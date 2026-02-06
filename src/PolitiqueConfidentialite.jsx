@@ -44,7 +44,7 @@ export default function PolitiqueConfidentialite({ onBack }) {
               Le responsable du traitement des donn&eacute;es personnelles est <strong>No&eacute; Calmes</strong>.
             </p>
             <p className="mt-2">
-              Contact : <a href="mailto:contact@noecalmes.com" className="text-brand hover:underline">contact@noecalmes.com</a>
+              Contact : <a href="mailto:contact@noecalmes.fr" className="text-brand hover:underline">contact@noecalmes.fr</a>
             </p>
           </section>
 
@@ -120,7 +120,7 @@ export default function PolitiqueConfidentialite({ onBack }) {
               <li><strong>Droit d&rsquo;opposition</strong> : vous opposer au traitement de vos donn&eacute;es</li>
             </ul>
             <p className="mt-3">
-              Pour exercer vos droits, contactez : <a href="mailto:contact@noecalmes.com" className="text-brand hover:underline">contact@noecalmes.com</a>
+              Pour exercer vos droits, contactez : <a href="mailto:contact@noecalmes.fr" className="text-brand hover:underline">contact@noecalmes.fr</a>
             </p>
             <p className="mt-2">
               Vous pouvez &eacute;galement introduire une r&eacute;clamation aupr&egrave;s de la <strong>CNIL</strong> (Commission Nationale de l&rsquo;Informatique et des Libert&eacute;s) : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">www.cnil.fr</a>

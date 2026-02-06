@@ -32,7 +32,7 @@ export default function MentionsLegales({ onBack }) {
               <li><strong className="text-text">N&deg; TVA :</strong> FR25922623814</li>
               <li><strong className="text-text">Activit&eacute; :</strong> Programmation informatique (NAF 6201Z)</li>
               <li><strong className="text-text">Adresse :</strong> 2500 Rue des Aumi&egrave;res, 12100 Millau, France</li>
-              <li><strong className="text-text">Contact :</strong> <a href="mailto:contact@noecalmes.com" className="text-brand hover:underline">contact@noecalmes.com</a></li>
+              <li><strong className="text-text">Contact :</strong> <a href="mailto:contact@noecalmes.fr" className="text-brand hover:underline">contact@noecalmes.fr</a></li>
             </ul>
           </section>
 
