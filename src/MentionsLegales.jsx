@@ -44,9 +44,9 @@ export default function MentionsLegales({ onBack }) {
           <section>
             <h2 className="font-heading text-lg font-bold mb-3">H&eacute;bergeur</h2>
             <ul className="space-y-1.5 text-grey">
-              <li><strong className="text-text">Raison sociale :</strong> Vercel Inc.</li>
-              <li><strong className="text-text">Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, &Eacute;tats-Unis</li>
-              <li><strong className="text-text">Site :</strong> <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">vercel.com</a></li>
+              <li><strong className="text-text">Raison sociale :</strong> GitHub, Inc. (GitHub Pages)</li>
+              <li><strong className="text-text">Adresse :</strong> 88 Colin P Kelly Jr St, San Francisco, CA 94107, &Eacute;tats-Unis</li>
+              <li><strong className="text-text">Site :</strong> <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">pages.github.com</a></li>
             </ul>
           </section>
 
