@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/node_modules/geist/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/node_modules/geist/dist/fonts/geist-sans/Geist-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/node_modules/geist/dist/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/node_modules/geist/dist/fonts/geist-sans/Geist-Black.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-surface: #fffefc;
+  --color-text: #033475;
+  --color-brand: #665dff;
+  --color-brand-dark: #576bfc;
+  --color-brand-light: #8796ff;
+  --color-brand-pale: #ccd2ff;
+  --color-brand-wash: #f0eeff;
+  --color-grey: gray;
+  --color-light-grey: #b6b4b4;
+  --color-card: #f9f9f9;
+  --color-card-border: #0000000f;
+  --color-green-bg: #e8f5e9;
+  --color-green-text: #2e7d32;
+  --color-red-bg: #fce4ec;
+  --color-red-text: #c62828;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Geist', 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: url('/arrow-cursor.svg') 4 2, auto;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* ===== ENTRANCE ANIMATIONS ===== */
+
+/* Navbar — slide down from top */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.anim-nav {
+  animation: slideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Hero stagger — fade up from bottom */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.anim-hero > * {
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim-hero > *:nth-child(1) { animation-delay: 0.15s; }
+.anim-hero > *:nth-child(2) { animation-delay: 0.3s; }
+.anim-hero > *:nth-child(3) { animation-delay: 0.45s; }
+.anim-hero > *:nth-child(4) { animation-delay: 0.55s; }
+.anim-hero > *:nth-child(5) { animation-delay: 0.65s; }
+.anim-hero > *:nth-child(6) { animation-delay: 0.75s; }
+.anim-hero > *:nth-child(7) { animation-delay: 0.85s; }
+
+/* Scroll reveal — sections & items */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealScale {
+  from { opacity: 0; transform: translateY(24px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.visible {
+  animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Cards and grid items get a staggered scale-up */
+.reveal-stagger > * {
+  opacity: 0;
+}
+
+.reveal-stagger.visible > * {
+  animation: revealScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.reveal-stagger.visible > *:nth-child(1) { animation-delay: 0.05s; }
+.reveal-stagger.visible > *:nth-child(2) { animation-delay: 0.12s; }
+.reveal-stagger.visible > *:nth-child(3) { animation-delay: 0.19s; }
+.reveal-stagger.visible > *:nth-child(4) { animation-delay: 0.26s; }
+.reveal-stagger.visible > *:nth-child(5) { animation-delay: 0.33s; }
+.reveal-stagger.visible > *:nth-child(6) { animation-delay: 0.40s; }
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .anim-nav,
+  .anim-hero > *,
+  .reveal.visible,
+  .reveal-stagger.visible > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* FAQ details marker reset */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary {
+  list-style: none;
+}
