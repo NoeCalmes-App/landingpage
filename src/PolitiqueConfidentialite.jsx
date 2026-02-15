@@ -33,7 +33,6 @@ export default function PolitiqueConfidentialite({ onBack }) {
               <li>SIRET : 922 623 814 00030</li>
               <li>TVA intracommunautaire : FR25922623814</li>
               <li>Activit&eacute; : Programmation informatique (6201Z)</li>
-              <li>Adresse : 2500 Rue des Aumi&egrave;res, 12100 Millau, France</li>
             </ul>
           </section>
 

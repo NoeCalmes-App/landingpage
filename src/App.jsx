@@ -8,8 +8,10 @@ import plouffIcon from './assets/appicon/plouffhabitudes.png'
 import wackupIcon from './assets/appicon/wackupalarme.png'
 import devSvg from './assets/lib/devmobile.svg'
 import postSvg from './assets/lib/post.svg'
+import mePhoto from './assets/lib/me.png'
 
 const NAV_LINKS = [
+  { href: '#why', label: 'À propos' },
   { href: '#process', label: 'Process' },
   { href: '#deliverables', label: 'Ce que je fais' },
   { href: '#faq', label: 'FAQ' },
@@ -320,18 +322,19 @@ function App() {
       </section>
 
       {/* ========== AUTORITÉ ========== */}
-      <section className="py-16 md:py-22 px-5 bg-card" id="why">
-        <div className="max-w-275 mx-auto text-center">
-          <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight mb-4">
+      <section className="pt-16 pb-16 md:pt-22 md:pb-22 px-5 bg-card" id="why">
+        <div className="max-w-275 mx-auto">
+          <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-4">
             Pourquoi moi et pas une agence
           </h2>
 
-          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto mb-5">
-            J'ai lancé mes propres applications — WakeUp Alarme, Plouff Habitudes<br />
-            Je connais les vrais problèmes : prioriser, trancher, livrer.<br />
-            Pas de chef de projet, pas d'intermédiaire. Vous parlez directement à celui qui construit.
+          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-12">
+            J'ai lanc&eacute; mes propres applications — WakeUp Alarme, Plouff Habitudes.<br />
+            Je connais les vrais probl&egrave;mes : prioriser, trancher, livrer.<br />
+            Pas de chef de projet, pas d'interm&eacute;diaire. Vous parlez directement &agrave; celui qui construit.
           </p>
 
+          {/* Apps */}
           <div className="reveal flex items-center justify-center gap-5 mb-5">
             {[
               { icon: wackupIcon, name: 'WakeUp Alarme', url: 'https://wakeupalarm.app/' },
@@ -344,11 +347,11 @@ function App() {
             ))}
           </div>
 
-          <p className="reveal text-brand font-semibold text-[0.95rem] md:text-[1.05rem] mb-10 md:mb-12">
-            Un seul interlocuteur, responsable de A à Z.
+          <p className="reveal text-brand font-semibold text-[0.95rem] md:text-[1.05rem] text-center mb-10 md:mb-12">
+            Un seul interlocuteur, responsable de A &agrave; Z.
           </p>
 
-          <div className="reveal-stagger flex flex-wrap justify-center gap-2.5 md:gap-4 max-w-230 mx-auto">
+          <div className="reveal-stagger flex flex-wrap justify-center gap-2.5 md:gap-4 max-w-230 mx-auto mb-10 md:mb-18">
             {[
               'J\'ai lancé mes propres apps',
               'Zéro intermédiaire',
@@ -364,6 +367,26 @@ function App() {
                 {skill}
               </div>
             ))}
+          </div>
+
+          {/* Photo + Bio */}
+          <div className="reveal max-w-180 mx-auto px-5 md:px-6 md:bg-white md:rounded-2xl md:p-10">
+            <div className="flex flex-col md:flex-row items-center gap-3 md:gap-10">
+              <img
+                src={mePhoto}
+                alt="Noé Calmes"
+                className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover shadow-lg shrink-0"
+              />
+              <div className="text-center md:text-left">
+                <h3 className="font-heading text-text text-lg md:text-xl font-bold mb-1">
+                  No&eacute; Calmes
+                </h3>
+                <p className="text-grey text-[0.9rem] md:text-[0.95rem] leading-relaxed">
+                  Je code depuis plus de 5 ans et je suis dans le d&eacute;veloppement mobile depuis plusieurs ann&eacute;es, expert Flutter &amp; Dart.
+                  Design, strat&eacute;gie produit, d&eacute;veloppement et mise en ligne.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -523,7 +546,7 @@ function App() {
 
           {/* Nous contacter + socials */}
           <div className="flex items-center gap-4">
-            <p className="text-white text-sm font-semibold">Nous contacter</p>
+            <p className="text-white text-sm font-semibold">Me contacter</p>
             <a href="https://www.linkedin.com/in/noecalmes" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-9 h-9 flex items-center justify-center rounded-[8px] bg-white text-brand hover:opacity-80 transition-opacity">
               <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
