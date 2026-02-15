@@ -383,7 +383,7 @@ function App() {
                 </h3>
                 <p className="text-grey text-[0.9rem] md:text-[0.95rem] leading-relaxed">
                   Je code depuis plus de 5 ans et je suis dans le d&eacute;veloppement mobile depuis plusieurs ann&eacute;es, expert Flutter &amp; Dart.
-                  Design, strat&eacute;gie produit, d&eacute;veloppement et mise en ligne.
+                  Strat&eacute;gie produit, d&eacute;veloppement et mise en ligne.
                 </p>
               </div>
             </div>
