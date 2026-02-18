@@ -227,7 +227,7 @@ function App() {
 
           {/* Proof */}
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-8 mt-7 md:mt-18">
-            {['MVP livré en 30 jours', 'Applications complètes prêtes à scaler', 'Suivi après mise en ligne'].map((text) => (
+            {['MVP livré en 45 jours', 'Applications complètes prêtes à scaler', 'Suivi après mise en ligne'].map((text) => (
               <div key={text} className="flex items-center gap-2.5 text-text text-[0.85rem] md:text-[0.9rem] font-medium">
                 <span className="shrink-0 w-5 h-5 rounded-full bg-brand flex items-center justify-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-white" />
@@ -245,7 +245,7 @@ function App() {
               </h2>
               <ul className="space-y-4">
                 {[
-                  'Vous souhaitez créer une app MVP en 30 jours',
+                  'Vous souhaitez créer une app MVP en 45 jours',
                   'Vous souhaitez créer une application complète prête à scaler',
                   'Vous avez des maquettes d\'une app et cherchez un développeur',
                   'Vous souhaitez une refonte de votre application',
@@ -289,7 +289,7 @@ function App() {
             <ul className="space-y-4">
               {[
                 'Vous avez une idée d\'application déjà élaborée',
-                'Vous souhaitez créer une app MVP en 30 jours',
+                'Vous souhaitez créer une app MVP en 45 jours',
                 'Vous souhaitez créer une application complète prête à scaler',
                 'Vous avez des maquettes d\'une app et cherchez un développeur',
               ].map((item) => (
@@ -329,15 +329,15 @@ function App() {
           </h2>
 
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-12">
-            J'ai lanc&eacute; mes propres applications — WakeUp Alarme, Plouff Habitudes.<br />
-            Je connais les vrais probl&egrave;mes : prioriser, trancher, livrer.<br />
-            Pas de chef de projet, pas d'interm&eacute;diaire. Vous parlez directement &agrave; celui qui construit.
+            J'ai lanc&eacute; mes propres applications — Wake Up Alarme, Plouff Habitudes.<br />
+            Je connais les vrais probl&egrave;mes : <strong>prioriser, trancher, livrer.</strong><br />
+            Pas de chef de projet, pas d'interm&eacute;diaire. Vous parlez directement &agrave; <strong>celui qui construit.</strong>
           </p>
 
           {/* Apps */}
           <div className="reveal flex items-center justify-center gap-5 mb-5">
             {[
-              { icon: wackupIcon, name: 'WakeUp Alarme', url: 'https://wakeupalarm.app/' },
+              { icon: wackupIcon, name: 'Wake Up Alarme', url: 'https://wakeupalarm.app/' },
               { icon: plouffIcon, name: 'Plouff Habitudes', url: 'http://plouff-habitudes.com' },
             ].map(({ icon, name, url }) => (
               <a key={name} href={url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2">
@@ -348,7 +348,7 @@ function App() {
           </div>
 
           <p className="reveal text-brand font-semibold text-[0.95rem] md:text-[1.05rem] text-center mb-10 md:mb-12">
-            Un seul interlocuteur, responsable de A &agrave; Z.
+            Un seul interlocuteur, <mark>responsable de A &agrave; Z.</mark>
           </p>
 
           <div className="reveal-stagger flex flex-wrap justify-center gap-2.5 md:gap-4 max-w-230 mx-auto mb-10 md:mb-18">
@@ -382,7 +382,7 @@ function App() {
                   No&eacute; Calmes
                 </h3>
                 <p className="text-grey text-[0.9rem] md:text-[0.95rem] leading-relaxed">
-                  Je code depuis plus de 5 ans et je suis dans le d&eacute;veloppement mobile depuis plusieurs ann&eacute;es, expert Flutter &amp; Dart.
+                  Je code depuis plus de 5 ans et je suis dans le d&eacute;veloppement mobile depuis un bon moment, expert Flutter &amp; Dart.
                   Strat&eacute;gie produit, d&eacute;veloppement et mise en ligne.
                 </p>
               </div>
@@ -481,7 +481,7 @@ function App() {
           <div className="reveal max-w-170 mx-auto divide-y divide-card-border border-t border-card-border">
             {[
               { q: 'Comment fonctionne la tarification ?', a: 'Je ne facture ni à l\'heure, ni à la journée. Le tarif est défini dès le départ, en fonction du projet. Pas de mauvaise surprise, pas de compteur qui tourne — vous savez exactement ce que vous payez avant de commencer.' },
-              { q: 'Combien de temps faut-il pour avoir une application mobile ?', a: 'Pour un MVP, comptez environ 30 jours. Pour une application complète, le délai dépend du projet et de vos besoins — on définit ça ensemble.' },
+              { q: 'Combien de temps faut-il pour avoir une application mobile ?', a: 'Pour un MVP, comptez environ 45 jours. Pour une application complète, le délai dépend du projet et de vos besoins — on définit ça ensemble.' },
               { q: 'Après la livraison de l\'application ?', a: 'Je ne disparais pas après la mise en ligne. Je reste disponible pour les corrections, les mises à jour, les nouvelles fonctionnalités et l\'accompagnement technique. Le suivi fait partie de mon approche — on définit ensemble ce qui est nécessaire selon l\'évolution de votre produit.' },
             ].map(({ q, a }) => (
               <details key={q} className="group">
