@@ -129,7 +129,7 @@ function App() {
                   Noé Calmes
                 </span>
                 <span className="text-grey text-sm md:text-md leading-tight font-normal">
-                  Expert Développeur Flutter
+                  Développeur Mobile Flutter
                 </span>
               </a>
 
@@ -348,7 +348,7 @@ function App() {
           </div>
 
           <p className="reveal text-brand font-semibold text-[0.95rem] md:text-[1.05rem] text-center mb-10 md:mb-12">
-            Un seul interlocuteur, <mark>responsable de A &agrave; Z.</mark>
+            Un seul interlocuteur, <strong>responsable de A &agrave; Z.</strong>
           </p>
 
           <div className="reveal-stagger flex flex-wrap justify-center gap-2.5 md:gap-4 max-w-230 mx-auto mb-10 md:mb-18">
@@ -382,7 +382,7 @@ function App() {
                   No&eacute; Calmes
                 </h3>
                 <p className="text-grey text-[0.9rem] md:text-[0.95rem] leading-relaxed">
-                  Je code depuis plus de 5 ans et je suis dans le d&eacute;veloppement mobile depuis un bon moment, expert Flutter &amp; Dart.
+                  Je code <strong>depuis plus de 5 ans</strong> et je suis dans le d&eacute;veloppement mobile depuis un bon moment, <strong>expert Flutter &amp; Dart</strong>.
                   Strat&eacute;gie produit, d&eacute;veloppement et mise en ligne.
                 </p>
               </div>
