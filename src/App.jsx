@@ -348,7 +348,7 @@ function App() {
           </div>
 
           <p className="reveal text-brand font-semibold text-[0.95rem] md:text-[1.05rem] text-center mb-10 md:mb-12">
-            Un seul interlocuteur, <strong>responsable de A &agrave; Z.</strong>
+            Un seul interlocuteur, <span className="underline decoration-2 underline-offset-4">responsable de A &agrave; Z.</span>
           </p>
 
           <div className="reveal-stagger flex flex-wrap justify-center gap-2.5 md:gap-4 max-w-230 mx-auto mb-10 md:mb-18">
