@@ -338,7 +338,7 @@ function App() {
           <div className="reveal flex items-center justify-center gap-5 mb-5">
             {[
               { icon: wackupIcon, name: 'Wake Up Alarme', url: 'https://wakeupalarm.app/' },
-              { icon: plouffIcon, name: 'Plouff Habitudes', url: 'http://plouff-habitudes.com' },
+              { icon: plouffIcon, name: 'Plouff Habitudes', url: 'https://apps.apple.com/app/plouf-habitudes/id6758303032' },
             ].map(({ icon, name, url }) => (
               <a key={name} href={url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2">
                 <img src={icon} alt={name} className="w-20 h-20 md:w-24 md:h-24 rounded-[22%] shadow-md transition-transform duration-300 group-hover:scale-110" />
