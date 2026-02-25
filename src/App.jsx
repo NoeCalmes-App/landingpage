@@ -105,6 +105,10 @@ function App() {
   const [whatsappOpen, setWhatsappOpen] = useState(false)
   const scrollRef = useScrollReveal()
 
+  const scrollToCalendly = () => {
+    document.getElementById('calendly-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   const goHome = () => { setPage('home'); window.scrollTo(0, 0) }
 
   if (page === 'privacy') return <PolitiqueConfidentialite onBack={goHome} />
@@ -145,7 +149,7 @@ function App() {
               {/* Right — CTA + Hamburger */}
               <div className="flex items-center gap-3">
                 <button
-                  onClick={() => setWhatsappOpen(true)}
+                  onClick={scrollToCalendly}
                   className="hidden min-[480px]:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
                 >
                   Réserver un appel
@@ -182,7 +186,7 @@ function App() {
                   ))}
                   <button
                     className="min-[480px]:hidden text-center bg-[#131313] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer"
-                    onClick={() => { setMenuOpen(false); setWhatsappOpen(true) }}
+                    onClick={() => { setMenuOpen(false); scrollToCalendly() }}
                   >
                     Réserver un appel
                   </button>
@@ -211,7 +215,7 @@ function App() {
           </p>
 
           <button
-            onClick={() => setWhatsappOpen(true)}
+            onClick={scrollToCalendly}
             className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
           >
             Discuter de mon projet
@@ -475,26 +479,46 @@ function App() {
       <section className="py-16 md:py-22 px-5" id="faq">
         <div className="max-w-275 mx-auto">
           <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-10 md:mb-12">
-            Questions fréquentes
+            <span className="text-brand">Vos questions</span>, nos réponses
           </h2>
 
-          <div className="reveal max-w-170 mx-auto divide-y divide-card-border border-t border-card-border">
+          <div className="reveal max-w-170 mx-auto flex flex-col gap-4">
             {[
               { q: 'Comment fonctionne la tarification ?', a: 'Je ne facture ni à l\'heure, ni à la journée. Le tarif est défini dès le départ, en fonction du projet. Pas de mauvaise surprise, pas de compteur qui tourne — vous savez exactement ce que vous payez avant de commencer.' },
               { q: 'Combien de temps faut-il pour avoir une application mobile ?', a: 'Pour un MVP, comptez environ 45 jours. Pour une application complète, le délai dépend du projet et de vos besoins — on définit ça ensemble.' },
               { q: 'Après la livraison de l\'application ?', a: 'Je ne disparais pas après la mise en ligne. Je reste disponible pour les corrections, les mises à jour, les nouvelles fonctionnalités et l\'accompagnement technique. Le suivi fait partie de mon approche — on définit ensemble ce qui est nécessaire selon l\'évolution de votre produit.' },
             ].map(({ q, a }) => (
-              <details key={q} className="group">
-                <summary className="flex items-center justify-between gap-4 py-5 md:py-6 cursor-pointer text-text font-semibold text-[0.95rem] md:text-base">
+              <details key={q} className="group bg-card border border-card-border rounded-[15px] px-6 py-1">
+                <summary className="flex items-center justify-between gap-4 py-5 cursor-pointer text-text font-semibold text-[0.95rem] md:text-base">
                   {q}
                   <span className="text-brand text-xl shrink-0 w-6 text-center group-open:hidden">+</span>
                   <span className="text-brand text-xl shrink-0 w-6 text-center hidden group-open:block">&minus;</span>
                 </summary>
-                <p className="pb-5 md:pb-6 text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">
+                <p className="pb-5 text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">
                   {a}
                 </p>
               </details>
             ))}
+          </div>
+
+          {/* Calendly */}
+          <div id="calendly-section" className="mt-16 md:mt-24 text-center">
+            <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-3 md:mb-3">
+              Réservez <span className="text-brand">un appel</span> avec nous 📞
+            </h2>
+            <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mb-1 md:mb-0">
+              C'est 100% gratuit, on pourra répondre à toutes vos questions.
+            </p>
+            <div
+              className="calendly-inline-widget"
+              data-url="https://calendly.com/noecalmes-pro/appel-app?primary_color=665dff"
+              style={{ minWidth: '320px', height: '700px' }}
+            />
+            <script
+              type="text/javascript"
+              src="https://assets.calendly.com/assets/external/widget.js"
+              async
+            />
           </div>
         </div>
       </section>
@@ -512,7 +536,7 @@ function App() {
           </p>
 
           <button
-            onClick={() => setWhatsappOpen(true)}
+            onClick={scrollToCalendly}
             className="reveal group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
           >
             Réserver mon appel gratuit
@@ -541,7 +565,7 @@ function App() {
             <a href="#process" className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Process</a>
             <a href="#deliverables" className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Ce que je fais</a>
             <a href="#faq" className="text-white text-sm font-semibold hover:text-white/60 transition-colors">FAQ</a>
-            <button onClick={() => setWhatsappOpen(true)} className="text-white text-sm font-semibold hover:text-white/60 transition-colors cursor-pointer">Contact</button>
+            <button onClick={scrollToCalendly} className="text-white text-sm font-semibold hover:text-white/60 transition-colors cursor-pointer">Contact</button>
           </div>
 
           {/* Nous contacter + socials */}

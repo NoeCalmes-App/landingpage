@@ -159,3 +159,8 @@ details summary::-webkit-details-marker {
 details summary {
   list-style: none;
 }
+
+/* Hide Calendly branding badge */
+a[href="https://calendly.com/fr?utm_campaign=sign_up&utm_medium=badge&utm_source=invitee"] {
+  display: none !important;
+}
