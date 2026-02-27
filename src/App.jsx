@@ -99,6 +99,41 @@ function WhatsAppModal({ open, onClose }) {
   )
 }
 
+const faqItems = [
+  { q: 'Comment fonctionne la tarification ?', a: 'Je ne facture ni à l\'heure, ni à la journée. Le tarif est défini dès le départ, en fonction du projet. Pas de mauvaise surprise, pas de compteur qui tourne — vous savez exactement ce que vous payez avant de commencer.' },
+  { q: 'Combien de temps faut-il pour avoir une application mobile ?', a: 'Pour un MVP, comptez environ 45 jours. Pour une application complète, le délai dépend du projet et de vos besoins — on définit ça ensemble.' },
+  { q: 'Après la livraison de l\'application ?', a: 'Je ne disparais pas après la mise en ligne. Je reste disponible pour les corrections, les mises à jour, les nouvelles fonctionnalités et l\'accompagnement technique. Le suivi fait partie de mon approche — on définit ensemble ce qui est nécessaire selon l\'évolution de votre produit.' },
+]
+
+function FaqAccordion() {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  return (
+    <div className="reveal max-w-170 mx-auto flex flex-col gap-4">
+      {faqItems.map(({ q, a }, i) => (
+        <details
+          key={q}
+          open={openIndex === i}
+          className="group bg-card border border-card-border rounded-[15px] px-6 py-1"
+          onToggle={(e) => {
+            if (e.target.open) setOpenIndex(i)
+            else if (openIndex === i) setOpenIndex(null)
+          }}
+        >
+          <summary className="flex items-center justify-between gap-4 py-5 cursor-pointer text-text font-semibold text-[0.95rem] md:text-base">
+            {q}
+            <span className="text-brand text-xl shrink-0 w-6 text-center group-open:hidden">+</span>
+            <span className="text-brand text-xl shrink-0 w-6 text-center hidden group-open:block">&minus;</span>
+          </summary>
+          <p className="pb-5 text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">
+            {a}
+          </p>
+        </details>
+      ))}
+    </div>
+  )
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [page, setPage] = useState('home')
@@ -482,24 +517,7 @@ function App() {
             <span className="text-brand">Vos questions</span>, nos réponses
           </h2>
 
-          <div className="reveal max-w-170 mx-auto flex flex-col gap-4">
-            {[
-              { q: 'Comment fonctionne la tarification ?', a: 'Je ne facture ni à l\'heure, ni à la journée. Le tarif est défini dès le départ, en fonction du projet. Pas de mauvaise surprise, pas de compteur qui tourne — vous savez exactement ce que vous payez avant de commencer.' },
-              { q: 'Combien de temps faut-il pour avoir une application mobile ?', a: 'Pour un MVP, comptez environ 45 jours. Pour une application complète, le délai dépend du projet et de vos besoins — on définit ça ensemble.' },
-              { q: 'Après la livraison de l\'application ?', a: 'Je ne disparais pas après la mise en ligne. Je reste disponible pour les corrections, les mises à jour, les nouvelles fonctionnalités et l\'accompagnement technique. Le suivi fait partie de mon approche — on définit ensemble ce qui est nécessaire selon l\'évolution de votre produit.' },
-            ].map(({ q, a }) => (
-              <details key={q} className="group bg-card border border-card-border rounded-[15px] px-6 py-1">
-                <summary className="flex items-center justify-between gap-4 py-5 cursor-pointer text-text font-semibold text-[0.95rem] md:text-base">
-                  {q}
-                  <span className="text-brand text-xl shrink-0 w-6 text-center group-open:hidden">+</span>
-                  <span className="text-brand text-xl shrink-0 w-6 text-center hidden group-open:block">&minus;</span>
-                </summary>
-                <p className="pb-5 text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">
-                  {a}
-                </p>
-              </details>
-            ))}
-          </div>
+          <FaqAccordion />
 
           {/* Calendly */}
           <div id="calendly-section" className="mt-16 md:mt-24 text-center">
