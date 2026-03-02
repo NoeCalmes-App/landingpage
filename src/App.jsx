@@ -146,6 +146,7 @@ function App() {
         if (typeof fbq === 'function') {
           fbq('track', 'Lead')
         }
+        history.pushState(null, '', '/merci')
       }
     }
     window.addEventListener('message', handleCalendlyEvent)
