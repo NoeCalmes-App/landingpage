@@ -166,7 +166,7 @@ function App() {
   return (
     <div ref={scrollRef}>
       {/* ========== NAVBAR ========== */}
-      <nav className="anim-nav fixed inset-[18px_0_auto] z-50 flex justify-center px-4 md:px-6">
+      <nav className="anim-nav fixed inset-x-0 top-2.5 md:top-[18px] z-50 flex justify-center px-4 md:px-6">
         <div className="w-full max-w-230">
           <div
             className={`backdrop-blur-[12px] border border-[#70707029] shadow-[0_1px_3px_#00000017] overflow-hidden rounded-[40px] transition-[background-color] duration-300 ease-in-out ${
