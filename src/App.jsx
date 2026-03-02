@@ -140,6 +140,18 @@ function App() {
   const [whatsappOpen, setWhatsappOpen] = useState(false)
   const scrollRef = useScrollReveal()
 
+  useEffect(() => {
+    const handleCalendlyEvent = (e) => {
+      if (e.data?.event === 'calendly.event_scheduled') {
+        if (typeof fbq === 'function') {
+          fbq('track', 'Lead')
+        }
+      }
+    }
+    window.addEventListener('message', handleCalendlyEvent)
+    return () => window.removeEventListener('message', handleCalendlyEvent)
+  }, [])
+
   const scrollToCalendly = () => {
     document.getElementById('calendly-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
