@@ -525,7 +525,7 @@ function App() {
       {/* ========== FAQ ========== */}
       <section className="py-16 md:py-22 px-5" id="faq">
         <div className="max-w-275 mx-auto">
-          <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-10 md:mb-12">
+          <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-6 md:mb-12">
             <span className="text-brand">Vos questions</span>, nos réponses
           </h2>
 
@@ -536,7 +536,7 @@ function App() {
             <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-3 md:mb-3">
               Réservez <span className="text-brand">un appel</span> avec nous 📞
             </h2>
-            <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mb-1 md:mb-0">
+            <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mb-3 md:mb-0">
               C'est 100% gratuit, on pourra répondre à toutes vos questions.
             </p>
             <div
