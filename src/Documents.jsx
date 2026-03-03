@@ -1,5 +1,6 @@
 import ajoutMembrePdf from './assets/docs/Ajout_Membre_Firebase.pdf'
 import googlePlayPdf from './assets/docs/Création Compte Google Play Console.pdf'
+import appleDevPdf from './assets/docs/Création compte Apple Développeur.pdf'
 
 const DOCUMENTS = [
   {
@@ -21,10 +22,18 @@ const DOCUMENTS = [
   {
     id: 'google-play-console',
     route: '/google-play-console',
-    title: 'Création Compte Google Play Console',
-    description: "Étapes pour créer et configurer un compte Google Play Console afin de publier une application Android.",
+    title: 'Compte Google Play Console',
+    description: "Création et configuration d'un compte Google Play Console pour publier une application Android.",
     category: 'Guide technique',
     pdf: googlePlayPdf,
+  },
+  {
+    id: 'apple-developer',
+    route: '/apple-developer',
+    title: 'Compte Apple Développeur',
+    description: "Création et configuration d'un compte Apple Développeur pour publier une application iOS sur l'App Store.",
+    category: 'Guide technique',
+    pdf: appleDevPdf,
   },
 ]
 
