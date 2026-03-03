@@ -106,7 +106,7 @@ function Documents({ onBack, onOpenDocument }) {
           Documents
         </h1>
         <p className="text-[#888] text-[0.95rem]">
-          Guides de démarrage pour lancer ton projet Flutter.
+          Guide d'information avant de lancer votre application mobile.
         </p>
       </div>
 
@@ -118,7 +118,7 @@ function Documents({ onBack, onOpenDocument }) {
 
         {/* Configuration avant code */}
         <div>
-          <h2 className="text-[#888] text-[0.95rem] mb-5">
+          <h2 className="font-heading text-[#131313] text-base font-semibold mb-5">
             Configuration avant code
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
