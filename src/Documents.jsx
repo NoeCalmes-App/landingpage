@@ -110,11 +110,23 @@ function Documents({ onBack, onOpenDocument }) {
         </p>
       </div>
 
-      {/* Cards grid */}
-      <div className="px-5 pb-20 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {DOCUMENTS.map((doc) => (
-          <DocumentCard key={doc.id} doc={doc} onClick={() => onOpenDocument(doc)} />
-        ))}
+      <div className="px-5 pb-20 max-w-4xl mx-auto space-y-10">
+        {/* Flutter & Firebase */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <DocumentCard doc={DOCUMENTS[0]} onClick={() => onOpenDocument(DOCUMENTS[0])} />
+        </div>
+
+        {/* Configuration avant code */}
+        <div>
+          <h2 className="font-heading text-[#131313] text-lg font-bold mb-5">
+            Configuration avant code
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {DOCUMENTS.slice(1).map((doc) => (
+              <DocumentCard key={doc.id} doc={doc} onClick={() => onOpenDocument(doc)} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
