@@ -31,7 +31,7 @@ const DOCUMENTS = [
     id: 'apple-developer',
     route: '/apple-developer',
     title: 'Compte Apple Développeur',
-    description: "Création et configuration d'un compte Apple Développeur pour publier une application iOS sur l'App Store.",
+    description: "Création et configuration d'un compte Apple Développeur pour publier une application iOS",
     category: 'Guide technique',
     pdf: appleDevPdf,
   },
