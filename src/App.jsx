@@ -3,6 +3,7 @@ import './App.css'
 import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
 import MentionsLegales from './MentionsLegales.jsx'
 import CGV from './CGV.jsx'
+import Document from './Document.jsx'
 import meetingSvg from './assets/lib/meetingdev.svg'
 import plouffIcon from './assets/appicon/plouffhabitudes.png'
 import wackupIcon from './assets/appicon/wackupalarme.png'
@@ -136,7 +137,16 @@ function FaqAccordion() {
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [page, setPage] = useState('home')
+  const [page, setPage] = useState(() => {
+    const redirect = sessionStorage.getItem('redirect')
+    if (redirect) {
+      sessionStorage.removeItem('redirect')
+      history.replaceState(null, '', redirect)
+    }
+    const path = redirect || window.location.pathname
+    if (path === '/document') return 'document'
+    return 'home'
+  })
   const [whatsappOpen, setWhatsappOpen] = useState(false)
   const scrollRef = useScrollReveal()
 
@@ -157,11 +167,12 @@ function App() {
     document.getElementById('calendly-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
-  const goHome = () => { setPage('home'); window.scrollTo(0, 0) }
+  const goHome = () => { setPage('home'); history.pushState(null, '', '/'); window.scrollTo(0, 0) }
 
   if (page === 'privacy') return <PolitiqueConfidentialite onBack={goHome} />
   if (page === 'mentions') return <MentionsLegales onBack={goHome} />
   if (page === 'cgv') return <CGV onBack={goHome} />
+  if (page === 'document') return <Document onBack={goHome} />
 
   return (
     <div ref={scrollRef}>
