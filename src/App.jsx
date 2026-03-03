@@ -4,6 +4,7 @@ import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
 import MentionsLegales from './MentionsLegales.jsx'
 import CGV from './CGV.jsx'
 import Document from './Document.jsx'
+import Documents, { DOCUMENTS } from './Documents.jsx'
 import meetingSvg from './assets/lib/meetingdev.svg'
 import plouffIcon from './assets/appicon/plouffhabitudes.png'
 import wackupIcon from './assets/appicon/wackupalarme.png'
@@ -137,6 +138,10 @@ function FaqAccordion() {
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [currentDoc, setCurrentDoc] = useState(() => {
+    const path = sessionStorage.getItem('redirect') || window.location.pathname
+    return DOCUMENTS.find((d) => d.route === path) || null
+  })
   const [page, setPage] = useState(() => {
     const redirect = sessionStorage.getItem('redirect')
     if (redirect) {
@@ -144,7 +149,8 @@ function App() {
       history.replaceState(null, '', redirect)
     }
     const path = redirect || window.location.pathname
-    if (path === '/document') return 'document'
+    if (path === '/documents') return 'documents'
+    if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
     return 'home'
   })
   const [whatsappOpen, setWhatsappOpen] = useState(false)
@@ -169,10 +175,23 @@ function App() {
 
   const goHome = () => { setPage('home'); history.pushState(null, '', '/'); window.scrollTo(0, 0) }
 
+  const goDocuments = () => { setPage('documents'); history.pushState(null, '', '/documents'); window.scrollTo(0, 0) }
+
   if (page === 'privacy') return <PolitiqueConfidentialite onBack={goHome} />
   if (page === 'mentions') return <MentionsLegales onBack={goHome} />
   if (page === 'cgv') return <CGV onBack={goHome} />
-  if (page === 'document') return <Document onBack={goHome} />
+  if (page === 'documents') return (
+    <Documents
+      onBack={goHome}
+      onOpenDocument={(doc) => {
+        setCurrentDoc(doc)
+        setPage('document-viewer')
+        history.pushState(null, '', doc.route)
+        window.scrollTo(0, 0)
+      }}
+    />
+  )
+  if (page === 'document-viewer' && currentDoc) return <Document doc={currentDoc} onBack={goDocuments} />
 
   return (
     <div ref={scrollRef}>
