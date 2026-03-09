@@ -5,6 +5,7 @@ import MentionsLegales from './MentionsLegales.jsx'
 import CGV from './CGV.jsx'
 import Document from './Document.jsx'
 import Documents, { DOCUMENTS } from './Documents.jsx'
+import ContactNoe from './ContactNoe.jsx'
 import meetingSvg from './assets/lib/meetingdev.svg'
 import plouffIcon from './assets/appicon/plouffhabitudes.png'
 import wackupIcon from './assets/appicon/wackupalarme.png'
@@ -150,6 +151,7 @@ function App() {
     }
     const path = redirect || window.location.pathname
     if (path === '/documents') return 'documents'
+    if (path === '/contactnoe') return 'contact'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
     return 'home'
   })
@@ -177,6 +179,7 @@ function App() {
 
   const goDocuments = () => { setPage('documents'); history.pushState(null, '', '/documents'); window.scrollTo(0, 0) }
 
+  if (page === 'contact') return <ContactNoe />
   if (page === 'privacy') return <PolitiqueConfidentialite onBack={goHome} />
   if (page === 'mentions') return <MentionsLegales onBack={goHome} />
   if (page === 'cgv') return <CGV onBack={goHome} />
