@@ -1,16 +1,143 @@
+import { useState } from 'react'
 import qrcode from './assets/contact/qrcode.png'
 
 const WHATSAPP_URL = 'https://wa.me/33658308210'
 const TEAMS_URL = 'https://teams.live.com/l/invite/FEAC7bmID--_ZezkAE?v=g1'
 const EMAIL = 'contact@noecalmes.fr'
 
-function ContactItem({ href, icon, label, sublabel, color }) {
+const EMAIL_OPTIONS = [
+  {
+    label: 'Gmail',
+    sublabel: 'Ouvrir dans Gmail',
+    href: `https://mail.google.com/mail/?view=cm&to=${EMAIL}`,
+    color: '#EA4335',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+        <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Outlook',
+    sublabel: 'Ouvrir dans Outlook',
+    href: `https://outlook.live.com/mail/0/deeplink/compose?to=${EMAIL}`,
+    color: '#0078D4',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+        <path d="M7.88 12.04q0 .45-.11.87-.1.41-.33.74-.22.33-.58.52-.37.2-.87.2t-.85-.2q-.35-.21-.57-.55-.22-.33-.33-.75-.1-.42-.1-.86t.1-.87q.1-.43.34-.76.22-.34.59-.54.36-.2.87-.2t.86.2q.35.21.57.55.22.34.31.77.1.43.1.88zM24 12v9.38q0 .46-.33.8-.33.32-.8.32H7.13q-.46 0-.8-.33-.32-.33-.32-.8V18H1q-.41 0-.7-.3-.3-.29-.3-.7V7q0-.41.3-.7Q.58 6 1 6h6.5V2.55q0-.44.3-.75.3-.3.75-.3h12.9q.44 0 .75.3.3.3.3.75V10.85l1.24.72h.01q.1.07.18.18.07.12.07.25zm-6-8.25v3h3l-3-3zm4.5 11.99l-3.75-2.61V15l3.75 2.61v-1.87zM12 8.5H8.5V12H12V8.5zm0 4.5H8.5v3.5H12V13zm-5-4.5H3.5V12H7V8.5zm0 4.5H3.5v3.5H7V13zm13.5-2.09V7.5H14v2.91l-2.75-1.91H7.13V17H7v.5l5.25-3.63 5.25 3.63V7.5h6.5v3.91l-2.5-1.5z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Yahoo Mail',
+    sublabel: 'Ouvrir dans Yahoo',
+    href: `https://compose.mail.yahoo.com/?to=${EMAIL}`,
+    color: '#6001D2',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+        <path d="M19.7 2.9L14.5 11l5.2 8.1H24v2.1h-8.3v-2.1h2.8l-3.9-6.1-3.9 6.1H13v2.1H4.8v-2.1h3.9L0 2.9h3.8l6.1 9.5 6.1-9.5z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Application mail',
+    sublabel: 'Mac Mail, Outlook desktop…',
+    href: `mailto:${EMAIL}`,
+    color: '#131313',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22,6 12,13 2,6" />
+      </svg>
+    ),
+  },
+]
+
+function EmailModal({ onClose }) {
+  const [copied, setCopied] = useState(false)
+
+  const copy = () => {
+    navigator.clipboard.writeText(EMAIL)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   return (
-    <a
-      href={href}
-      target={href.startsWith('mailto') ? undefined : '_blank'}
-      rel="noopener noreferrer"
-      className="group flex items-center gap-5 bg-card border border-card-border rounded-[18px] px-6 py-5 hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] transition-all duration-200"
+    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center px-4 pb-4 sm:pb-0" onClick={onClose}>
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+      <div
+        className="relative bg-white rounded-[22px] p-6 w-full max-w-sm shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between mb-5">
+          <div>
+            <h3 className="font-heading text-[#131313] font-bold text-base">Envoyer un email</h3>
+            <p className="text-grey text-[0.8rem] mt-0.5">{EMAIL}</p>
+          </div>
+          <button onClick={onClose} className="text-grey hover:text-[#131313] transition-colors cursor-pointer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="flex flex-col gap-2 mb-4">
+          {EMAIL_OPTIONS.map(({ label, sublabel, href, color, icon }) => (
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith('mailto') ? undefined : '_blank'}
+              rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+              onClick={onClose}
+              className="flex items-center gap-4 px-4 py-3 rounded-[14px] hover:bg-[#f5f5f5] transition-colors"
+            >
+              <div className="w-9 h-9 rounded-[10px] flex items-center justify-center shrink-0" style={{ backgroundColor: color }}>
+                {icon}
+              </div>
+              <div>
+                <p className="text-[#131313] font-semibold text-[0.88rem]">{label}</p>
+                <p className="text-grey text-[0.78rem]">{sublabel}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <button
+          onClick={copy}
+          className="w-full flex items-center justify-center gap-2 border border-[#e5e5e5] rounded-[14px] py-3 text-[#131313] text-[0.88rem] font-semibold hover:bg-[#f5f5f5] transition-colors cursor-pointer"
+        >
+          {copied ? (
+            <>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span className="text-[#22c55e]">Copié !</span>
+            </>
+          ) : (
+            <>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+              Copier l'adresse
+            </>
+          )}
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function ContactItem({ href, icon, label, sublabel, color, onClick }) {
+  const Tag = onClick ? 'button' : 'a'
+  const props = onClick
+    ? { onClick, type: 'button' }
+    : { href, target: '_blank', rel: 'noopener noreferrer' }
+
+  return (
+    <Tag
+      {...props}
+      className="group w-full flex items-center gap-5 bg-card border border-card-border rounded-[18px] px-6 py-5 hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] transition-all duration-200 cursor-pointer text-left"
     >
       <div
         className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105"
@@ -30,11 +157,13 @@ function ContactItem({ href, icon, label, sublabel, color }) {
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
       </svg>
-    </a>
+    </Tag>
   )
 }
 
 function ContactNoe() {
+  const [emailOpen, setEmailOpen] = useState(false)
+
   return (
     <div className="min-h-screen bg-[#f9f9f9] flex flex-col">
       {/* Header */}
@@ -57,7 +186,7 @@ function ContactNoe() {
       <div className="flex-1 px-5 pt-12 pb-20 max-w-lg mx-auto w-full">
         {/* Title */}
         <div className="mb-10">
-          <h1 className="font-heading text-text text-3xl md:text-4xl font-extrabold tracking-tight mb-2">
+          <h1 className="font-heading text-[#131313] text-3xl md:text-4xl font-extrabold tracking-tight mb-2">
             Contact
           </h1>
           <p className="text-grey text-[0.95rem]">
@@ -68,7 +197,7 @@ function ContactNoe() {
         {/* Contact items */}
         <div className="flex flex-col gap-3 mb-10">
           <ContactItem
-            href={`mailto:${EMAIL}`}
+            onClick={() => setEmailOpen(true)}
             label={EMAIL}
             sublabel="Email"
             color="#665dff"
@@ -103,7 +232,6 @@ function ContactNoe() {
                 <path d="M14.625 8.25a1.875 1.875 0 1 0 0-3.75 1.875 1.875 0 0 0 0 3.75z" />
                 <path d="M17.25 9h-5.25A1.5 1.5 0 0 0 10.5 10.5v5.25a3.75 3.75 0 0 0 7.5 0V10.5A1.5 1.5 0 0 0 17.25 9z" />
                 <path d="M20.25 9h-1.5v6.75a4.5 4.5 0 0 1-4.5 4.5h-.75A3.75 3.75 0 0 0 17.25 24h.75A3.75 3.75 0 0 0 21.75 20.25V10.5A1.5 1.5 0 0 0 20.25 9z" />
-                <path d="M3.75 9A1.5 1.5 0 0 0 2.25 10.5v3.75a6 6 0 0 0 6 6h1.5a6 6 0 0 0 6-6V10.5A1.5 1.5 0 0 0 14.25 9H3.75z" opacity=".3" />
               </svg>
             }
           />
@@ -147,6 +275,8 @@ function ContactNoe() {
           &copy; 2026 Noé Calmes
         </p>
       </div>
+
+      {emailOpen && <EmailModal onClose={() => setEmailOpen(false)} />}
     </div>
   )
 }
