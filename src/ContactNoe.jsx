@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import qrcode from './assets/contact/qrcode.png'
 import { FaWhatsapp } from 'react-icons/fa'
-import { SiGmail, SiMicrosoftoutlook, SiYahoo } from 'react-icons/si'
+import { SiGmail } from 'react-icons/si'
+import { FaYahoo } from 'react-icons/fa'
+import { PiMicrosoftOutlookLogoFill } from 'react-icons/pi'
 import { BsMicrosoftTeams } from 'react-icons/bs'
 import { MdEmail } from 'react-icons/md'
 
@@ -22,14 +24,14 @@ const EMAIL_OPTIONS = [
     sublabel: 'Ouvrir dans Outlook',
     href: `https://outlook.live.com/mail/0/deeplink/compose?to=${EMAIL}`,
     iconBg: '#fff',
-    icon: <SiMicrosoftoutlook size={22} color="#0078D4" />,
+    icon: <PiMicrosoftOutlookLogoFill size={22} color="#0078D4" />,
   },
   {
     label: 'Yahoo Mail',
     sublabel: 'Ouvrir dans Yahoo',
     href: `https://compose.mail.yahoo.com/?to=${EMAIL}`,
     iconBg: '#fff',
-    icon: <SiYahoo size={22} color="#6001D2" />,
+    icon: <FaYahoo size={22} color="#6001D2" />,
   },
   {
     label: 'Application mail',
