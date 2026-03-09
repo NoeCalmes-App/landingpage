@@ -85,19 +85,19 @@ function Documents({ onBack, onOpenDocument }) {
   return (
     <div className="min-h-screen bg-[#f9f9f9]">
       {/* Header sticky */}
-      <div className="sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b border-[#e5e5e5] px-5 py-4 flex items-center gap-3">
-        <button
-          onClick={onBack}
-          className="flex items-center gap-1.5 text-[#665dff] font-semibold text-sm hover:opacity-70 transition-opacity cursor-pointer shrink-0"
+      <div className="sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b border-[#e5e5e5] px-5 py-4 flex items-center justify-center gap-2">
+        <a
+          href="/documents"
+          className="px-5 py-2 rounded-full bg-[#665dff] text-white font-semibold text-sm transition-opacity hover:opacity-80"
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-          Retour
-        </button>
-        <span className="text-[#131313] font-bold text-sm md:text-base">
-          Site noecalmes
-        </span>
+          Documents
+        </a>
+        <a
+          href="/contactnoe"
+          className="px-5 py-2 rounded-full bg-[#f3f3f3] text-[#131313] font-semibold text-sm transition-colors hover:bg-[#e8e8e8]"
+        >
+          Contact
+        </a>
       </div>
 
       {/* Page title */}
