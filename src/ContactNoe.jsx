@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import qrcode from './assets/contact/qrcode.png'
-import { SiGmail, SiMicrosoftoutlook, SiYahoo, SiMicrosoftteams, SiWhatsapp } from 'react-icons/si'
+import { FaWhatsapp } from 'react-icons/fa'
+import { SiGmail, SiMicrosoftoutlook, SiYahoo } from 'react-icons/si'
+import { BsMicrosoftTeams } from 'react-icons/bs'
 import { MdEmail } from 'react-icons/md'
 
 const WHATSAPP_URL = 'https://wa.me/33658308210'
@@ -12,29 +14,29 @@ const EMAIL_OPTIONS = [
     label: 'Gmail',
     sublabel: 'Ouvrir dans Gmail',
     href: `https://mail.google.com/mail/?view=cm&to=${EMAIL}`,
-    color: '#EA4335',
-    icon: <SiGmail size={20} color="white" />,
+    iconBg: '#fff',
+    icon: <SiGmail size={22} color="#EA4335" />,
   },
   {
     label: 'Outlook',
     sublabel: 'Ouvrir dans Outlook',
     href: `https://outlook.live.com/mail/0/deeplink/compose?to=${EMAIL}`,
-    color: '#0078D4',
-    icon: <SiMicrosoftoutlook size={20} color="white" />,
+    iconBg: '#fff',
+    icon: <SiMicrosoftoutlook size={22} color="#0078D4" />,
   },
   {
     label: 'Yahoo Mail',
     sublabel: 'Ouvrir dans Yahoo',
     href: `https://compose.mail.yahoo.com/?to=${EMAIL}`,
-    color: '#6001D2',
-    icon: <SiYahoo size={20} color="white" />,
+    iconBg: '#fff',
+    icon: <SiYahoo size={22} color="#6001D2" />,
   },
   {
     label: 'Application mail',
     sublabel: 'Mac Mail, Outlook desktop…',
     href: `mailto:${EMAIL}`,
-    color: '#131313',
-    icon: <MdEmail size={22} color="white" />,
+    iconBg: '#f3f3f3',
+    icon: <MdEmail size={24} color="#131313" />,
   },
 ]
 
@@ -67,7 +69,7 @@ function EmailModal({ onClose }) {
         </div>
 
         <div className="flex flex-col gap-2 mb-4">
-          {EMAIL_OPTIONS.map(({ label, sublabel, href, color, icon }) => (
+          {EMAIL_OPTIONS.map(({ label, sublabel, href, iconBg, icon }) => (
             <a
               key={label}
               href={href}
@@ -76,7 +78,7 @@ function EmailModal({ onClose }) {
               onClick={onClose}
               className="flex items-center gap-4 px-4 py-3 rounded-[14px] hover:bg-[#f5f5f5] transition-colors"
             >
-              <div className="w-9 h-9 rounded-[10px] flex items-center justify-center shrink-0" style={{ backgroundColor: color }}>
+              <div className="w-9 h-9 rounded-[10px] flex items-center justify-center shrink-0 border border-[#e8e8e8]" style={{ backgroundColor: iconBg }}>
                 {icon}
               </div>
               <div>
@@ -113,7 +115,7 @@ function EmailModal({ onClose }) {
   )
 }
 
-function ContactItem({ href, icon, label, sublabel, color, onClick }) {
+function ContactItem({ href, icon, label, sublabel, iconBg = '#f3f3f3', onClick }) {
   const Tag = onClick ? 'button' : 'a'
   const props = onClick
     ? { onClick, type: 'button' }
@@ -125,8 +127,8 @@ function ContactItem({ href, icon, label, sublabel, color, onClick }) {
       className="group w-full flex items-center gap-5 bg-card border border-card-border rounded-[18px] px-6 py-5 hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(0,0,0,0.07)] transition-all duration-200 cursor-pointer text-left"
     >
       <div
-        className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105"
-        style={{ backgroundColor: color }}
+        className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-105 border border-[#e8e8e8]"
+        style={{ backgroundColor: iconBg }}
       >
         {icon}
       </div>
@@ -185,24 +187,24 @@ function ContactNoe() {
             onClick={() => setEmailOpen(true)}
             label={EMAIL}
             sublabel="Email"
-            color="#665dff"
-            icon={<MdEmail size={24} color="white" />}
+            iconBg="#fff"
+            icon={<MdEmail size={26} color="#665dff" />}
           />
 
           <ContactItem
             href={WHATSAPP_URL}
             label="+33 6 58 30 82 10"
             sublabel="WhatsApp"
-            color="#25D366"
-            icon={<SiWhatsapp size={24} color="white" />}
+            iconBg="#fff"
+            icon={<FaWhatsapp size={26} color="#25D366" />}
           />
 
           <ContactItem
             href={TEAMS_URL}
             label="Noé Calmes"
             sublabel="Microsoft Teams"
-            color="#5558AF"
-            icon={<SiMicrosoftteams size={24} color="white" />}
+            iconBg="#fff"
+            icon={<BsMicrosoftTeams size={24} color="#5558AF" />}
           />
         </div>
 
