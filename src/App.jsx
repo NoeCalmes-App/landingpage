@@ -109,7 +109,7 @@ const faqItems = [
 ]
 
 function FaqAccordion() {
-  const [openIndex, setOpenIndex] = useState(null)
+  const [openIndex, setOpenIndex] = useState(0)
 
   return (
     <div className="reveal max-w-170 mx-auto flex flex-col gap-4">
@@ -330,10 +330,9 @@ function App() {
               </h2>
               <ul className="space-y-4">
                 {[
-                  'Vous souhaitez créer une app MVP en 45 jours',
-                  'Vous souhaitez créer une application complète prête à scaler',
-                  'Vous avez des maquettes d\'une app et cherchez un développeur',
-                  'Vous souhaitez une refonte de votre application',
+                  'Vous voulez lancer une MVP en 45 jours',
+                  'Vous cherchez un développeur pour transformer votre idée en app',
+                  'Vous avez déjà des maquettes et cherchez développeur qualifié',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3.5 text-text text-[0.93rem] leading-snug">
                     <span className="shrink-0 w-7 h-7 rounded-full bg-green-bg text-green-text flex items-center justify-center text-sm font-bold">&#10003;</span>
@@ -373,10 +372,9 @@ function App() {
             </h2>
             <ul className="space-y-4">
               {[
-                'Vous avez une idée d\'application déjà élaborée',
-                'Vous souhaitez créer une app MVP en 45 jours',
-                'Vous souhaitez créer une application complète prête à scaler',
-                'Vous avez des maquettes d\'une app et cherchez un développeur',
+                'Vous voulez lancer une MVP en 45 jours',
+                'Vous cherchez un développeur pour transformer votre idée en app',
+                'Vous avez déjà des maquettes et cherchez un expert Flutter',
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3.5 text-text text-[0.93rem] leading-snug">
                   <span className="shrink-0 w-6.5 h-6.5 rounded-full bg-green-bg text-green-text flex items-center justify-center text-xs font-bold">&#10003;</span>
@@ -410,7 +408,7 @@ function App() {
       <section className="pt-16 pb-16 md:pt-22 md:pb-22 px-5 bg-card" id="why">
         <div className="max-w-275 mx-auto">
           <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-4">
-            Pourquoi moi et pas une agence
+            Pourquoi travailler avec moi
           </h2>
 
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-12">
