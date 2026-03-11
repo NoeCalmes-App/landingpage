@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
 import './App.css'
 import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
 import MentionsLegales from './MentionsLegales.jsx'
@@ -6,6 +8,7 @@ import CGV from './CGV.jsx'
 import Document from './Document.jsx'
 import Documents, { DOCUMENTS } from './Documents.jsx'
 import ContactNoe from './ContactNoe.jsx'
+import trustpilotStar from './assets/trustpilot.svg'
 import meetingSvg from './assets/lib/meetingdev.svg'
 import plouffIcon from './assets/appicon/plouffhabitudes.png'
 import wackupIcon from './assets/appicon/wackupalarme.png'
@@ -99,6 +102,74 @@ function WhatsAppModal({ open, onClose }) {
         </p>
       </div>
     </div>
+  )
+}
+
+const REVIEWS = [
+  {
+    name: 'Sophie M.',
+    role: '',
+    text: 'Noé a livré notre MVP en 6 semaines. Communication fluide, code propre, et il a su challenger nos idées pour aller à l\'essentiel. Je recommande à 100%.',
+    stars: 5,
+  },
+  {
+    name: 'Thomas R.',
+    role: '',
+    text: 'On avait déjà travaillé avec une agence sans résultat. Noé a repris le projet et nous a livré une app stable et performante, dans les temps et un budget très raisonnable.',
+    stars: 5,
+  },
+  {
+    name: 'Medhi D.',
+    role: '',
+    text: 'Un vrai plaisir de bosser avec quelqu\'un qui comprend autant la technique que le produit. Il ne se contente pas de coder, il pense business.',
+    stars: 5,
+  },
+]
+
+function ReviewCard({ name, role, text, stars }) {
+  return (
+    <div className="bg-surface border border-card-border rounded-[15px] p-7 md:p-8 flex flex-col text-left h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_28px_rgba(0,0,0,0.05)]">
+      <div className="flex items-center gap-1.5 mb-4">
+        {Array.from({ length: stars }, (_, i) => (
+          <img key={i} src={trustpilotStar} alt="★" className="w-7 h-7" />
+        ))}
+        <span className="ml-1 text-[0.85rem] font-semibold text-grey leading-none">{stars}/5</span>
+      </div>
+      <p className="text-text text-[0.93rem] leading-relaxed flex-1 mb-5">{text}</p>
+      <div>
+        <p className="text-text font-semibold text-[0.9rem]">{name}</p>
+        <p className="text-grey text-[0.82rem]">{role}</p>
+      </div>
+    </div>
+  )
+}
+
+function ReviewsCarousel() {
+  const [emblaRef] = useEmblaCarousel(
+    { loop: true, align: 'start', dragFree: true },
+    [Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true })]
+  )
+
+  return (
+    <>
+      {/* Mobile: Embla infinite carousel */}
+      <div className="md:hidden overflow-hidden" ref={emblaRef}>
+        <div className="flex">
+          {REVIEWS.map(({ name, role, text, stars }) => (
+            <div key={name} className="flex-none w-[80vw] pr-4">
+              <ReviewCard name={name} role={role} text={text} stars={stars} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop: grid */}
+      <div className="hidden md:grid md:grid-cols-3 gap-6">
+        {REVIEWS.map(({ name, role, text, stars }) => (
+          <ReviewCard key={name} name={name} role={role} text={text} stars={stars} />
+        ))}
+      </div>
+    </>
   )
 }
 
@@ -307,7 +378,7 @@ function App() {
           </button>
 
           <p className="text-grey text-[0.8rem] md:text-[0.85rem] mt-2.5">
-            15 min &bull; Gratuit &bull; Sans engagement
+            15 min &bull; Gratuit
           </p>
 
           {/* Proof */}
@@ -535,7 +606,7 @@ function App() {
 
           <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 max-w-230 mx-auto">
             {[
-              { num: '1', title: 'On échange', desc: 'Vous me présentez votre idée. On voit ensemble si c\'est le bon moment et la bonne approche.', img: meetingSvg },
+              { num: '1', title: 'On échange', desc: 'Vous me présentez votre idée. On voit ensemble si c\'est le bon moment et la bonne approche. Vous repartez avec un devis gratuit.', img: meetingSvg },
               { num: '2', title: 'Je construis', desc: 'Avancement concret, échanges réguliers. Vous voyez l\'app prendre forme, pas juste des slides.', img: devSvg },
               { num: '3', title: 'Vous lancez', desc: 'Application prête, sur l\'App Store et Google Play. Je reste disponible après la mise en ligne.', img: postSvg },
             ].map(({ num, title, desc, img }) => (
@@ -609,8 +680,15 @@ function App() {
           </button>
 
           <p className="reveal text-light-grey text-[0.85rem] mt-3">
-            Sans engagement &bull; Réponse sous 24h &bull; Places limitées
+            100% gratuit &bull; Créneaux limités
           </p>
+
+          <div className="reveal mt-9 md:mt-10 w-full max-w-225 mx-auto">
+            <h3 className="font-heading text-text text-xl md:text-2xl font-bold mb-5 text-center">
+              Ils m'ont fait <span className="text-brand">confiance 🥳</span>
+            </h3>
+            <ReviewsCarousel />
+          </div>
         </div>
       </section>
 
