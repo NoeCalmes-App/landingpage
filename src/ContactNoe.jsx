@@ -42,7 +42,7 @@ const EMAIL_OPTIONS = [
   },
 ]
 
-function EmailModal({ onClose }) {
+export function EmailModal({ onClose }) {
   const [copied, setCopied] = useState(false)
 
   const copy = () => {
