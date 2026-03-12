@@ -279,7 +279,7 @@ function App() {
             }`}
           >
             {/* Bar — 80px */}
-            <div className="flex items-center justify-between h-20 px-6 md:px-8">
+            <div className="flex items-center justify-between h-20 px-6 md:px-7">
               {/* Brand */}
               <a href="#" className="flex flex-col">
                 <span className="text-text font-bold text-xl md:text-1xl leading-tight tracking-tight" style={{ fontFamily: "'Poppins', sans-serif" }}>
@@ -291,7 +291,7 @@ function App() {
               </a>
 
               {/* Desktop links (lg+) */}
-              <div className="hidden lg:flex items-center gap-8">
+              <div className="hidden lg:flex items-center gap-6">
                 {NAV_LINKS.map(({ href, label }) => (
                   <a key={label} href={href} className="text-text text-[0.95rem] font-semibold hover:text-brand transition-colors">
                     {label}
@@ -538,7 +538,6 @@ function App() {
                 </h3>
                 <p className="text-grey text-[0.9rem] md:text-[0.95rem] leading-relaxed">
                   <strong>J'aide les entreprises &agrave; concevoir et lancer leur application mobile.</strong> Avec plus de 5 ans d'exp&eacute;rience en d&eacute;veloppement et une sp&eacute;cialisation Flutter, j'interviens de la <strong>strat&eacute;gie produit</strong> au d&eacute;veloppement et &agrave; la <strong>mise en ligne.</strong>
-                  Strat&eacute;gie produit, d&eacute;veloppement et mise en ligne.
                 </p>
               </div>
             </div>
@@ -694,10 +693,26 @@ function App() {
       </section>
 
       {/* ========== FOOTER ========== */}
-      <footer className="reveal bg-brand py-14 px-6">
-        <div className="flex flex-col items-center text-center gap-8 max-w-275 mx-auto">
+      <footer className="reveal bg-brand py-14 px-6 relative overflow-hidden">
+        {/* Background big text */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 md:bottom-6 z-0 select-none text-center font-bold leading-[0.9]"
+          style={{
+            fontFamily: "'Inter', Arial, sans-serif",
+            fontSize: 'clamp(4rem, 12vw, 10rem)',
+            color: 'transparent',
+            WebkitTextFillColor: 'transparent',
+            backgroundImage: 'linear-gradient(rgba(255,254,252,0.1), rgba(255,255,255,0))',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+          }}
+        >
+          NOE CALMES.
+        </div>
+
+        <div className="relative z-10 flex flex-col items-center text-center gap-8 max-w-275 mx-auto">
           {/* Name */}
-          <p className="text-white font-bold text-xl md:text-4xl tracking-tight" style={{ fontFamily: "'Poppins', sans-serif" }}>
+          <p className="text-white font-bold text-xl md:text-4xl tracking-tight md:pb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
             Noé Calmes.
           </p>
 
@@ -710,10 +725,10 @@ function App() {
           </div>
 
           {/* Nous contacter + socials */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6 md:pt-1">
             <p className="text-white text-sm font-semibold">Me contacter</p>
             <button onClick={() => setFooterEmailOpen(true)} aria-label="Email" className="w-9 h-9 flex items-center justify-center rounded-[8px] bg-white text-brand hover:opacity-80 transition-opacity cursor-pointer">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
               </svg>
             </button>
@@ -730,7 +745,7 @@ function App() {
           </div>
 
           {/* Copyright + legal */}
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pt-8 border-t border-white/10 w-full">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 w-full">
             <p className="text-white/40 text-xs">
               &copy; 2026 No&eacute; Calmes. Tous droits r&eacute;serv&eacute;s.
             </p>
