@@ -537,7 +537,7 @@ function App() {
                   No&eacute; Calmes
                 </h3>
                 <p className="text-grey text-[0.9rem] md:text-[0.95rem] leading-relaxed">
-                  Je code <strong>depuis plus de 5 ans</strong> et je suis dans le d&eacute;veloppement mobile depuis un bon moment, <strong>expert Flutter &amp; Dart</strong>.
+                  <strong>J'aide les entreprises &agrave; concevoir et lancer leur application mobile.</strong> Avec plus de 5 ans d'exp&eacute;rience en d&eacute;veloppement et une sp&eacute;cialisation Flutter, j'interviens de la <strong>strat&eacute;gie produit</strong> au d&eacute;veloppement et &agrave; la <strong>mise en ligne.</strong>
                   Strat&eacute;gie produit, d&eacute;veloppement et mise en ligne.
                 </p>
               </div>
