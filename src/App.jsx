@@ -286,7 +286,7 @@ function App() {
                   Noé Calmes
                 </span>
                 <span className="text-grey text-sm md:text-md leading-tight font-normal">
-                  Développeur Mobile Flutter
+                  Expert mobile spécialisé Flutter
                 </span>
               </a>
 
