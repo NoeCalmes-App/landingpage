@@ -404,7 +404,7 @@ function App() {
                 {[
                   'Vous voulez lancer une MVP en 45 jours',
                   'Vous cherchez un développeur pour transformer votre idée en app',
-                  'Vous avez déjà des maquettes et cherchez développeur qualifié',
+                  'Vous avez déjà des maquettes et cherchez un développeur qualifié',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3.5 text-text text-[0.93rem] leading-snug">
                     <span className="shrink-0 w-7 h-7 rounded-full bg-green-bg text-green-text flex items-center justify-center text-sm font-bold">&#10003;</span>
