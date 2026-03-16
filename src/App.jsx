@@ -8,6 +8,7 @@ import CGV from './CGV.jsx'
 import Document from './Document.jsx'
 import Documents, { DOCUMENTS } from './Documents.jsx'
 import ContactNoe, { EmailModal } from './ContactNoe.jsx'
+import Merci from './Merci.jsx'
 import trustpilotStar from './assets/trustpilot.svg'
 import meetingSvg from './assets/lib/meetingdev.svg'
 import plouffIcon from './assets/appicon/plouffhabitudes.png'
@@ -222,6 +223,7 @@ function App() {
       history.replaceState(null, '', redirect)
     }
     const path = redirect || window.location.pathname
+    if (path === '/merci') return 'merci'
     if (path === '/documents') return 'documents'
     if (path === '/contactnoe') return 'contact'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
@@ -231,11 +233,19 @@ function App() {
   const scrollRef = useScrollReveal()
 
   useEffect(() => {
+    // Charge le script Calendly dynamiquement (les <script> dans JSX ne s'exécutent pas)
+    if (!window.Calendly) {
+      const script = document.createElement('script')
+      script.src = 'https://assets.calendly.com/assets/external/widget.js'
+      script.async = true
+      document.head.appendChild(script)
+    }
+  }, [])
+
+  useEffect(() => {
     const handleCalendlyEvent = (e) => {
       if (e.data?.event === 'calendly.event_scheduled') {
-        if (typeof fbq === 'function') {
-          fbq('track', 'Lead')
-        }
+        setPage('merci')
         history.pushState(null, '', '/merci')
       }
     }
@@ -251,6 +261,7 @@ function App() {
 
   const goDocuments = () => { setPage('documents'); history.pushState(null, '', '/documents'); window.scrollTo(0, 0) }
 
+  if (page === 'merci') return <Merci onBack={goHome} />
   if (page === 'contact') return <ContactNoe />
   if (page === 'privacy') return <PolitiqueConfidentialite onBack={goHome} />
   if (page === 'mentions') return <MentionsLegales onBack={goHome} />
@@ -646,11 +657,6 @@ function App() {
               className="calendly-inline-widget"
               data-url="https://calendly.com/noecalmes-pro/appel-app?primary_color=665dff"
               style={{ minWidth: '320px', height: '700px' }}
-            />
-            <script
-              type="text/javascript"
-              src="https://assets.calendly.com/assets/external/widget.js"
-              async
             />
           </div>
         </div>
