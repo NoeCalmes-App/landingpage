@@ -523,7 +523,7 @@ function App() {
               'Zéro intermédiaire',
               'Vision produit + technique',
               'Communication directe',
-              'Engagement total',
+              'Un seul projet à la fois',
             ].map((skill) => (
               <div
                 key={skill}
@@ -618,7 +618,7 @@ function App() {
           <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 max-w-230 mx-auto">
             {[
               { num: '1', title: 'On échange', desc: 'Vous me présentez votre idée. On voit ensemble si c\'est le bon moment et la bonne approche. Vous repartez avec un devis gratuit.', img: meetingSvg },
-              { num: '2', title: 'Je construis', desc: 'Avancement concret, échanges réguliers. Vous voyez l\'app prendre forme, pas juste des slides.', img: devSvg },
+              { num: '2', title: 'Je construis', desc: 'Votre projet est ma seule priorité. Avancement concret, échanges réguliers. Vous voyez l\'app prendre forme, pas juste des slides.', img: devSvg },
               { num: '3', title: 'Vous lancez', desc: 'Application prête, sur l\'App Store et Google Play. Je reste disponible après la mise en ligne.', img: postSvg },
             ].map(({ num, title, desc, img }) => (
               <div key={num} className="group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
