@@ -272,10 +272,16 @@ function App() {
       document.querySelector('meta[property="og:title"]')?.setAttribute('content', section.title)
       document.querySelector('meta[property="og:description"]')?.setAttribute('content', section.description)
       document.querySelector('meta[property="og:url"]')?.setAttribute('content', `https://noecalmes.fr${path}`)
-      // Petit délai pour laisser le DOM se rendre
-      setTimeout(() => {
-        document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 300)
+      // Scroll vers la section une fois le DOM prêt
+      const scrollToSection = () => {
+        const el = document.getElementById(section.id)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }
+      // Essayer après le rendu React, puis après le chargement complet de la page
+      setTimeout(scrollToSection, 500)
+      window.addEventListener('load', scrollToSection, { once: true })
     }
   }, [])
 
