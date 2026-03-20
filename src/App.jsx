@@ -17,12 +17,40 @@ import devSvg from './assets/lib/devmobile.svg'
 import postSvg from './assets/lib/post.svg'
 import mePhoto from './assets/lib/me.png'
 
+const SECTION_ROUTES = {
+  '/a-propos': {
+    id: 'why',
+    title: 'À propos — Noé Calmes',
+    description: 'Développeur mobile spécialisé Flutter, je transforme une idée d\'application en produit réel, de la conception au déploiement sur les stores.',
+  },
+  '/offre': {
+    id: 'offre',
+    title: 'Offre — Noé Calmes',
+    description: 'MVP en 45 jours ou application complète prête à scaler, avec un cadre clair, un budget défini et un accompagnement jusqu\'au lancement.',
+  },
+  '/etapes': {
+    id: 'etapes',
+    title: 'Étapes — Noé Calmes',
+    description: 'Un process simple en 3 étapes : échange, construction, puis mise en ligne sur l\'App Store et Google Play.',
+  },
+  '/faq': {
+    id: 'faq',
+    title: 'FAQ — Noé Calmes',
+    description: 'Retrouvez les réponses sur les délais, la tarification, la livraison, la publication sur les stores et le suivi après mise en ligne.',
+  },
+  '/contact': {
+    id: 'booking',
+    title: 'Contact — Noé Calmes',
+    description: 'Réservez un appel gratuit de 15 minutes pour discuter de votre projet d\'application mobile.',
+  },
+}
+
 const NAV_LINKS = [
-  { href: '#why', label: 'À propos' },
-  { href: '#process', label: 'Process' },
-  { href: '#deliverables', label: 'Ce que je fais' },
-  { href: '#faq', label: 'FAQ' },
-  { href: '#booking', label: 'Contact' },
+  { href: '/a-propos', label: 'À propos' },
+  { href: '/offre', label: 'Offre' },
+  { href: '/etapes', label: 'Étapes' },
+  { href: '/faq', label: 'FAQ' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 function useScrollReveal() {
@@ -227,10 +255,29 @@ function App() {
     if (path === '/documents') return 'documents'
     if (path === '/contactnoe') return 'contact'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
+    if (path in SECTION_ROUTES) return 'home'
     return 'home'
   })
   const [whatsappOpen, setWhatsappOpen] = useState(false)
   const scrollRef = useScrollReveal()
+
+  // Auto-scroll vers la section et mise à jour des meta tags si on arrive sur une route de section
+  useEffect(() => {
+    const path = window.location.pathname
+    const section = SECTION_ROUTES[path]
+    if (section) {
+      document.title = section.title
+      document.querySelector('meta[name="description"]')?.setAttribute('content', section.description)
+      document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://noecalmes.fr${path}`)
+      document.querySelector('meta[property="og:title"]')?.setAttribute('content', section.title)
+      document.querySelector('meta[property="og:description"]')?.setAttribute('content', section.description)
+      document.querySelector('meta[property="og:url"]')?.setAttribute('content', `https://noecalmes.fr${path}`)
+      // Petit délai pour laisser le DOM se rendre
+      setTimeout(() => {
+        document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 300)
+    }
+  }, [])
 
   useEffect(() => {
     // Charge le script Calendly dynamiquement (les <script> dans JSX ne s'exécutent pas)
@@ -304,7 +351,8 @@ function App() {
               {/* Desktop links (lg+) */}
               <div className="hidden lg:flex items-center gap-6">
                 {NAV_LINKS.map(({ href, label }) => (
-                  <a key={label} href={href} className="text-text text-[0.95rem] font-semibold hover:text-brand transition-colors">
+                  <a key={label} href={href} className="text-text text-[0.95rem] font-semibold hover:text-brand transition-colors"
+                    onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES[href].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', href) }}>
                     {label}
                   </a>
                 ))}
@@ -343,7 +391,7 @@ function App() {
                       key={label}
                       href={href}
                       className="text-text text-base font-medium hover:text-brand transition-colors"
-                      onClick={() => setMenuOpen(false)}
+                      onClick={(e) => { e.preventDefault(); setMenuOpen(false); document.getElementById(SECTION_ROUTES[href].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', href) }}
                     >
                       {label}
                     </a>
@@ -557,7 +605,7 @@ function App() {
       </section>
 
       {/* ========== CE QUE JE LIVRE ========== */}
-      <section className="py-16 md:py-22 px-5" id="deliverables">
+      <section className="py-16 md:py-22 px-5" id="etapes">
         <div className="max-w-275 mx-auto">
           <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-10 md:mb-12">
             Ce que vous obtenez concrètement
@@ -609,7 +657,7 @@ function App() {
       </section>
 
       {/* ========== PROCESS ========== */}
-      <section className="py-16 md:py-22 px-5 bg-card" id="process">
+      <section className="py-16 md:py-22 px-5 bg-card" id="offre">
         <div className="max-w-275 mx-auto">
           <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-10 md:mb-12">
             Comment ça se passe ?
@@ -724,9 +772,9 @@ function App() {
 
           {/* Nav links */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-            <a href="#process" className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Process</a>
-            <a href="#deliverables" className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Ce que je fais</a>
-            <a href="#faq" className="text-white text-sm font-semibold hover:text-white/60 transition-colors">FAQ</a>
+            <a href="/offre" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/offre'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/offre') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Offre</a>
+            <a href="/etapes" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/etapes'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/etapes') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Étapes</a>
+            <a href="/faq" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/faq'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/faq') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">FAQ</a>
             <button onClick={scrollToCalendly} className="text-white text-sm font-semibold hover:text-white/60 transition-colors cursor-pointer">Contact</button>
           </div>
 
