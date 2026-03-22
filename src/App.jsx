@@ -250,7 +250,7 @@ function App() {
       sessionStorage.removeItem('redirect')
       history.replaceState(null, '', redirect)
     }
-    const path = redirect || window.location.pathname
+    const path = (redirect || window.location.pathname).replace(/\/$/, '') || '/'
     if (path === '/merci') return 'merci'
     if (path === '/documents') return 'documents'
     if (path === '/contactnoe') return 'contact'
@@ -263,7 +263,7 @@ function App() {
 
   // Auto-scroll vers la section et mise à jour des meta tags si on arrive sur une route de section
   useEffect(() => {
-    const path = window.location.pathname
+    const path = window.location.pathname.replace(/\/$/, '') || '/'
     const section = SECTION_ROUTES[path]
     if (section) {
       document.title = section.title
