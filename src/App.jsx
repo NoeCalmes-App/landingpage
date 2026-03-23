@@ -517,9 +517,9 @@ function App() {
             </h2>
             <ul className="space-y-4">
               {[
-                'Vous voulez lancer une MVP en 45 jours',
-                'Vous cherchez un développeur pour transformer votre idée en app',
-                'Vous avez déjà des maquettes et cherchez un expert Flutter',
+                'Vous souhaitez lancer une première version rapidement',
+                'Vous avez déjà des maquettes ou une application à reprendre',
+                'Vous cherchez un expert Flutter',
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3.5 text-text text-[0.93rem] leading-snug">
                   <span className="shrink-0 w-6.5 h-6.5 rounded-full bg-green-bg text-green-text flex items-center justify-center text-xs font-bold">&#10003;</span>
@@ -535,9 +535,9 @@ function App() {
             </h2>
             <ul className="space-y-4">
               {[
-                'Vous n\'avez pas encore de budget alloué',
-                'Vous cherchez uniquement le prix le plus bas',
-                'Vous avez besoin d\'une équipe de 5+ développeurs',
+                'Votre projet est encore trop flou',
+                'L’application n’est pas une priorité',
+                'Vous cherchez une agence ou une grande équipe',
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3.5 text-text text-[0.93rem] leading-snug">
                   <span className="shrink-0 w-6.5 h-6.5 rounded-full bg-red-bg text-red-text flex items-center justify-center text-xs font-bold">&#10007;</span>
