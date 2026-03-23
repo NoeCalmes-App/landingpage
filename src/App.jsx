@@ -39,7 +39,7 @@ const SECTION_ROUTES = {
     description: 'Retrouvez les réponses sur les délais, la tarification, la livraison, la publication sur les stores et le suivi après mise en ligne.',
   },
   '/contact': {
-    id: 'booking',
+    id: 'calendly-section',
     title: 'Contact — Noé Calmes',
     description: 'Réservez un appel gratuit de 15 minutes pour discuter de votre projet d\'application mobile.',
   },
@@ -315,6 +315,7 @@ function App() {
 
   const scrollToCalendly = () => {
     document.getElementById('calendly-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    history.pushState(null, '', '/contact')
   }
 
   const goHome = () => { setPage('home'); history.pushState(null, '', '/'); window.scrollTo(0, 0) }
@@ -698,7 +699,7 @@ function App() {
       </section>
 
       {/* ========== FAQ ========== */}
-      <section className="py-16 md:py-22 px-5" id="faq">
+      <section className="pt-16  md:pt-22 md:pb-3 px-5" id="faq">
         <div className="max-w-275 mx-auto">
           <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-6 md:mb-12">
             <span className="text-brand">Vos questions</span>, nos réponses
@@ -711,13 +712,12 @@ function App() {
             <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-3 md:mb-3">
               Réservez <span className="text-brand">un appel</span> avec nous 📞
             </h2>
-            <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mb-3 md:mb-0">
+            <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mb-7 md:mb-0">
               C'est 100% gratuit, on pourra répondre à toutes vos questions.
             </p>
             <div
-              className="calendly-inline-widget"
+              className="calendly-inline-widget min-w-[320px] h-[1200px] md:h-[950px]"
               data-url="https://calendly.com/noecalmes-pro/appel-app?primary_color=665dff"
-              style={{ minWidth: '320px', height: '700px' }}
             />
           </div>
         </div>
@@ -788,7 +788,7 @@ function App() {
             <a href="/offre" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/offre'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/offre') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Offre</a>
             <a href="/etapes" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/etapes'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/etapes') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Étapes</a>
             <a href="/faq" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/faq'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/faq') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">FAQ</a>
-            <button onClick={scrollToCalendly} className="text-white text-sm font-semibold hover:text-white/60 transition-colors cursor-pointer">Contact</button>
+            <a href="/contact" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/contact'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/contact') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Contact</a>
           </div>
 
           {/* Nous contacter + socials */}
