@@ -710,7 +710,7 @@ function App() {
           {/* Calendly */}
           <div id="calendly-section" className="mt-16 md:mt-24 text-center">
             <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-3 md:mb-3">
-              Réservez <span className="text-brand">un appel</span> avec nous 📞
+              Réservez <span className="text-brand">un appel</span> avec moi 📞
             </h2>
             <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mb-7 md:mb-0">
               C'est 100% gratuit, on pourra répondre à toutes vos questions.
