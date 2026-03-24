@@ -713,7 +713,7 @@ function App() {
               Réservez <span className="text-brand">un appel</span> avec moi 📞
             </h2>
             <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mb-7 md:mb-0">
-              C'est 100% gratuit, on pourra répondre à toutes vos questions.
+              C'est 100% gratuit, je pourrai répondre à toutes vos questions.
             </p>
             <div
               className="calendly-inline-widget min-w-[320px] h-[1200px] md:h-[950px]"
