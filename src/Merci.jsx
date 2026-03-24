@@ -10,18 +10,24 @@ export default function Merci({ onBack }) {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-center px-5">
       <div className="max-w-md w-full">
-        <div className="w-20 h-20 rounded-full bg-brand/10 flex items-center justify-center mx-auto mb-6">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#665dff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <div className="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center mx-auto mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#665dff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
 
-        <h1 className="font-heading text-text text-2xl md:text-3xl font-bold mb-4">
-          Votre appel est confirmé !
+        <h1 className="font-heading text-text text-xl md:text-2xl font-bold mb-3">
+          Votre appel est confirmé.
         </h1>
 
-        <p className="text-grey text-[0.95rem] md:text-base leading-relaxed mb-8">
-          Merci pour votre confiance. Vous allez recevoir un email de confirmation avec le lien de la visio. À très vite !
+        <p className="text-grey text-sm leading-relaxed mb-6">
+          Merci pour votre confiance. Vous allez recevoir un email de confirmation avec le lien de la visio.
+        </p>
+
+        <p className="text-text text-xs italic mb-8">
+          Merci de prévenir en cas d'empêchement.
+          <br />
+          Sans réponse, aucun nouveau créneau ne pourra être réservé.
         </p>
 
         <button
