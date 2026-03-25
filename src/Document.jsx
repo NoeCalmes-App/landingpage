@@ -1,4 +1,11 @@
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+
 function Document({ doc, onBack }) {
+  if (isMobile) {
+    window.location.href = doc.pdf
+    return null
+  }
+
   return (
     <div className="min-h-screen bg-[#f9f9f9] flex flex-col">
       {/* Header */}
@@ -29,7 +36,6 @@ function Document({ doc, onBack }) {
         </a>
       </div>
 
-      {/* PDF Viewer */}
       <div className="flex-1 w-full">
         <iframe
           src={doc.pdf}
