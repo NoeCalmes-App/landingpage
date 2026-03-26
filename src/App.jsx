@@ -477,7 +477,14 @@ function App() {
           <h1 className="font-heading text-[2.275rem] sm:text-[2.25rem] md:text-[2.75rem] lg:text-[3.25rem] font-extrabold text-text tracking-tight leading-[1.15] mb-8">
             Vous avez une idée d'application.<br />
             Je la transforme en <span className="text-brand relative">produit réel !
-              <span className="absolute -bottom-3 rounded-sm left-1/2 -translate-x-1/2 w-[65%] h-2.5 bg-brand -rotate-1" />
+              <svg
+                className="absolute md:-bottom-4 -bottom-3.5 left-1/2 -translate-x-1/2 md:-translate-x-[50%] w-[70%] h-4.5 -rotate-1"
+                viewBox="0 0 180 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M2 11 C55 4 120 4 178 7" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
+              </svg>
             </span>
           </h1>
 
