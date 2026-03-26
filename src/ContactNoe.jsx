@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import qrcode from './assets/contact/qrcode.png'
+import qrcode from './assets/contact/qrcode.webp'
 import { FaWhatsapp } from 'react-icons/fa'
 import { SiGmail } from 'react-icons/si'
 import { FaYahoo } from 'react-icons/fa'

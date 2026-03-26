@@ -12,11 +12,11 @@ import Merci from './Merci.jsx'
 import { BlogList, BlogArticlePage, BLOG_ARTICLES } from './Blog.jsx'
 import trustpilotStar from './assets/trustpilot.svg'
 import meetingSvg from './assets/lib/meetingdev.svg'
-import plouffIcon from './assets/appicon/plouffhabitudes.png'
-import wackupIcon from './assets/appicon/wackupalarme.png'
+import plouffIcon from './assets/appicon/plouffhabitudes.webp'
+import wackupIcon from './assets/appicon/wackupalarme.webp'
 import devSvg from './assets/lib/devmobile.svg'
 import postSvg from './assets/lib/post.svg'
-import mePhoto from './assets/lib/me.png'
+import mePhoto from './assets/lib/me.webp'
 
 const SECTION_ROUTES = {
   '/a-propos': {
@@ -304,13 +304,25 @@ function App() {
   }, [])
 
   useEffect(() => {
-    // Charge le script Calendly dynamiquement (les <script> dans JSX ne s'exécutent pas)
-    if (!window.Calendly) {
-      const script = document.createElement('script')
-      script.src = 'https://assets.calendly.com/assets/external/widget.js'
-      script.async = true
-      document.head.appendChild(script)
-    }
+    // Charge le script Calendly uniquement quand la section est visible
+    const target = document.getElementById('calendly-section')
+    if (!target) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !window.Calendly) {
+          const script = document.createElement('script')
+          script.src = 'https://assets.calendly.com/assets/external/widget.js'
+          script.async = true
+          document.head.appendChild(script)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '200px' }
+    )
+
+    observer.observe(target)
+    return () => observer.disconnect()
   }, [])
 
   useEffect(() => {
@@ -602,7 +614,7 @@ function App() {
               { icon: plouffIcon, name: 'Plouff Habitudes', url: 'https://apps.apple.com/app/plouf-habitudes/id6758303032' },
             ].map(({ icon, name, url }) => (
               <a key={name} href={url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2">
-                <img src={icon} alt={name} loading="lazy" className="w-20 h-20 md:w-24 md:h-24 rounded-[22%] shadow-md transition-transform duration-300 group-hover:scale-110" />
+                <img src={icon} alt={name} loading="lazy" width="96" height="96" className="w-20 h-20 md:w-24 md:h-24 rounded-[22%] shadow-md transition-transform duration-300 group-hover:scale-110" />
                 <span className="text-grey text-[0.75rem] md:text-[0.8rem] font-medium mt-1 transition-colors duration-300 group-hover:text-brand">{name}</span>
               </a>
             ))}
@@ -637,6 +649,8 @@ function App() {
                 src={mePhoto}
                 alt="Noé Calmes"
                 loading="lazy"
+                width="144"
+                height="144"
                 className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover shadow-lg shrink-0"
               />
               <div className="text-center md:text-left">
@@ -718,7 +732,7 @@ function App() {
               { num: '3', title: 'Vous lancez', desc: 'Application prête, sur l\'App Store et Google Play. Je reste disponible après la mise en ligne.', img: postSvg },
             ].map(({ num, title, desc, img }) => (
               <div key={num} className="group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
-                <img src={img} alt={title} loading="lazy" className="w-full h-40 object-contain mb-6" />
+                <img src={img} alt={title} loading="lazy" width="280" height="160" className="w-full h-40 object-contain mb-6" />
                 <div className="flex flex-col justify-center flex-1">
                   <span className="self-start text-brand text-[0.8rem] font-semibold bg-brand/10 px-3 py-1 rounded-full mb-3 transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">
                     Étape {num}
