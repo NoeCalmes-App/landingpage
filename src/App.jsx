@@ -9,6 +9,7 @@ import Document from './Document.jsx'
 import Documents, { DOCUMENTS } from './Documents.jsx'
 import ContactNoe, { EmailModal } from './ContactNoe.jsx'
 import Merci from './Merci.jsx'
+import { BlogList, BlogArticlePage, BLOG_ARTICLES } from './Blog.jsx'
 import trustpilotStar from './assets/trustpilot.svg'
 import meetingSvg from './assets/lib/meetingdev.svg'
 import plouffIcon from './assets/appicon/plouffhabitudes.png'
@@ -20,28 +21,28 @@ import mePhoto from './assets/lib/me.png'
 const SECTION_ROUTES = {
   '/a-propos': {
     id: 'why',
-    title: 'À propos — Noé Calmes',
-    description: 'Développeur mobile spécialisé Flutter, je transforme une idée d\'application en produit réel, de la conception au déploiement sur les stores.',
+    title: 'Expert mobile spécialisé Flutter — Noé Calmes',
+    description: 'Expert mobile indépendant spécialisé Flutter. Création, reprise et évolution d\'applications mobiles iOS et Android pour les entreprises en France.',
   },
   '/offre': {
     id: 'offre',
-    title: 'Offre — Noé Calmes',
-    description: 'MVP en 45 jours ou application complète prête à scaler, avec un cadre clair, un budget défini et un accompagnement jusqu\'au lancement.',
+    title: 'Créer ou reprendre une application mobile | Noé Calmes',
+    description: 'Création, reprise ou évolution de votre application mobile Flutter. MVP en 45 jours ou app complète, cadre clair et budget défini jusqu\'à la mise en ligne.',
   },
   '/etapes': {
     id: 'etapes',
-    title: 'Étapes — Noé Calmes',
-    description: 'Un process simple en 3 étapes : échange, construction, puis mise en ligne sur l\'App Store et Google Play.',
+    title: 'Comment créer une application mobile en 3 étapes | Noé Calmes',
+    description: 'Créer votre application mobile simplement : cadrage de votre projet, développement Flutter, puis mise en ligne sur l\'App Store et Google Play.',
   },
   '/faq': {
     id: 'faq',
-    title: 'FAQ — Noé Calmes',
-    description: 'Retrouvez les réponses sur les délais, la tarification, la livraison, la publication sur les stores et le suivi après mise en ligne.',
+    title: 'FAQ — Création et développement application mobile | Noé Calmes',
+    description: 'Questions fréquentes sur la création, la reprise et l\'évolution d\'application mobile : délais, tarifs, livraison et suivi après mise en ligne.',
   },
   '/contact': {
     id: 'calendly-section',
-    title: 'Contact — Noé Calmes',
-    description: 'Réservez un appel gratuit de 15 minutes pour discuter de votre projet d\'application mobile.',
+    title: 'Contact — Projet application mobile | Noé Calmes',
+    description: 'Un projet d\'application mobile ? Création, reprise ou évolution — réservez un appel gratuit de 15 minutes pour en discuter.',
   },
 }
 
@@ -254,11 +255,21 @@ function App() {
     if (path === '/merci') return 'merci'
     if (path === '/documents') return 'documents'
     if (path === '/contactnoe') return 'contact'
+    if (path === '/blog') return 'blog'
+    if (path.startsWith('/blog/')) return 'blog-article'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
     if (path in SECTION_ROUTES) return 'home'
     return 'home'
   })
   const [whatsappOpen, setWhatsappOpen] = useState(false)
+  const [currentArticle, setCurrentArticle] = useState(() => {
+    const path = (sessionStorage.getItem('redirect') || window.location.pathname).replace(/\/$/, '')
+    if (path.startsWith('/blog/')) {
+      const slug = path.replace('/blog/', '')
+      return BLOG_ARTICLES.find((a) => a.slug === slug) || null
+    }
+    return null
+  })
   const scrollRef = useScrollReveal()
 
   // Auto-scroll vers la section et mise à jour des meta tags si on arrive sur une route de section
@@ -322,6 +333,28 @@ function App() {
 
   const goDocuments = () => { setPage('documents'); history.pushState(null, '', '/documents'); window.scrollTo(0, 0) }
 
+  const goBlog = () => { setPage('blog'); history.pushState(null, '', '/blog'); window.scrollTo(0, 0) }
+
+  const goBookCall = () => { setPage('home'); history.pushState(null, '', '/contact'); setTimeout(() => document.getElementById('calendly-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100) }
+
+  if (page === 'blog') return (
+    <BlogList
+      onBack={goHome}
+      onBookCall={goBookCall}
+      onArticle={(article) => {
+        setCurrentArticle(article)
+        setPage('blog-article')
+        history.pushState(null, '', `/blog/${article.slug}`)
+      }}
+    />
+  )
+  if (page === 'blog-article' && currentArticle) return (
+    <BlogArticlePage
+      article={currentArticle}
+      onBack={goBlog}
+      onBookCall={goBookCall}
+    />
+  )
   if (page === 'merci') return <Merci onBack={goHome} />
   if (page === 'contact') return <ContactNoe />
   if (page === 'privacy') return <PolitiqueConfidentialite onBack={goHome} />
@@ -569,7 +602,7 @@ function App() {
               { icon: plouffIcon, name: 'Plouff Habitudes', url: 'https://apps.apple.com/app/plouf-habitudes/id6758303032' },
             ].map(({ icon, name, url }) => (
               <a key={name} href={url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2">
-                <img src={icon} alt={name} className="w-20 h-20 md:w-24 md:h-24 rounded-[22%] shadow-md transition-transform duration-300 group-hover:scale-110" />
+                <img src={icon} alt={name} loading="lazy" className="w-20 h-20 md:w-24 md:h-24 rounded-[22%] shadow-md transition-transform duration-300 group-hover:scale-110" />
                 <span className="text-grey text-[0.75rem] md:text-[0.8rem] font-medium mt-1 transition-colors duration-300 group-hover:text-brand">{name}</span>
               </a>
             ))}
@@ -603,6 +636,7 @@ function App() {
               <img
                 src={mePhoto}
                 alt="Noé Calmes"
+                loading="lazy"
                 className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover shadow-lg shrink-0"
               />
               <div className="text-center md:text-left">
@@ -684,7 +718,7 @@ function App() {
               { num: '3', title: 'Vous lancez', desc: 'Application prête, sur l\'App Store et Google Play. Je reste disponible après la mise en ligne.', img: postSvg },
             ].map(({ num, title, desc, img }) => (
               <div key={num} className="group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
-                <img src={img} alt={title} className="w-full h-40 object-contain mb-6" />
+                <img src={img} alt={title} loading="lazy" className="w-full h-40 object-contain mb-6" />
                 <div className="flex flex-col justify-center flex-1">
                   <span className="self-start text-brand text-[0.8rem] font-semibold bg-brand/10 px-3 py-1 rounded-full mb-3 transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">
                     Étape {num}
@@ -789,6 +823,7 @@ function App() {
             <a href="/etapes" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/etapes'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/etapes') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Étapes</a>
             <a href="/faq" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/faq'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/faq') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">FAQ</a>
             <a href="/contact" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/contact'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/contact') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Contact</a>
+            <a href="/blog" onClick={(e) => { e.preventDefault(); goBlog() }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Blog</a>
           </div>
 
           {/* Nous contacter + socials */}
