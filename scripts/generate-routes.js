@@ -186,4 +186,25 @@ for (const route of blogRoutes) {
   console.log(`✓ Generated ${route.path}/index.html`)
 }
 
+// Utility/legal routes — serve the SPA shell with noindex so Google doesn't flag redirect errors
+const noindexRoutes = ['/mentions', '/privacy', '/cgv', '/documents', '/merci', '/contactnoe']
+
+for (const path of noindexRoutes) {
+  let html = baseHtml
+  // Add noindex so Google ignores these pages
+  html = html.replace(
+    /<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/,
+    '<meta name="robots" content="noindex, nofollow" />'
+  )
+  html = html.replace(
+    /<title>[^<]*<\/title>/,
+    `<title>Noé Calmes</title>`
+  )
+
+  const routeDir = join(distDir, path)
+  mkdirSync(routeDir, { recursive: true })
+  writeFileSync(join(routeDir, 'index.html'), html)
+  console.log(`✓ Generated ${path}/index.html (noindex)`)
+}
+
 console.log('Done! All route pages generated.')
