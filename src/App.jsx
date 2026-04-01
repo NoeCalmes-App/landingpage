@@ -478,7 +478,7 @@ function App() {
             Vous avez une idée d'application.<br />
             Je la transforme en <span className="text-brand relative">produit réel !
               <svg
-                className="absolute md:-bottom-4 -bottom-3.5 left-1/2 -translate-x-1/2 md:-translate-x-[50%] w-[70%] h-4.5 -rotate-1"
+                className="absolute md:-bottom-4 -bottom-3.5 left-1/2 -translate-x-1/2 md:-translate-x-[60%] w-[70%] md:w-[70%] h-4.5 -rotate-1"
                 viewBox="0 0 180 14"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
