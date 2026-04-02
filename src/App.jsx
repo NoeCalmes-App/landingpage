@@ -8,6 +8,7 @@ import CGV from './CGV.jsx'
 import Document from './Document.jsx'
 import Documents, { DOCUMENTS } from './Documents.jsx'
 import ContactNoe, { EmailModal } from './ContactNoe.jsx'
+import Legales from './Legales.jsx'
 import Merci from './Merci.jsx'
 import { BlogList, BlogArticlePage, BLOG_ARTICLES } from './Blog.jsx'
 import trustpilotStar from './assets/trustpilot.svg'
@@ -255,6 +256,7 @@ function App() {
     if (path === '/merci') return 'merci'
     if (path === '/documents') return 'documents'
     if (path === '/contactnoe') return 'contact'
+    if (path === '/legal') return 'legal'
     if (path === '/blog') return 'blog'
     if (path.startsWith('/blog/')) return 'blog-article'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
@@ -369,6 +371,7 @@ function App() {
   )
   if (page === 'merci') return <Merci onBack={goHome} />
   if (page === 'contact') return <ContactNoe />
+  if (page === 'legal') return <Legales />
   if (page === 'privacy') return <PolitiqueConfidentialite onBack={goHome} />
   if (page === 'mentions') return <MentionsLegales onBack={goHome} />
   if (page === 'cgv') return <CGV onBack={goHome} />

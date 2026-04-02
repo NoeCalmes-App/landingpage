@@ -98,6 +98,12 @@ function Documents({ onBack, onOpenDocument }) {
         >
           Contact
         </a>
+        <a
+          href="/legal"
+          className="px-5 py-2 rounded-full bg-[#f3f3f3] text-[#131313] font-semibold text-sm transition-colors hover:bg-[#e8e8e8]"
+        >
+          Légal
+        </a>
       </div>
 
       {/* Page title */}

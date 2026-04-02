@@ -187,7 +187,7 @@ for (const route of blogRoutes) {
 }
 
 // Utility/legal routes — serve the SPA shell with noindex so Google doesn't flag redirect errors
-const noindexRoutes = ['/mentions', '/privacy', '/cgv', '/documents', '/merci', '/contactnoe']
+const noindexRoutes = ['/mentions', '/privacy', '/cgv', '/documents', '/merci', '/contactnoe', '/legal']
 
 for (const path of noindexRoutes) {
   let html = baseHtml
