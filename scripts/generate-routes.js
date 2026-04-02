@@ -207,4 +207,12 @@ for (const path of noindexRoutes) {
   console.log(`✓ Generated ${path}/index.html (noindex)`)
 }
 
+// Home page — inject pre-rendered hero content so Lighthouse gets FCP immediately
+const homeHtml = baseHtml.replace(
+  '<div id="root"></div>',
+  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">Vous avez une idée d'application. Je la transforme en produit réel !</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Un seul développeur, de la conception au déploiement sur les stores.</p><a href="#contact" style="display:inline-block;background:#6C47FF;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Réserver un appel gratuit</a></div></div>`
+)
+writeFileSync(join(distDir, 'index.html'), homeHtml)
+console.log('✓ Injected pre-rendered content into home index.html')
+
 console.log('Done! All route pages generated.')
