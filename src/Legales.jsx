@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const LEGAL_INFO = [
-  { label: 'Nom commercial', value: 'NOE CALMES' },
+  { label: 'Nom commercial', value: 'Noé Calmes' },
   { label: 'SIREN', value: '922 623 814' },
   { label: 'SIRET (siège)', value: '922 623 814 00030' },
   { label: 'Forme juridique', value: 'Entrepreneur individuel' },
@@ -12,8 +12,8 @@ const LEGAL_INFO = [
   { label: 'Activité', value: 'Conception, développement et maintenance de sites internet, réseaux intranets et tout système informatique pour le compte de tiers' },
 ]
 
-const COPY_TEXT = `Informations juridiques de NOE CALMES
-Nom commercial : NOE CALMES
+const COPY_TEXT = `Informations juridiques de Noé Calmes
+Nom commercial : Noé Calmes
 SIREN : 922 623 814
 SIRET (siège) : 922 623 814 00030
 Forme juridique : Entrepreneur individuel
