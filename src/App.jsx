@@ -205,7 +205,7 @@ function ReviewsCarousel() {
 }
 
 const faqItems = [
-  { q: 'Comment fonctionne la tarification ?', a: 'Je ne facture ni à l\'heure, ni à la journée. Le tarif est défini dès le départ, en fonction du projet. Pas de mauvaise surprise, pas de compteur qui tourne — vous savez exactement ce que vous payez avant de commencer.' },
+  { q: 'Comment fonctionne la tarification ?', a: 'Tarif fixe, défini avant de commencer. Je ne suis pas une agence qui facture 20 000 € une appli — ma conviction, c\'est la transparence et l\'honnêteté. Vous savez exactement ce que vous payez, sans compteur qui tourne.' },
   { q: 'Combien de temps faut-il pour avoir une application mobile ?', a: 'Pour un MVP, comptez environ 45 jours. Pour une application complète, le délai dépend du projet et de vos besoins — on définit ça ensemble.' },
   { q: 'Après la livraison de l\'application ?', a: 'Je ne disparais pas après la mise en ligne. Je reste disponible pour les corrections, les mises à jour, les nouvelles fonctionnalités et l\'accompagnement technique. Le suivi fait partie de mon approche — on définit ensemble ce qui est nécessaire selon l\'évolution de votre produit.' },
 ]
@@ -617,6 +617,12 @@ function App() {
             Pourquoi travailler avec moi
           </h2>
 
+          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-10">
+            Je connais les vrais probl&egrave;mes : <strong>prioriser, trancher, livrer.</strong><br />
+            Pas d'interm&eacute;diaire — vous parlez directement &agrave; <strong>celui qui construit.</strong><br />
+            <strong>Pas de devis &agrave; 20&nbsp;000&nbsp;€.</strong> Tarif honn&ecirc;te, z&eacute;ro zone grise.
+          </p>
+
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-5">
             J'ai lanc&eacute; mes propres applications — Wake Up Alarme, Plouff Habitudes.
           </p>
@@ -633,11 +639,6 @@ function App() {
               </a>
             ))}
           </div>
-
-          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-10">
-            Je connais les vrais probl&egrave;mes : <strong>prioriser, trancher, livrer.</strong><br />
-            Pas de chef de projet, pas d'interm&eacute;diaire. Vous parlez directement &agrave; <strong>celui qui construit.</strong>
-          </p>
 
           <p className="reveal text-brand font-semibold text-[0.95rem] md:text-[1.05rem] text-center mb-5 md:mb-6">
             Un seul interlocuteur, <span className="underline decoration-2 underline-offset-4">responsable de A &agrave; Z.</span>
