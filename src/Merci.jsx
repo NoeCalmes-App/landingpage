@@ -24,6 +24,33 @@ export default function Merci({ onBack }) {
           Merci pour votre confiance. Vous allez recevoir un email de confirmation avec le lien de la visio.
         </p>
 
+        <div className="bg-brand/5 border border-brand/15 rounded-xl p-5 mb-6 text-left">
+          <h2 className="font-heading text-text text-sm font-bold mb-3">
+            Préparez l'entretien pour qu'on avance vite :
+          </h2>
+          <ul className="space-y-2 text-grey text-sm leading-relaxed">
+            <li className="flex items-start gap-2">
+              <span className="text-brand mt-0.5 shrink-0">&#10003;</span>
+              Un document décrivant chaque fonctionnalité de votre application
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-brand mt-0.5 shrink-0">&#10003;</span>
+              Un cahier des charges si vous en avez un
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-brand mt-0.5 shrink-0">&#10003;</span>
+              Maquettes, captures d'écran ou vidéos de l'existant
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-brand mt-0.5 shrink-0">&#10003;</span>
+              Tout fichier utile (pièces jointes, accès, specs…)
+            </li>
+          </ul>
+          <p className="text-grey/70 text-xs mt-3 italic">
+            Pas de panique si tout n'est pas prêt — on fera le point ensemble.
+          </p>
+        </div>
+
         <p className="text-text text-xs italic mb-8">
           Merci de prévenir en cas d'empêchement.
           <br />
