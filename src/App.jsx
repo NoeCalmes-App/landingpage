@@ -617,17 +617,15 @@ function App() {
             Pourquoi travailler avec moi
           </h2>
 
-          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-12">
-            J'ai lanc&eacute; mes propres applications — Wake Up Alarme, Plouff Habitudes.<br />
-            Je connais les vrais probl&egrave;mes : <strong>prioriser, trancher, livrer.</strong><br />
-            Pas de chef de projet, pas d'interm&eacute;diaire. Vous parlez directement &agrave; <strong>celui qui construit.</strong>
+          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-5">
+            J'ai lanc&eacute; mes propres applications — Wake Up Alarme, Plouff Habitudes.
           </p>
 
           {/* Apps */}
           <div className="reveal flex items-center justify-center gap-5 mb-5">
             {[
               { icon: wackupIcon, name: 'Wake Up Alarme', url: 'https://wakeupalarm.app/' },
-              { icon: plouffIcon, name: 'Plouff Habitudes', url: 'https://apps.apple.com/app/plouf-habitudes/id6758303032' },
+              { icon: plouffIcon, name: 'Plouff Habitudes', url: 'http://plouff-habitudes.com/' },
             ].map(({ icon, name, url }) => (
               <a key={name} href={url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-2">
                 <img src={icon} alt={name} loading="lazy" width="96" height="96" className="w-20 h-20 md:w-24 md:h-24 rounded-[22%] shadow-md transition-transform duration-300 group-hover:scale-110" />
@@ -636,7 +634,12 @@ function App() {
             ))}
           </div>
 
-          <p className="reveal text-brand font-semibold text-[0.95rem] md:text-[1.05rem] text-center mb-10 md:mb-12">
+          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-10">
+            Je connais les vrais probl&egrave;mes : <strong>prioriser, trancher, livrer.</strong><br />
+            Pas de chef de projet, pas d'interm&eacute;diaire. Vous parlez directement &agrave; <strong>celui qui construit.</strong>
+          </p>
+
+          <p className="reveal text-brand font-semibold text-[0.95rem] md:text-[1.05rem] text-center mb-5 md:mb-6">
             Un seul interlocuteur, <span className="underline decoration-2 underline-offset-4">responsable de A &agrave; Z.</span>
           </p>
 
