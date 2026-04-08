@@ -619,12 +619,12 @@ function App() {
 
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-10">
             Je connais les vrais probl&egrave;mes : <strong>prioriser, trancher, livrer.</strong><br />
-            Pas d'interm&eacute;diaire — vous parlez directement &agrave; <strong>celui qui construit.</strong><br />
-            <strong>Pas de devis &agrave; 20&nbsp;000&nbsp;€.</strong> Tarif honn&ecirc;te, z&eacute;ro zone grise.
+            Pas d'interm&eacute;diaire — vous parlez directement &agrave; <strong>celui qui construit.</strong>
+            <span className="text-brand font-semibold block mt-2"><strong>Pas de devis &agrave; 20&nbsp;000&nbsp;€.</strong> Tarif honn&ecirc;te, z&eacute;ro zone grise.</span>
           </p>
 
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-5">
-            J'ai lanc&eacute; mes propres applications — Wake Up Alarme, Plouff Habitudes.
+            J'ai lanc&eacute; mes propres applications :
           </p>
 
           {/* Apps */}
@@ -640,14 +640,9 @@ function App() {
             ))}
           </div>
 
-          <p className="reveal text-brand font-semibold text-[0.95rem] md:text-[1.05rem] text-center mb-5 md:mb-6">
-            Un seul interlocuteur, <span className="underline decoration-2 underline-offset-4">responsable de A &agrave; Z.</span>
-          </p>
-
           <div className="reveal-stagger flex flex-wrap justify-center gap-2.5 md:gap-4 max-w-230 mx-auto mb-10 md:mb-18">
             {[
-              'J\'ai lancé mes propres apps',
-              'Zéro intermédiaire',
+              'Budget transparent',
               'Vision produit + technique',
               'Communication directe',
               'Un seul projet à la fois',
