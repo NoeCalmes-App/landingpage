@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  repository_dispatch:
+    types: [deploy-devis-app]
 
 permissions:
   contents: read
@@ -25,6 +27,29 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+
+      - name: Checkout devis-app
+        uses: actions/checkout@v4
+        with:
+          repository: NoeCalmes-App/devis-app
+          path: devis-app-src
+
+      - name: Build devis-app
+        run: |
+          cd devis-app-src
+          npm ci
+          npm run build
+        env:
+          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+          VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+
+      - name: Inject app-devis into dist
+        run: cp -r devis-app-src/dist dist/app-devis
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
