@@ -4,8 +4,18 @@
   <meta charset="utf-8">
   <script>
     var path = window.location.pathname;
-    sessionStorage.setItem('redirect', path);
-    window.location.replace('/');
+    // Routes SPA de l'app devis — redirect vers app-devis/index.html
+    if (path.startsWith('/app-devis/') || path.startsWith('/maquette-visuel/')) {
+      // Réécrire /maquette-visuel/x/y → /app-devis/maquette-visuel/x/y
+      var appPath = path.startsWith('/maquette-visuel/')
+        ? '/app-devis' + path
+        : path;
+      sessionStorage.setItem('redirect', appPath);
+      window.location.replace('/app-devis/');
+    } else {
+      sessionStorage.setItem('redirect', path);
+      window.location.replace('/');
+    }
   </script>
 </head>
 <body></body>
