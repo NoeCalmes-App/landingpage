@@ -1545,6 +1545,149 @@
       .slide.active {
         display: flex;
       }
+
+      /* ═══════════════════════════════════════════════
+       SLIDE 7 — TECHNOLOGIES
+      ═══════════════════════════════════════════════ */
+      #slide-7 {
+        background: var(--surface);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 64px 140px;
+      }
+
+      .stec-label {
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--brand);
+        margin-bottom: 16px;
+      }
+
+      .stec-title {
+        font-size: 72px;
+        font-weight: 800;
+        color: var(--text);
+        letter-spacing: -0.03em;
+        line-height: 1;
+        margin-bottom: 52px;
+      }
+
+      .stec-cols {
+        display: flex;
+        gap: 36px;
+        align-items: stretch;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .stec-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: white;
+        border: 1.5px solid rgba(3, 52, 117, 0.09);
+        border-radius: 20px;
+        padding: 36px 32px;
+      }
+
+      .stec-cat {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--brand);
+        margin-bottom: 24px;
+      }
+
+      .stec-logo-wrap {
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 22px;
+        flex-shrink: 0;
+      }
+
+      .stec-logo-flutter  { background: #E3F4FD; }
+      .stec-logo-firebase { background: #FFF3E0; }
+      .stec-logo-figma    { background: #FFF0EE; }
+
+      .stec-name {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--text);
+        letter-spacing: -0.02em;
+        margin-bottom: 12px;
+        text-align: center;
+      }
+
+      .stec-desc {
+        font-size: 14px;
+        color: #556;
+        line-height: 1.6;
+        text-align: center;
+        margin-bottom: 18px;
+      }
+
+      .stec-checks {
+        list-style: none;
+        width: 100%;
+        margin-bottom: 20px;
+        flex: 1;
+      }
+
+      .stec-checks li {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+        font-size: 13px;
+        color: #444;
+        line-height: 1.5;
+        padding: 5px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+      }
+
+      .stec-checks li:last-child { border-bottom: none; }
+
+      .stec-check {
+        color: var(--brand);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .stec-used-label {
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #aaa;
+        margin-bottom: 8px;
+        align-self: flex-start;
+      }
+
+      .stec-companies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      .stec-badge {
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--text);
+        background: #f4f4f6;
+        border: 1px solid rgba(3, 52, 117, 0.1);
+        padding: 4px 11px;
+        border-radius: 999px;
+      }
     </style>
   </head>
   <body>
@@ -1921,9 +2064,116 @@
     </div>
 
     <!-- ════════════════════════════════════════════════
-     SLIDE 7 — DEVIS
+     SLIDE 7 — TECHNOLOGIES
 ════════════════════════════════════════════════ -->
     <div class="slide" id="slide-7">
+      <p class="stec-label">Proposition d'accompagnement</p>
+      <h2 class="stec-title">Nos choix de technologies</h2>
+
+      <div class="stec-cols">
+
+        <!-- Flutter -->
+        <div class="stec-col">
+          <p class="stec-cat">Tech. mobile</p>
+          <div class="stec-logo-wrap stec-logo-flutter">
+            <!-- Flutter logo -->
+            <svg width="44" height="54" viewBox="0 0 66 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M40.9 0H25.7L.7 24.8 9.3 33.3 40.9 0z" fill="#54C5F8"/>
+              <path d="M.7 39.4 9.3 48l30.8-30.8H25.7L.7 39.4z" fill="#01579B"/>
+              <path d="M9.3 48 31.2 69.8h15.2L15.8 38.9 9.3 48z" fill="#01579B"/>
+              <path d="M31.2 69.8h15.2L58.8 57.4l-9.1-9.1L31.2 69.8z" fill="#29B6F6"/>
+              <path d="M46.4 69.8 34.9 58.5l-3.7 11.3h15.2z" fill="#045C97"/>
+            </svg>
+          </div>
+          <p class="stec-name">Flutter</p>
+          <p class="stec-desc">Framework mobile de <strong>Google</strong>, open-source et sécurisé. Une seule codebase pour iOS &amp; Android, compilée en natif.</p>
+          <ul class="stec-checks">
+            <li><span class="stec-check">✓</span> Soutenu et audité par Google</li>
+            <li><span class="stec-check">✓</span> iOS &amp; Android depuis un seul code</li>
+            <li><span class="stec-check">✓</span> Performances natives compilées</li>
+            <li><span class="stec-check">✓</span> Mises à jour régulières &amp; communauté active</li>
+          </ul>
+          <p class="stec-used-label">Utilisé par :</p>
+          <div class="stec-companies">
+            <span class="stec-badge">Google Pay</span>
+            <span class="stec-badge">BMW</span>
+            <span class="stec-badge">eBay Motors</span>
+            <span class="stec-badge">Nubank</span>
+            <span class="stec-badge">Alibaba</span>
+          </div>
+        </div>
+
+        <!-- Firebase -->
+        <div class="stec-col">
+          <p class="stec-cat">Tech. back-end</p>
+          <div class="stec-logo-wrap stec-logo-firebase">
+            <!-- Firebase flame logo -->
+            <svg width="38" height="52" viewBox="0 0 57 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.5 57.3 12.8 15.4l12.1 21.4L1.5 57.3z" fill="#F57C00"/>
+              <path d="M24.9 0 12.8 15.4l12.1 21.4L37 15.4 24.9 0z" fill="#FFCA28"/>
+              <path d="M12.8 15.4 1.5 57.3l33.3-20.5-12-21.4z" fill="#EF6C00"/>
+              <path d="M24.9 36.8 12.8 15.4l22.2 21.4H24.9z" fill="#FFA000"/>
+              <path d="M1.5 57.3l55.5-5.2-18 26H13.7L1.5 57.3z" fill="#FFCA28"/>
+              <path d="M39 78.1l18-26-18-15.3V78z" fill="#F57C00"/>
+              <path d="M1.5 57.3 39 78.1V57.3H1.5z" fill="#FFA000"/>
+            </svg>
+          </div>
+          <p class="stec-name">Firebase</p>
+          <p class="stec-desc">Plateforme back-end de <strong>Google</strong>. Zéro serveur à gérer, forfait gratuit, briques sécurisées prêtes à l'emploi.</p>
+          <ul class="stec-checks">
+            <li><span class="stec-check">✓</span> Zéro serveur à configurer ou maintenir</li>
+            <li><span class="stec-check">✓</span> Forfait gratuit, puis très peu cher</li>
+            <li><span class="stec-check">✓</span> Auth, push, SMS &amp; e-mails intégrés</li>
+            <li><span class="stec-check">✓</span> Sécurité gérée et auditée par Google</li>
+          </ul>
+          <p class="stec-used-label">Utilisé par :</p>
+          <div class="stec-companies">
+            <span class="stec-badge">Duolingo</span>
+            <span class="stec-badge">The New York Times</span>
+            <span class="stec-badge">Trivago</span>
+            <span class="stec-badge">Lyft</span>
+            <span class="stec-badge">Alibaba</span>
+          </div>
+        </div>
+
+        <!-- Figma -->
+        <div class="stec-col">
+          <p class="stec-cat">Tech. design</p>
+          <div class="stec-logo-wrap stec-logo-figma">
+            <!-- Figma logo -->
+            <svg width="36" height="54" viewBox="0 0 38 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.5 28H19V10H9.5A9.5 9.5 0 009.5 28z" fill="#F24E1E"/>
+              <path d="M0 18.5A9.5 9.5 0 019.5 9H19v19H9.5A9.5 9.5 0 010 18.5z" fill="#FF7262"/>
+              <path d="M19 0h9.5a9.5 9.5 0 010 19H19V0z" fill="#A259FF"/>
+              <circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/>
+              <path d="M0 37.5A9.5 9.5 0 019.5 28H19v9.5A9.5 9.5 0 019.5 47 9.5 9.5 0 010 37.5z" fill="#0ACF83"/>
+            </svg>
+          </div>
+          <p class="stec-name">Figma</p>
+          <p class="stec-desc">Référence mondiale du design UI/UX. Chaque écran est prototypé et validé <strong>avant</strong> d'être développé.</p>
+          <ul class="stec-checks">
+            <li><span class="stec-check">✓</span> Prototype interactif avant le développement</li>
+            <li><span class="stec-check">✓</span> Validation des écrans en amont</li>
+            <li><span class="stec-check">✓</span> Collaboration en temps réel</li>
+            <li><span class="stec-check">✓</span> Standard de l'industrie</li>
+          </ul>
+          <p class="stec-used-label">Utilisé par :</p>
+          <div class="stec-companies">
+            <span class="stec-badge">Microsoft</span>
+            <span class="stec-badge">Spotify</span>
+            <span class="stec-badge">Airbnb</span>
+            <span class="stec-badge">Dropbox</span>
+            <span class="stec-badge">Twitter</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════
+     SLIDE 8 — DEVIS
+════════════════════════════════════════════════ -->
+    <div class="slide" id="slide-8">
       <!-- EN-TÊTE -->
       <div class="dv-header">
         <div class="dv-from">
@@ -2091,9 +2341,9 @@
     </div>
 
     <!-- ════════════════════════════════════════════════
-     SLIDE 8 — CONDITIONS & SIGNATURE
+     SLIDE 9 — CONDITIONS & SIGNATURE
 ════════════════════════════════════════════════ -->
-    <div class="slide" id="slide-8">
+    <div class="slide" id="slide-9">
       <p class="s8-label">Proposition d'accompagnement · MatchUp</p>
       <h2 class="s8-title">Conditions & Signature</h2>
 
@@ -2126,7 +2376,7 @@
                 href="#"
                 class="s8-card-link"
                 onclick="
-                  showSlide(9);
+                  showSlide(10);
                   return false;
                 "
                 >→ Consulter les CGV (page suivante)</a
@@ -2204,9 +2454,9 @@
     </div>
 
     <!-- ════════════════════════════════════════════════
-     SLIDE 9 — CGV (Art. 1–5)
+     SLIDE 10 — CGV (Art. 1–5)
 ════════════════════════════════════════════════ -->
-    <div class="slide" id="slide-9">
+    <div class="slide" id="slide-10">
       <p class="s8-label">Noé Calmes · Expert mobile indépendant</p>
       <h2 class="s9-title">Conditions Générales de Vente</h2>
 
@@ -2276,9 +2526,9 @@
     </div>
 
     <!-- ════════════════════════════════════════════════
-     SLIDE 10 — CGV (Art. 6–9)
+     SLIDE 11 — CGV (Art. 6–9)
 ════════════════════════════════════════════════ -->
-    <div class="slide" id="slide-10">
+    <div class="slide" id="slide-11">
       <div class="s10-wrap">
 
         <p class="s10-label">Proposition d'accompagnement · MatchUp</p>
@@ -2315,7 +2565,7 @@
     </div>
 
     <script>
-      const TOTAL = 10;
+      const TOTAL = 11;
       let current = 1;
 
       function showSlide(n) {
@@ -2346,6 +2596,15 @@
           nextSlide();
         if (e.key === "ArrowLeft" || e.key === "ArrowUp") prevSlide();
       });
+
+      let wheelLock = false;
+      document.addEventListener("wheel", (e) => {
+        if (wheelLock) return;
+        wheelLock = true;
+        setTimeout(() => { wheelLock = false; }, 600);
+        if (e.deltaY > 0) nextSlide();
+        else if (e.deltaY < 0) prevSlide();
+      }, { passive: true });
 
       // ── Devis editing & localStorage ──────────────────────────────
       (function () {
