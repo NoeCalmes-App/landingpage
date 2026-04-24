@@ -620,10 +620,9 @@ function App() {
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-10">
             Je connais les vrais probl&egrave;mes : <strong>prioriser, trancher, livrer.</strong><br />
             Pas d'interm&eacute;diaire — vous parlez directement &agrave; <strong>celui qui construit.</strong>
-            <span className="text-brand font-semibold block mt-2"><strong>Pas de devis &agrave; 20&nbsp;000&nbsp;€.</strong> Tarif honn&ecirc;te, z&eacute;ro zone grise.</span>
           </p>
 
-          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-5">
+          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-5 mt-[-8px] md:mt-[-16px]">
             J'ai lanc&eacute; mes propres applications :
           </p>
 
@@ -639,6 +638,10 @@ function App() {
               </a>
             ))}
           </div>
+
+          <p className="reveal text-brand font-semibold text-center text-[0.95rem] md:text-[1.05rem] mt-11 mb-4 md:mb-6">
+            <mark style={{background:'#e8e5ff', color:'#665dff', borderRadius:'4px', padding:'2px 6px'}}>Pas de devis &agrave; 20&nbsp;000&nbsp;€.</mark> Tarif honn&ecirc;te, z&eacute;ro zone grise.
+          </p>
 
           <div className="reveal-stagger flex flex-wrap justify-center gap-2.5 md:gap-4 max-w-230 mx-auto mb-10 md:mb-18">
             {[
