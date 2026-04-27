@@ -22,8 +22,6 @@ export default function Merci({ onBack }) {
 
         <p className="text-grey text-sm leading-relaxed mb-6">
           Tu vas recevoir un email de confirmation Calendly dans quelques secondes.
-          <br />
-          1h avant l'appel, tu auras un rappel WhatsApp avec le lien visio.
         </p>
 
         <div className="bg-brand/5 border border-brand/15 rounded-xl p-5 mb-6 text-left">
