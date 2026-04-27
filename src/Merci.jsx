@@ -17,33 +17,31 @@ export default function Merci({ onBack }) {
         </div>
 
         <h1 className="font-heading text-text text-xl md:text-2xl font-bold mb-3">
-          Votre appel est confirmé.
+          C'est confirmé.
         </h1>
 
         <p className="text-grey text-sm leading-relaxed mb-6">
-          Merci pour votre confiance. Vous allez recevoir un email de confirmation avec le lien de la visio.
+          Tu vas recevoir un email de confirmation Calendly dans quelques secondes.
+          <br />
+          1h avant l'appel, tu auras un rappel WhatsApp avec le lien visio.
         </p>
 
         <div className="bg-brand/5 border border-brand/15 rounded-xl p-5 mb-6 text-left">
           <h2 className="font-heading text-text text-sm font-bold mb-3">
-            Préparez l'entretien pour qu'on avance vite :
+            Pour qu'on tire le max de nos 30 minutes, viens avec en tête :
           </h2>
           <ul className="space-y-2 text-grey text-sm leading-relaxed">
             <li className="flex items-start gap-2">
               <span className="text-brand mt-0.5 shrink-0">&#10003;</span>
-              Un document décrivant chaque fonctionnalité de votre application
+              Ton objectif business derrière l'app — l'utilisateur, le problème à résoudre, l'enjeu
             </li>
             <li className="flex items-start gap-2">
               <span className="text-brand mt-0.5 shrink-0">&#10003;</span>
-              Un cahier des charges si vous en avez un
+              Si tu as un existant à reprendre ou faire évoluer : un accès, une capture ou un brief rapide
             </li>
             <li className="flex items-start gap-2">
               <span className="text-brand mt-0.5 shrink-0">&#10003;</span>
-              Maquettes, captures d'écran ou vidéos de l'existant
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-brand mt-0.5 shrink-0">&#10003;</span>
-              Tout fichier utile (pièces jointes, accès, specs…)
+              Tes contraintes : deadline, équipe en place, point de blocage actuel
             </li>
           </ul>
           <p className="text-grey/70 text-xs mt-3 italic">
@@ -52,9 +50,9 @@ export default function Merci({ onBack }) {
         </div>
 
         <p className="text-text text-xs italic mb-8">
-          Merci de prévenir en cas d'empêchement.
+          En cas d'empêchement, préviens-moi via le lien d'annulation Calendly.
           <br />
-          Sans réponse, aucun nouveau créneau ne pourra être réservé.
+          Sans nouvelle, je ne rouvre pas de créneau.
         </p>
 
         <button

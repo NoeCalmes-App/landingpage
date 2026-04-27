@@ -35,7 +35,7 @@ export const BLOG_ARTICLES = [
       </ul>
 
       <h2>Comment obtenir un devis précis ?</h2>
-      <p>Chaque projet est unique. La meilleure façon de connaître le coût de votre application mobile est d'en discuter directement. Je propose un <strong>appel gratuit de 15 minutes</strong> pour comprendre votre besoin — création, reprise ou évolution — et vous donner une estimation réaliste.</p>
+      <p>Chaque projet est unique. La meilleure façon de connaître le coût de votre application mobile est d'en discuter directement. Je propose un <strong>appel gratuit de 30 minutes</strong> pour comprendre votre besoin — création, reprise ou évolution — et vous donner une estimation réaliste.</p>
     `,
   },
   {
@@ -97,7 +97,7 @@ export const BLOG_ARTICLES = [
       <p>Une application mobile ne s'arrête pas à la mise en ligne. Elle a besoin d'<strong>évoluer</strong> : nouvelles fonctionnalités, corrections, optimisations. C'est pourquoi il est important de travailler avec quelqu'un qui reste disponible après le lancement.</p>
 
       <h2>Prêt à lancer votre projet mobile ?</h2>
-      <p>Que vous partiez de zéro, que vous ayez un existant à reprendre ou une app à faire évoluer, commençons par en discuter. Un <strong>appel de 15 minutes</strong> suffit pour cadrer les contours de votre projet.</p>
+      <p>Que vous partiez de zéro, que vous ayez un existant à reprendre ou une app à faire évoluer, commençons par en discuter. Un <strong>appel de 30 minutes</strong> suffit pour cadrer les contours de votre projet.</p>
     `,
   },
   {
@@ -219,7 +219,7 @@ function BlogArticlePage({ article, onBack, onBookCall }) {
             Vous avez un projet d'application mobile ?
           </h3>
           <p className="text-grey text-[0.93rem] mb-5">
-            Discutons-en gratuitement pendant 15 minutes.
+            Discutons-en gratuitement pendant 30 minutes.
           </p>
           <button
             onClick={onBookCall}

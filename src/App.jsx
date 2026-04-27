@@ -43,7 +43,7 @@ const SECTION_ROUTES = {
   '/contact': {
     id: 'calendly-section',
     title: 'Contact — Projet application mobile | Noé Calmes',
-    description: 'Un projet d\'application mobile ? Création, reprise ou évolution — réservez un appel gratuit de 15 minutes pour en discuter.',
+    description: 'Un projet d\'application mobile ? Création, reprise ou évolution — réservez un appel gratuit de 30 minutes pour en discuter.',
   },
 }
 
@@ -513,7 +513,7 @@ function App() {
           </button>
 
           <p className="text-grey text-[0.8rem] md:text-[0.85rem] mt-2.5">
-            15 min &bull; Gratuit
+            30 min &bull; Gratuit
           </p>
 
           {/* Proof */}
@@ -797,7 +797,7 @@ function App() {
           </h2>
 
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mb-8">
-            15 minutes pour discuter de votre projet, comprendre vos besoins<br className="hidden md:block" />
+            30 minutes pour discuter de votre projet, comprendre vos besoins<br className="hidden md:block" />
             et voir comment je pourrais y contribuer.
           </p>
 
