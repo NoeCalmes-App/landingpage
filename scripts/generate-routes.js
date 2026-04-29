@@ -6,211 +6,187 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const distDir = join(__dirname, '..', 'dist')
 const baseHtml = readFileSync(join(distDir, 'index.html'), 'utf-8')
 
-const routes = [
-  {
-    path: '/a-propos',
-    title: 'Expert mobile spécialisé Flutter — Noé Calmes',
-    description: "Expert mobile indépendant spécialisé Flutter. Création, reprise et évolution d'applications mobiles iOS et Android pour les entreprises en France.",
-    heading: 'Expert mobile spécialisé Flutter',
-    content: "Expert mobile indépendant spécialisé Flutter, j'aide les entreprises à créer, reprendre et faire évoluer leur application mobile. Du cadrage au développement et à la mise en ligne sur l'App Store et Google Play.",
-  },
-  {
-    path: '/offre',
-    title: 'Créer ou reprendre une application mobile | Noé Calmes',
-    description: "Création, reprise ou évolution de votre application mobile Flutter. MVP en 45 jours ou app complète, cadre clair et budget défini jusqu'à la mise en ligne.",
-    heading: 'Créer, reprendre ou faire évoluer votre application mobile',
-    content: "Création d'application mobile, reprise d'un existant ou évolution d'une app déjà lancée. MVP en 45 jours ou application complète, avec un cadre clair, un budget défini et une mise en ligne sur les stores.",
-  },
-  {
-    path: '/etapes',
-    title: 'Comment créer une application mobile en 3 étapes | Noé Calmes',
-    description: "Créer votre application mobile simplement : cadrage de votre projet, développement Flutter, puis mise en ligne sur l'App Store et Google Play.",
-    heading: 'Comment créer une application mobile',
-    content: "Créer une application mobile en 3 étapes : cadrage pour comprendre votre besoin, développement de l'application mobile avec Flutter, puis mise en ligne sur l'App Store et Google Play.",
-  },
-  {
-    path: '/faq',
-    title: 'FAQ — Création et développement application mobile | Noé Calmes',
-    description: "Questions fréquentes sur la création, la reprise et l'évolution d'application mobile : délais, tarifs, livraison et suivi après mise en ligne.",
-    heading: 'Questions fréquentes — Application mobile',
-    content: "Retrouvez les réponses aux questions les plus fréquentes sur la création, la reprise et l'évolution d'application mobile : délais, tarification, livraison, publication sur les stores et suivi après mise en ligne.",
-  },
-  {
-    path: '/contact',
-    title: 'Contact — Projet application mobile | Noé Calmes',
-    description: "Un projet d'application mobile ? Création, reprise ou évolution — réservez un appel gratuit de 15 minutes pour en discuter.",
-    heading: 'Discutons de votre projet mobile',
-    content: "Vous avez un projet d'application mobile ? Création, reprise ou évolution — réservez un appel gratuit de 15 minutes pour en discuter. Je vous réponds sous 24h.",
-  },
-]
+// Helper to patch all SEO meta tags
+function patchHtml(html, { path, title, description, heading, content, backLink = '← Retour à l\'accueil', backHref = 'https://noecalmes.fr/', breadcrumb }) {
+  html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
+  html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/, `<meta name="description" content="${description}" />`)
+  html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, `<link rel="canonical" href="https://noecalmes.fr${path}" />`)
+  html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${title}" />`)
+  html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${description}" />`)
+  html = html.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="https://noecalmes.fr${path}" />`)
+  html = html.replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${title}" />`)
+  html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${description}" />`)
 
-for (const route of routes) {
-  let html = baseHtml
-
-  // Replace title
-  html = html.replace(
-    /<title>[^<]*<\/title>/,
-    `<title>${route.title}</title>`
-  )
-
-  // Replace meta description
-  html = html.replace(
-    /<meta\s+name="description"\s+content="[^"]*"\s*\/?>/,
-    `<meta name="description" content="${route.description}" />`
-  )
-
-  // Replace canonical
-  html = html.replace(
-    /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/,
-    `<link rel="canonical" href="https://noecalmes.fr${route.path}" />`
-  )
-
-  // Replace og:title
-  html = html.replace(
-    /<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/,
-    `<meta property="og:title" content="${route.title}" />`
-  )
-
-  // Replace og:description
-  html = html.replace(
-    /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/,
-    `<meta property="og:description" content="${route.description}" />`
-  )
-
-  // Replace og:url
-  html = html.replace(
-    /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/,
-    `<meta property="og:url" content="https://noecalmes.fr${route.path}" />`
-  )
-
-  // Replace twitter:title
-  html = html.replace(
-    /<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/,
-    `<meta name="twitter:title" content="${route.title}" />`
-  )
-
-  // Replace twitter:description
-  html = html.replace(
-    /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/,
-    `<meta name="twitter:description" content="${route.description}" />`
-  )
-
-  // Replace BreadcrumbList with route-specific breadcrumb
   const breadcrumbJson = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://noecalmes.fr/" },
-      { "@type": "ListItem", "position": 2, "name": route.heading, "item": `https://noecalmes.fr${route.path}` }
-    ]
+    "itemListElement": breadcrumb,
   }, null, 6)
   html = html.replace(
     /<script type="application\/ld\+json">\s*\{[^}]*"@type":\s*"BreadcrumbList"[\s\S]*?<\/script>/,
     `<script type="application/ld+json">\n    ${breadcrumbJson}\n    </script>`
   )
 
-  // Inject unique visible content into <div id="root"> for SEO
-  // React will hydrate over this on load
-  const seoContent = `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1>${route.heading}</h1><p>${route.content}</p><a href="https://noecalmes.fr/">← Retour à l'accueil</a></div></div>`
+  const seoContent = `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1>${heading}</h1><p>${content}</p><a href="${backHref}">${backLink}</a></div></div>`
   html = html.replace('<div id="root"></div>', seoContent)
 
+  return html
+}
+
+// ─── Section routes (5 sections + their SEO pages) ───────────────────────────
+
+const sectionRoutes = [
+  {
+    path: '/expertise',
+    title: 'Pourquoi travailler avec Noé Calmes — Expert en applications mobiles',
+    description: 'Expert en applications mobiles indépendant. Création, reprise et évolution d\'applications iOS et Android — de la stratégie au lancement, pour les entreprises en France.',
+    heading: 'Expert en applications mobiles — Noé Calmes',
+    content: 'Expert en applications mobiles indépendant. J\'aide les entreprises à créer, reprendre et faire évoluer leur application mobile — en pensant business avant de penser code. Stratégie, design et développement de la conception au lancement sur les stores.',
+  },
+  {
+    path: '/etapes',
+    title: 'Comment créer une application mobile en 3 étapes | Noé Calmes',
+    description: 'Créer votre application mobile simplement : un échange pour cadrer votre projet, le développement, puis le lancement sur l\'App Store et Google Play.',
+    heading: 'Comment créer une application mobile',
+    content: 'Créer une application mobile en 3 étapes : cadrage pour comprendre votre besoin, développement de l\'application mobile, puis mise en ligne sur l\'App Store et Google Play. MVP en 45 jours, tarif fixe.',
+  },
+  {
+    path: '/avis',
+    title: 'Avis clients — Noé Calmes, expert en applications mobiles',
+    description: 'Ce que disent les clients qui ont fait confiance à Noé Calmes pour créer, reprendre ou faire évoluer leur application mobile.',
+    heading: 'Avis clients — Noé Calmes',
+    content: 'Découvrez les avis de clients qui ont confié leur projet d\'application mobile à Noé Calmes. Création de MVP, reprise d\'application existante, évolution de fonctionnalités — ce qu\'ils en disent.',
+  },
+  {
+    path: '/faq',
+    title: 'FAQ — Création d\'application mobile | Noé Calmes',
+    description: 'Questions fréquentes sur la création, la reprise et l\'évolution d\'application mobile : délais, tarifs, livraison et suivi après mise en ligne.',
+    heading: 'FAQ — Création d\'application mobile',
+    content: 'Retrouvez les réponses aux questions les plus fréquentes sur la création, la reprise et l\'évolution d\'application mobile : délais, tarification, livraison, publication sur les stores et suivi après mise en ligne.',
+  },
+  {
+    path: '/rendez-vous',
+    title: 'Réserver un appel gratuit — Application mobile | Noé Calmes',
+    description: 'Vous avez un projet d\'application mobile ? Réservez un appel gratuit de 30 minutes pour en discuter. Création, reprise ou évolution — sans engagement.',
+    heading: 'Réserver un appel découverte gratuit',
+    content: 'Vous avez un projet d\'application mobile ? Réservez un appel gratuit de 30 minutes pour discuter de votre idée, vos besoins et vos objectifs. Création, reprise ou évolution — sans engagement.',
+  },
+]
+
+for (const route of sectionRoutes) {
+  const html = patchHtml(baseHtml, {
+    ...route,
+    breadcrumb: [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://noecalmes.fr/" },
+      { "@type": "ListItem", "position": 2, "name": route.heading, "item": `https://noecalmes.fr${route.path}` },
+    ],
+  })
   const routeDir = join(distDir, route.path)
   mkdirSync(routeDir, { recursive: true })
   writeFileSync(join(routeDir, 'index.html'), html)
   console.log(`✓ Generated ${route.path}/index.html`)
 }
 
-// Blog routes
+// ─── Blog routes ──────────────────────────────────────────────────────────────
+
 const blogRoutes = [
   {
     path: '/blog',
-    title: 'Blog — Développement application mobile | Noé Calmes',
-    description: 'Conseils et guides pour créer votre application mobile : coûts, technologies, bonnes pratiques et retours d\'expérience.',
+    title: 'Blog — Création d\'application mobile | Noé Calmes',
+    description: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix techniques — par un expert en applications mobiles.',
     heading: 'Blog — Application mobile',
-    content: 'Conseils et guides pour créer, reprendre ou faire évoluer votre application mobile : coûts, technologies, Flutter et retours d\'expérience d\'un expert mobile indépendant.',
+    content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
   },
   {
     path: '/blog/combien-coute-application-mobile',
     title: 'Combien coûte une application mobile en 2026 ? | Noé Calmes',
-    description: 'Découvrez le vrai coût de création d\'une application mobile en France : freelance vs agence, MVP vs app complète, et les facteurs qui influencent le prix.',
+    description: 'Découvrez le vrai coût d\'une application mobile en 2026 : freelance vs agence, MVP vs app complète. Prix indicatifs et facteurs qui influencent le budget.',
     heading: 'Combien coûte une application mobile en 2026 ?',
-    content: 'Découvrez le vrai coût de création d\'une application mobile en France. Comparaison freelance vs agence, MVP vs app complète, et les facteurs qui influencent le prix de votre application.',
+    content: 'Freelance, agence, no-code : combien faut-il réellement budgétiser pour créer une application mobile en 2026 ? Analyse complète des prix selon le type de projet et les acteurs du marché.',
   },
   {
     path: '/blog/creer-application-mobile-guide',
     title: 'Comment créer une application mobile en 2026 — Guide complet | Noé Calmes',
     description: 'Guide complet pour créer une application mobile : les étapes, les choix techniques, les erreurs à éviter et comment passer de l\'idée au lancement sur les stores.',
     heading: 'Comment créer une application mobile : le guide complet',
-    content: 'Guide complet pour créer une application mobile : les étapes clés, les choix techniques (Flutter, natif), les erreurs à éviter et comment passer de l\'idée au lancement sur l\'App Store et Google Play.',
+    content: 'De l\'idée au lancement sur les stores : guide complet pour créer une application mobile en 2026. Étapes, choix techniques, erreurs à éviter et bonnes pratiques pour réussir votre projet mobile.',
   },
   {
-    path: '/blog/flutter-vs-natif-quel-choix',
-    title: 'Flutter vs natif — Quel choix pour votre app mobile en 2026 ? | Noé Calmes',
-    description: 'Flutter ou développement natif pour votre application mobile ? Comparaison complète : coûts, performances, délais et cas d\'usage pour faire le bon choix.',
-    heading: 'Flutter vs natif : quel choix pour votre application mobile ?',
-    content: 'Flutter ou développement natif pour votre application mobile ? Comparaison complète des coûts, performances, délais de développement et cas d\'usage pour faire le bon choix en 2026.',
+    path: '/blog/reprendre-application-mobile-existante',
+    title: 'Reprendre une application mobile existante — Comment faire ? | Noé Calmes',
+    description: 'Vous avez une application mobile à reprendre ? Guide complet pour auditer, stabiliser et relancer une app existante sans repartir de zéro.',
+    heading: 'Reprendre une application mobile existante',
+    content: 'Votre application mobile est instable, abandonnée ou mal codée ? Découvrez comment reprendre une app existante : audit technique, plan d\'action et remise sur de bonnes bases pour la faire évoluer sereinement.',
+  },
+  {
+    path: '/blog/faire-evoluer-application-mobile',
+    title: 'Comment faire évoluer une application mobile sans tout casser | Noé Calmes',
+    description: 'Ajouter des fonctionnalités, corriger la dette technique, améliorer l\'expérience utilisateur : guide pratique pour faire évoluer votre application mobile.',
+    heading: 'Comment faire évoluer une application mobile sans tout casser',
+    content: 'Ajouter des fonctionnalités, réduire la dette technique, améliorer les performances : guide pratique pour faire évoluer votre application mobile sans tout casser ni repartir de zéro.',
+  },
+  {
+    path: '/blog/mvp-application-mobile',
+    title: 'MVP application mobile : comment lancer vite sans sacrifier la qualité | Noé Calmes',
+    description: 'Qu\'est-ce qu\'un MVP mobile et comment le construire ? Guide pour lancer votre première version en 45 jours, tester votre idée et éviter les pièges courants.',
+    heading: 'MVP application mobile : lancer vite sans sacrifier la qualité',
+    content: 'Qu\'est-ce qu\'un MVP mobile, pourquoi en avoir un et comment le construire ? Guide complet pour lancer votre première version d\'application en 45 jours, valider votre idée et éviter les erreurs classiques.',
+  },
+  {
+    path: '/blog/choisir-expert-application-mobile',
+    title: 'Comment choisir le bon expert pour créer votre application mobile | Noé Calmes',
+    description: 'Freelance, agence, no-code : comment choisir le bon partenaire pour créer votre application mobile ? Les critères essentiels pour ne pas se tromper.',
+    heading: 'Comment choisir le bon expert pour créer votre application mobile',
+    content: 'Freelance spécialisé, agence digitale ou no-code : comment choisir le bon partenaire pour créer votre application mobile ? Les critères essentiels, les questions à poser et les pièges à éviter.',
   },
 ]
 
 for (const route of blogRoutes) {
-  let html = baseHtml
-
-  html = html.replace(/<title>[^<]*<\/title>/, `<title>${route.title}</title>`)
-  html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/, `<meta name="description" content="${route.description}" />`)
-  html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, `<link rel="canonical" href="https://noecalmes.fr${route.path}" />`)
-  html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${route.title}" />`)
-  html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${route.description}" />`)
-  html = html.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="https://noecalmes.fr${route.path}" />`)
-  html = html.replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${route.title}" />`)
-  html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${route.description}" />`)
-
-  const breadcrumbItems = [
+  const breadcrumb = [
     { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://noecalmes.fr/" },
     { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://noecalmes.fr/blog" },
   ]
   if (route.path !== '/blog') {
-    breadcrumbItems.push({ "@type": "ListItem", "position": 3, "name": route.heading, "item": `https://noecalmes.fr${route.path}` })
+    breadcrumb.push({ "@type": "ListItem", "position": 3, "name": route.heading, "item": `https://noecalmes.fr${route.path}` })
   }
-  const breadcrumbJson = JSON.stringify({ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": breadcrumbItems }, null, 6)
-  html = html.replace(
-    /<script type="application\/ld\+json">\s*\{[^}]*"@type":\s*"BreadcrumbList"[\s\S]*?<\/script>/,
-    `<script type="application/ld+json">\n    ${breadcrumbJson}\n    </script>`
-  )
 
-  const seoContent = `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1>${route.heading}</h1><p>${route.content}</p><a href="https://noecalmes.fr/blog">← Retour au blog</a></div></div>`
-  html = html.replace('<div id="root"></div>', seoContent)
-
+  const html = patchHtml(baseHtml, {
+    ...route,
+    backLink: '← Retour au blog',
+    backHref: 'https://noecalmes.fr/blog',
+    breadcrumb,
+  })
   const routeDir = join(distDir, route.path)
   mkdirSync(routeDir, { recursive: true })
   writeFileSync(join(routeDir, 'index.html'), html)
   console.log(`✓ Generated ${route.path}/index.html`)
 }
 
-// Utility/legal routes — serve the SPA shell with noindex so Google doesn't flag redirect errors
-const noindexRoutes = ['/mentions', '/privacy', '/cgv', '/documents', '/merci', '/contactnoe', '/legal']
+// ─── Legacy routes — noindex (old URLs that may still be indexed by Google) ──
+
+const legacyRoutes = ['/a-propos', '/offre', '/contact']
+const noindexRoutes = ['/mentions', '/privacy', '/cgv', '/documents', '/merci', '/contactnoe', '/legal', ...legacyRoutes]
 
 for (const path of noindexRoutes) {
   let html = baseHtml
-  // Add noindex so Google ignores these pages
   html = html.replace(
     /<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/,
     '<meta name="robots" content="noindex, nofollow" />'
   )
-  html = html.replace(
-    /<title>[^<]*<\/title>/,
-    `<title>Noé Calmes</title>`
-  )
+  html = html.replace(/<title>[^<]*<\/title>/, `<title>Noé Calmes</title>`)
 
   const routeDir = join(distDir, path)
   mkdirSync(routeDir, { recursive: true })
   writeFileSync(join(routeDir, 'index.html'), html)
-  console.log(`✓ Generated ${path}/index.html (noindex)`)
+  const isLegacy = legacyRoutes.includes(path)
+  console.log(`✓ Generated ${path}/index.html (${isLegacy ? 'legacy noindex' : 'noindex'})`)
 }
 
-// Home page — inject pre-rendered hero content so Lighthouse gets FCP immediately
+// ─── Home page — pre-render hero for Lighthouse FCP ──────────────────────────
+
 const homeHtml = baseHtml.replace(
   '<div id="root"></div>',
-  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">Vous avez une idée d'application. Je la transforme en produit réel !</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Un seul développeur, de la conception au déploiement sur les stores.</p><a href="#contact" style="display:inline-block;background:#6C47FF;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Réserver un appel gratuit</a></div></div>`
+  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">Je transforme votre idée en app mobile en 45 jours.</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Votre application pensée pour générer des revenus, de la stratégie au lancement. Création, reprise et évolution d'applications iOS et Android. Tarif fixe, MVP en 45 jours.</p><a href="/rendez-vous" style="display:inline-block;background:#645cff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Obtenir mes premières maquettes</a></div></div>`
 )
 writeFileSync(join(distDir, 'index.html'), homeHtml)
 console.log('✓ Injected pre-rendered content into home index.html')
