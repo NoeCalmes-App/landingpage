@@ -5,7 +5,6 @@ const LEGAL_INFO = [
   { label: 'SIREN', value: '922 623 814' },
   { label: 'SIRET (siège)', value: '922 623 814 00030' },
   { label: 'Forme juridique', value: 'Entrepreneur individuel' },
-  { label: 'Micro-entreprise', value: 'Oui' },
   { label: 'Numéro de TVA', value: 'FR25922623814' },
   { label: 'Numéro RCS', value: '922 623 814 R.C.S. Rodez' },
   { label: 'Code NAF / APE', value: '62.01Z — Programmation informatique' },
@@ -17,7 +16,6 @@ Nom commercial : Noé Calmes
 SIREN : 922 623 814
 SIRET (siège) : 922 623 814 00030
 Forme juridique : Entrepreneur individuel
-Micro-entreprise : Oui
 Numéro de TVA : FR25922623814
 Numéro RCS : 922 623 814 R.C.S. Rodez
 Code NAF / APE : 62.01Z — Programmation informatique`
