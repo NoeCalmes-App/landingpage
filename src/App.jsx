@@ -22,6 +22,9 @@ import calorieIcon from './assets/app/calorie.webp'
 import hushIcon from './assets/app/hushapp.webp'
 import purgeIcon from './assets/app/purge.webp'
 import snapIcon from './assets/app/snapmaster.png'
+import sophiePhoto from './assets/person/fille.jpeg'
+import thomasPhoto from './assets/person/gars.jpeg'
+import medhiPhoto from './assets/person/chefprojet.jpeg'
 import ChatbotWidget from './chatbot/Widget'
 
 const SECTION_ROUTES = {
@@ -92,29 +95,34 @@ const REVIEWS = [
     name: 'Sophie M.',
     role: 'Fondatrice',
     text: 'Noé a livré notre MVP en 6 semaines. Communication fluide, code propre, et il a su challenger nos idées pour aller à l\'essentiel. Je recommande à 100%.',
+    photo: sophiePhoto,
   },
   {
     name: 'Thomas R.',
     role: 'Co-fondateur',
     text: 'On avait déjà travaillé avec une agence sans résultat. Noé a repris le projet et nous a livré une app stable et performante, dans les temps et un budget très raisonnable.',
+    photo: thomasPhoto,
   },
   {
     name: 'Medhi D.',
     role: 'Chef de projet',
     text: 'Un vrai plaisir de travailler avec quelqu\'un qui comprend autant la technique que le produit. Il ne se contente pas de coder, il pense business.',
+    photo: medhiPhoto,
   },
 ]
 
-function ReviewCard({ name, role, text }) {
-  const initials = name.split(' ').map((n) => n[0]).join('')
+function ReviewCard({ name, role, text, photo }) {
   return (
     <div className="bg-surface border border-card-border rounded-[15px] p-7 md:p-8 flex flex-col text-left h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_28px_rgba(0,0,0,0.05)]">
       <p className="text-brand font-bold text-5xl leading-none mb-4 select-none">&ldquo;</p>
       <p className="text-text text-[0.93rem] leading-relaxed flex-1 mb-6 italic">{text}</p>
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-brand/10 text-brand font-bold text-sm flex items-center justify-center shrink-0">
-          {initials}
-        </div>
+        <img
+          src={photo}
+          alt={name}
+          loading="lazy"
+          className="w-10 h-10 rounded-full object-cover shrink-0"
+        />
         <div>
           <p className="text-text font-semibold text-[0.9rem]">{name}</p>
           <p className="text-grey text-[0.8rem]">{role}</p>
@@ -135,9 +143,9 @@ function ReviewsCarousel() {
       {/* Mobile: Embla infinite carousel */}
       <div className="md:hidden overflow-hidden" ref={emblaRef}>
         <div className="flex">
-          {REVIEWS.map(({ name, role, text }) => (
+          {REVIEWS.map(({ name, role, text, photo }) => (
             <div key={name} className="flex-none w-[80vw] pr-4">
-              <ReviewCard name={name} role={role} text={text} />
+              <ReviewCard name={name} role={role} text={text} photo={photo} />
             </div>
           ))}
         </div>
@@ -145,8 +153,8 @@ function ReviewsCarousel() {
 
       {/* Desktop: grid */}
       <div className="hidden md:grid md:grid-cols-3 gap-6">
-        {REVIEWS.map(({ name, role, text }) => (
-          <ReviewCard key={name} name={name} role={role} text={text} />
+        {REVIEWS.map(({ name, role, text, photo }) => (
+          <ReviewCard key={name} name={name} role={role} text={text} photo={photo} />
         ))}
       </div>
     </>
