@@ -6,7 +6,7 @@ import './styles.css'
 
 const WELCOME_MESSAGE = {
   role: 'assistant',
-  text: "Bonjour 👋 Je suis l'assistant de Noé. Posez-moi votre question sur votre projet d'application mobile.",
+  text: "Bonjour 👋 Je suis l'assistant de Noé. Posez-moi vos questions sur votre projet d'application mobile.",
 }
 
 // Construit les composants markdown avec un callback pour fermer le chatbot
@@ -192,7 +192,7 @@ export default function ChatbotWidget() {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? 'Fermer le chat' : 'Ouvrir le chat avec Noé'}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-500 hover:scale-110 cursor-pointer flex items-center justify-center bg-brand"
+        className="fixed bottom-4 right-6 md:bottom-6 z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-500 hover:scale-110 cursor-pointer flex items-center justify-center bg-brand"
         style={{
           opacity: hasScrolled ? 1 : 0,
           transform: hasScrolled ? 'scale(1) translateY(0)' : 'scale(0.8) translateY(16px)',
@@ -226,7 +226,7 @@ export default function ChatbotWidget() {
       {/* Modal chat */}
       {open && (
         <div
-          className="fixed bottom-24 right-6 z-[100] flex flex-col bg-white rounded-3xl shadow-2xl border border-card-border overflow-hidden"
+          className="fixed bottom-22 right-6 md:bottom-24 z-[100] flex flex-col bg-white rounded-3xl shadow-2xl border border-card-border overflow-hidden"
           style={{
             width: 'min(380px, calc(100vw - 3rem))',
             height: 'min(560px, calc(100vh - 7rem))',
@@ -329,8 +329,8 @@ export default function ChatbotWidget() {
                   className="w-10 h-10 rounded-full bg-brand text-white flex items-center justify-center hover:bg-brand-dark disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer flex-shrink-0"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="12" y1="19" x2="12" y2="5" />
-                    <polyline points="5 12 12 5 19 12" />
+                    <line x1="22" y1="2" x2="11" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
                   </svg>
                 </button>
               </div>
