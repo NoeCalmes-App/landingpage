@@ -155,7 +155,7 @@ export default function ChatbotWidget() {
         setBlocked(true)
       }
     } catch (err) {
-      setError("Connexion interrompue. Réessayez ou réservez un appel.")
+      setError(true)
       console.warn('[chatbot]', err)
     } finally {
       setLoading(false)
@@ -286,8 +286,16 @@ export default function ChatbotWidget() {
               </div>
             )}
             {error && !loading && (
-              <div className="text-center text-[0.8rem] text-red-text bg-red-bg rounded-xl py-2 px-3">
-                {error}
+              <div className="text-center text-[0.8rem] text-orange-600 bg-orange-50 rounded-xl py-2 px-3 leading-relaxed">
+                L'assistant de Noé est en maintenance.{' '}
+                <button
+                  type="button"
+                  onClick={handleCalendlyClick}
+                  className="underline underline-offset-2 font-semibold cursor-pointer hover:text-orange-700"
+                >
+                  Prenez rendez-vous avec Noé
+                </button>
+                {' '}pour répondre à vos questions.
               </div>
             )}
           </div>
