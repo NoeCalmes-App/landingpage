@@ -254,21 +254,34 @@ function App() {
   }, [])
 
   useEffect(() => {
-    // Charge le script Calendly uniquement quand la section est visible
+    // Charge le script Calendly :
+    //   - immédiatement si on arrive sur /rendez-vous (le widget est forcément vu)
+    //   - sinon quand la section approche du viewport (rootMargin 600px)
+    const loadCalendlyScript = () => {
+      if (window.Calendly || document.querySelector('script[data-calendly]')) return
+      const script = document.createElement('script')
+      script.src = 'https://assets.calendly.com/assets/external/widget.js'
+      script.async = true
+      script.dataset.calendly = '1'
+      document.head.appendChild(script)
+    }
+
+    if (window.location.pathname.replace(/\/$/, '') === '/rendez-vous') {
+      loadCalendlyScript()
+      return
+    }
+
     const target = document.getElementById('calendly-section')
     if (!target) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !window.Calendly) {
-          const script = document.createElement('script')
-          script.src = 'https://assets.calendly.com/assets/external/widget.js'
-          script.async = true
-          document.head.appendChild(script)
+        if (entry.isIntersecting) {
+          loadCalendlyScript()
           observer.disconnect()
         }
       },
-      { rootMargin: '200px' }
+      { rootMargin: '600px' }
     )
 
     observer.observe(target)
