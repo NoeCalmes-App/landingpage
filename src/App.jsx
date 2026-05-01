@@ -553,7 +553,7 @@ function App() {
               <ul className="space-y-4">
                 {[
                   'Livraison en 45 jours',
-                  'À partir de 4 500 €',
+                  'À partir de 4 000 €',
                   'Process simple et transparent',
                   'Un seul expert, joignable directement 6j/7',
                   'Pensé business pour générer des revenus',

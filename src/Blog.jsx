@@ -14,7 +14,7 @@ export const BLOG_ARTICLES = [
       <h2>Les fourchettes de prix en France en 2026</h2>
       <p>Le coût d'une application mobile dépend du périmètre, du type de projet et de l'interlocuteur que vous choisissez. Voici les grandes catégories :</p>
       <ul>
-        <li><strong>MVP — première version</strong> : entre 4 500 € et 15 000 €. Une version ciblée sur les fonctionnalités essentielles, livrée en 45 jours environ. L'objectif : valider votre idée sans tout miser d'un coup.</li>
+        <li><strong>MVP — première version</strong> : entre 4 000 € et 15 000 €. Une version ciblée sur les fonctionnalités essentielles, livrée en 45 jours environ. L'objectif : valider votre idée sans tout miser d'un coup.</li>
         <li><strong>Application complète</strong> : entre 15 000 € et 50 000 €. Un produit plus abouti, avec des fonctionnalités avancées, une UX travaillée, des intégrations complexes.</li>
         <li><strong>Reprise ou évolution d'une app existante</strong> : variable selon l'état de la base technique et le périmètre des évolutions. Souvent plus rapide et moins cher que de repartir de zéro.</li>
         <li><strong>Grande agence ou ESN</strong> : 50 000 € à 300 000 €+. Des équipes importantes, des délais longs, des processus lourds — pertinent pour des projets très complexes.</li>
