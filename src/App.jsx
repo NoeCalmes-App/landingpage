@@ -675,8 +675,15 @@ function App() {
           <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight mb-3 md:mb-4">
             Parlons de <span className="text-brand">votre application</span> 📞
           </h2>
-          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-4 md:mb-0">
+          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-4">
             Vous avez une idée&nbsp;? Une app mobile déjà en ligne&nbsp;?
+          </p>
+          <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-6 md:mb-8 -mt-2">
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+            </span>
+            <strong className="text-text font-semibold">2 projets par mois · 1 place disponible en {new Date().toLocaleString('fr-FR', { month: 'long' })}</strong>
           </p>
           <div
             className="calendly-inline-widget min-w-[320px] h-[980px] md:h-[950px]"
