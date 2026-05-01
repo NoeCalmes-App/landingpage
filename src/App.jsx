@@ -552,7 +552,7 @@ function App() {
               </div>
               <ul className="space-y-4">
                 {[
-                  'Livraison en 45 jours',
+                  'Livraison en 6 à 8 semaines',
                   'À partir de 4 000 €',
                   'Process simple et transparent',
                   'Un seul expert, joignable directement 6j/7',
