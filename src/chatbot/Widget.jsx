@@ -82,6 +82,7 @@ export default function ChatbotWidget() {
 
   const scrollRef = useRef(null)
   const inputRef = useRef(null)
+  const lastAssistantRef = useRef(null)
 
   // Apparition du bouton flottant après le 1er scroll (mirror du WhatsApp existant)
   useEffect(() => {
@@ -101,10 +102,14 @@ export default function ChatbotWidget() {
     }
   }, [])
 
-  // Auto-scroll quand un nouveau message arrive
+  // Auto-scroll : bas si loading (indicateur typing), début du message assistant sinon
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+    if (loading) {
+      if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+    } else {
+      if (lastAssistantRef.current) {
+        lastAssistantRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
     }
   }, [messages, loading])
 
@@ -258,9 +263,12 @@ export default function ChatbotWidget() {
 
           {/* Messages */}
           <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-card/40">
-            {messages.map((msg, i) => (
+            {messages.map((msg, i) => {
+              const isLastAssistant = msg.role === 'assistant' && messages.slice(i + 1).every(m => m.role !== 'assistant')
+              return (
               <div
                 key={i}
+                ref={isLastAssistant ? lastAssistantRef : null}
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
@@ -277,7 +285,7 @@ export default function ChatbotWidget() {
                   )}
                 </div>
               </div>
-            ))}
+              )})}
             {loading && (
               <div className="flex justify-start">
                 <div className="bg-white border border-card-border rounded-2xl rounded-bl-md shadow-sm">
