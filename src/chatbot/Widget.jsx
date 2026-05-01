@@ -326,7 +326,7 @@ export default function ChatbotWidget() {
                   rows={1}
                   maxLength={500}
                   disabled={loading}
-                  className="flex-1 resize-none bg-card border border-card-border rounded-2xl px-3.5 py-2.5 text-[0.875rem] text-text placeholder:text-grey/70 focus:outline-none focus:border-brand-light transition-colors max-h-24"
+                  className="chatbot-textarea flex-1 resize-none bg-card border border-card-border rounded-2xl px-3.5 py-2.5 text-[0.875rem] text-text placeholder:text-grey/70 focus:outline-none focus:border-brand-light transition-colors max-h-24"
                   style={{ fontFamily: 'inherit' }}
                 />
                 <button
