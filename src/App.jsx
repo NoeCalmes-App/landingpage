@@ -198,6 +198,7 @@ function FaqAccordion() {
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [spotsLoaded, setSpotsLoaded] = useState(false)
   const [footerEmailOpen, setFooterEmailOpen] = useState(false)
   const [currentDoc, setCurrentDoc] = useState(() => {
     const path = sessionStorage.getItem('redirect') || window.location.pathname
@@ -276,6 +277,7 @@ function App() {
 
     if (window.location.pathname.replace(/\/$/, '') === '/rendez-vous') {
       loadCalendlyScript()
+      setTimeout(() => setSpotsLoaded(true), 1200)
       return
     }
 
@@ -286,6 +288,7 @@ function App() {
       ([entry]) => {
         if (entry.isIntersecting) {
           loadCalendlyScript()
+          setTimeout(() => setSpotsLoaded(true), 1200)
           observer.disconnect()
         }
       },
@@ -678,12 +681,21 @@ function App() {
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-4">
             Vous avez une idée&nbsp;? Une app mobile déjà en ligne&nbsp;?
           </p>
-          <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-6 md:mb-0 -mt-2">
-            <span className="relative flex h-2 w-2 shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-            </span>
-            <strong className="text-text font-semibold">2 projets par mois · 1 place disponible en {new Date().toLocaleString('fr-FR', { month: 'long' })}</strong>
+          <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-6 md:mb-0 -mt-2 min-h-[1.5rem]">
+            {spotsLoaded ? (
+              <>
+                <span className="relative flex h-2 w-2 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                </span>
+                <strong className="text-text font-semibold animate-fadeIn">2 projets par mois · 1 place disponible en {new Date().toLocaleString('fr-FR', { month: 'long' })}</strong>
+              </>
+            ) : (
+              <span className="inline-flex gap-1 items-center text-grey/50 text-xs">
+                <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
+                Vérification des disponibilités…
+              </span>
+            )}
           </p>
           <div
             className="calendly-inline-widget min-w-[320px] h-[980px] md:h-[950px]"
