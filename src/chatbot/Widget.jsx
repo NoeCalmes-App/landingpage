@@ -192,7 +192,7 @@ export default function ChatbotWidget() {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? 'Fermer le chat' : 'Ouvrir le chat avec Noé'}
-        className="fixed bottom-4 right-6 md:bottom-6 z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-500 hover:scale-110 cursor-pointer flex items-center justify-center bg-brand"
+        className="fixed bottom-2 right-6 md:bottom-6 z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-500 hover:scale-110 cursor-pointer flex items-center justify-center bg-brand"
         style={{
           opacity: hasScrolled ? 1 : 0,
           transform: hasScrolled ? 'scale(1) translateY(0)' : 'scale(0.8) translateY(16px)',
