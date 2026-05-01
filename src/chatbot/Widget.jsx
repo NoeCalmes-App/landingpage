@@ -226,7 +226,7 @@ export default function ChatbotWidget() {
       {/* Modal chat */}
       {open && (
         <div
-          className="fixed bottom-22 right-6 md:bottom-24 z-[100] flex flex-col bg-white rounded-3xl shadow-2xl border border-card-border overflow-hidden"
+          className="fixed bottom-18 right-6 md:bottom-24 z-[100] flex flex-col bg-white rounded-3xl shadow-2xl border border-card-border overflow-hidden"
           style={{
             width: 'min(380px, calc(100vw - 3rem))',
             height: 'min(560px, calc(100vh - 7rem))',

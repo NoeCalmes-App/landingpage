@@ -678,7 +678,7 @@ function App() {
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-4">
             Vous avez une idée&nbsp;? Une app mobile déjà en ligne&nbsp;?
           </p>
-          <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-6 md:mb-8 -mt-2">
+          <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-6 md:mb-0 -mt-2">
             <span className="relative flex h-2 w-2 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
