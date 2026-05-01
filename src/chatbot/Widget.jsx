@@ -266,26 +266,27 @@ export default function ChatbotWidget() {
             {messages.map((msg, i) => {
               const isLastAssistant = msg.role === 'assistant' && messages.slice(i + 1).every(m => m.role !== 'assistant')
               return (
-              <div
-                key={i}
-                ref={isLastAssistant ? lastAssistantRef : null}
-                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
                 <div
-                  className={
-                    msg.role === 'user'
-                      ? 'max-w-[85%] bg-brand text-white px-3.5 py-2.5 rounded-2xl rounded-br-md text-[0.875rem] leading-relaxed shadow-sm'
-                      : 'max-w-[85%] bg-white text-text border border-card-border px-3.5 py-2.5 rounded-2xl rounded-bl-md text-[0.875rem] leading-relaxed shadow-sm'
-                  }
+                  key={i}
+                  ref={isLastAssistant ? lastAssistantRef : null}
+                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  {msg.role === 'user' ? (
-                    msg.text
-                  ) : (
-                    <ReactMarkdown components={mdComponents}>{msg.text}</ReactMarkdown>
-                  )}
+                  <div
+                    className={
+                      msg.role === 'user'
+                        ? 'max-w-[85%] bg-brand text-white px-3.5 py-2.5 rounded-2xl rounded-br-md text-[0.875rem] leading-relaxed shadow-sm'
+                        : 'max-w-[85%] bg-white text-text border border-card-border px-3.5 py-2.5 rounded-2xl rounded-bl-md text-[0.875rem] leading-relaxed shadow-sm'
+                    }
+                  >
+                    {msg.role === 'user' ? (
+                      msg.text
+                    ) : (
+                      <ReactMarkdown components={mdComponents}>{msg.text}</ReactMarkdown>
+                    )}
+                  </div>
                 </div>
-              </div>
-              )})}
+              )
+            })}
             {loading && (
               <div className="flex justify-start">
                 <div className="bg-white border border-card-border rounded-2xl rounded-bl-md shadow-sm">
