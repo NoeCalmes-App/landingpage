@@ -186,7 +186,7 @@ for (const path of noindexRoutes) {
 
 const homeHtml = baseHtml.replace(
   '<div id="root"></div>',
-  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">Je transforme votre idée en app mobile en 45 jours.</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Votre application pensée pour générer des revenus, de la stratégie au lancement. Création, reprise et évolution d'applications iOS et Android. Tarif fixe, MVP en 45 jours.</p><a href="/rendez-vous" style="display:inline-block;background:#645cff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Obtenir mes premières maquettes</a></div></div>`
+  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif;visibility:hidden" aria-hidden="true"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">Je transforme votre idée en app mobile en 45 jours.</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Votre application pensée pour générer des revenus, de la stratégie au lancement. Création, reprise et évolution d'applications iOS et Android. Tarif fixe, MVP en 45 jours.</p><a href="/rendez-vous" style="display:inline-block;background:#645cff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Obtenir mes premières maquettes</a></div></div>`
 )
 writeFileSync(join(distDir, 'index.html'), homeHtml)
 console.log('✓ Injected pre-rendered content into home index.html')
