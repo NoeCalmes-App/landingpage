@@ -277,7 +277,6 @@ function App() {
 
     if (window.location.pathname.replace(/\/$/, '') === '/rendez-vous') {
       loadCalendlyScript()
-      setTimeout(() => setSpotsLoaded(true), 1200)
       return
     }
 
@@ -288,7 +287,6 @@ function App() {
       ([entry]) => {
         if (entry.isIntersecting) {
           loadCalendlyScript()
-          setTimeout(() => setSpotsLoaded(true), 1200)
           observer.disconnect()
         }
       },
@@ -304,6 +302,9 @@ function App() {
       if (e.data?.event === 'calendly.event_scheduled') {
         setPage('merci')
         history.pushState(null, '', '/merci')
+      }
+      if (e.data?.event === 'calendly.profile_page_viewed') {
+        setSpotsLoaded(true)
       }
     }
     window.addEventListener('message', handleCalendlyEvent)
@@ -534,9 +535,8 @@ function App() {
                 {[
                   '3 à 6 mois de développement',
                   'Budget à partir de 15 000 €',
-                  'Processus complexe et chronophage',
                   'Jamais disponible, difficile à joindre',
-                  'Code livré — bonne chance pour le lancement',
+                  'Code livré — bonne chance !',
                   'Pas de réponse avant 48h minimum',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-grey text-[0.9rem] md:text-[0.93rem]">
@@ -557,7 +557,6 @@ function App() {
                 {[
                   'Livraison en 6 à 8 semaines',
                   'À partir de 3 500 €',
-                  'Process simple et transparent',
                   'Un seul expert, joignable directement 6j/7',
                   'Pensé business pour générer des revenus',
                   'Spécialisé Flutter (iOS & Android)',
