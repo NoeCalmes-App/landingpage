@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1400" />
+    <title>Stories — 45 jours · Noé Calmes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      :root {
+        --brand: #665dff;
+        --brand-light: #8796ff;
+        --brand-pale: #ccd2ff;
+        --brand-wash: #f0eeff;
+        --text: #033475;
+        --text-soft: #03347599;
+        --surface: #fffefc;
+        --line: #03347514;
+      }
+
+      @font-face {
+        font-family: "Geist";
+        src: url("/node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.woff2") format("woff2");
+        font-weight: 600; font-style: normal; font-display: swap;
+      }
+      @font-face {
+        font-family: "Geist";
+        src: url("/node_modules/geist/dist/fonts/geist-sans/Geist-Bold.woff2") format("woff2");
+        font-weight: 700; font-style: normal; font-display: swap;
+      }
+      @font-face {
+        font-family: "Geist";
+        src: url("/node_modules/geist/dist/fonts/geist-sans/Geist-Black.woff2") format("woff2");
+        font-weight: 800; font-style: normal; font-display: swap;
+      }
+
+      html, body {
+        background: #0a0a0c;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        color: white;
+      }
+
+      .page-head { text-align: center; padding: 56px 24px 16px; }
+      .page-head h1 {
+        font-family: "Geist", sans-serif;
+        font-weight: 700; font-size: 28px;
+        letter-spacing: -0.02em; margin-bottom: 8px;
+      }
+      .page-head p { color: rgba(255, 255, 255, 0.5); font-size: 14px; }
+      .page-head .download-all {
+        margin-top: 24px;
+        background: var(--brand); color: white; border: none;
+        padding: 14px 28px; border-radius: 999px;
+        font-family: "Geist", sans-serif;
+        font-weight: 600; font-size: 14px;
+        cursor: pointer;
+      }
+
+      .stage {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+        gap: 56px 32px;
+        max-width: 1500px; margin: 0 auto;
+        padding: 56px 32px 120px;
+      }
+      .frame { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+      .frame-head {
+        display: flex; align-items: center; justify-content: space-between;
+        width: 360px;
+      }
+      .frame-title {
+        font-family: "Geist", sans-serif;
+        font-weight: 600; font-size: 13px;
+        color: rgba(255, 255, 255, 0.55);
+        letter-spacing: 0.12em; text-transform: uppercase;
+      }
+      .dl-btn {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: white;
+        padding: 8px 16px; border-radius: 999px;
+        font-family: "Geist", sans-serif;
+        font-weight: 600; font-size: 12px;
+        letter-spacing: 0.04em; cursor: pointer;
+      }
+      .dl-btn:hover { background: var(--brand); border-color: var(--brand); }
+      .dl-btn.busy { opacity: 0.5; pointer-events: none; }
+
+      .display {
+        width: 360px; height: 640px;
+        overflow: hidden; border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      }
+      .display .slide { transform: scale(0.3333333); transform-origin: top left; }
+
+      /* ════════════════════════════════════════════
+         SLIDE BASE
+         ════════════════════════════════════════════ */
+      .slide {
+        width: 1080px; height: 1920px;
+        position: relative; overflow: hidden;
+        font-family: "Inter", sans-serif;
+        color: var(--text);
+        padding: 150px 90px 200px;
+        display: flex; flex-direction: column;
+      }
+
+      .bg-surface { background: var(--surface); }
+      .bg-surface::after {
+        content: ""; position: absolute; bottom: 0; left: 0; right: 0;
+        height: 8px; background: var(--brand);
+      }
+
+      .bg-card { background: #fafafa; }
+      .bg-card::after {
+        content: ""; position: absolute; bottom: 0; left: 0; right: 0;
+        height: 8px; background: var(--brand);
+      }
+
+      .bg-brand-soft { background: #fafafa; }
+      .bg-brand-soft::before {
+        content: ""; position: absolute; top: 0; left: 0; right: 0;
+        height: 24px; background: #645cff;
+      }
+      .bg-brand-soft::after {
+        content: ""; position: absolute; bottom: 0; left: 0; right: 0;
+        height: 8px; background: #645cff;
+      }
+
+      /* Tag pill */
+      .tag {
+        display: inline-flex; align-items: center; gap: 16px;
+        padding: 22px 40px;
+        border: 2px solid var(--text);
+        border-radius: 999px;
+        font-family: "Geist", sans-serif;
+        font-weight: 700; font-size: 30px;
+        letter-spacing: 0.06em; text-transform: uppercase;
+        color: var(--text);
+        background: transparent;
+        align-self: flex-start;
+      }
+      .tag .dot {
+        width: 14px; height: 14px; border-radius: 50%;
+        background: var(--brand);
+      }
+      .bg-brand-soft .tag {
+        border-color: #645cff; color: #645cff;
+        background: white;
+      }
+      .bg-brand-soft .tag .dot { background: #645cff; }
+      #s1 .tag { margin-left: -16px; }
+
+      /* Signature */
+      .signature {
+        position: absolute;
+        bottom: 56px; left: 90px;
+        font-family: "Geist", sans-serif;
+        font-weight: 600; font-size: 40px;
+        color: gray;
+        opacity: 0.18;
+        letter-spacing: -0.005em;
+      }
+      .bg-brand-soft .signature {
+        color: #645cff;
+        opacity: 0.28;
+      }
+
+      /* ════════════════════════════════════════════
+         SLIDE 1 — HOOK : 45
+         ════════════════════════════════════════════ */
+      #s1 { justify-content: space-between; }
+      .s1-num {
+        font-family: "Geist", sans-serif;
+        font-weight: 800;
+        font-size: 760px;
+        line-height: 0.82;
+        letter-spacing: -0.075em;
+        color: var(--brand);
+      }
+      .s1-headline {
+        font-family: "Geist", sans-serif;
+        font-weight: 800;
+        font-size: 92px;
+        line-height: 0.95;
+        letter-spacing: -0.035em;
+        color: var(--text);
+        margin-top: 32px;
+      }
+      .s1-meta {
+        font-family: "Geist", sans-serif;
+        font-weight: 700; font-size: 40px;
+        color: var(--text);
+        margin-top: 32px;
+        letter-spacing: -0.015em;
+        line-height: 1.3;
+      }
+      .s1-meta em { font-style: normal; color: var(--brand); font-weight: 700; }
+
+      /* ════════════════════════════════════════════
+         SLIDE 2 — RÉALITÉ : 6 à 12 mois vs 45j
+         ════════════════════════════════════════════ */
+      #s2 { justify-content: space-between; }
+      .s2-title {
+        font-family: "Geist", sans-serif;
+        font-weight: 800; font-size: 95px;
+        line-height: 1.15;
+        letter-spacing: -0.04em;
+        color: var(--text);
+        margin-top: 48px;
+      }
+      .s2-title em { font-style: normal; color: var(--brand); position: relative; z-index: 0; }
+      .s2-title em::after {
+        content: ""; position: absolute;
+        left: -8px; right: -8px; bottom: -2px;
+        height: 28%; background: rgba(102, 93, 255, 0.22);
+        border-radius: 4px; z-index: -1;
+      }
+      .s3-title em { font-style: normal; color: #645cff; position: relative; z-index: 0; }
+      .s3-title em::after {
+        content: ""; position: absolute;
+        left: -8px; right: -8px; bottom: -2px;
+        height: 28%; background: rgba(100, 92, 255, 0.22);
+        border-radius: 4px; z-index: -1;
+      }
+      .s4-title em { font-style: normal; color: var(--brand); position: relative; z-index: 0; }
+      .s4-title em::after {
+        content: ""; position: absolute;
+        left: -8px; right: -8px; bottom: -2px;
+        height: 28%; background: rgba(102, 93, 255, 0.22);
+        border-radius: 4px; z-index: -1;
+      }
+
+      .s2-bars { display: flex; flex-direction: column; gap: 28px; }
+      .s2-bar { display: flex; align-items: center; gap: 28px; }
+      .s2-bar .label {
+        font-family: "Geist", sans-serif;
+        font-weight: 700; font-size: 32px;
+        color: var(--text);
+        min-width: 220px;
+        letter-spacing: -0.01em;
+      }
+      .s2-bar .track {
+        flex: 1; height: 64px;
+        background: rgba(3, 52, 117, 0.06);
+        border-radius: 16px;
+        position: relative;
+        overflow: hidden;
+      }
+      .s2-bar .fill {
+        position: absolute; top: 0; left: 0; bottom: 0;
+        background: rgba(3, 52, 117, 0.55);
+        border-radius: 16px;
+      }
+      .s2-bar.bar-mine .fill { background: var(--brand); }
+      .s2-bar .value {
+        font-family: "Geist", sans-serif;
+        font-weight: 800; font-size: 30px;
+        color: var(--text);
+        min-width: 110px;
+        text-align: right;
+        letter-spacing: -0.01em;
+      }
+      .s2-bar.bar-mine .value { color: var(--brand); }
+
+      .s2-foot {
+        font-family: "Geist", sans-serif;
+        font-weight: 700; font-size: 40px;
+        color: var(--text);
+        line-height: 1.3;
+        letter-spacing: -0.015em;
+      }
+      .s2-foot em { font-style: normal; color: var(--brand); font-weight: 700; }
+
+      /* ════════════════════════════════════════════
+         SLIDE 3 — MÉTHODE : 4 sprints
+         ════════════════════════════════════════════ */
+      #s3 { justify-content: space-between; }
+      .s3-title {
+        font-family: "Geist", sans-serif;
+        font-weight: 800; font-size: 116px;
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+        color: var(--text);
+        margin-top: 48px;
+      }
+      .s3-sprints { display: flex; flex-direction: column; }
+      .s3-sprint {
+        display: flex; align-items: baseline; gap: 36px;
+        padding: 26px 0;
+        border-top: 1px solid rgba(3, 52, 117, 0.14);
+      }
+      .s3-sprint:last-child { border-bottom: 1px solid rgba(3, 52, 117, 0.14); }
+      .s3-sprint .day {
+        font-family: "Geist", sans-serif;
+        font-weight: 700; font-size: 26px;
+        color: #645cff;
+        letter-spacing: 0.04em;
+        min-width: 220px;
+      }
+      .s3-sprint .lbl {
+        font-family: "Geist", sans-serif;
+        font-weight: 800; font-size: 56px;
+        color: var(--text);
+        letter-spacing: -0.025em;
+        line-height: 1;
+      }
+
+      .s3-foot {
+        font-family: "Geist", sans-serif;
+        font-weight: 700; font-size: 40px;
+        color: var(--text);
+        line-height: 1.3;
+        letter-spacing: -0.015em;
+        max-width: 900px;
+      }
+      .s3-foot strong { color: #645cff; font-weight: 700; }
+
+      /* ════════════════════════════════════════════
+         SLIDE 4 — INVITATION
+         ════════════════════════════════════════════ */
+      #s4 { justify-content: space-between; }
+      .s4-head {
+        display: flex; flex-direction: column; gap: 28px;
+        align-self: stretch;
+      }
+      #s4 .tag { align-self: flex-start; margin-left: -16px; }
+      .s4-kicker {
+        font-family: "Geist", sans-serif;
+        font-weight: 700; font-size: 40px;
+        color: var(--text-soft);
+        letter-spacing: -0.015em;
+        line-height: 1.25;
+        text-align: left;
+      }
+      .s4-kicker strong { color: var(--brand); font-weight: 600; }
+      .s4-block {
+        display: flex; flex-direction: column; gap: 36px;
+        align-self: center;
+        text-align: left;
+        width: max-content;
+      }
+      .s4-title {
+        font-family: "Geist", sans-serif;
+        font-weight: 800; font-size: 152px;
+        line-height: 0.9;
+        letter-spacing: -0.05em;
+        color: var(--text);
+      }
+      .s4-foot {
+        display: flex; flex-direction: column; align-items: center; gap: 28px;
+        align-self: center;
+        text-align: center;
+        width: 100%;
+      }
+      .s4-sub {
+        font-family: "Geist", sans-serif;
+        font-weight: 600; font-size: 34px;
+        color: var(--text-soft);
+        line-height: 1.45;
+        text-align: center;
+        margin-bottom: 8px;
+      }
+      .s4-sub strong { color: var(--text); font-weight: 700; }
+      .s4-cta {
+        display: inline-flex; align-items: center; gap: 24px;
+        padding: 36px 64px;
+        background: var(--brand); color: white;
+        border-radius: 999px;
+        font-family: "Geist", sans-serif;
+        font-weight: 700; font-size: 44px;
+        letter-spacing: -0.015em;
+        box-shadow: 0 18px 44px rgba(102, 93, 255, 0.34);
+        align-self: stretch; justify-content: center;
+      }
+      .s4-cta .arrow {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 56px; height: 56px;
+        border-radius: 50%;
+        background: white; color: var(--brand);
+        font-size: 32px;
+      }
+      .s4-link {
+        font-family: "Geist", sans-serif;
+        font-weight: 600; font-size: 28px;
+        color: var(--text-soft);
+        letter-spacing: -0.005em;
+      }
+      .s4-link strong { color: var(--text); font-weight: 700; }
+      #s4 .signature { left: 90px; transform: none; }
+    </style>
+  </head>
+  <body>
+    <div class="page-head">
+      <h1>Stories Instagram — 45 jours</h1>
+      <p>Format 1080×1920 · 4 slides · Cliquez "↓ PNG" pour exporter</p>
+      <button class="download-all" onclick="downloadAll()">↓ Tout télécharger</button>
+    </div>
+
+    <div class="stage">
+      <!-- ═══════════ SLIDE 1 — HOOK : 45 ═══════════ -->
+      <div class="frame">
+        <div class="frame-head">
+          <div class="frame-title">01 · Le délai</div>
+          <button class="dl-btn" data-target="s1">↓ PNG</button>
+        </div>
+        <div class="display">
+          <div class="slide bg-surface" id="s1">
+            <span class="tag"><span class="dot"></span>Le délai</span>
+            <div>
+              <div class="s1-num">45</div>
+              <div class="s1-headline">jours pour passer<br />de l'idée au store.</div>
+              <div class="s1-meta">
+                Pas 6 mois.<br />
+                <em>Pas 1 an.</em>
+              </div>
+            </div>
+            <div class="signature">@noecalmes.app</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ SLIDE 2 — RÉALITÉ ═══════════ -->
+      <div class="frame">
+        <div class="frame-head">
+          <div class="frame-title">02 · La réalité du marché</div>
+          <button class="dl-btn" data-target="s2">↓ PNG</button>
+        </div>
+        <div class="display">
+          <div class="slide bg-card" id="s2">
+            <div>
+              <span class="tag"><span class="dot"></span>La réalité du marché</span>
+              <div class="s2-title">
+                Combien de temps<br />
+                pour <em>livrer une app ?</em>
+              </div>
+            </div>
+
+            <div class="s2-bars">
+              <div class="s2-bar">
+                <div class="label">Agence</div>
+                <div class="track"><div class="fill" style="width: 100%"></div></div>
+                <div class="value">6 mois</div>
+              </div>
+              <div class="s2-bar">
+                <div class="label">Freelance</div>
+                <div class="track"><div class="fill" style="width: 50%"></div></div>
+                <div class="value">3 mois</div>
+              </div>
+              <div class="s2-bar bar-mine">
+                <div class="label">Avec moi</div>
+                <div class="track"><div class="fill" style="width: 25%"></div></div>
+                <div class="value">45 j</div>
+              </div>
+            </div>
+
+            <div class="s2-foot">
+              Aujourd'hui, le marché a changé.<br />
+              <em>Les agences, non.</em>
+            </div>
+
+            <div class="signature">@noecalmes.app</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ SLIDE 3 — MÉTHODE ═══════════ -->
+      <div class="frame">
+        <div class="frame-head">
+          <div class="frame-title">03 · Comment je tiens</div>
+          <button class="dl-btn" data-target="s3">↓ PNG</button>
+        </div>
+        <div class="display">
+          <div class="slide bg-brand-soft" id="s3">
+            <div>
+              <span class="tag"><span class="dot"></span>Comment je tiens</span>
+              <div class="s3-title">
+                45 jours,<br />
+                <em>4 sprints.</em>
+              </div>
+            </div>
+
+            <div class="s3-sprints">
+              <div class="s3-sprint">
+                <span class="day">J0 → J3</span>
+                <span class="lbl">Cadrage stratégique</span>
+              </div>
+              <div class="s3-sprint">
+                <span class="day">J4 → J11</span>
+                <span class="lbl">Design & maquettes</span>
+              </div>
+              <div class="s3-sprint">
+                <span class="day">J12 → J39</span>
+                <span class="lbl">Développement</span>
+              </div>
+              <div class="s3-sprint">
+                <span class="day">J40 → J45</span>
+                <span class="lbl">Soumission stores</span>
+              </div>
+            </div>
+
+            <div class="s3-foot">
+              Pas une promesse en l'air.<br />
+              <strong>Une méthode rodée sur +20 apps.</strong>
+            </div>
+
+            <div class="signature">@noecalmes.app</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ SLIDE 4 — INVITATION ═══════════ -->
+      <div class="frame">
+        <div class="frame-head">
+          <div class="frame-title">04 · Invitation</div>
+          <button class="dl-btn" data-target="s4">↓ PNG</button>
+        </div>
+        <div class="display">
+          <div class="slide bg-surface" id="s4">
+            <div class="s4-head">
+              <span class="tag"><span class="dot"></span>À votre tour</span>
+              <div class="s4-kicker">
+                45 jours.<br />
+                <strong>C'est possible.</strong>
+              </div>
+            </div>
+
+            <div class="s4-block">
+              <div class="s4-title">
+                On démarre<br />
+                <em>quand ?</em>
+              </div>
+            </div>
+
+            <div class="s4-foot">
+              <div class="s4-cta">
+                Réserver un créneau
+                <span class="arrow">→</span>
+              </div>
+              <div class="s4-link">
+                Lien en bio · <strong>noecalmes.fr</strong>
+              </div>
+            </div>
+
+            <div class="signature">@noecalmes.app</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      async function captureSlide(slideEl) {
+        const originalParent = slideEl.parentElement;
+        const placeholder = document.createElement('div');
+        placeholder.style.width = '360px';
+        placeholder.style.height = '640px';
+        const originalTransform = slideEl.style.transform;
+        slideEl.style.transform = 'none';
+        slideEl.style.position = 'fixed';
+        slideEl.style.top = '-10000px';
+        slideEl.style.left = '-10000px';
+        document.body.appendChild(slideEl);
+        originalParent.appendChild(placeholder);
+
+        await new Promise(r => setTimeout(r, 100));
+
+        const canvas = await html2canvas(slideEl, {
+          width: 1080, height: 1920,
+          scale: 2,
+          backgroundColor: null,
+          useCORS: true, allowTaint: true,
+          logging: false,
+        });
+
+        slideEl.style.transform = originalTransform;
+        slideEl.style.position = '';
+        slideEl.style.top = '';
+        slideEl.style.left = '';
+        originalParent.replaceChild(slideEl, placeholder);
+
+        return canvas;
+      }
+
+      async function downloadOne(slideId) {
+        const btn = document.querySelector(`[data-target="${slideId}"]`);
+        const slide = document.getElementById(slideId);
+        if (!btn || !slide) return;
+
+        btn.classList.add('busy');
+        btn.textContent = '... export';
+        try {
+          const canvas = await captureSlide(slide);
+          const link = document.createElement('a');
+          link.download = `story-45j-${slideId}.png`;
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+        } catch (e) {
+          console.error(e);
+          alert('Erreur export — voir console');
+        } finally {
+          btn.classList.remove('busy');
+          btn.textContent = '↓ PNG';
+        }
+      }
+
+      async function downloadAll() {
+        const ids = ['s1', 's2', 's3', 's4'];
+        for (const id of ids) {
+          await downloadOne(id);
+          await new Promise(r => setTimeout(r, 400));
+        }
+      }
+
+      document.querySelectorAll('.dl-btn').forEach(btn => {
+        btn.addEventListener('click', () => downloadOne(btn.dataset.target));
+      });
+    </script>
+  </body>
+</html>

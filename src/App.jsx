@@ -94,7 +94,7 @@ const REVIEWS = [
   {
     name: 'Sophie M.',
     role: 'Fondatrice',
-    text: 'Noé a livré notre MVP en 6 semaines. Communication fluide, code propre, et il a su challenger nos idées pour aller à l\'essentiel. Je recommande à 100%.',
+    text: 'Noé a livré notre MVP en 6 semaines. Communication fluide il a su challenger nos idées pour aller à l\'essentiel. Je recommande à 100%.',
     photo: sophiePhoto,
   },
   {
