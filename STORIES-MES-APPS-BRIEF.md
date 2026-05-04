@@ -445,7 +445,7 @@ Cette progression visuelle (clair → doux → fort → clair) accompagne la pro
 2. **Générer en 1080×1920 portrait**
 3. **Itérer** : si le texte ne sort pas exactement, demander à nano banana de "garder la composition mais corriger le texte exact à 'X'"
 4. **Vérifier** : icônes apps lisibles, couleurs hex respectées, pas d'emoji parasite
-5. **Comparer** avec la version HTML disponible sur `http://localhost:5173/stories-mes-apps.html` pour valider la cohérence DA
+5. **Comparer** avec la version HTML disponible sur `http://localhost:5173/stories.html` (Set 1 — Mes apps) pour valider la cohérence DA
 6. **Exporter** en PNG, ranger dans un dossier `stories-mes-apps/` numéroté `s1.png` à `s4.png`
 
 ### Tip d'expert
