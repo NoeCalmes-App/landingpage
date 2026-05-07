@@ -1044,7 +1044,8 @@
       #n3,
       #n4,
       #n5,
-      #n6 {
+      #n6,
+      #n7 {
         width: 1080px;
         height: 1080px;
         padding: 96px 90px 110px;
@@ -1054,7 +1055,8 @@
       .display:has(#n3),
       .display:has(#n4),
       .display:has(#n5),
-      .display:has(#n6) {
+      .display:has(#n6),
+      .display:has(#n7) {
         height: 360px;
       }
 
@@ -1245,6 +1247,12 @@
         color: var(--text);
         font-weight: 800;
       }
+      .n-item .n-soft {
+        font-size: 0.72em;
+        font-style: italic;
+        font-weight: 500;
+        opacity: 0.7;
+      }
       .n-cta-block {
         display: flex;
         flex-direction: column;
@@ -1252,10 +1260,14 @@
       }
       .n-cta {
         font-family: "Geist", sans-serif;
-        font-weight: 800;
-        font-size: 60px;
-        line-height: 1.05;
-        letter-spacing: -0.025em;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: var(--text);
+      }
+      .n-cta strong {
+        font-weight: 900;
         color: var(--text);
       }
       .n-cta em {
@@ -1277,14 +1289,15 @@
       }
       .n-url {
         font-family: "Geist", sans-serif;
-        font-weight: 600;
-        font-size: 32px;
-        color: var(--text-soft);
-        letter-spacing: -0.005em;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: var(--text);
       }
       .n-url strong {
         color: var(--text);
-        font-weight: 700;
+        font-weight: 800;
       }
     </style>
   </head>
@@ -1292,11 +1305,11 @@
     <div class="page-head">
       <h1>Stories Instagram — Noé Calmes</h1>
       <p>
-        4 sets · 17 slides · Stories 1080×1920 + Posts 1080×1080 · Cliquez "↓
+        4 sets · 18 slides · Stories 1080×1920 + Posts 1080×1080 · Cliquez "↓
         PNG" ou "Tout télécharger"
       </p>
       <button class="download-all" onclick="downloadAll()">
-        ↓ Tout télécharger (17)
+        ↓ Tout télécharger (18)
       </button>
     </div>
 
@@ -1782,13 +1795,13 @@
               <div class="n-title">Noé <em>Calmes.</em></div>
               <div class="n-list">
                 <div class="n-item">
-                  <strong>Développeur web</strong> (bac +3)
+                  <span><strong>Développeur web</strong> de formation <span class="n-soft">(bac +3)</span></span>
                 </div>
                 <div class="n-item">
-                  <strong>Tombé amoureux</strong>du mobile
+                  <span><strong>Tombé amoureux</strong> du mobile</span>
                 </div>
                 <div class="n-item">
-                  <strong>je suis devenu</strong>développeur mobile
+                  <span><strong>Reconversion</strong> en développeur mobile</span>
                 </div>
               </div>
             </div>
@@ -1833,9 +1846,9 @@
             <div class="n-body">
               <div class="n-title"><em>Pourquoi&nbsp;?</em></div>
               <div class="n-list">
-                <div class="n-item">Agences trop chères</div>
-                <div class="n-item">Freelances qui disparaissent</div>
-                <div class="n-item">Projets qui n'avancent jamais</div>
+                <div class="n-item"><span>Agences <strong>trop chères</strong></span></div>
+                <div class="n-item"><span>Freelances <strong>qui disparaissent</strong></span></div>
+                <div class="n-item"><span>Projets <strong>qui n'avancent jamais</strong></span></div>
               </div>
             </div>
             <div class="n-arrow">→</div>
@@ -1855,10 +1868,10 @@
             <div class="n-body">
               <div class="n-title">Alors je me suis <em>préparé.</em></div>
               <div class="n-list">
-                <div class="n-item">Formé en<strong>design</strong></div>
-                <div class="n-item">Formé en<strong>stratégie</strong></div>
-                <div class="n-item">Lancé mes deux app mobiles</div>
-                <div class="n-item">Mis à mon compte</div>
+                <div class="n-item"><span>Formé en <strong>design</strong></span></div>
+                <div class="n-item"><span>Formé en <strong>stratégie</strong></span></div>
+                <div class="n-item"><span>Lancé <strong>mes deux app mobiles</strong></span></div>
+                <div class="n-item"><span><strong>Mis à mon compte</strong></span></div>
               </div>
             </div>
             <div class="n-arrow">→</div>
@@ -1881,12 +1894,36 @@
                 <em>je crée.</em>
               </div>
               <div class="n-list">
-                <div class="n-item">1 seul expert (moi)</div>
-                <div class="n-item">1<strong>tarif fixe</strong></div>
+                <div class="n-item"><span><strong>1 seul expert</strong> <span class="n-soft">(moi)</span></span></div>
+                <div class="n-item"><span>1 <strong>tarif fixe</strong></span></div>
                 <div class="n-item">
-                  <strong>45 jours,</strong>accompagné de A à Z
+                  <span><strong>45 jours,</strong> accompagné de A à Z</span>
                 </div>
-                <div class="n-item"><strong>+20 apps</strong>déjà lancées</div>
+                <div class="n-item"><span><strong>+20 apps</strong> déjà lancées</span></div>
+              </div>
+            </div>
+            <div class="n-arrow">→</div>
+            <div class="signature">@noecalmes.app</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ SLIDE N7 — CTA FINAL ═══════════ -->
+      <div class="frame">
+        <div class="frame-head">
+          <div class="frame-title">18 · Prêt à discuter</div>
+          <button class="dl-btn" data-target="n7">↓ PNG</button>
+        </div>
+        <div class="display">
+          <div class="slide bg-brand-soft" id="n7">
+            <div class="n-body">
+              <div class="n-title">
+                Prêt à discuter<br />
+                <em>de votre projet</em>&nbsp;?
+              </div>
+              <div class="n-cta-block">
+                <div class="n-cta">Échangeons <strong>30 min.</strong></div>
+                <div class="n-url">👉 sur <strong>noecalmes.fr</strong></div>
               </div>
             </div>
             <div class="signature">@noecalmes.app</div>
@@ -1975,6 +2012,7 @@
           "n4",
           "n5",
           "n6",
+          "n7",
         ];
         for (const id of ids) {
           await downloadOne(id);
