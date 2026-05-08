@@ -109,7 +109,7 @@ C'est ça que je vends : pas une compétence technique, mais **un produit mobile
 | Agences traditionnelles | Noé Calmes |
 |---|---|
 | 3 à 6 mois | 45 jours pour un MVP |
-| À partir de 15 000 € | À partir de 4 500 € |
+| À partir de 15 000 € | À partir de 3 500 € |
 | Processus complexe | Process simple et transparent |
 | Jamais disponible, difficile à joindre | Un seul expert, joignable 6j/7 |
 | Code livré — bonne chance pour le lancement | Pensé business |
