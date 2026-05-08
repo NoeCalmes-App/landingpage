@@ -96,11 +96,12 @@ C'est ça que je vends : pas une compétence technique, mais **un produit mobile
 
 ## Proof points
 
-- **+20 applications publiées sur les stores**
+- **+20 applications publiées sur les stores** (toute carrière confondue)
 - **45 jours** pour un MVP
 - **Tarif fixe, zéro surprise**
 - **Joignable directement 6j/7** — pas de middleman, pas d'email qui dort 48h
-- **Mes propres apps** : Snap Master, Plouff Habitudes, Wake Up Alarme — j'ai la vision usage réel
+- **Mes propres apps** : Wake Up Alarme (wakeupalarm.app), Plouff Habitudes (plouff-habitudes.com) — j'ai la vision usage réel
+- **Apps clients récentes mises en avant sur le hero du site** : Snap Master, Calorie, Purge, Hush
 
 ---
 
@@ -119,19 +120,27 @@ C'est ça que je vends : pas une compétence technique, mais **un produit mobile
 
 ## Ma cible
 
-**Cœur** : startups, PME, porteurs de projet avec un besoin mobile concret.
+**Cœur de cible actuel** : petits entrepreneurs et porteurs de projet — fondateurs solo, indépendants, créateurs early-stage qui ont une idée d'app mobile à lancer.
 
-**Range tarifaire** : 3 000 € – 15 000 €
+**Range tarifaire** : 3 500 € – ~30 000 € (tarif fixe, pas de TJM)
+
+**Pourquoi cette cible** :
+- profils peu techniques → ils achètent surtout mon cadrage et ma capacité à les guider, pas du code à la mission
+- décision rapide, peu d'intermédiaires, peu de comités → moins de friction commerciale
+- c'est ce que j'attire naturellement aujourd'hui, je joue mon terrain
 
 **À attirer** :
-- startups qui veulent lancer une première version
-- PME qui veulent digitaliser un service
-- entreprises avec une app à reprendre ou faire évoluer
-- fondateurs qui veulent aller au concret
+- fondateurs qui veulent lancer une première version (MVP)
+- créateurs / indépendants qui veulent une app pour leur business
+- petits entrepreneurs qui veulent transformer leur idée en produit concret
 
-**À éviter** :
+**Pas une priorité actuelle** :
+- PME structurées (cycles de vente longs, comités, intégration SI) — peut-être plus tard
+- reprise d'app existante — capacité existe mais je ne pousse pas cet angle commercialement pour l'instant
+
+**À éviter absolument** :
 - chasseurs de prix bas
-- projets encore flous ("on verra bien")
+- projets flous ("on verra bien")
 - clients qui attendent une grosse agence
 - budgets irréalistes
 
