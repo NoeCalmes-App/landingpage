@@ -125,7 +125,7 @@ Votre idée d'app peut-elle vraiment rapporter ?
 ## Outils sélectionnés
 
 - **Auto-DM / chatbot** : ManyChat (gratuit jusqu'à 1000 contacts, ~15€/mois ensuite)
-- **Calendly** : déjà actif (calendly.com/noecalmes-pro/appel-app-mobile)
+- **Calendly** : déjà actif (calendly.com/noecalmes-app/appel-app-mobile)
 - **Lead magnet hosting** : PDF stocké via ManyChat (envoi direct en DM)
 
 ---

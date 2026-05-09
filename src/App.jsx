@@ -699,7 +699,7 @@ function App() {
           </p>
           <div
             className="calendly-inline-widget min-w-[320px] h-[980px] md:h-[950px]"
-            data-url="https://calendly.com/noecalmes-pro/appel-app-mobile?primary_color=645cff"
+            data-url="https://calendly.com/noecalmes-app/appel-app-mobile?primary_color=645cff"
           />
         </div>
       </section>
