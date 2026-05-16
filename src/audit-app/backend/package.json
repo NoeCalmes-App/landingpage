@@ -1,0 +1,29 @@
+{
+  "name": "audit-app-backend",
+  "version": "1.0.0",
+  "description": "Backend Firebase Functions de noecalmes.fr/audit-app — endpoint /verdictWeb (orchestrateur multi-provider IA).",
+  "private": true,
+  "main": "lib/index.js",
+  "engines": {
+    "node": "20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "deploy": "firebase deploy --only functions:audit-web",
+    "logs": "firebase functions:log --only verdictWeb"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "@google/generative-ai": "^0.24.0",
+    "firebase-admin": "^13.0.2",
+    "firebase-functions": "^6.3.0",
+    "openai": "^4.76.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.10",
+    "typescript": "^5.7.2"
+  }
+}

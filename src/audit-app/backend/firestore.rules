@@ -1,0 +1,17 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Collection 'audits' — ecrite uniquement via l'Admin SDK depuis les
+    // Cloud Functions (verdictWeb). Aucun acces direct depuis les clients
+    // (web/mobile) : le SDK Admin court-circuite ces regles.
+    match /audits/{auditId} {
+      allow read, write: if false;
+    }
+
+    // Tout le reste de la base est verrouille par defaut.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

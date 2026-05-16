@@ -11,6 +11,7 @@ import ContactNoe, { EmailModal } from './ContactNoe.jsx'
 import Legales from './Legales.jsx'
 import Merci from './Merci.jsx'
 import { BlogList, BlogArticlePage, BLOG_ARTICLES } from './Blog.jsx'
+import AuditApp from './audit-app/AuditApp.jsx'
 import trustpilotStar from './assets/trustpilot.svg'
 import meetingSvg from './assets/lib/meetingdev.svg'
 import plouffIcon from './assets/appicon/plouffhabitudes.webp'
@@ -215,6 +216,7 @@ function App() {
     if (path === '/documents') return 'documents'
     if (path === '/contactnoe') return 'contact'
     if (path === '/legal') return 'legal'
+    if (path === '/audit-app') return 'audit-app'
     if (path === '/blog') return 'blog'
     if (path.startsWith('/blog/')) return 'blog-article'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
@@ -344,6 +346,7 @@ function App() {
   if (page === 'merci') return <Merci onBack={goHome} />
   if (page === 'contact') return <ContactNoe />
   if (page === 'legal') return <Legales />
+  if (page === 'audit-app') return <AuditApp onBack={goHome} onBookCall={goBookCall} onLegal={(p) => { setPage(p); window.scrollTo(0, 0) }} />
   if (page === 'privacy') return <PolitiqueConfidentialite onBack={goHome} />
   if (page === 'mentions') return <MentionsLegales onBack={goHome} />
   if (page === 'cgv') return <CGV onBack={goHome} />
@@ -653,7 +656,7 @@ function App() {
 
           <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 max-w-230 mx-auto">
             {[
-              { num: '1', title: 'On échange', desc: 'Vous me présentez votre idée. On voit ensemble si c\'est le bon moment et la bonne approche. Vous repartez avec un devis gratuit.', img: meetingSvg },
+              { num: '1', title: 'On échange', desc: 'Vous me présentez votre idée. Je vous offre et rédige votre cahier des charges, puis vous transmets le devis.', img: meetingSvg },
               { num: '2', title: 'Je construis', desc: 'Votre projet est ma seule priorité. Avancement concret, échanges réguliers. Vous voyez l\'app prendre forme, pas juste des slides.', img: devSvg },
               { num: '3', title: 'Vous lancez', desc: 'Application prête, sur l\'App Store et Google Play. Je reste disponible après la mise en ligne.', img: postSvg },
             ].map(({ num, title, desc, img }) => (
@@ -714,6 +717,51 @@ function App() {
         </div>
       </section>
 
+      {/* ========== AUDIT GRATUIT ========== */}
+      <section className="pt-8 pb-16 md:py-22 px-5" id="audit">
+        <div className="max-w-275 mx-auto">
+          <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
+            Pas encore prêt à investir ?
+          </p>
+          <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-4">
+            Validez votre projet <span className="text-brand">avant d'engager 1&nbsp;€.</span>
+          </h2>
+          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-12">
+            En 2 minutes, vous repartez avec un verdict honnête sur votre idée : marché, budget réaliste, délai de lancement. Sans appel, sans engagement.
+          </p>
+
+          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-230 mx-auto mb-10 md:mb-12">
+            {[
+              { num: '1', title: 'Marché & cible', desc: 'Votre idée a-t-elle un public prêt à payer ? Analyse de votre positionnement face aux solutions déjà existantes.' },
+              { num: '2', title: 'Budget réaliste', desc: 'Fourchette de coût pour la première version, en fonction du périmètre que vous décrivez. Pas de devis flou à 20 000 €.' },
+              { num: '3', title: 'Délai de lancement', desc: 'Combien de semaines pour mettre votre app entre les mains de vrais utilisateurs et commencer à valider.' },
+            ].map(({ num, title, desc }) => (
+              <div key={num} className="bg-surface border border-card-border rounded-[15px] p-7 md:p-8 text-left">
+                <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-brand/10 text-brand font-heading font-bold text-[0.95rem] mb-4">
+                  {num}
+                </span>
+                <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2.5">{title}</h3>
+                <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="reveal text-center">
+            <button
+              onClick={() => { setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }}
+              className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
+            >
+              Lancer mon audit gratuit
+              <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </button>
+            <p className="text-grey/60 text-[0.8rem] mt-3">2 min · sans appel · résultat immédiat</p>
+          </div>
+        </div>
+      </section>
+
       {/* ========== FAQ ========== */}
       <section className="py-16 md:py-22 px-5 bg-card" id="faq">
         <div className="max-w-275 mx-auto">
@@ -752,8 +800,7 @@ function App() {
           {/* Nav links */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
             <a href="/etapes" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/etapes'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/etapes') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Étapes</a>
-            <a href="/etapes" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/etapes'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/etapes') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Étapes</a>
-            <a href="/faq" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/faq'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/faq') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">FAQ</a>
+            <a href="/audit-app" onClick={(e) => { e.preventDefault(); setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Audit gratuit</a>
             <a href="/rendez-vous" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/rendez-vous'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/rendez-vous') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Rendez-vous</a>
             <a href="/blog" onClick={(e) => { e.preventDefault(); goBlog() }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Blog</a>
           </div>
@@ -787,6 +834,10 @@ function App() {
             <button onClick={() => { setPage('mentions'); window.scrollTo(0, 0) }} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">Mentions l&eacute;gales</button>
             <button onClick={() => { setPage('privacy'); window.scrollTo(0, 0) }} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">Politique de confidentialit&eacute;</button>
           </div>
+
+          <p className="text-white/40 text-xs leading-relaxed max-w-200 mx-auto">
+            Audit gratuit : les informations que vous transmettez sont conservées de façon sécurisée et utilisées uniquement par Noé pour analyser votre projet, vous conseiller et rédiger votre cahier des charges. Aucune donnée n&apos;est partagée avec des tiers — secret professionnel garanti.
+          </p>
         </div>
       </footer>
 

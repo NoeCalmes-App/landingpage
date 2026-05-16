@@ -148,10 +148,11 @@ C'est ça que je vends : pas une compétence technique, mais **un produit mobile
 
 ## Tonalité
 
-- **Vouvoiement** dans les écrits client (landing page, emails, devis)
+- **Vouvoiement** dans les écrits client formels : landing page, emails, devis, contrats
+- **Tutoiement sur Instagram** (DM, captions, reels, stories) — canal peer-to-peer, cible petits entrepreneurs/créateurs solo, codes de la plateforme + bassin B2B (Théo Lion, Stan Leloup, etc.)
 - Ton direct, structuré, pro mais pas corporate
 - Cadre clair > promesses floues
-- Affirmations > questions (le sous-titre hero est une affirmation, pas une promesse vague)
+- Affirmations > questions dans les écrits formels (le sous-titre hero est une affirmation). Exception : hook par question accepté sur les bios/pubs/reels Insta où le format direct-response l'exige.
 
 ---
 

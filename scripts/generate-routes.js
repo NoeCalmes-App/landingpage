@@ -162,6 +162,28 @@ for (const route of blogRoutes) {
   console.log(`✓ Generated ${route.path}/index.html`)
 }
 
+// ─── Audit app route — landing dediee /audit-app ─────────────────────────────
+
+const auditAppRoute = {
+  path: '/audit-app',
+  title: 'Audit app gratuit — Noé Calmes',
+  description: 'Évaluez la viabilité de votre idée d\'application mobile en 2 minutes. Audit gratuit par un expert indépendant.',
+  heading: 'Audit gratuit de votre idée d\'application',
+  content: 'Répondez à 5 questions et obtenez un retour d\'expert en 2 minutes. Mon idée peut-elle marcher ? Combien ça va me coûter ? Suis-je en train de me planter ? Audit gratuit, sans engagement.',
+}
+
+const auditHtml = patchHtml(baseHtml, {
+  ...auditAppRoute,
+  breadcrumb: [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://noecalmes.fr/" },
+    { "@type": "ListItem", "position": 2, "name": auditAppRoute.heading, "item": `https://noecalmes.fr${auditAppRoute.path}` },
+  ],
+})
+const auditDir = join(distDir, auditAppRoute.path)
+mkdirSync(auditDir, { recursive: true })
+writeFileSync(join(auditDir, 'index.html'), auditHtml)
+console.log(`✓ Generated ${auditAppRoute.path}/index.html`)
+
 // ─── Legacy routes — noindex (old URLs that may still be indexed by Google) ──
 
 const legacyRoutes = ['/a-propos', '/offre', '/contact']

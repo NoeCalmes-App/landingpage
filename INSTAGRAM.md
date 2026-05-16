@@ -68,6 +68,32 @@ Votre idée d'app peut-elle vraiment rapporter ?
 
 ---
 
+## Workflow ManyChat — VERSION DÉFINITIVE
+
+**Stratégie : Position 2 (humanisation assumée, délai 15-18 min, tutoiement Insta).**
+
+**Variables à créer** : question1, question2, question3, question4, idea_text, verdict_p1, verdict_p2, verdict_p3, budget (system : first_name)
+
+**Blocs du flow** :
+1. Accueil avec contrat clair (5 questions, 2 min)
+2-6. Q1 à Q5 (4 boutons multiple choice + 1 texte libre pour la description)
+7. Acknowledgment + délai annoncé "15 min, tête reposée"
+8. External Request OpenAI (gpt-4o-mini) avec prompt expert qui personnalise le verdict au secteur précis
+9. Verdict en 3 messages, délai 45-60 sec entre chaque
+10. CTA Calendly avec bouton "Réserver 15 min avec Noé"
+11. Email parallèle à noecalmes.pro@gmail.com avec récap complet
+12. Relance 48h si pas de booking
+13. Relance J+7 finale
+14. Confirmation booking (webhook Calendly)
+
+**URL Calendly finale** : `https://calendly.com/noecalmes-app/appel-app-mobile?name={{first_name}}` (variable insérée via sélecteur, pas tapée à la main). Pas de pre-fill custom field — info récupérée via email parallèle.
+
+**Tonalité** : tutoiement Insta, ton direct, "à chaud", "à tête reposée", phrases courtes, peer-to-peer expert. Voir POSITIONNEMENT.md section Tonalité pour la règle générale.
+
+**Voir Annexe à la fin de ce fichier pour le détail mot-à-mot de chaque message.**
+
+---
+
 ## Lead magnet — Test rentabilité INTERACTIF (via ManyChat)
 
 **Format** : pas un PDF, mais une **conversation interactive directement dans le DM via ManyChat**.
