@@ -166,10 +166,10 @@ for (const route of blogRoutes) {
 
 const auditAppRoute = {
   path: '/audit-app',
-  title: 'Audit app gratuit — Noé Calmes',
-  description: 'Évaluez la viabilité de votre idée d\'application mobile en 2 minutes. Audit gratuit par un expert indépendant.',
-  heading: 'Audit gratuit de votre idée d\'application',
-  content: 'Répondez à 5 questions et obtenez un retour d\'expert en 2 minutes. Mon idée peut-elle marcher ? Combien ça va me coûter ? Suis-je en train de me planter ? Audit gratuit, sans engagement.',
+  title: 'Tester une idée d\'application mobile — Noé Calmes',
+  description: 'Testez votre idée d\'application mobile avant d\'investir : potentiel business, budget, délai et points à valider en 2 minutes.',
+  heading: 'Tester votre idée d\'application mobile',
+  content: 'Répondez à 5 questions et obtenez une première lecture claire avant d\'investir dans le développement : potentiel business, budget MVP, délai réaliste et points à clarifier.',
 }
 
 const auditHtml = patchHtml(baseHtml, {

@@ -63,7 +63,11 @@ const NAV_LINKS = [
   { href: '/faq', label: 'FAQ' },
 ]
 
-function useScrollReveal() {
+// `trigger` permet de re-attacher l'observer quand la page change.
+// Indispensable car les elements .reveal de la home n'existent pas tant
+// qu'on est sur /audit-app, /blog, etc. Sans ce re-attachement ils
+// resteraient en opacity:0 (etat CSS par defaut) au retour sur la home.
+function useScrollReveal(trigger) {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -86,7 +90,7 @@ function useScrollReveal() {
 
     targets.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [])
+  }, [trigger])
 
   return ref
 }
@@ -201,6 +205,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [spotsLoaded, setSpotsLoaded] = useState(false)
   const [footerEmailOpen, setFooterEmailOpen] = useState(false)
+  const [legalReturnPath, setLegalReturnPath] = useState('/')
   const [currentDoc, setCurrentDoc] = useState(() => {
     const path = sessionStorage.getItem('redirect') || window.location.pathname
     return DOCUMENTS.find((d) => d.route === path) || null
@@ -217,6 +222,9 @@ function App() {
     if (path === '/contactnoe') return 'contact'
     if (path === '/legal') return 'legal'
     if (path === '/audit-app') return 'audit-app'
+    if (path === '/cgv') return 'cgv'
+    if (path === '/mentions') return 'mentions'
+    if (path === '/privacy') return 'privacy'
     if (path === '/blog') return 'blog'
     if (path.startsWith('/blog/')) return 'blog-article'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
@@ -231,7 +239,10 @@ function App() {
     }
     return null
   })
-  const scrollRef = useScrollReveal()
+  // page en trigger : quand on bascule de audit-app/blog/etc. vers home,
+  // l'observer doit etre re-attache aux nouveaux elements .reveal sinon
+  // ils restent invisibles (opacity: 0 par defaut dans le CSS).
+  const scrollRef = useScrollReveal(page)
 
   // Auto-scroll vers la section et mise à jour des meta tags si on arrive sur une route de section
   useEffect(() => {
@@ -264,18 +275,28 @@ function App() {
     }
   }, [])
 
+  // Charge le script Calendly une seule fois (idempotent).
+  // Extrait hors du useEffect pour pouvoir etre appele par goBookCall quand
+  // on bascule depuis une autre page (audit-app, blog, etc.) — le useEffect
+  // de mount ne suffit pas car au boot la section #calendly-section n'existe
+  // pas encore dans le DOM si on n'est pas sur la home.
+  const loadCalendlyScript = () => {
+    if (window.Calendly || document.querySelector('script[data-calendly]')) return
+    const script = document.createElement('script')
+    script.src = 'https://assets.calendly.com/assets/external/widget.js'
+    script.async = true
+    script.dataset.calendly = '1'
+    document.head.appendChild(script)
+  }
+
   useEffect(() => {
     // Charge le script Calendly :
     //   - immédiatement si on arrive sur /rendez-vous (le widget est forcément vu)
     //   - sinon quand la section approche du viewport (rootMargin 600px)
-    const loadCalendlyScript = () => {
-      if (window.Calendly || document.querySelector('script[data-calendly]')) return
-      const script = document.createElement('script')
-      script.src = 'https://assets.calendly.com/assets/external/widget.js'
-      script.async = true
-      script.dataset.calendly = '1'
-      document.head.appendChild(script)
-    }
+    // Re-run quand `page` change : si l'utilisateur bascule sur la home depuis
+    // une autre page, on a besoin de remonter l'observer car la section
+    // #calendly-section n'existait pas au mount initial.
+    if (page !== 'home') return
 
     if (window.location.pathname.replace(/\/$/, '') === '/rendez-vous') {
       loadCalendlyScript()
@@ -299,7 +320,7 @@ function App() {
 
     observer.observe(target)
     return () => observer.disconnect()
-  }, [])
+  }, [page])
 
   useEffect(() => {
     const handleCalendlyEvent = (e) => {
@@ -323,7 +344,56 @@ function App() {
 
   const goBlog = () => { setPage('blog'); history.pushState(null, '', '/blog'); window.scrollTo(0, 0) }
 
-  const goBookCall = () => { setPage('home'); history.pushState(null, '', '/rendez-vous'); setTimeout(() => document.getElementById('calendly-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100) }
+  // Bascule sur la home + scroll vers la section Calendly + force le
+  // chargement du script Calendly (sinon le widget reste vide quand on
+  // bascule depuis /audit-app ou /blog — la section serait rendue avec sa
+  // hauteur reservee mais sans contenu visible).
+  // Retry du scroll avec backoff pour attendre que React rende la home.
+  const goBookCall = () => {
+    setPage('home')
+    history.pushState(null, '', '/rendez-vous')
+    loadCalendlyScript()
+    setSpotsLoaded(true)
+    const tryScroll = (attempts = 0) => {
+      const el = document.getElementById('calendly-section')
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        return
+      }
+      if (attempts >= 12) return
+      setTimeout(() => tryScroll(attempts + 1), 80)
+    }
+    requestAnimationFrame(() => tryScroll())
+  }
+
+  const openLegal = (target, returnPath = window.location.pathname) => {
+    const path = returnPath || '/'
+    setLegalReturnPath(path === '/cgv' || path === '/mentions' || path === '/privacy' ? '/' : path)
+    setPage(target)
+    history.pushState(null, '', `/${target}`)
+    window.scrollTo(0, 0)
+  }
+
+  const goLegalBack = () => {
+    if (legalReturnPath === '/audit-app') {
+      setPage('audit-app')
+      history.pushState(null, '', '/audit-app')
+      window.scrollTo(0, 0)
+      return
+    }
+
+    setPage('home')
+    history.pushState(null, '', legalReturnPath || '/')
+
+    const section = SECTION_ROUTES[legalReturnPath]
+    if (section) {
+      setTimeout(() => {
+        document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }
 
   if (page === 'blog') return (
     <BlogList
@@ -346,10 +416,10 @@ function App() {
   if (page === 'merci') return <Merci onBack={goHome} />
   if (page === 'contact') return <ContactNoe />
   if (page === 'legal') return <Legales />
-  if (page === 'audit-app') return <AuditApp onBack={goHome} onBookCall={goBookCall} onLegal={(p) => { setPage(p); window.scrollTo(0, 0) }} />
-  if (page === 'privacy') return <PolitiqueConfidentialite onBack={goHome} />
-  if (page === 'mentions') return <MentionsLegales onBack={goHome} />
-  if (page === 'cgv') return <CGV onBack={goHome} />
+  if (page === 'audit-app') return <AuditApp onBack={goHome} onBookCall={goBookCall} onLegal={(p) => openLegal(p, '/audit-app')} />
+  if (page === 'privacy') return <PolitiqueConfidentialite onBack={goLegalBack} />
+  if (page === 'mentions') return <MentionsLegales onBack={goLegalBack} />
+  if (page === 'cgv') return <CGV onBack={goLegalBack} />
   if (page === 'documents') return (
     <Documents
       onBack={goHome}
@@ -830,9 +900,9 @@ function App() {
             <p className="text-white/40 text-xs">
               &copy; 2026 No&eacute; Calmes. Tous droits r&eacute;serv&eacute;s.
             </p>
-            <button onClick={() => { setPage('cgv'); window.scrollTo(0, 0) }} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">CGV</button>
-            <button onClick={() => { setPage('mentions'); window.scrollTo(0, 0) }} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">Mentions l&eacute;gales</button>
-            <button onClick={() => { setPage('privacy'); window.scrollTo(0, 0) }} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">Politique de confidentialit&eacute;</button>
+            <button onClick={() => openLegal('cgv')} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">CGV</button>
+            <button onClick={() => openLegal('mentions')} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">Mentions l&eacute;gales</button>
+            <button onClick={() => openLegal('privacy')} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">Politique de confidentialit&eacute;</button>
           </div>
 
           <p className="text-white/40 text-xs leading-relaxed max-w-200 mx-auto">
@@ -841,8 +911,11 @@ function App() {
         </div>
       </footer>
 
-      {/* Chatbot IA flottant — remplace l'ancien bouton WhatsApp */}
-      <ChatbotWidget />
+      {/* Chatbot IA flottant — remplace l'ancien bouton WhatsApp.
+          On passe goBookCall pour qu'un clic "Discuter avec Noé" depuis la
+          page audit-app (ou toute autre page non-home) bascule sur la home
+          + scroll Calendly sans full reload (sinon flash de page blanche). */}
+      <ChatbotWidget onBookCall={goBookCall} />
 
       {footerEmailOpen && <EmailModal onClose={() => setFooterEmailOpen(false)} />}
     </div>

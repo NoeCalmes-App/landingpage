@@ -70,7 +70,12 @@ function TypingDots() {
   )
 }
 
-export default function ChatbotWidget() {
+// Props :
+//   onBookCall (optionnel) — callback fourni par le parent pour basculer
+//   sur la home + scroller vers Calendly sans full reload. Si absent, on
+//   utilise un fallback `history.pushState` + scroll (qui peut donner une
+//   page blanche en production si la home n'est pas deja chargee).
+export default function ChatbotWidget({ onBookCall }) {
   const [hasScrolled, setHasScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [sessionId, setSessionId] = useState('')
@@ -177,16 +182,27 @@ export default function ChatbotWidget() {
   // Quand le visiteur clique sur "Réserver un appel" dans une réponse du bot
   // ou sur le bandeau CTA quand la conversation est bloquée : on ferme le
   // chatbot et on scrolle vers le widget Calendly intégré dans la landing.
+  //
+  // 3 strategies, dans l'ordre :
+  //   1. Section Calendly deja dans le DOM → scroll direct (pas de reload)
+  //   2. onBookCall fourni par le parent → basculer sur la home en React state
+  //      (transition sans full reload, scroll declenche apres le render)
+  //   3. Fallback dernier recours → window.location.href (full reload, peut
+  //      donner un flash blanc en prod)
   const handleCalendlyClick = useCallback(() => {
     setOpen(false)
     const el = document.getElementById('calendly-section')
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       history.pushState(null, '', '/rendez-vous')
-    } else {
-      window.location.href = '/rendez-vous'
+      return
     }
-  }, [])
+    if (typeof onBookCall === 'function') {
+      onBookCall()
+      return
+    }
+    window.location.href = '/rendez-vous'
+  }, [onBookCall])
 
   const mdComponents = buildMdComponents(handleCalendlyClick)
 

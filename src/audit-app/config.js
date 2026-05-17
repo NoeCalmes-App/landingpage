@@ -17,9 +17,9 @@ export const CALENDLY_URL =
 // viabilite produit + cout d'entree + delai avant lancement.
 // Q3 (temps) repond a la promesse differenciante "MVP en 45 jours".
 export const HERO_QUESTIONS = [
-  "Mon idée d'application peut-elle vraiment marcher ?",
-  'Combien ça va me coûter ?',
-  'Combien de temps pour la lancer ?',
+  "Mon idée d'app peut-elle vraiment marcher ?",
+  'Quel budget prévoir pour une première version ?',
+  'Combien de temps avant de pouvoir la lancer ?',
 ]
 
 // Validation minimale du prenom

@@ -37,12 +37,12 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
   // Meta tags propres a la page
   useEffect(() => {
     const previousTitle = document.title
-    document.title = 'Audit app gratuit — Noé Calmes'
+    document.title = 'Tester une idée d\'application mobile — Noé Calmes'
     const meta = document.querySelector('meta[name="description"]')
     const previousDesc = meta?.getAttribute('content')
     meta?.setAttribute(
       'content',
-      'Évaluez la viabilité de votre idée d\'application mobile en 2 minutes. Audit gratuit par un expert indépendant.'
+      'Testez votre idée d\'application mobile avant d\'investir : potentiel business, budget, délai et points à valider en 2 minutes.'
     )
     return () => {
       document.title = previousTitle
@@ -103,7 +103,7 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
       {showNav && <AuditAppTopBar onBack={onBack} onBookCall={onBookCall} />}
 
       <div className="flex-1 flex flex-col">
-        {stage === 'hero' && <AuditAppHero onStart={handleStart} />}
+        {stage === 'hero' && <AuditAppHero onStart={handleStart} onLegal={onLegal} />}
 
         {stage === 'form' && (
           <AuditAppForm
@@ -124,7 +124,7 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
         )}
       </div>
 
-      <AuditAppLegalFooter onLegal={onLegal} />
+      {stage !== 'hero' && <AuditAppLegalFooter onLegal={onLegal} />}
     </div>
   )
 }

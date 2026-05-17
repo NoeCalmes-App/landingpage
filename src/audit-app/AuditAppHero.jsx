@@ -1,44 +1,50 @@
-// Hero /audit-app — conversion-first.
+// Hero /audit-app — question-first.
 //
-// Le prospect arrive sans me connaitre. Il s'en fout de mes +20 apps.
-// Ce qu'il veut savoir : est-ce que JE comprends ses doutes.
-//
-// Donc on le confronte a SES 3 questions des qu'il arrive. Effet miroir =
-// "ce mec a capte exactement ce que je me dis dans ma tete". Une fois ce
-// hook pose, on lui propose la resolution : un test 2 min.
-//
-// Inspiration : landing-page style Hormozi/Brunson — peu de texte, pain
-// point en avant, CTA dominant, risk reversal en microcopy.
+// Le bon hook est simple : les 3 questions qu'un porteur de projet se pose
+// avant de payer le developpement d'une app. On garde ce miroir, mais avec
+// une mise en page differente de la home pour eviter l'effet "meme hero".
 
 import { HERO_QUESTIONS } from './config'
 
-export default function AuditAppHero({ onStart }) {
+// Styles de "papier desordonné" : rotation legere visible sur mobile,
+// rotation un poil plus discrete sur desktop pour ne pas attirer trop
+// l'attention sur l'effet (le contenu prime). La carte du milieu reste
+// droite pour ancrer la grille.
+const QUESTION_CARD_STYLES = [
+  'rotate-[1deg] translate-x-[3px] translate-y-[1px] md:rotate-[0.8deg] md:translate-x-1 md:translate-y-0.5',
+  'rotate-0',
+  '-rotate-[1deg] -translate-x-[3px] translate-y-[1px] md:-rotate-[0.8deg] md:-translate-x-1 md:translate-y-0.5',
+]
+
+export default function AuditAppHero({ onStart, onLegal }) {
+  const goLegal = (target) => {
+    if (typeof onLegal === 'function') onLegal(target)
+  }
+
   return (
     <section
-      className="flex-1 flex items-center justify-center text-center px-5 md:px-10"
+      className="relative flex-1 h-[100svh] px-5 md:px-10 pt-[108px] pb-17 md:pt-[120px] md:pb-18 bg-surface overflow-hidden flex items-center justify-center text-center"
       style={{
         backgroundImage:
-          'radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 50%, transparent), linear-gradient(0deg, #f9f9f9, #867ffe 23%, var(--color-brand) 75%, white)',
+          'linear-gradient(180deg, #fffefc 0%, #f8f9ff 58%, #f9f9f9 100%)',
       }}
     >
-      <div className="anim-hero max-w-170 mx-auto w-full pt-28 pb-12 md:pt-32 md:pb-16">
-        {/* Badge pre-headline */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/85 backdrop-blur-sm border border-white/60 shadow-sm mb-7 md:mb-8">
+      <div className="anim-hero w-full max-w-170 mx-auto flex flex-col items-center">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-card-border shadow-sm mb-6 md:mb-7">
           <span className="relative flex h-2 w-2 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-60" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-50" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
           </span>
-          <p className="text-text text-[0.78rem] md:text-[0.82rem] font-semibold tracking-wide uppercase">
-            Audit gratuit · 2 minutes
+          <p className="text-text text-[0.76rem] md:text-[0.8rem] font-semibold tracking-wide uppercase">
+            Audit express · 2 minutes
           </p>
         </div>
 
-        {/* H1 — introduit les 3 questions */}
-        <h1 className="font-heading text-[2rem] sm:text-[2.4rem] md:text-[2.9rem] lg:text-[3.2rem] font-extrabold text-text tracking-tight leading-[1.08] mb-9 md:mb-10">
+        <h1 className="font-heading text-[2.05rem] sm:text-[2.45rem] md:text-[2.9rem] lg:text-[3.2rem] font-extrabold text-text tracking-tight leading-[1.08] mb-10 md:mb-14">
           Vous vous posez
           <br />
           ces{' '}
-          <span className="text-brand relative whitespace-nowrap">
+          <span className="text-brand relative inline-block whitespace-nowrap">
             3 questions
             <svg
               className="absolute -bottom-2 md:-bottom-3 left-0 w-full h-4"
@@ -58,27 +64,25 @@ export default function AuditAppHero({ onStart }) {
           ?
         </h1>
 
-        {/* Les 3 questions — heart of the hero */}
-        <div className="grid grid-cols-1 gap-2.5 md:gap-3 max-w-130 mx-auto mb-10 md:mb-12">
+        <div className="grid grid-cols-1 gap-2.5 md:gap-3 w-full max-w-132 mb-12 md:mb-16">
           {HERO_QUESTIONS.map((q, i) => (
             <div
               key={q}
-              className="bg-white/85 backdrop-blur-sm border border-white/60 rounded-2xl px-5 py-4 md:px-6 md:py-5 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.08)] flex items-center gap-3 md:gap-4 text-left"
+              className={`bg-white border border-card-border rounded-2xl px-4 py-3.5 md:px-6 md:py-4.5 shadow-[0_10px_30px_-24px_rgba(3,52,117,0.35)] flex items-center gap-3 md:gap-4 text-left transition-transform duration-300 hover:rotate-0 hover:translate-x-0 hover:translate-y-0 ${QUESTION_CARD_STYLES[i] || ''}`}
             >
               <span className="shrink-0 w-8 h-8 md:w-9 md:h-9 rounded-full bg-brand/12 text-brand flex items-center justify-center font-heading font-bold text-[0.92rem]">
                 {i + 1}
               </span>
-              <p className="text-text text-[0.97rem] md:text-[1.05rem] font-semibold leading-snug">
+              <p className="text-text text-[0.95rem] md:text-[1.04rem] font-semibold leading-snug">
                 {`« ${q} »`}
               </p>
             </div>
           ))}
         </div>
 
-        {/* CTA dominant */}
         <button
           onClick={onStart}
-          className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
+          className="group inline-flex items-center justify-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer hover:bg-text transition-colors"
         >
           Lancer mon audit gratuit
           <svg
@@ -97,7 +101,14 @@ export default function AuditAppHero({ onStart }) {
             <polyline points="12 5 19 12 12 19" />
           </svg>
         </button>
+      </div>
 
+      <div className="absolute inset-x-0 bottom-4 md:bottom-5 px-5">
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+          <button onClick={() => goLegal('cgv')} className="text-grey/60 text-xs hover:text-text transition-colors cursor-pointer">CGV</button>
+          <button onClick={() => goLegal('mentions')} className="text-grey/60 text-xs hover:text-text transition-colors cursor-pointer">Mentions légales</button>
+          <button onClick={() => goLegal('privacy')} className="text-grey/60 text-xs hover:text-text transition-colors cursor-pointer">Politique de confidentialité</button>
+        </div>
       </div>
     </section>
   )
