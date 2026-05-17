@@ -150,26 +150,40 @@ export default function AuditAppVerdict({
                     <BulletList items={verdict.differenciation} bulletAccent="brand" />
                   </SectionCard>
                 )}
-                {hasPrix && (
+                {(hasPrix || hasDelai) && (
                   <SectionCard
-                    label="Prix indicatif"
+                    label="Pour un devis précis"
                     icon={<EuroIcon />}
                     accent="neutral"
                   >
-                    <p className="text-text/90 text-[0.95rem] leading-relaxed">
-                      {verdict.prix_indicatif}
-                    </p>
-                  </SectionCard>
-                )}
-                {hasDelai && (
-                  <SectionCard
-                    label="Délai indicatif"
-                    icon={<ClockIcon />}
-                    accent="neutral"
-                  >
-                    <p className="text-text/90 text-[0.95rem] leading-relaxed">
-                      {verdict.delai_indicatif}
-                    </p>
+                    <div className="space-y-3.5">
+                      {hasPrix && (
+                        <div>
+                          <p className="text-text font-semibold text-[0.88rem] md:text-[0.9rem] mb-1">
+                            Le prix
+                          </p>
+                          <p className="text-text/85 text-[0.92rem] md:text-[0.95rem] leading-relaxed">
+                            {verdict.prix_indicatif}
+                          </p>
+                        </div>
+                      )}
+                      {hasDelai && (
+                        <div
+                          className={
+                            hasPrix
+                              ? 'pt-3.5 border-t border-card-border'
+                              : ''
+                          }
+                        >
+                          <p className="text-text font-semibold text-[0.88rem] md:text-[0.9rem] mb-1">
+                            Le délai
+                          </p>
+                          <p className="text-text/85 text-[0.92rem] md:text-[0.95rem] leading-relaxed">
+                            {verdict.delai_indicatif}
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </SectionCard>
                 )}
               </div>
@@ -217,26 +231,40 @@ export default function AuditAppVerdict({
                   <BulletList items={verdict.differenciation} bulletAccent="brand" />
                 </SectionCard>
               )}
-              {hasPrix && (
+              {(hasPrix || hasDelai) && (
                 <SectionCard
-                  label="Prix indicatif"
+                  label="Pour un devis précis"
                   icon={<EuroIcon />}
                   accent="neutral"
                 >
-                  <p className="text-text/90 text-[0.95rem] leading-relaxed">
-                    {verdict.prix_indicatif}
-                  </p>
-                </SectionCard>
-              )}
-              {hasDelai && (
-                <SectionCard
-                  label="Délai indicatif"
-                  icon={<ClockIcon />}
-                  accent="neutral"
-                >
-                  <p className="text-text/90 text-[0.95rem] leading-relaxed">
-                    {verdict.delai_indicatif}
-                  </p>
+                  <div className="space-y-3.5">
+                    {hasPrix && (
+                      <div>
+                        <p className="text-text font-semibold text-[0.88rem] md:text-[0.9rem] mb-1">
+                          Le prix
+                        </p>
+                        <p className="text-text/85 text-[0.92rem] md:text-[0.95rem] leading-relaxed">
+                          {verdict.prix_indicatif}
+                        </p>
+                      </div>
+                    )}
+                    {hasDelai && (
+                      <div
+                        className={
+                          hasPrix
+                            ? 'pt-3.5 border-t border-card-border'
+                            : ''
+                        }
+                      >
+                        <p className="text-text font-semibold text-[0.88rem] md:text-[0.9rem] mb-1">
+                          Le délai
+                        </p>
+                        <p className="text-text/85 text-[0.92rem] md:text-[0.95rem] leading-relaxed">
+                          {verdict.delai_indicatif}
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 </SectionCard>
               )}
             </>
