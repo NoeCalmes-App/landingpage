@@ -608,7 +608,7 @@ function App() {
                   '3 à 6 mois de développement',
                   'Budget à partir de 15 000 €',
                   'Jamais disponible, difficile à joindre',
-                  'Code livré — bonne chance pour le lancement',
+                  'Projet livré, débrouillez-vous',
                   'Pas de réponse avant 48h minimum',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-grey text-[0.9rem] md:text-[0.93rem]">
