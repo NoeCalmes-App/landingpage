@@ -607,7 +607,6 @@ function App() {
                 {[
                   '3 à 6 mois de développement',
                   'Budget à partir de 15 000 €',
-                  'Processus complexe et chronophage',
                   'Jamais disponible, difficile à joindre',
                   'Code livré — bonne chance pour le lancement',
                   'Pas de réponse avant 48h minimum',
@@ -630,7 +629,6 @@ function App() {
                 {[
                   'Livraison en 6 à 8 semaines',
                   'À partir de 3 500 €',
-                  'Process simple et transparent',
                   'Un seul expert, joignable directement 6j/7',
                   'Pensé business pour générer des revenus',
                   'Spécialisé Flutter (iOS & Android)',
@@ -727,7 +725,7 @@ function App() {
           <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 max-w-230 mx-auto">
             {[
               { num: '1', title: 'On échange', desc: 'Vous me présentez votre idée. Je vous offre et rédige votre cahier des charges, puis vous transmets le devis.', img: meetingSvg },
-              { num: '2', title: 'Je construis', desc: 'Votre projet est ma seule priorité. Avancement concret, échanges réguliers. Vous voyez l\'app prendre forme, pas juste des slides.', img: devSvg },
+              { num: '2', title: 'Je construis', desc: 'Votre projet est ma seule priorité. Avancement concret, échanges réguliers. Vous voyez l\'applicationprendre forme.', img: devSvg },
               { num: '3', title: 'Vous lancez', desc: 'Application prête, sur l\'App Store et Google Play. Je reste disponible après la mise en ligne.', img: postSvg },
             ].map(({ num, title, desc, img }) => (
               <div key={num} className="group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
@@ -749,7 +747,7 @@ function App() {
       <section className="pt-16 md:pt-22 pb-0 md:pb-0 px-5 bg-card" id="calendly-section">
         <div className="max-w-275 mx-auto text-center">
           <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight mb-3 md:mb-4">
-            Parlons de <span className="text-brand">votre application</span> 📞
+            📞 Parlons de <span className="text-brand">votre application</span>
           </h2>
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-4">
             Vous avez une idée&nbsp;? Une app mobile déjà en ligne&nbsp;?
@@ -781,7 +779,7 @@ function App() {
       <section className="py-16 md:py-22 px-5" id="avis">
         <div className="max-w-275 mx-auto">
           <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-10 md:mb-12">
-            Ce qu'ils <span className="text-brand">disent</span> 💬
+            Ce qu'ils <span className="text-brand">disent...</span> 
           </h2>
           <ReviewsCarousel />
         </div>
