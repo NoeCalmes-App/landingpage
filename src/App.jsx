@@ -747,7 +747,7 @@ function App() {
       <section className="pt-16 md:pt-22 pb-0 md:pb-0 px-5 bg-card" id="calendly-section">
         <div className="max-w-275 mx-auto text-center">
           <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight mb-3 md:mb-4">
-            📞 Parlons de <span className="text-brand">votre application</span>
+            Parlons de <span className="text-brand">votre application</span>
           </h2>
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-4">
             Vous avez une idée&nbsp;? Une app mobile déjà en ligne&nbsp;?
@@ -786,150 +786,61 @@ function App() {
       </section>
 
       {/* ========== AUDIT GRATUIT ========== */}
-      <section className="pt-8 pb-16 md:py-22 px-5" id="audit">
-        <div className="max-w-275 mx-auto">
-          <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
-            Pas encore prêt à investir ?
-          </p>
-          <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-4">
-            Recevez un verdict <span className="text-brand">honnête sur votre idée</span>.
-          </h2>
-          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-14">
-            4 questions, 2 minutes. Analyse IA croisée avec ma méthode terrain — vous repartez avec un avis franc, pas un argumentaire commercial.
-          </p>
+      {/* CTA card contenue, palette 100% brand : bg-brand + glows brand-light
+          + dot pattern + glassmorphism. Volontairement court, la pédagogie
+          complète est sur /audit-app. */}
+      <section className="pt-2 pb-12 md:pt-2 md:pb-14 px-4 md:px-6" id="audit">
+        <div className="max-w-230 mx-auto">
+          <div className="reveal relative overflow-hidden rounded-[28px] md:rounded-[36px] bg-brand px-5 py-11 md:px-10 md:py-11 text-center">
+            {/* Glows brand-light en fond pour donner de la profondeur */}
+            <div className="pointer-events-none absolute -top-32 -left-20 w-96 h-96 rounded-full bg-brand-light opacity-50 blur-[90px]" />
+            <div className="pointer-events-none absolute -bottom-28 -right-16 w-80 h-80 rounded-full bg-brand-pale opacity-40 blur-[90px]" />
+            {/* Grille de points subtile */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.09]"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px)',
+                backgroundSize: '24px 24px',
+              }}
+            />
 
-          {/* Aperçu du verdict réel. Sections reprises de AuditAppVerdict.jsx
-              pour rester fidèle au livrable que le prospect va recevoir. */}
-          <div className="reveal max-w-180 mx-auto mb-10 md:mb-12">
-            <div className="relative bg-surface border border-card-border rounded-2xl shadow-[0_30px_60px_-30px_rgba(3,52,117,0.25)] overflow-hidden">
-              {/* Top bar style fenêtre */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-card-border bg-card/60">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-                <span className="hidden sm:inline ml-3 text-grey text-[0.72rem] font-medium tracking-tight truncate">
-                  noecalmes.fr/audit-app
+            <div className="relative">
+              {/* Badge glassmorphism */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 mb-7 md:mb-8">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-70" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
                 </span>
-                <span className="ml-auto inline-flex items-center gap-1.5 text-[0.68rem] md:text-[0.72rem] font-semibold text-green-text">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-text opacity-50" />
-                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-text" />
-                  </span>
-                  Analyse terminée
+                <span className="text-white text-[0.72rem] font-semibold tracking-widest uppercase">
+                  Audit express · 2 min
                 </span>
               </div>
 
-              {/* Corps du verdict */}
-              <div className="p-5 md:p-7">
-                <div className="flex items-center gap-3 mb-5 md:mb-6">
-                  <div className="w-10 h-10 rounded-full bg-brand/15 flex items-center justify-center text-brand font-heading font-bold text-[1rem]">
-                    S
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-text font-heading font-bold text-[0.95rem] md:text-[1rem] leading-tight">
-                      Verdict pour Sarah
-                    </p>
-                    <p className="text-grey text-[0.75rem] truncate">
-                      Coaching nutrition · généré il y a 12 sec
-                    </p>
-                  </div>
-                </div>
+              <h2 className="font-heading text-white text-[1.95rem] sm:text-[2.35rem] md:text-[2.85rem] font-bold tracking-tight leading-[1.08] max-w-140 mx-auto mb-5 md:mb-6">
+                Les 3 réponses{' '}
+                <span className="text-brand-pale">avant d'investir 1&nbsp;€</span>
+              </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-                  {[
-                    {
-                      icon: (
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                      ),
-                      tone: 'positive',
-                      label: 'Forces de votre idée',
-                      preview: 'Marché en croissance · douleur réelle · cible accessible via Instagram',
-                    },
-                    {
-                      icon: (
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="8" x2="12" y2="13" /><line x1="12" y1="17" x2="12" y2="17" /></svg>
-                      ),
-                      tone: 'danger',
-                      label: 'Points à corriger',
-                      preview: 'Différenciation floue face à MyFitnessPal · rétention M2 à valider',
-                    },
-                    {
-                      icon: (
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="3" /></svg>
-                      ),
-                      tone: 'brand',
-                      label: '3 concurrents directs',
-                      preview: 'Positionnement comparatif et angles laissés vacants sur la niche',
-                    },
-                    {
-                      icon: (
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-                      ),
-                      tone: 'brand',
-                      label: 'Angle de différenciation',
-                      preview: '2 axes activables dès la V1, sans gonfler le périmètre',
-                    },
-                  ].map(({ icon, tone, label, preview }) => {
-                    const badge =
-                      tone === 'positive' ? 'bg-green-bg text-green-text'
-                      : tone === 'danger' ? 'bg-red-bg text-red-text'
-                      : 'bg-brand/15 text-brand'
-                    return (
-                      <div key={label} className="border border-card-border rounded-xl p-3.5 md:p-4 bg-surface">
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <span className={`inline-flex items-center justify-center w-5 h-5 rounded-full ${badge}`}>
-                            {icon}
-                          </span>
-                          <p className="text-text font-heading font-semibold text-[0.86rem] md:text-[0.9rem]">
-                            {label}
-                          </p>
-                        </div>
-                        <p className="text-grey text-[0.8rem] md:text-[0.82rem] leading-relaxed">
-                          {preview}
-                        </p>
-                      </div>
-                    )
-                  })}
-                </div>
+              <p className="text-white/80 text-[0.95rem] md:text-[1.05rem] max-w-115 mx-auto mb-9 md:mb-11 leading-relaxed">
+                Marché, budget, délai. En 2 minutes, sans appel.
+              </p>
 
-                {/* Stats prix / délai */}
-                <div className="grid grid-cols-2 gap-4 mt-5 md:mt-6 pt-5 md:pt-6 border-t border-card-border">
-                  <div>
-                    <p className="text-grey text-[0.68rem] md:text-[0.7rem] uppercase tracking-widest font-semibold mb-1">
-                      Budget indicatif
-                    </p>
-                    <p className="font-heading text-text text-[1.05rem] md:text-[1.2rem] font-bold tracking-tight">
-                      8 500 € – 14 000 €
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-grey text-[0.68rem] md:text-[0.7rem] uppercase tracking-widest font-semibold mb-1">
-                      Délai estimé
-                    </p>
-                    <p className="font-heading text-text text-[1.05rem] md:text-[1.2rem] font-bold tracking-tight">
-                      6 à 9 semaines
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <button
+                onClick={() => { setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }}
+                className="group inline-flex items-center gap-2.5 bg-white text-brand font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer shadow-[0_15px_35px_-18px_rgba(102,93,255,0.5)]"
+              >
+                Lancer mon audit
+                <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+
+              <p className="text-white/60 text-[0.78rem] mt-4">
+                Gratuit · résultat immédiat
+              </p>
             </div>
-            <p className="text-grey/70 text-[0.72rem] md:text-[0.75rem] text-center mt-3 italic">
-              Exemple · votre verdict est généré à partir de vos réponses
-            </p>
-          </div>
-
-          <div className="reveal text-center">
-            <button
-              onClick={() => { setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }}
-              className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
-            >
-              Lancer mon audit gratuit
-              <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </button>
-            <p className="text-grey/60 text-[0.8rem] mt-3">2 min · sans appel · résultat immédiat</p>
           </div>
         </div>
       </section>
