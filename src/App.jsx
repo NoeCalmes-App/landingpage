@@ -725,7 +725,7 @@ function App() {
           <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 max-w-230 mx-auto">
             {[
               { num: '1', title: 'On échange', desc: 'Vous me présentez votre idée. Je vous offre et rédige votre cahier des charges, puis vous transmets le devis.', img: meetingSvg },
-              { num: '2', title: 'Je construis', desc: 'Votre projet est ma seule priorité. Avancement concret, échanges réguliers. Vous voyez l\'applicationprendre forme.', img: devSvg },
+              { num: '2', title: 'Je construis', desc: 'Votre projet est ma seule priorité. Avancement concret, échanges réguliers. Vous voyez votre application prendre forme.', img: devSvg },
               { num: '3', title: 'Vous lancez', desc: 'Application prête, sur l\'App Store et Google Play. Je reste disponible après la mise en ligne.', img: postSvg },
             ].map(({ num, title, desc, img }) => (
               <div key={num} className="group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
@@ -792,26 +792,130 @@ function App() {
             Pas encore prêt à investir ?
           </p>
           <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-4">
-            Validez votre projet <span className="text-brand">avant d'engager 1&nbsp;€.</span>
+            Recevez un verdict <span className="text-brand">honnête sur votre idée</span>.
           </h2>
-          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-12">
-            En 2 minutes, vous repartez avec un verdict honnête sur votre idée : marché, budget réaliste, délai de lancement. Sans appel, sans engagement.
+          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-160 mx-auto text-center mb-10 md:mb-14">
+            4 questions, 2 minutes. Analyse IA croisée avec ma méthode terrain — vous repartez avec un avis franc, pas un argumentaire commercial.
           </p>
 
-          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-230 mx-auto mb-10 md:mb-12">
-            {[
-              { num: '1', title: 'Marché & cible', desc: 'Votre idée a-t-elle un public prêt à payer ? Analyse de votre positionnement face aux solutions déjà existantes.' },
-              { num: '2', title: 'Budget réaliste', desc: 'Fourchette de coût pour la première version, en fonction du périmètre que vous décrivez. Pas de devis flou à 20 000 €.' },
-              { num: '3', title: 'Délai de lancement', desc: 'Combien de semaines pour mettre votre app entre les mains de vrais utilisateurs et commencer à valider.' },
-            ].map(({ num, title, desc }) => (
-              <div key={num} className="bg-surface border border-card-border rounded-[15px] p-7 md:p-8 text-left">
-                <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-brand/10 text-brand font-heading font-bold text-[0.95rem] mb-4">
-                  {num}
+          {/* Aperçu du verdict réel. Sections reprises de AuditAppVerdict.jsx
+              pour rester fidèle au livrable que le prospect va recevoir. */}
+          <div className="reveal max-w-180 mx-auto mb-10 md:mb-12">
+            <div className="relative bg-surface border border-card-border rounded-2xl shadow-[0_30px_60px_-30px_rgba(3,52,117,0.25)] overflow-hidden">
+              {/* Top bar style fenêtre */}
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-card-border bg-card/60">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+                <span className="hidden sm:inline ml-3 text-grey text-[0.72rem] font-medium tracking-tight truncate">
+                  noecalmes.fr/audit-app
                 </span>
-                <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2.5">{title}</h3>
-                <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">{desc}</p>
+                <span className="ml-auto inline-flex items-center gap-1.5 text-[0.68rem] md:text-[0.72rem] font-semibold text-green-text">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-text opacity-50" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-text" />
+                  </span>
+                  Analyse terminée
+                </span>
               </div>
-            ))}
+
+              {/* Corps du verdict */}
+              <div className="p-5 md:p-7">
+                <div className="flex items-center gap-3 mb-5 md:mb-6">
+                  <div className="w-10 h-10 rounded-full bg-brand/15 flex items-center justify-center text-brand font-heading font-bold text-[1rem]">
+                    S
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-text font-heading font-bold text-[0.95rem] md:text-[1rem] leading-tight">
+                      Verdict pour Sarah
+                    </p>
+                    <p className="text-grey text-[0.75rem] truncate">
+                      Coaching nutrition · généré il y a 12 sec
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                  {[
+                    {
+                      icon: (
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                      ),
+                      tone: 'positive',
+                      label: 'Forces de votre idée',
+                      preview: 'Marché en croissance · douleur réelle · cible accessible via Instagram',
+                    },
+                    {
+                      icon: (
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="8" x2="12" y2="13" /><line x1="12" y1="17" x2="12" y2="17" /></svg>
+                      ),
+                      tone: 'danger',
+                      label: 'Points à corriger',
+                      preview: 'Différenciation floue face à MyFitnessPal · rétention M2 à valider',
+                    },
+                    {
+                      icon: (
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="3" /></svg>
+                      ),
+                      tone: 'brand',
+                      label: '3 concurrents directs',
+                      preview: 'Positionnement comparatif et angles laissés vacants sur la niche',
+                    },
+                    {
+                      icon: (
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+                      ),
+                      tone: 'brand',
+                      label: 'Angle de différenciation',
+                      preview: '2 axes activables dès la V1, sans gonfler le périmètre',
+                    },
+                  ].map(({ icon, tone, label, preview }) => {
+                    const badge =
+                      tone === 'positive' ? 'bg-green-bg text-green-text'
+                      : tone === 'danger' ? 'bg-red-bg text-red-text'
+                      : 'bg-brand/15 text-brand'
+                    return (
+                      <div key={label} className="border border-card-border rounded-xl p-3.5 md:p-4 bg-surface">
+                        <div className="flex items-center gap-2 mb-1.5">
+                          <span className={`inline-flex items-center justify-center w-5 h-5 rounded-full ${badge}`}>
+                            {icon}
+                          </span>
+                          <p className="text-text font-heading font-semibold text-[0.86rem] md:text-[0.9rem]">
+                            {label}
+                          </p>
+                        </div>
+                        <p className="text-grey text-[0.8rem] md:text-[0.82rem] leading-relaxed">
+                          {preview}
+                        </p>
+                      </div>
+                    )
+                  })}
+                </div>
+
+                {/* Stats prix / délai */}
+                <div className="grid grid-cols-2 gap-4 mt-5 md:mt-6 pt-5 md:pt-6 border-t border-card-border">
+                  <div>
+                    <p className="text-grey text-[0.68rem] md:text-[0.7rem] uppercase tracking-widest font-semibold mb-1">
+                      Budget indicatif
+                    </p>
+                    <p className="font-heading text-text text-[1.05rem] md:text-[1.2rem] font-bold tracking-tight">
+                      8 500 € – 14 000 €
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-grey text-[0.68rem] md:text-[0.7rem] uppercase tracking-widest font-semibold mb-1">
+                      Délai estimé
+                    </p>
+                    <p className="font-heading text-text text-[1.05rem] md:text-[1.2rem] font-bold tracking-tight">
+                      6 à 9 semaines
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="text-grey/70 text-[0.72rem] md:text-[0.75rem] text-center mt-3 italic">
+              Exemple · votre verdict est généré à partir de vos réponses
+            </p>
           </div>
 
           <div className="reveal text-center">
