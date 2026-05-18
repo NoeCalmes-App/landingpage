@@ -15,7 +15,7 @@
 // Lazy imports : pdfjs ET tesseract ne sont charges qu'a la 1ere utilisation
 // effective (pas dans le bundle initial).
 
-import { useRef, useState } from 'react'
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 
 const MAX_FILES = 3
 const MAX_FILE_BYTES = 15 * 1024 * 1024 // 15 Mo par fichier
@@ -40,7 +40,10 @@ const ACCEPTED_MIME = new Set([
   'text/plain',
 ])
 
-export default function AuditAppAttachment({ onChange }) {
+// forwardRef + useImperativeHandle : la trigger du file picker est expose
+// au parent (TextareaStep) qui place le bouton paperclip a l'interieur du
+// container du textarea, pattern ChatGPT/Claude.
+const AuditAppAttachment = forwardRef(function AuditAppAttachment({ onChange }, ref) {
   const inputRef = useRef(null)
   // [{ id, name, size, status:'loading'|'loaded'|'error', text, error, progressMessage }]
   const [files, setFiles] = useState([])
@@ -212,10 +215,16 @@ export default function AuditAppAttachment({ onChange }) {
 
   const canAddMore = files.length < MAX_FILES
 
-  // ============= Rendu =============
+  // Expose la trigger du file picker au parent — le bouton paperclip vit
+  // dans le container du textarea (TextareaStep), pas ici.
+  useImperativeHandle(ref, () => ({
+    triggerPicker: handlePick,
+  }), [files.length])
+
+  // ============= Rendu : input cache + erreurs + liste de fichiers =============
 
   return (
-    <div className="mt-4">
+    <>
       <input
         ref={inputRef}
         type="file"
@@ -225,53 +234,20 @@ export default function AuditAppAttachment({ onChange }) {
         onChange={handleFileChange}
       />
 
-      {/* Bandeau : "Optionnel | bouton | extensions" */}
-      <div className="rounded-xl border border-dashed border-card-border bg-card/40 px-4 py-3 md:px-5 md:py-3.5">
-        <div className="flex items-center gap-3 flex-wrap">
-          <span className="text-grey/80 text-[0.78rem] font-semibold uppercase tracking-wide">
-            Optionnel
-          </span>
-
-          <button
-            type="button"
-            onClick={handlePick}
-            disabled={!canAddMore}
-            className={`inline-flex items-center gap-2 bg-surface border font-semibold text-[0.86rem] px-4 py-2 rounded-full transition-colors ${
-              canAddMore
-                ? 'border-card-border text-text hover:border-brand/50 hover:text-brand cursor-pointer'
-                : 'border-card-border text-grey/60 cursor-not-allowed'
-            }`}
-          >
-            <PaperclipIcon />
-            Joindre un document
-          </button>
-
-          <span className="text-grey text-[0.78rem] md:text-[0.82rem] font-medium tracking-wide">
-            {EXTENSIONS_LABEL}
-          </span>
-
-          {files.length > 0 && (
-            <span className="ml-auto text-grey/80 text-[0.78rem] tabular-nums">
-              {files.length} / {MAX_FILES}
-            </span>
-          )}
+      {topError && (
+        <div className="mt-3 rounded-lg bg-red-bg/50 border border-red-text/20 px-3.5 py-2.5">
+          <p className="text-red-text text-[0.85rem] font-semibold mb-0.5">
+            {topError}
+          </p>
+          <p className="text-red-text/85 text-[0.78rem]">
+            Formats acceptés : {EXTENSIONS_LABEL} · 15 Mo max · 3 fichiers maximum
+          </p>
         </div>
-
-        {topError && (
-          <div className="mt-3 rounded-lg bg-red-bg/50 border border-red-text/20 px-3.5 py-2.5">
-            <p className="text-red-text text-[0.85rem] font-semibold mb-0.5">
-              {topError}
-            </p>
-            <p className="text-red-text/85 text-[0.78rem]">
-              Formats acceptés : {EXTENSIONS_LABEL} · 15 Mo max · 3 fichiers maximum
-            </p>
-          </div>
-        )}
-      </div>
+      )}
 
       {/* Liste des fichiers */}
       {files.length > 0 && (
-        <div className="mt-2.5 space-y-2">
+        <div className="mt-3 space-y-2">
           {files.map((f) => (
             <FileChip key={f.id} file={f} onRemove={() => handleClearOne(f.id)} />
           ))}
@@ -282,20 +258,22 @@ export default function AuditAppAttachment({ onChange }) {
         <p className="mt-2 text-grey text-[0.78rem]">
           {totalLoaded > MAX_CHARS_TOTAL ? (
             <span className="text-brand">
-              Documents volumineux — l'analyse se concentre sur les sections
+              Documents volumineux. L'analyse se concentre sur les sections
               les plus importantes.
             </span>
           ) : (
             <>
-              {totalLoaded.toLocaleString('fr-FR')} caractères au total — bien
+              {totalLoaded.toLocaleString('fr-FR')} caractères au total, bien
               dans la zone analysable.
             </>
           )}
         </p>
       )}
-    </div>
+    </>
   )
-}
+})
+
+export default AuditAppAttachment
 
 // =====================================================================
 // FileChip

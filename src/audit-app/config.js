@@ -38,7 +38,7 @@ export const FORM_STEPS = [
     label: 'Votre idée',
     question:
       "Décrivez votre idée d'application : que ferait-elle et pour qui ?",
-    helper: 'Plus vous donnez de détails, plus l\'audit sera précis. Vous pouvez aussi joindre un document (brief, specs, comptes rendus d\'entretiens).',
+    helper: 'Plus vous donnez de détails, plus l\'audit sera précis.',
     placeholder: 'Une application qui permet à... pour...',
     // 30 chars min — seuil bas pour ne pas bloquer, mais force a sortir
     // une vraie phrase. Pour aller plus loin, le prospect peut joindre

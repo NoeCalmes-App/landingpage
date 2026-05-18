@@ -168,7 +168,7 @@ function FormTunnel({ initialFirstName, onSubmit, error }) {
   const progressPct = Math.round(((stepIndex + 1) / TOTAL_STEPS) * 100)
 
   return (
-    <section className="flex-1 flex flex-col px-5 md:px-10 pt-10 pb-10 md:pt-12 md:pb-14 bg-card">
+    <section className="flex-1 flex flex-col px-8 md:px-10 pt-10 pb-10 md:pt-12 md:pb-14 bg-card">
       <div className="w-full max-w-160 mx-auto">
         {/* Header du tunnel : label "Votre audit" + pourcentage */}
         <div className="flex items-baseline justify-between mb-3 md:mb-4">
@@ -420,12 +420,23 @@ function TextareaStep({
 }) {
   const showError = touched && value.trim().length < step.minLength
   const taRef = useRef(null)
+  // Expose la trigger du file picker (qui vit dans AuditAppAttachment)
+  // au bouton paperclip qu'on place dans le container du textarea.
+  const attachmentRef = useRef(null)
   const maxLength = step.maxLength || 2000
   const remaining = maxLength - value.length
   const nearLimit = remaining <= 100
 
+  // Autofocus uniquement sur desktop : sur mobile, ouvrir le clavier
+  // immediatement masque le titre de la question. Laisser l'user tapper
+  // le champ quand il a lu.
   useEffect(() => {
-    taRef.current?.focus()
+    const isDesktop =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(min-width: 768px)').matches
+    if (isDesktop) {
+      taRef.current?.focus()
+    }
   }, [])
 
   // Capture la value en respectant le plafond (utile pour coller un gros
@@ -567,7 +578,16 @@ function TextareaStep({
         </p>
       )}
 
-      <div className="relative">
+      {/* Container ChatGPT-style : textarea EN HAUT + barre d'actions EN BAS,
+          tous deux en flux (pas absolute). Le textarea scrolle naturellement
+          si trop de texte, les icones restent toujours en dessous. */}
+      <div
+        className={`rounded-xl bg-card border transition-colors ${
+          showError
+            ? 'border-red-text/40'
+            : 'border-card-border focus-within:border-brand focus-within:ring-2 focus-within:ring-brand/15'
+        }`}
+      >
         <textarea
           ref={taRef}
           value={value}
@@ -576,32 +596,61 @@ function TextareaStep({
           rows={step.optional ? 3 : 6}
           maxLength={maxLength}
           placeholder={step.placeholder}
-          className={`w-full px-4 py-3 pr-14 rounded-xl bg-card border ${
-            showError ? 'border-red-text/40' : 'border-card-border'
-          } text-text text-[0.95rem] placeholder:text-light-grey focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/15 transition-colors resize-none`}
+          className="block w-full px-4 pt-3 pb-2 bg-transparent border-0 outline-none text-text text-[0.95rem] placeholder:text-light-grey resize-none"
         />
 
-        {/* Bouton micro */}
-        {step.voiceInput && voiceSupported && (
-          <button
-            type="button"
-            onClick={toggleVoice}
-            aria-label={
-              voiceActive ? 'Arrêter la dictée' : 'Dicter ma réponse'
-            }
-            className={`absolute bottom-3 right-3 inline-flex items-center justify-center w-10 h-10 rounded-full transition-colors cursor-pointer ${
-              voiceActive
-                ? 'bg-red-text/15 text-red-text hover:bg-red-text/20'
-                : 'bg-brand/12 text-brand hover:bg-brand/20'
-            }`}
-          >
-            {voiceActive ? (
-              // Stop icon + halo pulse
-              <>
-                <span className="absolute inset-0 rounded-full bg-red-text/20 animate-ping" />
+        {/* Barre d'actions au fond, dans le flux (paperclip a gauche + mic a droite) */}
+        <div className="flex items-center justify-between gap-2 px-2 pb-2 pt-1">
+          {/* Gauche : paperclip + extensions */}
+          {step.allowAttachment ? (
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => attachmentRef.current?.triggerPicker()}
+                aria-label="Joindre un document"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-full text-grey hover:text-brand hover:bg-brand/10 transition-colors cursor-pointer"
+              >
                 <svg
-                  width="16"
-                  height="16"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+                </svg>
+              </button>
+              <span className="text-grey/70 text-[0.72rem] tracking-wide select-none">
+                pdf · md · txt
+              </span>
+            </div>
+          ) : (
+            <span />
+          )}
+
+          {/* Droite : mic */}
+          {step.voiceInput && voiceSupported && (
+            <button
+              type="button"
+              onClick={toggleVoice}
+              aria-label={voiceActive ? 'Arrêter la dictée' : 'Dicter ma réponse'}
+              className={`relative inline-flex items-center justify-center w-9 h-9 rounded-full transition-colors cursor-pointer ${
+                voiceActive
+                  ? 'bg-red-text/15 text-red-text hover:bg-red-text/20'
+                  : 'bg-brand/12 text-brand hover:bg-brand/20'
+              }`}
+            >
+              {voiceActive && (
+                <span className="absolute inset-0 rounded-full bg-red-text/20 animate-ping" />
+              )}
+              {voiceActive ? (
+                <svg
+                  width="14"
+                  height="14"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   aria-hidden="true"
@@ -609,27 +658,27 @@ function TextareaStep({
                 >
                   <rect x="6" y="6" width="12" height="12" rx="2" />
                 </svg>
-              </>
-            ) : (
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                <line x1="12" y1="19" x2="12" y2="23" />
-                <line x1="8" y1="23" x2="16" y2="23" />
-              </svg>
-            )}
-          </button>
-        )}
+              ) : (
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                  <line x1="12" y1="19" x2="12" y2="23" />
+                  <line x1="8" y1="23" x2="16" y2="23" />
+                </svg>
+              )}
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Statut dictee, erreur minimum, ou approche du plafond */}
@@ -643,7 +692,7 @@ function TextareaStep({
         </p>
       ) : showError ? (
         <p className="text-red-text text-[0.82rem] mt-2">
-          Encore quelques mots — minimum {step.minLength} caractères.
+          Encore quelques mots, minimum {step.minLength} caractères.
         </p>
       ) : nearLimit ? (
         <p className="text-grey/80 text-[0.78rem] mt-2 text-right">
@@ -653,6 +702,7 @@ function TextareaStep({
 
       {step.allowAttachment && (
         <AuditAppAttachment
+          ref={attachmentRef}
           value={attachedContent || ''}
           onChange={onAttachmentChange}
         />

@@ -270,37 +270,75 @@ Réponds aux questions, puis :
 
 ---
 
-## 6. Comment matérialiser cette stratégie
+## 6. Où matérialiser quoi — le cadre à 3 niveaux
 
-### Sur la landing page (`/`)
+**Principe fondateur** : tes deux offres existent, mais le client ne les voit **jamais simultanément**. Un client qui doit choisir entre deux offres décide rarement. Un client à qui on propose UNE offre claire signe.
 
-- **Hero principal** : reste sur la promesse « 45 jours, à partir de 3 500 € » (correspond à l'Offre A) — c'est ton crochet
-- **Section nouvelle « Mes deux formules »** à ajouter entre la section « Étapes » et la section « Calendly » :
-  - Deux cartes côte à côte
-  - **Carte 1 : Première Version** (Offre A) — pour démarrer, 45 jours, à partir de 3 500 €
-  - **Carte 2 : Application Complète** (Offre B) — pour aller loin, 3 à 6 mois, à partir de 8 000 €
-  - Chaque carte avec : « Pour qui », « Ce qui est inclus », « Délai », « Prix », « CTA Demander un devis »
+### Niveau 1 — La landing page : focus exclusif sur l'Offre A
 
-### Sur la devis-app
+Ta landing publique (`noecalmes.fr`) reste **strictement orientée sur la « Première Version »** :
 
-- Au moment de créer un nouveau devis, ajouter dans le sélecteur « Type de projet » une nuance « Première Version » vs « Application Complète » (en plus de mobile/web/combo/forfait), ou simplement le mentionner dans le champ `subject` (« Application Lancement — Plouff Habitudes »)
-- Dans la slide « Mission » du devis, adapter le ton selon le type :
+- **Hero** : intact, « 45 jours, à partir de 3 500 € » → c'est ton hook commercial mémorable
+- **Sections existantes** (Différence, Process, Avis, Audit, FAQ) : inchangées
+- **Pas de section « Mes deux formules » en évidence** — ça diluerait ton message et créerait de la paralysie de décision chez le visiteur non-technique
+- **Seule mention de l'Offre B autorisée** : une question discrète dans la FAQ :
+
+> **Q. Vous proposez plusieurs formules ?**
+>
+> R. *Oui. La formule mise en avant est ma « Première Version » : 45 jours, à partir de 3 500 €, pour lancer votre application rapidement. Pour les projets plus aboutis ou qui demandent plus de fonctionnalités, je propose aussi une « Application Complète » sur mesure. On regarde ensemble laquelle correspond à votre projet lors de notre premier appel.*
+
+Cette mention discrète a deux vertus :
+- Tu n'es pas accusé de cacher ton offre haut de gamme (transparence préservée)
+- Tu rediriges vers l'appel pour décider ensemble (pas de comparaison amont)
+
+### Niveau 2 — L'appel : c'est LÀ que tu présentes et orientes
+
+C'est ton terrain unique. Tu écoutes, tu jauges, tu décides quelle offre proposer en fin d'appel. **Le client n'a pas à choisir** entre deux offres : tu fais le choix pour lui en fonction de ce que tu as compris de son besoin, de son budget, de la maturité de son projet.
+
+Voir la section 7 et le document **`SCRIPT-APPEL-CLIENT.md`** pour le détail opérationnel du call.
+
+### Niveau 3 — Le devis : UNE seule offre, jamais deux
+
+Le devis envoyé au client après l'appel contient **uniquement l'offre que tu as choisie pour lui**. Pas de comparaison, pas de choix à faire. Le client a juste deux options : signer ou refuser.
+
+**Si tu envoies un devis avec 2 offres** :
+- Le client se sent face à un choix dur (« laquelle ? »)
+- Il procrastine, retourne réfléchir, perd le momentum
+- Conversion divisée par 2 à 3
+
+**Si tu envoies UN seul devis** :
+- Le client n'a qu'une décision binaire à prendre (oui/non)
+- Le travail de qualification est déjà fait pendant l'appel
+- Le devis est l'aboutissement naturel de l'échange
+
+**Exception unique** : si vraiment en fin d'appel le client hésite, dis-lui : *« Je vais vous préparer un devis pour la Première Version. Si après l'avoir vu vous sentez qu'il vous faut plus, on bascule sur l'Application Complète, mais commençons simple. »* — et tu envoies UN devis (Offre A).
+
+### Récapitulatif visuel
+
+| Étape | Client voit | Décision client |
+|---|---|---|
+| **Landing page** | Une seule offre (MVP) + mention FAQ discrète de l'Offre B | Prendre RDV ou non |
+| **Premier appel (15 min)** | Les 2 offres présentées brièvement, puis 1 seule recommandée par toi | Donner son accord pour recevoir le devis |
+| **Devis envoyé** | 1 seule offre, celle que tu as recommandée | Signer ou non |
+| **Suite éventuelle** | Si MVP signé et marché validé, tu peux proposer une « V2 Complète » 3-6 mois plus tard | Nouvelle signature |
+
+### Adaptations techniques minimales
+
+**Sur la landing page** :
+- Ajouter une seule entrée dans la FAQ (la question « Vous proposez plusieurs formules ? » avec la réponse ci-dessus)
+- Aucune autre modification
+
+**Sur la devis-app** :
+- Aucune modification structurelle — tu continues à créer un seul devis par client
+- Dans le `subject` du devis, tu peux préciser informellement : « Première Version — [Nom du projet] » ou « Application Complète — [Nom du projet] » pour t'y retrouver dans ton historique
+- Dans la slide « Mission » du PDF, adapter le ton selon le type :
   - Offre A : « Lancer rapidement une première version pour tester votre idée »
   - Offre B : « Construire une application complète et durable »
 
-### Dans le chatbot (system prompt)
-
-À mettre à jour dans `functions/chatbot/lib/systemPrompt.js` :
-
-- Quand un prospect mentionne un budget < 5 000 € ou un délai court → orienter Offre A
-- Quand un prospect mentionne « plusieurs fonctionnalités » + « beaucoup d'utilisateurs prévus » → orienter Offre B
-- Toujours expliquer en français simple, jamais de mot technique sans définition
-
-### Dans le devis PDF (slide Mission)
-
-Adapter les 3 objectifs selon l'offre :
-- Offre A : « Tester votre idée avec de vrais utilisateurs », « Lancer en 45 jours », « Budget maîtrisé »
-- Offre B : « Application aboutie dès le premier jour », « Conçue pour durer », « Expérience utilisateur sur-mesure »
+**Dans le chatbot (`functions/chatbot/lib/systemPrompt.js`)** :
+- Mentionner par défaut l'Offre A (3 500 € / 45 jours) — c'est cohérent avec la landing
+- Évoquer l'Offre B seulement si le visiteur parle de projets larges (paiement, abonnement, communauté, beaucoup de fonctionnalités)
+- Toujours rediriger vers l'appel pour décider : *« Le mieux est qu'on en parle avec Noé directement, vous pouvez prendre rendez-vous gratuit ici »*
 
 ---
 
