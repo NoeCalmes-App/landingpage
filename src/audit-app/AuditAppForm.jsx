@@ -450,10 +450,22 @@ function TextareaStep({
   }
 
   // Saisie vocale (SpeechRecognition natif fr-FR)
+  // Pattern tap-to-talk : click micro -> parle -> 2s silence -> auto-stop,
+  // texte preserve dans le textfield. L'user re-clique pour ajouter.
   const [voiceActive, setVoiceActive] = useState(false)
   const [voiceSupported, setVoiceSupported] = useState(false)
+  const [voiceError, setVoiceError] = useState(null)
+  // 5 niveaux audio temps reel pour visualiser le volume du micro pendant
+  // la dictee (Web Audio API : MediaStream -> AnalyserNode -> rAF loop).
+  const [audioLevels, setAudioLevels] = useState([0, 0, 0, 0, 0])
   const recognitionRef = useRef(null)
   const baseTextRef = useRef('')
+  // Refs pour la chaine audio : on stoppe tout proprement a la fin
+  // (tracks, AudioContext, rAF) pour ne pas laisser le mic actif.
+  const audioCtxRef = useRef(null)
+  const analyserRef = useRef(null)
+  const meterStreamRef = useRef(null)
+  const rafRef = useRef(null)
 
   useEffect(() => {
     const SR =
@@ -463,25 +475,118 @@ function TextareaStep({
     setVoiceSupported(true)
   }, [])
 
+  const stopAudioMeter = () => {
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current)
+      rafRef.current = null
+    }
+    if (meterStreamRef.current) {
+      meterStreamRef.current.getTracks().forEach((t) => t.stop())
+      meterStreamRef.current = null
+    }
+    if (audioCtxRef.current) {
+      audioCtxRef.current.close().catch(() => {
+        /* ignore */
+      })
+      audioCtxRef.current = null
+    }
+    analyserRef.current = null
+    setAudioLevels([0, 0, 0, 0, 0])
+  }
+
+  const startAudioMeter = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      meterStreamRef.current = stream
+
+      const Ctx = window.AudioContext || window.webkitAudioContext
+      if (!Ctx) return
+      const ctx = new Ctx()
+      audioCtxRef.current = ctx
+      // Chrome demarre parfois suspended : on resume (on est dans un click
+      // user, donc autorise).
+      if (ctx.state === 'suspended') {
+        try {
+          await ctx.resume()
+        } catch {
+          /* ignore */
+        }
+      }
+
+      const source = ctx.createMediaStreamSource(stream)
+      const analyser = ctx.createAnalyser()
+      analyser.fftSize = 256
+      analyser.smoothingTimeConstant = 0.6
+      source.connect(analyser)
+      analyserRef.current = analyser
+
+      const buf = new Uint8Array(analyser.frequencyBinCount)
+      const numBars = 5
+      const bandSize = Math.floor(buf.length / numBars)
+
+      const tick = () => {
+        if (!analyserRef.current) return
+        analyserRef.current.getByteFrequencyData(buf)
+        const levels = []
+        for (let i = 0; i < numBars; i++) {
+          let sum = 0
+          for (let j = 0; j < bandSize; j++) {
+            sum += buf[i * bandSize + j]
+          }
+          levels.push(sum / bandSize / 255)
+        }
+        setAudioLevels(levels)
+        rafRef.current = requestAnimationFrame(tick)
+      }
+      rafRef.current = requestAnimationFrame(tick)
+    } catch {
+      // Permission refusee ou pas de mic : la dictee SpeechRecognition peut
+      // quand meme marcher, on ne bloque rien. Juste pas de visualisation.
+      stopAudioMeter()
+    }
+  }
+
+  // Cleanup au demontage
+  useEffect(() => {
+    return () => {
+      if (recognitionRef.current) {
+        try {
+          recognitionRef.current.stop()
+        } catch {
+          /* ignore */
+        }
+      }
+      stopAudioMeter()
+    }
+  }, [])
+
   const startVoice = () => {
+    setVoiceError(null)
     const SR =
       window.SpeechRecognition || window.webkitSpeechRecognition
     if (!SR) return
 
-    // Arret eventuel d'une session precedente
+    // Cleanup session precedente
     if (recognitionRef.current) {
       try {
         recognitionRef.current.stop()
       } catch {
         /* ignore */
       }
+      recognitionRef.current = null
     }
+
+    // Anchor baseText sur la valeur DOM courante : preserve tout ce qui est
+    // deja dans le textfield (texte tape OU dicte avant).
+    const currentText = taRef.current?.value || ''
+    baseTextRef.current = currentText ? currentText.trimEnd() + ' ' : ''
 
     const rec = new SR()
     rec.lang = 'fr-FR'
-    rec.continuous = true
+    // continuous=false partout : auto-stop sur silence apres ~2s.
+    // Sur iOS continuous=true est de toute facon ignore (bug Safari).
+    rec.continuous = false
     rec.interimResults = true
-    baseTextRef.current = value ? value.trimEnd() + ' ' : ''
 
     rec.onresult = (event) => {
       let finalT = ''
@@ -497,27 +602,38 @@ function TextareaStep({
       onChange(capped)
       if (finalT) {
         baseTextRef.current += finalT
-        // Stop auto si on a atteint le plafond
-        if (baseTextRef.current.length >= maxLength) {
-          try {
-            rec.stop()
-          } catch {
-            /* ignore */
-          }
-        }
       }
     }
-    rec.onerror = () => {
-      setVoiceActive(false)
+
+    rec.onerror = (e) => {
+      // Erreurs bloquantes (permission, micro) : message clair pour l'user
+      const fatal = ['not-allowed', 'service-not-allowed', 'audio-capture']
+      if (e?.error && fatal.includes(e.error)) {
+        setVoiceActive(false)
+        if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
+          setVoiceError(
+            'Autorisez l\'accès au micro dans les réglages de votre navigateur pour utiliser la dictée.'
+          )
+        } else {
+          setVoiceError('Micro indisponible sur cet appareil.')
+        }
+      }
+      // 'no-speech', 'network', 'aborted' : non-bloquant, onend gerera
     }
+
     rec.onend = () => {
+      // Toujours stopper l'etat visuel : auto-stop sur silence ou stop manuel.
+      // Le texte dicte est deja dans le textfield via les onresult precedents.
       setVoiceActive(false)
+      stopAudioMeter()
     }
 
     recognitionRef.current = rec
     try {
       rec.start()
       setVoiceActive(true)
+      // Demarre la visualisation audio en parallele (fire-and-forget).
+      startAudioMeter()
     } catch {
       setVoiceActive(false)
     }
@@ -532,25 +648,13 @@ function TextareaStep({
       }
     }
     setVoiceActive(false)
+    stopAudioMeter()
   }
 
   const toggleVoice = () => {
     if (voiceActive) stopVoice()
     else startVoice()
   }
-
-  // Nettoyage
-  useEffect(() => {
-    return () => {
-      if (recognitionRef.current) {
-        try {
-          recognitionRef.current.stop()
-        } catch {
-          /* ignore */
-        }
-      }
-    }
-  }, [])
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
@@ -681,14 +785,27 @@ function TextareaStep({
         </div>
       </div>
 
-      {/* Statut dictee, erreur minimum, ou approche du plafond */}
+      {/* Statut dictee, erreur micro, erreur minimum, ou approche du plafond */}
       {voiceActive ? (
-        <p className="text-brand text-[0.82rem] mt-2 flex items-center gap-1.5">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
-          </span>
-          Je vous écoute…
+        <div className="mt-3 flex items-center justify-center gap-[5px] h-7">
+          {audioLevels.map((level, i) => {
+            // Min 4px (visible meme dans le silence) -> max 28px (parole forte)
+            const h = Math.max(4, Math.min(28, level * 80))
+            return (
+              <span
+                key={i}
+                className="w-1 bg-brand rounded-full"
+                style={{
+                  height: `${h}px`,
+                  transition: 'height 80ms linear',
+                }}
+              />
+            )
+          })}
+        </div>
+      ) : voiceError ? (
+        <p className="text-red-text text-[0.82rem] mt-2 leading-relaxed">
+          {voiceError}
         </p>
       ) : showError ? (
         <p className="text-red-text text-[0.82rem] mt-2">
