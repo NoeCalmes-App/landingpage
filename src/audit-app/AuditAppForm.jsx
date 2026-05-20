@@ -752,16 +752,26 @@ function TextareaStep({
                 <span className="absolute inset-0 rounded-full bg-red-text/20 animate-ping" />
               )}
               {voiceActive ? (
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
+                // Barres audio temps reel a l'interieur du bouton (style ChatGPT/Claude).
+                // Click sur le bouton -> stop dictee (cf. toggleVoice).
+                <span
+                  className="relative flex items-center justify-center gap-[2px] h-full"
                   aria-hidden="true"
-                  className="relative"
                 >
-                  <rect x="6" y="6" width="12" height="12" rx="2" />
-                </svg>
+                  {audioLevels.map((level, i) => {
+                    const h = Math.max(3, Math.min(16, level * 50))
+                    return (
+                      <span
+                        key={i}
+                        className="w-[2px] bg-current rounded-full"
+                        style={{
+                          height: `${h}px`,
+                          transition: 'height 80ms linear',
+                        }}
+                      />
+                    )
+                  })}
+                </span>
               ) : (
                 <svg
                   width="17"
@@ -785,25 +795,9 @@ function TextareaStep({
         </div>
       </div>
 
-      {/* Statut dictee, erreur micro, erreur minimum, ou approche du plafond */}
-      {voiceActive ? (
-        <div className="mt-3 flex items-center justify-center gap-[5px] h-7">
-          {audioLevels.map((level, i) => {
-            // Min 4px (visible meme dans le silence) -> max 28px (parole forte)
-            const h = Math.max(4, Math.min(28, level * 80))
-            return (
-              <span
-                key={i}
-                className="w-1 bg-brand rounded-full"
-                style={{
-                  height: `${h}px`,
-                  transition: 'height 80ms linear',
-                }}
-              />
-            )
-          })}
-        </div>
-      ) : voiceError ? (
+      {/* Erreur micro, erreur minimum, ou approche du plafond.
+          La visualisation audio temps reel est maintenant DANS le bouton mic. */}
+      {voiceError ? (
         <p className="text-red-text text-[0.82rem] mt-2 leading-relaxed">
           {voiceError}
         </p>
