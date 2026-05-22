@@ -22,7 +22,6 @@ export default function AuditAppForm({
   initialFirstName,
   onSubmit,
   submitting,
-  error,
 }) {
   // Si on est en train de soumettre, on remplace l'UI form par l'ecran d'analyse
   if (submitting) {
@@ -33,7 +32,6 @@ export default function AuditAppForm({
     <FormTunnel
       initialFirstName={initialFirstName}
       onSubmit={onSubmit}
-      error={error}
     />
   )
 }
@@ -42,7 +40,7 @@ export default function AuditAppForm({
 // Tunnel principal
 // ===================================================================
 
-function FormTunnel({ initialFirstName, onSubmit, error }) {
+function FormTunnel({ initialFirstName, onSubmit }) {
   // Restauration depuis localStorage : si le prospect a deja commence
   // un audit, on lui rend ses reponses et le step ou il s'etait arrete.
   const restored = loadAuditState() || {}
@@ -221,12 +219,6 @@ function FormTunnel({ initialFirstName, onSubmit, error }) {
               selectedValue={answers[currentStep.field]}
               onSelect={handleChoiceClick}
             />
-          )}
-
-          {error && (
-            <div className="mt-5 rounded-lg bg-red-bg/50 border border-red-text/20 px-4 py-3 text-red-text text-[0.88rem]">
-              {error}
-            </div>
           )}
 
           {/* Actions — uniquement pour les etapes qui ont un bouton (input/textarea) */}

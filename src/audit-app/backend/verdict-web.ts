@@ -40,9 +40,18 @@ const ALLOWED_ORIGINS = new Set<string>([
   "https://noecalmes.fr",
   "https://www.noecalmes.fr",
   "http://localhost:5173",
+  "http://localhost:5174",
+  "http://localhost:5175",
   "http://localhost:4173",
+  "http://localhost:4174",
   "http://127.0.0.1:5173",
+  "http://127.0.0.1:5174",
+  "http://127.0.0.1:5175",
 ]);
+
+function isAllowedCorsOrigin(origin: string): boolean {
+  return ALLOWED_ORIGINS.has(origin);
+}
 
 // ============ RATE LIMIT (en memoire) ============
 
@@ -72,12 +81,12 @@ export const verdictWeb = onRequest(
     secrets: [GEMINI_API_KEY, GROQ_API_KEY],
     cors: false,
     memory: "256MiB",
-    timeoutSeconds: 60,
+    timeoutSeconds: 120,
     maxInstances: 10,
   },
   async (req, res): Promise<void> => {
     const origin = req.header("origin") || "";
-    const isAllowedOrigin = ALLOWED_ORIGINS.has(origin);
+    const isAllowedOrigin = isAllowedCorsOrigin(origin);
 
     if (req.method === "OPTIONS") {
       if (isAllowedOrigin) {

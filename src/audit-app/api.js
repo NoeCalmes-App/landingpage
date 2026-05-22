@@ -3,6 +3,8 @@
 
 import { API_URL } from './config'
 
+const NETWORK_RETRY_DELAYS_MS = [0, 900, 1800]
+
 /**
  * Envoie les reponses au backend et retourne le verdict V3 (JSON enrichi).
  *
@@ -37,13 +39,15 @@ export async function generateVerdict(payload) {
     )
   }
 
+  const request = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  }
+
   let response
   try {
-    response = await fetch(API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
+    response = await fetchWithRetry(API_URL, request)
   } catch {
     throw new Error('Connexion impossible. Vérifiez votre réseau et réessayez.')
   }
@@ -65,4 +69,27 @@ export async function generateVerdict(payload) {
     throw new Error('Réponse incomplète du serveur.')
   }
   return data
+}
+
+async function fetchWithRetry(url, request) {
+  let lastError
+
+  for (let i = 0; i < NETWORK_RETRY_DELAYS_MS.length; i++) {
+    const delay = NETWORK_RETRY_DELAYS_MS[i]
+    if (delay > 0) {
+      await new Promise((resolve) => setTimeout(resolve, delay))
+    }
+
+    try {
+      const response = await fetch(url, request)
+      if (![502, 503, 504].includes(response.status)) {
+        return response
+      }
+      lastError = new Error(`Temporary server error: ${response.status}`)
+    } catch (error) {
+      lastError = error
+    }
+  }
+
+  throw lastError || new Error('Network request failed')
 }

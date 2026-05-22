@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import AuditAppHero from './AuditAppHero'
 import AuditAppForm from './AuditAppForm'
 import AuditAppVerdict from './AuditAppVerdict'
+import MaintenanceModal from './MaintenanceModal'
 import { generateVerdict } from './api'
 import { loadAuditState, saveAuditState, clearAuditState } from './storage'
 import mePhoto from '../assets/lib/me.webp'
@@ -28,6 +29,13 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
   const [error, setError] = useState(null)
   const [verdict, setVerdict] = useState(() => loadAuditState()?.verdict || null)
   const [firstName, setFirstName] = useState(() => loadAuditState()?.firstName || '')
+  // Dernier payload soumis : on le garde en memoire (et en localStorage) pour
+  // que la popup "Reessayer" puisse relancer la generation sans refaire le
+  // formulaire. Restaure aussi a l'ouverture : si l'user a ferme l'onglet
+  // pendant une erreur, il revient sur sa derniere question et peut relancer.
+  const [pendingPayload, setPendingPayload] = useState(
+    () => loadAuditState()?.pendingPayload || null
+  )
 
   // Synchronise les changements de stage/verdict/firstName dans localStorage
   useEffect(() => {
@@ -63,6 +71,10 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
     setSubmitting(true)
     setError(null)
     setFirstName(payload.first_name || '')
+    // Memorise le payload pour permettre un "Reessayer" depuis la popup
+    // sans avoir a refaire tout le tunnel.
+    setPendingPayload(payload)
+    saveAuditState({ pendingPayload: payload })
 
     // Temps mini d'affichage de l'ecran d'analyse pour la credibilite.
     // Si l'API repond en 2s, on attend quand meme jusqu'a 12s avant de
@@ -79,6 +91,9 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
       }
       setVerdict(data)
       setStage('verdict')
+      // Verdict OK : on n'a plus besoin de garder le payload en attente
+      setPendingPayload(null)
+      saveAuditState({ pendingPayload: null })
     } catch (e) {
       setError(e?.message || 'Erreur inattendue. Réessayez.')
     } finally {
@@ -86,11 +101,26 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
     }
   }
 
+  const handleRetry = () => {
+    if (!pendingPayload) {
+      // Pas de payload en memoire — on ferme juste la popup, l'user
+      // pourra revalider sa derniere question pour relancer.
+      setError(null)
+      return
+    }
+    handleSubmit(pendingPayload)
+  }
+
+  const handleCloseMaintenance = () => {
+    setError(null)
+  }
+
   const handleRestart = () => {
     clearAuditState()
     setVerdict(null)
     setError(null)
     setFirstName('')
+    setPendingPayload(null)
     setStage('hero')
   }
 
@@ -110,7 +140,6 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
             initialFirstName={firstName}
             onSubmit={handleSubmit}
             submitting={submitting}
-            error={error}
           />
         )}
 
@@ -131,6 +160,17 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
         <AuditAppLegalFooter
           onLegal={onLegal}
           onRestart={handleRestart}
+        />
+      )}
+
+      {/* Popup maintenance : remplace l'ancien message d'erreur inline.
+          S'affiche tant que `error` est set et qu'on n'est pas en train de
+          relancer une tentative (sinon on garde l'ecran d'analyse visible). */}
+      {error && !submitting && (
+        <MaintenanceModal
+          onRetry={handleRetry}
+          onClose={handleCloseMaintenance}
+          retrying={false}
         />
       )}
     </div>

@@ -430,12 +430,17 @@ async function tryProvider(
   provider: AIProvider,
   input: VerdictRequest
 ): Promise<VerdictGenerated | null> {
-  const MAX_ATTEMPTS = 2;
+  const MAX_ATTEMPTS = 1;
+  const PROVIDER_TIMEOUT_MS = 25_000;
   const tentativeBranch: Branch = "A";
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     try {
       const start = Date.now();
-      const result = await provider.generate(input, tentativeBranch);
+      const result = await withTimeout(
+        provider.generate(input, tentativeBranch),
+        PROVIDER_TIMEOUT_MS,
+        provider.name
+      );
       logger.info(`Provider ${provider.name} OK`, {
         attempt,
         durationMs: Date.now() - start,
@@ -452,4 +457,21 @@ async function tryProvider(
     }
   }
   return null;
+}
+
+function withTimeout<T>(
+  promise: Promise<T>,
+  ms: number,
+  label: string
+): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => {
+      reject(new Error(`Provider ${label} timeout after ${ms}ms`));
+    }, ms);
+  });
+
+  return Promise.race([promise, timeout]).finally(() => {
+    if (timer) clearTimeout(timer);
+  });
 }
