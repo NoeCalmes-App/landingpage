@@ -12,6 +12,7 @@ import Legales from './Legales.jsx'
 import Merci from './Merci.jsx'
 import { BlogList, BlogArticlePage, BLOG_ARTICLES } from './Blog.jsx'
 import AuditApp from './audit-app/AuditApp.jsx'
+import SmoothRideMockups from './SmoothRideMockups.jsx'
 import trustpilotStar from './assets/trustpilot.svg'
 import meetingSvg from './assets/lib/meetingdev.svg'
 import plouffIcon from './assets/appicon/plouffhabitudes.webp'
@@ -227,6 +228,9 @@ function App() {
     if (path === '/privacy') return 'privacy'
     if (path === '/blog') return 'blog'
     if (path.startsWith('/blog/')) return 'blog-article'
+    // Maquettes SmoothRide (et toute future démo client) — page autonome,
+    // sans le shell landing-page (navbar/footer). URL : /maquette/<appSlug>.
+    if (path.startsWith('/maquette/')) return 'smoothride-mockups'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
     if (path in SECTION_ROUTES) return 'home'
     return 'home'
@@ -414,6 +418,7 @@ function App() {
     />
   )
   if (page === 'merci') return <Merci onBack={goHome} />
+  if (page === 'smoothride-mockups') return <SmoothRideMockups />
   if (page === 'contact') return <ContactNoe />
   if (page === 'legal') return <Legales />
   if (page === 'audit-app') return <AuditApp onBack={goHome} onBookCall={goBookCall} onLegal={(p) => openLegal(p, '/audit-app')} />
