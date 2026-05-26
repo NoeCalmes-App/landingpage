@@ -228,9 +228,11 @@ function App() {
     if (path === '/privacy') return 'privacy'
     if (path === '/blog') return 'blog'
     if (path.startsWith('/blog/')) return 'blog-article'
-    // Maquettes SmoothRide (et toute future démo client) — page autonome,
-    // sans le shell landing-page (navbar/footer). URL : /maquette/<appSlug>.
-    if (path.startsWith('/maquette/')) return 'smoothride-mockups'
+    // Maquettes SmoothRide — page autonome (sans navbar/footer landing-page).
+    // Restreint à /maquette/smoothride (case-insensitive) uniquement. Toute
+    // autre URL /maquette/xxx retombe sur la home (pas de leak vers SmoothRide
+    // pour un slug inconnu).
+    if (path.toLowerCase() === '/maquette/smoothride') return 'smoothride-mockups'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
     if (path in SECTION_ROUTES) return 'home'
     return 'home'
