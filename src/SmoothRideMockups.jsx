@@ -6,7 +6,6 @@ import {
   CircleUserRound,
   Clock3,
   CreditCard,
-  Download,
   Flag,
   Home,
   LocateFixed,
@@ -23,8 +22,6 @@ import {
   UserRound,
   X,
 } from 'lucide-react'
-import html2canvas from 'html2canvas'
-import toast from 'react-hot-toast'
 import './smoothride-mockups.css'
 
 function StatusBar() {
@@ -588,25 +585,6 @@ export default function SmoothRideMockupsPage() {
   const appSlug = window.location.pathname.replace(/\/$/, '').split('/').pop() || 'smoothride'
   const appName = getAppName(appSlug)
 
-  async function downloadMockup(id, title) {
-    const el = document.getElementById(`sr-export-${id}`)
-    if (!el) return
-    try {
-      const canvas = await html2canvas(el, {
-        backgroundColor: null,
-        scale: 3,
-        useCORS: true,
-      })
-      const link = document.createElement('a')
-      link.download = `smoothride-${id}.png`
-      link.href = canvas.toDataURL('image/png')
-      link.click()
-      toast.success(`${title} téléchargé`)
-    } catch {
-      toast.error('Téléchargement impossible')
-    }
-  }
-
   return (
     <main className="smoothride-mockups-page">
       <section className="sr-landing-hero">
@@ -629,10 +607,6 @@ export default function SmoothRideMockupsPage() {
                 <h2>{mockup.title}</h2>
                 <p>{mockup.subtitle}</p>
               </div>
-              <button onClick={() => downloadMockup(mockup.id, mockup.title)}>
-                <Download size={14} />
-                PNG
-              </button>
             </div>
             <div id={`sr-export-${mockup.id}`} className="sr-export-wrap">
               <PhoneFrame>{mockup.screen}</PhoneFrame>
