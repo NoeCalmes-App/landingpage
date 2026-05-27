@@ -13,7 +13,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { FORM_STEPS, FIRST_NAME_MIN_LENGTH } from './config'
-import { loadAuditState, saveAuditState } from './storage'
+import { loadAuditState, saveAuditState, getOrCreateSessionId } from './storage'
+import { sendPartialAudit } from './api'
 import AuditAppAttachment from './AuditAppAttachment'
 
 const TOTAL_STEPS = FORM_STEPS.length + 1 // +1 pour l'etape prenom
@@ -68,6 +69,33 @@ function FormTunnel({ initialFirstName, onSubmit }) {
   useEffect(() => {
     saveAuditState({ stepIndex, firstName, answers, attachedContent })
   }, [stepIndex, firstName, answers, attachedContent])
+
+  // Capture des audits abandonnés : à chaque transition d'étape (après que
+  // le prénom soit validé), on POST un snapshot vers /auditPartial pour
+  // que le dashboard Audit Stats du devis-app puisse voir où le prospect
+  // s'est arrêté. Garde-fou : on n'envoie que si firstName a au moins
+  // FIRST_NAME_MIN_LENGTH caractères — sinon on ne sait pas qui c'est.
+  useEffect(() => {
+    if (firstName.trim().length < FIRST_NAME_MIN_LENGTH) return
+    if (stepIndex === 0) return // pas encore franchi l'étape prénom
+    sendPartialAudit({
+      sessionId: getOrCreateSessionId(),
+      firstName: firstName.trim(),
+      stepIndex,
+      totalSteps: TOTAL_STEPS,
+      ideaText: answers.idea_text || '',
+      knownCompetitors: answers.known_competitors || null,
+      q1Answer: answers.q1_answer || '',
+      q2Answer: answers.q2_answer || '',
+      q3Answer: answers.q3_answer || '',
+      q4Answer: answers.q4_answer || '',
+      hasAttachment: (attachedContent || '').length > 0,
+    })
+    // On ne déclenche QUE sur changement de stepIndex pour ne pas spammer
+    // à chaque frappe dans un textarea — le snapshot complet est capturé
+    // au moment où le prospect passe à l'étape suivante.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stepIndex])
 
   const isFirstNameStep = stepIndex === 0
   const currentStep = isFirstNameStep ? null : FORM_STEPS[stepIndex - 1]

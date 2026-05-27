@@ -54,3 +54,25 @@ export function clearAuditState() {
     /* ignore */
   }
 }
+
+/**
+ * Retourne (ou génère et persiste) un identifiant unique pour cette
+ * session d'audit. Sert à identifier le doc Firestore qu'on upsert
+ * sur chaque étape côté /auditPartial — sans ça, on créerait des
+ * doublons à chaque envoi.
+ *
+ * crypto.randomUUID() est dispo dans tous les navigateurs modernes
+ * (Chrome 92+, Safari 15.4+, Firefox 95+). Fallback minimal si absent.
+ */
+export function getOrCreateSessionId() {
+  const current = loadAuditState() || {}
+  if (current.sessionId && typeof current.sessionId === 'string') {
+    return current.sessionId
+  }
+  const sessionId =
+    typeof window !== 'undefined' && window.crypto && window.crypto.randomUUID
+      ? window.crypto.randomUUID()
+      : `s_${Date.now()}_${Math.random().toString(36).slice(2, 12)}`
+  saveAuditState({ sessionId })
+  return sessionId
+}

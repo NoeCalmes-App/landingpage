@@ -8,6 +8,13 @@
 
 export const API_URL = import.meta.env.VITE_AUDIT_API_URL || ''
 
+// URL de l'endpoint qui capture les audits abandonnés (1 POST par étape
+// franchie). Si non défini, on dérive en remplaçant /verdictWeb par
+// /auditPartial (même région, même projet Firebase).
+export const PARTIAL_API_URL =
+  import.meta.env.VITE_AUDIT_PARTIAL_API_URL ||
+  (API_URL ? API_URL.replace(/\/verdictWeb\b/, '/auditPartial') : '')
+
 // URL du Calendly affiche apres un verdict en branche A.
 export const CALENDLY_URL =
   'https://calendly.com/noecalmes-app/appel-app-mobile?primary_color=645cff'

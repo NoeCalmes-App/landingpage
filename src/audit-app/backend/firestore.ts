@@ -100,6 +100,83 @@ export async function markAuditFailed(
   });
 }
 
+// ============ PARTIAL AUDITS (capture des abandons) ============
+
+export interface PartialAuditPayload {
+  sessionId: string;
+  firstName: string;
+  stepIndex: number;
+  totalSteps: number;
+  ideaText: string;
+  knownCompetitors: string | null;
+  q1Answer: string;
+  q2Answer: string;
+  q3Answer: string;
+  q4Answer: string;
+  hasAttachment: boolean;
+  userAgent: string | null;
+  origin: string | null;
+}
+
+/**
+ * Upsert d'un audit "partiel" (l'utilisateur a entré au moins son prénom
+ * mais n'a pas encore soumis le formulaire). Identifié par sessionId
+ * généré côté client (nanoid en localStorage).
+ *
+ * Premier appel  → CREATE  : status='partial', createdAt = now
+ * Appels suivants → UPDATE : maj du stepIndex et des réponses, updatedAt
+ *
+ * Si l'utilisateur termine, /verdictWeb crée un AUTRE doc (avec auto-id).
+ * On ne fusionne PAS les deux : les partiels servent à voir le funnel
+ * d'abandons, les complétés sont les vrais leads.
+ *
+ * ID du document : `partial_${sessionId}` (pour éviter toute collision
+ * théorique avec les auto-IDs des audits complétés).
+ */
+export async function upsertPartialAudit(
+  payload: PartialAuditPayload,
+): Promise<void> {
+  const docId = `partial_${payload.sessionId}`;
+  const ref = db.collection(COLLECTION).doc(docId);
+  const snap = await ref.get();
+  const base = {
+    sessionId: payload.sessionId,
+    firstName: payload.firstName,
+    stepIndex: payload.stepIndex,
+    totalSteps: payload.totalSteps,
+    ideaText: payload.ideaText,
+    knownCompetitors: payload.knownCompetitors,
+    q1Answer: payload.q1Answer,
+    q2Answer: payload.q2Answer,
+    q3Answer: payload.q3Answer,
+    q4Answer: payload.q4Answer,
+    hasAttachment: payload.hasAttachment,
+    userAgent: payload.userAgent,
+    origin: payload.origin,
+    status: "partial",
+    verdict: null,
+    branch: null,
+    budgetTag: null,
+    aiProvider: null,
+    errorMessage: null,
+    schemaVersion: 1,
+  };
+  if (snap.exists) {
+    await ref.update({ ...base, updatedAt: FieldValue.serverTimestamp() });
+  } else {
+    await ref.set({
+      ...base,
+      createdAt: FieldValue.serverTimestamp(),
+      updatedAt: FieldValue.serverTimestamp(),
+      completedAt: null,
+      durationMs: null,
+      attachment: payload.hasAttachment
+        ? { hasAttachment: true, extractedChars: 0 }
+        : null,
+    });
+  }
+}
+
 /**
  * Wrapper safe : on ne fait JAMAIS planter la requete HTTP a cause de
  * Firestore. La priorite c'est de renvoyer le verdict au client.
