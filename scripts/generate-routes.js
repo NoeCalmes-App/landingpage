@@ -184,6 +184,23 @@ mkdirSync(auditDir, { recursive: true })
 writeFileSync(join(auditDir, 'index.html'), auditHtml)
 console.log(`✓ Generated ${auditAppRoute.path}/index.html`)
 
+// ─── Client mockup routes — noindex autonomous visual proposal pages ─────────
+
+const mockupRoutes = ['/maquette/smoothride', '/maquette/pac-assist', '/maquette/cvc-assist']
+
+for (const path of mockupRoutes) {
+  let html = baseHtml
+  html = html.replace(
+    /<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/,
+    '<meta name="robots" content="noindex, nofollow" />'
+  )
+  html = html.replace(/<title>[^<]*<\/title>/, `<title>Maquettes visuelles — Noé Calmes</title>`)
+  const routeDir = join(distDir, path)
+  mkdirSync(routeDir, { recursive: true })
+  writeFileSync(join(routeDir, 'index.html'), html)
+  console.log(`✓ Generated ${path}/index.html (mockup noindex)`)
+}
+
 // ─── Legacy routes — noindex (old URLs that may still be indexed by Google) ──
 
 const legacyRoutes = ['/a-propos', '/offre', '/contact']
