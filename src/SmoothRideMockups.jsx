@@ -593,8 +593,8 @@ export default function SmoothRideMockupsPage() {
           <h1>Maquettes visuelles</h1>
           <p className="sr-reference">SmoothRide · MOB-2026-088</p>
           <p className="sr-disclaimer">
-            Maquette rapide pour illustrer une piste d'interface — aucune charte graphique ni design
-            définitif appliqué. Non contractuelle.
+            Aperçu rapide pour visualiser l'idée — toutes les pages ne sont pas illustrées
+            et le design n'est pas définitif (couleurs, logo, typo). Non contractuel.
           </p>
         </div>
       </section>
