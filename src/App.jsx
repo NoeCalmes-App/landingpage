@@ -552,10 +552,10 @@ function App() {
             </p>
           </div>
 
-          <h1 className="font-heading text-[2.275rem] sm:text-[2.25rem] md:text-[2.75rem] lg:text-[3.25rem] font-extrabold text-text tracking-tight leading-[1.15] mb-8">
+            <h1 className="font-heading text-[2.275rem] sm:text-[2.25rem] md:text-[2.75rem] lg:text-[3.25rem] font-extrabold text-text tracking-tight leading-[1.15] mb-10 md:mb-12">
               Je transforme votre idée <br className="hidden sm:block" />
               en <span className="text-brand">application</span> qui génère <br className="hidden md:block" />
-              <span className="text-brand relative">des revenus.
+              <span className="text-brand relative">des revenus
               <svg
                 className="absolute md:-bottom-4 -bottom-3.5 left-1/2 -translate-x-[60%] md:-translate-x-[60%] w-[70%] md:w-[70%] h-4.5 -rotate-1"
                 viewBox="0 0 180 14"
@@ -569,9 +569,9 @@ function App() {
 
           <button
             onClick={scrollToCalendly}
-            className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
+            className="group inline-flex items-center gap-3 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
           >
-            Discuter de mon projet
+            <span className="pr-1">Discuter de mon projet</span>
             <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
@@ -579,7 +579,7 @@ function App() {
           </button>
 
           {/* Proof */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-8 mt-13 md:mt-14">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-8 mt-16 md:mt-18">
             {['Tarif fixe, zéro surprise', 'Publication App Store & Google Play', 'Suivi après mise en ligne'].map((text) => (
               <div key={text} className="flex items-center gap-2.5 text-text text-[0.85rem] md:text-[0.9rem] font-medium">
                 <span className="shrink-0 w-5 h-5 rounded-full bg-brand flex items-center justify-center">
