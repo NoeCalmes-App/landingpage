@@ -170,7 +170,7 @@ function ReviewsCarousel() {
 
 const faqItems = [
   { q: 'Comment fonctionne la tarification ?', a: 'Tarif fixe, défini avant de commencer. Je ne suis pas une agence qui facture 20 000 € une appli — ma conviction, c\'est la transparence et l\'honnêteté. Vous savez exactement ce que vous payez, sans compteur qui tourne.' },
-  { q: 'Combien de temps faut-il pour avoir une application mobile ?', a: 'Pour un MVP, comptez environ 45 jours. Pour une application complète, le délai dépend du projet et de vos besoins — on définit ça ensemble.' },
+  { q: 'Combien de temps faut-il pour avoir une application mobile ?', a: 'Pour une première version, comptez environ 45 jours. Pour une application complète, le délai dépend du projet et de vos besoins — on définit ça ensemble.' },
   { q: 'Après la livraison de l\'application ?', a: 'Je ne disparais pas après la mise en ligne. Je reste disponible pour les corrections, les mises à jour, les nouvelles fonctionnalités et l\'accompagnement technique. Le suivi fait partie de mon approche — on définit ensemble ce qui est nécessaire selon l\'évolution de votre produit.' },
 ]
 
@@ -553,8 +553,9 @@ function App() {
           </div>
 
           <h1 className="font-heading text-[2.275rem] sm:text-[2.25rem] md:text-[2.75rem] lg:text-[3.25rem] font-extrabold text-text tracking-tight leading-[1.15] mb-8">
-            Je transforme votre idée <br className="hidden sm:block" />
-            en app mobile en <span className="text-brand relative">45 jours.
+              Je transforme votre idée <br className="hidden sm:block" />
+              en <span className="text-brand">application</span> qui génère <br className="hidden md:block" />
+              <span className="text-brand relative">des revenus.
               <svg
                 className="absolute md:-bottom-4 -bottom-3.5 left-1/2 -translate-x-[60%] md:-translate-x-[60%] w-[70%] md:w-[70%] h-4.5 -rotate-1"
                 viewBox="0 0 180 14"
@@ -566,16 +567,11 @@ function App() {
             </span>
           </h1>
 
-          <p className="text-grey text-[0.95rem] md:text-base lg:text-lg leading-relaxed max-w-155 mx-auto mb-10">
-            Votre application pensée pour générer des revenus,<br className="hidden sm:block" />
-            de la stratégie au lancement.
-          </p>
-
           <button
             onClick={scrollToCalendly}
             className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
           >
-            Obtenir mes premières maquettes
+            Discuter de mon projet
             <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
@@ -657,7 +653,7 @@ function App() {
               onClick={scrollToCalendly}
               className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
-              Discuter de mon projet
+               Réserver mon appel avec Noé
               <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
