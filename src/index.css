@@ -107,9 +107,17 @@ section[id] {
 /* ===== HERO BACKGROUND ===== */
 .hero-bg {
   background:
-    radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 74%, transparent),
-    linear-gradient(0deg, #f9f9f9, #b8b3ff 14%, #9a93ff 48%, white 97%);
+    radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 66%, transparent),
+    linear-gradient(0deg, #f9f9f9, #b8b3ff 18%, #9a93ff 54%, white 97%);
   isolation: isolate;
+}
+
+@media (min-width: 768px) {
+  .hero-bg {
+    background:
+      radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 72%, transparent),
+      linear-gradient(0deg, #f9f9f9, #cbc8ff 14%, #b6b1ff 45%, white 97%);
+  }
 }
 
 .hero-bg::before {

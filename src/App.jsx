@@ -560,11 +560,11 @@ function App() {
             </div>
           </div>
 
-          {/* Titre — retour lisible, accent unique sur "application" + revenus */}
-          <h1 className="font-heading text-[1.78rem] min-[375px]:text-[1.85rem] min-[414px]:text-[1.98rem] min-[430px]:text-[2.05rem] min-[480px]:text-[2.15rem] sm:text-[2.1rem] md:text-[2.35rem] lg:text-[2.6rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-9 md:mb-11">
-            Je transforme votre<br className="sm:hidden" /> idée<br className="hidden sm:block" /> en <span className="text-brand">application</span><br className="sm:hidden" />{/* Mobile : "qui génère des" puis "revenus" surligné */}
-            <span className="sm:hidden"> qui génère des<br />{' '}
-              <span className="relative z-0 inline-block whitespace-nowrap text-brand after:content-[''] after:absolute after:-left-2 after:-right-2 after:bottom-[-1px] after:h-[26%] after:rounded after:bg-[rgba(102,93,255,0.22)] after:z-[-1]">revenus</span>
+          {/* Titre — accent sur l'idée, revenus plus lisibles sur mobile */}
+          <h1 className="font-heading text-[1.52rem] min-[375px]:text-[1.6rem] min-[414px]:text-[1.72rem] min-[430px]:text-[1.82rem] min-[480px]:text-[2.05rem] sm:text-[2.1rem] md:text-[2.35rem] lg:text-[2.6rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-9 md:mb-11">
+            Je transforme votre<br className="sm:hidden" /> <span className="text-brand">idée</span><br className="hidden sm:block" /> en <span className="text-brand">application</span><br className="sm:hidden" />
+            <span className="sm:hidden"> qui génère{' '}
+              <span className="relative z-0 inline-block whitespace-nowrap text-brand after:content-[''] after:absolute after:-left-2 after:-right-2 after:bottom-[-1px] after:h-[26%] after:rounded after:bg-[rgba(102,93,255,0.22)] after:z-[-1]">des revenus</span>
             </span>
             {/* Desktop : "qui génère" puis "des revenus" surligné */}
             <span className="hidden sm:inline"> qui génère<br />{' '}
@@ -573,7 +573,7 @@ function App() {
           </h1>
 
           {/* CTA */}
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-3 md:mb-5">
             <button
               onClick={scrollToCalendly}
               className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
@@ -622,7 +622,7 @@ function App() {
                   'Projet livré, débrouillez-vous',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3.5 text-grey text-[0.95rem] font-semibold leading-relaxed">
-                    <svg className="shrink-0 text-red-text" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+                    <svg className="shrink-0 text-red-text" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                       <line x1="18" y1="6" x2="6" y2="18" />
                       <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
@@ -643,7 +643,7 @@ function App() {
                   'Pensé pour générer des revenus',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3.5 text-text text-[0.95rem] font-semibold leading-relaxed">
-                    <svg className="shrink-0 text-brand" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+                    <svg className="shrink-0 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                     {item}

@@ -44,22 +44,8 @@ export default function AuditAppHero({ onStart, onLegal }) {
           Vous vous posez
           <br />
           ces{' '}
-          <span className="text-brand relative inline-block whitespace-nowrap">
+          <span className="relative z-0 inline-block whitespace-nowrap text-brand after:content-[''] after:absolute after:-left-2 after:-right-2 after:bottom-[-1px] after:h-[26%] after:rounded after:bg-[rgba(102,93,255,0.22)] after:z-[-1]">
             3 questions
-            <svg
-              className="absolute -bottom-2 md:-bottom-3 left-0 w-full h-4"
-              viewBox="0 0 220 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                d="M2 11 C70 4 150 4 218 7"
-                stroke="currentColor"
-                strokeWidth="5"
-                strokeLinecap="round"
-              />
-            </svg>
           </span>{' '}
           ?
         </h1>
