@@ -165,9 +165,10 @@ section[id] {
   transform: none;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
   .hero-bg::before {
-    background: none;
+    background:
+      radial-gradient(circle at 82% 4%, rgba(154, 147, 255, 0.48) 0%, rgba(184, 179, 255, 0.34) 15%, rgba(184, 179, 255, 0) 30%);
   }
 
   .hero-bg::after {

@@ -464,7 +464,7 @@ function App() {
             {/* Bar */}
             <div className="flex items-center justify-between h-[68px] px-6 md:px-7">
               {/* Brand */}
-              <a href="#" className="flex flex-col gap-[5px]">
+              <a href="#" className="flex flex-col gap-[7px]">
                 <span className="text-text font-bold text-xl md:text-1xl leading-none tracking-tight" style={{ fontFamily: "'Poppins', sans-serif" }}>
                   Noé Calmes
                 </span>
@@ -536,7 +536,7 @@ function App() {
 
       {/* ========== HERO (plein écran avec gradient) ========== */}
       <section
-        className="hero-bg relative min-h-screen flex items-center justify-center text-center px-3 sm:px-5 md:px-10 lg:px-16 pt-36 pb-20 md:pt-44 md:pb-24 overflow-hidden"
+        className="hero-bg relative min-h-screen flex items-center justify-center text-center px-3 sm:px-5 md:px-10 lg:px-16 pt-28 pb-28 md:pt-40 md:pb-32 overflow-hidden"
       >
         <div className="hero-visual" aria-hidden="true" />
 
@@ -564,7 +564,7 @@ function App() {
           </div>
 
           {/* Titre — accent sur l'idée, revenus plus lisibles sur mobile */}
-          <h1 className="font-heading text-[1.52rem] min-[375px]:text-[1.6rem] min-[414px]:text-[1.72rem] min-[430px]:text-[1.82rem] min-[480px]:text-[2.05rem] sm:text-[2.1rem] md:text-[2.35rem] lg:text-[2.6rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-9 md:mb-11">
+          <h1 className="font-heading text-[1.66rem] min-[375px]:text-[1.74rem] min-[414px]:text-[1.86rem] min-[430px]:text-[1.94rem] min-[480px]:text-[2.08rem] sm:text-[2.2rem] md:text-[2.45rem] lg:text-[2.72rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-9 md:mb-11">
             Je transforme votre<br className="sm:hidden" /> <span className="text-brand">idée</span><br className="hidden sm:block" /> en <span className="text-brand">application</span><br className="sm:hidden" />
             <span className="sm:hidden"> qui génère{' '}
               <span className="relative z-0 inline-block whitespace-nowrap text-brand after:content-[''] after:absolute after:-left-2 after:-right-2 after:bottom-[-1px] after:h-[26%] after:rounded after:bg-[rgba(102,93,255,0.22)] after:z-[-1]">des revenus</span>
