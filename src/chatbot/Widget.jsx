@@ -9,6 +9,10 @@ const WELCOME_MESSAGE = {
   text: "Bonjour 👋 Je suis l'assistant de Noé. Posez-moi vos questions sur votre projet d'application mobile.",
 }
 
+const DEFAULT_WHATSAPP_URL = `https://wa.me/33658308210?${new URLSearchParams({
+  text: "Bonjour Noé, j'aimerais discuter de mon projet d'application.",
+})}`
+
 // Construit les composants markdown avec un callback pour fermer le chatbot
 // quand l'utilisateur clique sur le lien /rendez-vous (redirection Calendly).
 const buildMdComponents = (onCalendlyClick) => ({
@@ -75,7 +79,9 @@ function TypingDots() {
 //   sur la home + scroller vers Calendly sans full reload. Si absent, on
 //   utilise un fallback `history.pushState` + scroll (qui peut donner une
 //   page blanche en production si la home n'est pas deja chargee).
-export default function ChatbotWidget({ onBookCall }) {
+//   contactMode: 'chatbot' garde le comportement IA, 'whatsapp' redirige le
+//   bouton flottant vers WhatsApp sans supprimer le systeme IA.
+export default function ChatbotWidget({ onBookCall, contactMode = 'chatbot', whatsappUrl = DEFAULT_WHATSAPP_URL }) {
   const [hasScrolled, setHasScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [sessionId, setSessionId] = useState('')
@@ -205,14 +211,29 @@ export default function ChatbotWidget({ onBookCall }) {
   }, [onBookCall])
 
   const mdComponents = buildMdComponents(handleCalendlyClick)
+  const usesWhatsApp = contactMode === 'whatsapp'
+
+  const handleFloatingClick = () => {
+    if (!usesWhatsApp) {
+      setOpen((v) => !v)
+      return
+    }
+
+    const opened = window.open(whatsappUrl, '_blank')
+    if (opened) {
+      opened.opener = null
+      return
+    }
+    window.location.href = whatsappUrl
+  }
 
   return (
     <>
       {/* Bouton flottant — icône WhatsApp en violet brand */}
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-label={open ? 'Fermer le chat' : 'Ouvrir le chat avec Noé'}
+        onClick={handleFloatingClick}
+        aria-label={usesWhatsApp ? 'Discuter avec Noé sur WhatsApp' : open ? 'Fermer le chat' : 'Ouvrir le chat avec Noé'}
         className="fixed bottom-2 right-6 md:bottom-6 z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-500 hover:scale-110 cursor-pointer flex items-center justify-center bg-brand"
         style={{
           opacity: hasScrolled ? 1 : 0,
@@ -245,7 +266,7 @@ export default function ChatbotWidget({ onBookCall }) {
       </button>
 
       {/* Modal chat */}
-      {open && (
+      {open && !usesWhatsApp && (
         <div
           className="fixed bottom-18 right-6 md:bottom-24 z-[100] flex flex-col bg-white rounded-3xl shadow-2xl border border-card-border overflow-hidden"
           style={{

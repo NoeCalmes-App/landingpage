@@ -7,13 +7,13 @@ const distDir = join(__dirname, '..', 'dist')
 const baseHtml = readFileSync(join(distDir, 'index.html'), 'utf-8')
 
 // Helper to patch all SEO meta tags
-function patchHtml(html, { path, title, description, heading, content, backLink = '← Retour à l\'accueil', backHref = 'https://noecalmes.fr/', breadcrumb }) {
+function patchHtml(html, { path, canonicalPath = path, title, description, heading, content, backLink = '← Retour à l\'accueil', backHref = 'https://noecalmes.fr/', breadcrumb }) {
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
   html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/, `<meta name="description" content="${description}" />`)
-  html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, `<link rel="canonical" href="https://noecalmes.fr${path}" />`)
+  html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, `<link rel="canonical" href="https://noecalmes.fr${canonicalPath}" />`)
   html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${title}" />`)
   html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${description}" />`)
-  html = html.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="https://noecalmes.fr${path}" />`)
+  html = html.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="https://noecalmes.fr${canonicalPath}" />`)
   html = html.replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${title}" />`)
   html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${description}" />`)
 
@@ -44,11 +44,11 @@ const sectionRoutes = [
     content: 'Expert en applications mobiles indépendant. J\'aide les entreprises à créer, reprendre et faire évoluer leur application mobile — en pensant business avant de penser code. Stratégie, design et développement de la conception au lancement sur les stores.',
   },
   {
-    path: '/etapes',
-    title: 'Comment créer une application mobile en 3 étapes | Noé Calmes',
-    description: 'Créer votre application mobile simplement : un échange pour cadrer votre projet, le développement, puis le lancement sur l\'App Store et Google Play.',
-    heading: 'Comment créer une application mobile',
-    content: 'Créer une application mobile en 3 étapes : cadrage pour comprendre votre besoin, développement de l\'application mobile, puis mise en ligne sur l\'App Store et Google Play. MVP en 45 jours, tarif fixe.',
+    path: '/creation-application-mobile',
+    title: 'Méthode de création d\'application mobile | Noé Calmes',
+    description: 'Découvrez ma méthode pour créer votre application mobile : cadrage clair, développement, puis lancement sur l\'App Store et Google Play.',
+    heading: 'Méthode de création d\'application mobile',
+    content: 'Une méthode simple pour créer votre application mobile : un échange pour cadrer le projet, un développement suivi avec des points réguliers, puis la mise en ligne sur l\'App Store et Google Play.',
   },
   {
     path: '/avis',
@@ -85,6 +85,31 @@ for (const route of sectionRoutes) {
   mkdirSync(routeDir, { recursive: true })
   writeFileSync(join(routeDir, 'index.html'), html)
   console.log(`✓ Generated ${route.path}/index.html`)
+}
+
+const legacySectionRoutes = [
+  {
+    path: '/etapes',
+    canonicalPath: '/creation-application-mobile',
+    title: 'Méthode de création d\'application mobile | Noé Calmes',
+    description: 'Découvrez ma méthode pour créer votre application mobile : cadrage clair, développement, puis lancement sur l\'App Store et Google Play.',
+    heading: 'Méthode de création d\'application mobile',
+    content: 'Cette page a évolué : retrouvez ma méthode de création d\'application mobile, du cadrage au lancement sur les stores.',
+  },
+]
+
+for (const route of legacySectionRoutes) {
+  const html = patchHtml(baseHtml, {
+    ...route,
+    breadcrumb: [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://noecalmes.fr/" },
+      { "@type": "ListItem", "position": 2, "name": route.heading, "item": `https://noecalmes.fr${route.canonicalPath}` },
+    ],
+  })
+  const routeDir = join(distDir, route.path)
+  mkdirSync(routeDir, { recursive: true })
+  writeFileSync(join(routeDir, 'index.html'), html)
+  console.log(`✓ Generated ${route.path}/index.html (legacy canonical)`)
 }
 
 // ─── Blog routes ──────────────────────────────────────────────────────────────

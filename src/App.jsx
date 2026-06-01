@@ -37,10 +37,16 @@ const SECTION_ROUTES = {
     title: 'Pourquoi travailler avec Noé Calmes — Expert en applications mobiles',
     description: 'Expert en applications mobiles indépendant. Création, reprise et évolution d\'applications iOS et Android — de la stratégie au lancement, pour les entreprises en France.',
   },
+  '/creation-application-mobile': {
+    id: 'offre',
+    title: 'Méthode de création d\'application mobile | Noé Calmes',
+    description: 'Découvrez ma méthode pour créer votre application mobile : cadrage clair, développement, puis lancement sur l\'App Store et Google Play.',
+  },
   '/etapes': {
     id: 'offre',
-    title: 'Comment créer une application mobile en 3 étapes | Noé Calmes',
-    description: 'Créer votre application mobile simplement : un échange pour cadrer votre projet, le développement, puis le lancement sur l\'App Store et Google Play.',
+    title: 'Méthode de création d\'application mobile | Noé Calmes',
+    description: 'Découvrez ma méthode pour créer votre application mobile : cadrage clair, développement, puis lancement sur l\'App Store et Google Play.',
+    canonicalPath: '/creation-application-mobile',
   },
   '/avis': {
     id: 'avis',
@@ -66,7 +72,7 @@ const SECTION_ROUTES = {
 
 const NAV_LINKS = [
   { href: '/expertise', label: 'Expertise' },
-  { href: '/etapes', label: 'Étapes' },
+  { href: '/creation-application-mobile', label: 'Méthode' },
   { href: '/audit', label: 'Audit' },
   { href: '/avis', label: 'Avis' },
 ]
@@ -264,12 +270,13 @@ function App() {
     const path = window.location.pathname.replace(/\/$/, '') || '/'
     const section = SECTION_ROUTES[path]
     if (section) {
+      const canonicalPath = section.canonicalPath || path
       document.title = section.title
       document.querySelector('meta[name="description"]')?.setAttribute('content', section.description)
-      document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://noecalmes.fr${path}`)
+      document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://noecalmes.fr${canonicalPath}`)
       document.querySelector('meta[property="og:title"]')?.setAttribute('content', section.title)
       document.querySelector('meta[property="og:description"]')?.setAttribute('content', section.description)
-      document.querySelector('meta[property="og:url"]')?.setAttribute('content', `https://noecalmes.fr${path}`)
+      document.querySelector('meta[property="og:url"]')?.setAttribute('content', `https://noecalmes.fr${canonicalPath}`)
       // Scroll vers la section une fois le DOM prêt
       // Réessayer plusieurs fois car le contenu peut mettre du temps à se charger
       const scrollToSection = () => {
@@ -896,7 +903,7 @@ function App() {
 
           {/* Nav links */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-            <a href="/etapes" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/etapes'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/etapes') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Étapes</a>
+            <a href="/creation-application-mobile" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/creation-application-mobile'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/creation-application-mobile') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Méthode</a>
             <a href="/audit-app" onClick={(e) => { e.preventDefault(); setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Audit gratuit</a>
             <a href="/rendez-vous" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/rendez-vous'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/rendez-vous') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Rendez-vous</a>
             <a href="/blog" onClick={(e) => { e.preventDefault(); goBlog() }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Blog</a>
@@ -938,11 +945,9 @@ function App() {
         </div>
       </footer>
 
-      {/* Chatbot IA flottant — remplace l'ancien bouton WhatsApp.
-          On passe goBookCall pour qu'un clic "Discuter avec Noé" depuis la
-          page audit-app (ou toute autre page non-home) bascule sur la home
-          + scroll Calendly sans full reload (sinon flash de page blanche). */}
-      <ChatbotWidget onBookCall={goBookCall} />
+      {/* Widget flottant : le systeme IA reste disponible dans ChatbotWidget,
+          mais on teste actuellement un bouton qui ouvre WhatsApp directement. */}
+      <ChatbotWidget onBookCall={goBookCall} contactMode="whatsapp" />
 
       {footerEmailOpen && <EmailModal onClose={() => setFooterEmailOpen(false)} />}
     </div>
