@@ -51,6 +51,11 @@ const SECTION_ROUTES = {
     title: 'FAQ — Création d\'application mobile | Noé Calmes',
     description: 'Questions fréquentes sur la création, la reprise et l\'évolution d\'application mobile : délais, tarifs, livraison et suivi après mise en ligne.',
   },
+  '/audit': {
+    id: 'audit',
+    title: 'Audit gratuit de votre application mobile | Noé Calmes',
+    description: 'Faites auditer votre application mobile : analyse rapide et recommandations concrètes pour repartir sur de bonnes bases.',
+  },
   '/rendez-vous': {
     id: 'calendly-section',
     title: 'Réserver un appel gratuit — Application mobile | Noé Calmes',
@@ -61,8 +66,8 @@ const SECTION_ROUTES = {
 const NAV_LINKS = [
   { href: '/expertise', label: 'Expertise' },
   { href: '/etapes', label: 'Étapes' },
+  { href: '/audit', label: 'Audit' },
   { href: '/avis', label: 'Avis' },
-  { href: '/faq', label: 'FAQ' },
 ]
 
 // `trigger` permet de re-attacher l'observer quand la page change.
@@ -447,20 +452,20 @@ function App() {
     <div ref={scrollRef}>
       {/* ========== NAVBAR ========== */}
       <nav className="anim-nav fixed inset-x-0 top-2.5 md:top-[18px] z-50 flex justify-center px-4 md:px-6">
-        <div className="w-full max-w-230">
+        <div className="w-full max-w-210">
           <div
             className={`backdrop-blur-[12px] border border-[#70707029] shadow-[0_1px_3px_#00000017] overflow-hidden rounded-[40px] transition-[background-color] duration-300 ease-in-out ${
               menuOpen ? 'bg-[#ffffffee]' : 'bg-[#fffefc3d]'
             }`}
           >
-            {/* Bar — 80px */}
-            <div className="flex items-center justify-between h-20 px-6 md:px-7">
+            {/* Bar */}
+            <div className="flex items-center justify-between h-[68px] px-6 md:px-7">
               {/* Brand */}
-              <a href="#" className="flex flex-col">
-                <span className="text-text font-bold text-xl md:text-1xl leading-tight tracking-tight" style={{ fontFamily: "'Poppins', sans-serif" }}>
+              <a href="#" className="flex flex-col gap-[5px]">
+                <span className="text-text font-bold text-xl md:text-1xl leading-none tracking-tight" style={{ fontFamily: "'Poppins', sans-serif" }}>
                   Noé Calmes
                 </span>
-                <span className="text-grey text-sm md:text-md leading-tight font-normal">
+                <span className="text-grey text-[0.7rem] md:text-[0.75rem] leading-none font-normal">
                   Expert en applications mobiles
                 </span>
               </a>
@@ -479,9 +484,9 @@ function App() {
               <div className="flex items-center gap-3">
                 <button
                   onClick={scrollToCalendly}
-                  className="hidden min-[480px]:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
+                  className="hidden min-[480px]:inline-block bg-[#131313] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors cursor-pointer"
                 >
-                  Discuter de mon projet
+                  Réserver un créneau
                 </button>
 
                 <button
@@ -517,7 +522,7 @@ function App() {
                     className="min-[480px]:hidden text-center bg-[#131313] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer"
                     onClick={() => { setMenuOpen(false); scrollToCalendly() }}
                   >
-                    Discuter de mon projet
+                    Discuter de ton projet
                   </button>
                 </div>
               </div>
@@ -528,58 +533,61 @@ function App() {
 
       {/* ========== HERO (plein écran avec gradient) ========== */}
       <section
-        className="min-h-screen flex items-center justify-center text-center px-5 md:px-10 lg:px-16 pt-40 pb-16 md:pt-44 md:pb-20"
-        style={{ backgroundImage: 'radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 50%, transparent), linear-gradient(0deg, #f9f9f9, #867ffe 23%, var(--color-brand) 75%, white)' }}
+        className="hero-bg relative min-h-screen flex items-center justify-center text-center px-3 sm:px-5 md:px-10 lg:px-16 pt-36 pb-20 md:pt-44 md:pb-24 overflow-hidden"
       >
-        <div className="anim-hero max-w-275 mx-auto w-full">
-          {/* App stack proof */}
-          <div className="flex items-center justify-center gap-2 mb-7 md:mb-8">
-            <div className="flex items-center">
-              {[snapIcon, calorieIcon, purgeIcon, hushIcon].map((icon, i) => (
-                <img
-                  key={i}
-                  src={icon}
-                  alt=""
-                  width="28"
-                  height="28"
-                  className="w-7 h-7 md:w-8 md:h-8 rounded-[28%] shadow-sm border border-white/40 object-cover"
-                  style={{ marginLeft: i === 0 ? 0 : '-7px', zIndex: i }}
-                />
-              ))}
+        <div className="hero-visual" aria-hidden="true" />
+
+        <div className="hero-content anim-hero relative z-10 max-w-3xl mx-auto w-full">
+          {/* Pill — preuve apps réelles */}
+          <div className="flex justify-center mb-7 md:mb-9">
+            <div className="inline-flex items-center gap-2.5 sm:gap-3 rounded-full bg-white/70 backdrop-blur-sm border border-brand-pale pl-1.5 pr-3.5 sm:pl-2 sm:pr-4 py-1 sm:py-1.5 shadow-[0_2px_14px_rgba(102,93,255,0.13)]">
+              <div className="flex items-center">
+                {[snapIcon, calorieIcon, purgeIcon, hushIcon].map((icon, i) => (
+                  <img
+                    key={i}
+                    src={icon}
+                    alt=""
+                    width="30"
+                    height="30"
+                    className="w-6 h-6 sm:w-7 sm:h-7 rounded-[28%] border border-white object-cover"
+                    style={{ marginLeft: i === 0 ? 0 : '-7px', zIndex: i }}
+                  />
+                ))}
+              </div>
+              <p className="text-text text-[0.74rem] sm:text-[0.82rem] md:text-[0.88rem] font-medium">
+                <span className="text-brand font-bold">+20 applications</span> publiées
+              </p>
             </div>
-            <p className="text-text text-[0.8rem] md:text-[0.88rem] font-medium">
-              <span className="text-brand font-bold">+20 applications</span> publiées sur les stores
-            </p>
           </div>
 
-            <h1 className="font-heading text-[2.275rem] sm:text-[2.25rem] md:text-[2.75rem] lg:text-[3.25rem] font-extrabold text-text tracking-tight leading-[1.15] mb-10 md:mb-12">
-              Je transforme votre idée <br className="hidden sm:block" />
-              en <span className="text-brand">application</span> qui génère <br className="hidden md:block" />
-              <span className="text-brand relative">des revenus
-              <svg
-                className="absolute md:-bottom-4 -bottom-3.5 left-1/2 -translate-x-[60%] md:-translate-x-[60%] w-[70%] md:w-[70%] h-4.5 -rotate-1"
-                viewBox="0 0 180 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M2 11 C55 4 120 4 178 7" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
-              </svg>
+          {/* Titre — retour lisible, accent unique sur "application" + revenus */}
+          <h1 className="font-heading text-[1.78rem] min-[375px]:text-[1.85rem] min-[414px]:text-[1.98rem] min-[430px]:text-[2.05rem] min-[480px]:text-[2.15rem] sm:text-[2.1rem] md:text-[2.35rem] lg:text-[2.6rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-9 md:mb-11">
+            Je transforme votre<br className="sm:hidden" /> idée<br className="hidden sm:block" /> en <span className="text-brand">application</span><br className="sm:hidden" />{/* Mobile : "qui génère des" puis "revenus" surligné */}
+            <span className="sm:hidden"> qui génère des<br />{' '}
+              <span className="relative z-0 inline-block whitespace-nowrap text-brand after:content-[''] after:absolute after:-left-2 after:-right-2 after:bottom-[-1px] after:h-[26%] after:rounded after:bg-[rgba(102,93,255,0.22)] after:z-[-1]">revenus</span>
+            </span>
+            {/* Desktop : "qui génère" puis "des revenus" surligné */}
+            <span className="hidden sm:inline"> qui génère<br />{' '}
+              <span className="relative z-0 inline-block whitespace-nowrap text-brand after:content-[''] after:absolute after:-left-2 after:-right-2 after:bottom-[-1px] after:h-[26%] after:rounded after:bg-[rgba(102,93,255,0.22)] after:z-[-1]">des revenus</span>
             </span>
           </h1>
 
-          <button
-            onClick={scrollToCalendly}
-            className="group inline-flex items-center gap-3 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
-          >
-            <span className="pr-1">Discuter de mon projet</span>
-            <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </button>
+          {/* CTA */}
+          <div className="flex justify-center">
+            <button
+              onClick={scrollToCalendly}
+              className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
+            >
+              <span className="pr-0.5 md:pr-1">Discuter de ton projet</span>
+              <svg className="w-[18px] h-[18px] md:w-[22px] md:h-[22px] transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </button>
+          </div>
 
-          {/* Proof */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-8 mt-16 md:mt-18">
+          {/* Proof — points ronds */}
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:gap-x-10 mt-10 md:mt-14">
             {['Tarif fixe, zéro surprise', 'Publication App Store & Google Play', 'Suivi après mise en ligne'].map((text) => (
               <div key={text} className="flex items-center gap-2.5 text-text text-[0.85rem] md:text-[0.9rem] font-medium">
                 <span className="shrink-0 w-5 h-5 rounded-full bg-brand flex items-center justify-center">
@@ -602,23 +610,22 @@ function App() {
           <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-8 md:mb-12">
             Pourquoi me faire <span className="text-brand">confiance ?</span>
           </h2>
-          <div className="reveal max-w-[860px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-10 md:mb-14">
+          <div className="reveal max-w-[780px] mx-auto grid grid-cols-1 sm:grid-cols-2 rounded-2xl border border-card-border overflow-hidden mb-10 md:mb-14">
             {/* Agences */}
-            <div className="bg-card border border-card-border rounded-[15px] p-7 md:p-8">
-              <div className="mb-6">
-                <p className="text-text font-bold text-[1.05rem]">Agences traditionnelles</p>
-                <p className="text-grey text-[0.82rem] mt-1">L'ancienne méthode</p>
-              </div>
-              <ul className="space-y-4">
+            <div className="p-8 md:p-10 bg-card">
+              <p className="text-text font-bold text-[1.1rem] mb-7">Agences</p>
+              <ul className="space-y-5">
                 {[
                   '3 à 6 mois de développement',
-                  'Budget à partir de 15 000 €',
-                  'Jamais disponible, difficile à joindre',
+                  'À partir de 15 000 €',
+                  'Difficile à joindre',
                   'Projet livré, débrouillez-vous',
-                  'Pas de réponse avant 48h minimum',
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-grey text-[0.9rem] md:text-[0.93rem]">
-                    <span className="shrink-0 w-5 h-5 rounded-full bg-red-bg text-red-text flex items-center justify-center text-xs font-bold">✗</span>
+                  <li key={item} className="flex items-center gap-3.5 text-grey text-[0.95rem] font-semibold leading-relaxed">
+                    <svg className="shrink-0 text-red-text" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
                     {item}
                   </li>
                 ))}
@@ -626,21 +633,19 @@ function App() {
             </div>
 
             {/* Noé */}
-            <div className="bg-brand rounded-[15px] p-7 md:p-8">
-              <div className="mb-6">
-                <p className="text-white font-bold text-[1.05rem]">Noé Calmes</p>
-                <p className="text-white/60 text-[0.82rem] mt-1">Mon approche</p>
-              </div>
-              <ul className="space-y-4">
+            <div className="p-8 md:p-10 border-t sm:border-t-0 sm:border-l border-card-border">
+              <p className="text-brand font-bold text-[1.1rem] mb-7">Noé Calmes</p>
+              <ul className="space-y-5">
                 {[
                   'Livraison en 6 à 8 semaines',
                   'À partir de 3 500 €',
-                  'Un seul expert, joignable directement 6j/7',
-                  'Pensé business pour générer des revenus',
-                  'Spécialisé Flutter (iOS & Android)',
+                  'Joignable directement 6j/7',
+                  'Pensé pour générer des revenus',
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-white text-[0.9rem] md:text-[0.93rem]">
-                    <span className="shrink-0 w-5 h-5 rounded-full bg-white/20 text-white flex items-center justify-center text-xs font-bold">✓</span>
+                  <li key={item} className="flex items-center gap-3.5 text-text text-[0.95rem] font-semibold leading-relaxed">
+                    <svg className="shrink-0 text-brand" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
                     {item}
                   </li>
                 ))}
@@ -756,7 +761,7 @@ function App() {
             Parlons de <span className="text-brand">votre application</span>
           </h2>
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-4">
-            Vous avez une idée&nbsp;? Une app mobile déjà en ligne&nbsp;?
+            Vous avez une idée&nbsp;? Une application déjà en ligne&nbsp;?
           </p>
           <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-6 md:mb-0 -mt-2 min-h-[1.5rem]">
             {spotsLoaded ? (

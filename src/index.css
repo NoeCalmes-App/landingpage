@@ -104,6 +104,73 @@ section[id] {
 .anim-hero > *:nth-child(6) { animation-delay: 0.75s; }
 .anim-hero > *:nth-child(7) { animation-delay: 0.85s; }
 
+/* ===== HERO BACKGROUND ===== */
+.hero-bg {
+  background:
+    radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 74%, transparent),
+    linear-gradient(0deg, #f9f9f9, #b8b3ff 14%, #9a93ff 48%, white 97%);
+  isolation: isolate;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background: none;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background: none;
+}
+
+.hero-visual {
+  display: none;
+}
+
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, rgba(102, 93, 255, 0.14) 0%, rgba(102, 93, 255, 0.06) 36%, rgba(255, 254, 252, 0) 62%),
+    linear-gradient(245deg, rgba(135, 150, 255, 0.16) 0%, rgba(135, 150, 255, 0.07) 34%, rgba(255, 254, 252, 0) 62%);
+  opacity: 0.68;
+}
+
+.hero-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 254, 252, 0.2), rgba(255, 254, 252, 0.04) 50%, rgba(255, 254, 252, 0.2)),
+    linear-gradient(180deg, rgba(255, 254, 252, 0.32), rgba(255, 254, 252, 0) 40%, rgba(255, 254, 252, 0.62));
+}
+
+.hero-content {
+  transform: none;
+}
+
+@media (max-width: 640px) {
+  .hero-bg::before {
+    background: none;
+  }
+
+  .hero-bg::after {
+    background: none;
+  }
+
+  .hero-content {
+    transform: none;
+  }
+}
+
 /* Scroll reveal — sections & items */
 @keyframes revealUp {
   from { opacity: 0; transform: translateY(40px); }
