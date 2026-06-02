@@ -565,7 +565,7 @@ function App() {
                 ))}
               </div>
               <p className="text-text text-[0.74rem] sm:text-[0.82rem] md:text-[0.88rem] font-medium">
-                <span className="text-brand font-bold">+20 applications</span> publiées
+                <span className="text-brand font-bold">+20 applications</span><span className="sm:hidden"> publiées</span><span className="hidden sm:inline"> déjà publiées</span>
               </p>
             </div>
           </div>
