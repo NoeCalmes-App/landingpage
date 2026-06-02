@@ -573,14 +573,14 @@ function App() {
           {/* Titre — même direction desktop/mobile, avec des retours adaptés aux petits écrans */}
           <h1 className="font-heading text-[1.56rem] min-[375px]:text-[1.62rem] min-[414px]:text-[1.78rem] min-[430px]:text-[1.9rem] min-[480px]:text-[2.08rem] sm:text-[2.34rem] md:text-[2.72rem] lg:text-[3.08rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-9 md:mb-11">
             <span className="sm:hidden text-text font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
-              Je <span className="inline-block mx-1 text-[#828282] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> votre<br />
+              Je <span className="inline-block mx-1 text-[#4b4b4b] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> votre<br />
               idée en application qui<br />
               <span className="inline-block whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent py-1 -my-1">
                 génère des revenus
               </span>
             </span>
             <span className="hidden sm:inline text-text font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
-              Je <span className="inline-block mx-1.5 text-[#828282] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> votre idée en<br />
+              Je <span className="inline-block mx-1.5 text-[#4b4b4b] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> votre idée en<br />
               app qui{' '}
               <span className="inline-block whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent py-1 -my-1">
                 génère des revenus
