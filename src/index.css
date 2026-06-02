@@ -24,6 +24,22 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Plus Jakarta Sans Local';
+  src: url('/src/assets/font/PlusJakartaSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans Local';
+  src: url('/src/assets/font/PlusJakartaSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-surface: #fffefc;
   --color-text: #033475;
@@ -55,6 +71,10 @@ body {
   font-family: var(--font-sans);
   background-color: var(--color-surface);
   color: var(--color-text);
+}
+
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', 'Inter', sans-serif;
 }
 
 section[id] {

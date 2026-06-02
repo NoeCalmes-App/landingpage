@@ -472,7 +472,7 @@ function App() {
             <div className="flex items-center justify-between h-[68px] px-6 md:px-7">
               {/* Brand */}
               <a href="#" className="flex flex-col gap-[7px]">
-                <span className="text-text font-bold text-xl md:text-1xl leading-none tracking-tight" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                <span className="font-jakarta text-text font-extrabold text-xl md:text-1xl leading-none tracking-tight">
                   Noé Calmes
                 </span>
                 <span className="text-grey text-[0.7rem] md:text-[0.75rem] leading-none font-normal">
@@ -570,20 +570,26 @@ function App() {
             </div>
           </div>
 
-          {/* Titre — accent sur l'idée, revenus plus lisibles sur mobile */}
-          <h1 className="font-heading text-[1.66rem] min-[375px]:text-[1.74rem] min-[414px]:text-[1.86rem] min-[430px]:text-[1.94rem] min-[480px]:text-[2.08rem] sm:text-[2.2rem] md:text-[2.45rem] lg:text-[2.72rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-9 md:mb-11">
-            Je transforme votre<br className="sm:hidden" /> <span className="text-brand">idée</span><br className="hidden sm:block" /> en <span className="text-brand">application</span><br className="sm:hidden" />
-            <span className="sm:hidden"> qui génère{' '}
-              <span className="relative z-0 inline-block whitespace-nowrap text-brand after:content-[''] after:absolute after:-left-2 after:-right-2 after:bottom-[-1px] after:h-[26%] after:rounded after:bg-[rgba(102,93,255,0.22)] after:z-[-1]">des revenus</span>
+          {/* Titre — même direction desktop/mobile, avec des retours adaptés aux petits écrans */}
+          <h1 className="font-heading text-[1.56rem] min-[375px]:text-[1.62rem] min-[414px]:text-[1.78rem] min-[430px]:text-[1.9rem] min-[480px]:text-[2.08rem] sm:text-[2.34rem] md:text-[2.72rem] lg:text-[3.08rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-9 md:mb-11">
+            <span className="sm:hidden text-text font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
+              Je <span className="inline-block mx-1 text-[#828282] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> votre<br />
+              idée en application qui<br />
+              <span className="inline-block whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent py-1 -my-1">
+                génère des revenus
+              </span>
             </span>
-            {/* Desktop : "qui génère" puis "des revenus" surligné */}
-            <span className="hidden sm:inline"> qui génère<br />{' '}
-              <span className="relative z-0 inline-block whitespace-nowrap text-brand after:content-[''] after:absolute after:-left-2 after:-right-2 after:bottom-[-1px] after:h-[26%] after:rounded after:bg-[rgba(102,93,255,0.22)] after:z-[-1]">des revenus</span>
+            <span className="hidden sm:inline text-text font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
+              Je <span className="inline-block mx-1.5 text-[#828282] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> votre idée en<br />
+              app qui{' '}
+              <span className="inline-block whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent py-1 -my-1">
+                génère des revenus
+              </span>
             </span>
           </h1>
 
-          {/* CTA */}
-          <div className="flex justify-center mb-3 md:mb-5">
+          {/* CTA mobile */}
+          <div className="flex justify-center mb-3 sm:hidden">
             <button
               onClick={scrollToCalendly}
               className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
@@ -596,9 +602,21 @@ function App() {
             </button>
           </div>
 
-          {/* Proof — points ronds */}
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:gap-x-10 mt-10 md:mt-14">
-            {['Tarif fixe, zéro surprise', 'Publication App Store & Google Play', 'Suivi après mise en ligne'].map((text) => (
+          {/* Proof mobile — ordre inchange */}
+          <div className="flex flex-col items-center justify-center gap-5 mt-10 sm:hidden">
+            {['Tarif fixe, zéro surprise', 'Publication sur les stores', 'Suivi après mise en ligne'].map((text) => (
+              <div key={text} className="flex items-center gap-2.5 text-text text-[0.85rem] font-medium">
+                <span className="shrink-0 w-5 h-5 rounded-full bg-brand flex items-center justify-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                </span>
+                {text}
+              </div>
+            ))}
+          </div>
+
+          {/* Proof desktop — au-dessus du bouton */}
+          <div className="hidden sm:flex flex-wrap items-center justify-center gap-x-10 gap-y-4 mt-10 md:mt-14">
+            {['Tarif fixe, zéro surprise', 'Publication sur les stores', 'Suivi après mise en ligne'].map((text) => (
               <div key={text} className="flex items-center gap-2.5 text-text text-[0.85rem] md:text-[0.9rem] font-medium">
                 <span className="shrink-0 w-5 h-5 rounded-full bg-brand flex items-center justify-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-white" />
@@ -606,6 +624,20 @@ function App() {
                 {text}
               </div>
             ))}
+          </div>
+
+          {/* CTA desktop */}
+          <div className="hidden sm:flex justify-center mt-8 md:mt-10 mb-3 md:mb-5">
+            <button
+              onClick={scrollToCalendly}
+              className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
+            >
+              <span className="pr-0.5 md:pr-1">Discuter de ton projet</span>
+              <svg className="w-[18px] h-[18px] md:w-[22px] md:h-[22px] transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </button>
           </div>
 
         </div>
@@ -617,7 +649,7 @@ function App() {
           <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
             La différence
           </p>
-          <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-8 md:mb-12">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-8 md:mb-12">
             Pourquoi me faire <span className="text-brand">confiance ?</span>
           </h2>
           <div className="reveal max-w-[780px] mx-auto grid grid-cols-1 sm:grid-cols-2 rounded-2xl border border-card-border overflow-hidden mb-10 md:mb-14">
@@ -682,7 +714,7 @@ function App() {
       {/* ========== AUTORITÉ ========== */}
       <section className="pt-18  pb-16 md:pt-28 md:pb-22 px-5 bg-card" id="why">
         <div className="max-w-275 mx-auto">
-          <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-4">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-4">
             Pourquoi travailler <span className="text-brand">avec moi</span>
           </h2>
 
@@ -739,7 +771,7 @@ function App() {
       {/* ========== PROCESS ========== */}
       <section className="py-16 md:py-22 px-5" id="offre">
         <div className="max-w-275 mx-auto">
-          <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-10 md:mb-12">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-10 md:mb-12">
             Comment <span className="text-brand">ça se passe ?</span>
           </h2>
 
@@ -767,7 +799,7 @@ function App() {
       {/* ========== CALENDLY ========== */}
       <section className="pt-16 md:pt-22 pb-0 md:pb-0 px-5 bg-card" id="calendly-section">
         <div className="max-w-275 mx-auto text-center">
-          <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight mb-3 md:mb-4">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-3 md:mb-4">
             Parlons de <span className="text-brand">votre application</span>
           </h2>
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-4">
@@ -799,7 +831,7 @@ function App() {
       {/* ========== REVIEWS ========== */}
       <section className="py-16 md:py-22 px-5" id="avis">
         <div className="max-w-275 mx-auto">
-          <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-10 md:mb-12">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-10 md:mb-12">
             Ce qu'ils <span className="text-brand">disent...</span> 
           </h2>
           <ReviewsCarousel />
@@ -811,45 +843,34 @@ function App() {
           + dot pattern + glassmorphism. Volontairement court, la pédagogie
           complète est sur /audit-app. */}
       <section className="pt-2 pb-12 md:pt-2 md:pb-14 px-4 md:px-6" id="audit">
-        <div className="max-w-230 mx-auto">
-          <div className="reveal relative overflow-hidden rounded-[28px] md:rounded-[36px] bg-brand px-5 py-11 md:px-10 md:py-11 text-center">
-            {/* Glows brand-light en fond pour donner de la profondeur */}
-            <div className="pointer-events-none absolute -top-32 -left-20 w-96 h-96 rounded-full bg-brand-light opacity-50 blur-[90px]" />
-            <div className="pointer-events-none absolute -bottom-28 -right-16 w-80 h-80 rounded-full bg-brand-pale opacity-40 blur-[90px]" />
-            {/* Grille de points subtile */}
-            <div
-              className="pointer-events-none absolute inset-0 opacity-[0.09]"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px)',
-                backgroundSize: '24px 24px',
-              }}
-            />
+        <div className="max-w-210 mx-auto">
+          <div className="reveal relative overflow-hidden rounded-[28px] md:rounded-[34px] border border-brand/10 bg-white px-5 py-11 md:px-10 md:py-12 text-center shadow-[0_20px_55px_-44px_rgba(102,93,255,0.55)]">
+            <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-[#665dff] opacity-[0.12] blur-[58px]" />
 
             <div className="relative">
               {/* Badge glassmorphism */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 mb-7 md:mb-8">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand/6 border border-brand/12 mb-7 md:mb-8">
                 <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-70" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-60" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
                 </span>
-                <span className="text-white text-[0.72rem] font-semibold tracking-widest uppercase">
+                <span className="font-jakarta text-brand text-[0.72rem] font-extrabold tracking-widest uppercase">
                   Audit express · 2 min
                 </span>
               </div>
 
-              <h2 className="font-heading text-white text-[1.95rem] sm:text-[2.35rem] md:text-[2.85rem] font-bold tracking-tight leading-[1.08] max-w-140 mx-auto mb-5 md:mb-6">
+              <h2 className="font-jakarta text-text text-[1.95rem] sm:text-[2.35rem] md:text-[2.85rem] font-extrabold tracking-tight leading-[1.08] max-w-140 mx-auto mb-5 md:mb-6">
                 Les 3 réponses{' '}
-                <span className="text-brand-pale">avant d'investir 1&nbsp;€</span>
+                <span className="text-brand">avant d'investir 1&nbsp;€</span>
               </h2>
 
-              <p className="text-white/80 text-[0.95rem] md:text-[1.05rem] max-w-115 mx-auto mb-9 md:mb-11 leading-relaxed">
+              <p className="text-grey text-[0.95rem] md:text-[1.05rem] max-w-115 mx-auto mb-9 md:mb-11 leading-relaxed">
                 Marché, budget, délai. En 2 minutes, sans appel.
               </p>
 
               <button
                 onClick={() => { setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }}
-                className="group inline-flex items-center gap-2.5 bg-white text-brand font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer shadow-[0_15px_35px_-18px_rgba(102,93,255,0.5)]"
+                className="group inline-flex items-center gap-2.5 bg-brand text-white font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer shadow-[0_16px_38px_-20px_rgba(102,93,255,0.85)]"
               >
                 Lancer mon audit
                 <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -858,7 +879,7 @@ function App() {
                 </svg>
               </button>
 
-              <p className="text-white/60 text-[0.78rem] mt-4">
+              <p className="text-grey/60 text-[0.78rem] mt-4">
                 Gratuit · résultat immédiat
               </p>
             </div>
@@ -869,7 +890,7 @@ function App() {
       {/* ========== FAQ ========== */}
       <section className="py-16 md:py-22 px-5 bg-card" id="faq">
         <div className="max-w-275 mx-auto">
-          <h2 className="reveal font-heading text-text text-2xl md:text-[2.1rem] font-bold tracking-tight text-center mb-6 md:mb-12">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-6 md:mb-12">
             <span className="text-brand">Vos questions</span>, nos réponses
           </h2>
           <FaqAccordion />
@@ -897,7 +918,7 @@ function App() {
 
         <div className="relative z-10 flex flex-col items-center text-center gap-8 max-w-275 mx-auto">
           {/* Name */}
-          <p className="text-white font-bold text-xl md:text-4xl tracking-tight md:pb-3" style={{ fontFamily: "'Poppins', sans-serif" }}>
+          <p className="font-jakarta text-white font-extrabold text-xl md:text-4xl tracking-tight md:pb-3">
             Noé Calmes.
           </p>
 
