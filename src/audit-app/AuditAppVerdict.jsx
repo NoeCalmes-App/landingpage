@@ -8,7 +8,7 @@
 //   - La ou vous pouvez creuser (differenciation)
 //   - Le defi principal
 //   - Plan d'action concret (numerote)
-//   - Prix indicatif + Delai indicatif (cote a cote)
+//   - Prix non chiffre + delai indicatif
 //   - CTA selon branche A (appel Calendly) ou C (lien noecalmes.fr)
 //
 // Chaque section masquee si son contenu est vide — l'UI s'adapte aux
@@ -26,15 +26,15 @@ export default function AuditAppVerdict({
   const concurrentsCount = (verdict.concurrents || []).length
   const hasConcurrents = concurrentsCount > 0
   const hasDiff = (verdict.differenciation || []).length > 0
-  // plan_action retire de l'UI volontairement (cf. note ci-dessous au rendu)
-  const hasPrix = Boolean(verdict.prix_indicatif)
-  const hasDelai = Boolean(verdict.delai_indicatif)
+  // plan_action retire de l'UI volontairement : l'audit donne des reperes,
+  // le chiffrage complet passe par l'appel puis le devis.
   const hasDefi = Boolean(verdict.defi_principal)
+  const hasDelai = Boolean(verdict.delai_indicatif)
 
-  // Densité de la zone "middle right" (def / diff / prix / délai).
+  // Densité de la zone "middle right" (défi / différenciation / chiffrage).
   // On compte les blocs distincts qui rempliraient la colonne droite.
   const midRightCount =
-    (hasDefi ? 1 : 0) + (hasDiff ? 1 : 0) + (hasPrix ? 1 : 0) + (hasDelai ? 1 : 0)
+    (hasDefi ? 1 : 0) + (hasDiff ? 1 : 0) + 1
 
   // Mode Bento desktop = on a assez de matière pour équilibrer 2 colonnes :
   // au moins 2 concurrents à gauche, au moins 2 blocs à droite.
@@ -150,42 +150,10 @@ export default function AuditAppVerdict({
                     <BulletList items={verdict.differenciation} bulletAccent="brand" />
                   </SectionCard>
                 )}
-                {(hasPrix || hasDelai) && (
-                  <SectionCard
-                    label="Pour un devis précis"
-                    icon={<EuroIcon />}
-                    accent="neutral"
-                  >
-                    <div className="space-y-3.5">
-                      {hasPrix && (
-                        <div>
-                          <p className="text-text font-semibold text-[0.88rem] md:text-[0.9rem] mb-1">
-                            Le prix
-                          </p>
-                          <p className="text-text/85 text-[0.92rem] md:text-[0.95rem] leading-relaxed">
-                            {verdict.prix_indicatif}
-                          </p>
-                        </div>
-                      )}
-                      {hasDelai && (
-                        <div
-                          className={
-                            hasPrix
-                              ? 'pt-3.5 border-t border-card-border'
-                              : ''
-                          }
-                        >
-                          <p className="text-text font-semibold text-[0.88rem] md:text-[0.9rem] mb-1">
-                            Le délai
-                          </p>
-                          <p className="text-text/85 text-[0.92rem] md:text-[0.95rem] leading-relaxed">
-                            {verdict.delai_indicatif}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </SectionCard>
-                )}
+                <PriceTimingCard
+                  delai={hasDelai ? verdict.delai_indicatif : ''}
+                  onBookCall={onBookCall}
+                />
               </div>
             </div>
           ) : (
@@ -231,42 +199,10 @@ export default function AuditAppVerdict({
                   <BulletList items={verdict.differenciation} bulletAccent="brand" />
                 </SectionCard>
               )}
-              {(hasPrix || hasDelai) && (
-                <SectionCard
-                  label="Pour un devis précis"
-                  icon={<EuroIcon />}
-                  accent="neutral"
-                >
-                  <div className="space-y-3.5">
-                    {hasPrix && (
-                      <div>
-                        <p className="text-text font-semibold text-[0.88rem] md:text-[0.9rem] mb-1">
-                          Le prix
-                        </p>
-                        <p className="text-text/85 text-[0.92rem] md:text-[0.95rem] leading-relaxed">
-                          {verdict.prix_indicatif}
-                        </p>
-                      </div>
-                    )}
-                    {hasDelai && (
-                      <div
-                        className={
-                          hasPrix
-                            ? 'pt-3.5 border-t border-card-border'
-                            : ''
-                        }
-                      >
-                        <p className="text-text font-semibold text-[0.88rem] md:text-[0.9rem] mb-1">
-                          Le délai
-                        </p>
-                        <p className="text-text/85 text-[0.92rem] md:text-[0.95rem] leading-relaxed">
-                          {verdict.delai_indicatif}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </SectionCard>
-              )}
+              <PriceTimingCard
+                delai={hasDelai ? verdict.delai_indicatif : ''}
+                onBookCall={onBookCall}
+              />
             </>
           )}
 
@@ -328,6 +264,46 @@ function SectionCard({ label, icon, accent = 'neutral', children }) {
       </div>
       <div>{children}</div>
     </article>
+  )
+}
+
+function PriceTimingCard({ delai, onBookCall }) {
+  return (
+    <SectionCard
+      label="Prix et délai"
+      icon={<EuroIcon />}
+      accent="neutral"
+    >
+      <div className="space-y-4">
+        <div>
+          <p className="text-text font-semibold text-[0.88rem] md:text-[0.9rem] mb-1">
+            Le prix
+          </p>
+          <p className="text-text/85 text-[0.92rem] md:text-[0.95rem] leading-relaxed">
+            Impossible de donner un prix honnête sans cadrer précisément votre application. Le bon réflexe : prendre rendez-vous avec moi pour regarder le périmètre, les fonctionnalités et le modèle de revenus, puis recevoir un devis clair.
+          </p>
+        </div>
+
+        {delai && (
+          <div className="pt-3.5 border-t border-card-border">
+            <p className="text-text font-semibold text-[0.88rem] md:text-[0.9rem] mb-1">
+              Le délai
+            </p>
+            <p className="text-text/85 text-[0.92rem] md:text-[0.95rem] leading-relaxed">
+              {delai}
+            </p>
+          </div>
+        )}
+
+        <button
+          onClick={onBookCall}
+          className="inline-flex items-center gap-2 text-brand font-semibold text-[0.9rem] hover:opacity-80 transition-opacity cursor-pointer"
+        >
+          Prendre rendez-vous
+          <ArrowRightIcon size={14} />
+        </button>
+      </div>
+    </SectionCard>
   )
 }
 

@@ -86,11 +86,11 @@ const FALLBACK_VERDICTS: Record<Branch, VerdictGenerated> = {
       "Etablir un budget realiste et un delai coherent avec vos contraintes",
     ],
     prix_indicatif:
-      "Sur la base des elements actuels, je ne peux pas vous donner de fourchette precise. Mon ticket d'entree est de 3 500 EUR, et la majorite des projets se situent entre 5 000 et 15 000 EUR pour une V1. Le chiffrage exact se fait en appel.",
+      "Impossible de donner un prix honnete sans cadrer precisement votre application. Le tarif depend du perimetre a developper, du niveau de design attendu, des integrations et du niveau de finition souhaite. Le bon reflexe est de prendre rendez-vous pour transformer cet audit en devis clair.",
     delai_indicatif:
-      "Pour un MVP standard, comptez entre 4 et 10 semaines. Le delai precis depend de la complexite finale qu'on definira ensemble.",
+      "A premiere vue, comptez environ 7 semaines pour construire une version serieuse. Le planning exact se valide en appel, une fois le perimetre et le niveau de finition clarifies.",
     cta_message:
-      "Avec 5 questions, je peux vous donner des reperes mais pas un chiffrage exact ni un delai realiste. Pour ces deux points precisement, le mieux c'est qu'on en parle 30 minutes — je rentre dans le detail de votre cas, et vous repartez avec une fourchette serieuse et un planning concret.",
+      "Avec 5 questions, je peux vous donner des reperes mais pas un chiffrage exact ni un delai realiste. Pour ces deux points precisement, le mieux c'est qu'on en parle 30 minutes. Je rentre dans le detail de votre cas, puis je vous envoie un devis ferme avec un prix et un planning clairs.",
     budget_tag: "MID",
   },
   C: {
@@ -115,7 +115,7 @@ const FALLBACK_VERDICTS: Record<Branch, VerdictGenerated> = {
     prix_indicatif: null,
     delai_indicatif: "",
     cta_message:
-      "Mon ticket d'entree est de 3 500 EUR — c'est le seuil pour livrer une application aboutie, de la strategie au lancement. En dessous, je ne pourrai pas vous accompagner serieusement. Prenez le temps de stabiliser votre budget et de valider votre idee aupres de votre cible. Quand le moment sera juste, revenez vers moi. Ma demarche est detaillee sur noecalmes.fr.",
+      "Votre budget annonce semble encore trop fragile pour lancer une application dans de bonnes conditions. A ce stade, donner un prix serait malhonnete sans cadrer votre idee, votre modele de revenus et votre perimetre. Prenez le temps de stabiliser votre budget et de valider votre idee aupres de votre cible. Quand le moment sera juste, le plus simple sera d'en parler avec moi pour transformer votre idee en projet clair.",
     budget_tag: "OUT",
   },
 };

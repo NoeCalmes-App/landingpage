@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contenu Instagram — Épinglés + Stories à la une</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{ --brand:#665dff; --navy:#0a1a33; --cream:#fffefc; --muted:#46506a; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#23232b;color:#e9e9f2;font-family:'Sora',sans-serif;padding:32px 18px 80px}
+  h1.title{max-width:1100px;margin:0 auto 8px;font-size:28px;font-weight:800;color:#fff}
+  h2.sec{max-width:1100px;margin:46px auto 6px;font-size:22px;font-weight:800;color:#fff}
+  h2.big-sec{max-width:1100px;margin:70px auto 6px;font-size:24px;font-weight:800;color:#fff;
+    border-top:1px solid #3a3a45;padding-top:40px}
+  p.note{max-width:1100px;margin:0 auto 20px;font-size:14px;color:#b7b7c8;line-height:1.5}
+  p.note b{color:#fff}
+
+  .row{display:flex;gap:16px;overflow-x:auto;padding:6px 2px 18px;max-width:1100px;margin:0 auto;
+    scroll-snap-type:x mandatory}
+  .grid3{display:flex;gap:6px;max-width:1100px;margin:0 auto 6px;justify-content:flex-start}
+
+  /* slide 4:5 */
+  .s{position:relative;flex:none;width:248px;aspect-ratio:4/5;border-radius:18px;overflow:hidden;
+    display:flex;flex-direction:column;padding:28px 24px;scroll-snap-align:start}
+  .cream{background:var(--cream);color:var(--navy);
+    background-image:linear-gradient(rgba(10,26,51,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(10,26,51,.05) 1px,transparent 1px);background-size:34px 34px}
+  .navy{background:var(--navy);color:#fff}
+  .cream .multi{color:var(--navy)}
+
+  .pin{position:absolute;top:12px;right:14px;font-size:14px;z-index:5}
+  .multi{position:absolute;top:13px;right:36px;font-size:12px;color:#fff;z-index:5;opacity:.9}
+  .num{position:absolute;top:18px;left:24px;font-size:11px;font-weight:700;opacity:.45}
+  .swipe{position:absolute;bottom:16px;right:20px;font-size:13px;font-weight:700;color:var(--brand)}
+  .navy .swipe{color:#b9b4ff}
+
+  .k{font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--brand)}
+  .big{margin-top:auto;font-size:31px;font-weight:800;line-height:1.05;letter-spacing:-.02em}
+  .u{position:relative;color:var(--brand);white-space:nowrap}
+  .u::after{content:'';position:absolute;left:-3%;right:-3%;bottom:-.16em;height:.34em;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M3 8 C60 3,140 4,197 6' fill='none' stroke='%23665dff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
+  .navy .big .u,.navy .u{color:#b9b4ff}
+  .navy .u::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M3 8 C60 3,140 4,197 6' fill='none' stroke='%23b9b4ff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E")}
+  .sub{margin-top:12px;font-size:13px;font-weight:500;color:var(--muted)}
+  .navy .sub{color:#b9b4ff}
+  .mid{margin:auto 0;font-size:24px;font-weight:800;line-height:1.16;letter-spacing:-.01em}
+  .mid em{font-style:normal;color:var(--brand)}
+  .navy .mid em{color:#b9b4ff}
+  .step{position:absolute;top:24px;left:22px;font-size:52px;font-weight:800;color:var(--brand);opacity:.16;line-height:1}
+  .stitle{margin-top:auto;font-size:23px;font-weight:800;line-height:1.14;letter-spacing:-.01em}
+  .sdesc{margin-top:9px;font-size:12.5px;font-weight:500;color:var(--muted);line-height:1.4}
+  .navy .sdesc{color:#b9b4ff}
+
+  /* slide image / visage */
+  .img{background:#cdd2de center/cover no-repeat;justify-content:flex-end}
+  .img::after{content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,26,51,.05) 30%,rgba(10,26,51,.88))}
+  .img>*{position:relative;z-index:2}
+  .imglbl{position:absolute;top:12px;left:14px;z-index:3;font-size:9px;background:rgba(102,93,255,.92);
+    color:#fff;padding:4px 8px;border-radius:5px;font-weight:600}
+  .tagk{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#b9b4ff;margin-bottom:8px}
+  .tt{color:#fff;font-size:23px;font-weight:800;line-height:1.14;letter-spacing:-.01em}
+  .tt em{font-style:normal;color:#b9b4ff}
+  .cta{margin-top:10px;font-size:12px;font-weight:600;color:#b9b4ff}
+
+  /* slide récap (résultat de l'outil) */
+  .rk{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--brand)}
+  .recap{margin-top:auto;width:100%;background:#fff;border:1px solid rgba(10,26,51,.10);
+    border-radius:14px;padding:15px 15px 13px;box-shadow:0 10px 26px rgba(10,26,51,.10)}
+  .recap .rt{font-size:13px;font-weight:800;color:var(--navy);margin-bottom:9px}
+  .rline{font-size:12px;font-weight:600;margin:5px 0;display:flex;gap:6px;line-height:1.25}
+  .rline.ok{color:#0f9d58}
+  .rline.no{color:#e0533d}
+  .rsplit{display:flex;gap:8px;margin-top:11px;border-top:1px solid rgba(10,26,51,.09);padding-top:10px}
+  .rsplit span{flex:1;font-size:10px;font-weight:600;color:var(--muted)}
+  .rsplit b{display:block;color:var(--navy);font-size:15px;font-weight:800;margin-top:2px}
+
+  /* slide carte App Store (preuve sociale ordinaire) */
+  .store{margin-top:auto;width:100%;background:#fff;border:1px solid rgba(10,26,51,.10);
+    border-radius:16px;padding:15px;box-shadow:0 12px 30px rgba(10,26,51,.12)}
+  .store .top{display:flex;gap:12px;align-items:center}
+  .store .ico{width:54px;height:54px;border-radius:14px;flex:none;display:flex;align-items:center;
+    justify-content:center;font-size:26px;background:linear-gradient(135deg,#8a83ff,#665dff);
+    box-shadow:0 6px 14px rgba(102,93,255,.35)}
+  .store .nm{font-size:14px;font-weight:800;color:var(--navy);line-height:1.1}
+  .store .cat{font-size:11px;color:var(--muted);margin-top:3px}
+  .store .get{margin-left:auto;font-size:11px;font-weight:800;color:#fff;background:var(--brand);
+    padding:6px 14px;border-radius:20px}
+  .store .stats{display:flex;margin-top:13px;border-top:1px solid rgba(10,26,51,.08);padding-top:11px}
+  .store .stat{flex:1;text-align:center;border-left:1px solid rgba(10,26,51,.07)}
+  .store .stat:first-child{border-left:0}
+  .store .stat b{display:block;font-size:14px;font-weight:800;color:var(--navy);line-height:1}
+  .store .stat span{font-size:8.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+
+  /* callout annoté (flèche qui pointe l'écran) */
+  .anno{position:absolute;z-index:4;max-width:150px;background:#fff;color:var(--navy);
+    font-size:10.5px;font-weight:700;line-height:1.28;padding:8px 10px;border-radius:10px;
+    box-shadow:0 10px 24px rgba(10,26,51,.30)}
+  .anno b{color:var(--brand)}
+  .anno.tl{top:58px;left:16px}
+  .anno.tl::after{content:'';position:absolute;left:20px;bottom:-7px;
+    border:7px solid transparent;border-top-color:#fff;border-bottom:0}
+  .anno.tr{top:58px;right:16px;text-align:right}
+  .anno.tr::after{content:'';position:absolute;right:20px;bottom:-7px;
+    border:7px solid transparent;border-top-color:#fff;border-bottom:0}
+
+  .legende{max-width:1100px;margin:10px auto 0;background:#2d2d37;border-radius:12px;padding:16px 18px;
+    font-size:13px;color:#cfcfe0;line-height:1.55}
+  .legende b{color:#fff}
+
+  /* ====== STORIES À LA UNE (9/16) ====== */
+  .stories{display:flex;gap:18px;flex-wrap:wrap;max-width:1100px;margin:0 auto;padding:6px 2px 18px}
+  .story{position:relative;width:300px;aspect-ratio:9/16;border-radius:26px;overflow:hidden;
+    background:var(--cream);color:var(--navy);display:flex;flex-direction:column;
+    background-image:
+      linear-gradient(rgba(10,26,51,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(10,26,51,.05) 1px, transparent 1px);
+    background-size:38px 38px}
+  .story .head{padding:44px 30px 0}
+  .story .kicker{font-size:11px;font-weight:700;letter-spacing:.30em;text-transform:uppercase;
+    color:var(--brand);margin-bottom:16px}
+  .story .kicker span{color:#c7c3e8}
+  .story h3{font-size:36px;font-weight:800;line-height:1.04;letter-spacing:-.02em}
+  .story h3 .accent{position:relative;white-space:nowrap;color:var(--brand)}
+  .story .lede{margin-top:18px;font-size:14px;font-weight:400;line-height:1.5;color:var(--muted);max-width:240px}
+  .story .photo{margin-top:auto;height:44%;position:relative;
+    background:#d8dbe5 center/cover no-repeat;border-top:1.5px solid rgba(10,26,51,.12)}
+  .story .photo::after{content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(255,254,252,0) 60%,rgba(10,26,51,.18))}
+  .story .tag{position:absolute;left:20px;bottom:18px;z-index:2;
+    background:var(--navy);color:#fff;font-size:11px;font-weight:600;
+    padding:6px 12px;border-radius:100px}
+  .story .dots{position:absolute;top:24px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:3}
+  .story .dots i{width:18px;height:3px;border-radius:3px;background:rgba(10,26,51,.16)}
+  .story .dots i.on{background:var(--brand);width:26px}
+
+  /* ====== STORY "MA MÉTHODE" (6 slides, classes isolées en .mstory) ====== */
+  .mstory{position:relative;width:300px;aspect-ratio:9/16;border-radius:26px;overflow:hidden;
+    background:var(--cream);color:var(--navy);display:flex;flex-direction:column;
+    background-image:linear-gradient(rgba(10,26,51,.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(10,26,51,.05) 1px,transparent 1px);background-size:38px 38px}
+  .mstory .mpad{padding:40px 26px;display:flex;flex-direction:column;height:100%}
+  .mstory .mkicker{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--brand)}
+  .mstory .mbig{margin-top:auto;font-size:30px;font-weight:800;line-height:1.1;letter-spacing:-.02em}
+  .mstory .mbig .u{color:var(--brand)}
+  .mstory .marrow{font-size:24px;color:var(--brand);margin-top:20px}
+  .mstory .mph{position:relative;flex:1;background:#d8dbe5 center/cover no-repeat}
+  .mstory .mph::after{content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,26,51,.15) 0%,rgba(10,26,51,0) 32%,rgba(10,26,51,.80))}
+  .mstory .mlbl{position:absolute;top:18px;left:18px;z-index:3;font-size:9px;background:rgba(102,93,255,.9);
+    color:#fff;padding:4px 9px;border-radius:5px;font-weight:600}
+  .mstory .mcap{position:absolute;left:22px;right:22px;bottom:32px;z-index:3;color:#fff}
+  .mstory .mcap .mk{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#b9b4ff;display:block;margin-bottom:9px}
+  .mstory .mcap .mt{font-size:22px;font-weight:800;line-height:1.18;letter-spacing:-.01em}
+  .mstory .mcap .mt em{font-style:normal;color:#b9b4ff}
+  .mstory .mcap .ms{margin-top:8px;font-size:12.5px;font-weight:500;color:#d7d3ff;opacity:.92}
+  .mstory .mqa{font-size:26px;font-weight:800;line-height:1.16;letter-spacing:-.01em}
+  .mstory .mlede{font-size:14px;color:var(--muted);line-height:1.5;margin-top:12px}
+  .mstory .mbtn{margin-top:20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    background:var(--brand);color:#fff;font-weight:700;font-size:15px;padding:14px 20px;border-radius:100px;
+    box-shadow:0 10px 24px rgba(102,93,255,.35)}
+</style>
+</head>
+<body>
+
+  <h1 class="title">Contenu Instagram de Noé</h1>
+  <p class="note">Tout le contenu du profil au même endroit : les <b>3 épinglés</b> (reach + closing) et les <b>stories à la une</b> (l'histoire, la méthode, les avis).</p>
+
+  <!-- ====== LA GRILLE ====== -->
+  <h2 class="sec">Ton profil — les 3 épinglés dans la grille</h2>
+  <p class="note">Ce que voit le visiteur en arrivant. Fonds différents (<b>crème · marine · image</b>) → ça respire, ça donne envie d'ouvrir. Ta tête n'est PAS sur les couvertures : elle arrive au moment du CTA (dernier slide) + sur tes photos lifestyle.</p>
+  <div class="grid3">
+    <div class="s cream"><span class="pin">📌</span><span class="multi">▤</span><span class="k">Le vrai sujet</span><div class="big">Pourquoi 90% des applications ne <span class="u">rapportent rien</span></div></div>
+    <div class="s navy"><span class="pin">📌</span><span class="multi">▤</span><span class="k">Sans tabou</span><div class="big">Combien coûte une <span class="u">application</span> ?</div></div>
+    <div class="s img" style="background-image:url('./src/assets/lib/me.webp')"><span class="pin">📌</span><span class="multi">▤</span><span class="imglbl">capture app · Calorie</span><span class="tagk">Analyse</span><div class="tt">Calorie, une app qui <em>rapporte</em>.</div></div>
+  </div>
+
+  <!-- ====== ÉPINGLÉ 1 ====== -->
+  <h2 class="sec">Épinglé 1 — « Pourquoi 90% des applications ne rapportent rien »</h2>
+  <p class="note"><b>Job : la peur de l'échec.</b> Couverture = texte seul (crème). Tu enseignes, tu rassures, tu prouves l'expertise. Ta tête au slide CTA.</p>
+  <div class="row">
+    <div class="s cream"><span class="num">1/6</span><div class="big" style="margin-top:auto">Pourquoi 90% des applications ne <span class="u">rapportent rien</span></div><div class="sub">Et le code n'y est pour rien.</div><span class="swipe">→</span></div>
+    <div class="s navy"><span class="num">2/6</span><div class="mid">Une app qui <em>fonctionne</em> n'est pas une app qui <em>rapporte</em>.</div><div class="sub">Pas des téléchargements. Des utilisateurs qui paient et qui reviennent.</div><span class="swipe">→</span></div>
+    <div class="s cream"><span class="num">3/6</span><span class="step">1</span><div class="stitle">Le bon moment pour faire payer.</div><div class="sdesc">Trop tôt l'utilisateur fuit, trop tard il oublie.</div><span class="swipe">→</span></div>
+    <div class="s cream"><span class="num">4/6</span><span class="step">2</span><div class="stitle">Les premiers écrans qui retiennent.</div><div class="sdesc">1 utilisateur sur 4 n'ouvre l'app qu'une seule fois.</div><span class="swipe">→</span></div>
+    <div class="s cream"><span class="num">5/6</span><span class="step">3</span><div class="stitle">Une raison de revenir chaque jour.</div><div class="sdesc">Une app qu'on ouvre tous les jours ne se résilie pas.</div><span class="swipe">→</span></div>
+    <div class="s img" style="background-image:url('./src/assets/lib/me.webp')"><span class="imglbl">photo toi</span><div class="tt">Tout ça se décide avant la 1re ligne de code.</div></div>
+  </div>
+  <div class="legende"><b>Légende :</b> 90% des applications ne rapportent rien. Et ce n'est jamais à cause du code.<br><br>On croit qu'une app bien faite, qui fonctionne, va forcément trouver son public et son chiffre. C'est faux. Ce qui fait qu'une app rapporte (ou pas) se décide bien avant de la développer, dans la façon de la penser.<br><br>Tu bosses sur une app en ce moment ? Dis-moi en commentaire.</div>
+
+  <!-- ====== ÉPINGLÉ 2 ====== -->
+  <h2 class="sec">Épinglé 2 — « Combien coûte une application ? »</h2>
+  <p class="note"><b>Job : la peur de se faire plumer.</b> Couverture = texte seul (marine, pour casser le rythme). Tu désamorces l'objection prix en public. Ta tête au slide CTA.</p>
+  <div class="row">
+    <div class="s navy"><span class="num">1/6</span><div class="big" style="margin-top:auto">Combien coûte une <span class="u">application</span> ?</div><span class="swipe">→</span></div>
+    <div class="s cream"><span class="num">2/6</span><div class="mid">On te dit <em>30 000€</em>. Parfois <em>50 000€</em>.</div><span class="swipe">→</span></div>
+    <div class="s cream"><span class="num">3/6</span><div class="mid">Normal : une agence, c'est <span class="u">toute une équipe</span> à payer. Chef de projet, designers, plusieurs devs.</div><span class="swipe">→</span></div>
+    <div class="s cream"><span class="num">4/6</span><div class="big" style="margin-top:auto">Chaque app a son <span class="u">propre prix</span>.</div><div class="sub">Fixé selon ton projet. Pas de surprise.</div><span class="swipe">→</span></div>
+    <div class="s navy"><span class="num">5/6</span><div class="mid">Alors j'ai créé un <em>outil</em> qui chiffre ton projet en 2 minutes.</div><div class="sub">Un recap clair : forces, faiblesses et vrai potentiel de ton idée.</div><span class="swipe">→</span></div>
+    <div class="s cream"><span class="num">6/6</span><span class="rk">Ce que tu reçois</span><div class="recap"><div class="rt">Ton idée d'app</div><div class="rline ok">✓ Peut générer des revenus récurrents</div><div class="rline ok">✓ Marché demandeur</div><div class="rline no">✗ Monétisation à clarifier</div><div class="rsplit"><span>Prix estimé<b>3,5k – 8k €</b></span><span>Délai<b>~ 45 jours</b></span></div></div></div>
+  </div>
+  <div class="legende"><b>Légende :</b> Commente ou DM « PRIX » si tu as une idée d'application et que tu veux savoir combien elle te coûterait. En 2 minutes tu as la réponse.</div>
+
+  <!-- ====== ÉPINGLÉ 3 ====== -->
+  <h2 class="sec">Épinglé 3 — « Calorie, une app qui rapporte » (décryptage)</h2>
+  <p class="note"><b>Job : la légitimité (« pourquoi me faire confiance »).</b> On décortique une vraie app que tu as développée : comment elle génère des revenus, en 3 temps (l'essai gratuit fait entrer, l'habitude fait revenir, les données font payer). Vocabulaire volontairement différent des épinglés 1 et 2.</p>
+  <p class="note" style="margin-top:-12px"><b>À me fournir :</b> la couverture (<code>epingle3.webp</code>), la capture App Store / stats (<code>app-store.webp</code>) et un écran de suivi de l'app (<code>calorie-data.webp</code>, l'historique des repas).</p>
+  <div class="row">
+    <div class="s img" style="background-image:url('./src/assets/lib/epingle3.webp')"><span class="num" style="color:#fff;opacity:.7">1/7</span><span class="tagk">Analyse</span><div class="tt">Calorie, une app qui <em>rapporte</em>.</div><span class="swipe">→</span></div>
+
+    <div class="s img" style="background-image:url('./src/assets/lib/app-store.webp')"><span class="num" style="color:#fff;opacity:.7">2/7</span><span class="imglbl">capture · App Store</span><div class="tt">+40k <em>téléchargements</em>.</div><div class="cta">Pourtant… ≈ 3% payants → <b style="color:#fff;font-size:16px">~10 000 €/mois</b></div><span class="swipe">→</span></div>
+
+    <div class="s navy"><span class="num">3/7</span><div class="mid">Des centaines d'apps de calories <em>existent</em>.</div><div class="sub">Alors, comment Calorie génère des revenus ?</div><span class="swipe">→</span></div>
+
+    <div class="s cream"><span class="num">4/7</span><span class="k">1 · l'essai gratuit</span><div class="big" style="margin-top:auto">Un essai gratuit pour <span class="u">découvrir</span> l'app.</div><div class="sub">Gratuit pendant quelques jours.</div><span class="swipe">→</span></div>
+
+    <div class="s navy"><span class="num">5/7</span><span class="tagk">2 · l'habitude</span><div class="mid">Compter ses calories, c'est <em>tous les jours</em>.</div><div class="sub">Ça devient vite une habitude.</div><span class="swipe">→</span></div>
+
+    <div class="s img" style="background-image:url('./src/assets/lib/calorie-data.webp')"><span class="num" style="color:#fff;opacity:.7">6/7</span><span class="imglbl">écran · ton suivi</span><span class="tagk">3 · l'abonnement</span><div class="tt">Tes repas, tes données, <em>jour après jour</em>.</div><div class="cta">On s'abonne pour ne pas les perdre.</div><span class="swipe">→</span></div>
+
+    <div class="s img" style="background-image:url('./src/assets/lib/me.webp')"><span class="imglbl">photo toi</span><div class="tt">Tout ça se réfléchit <em>avant</em> la première ligne de code.</div><div class="cta">C'est mon rôle : penser une app qui rapporte.</div></div>
+  </div>
+  <div class="legende"><b>Légende :</b> Cette app de calories rapporte ~10 000 €/mois. Et c'est moi qui l'ai développée.<br><br>Des centaines d'apps identiques existent, mais très peu rapportent. La différence ne tient pas à l'idée, mais à la façon dont l'app est pensée pour générer du revenu. Et ça se décide avant la première ligne de code.<br><br>C'est mon métier : concevoir des apps faites pour rapporter, pas juste pour exister.<br><br>👉 Tu as un projet d'application ? Lien en bio.</div>
+
+  <!-- ====== STORIES À LA UNE ====== -->
+  <h2 class="big-sec">Stories à la une</h2>
+  <p class="note">Les 3 mises en avant sous ta bio : <b>Mon histoire</b> (qui tu es) · <b>Ma méthode</b> (comment tu travailles) · <b>Avis</b> (la preuve). Format vertical 9/16.</p>
+  <p class="note"><b>① Mon histoire</b> — qui tu es (6 slides, maquette du 1er).</p>
+  <div class="stories">
+    <div class="story">
+      <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="head">
+        <div class="kicker">Mon histoire <span>· 01 / 06</span></div>
+        <h3>Moi c'est <span class="accent">Noé</span></h3>
+        <div class="lede">Passionné d'informatique depuis tout petit. Voici comment j'en suis arrivé à créer des apps qui rapportent.</div>
+      </div>
+      <div class="photo" style="background-image:url('./story1.jpg')">
+        <div class="tag">Déjà accro à 8 ans</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:34px"><b>② Ma méthode</b> — comment tu transformes l'idée d'un client en app rentable (6 slides).</p>
+  <div class="stories">
+
+    <div class="mstory"><div class="mpad">
+      <div class="mkicker">Ma méthode</div>
+      <div class="mbig">Comment je transforme l'idée d'app d'un client en <span class="u">app rentable</span></div>
+      <div class="marrow">↓</div>
+    </div></div>
+
+    <div class="mstory">
+      <div class="mph" style="background-image:url('./methode-strategie.jpg')">
+        <span class="mlbl">IMG · toi à l'ordi / plan</span>
+        <div class="mcap"><span class="mk">Étape 1</span><div class="mt">La <em>stratégie</em></div><div class="ms">On voit ensemble à qui s'adressera ton app et comment elle rapportera.</div></div>
+      </div>
+    </div>
+
+    <div class="mstory">
+      <div class="mph" style="background-image:url('./methode-design.jpg')">
+        <span class="mlbl">IMG · ton écran Figma / design</span>
+        <div class="mcap"><span class="mk">Étape 2</span><div class="mt">Le <em>design</em></div><div class="ms">Je conçois les interfaces de l'app, pensées pour convertir les utilisateurs.</div></div>
+      </div>
+    </div>
+
+    <div class="mstory">
+      <div class="mph" style="background-image:url('./methode-mvp.jpg')">
+        <span class="mlbl">IMG · tél, app épurée</span>
+        <div class="mcap"><span class="mk">Étape 3</span><div class="mt">La <em>version 1</em> (MVP)</div><div class="ms">Je la développe et la lance pour la confronter au vrai marché.</div></div>
+      </div>
+    </div>
+
+    <div class="mstory">
+      <div class="mph" style="background-image:url('./methode-v2.jpg')">
+        <span class="mlbl">IMG · tél app finie / courbe</span>
+        <div class="mcap"><span class="mk">Étape 4</span><div class="mt">La <em>version complète</em></div><div class="ms">L'app fonctionne sur le marché ? Je la fais évoluer avec toutes ses fonctionnalités.</div></div>
+      </div>
+    </div>
+
+    <div class="mstory"><div class="mpad" style="justify-content:flex-end">
+      <div class="mqa">Curieux de voir ce que ça donnerait pour ton idée ?</div>
+      <div class="mlede">En 2 min : est-ce qu'elle peut marcher, et combien investir.</div>
+      <div class="mbtn">Audit gratuit · 2 min →</div>
+    </div></div>
+
+  </div>
+
+  <p class="note" style="margin-top:34px;opacity:.8"><b>③ Avis</b> — la preuve sociale, à construire sur le même modèle (à venir).</p>
+
+</body>
+</html>

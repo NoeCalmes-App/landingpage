@@ -532,7 +532,7 @@ function App() {
                     className="min-[480px]:hidden text-center bg-[#131313] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer"
                     onClick={() => { setMenuOpen(false); scrollToCalendly() }}
                   >
-                    Discuter de ton projet
+                    Discuter de votre projet
                   </button>
                 </div>
               </div>
@@ -594,7 +594,7 @@ function App() {
               onClick={scrollToCalendly}
               className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
             >
-              <span className="pr-0.5 md:pr-1">Discuter de ton projet</span>
+              <span className="pr-0.5 md:pr-1">Discuter de votre projet</span>
               <svg className="w-[18px] h-[18px] md:w-[22px] md:h-[22px] transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
@@ -632,7 +632,7 @@ function App() {
               onClick={scrollToCalendly}
               className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
             >
-              <span className="pr-0.5 md:pr-1">Discuter de ton projet</span>
+              <span className="pr-0.5 md:pr-1">Discuter de votre projet</span>
               <svg className="w-[18px] h-[18px] md:w-[22px] md:h-[22px] transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
