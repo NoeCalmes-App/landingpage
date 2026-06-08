@@ -29,6 +29,7 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
   const [error, setError] = useState(null)
   const [verdict, setVerdict] = useState(() => loadAuditState()?.verdict || null)
   const [firstName, setFirstName] = useState(() => loadAuditState()?.firstName || '')
+  const [appType, setAppType] = useState(() => loadAuditState()?.appType || '')
   // Dernier payload soumis : on le garde en memoire (et en localStorage) pour
   // que la popup "Reessayer" puisse relancer la generation sans refaire le
   // formulaire. Restaure aussi a l'ouverture : si l'user a ferme l'onglet
@@ -39,8 +40,8 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
 
   // Synchronise les changements de stage/verdict/firstName dans localStorage
   useEffect(() => {
-    saveAuditState({ stage, firstName, verdict })
-  }, [stage, firstName, verdict])
+    saveAuditState({ stage, firstName, verdict, appType })
+  }, [stage, firstName, verdict, appType])
 
   // Meta tags propres a la page
   useEffect(() => {
@@ -71,6 +72,7 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
     setSubmitting(true)
     setError(null)
     setFirstName(payload.first_name || '')
+    setAppType(payload.app_type || '')
     // Memorise le payload pour permettre un "Reessayer" depuis la popup
     // sans avoir a refaire tout le tunnel.
     setPendingPayload(payload)
@@ -120,6 +122,7 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
     setVerdict(null)
     setError(null)
     setFirstName('')
+    setAppType('')
     setPendingPayload(null)
     setStage('hero')
   }
@@ -146,6 +149,7 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
         {stage === 'verdict' && verdict && (
           <AuditAppVerdict
             firstName={firstName}
+            appType={appType}
             verdict={verdict}
             onRestart={handleRestart}
             onBookCall={onBookCall}

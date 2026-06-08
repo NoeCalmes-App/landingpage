@@ -86,7 +86,7 @@ const FALLBACK_VERDICTS: Record<Branch, VerdictGenerated> = {
       "Etablir un budget realiste et un delai coherent avec vos contraintes",
     ],
     prix_indicatif:
-      "Impossible de donner un prix honnete sans cadrer precisement votre application. Le tarif depend du perimetre a developper, du niveau de design attendu, des integrations et du niveau de finition souhaite. Le bon reflexe est de prendre rendez-vous pour transformer cet audit en devis clair.",
+      "Pour une premiere version serieuse, comptez une estimation large, autour de 5 000 a 12 000 EUR selon le perimetre. La fourchette est large parce que c'est une estimation sans cadrage precis. Pour un vrai prix et un delai exact, le plus simple c'est qu'on en parle directement.",
     delai_indicatif:
       "A premiere vue, comptez environ 7 semaines pour construire une version serieuse. Le planning exact se valide en appel, une fois le perimetre et le niveau de finition clarifies.",
     cta_message:

@@ -41,6 +41,22 @@ export const FIRST_NAME_MIN_LENGTH = 2
 // pour donner au LLM le contexte necessaire a sa generation.
 export const FORM_STEPS = [
   {
+    field: 'app_type',
+    label: 'Type d\'app',
+    question: 'Votre projet, c\'est plutôt…',
+    infoItems: [
+      { t: 'Mobile', d: 'une app téléchargeable sur tous les téléphones, via l\'App Store et le Google Play Store.' },
+      { t: 'Web', d: 'une app accessible via une adresse internet (un site, ex : amazon.fr), sans rien à installer.' },
+      { t: 'Mobile & web', d: 'les deux à la fois, interconnectés.' },
+    ],
+    type: 'choice',
+    options: [
+      { label: 'Application mobile', value: 'Une application mobile.' },
+      { label: 'Application web', value: 'Une application web.' },
+      { label: 'Application mobile & web', value: 'Une application mobile et web.' },
+    ],
+  },
+  {
     field: 'idea_text',
     label: 'Votre idée',
     question:
@@ -169,24 +185,20 @@ export const FORM_STEPS = [
     type: 'choice',
     options: [
       {
-        label: 'Plus de 20 000 €',
-        value: 'Mon budget est supérieur à 20 000 €.',
+        label: 'Plus de 12 000 €',
+        value: 'Mon budget est supérieur à 12 000 €.',
       },
       {
-        label: '10 000 € à 20 000 €',
-        value: 'Mon budget se situe entre 10 000 € et 20 000 €.',
+        label: '7 500 € à 12 000 €',
+        value: 'Mon budget se situe entre 7 500 € et 12 000 €.',
       },
       {
-        label: '3 500 € à 10 000 €',
-        value: 'Mon budget se situe entre 3 500 € et 10 000 €.',
+        label: '3 500 € à 7 500 €',
+        value: 'Mon budget se situe entre 3 500 € et 7 500 €.',
       },
       {
         label: 'Moins de 3 500 €',
         value: 'Mon budget est inférieur à 3 500 €.',
-      },
-      {
-        label: 'Je ne sais pas encore',
-        value: 'Je n\'ai pas encore défini de budget précis.',
       },
     ],
   },

@@ -847,14 +847,60 @@ function TextareaStep({
 // ===================================================================
 
 function ChoiceStep({ step, selectedValue, onSelect }) {
+  const [infoOpen, setInfoOpen] = useState(false)
+  const infoRef = useRef(null)
+
+  // Fermer le tooltip si on clique en dehors.
+  useEffect(() => {
+    if (!infoOpen) return
+    const onDown = (e) => {
+      if (infoRef.current && !infoRef.current.contains(e.target)) {
+        setInfoOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', onDown)
+    return () => document.removeEventListener('mousedown', onDown)
+  }, [infoOpen])
+
   return (
     <div>
       <p className="text-brand font-semibold text-[0.78rem] tracking-widest uppercase mb-2">
         {step.label}
       </p>
-      <h2 className="font-heading text-text text-xl md:text-2xl font-bold leading-tight mb-5">
-        {step.question}
-      </h2>
+      <div className="flex items-start justify-between gap-3 mb-5">
+        <h2 className="font-heading text-text text-xl md:text-2xl font-bold leading-tight">
+          {step.question}
+        </h2>
+        {step.infoItems && (
+          <div ref={infoRef} className="relative group shrink-0">
+            <button
+              type="button"
+              onClick={() => setInfoOpen((v) => !v)}
+              aria-label="C'est quoi la différence ?"
+              aria-expanded={infoOpen}
+              className={`inline-flex items-center justify-center w-8 h-8 mt-0.5 rounded-full text-[0.9rem] font-bold transition-colors cursor-pointer ${
+                infoOpen
+                  ? 'bg-brand/15 text-brand'
+                  : 'bg-grey/15 text-grey hover:bg-grey/25 hover:text-text'
+              }`}
+            >
+              ?
+            </button>
+            {/* Tooltip : au-dessus du "?", blanc arrondi. Desktop = hover, mobile = clic. */}
+            <div
+              className={`absolute bottom-full right-0 mb-2 w-96 md:w-[30rem] max-w-[calc(100vw-2.5rem)] rounded-xl bg-white border border-card-border shadow-xl p-4 z-20 space-y-2.5 ${
+                infoOpen ? 'block' : 'hidden'
+              } md:group-hover:block`}
+            >
+              {step.infoItems.map((it) => (
+                <p key={it.t} className="text-text text-[0.86rem] leading-relaxed">
+                  <span className="font-bold">{it.t}</span> : {it.d}
+                </p>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
 
       <div className="flex flex-col gap-2.5">
         {step.options.map((opt) => {

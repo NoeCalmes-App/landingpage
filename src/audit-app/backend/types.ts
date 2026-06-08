@@ -22,6 +22,8 @@ export type Branch = z.infer<typeof BranchSchema>;
 
 export const VerdictRequestSchema = z.object({
   first_name: z.string().min(1).max(50),
+  // Type d'app choisi par le prospect : "Une application mobile." / "...web." / "...mobile et web."
+  app_type: z.string().max(120).default(""),
   budget_tag: BudgetTagSchema.optional(),
   q1_answer: z.string().max(500).default(""),
   q2_answer: z.string().max(500).default(""),

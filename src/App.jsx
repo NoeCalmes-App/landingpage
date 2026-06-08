@@ -186,6 +186,8 @@ const faqItems = [
   { q: 'Après la livraison de l\'application ?', a: 'Je ne disparais pas après la mise en ligne. Je reste disponible pour les corrections, les mises à jour, les nouvelles fonctionnalités et l\'accompagnement technique. Le suivi fait partie de mon approche — on définit ensemble ce qui est nécessaire selon l\'évolution de votre produit.' },
 ]
 
+const AVAILABILITY_CHECK_DELAY_MS = 2200
+
 function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState(null)
 
@@ -322,7 +324,7 @@ function App() {
 
     if (window.location.pathname.replace(/\/$/, '') === '/rendez-vous') {
       loadCalendlyScript()
-      setTimeout(() => setSpotsLoaded(true), 1200)
+      setTimeout(() => setSpotsLoaded(true), AVAILABILITY_CHECK_DELAY_MS)
       return
     }
 
@@ -333,7 +335,7 @@ function App() {
       ([entry]) => {
         if (entry.isIntersecting) {
           loadCalendlyScript()
-          setTimeout(() => setSpotsLoaded(true), 1200)
+          setTimeout(() => setSpotsLoaded(true), AVAILABILITY_CHECK_DELAY_MS)
           observer.disconnect()
         }
       },

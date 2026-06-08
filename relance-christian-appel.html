@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relance Christian - Script d'appel</title>
+    <style>
+      :root {
+        --ink: #11131a;
+        --muted: #6d7280;
+        --line: #e7e8ee;
+        --paper: #fbfbfd;
+        --surface: #ffffff;
+        --brand: #665dff;
+        --brand-soft: #eceaff;
+        --good: #0f8a5f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        line-height: 1.55;
+      }
+
+      main {
+        width: min(980px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 40px 0 56px;
+      }
+
+      header {
+        padding: 28px 0 24px;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 28px;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--brand);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+      }
+
+      .lead {
+        max-width: 720px;
+        margin: 18px 0 0;
+        font-size: 1.05rem;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      .block {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 22px;
+      }
+
+      .block.important {
+        border-color: rgba(102, 93, 255, 0.28);
+        background: linear-gradient(180deg, #fff, #fbfbff);
+      }
+
+      .label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 14px;
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .num {
+        display: inline-flex;
+        width: 24px;
+        height: 24px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--brand);
+        color: #fff;
+        font-size: 0.8rem;
+      }
+
+      .script {
+        margin: 0;
+        padding: 18px;
+        border-radius: 8px;
+        background: #f6f7fb;
+        border: 1px solid #ebedf5;
+        font-size: clamp(1rem, 2vw, 1.12rem);
+        white-space: pre-wrap;
+      }
+
+      .note {
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .highlight {
+        color: var(--brand);
+        font-weight: 800;
+      }
+
+      .checklist {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .checklist li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        color: var(--ink);
+      }
+
+      .checklist li::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        margin-top: 0.65em;
+        flex: 0 0 auto;
+        background: var(--good);
+      }
+
+      .avoid li::before {
+        background: #d64f4f;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      @media (max-width: 720px) {
+        main {
+          width: min(100% - 24px, 980px);
+          padding-top: 20px;
+        }
+
+        header {
+          padding-top: 18px;
+        }
+
+        .block {
+          padding: 18px;
+        }
+
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Relance Christian</p>
+        <h1>Script d'appel clair et naturel</h1>
+        <p class="lead">
+          L'objectif n'est pas de vendre un devis au telephone. Tu reprends
+          contact, tu verifies si le projet est encore d'actualite, puis tu
+          cales un vrai cadrage.
+        </p>
+      </header>
+
+      <section class="grid">
+        <article class="block important">
+          <p class="label"><span class="num">1</span> Ouverture</p>
+          <p class="script">Bonjour Christian, c'est Noe Calmes.
+
+On avait rendez-vous il y a quelques semaines au sujet de votre projet d'application mobile, mais on avait du decaler.
+
+Je vous appelle simplement pour savoir si le projet est toujours d'actualite.</p>
+          <p class="note">
+            Ensuite, silence. Tu le laisses repondre avant de pitcher.
+          </p>
+        </article>
+
+        <article class="block">
+          <p class="label"><span class="num">2</span> S'il dit oui</p>
+          <p class="script">Tres bien.
+
+Est-ce que vous avez 5 minutes la maintenant pour que je comprenne rapidement votre idee ?</p>
+        </article>
+
+        <article class="block important">
+          <p class="label"><span class="num">3</span> Ton positionnement</p>
+          <p class="script">Avant de parler prix ou visuel de l'application, j'aimerais comprendre votre projet : l'idee, la cible, et comment vous imaginez que l'application peut generer des revenus.
+
+Moi, mon role, ce n'est pas juste de developper une app. J'ai accompagne et cree une vingtaine d'applications, avec une approche orientee business, revenus et rentabilite. Hush a par exemple depasse les 200 000 telechargements.
+
+Ce que je cherche a livrer, c'est une application bien pensee, qui peut vraiment servir un objectif business : revenus, abonnements, ventes, reservations, leads, ou autre modele selon le projet.
+
+Je ne fais pas la communication a votre place, mais je construis l'application, le parcours utilisateur et la logique produit pour que l'app soit coherente avec son modele economique.</p>
+        </article>
+
+        <article class="block">
+          <p class="label"><span class="num">4</span> Question simple</p>
+          <p class="script">Du coup, en deux minutes : c'est quoi votre idee d'application, pour qui, et ou vous en etes aujourd'hui ?</p>
+        </article>
+
+        <article class="block">
+          <p class="label"><span class="num">5</span> Pour caler le vrai appel</p>
+          <p class="script">Ok, je comprends mieux.
+
+Pour vous repondre serieusement sur le prix, le delai et la meilleure facon de lancer, le mieux c'est que je comprenne d'abord votre idee, votre cible et votre objectif.
+
+Apres cet echange, je pourrai vous preparer gratuitement un premier cadrage avec un cahier des charges, un devis et un visuel de l'application.
+
+On peut se caler un appel de 20 a 30 minutes cette semaine pour faire ca proprement ?</p>
+        </article>
+
+        <article class="block important">
+          <p class="label"><span class="num">6</span> Phrase centrale</p>
+          <p class="script">Avant de parler prix, je veux comprendre si l'app peut vraiment generer des revenus et comment la construire dans ce sens.</p>
+          <p class="note">
+            C'est cette phrase qui te sort du role de simple developpeur.
+          </p>
+        </article>
+
+        <div class="two-col">
+          <article class="block">
+            <p class="label">A garder</p>
+            <ul class="checklist">
+              <li>Parler d'application rentable et de revenus.</li>
+              <li>Dire que tu cadres avant de chiffrer.</li>
+              <li>Mettre en avant les applications creees et Hush.</li>
+              <li>Demander un vrai appel de cadrage de 20 a 30 minutes.</li>
+            </ul>
+          </article>
+
+          <article class="block">
+            <p class="label">A eviter</p>
+            <ul class="checklist avoid">
+              <li>Demander directement s'il veut un devis.</li>
+              <li>Promettre un visuel de l'application sans cadrage.</li>
+              <li>Parler de Philippe ou de concurrents.</li>
+              <li>Te justifier ou avoir l'air de courir apres lui.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

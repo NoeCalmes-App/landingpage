@@ -16,10 +16,12 @@
 
 export default function AuditAppVerdict({
   firstName,
+  appType,
   verdict,
   onBookCall,
 }) {
   const isHotLead = verdict.branch === 'A'
+  const waUrl = buildWhatsAppUrl(firstName, appType)
 
   const hasSolide = (verdict.ce_qui_est_solide || []).length > 0
   const hasManque = (verdict.ce_qui_manque || []).length > 0
@@ -151,8 +153,9 @@ export default function AuditAppVerdict({
                   </SectionCard>
                 )}
                 <PriceTimingCard
+                  prix={verdict.prix_indicatif}
                   delai={hasDelai ? verdict.delai_indicatif : ''}
-                  onBookCall={onBookCall}
+                  waUrl={waUrl}
                 />
               </div>
             </div>
@@ -200,8 +203,9 @@ export default function AuditAppVerdict({
                 </SectionCard>
               )}
               <PriceTimingCard
+                prix={verdict.prix_indicatif}
                 delai={hasDelai ? verdict.delai_indicatif : ''}
-                onBookCall={onBookCall}
+                waUrl={waUrl}
               />
             </>
           )}
@@ -217,6 +221,7 @@ export default function AuditAppVerdict({
             isHotLead ? (
               <ClosingHotLead
                 ctaMessage={verdict.cta_message}
+                waUrl={waUrl}
                 onBookCall={onBookCall}
               />
             ) : (
@@ -267,7 +272,10 @@ function SectionCard({ label, icon, accent = 'neutral', children }) {
   )
 }
 
-function PriceTimingCard({ delai, onBookCall }) {
+function PriceTimingCard({ prix, delai, waUrl }) {
+  const prixText =
+    prix ||
+    "Pour une première version sérieuse, comptez une estimation large. La fourchette est large parce que c'est une estimation sans cadrage précis. Pour un vrai prix et un délai exact, le plus simple c'est qu'on en parle directement."
   return (
     <SectionCard
       label="Prix et délai"
@@ -277,10 +285,10 @@ function PriceTimingCard({ delai, onBookCall }) {
       <div className="space-y-4">
         <div>
           <p className="text-text font-semibold text-[0.88rem] md:text-[0.9rem] mb-1">
-            Le prix
+            Le prix (estimation)
           </p>
           <p className="text-text/85 text-[0.92rem] md:text-[0.95rem] leading-relaxed">
-            Impossible de donner un prix honnête sans cadrer précisément votre application. Le bon réflexe : prendre rendez-vous avec moi pour regarder le périmètre, les fonctionnalités et le modèle de revenus, puis recevoir un devis clair.
+            {prixText}
           </p>
         </div>
 
@@ -295,16 +303,32 @@ function PriceTimingCard({ delai, onBookCall }) {
           </div>
         )}
 
-        <button
-          onClick={onBookCall}
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-brand font-semibold text-[0.9rem] hover:opacity-80 transition-opacity cursor-pointer"
         >
-          Prendre rendez-vous
+          Avoir un vrai prix avec Noé
           <ArrowRightIcon size={14} />
-        </button>
+        </a>
       </div>
     </SectionCard>
   )
+}
+
+// Construit le lien WhatsApp avec un message pre-rempli (le prospect n'a qu'a
+// envoyer). Numero : cf. ChatbotWidget (wa.me/33658308210).
+function buildWhatsAppUrl(firstName, appType) {
+  const name = (firstName || '').trim()
+  const intro = name ? `Salut Noé, c'est ${name} 👋` : 'Salut Noé 👋'
+  const t = (appType || '').toLowerCase()
+  let typeWord = 'application'
+  if (t.includes('mobile') && t.includes('web')) typeWord = 'application mobile et web'
+  else if (t.includes('web')) typeWord = 'application web'
+  else if (t.includes('mobile')) typeWord = 'application mobile'
+  const msg = `${intro} J'ai une idée d'${typeWord}, je viens de faire l'audit et j'aimerais en parler.`
+  return `https://wa.me/33658308210?text=${encodeURIComponent(msg)}`
 }
 
 // =====================================================================
@@ -411,7 +435,7 @@ function CompetitorCard({ competitor }) {
 // Closing — section integree au flux, pas un bloc salesy
 // =====================================================================
 
-function ClosingHotLead({ ctaMessage, onBookCall }) {
+function ClosingHotLead({ ctaMessage, waUrl, onBookCall }) {
   return (
     <article className="rounded-2xl p-5 md:p-7 lg:p-9 border border-brand/25 bg-brand/[0.06] shadow-sm">
       <div className="flex items-center gap-3 mb-4 lg:mb-5">
@@ -428,17 +452,28 @@ function ClosingHotLead({ ctaMessage, onBookCall }) {
       </p>
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-        <button
-          onClick={onBookCall}
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="group inline-flex items-center justify-center gap-2.5 bg-text text-surface font-semibold text-[0.92rem] md:text-[0.95rem] lg:text-[1rem] px-6 py-3 lg:px-7 lg:py-3.5 rounded-full cursor-pointer hover:bg-brand transition-colors"
         >
           <PhoneIcon />
-          Réserver 30 minutes avec Noé
-        </button>
+          Discuter avec Noé sur WhatsApp
+        </a>
         <p className="text-grey text-[0.8rem] md:text-[0.82rem]">
-          Cadre de votre idée · Rédaction Cahier des charges · Devis
+          Réponse rapide · on cadre votre idée ensemble
         </p>
       </div>
+
+      {typeof onBookCall === 'function' && (
+        <button
+          onClick={onBookCall}
+          className="mt-4 text-grey text-[0.8rem] hover:text-brand transition-colors cursor-pointer underline underline-offset-2"
+        >
+          ou réserver un créneau de 30 min
+        </button>
+      )}
     </article>
   )
 }
