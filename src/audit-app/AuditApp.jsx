@@ -10,7 +10,7 @@ import AuditAppForm from './AuditAppForm'
 import AuditAppVerdict from './AuditAppVerdict'
 import MaintenanceModal from './MaintenanceModal'
 import { generateVerdict } from './api'
-import { loadAuditState, saveAuditState, clearAuditState } from './storage'
+import { loadAuditState, saveAuditState } from './storage'
 import mePhoto from '../assets/lib/me.webp'
 
 export default function AuditApp({ onBack, onBookCall, onLegal }) {
@@ -117,16 +117,6 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
     setError(null)
   }
 
-  const handleRestart = () => {
-    clearAuditState()
-    setVerdict(null)
-    setError(null)
-    setFirstName('')
-    setAppType('')
-    setPendingPayload(null)
-    setStage('hero')
-  }
-
   // La navbar n'apparait que sur le hero — pendant le formulaire (focus action)
   // et sur la page verdict (focus contenu de l'audit), on la masque.
   const showNav = stage === 'hero'
@@ -151,7 +141,6 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
             firstName={firstName}
             appType={appType}
             verdict={verdict}
-            onRestart={handleRestart}
             onBookCall={onBookCall}
           />
         )}
@@ -163,7 +152,6 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
       {stage === 'verdict' && (
         <AuditAppLegalFooter
           onLegal={onLegal}
-          onRestart={handleRestart}
         />
       )}
 
@@ -184,38 +172,13 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
 // Footer minimal pour les ecrans /audit-app : juste les liens legaux centres
 // sur un fond gris clair (--color-card). Pas de nom, pas de socials —
 // la page est focus conversion, on garde le bas neutre.
-// Sur l'ecran verdict uniquement, on ajoute un lien "Refaire le test" pour
-// permettre au prospect de relancer l'audit avec une autre idee ou des
-// reponses corrigees.
-function AuditAppLegalFooter({ onLegal, onRestart }) {
+function AuditAppLegalFooter({ onLegal }) {
   const go = (target) => {
     if (typeof onLegal === 'function') onLegal(target)
   }
   return (
     <div className="bg-card py-6 px-5">
       <div className="max-w-275 mx-auto flex flex-col items-center gap-4">
-        {onRestart && (
-          <button
-            onClick={onRestart}
-            className="inline-flex items-center gap-2 text-grey text-[0.82rem] font-semibold hover:text-brand transition-colors cursor-pointer"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <polyline points="1 4 1 10 7 10" />
-              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
-            </svg>
-            Refaire le test
-          </button>
-        )}
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
           <button onClick={() => go('cgv')} className="text-grey text-xs hover:text-text transition-colors cursor-pointer">CGV</button>
           <button onClick={() => go('mentions')} className="text-grey text-xs hover:text-text transition-colors cursor-pointer">Mentions légales</button>

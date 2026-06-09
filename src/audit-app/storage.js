@@ -43,19 +43,6 @@ export function saveAuditState(patch) {
 }
 
 /**
- * Vide completement l'etat persiste. Utilise quand le prospect choisit
- * "Recommencer un audit" depuis la page verdict.
- */
-export function clearAuditState() {
-  try {
-    if (typeof window === 'undefined') return
-    window.localStorage.removeItem(STORAGE_KEY)
-  } catch {
-    /* ignore */
-  }
-}
-
-/**
  * Retourne (ou génère et persiste) un identifiant unique pour cette
  * session d'audit. Envoyé uniquement à la requête finale afin de relier
  * proprement les données du tunnel au verdict IA.
