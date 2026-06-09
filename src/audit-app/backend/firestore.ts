@@ -1,10 +1,9 @@
 /**
  * Persistance Firestore des audits soumis sur noecalmes.fr/audit-app.
  *
- * Strategie en 2 temps :
- *  1. createPendingAudit() : doc cree avant l'appel IA (status=pending)
- *     -> capture le lead meme si l'IA crashe / rate-limit / panne
- *  2. updateAuditWithVerdict() / markAuditFailed() : enrichi apres
+ * Strategie :
+ *  - un seul document est cree apres le verdict IA reussi
+ *  - le devis-app ne lit donc que des audits finalises (`status=completed`)
  *
  * Toute la lecture/ecriture passe par l'Admin SDK -> regles cote client 100%
  * fermees (cf. firestore.rules).
@@ -52,77 +51,30 @@ export interface CompletedAuditPayload {
   startedAtMs: number;
 }
 
-export async function createPendingAudit(
+export async function createCompletedAudit(
   payload: PendingAuditPayload,
-  meta: RequestMeta
-): Promise<string> {
-  const baseDoc = {
-    ...payload,
-    verdict: null,
-    branch: null,
-    budgetTag: null,
-    aiProvider: null,
-    status: "pending",
-    errorMessage: null,
-    createdAt: FieldValue.serverTimestamp(),
-    submittedAt: FieldValue.serverTimestamp(),
-    completedAt: null,
-    durationMs: null,
-    userAgent: meta.userAgent,
-    origin: meta.origin,
-    schemaVersion: 1,
-  };
-
-  // Si un audit partiel existe deja pour cette session, on le transforme en
-  // pending/completed plus tard. Cela evite le doublon "abandonné" + "complété"
-  // pour une personne qui va finalement au bout du tunnel.
-  if (payload.sessionId) {
-    const ref = db.collection(COLLECTION).doc(`partial_${payload.sessionId}`);
-    const snap = await ref.get();
-    const createdAt = snap.exists && snap.get("createdAt")
-      ? snap.get("createdAt")
-      : FieldValue.serverTimestamp();
-    await ref.set(
-      {
-        ...baseDoc,
-        createdAt,
-        updatedAt: FieldValue.serverTimestamp(),
-      },
-      { merge: true }
-    );
-    return ref.id;
-  }
-
-  const ref = await db.collection(COLLECTION).add(baseDoc);
-  return ref.id;
-}
-
-export async function updateAuditWithVerdict(
-  id: string,
+  meta: RequestMeta,
   data: CompletedAuditPayload
-): Promise<void> {
-  await db.collection(COLLECTION).doc(id).update({
+): Promise<string> {
+  const doc = {
+    ...payload,
     verdict: data.verdict,
     branch: data.branch,
     budgetTag: data.budgetTag,
     aiProvider: data.aiProvider,
     status: "completed",
+    errorMessage: null,
+    createdAt: FieldValue.serverTimestamp(),
+    submittedAt: FieldValue.serverTimestamp(),
     completedAt: FieldValue.serverTimestamp(),
     durationMs: Date.now() - data.startedAtMs,
-  });
-}
+    userAgent: meta.userAgent,
+    origin: meta.origin,
+    schemaVersion: 1,
+  };
 
-export async function markAuditFailed(
-  id: string,
-  errorMessage: string,
-  startedAtMs: number
-): Promise<void> {
-  await db.collection(COLLECTION).doc(id).update({
-    status: "failed",
-    errorMessage: errorMessage.slice(0, 1000),
-    completedAt: FieldValue.serverTimestamp(),
-    durationMs: Date.now() - startedAtMs,
-  });
+  const ref = await db.collection(COLLECTION).add(doc);
+  return ref.id;
 }
 
 // ============ PARTIAL AUDITS (capture des abandons) ============

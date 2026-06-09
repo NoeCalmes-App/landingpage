@@ -19,10 +19,8 @@ import {
 } from "./types";
 import { generateVerdict } from "./orchestrator";
 import {
-  createPendingAudit,
-  markAuditFailed,
+  createCompletedAudit,
   safeFirestore,
-  updateAuditWithVerdict,
 } from "./firestore";
 
 // Cascade IA : Gemini Pro -> Gemini Flash -> Groq -> OpenAI -> Anthropic
@@ -146,26 +144,6 @@ export const verdictWeb = onRequest(
       origin: origin || null,
     };
 
-    const auditId = await safeFirestore("createPendingAudit", () =>
-      createPendingAudit(
-        {
-          firstName: parsed.data.first_name,
-          sessionId: parsed.data.session_id ?? null,
-          ideaText: parsed.data.idea_text,
-          appType: parsed.data.app_type || null,
-          knownCompetitors: parsed.data.known_competitors || null,
-          q1Answer: parsed.data.q1_answer,
-          q2Answer: parsed.data.q2_answer,
-          q3Answer: parsed.data.q3_answer,
-          q4Answer: parsed.data.q4_answer,
-          attachment: hasAttachment
-            ? { hasAttachment: true, extractedChars: attachedContent.length }
-            : null,
-        },
-        requestMeta
-      )
-    );
-
     try {
       // Injection du document joint dans idea_text si present.
       // Plafonds genereux : Gemini Pro accepte 2M tokens (~8M chars), on
@@ -192,6 +170,33 @@ export const verdictWeb = onRequest(
         input
       );
 
+      const auditId = await safeFirestore("createCompletedAudit", () =>
+        createCompletedAudit(
+          {
+            firstName: parsed.data.first_name,
+            sessionId: parsed.data.session_id ?? null,
+            ideaText: parsed.data.idea_text,
+            appType: parsed.data.app_type || null,
+            knownCompetitors: parsed.data.known_competitors || null,
+            q1Answer: parsed.data.q1_answer,
+            q2Answer: parsed.data.q2_answer,
+            q3Answer: parsed.data.q3_answer,
+            q4Answer: parsed.data.q4_answer,
+            attachment: hasAttachment
+              ? { hasAttachment: true, extractedChars: attachedContent.length }
+              : null,
+          },
+          requestMeta,
+          {
+            verdict: verdictResp,
+            branch: verdictResp.branch,
+            budgetTag: verdictResp.budget_tag ?? null,
+            aiProvider,
+            startedAtMs,
+          }
+        )
+      );
+
       logger.info("verdictWeb : verdict retourne", {
         first_name: parsed.data.first_name,
         budget_tag: verdictResp.budget_tag,
@@ -203,30 +208,9 @@ export const verdictWeb = onRequest(
         ip,
       });
 
-      if (auditId) {
-        await safeFirestore("updateAuditWithVerdict", () =>
-          updateAuditWithVerdict(auditId, {
-            verdict: verdictResp,
-            branch: verdictResp.branch,
-            budgetTag: verdictResp.budget_tag ?? null,
-            aiProvider,
-            startedAtMs,
-          })
-        );
-      }
-
       res.status(200).json(verdictResp);
     } catch (err) {
       logger.error("verdictWeb : erreur inattendue", err);
-      if (auditId) {
-        await safeFirestore("markAuditFailed", () =>
-          markAuditFailed(
-            auditId,
-            err instanceof Error ? err.message : String(err),
-            startedAtMs
-          )
-        );
-      }
       res.status(500).json({ error: "Internal server error" });
     }
   }

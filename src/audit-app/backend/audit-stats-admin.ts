@@ -141,12 +141,6 @@ function buildStats(audits: ReturnType<typeof publicAudit>[]) {
     daily[dateKey(d)] = 0;
   }
 
-  const byStatus: Record<AuditStatus, number> = {
-    pending: 0,
-    completed: 0,
-    failed: 0,
-    partial: 0,
-  };
   const byBranch: Record<AuditBranch, number> = {
     A: 0,
     B: 0,
@@ -155,61 +149,46 @@ function buildStats(audits: ReturnType<typeof publicAudit>[]) {
   };
   const byProvider: Record<string, number> = {};
 
-  let allToday = 0;
-  let allWeek = 0;
-  let allMonth = 0;
-  let completedToday = 0;
-  let completedWeek = 0;
-  let completedMonth = 0;
+  let today = 0;
+  let week = 0;
+  let month = 0;
 
   for (const audit of audits) {
-    byStatus[audit.status]++;
     const createdAt = audit.createdAt ? new Date(audit.createdAt) : null;
     if (!createdAt || Number.isNaN(createdAt.getTime())) continue;
 
-    if (createdAt >= startOfToday) allToday++;
-    if (createdAt >= startOfWeek) allWeek++;
+    if (createdAt >= startOfToday) today++;
+    if (createdAt >= startOfWeek) week++;
     if (createdAt >= startOfMonth) {
-      allMonth++;
+      month++;
       const key = dateKey(createdAt);
       if (key in daily) daily[key]++;
     }
 
-    if (audit.status === "completed") {
-      if (createdAt >= startOfToday) completedToday++;
-      if (createdAt >= startOfWeek) completedWeek++;
-      if (createdAt >= startOfMonth) completedMonth++;
-      const branch = normalizeBranch(audit.branch);
-      byBranch[branch] = (byBranch[branch] ?? 0) + 1;
-      const provider = audit.aiProvider || "unknown";
-      byProvider[provider] = (byProvider[provider] ?? 0) + 1;
-    }
+    const branch = normalizeBranch(audit.branch);
+    byBranch[branch] = (byBranch[branch] ?? 0) + 1;
+    const provider = audit.aiProvider || "unknown";
+    byProvider[provider] = (byProvider[provider] ?? 0) + 1;
   }
 
   return {
     allTotal: audits.length,
-    allToday,
-    allWeek,
-    allMonth,
-    total: byStatus.completed,
-    today: completedToday,
-    week: completedWeek,
-    month: completedMonth,
-    partialTotal: byStatus.partial,
-    partialToday: audits.filter((a) => {
-      if (a.status !== "partial" || !a.createdAt) return false;
-      return new Date(a.createdAt) >= startOfToday;
-    }).length,
-    failedTotal: byStatus.failed,
-    failedToday: audits.filter((a) => {
-      if (a.status !== "failed" || !a.createdAt) return false;
-      return new Date(a.createdAt) >= startOfToday;
-    }).length,
-    pendingTotal: byStatus.pending,
+    allToday: today,
+    allWeek: week,
+    allMonth: month,
+    total: audits.length,
+    today,
+    week,
+    month,
+    partialTotal: 0,
+    partialToday: 0,
+    failedTotal: 0,
+    failedToday: 0,
+    pendingTotal: 0,
     daily: Object.entries(daily)
       .map(([date, count]) => ({ date, count }))
       .sort((a, b) => a.date.localeCompare(b.date)),
-    byStatus,
+    byStatus: { pending: 0, completed: audits.length, failed: 0, partial: 0 },
     byBranch,
     byProvider,
   };
@@ -275,7 +254,7 @@ export const auditStatsAdmin = onRequest(
 
     const audits = snap.docs
       .map((doc) => publicAudit(doc.id, doc.data()))
-      .filter((audit) => audit.firstName || audit.ideaText || audit.status !== "pending")
+      .filter((audit) => audit.status === "completed")
       .slice(0, max);
 
     res.status(200).json({

@@ -57,9 +57,8 @@ export function clearAuditState() {
 
 /**
  * Retourne (ou génère et persiste) un identifiant unique pour cette
- * session d'audit. Sert à identifier le doc Firestore qu'on upsert
- * sur chaque étape côté /auditPartial — sans ça, on créerait des
- * doublons à chaque envoi.
+ * session d'audit. Envoyé uniquement à la requête finale afin de relier
+ * proprement les données du tunnel au verdict IA.
  *
  * crypto.randomUUID() est dispo dans tous les navigateurs modernes
  * (Chrome 92+, Safari 15.4+, Firefox 95+). Fallback minimal si absent.

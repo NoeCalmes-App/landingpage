@@ -1,7 +1,7 @@
 // Fetch vers l'endpoint Firebase /verdictWeb.
 // Toute la logique reseau est isolee ici pour faciliter le test et le mock.
 
-import { API_URL, PARTIAL_API_URL } from './config'
+import { API_URL } from './config'
 
 const NETWORK_RETRY_DELAYS_MS = [0, 900, 1800]
 
@@ -69,34 +69,6 @@ export async function generateVerdict(payload) {
     throw new Error('Réponse incomplète du serveur.')
   }
   return data
-}
-
-/**
- * Capture un audit partiel (l'utilisateur a entré son prénom mais n'a
- * pas encore soumis). Idempotent : appelé à chaque transition d'étape,
- * upsert côté backend sur le sessionId.
- *
- * Fire-and-forget : on n'attend pas la réponse, on ne montre pas
- * d'erreur à l'utilisateur si ça échoue (capture optionnelle).
- *
- * @param {Object} payload — { sessionId, firstName, stepIndex, totalSteps, ... }
- */
-export function sendPartialAudit(payload) {
-  if (!PARTIAL_API_URL) return
-  if (!payload || !payload.firstName || payload.firstName.trim().length < 2) return
-  try {
-    fetch(PARTIAL_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      // keepalive permet à la requête de finir même si l'onglet se ferme
-      keepalive: true,
-    }).catch(() => {
-      /* fire-and-forget : on ignore les erreurs réseau côté client */
-    })
-  } catch {
-    /* ignore */
-  }
 }
 
 async function fetchWithRetry(url, request) {
