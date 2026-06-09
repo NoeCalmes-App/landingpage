@@ -4,7 +4,9 @@
  * Endpoints publiés (region europe-west1) :
  *   - POST /verdictWeb    — appel final (génération verdict IA + CORS)
  *   - POST /auditPartial  — capture des audits abandonnés (un POST par étape)
+ *   - GET  /auditStatsAdmin — stats admin lues par devis-app (auth requise)
  */
 
 export { verdictWeb } from "./verdict-web";
 export { auditPartial } from "./audit-partial";
+export { auditStatsAdmin } from "./audit-stats-admin";

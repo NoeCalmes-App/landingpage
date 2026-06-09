@@ -83,6 +83,7 @@ function FormTunnel({ initialFirstName, onSubmit }) {
       firstName: firstName.trim(),
       stepIndex,
       totalSteps: TOTAL_STEPS,
+      appType: answers.app_type || '',
       ideaText: answers.idea_text || '',
       knownCompetitors: answers.known_competitors || null,
       q1Answer: answers.q1_answer || '',
@@ -141,6 +142,7 @@ function FormTunnel({ initialFirstName, onSubmit }) {
     if (next >= TOTAL_STEPS) {
       onSubmit({
         first_name: firstName.trim(),
+        session_id: getOrCreateSessionId(),
         ...currentAnswers,
         attached_content: attachedContent || '',
       })

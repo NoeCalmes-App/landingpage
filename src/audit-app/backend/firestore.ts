@@ -25,7 +25,9 @@ const COLLECTION = "audits";
 
 export interface PendingAuditPayload {
   firstName: string;
+  sessionId: string | null;
   ideaText: string;
+  appType: string | null;
   knownCompetitors: string | null;
   q1Answer: string;
   q2Answer: string;
@@ -54,7 +56,7 @@ export async function createPendingAudit(
   payload: PendingAuditPayload,
   meta: RequestMeta
 ): Promise<string> {
-  const ref = await db.collection(COLLECTION).add({
+  const baseDoc = {
     ...payload,
     verdict: null,
     branch: null,
@@ -63,12 +65,35 @@ export async function createPendingAudit(
     status: "pending",
     errorMessage: null,
     createdAt: FieldValue.serverTimestamp(),
+    submittedAt: FieldValue.serverTimestamp(),
     completedAt: null,
     durationMs: null,
     userAgent: meta.userAgent,
     origin: meta.origin,
     schemaVersion: 1,
-  });
+  };
+
+  // Si un audit partiel existe deja pour cette session, on le transforme en
+  // pending/completed plus tard. Cela evite le doublon "abandonné" + "complété"
+  // pour une personne qui va finalement au bout du tunnel.
+  if (payload.sessionId) {
+    const ref = db.collection(COLLECTION).doc(`partial_${payload.sessionId}`);
+    const snap = await ref.get();
+    const createdAt = snap.exists && snap.get("createdAt")
+      ? snap.get("createdAt")
+      : FieldValue.serverTimestamp();
+    await ref.set(
+      {
+        ...baseDoc,
+        createdAt,
+        updatedAt: FieldValue.serverTimestamp(),
+      },
+      { merge: true }
+    );
+    return ref.id;
+  }
+
+  const ref = await db.collection(COLLECTION).add(baseDoc);
   return ref.id;
 }
 
@@ -107,6 +132,7 @@ export interface PartialAuditPayload {
   firstName: string;
   stepIndex: number;
   totalSteps: number;
+  appType: string | null;
   ideaText: string;
   knownCompetitors: string | null;
   q1Answer: string;
@@ -139,11 +165,21 @@ export async function upsertPartialAudit(
   const docId = `partial_${payload.sessionId}`;
   const ref = db.collection(COLLECTION).doc(docId);
   const snap = await ref.get();
+
+  // Garde-fou anti-race-condition : un POST /auditPartial en keepalive peut
+  // arriver apres la soumission finale. Dans ce cas, on ne doit jamais
+  // repasser un audit pending/completed/failed en partial.
+  if (snap.exists) {
+    const currentStatus = snap.get("status");
+    if (currentStatus && currentStatus !== "partial") return;
+  }
+
   const base = {
     sessionId: payload.sessionId,
     firstName: payload.firstName,
     stepIndex: payload.stepIndex,
     totalSteps: payload.totalSteps,
+    appType: payload.appType,
     ideaText: payload.ideaText,
     knownCompetitors: payload.knownCompetitors,
     q1Answer: payload.q1Answer,

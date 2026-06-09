@@ -22,6 +22,10 @@ export type Branch = z.infer<typeof BranchSchema>;
 
 export const VerdictRequestSchema = z.object({
   first_name: z.string().min(1).max(50),
+  // Identifiant de session genere cote navigateur. Permet de transformer
+  // le doc partiel `partial_{sessionId}` en audit completed au lieu de
+  // creer un doublon "abandonné" + "complété".
+  session_id: z.string().min(8).max(80).optional(),
   // Type d'app choisi par le prospect : "Une application mobile." / "...web." / "...mobile et web."
   app_type: z.string().max(120).default(""),
   budget_tag: BudgetTagSchema.optional(),
