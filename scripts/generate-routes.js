@@ -7,7 +7,19 @@ const distDir = join(__dirname, '..', 'dist')
 const baseHtml = readFileSync(join(distDir, 'index.html'), 'utf-8')
 
 // Helper to patch all SEO meta tags
-function patchHtml(html, { path, canonicalPath = path, title, description, heading, content, backLink = '← Retour à l\'accueil', backHref = 'https://noecalmes.fr/', breadcrumb }) {
+function patchHtml(html, {
+  path,
+  canonicalPath = path,
+  title,
+  description,
+  heading,
+  content,
+  backLink = '← Retour à l\'accueil',
+  backHref = 'https://noecalmes.fr/',
+  breadcrumb,
+  ogImage,
+  ogImageAlt,
+}) {
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
   html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/, `<meta name="description" content="${description}" />`)
   html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, `<link rel="canonical" href="https://noecalmes.fr${canonicalPath}" />`)
@@ -16,6 +28,16 @@ function patchHtml(html, { path, canonicalPath = path, title, description, headi
   html = html.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="https://noecalmes.fr${canonicalPath}" />`)
   html = html.replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${title}" />`)
   html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${description}" />`)
+
+  if (ogImage) {
+    html = html.replace(/<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/, `<meta property="og:image" content="${ogImage}" />`)
+    html = html.replace(/<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:image" content="${ogImage}" />`)
+    html = html.replace(/"image":\s*"[^"]*"/, `"image": "${ogImage}"`)
+  }
+  if (ogImageAlt) {
+    html = html.replace(/<meta\s+property="og:image:alt"\s+content="[^"]*"\s*\/?>/, `<meta property="og:image:alt" content="${ogImageAlt}" />`)
+    html = html.replace(/<meta\s+name="twitter:image:alt"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:image:alt" content="${ogImageAlt}" />`)
+  }
 
   const breadcrumbJson = JSON.stringify({
     "@context": "https://schema.org",
@@ -195,6 +217,8 @@ const auditAppRoute = {
   description: 'Testez votre idée d\'application mobile avant d\'investir : potentiel business, budget, délai et points à valider en 2 minutes.',
   heading: 'Tester votre idée d\'application mobile',
   content: 'Répondez à 5 questions et obtenez une première lecture claire avant d\'investir dans le développement : potentiel business, budget MVP, délai réaliste et points à clarifier.',
+  ogImage: 'https://noecalmes.fr/audit-app-og.png',
+  ogImageAlt: 'Audit gratuit pour savoir combien coûterait une idée d’application mobile avant d’investir.',
 }
 
 const auditHtml = patchHtml(baseHtml, {
