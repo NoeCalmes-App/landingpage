@@ -307,10 +307,9 @@ function PriceTimingCard({ prix, delai, waUrl }) {
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-brand font-semibold text-[0.9rem] hover:opacity-80 transition-opacity cursor-pointer"
+          className="inline-flex items-center text-blue-600 font-semibold text-[0.9rem] hover:text-blue-700 transition-colors cursor-pointer"
         >
-          Avoir un vrai prix avec Noé
-          <ArrowRightIcon size={14} />
+          Avoir le vrai prix de mon application
         </a>
       </div>
     </SectionCard>
@@ -327,7 +326,7 @@ function buildWhatsAppUrl(firstName, appType) {
   if (t.includes('mobile') && t.includes('web')) typeWord = 'application mobile et web'
   else if (t.includes('web')) typeWord = 'application web'
   else if (t.includes('mobile')) typeWord = 'application mobile'
-  const msg = `${intro} J'ai une idée d'${typeWord}, je viens de faire l'audit et j'aimerais en parler.`
+  const msg = `${intro} Je viens de faire l'audit pour mon idée d'${typeWord} et j'aimerais avoir votre avis pour avancer.`
   return `https://wa.me/33658308210?text=${encodeURIComponent(msg)}`
 }
 
@@ -451,29 +450,25 @@ function ClosingHotLead({ ctaMessage, waUrl, onBookCall }) {
         {ctaMessage}
       </p>
 
-      <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+      <div className="flex flex-col items-start gap-3">
         <a
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center justify-center gap-2.5 bg-text text-surface font-semibold text-[0.92rem] md:text-[0.95rem] lg:text-[1rem] px-6 py-3 lg:px-7 lg:py-3.5 rounded-full cursor-pointer hover:bg-brand transition-colors"
+          className="group inline-flex items-center justify-center bg-text text-surface font-semibold text-[0.92rem] md:text-[0.95rem] lg:text-[1rem] px-6 py-3 lg:px-7 lg:py-3.5 rounded-full cursor-pointer hover:bg-brand transition-colors"
         >
-          <PhoneIcon />
-          Discuter avec Noé sur WhatsApp
+          Écrire à Noé sur WhatsApp
         </a>
-        <p className="text-grey text-[0.8rem] md:text-[0.82rem]">
-          Réponse rapide · on cadre votre idée ensemble
-        </p>
-      </div>
 
-      {typeof onBookCall === 'function' && (
-        <button
-          onClick={onBookCall}
-          className="mt-4 text-grey text-[0.8rem] hover:text-brand transition-colors cursor-pointer underline underline-offset-2"
-        >
-          ou réserver un créneau de 30 min
-        </button>
-      )}
+        {typeof onBookCall === 'function' && (
+          <button
+            onClick={onBookCall}
+            className="text-grey text-[0.85rem] hover:text-brand transition-colors cursor-pointer underline underline-offset-2"
+          >
+            ou réserver un appel de 30 min
+          </button>
+        )}
+      </div>
     </article>
   )
 }

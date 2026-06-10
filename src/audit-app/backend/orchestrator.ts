@@ -88,9 +88,9 @@ const FALLBACK_VERDICTS: Record<Branch, VerdictGenerated> = {
     prix_indicatif:
       "Pour une premiere version serieuse, comptez une estimation large, autour de 5 000 a 12 000 EUR selon le perimetre. La fourchette est large parce que c'est une estimation sans cadrage precis. Pour un vrai prix et un delai exact, le plus simple c'est qu'on en parle directement.",
     delai_indicatif:
-      "A premiere vue, comptez environ 7 semaines pour construire une version serieuse. Le planning exact se valide en appel, une fois le perimetre et le niveau de finition clarifies.",
+      "A premiere vue, comptez environ 7 semaines pour construire une version serieuse. Le delai exact se cale en appel, une fois le perimetre et le niveau de finition clarifies.",
     cta_message:
-      "Avec 5 questions, je peux vous donner des reperes mais pas un chiffrage exact ni un delai realiste. Pour ces deux points precisement, le mieux c'est qu'on en parle 30 minutes. Je rentre dans le detail de votre cas, puis je vous envoie un devis ferme avec un prix et un planning clairs.",
+      "Avec seulement 5 questions, je peux deja vous donner de bons reperes, mais pour un prix fixe et un delai precis, je dois d'abord bien comprendre votre projet. Pour avoir un vrai prix, ecrivez-moi sur WhatsApp : on en parle, puis je vous fais un devis avec une maquette de votre app.",
     budget_tag: "MID",
   },
   C: {

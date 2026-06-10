@@ -16,7 +16,7 @@ export function computeBranch(budget: BudgetTag): Branch {
 }
 
 const PINCETTES =
-  "Audit etabli en 2 minutes sur la base de 5 reponses — il sert a poser un cadre, pas a chiffrer precisement votre projet.";
+  "Audit etabli en 2 minutes sur la base de 5 reponses. Il sert a poser un cadre, pas a chiffrer precisement votre projet.";
 
 export const FALLBACK_VERDICTS: Record<Branch, VerdictBody> = {
   A: {
@@ -27,7 +27,7 @@ export const FALLBACK_VERDICTS: Record<Branch, VerdictBody> = {
       "Vous avez engage la demarche : c'est deja un signal d'intention serieuse.",
     ],
     ce_qui_manque: [
-      "Notre IA n'a pas pu generer un audit detaille a l'instant — nous reglerons cela au telephone.",
+      "Notre IA n'a pas pu generer un audit detaille a l'instant, nous reglerons cela au telephone.",
     ],
     concurrents: [],
     differenciation: [],

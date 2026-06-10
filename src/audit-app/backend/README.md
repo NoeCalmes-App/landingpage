@@ -1,20 +1,23 @@
 # Backend `/verdictWeb` — autonome dans landing-page
 
-Ce dossier est la **source de deploiement Firebase Functions** pour l'endpoint
-`/verdictWeb` consomme par la page React `/audit-app`. Il est totalement
-autonome : `firebase deploy` se lance depuis ce dossier, plus besoin du repo
-`manychat-funnel`.
+Ce dossier est la **source de deploiement Firebase Functions** des endpoints de
+la page React `/audit-app` (`/verdictWeb`, `/auditPartial`, `/auditStatsAdmin`).
+Il est totalement autonome : `firebase deploy` se lance depuis ce dossier, plus
+besoin du repo `manychat-funnel`.
 
 ## Architecture
 
 | Fichier | Role |
 |---|---|
-| `index.ts` | Entry point — re-exporte `verdictWeb` |
-| `verdict-web.ts` | Endpoint HTTP `/verdictWeb` (CORS, rate limit, validation Zod) |
-| `ai-orchestrator-v2-web.ts` | Chaine multi-provider Gemini -> OpenAI -> Claude |
-| `prompts-v2-web.ts` | Prompt systeme value-first + builder de prompt utilisateur |
-| `branch.ts` | Logique branchement budget A/C + fallbacks |
+| `index.ts` | Entry point — exporte `verdictWeb`, `auditPartial`, `auditStatsAdmin` |
+| `verdict-web.ts` | Endpoint HTTP `/verdictWeb` (CORS, rate limit, validation Zod, sauvegarde du lead) |
+| `audit-partial.ts` | Endpoint `/auditPartial` — capture des audits abandonnes (un POST par etape) |
+| `audit-stats-admin.ts` | Endpoint `/auditStatsAdmin` — stats admin (auth requise, lues par devis-app) |
+| `orchestrator.ts` | Chaine multi-provider Gemini -> OpenAI -> Claude (`generateVerdict`) |
+| `prompts.ts` | Prompt systeme value-first + builder de prompt utilisateur |
+| `branch.ts` | Logique branchement budget A/C + verdicts de secours |
 | `types.ts` | Types et schemas Zod |
+| `firestore.ts` | Sauvegarde des leads / audits dans Firestore |
 | `providers/parse.ts` | Parser JSON tolerant aux fences markdown |
 | `package.json` | Dependencies Firebase Functions + SDKs IA |
 | `tsconfig.json` | TS commonjs, target es2022, sortie dans `lib/` |
