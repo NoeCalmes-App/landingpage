@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Geist';
-  src: url('/node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2');
+  src: url('/assets/fonts/geist/Geist-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: 'Geist';
-  src: url('/node_modules/geist/dist/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
+  src: url('/assets/fonts/geist/Geist-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: 'Geist';
-  src: url('/node_modules/geist/dist/fonts/geist-sans/Geist-Black.woff2') format('woff2');
+  src: url('/assets/fonts/geist/Geist-Black.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -26,7 +26,7 @@
 
 @font-face {
   font-family: 'Plus Jakarta Sans Local';
-  src: url('/src/assets/font/PlusJakartaSans-Bold.ttf') format('truetype');
+  src: url('/assets/fonts/plus-jakarta/PlusJakartaSans-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -34,7 +34,7 @@
 
 @font-face {
   font-family: 'Plus Jakarta Sans Local';
-  src: url('/src/assets/font/PlusJakartaSans-ExtraBold.ttf') format('truetype');
+  src: url('/assets/fonts/plus-jakarta/PlusJakartaSans-ExtraBold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
   font-display: swap;

@@ -1,6 +1,6 @@
 # Stratégie Instagram — @noecalmes.app
 
-> Référence : voir `POSITIONNEMENT.md` pour tout le contexte business (cible, vocabulaire, ton, proof points).
+> Référence : voir `documentation/context/positionnement.md` pour tout le contexte business (cible, vocabulaire, ton, proof points).
 
 ---
 
@@ -39,7 +39,7 @@ Votre idée d'app peut-elle vraiment rapporter ?
 - *Ligne 3 = filtre prix transparence.* Disqualifie les budgets impossibles avant qu'ils DM.
 - *Ligne 4 = la réponse à la question de la ligne 1.* Mini-dialogue qui ferme la boucle psychologique. "Gratuitement" lève la dernière friction.
 
-**Important sur la "règle questions vs affirmations" du POSITIONNEMENT.md** : la règle reste valable pour les écrits client de fond (landing, emails, devis). Mais la bio Insta est un format direct-response où le hook par question (sur leur PROJET, pas sur eux) est mécaniquement supérieur. Exception assumée et documentée.
+**Important sur la "règle questions vs affirmations" du documentation/context/positionnement.md** : la règle reste valable pour les écrits client de fond (landing, emails, devis). Mais la bio Insta est un format direct-response où le hook par question (sur leur PROJET, pas sur eux) est mécaniquement supérieur. Exception assumée et documentée.
 
 **ManyChat — scénario à mettre en place** :
 1. Accueil personnalisé : "Salut [prénom] ! Pour savoir si votre idée peut rapporter, j'ai besoin de 60 secondes."
@@ -49,7 +49,7 @@ Votre idée d'app peut-elle vraiment rapporter ?
 5. Projet à cadrer → invitation appel cadrage
 6. Projet risqué → ressources gratuites + retour dans 6 mois
 
-**Cohérence avec `POSITIONNEMENT.md`** :
+**Cohérence avec `documentation/context/positionnement.md`** :
 - Vocabulaire conforme (application, lancement, tarif fixe, générer des revenus)
 - Aucun mot interdit (Flutter, freelance, TJM, code)
 - Affirmations uniquement (pas de questions)
@@ -88,7 +88,7 @@ Votre idée d'app peut-elle vraiment rapporter ?
 
 **URL Calendly finale** : `https://calendly.com/noecalmes-app/appel-app-mobile?name={{first_name}}` (variable insérée via sélecteur, pas tapée à la main). Pas de pre-fill custom field — info récupérée via email parallèle.
 
-**Tonalité** : tutoiement Insta, ton direct, "à chaud", "à tête reposée", phrases courtes, peer-to-peer expert. Voir POSITIONNEMENT.md section Tonalité pour la règle générale.
+**Tonalité** : tutoiement Insta, ton direct, "à chaud", "à tête reposée", phrases courtes, peer-to-peer expert. Voir documentation/context/positionnement.md section Tonalité pour la règle générale.
 
 **Voir Annexe à la fin de ce fichier pour le détail mot-à-mot de chaque message.**
 
@@ -132,7 +132,7 @@ Votre idée d'app peut-elle vraiment rapporter ?
 
 ## Roadmap (ordre d'exécution)
 
-1. ✅ Positionnement aligné (POSITIONNEMENT.md à jour)
+1. ✅ Positionnement aligné (documentation/context/positionnement.md à jour)
 2. ✅ Bio validée
 3. ⏳ Photo de profil (visage de Noé, pas logo)
 4. ⏳ Script VSL épinglée (60-90 secondes)
@@ -159,7 +159,7 @@ Votre idée d'app peut-elle vraiment rapporter ?
 ## Règles d'écriture pour Instagram
 
 - Vouvoiement systématique dans toute communication client (captions, DM, scénarios ManyChat)
-- Vocabulaire conforme à `POSITIONNEMENT.md` (Expert en application mobile, pas Flutter, pas freelance)
+- Vocabulaire conforme à `documentation/context/positionnement.md` (Expert en application mobile, pas Flutter, pas freelance)
 - Ton direct, structuré, pas corporate
 - Affirmations > questions (sauf hook reel volontaire)
 - Toujours un CTA clair par contenu (pas de reel sans appel à l'action explicite)

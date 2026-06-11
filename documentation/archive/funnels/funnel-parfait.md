@@ -1,5 +1,7 @@
 # Le funnel parfait — version simple (v2)
 
+> Statut : **reference strategique historique**. Globalement utile pour la logique WhatsApp / audit, mais a confronter avec `documentation/architecture/audit-app.md` pour l'etat actuel du produit.
+
 **Objectif unique :** que le prospect finisse par **te parler sur WhatsApp**, déjà rassuré et convaincu.
 
 **3 principes de conversion qui guident tout :**

@@ -11,7 +11,8 @@ import AuditAppVerdict from './AuditAppVerdict'
 import MaintenanceModal from './MaintenanceModal'
 import { generateVerdict } from './api'
 import { loadAuditState, saveAuditState } from './storage'
-import mePhoto from '../assets/lib/me.webp'
+
+const mePhoto = '/assets/images/profile/me.webp'
 
 export default function AuditApp({ onBack, onBookCall, onLegal }) {
   // Restauration de l'etat persiste : si le prospect a deja commence

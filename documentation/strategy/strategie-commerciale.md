@@ -11,7 +11,9 @@ Document de référence interne. Sert de guide pour structurer la landing, le ch
 ### Offre A — « Première version » (ex-MVP)
 
 **Nom commercial** : *« Application Lancement »* ou *« Première Version »*
-**Slogan court** : *« Votre app sur les stores en 45 jours. »*
+**Slogan court** : *« Une première version pensée pour générer des revenus, sur les stores rapidement. »*
+
+Le « 45 jours » se dit uniquement quand on parle d'un MVP au périmètre clair. Ce n'est pas l'argument de vente principal : l'argument, c'est l'app pensée pour rapporter, à un prix loin des agences.
 
 #### Pour qui
 
@@ -40,10 +42,6 @@ Document de référence interne. Sert de guide pour structurer la landing, le ch
 
 **À partir de 3 500 € HT.**
 
-#### Métaphore à utiliser à l'oral
-
-> *« C'est comme ouvrir un food-truck pour tester votre cuisine avant d'investir dans un restaurant complet. Vous validez que les gens aiment avant de mettre tous vos moyens. »*
-
 ---
 
 ### Offre B — « Application Complète » (ex-Application prête à scaler)
@@ -71,19 +69,14 @@ Document de référence interne. Sert de guide pour structurer la landing, le ch
 - Application mobile (iPhone + Android) **et/ou** application web selon le projet
 - **Publication sur les stores** (et mise en ligne web si applicable)
 - **Suivi 30 jours après la mise en ligne**
-- **Maintenance possible** ensuite (devis séparé)
 
 #### Délai
 
-**3 à 6 mois** selon la complexité.
+**2 à 4 mois** selon la complexité.
 
 #### Prix
 
 **À partir de 8 000 € HT** (à valider selon le scope).
-
-#### Métaphore à utiliser à l'oral
-
-> *« C'est comme construire un restaurant complet : on dessine les plans avant (la maquette), on choisit le décor (le design), on aménage la cuisine pour servir 100 couverts par soir (l'architecture). Plus long, mais conçu pour durer. »*
 
 ---
 
@@ -99,7 +92,7 @@ Pose **deux questions** au prospect :
    - *Aller vite, je veux tester* → **Offre A**
    - *Du parfait, le rendu compte beaucoup* → **Offre B**
 
-Si tu hésites, **propose toujours l'Offre A en premier**. C'est moins engageant pour le client, et tu pourras lui proposer une V2 (« Application Complète ») plus tard quand le marché aura validé son idée. C'est aussi plus aligné avec ton positionnement (« 45 jours, à partir de 3 500 € »).
+Si tu hésites, **propose toujours l'Offre A en premier**. C'est moins engageant pour le client, et tu pourras lui proposer une V2 (« Application Complète ») plus tard quand le marché aura validé son idée. C'est aussi plus aligné avec ton positionnement (app pensée pour rapporter, à partir de 3 500 €).
 
 ---
 
@@ -189,9 +182,9 @@ Une fois que tu as compris le projet, présente-toi **simplement** :
 
 > *De mon côté, j'accompagne des gens comme vous qui veulent créer une application mobile, sans passer par une agence à 20 000 €. Je m'occupe de tout : du dessin de l'application au développement sur iPhone et Android, jusqu'à la publication sur l'App Store et Google Play.*
 >
-> *Ma différence : je suis seul, joignable directement par WhatsApp 6 jours sur 7, et je travaille à prix fixe — vous savez exactement ce que vous payez avant de commencer.*
+> *Ma différence : je ne livre pas juste du code, je conçois l'application pour qu'elle puisse générer des revenus — abonnement, parcours d'achat, modèle économique pensés dès le départ. Et je suis seul, joignable directement par WhatsApp 6 jours sur 7, à prix fixe — vous savez exactement ce que vous payez avant de commencer.*
 >
-> *Selon les projets, je propose deux formules. La première c'est la « Première Version », à partir de 3 500 €, livrée en 45 jours, idéale pour tester votre idée avec une application mobile simple mais professionnelle. La deuxième c'est l'« Application Complète », plus longue (3 à 6 mois), avec maquettes validées avant et toutes les fonctionnalités, pour les projets plus aboutis.*
+> *Selon les projets, je propose deux formules. La première c'est la « Première Version », à partir de 3 500 €, idéale pour tester votre idée rapidement avec une application simple mais professionnelle. La deuxième c'est l'« Application Complète » (2 à 4 mois), avec maquettes validées avant et toutes les fonctionnalités, pour les projets plus aboutis.*
 
 ### Phase 4 — Reformuler et orienter (2 min)
 
@@ -238,7 +231,7 @@ Réponds aux questions, puis :
 
 ### « Combien de temps ? »
 
-> *Pour une première version, comptez 45 jours fermes à partir du moment où on démarre. Pour une application complète avec maquettes, plutôt 3 à 6 mois selon le périmètre.*
+> *Pour une première version, comptez 45 jours fermes à partir du moment où on démarre. Pour une application complète avec maquettes, plutôt 2 à 4 mois selon le périmètre.*
 
 ### « Je veux comparer avec d'autres devis »
 
@@ -250,7 +243,7 @@ Réponds aux questions, puis :
 
 ### « Et après la mise en ligne ? »
 
-> *Je reste disponible 30 jours après la publication pour corriger les bugs gratuitement. Ensuite, on peut prévoir un contrat de maintenance si vous voulez que je continue à m'occuper de l'application, ou vous pouvez aussi reprendre le code et le confier à quelqu'un d'autre — vous êtes propriétaire à 100 %.*
+> *Je reste disponible 30 jours après la publication pour corriger les bugs gratuitement. Ensuite, toute évolution ou nouvelle fonctionnalité fait l'objet d'un nouveau devis — pas d'abonnement de maintenance. Et vous êtes propriétaire du code à 100 % : vous pouvez aussi le confier à quelqu'un d'autre.*
 
 ### « Vous faites du web aussi ? »
 
@@ -278,7 +271,7 @@ Réponds aux questions, puis :
 
 Ta landing publique (`noecalmes.fr`) reste **strictement orientée sur la « Première Version »** :
 
-- **Hero** : intact, « 45 jours, à partir de 3 500 € » → c'est ton hook commercial mémorable
+- **Hero** : « votre application qui génère des revenus » → c'est l'angle de marque. Le « 45 jours » n'apparaît que dans la FAQ (délai d'une première version)
 - **Sections existantes** (Différence, Process, Avis, Audit, FAQ) : inchangées
 - **Pas de section « Mes deux formules » en évidence** — ça diluerait ton message et créerait de la paralysie de décision chez le visiteur non-technique
 - **Seule mention de l'Offre B autorisée** : une question discrète dans la FAQ :
@@ -295,7 +288,7 @@ Cette mention discrète a deux vertus :
 
 C'est ton terrain unique. Tu écoutes, tu jauges, tu décides quelle offre proposer en fin d'appel. **Le client n'a pas à choisir** entre deux offres : tu fais le choix pour lui en fonction de ce que tu as compris de son besoin, de son budget, de la maturité de son projet.
 
-Voir la section 7 et le document **`SCRIPT-APPEL-CLIENT.md`** pour le détail opérationnel du call.
+Voir la section 7 (l'ancien script d'appel détaillé est dans `documentation/archive/sales/script-appel-client.md`, jamais utilisé en pratique).
 
 ### Niveau 3 — Le devis : UNE seule offre, jamais deux
 
@@ -389,4 +382,4 @@ C'est ta phrase magique. Elle ferme le call proprement, te donne le temps de ré
 
 ---
 
-*Document créé le 18 mai 2026. À mettre à jour après chaque retour client significatif.*
+*Document créé le 18 mai 2026. Révisé le 12 juin 2026 : aligné positionnement v2 (angle revenus en pitch, 45 jours réservé au MVP, Application Complète 2 à 4 mois, plus de contrat de maintenance, métaphores retirées). À mettre à jour après chaque retour client significatif.*

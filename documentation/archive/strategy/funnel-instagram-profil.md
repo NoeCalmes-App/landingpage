@@ -1,6 +1,6 @@
 # Funnel Instagram @noecalmes.app — Plan complet (calculé au millimètre)
 
-> Réfs : `POSITIONNEMENT.md` (cible, vocabulaire, angle cœur) + `INSTAGRAM.md` (bio, ManyChat, Calendly).
+> Réfs : `documentation/context/positionnement.md` (cible, vocabulaire, angle cœur) + `documentation/strategy/instagram.md` (bio, ManyChat, Calendly).
 > Angle unique martelé partout : **« Je ne livre pas une app, je livre un actif qui génère des revenus. »**
 > Avatar : le porteur de projet / petit entrepreneur qui a une idée d'app, pense qu'elle peut rapporter, et a peur de se faire plumer par une agence. Large en secteur, ultra-précis en intention.
 
@@ -213,7 +213,7 @@ Lead chaud + déjà qualifié sur le budget
 - **Lien 1 = Audit** (le 1er pas, sans engagement) → c'est LUI qu'on pousse partout.
 - **Lien 2 = Réserver un appel** (pour ceux déjà chauds).
 
-**Setup ManyChat minimal :** 1 seul automatisme à créer pour démarrer → trigger mot-clé "APP" (commentaire + DM) qui envoie le message + lien audit. Le quiz 8 questions de `INSTAGRAM.md` devient optionnel : l'audit le remplace.
+**Setup ManyChat minimal :** 1 seul automatisme à créer pour démarrer → trigger mot-clé "APP" (commentaire + DM) qui envoie le message + lien audit. Le quiz 8 questions de `documentation/strategy/instagram.md` devient optionnel : l'audit le remplace.
 
 ---
 
@@ -283,6 +283,6 @@ Lead chaud + déjà qualifié sur le budget
 
 ## 8. Décisions à acter
 
-- **Tu / vous** : tutoiement sur Insta (validé POSITIONNEMENT.md). ⚠️ INSTAGRAM.md ligne 161 dit encore "vouvoiement" → à corriger pour cohérence.
+- **Tu / vous** : tutoiement sur Insta (validé documentation/context/positionnement.md). ⚠️ documentation/strategy/instagram.md ligne 161 dit encore "vouvoiement" → à corriger pour cohérence.
 - **Niche** : pas de niche secteur. Niche d'ANGLE = "l'app comme actif qui rapporte". Tu sers tous les entrepreneurs.
 - **Avatar** : porteur de projet avec une idée d'app, peur de se faire plumer, veut savoir si ça peut rapporter.

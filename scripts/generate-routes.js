@@ -217,7 +217,7 @@ const auditAppRoute = {
   description: 'Testez votre idée d\'application mobile avant d\'investir : potentiel business, budget, délai et points à valider en 2 minutes.',
   heading: 'Tester votre idée d\'application mobile',
   content: 'Répondez à 5 questions et obtenez une première lecture claire avant d\'investir dans le développement : potentiel business, budget MVP, délai réaliste et points à clarifier.',
-  ogImage: 'https://noecalmes.fr/audit-app-og.png',
+  ogImage: 'https://noecalmes.fr/assets/images/meta/audit-app-og.png',
   ogImageAlt: 'Audit gratuit pour savoir combien coûterait une idée d’application mobile avant d’investir.',
 }
 

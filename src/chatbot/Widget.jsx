@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import ReactMarkdown from 'react-markdown'
-import mePhoto from '../assets/lib/me.webp'
 import { initSession, persistMessage, sendMessage } from './client'
 import './styles.css'
+
+const mePhoto = '/assets/images/profile/me.webp'
 
 const WELCOME_MESSAGE = {
   role: 'assistant',

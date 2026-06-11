@@ -1,5 +1,9 @@
 # Analyse du funnel `audit-app` — Noé Calmes
 
+> Statut : **analyse historique**. Utile pour comprendre les arbitrages du tunnel, mais la source de verite actuelle est `documentation/architecture/audit-app.md`.
+>
+> A verifier avant usage : certains passages parlent du prix comme "non chiffre", alors que l'implementation actuelle affiche une **fourchette d'estimation** et pousse ensuite vers WhatsApp / Calendly.
+
 > Objectif du funnel : Instagram → outil d'audit → **le prospect prend un appel (WhatsApp / Calendly), content, et veut te parler.**
 > Cible : petits entrepreneurs / fondateurs solo non-techniques. Vouvoiement sur le site, tutoiement sur Insta.
 
@@ -220,4 +224,3 @@ Conclusion : tu ne touches pas à la structure, tu **mets la dictée vocale en a
 
 ### Pourquoi ce funnel convertit le mieux pour TA cible
 Petits entrepreneurs non-tech, peu de friction tolérée, codes Instagram, peer-to-peer : ils veulent **être rassurés vite** et **parler à un humain**, pas remplir des formulaires froids ni recevoir une facture automatique. Ce funnel leur donne de la valeur (l'audit), capture sans les braquer (email service + WhatsApp sans demander le numéro), et les amène à TE parler sur le canal où tu es le meilleur. Chaque étape sert l'objectif unique : **une conversation WhatsApp où il arrive déjà conquis.**
-

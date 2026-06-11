@@ -452,4 +452,4 @@ Cette progression visuelle (clair → doux → fort → clair) accompagne la pro
 Pour les icônes d'apps réelles (Plouff, Wake Up Alarme), nano banana a peu de chances de les générer fidèlement. Solution :
 - Générer la composition complète SANS les icônes
 - Incruster les vraies icônes a posteriori dans Figma / Photoshop
-- Ou utiliser directement la version HTML qui charge les vrais fichiers `appicon/plouffhabitudes.webp` et `appicon/wackupalarme.webp`
+- Ou utiliser directement la version HTML qui charge les vrais fichiers `assets/images/app-icons/plouffhabitudes.webp` et `assets/images/app-icons/wackupalarme.webp`

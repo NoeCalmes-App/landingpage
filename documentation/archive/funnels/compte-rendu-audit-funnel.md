@@ -1,12 +1,14 @@
 # Compte rendu — Audit de l'outil /audit-app + funnel WhatsApp
 
+> Statut : **archive utile / decisions passees**. A lire pour comprendre la logique WhatsApp et les anciens arbitrages, mais ne remplace pas `documentation/architecture/audit-app.md`.
+
 Analyse complète du parcours, de la landing au message WhatsApp, avec les modifications déjà appliquées et mes recommandations. Objectif unique rappelé : **que le prospect finisse par t'écrire sur WhatsApp (ou réserver 30 min), déjà convaincu.**
 
 ---
 
 ## 1. Vue d'ensemble du parcours
 
-Le funnel est clair et bien pensé, conforme à `FUNNEL-PARFAIT.md` :
+Le funnel est clair et bien pensé, conforme à `documentation/archive/funnels/funnel-parfait.md` :
 
 `Instagram (promesse honnête) → outil d'audit (valeur livrée direct) → verdict gratuit → bouton WhatsApp pré-rempli → conversation où tu closes.`
 
@@ -84,4 +86,4 @@ Un seul chemin fort, une porte de sortie secondaire pour ceux qui préfèrent ca
 
 ## 6. Alignement avec ton positionnement
 
-Tout ça reste cohérent avec `POSITIONNEMENT.md` : « expert en application mobile », « app pensée pour générer des revenus », tarif fixe, joignable directement. Le funnel WhatsApp incarne justement le « un seul expert, joignable 6j/7 » : pas d'agence, pas d'email qui dort, tu réponds toi-même. Le message de clôture personnalisé renforce ce positionnement (« je regarde VOTRE cas ») bien mieux que l'ancien texte process.
+Tout ça reste cohérent avec `documentation/context/positionnement.md` : « expert en application mobile », « app pensée pour générer des revenus », tarif fixe, joignable directement. Le funnel WhatsApp incarne justement le « un seul expert, joignable 6j/7 » : pas d'agence, pas d'email qui dort, tu réponds toi-même. Le message de clôture personnalisé renforce ce positionnement (« je regarde VOTRE cas ») bien mieux que l'ancien texte process.

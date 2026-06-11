@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import qrcode from './assets/contact/qrcode.webp'
 import { FaWhatsapp } from 'react-icons/fa'
 import { SiGmail } from 'react-icons/si'
 import { FaYahoo } from 'react-icons/fa'
@@ -7,6 +6,7 @@ import { PiMicrosoftOutlookLogoFill } from 'react-icons/pi'
 import { BsMicrosoftTeams } from 'react-icons/bs'
 import { MdEmail } from 'react-icons/md'
 
+const qrcode = '/assets/images/contact/qrcode.webp'
 const WHATSAPP_URL = 'https://wa.me/33658308210'
 const TEAMS_URL = 'https://teams.live.com/l/invite/FEAC7bmID--_ZezkAE?v=g1'
 const EMAIL = 'contact@noecalmes.fr'

@@ -1,9 +1,13 @@
 # Diagnostic — Tunnel audit_app & landing
 
+> Statut : **archive / partiellement obsolete**. Ce diagnostic date du 25 mai 2026 et ne doit pas etre pris comme source de verite actuelle. Pour l'etat actuel du funnel, lire d'abord `documentation/architecture/audit-app.md` puis le code `src/audit-app/*`.
+>
+> Point obsolete important : ce document recommande de retirer le prix indicatif. Le code actuel affiche volontairement une **estimation / fourchette large** via `prix_indicatif`, puis pousse vers WhatsApp ou Calendly pour obtenir un vrai prix fixe.
+
 **Objectif business rappelé** : attirer gratuitement des prospects via la landing → les faire passer l'audit → **les faire prendre un appel avec toi**, jamais leur donner un prix.
 
 **Date** : 25 mai 2026
-**Périmètre analysé** : `index.html`, `src/App.jsx` (home), `src/audit-app/*` (tunnel complet), `POSITIONNEMENT.md`, `STRATEGIE-COMMERCIALE.md`.
+**Périmètre analysé** : `index.html`, `src/App.jsx` (home), `src/audit-app/*` (tunnel complet), `documentation/context/positionnement.md`, `documentation/strategy/strategie-commerciale.md`.
 
 ---
 
@@ -43,7 +47,7 @@ Et l'API renvoie effectivement ce champ (`api.js` ligne 28 : `prix_indicatif: st
 **Pourquoi c'est un problème** :
 
 1. Tu m'as dit littéralement *"audit_app à la fin pas de prix et fait en sorte que le client prenne un appel avec moi"*. Donc c'est en contradiction avec ton intention.
-2. Ton `STRATEGIE-COMMERCIALE.md` section 8 dit : *"Donner un prix exact à l'oral — toujours une fourchette + devis écrit"*. Même logique : un prix à l'écrit dans un audit anonyme, c'est pire qu'à l'oral, parce que tu n'as ni la voix, ni le rapport, ni la qualification du projet.
+2. Ton `documentation/strategy/strategie-commerciale.md` section 8 dit : *"Donner un prix exact à l'oral — toujours une fourchette + devis écrit"*. Même logique : un prix à l'écrit dans un audit anonyme, c'est pire qu'à l'oral, parce que tu n'as ni la voix, ni le rapport, ni la qualification du projet.
 3. Le visiteur qui lit "à partir de 3 500 €" dans l'audit n'a plus aucune raison de prendre un appel. Il a déjà sa réponse. Tu fais le travail de qualification gratuitement et tu perds le RDV.
 4. Pire : ton intro de section s'appelle *"Pour un devis précis"* — donc tu promets un devis précis tout en donnant déjà un prix. Cognitivement, le prospect lit le prix et oublie le CTA.
 
@@ -105,7 +109,7 @@ L'objectif : retirer tout ce qui peut paraître transactionnel et remplacer par 
 
 ### 3.4 La FAQ de la home mentionne encore "à partir de 3 500 €"
 
-`STRATEGIE-COMMERCIALE.md` section 6 dit que la landing reste sur "MVP 45 jours, à partir de 3 500 €". Décision assumée — donc cohérence avec l'audit qui devra rester silencieux sur le prix. C'est intentionnel : tu donnes l'ordre de grandeur sur la home pour rassurer, et tu fais le travail de qualification précis pendant l'appel.
+`documentation/strategy/strategie-commerciale.md` section 6 dit que la landing reste sur "MVP 45 jours, à partir de 3 500 €". Décision assumée — donc cohérence avec l'audit qui devra rester silencieux sur le prix. C'est intentionnel : tu donnes l'ordre de grandeur sur la home pour rassurer, et tu fais le travail de qualification précis pendant l'appel.
 
 **Mais** : si tu envoies du trafic SaaS directement vers `/audit-app` (pubs, posts Insta), le prospect n'a peut-être jamais vu le "3 500 €" de la home. C'est OK — ça devient un argument de plus pour le faire appeler.
 

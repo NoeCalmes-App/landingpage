@@ -1,6 +1,6 @@
-import ajoutMembrePdf from './assets/docs/Ajout_Membre_Firebase.pdf'
-import googlePlayPdf from './assets/docs/Création Compte Google Play Console.pdf'
-import appleDevPdf from './assets/docs/Création compte Apple Développeur.pdf'
+const ajoutMembrePdf = '/assets/documents/guides/Ajout_Membre_Firebase.pdf'
+const googlePlayPdf = '/assets/documents/guides/Création Compte Google Play Console.pdf'
+const appleDevPdf = '/assets/documents/guides/Création compte Apple Développeur.pdf'
 
 const DOCUMENTS = [
   {
@@ -9,7 +9,7 @@ const DOCUMENTS = [
     title: 'Flutter & Firebase',
     description: "Firebase & Flutter c'est quoi ?",
     category: 'Informations',
-    pdf: '/document.pdf',
+    pdf: '/assets/documents/document.pdf',
   },
   {
     id: 'new-membre',
