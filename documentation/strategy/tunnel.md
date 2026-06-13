@@ -57,7 +57,7 @@ Deux liens :
 Headline recommandé :
 
 ```txt
-Expert application mobile | Je transforme votre idée en app qui génère des revenus
+Expert en applications mobiles | Je transforme votre idée en app pensée pour générer des revenus
 ```
 
 Bannière recommandée :
@@ -66,6 +66,39 @@ Bannière recommandée :
 Votre idée d'application peut devenir une vraie source de revenus.
 Audit · Cadrage · Design · Développement · Lancement
 ```
+
+Ne pas mettre en avant "Flutter" dans le titre ou la bannière : la cible LinkedIn n'achète pas une technologie, elle achète un cadrage et une application capable de créer de la valeur.
+
+Éviter aussi les promesses trop dures du type "application rentable en 45 jours". La formulation validée est "pensée pour générer des revenus", plus crédible et moins risquée.
+
+### Section Infos
+
+Version recommandée :
+
+```txt
+Vous avez une idée d’application mobile ?
+
+J’aide les entrepreneurs, coachs, formateurs et porteurs de projet à transformer une idée en application claire, lancée sur iPhone et Android, et pensée pour générer des revenus.
+
+Mon rôle ne se limite pas au développement.
+
+Avant de coder, je vous aide à cadrer :
+- la première version à lancer ;
+- les fonctionnalités vraiment utiles ;
+- le modèle économique ;
+- l’expérience utilisateur ;
+- le budget et le délai réalistes.
+
+J’interviens ensuite sur le design, le développement, la publication sur l’App Store et Google Play, puis le suivi après lancement.
+
++20 applications publiées.
+
+J’ai aussi créé un audit gratuit pour tester une idée d’application en 2 minutes : potentiel, budget à prévoir, délai de lancement.
+
+→ https://noecalmes.fr/audit-app
+```
+
+Cette section doit rester lisible et orientée client. Elle ne doit pas devenir une liste de technologies ni une promesse de rentabilité garantie.
 
 ### Cible prospection prioritaire
 
