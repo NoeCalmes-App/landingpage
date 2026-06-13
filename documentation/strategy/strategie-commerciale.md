@@ -357,7 +357,7 @@ Le devis envoyé au client après l'appel contient **uniquement l'offre que tu a
 - Ajouter une seule entrée dans la FAQ (la question « Vous proposez plusieurs formules ? » avec la réponse ci-dessus)
 - Aucune autre modification
 
-**Sur la devis-app** :
+**Sur Nowork** :
 - Aucune modification structurelle — tu continues à créer un seul devis par client
 - Dans le `subject` du devis, tu peux préciser informellement : « Première Version — [Nom du projet] » ou « Application Complète — [Nom du projet] » pour t'y retrouver dans ton historique
 - Dans la slide « Mission » du PDF, adapter le ton selon le type :

@@ -1,6 +1,6 @@
 # AGENTS.md — Landing Page Noe Calmes
 
-Landing page publique de Noe Calmes, expert en application mobile. Le site sert a convertir du trafic Instagram / LinkedIn / SEO vers un audit gratuit, WhatsApp ou un appel Calendly. Ne pas confondre avec `devis-app`, qui reste l'admin CRM/devis.
+Landing page publique de Noe Calmes, expert en application mobile. Le site sert a convertir du trafic Instagram / LinkedIn / SEO vers un audit gratuit, WhatsApp ou un appel Calendly. Ne pas confondre avec Nowork, qui reste l'admin CRM/devis.
 
 ## Stack
 
@@ -21,14 +21,14 @@ Lire seulement la doc utile au sujet demande.
 | Architecture landing page, routes, SEO, maquettes | `documentation/architecture/landing-page.md` |
 | Audit app, funnel, questions, verdict IA, Firebase audit | `documentation/architecture/audit-app.md` |
 | Assets, images, icones, fonts, documents PDF | `documentation/architecture/assets.md` |
-| Espace client public futur `/espace-client/...` | `documentation/architecture/client-space-public.md` |
+| Espace client public `/espace-client/...` | `documentation/architecture/client-space-public.md` |
 | Strategie commerciale, call, objections | `documentation/strategy/strategie-commerciale.md` |
 | Instagram, LinkedIn, tunnel d'acquisition | `documentation/strategy/tunnel.md` |
 | Stories, posts, briefs creatifs | `content/README.md` puis le fichier de brief concerne |
 
 ## Funnel business
 
-Trafic Instagram / LinkedIn / SEO -> `noecalmes.fr/audit-app` -> audit en plusieurs etapes -> recap IA -> appel Calendly ou prise de contact WhatsApp -> ajout/suivi dans `devis-app` CRM -> devis / cahier des charges / relances.
+Trafic Instagram / LinkedIn / SEO -> `noecalmes.fr/audit-app` -> audit en plusieurs etapes -> recap IA -> appel Calendly ou prise de contact WhatsApp -> ajout/suivi dans Nowork CRM -> devis / cahier des charges / relances.
 
 L'audit app ne doit pas devenir un devis automatique complet. Il donne de la valeur, qualifie le lead, puis pousse vers la conversation avec Noe.
 
@@ -64,7 +64,7 @@ Les fichiers sous `public` se referencent avec une URL absolue depuis la racine,
 - `/maquette/...` est une route landing page pour les maquettes HTML faites a la main.
 - `/maquette-visuel/...` appartient a Nowork et passe par une facade landing page vers `/nowork`.
 - Le backend audit app utilise le projet Firebase `manychatia-82692`.
-- Le panel admin des audits est lu depuis `devis-app` via `auditStatsAdmin`, avec authentification Firebase `devis-app-8e216`.
+- Le panel admin des audits est lu depuis Nowork via `auditStatsAdmin`, avec authentification Firebase `devis-app-8e216`.
 
 ## Verification avant livraison
 

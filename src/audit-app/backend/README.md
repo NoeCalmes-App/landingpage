@@ -12,7 +12,7 @@ besoin du repo `manychat-funnel`.
 | `index.ts` | Entry point — exporte `verdictWeb`, `auditPartial`, `auditStatsAdmin` |
 | `verdict-web.ts` | Endpoint HTTP `/verdictWeb` (CORS, rate limit, validation Zod, sauvegarde du lead) |
 | `audit-partial.ts` | Endpoint `/auditPartial` — capture des audits abandonnes (un POST par etape) |
-| `audit-stats-admin.ts` | Endpoint `/auditStatsAdmin` — stats admin (auth requise, lues par devis-app) |
+| `audit-stats-admin.ts` | Endpoint `/auditStatsAdmin` — stats admin (auth requise, lues par Nowork) |
 | `orchestrator.ts` | Chaine multi-provider Gemini -> OpenAI -> Claude (`generateVerdict`) |
 | `prompts.ts` | Prompt systeme value-first + builder de prompt utilisateur |
 | `branch.ts` | Logique branchement budget A/C + verdicts de secours |

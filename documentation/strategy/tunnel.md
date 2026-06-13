@@ -19,7 +19,7 @@ Instagram / LinkedIn
   /audit-app  -> verdict IA -> 2 boutons : WhatsApp ou rendez-vous Calendly
       |
       v
-  Appel 30 min -> suivi CRM devis-app -> devis + cahier des charges -> relances
+  Appel 30 min -> suivi CRM Nowork -> devis + cahier des charges -> relances
 ```
 
 ## Instagram (@noecalmes.app)
@@ -129,4 +129,4 @@ Un seul automatisme actif : commentaire sur le post "Combien coûte une app" dé
 
 ## Après le tunnel
 
-Tout lead aboutit dans le CRM devis-app (webhook Calendly = création client automatique) : appel, devis, cahier des charges, relances.
+Tout lead aboutit dans le CRM Nowork (webhook Calendly = création client automatique) : appel, devis, cahier des charges, relances.

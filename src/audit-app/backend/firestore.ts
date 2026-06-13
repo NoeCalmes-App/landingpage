@@ -3,7 +3,7 @@
  *
  * Strategie :
  *  - un seul document est cree apres le verdict IA reussi
- *  - le devis-app ne lit donc que des audits finalises (`status=completed`)
+ *  - Nowork ne lit donc que des audits finalises (`status=completed`)
  *
  * Toute la lecture/ecriture passe par l'Admin SDK -> regles cote client 100%
  * fermees (cf. firestore.rules).

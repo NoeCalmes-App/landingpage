@@ -5,7 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
   repository_dispatch:
-    types: [deploy-devis-app]
+    types: [deploy-nowork, deploy-devis-app]
 
 permissions:
   contents: read
@@ -28,16 +28,26 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: Checkout devis-app
+      - name: Checkout Nowork
+        id: checkout-nowork
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          repository: NoeCalmes-App/nowork
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          path: nowork-src
+
+      - name: Checkout Nowork legacy fallback
+        if: steps.checkout-nowork.outcome == 'failure'
         uses: actions/checkout@v4
         with:
           repository: NoeCalmes-App/devis-app
           token: ${{ secrets.DEPLOY_TOKEN }}
-          path: devis-app-src
+          path: nowork-src
 
-      - name: Build devis-app
+      - name: Build Nowork
         run: |
-          cd devis-app-src
+          cd nowork-src
           npm ci
           npm run build
         env:
@@ -49,7 +59,7 @@ jobs:
           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
 
       - name: Inject Nowork into dist
-        run: cp -r devis-app-src/dist dist/nowork
+        run: cp -r nowork-src/dist dist/nowork
 
       - uses: actions/upload-pages-artifact@v3
         with:

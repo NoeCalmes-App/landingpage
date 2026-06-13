@@ -2,10 +2,10 @@
  * Endpoint admin /auditStatsAdmin.
  *
  * Le backend audit ecrit dans le projet Firebase `manychatia-82692`, alors
- * que le devis-app est authentifie sur `devis-app-8e216`. Cette function sert
+ * que Nowork est authentifie sur le projet historique `devis-app-8e216`. Cette function sert
  * de pont securise : elle lit les audits via Admin SDK, mais renvoie les
  * donnees uniquement si l'appelant fournit un ID token Firebase valide du
- * devis-app.
+ * Nowork.
  */
 
 import { getApps, initializeApp } from "firebase-admin/app";
@@ -20,8 +20,8 @@ if (getApps().length === 0) {
 
 const db = getFirestore();
 const COLLECTION = "audits";
-const DEVIS_APP_PROJECT_ID = "devis-app-8e216";
-const DEVIS_AUTH_APP_NAME = "devis-app-auth";
+const NOWORK_FIREBASE_PROJECT_ID = "devis-app-8e216";
+const NOWORK_AUTH_APP_NAME = "nowork-auth";
 
 const ALLOWED_ORIGINS = new Set<string>([
   "https://noecalmes.fr",
@@ -39,10 +39,10 @@ const ALLOWED_ORIGINS = new Set<string>([
 type AuditStatus = "pending" | "completed" | "failed" | "partial";
 type AuditBranch = "A" | "B" | "C" | "unknown";
 
-function devisAuthApp() {
+function noworkAuthApp() {
   return (
-    getApps().find((app) => app.name === DEVIS_AUTH_APP_NAME) ||
-    initializeApp({ projectId: DEVIS_APP_PROJECT_ID }, DEVIS_AUTH_APP_NAME)
+    getApps().find((app) => app.name === NOWORK_AUTH_APP_NAME) ||
+    initializeApp({ projectId: NOWORK_FIREBASE_PROJECT_ID }, NOWORK_AUTH_APP_NAME)
   );
 }
 
@@ -238,9 +238,9 @@ export const auditStatsAdmin = onRequest(
     }
 
     try {
-      await getAuth(devisAuthApp()).verifyIdToken(match[1]);
+      await getAuth(noworkAuthApp()).verifyIdToken(match[1]);
     } catch (err) {
-      logger.warn("auditStatsAdmin : invalid devis-app token", {
+      logger.warn("auditStatsAdmin : invalid Nowork token", {
         error: err instanceof Error ? err.message : String(err),
       });
       res.status(401).json({ error: "Invalid token" });

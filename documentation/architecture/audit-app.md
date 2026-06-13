@@ -6,7 +6,7 @@
 
 Flux voulu :
 
-Instagram / LinkedIn / SEO -> `/audit-app` -> questions -> recap IA -> appel ou WhatsApp -> suivi dans `devis-app` CRM -> devis / cahier des charges / relances.
+Instagram / LinkedIn / SEO -> `/audit-app` -> questions -> recap IA -> appel ou WhatsApp -> suivi dans Nowork CRM -> devis / cahier des charges / relances.
 
 L'audit donne de la valeur, mais ne remplace pas un devis ni un cahier des charges complet.
 
@@ -45,7 +45,7 @@ Functions :
 
 - `verdictWeb` — endpoint final appele par le front, genere le verdict IA et sauvegarde l'audit finalise.
 - `auditPartial` — endpoint pour capturer les abandons du tunnel.
-- `auditStatsAdmin` — endpoint admin lu depuis `devis-app`, protege par token Firebase du projet `devis-app-8e216`.
+- `auditStatsAdmin` — endpoint admin lu depuis Nowork, protege par token Firebase du projet `devis-app-8e216`.
 
 Collection Firestore : `audits`.
 
@@ -85,11 +85,11 @@ La logique de branche est dans `src/audit-app/backend/branch.ts`.
 - Budget inferieur a 3 500 EUR -> branche C : pas de Calendly direct, message plus franc.
 - Autres budgets -> branche A : Calendly propose.
 
-## Lien avec `devis-app`
+## Lien avec Nowork
 
-`devis-app` ne stocke pas directement les audits dans son Firestore. Il lit les audits du projet `manychatia-82692` via la function `auditStatsAdmin`, qui verifie un token Firebase du projet `devis-app-8e216`.
+Nowork ne stocke pas directement les audits dans son Firestore. Il lit les audits du projet `manychatia-82692` via la function `auditStatsAdmin`, qui verifie un token Firebase du projet historique `devis-app-8e216`.
 
-But cote admin : voir les audits termines, les dates, les reponses et le verdict, puis creer/suivre le prospect dans le CRM `devis-app`.
+But cote admin : voir les audits termines, les dates, les reponses et le verdict, puis creer/suivre le prospect dans le CRM Nowork.
 
 ## Positionnement
 

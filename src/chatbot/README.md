@@ -29,12 +29,12 @@ VITE_CHATBOT_API_URL=https://chatbot-XXXXX-ew.a.run.app
 ```
 
 URL fournie par `firebase deploy` côté backend.
-Voir `devis-app/functions/chatbot/README.md` pour le déploiement backend.
+Voir `nowork/functions/chatbot/README.md` pour le deploiement backend.
 
 ## Backend
 
 Le code serveur (handler Gemini, sécurité, Firestore) est dans :
-`devis-app/functions/chatbot/`
+`nowork/functions/chatbot/`
 
 L'architecture complète est documentée dans :
-`devis-app/functions/chatbot/ARCHITECTURE.md`
+`nowork/functions/chatbot/ARCHITECTURE.md`
