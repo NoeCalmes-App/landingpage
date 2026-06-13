@@ -42,6 +42,8 @@ Le « 45 jours » se dit uniquement quand on parle d'un MVP au périmètre clair
 
 **À partir de 3 500 € HT.**
 
+Note de cadrage prix : ne pas laisser entendre que toute application coûte 3 500 €. C'est un point d'entrée pour une première version simple. La plupart des projets sérieux se situent plutôt autour de **6 000 € à 12 000 €**, selon le périmètre, le design, les intégrations et le niveau de finition.
+
 ---
 
 ### Offre B — « Application Complète » (ex-Application prête à scaler)
@@ -77,6 +79,40 @@ Le « 45 jours » se dit uniquement quand on parle d'un MVP au périmètre clair
 #### Prix
 
 **À partir de 8 000 € HT** (à valider selon le scope).
+
+---
+
+### Offre C — « Cadrage financement » (interne / à proposer au bon moment)
+
+**Nom commercial possible** : *« Dossier de cadrage »* ou *« Cadrage financement »*
+
+#### Pour qui
+
+- Prospect sérieux, mais pas encore finançable immédiatement
+- Projet clair ou presque clair, financement en cours
+- Personne qui doit convaincre un associé, une banque, un investisseur ou une équipe
+
+#### Promesse
+
+> Transformer une idée d'application en dossier clair : périmètre, maquette visuelle, budget estimatif et étapes de lancement.
+
+#### Ce qui est inclus
+
+- Reformulation claire du projet
+- Périmètre de première version
+- Maquette visuelle des écrans clés
+- Estimation budgétaire et délai indicatif
+- Document présentable à des associés, financeurs ou décideurs
+
+#### Prix
+
+**490 € à 1 500 € HT**, déductible du développement si le projet démarre ensuite.
+
+#### Quand la proposer
+
+Uniquement quand le prospect répond ou dit en appel : financement en cours, besoin de convaincre quelqu'un, projet sérieux mais acompte pas disponible immédiatement.
+
+Ne pas la pousser aux leads prêts à démarrer : dans ce cas, aller directement vers le devis développement.
 
 ---
 

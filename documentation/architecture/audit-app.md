@@ -28,11 +28,12 @@ Les questions sont declarees dans `src/audit-app/config.js` :
 
 1. Type d'app : mobile, web, mobile & web.
 2. Idee : texte libre, dictee vocale possible, piece jointe possible.
-3. Marche : concurrents payants / gratuits / aucune solution.
-4. References concurrentes connues, conditionnel.
-5. Cible : nombre de personnes interrogees.
-6. Modele economique : abonnement, achat unique, commission, freemium, inconnu.
-7. Budget : plus de 12k, 7.5k-12k, 3.5k-7.5k, moins de 3.5k.
+3. Stade du projet : pret a demarrer, financement en cours, budget/delai a estimer, validation de l'idee.
+4. Marche : concurrents payants / gratuits / aucune solution.
+5. References concurrentes connues, conditionnel.
+6. Cible : nombre de personnes interrogees.
+7. Modele economique : abonnement, achat unique, commission, freemium, inconnu.
+8. Budget : plus de 12k, 7.5k-12k, 3.5k-7.5k, moins de 3.5k.
 
 ## Backend Firebase audit
 
@@ -54,12 +55,14 @@ Un audit finalise contient notamment :
 - `sessionId`
 - `appType`
 - `ideaText`
+- `projectStageAnswer`
 - `knownCompetitors`
 - `q1Answer` a `q4Answer`
 - `attachment`
 - `verdict`
 - `branch`
 - `budgetTag`
+- `leadTemperature` (`hot`, `warm`, `cold`, `unknown`) calcule a partir du stade projet et du budget.
 - `aiProvider`
 - `status`
 - `createdAt`, `submittedAt`, `completedAt`

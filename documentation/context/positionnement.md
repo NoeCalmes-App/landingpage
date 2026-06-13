@@ -20,7 +20,7 @@ Je ne suis pas un développeur à la mission. Je ne suis pas une agence. Je suis
 
 ## Mon positionnement en une phrase
 
-J'aide les entreprises à **créer, reprendre et faire évoluer** leur application mobile — en la pensant comme un actif capable de générer des revenus avant de la penser comme un projet technique.
+J'aide les entrepreneurs et porteurs de projet à **transformer une idée en application mobile** — en la pensant comme un actif capable de générer des revenus avant de la penser comme un projet technique.
 
 ---
 
@@ -187,30 +187,60 @@ On peut lancer une première version (MVP) pour valider que les gens paient, ava
 
 ## Ma cible
 
-**Cœur de cible actuel** : petits entrepreneurs et porteurs de projet — fondateurs solo, indépendants, créateurs early-stage qui ont une idée d'app mobile à lancer.
+**Cœur de cible actuel** : entrepreneurs non techniques ou semi-techniques qui ont une idée d'application mobile et veulent en faire un vrai produit générateur de revenus.
 
-**Range tarifaire** : 3 500 € – ~30 000 € (tarif fixe, pas de TJM)
+Le bon prospect n'est pas seulement quelqu'un qui "a une idée". C'est quelqu'un qui voit l'application comme un **investissement** : une app capable de vendre, fidéliser, encaisser, réserver, proposer un abonnement, générer des leads ou créer un revenu supplémentaire.
+
+**Range tarifaire** : 3 500 € – ~30 000 € (tarif fixe, pas de TJM). La plupart des projets sérieux se situent plutôt autour de 6 000 € à 12 000 €, avec une première version simple possible à partir de 3 500 €.
+
+**Priorité commerciale actuelle** :
+
+1. **Porteurs d'idée d'application**
+   Fondateurs solo, indépendants, créateurs early-stage, profils non techniques ou semi-techniques. Ils savent déjà qu'ils veulent une application et cherchent surtout à comprendre le potentiel, le budget, le délai et le bon périmètre.
+
+2. **Entrepreneurs avec clients, audience ou communauté**
+   Coachs, formateurs, salles/studios, consultants, créateurs de contenu, organismes de formation ou indépendants avec une clientèle existante. Ils ne cherchent pas toujours une app au départ, mais leur activité peut être transformée en app mobile : suivi client, contenu premium, abonnement, réservation, espace membre, option payante.
+
+3. **Prospects en financement**
+   Projets sérieux mais pas encore finançables immédiatement : associés qui cotisent, demande de prêt, recherche d'investisseur, budget en cours de constitution. Ce ne sont pas des leads à jeter, mais des leads à classer en cycle long.
 
 **Pourquoi cette cible** :
-- profils peu techniques → ils achètent surtout mon cadrage et ma capacité à les guider, pas du code à la mission
-- décision rapide, peu d'intermédiaires, peu de comités → moins de friction commerciale
-- c'est ce que j'attire naturellement aujourd'hui, je joue mon terrain
+- profils souvent non techniques → ils achètent mon cadrage, ma capacité à traduire l'idée et ma livraison complète, pas une ressource au TJM
+- décision plus directe qu'en PME structurée → moins de comités, moins d'intermédiaires
+- ils comparent souvent avec des agences → mon angle "expert indépendant, prix fixe, app pensée revenus" est lisible
+- l'application a un sens business concret : abonnement, paiement, réservation, accès premium, leads, fidélisation
+
+**Signaux à rechercher en acquisition** :
+- une offre déjà vendue (coaching, formation, programme, abonnement, service premium)
+- une clientèle ou une audience existante
+- des contenus réguliers, témoignages, cas clients, communauté
+- une volonté de lancer, financer ou structurer un projet d'application
+- intérêt visible pour app mobile, MVP, no-code, agence, produit digital, levée ou financement
 
 **À attirer** :
-- fondateurs qui veulent lancer une première version (MVP)
-- créateurs / indépendants qui veulent une app pour leur business
-- petits entrepreneurs qui veulent transformer leur idée en produit concret
-- porteurs de projet qui voient l'application comme un actif et veulent comprendre comment elle peut générer des revenus
+- personnes qui veulent transformer une idée en app mobile monétisable
+- entrepreneurs qui veulent créer une app pour leurs clients ou abonnés
+- porteurs de projet qui ont déjà comparé avec des agences mais veulent un interlocuteur plus direct
+- prospects qui ont un budget prévu ou un financement en cours
+
+**Canaux prioritaires** :
+- Instagram / audit-app : porteurs d'idée, contenus coût/potentiel/délai, commentaires et DM
+- LinkedIn : entrepreneurs avec activité, coachs/formateurs/salles/consultants/créateurs avec clients ou audience
+- Anciens prospects : relance par stade (prêt à démarrer, financement en cours, budget à estimer)
+- Partenaires agences web/marketing : canal secondaire, pas priorité court terme
 
 **Pas une priorité actuelle** :
-- PME structurées (cycles de vente longs, comités, intégration SI) — peut-être plus tard
-- reprise d'app existante — capacité existe mais je ne pousse pas cet angle commercialement pour l'instant
+- CTO, recruteurs, équipes techniques qui cherchent une ressource Flutter au TJM
+- grandes PME structurées avec cycles longs et intégration SI lourde
+- agences mobiles concurrentes (utile ponctuellement en sous-traitance, pas cible principale)
+- projets web simples qui relèvent d'un site vitrine ou d'un outil interne sans logique mobile
 
 **À éviter absolument** :
 - chasseurs de prix bas
 - projets flous ("on verra bien")
-- clients qui attendent une grosse agence
-- budgets irréalistes
+- prospects sans budget, sans financement en cours et sans marché identifié
+- clients qui veulent seulement "un dev pas cher"
+- personnes qui ne voient pas l'application comme un investissement
 
 ---
 

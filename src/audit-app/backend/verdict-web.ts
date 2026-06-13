@@ -177,6 +177,7 @@ export const verdictWeb = onRequest(
             sessionId: parsed.data.session_id ?? null,
             ideaText: parsed.data.idea_text,
             appType: parsed.data.app_type || null,
+            projectStageAnswer: parsed.data.project_stage_answer,
             knownCompetitors: parsed.data.known_competitors || null,
             q1Answer: parsed.data.q1_answer,
             q2Answer: parsed.data.q2_answer,

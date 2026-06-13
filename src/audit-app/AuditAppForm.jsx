@@ -2,8 +2,9 @@
 //
 // Structure :
 //   - Step 0 (prenom)  : input texte
-//   - Step 1 (idee)    : textarea + saisie vocale
-//   - Step 2-5         : multi-choice qui auto-avance au clic
+//   - Step 1 (type app): choix mobile/web
+//   - Step 2 (idee)    : textarea + saisie vocale
+//   - Step 3-7         : multi-choice qui auto-avance au clic
 //
 // Tonalite vouvoiement (site formel). Pas d'affichage "Etape X/Y", pas de
 // compteur caracteres, pas de mention "appel" (gardee pour la fin du tunnel).

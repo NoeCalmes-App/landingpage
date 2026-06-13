@@ -33,6 +33,7 @@ export const VerdictRequestSchema = z.object({
   q2_answer: z.string().max(500).default(""),
   q3_answer: z.string().max(500).default(""),
   q4_answer: z.string().max(500).default(""),
+  project_stage_answer: z.string().max(500).default(""),
   // Plafond 12000 chars (~2000 mots) — descriptions tres detaillees,
   // pastes de paragraphes, dictee vocale longue.
   idea_text: z.string().max(12000).default(""),

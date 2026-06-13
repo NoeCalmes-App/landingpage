@@ -26,8 +26,10 @@ export const HERO_QUESTIONS = [
 export const FIRST_NAME_MIN_LENGTH = 2
 
 // Etapes du formulaire.
-// Step 0 = idea_text (textarea libre + saisie vocale)
-// Step 1..4 = q1..q4 (multi-choice, auto-advance au clic)
+// Step 0 = app_type
+// Step 1 = idea_text (textarea libre + saisie vocale)
+// Step 2 = project_stage_answer (maturite commerciale du lead)
+// Step 3..6 = q1..q4 (multi-choice, auto-advance au clic)
 //
 // IMPORTANT : pour les choix, `value` est ce qui est ENVOYE a l'API (donc lu
 // par le LLM). On garde des phrases descriptives plutot que des labels courts
@@ -69,6 +71,34 @@ export const FORM_STEPS = [
     // Active le bouton d'attachement (pdf/md/txt) sous le textarea.
     // Le texte extrait est envoye dans le payload comme `attached_content`.
     allowAttachment: true,
+  },
+  {
+    field: 'project_stage_answer',
+    label: 'Votre stade',
+    question: "À quel stade en est votre projet d’application ?",
+    type: 'choice',
+    options: [
+      {
+        label: 'Prêt à démarrer, budget prévu',
+        value:
+          'Je suis prêt à démarrer, le budget est prévu.',
+      },
+      {
+        label: 'Projet clair, financement en cours',
+        value:
+          'Le projet est clair, je finalise le financement.',
+      },
+      {
+        label: 'Idée claire, budget à estimer',
+        value:
+          'J’ai l’idée, je veux estimer le budget et le délai.',
+      },
+      {
+        label: 'Je veux d’abord valider l’idée',
+        value:
+          'Je veux d’abord savoir si l’idée peut fonctionner.',
+      },
+    ],
   },
   {
     field: 'q1_answer',

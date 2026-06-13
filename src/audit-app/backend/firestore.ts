@@ -21,12 +21,35 @@ if (getApps().length === 0) {
 
 const db = getFirestore();
 const COLLECTION = "audits";
+type LeadTemperature = "hot" | "warm" | "cold" | "unknown";
+
+function computeLeadTemperature(input: {
+  projectStageAnswer?: string | null;
+  q4Answer?: string | null;
+}): LeadTemperature {
+  const stage = (input.projectStageAnswer || "").toLowerCase();
+  const budget = (input.q4Answer || "").toLowerCase();
+
+  const budgetOut =
+    budget.includes("inférieur") ||
+    budget.includes("moins de 3") ||
+    budget.includes("moins de 3500");
+
+  if (budgetOut) return "cold";
+  if (stage.includes("prêt") || stage.includes("pret")) return "hot";
+  if (stage.includes("financement")) return "warm";
+  if (stage.includes("budget") && stage.includes("estimer")) return "warm";
+  if (stage.includes("valider") || stage.includes("fonctionner")) return "cold";
+  if (budget.includes("12 000") || budget.includes("7 500") || budget.includes("3 500")) return "warm";
+  return "unknown";
+}
 
 export interface PendingAuditPayload {
   firstName: string;
   sessionId: string | null;
   ideaText: string;
   appType: string | null;
+  projectStageAnswer: string;
   knownCompetitors: string | null;
   q1Answer: string;
   q2Answer: string;
@@ -61,6 +84,7 @@ export async function createCompletedAudit(
     verdict: data.verdict,
     branch: data.branch,
     budgetTag: data.budgetTag,
+    leadTemperature: computeLeadTemperature(payload),
     aiProvider: data.aiProvider,
     status: "completed",
     errorMessage: null,
@@ -85,6 +109,7 @@ export interface PartialAuditPayload {
   stepIndex: number;
   totalSteps: number;
   appType: string | null;
+  projectStageAnswer: string;
   ideaText: string;
   knownCompetitors: string | null;
   q1Answer: string;
@@ -132,6 +157,7 @@ export async function upsertPartialAudit(
     stepIndex: payload.stepIndex,
     totalSteps: payload.totalSteps,
     appType: payload.appType,
+    projectStageAnswer: payload.projectStageAnswer,
     ideaText: payload.ideaText,
     knownCompetitors: payload.knownCompetitors,
     q1Answer: payload.q1Answer,
@@ -145,6 +171,7 @@ export async function upsertPartialAudit(
     verdict: null,
     branch: null,
     budgetTag: null,
+    leadTemperature: computeLeadTemperature(payload),
     aiProvider: null,
     errorMessage: null,
     schemaVersion: 1,

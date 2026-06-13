@@ -11,6 +11,7 @@ const NETWORK_RETRY_DELAYS_MS = [0, 900, 1800]
  * @param {Object} payload
  * @param {string} payload.first_name
  * @param {string} payload.idea_text
+ * @param {string} payload.project_stage_answer
  * @param {string} payload.known_competitors  (optionnel)
  * @param {string} payload.q1_answer
  * @param {string} payload.q2_answer

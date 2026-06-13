@@ -104,6 +104,7 @@ INPUT JSON RECU
 {
   "first_name": prenom du prospect,
   "app_type": type d'app choisi (application mobile, application web, ou application mobile et web),
+  "project_stage_answer": phrase sur le stade du projet (pret a demarrer, financement en cours, budget a estimer, validation de l'idee),
   "q1_answer": phrase sur marche payant existant,
   "q2_answer": phrase sur validation client (combien interroges),
   "q3_answer": phrase sur modele economique,
@@ -291,6 +292,7 @@ export function buildUserPrompt(input: VerdictRequest): string {
   return JSON.stringify({
     first_name: input.first_name,
     app_type: input.app_type || "",
+    project_stage_answer: input.project_stage_answer || "",
     q1_answer: input.q1_answer || "",
     q2_answer: input.q2_answer || "",
     q3_answer: input.q3_answer || "",
