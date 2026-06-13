@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <script>
     var path = window.location.pathname;
-    // Routes SPA de l'app devis — redirect vers app-devis/index.html
-    if (path.startsWith('/app-devis/') || path.startsWith('/maquette-visuel/') || path.startsWith('/espace-client/')) {
+    // Routes SPA de l'app devis — redirect vers app-devis/index.html.
+    // /espace-client/... reste sur la landing page pour garder une URL client propre.
+    if (path.startsWith('/app-devis/') || path.startsWith('/maquette-visuel/')) {
       // Réécrire /maquette-visuel/x/y → /app-devis/maquette-visuel/x/y
-      // Réécrire /espace-client/token → /app-devis/espace-client/token
-      var appPath = (path.startsWith('/maquette-visuel/') || path.startsWith('/espace-client/'))
+      var appPath = path.startsWith('/maquette-visuel/')
         ? '/app-devis' + path
         : path;
       sessionStorage.setItem('redirect', appPath);

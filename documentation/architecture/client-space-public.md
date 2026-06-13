@@ -35,6 +35,21 @@ Les donnees d'espace client doivent rester cote `devis-app`, car c'est la que vi
 
 Le Firebase AuditApp (`manychatia-82692`) ne doit pas stocker les espaces clients.
 
+## Implementation actuelle
+
+Depuis juin 2026, `/espace-client/...` est route par la landing page via `src/ClientSpaceBridge.jsx`.
+
+Le bridge garde l'URL visible `https://noecalmes.fr/espace-client/{clientSlug}/{token}` et charge en iframe same-origin l'interface publique existante de `app-devis` :
+
+```txt
+/espace-client/slug/token
+  -> landing-page ClientSpaceBridge
+  -> iframe /app-devis/espace-client/slug/token
+  -> Firestore devis-app-8e216 / users/default-user/clientSpaces
+```
+
+Ce choix evite de dupliquer le chat, les documents, le depot de devis signe et les compteurs de notifications admin. Une extraction complete de l'UI publique dans la landing reste possible plus tard.
+
 ## Implementation recommandee
 
 Phase propre :
@@ -63,4 +78,3 @@ Version rapide :
 - GitHub Pages ne sait pas faire de rewrite transparent vers `/app-devis` tout en gardant l'URL visible `/espace-client/...`.
 - Une redirection vers `/app-devis/espace-client/...` fonctionne techniquement, mais l'URL client n'est pas propre.
 - Si aucun espace client n'a ete envoye, on peut supprimer/recreer les espaces existants sans migration.
-

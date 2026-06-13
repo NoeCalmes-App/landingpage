@@ -21,6 +21,7 @@ Routes gerees dans `src/App.jsx` :
 - `/rendez-vous` — section Calendly de la home
 - `/documents` et routes documents
 - `/blog` et `/blog/...`
+- `/espace-client/:clientSlug/:token` et `/espace-client/:token` — facade publique vers l'espace client de `app-devis`, URL propre sans `/app-devis` visible
 - `/maquette/smoothride`
 - `/maquette/aretha`
 - `/maquette/pac-assist`, `/maquette/cvc-assist`
@@ -66,4 +67,3 @@ Cas sensible :
 - `/app-devis/...` doit renvoyer vers l'application admin.
 - `/maquette-visuel/...` appartient a `app-devis`.
 - `/espace-client/...` est destine a devenir une vraie route publique landing page, sans afficher `/app-devis`.
-

@@ -15,6 +15,7 @@ import AuditApp from './audit-app/AuditApp.jsx'
 import SmoothRideMockups from './SmoothRideMockups.jsx'
 import ArethaMockups from './ArethaMockups.jsx'
 import PacAssistMockups from './PacAssistMockups.jsx'
+import ClientSpaceBridge from './ClientSpaceBridge.jsx'
 import ChatbotWidget from './chatbot/Widget'
 
 const meetingSvg = '/assets/images/illustrations/meetingdev.svg'
@@ -233,6 +234,7 @@ function App() {
       history.replaceState(null, '', redirect)
     }
     const path = (redirect || window.location.pathname).replace(/\/$/, '') || '/'
+    if (path === '/espace-client' || path.startsWith('/espace-client/')) return 'client-space'
     if (path === '/merci') return 'merci'
     if (path === '/documents') return 'documents'
     if (path === '/contactnoe') return 'contact'
@@ -438,6 +440,7 @@ function App() {
     />
   )
   if (page === 'merci') return <Merci onBack={goHome} />
+  if (page === 'client-space') return <ClientSpaceBridge />
   if (page === 'smoothride-mockups') return <SmoothRideMockups />
   if (page === 'aretha-mockups') return <ArethaMockups />
   if (page === 'pac-assist-mockups') return <PacAssistMockups />
