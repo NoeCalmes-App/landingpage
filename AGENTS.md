@@ -62,7 +62,7 @@ Les fichiers sous `public` se referencent avec une URL absolue depuis la racine,
 - Les pages HTML statiques dans `public/` peuvent aussi referencer des assets. Les verifier apres tout deplacement.
 - `scripts/generate-routes.js` genere des pages SEO dans `dist` apres le build.
 - `/maquette/...` est une route landing page pour les maquettes HTML faites a la main.
-- `/maquette-visuel/...` appartient a `app-devis` et passe par la redirection GitHub Pages vers `/app-devis`.
+- `/maquette-visuel/...` appartient a Nowork et passe par une facade landing page vers `/nowork`.
 - Le backend audit app utilise le projet Firebase `manychatia-82692`.
 - Le panel admin des audits est lu depuis `devis-app` via `auditStatsAdmin`, avec authentification Firebase `devis-app-8e216`.
 

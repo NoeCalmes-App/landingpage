@@ -8,23 +8,23 @@ Afficher les espaces clients avec une URL propre :
 https://noecalmes.fr/espace-client/{clientSlug}/{token}
 ```
 
-sans exposer `/app-devis` au client.
+sans exposer `/nowork` au client.
 
 ## Principe
 
-`app-devis` reste l'admin. La landing page porte seulement l'interface publique client.
+Nowork reste l'admin. La landing page porte seulement l'interface publique client.
 
 ```txt
 Client
   -> noecalmes.fr/espace-client/slug/token
   -> UI publique dans landing-page
   -> Firebase / API du projet devis-app
-  -> app-devis admin reçoit messages, devis signes, documents, notifications
+  -> Nowork admin reçoit messages, devis signes, documents, notifications
 ```
 
 ## Source de verite
 
-Les donnees d'espace client doivent rester cote `devis-app`, car c'est la que vivent :
+Les donnees d'espace client doivent rester cote Nowork, car c'est la que vivent :
 
 - clients
 - devis
@@ -39,12 +39,12 @@ Le Firebase AuditApp (`manychatia-82692`) ne doit pas stocker les espaces client
 
 Depuis juin 2026, `/espace-client/...` est route par la landing page via `src/ClientSpaceBridge.jsx`.
 
-Le bridge garde l'URL visible `https://noecalmes.fr/espace-client/{clientSlug}/{token}` et charge en iframe same-origin l'interface publique existante de `app-devis` :
+Le bridge garde l'URL visible `https://noecalmes.fr/espace-client/{clientSlug}/{token}` et charge en iframe same-origin l'interface publique existante de Nowork :
 
 ```txt
 /espace-client/slug/token
   -> landing-page ClientSpaceBridge
-  -> iframe /app-devis/espace-client/slug/token
+  -> iframe /nowork/espace-client/slug/token
   -> Firestore devis-app-8e216 / users/default-user/clientSpaces
 ```
 
@@ -57,8 +57,8 @@ Phase propre :
 1. Creer une route landing page `/espace-client/:clientSlug/:token`.
 2. Reprendre l'interface publique de `devis-app/src/views/pages/ClientSpacePage.tsx`.
 3. Lire/ecrire les donnees dans le projet `devis-app-8e216`.
-4. Modifier `app-devis` pour generer des URLs `https://noecalmes.fr/espace-client/...`.
-5. Ne plus rediriger `/espace-client/...` vers `/app-devis/...` dans `public/404.html`.
+4. Modifier Nowork pour generer des URLs `https://noecalmes.fr/espace-client/...`.
+5. Ne jamais rediriger `/espace-client/...` vers `/nowork/...` dans `public/404.html`.
 
 Version robuste :
 
@@ -75,6 +75,6 @@ Version rapide :
 
 ## Points sensibles
 
-- GitHub Pages ne sait pas faire de rewrite transparent vers `/app-devis` tout en gardant l'URL visible `/espace-client/...`.
-- Une redirection vers `/app-devis/espace-client/...` fonctionne techniquement, mais l'URL client n'est pas propre.
+- GitHub Pages ne sait pas faire de rewrite transparent vers `/nowork` tout en gardant l'URL visible `/espace-client/...`.
+- Une redirection vers `/nowork/espace-client/...` fonctionne techniquement, mais l'URL client n'est pas propre.
 - Si aucun espace client n'a ete envoye, on peut supprimer/recreer les espaces existants sans migration.

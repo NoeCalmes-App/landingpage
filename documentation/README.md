@@ -7,7 +7,7 @@ Cette documentation est organisee pour limiter les tokens : lire d'abord le fich
 - `architecture/landing-page.md` — routes publiques, maquettes, SEO, Calendly, chatbot.
 - `architecture/audit-app.md` — funnel audit, questions, recap IA, backend Firebase, lecture admin par `devis-app`.
 - `architecture/assets.md` — rangement des images, icones, fonts et PDF.
-- `architecture/client-space-public.md` — architecture cible pour `/espace-client/...` sans `/app-devis` visible.
+- `architecture/client-space-public.md` — architecture cible pour `/espace-client/...` sans `/nowork` visible.
 - `context/positionnement.md` — positionnement central de Noe, vocabulaire, promesse, preuve sociale.
 
 ## Strategie active

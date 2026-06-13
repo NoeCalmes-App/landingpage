@@ -253,7 +253,7 @@ for (const path of mockupRoutes) {
 // ─── Legacy routes — noindex (old URLs that may still be indexed by Google) ──
 
 const legacyRoutes = ['/a-propos', '/offre', '/contact']
-const noindexRoutes = ['/mentions', '/privacy', '/cgv', '/documents', '/merci', '/contactnoe', '/legal', '/espace-client', ...legacyRoutes]
+const noindexRoutes = ['/mentions', '/privacy', '/cgv', '/documents', '/merci', '/contactnoe', '/legal', '/espace-client', '/maquette-visuel', ...legacyRoutes]
 
 for (const path of noindexRoutes) {
   let html = baseHtml

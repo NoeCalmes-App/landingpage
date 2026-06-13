@@ -48,8 +48,8 @@ jobs:
           VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
 
-      - name: Inject app-devis into dist
-        run: cp -r devis-app-src/dist dist/app-devis
+      - name: Inject Nowork into dist
+        run: cp -r devis-app-src/dist dist/nowork
 
       - uses: actions/upload-pages-artifact@v3
         with:

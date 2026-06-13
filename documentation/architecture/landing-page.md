@@ -21,7 +21,8 @@ Routes gerees dans `src/App.jsx` :
 - `/rendez-vous` — section Calendly de la home
 - `/documents` et routes documents
 - `/blog` et `/blog/...`
-- `/espace-client/:clientSlug/:token` et `/espace-client/:token` — facade publique vers l'espace client de `app-devis`, URL propre sans `/app-devis` visible
+- `/espace-client/:clientSlug/:token` et `/espace-client/:token` — facade publique vers l'espace client de Nowork, URL propre sans `/nowork` visible
+- `/maquette-visuel/:clientSlug/:quoteId` — facade publique vers les maquettes de Nowork, URL propre sans `/nowork` visible
 - `/maquette/smoothride`
 - `/maquette/aretha`
 - `/maquette/pac-assist`, `/maquette/cvc-assist`
@@ -33,10 +34,10 @@ Routes gerees dans `src/App.jsx` :
 
 Les maquettes HTML faites a la main vivent dans la landing page avec des routes `/maquette/...`.
 
-Ne pas confondre avec `app-devis` :
+Ne pas confondre avec Nowork :
 
 - `/maquette/smoothride`, `/maquette/aretha`, `/maquette/cvc-assist` = pages landing page.
-- `/maquette-visuel/{clientSlug}/{quoteId}` = galerie publique generee par `app-devis`.
+- `/maquette-visuel/{clientSlug}/{quoteId}` = galerie publique generee par Nowork.
 
 Pour les URLs collees dans un devis, preferer des slugs minuscules et stables :
 
@@ -64,6 +65,7 @@ Le backend chatbot n'est pas dans ce repo : il appelle la Cloud Function du proj
 
 Cas sensible :
 
-- `/app-devis/...` doit renvoyer vers l'application admin.
-- `/maquette-visuel/...` appartient a `app-devis`.
-- `/espace-client/...` est destine a devenir une vraie route publique landing page, sans afficher `/app-devis`.
+- `/nowork/...` doit renvoyer vers l'application admin.
+- `/app-devis/...` doit rester redirige vers `/nowork/...` pour compatibilite avec les anciens liens.
+- `/maquette-visuel/...` appartient a Nowork mais reste affiche sans `/nowork` via une facade landing page.
+- `/espace-client/...` est une route publique landing page, sans afficher `/nowork`.
