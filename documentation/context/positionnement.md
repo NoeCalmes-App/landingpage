@@ -185,6 +185,31 @@ On peut lancer une première version (MVP) pour valider que les gens paient, ava
 
 ---
 
+## Mon argument vs l'IA / la génération de code
+
+C'est devenu un point de différenciation central. De plus en plus de gens pensent qu'une IA (Lovable, Bolt, Cursor, v0, « vibe coding ») suffit à créer une application. Mon positionnement répond directement à cette croyance.
+
+**L'IA génère du code. Elle ne génère pas de revenus.**
+
+Ce que l'IA fait : produire un écran, une fonctionnalité, du code qui compile. Ça s'arrête là.
+
+Ce que l'IA ne fait pas — et qui fait pourtant qu'une app rapporte :
+
+- **penser le parcours utilisateur** pour amener à la valeur, puis à l'achat ;
+- **optimiser le passage à l'achat** : paywall placé au bon moment, bonne offre, bon prix ;
+- **créer la rétention** : donner une raison de revenir, installer une routine, une habitude ;
+- **construire un modèle économique** cohérent (abonnement, freemium, MRR) pensé dès le départ ;
+- **arbitrer** ce qui est utile ou non, cadrer la première version, éviter de coder la mauvaise chose ;
+- **accompagner** après la mise en ligne pour que l'app génère vraiment de l'argent.
+
+Une app générée par IA, c'est une coquille qui existe et qui compile. Une app qui rapporte, c'est une stratégie produit + une expérience pensée pour convertir et fidéliser. L'IA est un outil que j'utilise pour aller plus vite ; elle ne remplace pas la conception business.
+
+Formulation courte à marteler : **« L'IA te donne du code. Moi je te donne une app qui rapporte. »**
+
+Nuance importante : ne pas dénigrer l'IA (je l'utilise moi-même). Le message n'est pas « l'IA c'est nul », mais « l'IA ne suffit pas : générer du code ≠ concevoir un produit qui génère des revenus ».
+
+---
+
 ## Ma cible
 
 **Cœur de cible actuel** : entrepreneurs non techniques ou semi-techniques qui ont une idée d'application mobile et veulent en faire un vrai produit générateur de revenus.

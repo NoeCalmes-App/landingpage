@@ -25,6 +25,7 @@ Routes gerees dans `src/App.jsx` :
 - `/maquette-visuel/:clientSlug/:quoteId` — facade publique vers les maquettes de Nowork, URL propre sans `/nowork` visible
 - `/maquette/smoothride`
 - `/maquette/aretha`
+- `/maquette/kingfit-coach`
 - `/maquette/pac-assist`, `/maquette/cvc-assist`
 - `/merci`, `/contactnoe`, `/legal`, `/mentions`, `/privacy`, `/cgv`
 
@@ -37,13 +38,25 @@ Les maquettes HTML faites a la main vivent dans la landing page avec des routes 
 Ne pas confondre avec Nowork :
 
 - `/maquette/smoothride`, `/maquette/aretha`, `/maquette/cvc-assist` = pages landing page.
+- `/maquette/kingfit-coach` = page de maquettes pour l'application coach/salle de sport.
 - `/maquette-visuel/{clientSlug}/{quoteId}` = galerie publique generee par Nowork.
 
 Pour les URLs collees dans un devis, preferer des slugs minuscules et stables :
 
 - `https://noecalmes.fr/maquette/smoothride/`
 - `https://noecalmes.fr/maquette/aretha/`
+- `https://noecalmes.fr/maquette/kingfit-coach/`
 - `https://noecalmes.fr/maquette/cvc-assist/`
+
+### Reference de structure pour nouvelles maquettes
+
+Quand une nouvelle maquette client doit etre creee, prendre Aretha comme reference de structure, pas comme contenu a copier.
+
+- Reference publique : `https://noecalmes.fr/maquette/aretha/`
+- Fichiers locaux : `src/ArethaMockups.jsx` et `src/aretha-mockups.css`
+- Attendu : page autonome, hero sobre, galerie de cartes, frames mobile propres, titre et sous-titre pour chaque ecran, finition visuelle coherente.
+- Adapter a chaque projet : parcours, ecrans, style, couleurs, illustrations, textes et niveau de detail doivent rester propres au client.
+- Si le client demande un lien dans le devis, coller l'URL `/maquette/{slug}` generee dans ce dossier, pas une galerie `/maquette-visuel/...` sauf si les images viennent de Nowork.
 
 ## Calendly
 

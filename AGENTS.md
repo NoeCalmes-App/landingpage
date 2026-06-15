@@ -24,6 +24,7 @@ Lire seulement la doc utile au sujet demande.
 | Espace client public `/espace-client/...` | `documentation/architecture/client-space-public.md` |
 | Strategie commerciale, call, objections | `documentation/strategy/strategie-commerciale.md` |
 | Instagram, LinkedIn, tunnel d'acquisition | `documentation/strategy/tunnel.md` |
+| Rediger un post / carrousel LinkedIn | `documentation/strategy/linkedin-posts.md` |
 | Stories, posts, briefs creatifs | `content/README.md` puis le fichier de brief concerne |
 
 ## Funnel business
@@ -65,6 +66,24 @@ Les fichiers sous `public` se referencent avec une URL absolue depuis la racine,
 - `/maquette-visuel/...` appartient a Nowork et passe par une facade landing page vers `/nowork`.
 - Le backend audit app utilise le projet Firebase `manychatia-82692`.
 - Le panel admin des audits est lu depuis Nowork via `auditStatsAdmin`, avec authentification Firebase `devis-app-8e216`.
+
+## Reference maquettes
+
+Quand Noe demande de creer une maquette pour un nouveau projet, utiliser la page Aretha comme reference de structure :
+
+- Route publique de reference : `https://noecalmes.fr/maquette/aretha/`
+- Code local de reference : `src/ArethaMockups.jsx` et `src/aretha-mockups.css`
+- Structure attendue : page autonome sans navbar/footer landing, hero simple, galerie de maquettes, cartes de presentation, frames mobile propres, rendu premium et coherent.
+- Pour un nouveau projet, reprendre la structure et le niveau de finition, mais jamais le contenu, les fonctionnalites, les couleurs ou la marque Aretha si le projet est different.
+- Les maquettes HTML vivent dans `landing-page` sur une route `/maquette/{slug}`. Le devis et le cahier des charges restent geres cote Nowork.
+
+En-tete standard a conserver pour les routes `/maquette/...` :
+
+- Eyebrow : `Proposition d'accompagnement`
+- Titre : `Maquettes visuelles`
+- Reference : `[Nom du projet] · [reference ou nom provisoire]`
+- Disclaimer : `Aperçu rapide pour visualiser l'idée, toutes les pages ne sont pas illustrées et le design n'est pas définitif (couleurs, logo, typo). Non contractuel.`
+- En dessous : galerie de cartes avec titre/sous-titre, puis frames mobile ou desktop selon le projet.
 
 ## Verification avant livraison
 

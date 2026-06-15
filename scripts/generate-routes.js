@@ -235,7 +235,13 @@ console.log(`✓ Generated ${auditAppRoute.path}/index.html`)
 
 // ─── Client mockup routes — noindex autonomous visual proposal pages ─────────
 
-const mockupRoutes = ['/maquette/smoothride', '/maquette/pac-assist', '/maquette/cvc-assist']
+const mockupRoutes = [
+  '/maquette/smoothride',
+  '/maquette/aretha',
+  '/maquette/kingfit-coach',
+  '/maquette/pac-assist',
+  '/maquette/cvc-assist',
+]
 
 for (const path of mockupRoutes) {
   let html = baseHtml

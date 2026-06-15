@@ -15,6 +15,7 @@ import AuditApp from './audit-app/AuditApp.jsx'
 import SmoothRideMockups from './SmoothRideMockups.jsx'
 import ArethaMockups from './ArethaMockups.jsx'
 import PacAssistMockups from './PacAssistMockups.jsx'
+import CoachAppMockups from './CoachAppMockups.jsx'
 import ClientSpaceBridge from './ClientSpaceBridge.jsx'
 import MaquetteVisualBridge from './MaquetteVisualBridge.jsx'
 import ChatbotWidget from './chatbot/Widget'
@@ -254,6 +255,7 @@ function App() {
     if (path.toLowerCase() === '/maquette/smoothride') return 'smoothride-mockups'
     if (path.toLowerCase() === '/maquette/aretha') return 'aretha-mockups'
     if (['/maquette/pac-assist', '/maquette/cvc-assist', '/maquette/pacassist', '/maquette/cvcassist'].includes(path.toLowerCase())) return 'pac-assist-mockups'
+    if (['/maquette/kingfit-coach', '/maquette/kingfit', '/maquette/coach-app', '/maquette/app-coach'].includes(path.toLowerCase())) return 'coach-app-mockups'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
     if (path in SECTION_ROUTES) return 'home'
     return 'home'
@@ -447,6 +449,7 @@ function App() {
   if (page === 'smoothride-mockups') return <SmoothRideMockups />
   if (page === 'aretha-mockups') return <ArethaMockups />
   if (page === 'pac-assist-mockups') return <PacAssistMockups />
+  if (page === 'coach-app-mockups') return <CoachAppMockups />
   if (page === 'contact') return <ContactNoe />
   if (page === 'legal') return <Legales />
   if (page === 'audit-app') return <AuditApp onBack={goHome} onBookCall={goBookCall} onLegal={(p) => openLegal(p, '/audit-app')} />
