@@ -19,6 +19,8 @@ import {
   Utensils,
   Video,
 } from 'lucide-react'
+import Model from 'react-body-highlighter'
+import StatusBarIcons from './StatusBarIcons'
 import './coach-app-mockups.css'
 
 function StatusBar() {
@@ -26,9 +28,7 @@ function StatusBar() {
     <div className="coach-statusbar">
       <span>9:41</span>
       <div className="coach-status-icons">
-        <span className="coach-signal" />
-        <span className="coach-wifi" />
-        <span className="coach-battery" />
+        <StatusBarIcons />
       </div>
     </div>
   )
@@ -87,19 +87,19 @@ function BottomNav({ active = 'training' }) {
   )
 }
 
+const MUSCLE_TARGETS = ['chest', 'front-deltoids', 'biceps', 'triceps', 'abs', 'quadriceps']
+
 function MuscleMap({ variant = 'full' }) {
+  const muscles = variant === 'light' ? ['chest', 'abs'] : MUSCLE_TARGETS
   return (
     <div className={`coach-muscle-map coach-muscle-${variant}`}>
-      <div className="coach-body-shape">
-        <span className="muscle chest" />
-        <span className="muscle abs" />
-        <span className="muscle shoulder-left" />
-        <span className="muscle shoulder-right" />
-        <span className="muscle arm-left" />
-        <span className="muscle arm-right" />
-        <span className="muscle leg-left" />
-        <span className="muscle leg-right" />
-      </div>
+      <Model
+        data={[{ name: 'Séance', muscles }]}
+        type="anterior"
+        bodyColor="#39424b"
+        highlightedColors={['#75dce6']}
+        svgStyle={{ height: variant === 'light' ? '64px' : '84px', width: 'auto' }}
+      />
     </div>
   )
 }
@@ -107,18 +107,10 @@ function MuscleMap({ variant = 'full' }) {
 function VideoStill({ label = 'Vidéo coach', compact = false }) {
   return (
     <div className={compact ? 'coach-video-still is-compact' : 'coach-video-still'}>
-      <div className="coach-video-person">
-        <span className="head" />
-        <span className="torso" />
-        <span className="arm-left" />
-        <span className="arm-right" />
-        <span className="leg-left" />
-        <span className="leg-right" />
-      </div>
-      <span className="coach-play-pill">
-        <Play size={compact ? 12 : 15} fill="currentColor" />
-        {label}
+      <span className="coach-video-play">
+        <Play size={compact ? 13 : 20} fill="currentColor" />
       </span>
+      <span className="coach-play-pill">{label}</span>
     </div>
   )
 }
@@ -192,8 +184,19 @@ function PlanPreviewScreen() {
         <p className="coach-kicker">Aperçu gratuit</p>
         <h3>Plan prise de muscle sur 4 semaines</h3>
         <div className="coach-chart">
-          <span className="line base" />
-          <span className="line active" />
+          <svg className="coach-chart-svg" viewBox="0 0 220 96" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="coachChartFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="var(--coach-aqua)" stopOpacity="0.32" />
+                <stop offset="100%" stopColor="var(--coach-aqua)" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path d="M6 78 L58 64 L110 47 L162 30 L214 12 L214 92 L6 92 Z" fill="url(#coachChartFill)" />
+            <path d="M6 78 L58 64 L110 47 L162 30 L214 12" fill="none" stroke="var(--coach-aqua)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+            <circle cx="6" cy="78" r="3.5" fill="var(--coach-aqua)" />
+            <circle cx="110" cy="47" r="3.5" fill="var(--coach-aqua)" />
+            <circle cx="214" cy="12" r="4.5" fill="var(--coach-aqua)" />
+          </svg>
           <strong>+ progression</strong>
         </div>
         <div className="coach-plan-grid">
@@ -338,10 +341,13 @@ function ActiveWorkoutScreen() {
 }
 
 function NutritionScreen() {
+  const RICE_IMG = 'https://img.magnific.com/photos-gratuite/plat-indien-traditionnel-du-riz-du-poulet_23-2148294954.jpg?t=st=1781537098~exp=1781540698~hmac=3b06edf47c4ccd5f08c241a50a9028ee7bffdfec7926fe3d787ef729321e8f57&w=740'
+  const CREPES_IMG = 'https://img.magnific.com/photos-gratuite/fromage-crepes-au-miel_1339-5251.jpg?t=st=1781537061~exp=1781540661~hmac=db04205a0a354ed6373118ba05797267285af51a080a4c95a1934a72ef37a86d&w=740'
+  const POKE_IMG = 'https://img.magnific.com/photos-gratuite/photographie-plat-poke-bowl-au-saumon_53876-108183.jpg?t=st=1781537915~exp=1781541515~hmac=661b35bd40d8e3bcd0e65c759142014fe23c68388bbd160413d9f4d1d6230146&w=740'
   const recipes = [
-    ['Bowl protéiné', '420 kcal · 8 min', 'is-blue'],
-    ['Poulet riz légumes', '610 kcal · 20 min', 'is-orange'],
-    ['Pancakes avoine', '380 kcal · 12 min', 'is-pink'],
+    ['Poulet riz légumes', '610 kcal · 20 min', 'is-orange', RICE_IMG],
+    ['Pancakes avoine', '380 kcal · 12 min', 'is-pink', CREPES_IMG],
+    ['Bowl protéiné', '420 kcal · 8 min', 'is-blue', POKE_IMG],
   ]
 
   return (
@@ -350,9 +356,11 @@ function NutritionScreen() {
       <h3>Recettes du coach</h3>
       <p className="coach-subtitle">Des idées simples à ajouter au programme de la semaine.</p>
       <div className="coach-recipe-grid">
-        {recipes.map(([name, meta, tone]) => (
+        {recipes.map(([name, meta, tone, img]) => (
           <article className={`coach-recipe ${tone}`} key={name}>
-            <div className="coach-food-visual" />
+            {img
+              ? <img className="coach-food-photo" src={img} alt={name} loading="lazy" />
+              : <div className="coach-food-visual" />}
             <strong>{name}</strong>
             <small>{meta}</small>
           </article>
@@ -412,41 +420,27 @@ function ProfileScreen() {
 
 function AdminScreen() {
   return (
-    <div className="coach-admin-preview">
-      <div className="coach-admin-sidebar">
-        <AppLogo small />
-        <span className="is-active">Clients</span>
-        <span>Programmes</span>
-        <span>Exercices</span>
-        <span>Recettes</span>
-        <span>Messages</span>
+    <section className="coach-screen coach-admin">
+      <TopBar title="Espace admin" icon={<Settings size={19} />} />
+      <div className="coach-welcome">
+        <p>Connecté en administrateur</p>
+        <h3>Gestion de l’application</h3>
       </div>
-      <div className="coach-admin-main">
-        <div className="coach-admin-top">
-          <div>
-            <p className="coach-kicker">Espace coach</p>
-            <h3>Gestion de l’application</h3>
-          </div>
-          <button>Ajouter un exercice</button>
-        </div>
-        <div className="coach-admin-metrics">
-          <span><strong>128</strong><small>Clients</small></span>
-          <span><strong>42</strong><small>Exercices</small></span>
-          <span><strong>18</strong><small>Recettes</small></span>
-          <span><strong>9</strong><small>Messages</small></span>
-        </div>
-        <div className="coach-admin-table">
-          {['Alex Martin', 'Samira B.', 'Kevin L.'].map((client, index) => (
-            <div key={client}>
-              <strong>{client}</strong>
-              <span>{index === 0 ? 'Premium actif' : 'Essai gratuit'}</span>
-              <small>{index + 2} séances cette semaine</small>
-              <button>Voir</button>
-            </div>
-          ))}
-        </div>
+      <div className="coach-stats-grid">
+        <div><small>Clients</small><strong>128</strong></div>
+        <div><small>Exercices</small><strong>42</strong></div>
+        <div><small>Recettes</small><strong>18</strong></div>
+        <div><small>Messages</small><strong>9</strong></div>
       </div>
-    </div>
+      <div className="coach-settings-list">
+        <span>Clients <ChevronRight size={17} /></span>
+        <span>Programmes <ChevronRight size={17} /></span>
+        <span>Exercices et vidéos <ChevronRight size={17} /></span>
+        <span>Recettes <ChevronRight size={17} /></span>
+        <span>Messages <ChevronRight size={17} /></span>
+      </div>
+      <PrimaryButton>Ajouter un exercice</PrimaryButton>
+    </section>
   )
 }
 
@@ -462,6 +456,7 @@ const mockups = [
   { id: 'nutrition', title: 'Nutrition', subtitle: 'Recettes du coach', screen: <NutritionScreen /> },
   { id: 'chat', title: 'Messagerie', subtitle: 'Lien coach-client', screen: <ChatScreen /> },
   { id: 'profile', title: 'Profil', subtitle: 'Progression et abonnement', screen: <ProfileScreen /> },
+  { id: 'admin', title: 'Espace admin', subtitle: 'Géré dans l’app (compte coach)', screen: <AdminScreen /> },
 ]
 
 export default function CoachAppMockupsPage() {
@@ -493,16 +488,6 @@ export default function CoachAppMockupsPage() {
             </div>
           </article>
         ))}
-
-        <article className="coach-mockup-card coach-mockup-card-wide">
-          <div className="coach-card-head">
-            <div>
-              <h2>Administration web</h2>
-              <p>Gestion clients, contenus et messages</p>
-            </div>
-          </div>
-          <AdminScreen />
-        </article>
       </section>
     </main>
   )

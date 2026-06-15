@@ -26,15 +26,14 @@ import {
   Zap,
 } from 'lucide-react'
 import './pac-assist-mockups.css'
+import StatusBarIcons from './StatusBarIcons'
 
 function StatusBar() {
   return (
     <div className="pa-statusbar">
       <span>9:41</span>
       <div className="pa-status-icons">
-        <span className="pa-signal" />
-        <span className="pa-wifi" />
-        <span className="pa-battery" />
+        <StatusBarIcons />
       </div>
     </div>
   )

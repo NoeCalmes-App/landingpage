@@ -20,15 +20,14 @@ import {
   Users,
 } from 'lucide-react'
 import './aretha-mockups.css'
+import StatusBarIcons from './StatusBarIcons'
 
 function StatusBar() {
   return (
     <div className="ar-statusbar">
       <span>9:41</span>
       <div className="ar-status-icons">
-        <span className="ar-signal" />
-        <span className="ar-wifi" />
-        <span className="ar-battery" />
+        <StatusBarIcons />
       </div>
     </div>
   )

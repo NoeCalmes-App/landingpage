@@ -19,6 +19,7 @@
     "lucide-react": "^0.474.0",
     "pdfjs-dist": "^5.7.284",
     "react": "^19.2.0",
+    "react-body-highlighter": "^2.0.5",
     "react-dom": "^19.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.6.0",

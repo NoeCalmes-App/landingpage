@@ -133,7 +133,6 @@
 .coach-phone-frame {
   width: 390px;
   max-width: 100%;
-  aspect-ratio: 390 / 844;
   padding: 10px;
   border-radius: 44px;
   background: linear-gradient(145deg, #2a3036, #080a0c);
@@ -145,7 +144,8 @@
 .coach-phone-screen {
   position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 820px;
+  height: auto;
   overflow: hidden;
   border-radius: 35px;
   color: var(--coach-text);
@@ -218,7 +218,7 @@
 }
 
 .coach-screen {
-  height: calc(100% - 36px);
+  min-height: 784px;
   padding: 18px 18px 20px;
   display: flex;
   flex-direction: column;
@@ -232,6 +232,10 @@
   line-height: 1.06;
   font-weight: 850;
   letter-spacing: -0.02em;
+}
+
+.coach-quiz h3 {
+  font-size: 21px;
 }
 
 .coach-screen h4 {
@@ -287,6 +291,12 @@
   font-size: 17px;
   font-weight: 850;
   box-shadow: 0 16px 32px rgba(117, 220, 230, 0.2);
+}
+
+/* CTA onboarding/quiz collé en bas de l'écran, même position d'un écran à l'autre */
+.coach-onboarding .coach-primary,
+.coach-quiz .coach-primary {
+  margin-top: auto;
 }
 
 .coach-primary-muted {
@@ -504,6 +514,27 @@
 .coach-video-person .leg-left { left: 28px; }
 .coach-video-person .leg-right { right: 28px; }
 
+.coach-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #061014;
+  background: rgba(117, 220, 230, 0.92);
+  box-shadow: 0 12px 30px rgba(117, 220, 230, 0.3);
+}
+
+.coach-video-still.is-compact .coach-video-play {
+  width: 30px;
+  height: 30px;
+}
+
 .coach-play-pill {
   position: absolute;
   left: 16px;
@@ -521,6 +552,7 @@
 
 .coach-screen-copy h3 {
   margin: 7px 0 9px;
+  font-size: 22px;
 }
 
 .coach-plan-card,
@@ -548,13 +580,14 @@
     #0e1216;
 }
 
-.coach-chart .line {
+.coach-chart-svg {
   position: absolute;
-  left: 18px;
-  right: 18px;
-  height: 5px;
-  border-radius: 99px;
-  transform-origin: left center;
+  left: 14px;
+  right: 14px;
+  top: 14px;
+  bottom: 16px;
+  width: auto;
+  height: auto;
 }
 
 .coach-chart .base {
@@ -612,52 +645,28 @@
 }
 
 .coach-muscle-map {
-  width: 92px;
-  height: 116px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.coach-body-shape {
-  position: relative;
-  width: 66px;
-  height: 104px;
-  border-radius: 26px 26px 18px 18px;
-  background:
-    radial-gradient(circle at 50% 10%, #343b43 0 11px, transparent 12px),
-    linear-gradient(180deg, transparent 0 25px, #3a424b 25px 88px, transparent 88px);
+.coach-muscle-svg {
+  width: auto;
+  height: 132px;
+  display: block;
 }
 
-.coach-body-shape::before,
-.coach-body-shape::after {
-  content: "";
-  position: absolute;
-  top: 35px;
-  width: 18px;
-  height: 48px;
-  border-radius: 12px;
-  background: #343b43;
-}
-
-.coach-body-shape::before { left: -13px; transform: rotate(8deg); }
-.coach-body-shape::after { right: -13px; transform: rotate(-8deg); }
-
-.coach-body-shape .muscle {
-  position: absolute;
-  border-radius: 99px;
-  background: var(--coach-aqua);
+.coach-muscle-zones {
   opacity: 0.95;
 }
 
-.muscle.chest { left: 18px; top: 31px; width: 30px; height: 15px; }
-.muscle.abs { left: 23px; top: 49px; width: 20px; height: 28px; }
-.muscle.shoulder-left { left: 7px; top: 31px; width: 12px; height: 14px; }
-.muscle.shoulder-right { right: 7px; top: 31px; width: 12px; height: 14px; }
-.muscle.arm-left { left: -10px; top: 48px; width: 10px; height: 30px; }
-.muscle.arm-right { right: -10px; top: 48px; width: 10px; height: 30px; }
-.muscle.leg-left { left: 19px; bottom: 5px; width: 10px; height: 26px; }
-.muscle.leg-right { right: 19px; bottom: 5px; width: 10px; height: 26px; }
-.coach-muscle-light .muscle { opacity: 0.25; }
+.coach-muscle-light .coach-muscle-svg {
+  height: 104px;
+}
+
+.coach-muscle-light .coach-muscle-zones {
+  opacity: 0.45;
+}
 
 .coach-paywall {
   gap: 13px;
@@ -989,6 +998,13 @@
     linear-gradient(135deg, #25313a, #121519);
 }
 
+.coach-food-photo {
+  width: 100%;
+  height: 78px;
+  object-fit: cover;
+  display: block;
+}
+
 .coach-recipe.is-blue .coach-food-visual { filter: hue-rotate(25deg); }
 .coach-recipe.is-orange .coach-food-visual { filter: hue-rotate(-25deg) saturate(1.2); }
 .coach-recipe.is-pink .coach-food-visual { filter: hue-rotate(80deg); }
@@ -1069,6 +1085,10 @@
 .coach-message-box button {
   width: 38px;
   height: 38px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 0;
   border-radius: 14px;
   color: #061014;

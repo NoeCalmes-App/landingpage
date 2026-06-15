@@ -23,15 +23,14 @@ import {
   X,
 } from 'lucide-react'
 import './smoothride-mockups.css'
+import StatusBarIcons from './StatusBarIcons'
 
 function StatusBar() {
   return (
     <div className="sr-statusbar">
       <span>9:41</span>
       <div className="sr-status-icons">
-        <span className="sr-signal" />
-        <span className="sr-wifi" />
-        <span className="sr-battery" />
+        <StatusBarIcons />
       </div>
     </div>
   )
