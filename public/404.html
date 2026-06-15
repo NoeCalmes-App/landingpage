@@ -6,6 +6,8 @@
     var path = window.location.pathname;
     var NOWORK_BASE = '/nowork';
     var LEGACY_BASE = '/app-devis';
+    var cgvPdfMatch = path.match(/^\/cgv\/([^/]+\.pdf)$/i);
+    var rootCgvPdfMatch = path.match(/^\/(CGV-[^/]+\.pdf)$/i);
 
     function redirectToLanding(cleanPath) {
       sessionStorage.setItem('redirect', cleanPath);
@@ -17,8 +19,16 @@
       window.location.replace(NOWORK_BASE + '/');
     }
 
-    // Anciens liens app-devis : redirection de compatibilite.
-    if (path === LEGACY_BASE || path.startsWith(LEGACY_BASE + '/')) {
+    // Anciens liens CGV : les devis/CDC deja generes pointent parfois vers
+    // /CGV-{date}.pdf et parfois vers /cgv/{fichier}.
+    // On garde ces URLs compatibles avec le dossier public actuel.
+    if (path === '/cgv.pdf') {
+      window.location.replace('/cgv/CGV-22-05-2026.pdf');
+    } else if (rootCgvPdfMatch) {
+      window.location.replace('/cgv/' + rootCgvPdfMatch[1]);
+    } else if (cgvPdfMatch) {
+      window.location.replace('/assets/documents/cgv/' + cgvPdfMatch[1]);
+    } else if (path === LEGACY_BASE || path.startsWith(LEGACY_BASE + '/')) {
       var legacyRest = path.slice(LEGACY_BASE.length) || '/';
       if (legacyRest.startsWith('/espace-client/')) {
         redirectToLanding(legacyRest);
