@@ -49,7 +49,7 @@ function patchHtml(html, {
     `<script type="application/ld+json">\n    ${breadcrumbJson}\n    </script>`
   )
 
-  const seoContent = `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1>${heading}</h1><p>${content}</p><a href="${backHref}">${backLink}</a></div></div>`
+  const seoContent = `<div id="root"></div><div data-seo-prerender style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden"><h1>${heading}</h1><p>${content}</p><a href="${backHref}">${backLink}</a></div><noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1>${heading}</h1><p>${content}</p><a href="${backHref}">${backLink}</a></div></noscript>`
   html = html.replace('<div id="root"></div>', seoContent)
 
   return html
