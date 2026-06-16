@@ -124,7 +124,7 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {showNav && <AuditAppTopBar onBack={onBack} onBookCall={onBookCall} />}
+      {showNav && <AuditAppTopBar onBack={onBack} />}
 
       <div className="flex-1 flex flex-col">
         {stage === 'hero' && <AuditAppHero onStart={handleStart} onLegal={onLegal} />}
@@ -195,23 +195,7 @@ function AuditAppLegalFooter({ onLegal }) {
 // cliquables pour revenir a l'accueil — pas besoin de bouton "Retour" textuel.
 // Objectif : maximiser la confiance + offrir un raccourci aux prospects deja
 // chauds qui veulent skipper le formulaire.
-function AuditAppTopBar({ onBack, onBookCall }) {
-  // Faux check de disponibilite : on simule une verification ~1.6s avant
-  // d'afficher le badge vert "disponible". Effet de presence + credibilite.
-  const [checking, setChecking] = useState(true)
-  useEffect(() => {
-    const t = setTimeout(() => setChecking(false), 1600)
-    return () => clearTimeout(t)
-  }, [])
-
-  const handleBookCall = () => {
-    if (typeof onBookCall === 'function') {
-      onBookCall()
-    } else if (typeof onBack === 'function') {
-      onBack()
-    }
-  }
-
+function AuditAppTopBar({ onBack }) {
   return (
     <header className="anim-nav fixed inset-x-0 top-2.5 md:top-[18px] z-50 flex justify-center px-4 md:px-6">
       <div className="w-full max-w-200">
@@ -236,32 +220,10 @@ function AuditAppTopBar({ onBack, onBookCall }) {
                 >
                   Noé Calmes
                 </span>
-                <span className="flex items-center gap-1.5 text-grey text-[0.72rem] md:text-[0.78rem] leading-tight font-normal">
-                  {checking ? (
-                    <>
-                      <span className="inline-block w-2.5 h-2.5 rounded-full border border-grey/40 border-t-grey animate-spin" />
-                      <span>Vérification de la disponibilité…</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="relative flex h-1.5 w-1.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-60" />
-                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
-                      </span>
-                      Expert · disponible
-                    </>
-                  )}
+                <span className="text-grey text-[0.72rem] md:text-[0.78rem] leading-tight font-normal">
+                  Expert en applications
                 </span>
               </div>
-            </button>
-
-            {/* CTA droite : Discuter avec Noé → /rendez-vous (Calendly home) */}
-            <button
-              onClick={handleBookCall}
-              className="inline-flex items-center gap-1.5 md:gap-2 bg-text text-surface text-[0.82rem] md:text-[0.9rem] font-semibold px-4 py-2.5 md:px-5 md:py-3 rounded-full hover:bg-brand transition-colors cursor-pointer shadow-sm"
-            >
-              <span className="hidden sm:inline">Discuter avec Noé</span>
-              <span className="sm:hidden">Discuter</span>
             </button>
           </div>
         </div>
