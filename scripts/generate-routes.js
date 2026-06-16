@@ -145,6 +145,13 @@ const blogRoutes = [
     content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
   },
   {
+    path: '/blog/application-mobile-meilleur-investissement',
+    title: 'Créer une application mobile : meilleur investissement en 2026 ! | Noé Calmes',
+    description: 'Communauté, réseau métier, revenus récurrents, valorisation : pourquoi une application mobile bien pensée peut devenir un vrai actif business.',
+    heading: 'Créer une application mobile : le meilleur investissement en 2026 !',
+    content: 'Une application mobile bien pensée peut devenir un actif business : revenus récurrents, valorisation, usage B2B ou B2C et coût d\'entrée plus accessible que beaucoup d\'autres investissements.',
+  },
+  {
     path: '/blog/combien-coute-application-mobile',
     title: 'Combien coûte une application mobile en 2026 ? | Noé Calmes',
     description: 'Découvrez le vrai coût d\'une application mobile en 2026 : freelance vs agence, MVP vs app complète. Prix indicatifs et facteurs qui influencent le budget.',

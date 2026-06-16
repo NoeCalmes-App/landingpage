@@ -1,6 +1,36 @@
 import { useEffect } from 'react'
 
+const mePhoto = '/assets/images/profile/me.webp'
+
 export const BLOG_ARTICLES = [
+  {
+    slug: 'application-mobile-meilleur-investissement',
+    title: 'Créer une application mobile : le meilleur investissement en 2026 !',
+    metaTitle: 'Créer une application mobile : meilleur investissement en 2026 ! | Noé Calmes',
+    description: 'Communauté, réseau métier, revenus récurrents, valorisation : pourquoi une application mobile bien pensée peut devenir un vrai actif business.',
+    date: '2026-06-16',
+    readTime: '-2min',
+    finalCta: 'audit',
+    compactHeader: true,
+    content: `
+      <p>Quand on parle d'investissement, on pense souvent immobilier, publicité ou matériel. Mais il y a un actif que beaucoup d'entrepreneurs sous-estiment encore : <strong>l'application mobile</strong>.</p>
+      <p>Peu d'investissements cochent autant de cases : revenus mensuels, faibles frais, distribution mondiale, valorisation et revente possible.</p>
+
+      <h2>Communauté, métier, réseau : vous avez déjà un point d'entrée</h2>
+      <p>Si vous avez une audience, une clientèle ou une communauté, vous avez déjà le plus dur : l'attention. Une application peut transformer cette attention en revenus récurrents.</p>
+      <p>Et si vous n'avez pas de communauté, partez de votre métier. Un plombier connaît les problèmes des techniciens. Un restaurateur connaît les contraintes de réservation. Un consultant connaît les blocages de ses clients. Cette expérience peut devenir une application B2B ou B2C.</p>
+
+      <h2>Une application, c'est un actif</h2>
+      <p>Bien pensée, une application mobile peut avoir des utilisateurs, des revenus, une marque, une base de données et un parcours de vente. Ce n'est pas juste un outil : c'est un actif.</p>
+      <p>Comme l'immobilier, elle peut produire du revenu. Mais avec un coût de départ souvent plus accessible, peu de frais de fonctionnement, et une distribution possible partout dès le premier jour.</p>
+      <p>Si elle génère du revenu mensuel, elle peut aussi se valoriser. Et si elle ne décolle pas tout de suite, vous pouvez ajuster, vous associer avec quelqu'un de fort en marketing, ou repartir d'une première version plus claire.</p>
+
+      <h2>Le point clé : ne pas construire au hasard</h2>
+      <p>Une application mal pensée ne rapporte rien. Avant de développer, il faut valider le besoin, le public, le modèle économique et la première version à lancer.</p>
+      <p>C'est là que se joue la différence entre une application qui existe et une application qui peut rapporter.</p>
+
+    `,
+  },
   {
     slug: 'combien-coute-application-mobile',
     title: 'Combien coûte une application mobile en 2026 ?',
@@ -352,28 +382,43 @@ export const BLOG_ARTICLES = [
   },
 ]
 
-function BlogArticlePage({ article, onBack, onBookCall }) {
+function BlogArticlePage({ article, onBack, onBookCall, onAuditApp }) {
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [])
+    document.title = article.metaTitle || article.title
+    document.querySelector('meta[name="description"]')?.setAttribute('content', article.description)
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://noecalmes.fr/blog/${article.slug}`)
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', article.metaTitle || article.title)
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', article.description)
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', `https://noecalmes.fr/blog/${article.slug}`)
+  }, [article])
 
   return (
     <div className="min-h-screen bg-surface">
       <nav className="fixed inset-x-0 top-2.5 md:top-4.5 z-50 flex justify-center px-4 md:px-6">
         <div className="w-full max-w-230">
           <div className="backdrop-blur-md border border-[#70707029] shadow-[0_1px_3px_#00000017] rounded-[40px] bg-[#fffefc3d]">
-            <div className="flex items-center justify-center min-[480px]:justify-between h-20 px-6 md:px-7">
-              <button onClick={onBack} className="flex flex-col text-left cursor-pointer">
-                <span className="text-text font-bold text-xl md:text-1xl leading-tight tracking-tight" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                  Noé Calmes
-                </span>
-                <span className="text-grey text-sm md:text-md leading-tight font-normal">
-                  Expert en applications mobiles
+            <div className="flex items-center justify-center min-[480px]:justify-between h-20 px-5 md:px-7">
+              <button onClick={onBack} className="flex items-center gap-3 text-left cursor-pointer min-w-0">
+                <img
+                  src={mePhoto}
+                  alt="Noé Calmes"
+                  width="44"
+                  height="44"
+                  className="h-11 w-11 rounded-full object-cover shrink-0"
+                />
+                <span className="flex flex-col min-w-0">
+                  <span className="text-text font-bold text-lg md:text-1xl leading-tight tracking-tight truncate" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                    Noé Calmes
+                  </span>
+                  <span className="text-grey text-xs md:text-md leading-tight font-normal truncate">
+                    Expert en applications mobiles
+                  </span>
                 </span>
               </button>
               <button
                 onClick={onBookCall}
-                className="hidden min-[480px]:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
+                className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
               >
                 Réserver un appel
               </button>
@@ -382,20 +427,39 @@ function BlogArticlePage({ article, onBack, onBookCall }) {
         </div>
       </nav>
 
-      <article className="max-w-180 mx-auto px-5 pt-36 md:pt-40 pb-20">
-        <button onClick={onBack} className="text-brand text-[0.9rem] font-medium mb-6 inline-flex items-center gap-1.5 hover:underline cursor-pointer">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          Retour au blog
-        </button>
+      <article className={`max-w-180 mx-auto px-5 pb-20 ${article.compactHeader ? 'pt-32 md:pt-36' : 'pt-36 md:pt-40'}`}>
+        {article.compactHeader ? (
+          <div className="flex items-center justify-between gap-4 text-[0.85rem] mb-4">
+            <button onClick={onBack} className="text-brand font-medium inline-flex items-center gap-1.5 hover:underline cursor-pointer shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12" />
+                <polyline points="12 19 5 12 12 5" />
+              </svg>
+              Retour au blog
+            </button>
+            <span className="text-grey text-right">
+              {article.readTime} de lecture
+            </span>
+          </div>
+        ) : (
+          <button onClick={onBack} className="text-brand text-[0.9rem] font-medium mb-6 inline-flex items-center gap-1.5 hover:underline cursor-pointer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+            Retour au blog
+          </button>
+        )}
 
-        <div className="flex items-center gap-3 text-grey text-[0.85rem] mb-4">
-          <time>{new Date(article.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
-          <span>&bull;</span>
-          <span>{article.readTime} de lecture</span>
-        </div>
+        {!article.compactHeader && (
+          <div className="flex items-center gap-3 text-grey text-[0.85rem] mb-4">
+            <>
+              <time>{new Date(article.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+              <span>&bull;</span>
+            </>
+            <span>{article.readTime} de lecture</span>
+          </div>
+        )}
 
         <h1 className="font-heading text-text text-[1.75rem] md:text-[2.25rem] font-bold tracking-tight leading-[1.2] mb-8">
           {article.title}
@@ -406,20 +470,45 @@ function BlogArticlePage({ article, onBack, onBookCall }) {
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
-        <div className="mt-12 p-8 bg-card border border-card-border rounded-[15px] text-center">
-          <h3 className="font-heading text-text text-lg md:text-xl font-bold mb-3">
-            Vous avez un projet d'application mobile ?
-          </h3>
-          <p className="text-grey text-[0.93rem] mb-5">
-            Discutons-en gratuitement pendant 30 minutes.
-          </p>
-          <button
-            onClick={onBookCall}
-            className="inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] px-8 py-3.5 rounded-full cursor-pointer"
-          >
-            Réserver un appel gratuit
-          </button>
-        </div>
+        {article.finalCta === 'audit' ? (
+          <div className="mt-12 p-7 md:p-8 bg-card border border-card-border rounded-[15px] text-center">
+            <h3 className="font-heading text-text text-lg md:text-xl font-bold mb-3">
+              Tu penses que ton idée d'app a du potentiel ?
+            </h3>
+            <p className="text-grey text-[0.93rem] mb-5 max-w-130 mx-auto">
+              Audit gratuit en 2 min : potentiel, budget à prévoir et délai réaliste pour une première version.
+            </p>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
+              <button
+                onClick={onAuditApp}
+                className="inline-flex justify-center items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] px-7 py-3.5 rounded-full cursor-pointer"
+              >
+                Faire l'audit gratuit
+              </button>
+              <button
+                onClick={onBookCall}
+                className="inline-flex justify-center items-center gap-2.5 bg-[#ececf0] text-text font-semibold text-[0.95rem] px-7 py-3.5 rounded-full cursor-pointer"
+              >
+                Prendre rendez-vous avec Noé
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="mt-12 p-8 bg-card border border-card-border rounded-[15px] text-center">
+            <h3 className="font-heading text-text text-lg md:text-xl font-bold mb-3">
+              Vous avez un projet d'application mobile ?
+            </h3>
+            <p className="text-grey text-[0.93rem] mb-5">
+              Discutons-en gratuitement pendant 30 minutes.
+            </p>
+            <button
+              onClick={onBookCall}
+              className="inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] px-8 py-3.5 rounded-full cursor-pointer"
+            >
+              Réserver un appel gratuit
+            </button>
+          </div>
+        )}
       </article>
     </div>
   )
@@ -435,18 +524,27 @@ function BlogList({ onBack, onArticle, onBookCall }) {
       <nav className="fixed inset-x-0 top-2.5 md:top-4.5 z-50 flex justify-center px-4 md:px-6">
         <div className="w-full max-w-230">
           <div className="backdrop-blur-md border border-[#70707029] shadow-[0_1px_3px_#00000017] rounded-[40px] bg-[#fffefc3d]">
-            <div className="flex items-center justify-center min-[480px]:justify-between h-20 px-6 md:px-7">
-              <button onClick={onBack} className="flex flex-col text-left cursor-pointer">
-                <span className="text-text font-bold text-xl md:text-1xl leading-tight tracking-tight" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                  Noé Calmes
-                </span>
-                <span className="text-grey text-sm md:text-md leading-tight font-normal">
-                  Expert en applications mobiles
+            <div className="flex items-center justify-center min-[480px]:justify-between h-20 px-5 md:px-7">
+              <button onClick={onBack} className="flex items-center gap-3 text-left cursor-pointer min-w-0">
+                <img
+                  src={mePhoto}
+                  alt="Noé Calmes"
+                  width="44"
+                  height="44"
+                  className="h-11 w-11 rounded-full object-cover shrink-0"
+                />
+                <span className="flex flex-col min-w-0">
+                  <span className="text-text font-bold text-lg md:text-1xl leading-tight tracking-tight truncate" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                    Noé Calmes
+                  </span>
+                  <span className="text-grey text-xs md:text-md leading-tight font-normal truncate">
+                    Expert en applications mobiles
+                  </span>
                 </span>
               </button>
               <button
                 onClick={onBookCall}
-                className="hidden min-[480px]:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
+                className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
               >
                 Réserver un appel
               </button>

@@ -374,6 +374,8 @@ function App() {
 
   const goBlog = () => { setPage('blog'); history.pushState(null, '', '/blog'); window.scrollTo(0, 0) }
 
+  const goAuditApp = () => { setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }
+
   // Bascule sur la home + scroll vers la section Calendly + force le
   // chargement du script Calendly (sinon le widget reste vide quand on
   // bascule depuis /audit-app ou /blog — la section serait rendue avec sa
@@ -441,6 +443,7 @@ function App() {
       article={currentArticle}
       onBack={goBlog}
       onBookCall={goBookCall}
+      onAuditApp={goAuditApp}
     />
   )
   if (page === 'merci') return <Merci onBack={goHome} />
@@ -482,12 +485,21 @@ function App() {
             {/* Bar */}
             <div className="flex items-center justify-between h-[68px] px-6 md:px-7">
               {/* Brand */}
-              <a href="#" className="flex flex-col gap-[7px]">
-                <span className="font-jakarta text-text font-extrabold text-xl md:text-1xl leading-none tracking-tight">
-                  Noé Calmes
-                </span>
-                <span className="text-grey text-[0.7rem] md:text-[0.75rem] leading-none font-normal">
-                  Expert en applications mobiles
+              <a href="#" className="flex items-center gap-3 min-w-0">
+                <img
+                  src={mePhoto}
+                  alt="Noé Calmes"
+                  width="40"
+                  height="40"
+                  className="h-10 w-10 rounded-full object-cover shrink-0"
+                />
+                <span className="flex flex-col gap-[5px] min-w-0">
+                  <span className="font-jakarta text-text font-extrabold text-lg md:text-1xl leading-none tracking-tight truncate">
+                    Noé Calmes
+                  </span>
+                  <span className="text-grey text-[0.68rem] md:text-[0.75rem] leading-none font-normal truncate">
+                    Expert en applications mobiles
+                  </span>
                 </span>
               </a>
 
@@ -505,7 +517,7 @@ function App() {
               <div className="flex items-center gap-3">
                 <button
                   onClick={scrollToCalendly}
-                  className="hidden min-[480px]:inline-block bg-[#131313] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors cursor-pointer"
+                  className="hidden sm:inline-block bg-[#131313] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors cursor-pointer"
                 >
                   Réserver un créneau
                 </button>
