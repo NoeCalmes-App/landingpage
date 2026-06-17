@@ -248,6 +248,7 @@ const mockupRoutes = [
   '/maquette/kingfit-coach',
   '/maquette/pac-assist',
   '/maquette/cvc-assist',
+  '/maquette/blush',
 ]
 
 for (const path of mockupRoutes) {
