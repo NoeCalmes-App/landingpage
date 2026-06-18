@@ -184,6 +184,12 @@ Un seul automatisme actif : commentaire sur le post "Combien coûte une app" dé
 
 Le rôle de l'audit n'est pas de faire un devis automatique complet. Il donne assez de valeur pour qualifier le lead, puis pousse vers une conversation avec Noé.
 
+Sur le hero de `/audit-app`, la hiérarchie doit rester nette :
+
+- bouton principal visible : lancer l'audit ;
+- lien secondaire discret sous le bouton : `Je préfère discuter avec Noé` vers WhatsApp ;
+- pas de bouton WhatsApp dans la navbar, pour ne pas transformer la page en double choix dès l'arrivée.
+
 ## Après le tunnel
 
 Tout lead chaud doit être suivi dans Nowork : conversation WhatsApp, appel si nécessaire, devis, cahier des charges, relances. Les leads Calendly peuvent encore arriver via le webhook Calendly, mais le chemin prix/budget prioritaire est maintenant `/audit-app` -> WhatsApp.

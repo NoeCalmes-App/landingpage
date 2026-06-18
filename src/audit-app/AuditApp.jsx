@@ -190,11 +190,8 @@ function AuditAppLegalFooter({ onLegal }) {
   )
 }
 
-// Barre du haut premium : photo Noe + CTA "Discuter avec Noé" qui redirige
-// vers /rendez-vous (Calendly de la home). Le logo + photo restent
-// cliquables pour revenir a l'accueil — pas besoin de bouton "Retour" textuel.
-// Objectif : maximiser la confiance + offrir un raccourci aux prospects deja
-// chauds qui veulent skipper le formulaire.
+// Barre du haut premium : photo Noe + marque. Le raccourci WhatsApp reste
+// sous le CTA principal du hero pour ne pas concurrencer l'audit dans la nav.
 function AuditAppTopBar({ onBack }) {
   return (
     <header className="anim-nav fixed inset-x-0 top-2.5 md:top-[18px] z-50 flex justify-center px-4 md:px-6">

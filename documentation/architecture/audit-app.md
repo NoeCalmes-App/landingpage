@@ -22,6 +22,13 @@ Fichiers principaux :
 - `src/audit-app/api.js` — POST final vers `VITE_AUDIT_API_URL`.
 - `src/audit-app/storage.js` — persistence locale de l'etat du tunnel.
 
+Regle hero :
+
+- CTA principal : lancer l'audit.
+- Sortie secondaire : petit lien gris/souligne sous le CTA (`Je préfère discuter avec Noé`) vers WhatsApp.
+- Pas de CTA WhatsApp dans la navbar du hero : la barre sert a la confiance, le lien sous le bouton sert de porte de sortie pour les visiteurs qui refusent le test.
+- Pendant le formulaire, aucun raccourci WhatsApp visible : focus sur la completion.
+
 ## Questions collectees
 
 Les questions sont declarees dans `src/audit-app/config.js` :
