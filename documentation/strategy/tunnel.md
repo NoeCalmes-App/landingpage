@@ -6,9 +6,11 @@
 ## Schéma global
 
 ```
-Instagram / LinkedIn
+Instagram / LinkedIn / Meta Ads / SEO
       |
-      |-- lien bio 1 : noecalmes.fr  -> appel Calendly 30 min
+      |-- lien bio 1 : noecalmes.fr  -> landing de confiance
+      |        |-- CTA projet clair -> appel Calendly 30 min
+      |        |-- question prix/budget -> /audit-app
       |-- lien bio 2 : /audit-app "Teste ton idée, 2 minutes, offert"
       |-- commentaire sur post "Combien coûte une app"
       |        -> ManyChat envoie automatiquement le lien /audit-app en DM
@@ -16,11 +18,14 @@ Instagram / LinkedIn
       |        -> entrepreneurs avec clients/audience -> conversation -> /audit-app si intérêt
       |
       v
-  /audit-app  -> verdict IA -> 2 boutons : WhatsApp ou rendez-vous Calendly
+  /audit-app  -> verdict IA -> WhatsApp en CTA principal
+       |                         Calendly seulement en option secondaire
       |
       v
-  Appel 30 min -> suivi CRM Nowork -> devis + cahier des charges -> relances
+  Conversation WhatsApp ou appel 30 min -> suivi CRM Nowork -> devis + cahier des charges -> relances
 ```
+
+Principe actuel : **la question prix/budget ne doit pas envoyer directement vers Calendly**. Elle doit renvoyer vers `/audit-app`, qui répond aux 3 angoisses avant la conversation : est-ce que l'idée tient, combien prévoir, et combien de temps avant lancement. Calendly reste utile pour les prospects déjà prêts à parler, mais l'audit pré-qualifie mieux les leads froids et les visiteurs qui comparent les prix.
 
 ## Instagram (@noecalmes.app)
 
@@ -34,9 +39,9 @@ Catégorie : Création digitale
 👇| Audit de ton idée d'app
 ```
 
-Deux liens :
+Deux liens possibles :
 
-1. `noecalmes.fr` : prise de rendez-vous Calendly 30 min.
+1. `noecalmes.fr` : landing de confiance. Les CTA projet peuvent mener au rendez-vous, mais les accroches prix/budget doivent renvoyer vers `/audit-app`.
 2. `noecalmes.fr/audit-app` : "Teste ton idée, 2 minutes, offert."
 
 ### Stories à la une
@@ -49,6 +54,23 @@ Deux liens :
 1. Carrousel "Pourquoi 90 % des apps ne rapportent rien" : redirige vers l'audit.
 2. Carrousel "Combien coûte une app" : redirige vers l'audit. C'est sur CE post que le trigger ManyChat est actif (commentaire = DM automatique avec le lien audit).
 3. Analyse de Calori (app que j'ai créée) : pourquoi elle marche.
+
+## Landing page `noecalmes.fr`
+
+La landing principale rassure et vend le positionnement : expert indépendant en application mobile, pas une agence, de la stratégie au lancement.
+
+Deux types de CTA coexistent :
+
+- **Projet mûr / envie de parler** : bouton rendez-vous vers Calendly.
+- **Question prix / doute / comparaison agence** : lien vers `/audit-app`.
+
+Règle pour la section comparaison "Agences vs Noé Calmes" :
+
+- Côté agences : garder l'ancrage prix élevé (`À partir de 15 000 €`) pour poser le contraste.
+- Côté Noé : ne pas mettre le prix d'appel en frontal dans cette carte. Utiliser `Tarif fixe, sans surprise`.
+- Juste dessous, ajouter un lien bleu/souligné du type `Combien coûterait mon app ?` vers `/audit-app`.
+
+Objectif : capter le réflexe naturel "ok, mais moi ça coûterait combien ?", puis faire entrer le visiteur dans l'audit. L'audit donne potentiel, budget, délai, puis pousse vers WhatsApp. Ce chemin est plus doux et plus qualifiant qu'un Calendly direct.
 
 ## LinkedIn
 
@@ -158,8 +180,10 @@ Un seul automatisme actif : commentaire sur le post "Combien coûte une app" dé
 
 ## Audit app
 
-`/audit-app` est le cœur du tunnel : questions, verdict IA (potentiel, budget, délai), puis deux sorties au choix du prospect : WhatsApp ou rendez-vous Calendly. Détail technique : `architecture/audit-app.md`.
+`/audit-app` est le cœur du tunnel : questions, verdict IA (potentiel, budget, délai), puis sortie principale vers WhatsApp. Le rendez-vous Calendly peut rester en option discrète pour les prospects qui veulent réserver tout de suite, mais il ne doit pas concurrencer le CTA WhatsApp.
+
+Le rôle de l'audit n'est pas de faire un devis automatique complet. Il donne assez de valeur pour qualifier le lead, puis pousse vers une conversation avec Noé.
 
 ## Après le tunnel
 
-Tout lead aboutit dans le CRM Nowork (webhook Calendly = création client automatique) : appel, devis, cahier des charges, relances.
+Tout lead chaud doit être suivi dans Nowork : conversation WhatsApp, appel si nécessaire, devis, cahier des charges, relances. Les leads Calendly peuvent encore arriver via le webhook Calendly, mais le chemin prix/budget prioritaire est maintenant `/audit-app` -> WhatsApp.

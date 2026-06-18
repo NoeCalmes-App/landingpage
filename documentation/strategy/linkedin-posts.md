@@ -57,10 +57,12 @@ CTA : commenter un mot-clé OU audit gratuit
       v
 /audit-app (2 min : potentiel, budget, délai)
       v
-WhatsApp ou appel Calendly --> Nowork --> devis
+WhatsApp en CTA principal
+      v
+Nowork --> devis
 ```
 
-Le post ne vend pas l'app. Le post **crée la confiance** qui fait que la personne fait l'audit ou répond en DM. L'audit gratuit (`noecalmes.fr/audit-app`) est le lead magnet naturel : « teste ton idée en 2 minutes ».
+Le post ne vend pas l'app. Le post **crée la confiance** qui fait que la personne fait l'audit ou répond en DM. L'audit gratuit (`noecalmes.fr/audit-app`) est le lead magnet naturel : « teste ton idée en 2 minutes ». Après l'audit, WhatsApp est le CTA principal ; Calendly peut rester une option secondaire, mais il ne doit pas concurrencer la conversation directe.
 
 ---
 

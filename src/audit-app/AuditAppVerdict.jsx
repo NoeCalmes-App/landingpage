@@ -9,7 +9,7 @@
 //   - Le defi principal
 //   - Plan d'action concret (numerote)
 //   - Prix non chiffre + delai indicatif
-//   - CTA selon branche A (appel Calendly) ou C (lien noecalmes.fr)
+//   - CTA selon branche : WhatsApp principal, Calendly en option secondaire
 //
 // Chaque section masquee si son contenu est vide — l'UI s'adapte aux
 // reponses de l'IA (cas idee precise vs idee vague).

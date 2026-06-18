@@ -4,6 +4,8 @@
 
 Site public `noecalmes.fr` pour vendre le positionnement de Noe Calmes : expert en application mobile, de la strategie au lancement. Le site sert a convertir le trafic en audit gratuit, WhatsApp ou appel Calendly.
 
+Le chemin prioritaire pour les visiteurs qui se posent une question de prix/budget est : landing page -> `/audit-app` -> verdict -> WhatsApp. Calendly reste disponible pour les visiteurs deja prets a parler, mais ne doit pas etre le seul chemin de conversion.
+
 ## Stack
 
 - React + Vite
@@ -60,7 +62,9 @@ Quand une nouvelle maquette client doit etre creee, prendre Aretha comme referen
 
 ## Calendly
 
-Le widget Calendly est charge depuis `src/App.jsx`. Le CTA de l'audit peut renvoyer vers la section rendez-vous de la home.
+Le widget Calendly est charge depuis `src/App.jsx`. Les CTA projet de la landing peuvent renvoyer vers la section rendez-vous de la home.
+
+Pour les CTA prix/budget, preferer `/audit-app` a Calendly direct. Exemple actuel dans la section comparaison : `Tarif fixe, sans surprise` puis lien secondaire `Combien coûterait mon app ?` vers `/audit-app`.
 
 URL configuree dans `src/audit-app/config.js` :
 

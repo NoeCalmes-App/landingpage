@@ -177,11 +177,19 @@ On peut lancer une première version (MVP) pour valider que les gens paient, ava
 | Agences traditionnelles | Noé Calmes |
 |---|---|
 | Planning lourd et flou | Délai cadré selon l'objectif réel |
-| À partir de 15 000 € | À partir de 3 500 € |
+| À partir de 15 000 € | Tarif fixe, sans surprise |
 | Processus complexe | Process simple et transparent |
 | Jamais disponible, difficile à joindre | Un seul expert, joignable 6j/7 |
 | Code livré — bonne chance pour le lancement | Application pensée pour générer des revenus |
 | Pas de réponse avant 48h minimum | Spécialisé application mobile |
+
+Note landing page : dans la carte de comparaison publique, ne pas afficher le prix d'appel `3 500 €` en frontal. Le contraste doit être :
+
+- Agences : `À partir de 15 000 €`
+- Noé : `Tarif fixe, sans surprise`
+- Lien secondaire bleu/souligné : `Combien coûterait mon app ?` -> `/audit-app`
+
+Pourquoi : le prix d'appel attire parfois les chasseurs de prix bas et peut réduire la perception premium. Le lien vers l'audit transforme la curiosité prix en lead qualifié : le visiteur répond aux questions, obtient potentiel/budget/délai, puis arrive naturellement sur WhatsApp.
 
 ---
 

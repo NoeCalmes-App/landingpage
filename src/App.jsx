@@ -20,6 +20,7 @@ import BlushMockups from './BlushMockups.jsx'
 import ClientSpaceBridge from './ClientSpaceBridge.jsx'
 import MaquetteVisualBridge from './MaquetteVisualBridge.jsx'
 import ChatbotWidget from './chatbot/Widget'
+import { ExternalLink } from 'lucide-react'
 
 const meetingSvg = '/assets/images/illustrations/meetingdev.svg'
 const plouffIcon = '/assets/images/app-icons/plouffhabitudes.webp'
@@ -706,7 +707,7 @@ function App() {
               <ul className="space-y-5">
                 {[
                   'Livraison en 6 à 8 semaines',
-                  'À partir de 3 500 €',
+                  'Tarif fixe, sans surprise',
                   'Joignable directement 6j/7',
                   'Pensé pour générer des revenus',
                 ].map((item) => (
@@ -714,7 +715,19 @@ function App() {
                     <svg className="shrink-0 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    {item}
+                    {item === 'Tarif fixe, sans surprise' ? (
+                      <span className="flex flex-col items-start gap-1">
+                        <span>{item}</span>
+                        <a
+                          href="/audit-app"
+                          onClick={(e) => { e.preventDefault(); goAuditApp() }}
+                          className="inline-flex items-center gap-1 text-[0.9rem] text-[#2563eb] underline underline-offset-4 decoration-[#2563eb]/50 hover:text-brand hover:decoration-brand transition-colors"
+                        >
+                          Combien coûterait mon app ?
+                          <ExternalLink size={14} strokeWidth={2.4} aria-hidden="true" />
+                        </a>
+                      </span>
+                    ) : item}
                   </li>
                 ))}
               </ul>

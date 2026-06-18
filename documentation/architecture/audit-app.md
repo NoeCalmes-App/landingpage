@@ -2,11 +2,11 @@
 
 ## Role business
 
-`/audit-app` est un funnel d'acquisition gratuit. Il aide un prospect a clarifier son idee d'application, puis l'incite a contacter Noe via WhatsApp ou a prendre un appel.
+`/audit-app` est un funnel d'acquisition gratuit. Il aide un prospect a clarifier son idee d'application, puis l'incite a contacter Noe via WhatsApp. Le rendez-vous Calendly peut rester en option secondaire pour les prospects deja chauds, mais WhatsApp est le CTA principal.
 
 Flux voulu :
 
-Instagram / LinkedIn / SEO -> `/audit-app` -> questions -> recap IA -> appel ou WhatsApp -> suivi dans Nowork CRM -> devis / cahier des charges / relances.
+Instagram / LinkedIn / Meta Ads / SEO / landing page -> `/audit-app` -> questions -> recap IA -> WhatsApp -> suivi dans Nowork CRM -> devis / cahier des charges / relances.
 
 L'audit donne de la valeur, mais ne remplace pas un devis ni un cahier des charges complet.
 
@@ -82,8 +82,8 @@ Cascade actuelle documentee dans le code : Gemini / Groq, avec fallback selon co
 
 La logique de branche est dans `src/audit-app/backend/branch.ts`.
 
-- Budget inferieur a 3 500 EUR -> branche C : pas de Calendly direct, message plus franc.
-- Autres budgets -> branche A : Calendly propose.
+- Budget inferieur a 3 500 EUR -> branche C : pas de push fort vers la conversation commerciale, message plus franc.
+- Autres budgets -> branche A : WhatsApp en CTA principal, Calendly seulement en option secondaire.
 
 ## Lien avec Nowork
 

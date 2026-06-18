@@ -1,9 +1,9 @@
 /**
  * Logique de branchement simplifiee.
  *
- * Regle unique : le budget determine l'eligibilite au call.
- * - budget OUT (< 3500 EUR) -> branche C : pas de Calendly, message franc
- * - tout le reste -> branche A : Calendly propose
+ * Regle unique : le budget determine l'eligibilite commerciale.
+ * - budget OUT (< 3500 EUR) -> branche C : pas de push fort, message franc
+ * - tout le reste -> branche A : WhatsApp principal, Calendly secondaire
  *
  * V3 : les FALLBACK_VERDICTS retournent le nouveau schema enrichi
  * (utilises si TOUS les providers IA echouent — cas extreme).
