@@ -50,7 +50,7 @@ export default function PolitiqueConfidentialite({ onBack }) {
           {/* 3 */}
           <section>
             <h2 className="font-heading text-lg font-bold mb-3">Donn&eacute;es collect&eacute;es</h2>
-            <p>Dans le cadre de l&rsquo;utilisation du site et de la prise de rendez-vous, les donn&eacute;es suivantes peuvent &ecirc;tre collect&eacute;es :</p>
+            <p>Dans le cadre de l&rsquo;utilisation du site et de la prise de contact, les donn&eacute;es suivantes peuvent &ecirc;tre collect&eacute;es :</p>
             <ul className="mt-3 space-y-1.5 list-disc list-inside text-grey">
               <li>Nom et pr&eacute;nom</li>
               <li>Adresse e-mail</li>
@@ -65,7 +65,7 @@ export default function PolitiqueConfidentialite({ onBack }) {
             <h2 className="font-heading text-lg font-bold mb-3">Finalit&eacute;s du traitement</h2>
             <p>Vos donn&eacute;es sont collect&eacute;es pour les finalit&eacute;s suivantes :</p>
             <ul className="mt-3 space-y-1.5 list-disc list-inside text-grey">
-              <li>R&eacute;pondre &agrave; vos demandes de contact et de prise de rendez-vous</li>
+              <li>R&eacute;pondre &agrave; vos demandes de contact</li>
               <li>&Eacute;tablir des devis et propositions commerciales</li>
               <li>Assurer le suivi de la relation client</li>
               <li>Am&eacute;liorer l&rsquo;exp&eacute;rience utilisateur du site</li>
@@ -102,7 +102,7 @@ export default function PolitiqueConfidentialite({ onBack }) {
               Vos donn&eacute;es sont destin&eacute;es uniquement &agrave; No&eacute; Calmes. Elles ne sont ni vendues, ni c&eacute;d&eacute;es &agrave; des tiers.
             </p>
             <p className="mt-2">
-              Elles peuvent &ecirc;tre transmises &agrave; des sous-traitants techniques (h&eacute;bergement, outil de prise de rendez-vous) dans le respect du RGPD.
+              Elles peuvent &ecirc;tre transmises &agrave; des sous-traitants techniques (h&eacute;bergement, messagerie WhatsApp) dans le respect du RGPD.
             </p>
           </section>
 

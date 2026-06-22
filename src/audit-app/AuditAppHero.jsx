@@ -7,7 +7,7 @@
 import { HERO_QUESTIONS } from './config'
 
 const DIRECT_WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
-  "Bonjour Noé, j'ai une idée d'application. L'idée, c'est :"
+  "Salut Noé, j'ai un projet d'application et j'aimerais ton avis. Mon projet en deux mots : "
 )}`
 
 // Styles de "papier desordonné" : rotation legere visible sur mobile,

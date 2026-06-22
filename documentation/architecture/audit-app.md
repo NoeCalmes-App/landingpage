@@ -2,7 +2,7 @@
 
 ## Role business
 
-`/audit-app` est un funnel d'acquisition gratuit. Il aide un prospect a clarifier son idee d'application, puis l'incite a contacter Noe via WhatsApp. Le rendez-vous Calendly peut rester en option secondaire pour les prospects deja chauds, mais WhatsApp est le CTA principal.
+`/audit-app` est un funnel d'acquisition gratuit. Il aide un prospect a clarifier son idee d'application, puis l'incite a contacter Noe via WhatsApp. WhatsApp est le **seul** canal de contact : le CTA secondaire Calendly sous le verdict a ete retire le 22/06/2026 (voir `documentation/strategy/tunnel.md`).
 
 Flux voulu :
 
@@ -18,7 +18,7 @@ Fichiers principaux :
 - `src/audit-app/AuditAppHero.jsx` — premiere page du funnel.
 - `src/audit-app/AuditAppForm.jsx` — formulaire multi-etapes.
 - `src/audit-app/AuditAppVerdict.jsx` — rendu du recap IA.
-- `src/audit-app/config.js` — questions, options, URL Calendly, endpoint API.
+- `src/audit-app/config.js` — questions, options, endpoint API (`CALENDLY_URL` encore present mais inutilise depuis le retrait de Calendly).
 - `src/audit-app/api.js` — POST final vers `VITE_AUDIT_API_URL`.
 - `src/audit-app/storage.js` — persistence locale de l'etat du tunnel.
 
@@ -90,7 +90,7 @@ Cascade actuelle documentee dans le code : Gemini / Groq, avec fallback selon co
 La logique de branche est dans `src/audit-app/backend/branch.ts`.
 
 - Budget inferieur a 3 500 EUR -> branche C : pas de push fort vers la conversation commerciale, message plus franc.
-- Autres budgets -> branche A : WhatsApp en CTA principal, Calendly seulement en option secondaire.
+- Autres budgets -> branche A : WhatsApp en CTA principal. (Le CTA Calendly secondaire de cette branche a ete retire le 22/06/2026 ; le commentaire dans `branch.ts` peut encore le mentionner.)
 
 ## Lien avec Nowork
 

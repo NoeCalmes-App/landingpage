@@ -320,13 +320,13 @@ function PriceTimingCard({ prix, delai, waUrl }) {
 // envoyer). Numero : cf. ChatbotWidget (wa.me/33658308210).
 function buildWhatsAppUrl(firstName, appType) {
   const name = (firstName || '').trim()
-  const intro = name ? `Salut Noé, c'est ${name} 👋` : 'Salut Noé 👋'
+  const intro = name ? `Salut Noé, moi c'est ${name}.` : 'Salut Noé.'
   const t = (appType || '').toLowerCase()
   let typeWord = 'application'
   if (t.includes('mobile') && t.includes('web')) typeWord = 'application mobile et web'
   else if (t.includes('web')) typeWord = 'application web'
   else if (t.includes('mobile')) typeWord = 'application mobile'
-  const msg = `${intro} Je viens de faire l'audit pour mon idée d'${typeWord} et j'aimerais avoir votre avis pour avancer.`
+  const msg = `${intro} Je viens de faire ton audit pour mon idée d'${typeWord} et j'aimerais ton avis pour avancer.`
   return `https://wa.me/33658308210?text=${encodeURIComponent(msg)}`
 }
 
@@ -459,15 +459,6 @@ function ClosingHotLead({ ctaMessage, waUrl, onBookCall }) {
         >
           Écrire à Noé sur WhatsApp
         </a>
-
-        {typeof onBookCall === 'function' && (
-          <button
-            onClick={onBookCall}
-            className="text-grey text-[0.85rem] hover:text-brand transition-colors cursor-pointer underline underline-offset-2"
-          >
-            ou réserver un appel de 30 min
-          </button>
-        )}
       </div>
     </article>
   )

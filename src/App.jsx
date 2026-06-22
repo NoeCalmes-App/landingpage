@@ -36,6 +36,14 @@ const sophiePhoto = '/assets/images/people/fille.jpeg'
 const thomasPhoto = '/assets/images/people/gars.jpeg'
 const medhiPhoto = '/assets/images/people/chefprojet.jpeg'
 
+// Canal de contact unique : WhatsApp (message pré-rempli pour amorcer la qualif).
+// Le funnel pousse partout vers WhatsApp ; Calendly a été retiré de la landing
+// (le code reste dans l'historique git, voir documentation/strategy/tunnel.md).
+const WHATSAPP_NUMBER = '33658308210'
+const WHATSAPP_PREFILL =
+  "Salut Noé, j'ai un projet d'application et j'aimerais ton avis. Mon projet en deux mots : "
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_PREFILL)}`
+
 const SECTION_ROUTES = {
   '/expertise': {
     id: 'why',
@@ -70,8 +78,8 @@ const SECTION_ROUTES = {
   },
   '/rendez-vous': {
     id: 'calendly-section',
-    title: 'Réserver un appel gratuit — Application mobile | Noé Calmes',
-    description: 'Vous avez un projet d\'application mobile ? Réservez un appel gratuit de 30 minutes pour en discuter. Création, reprise ou évolution — sans engagement.',
+    title: 'Écrire à Noé sur WhatsApp — Application mobile | Noé Calmes',
+    description: 'Un projet d\'application mobile ? Écris directement à Noé sur WhatsApp : c\'est lui qui répond, on voit en 2 messages si ton projet tient la route. Sans engagement.',
   },
 }
 
@@ -240,7 +248,10 @@ function App() {
     const path = (redirect || window.location.pathname).replace(/\/$/, '') || '/'
     if (path === '/espace-client' || path.startsWith('/espace-client/')) return 'client-space'
     if (path === '/maquette-visuel' || path.startsWith('/maquette-visuel/')) return 'maquette-visual'
-    if (path === '/merci') return 'merci'
+    // Route /merci désactivée le 22/06/2026 (ancien funnel Calendly : page
+    // affichée après réservation d'un RDV). Composant Merci.jsx conservé.
+    // Réactiver = décommenter. Voir documentation/archive/funnels/funnel-calendly-2026-06.md
+    // if (path === '/merci') return 'merci'
     if (path === '/documents') return 'documents'
     if (path === '/contactnoe') return 'contact'
     if (path === '/legal') return 'legal'
@@ -313,14 +324,11 @@ function App() {
   // on bascule depuis une autre page (audit-app, blog, etc.) — le useEffect
   // de mount ne suffit pas car au boot la section #calendly-section n'existe
   // pas encore dans le DOM si on n'est pas sur la home.
-  const loadCalendlyScript = () => {
-    if (window.Calendly || document.querySelector('script[data-calendly]')) return
-    const script = document.createElement('script')
-    script.src = 'https://assets.calendly.com/assets/external/widget.js'
-    script.async = true
-    script.dataset.calendly = '1'
-    document.head.appendChild(script)
-  }
+  // Calendly retiré du funnel : on ne charge plus son script. La fonction est
+  // conservée en no-op pour ne pas toucher les appelants existants
+  // (goBookCall, useEffect de scroll). La section #calendly-section affiche
+  // désormais un CTA WhatsApp.
+  const loadCalendlyScript = () => {}
 
   useEffect(() => {
     // Charge le script Calendly :
@@ -355,16 +363,19 @@ function App() {
     return () => observer.disconnect()
   }, [page])
 
-  useEffect(() => {
-    const handleCalendlyEvent = (e) => {
-      if (e.data?.event === 'calendly.event_scheduled') {
-        setPage('merci')
-        history.pushState(null, '', '/merci')
-      }
-    }
-    window.addEventListener('message', handleCalendlyEvent)
-    return () => window.removeEventListener('message', handleCalendlyEvent)
-  }, [])
+  // Listener Calendly désactivé le 22/06/2026 (Calendly retiré du funnel).
+  // Faisait basculer vers /merci après réservation d'un RDV. Conservé pour
+  // réactivation. Voir documentation/archive/funnels/funnel-calendly-2026-06.md
+  // useEffect(() => {
+  //   const handleCalendlyEvent = (e) => {
+  //     if (e.data?.event === 'calendly.event_scheduled') {
+  //       setPage('merci')
+  //       history.pushState(null, '', '/merci')
+  //     }
+  //   }
+  //   window.addEventListener('message', handleCalendlyEvent)
+  //   return () => window.removeEventListener('message', handleCalendlyEvent)
+  // }, [])
 
   const scrollToCalendly = () => {
     document.getElementById('calendly-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -523,7 +534,7 @@ function App() {
                   onClick={scrollToCalendly}
                   className="hidden sm:inline-block bg-[#131313] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors cursor-pointer"
                 >
-                  Réserver un créneau
+                  Discuter avec Noé
                 </button>
 
                 <button
@@ -559,7 +570,7 @@ function App() {
                     className="min-[480px]:hidden text-center bg-[#131313] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer"
                     onClick={() => { setMenuOpen(false); scrollToCalendly() }}
                   >
-                    Discuter de votre projet
+                    Discuter avec Noé
                   </button>
                 </div>
               </div>
@@ -621,7 +632,7 @@ function App() {
               onClick={scrollToCalendly}
               className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
             >
-              <span className="pr-0.5 md:pr-1">Discuter de votre projet</span>
+              <span className="pr-0.5 md:pr-1">Écrire à Noé sur WhatsApp</span>
               <svg className="w-[18px] h-[18px] md:w-[22px] md:h-[22px] transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
@@ -659,7 +670,7 @@ function App() {
               onClick={scrollToCalendly}
               className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
             >
-              <span className="pr-0.5 md:pr-1">Discuter de votre projet</span>
+              <span className="pr-0.5 md:pr-1">Écrire à Noé sur WhatsApp</span>
               <svg className="w-[18px] h-[18px] md:w-[22px] md:h-[22px] transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
@@ -739,13 +750,13 @@ function App() {
               onClick={scrollToCalendly}
               className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
-               Réserver mon appel avec Noé
+               Discuter de mon projet
               <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </button>
-            <p className="text-grey/60 text-[0.8rem] mt-3">30 min · 100% gratuit</p>
+            <p className="text-grey/60 text-[0.8rem] mt-3">Réponse directe · 100% gratuit</p>
           </div>
         </div>
       </section>
@@ -839,12 +850,9 @@ function App() {
       <section className="pt-16 md:pt-22 pb-0 md:pb-0 px-5 bg-card" id="calendly-section">
         <div className="max-w-275 mx-auto text-center">
           <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-3 md:mb-4">
-            Parlons de <span className="text-brand">votre application</span>
+            Parlons de <span className="text-brand">ton application</span>
           </h2>
-          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-4">
-            Vous avez une idée&nbsp;? Une application déjà en ligne&nbsp;?
-          </p>
-          <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-6 md:mb-0 -mt-2 min-h-[1.5rem]">
+          <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-4 min-h-[1.5rem]">
             {spotsLoaded ? (
               <>
                 <span className="relative flex h-2 w-2 shrink-0">
@@ -860,10 +868,26 @@ function App() {
               </span>
             )}
           </p>
-          <div
-            className="calendly-inline-widget min-w-[320px] h-[980px] md:h-[950px]"
-            data-url="https://calendly.com/noecalmes-app/appel-app-mobile?primary_color=645cff"
-          />
+          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-2">
+            Une idée, ou une application déjà en ligne&nbsp;? Écris-moi&nbsp;: je regarde ton projet et je te dis comment avancer.
+          </p>
+          <div className="reveal flex flex-col items-center gap-3 mt-4 pb-16 md:pb-20">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
+            >
+              <span className="pr-0.5 md:pr-1">Écrire à Noé sur WhatsApp</span>
+              <svg className="w-[18px] h-[18px] md:w-[22px] md:h-[22px] transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+            <span className="text-grey text-xs md:text-sm">
+              C&apos;est moi qui réponds — pas un bot, pas un commercial.
+            </span>
+          </div>
         </div>
       </section>
 
@@ -965,7 +989,7 @@ function App() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
             <a href="/creation-application-mobile" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/creation-application-mobile'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/creation-application-mobile') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Méthode</a>
             <a href="/audit-app" onClick={(e) => { e.preventDefault(); setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Audit gratuit</a>
-            <a href="/rendez-vous" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/rendez-vous'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/rendez-vous') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Rendez-vous</a>
+            <a href="/rendez-vous" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/rendez-vous'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/rendez-vous') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Discuter avec Noé</a>
             <a href="/blog" onClick={(e) => { e.preventDefault(); goBlog() }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Blog</a>
           </div>
 

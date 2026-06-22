@@ -2,9 +2,9 @@
 
 ## Role
 
-Site public `noecalmes.fr` pour vendre le positionnement de Noe Calmes : expert en application mobile, de la strategie au lancement. Le site sert a convertir le trafic en audit gratuit, WhatsApp ou appel Calendly.
+Site public `noecalmes.fr` pour vendre le positionnement de Noe Calmes : expert en application mobile, de la strategie au lancement. Le site sert a convertir le trafic en audit gratuit et conversation WhatsApp.
 
-Le chemin prioritaire pour les visiteurs qui se posent une question de prix/budget est : landing page -> `/audit-app` -> verdict -> WhatsApp. Calendly reste disponible pour les visiteurs deja prets a parler, mais ne doit pas etre le seul chemin de conversion.
+Le chemin prioritaire pour les visiteurs qui se posent une question de prix/budget est : landing page -> `/audit-app` -> verdict -> WhatsApp. WhatsApp est le canal de contact unique : tous les CTA y menent (Calendly retire depuis le 22/06/2026, voir `documentation/strategy/tunnel.md`).
 
 ## Stack
 
@@ -20,7 +20,7 @@ Routes gerees dans `src/App.jsx` :
 
 - `/` — home landing page
 - `/audit-app` — audit gratuit d'idee d'application
-- `/rendez-vous` — section Calendly de la home
+- `/rendez-vous` — section contact WhatsApp de la home (id historique `#calendly-section`)
 - `/documents` et routes documents
 - `/blog` et `/blog/...`
 - `/espace-client/:clientSlug/:token` et `/espace-client/:token` — facade publique vers l'espace client de Nowork, URL propre sans `/nowork` visible
@@ -60,15 +60,13 @@ Quand une nouvelle maquette client doit etre creee, prendre Aretha comme referen
 - Adapter a chaque projet : parcours, ecrans, style, couleurs, illustrations, textes et niveau de detail doivent rester propres au client.
 - Si le client demande un lien dans le devis, coller l'URL `/maquette/{slug}` generee dans ce dossier, pas une galerie `/maquette-visuel/...` sauf si les images viennent de Nowork.
 
-## Calendly
+## Contact WhatsApp
 
-Le widget Calendly est charge depuis `src/App.jsx`. Les CTA projet de la landing peuvent renvoyer vers la section rendez-vous de la home.
+Calendly a ete retire de la landing le 22/06/2026 (embed, script et preconnexions supprimes). Le contact passe desormais par **WhatsApp** : constante `WHATSAPP_URL` (numero + message pre-rempli) dans `src/App.jsx`. La section `#calendly-section` de la home (id conserve pour ne pas casser la route `/rendez-vous`) affiche un bouton "Parler a Noe sur WhatsApp", et tous les CTA projet y menent.
 
-Pour les CTA prix/budget, preferer `/audit-app` a Calendly direct. Exemple actuel dans la section comparaison : `Tarif fixe, sans surprise` puis lien secondaire `Combien coûterait mon app ?` vers `/audit-app`.
+Pour les CTA prix/budget, preferer `/audit-app` : exemple dans la section comparaison, `Tarif fixe, sans surprise` puis lien secondaire `Combien coûterait mon app ?` vers `/audit-app`, qui finit lui aussi sur WhatsApp.
 
-URL configuree dans `src/audit-app/config.js` :
-
-`https://calendly.com/noecalmes-app/appel-app-mobile?primary_color=645cff`
+`CALENDLY_URL` reste defini dans `src/audit-app/config.js` mais n'est plus utilise (conserve pour reactivation eventuelle). Detail du retrait : `documentation/archive/funnels/funnel-calendly-2026-06.md`.
 
 ## Chatbot
 

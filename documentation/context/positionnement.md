@@ -1,5 +1,7 @@
 # Positionnement Noé Calmes — v2
 
+> Funnel / canal de contact : **WhatsApp partout** (l'audit-app et tous les CTA mènent à WhatsApp ; Calendly retiré le 22/06/2026). Le positionnement ci-dessous ne change pas. Détail du funnel : `documentation/strategy/tunnel.md`.
+
 ---
 
 ## Ce que je suis

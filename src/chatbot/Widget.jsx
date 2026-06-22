@@ -11,7 +11,7 @@ const WELCOME_MESSAGE = {
 }
 
 const DEFAULT_WHATSAPP_URL = `https://wa.me/33658308210?${new URLSearchParams({
-  text: "Bonjour Noé, j'aimerais discuter de mon projet d'application.",
+  text: "Salut Noé, j'ai un projet d'application et j'aimerais ton avis. Mon projet en deux mots : ",
 })}`
 
 // Construit les composants markdown avec un callback pour fermer le chatbot

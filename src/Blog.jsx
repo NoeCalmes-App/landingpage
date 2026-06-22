@@ -420,7 +420,7 @@ function BlogArticlePage({ article, onBack, onBookCall, onAuditApp }) {
                 onClick={onBookCall}
                 className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
               >
-                Réserver un appel
+                Discuter avec Noé
               </button>
             </div>
           </div>
@@ -489,7 +489,7 @@ function BlogArticlePage({ article, onBack, onBookCall, onAuditApp }) {
                 onClick={onBookCall}
                 className="inline-flex justify-center items-center gap-2.5 bg-[#ececf0] text-text font-semibold text-[0.95rem] px-7 py-3.5 rounded-full cursor-pointer"
               >
-                Prendre rendez-vous avec Noé
+                Écrire à Noé sur WhatsApp
               </button>
             </div>
           </div>
@@ -499,13 +499,13 @@ function BlogArticlePage({ article, onBack, onBookCall, onAuditApp }) {
               Vous avez un projet d'application mobile ?
             </h3>
             <p className="text-grey text-[0.93rem] mb-5">
-              Discutons-en gratuitement pendant 30 minutes.
+              Écrivez-moi sur WhatsApp, on en discute directement.
             </p>
             <button
               onClick={onBookCall}
               className="inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] px-8 py-3.5 rounded-full cursor-pointer"
             >
-              Réserver un appel gratuit
+              Écrire à Noé sur WhatsApp
             </button>
           </div>
         )}
@@ -546,7 +546,7 @@ function BlogList({ onBack, onArticle, onBookCall }) {
                 onClick={onBookCall}
                 className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
               >
-                Réserver un appel
+                Discuter avec Noé
               </button>
             </div>
           </div>

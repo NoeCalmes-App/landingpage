@@ -1,6 +1,6 @@
 # AGENTS.md — Landing Page Noe Calmes
 
-Landing page publique de Noe Calmes, expert en application mobile. Le site sert a convertir du trafic Instagram / LinkedIn / SEO vers un audit gratuit, WhatsApp ou un appel Calendly. Ne pas confondre avec Nowork, qui reste l'admin CRM/devis.
+Landing page publique de Noe Calmes, expert en application mobile. Le site sert a convertir du trafic Instagram / LinkedIn / SEO vers un audit gratuit et une prise de contact WhatsApp (canal unique depuis le 22/06/2026 ; Calendly retire de la landing). Ne pas confondre avec Nowork, qui reste l'admin CRM/devis.
 
 ## Stack
 
@@ -29,7 +29,7 @@ Lire seulement la doc utile au sujet demande.
 
 ## Funnel business
 
-Trafic Instagram / LinkedIn / SEO -> `noecalmes.fr/audit-app` -> audit en plusieurs etapes -> recap IA -> appel Calendly ou prise de contact WhatsApp -> ajout/suivi dans Nowork CRM -> devis / cahier des charges / relances.
+Trafic Instagram / LinkedIn / SEO -> `noecalmes.fr/audit-app` -> audit en plusieurs etapes -> recap IA -> prise de contact WhatsApp -> ajout/suivi dans Nowork CRM -> devis / cahier des charges / relances.
 
 L'audit app ne doit pas devenir un devis automatique complet. Il donne de la valeur, qualifie le lead, puis pousse vers la conversation avec Noe.
 

@@ -367,7 +367,7 @@ Le devis envoyé au client après l'appel contient **uniquement l'offre que tu a
 **Dans le chatbot (`functions/chatbot/lib/systemPrompt.js`)** :
 - Mentionner par défaut l'Offre A (3 500 € / 45 jours) — c'est cohérent avec la landing
 - Évoquer l'Offre B seulement si le visiteur parle de projets larges (paiement, abonnement, communauté, beaucoup de fonctionnalités)
-- Toujours rediriger vers l'appel pour décider : *« Le mieux est qu'on en parle avec Noé directement, vous pouvez prendre rendez-vous gratuit ici »*
+- Toujours rediriger vers la conversation pour décider : *« Le mieux est qu'on en parle avec Noé directement, vous pouvez lui écrire sur WhatsApp »* (Calendly retiré : le contact passe par WhatsApp, voir `tunnel.md`)
 
 ---
 

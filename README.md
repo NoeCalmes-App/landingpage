@@ -1,6 +1,6 @@
 # Landing Page — Noe Calmes
 
-Site public `noecalmes.fr` pour convertir du trafic Instagram / LinkedIn / SEO vers un audit gratuit, WhatsApp ou un appel Calendly.
+Site public `noecalmes.fr` pour convertir du trafic Instagram / LinkedIn / SEO vers un audit gratuit et une conversation WhatsApp (canal de contact unique ; Calendly retiré, voir `documentation/strategy/tunnel.md`).
 
 ## Commandes
 

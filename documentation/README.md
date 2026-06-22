@@ -4,7 +4,7 @@ Cette documentation est organisee pour limiter les tokens : lire d'abord le fich
 
 ## Sources de verite
 
-- `architecture/landing-page.md` — routes publiques, maquettes, SEO, Calendly, chatbot.
+- `architecture/landing-page.md` — routes publiques, maquettes, SEO, contact WhatsApp, chatbot.
 - `architecture/audit-app.md` — funnel audit, questions, recap IA, backend Firebase, lecture admin par Nowork.
 - `architecture/assets.md` — rangement des images, icones, fonts et PDF.
 - `architecture/client-space-public.md` — architecture actuelle pour `/espace-client/...` sans `/nowork` visible.
@@ -13,7 +13,7 @@ Cette documentation est organisee pour limiter les tokens : lire d'abord le fich
 ## Strategie active
 
 - `strategy/strategie-commerciale.md` — vente, prix, objections, qualification, logique d'appel. Revise le 12 juin 2026, aligne positionnement v2.
-- `strategy/tunnel.md` — etat reel du tunnel d'acquisition : Instagram, LinkedIn, bio, posts epingles, trigger ManyChat unique, audit-app, Calendly/WhatsApp. Source de verite du funnel actuel.
+- `strategy/tunnel.md` — etat reel du tunnel d'acquisition : Instagram, LinkedIn, bio, posts epingles, trigger ManyChat unique, audit-app, WhatsApp (canal unique). Source de verite du funnel actuel.
 
 Les anciennes strategies Instagram detaillees (flows ManyChat elabores) sont dans `archive/strategy/`.
 
@@ -27,4 +27,4 @@ Les briefs de posts/stories sont dans `../content/`. Ce sont des supports de cre
 
 ## Funnel global
 
-Instagram / LinkedIn / SEO -> landing page -> `/audit-app` -> verdict IA -> WhatsApp ou Calendly -> suivi dans Nowork CRM -> devis / cahier des charges / relances.
+Instagram / LinkedIn / SEO -> landing page -> `/audit-app` -> verdict IA -> WhatsApp -> suivi dans Nowork CRM -> devis / cahier des charges / relances.
