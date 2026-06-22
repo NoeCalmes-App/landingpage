@@ -328,7 +328,7 @@ function PriceTimingCard({ prix, delai, waUrl }) {
 // envoyer). Numero : cf. ChatbotWidget (wa.me/33658308210).
 function buildWhatsAppUrl(firstName, appType) {
   const name = (firstName || '').trim()
-  const intro = name ? `Salut Noé, moi c'est ${name}.` : 'Salut Noé.'
+  const intro = name ? `Bonjour Noé, moi c'est ${name}.` : 'Bonjour Noé.'
   const t = (appType || '').toLowerCase()
   let typeWord = 'application'
   if (t.includes('mobile') && t.includes('web')) typeWord = 'application mobile et web'

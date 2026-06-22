@@ -8,7 +8,7 @@ import { HERO_QUESTIONS } from './config'
 import { trackAuditStart, trackWhatsAppLead } from '../metaTracking.js'
 
 const DIRECT_WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
-  "Salut Noé, j'ai un projet d'application et j'aimerais ton avis. Mon projet en deux mots : "
+  "Bonjour Noé, j'ai un projet d'application et j'aimerais ton avis. Mon projet en deux mots : "
 )}`
 
 // Styles de "papier desordonné" : rotation legere visible sur mobile,

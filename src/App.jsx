@@ -38,11 +38,11 @@ const thomasPhoto = '/assets/images/people/gars.jpeg'
 const medhiPhoto = '/assets/images/people/chefprojet.jpeg'
 
 // Canal de contact unique : WhatsApp (message pré-rempli pour amorcer la qualif).
-// Le funnel pousse partout vers WhatsApp ; Calendly a été retiré de la landing
-// (le code reste dans l'historique git, voir documentation/strategy/tunnel.md).
+// Les CTA de la landing passent d'abord par /rendez-vous. Seuls le bouton de
+// cette section et le bouton flottant ouvrent WhatsApp directement.
 const WHATSAPP_NUMBER = '33658308210'
 const WHATSAPP_PREFILL =
-  "Salut Noé, j'ai un projet d'application et j'aimerais ton avis. Mon projet en deux mots : "
+  "Bonjour Noé, j'ai un projet d'application et j'aimerais échanger avec toi pour voir comment le concrétiser."
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_PREFILL)}`
 
 const SECTION_ROUTES = {
@@ -378,16 +378,6 @@ function App() {
   //   return () => window.removeEventListener('message', handleCalendlyEvent)
   // }, [])
 
-  const openWhatsApp = (source = 'landing_cta') => {
-    trackWhatsAppLead(source)
-    const opened = window.open(WHATSAPP_URL, '_blank')
-    if (opened) {
-      opened.opener = null
-      return
-    }
-    window.location.href = WHATSAPP_URL
-  }
-
   const goHome = () => { setPage('home'); history.pushState(null, '', '/'); window.scrollTo(0, 0) }
 
   const goDocuments = () => { setPage('documents'); history.pushState(null, '', '/documents'); window.scrollTo(0, 0) }
@@ -396,10 +386,23 @@ function App() {
 
   const goAuditApp = () => { setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }
 
-  // Les CTA des pages secondaires ouvrent directement WhatsApp. La route
-  // /rendez-vous reste disponible pour les anciens liens et le footer.
-  const goBookCall = () => {
-    openWhatsApp('content_cta')
+  // Point de passage commun a tous les CTA de contact de la landing. Depuis
+  // une page secondaire, on remonte la home avant de scroller vers la section.
+  const goBookCall = (event) => {
+    event?.preventDefault?.()
+    setPage('home')
+    history.pushState(null, '', '/rendez-vous')
+
+    const scrollToContact = (attempts = 0) => {
+      const section = document.getElementById(SECTION_ROUTES['/rendez-vous'].id)
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        return
+      }
+      if (attempts < 10) setTimeout(() => scrollToContact(attempts + 1), 50)
+    }
+
+    requestAnimationFrame(() => scrollToContact())
   }
 
   const openLegal = (target, returnPath = window.location.pathname) => {
@@ -520,12 +523,13 @@ function App() {
 
               {/* Right — CTA + Hamburger */}
               <div className="flex items-center gap-3">
-                <button
-                  onClick={() => openWhatsApp('home_navbar')}
+                <a
+                  href="/rendez-vous"
+                  onClick={goBookCall}
                   className="hidden sm:inline-block bg-[#131313] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors cursor-pointer"
                 >
                   Discuter avec Noé
-                </button>
+                </a>
 
                 <button
                   onClick={() => setMenuOpen(!menuOpen)}
@@ -556,12 +560,13 @@ function App() {
                       {label}
                     </a>
                   ))}
-                  <button
+                  <a
+                    href="/rendez-vous"
                     className="min-[480px]:hidden text-center bg-[#131313] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer"
-                    onClick={() => { setMenuOpen(false); openWhatsApp('home_navbar_mobile') }}
+                    onClick={(event) => { setMenuOpen(false); goBookCall(event) }}
                   >
                     Discuter avec Noé
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -618,8 +623,9 @@ function App() {
 
           {/* CTA mobile */}
           <div className="flex justify-center mb-3 sm:hidden">
-            <button
-              onClick={() => openWhatsApp('home_hero')}
+            <a
+              href="/rendez-vous"
+              onClick={goBookCall}
               className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
             >
               <span className="pr-0.5 md:pr-1">Écrire à Noé sur WhatsApp</span>
@@ -627,7 +633,7 @@ function App() {
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
-            </button>
+            </a>
           </div>
 
           {/* Proof mobile — ordre inchange */}
@@ -656,8 +662,9 @@ function App() {
 
           {/* CTA desktop */}
           <div className="hidden sm:flex justify-center mt-8 md:mt-10 mb-3 md:mb-5">
-            <button
-              onClick={() => openWhatsApp('home_hero')}
+            <a
+              href="/rendez-vous"
+              onClick={goBookCall}
               className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
             >
               <span className="pr-0.5 md:pr-1">Écrire à Noé sur WhatsApp</span>
@@ -665,7 +672,7 @@ function App() {
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
-            </button>
+            </a>
           </div>
 
         </div>
@@ -736,8 +743,9 @@ function App() {
           </div>
 
           <div className="reveal text-center mt-6 md:mt-4">
-            <button
-              onClick={() => openWhatsApp('home_difference')}
+            <a
+              href="/rendez-vous"
+              onClick={goBookCall}
               className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
                Discuter de mon projet
@@ -745,7 +753,7 @@ function App() {
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
-            </button>
+            </a>
             <p className="text-grey/60 text-[0.8rem] mt-3">Réponse directe · 100% gratuit</p>
           </div>
         </div>
