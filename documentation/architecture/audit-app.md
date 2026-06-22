@@ -29,6 +29,15 @@ Regle hero :
 - Pas de CTA WhatsApp dans la navbar du hero : la barre sert a la confiance, le lien sous le bouton sert de porte de sortie pour les visiteurs qui refusent le test.
 - Pendant le formulaire, aucun raccourci WhatsApp visible : focus sur la completion.
 
+Tracking Meta :
+
+- bouton `Lancer mon audit gratuit` -> `AuditStart` ;
+- lien WhatsApp avant l'audit -> `Lead` avec source `audit_skip` ;
+- verdict affiche -> `AuditComplete` ;
+- premier clic WhatsApp apres verdict -> `Lead` + `QualifiedAuditLead` (les deux liens du verdict sont dedupliques).
+
+`Lead` est le signal commun utilise par les campagnes landing et audit. `QualifiedAuditLead` distingue le parcours ou le prospect a fourni son projet, son stade et son budget avant de cliquer. Aucun des deux ne prouve que le message WhatsApp a ete envoye ; cette confirmation necessiterait WhatsApp Business Platform et un webhook.
+
 ## Questions collectees
 
 Les questions sont declarees dans `src/audit-app/config.js` :

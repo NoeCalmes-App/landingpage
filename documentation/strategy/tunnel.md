@@ -69,8 +69,10 @@ La landing principale rassure et vend le positionnement : expert indépendant en
 
 Deux types de CTA coexistent :
 
-- **Projet mûr / envie de parler** : bouton WhatsApp (conversation directe).
+- **Projet mûr / envie de parler** : bouton qui ouvre WhatsApp directement en un clic.
 - **Question prix / doute / comparaison agence** : lien vers `/audit-app` (qui finit sur WhatsApp).
+
+La route `/rendez-vous` et la section de contact restent accessibles pour les anciens liens, mais les CTA principaux de la landing ne doivent pas imposer un scroll ou un second bouton avant WhatsApp.
 
 Règle pour la section comparaison "Agences vs Noé Calmes" :
 
@@ -197,6 +199,8 @@ Sur le hero de `/audit-app`, la hiérarchie doit rester nette :
 - bouton principal visible : lancer l'audit ;
 - lien secondaire discret sous le bouton : `Je préfère discuter avec Noé` vers WhatsApp ;
 - pas de bouton WhatsApp dans la navbar, pour ne pas transformer la page en double choix dès l'arrivée.
+
+Signaux Meta utilises : `Lead` au premier clic WhatsApp de la session, `AuditStart` au lancement de l'audit, `AuditComplete` au verdict, puis `QualifiedAuditLead` en plus lorsque le clic WhatsApp intervient apres verdict. Le Pixel ne confirme pas l'envoi du message dans WhatsApp ; ce dernier niveau reste manuel tant que WhatsApp Business Platform n'est pas branchee.
 
 ## Après le tunnel
 

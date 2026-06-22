@@ -62,11 +62,22 @@ Quand une nouvelle maquette client doit etre creee, prendre Aretha comme referen
 
 ## Contact WhatsApp
 
-Calendly a ete retire de la landing le 22/06/2026 (embed, script et preconnexions supprimes). Le contact passe desormais par **WhatsApp** : constante `WHATSAPP_URL` (numero + message pre-rempli) dans `src/App.jsx`. La section `#calendly-section` de la home (id conserve pour ne pas casser la route `/rendez-vous`) affiche un bouton "Parler a Noe sur WhatsApp", et tous les CTA projet y menent.
+Calendly a ete retire de la landing le 22/06/2026 (embed, script et preconnexions supprimes). Le contact passe desormais par **WhatsApp** : constante `WHATSAPP_URL` (numero + message pre-rempli) dans `src/App.jsx`. Les CTA projet ouvrent directement WhatsApp en un clic. La section `#calendly-section` de la home et la route `/rendez-vous` restent disponibles pour les anciens liens et comme page de contact partageable, mais ne sont plus une etape obligatoire.
 
 Pour les CTA prix/budget, preferer `/audit-app` : exemple dans la section comparaison, `Tarif fixe, sans surprise` puis lien secondaire `Combien coûterait mon app ?` vers `/audit-app`, qui finit lui aussi sur WhatsApp.
 
 `CALENDLY_URL` reste defini dans `src/audit-app/config.js` mais n'est plus utilise (conserve pour reactivation eventuelle). Detail du retrait : `documentation/archive/funnels/funnel-calendly-2026-06.md`.
+
+## Tracking Meta
+
+Le Pixel Meta est initialise dans `index.html`. Les evenements frontend sont centralises dans `src/metaTracking.js` et dedupliques par session :
+
+- `Lead` : premier clic WhatsApp de la session, depuis la landing, le bouton flottant ou l'audit.
+- `AuditStart` : demarrage du formulaire `/audit-app`.
+- `AuditComplete` : affichage du verdict.
+- `QualifiedAuditLead` : clic WhatsApp apres le verdict de l'audit, en plus du `Lead` commun.
+
+Le Pixel voit l'ouverture de WhatsApp, pas l'envoi reel du message. Suivre automatiquement les messages recus demanderait WhatsApp Business Platform avec webhook et Conversions API. L'application WhatsApp Business seule reste utile pour les reponses rapides et les libelles, mais ne remonte pas l'envoi au Pixel.
 
 ## Chatbot
 

@@ -20,6 +20,7 @@ import BlushMockups from './BlushMockups.jsx'
 import ClientSpaceBridge from './ClientSpaceBridge.jsx'
 import MaquetteVisualBridge from './MaquetteVisualBridge.jsx'
 import ChatbotWidget from './chatbot/Widget'
+import { trackWhatsAppLead } from './metaTracking.js'
 import { ExternalLink } from 'lucide-react'
 
 const meetingSvg = '/assets/images/illustrations/meetingdev.svg'
@@ -377,9 +378,14 @@ function App() {
   //   return () => window.removeEventListener('message', handleCalendlyEvent)
   // }, [])
 
-  const scrollToCalendly = () => {
-    document.getElementById('calendly-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    history.pushState(null, '', '/rendez-vous')
+  const openWhatsApp = (source = 'landing_cta') => {
+    trackWhatsAppLead(source)
+    const opened = window.open(WHATSAPP_URL, '_blank')
+    if (opened) {
+      opened.opener = null
+      return
+    }
+    window.location.href = WHATSAPP_URL
   }
 
   const goHome = () => { setPage('home'); history.pushState(null, '', '/'); window.scrollTo(0, 0) }
@@ -390,26 +396,10 @@ function App() {
 
   const goAuditApp = () => { setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }
 
-  // Bascule sur la home + scroll vers la section Calendly + force le
-  // chargement du script Calendly (sinon le widget reste vide quand on
-  // bascule depuis /audit-app ou /blog — la section serait rendue avec sa
-  // hauteur reservee mais sans contenu visible).
-  // Retry du scroll avec backoff pour attendre que React rende la home.
+  // Les CTA des pages secondaires ouvrent directement WhatsApp. La route
+  // /rendez-vous reste disponible pour les anciens liens et le footer.
   const goBookCall = () => {
-    setPage('home')
-    history.pushState(null, '', '/rendez-vous')
-    loadCalendlyScript()
-    setSpotsLoaded(true)
-    const tryScroll = (attempts = 0) => {
-      const el = document.getElementById('calendly-section')
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        return
-      }
-      if (attempts >= 12) return
-      setTimeout(() => tryScroll(attempts + 1), 80)
-    }
-    requestAnimationFrame(() => tryScroll())
+    openWhatsApp('content_cta')
   }
 
   const openLegal = (target, returnPath = window.location.pathname) => {
@@ -531,7 +521,7 @@ function App() {
               {/* Right — CTA + Hamburger */}
               <div className="flex items-center gap-3">
                 <button
-                  onClick={scrollToCalendly}
+                  onClick={() => openWhatsApp('home_navbar')}
                   className="hidden sm:inline-block bg-[#131313] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors cursor-pointer"
                 >
                   Discuter avec Noé
@@ -568,7 +558,7 @@ function App() {
                   ))}
                   <button
                     className="min-[480px]:hidden text-center bg-[#131313] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer"
-                    onClick={() => { setMenuOpen(false); scrollToCalendly() }}
+                    onClick={() => { setMenuOpen(false); openWhatsApp('home_navbar_mobile') }}
                   >
                     Discuter avec Noé
                   </button>
@@ -629,7 +619,7 @@ function App() {
           {/* CTA mobile */}
           <div className="flex justify-center mb-3 sm:hidden">
             <button
-              onClick={scrollToCalendly}
+              onClick={() => openWhatsApp('home_hero')}
               className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
             >
               <span className="pr-0.5 md:pr-1">Écrire à Noé sur WhatsApp</span>
@@ -667,7 +657,7 @@ function App() {
           {/* CTA desktop */}
           <div className="hidden sm:flex justify-center mt-8 md:mt-10 mb-3 md:mb-5">
             <button
-              onClick={scrollToCalendly}
+              onClick={() => openWhatsApp('home_hero')}
               className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
             >
               <span className="pr-0.5 md:pr-1">Écrire à Noé sur WhatsApp</span>
@@ -747,7 +737,7 @@ function App() {
 
           <div className="reveal text-center mt-6 md:mt-4">
             <button
-              onClick={scrollToCalendly}
+              onClick={() => openWhatsApp('home_difference')}
               className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
                Discuter de mon projet
@@ -876,6 +866,7 @@ function App() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppLead('home_contact')}
               className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
               <span className="pr-0.5 md:pr-1">Écrire à Noé sur WhatsApp</span>

@@ -14,6 +14,9 @@
 // Chaque section masquee si son contenu est vide — l'UI s'adapte aux
 // reponses de l'IA (cas idee precise vs idee vague).
 
+import { useEffect } from 'react'
+import { trackAuditComplete, trackQualifiedAuditLead } from '../metaTracking.js'
+
 export default function AuditAppVerdict({
   firstName,
   appType,
@@ -22,6 +25,10 @@ export default function AuditAppVerdict({
 }) {
   const isHotLead = verdict.branch === 'A'
   const waUrl = buildWhatsAppUrl(firstName, appType)
+
+  useEffect(() => {
+    trackAuditComplete()
+  }, [])
 
   const hasSolide = (verdict.ce_qui_est_solide || []).length > 0
   const hasManque = (verdict.ce_qui_manque || []).length > 0
@@ -307,6 +314,7 @@ function PriceTimingCard({ prix, delai, waUrl }) {
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackQualifiedAuditLead('audit_price')}
           className="inline-flex items-center text-blue-600 font-semibold text-[0.9rem] hover:text-blue-700 transition-colors cursor-pointer"
         >
           Avoir le vrai prix de mon application
@@ -455,6 +463,7 @@ function ClosingHotLead({ ctaMessage, waUrl, onBookCall }) {
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackQualifiedAuditLead('audit_verdict')}
           className="group inline-flex items-center justify-center bg-text text-surface font-semibold text-[0.92rem] md:text-[0.95rem] lg:text-[1rem] px-6 py-3 lg:px-7 lg:py-3.5 rounded-full cursor-pointer hover:bg-brand transition-colors"
         >
           Écrire à Noé sur WhatsApp

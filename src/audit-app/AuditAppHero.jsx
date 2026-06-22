@@ -5,6 +5,7 @@
 // une mise en page differente de la home pour eviter l'effet "meme hero".
 
 import { HERO_QUESTIONS } from './config'
+import { trackAuditStart, trackWhatsAppLead } from '../metaTracking.js'
 
 const DIRECT_WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
   "Salut Noé, j'ai un projet d'application et j'aimerais ton avis. Mon projet en deux mots : "
@@ -71,7 +72,10 @@ export default function AuditAppHero({ onStart, onLegal }) {
         </div>
 
         <button
-          onClick={onStart}
+          onClick={() => {
+            trackAuditStart()
+            onStart()
+          }}
           className="group inline-flex items-center justify-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer hover:bg-text transition-colors"
         >
           Lancer mon audit gratuit
@@ -96,6 +100,7 @@ export default function AuditAppHero({ onStart, onLegal }) {
           href={DIRECT_WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppLead('audit_skip')}
           className="mt-3.5 text-[0.83rem] md:text-[0.9rem] font-medium text-grey/75 underline underline-offset-4 decoration-grey/25 hover:text-text hover:decoration-text/45 transition-colors"
         >
           Je préfère discuter avec Noé
