@@ -849,10 +849,7 @@ function App() {
       {/* ========== CALENDLY ========== */}
       <section className="pt-16 md:pt-22 pb-0 md:pb-0 px-5 bg-card" id="calendly-section">
         <div className="max-w-275 mx-auto text-center">
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-3 md:mb-4">
-            Parlons de <span className="text-brand">ton application</span>
-          </h2>
-          <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-4 min-h-[1.5rem]">
+          <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-3 min-h-[1.5rem]">
             {spotsLoaded ? (
               <>
                 <span className="relative flex h-2 w-2 shrink-0">
@@ -868,6 +865,9 @@ function App() {
               </span>
             )}
           </p>
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-3 md:mb-4">
+            Parlons de <span className="text-brand">ton application</span>
+          </h2>
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-2">
             Une idée, ou une application déjà en ligne&nbsp;? Écris-moi&nbsp;: je regarde ton projet et je te dis comment avancer.
           </p>
