@@ -211,7 +211,7 @@ export const auditStatsAdmin = onRequest(
     if (req.method === "OPTIONS") {
       if (isAllowedOrigin) {
         setCors(res, origin);
-        res.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+        res.set("Access-Control-Allow-Methods", "GET, DELETE, OPTIONS");
         res.set("Access-Control-Allow-Headers", "Authorization, Content-Type");
         res.set("Access-Control-Max-Age", "3600");
       }
@@ -225,7 +225,7 @@ export const auditStatsAdmin = onRequest(
     }
     setCors(res, origin);
 
-    if (req.method !== "GET") {
+    if (req.method !== "GET" && req.method !== "DELETE") {
       res.status(405).json({ error: "Method not allowed" });
       return;
     }
@@ -244,6 +244,28 @@ export const auditStatsAdmin = onRequest(
         error: err instanceof Error ? err.message : String(err),
       });
       res.status(401).json({ error: "Invalid token" });
+      return;
+    }
+
+    if (req.method === "DELETE") {
+      const rawId = Array.isArray(req.query.id) ? req.query.id[0] : req.query.id;
+      const auditId = typeof rawId === "string" ? rawId.trim() : "";
+
+      if (!auditId || auditId.length > 200 || auditId.includes("/")) {
+        res.status(400).json({ error: "Invalid audit id" });
+        return;
+      }
+
+      const auditRef = db.collection(COLLECTION).doc(auditId);
+      const auditSnap = await auditRef.get();
+      if (!auditSnap.exists) {
+        res.status(404).json({ error: "Audit not found" });
+        return;
+      }
+
+      await auditRef.delete();
+      logger.info("auditStatsAdmin : audit deleted", { auditId });
+      res.status(200).json({ ok: true, id: auditId });
       return;
     }
 

@@ -4,7 +4,7 @@
  * Endpoints publiés (region europe-west1) :
  *   - POST /verdictWeb    — appel final (génération verdict IA + CORS)
  *   - POST /auditPartial  — capture des audits abandonnés (un POST par étape)
- *   - GET  /auditStatsAdmin — stats admin lues par Nowork (auth requise)
+ *   - GET/DELETE /auditStatsAdmin — stats et suppression admin depuis Nowork
  */
 
 export { verdictWeb } from "./verdict-web";
