@@ -60,38 +60,38 @@ function patchHtml(html, {
 const sectionRoutes = [
   {
     path: '/expertise',
-    title: 'Pourquoi travailler avec Noé Calmes — Expert en applications mobiles',
-    description: 'Expert en applications mobiles indépendant. Création, reprise et évolution d\'applications iOS et Android — de la stratégie au lancement, pour les entreprises en France.',
-    heading: 'Expert en applications mobiles — Noé Calmes',
-    content: 'Expert en applications mobiles indépendant. J\'aide les entreprises à créer, reprendre et faire évoluer leur application mobile — en pensant business avant de penser code. Stratégie, design et développement de la conception au lancement sur les stores.',
+    title: 'Concevoir une application mobile qui génère des revenus | Noé Calmes',
+    description: 'Je ne fais pas que développer ton application mobile : je la conçois pour qu\'elle génère des revenus. Stratégie, modèle économique, design et développement iOS et Android.',
+    heading: 'Concevoir une application mobile qui génère des revenus',
+    content: 'Je ne suis pas un développeur à la mission ni une agence. Je conçois ton application mobile pour qu\'elle génère des revenus : modèle économique, conversion des utilisateurs en clients, de la stratégie au lancement sur l\'App Store et Google Play. Une application que j\'ai conçue génère 13 000 € par mois.',
   },
   {
     path: '/creation-application-mobile',
-    title: 'Méthode de création d\'application mobile | Noé Calmes',
-    description: 'Découvrez ma méthode pour créer votre application mobile : cadrage clair, développement, puis lancement sur l\'App Store et Google Play.',
-    heading: 'Méthode de création d\'application mobile',
-    content: 'Une méthode simple pour créer votre application mobile : un échange pour cadrer le projet, un développement suivi avec des points réguliers, puis la mise en ligne sur l\'App Store et Google Play.',
+    title: 'Créer une application mobile rentable : ma méthode | Noé Calmes',
+    description: 'Ma méthode pour créer une application mobile pensée pour rapporter : cadrage du modèle économique, conception, développement, puis lancement sur l\'App Store et Google Play.',
+    heading: 'Ma méthode pour créer une application mobile qui rapporte',
+    content: 'Une méthode simple pour créer ton application mobile en pensant revenus avant de penser code : on cadre le besoin et le modèle économique, on conçoit comment l\'application transforme tes utilisateurs en clients, on développe, puis on lance sur l\'App Store et Google Play. Première version en 4 à 6 semaines.',
   },
   {
     path: '/avis',
-    title: 'Avis clients — Noé Calmes, expert en applications mobiles',
-    description: 'Ce que disent les clients qui ont fait confiance à Noé Calmes pour créer, reprendre ou faire évoluer leur application mobile.',
-    heading: 'Avis clients — Noé Calmes',
-    content: 'Découvrez les avis de clients qui ont confié leur projet d\'application mobile à Noé Calmes. Création de MVP, reprise d\'application existante, évolution de fonctionnalités — ce qu\'ils en disent.',
+    title: 'Avis et résultats, applications mobiles | Noé Calmes',
+    description: 'Ce que disent les porteurs de projet qui m\'ont confié leur application mobile, et des applications pensées pour générer des revenus.',
+    heading: 'Avis et résultats',
+    content: 'Les retours des entrepreneurs et porteurs de projet qui m\'ont confié leur application mobile : conception, développement, lancement, et des applications pensées pour rapporter.',
   },
   {
     path: '/faq',
-    title: 'FAQ — Création d\'application mobile | Noé Calmes',
-    description: 'Questions fréquentes sur la création, la reprise et l\'évolution d\'application mobile : délais, tarifs, livraison et suivi après mise en ligne.',
-    heading: 'FAQ — Création d\'application mobile',
-    content: 'Retrouvez les réponses aux questions les plus fréquentes sur la création, la reprise et l\'évolution d\'application mobile : délais, tarification, livraison, publication sur les stores et suivi après mise en ligne.',
+    title: 'FAQ, créer une application mobile qui rapporte | Noé Calmes',
+    description: 'Questions fréquentes : combien coûte une application mobile, combien de temps, comment elle génère des revenus, livraison et suivi après mise en ligne.',
+    heading: 'FAQ, créer une application mobile',
+    content: 'Les réponses aux questions fréquentes : budget (en général 5 à 10k en mobile), délai (première version en 4 à 6 semaines), comment une application est pensée pour générer des revenus, livraison et suivi après mise en ligne.',
   },
   {
     path: '/rendez-vous',
-    title: 'Réserver un appel gratuit — Application mobile | Noé Calmes',
-    description: 'Vous avez un projet d\'application mobile ? Réservez un appel gratuit de 30 minutes pour en discuter. Création, reprise ou évolution — sans engagement.',
-    heading: 'Réserver un appel découverte gratuit',
-    content: 'Vous avez un projet d\'application mobile ? Réservez un appel gratuit de 30 minutes pour discuter de votre idée, vos besoins et vos objectifs. Création, reprise ou évolution — sans engagement.',
+    title: 'Parler de ton projet d\'application mobile | Noé Calmes',
+    description: 'Tu as un projet d\'application mobile ? Échange directement avec moi pour voir comment la concevoir pour qu\'elle génère des revenus.',
+    heading: 'Parler de ton projet d\'application mobile',
+    content: 'Tu as une idée ou un projet d\'application mobile ? Échange directement avec moi pour voir comment la concevoir pour qu\'elle te rapporte. Tu peux aussi tester ton idée en 2 minutes avec l\'audit gratuit.',
   },
 ]
 
@@ -113,10 +113,10 @@ const legacySectionRoutes = [
   {
     path: '/etapes',
     canonicalPath: '/creation-application-mobile',
-    title: 'Méthode de création d\'application mobile | Noé Calmes',
-    description: 'Découvrez ma méthode pour créer votre application mobile : cadrage clair, développement, puis lancement sur l\'App Store et Google Play.',
-    heading: 'Méthode de création d\'application mobile',
-    content: 'Cette page a évolué : retrouvez ma méthode de création d\'application mobile, du cadrage au lancement sur les stores.',
+    title: 'Créer une application mobile rentable : ma méthode | Noé Calmes',
+    description: 'Ma méthode pour créer une application mobile pensée pour rapporter : cadrage du modèle économique, conception, développement, puis lancement sur l\'App Store et Google Play.',
+    heading: 'Ma méthode pour créer une application mobile qui rapporte',
+    content: 'Cette page a évolué : retrouve ma méthode pour créer une application mobile pensée pour générer des revenus, du cadrage au lancement sur les stores.',
   },
 ]
 
@@ -204,12 +204,28 @@ for (const route of blogRoutes) {
     breadcrumb.push({ "@type": "ListItem", "position": 3, "name": route.heading, "item": `https://noecalmes.fr${route.path}` })
   }
 
-  const html = patchHtml(baseHtml, {
+  let html = patchHtml(baseHtml, {
     ...route,
     backLink: '← Retour au blog',
     backHref: 'https://noecalmes.fr/blog',
     breadcrumb,
   })
+
+  // Article structured data for individual blog posts (not the blog index)
+  if (route.path !== '/blog') {
+    const articleJson = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": route.heading,
+      "description": route.description,
+      "author": { "@type": "Person", "name": "Noé Calmes", "url": "https://noecalmes.fr" },
+      "publisher": { "@id": "https://noecalmes.fr/#person" },
+      "mainEntityOfPage": `https://noecalmes.fr${route.path}`,
+      "image": "https://noecalmes.fr/assets/images/meta/new-og-image.png",
+    }, null, 6)
+    html = html.replace('</head>', `    <script type="application/ld+json">\n    ${articleJson}\n    </script>\n  </head>`)
+  }
+
   const routeDir = join(distDir, route.path)
   mkdirSync(routeDir, { recursive: true })
   writeFileSync(join(routeDir, 'index.html'), html)
@@ -220,12 +236,12 @@ for (const route of blogRoutes) {
 
 const auditAppRoute = {
   path: '/audit-app',
-  title: 'Tester une idée d\'application mobile — Noé Calmes',
-  description: 'Testez votre idée d\'application mobile avant d\'investir : potentiel business, budget, délai et points à valider en 2 minutes.',
-  heading: 'Tester votre idée d\'application mobile',
-  content: 'Répondez à 5 questions et obtenez une première lecture claire avant d\'investir dans le développement : potentiel business, budget MVP, délai réaliste et points à clarifier.',
+  title: 'Tester ton idée d\'application mobile en 2 minutes | Noé Calmes',
+  description: 'Teste ton idée d\'application mobile avant d\'investir : potentiel, budget, délai et si elle peut générer des revenus, en 2 minutes.',
+  heading: 'Tester ton idée d\'application mobile',
+  content: 'Réponds à quelques questions et obtiens une première lecture claire avant d\'investir dans le développement : potentiel, budget réaliste, délai, et si ton idée peut générer des revenus.',
   ogImage: 'https://noecalmes.fr/assets/images/meta/audit-app-og.png',
-  ogImageAlt: 'Audit gratuit pour savoir combien coûterait une idée d’application mobile avant d’investir.',
+  ogImageAlt: 'Audit gratuit pour tester si ton idée d\'application mobile peut générer des revenus.',
 }
 
 const auditHtml = patchHtml(baseHtml, {
@@ -288,7 +304,7 @@ for (const path of noindexRoutes) {
 
 const homeHtml = baseHtml.replace(
   '<div id="root"></div>',
-  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif;visibility:hidden" aria-hidden="true"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">Je transforme votre idée en app mobile en 45 jours.</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Votre application pensée pour générer des revenus, de la stratégie au lancement. Création, reprise et évolution d'applications iOS et Android. Tarif fixe, MVP en 45 jours.</p><a href="/rendez-vous" style="display:inline-block;background:#645cff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Obtenir mes premières maquettes</a></div></div>`
+  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif;visibility:hidden" aria-hidden="true"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">Je transforme ton idée en app qui génère des revenus.</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Je ne fais pas que développer ton application : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois. Plus de 20 applications publiées.</p><a href="/audit-app" style="display:inline-block;background:#6760ff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Tester mon idée d'application</a></div></div>`
 )
 writeFileSync(join(distDir, 'index.html'), homeHtml)
 console.log('✓ Injected pre-rendered content into home index.html')
