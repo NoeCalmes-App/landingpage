@@ -602,7 +602,7 @@ function App() {
           </div>
 
           {/* Titre — même direction desktop/mobile, avec des retours adaptés aux petits écrans */}
-          <h1 className="font-heading text-[1.56rem] min-[375px]:text-[1.62rem] min-[414px]:text-[1.78rem] min-[430px]:text-[1.9rem] min-[480px]:text-[2.08rem] sm:text-[2.34rem] md:text-[2.72rem] lg:text-[3.08rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-6 md:mb-8">
+          <h1 className="font-heading text-[1.72rem] min-[375px]:text-[1.8rem] min-[414px]:text-[1.95rem] min-[430px]:text-[2.05rem] min-[480px]:text-[2.2rem] sm:text-[2.34rem] md:text-[2.72rem] lg:text-[3.08rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-4 md:mb-8">
             <span className="sm:hidden text-text font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
               Je <span className="inline-block mx-1 text-[#4b4b4b] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> ton<br />
               idée en application qui<br />
@@ -620,7 +620,7 @@ function App() {
           </h1>
 
           {/* Sous-titre */}
-          <p className="text-grey text-[0.98rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-xl mx-auto mb-9 md:mb-11">
+          <p className="text-grey text-[0.92rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-xl mx-auto mb-9 md:mb-11">
             Je conçois ton application iOS et Android pour transformer tes utilisateurs en clients.
           </p>
 
@@ -629,14 +629,14 @@ function App() {
             {[
               { label: 'Ton idée', strong: false, icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18h6M10 22h4" /><path d="M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2h6c0-.8.4-1.5 1-2A7 7 0 0012 2z" /></svg> },
               { label: 'Ton application', strong: false, icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="2" width="12" height="20" rx="3" /><path d="M11 18h2" /></svg> },
-              { label: 'Tes revenus', strong: true, icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 17 9 11 13 15 21 7" /><polyline points="15 7 21 7 21 13" /></svg> },
+              { label: 'Des revenus', strong: true, icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 17 9 11 13 15 21 7" /><polyline points="15 7 21 7 21 13" /></svg> },
             ].map((node, i, arr) => (
               <div key={node.label} className="flex items-center gap-3 sm:gap-5">
                 <div className="flex flex-col items-center gap-2">
-                  <div className={`w-11 h-11 rounded-xl border bg-white shadow-sm flex items-center justify-center ${node.strong ? 'border-brand/40 text-brand' : 'border-card-border text-text'}`}>
+                  <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl border bg-white shadow-sm flex items-center justify-center ${node.strong ? 'border-brand/40 text-brand' : 'border-card-border text-text'}`}>
                     {node.icon}
                   </div>
-                  <span className={`text-[0.82rem] sm:text-[0.92rem] font-semibold ${node.strong ? 'text-brand' : 'text-text'}`}>{node.label}</span>
+                  <span className={`text-[0.78rem] sm:text-[0.92rem] font-semibold ${node.strong ? 'text-brand' : 'text-text'}`}>{node.label}</span>
                 </div>
                 {i < arr.length - 1 && (
                   <svg className="text-brand/40 shrink-0 mb-7" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
@@ -706,7 +706,7 @@ function App() {
         <div className="max-w-275 mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
             <div className="reveal shrink-0">
-              <img src={calorieVisuel} alt="Calories, application rentable" loading="lazy" className="w-full max-w-[160px] md:max-w-[270px] rounded-[28px] mx-auto" />
+              <img src={calorieVisuel} alt="Calories, application rentable" loading="lazy" className="w-full max-w-[195px] md:max-w-[270px] rounded-[28px] mx-auto" />
             </div>
             <div className="reveal max-w-[520px]">
               <h2 className="font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-5 leading-[1.15]">
@@ -721,7 +721,7 @@ function App() {
               <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2 md:gap-x-2 md:gap-y-3">
                 {['Arrivée', 'Onboarding', 'Essai gratuit', 'Habitude', 'Abonnement', 'Revenu récurrent'].map((step, i, arr) => (
                   <span key={step} className={`flex items-center gap-2 ${i === arr.length - 1 ? 'md:w-full md:basis-full md:mt-1' : ''}`}>
-                    <span className={`inline-flex items-center gap-1 md:gap-1.5 text-[0.74rem] md:text-[0.95rem] font-semibold rounded-full px-2.5 py-1 md:px-4 md:py-2 border ${i === arr.length - 1 ? 'bg-brand text-white border-brand' : 'bg-card text-text border-card-border'}`}>
+                    <span className={`inline-flex items-center gap-1 md:gap-1.5 text-[0.85rem] md:text-[0.95rem] font-semibold rounded-full px-3.5 py-2 md:px-4 md:py-2 border ${i === arr.length - 1 ? 'bg-brand text-white border-brand' : 'bg-card text-text border-card-border'}`}>
                       {i === arr.length - 1 && (
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 1l4 4-4 4" /><path d="M3 11V9a4 4 0 014-4h14" /><path d="M7 23l-4-4 4-4" /><path d="M21 13v2a4 4 0 01-4 4H3" /></svg>
                       )}
