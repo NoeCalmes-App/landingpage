@@ -1,6 +1,6 @@
 # Feuille de route SEO — viser le top sur SA niche
 
-> Le plan complet pour ranker. Source de vérité stratégie. Le détail des articles est dans `seo-content-plan.md`.
+> Le plan complet pour ranker. Source de vérité stratégie. Le détail des articles est dans `content-plan.md`.
 
 ## L'objectif réaliste (lis ça d'abord)
 
@@ -39,7 +39,7 @@ Fiche gratuite qui te fait apparaître sur Google Maps + sur « application mobi
 
 - [ ] **[Moi] Page pilier** « Comment rentabiliser une application mobile » (chapeaute tout le cluster).
 - [ ] **[Moi] Page locale** « Création d'application mobile à Toulouse » (capte le filon local).
-- [x] **[Auto] Tâche hebdo** : 1 article du cluster par semaine, à relire (voir `seo-content-plan.md`).
+- [x] **[Auto] Tâche hebdo** : 1 article du cluster par semaine, à relire (voir `content-plan.md`).
 - [ ] **[Toi] Relire + intégrer + push** chaque brouillon.
 
 ---
@@ -53,6 +53,14 @@ Des liens d'autres sites = des votes de confiance pour Google.
 - [ ] **[Toi] Ton histoire « app à 13 000 €/mois »** en post LinkedIn long / article : très partageable, attire des liens naturels.
 
 ---
+
+## Audit technique (24/06/2026) — résultat
+
+Rien de cassé. Librairies lourdes en lazy-load (OK), images avec alt (OK), données structurées valides (OK), liens internes corrigés (OK), robots/canoniques OK. `/avis` et `/rendez-vous` passés en noindex (contenu dupliqué / page vide). Reste un seul point technique :
+
+- [ ] **[Moi, quand tu veux] Optimiser les images** : convertir en webp + compresser les PNG de 0,7 à 1,4 Mo (snapmaster, lavender-sphere, off, icônes). Améliore la vitesse (Core Web Vitals). Non urgent.
+
+Le gros sujet de fond restant : transformer les sections (ancres sur une seule page) en **vraies pages séparées** avec contenu unique. Gros chantier de contenu, à planifier plus tard.
 
 ## Mesure (toutes les 2-4 semaines)
 

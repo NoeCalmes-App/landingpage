@@ -74,25 +74,11 @@ const sectionRoutes = [
     content: 'Une méthode simple pour créer ton application mobile en pensant revenus avant de penser code : on cadre le besoin et le modèle économique, on conçoit comment l\'application transforme tes utilisateurs en clients, on développe, puis on lance sur l\'App Store et Google Play. Première version en 4 à 6 semaines.',
   },
   {
-    path: '/avis',
-    title: 'Avis et résultats, applications mobiles | Noé Calmes',
-    description: 'Ce que disent les porteurs de projet qui m\'ont confié leur application mobile, et des applications pensées pour générer des revenus.',
-    heading: 'Avis et résultats',
-    content: 'Les retours des entrepreneurs et porteurs de projet qui m\'ont confié leur application mobile : conception, développement, lancement, et des applications pensées pour rapporter.',
-  },
-  {
     path: '/faq',
     title: 'FAQ, créer une application mobile qui rapporte | Noé Calmes',
     description: 'Questions fréquentes : combien coûte une application mobile, combien de temps, comment elle génère des revenus, livraison et suivi après mise en ligne.',
     heading: 'FAQ, créer une application mobile',
     content: 'Les réponses aux questions fréquentes : budget (en général 5 à 10k en mobile), délai (première version en 4 à 6 semaines), comment une application est pensée pour générer des revenus, livraison et suivi après mise en ligne.',
-  },
-  {
-    path: '/rendez-vous',
-    title: 'Parler de ton projet d\'application mobile | Noé Calmes',
-    description: 'Tu as un projet d\'application mobile ? Échange directement avec moi pour voir comment la concevoir pour qu\'elle génère des revenus.',
-    heading: 'Parler de ton projet d\'application mobile',
-    content: 'Tu as une idée ou un projet d\'application mobile ? Échange directement avec moi pour voir comment la concevoir pour qu\'elle te rapporte. Tu peux aussi tester ton idée en 2 minutes avec l\'audit gratuit.',
   },
 ]
 
@@ -144,6 +130,13 @@ const blogRoutes = [
     description: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix techniques — par un expert en applications mobiles.',
     heading: 'Blog — Application mobile',
     content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
+  },
+  {
+    path: '/blog/creation-application-mobile-toulouse',
+    title: 'Création d\'application mobile à Toulouse | Noé Calmes',
+    description: 'Développeur d\'applications mobiles à Toulouse : je conçois ton application iOS et Android pour qu\'elle génère des revenus, de l\'idée au lancement.',
+    heading: 'Création d\'application mobile à Toulouse',
+    content: 'Développeur d\'applications mobiles à Toulouse et en Occitanie. Je conçois ton application iOS et Android pour qu\'elle génère des revenus, pas juste pour exister, de la stratégie au lancement sur l\'App Store et Google Play. Une application que j\'ai conçue génère 13 000 € par mois.',
   },
   {
     path: '/blog/application-mobile-meilleur-investissement',
@@ -284,7 +277,7 @@ for (const path of mockupRoutes) {
 // ─── Legacy routes — noindex (old URLs that may still be indexed by Google) ──
 
 const legacyRoutes = ['/a-propos', '/offre', '/contact']
-const noindexRoutes = ['/mentions', '/privacy', '/cgv', '/documents', '/merci', '/contactnoe', '/legal', '/espace-client', '/maquette-visuel', ...legacyRoutes]
+const noindexRoutes = ['/avis', '/rendez-vous', '/mentions', '/privacy', '/cgv', '/documents', '/merci', '/contactnoe', '/legal', '/espace-client', '/maquette-visuel', ...legacyRoutes]
 
 for (const path of noindexRoutes) {
   let html = baseHtml

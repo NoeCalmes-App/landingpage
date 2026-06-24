@@ -42,7 +42,7 @@ On ne se bat PAS sur les têtes de gondole d'agence (« créer une application m
 
 ## Comment intégrer un brouillon (côté Noé)
 
-1. Ouvrir le brouillon dans `documentation/strategy/seo-drafts/`.
+1. Ouvrir le brouillon dans `documentation/strategy/seo/drafts/`.
 2. Relire, ajuster la voix si besoin.
 3. Copier l'objet article dans la constante `BLOG_ARTICLES` de `src/Blog.jsx` (slug, title, metaTitle, description, date, readTime, finalCta, content).
 4. Ajouter la route correspondante dans `scripts/generate-routes.js` (tableau `blogRoutes`) pour la meta + le pré-rendu SEO.

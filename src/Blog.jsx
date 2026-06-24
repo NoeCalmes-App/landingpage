@@ -4,6 +4,36 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'creation-application-mobile-toulouse',
+    title: "Création d'application mobile à Toulouse",
+    metaTitle: "Création d'application mobile à Toulouse | Noé Calmes",
+    description: "Développeur d'applications mobiles à Toulouse : je conçois ton application iOS et Android pour qu'elle génère des revenus, de l'idée au lancement.",
+    date: '2026-06-24',
+    readTime: '5 min',
+    finalCta: 'audit',
+    content: `
+      <p>Tu cherches un <strong>développeur d'application mobile à Toulouse</strong> pour concrétiser ton projet ? Avant même de parler de code, il y a une question plus importante : est-ce que ton application va vraiment te <strong>rapporter</strong> ? C'est exactement là-dessus que je travaille.</p>
+      <p>Je m'appelle Noé Calmes, je conçois et développe des applications mobiles iOS et Android, et je suis basé près de Toulouse. Mon métier ne se limite pas à écrire du code propre : je conçois ton application pour qu'elle <strong>génère des revenus</strong>, de la première idée jusqu'au lancement sur l'App Store et Google Play.</p>
+
+      <h2>Pas juste un développeur, un concepteur d'applications qui rapportent</h2>
+      <p>La plupart des applications ne rapportent jamais un euro. La différence ne vient pas de l'idée, mais de la <strong>conception</strong> : comment l'application transforme ses utilisateurs en clients, quel modèle économique tient la route (abonnement, essai gratuit, fidélisation), et comment garder les gens sur la durée. C'est ce que je pense <strong>avant</strong> la première ligne de code.</p>
+      <p>Cette approche, je ne la sors pas d'un livre. Une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>, j'ai publié plus de 20 applications, et j'ai développé la première version d'une application qui a dépassé 300 000 utilisateurs. Quand on travaille ensemble, tu profites de cette expérience concrète.</p>
+
+      <h2>Créer, reprendre ou faire évoluer ton application</h2>
+      <p>Que tu partes d'une simple idée ou d'un projet déjà avancé, je peux intervenir à trois niveaux : <strong>créer</strong> ton application de zéro avec une première version pensée pour le business, <strong>reprendre</strong> une application existante instable ou mal codée pour la remettre sur de bonnes bases, ou <strong>faire évoluer</strong> une application déjà en ligne avec de nouvelles fonctionnalités.</p>
+
+      <h2>Un indépendant à Toulouse, pas une agence</h2>
+      <p>Avec moi, tu ne passes pas par un commercial, puis un chef de projet, puis un sous-traitant. Tu parles <strong>directement</strong> à la personne qui conçoit et développe ton application. Pas d'intermédiaire, pas de compteur qui tourne, un tarif fixe décidé avant de commencer. Je travaille avec des entrepreneurs et des porteurs de projet à Toulouse, en Haute-Garonne et partout en Occitanie, et à distance dans toute la France.</p>
+      <p>Pour être clair sur mon périmètre : je conçois et développe une application qui transforme tes utilisateurs en clients. Je ne fais pas la publicité qui amène les utilisateurs. Toi tu amènes les gens, moi je les transforme en clients.</p>
+
+      <h2>Ma méthode, de l'idée au lancement</h2>
+      <p>On commence par cadrer ton projet et ton modèle économique. Je te livre un cahier des charges clair, un devis transparent et une première maquette de ton application pour que tu visualises avant de décider quoi que ce soit. Ensuite je développe, avec des points réguliers, et je publie sur l'App Store et Google Play. Compte en général 4 à 6 semaines pour une première version.</p>
+
+      <h2>Teste ton idée avant d'investir</h2>
+      <p>Avant même qu'on échange, tu peux tester gratuitement ton idée d'application en 2 minutes : tu obtiens une première lecture sur son potentiel, le budget à prévoir et le délai. C'est par ici, fais ton <a href="/audit-app">audit gratuit</a>. Et si tu veux creuser le budget, regarde aussi <a href="/blog/combien-coute-application-mobile">combien coûte une application mobile</a>.</p>
+    `,
+  },
+  {
     slug: 'application-mobile-meilleur-investissement',
     title: 'Créer une application mobile : le meilleur investissement en 2026 !',
     metaTitle: 'Créer une application mobile : meilleur investissement en 2026 ! | Noé Calmes',
