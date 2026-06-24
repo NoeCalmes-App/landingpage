@@ -185,13 +185,13 @@ On peut lancer une première version (MVP) pour valider que les gens paient, ava
 | Code livré — bonne chance pour le lancement | Application pensée pour générer des revenus |
 | Pas de réponse avant 48h minimum | Spécialisé application mobile |
 
-Note landing page : dans la carte de comparaison publique, ne pas afficher le prix d'appel `3 500 €` en frontal. Le contraste doit être :
+Note landing page : dans la carte de comparaison publique, ne pas faire du prix d'appel `5 000 €` la promesse principale. Le contraste doit rester :
 
 - Agences : `À partir de 15 000 €`
 - Noé : `Tarif fixe, sans surprise`
 - Lien secondaire bleu/souligné : `Combien coûterait mon app ?` -> `/audit-app`
 
-Pourquoi : le prix d'appel attire parfois les chasseurs de prix bas et peut réduire la perception premium. Le lien vers l'audit transforme la curiosité prix en lead qualifié : le visiteur répond aux questions, obtient potentiel/budget/délai, puis arrive naturellement sur WhatsApp.
+Pourquoi : la valeur reste l'application pensee pour generer des revenus. Le seuil `5 000 €` sert de filtre secondaire dans les publicites d'acquisition et dans l'audit, pas d'accroche principale sur la landing. Le lien vers l'audit transforme la curiosite prix en lead qualifie : le visiteur repond aux questions, obtient potentiel/budget/delai, puis arrive naturellement sur WhatsApp.
 
 ---
 
@@ -226,7 +226,7 @@ Nuance importante : ne pas dénigrer l'IA (je l'utilise moi-même). Le message n
 
 Le bon prospect n'est pas seulement quelqu'un qui "a une idée". C'est quelqu'un qui voit l'application comme un **investissement** : une app capable de vendre, fidéliser, encaisser, réserver, proposer un abonnement, générer des leads ou créer un revenu supplémentaire.
 
-**Range tarifaire** : 3 500 € – ~30 000 € (tarif fixe, pas de TJM). La plupart des projets sérieux se situent plutôt autour de 6 000 € à 12 000 €, avec une première version simple possible à partir de 3 500 €.
+**Range tarifaire** : 5 000 € – ~30 000 € (tarif fixe, pas de TJM). La plupart des projets sérieux se situent plutôt autour de 6 000 € à 12 000 €, avec une première version simple possible à partir de 5 000 €.
 
 **Priorité commerciale actuelle** :
 

@@ -33,11 +33,11 @@ Tracking Meta :
 
 - bouton `Lancer mon audit gratuit` -> `AuditStart` ;
 - lien WhatsApp avant l'audit -> `Lead` avec source `audit_skip` ;
-- verdict affiche -> `AuditComplete` + `QualifiedAuditComplete` si budget >= 3 500 EUR, ou `LowBudgetAudit` si budget < 3 500 EUR ;
+- verdict affiche -> `AuditComplete` + `QualifiedAuditComplete` si budget >= 5 000 EUR, ou `LowBudgetAudit` si budget < 5 000 EUR ;
 - premier clic WhatsApp apres verdict qualifie -> `WhatsAppClick` + `Lead` + `QualifiedAuditLead` ;
-- premier clic WhatsApp apres verdict petit budget -> `WhatsAppClick` + `LowBudgetLead`, sans `Lead`.
+- un budget inferieur a 5 000 EUR ne voit pas de CTA WhatsApp commercial dans le verdict et reste mesure par `LowBudgetAudit`.
 
-`Lead` est le signal positif commun utilise par les campagnes landing et audit. Un contact WhatsApp direct reste un `Lead` avec qualification inconnue, car l'intention est forte meme sans audit. `QualifiedAuditLead` distingue le parcours ou le prospect a fourni son projet, son stade et un budget suffisant avant de cliquer. Un budget inferieur a 3 500 EUR ne declenche jamais `Lead`. Aucun de ces evenements ne prouve que le message WhatsApp a ete envoye ; cette confirmation necessiterait WhatsApp Business Platform et un webhook.
+`Lead` est le signal positif commun utilise par les campagnes landing et audit. Un contact WhatsApp direct reste un `Lead` avec qualification inconnue, car l'intention est forte meme sans audit. `QualifiedAuditLead` distingue le parcours ou le prospect a fourni son projet, son stade et un budget suffisant avant de cliquer. Un budget inferieur a 5 000 EUR ne declenche jamais `Lead`. Aucun de ces evenements ne prouve que le message WhatsApp a ete envoye ; cette confirmation necessiterait WhatsApp Business Platform et un webhook.
 
 ## Questions collectees
 
@@ -50,7 +50,7 @@ Les questions sont declarees dans `src/audit-app/config.js` :
 5. References concurrentes connues, conditionnel.
 6. Cible : nombre de personnes interrogees.
 7. Modele economique : abonnement, achat unique, commission, freemium, inconnu.
-8. Budget : plus de 12k, 7.5k-12k, 3.5k-7.5k, moins de 3.5k.
+8. Budget : 10k ou plus, 7.5k-10k, 5k-7.5k, moins de 5k.
 
 ## Backend Firebase audit
 
@@ -99,7 +99,7 @@ Cascade actuelle documentee dans le code : Gemini / Groq, avec fallback selon co
 
 La logique de branche est dans `src/audit-app/backend/branch.ts`.
 
-- Budget inferieur a 3 500 EUR -> branche C : pas de push fort vers la conversation commerciale, message plus franc.
+- Budget inferieur a 5 000 EUR -> branche C : pas de push commercial ni de CTA WhatsApp dans le verdict, message plus franc.
 - Autres budgets -> branche A : WhatsApp en CTA principal. (Le CTA Calendly secondaire de cette branche a ete retire le 22/06/2026 ; le commentaire dans `branch.ts` peut encore le mentionner.)
 
 ## Lien avec Nowork

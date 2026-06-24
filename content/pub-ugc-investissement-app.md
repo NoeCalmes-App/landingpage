@@ -32,7 +32,7 @@ Un exemple tout bête : un abonnement à 15 € par mois. T'atteins 100 abonnés
 
 Mais attention — c'est là que 90 % des gens se plantent : ils croient qu'une app, c'est juste du code. Aujourd'hui une IA te pond du code en 5 minutes. Sauf que le code, ça génère pas de revenus. Ce qui génère des revenus, c'est le bon écran d'abonnement au bon moment, une vraie raison de revenir, un parcours pensé pour vendre. Ça, ça se réfléchit.
 
-Du coup j'ai créé un truc, et c'est gratuit : tu décris ton idée en 2 minutes, et tu sais direct si elle a le potentiel de générer de vrais revenus, combien ça coûterait à lancer, et en combien de temps. Le lien est juste là — teste ton idée, tu verras. »
+Du coup j'ai créé un truc, et c'est gratuit : tu décris ton idée en 2 minutes, et tu sais direct si elle a le potentiel de générer de vrais revenus, combien ça coûterait à lancer, et en combien de temps. Les projets que j'accompagne démarrent à 5 000 €. Le lien est juste là — teste ton idée, tu verras. »
 
 ---
 
@@ -44,7 +44,7 @@ Un appart, tu touches un loyer mais t'as les charges, les travaux, le locataire.
 
 Le piège ? Croire qu'une app c'est juste du code. Le code rapporte rien — c'est ce qu'il y a autour qui fait l'argent.
 
-Teste ton idée en 2 min, lien juste là : tu sauras si elle a du potentiel et combien ça coûte. »
+Teste ton idée en 2 min, lien juste là : tu sauras si elle a du potentiel et combien ça coûte. Les projets que j'accompagne démarrent à 5 000 €. »
 
 ---
 

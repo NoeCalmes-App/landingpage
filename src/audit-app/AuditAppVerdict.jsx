@@ -302,7 +302,9 @@ function PriceTimingCard({
 }) {
   const prixText =
     prix ||
-    "Pour une première version sérieuse, comptez une estimation large. La fourchette est large parce que c'est une estimation sans cadrage précis. Pour un vrai prix et un délai exact, le plus simple c'est qu'on en parle directement."
+    (isQualifiedBudget
+      ? "Pour une première version sérieuse, comptez une estimation large. La fourchette est large parce que c'est une estimation sans cadrage précis. Pour un vrai prix et un délai exact, le plus simple c'est qu'on en parle directement."
+      : "Une première version sérieuse commence à partir de 5 000 €. En dessous de ce budget, il faut encore consolider l'enveloppe ou réduire fortement le périmètre avant de lancer le développement.")
   return (
     <SectionCard
       label="Prix et délai"
@@ -330,21 +332,23 @@ function PriceTimingCard({
           </div>
         )}
 
-        <a
-          href={waUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() =>
-            trackAuditWhatsAppClick(
-              'audit_price',
-              budgetTier,
-              isQualifiedBudget
-            )
-          }
-          className="inline-flex items-center text-blue-600 font-semibold text-[0.9rem] hover:text-blue-700 transition-colors cursor-pointer"
-        >
-          Avoir le vrai prix de mon application
-        </a>
+        {isQualifiedBudget && (
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() =>
+              trackAuditWhatsAppClick(
+                'audit_price',
+                budgetTier,
+                isQualifiedBudget
+              )
+            }
+            className="inline-flex items-center text-blue-600 font-semibold text-[0.9rem] hover:text-blue-700 transition-colors cursor-pointer"
+          >
+            Avoir le vrai prix de mon application
+          </a>
+        )}
       </div>
     </SectionCard>
   )

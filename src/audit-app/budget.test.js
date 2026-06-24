@@ -9,12 +9,27 @@ import {
 
 test('classe les tranches fixes du formulaire sans dependre de l IA', () => {
   assert.equal(
-    classifyAuditBudget('Mon budget est inférieur à 3 500 €.', 'HIGH'),
+    classifyAuditBudget('Mon budget est inférieur à 5 000 €.', 'HIGH'),
     AUDIT_BUDGET_TIER.LOW
   )
   assert.equal(
-    classifyAuditBudget('Mon budget se situe entre 3 500 € et 7 500 €.', 'OUT'),
+    classifyAuditBudget('Mon budget se situe entre 5 000 € et 7 500 €.', 'OUT'),
     AUDIT_BUDGET_TIER.MID
+  )
+  assert.equal(
+    classifyAuditBudget('Mon budget se situe entre 7 500 € et 10 000 €.', 'OUT'),
+    AUDIT_BUDGET_TIER.MID
+  )
+  assert.equal(
+    classifyAuditBudget('Mon budget est de 10 000 € ou plus.', 'OUT'),
+    AUDIT_BUDGET_TIER.HIGH
+  )
+})
+
+test('garde une classification prudente pour les anciennes tranches', () => {
+  assert.equal(
+    classifyAuditBudget('Mon budget se situe entre 3 500 € et 7 500 €.', 'MID'),
+    AUDIT_BUDGET_TIER.LOW
   )
   assert.equal(
     classifyAuditBudget('Mon budget se situe entre 7 500 € et 12 000 €.', 'OUT'),

@@ -40,9 +40,9 @@ Le « 45 jours » se dit uniquement quand on parle d'un MVP au périmètre clair
 
 #### Prix
 
-**À partir de 3 500 € HT.**
+**À partir de 5 000 € HT.**
 
-Note de cadrage prix : ne pas laisser entendre que toute application coûte 3 500 €. C'est un point d'entrée pour une première version simple. La plupart des projets sérieux se situent plutôt autour de **6 000 € à 12 000 €**, selon le périmètre, le design, les intégrations et le niveau de finition.
+Note de cadrage prix : ne pas laisser entendre que toute application coûte 5 000 €. C'est un point d'entrée pour une première version simple. La plupart des projets sérieux se situent plutôt autour de **6 000 € à 12 000 €**, selon le périmètre, le design, les intégrations et le niveau de finition.
 
 ---
 
@@ -128,7 +128,7 @@ Pose **deux questions** au prospect :
    - *Aller vite, je veux tester* → **Offre A**
    - *Du parfait, le rendu compte beaucoup* → **Offre B**
 
-Si tu hésites, **propose toujours l'Offre A en premier**. C'est moins engageant pour le client, et tu pourras lui proposer une V2 (« Application Complète ») plus tard quand le marché aura validé son idée. C'est aussi plus aligné avec ton positionnement (app pensée pour rapporter, à partir de 3 500 €).
+Si tu hésites, **propose toujours l'Offre A en premier**. C'est moins engageant pour le client, et tu pourras lui proposer une V2 (« Application Complète ») plus tard quand le marché aura validé son idée. C'est aussi plus aligné avec ton positionnement (app pensée pour rapporter, à partir de 5 000 €).
 
 ---
 
@@ -208,8 +208,9 @@ Pose 4-5 questions et **écoute beaucoup plus que tu ne parles**. Tes objectifs 
 >
 > - **« Je ne sais pas du tout »** → potentiel, à éduquer
 > - **« 300 € »** → pas sérieux, gentiment redirige vers une formation ou un no-code
-> - **« 2 000 – 5 000 € »** → potentiel pour l'Offre A, à creuser
-> - **« 5 000 – 10 000 € »** → bon client pour l'Offre A, peut-être Offre B
+> - **« Moins de 5 000 € »** → budget insuffisant pour le développement, cycle long ou financement à structurer
+> - **« 5 000 – 7 500 € »** → bon client pour une Première Version ciblée
+> - **« 7 500 – 10 000 € »** → très bon client pour l'Offre A, peut-être Offre B
 > - **« 10 000 € et plus »** → excellent client pour l'Offre B
 
 ### Phase 3 — Ton pitch (2 min max)
@@ -220,7 +221,7 @@ Une fois que tu as compris le projet, présente-toi **simplement** :
 >
 > *Ma différence : je ne livre pas juste du code, je conçois l'application pour qu'elle puisse générer des revenus — abonnement, parcours d'achat, modèle économique pensés dès le départ. Et je suis seul, joignable directement par WhatsApp 6 jours sur 7, à prix fixe — vous savez exactement ce que vous payez avant de commencer.*
 >
-> *Selon les projets, je propose deux formules. La première c'est la « Première Version », à partir de 3 500 €, idéale pour tester votre idée rapidement avec une application simple mais professionnelle. La deuxième c'est l'« Application Complète » (2 à 4 mois), avec maquettes validées avant et toutes les fonctionnalités, pour les projets plus aboutis.*
+> *Selon les projets, je propose deux formules. La première c'est la « Première Version », à partir de 5 000 €, idéale pour tester votre idée rapidement avec une application simple mais professionnelle. La deuxième c'est l'« Application Complète » (2 à 4 mois), avec maquettes validées avant et toutes les fonctionnalités, pour les projets plus aboutis.*
 
 ### Phase 4 — Reformuler et orienter (2 min)
 
@@ -259,9 +260,9 @@ Réponds aux questions, puis :
 
 ### « Combien ça coûte ? » (avant que tu aies compris le projet)
 
-> *Ça dépend complètement des fonctionnalités et de la complexité. Pour vous donner un ordre d'idée : une première version commence à 3 500 €, et une application complète tourne plutôt autour de 8 000 à 15 000 €. Mais le mieux, c'est qu'on regarde ensemble votre projet pour que je vous donne un prix précis.*
+> *Ça dépend complètement des fonctionnalités et de la complexité. Pour vous donner un ordre d'idée : une première version commence à 5 000 €, et une application complète tourne plutôt autour de 8 000 à 12 000 €. Mais le mieux, c'est qu'on regarde ensemble votre projet pour que je vous donne un prix précis.*
 
-### « C'est trop cher » (à 3 500 €)
+### « C'est trop cher » (à 5 000 €)
 
 > *Je comprends que ça représente un budget. Pour comparaison, une agence classique facture entre 15 000 et 30 000 € pour le même travail. Mon tarif fixe couvre la conception, le développement complet iPhone et Android, et la publication. Et le tout en 45 jours, pas 6 mois. Si le budget est vraiment serré, on peut peut-être réduire le périmètre de fonctionnalités pour adapter — mais en dessous d'un certain seuil, je ne peux plus garantir la qualité.*
 
@@ -295,7 +296,7 @@ Réponds aux questions, puis :
 
 ### « Pourquoi pas une agence ? »
 
-> *Trois raisons concrètes : (1) Une agence facture 15 000 à 30 000 €, je facture à partir de 3 500 €. (2) Avec une agence, vous parlez à un commercial qui transmet ensuite à un développeur ; avec moi, vous parlez directement au développeur, donc zéro perte d'information. (3) Une agence vous livre le code et disparaît ; moi je reste disponible 30 jours pour les bugs et je m'engage à vous accompagner si vous voulez continuer ensemble.*
+> *Trois raisons concrètes : (1) Une agence facture 15 000 à 30 000 €, je facture à partir de 5 000 €. (2) Avec une agence, vous parlez à un commercial qui transmet ensuite à un développeur ; avec moi, vous parlez directement au développeur, donc zéro perte d'information. (3) Une agence vous livre le code et disparaît ; moi je reste disponible 30 jours pour les bugs et je m'engage à vous accompagner si vous voulez continuer ensemble.*
 
 ---
 
@@ -314,7 +315,7 @@ Ta landing publique (`noecalmes.fr`) reste **strictement orientée sur la « Pre
 
 > **Q. Vous proposez plusieurs formules ?**
 >
-> R. *Oui. La formule mise en avant est ma « Première Version » : 45 jours, à partir de 3 500 €, pour lancer votre application rapidement. Pour les projets plus aboutis ou qui demandent plus de fonctionnalités, je propose aussi une « Application Complète » sur mesure. On regarde ensemble laquelle correspond à votre projet lors de notre premier appel.*
+> R. *Oui. La formule mise en avant est ma « Première Version » : 45 jours, à partir de 5 000 €, pour lancer votre application rapidement. Pour les projets plus aboutis ou qui demandent plus de fonctionnalités, je propose aussi une « Application Complète » sur mesure. On regarde ensemble laquelle correspond à votre projet lors de notre premier appel.*
 
 Cette mention discrète a deux vertus :
 - Tu n'es pas accusé de cacher ton offre haut de gamme (transparence préservée)
@@ -365,7 +366,7 @@ Le devis envoyé au client après l'appel contient **uniquement l'offre que tu a
   - Offre B : « Construire une application complète et durable »
 
 **Dans le chatbot (`functions/chatbot/lib/systemPrompt.js`)** :
-- Mentionner par défaut l'Offre A (3 500 € / 45 jours) — c'est cohérent avec la landing
+- Mentionner par défaut l'Offre A (5 000 € / 45 jours) — c'est cohérent avec la landing
 - Évoquer l'Offre B seulement si le visiteur parle de projets larges (paiement, abonnement, communauté, beaucoup de fonctionnalités)
 - Toujours rediriger vers la conversation pour décider : *« Le mieux est qu'on en parle avec Noé directement, vous pouvez lui écrire sur WhatsApp »* (Calendly retiré : le contact passe par WhatsApp, voir `tunnel.md`)
 

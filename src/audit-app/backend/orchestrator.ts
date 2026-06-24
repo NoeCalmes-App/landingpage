@@ -86,7 +86,7 @@ const FALLBACK_VERDICTS: Record<Branch, VerdictGenerated> = {
       "Etablir un budget realiste et un delai coherent avec vos contraintes",
     ],
     prix_indicatif:
-      "Pour une premiere version serieuse, comptez une estimation large, autour de 5 000 a 12 000 EUR selon le perimetre. La fourchette est large parce que c'est une estimation sans cadrage precis. Pour un vrai prix et un delai exact, le plus simple c'est qu'on en parle directement.",
+      "Pour une premiere version serieuse, comptez une estimation large, autour de 6 000 a 10 000 EUR selon le perimetre. La fourchette est large parce que c'est une estimation sans cadrage precis. Pour un vrai prix et un delai exact, le plus simple c'est qu'on en parle directement.",
     delai_indicatif:
       "A premiere vue, comptez environ 7 semaines pour construire une version serieuse. Le delai exact se cale en appel, une fois le perimetre et le niveau de finition clarifies.",
     cta_message:
@@ -388,16 +388,16 @@ function guessBudgetIsOut(input: VerdictRequest): boolean {
   const q4 = (input.q4_answer || "").toLowerCase();
   if (!q4) return false;
   if (
-    q4.includes("moins de 3") ||
-    q4.includes("inferieur a 3") ||
-    q4.includes("inférieur à 3")
+    q4.includes("moins de 5") ||
+    q4.includes("inferieur a 5") ||
+    q4.includes("inférieur à 5")
   ) {
     return true;
   }
   const match = q4.match(/(\d{1,2}[ ]?\d{3}|\d{4})/);
   if (match) {
     const n = parseInt(match[0].replace(/\s/g, ""), 10);
-    if (!isNaN(n) && n < 3500) return true;
+    if (!isNaN(n) && n < 5000) return true;
   }
   return false;
 }

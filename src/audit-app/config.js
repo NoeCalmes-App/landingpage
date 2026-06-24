@@ -208,20 +208,20 @@ export const FORM_STEPS = [
     type: 'choice',
     options: [
       {
-        label: 'Plus de 12 000 €',
-        value: 'Mon budget est supérieur à 12 000 €.',
+        label: '10 000 € et plus',
+        value: 'Mon budget est de 10 000 € ou plus.',
       },
       {
-        label: '7 500 € à 12 000 €',
-        value: 'Mon budget se situe entre 7 500 € et 12 000 €.',
+        label: '7 500 € à 10 000 €',
+        value: 'Mon budget se situe entre 7 500 € et 10 000 €.',
       },
       {
-        label: '3 500 € à 7 500 €',
-        value: 'Mon budget se situe entre 3 500 € et 7 500 €.',
+        label: '5 000 € à 7 500 €',
+        value: 'Mon budget se situe entre 5 000 € et 7 500 €.',
       },
       {
-        label: 'Moins de 3 500 €',
-        value: 'Mon budget est inférieur à 3 500 €.',
+        label: 'Moins de 5 000 €',
+        value: 'Mon budget est inférieur à 5 000 €.',
       },
     ],
   },

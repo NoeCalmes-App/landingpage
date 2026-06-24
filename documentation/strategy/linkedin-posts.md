@@ -345,7 +345,7 @@ L'écriture est un muscle : 1 post, puis 5, puis 20. La régularité bat la perf
 - **Slide 1** : « Combien coûte vraiment une application mobile ? » (sous-titre : « La réponse qu'aucune agence ne te donne clairement. »)
 - **Slide 2** : « Spoiler : ce n'est pas 30 000 €. Et ce n'est pas 500 € non plus. »
 - **Slide 3** : « Le vrai prix dépend de 3 choses : le périmètre, le design, la monétisation. »
-- **Slide 4** : « Une première version simple, pensée pour tester ton idée : à partir de 3 500 €. »
+- **Slide 4** : « Une première version simple, pensée pour tester ton idée : à partir de 5 000 €. »
 - **Slide 5** : « Un vrai produit avec abonnement et paiement : plutôt 6 000 à 12 000 €. »
 - **Slide 6** : « Ce qui coûte cher, ce n'est pas le code. C'est de coder la mauvaise chose. »
 - **Slide 7** : « D'où la règle : on cadre AVANT de coder. Tu sais ce que tu paies, et pourquoi. »

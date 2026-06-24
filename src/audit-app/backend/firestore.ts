@@ -32,15 +32,16 @@ function computeLeadTemperature(input: {
 
   const budgetOut =
     budget.includes("inférieur") ||
-    budget.includes("moins de 3") ||
-    budget.includes("moins de 3500");
+    budget.includes("inferieur") ||
+    budget.includes("moins de 5") ||
+    budget.includes("moins de 5000");
 
   if (budgetOut) return "cold";
   if (stage.includes("prêt") || stage.includes("pret")) return "hot";
   if (stage.includes("financement")) return "warm";
   if (stage.includes("budget") && stage.includes("estimer")) return "warm";
   if (stage.includes("valider") || stage.includes("fonctionner")) return "cold";
-  if (budget.includes("12 000") || budget.includes("7 500") || budget.includes("3 500")) return "warm";
+  if (budget.includes("10 000") || budget.includes("7 500") || budget.includes("5 000")) return "warm";
   return "unknown";
 }
 

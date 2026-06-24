@@ -200,7 +200,7 @@ Sur le hero de `/audit-app`, la hiérarchie doit rester nette :
 - lien secondaire discret sous le bouton : `Je préfère discuter avec Noé` vers WhatsApp ;
 - pas de bouton WhatsApp dans la navbar, pour ne pas transformer la page en double choix dès l'arrivée.
 
-Signaux Meta utilises : `Lead` au premier clic WhatsApp direct, `AuditStart` au lancement de l'audit, puis une qualification budget au verdict. Un verdict avec budget >= 3 500 EUR declenche `QualifiedAuditComplete` ; un budget inferieur declenche `LowBudgetAudit`. Apres verdict, tout clic WhatsApp declenche `WhatsAppClick`, mais seuls les budgets qualifies envoient `Lead` + `QualifiedAuditLead`. Les petits budgets envoient `LowBudgetLead`, sans signal positif `Lead`. Le Pixel ne confirme pas l'envoi du message dans WhatsApp ; ce dernier niveau reste manuel tant que WhatsApp Business Platform n'est pas branchee.
+Signaux Meta utilises : `Lead` au premier clic WhatsApp direct, `AuditStart` au lancement de l'audit, puis une qualification budget au verdict. Un verdict avec budget >= 5 000 EUR declenche `QualifiedAuditComplete` ; un budget inferieur declenche `LowBudgetAudit`. Apres verdict, seuls les budgets qualifies voient les CTA WhatsApp et peuvent envoyer `Lead` + `QualifiedAuditLead`. Les petits budgets restent mesures par `LowBudgetAudit`, sans signal positif `Lead`. Le Pixel ne confirme pas l'envoi du message dans WhatsApp ; ce dernier niveau reste manuel tant que WhatsApp Business Platform n'est pas branchee.
 
 ## Après le tunnel
 
