@@ -49,7 +49,8 @@ function patchHtml(html, {
     `<script type="application/ld+json">\n    ${breadcrumbJson}\n    </script>`
   )
 
-  const seoContent = `<div id="root"></div><div data-seo-prerender style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden"><h1>${heading}</h1><p>${content}</p><a href="${backHref}">${backLink}</a></div><noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1>${heading}</h1><p>${content}</p><a href="${backHref}">${backLink}</a></div></noscript>`
+  const siteNav = '<nav aria-label="Pages du site"><a href="https://noecalmes.fr/">Accueil</a> · <a href="https://noecalmes.fr/expertise">Concevoir une application qui rapporte</a> · <a href="https://noecalmes.fr/creation-application-mobile">Ma méthode</a> · <a href="https://noecalmes.fr/blog">Blog</a> · <a href="https://noecalmes.fr/audit-app">Tester ton idée</a> · <a href="https://noecalmes.fr/faq">FAQ</a></nav>'
+  const seoContent = `<div id="root"></div><div data-seo-prerender style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden"><h1>${heading}</h1><p>${content}</p><a href="${backHref}">${backLink}</a>${siteNav}</div><noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1>${heading}</h1><p>${content}</p><a href="${backHref}">${backLink}</a>${siteNav}</div></noscript>`
   html = html.replace('<div id="root"></div>', seoContent)
 
   return html
@@ -304,7 +305,7 @@ for (const path of noindexRoutes) {
 
 const homeHtml = baseHtml.replace(
   '<div id="root"></div>',
-  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif;visibility:hidden" aria-hidden="true"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">Je transforme ton idée en app qui génère des revenus.</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Je ne fais pas que développer ton application : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois. Plus de 20 applications publiées.</p><a href="/audit-app" style="display:inline-block;background:#6760ff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Tester mon idée d'application</a></div></div>`
+  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif;visibility:hidden" aria-hidden="true"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">Je transforme ton idée en app qui génère des revenus.</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Je ne fais pas que développer ton application : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois. Plus de 20 applications publiées.</p><a href="/audit-app" style="display:inline-block;background:#6760ff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Tester mon idée d'application</a><nav aria-label="Pages du site" style="margin-top:1.5rem;font-size:0.85rem"><a href="/expertise">Concevoir une application qui rapporte</a> · <a href="/creation-application-mobile">Ma méthode</a> · <a href="/blog">Blog</a> · <a href="/audit-app">Tester ton idée</a> · <a href="/faq">FAQ</a></nav></div></div>`
 )
 writeFileSync(join(distDir, 'index.html'), homeHtml)
 console.log('✓ Injected pre-rendered content into home index.html')
