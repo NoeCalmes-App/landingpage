@@ -79,10 +79,15 @@ Pour les CTA prix/budget, preferer `/audit-app` : exemple dans la section compar
 
 Le Pixel Meta est initialise dans `index.html`. Les evenements frontend sont centralises dans `src/metaTracking.js` et dedupliques par session :
 
-- `Lead` : premier clic WhatsApp de la session, depuis la landing, le bouton flottant ou l'audit.
+- `Lead` (`Prospect` dans Meta) : premier clic WhatsApp direct de la session, ou clic WhatsApp apres un audit dont le budget est d'au moins 3 500 EUR. Un clic post-audit avec un budget inferieur ne declenche jamais cet evenement positif.
+- `DirectWhatsAppLead` : clic WhatsApp sans qualification budget prealable (landing, bouton flottant ou sortie avant l'audit). Il reste compte comme `Lead`, car l'intention de contact est forte, mais porte le statut `unknown`.
 - `AuditStart` : demarrage du formulaire `/audit-app`.
-- `AuditComplete` : affichage du verdict.
-- `QualifiedAuditLead` : clic WhatsApp apres le verdict de l'audit, en plus du `Lead` commun.
+- `AuditComplete` : affichage du verdict, avec `budget_tier`.
+- `QualifiedAuditComplete` : verdict affiche avec un budget d'au moins 3 500 EUR.
+- `LowBudgetAudit` : verdict affiche avec un budget inferieur a 3 500 EUR.
+- `WhatsAppClick` : tout clic WhatsApp apres verdict, quelle que soit la qualification.
+- `QualifiedAuditLead` : clic WhatsApp apres verdict avec un budget d'au moins 3 500 EUR, en plus du `Lead` commun.
+- `LowBudgetLead` : clic WhatsApp apres verdict avec un budget inferieur a 3 500 EUR. Cet evenement est mesure, mais n'envoie pas `Lead` et n'alimente donc pas l'optimisation positive de la campagne.
 
 Le Pixel voit l'ouverture de WhatsApp, pas l'envoi reel du message. Suivre automatiquement les messages recus demanderait WhatsApp Business Platform avec webhook et Conversions API. L'application WhatsApp Business seule reste utile pour les reponses rapides et les libelles, mais ne remonte pas l'envoi au Pixel.
 

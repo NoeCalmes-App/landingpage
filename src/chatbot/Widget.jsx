@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { initSession, persistMessage, sendMessage } from './client'
-import { trackWhatsAppLead } from '../metaTracking.js'
+import { trackDirectWhatsAppLead } from '../metaTracking.js'
 import './styles.css'
 
 const mePhoto = '/assets/images/profile/me.webp'
@@ -221,7 +221,7 @@ export default function ChatbotWidget({ onBookCall, contactMode = 'chatbot', wha
       return
     }
 
-    trackWhatsAppLead('floating_button')
+    trackDirectWhatsAppLead('floating_button')
     const opened = window.open(whatsappUrl, '_blank')
     if (opened) {
       opened.opener = null

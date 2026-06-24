@@ -15,20 +15,29 @@
 // reponses de l'IA (cas idee precise vs idee vague).
 
 import { useEffect } from 'react'
-import { trackAuditComplete, trackQualifiedAuditLead } from '../metaTracking.js'
+import {
+  trackAuditComplete,
+  trackAuditWhatsAppClick,
+} from '../metaTracking.js'
+import {
+  classifyAuditBudget,
+  isQualifiedAuditBudget,
+} from './budget.js'
 
 export default function AuditAppVerdict({
   firstName,
   appType,
+  budgetAnswer,
   verdict,
-  onBookCall,
 }) {
   const isHotLead = verdict.branch === 'A'
+  const budgetTier = classifyAuditBudget(budgetAnswer, verdict.budget_tag)
+  const isQualifiedBudget = isQualifiedAuditBudget(budgetTier)
   const waUrl = buildWhatsAppUrl(firstName, appType)
 
   useEffect(() => {
-    trackAuditComplete()
-  }, [])
+    trackAuditComplete(budgetTier, isQualifiedBudget)
+  }, [budgetTier, isQualifiedBudget])
 
   const hasSolide = (verdict.ce_qui_est_solide || []).length > 0
   const hasManque = (verdict.ce_qui_manque || []).length > 0
@@ -163,6 +172,8 @@ export default function AuditAppVerdict({
                   prix={verdict.prix_indicatif}
                   delai={hasDelai ? verdict.delai_indicatif : ''}
                   waUrl={waUrl}
+                  budgetTier={budgetTier}
+                  isQualifiedBudget={isQualifiedBudget}
                 />
               </div>
             </div>
@@ -213,6 +224,8 @@ export default function AuditAppVerdict({
                 prix={verdict.prix_indicatif}
                 delai={hasDelai ? verdict.delai_indicatif : ''}
                 waUrl={waUrl}
+                budgetTier={budgetTier}
+                isQualifiedBudget={isQualifiedBudget}
               />
             </>
           )}
@@ -229,7 +242,8 @@ export default function AuditAppVerdict({
               <ClosingHotLead
                 ctaMessage={verdict.cta_message}
                 waUrl={waUrl}
-                onBookCall={onBookCall}
+                budgetTier={budgetTier}
+                isQualifiedBudget={isQualifiedBudget}
               />
             ) : (
               <ClosingColdLead ctaMessage={verdict.cta_message} />
@@ -279,7 +293,13 @@ function SectionCard({ label, icon, accent = 'neutral', children }) {
   )
 }
 
-function PriceTimingCard({ prix, delai, waUrl }) {
+function PriceTimingCard({
+  prix,
+  delai,
+  waUrl,
+  budgetTier,
+  isQualifiedBudget,
+}) {
   const prixText =
     prix ||
     "Pour une première version sérieuse, comptez une estimation large. La fourchette est large parce que c'est une estimation sans cadrage précis. Pour un vrai prix et un délai exact, le plus simple c'est qu'on en parle directement."
@@ -314,7 +334,13 @@ function PriceTimingCard({ prix, delai, waUrl }) {
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => trackQualifiedAuditLead('audit_price')}
+          onClick={() =>
+            trackAuditWhatsAppClick(
+              'audit_price',
+              budgetTier,
+              isQualifiedBudget
+            )
+          }
           className="inline-flex items-center text-blue-600 font-semibold text-[0.9rem] hover:text-blue-700 transition-colors cursor-pointer"
         >
           Avoir le vrai prix de mon application
@@ -442,7 +468,12 @@ function CompetitorCard({ competitor }) {
 // Closing — section integree au flux, pas un bloc salesy
 // =====================================================================
 
-function ClosingHotLead({ ctaMessage, waUrl, onBookCall }) {
+function ClosingHotLead({
+  ctaMessage,
+  waUrl,
+  budgetTier,
+  isQualifiedBudget,
+}) {
   return (
     <article className="rounded-2xl p-5 md:p-7 lg:p-9 border border-brand/25 bg-brand/[0.06] shadow-sm">
       <div className="flex items-center gap-3 mb-4 lg:mb-5">
@@ -463,7 +494,13 @@ function ClosingHotLead({ ctaMessage, waUrl, onBookCall }) {
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => trackQualifiedAuditLead('audit_verdict')}
+          onClick={() =>
+            trackAuditWhatsAppClick(
+              'audit_verdict',
+              budgetTier,
+              isQualifiedBudget
+            )
+          }
           className="group inline-flex items-center justify-center bg-text text-surface font-semibold text-[0.92rem] md:text-[0.95rem] lg:text-[1rem] px-6 py-3 lg:px-7 lg:py-3.5 rounded-full cursor-pointer hover:bg-brand transition-colors"
         >
           Écrire à Noé sur WhatsApp

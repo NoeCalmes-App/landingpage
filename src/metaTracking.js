@@ -28,11 +28,32 @@ function trackCustomOnce(eventName, parameters, onceKey) {
   window.fbq('trackCustom', eventName, parameters)
 }
 
-export function trackWhatsAppLead(source) {
+function buildLeadParameters(source, parameters = {}) {
+  return {
+    channel: 'whatsapp',
+    source,
+    ...parameters,
+  }
+}
+
+export function trackWhatsAppLead(source, parameters = {}) {
   trackStandardOnce(
     'Lead',
-    { channel: 'whatsapp', source },
+    buildLeadParameters(source, parameters),
     'whatsapp-lead'
+  )
+}
+
+export function trackDirectWhatsAppLead(source) {
+  const parameters = buildLeadParameters(source, {
+    qualification_status: 'unknown',
+  })
+
+  trackWhatsAppLead(source, { qualification_status: 'unknown' })
+  trackCustomOnce(
+    'DirectWhatsAppLead',
+    parameters,
+    'direct-whatsapp-lead'
   )
 }
 
@@ -40,15 +61,53 @@ export function trackAuditStart() {
   trackCustomOnce('AuditStart', { funnel: 'audit-app' }, 'audit-start')
 }
 
-export function trackAuditComplete() {
-  trackCustomOnce('AuditComplete', { funnel: 'audit-app' }, 'audit-complete')
+export function trackAuditComplete(budgetTier, isQualified) {
+  const parameters = {
+    funnel: 'audit-app',
+    budget_tier: budgetTier,
+    qualification_status: isQualified ? 'qualified' : 'unqualified',
+  }
+
+  trackCustomOnce('AuditComplete', parameters, 'audit-complete')
+
+  if (isQualified) {
+    trackCustomOnce(
+      'QualifiedAuditComplete',
+      parameters,
+      'qualified-audit-complete'
+    )
+    return
+  }
+
+  if (budgetTier === 'low') {
+    trackCustomOnce('LowBudgetAudit', parameters, 'low-budget-audit')
+  }
 }
 
-export function trackQualifiedAuditLead(source) {
-  trackWhatsAppLead(source)
-  trackCustomOnce(
-    'QualifiedAuditLead',
-    { channel: 'whatsapp', funnel: 'audit-app', source },
-    'qualified-audit-lead'
-  )
+export function trackAuditWhatsAppClick(source, budgetTier, isQualified) {
+  const parameters = buildLeadParameters(source, {
+    funnel: 'audit-app',
+    budget_tier: budgetTier,
+    qualification_status: isQualified ? 'qualified' : 'unqualified',
+  })
+
+  trackCustomOnce('WhatsAppClick', parameters, 'audit-whatsapp-click')
+
+  if (isQualified) {
+    trackWhatsAppLead(source, {
+      funnel: 'audit-app',
+      budget_tier: budgetTier,
+      qualification_status: 'qualified',
+    })
+    trackCustomOnce(
+      'QualifiedAuditLead',
+      parameters,
+      'qualified-audit-lead'
+    )
+    return
+  }
+
+  if (budgetTier === 'low') {
+    trackCustomOnce('LowBudgetLead', parameters, 'low-budget-lead')
+  }
 }

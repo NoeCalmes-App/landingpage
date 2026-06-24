@@ -14,7 +14,7 @@ import { loadAuditState, saveAuditState } from './storage'
 
 const mePhoto = '/assets/images/profile/me.webp'
 
-export default function AuditApp({ onBack, onBookCall, onLegal }) {
+export default function AuditApp({ onBack, onLegal }) {
   // Restauration de l'etat persiste : si le prospect a deja commence
   // un audit ou genere un verdict, on l'amene la ou il s'etait arrete.
   const [stage, setStage] = useState(() => {
@@ -31,6 +31,12 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
   const [verdict, setVerdict] = useState(() => loadAuditState()?.verdict || null)
   const [firstName, setFirstName] = useState(() => loadAuditState()?.firstName || '')
   const [appType, setAppType] = useState(() => loadAuditState()?.appType || '')
+  const [budgetAnswer, setBudgetAnswer] = useState(
+    () =>
+      loadAuditState()?.budgetAnswer ||
+      loadAuditState()?.answers?.q4_answer ||
+      ''
+  )
   // Dernier payload soumis : on le garde en memoire (et en localStorage) pour
   // que la popup "Reessayer" puisse relancer la generation sans refaire le
   // formulaire. Restaure aussi a l'ouverture : si l'user a ferme l'onglet
@@ -41,8 +47,8 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
 
   // Synchronise les changements de stage/verdict/firstName dans localStorage
   useEffect(() => {
-    saveAuditState({ stage, firstName, verdict, appType })
-  }, [stage, firstName, verdict, appType])
+    saveAuditState({ stage, firstName, verdict, appType, budgetAnswer })
+  }, [stage, firstName, verdict, appType, budgetAnswer])
 
   // Meta tags propres a la page
   useEffect(() => {
@@ -74,6 +80,7 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
     setError(null)
     setFirstName(payload.first_name || '')
     setAppType(payload.app_type || '')
+    setBudgetAnswer(payload.q4_answer || '')
     // Memorise le payload pour permettre un "Reessayer" depuis la popup
     // sans avoir a refaire tout le tunnel.
     setPendingPayload(payload)
@@ -141,8 +148,8 @@ export default function AuditApp({ onBack, onBookCall, onLegal }) {
           <AuditAppVerdict
             firstName={firstName}
             appType={appType}
+            budgetAnswer={budgetAnswer}
             verdict={verdict}
-            onBookCall={onBookCall}
           />
         )}
       </div>

@@ -33,10 +33,11 @@ Tracking Meta :
 
 - bouton `Lancer mon audit gratuit` -> `AuditStart` ;
 - lien WhatsApp avant l'audit -> `Lead` avec source `audit_skip` ;
-- verdict affiche -> `AuditComplete` ;
-- premier clic WhatsApp apres verdict -> `Lead` + `QualifiedAuditLead` (les deux liens du verdict sont dedupliques).
+- verdict affiche -> `AuditComplete` + `QualifiedAuditComplete` si budget >= 3 500 EUR, ou `LowBudgetAudit` si budget < 3 500 EUR ;
+- premier clic WhatsApp apres verdict qualifie -> `WhatsAppClick` + `Lead` + `QualifiedAuditLead` ;
+- premier clic WhatsApp apres verdict petit budget -> `WhatsAppClick` + `LowBudgetLead`, sans `Lead`.
 
-`Lead` est le signal commun utilise par les campagnes landing et audit. `QualifiedAuditLead` distingue le parcours ou le prospect a fourni son projet, son stade et son budget avant de cliquer. Aucun des deux ne prouve que le message WhatsApp a ete envoye ; cette confirmation necessiterait WhatsApp Business Platform et un webhook.
+`Lead` est le signal positif commun utilise par les campagnes landing et audit. Un contact WhatsApp direct reste un `Lead` avec qualification inconnue, car l'intention est forte meme sans audit. `QualifiedAuditLead` distingue le parcours ou le prospect a fourni son projet, son stade et un budget suffisant avant de cliquer. Un budget inferieur a 3 500 EUR ne declenche jamais `Lead`. Aucun de ces evenements ne prouve que le message WhatsApp a ete envoye ; cette confirmation necessiterait WhatsApp Business Platform et un webhook.
 
 ## Questions collectees
 
