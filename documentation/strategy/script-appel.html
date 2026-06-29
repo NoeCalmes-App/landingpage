@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Script d'appel — antisèche</title>
+<style>
+  :root { font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0f172a; color: #0f172a; padding: 16px; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 { color: #fff; font-size: 20px; margin: 4px 0 16px; }
+  h1 span { color: #94a3b8; font-weight: 400; font-size: 14px; display: block; margin-top: 2px; }
+  .card { background: #fff; border-radius: 14px; padding: 14px 16px 16px; margin-bottom: 12px; border-left: 8px solid var(--c); box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+  .tag { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--c); margin-bottom: 8px; }
+  .num { background: var(--c); color: #fff; width: 24px; height: 24px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; }
+  .say { font-size: 17.5px; line-height: 1.45; font-weight: 600; margin: 8px 0; }
+  .say.big { font-size: 18.5px; }
+  .muted { color: #64748b; font-size: 13px; font-weight: 600; margin: 10px 0 4px; }
+  ul { margin: 6px 0 2px; padding-left: 18px; }
+  li { font-size: 15px; line-height: 1.5; margin: 3px 0; color: #1e293b; }
+  .branch { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+  .pill { font-weight: 800; font-size: 12px; padding: 3px 9px; border-radius: 999px; color: #fff; }
+  .ok { background:#16a34a } .mid { background:#f59e0b } .no { background:#ef4444 }
+  .block { margin-top: 8px; padding: 8px 10px; border-radius: 9px; background: #f8fafc; }
+  .block .say { font-size: 16px; margin: 4px 0; }
+  .reminders { background:#1e293b; color:#cbd5e1; border-radius:14px; padding:14px 18px; }
+  .reminders b { color:#fff; }
+  .reminders li { color:#cbd5e1; font-size:14px; }
+  .reminders .tag { color:#94a3b8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Script d'appel <span>Écouter → reformuler → se positionner → qualifier → proposer</span></h1>
+
+  <div class="card" style="--c:#2563eb">
+    <div class="tag"><span class="num">1</span> Ouverture</div>
+    <div class="say big">« Bonjour [Prénom], c'est Noé. Je t'appelle pour ton projet d'application. Tu as quelques minutes devant toi ? »</div>
+    <div class="muted">S'il dit oui :</div>
+    <div class="say">« Parfait. Dans un premier temps, raconte-moi ton projet et où tu en es aujourd'hui. Je te pose ensuite quelques questions pour bien comprendre, puis je te dis franchement si je peux t'accompagner et comment on avancerait. Ça te convient ? »</div>
+  </div>
+
+  <div class="card" style="--c:#16a34a">
+    <div class="tag"><span class="num">2</span> Le faire parler (écouter, 70 %)</div>
+    <div class="say big">« Raconte-moi ton projet avec tes mots. À quoi servirait l'application, et qui va l'utiliser ? »</div>
+    <div class="muted">Puis tu creuses, une question à la fois :</div>
+    <ul>
+      <li>C'est pour des particuliers, des entreprises, ou un usage interne ?</li>
+      <li>Quel problème concret l'application doit résoudre ?</li>
+      <li>Ton objectif principal : générer des revenus, des clients, gagner du temps, fidéliser ?</li>
+      <li>Si on gardait seulement 3 fonctionnalités au départ, lesquelles ?</li>
+      <li>Tu en es où : l'idée, des notes, une maquette, un début de développement ?</li>
+      <li>Tu voudrais lancer dans quel délai ?</li>
+    </ul>
+  </div>
+
+  <div class="card" style="--c:#ea580c">
+    <div class="tag"><span class="num">3</span> Reformuler (il doit se sentir compris)</div>
+    <div class="say big">« Donc si je résume : tu veux [ton application] pour [ton objectif], et le vrai enjeu derrière, c'est [la valeur]. C'est bien ça ? »</div>
+  </div>
+
+  <div class="card" style="--c:#7c3aed">
+    <div class="tag"><span class="num">4</span> Ton positionnement, puis ta preuve</div>
+    <div class="say">« De mon côté, je conçois et je développe des applications, de l'idée jusqu'à la mise en ligne sur l'App Store et Google Play. Ma différence, c'est que je ne crée pas une application juste pour qu'elle existe. Je la conçois pour qu'elle transforme tes utilisateurs en clients : créer l'habitude, les garder dans l'application, et les amener naturellement vers l'achat. L'objectif, c'est qu'elle te rapporte, pas seulement qu'elle fonctionne. »</div>
+    <div class="muted">La preuve, quand il a besoin d'être rassuré :</div>
+    <div class="say">« Pour te situer : une application que j'ai conçue génère 13 000 € par mois, j'ai publié plus de 20 applications, et j'ai réalisé la première version d'une application à 300 000 utilisateurs. Je sais ce qui fait qu'une application fonctionne, pas seulement comment la coder. »</div>
+  </div>
+
+  <div class="card" style="--c:#dc2626">
+    <div class="tag"><span class="num">5</span> Le budget</div>
+    <div class="say big">« Pour te donner un ordre d'idée, les projets que j'accompagne sont en général entre 5 000 et 11 000 €, selon le périmètre et le niveau de finition. Est-ce que c'est cohérent avec ce que tu avais en tête ? »</div>
+    <div class="branch">
+      <span class="pill ok">OUI</span><span class="pill mid">NE SAIT PAS</span><span class="pill no">TROP CHER</span>
+    </div>
+    <div class="block"><div class="muted" style="color:#16a34a">OUI</div><div class="say">« Parfait, on peut avancer sérieusement. Je finis de cadrer avec toi les écrans prioritaires et l'objectif exact de l'application. »</div></div>
+    <div class="block"><div class="muted" style="color:#d97706">NE SAIT PAS</div><div class="say">« C'est normal, et c'est justement mon rôle de cadrer. Mais je préfère être transparent : une vraie application professionnelle, publiée sur iPhone et Android, représente plusieurs milliers d'euros. Si tu cherches le prix le plus bas, je ne serai pas la bonne personne. Si tu veux une application qui te rapporte, c'est exactement mon métier. »</div></div>
+    <div class="block"><div class="muted" style="color:#dc2626">TROP CHER</div><div class="say">« Je comprends. À ce stade, c'est peut-être un peu tôt côté budget. Garde mon audit gratuit, et reviens quand ce sera le bon moment, je réponds toujours. »</div></div>
+  </div>
+
+  <div class="card" style="--c:#0891b2">
+    <div class="tag"><span class="num">6</span> Le prochain pas</div>
+    <div class="muted" style="color:#0891b2">Si le projet est clair :</div>
+    <div class="say">« C'est clair, j'ai assez d'éléments. Je vais te préparer le cahier des charges et le devis précis, et en plus je t'offre une première maquette de ton application, pour que tu visualises concrètement avant même de t'engager. Pour que ce soit le plus juste possible, envoie-moi après l'appel tout ce que tu as : notes, exemples d'applications, business plan, n'importe quel document utile. Plus tu m'en donnes, plus le devis et la maquette seront précis. »</div>
+    <div class="muted" style="color:#0891b2">Si le projet reste flou :</div>
+    <div class="say">« Pour être transparent, je n'ai pas encore assez d'éléments pour te donner un prix sérieux : te lancer un chiffre maintenant, ce serait au hasard, et tu serais perdant. Je préfère cadrer correctement. Envoie-moi après l'appel tout ce que tu as (notes, exemples, business plan), et je reviens vers toi rapidement avec une proposition claire et un budget précis. »</div>
+    <div class="muted">S'il insiste pour un prix tout de suite :</div>
+    <div class="say">« Je peux te donner la fourchette : en général entre 5 000 et 11 000 €. Le chiffre exact, je te le donne dans le devis, une fois le périmètre cadré, pour qu'il soit juste. »</div>
+  </div>
+
+  <div class="card" style="--c:#b45309">
+    <div class="tag"><span class="num">7</span> Objections (si ça bloque à la fin)</div>
+
+    <div class="block"><div class="muted">« C'est cher »</div>
+    <div class="say">« Je comprends. Mais la vraie question, ce n'est pas combien ça coûte, c'est combien ça te rapporte. Une application bien pensée se rembourse : si elle te ramène ne serait-ce que mille euros par mois, en quelques mois elle est payée, et ensuite c'est du bénéfice. »</div></div>
+
+    <div class="block"><div class="muted">« J'ai un développeur qui peut le faire moins cher »</div>
+    <div class="say">« Bien sûr, un développeur peut coder ton application. Mais ça va lui prendre énormément de temps, et la mise en ligne sur l'App Store et Google Play, c'est une vraie galère quand on n'a pas l'habitude. Et surtout : le sujet, ce n'est pas de coder l'app, c'est de la concevoir pour qu'elle rapporte. Coder, c'est la partie facile. La rendre rentable, c'est mon métier. »</div></div>
+
+    <div class="block"><div class="muted">« Je vais le faire moi-même avec l'IA »</div>
+    <div class="say">« L'IA peut te sortir un prototype, et c'est très bien pour tester une idée. Mais dès que tu veux une vraie application qui tienne la route et qui passe sur les stores, tu te retrouves vite avec du code que tu ne peux pas corriger, des bugs, de la dette technique, et tu perds un temps fou. La plupart des gens qui commencent comme ça finissent par chercher quelqu'un pour reprendre proprement. Autant partir sur de bonnes bases directement. »</div></div>
+
+    <div class="block"><div class="muted">« Je veux réfléchir »</div>
+    <div class="say">« Pas de souci, c'est normal. Juste pour t'aider : c'est le budget, le timing, ou un point du projet qui te fait hésiter ? »</div></div>
+
+    <div class="block"><div class="muted">« Comment je sais que tu vas livrer, que ça va marcher ? »</div>
+    <div class="say">« C'est légitime. Et c'est exactement pour ça que je t'offre une maquette et que je te fais un cahier des charges avant que tu paies quoi que ce soit : tu vois concrètement ce que tu vas avoir, avant de t'engager. »</div></div>
+  </div>
+
+  <div class="reminders">
+    <div class="tag">Rappels</div>
+    <ul>
+      <li><b>Tu écoutes d'abord</b>, tu ne pitches pas.</li>
+      <li>Le devis et la maquette se proposent <b>à la fin</b>, jamais au début.</li>
+      <li><b>Jamais</b> de prix exact à l'oral.</li>
+      <li>Tu es un <b>concepteur d'applications qui rapportent</b>, pas un simple développeur.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
