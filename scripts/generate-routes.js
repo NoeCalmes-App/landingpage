@@ -132,6 +132,13 @@ const blogRoutes = [
     content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
   },
   {
+    path: '/blog/rentabiliser-application-mobile',
+    title: 'Comment rentabiliser une application mobile | Noé Calmes',
+    description: 'Comment rentabiliser ton application mobile : abonnement, freemium, conversion, rétention. La méthode concrète qui transforme tes utilisateurs en clients.',
+    heading: 'Comment rentabiliser une application mobile',
+    content: 'Les modèles de revenus d\'une application mobile (abonnement, freemium, achats intégrés, publicité) et surtout ce qui fait la différence : la conception qui transforme tes utilisateurs en clients. Une application que j\'ai conçue génère 13 000 € par mois.',
+  },
+  {
     path: '/blog/creation-application-mobile-toulouse',
     title: 'Création d\'application mobile à Toulouse | Noé Calmes',
     description: 'Développeur d\'applications mobiles à Toulouse : je conçois ton application iOS et Android pour qu\'elle génère des revenus, de l\'idée au lancement.',
