@@ -266,6 +266,7 @@ const mockupRoutes = [
   '/maquette/pac-assist',
   '/maquette/cvc-assist',
   '/maquette/blush',
+  '/maquette/moovye',
 ]
 
 for (const path of mockupRoutes) {
