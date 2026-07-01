@@ -53,6 +53,7 @@ public/assets/
 - Icônes marque/framework/UI : `public/assets/icons/...`
 - Fonts : `public/assets/fonts/...`
 - PDF publics : `public/assets/documents/...`
+- CGV versionnées : `public/assets/documents/cgv/CGV-JJ-MM-AAAA.pdf`. Les fichiers peuvent aussi être exposés sous `public/cgv/` pour garder les liens courts `/cgv/{filename}`, mais le dossier `assets/documents/cgv` reste le chemin public de compatibilité.
 
 ## Fichiers statiques a surveiller
 
@@ -77,4 +78,3 @@ rg -n "src/assets|assets/lib|assets/app/|assets/appicon|assets/person|assets/con
 
 npm run build
 ```
-
