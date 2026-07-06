@@ -132,6 +132,13 @@ const blogRoutes = [
     content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
   },
   {
+    path: '/blog/combien-rapporte-application-mobile',
+    title: 'Combien rapporte une application mobile en 2026 ? | Noé Calmes',
+    description: 'Combien rapporte vraiment une application mobile en 2026 ? Chiffres réels, leviers de revenus et l\'exemple d\'une app à 13 000 € par mois.',
+    heading: 'Combien rapporte une application mobile en 2026 ?',
+    content: 'Combien rapporte réellement une application mobile en 2026 ? Le calcul du revenu (utilisateurs, conversion, prix, rétention), pourquoi la plupart des applications ne rapportent rien, et l\'exemple d\'une application que j\'ai conçue qui génère 13 000 € par mois.',
+  },
+  {
     path: '/blog/rentabiliser-application-mobile',
     title: 'Comment rentabiliser une application mobile | Noé Calmes',
     description: 'Comment rentabiliser ton application mobile : abonnement, freemium, conversion, rétention. La méthode concrète qui transforme tes utilisateurs en clients.',
