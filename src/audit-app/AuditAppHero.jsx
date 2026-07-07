@@ -41,7 +41,8 @@ export default function AuditAppHero({ onStart, onLegal }) {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
           </span>
           <p className="text-text text-[0.76rem] md:text-[0.8rem] font-semibold tracking-wide uppercase">
-            Audit express · 2 minutes
+            <span className="md:hidden">Audit express · 2 min</span>
+            <span className="hidden md:inline">Audit express · 2 minutes</span>
           </p>
         </div>
 
@@ -95,6 +96,10 @@ export default function AuditAppHero({ onStart, onLegal }) {
             <polyline points="12 5 19 12 12 19" />
           </svg>
         </button>
+
+        <p className="mt-2.5 md:hidden text-grey/65 text-[0.75rem] font-medium">
+          Réponses confidentielles et non partagées
+        </p>
 
         <a
           href={DIRECT_WHATSAPP_URL}

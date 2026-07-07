@@ -289,6 +289,24 @@ function AuditAppTopBar({ onBack }) {
                 </span>
               </div>
             </button>
+            <div className="hidden md:inline-flex items-center gap-1.5 rounded-full border border-card-border bg-white/55 px-3 py-1.5 text-grey/70 text-[0.76rem] font-semibold tracking-wide uppercase">
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="shrink-0"
+              >
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              100% confidentiel
+            </div>
           </div>
         </div>
       </div>

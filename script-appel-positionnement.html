@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Script appel</title>
+    <style>
+      :root {
+        --bg: #eef1f7;
+        --ink: #111827;
+        --muted: #697386;
+        --card: #ffffff;
+        --line: #dfe3ec;
+        --blue: #2458ff;
+        --green: #0f8a5f;
+        --orange: #b75f12;
+        --red: #c24141;
+        --violet: #6554e8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.45;
+      }
+
+      main {
+        width: min(780px, calc(100% - 24px));
+        margin: 0 auto;
+        padding: 18px 0 48px;
+      }
+
+      header {
+        margin: 0 0 14px;
+        padding: 8px 2px 2px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.9rem, 6vw, 3rem);
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+      }
+
+      .sub {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 1rem;
+        font-weight: 650;
+      }
+
+      .card {
+        margin: 0 0 10px;
+        border: 1px solid var(--line);
+        border-left: 8px solid var(--c, var(--blue));
+        border-radius: 8px;
+        background: var(--card);
+        overflow: hidden;
+      }
+
+      .head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px 0;
+      }
+
+      .num {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        background: var(--c, var(--blue));
+        color: #fff;
+        font-weight: 900;
+      }
+
+      h2 {
+        margin: 0;
+        color: var(--c, var(--blue));
+        font-size: 0.92rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .body {
+        padding: 12px 14px 14px;
+      }
+
+      .say {
+        margin: 0;
+        padding: 14px;
+        border-radius: 8px;
+        background: #f7f8fc;
+        border: 1px solid #e7eaf2;
+        font-size: clamp(1.12rem, 4.5vw, 1.32rem);
+        font-weight: 760;
+        white-space: pre-wrap;
+      }
+
+      .say.compact {
+        font-size: clamp(1.05rem, 4vw, 1.18rem);
+        font-weight: 700;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .mini {
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+
+      .mini strong {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--c, var(--blue));
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .mini p {
+        margin: 0;
+        font-size: 1.05rem;
+        font-weight: 720;
+      }
+
+      details {
+        margin: 8px 0 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      summary {
+        cursor: pointer;
+        padding: 12px;
+        font-size: 1rem;
+        font-weight: 900;
+      }
+
+      details p {
+        margin: 0;
+        padding: 0 12px 12px;
+        font-size: 1.03rem;
+        font-weight: 700;
+        white-space: pre-wrap;
+      }
+
+      .alt {
+        margin-top: 10px;
+        padding: 12px;
+        border-radius: 8px;
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+
+      .alt strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--blue);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .alt p {
+        margin: 0;
+        font-size: 1.05rem;
+        font-weight: 720;
+        white-space: pre-wrap;
+      }
+
+      @media (max-width: 680px) {
+        main {
+          width: min(100% - 18px, 780px);
+          padding-top: 12px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .head,
+        .body {
+          padding-left: 11px;
+          padding-right: 11px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Script appel</h1>
+        <p class="sub">Lis uniquement les encadres. Phrases naturelles, simples a sortir au telephone.</p>
+      </header>
+
+      <section class="card" style="--c: var(--blue)">
+        <div class="head">
+          <span class="num">1</span>
+          <h2>Ouverture</h2>
+        </div>
+        <div class="body">
+          <p class="say">Bonjour [Prenom], c'est Noe Calmes.
+
+Je vous appelle au sujet de votre projet d'application mobile.
+
+Vous aviez fait une demande pour en parler.
+
+Je vous prends deux minutes, ca vous va ?</p>
+          <div class="alt">
+            <strong>Version encore plus courte</strong>
+            <p>Bonjour [Prenom], c'est Noe Calmes.
+
+Je vous appelle pour votre projet d'application mobile.
+
+Je vous prends deux minutes ?</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" style="--c: var(--green)">
+        <div class="head">
+          <span class="num">2</span>
+          <h2>S'il dit oui</h2>
+        </div>
+        <div class="body">
+          <p class="say">Parfait, merci.
+
+Dites-moi simplement : c'est quoi l'idee de l'application, et pour qui vous voulez la creer ?</p>
+        </div>
+      </section>
+
+      <section class="card" style="--c: var(--orange)">
+        <div class="head">
+          <span class="num">3</span>
+          <h2>S'il n'a pas le temps</h2>
+        </div>
+        <div class="body">
+          <p class="say">Aucun souci.
+
+Je vous rappelle a un meilleur moment.
+
+Vous preferez aujourd'hui en fin de journee ou demain ?</p>
+        </div>
+      </section>
+
+      <section class="card" style="--c: var(--violet)">
+        <div class="head">
+          <span class="num">4</span>
+          <h2>Questions utiles</h2>
+        </div>
+        <div class="body">
+          <div class="grid">
+            <div class="mini">
+              <strong>Projet</strong>
+              <p>Elle servirait a quoi, concretement ?</p>
+            </div>
+            <div class="mini">
+              <strong>Cible</strong>
+              <p>Qui l'utiliserait ? Vos clients, une communaute, des entreprises, ou vous en interne ?</p>
+            </div>
+            <div class="mini">
+              <strong>Objectif</strong>
+              <p>Le but, ce serait plutot vendre, reserver, fideliser, proposer un abonnement, ou gagner du temps ?</p>
+            </div>
+            <div class="mini">
+              <strong>Avancement</strong>
+              <p>Aujourd'hui, vous avez deja quelque chose ou c'est encore au stade de l'idee ?</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" style="--c: var(--blue)">
+        <div class="head">
+          <span class="num">5</span>
+          <h2>Reformuler</h2>
+        </div>
+        <div class="body">
+          <p class="say">Ok, je vois.
+
+Donc si je reformule, vous voulez une application qui permet a [cible] de [action].
+
+Et derriere, l'objectif, c'est surtout [objectif].
+
+C'est bien ca ?</p>
+        </div>
+      </section>
+
+      <section class="card" style="--c: var(--violet)">
+        <div class="head">
+          <span class="num">6</span>
+          <h2>Positionnement court</h2>
+        </div>
+        <div class="body">
+          <p class="say">Moi, la ou j'interviens, ce n'est pas juste pour coder une application.
+
+Je vous aide a poser le projet, penser les ecrans, le parcours, puis construire et publier l'application.
+
+L'idee, c'est qu'elle serve un vrai objectif business, pas qu'elle existe juste techniquement.</p>
+        </div>
+      </section>
+
+      <section class="card" style="--c: var(--orange)">
+        <div class="head">
+          <span class="num">7</span>
+          <h2>Budget</h2>
+        </div>
+        <div class="body">
+          <p class="say">Je vous le dis assez tot pour eviter qu'on perde du temps tous les deux.
+
+Une application mobile serieuse, publiee sur iPhone et Android, c'est un budget de plusieurs milliers d'euros.
+
+En general, mes projets commencent autour de 5 000 euros, et tournent souvent entre 6 000 et 12 000 euros selon ce qu'il y a a faire.
+
+Vous aviez prevu un budget dans ces eaux-la ?</p>
+
+          <details>
+            <summary>S'il dit oui</summary>
+            <p>Ok parfait. Dans ce cas, ca vaut le coup de cadrer le projet proprement.</p>
+          </details>
+
+          <details>
+            <summary>S'il ne sait pas</summary>
+            <p>C'est normal. Justement, mon role c'est de cadrer le bon perimetre. Je prefere juste que ce soit clair : si l'objectif est une vraie application professionnelle, on ne sera pas sur quelques centaines d'euros.</p>
+          </details>
+
+          <details>
+            <summary>S'il dit trop cher</summary>
+            <p>Je comprends. Dans ce cas, ce n'est peut-etre pas le bon moment pour lancer l'application complete. On peut garder le contact, et vous reviendrez vers moi quand ce sera plus simple niveau budget.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="card" style="--c: var(--green)">
+        <div class="head">
+          <span class="num">8</span>
+          <h2>Prochain pas</h2>
+        </div>
+        <div class="body">
+          <p class="say">La suite, si ca vous va, elle est simple.
+
+Apres l'appel, vous m'envoyez ce que vous avez : notes, exemples, documents, meme si ce n'est pas parfaitement structure.
+
+De mon cote, je vous prepare une proposition claire avec le perimetre, le budget precis, et un premier visuel de l'application pour que vous puissiez vous projeter.</p>
+        </div>
+      </section>
+
+      <section class="card" style="--c: var(--red)">
+        <div class="head">
+          <span class="num">9</span>
+          <h2>Si elle veut reflechir</h2>
+        </div>
+        <div class="body">
+          <p class="say">Bien sur, c'est normal.
+
+Juste pour comprendre : ce qui bloque, c'est plutot le budget, le timing, ou le projet qui n'est pas encore assez clair ?</p>
+        </div>
+      </section>
+
+      <section class="card" style="--c: var(--blue)">
+        <div class="head">
+          <span class="num">10</span>
+          <h2>Preuves si besoin</h2>
+        </div>
+        <div class="body">
+          <p class="say compact">Pour vous situer, j'ai publie plus de 20 applications. J'ai aussi travaille sur une premiere version utilisee par plusieurs centaines de milliers d'utilisateurs, et une application que j'ai concue genere aujourd'hui 13 000 euros par mois.
+
+Donc mon sujet, ce n'est pas juste de coder. C'est de comprendre ce qui fait qu'une application fonctionne vraiment.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
