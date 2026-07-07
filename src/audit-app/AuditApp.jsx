@@ -10,7 +10,13 @@ import AuditAppForm from './AuditAppForm'
 import AuditAppVerdict from './AuditAppVerdict'
 import MaintenanceModal from './MaintenanceModal'
 import { generateVerdict } from './api'
-import { loadAuditState, saveAuditState } from './storage'
+import {
+  clearAuditState,
+  consumeAuditRelaunchQuota,
+  loadAuditRelaunchQuota,
+  loadAuditState,
+  saveAuditState,
+} from './storage'
 
 const mePhoto = '/assets/images/profile/me.webp'
 
@@ -43,6 +49,9 @@ export default function AuditApp({ onBack, onLegal }) {
   // pendant une erreur, il revient sur sa derniere question et peut relancer.
   const [pendingPayload, setPendingPayload] = useState(
     () => loadAuditState()?.pendingPayload || null
+  )
+  const [relaunchQuota, setRelaunchQuota] = useState(() =>
+    loadAuditRelaunchQuota()
   )
 
   // Synchronise les changements de stage/verdict/firstName dans localStorage
@@ -125,6 +134,22 @@ export default function AuditApp({ onBack, onLegal }) {
     setError(null)
   }
 
+  const handleRelaunchAudit = () => {
+    const result = consumeAuditRelaunchQuota()
+    setRelaunchQuota(result.quota)
+    if (!result.allowed) return
+
+    clearAuditState()
+    setStage('form')
+    setSubmitting(false)
+    setError(null)
+    setVerdict(null)
+    setFirstName('')
+    setAppType('')
+    setBudgetAnswer('')
+    setPendingPayload(null)
+  }
+
   // La navbar n'apparait que sur le hero — pendant le formulaire (focus action)
   // et sur la page verdict (focus contenu de l'audit), on la masque.
   const showNav = stage === 'hero'
@@ -160,6 +185,8 @@ export default function AuditApp({ onBack, onLegal }) {
       {stage === 'verdict' && (
         <AuditAppLegalFooter
           onLegal={onLegal}
+          onRelaunchAudit={handleRelaunchAudit}
+          relaunchQuota={relaunchQuota}
         />
       )}
 
@@ -180,13 +207,37 @@ export default function AuditApp({ onBack, onLegal }) {
 // Footer minimal pour les ecrans /audit-app : juste les liens legaux centres
 // sur un fond gris clair (--color-card). Pas de nom, pas de socials —
 // la page est focus conversion, on garde le bas neutre.
-function AuditAppLegalFooter({ onLegal }) {
+function AuditAppLegalFooter({ onLegal, onRelaunchAudit, relaunchQuota }) {
   const go = (target) => {
     if (typeof onLegal === 'function') onLegal(target)
   }
+  const remaining = relaunchQuota?.remaining ?? 0
+  const limit = relaunchQuota?.limit ?? 2
+  const blocked = relaunchQuota?.blocked ?? remaining <= 0
+
   return (
     <div className="bg-card py-6 px-5">
       <div className="max-w-275 mx-auto flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-1.5">
+          <button
+            type="button"
+            onClick={onRelaunchAudit}
+            disabled={blocked}
+            className={`inline-flex items-center justify-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
+              blocked
+                ? 'cursor-not-allowed border-card-border bg-surface text-grey/60'
+                : 'cursor-pointer border-card-border bg-surface text-text hover:border-brand/30 hover:text-brand'
+            }`}
+          >
+            <ReloadIcon />
+            {blocked ? 'Limite mensuelle atteinte' : "Relancer l'audit"}
+          </button>
+          <p className="text-[0.68rem] text-grey">
+            {blocked
+              ? `${limit} relances utilisées ce mois-ci`
+              : `${remaining} relance${remaining > 1 ? 's' : ''} restante${remaining > 1 ? 's' : ''} ce mois-ci`}
+          </p>
+        </div>
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
           <button onClick={() => go('cgv')} className="text-grey text-xs hover:text-text transition-colors cursor-pointer">CGV</button>
           <button onClick={() => go('mentions')} className="text-grey text-xs hover:text-text transition-colors cursor-pointer">Mentions légales</button>
@@ -194,6 +245,15 @@ function AuditAppLegalFooter({ onLegal }) {
         </div>
       </div>
     </div>
+  )
+}
+
+function ReloadIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+      <polyline points="21 3 21 9 15 9" />
+    </svg>
   )
 }
 

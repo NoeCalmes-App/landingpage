@@ -22,6 +22,12 @@ Fichiers principaux :
 - `src/audit-app/api.js` — POST final vers `VITE_AUDIT_API_URL`.
 - `src/audit-app/storage.js` — persistence locale de l'etat du tunnel.
 
+Relance depuis le verdict :
+
+- le footer du verdict affiche **Relancer l'audit** avec une icone reload ;
+- le clic repart sur un tunnel vierge sans conserver les anciennes reponses ;
+- le compteur local limite a 2 relances par mois et reste stocke separement de l'etat du tunnel pour ne pas etre efface au reset.
+
 Regle hero :
 
 - CTA principal : lancer l'audit.
