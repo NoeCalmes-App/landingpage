@@ -227,7 +227,7 @@ export default function Projets({ onBack }) {
           </span>
           <h1 className="font-heading text-[1.9rem] sm:text-[2.3rem] lg:text-[2.6rem] font-extrabold text-text tracking-tight leading-[1.15] text-balance">
             Les applications que j'ai{' '}
-            <span className="relative z-0 inline-block whitespace-nowrap text-brand after:content-[''] after:absolute after:-left-2 after:-right-2 after:bottom-[-1px] after:h-[26%] after:rounded after:bg-[rgba(102,93,255,0.22)] after:z-[-1]">
+            <span className="inline-block whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent py-1 -my-1">
               conçues
             </span>
           </h1>
