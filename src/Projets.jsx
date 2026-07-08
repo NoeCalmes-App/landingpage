@@ -297,6 +297,34 @@ export default function Projets({ onBack }) {
           </div>
         </div>
 
+        {/* Instagram — analyses d'applications, seul lien sortant de la page */}
+        <a
+          href="https://www.instagram.com/noecalmes.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative mt-4 flex items-center gap-4 bg-white border border-card-border rounded-[18px] p-5 sm:p-6 shadow-[0_2px_16px_rgba(102,93,255,0.06)] transition-shadow hover:shadow-[0_4px_24px_rgba(102,93,255,0.12)]"
+        >
+          <span className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-[24%] bg-brand-wash text-brand shrink-0">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4.5" />
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+            </svg>
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-heading text-text font-bold text-[1.05rem] leading-tight">
+              @noecalmes.app
+            </span>
+            <span className="block text-grey text-[0.78rem] font-medium mt-0.5">
+              Pourquoi une application rapporte — ou pas : mes analyses sur Instagram.
+            </span>
+          </span>
+          <svg className="text-grey shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="8 7 17 7 17 16" />
+          </svg>
+        </a>
+
         <p className="relative text-center text-grey text-[0.8rem] mt-10 font-medium">
           Noé Calmes · Expert en application mobile · iOS &amp; Android
         </p>
