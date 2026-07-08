@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 /*
  * Page /projets — portfolio envoyé après un échange (l'audience a déjà le WhatsApp).
@@ -92,7 +92,7 @@ const PROJECTS = [
 const OTHERS = [
   'Le coaching en salle de sport',
   'La gestion d\'entreprise & la logistique',
-  'Les devis d\'artisans créés à la voix, avec l\'IA',
+  'Une application pour faciliter le quotidien des artisans',
   'La finance personnelle',
   'Une communauté de passionnés',
   'La réservation de services',
@@ -129,13 +129,25 @@ const Badge = ({ type }) => {
     ),
   }
   return (
-    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand text-white shrink-0">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <span className="inline-flex items-center justify-center w-7 h-7 text-brand shrink-0">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.45" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         {paths[type]}
       </svg>
     </span>
   )
 }
+
+const MetricLine = ({ p, featured = false }) => (
+  <div className="grid grid-cols-[1.75rem_minmax(0,1fr)] items-center gap-x-2.5">
+    <Badge type={p.badge} />
+    <p className="min-w-0 leading-tight">
+      <span className={`font-heading text-text font-extrabold tracking-tight leading-none ${featured ? 'text-[2rem] sm:text-[2.5rem] lg:text-[2.8rem]' : 'text-[1.4rem] sm:text-[1.5rem]'}`}>
+        {p.highlight}
+      </span>
+      {p.unit && <span className={`text-text font-semibold ${featured ? 'text-[0.95rem]' : 'text-[0.85rem]'}`}> {p.unit}</span>}
+    </p>
+  </div>
+)
 
 const AppIdentity = ({ p, size = 'sm' }) => (
   <div className="flex items-center gap-3.5">
@@ -161,15 +173,9 @@ function FeaturedCard({ p }) {
       />
       <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
         <AppIdentity p={p} size="lg" />
-        <div>
-          <div className="flex items-center gap-2.5 flex-wrap">
-            <Badge type={p.badge} />
-            <span className="font-heading text-text font-extrabold text-[2rem] sm:text-[2.5rem] lg:text-[2.8rem] tracking-tight leading-none">
-              {p.highlight}
-            </span>
-            {p.unit && <span className="text-text text-[0.95rem] font-semibold">{p.unit}</span>}
-          </div>
-          <p className="text-grey text-[0.78rem] mt-2">{p.note}</p>
+        <div className="sm:min-w-[260px]">
+          <MetricLine p={p} featured />
+          <p className="text-grey text-[0.78rem] mt-2 pl-[2.375rem]">{p.note}</p>
         </div>
       </div>
     </div>
@@ -182,16 +188,10 @@ function ProjectCard({ p }) {
       <div className="mb-5">
         <AppIdentity p={p} />
       </div>
-      <div className="mt-auto flex items-center gap-2">
-        <Badge type={p.badge} />
-        <p className="flex-1 min-w-0 leading-tight">
-          <span className="font-heading text-text font-extrabold text-[1.4rem] sm:text-[1.5rem] tracking-tight leading-none">
-            {p.highlight}
-          </span>
-          {p.unit && <span className="text-text text-[0.85rem] font-semibold"> {p.unit}</span>}
-        </p>
+      <div className="mt-auto">
+        <MetricLine p={p} />
       </div>
-      <p className="text-grey text-[0.75rem] mt-2">{p.note}</p>
+      <p className="text-grey text-[0.75rem] mt-2 pl-[2.375rem]">{p.note}</p>
     </div>
   )
 }
@@ -208,6 +208,8 @@ export default function Projets({ onBack }) {
       document.title = prevTitle
     }
   }, [])
+
+  const [zoom, setZoom] = useState(false)
 
   return (
     <div className="min-h-screen bg-surface text-text">
@@ -278,13 +280,13 @@ export default function Projets({ onBack }) {
           ))}
         </div>
 
-        {/* Étendue — sans rien révéler */}
+        {/* Projets confidentiels — l'étendue, sans détail sensible */}
         <div className="relative mt-12 bg-card border border-card-border rounded-[18px] p-6 sm:p-8">
           <h2 className="font-heading text-text font-bold text-[1.15rem] text-center mb-1">
-            Des applications pour…
+            Projets clients confidentiels
           </h2>
           <p className="text-grey text-[0.85rem] text-center max-w-[46ch] mx-auto mb-6">
-            Des secteurs très différents, un même objectif : générer des revenus ou automatiser des heures de travail.
+            Des secteurs différents, présentés sans noms, sans écrans et sans détails sensibles.
           </p>
           <div className="max-w-[540px] lg:max-w-[720px] mx-auto">
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5">
@@ -302,7 +304,7 @@ export default function Projets({ onBack }) {
                 <path d="M8 11V7a4 4 0 0 1 8 0v4" />
               </svg>
               <span className="text-left leading-relaxed">
-                Ces projets restent confidentiels : je n'affiche ni le nom du client, ni les chiffres, ni les écrans.
+                Chaque projet reste confidentiel : les noms, les chiffres et les écrans restent côté client.
               </span>
             </div>
           </div>
@@ -340,32 +342,82 @@ export default function Projets({ onBack }) {
           </p>
         </div>
 
-        {/* Instagram — teaser du post épinglé, seul lien sortant de la page */}
-        <a
-          href="https://www.instagram.com/noecalmes.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative mt-4 flex items-center gap-4 bg-white border border-card-border rounded-[18px] p-5 sm:p-6 shadow-[0_2px_16px_rgba(102,93,255,0.06)] transition-shadow hover:shadow-[0_4px_24px_rgba(102,93,255,0.12)]"
-        >
-          <img
-            src="/assets/images/projets/ig-post-90.webp"
-            alt="Publication Instagram : pourquoi 90 % des applications ne rapportent rien"
-            loading="lazy"
-            className="w-24 h-24 sm:w-28 sm:h-28 rounded-[14px] object-cover shrink-0 border border-black/5 shadow-[0_2px_10px_rgba(3,52,117,0.10)]"
-          />
-          <span className="min-w-0 flex-1">
+        {/* Instagram — teaser du post épinglé, avec zoom sur la miniature */}
+        <div className="relative mt-4 flex items-center gap-4 bg-white border border-card-border rounded-[18px] p-5 sm:p-6 shadow-[0_2px_16px_rgba(102,93,255,0.06)] transition-shadow hover:shadow-[0_4px_24px_rgba(102,93,255,0.12)]">
+          <button
+            type="button"
+            onClick={() => setZoom(true)}
+            className="group relative shrink-0 cursor-zoom-in rounded-[14px] border-0 bg-transparent p-0"
+            aria-label="Agrandir l'image du post Instagram"
+          >
+            <img
+              src="/assets/images/projets/ig-post-90.webp"
+              alt="Publication Instagram : pourquoi 90 % des applications ne rapportent rien"
+              loading="lazy"
+              className="w-24 h-24 sm:w-24 sm:h-24 rounded-[14px] object-cover shrink-0 border border-black/5 shadow-[0_2px_10px_rgba(3,52,117,0.10)] transition-transform duration-300 group-hover:scale-[1.03]"
+            />
+            <span className="absolute bottom-1.5 right-1.5 inline-flex items-center justify-center w-7 h-7 rounded-full bg-black/55 text-white backdrop-blur-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="11" y1="8" x2="11" y2="14" />
+                <line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
+            </span>
+          </button>
+          <a
+            href="https://www.instagram.com/noecalmes.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="min-w-0 flex-1"
+          >
             <span className="block font-heading text-text font-bold text-[1rem] leading-snug">
               « Pourquoi 90&nbsp;% des applications ne rapportent rien »
             </span>
             <span className="block mt-1 text-grey text-[0.78rem] font-medium">
               @noecalmes.app
             </span>
-          </span>
-          <svg className="text-grey shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <line x1="7" y1="17" x2="17" y2="7" />
-            <polyline points="8 7 17 7 17 16" />
-          </svg>
-        </a>
+          </a>
+          <a
+            href="https://www.instagram.com/noecalmes.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-grey shrink-0"
+            aria-label="Voir la publication Instagram"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="8 7 17 7 17 16" />
+            </svg>
+          </a>
+        </div>
+
+        {/* Lightbox — zoom plein écran de l'image */}
+        {zoom && (
+          <div
+            onClick={() => setZoom(false)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-zoom-out"
+            role="dialog"
+            aria-modal="true"
+          >
+            <img
+              src="/assets/images/projets/ig-post-90.webp"
+              alt="Publication Instagram : pourquoi 90 % des applications ne rapportent rien"
+              className="max-h-[82vh] max-w-[88vw] sm:max-h-[72vh] sm:max-w-[560px] w-auto rounded-[16px] shadow-2xl"
+            />
+            <button
+              type="button"
+              onClick={() => setZoom(false)}
+              aria-label="Fermer"
+              className="absolute top-5 right-5 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/15 text-white hover:bg-white/25 transition-colors cursor-pointer"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+        )}
 
         <p className="relative text-center text-grey text-[0.8rem] mt-10 font-medium">
           Noé Calmes · Expert en application mobile · iOS &amp; Android
