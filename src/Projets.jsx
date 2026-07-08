@@ -28,9 +28,21 @@ const ICON = {
   calorie: '/assets/images/apps/calorie.webp',
   hush: '/assets/images/apps/hushapp.webp',
   plouff: '/assets/images/app-icons/plouffhabitudes.webp',
-  wakeup: '/assets/images/app-icons/wackupalarme.webp',
   purge: '/assets/images/apps/purge.webp',
 }
+
+const TESTIMONIALS = [
+  {
+    src: '/assets/images/projets/temoignage-delais.webp',
+    alt: 'Témoignage client WhatsApp : livré dans les délais, 100 % satisfait',
+    rotate: 'sm:-rotate-2',
+  },
+  {
+    src: '/assets/images/projets/temoignage-refonte.webp',
+    alt: 'Témoignage client WhatsApp : une application qui existait mais ne rapportait pas, remise sur pied',
+    rotate: 'sm:rotate-2',
+  },
+]
 
 const FEATURED = {
   icon: ICON.calorie,
@@ -39,7 +51,7 @@ const FEATURED = {
   highlight: '13 000 €',
   unit: '/ mois',
   note: '2 mois après le lancement',
-  badge: 'trend',
+  badge: 'euro',
 }
 
 const PROJECTS = [
@@ -60,15 +72,6 @@ const PROJECTS = [
     unit: '',
     note: 'Du design au lancement',
     badge: 'timer',
-  },
-  {
-    icon: ICON.wakeup,
-    name: 'Wake Up Alarme',
-    tagline: 'Alarme intelligente',
-    highlight: 'Missions au réveil',
-    unit: '',
-    note: 'Impossible de se rendormir : une mission à réussir pour éteindre l\'alarme',
-    badge: 'bell',
   },
   {
     icon: ICON.purge,
@@ -106,10 +109,11 @@ const Badge = ({ type }) => {
         <line x1="12" y1="14" x2="12" y2="10" />
       </>
     ),
-    bell: (
+    euro: (
       <>
-        <path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
-        <path d="M13.7 21a2 2 0 0 1-3.4 0" />
+        <path d="M4 10h11" />
+        <path d="M4 14h9" />
+        <path d="M19 6a8 8 0 1 0 0 12" />
       </>
     ),
     devices: (
@@ -242,7 +246,7 @@ export default function Projets({ onBack }) {
         </div>
       </header>
 
-      <main className="relative max-w-3xl lg:max-w-5xl mx-auto px-5 pt-28 md:pt-32 pb-16">
+      <main className="relative max-w-210 mx-auto px-5 pt-28 md:pt-32 pb-16">
         {/* Wash violet discret, écho du hero landing */}
         <div
           aria-hidden="true"
@@ -258,9 +262,9 @@ export default function Projets({ onBack }) {
             </div>
           </div>
           <h1 className="font-heading text-[1.9rem] sm:text-[2.3rem] lg:text-[2.6rem] font-extrabold text-text tracking-tight leading-[1.15] text-balance">
-            Les applications que j'ai{' '}
+            Les applications que{' '}
             <span className="inline-block whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent py-1 -my-1">
-              conçues
+              j'ai conçues
             </span>
           </h1>
           <p className="text-grey text-[0.92rem] sm:text-base mt-4 max-w-[46ch] sm:max-w-[62ch] mx-auto text-balance">
@@ -273,7 +277,7 @@ export default function Projets({ onBack }) {
           <FeaturedCard p={FEATURED} />
         </div>
 
-        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="relative grid grid-cols-1 sm:grid-cols-3 gap-4">
           {PROJECTS.map((p) => (
             <ProjectCard key={p.name} p={p} />
           ))}
@@ -285,7 +289,7 @@ export default function Projets({ onBack }) {
             Des applications pour…
           </h2>
           <p className="text-grey text-[0.85rem] text-center max-w-[46ch] mx-auto mb-6">
-            Des secteurs très différents, un même objectif : générer des revenus ou faire gagner du temps.
+            Des secteurs très différents, un même objectif : générer des revenus ou automatiser des heures de travail.
           </p>
           <div className="max-w-[540px] lg:max-w-[720px] mx-auto">
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5">
@@ -295,11 +299,8 @@ export default function Projets({ onBack }) {
                   {o}
                 </li>
               ))}
-              <li className="flex items-center gap-2.5 text-grey text-[0.9rem] font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand/40 shrink-0" />
-                Et d'autres encore…
-              </li>
             </ul>
+            <p className="text-grey text-[0.9rem] font-medium text-center mt-4">Et d'autres encore…</p>
             <div className="flex items-center gap-2 text-grey text-[0.8rem] mt-6">
               <svg className="shrink-0" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <rect x="4" y="11" width="16" height="10" rx="2" />
@@ -309,6 +310,27 @@ export default function Projets({ onBack }) {
                 Ces projets restent confidentiels : je n'affiche ni le nom du client, ni les chiffres, ni les écrans.
               </span>
             </div>
+          </div>
+        </div>
+
+        {/* Témoignages — captures réelles, format story */}
+        <div className="relative mt-12">
+          <h2 className="font-heading text-text font-bold text-[1.15rem] text-center mb-1">
+            Ce qu'en disent mes clients
+          </h2>
+          <p className="text-grey text-[0.85rem] text-center mb-7">
+            Des messages reçus, tels quels.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 sm:gap-8">
+            {TESTIMONIALS.map((t) => (
+              <img
+                key={t.src}
+                src={t.src}
+                alt={t.alt}
+                loading="lazy"
+                className={`w-full max-w-[330px] sm:max-w-[315px] rounded-[18px] border border-card-border shadow-[0_6px_28px_rgba(102,93,255,0.12)] ${t.rotate}`}
+              />
+            ))}
           </div>
         </div>
 
