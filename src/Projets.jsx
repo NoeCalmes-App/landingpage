@@ -21,6 +21,9 @@ import { useEffect } from 'react'
  * ⚠️ À CONFIRMER : la liste « Des applications pour… » (usages réels sans détail client).
  */
 
+const ME_PHOTO = '/assets/images/profile/me.webp'
+const WHATSAPP_URL = 'https://wa.me/33658308210'
+
 const ICON = {
   calorie: '/assets/images/apps/calorie.webp',
   hush: '/assets/images/apps/hushapp.webp',
@@ -61,10 +64,10 @@ const PROJECTS = [
   {
     icon: ICON.wakeup,
     name: 'Wake Up Alarme',
-    tagline: 'Réveil à missions',
-    highlight: 'Réveil garanti',
+    tagline: 'Alarme intelligente',
+    highlight: 'Missions au réveil',
     unit: '',
-    note: 'Sonne même sans réseau, même téléphone verrouillé',
+    note: 'Impossible de se rendormir : une mission à réussir pour éteindre l\'alarme',
     badge: 'bell',
   },
   {
@@ -73,7 +76,7 @@ const PROJECTS = [
     tagline: 'Tri & rangement de photos',
     highlight: 'Web + mobile',
     unit: '',
-    note: 'La même application sur téléphone et ordinateur, toujours synchronisée',
+    note: 'La même application sur téléphone et ordinateur',
     badge: 'devices',
   },
 ]
@@ -171,12 +174,14 @@ function ProjectCard({ p }) {
       <div className="mb-5">
         <AppIdentity p={p} />
       </div>
-      <div className="mt-auto flex items-center gap-2 flex-wrap">
+      <div className="mt-auto flex items-center gap-2">
         <Badge type={p.badge} />
-        <span className="font-heading text-text font-extrabold text-[1.4rem] sm:text-[1.5rem] tracking-tight leading-none">
-          {p.highlight}
-        </span>
-        {p.unit && <span className="text-text text-[0.85rem] font-semibold">{p.unit}</span>}
+        <p className="flex-1 min-w-0 leading-tight">
+          <span className="font-heading text-text font-extrabold text-[1.4rem] sm:text-[1.5rem] tracking-tight leading-none">
+            {p.highlight}
+          </span>
+          {p.unit && <span className="text-text text-[0.85rem] font-semibold"> {p.unit}</span>}
+        </p>
       </div>
       <p className="text-grey text-[0.75rem] mt-2">{p.note}</p>
     </div>
@@ -198,23 +203,46 @@ export default function Projets({ onBack }) {
 
   return (
     <div className="min-h-screen bg-surface text-text">
-      <header className="sticky top-0 z-30 bg-surface/80 backdrop-blur-md border-b border-black/5">
-        <div className="max-w-3xl lg:max-w-5xl mx-auto flex items-center justify-between px-5 h-14">
-          <button
-            onClick={onBack}
-            className="inline-flex items-center gap-1.5 text-text text-sm font-medium cursor-pointer"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="19" y1="12" x2="5" y2="12" />
-              <polyline points="12 19 5 12 12 5" />
-            </svg>
-            Retour
-          </button>
-          <span className="font-heading font-bold text-text">Noé Calmes</span>
+      {/* Navbar flottante — même langage que la landing et l'audit */}
+      <header className="fixed inset-x-0 top-2.5 md:top-[18px] z-50 flex justify-center px-4 md:px-6">
+        <div className="w-full max-w-210">
+          <div className="backdrop-blur-[12px] border border-[#70707029] shadow-[0_1px_3px_#00000017] bg-[#fffefc99] rounded-[40px]">
+            <div className="flex items-center justify-between h-[64px] md:h-[68px] pl-3 pr-2.5 md:pl-4 md:pr-3">
+              <button
+                onClick={onBack}
+                className="flex items-center gap-3 cursor-pointer group min-w-0"
+                aria-label="Retour à l'accueil"
+              >
+                <img
+                  src={ME_PHOTO}
+                  alt="Noé Calmes"
+                  loading="eager"
+                  className="w-10 h-10 md:w-11 md:h-11 rounded-full object-cover shrink-0 border-2 border-white shadow-sm group-hover:scale-105 transition-transform"
+                />
+                <span className="flex flex-col items-start text-left min-w-0">
+                  <span className="font-jakarta text-text font-extrabold text-[1rem] md:text-[1.05rem] leading-tight tracking-tight truncate group-hover:text-brand transition-colors">
+                    Noé Calmes
+                  </span>
+                  <span className="text-grey text-[0.68rem] md:text-[0.75rem] leading-tight font-normal truncate">
+                    Expert en applications mobiles
+                  </span>
+                </span>
+              </button>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#131313] text-white text-sm font-medium px-4 md:px-5 py-2.5 rounded-full hover:bg-black transition-colors shrink-0"
+              >
+                <span className="sm:hidden">Discuter</span>
+                <span className="hidden sm:inline">Discuter avec Noé</span>
+              </a>
+            </div>
+          </div>
         </div>
       </header>
 
-      <main className="relative max-w-3xl lg:max-w-5xl mx-auto px-5 pt-10 pb-16">
+      <main className="relative max-w-3xl lg:max-w-5xl mx-auto px-5 pt-28 md:pt-32 pb-16">
         {/* Wash violet discret, écho du hero landing */}
         <div
           aria-hidden="true"
@@ -222,16 +250,20 @@ export default function Projets({ onBack }) {
         />
 
         <div className="relative text-center mb-9">
-          <span className="inline-block text-brand bg-brand-wash text-[0.72rem] sm:text-[0.78rem] font-semibold px-3.5 py-1.5 rounded-full mb-5">
-            +20 applications publiées · iOS &amp; Android
-          </span>
+          <div className="flex justify-center mb-5">
+            <div className="inline-flex items-center rounded-full bg-white/70 backdrop-blur-sm border border-brand-pale px-3.5 py-1.5 shadow-[0_2px_14px_rgba(102,93,255,0.13)]">
+              <p className="text-text text-[0.74rem] sm:text-[0.82rem] font-medium">
+                <span className="text-brand font-bold">+20 applications</span> publiées · iOS &amp; Android
+              </p>
+            </div>
+          </div>
           <h1 className="font-heading text-[1.9rem] sm:text-[2.3rem] lg:text-[2.6rem] font-extrabold text-text tracking-tight leading-[1.15] text-balance">
             Les applications que j'ai{' '}
             <span className="inline-block whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent py-1 -my-1">
               conçues
             </span>
           </h1>
-          <p className="text-grey text-[0.92rem] sm:text-base mt-4 max-w-[46ch] mx-auto text-balance">
+          <p className="text-grey text-[0.92rem] sm:text-base mt-4 max-w-[46ch] sm:max-w-[62ch] mx-auto text-balance">
             Chaque application part d'une idée. Je la cadre, je la conçois 100&nbsp;% sur-mesure, de la stratégie au lancement. Voici ce que ça donne.
           </p>
         </div>
@@ -255,23 +287,28 @@ export default function Projets({ onBack }) {
           <p className="text-grey text-[0.85rem] text-center max-w-[46ch] mx-auto mb-6">
             Des secteurs très différents, un même objectif : générer des revenus ou faire gagner du temps.
           </p>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5 max-w-[540px] lg:max-w-[720px] mx-auto mb-3">
-            {OTHERS.map((o) => (
-              <li key={o} className="flex items-center gap-2.5 text-text text-[0.9rem] font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
-                {o}
+          <div className="max-w-[540px] lg:max-w-[720px] mx-auto">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5">
+              {OTHERS.map((o) => (
+                <li key={o} className="flex items-center gap-2.5 text-text text-[0.9rem] font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
+                  {o}
+                </li>
+              ))}
+              <li className="flex items-center gap-2.5 text-grey text-[0.9rem] font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand/40 shrink-0" />
+                Et d'autres encore…
               </li>
-            ))}
-          </ul>
-          <p className="text-grey text-[0.85rem] text-center font-medium mb-6">Et d'autres encore…</p>
-          <div className="flex items-center justify-center gap-2 text-grey text-[0.8rem] max-w-[48ch] mx-auto text-center">
-            <svg className="shrink-0 mt-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <rect x="4" y="11" width="16" height="10" rx="2" />
-              <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-            </svg>
-            <span className="text-left leading-relaxed">
-              Ces projets restent confidentiels : je n'affiche ni le nom du client, ni les chiffres, ni les écrans.
-            </span>
+            </ul>
+            <div className="flex items-center gap-2 text-grey text-[0.8rem] mt-6">
+              <svg className="shrink-0" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="4" y="11" width="16" height="10" rx="2" />
+                <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+              </svg>
+              <span className="text-left leading-relaxed">
+                Ces projets restent confidentiels : je n'affiche ni le nom du client, ni les chiffres, ni les écrans.
+              </span>
+            </div>
           </div>
         </div>
 
