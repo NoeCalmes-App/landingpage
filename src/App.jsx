@@ -263,7 +263,7 @@ function App() {
     if (path === '/privacy') return 'privacy'
     if (path === '/blog') return 'blog'
     if (path.startsWith('/blog/')) return 'blog-article'
-    if (path === '/projets' || path === '/projet') return 'projets'
+    if (path.toLowerCase() === '/projets' || path.toLowerCase() === '/projet') return 'projets'
     // Maquettes SmoothRide — page autonome (sans navbar/footer landing-page).
     // Restreint à /maquette/smoothride (case-insensitive) uniquement. Toute
     // autre URL /maquette/xxx retombe sur la home (pas de leak vers SmoothRide

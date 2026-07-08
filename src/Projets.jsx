@@ -17,12 +17,12 @@ import { useEffect } from 'react'
  *
  * Données réelles :
  *   - Calorie  : 13 000 €/mois, 2 mois après le lancement (client) — carte vedette
- *   - Hush     : 300 000 utilisateurs sur la 1ʳᵉ version — messagerie anonyme (client)
- *   - Plouff Habitudes : plouff-habitudes.com — suivi d'habitudes, conçue en ~30 jours
+ *   - Hush     : 300 000 utilisateurs sur la 1ʳᵉ version — messagerie anonyme (client) — CONFIRMÉ
+ *   - Plouff Habitudes : plouff-habitudes.com — suivi d'habitudes, conçue en 45 jours — CONFIRMÉ
  *   - Wake Up Alarme   : wakeupalarm.app — réveil à missions, sonne hors-ligne
  *   - Purge : tri de photos 100 % on-device (apps.apple.com/app/id6762089158)
  *
- * ⚠️ À CONFIRMER : Hush 300k · Plouff 30 jours · la liste « Des applications pour… ».
+ * ⚠️ À CONFIRMER : la liste « Des applications pour… » (usages réels sans détail client).
  */
 
 const ICON = {
@@ -58,7 +58,7 @@ const PROJECTS = [
     icon: ICON.plouff,
     name: 'Plouff Habitudes',
     tagline: 'Suivi d\'habitudes',
-    highlight: '30 jours',
+    highlight: '45 jours',
     unit: '',
     note: 'Du design au lancement',
     badge: 'timer',
@@ -193,7 +193,7 @@ export default function Projets({ onBack }) {
     document.title = 'Les applications que j\'ai conçues | Noé Calmes'
     document
       .querySelector('meta[name="description"]')
-      ?.setAttribute('content', 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 30 jours. +20 applications publiées sur iOS et Android.')
+      ?.setAttribute('content', 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. +20 applications publiées sur iOS et Android.')
     window.scrollTo(0, 0)
     return () => {
       document.title = prevTitle

@@ -83,17 +83,17 @@ const sectionRoutes = [
   {
     path: '/projets',
     title: 'Les applications que j\'ai conçues | Noé Calmes',
-    description: 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 30 jours. +20 applications publiées sur iOS et Android.',
+    description: 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. +20 applications publiées sur iOS et Android.',
     heading: 'Les applications que j\'ai conçues',
-    content: 'Applications mobiles conçues sur-mesure, de la stratégie au lancement : Calorie (13 000 € générés par mois), Hush (300 000 utilisateurs), Plouff Habitudes (lancée en 30 jours), Wake Up Alarme, Purge. +20 applications publiées sur iOS et Android.',
+    content: 'Applications mobiles conçues sur-mesure, de la stratégie au lancement : Calorie (13 000 € générés par mois), Hush (300 000 utilisateurs), Plouff Habitudes (lancée en 45 jours), Wake Up Alarme, Purge. +20 applications publiées sur iOS et Android.',
   },
   {
     path: '/projet',
     canonicalPath: '/projets',
     title: 'Les applications que j\'ai conçues | Noé Calmes',
-    description: 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 30 jours. +20 applications publiées sur iOS et Android.',
+    description: 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. +20 applications publiées sur iOS et Android.',
     heading: 'Les applications que j\'ai conçues',
-    content: 'Applications mobiles conçues sur-mesure, de la stratégie au lancement : Calorie (13 000 € générés par mois), Hush (300 000 utilisateurs), Plouff Habitudes (lancée en 30 jours), Wake Up Alarme, Purge. +20 applications publiées sur iOS et Android.',
+    content: 'Applications mobiles conçues sur-mesure, de la stratégie au lancement : Calorie (13 000 € générés par mois), Hush (300 000 utilisateurs), Plouff Habitudes (lancée en 45 jours), Wake Up Alarme, Purge. +20 applications publiées sur iOS et Android.',
   },
 ]
 
