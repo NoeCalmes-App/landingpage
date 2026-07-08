@@ -22,7 +22,6 @@ import { useEffect } from 'react'
  */
 
 const ME_PHOTO = '/assets/images/profile/me.webp'
-const WHATSAPP_URL = 'https://wa.me/33658308210'
 
 const ICON = {
   calorie: '/assets/images/apps/calorie.webp',
@@ -33,13 +32,18 @@ const ICON = {
 
 const TESTIMONIALS = [
   {
-    src: '/assets/images/projets/temoignage-delais.webp',
-    alt: 'Témoignage client WhatsApp : livré dans les délais, 100 % satisfait',
+    src: '/assets/images/projets/temoignage-idee.webp',
+    alt: 'Témoignage client WhatsApp : d\'une simple idée à une application qui tourne',
     rotate: 'sm:-rotate-2',
   },
   {
     src: '/assets/images/projets/temoignage-refonte.webp',
     alt: 'Témoignage client WhatsApp : une application qui existait mais ne rapportait pas, remise sur pied',
+    rotate: '',
+  },
+  {
+    src: '/assets/images/projets/temoignage-delais.webp',
+    alt: 'Témoignage client WhatsApp : livré dans les délais, 100 % satisfait',
     rotate: 'sm:rotate-2',
   },
 ]
@@ -59,7 +63,7 @@ const PROJECTS = [
     icon: ICON.hush,
     name: 'Hush',
     tagline: 'Messagerie anonyme',
-    highlight: '300 000',
+    highlight: '300K',
     unit: 'utilisateurs',
     note: 'Sur la première version',
     badge: 'trend',
@@ -77,9 +81,9 @@ const PROJECTS = [
     icon: ICON.purge,
     name: 'Purge',
     tagline: 'Tri & rangement de photos',
-    highlight: 'Web + mobile',
+    highlight: 'Mobile + web',
     unit: '',
-    note: 'La même application sur téléphone et ordinateur',
+    note: 'Sur téléphone et ordinateur',
     badge: 'devices',
   },
 ]
@@ -211,7 +215,7 @@ export default function Projets({ onBack }) {
       <header className="fixed inset-x-0 top-2.5 md:top-[18px] z-50 flex justify-center px-4 md:px-6">
         <div className="w-full max-w-210">
           <div className="backdrop-blur-[12px] border border-[#70707029] shadow-[0_1px_3px_#00000017] bg-[#fffefc99] rounded-[40px]">
-            <div className="flex items-center justify-between h-[64px] md:h-[68px] pl-3 pr-2.5 md:pl-4 md:pr-3">
+            <div className="flex items-center justify-center h-[64px] md:h-[68px] px-4">
               <button
                 onClick={onBack}
                 className="flex items-center gap-3 cursor-pointer group min-w-0"
@@ -232,15 +236,6 @@ export default function Projets({ onBack }) {
                   </span>
                 </span>
               </button>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#131313] text-white text-sm font-medium px-4 md:px-5 py-2.5 rounded-full hover:bg-black transition-colors shrink-0"
-              >
-                <span className="sm:hidden">Discuter</span>
-                <span className="hidden sm:inline">Discuter avec Noé</span>
-              </a>
             </div>
           </div>
         </div>
@@ -321,14 +316,14 @@ export default function Projets({ onBack }) {
           <p className="text-grey text-[0.85rem] text-center mb-7">
             Des messages reçus, tels quels.
           </p>
-          <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 sm:gap-8">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 sm:gap-5">
             {TESTIMONIALS.map((t) => (
               <img
                 key={t.src}
                 src={t.src}
                 alt={t.alt}
                 loading="lazy"
-                className={`w-full max-w-[330px] sm:max-w-[315px] rounded-[18px] border border-card-border shadow-[0_6px_28px_rgba(102,93,255,0.12)] ${t.rotate}`}
+                className={`w-full max-w-[330px] sm:max-w-[250px] rounded-[18px] border border-card-border shadow-[0_6px_28px_rgba(102,93,255,0.12)] ${t.rotate}`}
               />
             ))}
           </div>
@@ -344,7 +339,7 @@ export default function Projets({ onBack }) {
             Ma spécialité : les projets complexes
           </h2>
           <p className="relative text-grey text-[0.9rem] max-w-[52ch] mx-auto leading-relaxed">
-            IA intégrée, automatisations, applications connectées entre web et mobile. Plus le projet est ambitieux, plus il m'intéresse.
+            IA intégrée, automatisations, applications connectées entre mobile et web. Plus le projet est ambitieux, plus il m'intéresse.
           </p>
         </div>
 
@@ -355,18 +350,22 @@ export default function Projets({ onBack }) {
           rel="noopener noreferrer"
           className="relative mt-4 flex items-center gap-4 bg-white border border-card-border rounded-[18px] p-5 sm:p-6 shadow-[0_2px_16px_rgba(102,93,255,0.06)] transition-shadow hover:shadow-[0_4px_24px_rgba(102,93,255,0.12)]"
         >
-          <span className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-[24%] bg-brand-wash text-brand shrink-0">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" />
-              <circle cx="12" cy="12" r="4.5" />
-              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
-            </svg>
-          </span>
+          <img
+            src="/assets/images/projets/ig-post-90.webp"
+            alt="Publication Instagram : pourquoi 90 % des applications ne rapportent rien"
+            loading="lazy"
+            className="w-20 h-20 sm:w-24 sm:h-24 rounded-[14px] object-cover shrink-0 border border-black/5 shadow-[0_2px_10px_rgba(3,52,117,0.10)]"
+          />
           <span className="min-w-0 flex-1">
             <span className="block font-heading text-text font-bold text-[1rem] leading-snug">
               « Pourquoi 90&nbsp;% des applications ne rapportent rien »
             </span>
-            <span className="block text-grey text-[0.78rem] font-medium mt-0.5">
+            <span className="mt-1 flex items-center gap-1.5 text-grey text-[0.78rem] font-medium">
+              <svg className="shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4.5" />
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+              </svg>
               L'analyse est épinglée sur mon profil · @noecalmes.app
             </span>
           </span>
