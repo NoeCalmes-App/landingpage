@@ -80,6 +80,21 @@ const sectionRoutes = [
     heading: 'FAQ, créer une application mobile',
     content: 'Les réponses aux questions fréquentes : budget (en général 5 à 10k en mobile), délai (première version en 4 à 6 semaines), comment une application est pensée pour générer des revenus, livraison et suivi après mise en ligne.',
   },
+  {
+    path: '/projets',
+    title: 'Les applications que j\'ai conçues | Noé Calmes',
+    description: 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 30 jours. +20 applications publiées sur iOS et Android.',
+    heading: 'Les applications que j\'ai conçues',
+    content: 'Applications mobiles conçues sur-mesure, de la stratégie au lancement : Calorie (13 000 € générés par mois), Hush (300 000 utilisateurs), Plouff Habitudes (lancée en 30 jours), Wake Up Alarme, Purge. +20 applications publiées sur iOS et Android.',
+  },
+  {
+    path: '/projet',
+    canonicalPath: '/projets',
+    title: 'Les applications que j\'ai conçues | Noé Calmes',
+    description: 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 30 jours. +20 applications publiées sur iOS et Android.',
+    heading: 'Les applications que j\'ai conçues',
+    content: 'Applications mobiles conçues sur-mesure, de la stratégie au lancement : Calorie (13 000 € générés par mois), Hush (300 000 utilisateurs), Plouff Habitudes (lancée en 30 jours), Wake Up Alarme, Purge. +20 applications publiées sur iOS et Android.',
+  },
 ]
 
 for (const route of sectionRoutes) {

@@ -19,6 +19,7 @@ import CoachAppMockups from './CoachAppMockups.jsx'
 import BlushMockups from './BlushMockups.jsx'
 import MoovYeMockups from './MoovYeMockups.jsx'
 import ConvoiPiloteMockups from './ConvoiPiloteMockups.jsx'
+import Projets from './Projets.jsx'
 import ClientSpaceBridge from './ClientSpaceBridge.jsx'
 import MaquetteVisualBridge from './MaquetteVisualBridge.jsx'
 import ChatbotWidget from './chatbot/Widget'
@@ -262,6 +263,7 @@ function App() {
     if (path === '/privacy') return 'privacy'
     if (path === '/blog') return 'blog'
     if (path.startsWith('/blog/')) return 'blog-article'
+    if (path === '/projets' || path === '/projet') return 'projets'
     // Maquettes SmoothRide — page autonome (sans navbar/footer landing-page).
     // Restreint à /maquette/smoothride (case-insensitive) uniquement. Toute
     // autre URL /maquette/xxx retombe sur la home (pas de leak vers SmoothRide
@@ -465,6 +467,7 @@ function App() {
   if (page === 'blush-mockups') return <BlushMockups />
   if (page === 'moovye-mockups') return <MoovYeMockups />
   if (page === 'convoipilote-mockups') return <ConvoiPiloteMockups />
+  if (page === 'projets') return <Projets onBack={goHome} />
   if (page === 'contact') return <ContactNoe />
   if (page === 'legal') return <Legales />
   if (page === 'audit-app') return <AuditApp onBack={goHome} onLegal={(p) => openLegal(p, '/audit-app')} />
