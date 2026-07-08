@@ -215,7 +215,7 @@ export default function Projets({ onBack }) {
       <header className="fixed inset-x-0 top-2.5 md:top-[18px] z-50 flex justify-center px-4 md:px-6">
         <div className="w-full max-w-210">
           <div className="backdrop-blur-[12px] border border-[#70707029] shadow-[0_1px_3px_#00000017] bg-[#fffefc99] rounded-[40px]">
-            <div className="flex items-center justify-center h-[64px] md:h-[68px] px-4">
+            <div className="flex items-center h-[64px] md:h-[68px] pl-3 pr-4 md:pl-3.5">
               <button
                 onClick={onBack}
                 className="flex items-center gap-3 cursor-pointer group min-w-0"
@@ -313,10 +313,7 @@ export default function Projets({ onBack }) {
           <h2 className="font-heading text-text font-bold text-[1.15rem] text-center mb-1">
             Ce qu'en disent mes clients
           </h2>
-          <p className="text-grey text-[0.85rem] text-center mb-7">
-            Des messages reçus, tels quels.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 sm:gap-5">
+          <div className="mt-7 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 sm:gap-5">
             {TESTIMONIALS.map((t) => (
               <img
                 key={t.src}
@@ -354,19 +351,14 @@ export default function Projets({ onBack }) {
             src="/assets/images/projets/ig-post-90.webp"
             alt="Publication Instagram : pourquoi 90 % des applications ne rapportent rien"
             loading="lazy"
-            className="w-20 h-20 sm:w-24 sm:h-24 rounded-[14px] object-cover shrink-0 border border-black/5 shadow-[0_2px_10px_rgba(3,52,117,0.10)]"
+            className="w-24 h-24 sm:w-28 sm:h-28 rounded-[14px] object-cover shrink-0 border border-black/5 shadow-[0_2px_10px_rgba(3,52,117,0.10)]"
           />
           <span className="min-w-0 flex-1">
             <span className="block font-heading text-text font-bold text-[1rem] leading-snug">
               « Pourquoi 90&nbsp;% des applications ne rapportent rien »
             </span>
-            <span className="mt-1 flex items-center gap-1.5 text-grey text-[0.78rem] font-medium">
-              <svg className="shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <rect x="2" y="2" width="20" height="20" rx="5" />
-                <circle cx="12" cy="12" r="4.5" />
-                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
-              </svg>
-              L'analyse est épinglée sur mon profil · @noecalmes.app
+            <span className="block mt-1 text-grey text-[0.78rem] font-medium">
+              @noecalmes.app
             </span>
           </span>
           <svg className="text-grey shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
