@@ -5,22 +5,18 @@ import { useEffect } from 'react'
  * Objectif : conversion par la preuve. En 5 secondes : « il est fort, il fait du
  * sur-mesure, il génère des revenus et des utilisateurs. »
  *
- * Ton NEUTRE (ni tu ni vous) : page de présentation, évite l'incohérence
- * tutoiement landing / vouvoiement brief.
- *
- * Pas de dates, pas de CTA, pas de label de catégorie (le chiffre parle seul).
+ * Ton NEUTRE (ni tu ni vous). Pas de tirets cadratins dans la copy (fait « IA »).
+ * Pas de dates, pas de CTA contact, pas de label de catégorie (le chiffre parle seul).
  * Icône contextuelle : flèche ↑ = croissance, minuteur = vitesse,
- * puce = technicité, bouclier = confidentialité produit.
- *
- * Design aligné sur la landing : pill à icônes d'apps superposées (hero home),
- * surligneur violet signature, ombres teintées brand, carte Calorie en vedette.
+ * cloche = fiabilité, écrans = multi-plateforme.
  *
  * Données réelles :
- *   - Calorie  : 13 000 €/mois, 2 mois après le lancement (client) — carte vedette
+ *   - Calorie  : 13 000 €/mois, 2 mois après le lancement (client) — carte vedette. IA intégrée.
  *   - Hush     : 300 000 utilisateurs sur la 1ʳᵉ version — messagerie anonyme (client) — CONFIRMÉ
  *   - Plouff Habitudes : plouff-habitudes.com — suivi d'habitudes, conçue en 45 jours — CONFIRMÉ
- *   - Wake Up Alarme   : wakeupalarm.app — réveil à missions, sonne hors-ligne
- *   - Purge : tri de photos 100 % on-device (apps.apple.com/app/id6762089158)
+ *   - Wake Up Alarme   : wakeupalarm.app — réveil à missions, sonne hors-ligne / verrouillé
+ *     (peu de téléchargements : ne pas utiliser ce chiffre)
+ *   - Purge : tri de photos, accessible web + mobile synchronisés — CONFIRMÉ par Noé
  *
  * ⚠️ À CONFIRMER : la liste « Des applications pour… » (usages réels sans détail client).
  */
@@ -31,13 +27,12 @@ const ICON = {
   plouff: '/assets/images/app-icons/plouffhabitudes.webp',
   wakeup: '/assets/images/app-icons/wackupalarme.webp',
   purge: '/assets/images/apps/purge.webp',
-  snap: '/assets/images/apps/snapmaster.png',
 }
 
 const FEATURED = {
   icon: ICON.calorie,
   name: 'Calorie',
-  tagline: 'Suivi nutrition & calories',
+  tagline: 'Suivi nutrition par IA',
   highlight: '13 000 €',
   unit: '/ mois',
   note: '2 mois après le lancement',
@@ -67,27 +62,27 @@ const PROJECTS = [
     icon: ICON.wakeup,
     name: 'Wake Up Alarme',
     tagline: 'Réveil à missions',
-    highlight: 'Sonne hors-ligne',
+    highlight: 'Réveil garanti',
     unit: '',
-    note: 'Audio en arrière-plan — ce que très peu d\'applications savent faire',
-    badge: 'chip',
+    note: 'Sonne même sans réseau, même téléphone verrouillé',
+    badge: 'bell',
   },
   {
     icon: ICON.purge,
     name: 'Purge',
     tagline: 'Tri & rangement de photos',
-    highlight: '100 % privé',
+    highlight: 'Web + mobile',
     unit: '',
-    note: 'Analyse des photos sur l\'appareil — rien ne quitte le téléphone',
-    badge: 'shield',
+    note: 'La même application sur téléphone et ordinateur, toujours synchronisée',
+    badge: 'devices',
   },
 ]
 
 // « Des applications pour… » — l'étendue, sans rien révéler (confidentialité).
-// Usages réels + placeholders à ajuster. Purge est devenue une carte (retirée d'ici).
 const OTHERS = [
   'Le coaching en salle de sport',
   'La gestion d\'entreprise & la logistique',
+  'Les devis d\'artisans créés à la voix, avec l\'IA',
   'La finance personnelle',
   'Une communauté de passionnés',
   'La réservation de services',
@@ -108,16 +103,17 @@ const Badge = ({ type }) => {
         <line x1="12" y1="14" x2="12" y2="10" />
       </>
     ),
-    chip: (
+    bell: (
       <>
-        <rect x="8" y="8" width="8" height="8" rx="1" />
-        <path d="M10 2v3M14 2v3M10 19v3M14 19v3M2 10h3M2 14h3M19 10h3M19 14h3" />
+        <path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+        <path d="M13.7 21a2 2 0 0 1-3.4 0" />
       </>
     ),
-    shield: (
+    devices: (
       <>
-        <path d="M12 2l8 4v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6l8-4z" />
-        <polyline points="9 12 11 14 15 10" />
+        <rect x="2" y="4" width="13" height="9" rx="1.5" />
+        <path d="M6 17h4" />
+        <rect x="15" y="9" width="7" height="11" rx="1.5" />
       </>
     ),
   }
@@ -139,7 +135,7 @@ const AppIdentity = ({ p, size = 'sm' }) => (
       className={`${size === 'lg' ? 'w-14 h-14 sm:w-16 sm:h-16' : 'w-12 h-12 sm:w-14 sm:h-14'} rounded-[24%] object-cover shrink-0 border border-black/5 shadow-[0_2px_10px_rgba(3,52,117,0.08)]`}
     />
     <div className="min-w-0">
-      <p className={`font-heading text-text font-bold leading-tight truncate ${size === 'lg' ? 'text-[1.15rem] sm:text-[1.3rem]' : 'text-[1.05rem]'}`}>{p.name}</p>
+      <p className={`font-heading text-text font-bold leading-tight ${size === 'lg' ? 'text-[1.15rem] sm:text-[1.3rem]' : 'text-[1.05rem]'}`}>{p.name}</p>
       <p className="text-grey text-[0.78rem] font-medium mt-0.5">{p.tagline}</p>
     </div>
   </div>
@@ -147,7 +143,7 @@ const AppIdentity = ({ p, size = 'sm' }) => (
 
 function FeaturedCard({ p }) {
   return (
-    <div className="relative overflow-hidden bg-white border border-card-border rounded-[18px] p-5 sm:p-7 shadow-[0_4px_24px_rgba(102,93,255,0.09)]">
+    <div className="relative overflow-hidden bg-white border border-card-border rounded-[18px] p-5 sm:p-7 lg:p-9 shadow-[0_4px_24px_rgba(102,93,255,0.09)]">
       <div
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none bg-[linear-gradient(115deg,rgba(102,93,255,0.09),rgba(102,93,255,0.03)_45%,rgba(255,255,255,0)_70%)]"
@@ -157,7 +153,7 @@ function FeaturedCard({ p }) {
         <div>
           <div className="flex items-center gap-2.5 flex-wrap">
             <Badge type={p.badge} />
-            <span className="font-heading text-text font-extrabold text-[2rem] sm:text-[2.5rem] tracking-tight leading-none">
+            <span className="font-heading text-text font-extrabold text-[2rem] sm:text-[2.5rem] lg:text-[2.8rem] tracking-tight leading-none">
               {p.highlight}
             </span>
             {p.unit && <span className="text-text text-[0.95rem] font-semibold">{p.unit}</span>}
@@ -177,7 +173,7 @@ function ProjectCard({ p }) {
       </div>
       <div className="mt-auto flex items-center gap-2 flex-wrap">
         <Badge type={p.badge} />
-        <span className="font-heading text-text font-extrabold text-[1.4rem] sm:text-[1.6rem] tracking-tight leading-none">
+        <span className="font-heading text-text font-extrabold text-[1.4rem] sm:text-[1.5rem] tracking-tight leading-none">
           {p.highlight}
         </span>
         {p.unit && <span className="text-text text-[0.85rem] font-semibold">{p.unit}</span>}
@@ -203,7 +199,7 @@ export default function Projets({ onBack }) {
   return (
     <div className="min-h-screen bg-surface text-text">
       <header className="sticky top-0 z-30 bg-surface/80 backdrop-blur-md border-b border-black/5">
-        <div className="max-w-3xl mx-auto flex items-center justify-between px-5 h-14">
+        <div className="max-w-3xl lg:max-w-5xl mx-auto flex items-center justify-between px-5 h-14">
           <button
             onClick={onBack}
             className="inline-flex items-center gap-1.5 text-text text-sm font-medium cursor-pointer"
@@ -218,7 +214,7 @@ export default function Projets({ onBack }) {
         </div>
       </header>
 
-      <main className="relative max-w-3xl mx-auto px-5 pt-10 pb-16">
+      <main className="relative max-w-3xl lg:max-w-5xl mx-auto px-5 pt-10 pb-16">
         {/* Wash violet discret, écho du hero landing */}
         <div
           aria-hidden="true"
@@ -226,36 +222,17 @@ export default function Projets({ onBack }) {
         />
 
         <div className="relative text-center mb-9">
-          {/* Pill preuve — même langage visuel que le hero de la landing */}
-          <div className="flex justify-center mb-5">
-            <div className="inline-flex items-center gap-2.5 rounded-full bg-white/70 backdrop-blur-sm border border-brand-pale pl-1.5 pr-3.5 py-1 shadow-[0_2px_14px_rgba(102,93,255,0.13)]">
-              <div className="flex items-center">
-                {[ICON.snap, ICON.calorie, ICON.purge, ICON.hush].map((icon, i) => (
-                  <img
-                    key={icon}
-                    src={icon}
-                    alt=""
-                    width="26"
-                    height="26"
-                    className="w-6 h-6 sm:w-7 sm:h-7 rounded-[28%] border border-white object-cover"
-                    style={{ marginLeft: i === 0 ? 0 : '-7px', zIndex: i }}
-                  />
-                ))}
-              </div>
-              <p className="text-text text-[0.74rem] sm:text-[0.82rem] font-medium">
-                <span className="text-brand font-bold">+20 applications</span> publiées · iOS &amp; Android
-              </p>
-            </div>
-          </div>
-
-          <h1 className="font-heading text-[1.9rem] sm:text-[2.3rem] font-extrabold text-text tracking-tight leading-[1.15] text-balance">
+          <span className="inline-block text-brand bg-brand-wash text-[0.72rem] sm:text-[0.78rem] font-semibold px-3.5 py-1.5 rounded-full mb-5">
+            +20 applications publiées · iOS &amp; Android
+          </span>
+          <h1 className="font-heading text-[1.9rem] sm:text-[2.3rem] lg:text-[2.6rem] font-extrabold text-text tracking-tight leading-[1.15] text-balance">
             Les applications que j'ai{' '}
             <span className="relative z-0 inline-block whitespace-nowrap text-brand after:content-[''] after:absolute after:-left-2 after:-right-2 after:bottom-[-1px] after:h-[26%] after:rounded after:bg-[rgba(102,93,255,0.22)] after:z-[-1]">
               conçues
             </span>
           </h1>
           <p className="text-grey text-[0.92rem] sm:text-base mt-4 max-w-[46ch] mx-auto text-balance">
-            Chaque application part d'une idée. Je la cadre, je la conçois 100&nbsp;% sur-mesure — de la stratégie au lancement. Voici ce que ça donne.
+            Chaque application part d'une idée. Je la cadre, je la conçois 100&nbsp;% sur-mesure, de la stratégie au lancement. Voici ce que ça donne.
           </p>
         </div>
 
@@ -264,7 +241,7 @@ export default function Projets({ onBack }) {
           <FeaturedCard p={FEATURED} />
         </div>
 
-        <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {PROJECTS.map((p) => (
             <ProjectCard key={p.name} p={p} />
           ))}
@@ -275,10 +252,10 @@ export default function Projets({ onBack }) {
           <h2 className="font-heading text-text font-bold text-[1.15rem] text-center mb-1">
             Des applications pour…
           </h2>
-          <p className="text-grey text-[0.85rem] text-center max-w-[42ch] mx-auto mb-6">
-            Des secteurs très différents, une même exigence de conception.
+          <p className="text-grey text-[0.85rem] text-center max-w-[46ch] mx-auto mb-6">
+            Des secteurs très différents, un même objectif : générer des revenus ou faire gagner du temps.
           </p>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5 max-w-[540px] mx-auto mb-7">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5 max-w-[540px] lg:max-w-[720px] mx-auto mb-3">
             {OTHERS.map((o) => (
               <li key={o} className="flex items-center gap-2.5 text-text text-[0.9rem] font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
@@ -286,6 +263,7 @@ export default function Projets({ onBack }) {
               </li>
             ))}
           </ul>
+          <p className="text-grey text-[0.85rem] text-center font-medium mb-6">Et d'autres encore…</p>
           <div className="flex items-center justify-center gap-2 text-grey text-[0.8rem] max-w-[48ch] mx-auto text-center">
             <svg className="shrink-0 mt-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <rect x="4" y="11" width="16" height="10" rx="2" />
@@ -297,7 +275,21 @@ export default function Projets({ onBack }) {
           </div>
         </div>
 
-        {/* Instagram — analyses d'applications, seul lien sortant de la page */}
+        {/* Signature d'expert — les projets complexes */}
+        <div className="relative mt-4 overflow-hidden bg-white border border-card-border rounded-[18px] p-6 sm:p-8 text-center shadow-[0_2px_16px_rgba(102,93,255,0.06)]">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none bg-[linear-gradient(115deg,rgba(102,93,255,0.06),rgba(255,255,255,0)_60%)]"
+          />
+          <h2 className="relative font-heading text-text font-bold text-[1.15rem] mb-2">
+            Ma spécialité : les projets complexes
+          </h2>
+          <p className="relative text-grey text-[0.9rem] max-w-[52ch] mx-auto leading-relaxed">
+            IA intégrée, automatisations, applications connectées entre web et mobile. Plus le projet est ambitieux, plus il m'intéresse.
+          </p>
+        </div>
+
+        {/* Instagram — teaser du post épinglé, seul lien sortant de la page */}
         <a
           href="https://www.instagram.com/noecalmes.app/"
           target="_blank"
@@ -312,11 +304,11 @@ export default function Projets({ onBack }) {
             </svg>
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block font-heading text-text font-bold text-[1.05rem] leading-tight">
-              @noecalmes.app
+            <span className="block font-heading text-text font-bold text-[1rem] leading-snug">
+              « Pourquoi 90&nbsp;% des applications ne rapportent rien »
             </span>
             <span className="block text-grey text-[0.78rem] font-medium mt-0.5">
-              Pourquoi une application rapporte — ou pas : mes analyses sur Instagram.
+              L'analyse est épinglée sur mon profil · @noecalmes.app
             </span>
           </span>
           <svg className="text-grey shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
