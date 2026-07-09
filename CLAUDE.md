@@ -12,6 +12,7 @@ Lire `AGENTS.md` en premier. Ce fichier reste volontairement court pour ne pas c
 - Tunnel d'acquisition (Instagram, LinkedIn, audit) : `documentation/strategy/tunnel.md`
 - Rediger un post / carrousel LinkedIn : `documentation/strategy/linkedin-posts.md`
 - Strategie commerciale : `documentation/strategy/strategie-commerciale.md`
+- Prospection leads Meta (relances WhatsApp) : `documentation/strategy/prospection-meta-leads.md`
 - Supports stories/posts : `content/README.md`
 
 ## Regle
