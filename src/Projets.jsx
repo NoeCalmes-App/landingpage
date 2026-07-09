@@ -195,9 +195,17 @@ function FeaturedCard({ p }) {
       <div className="relative flex flex-col gap-9 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
         {/* Texte */}
         <div className="lg:max-w-[36rem]">
-          <span className="inline-block text-brand bg-brand-wash text-[0.68rem] font-semibold uppercase tracking-[0.16em] px-3 py-1.5 rounded-full">
-            2025
-          </span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-block text-brand bg-brand-wash text-[0.68rem] font-semibold uppercase tracking-[0.16em] px-3 py-1.5 rounded-full">
+              2025
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-brand bg-brand-wash text-[0.68rem] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full whitespace-nowrap">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l1.7 5.5L19 9l-5.3 1.5L12 16l-1.7-5.5L5 9l5.3-1.5z" />
+              </svg>
+              IA intégrée
+            </span>
+          </div>
           <div className="mt-5">
             <AppIdentity p={p} size="lg" />
           </div>
@@ -207,14 +215,14 @@ function FeaturedCard({ p }) {
         </div>
 
         {/* Chiffre — l'ancre visuelle */}
-        <div className="shrink-0 lg:text-right">
-          <div className="flex items-end gap-2 lg:justify-end">
+        <div className="shrink-0">
+          <div className="flex items-end gap-2">
             <span className="font-heading text-text font-extrabold text-[3rem] sm:text-[3.6rem] lg:text-[4rem] tracking-tight leading-none">
               {p.highlight}
             </span>
             <span className="text-text font-semibold text-[1.1rem] mb-2">{p.unit}</span>
           </div>
-          <p className="mt-3 text-grey text-[0.85rem]">{p.note} · IA intégrée</p>
+          <p className="mt-3 text-grey text-[0.85rem]">{p.note}</p>
         </div>
       </div>
     </div>
