@@ -171,6 +171,17 @@ function App() {
       history.replaceState(null, '', redirect)
     }
     const path = (redirect || window.location.pathname).replace(/\/$/, '') || '/'
+    // Redirection directe vers WhatsApp (message pré-rempli). Utilisée comme
+    // URL de fin du formulaire Meta (les formulaires instantanés refusent les
+    // liens wa.me, mais acceptent noecalmes.fr/whatsapp).
+    if (path === '/whatsapp' || path === '/wa') {
+      window.location.replace(
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+          "Salut Noé, je viens de remplir ton formulaire. Mon idée en deux lignes : "
+        )}`
+      )
+      return 'home'
+    }
     if (path === '/espace-client' || path.startsWith('/espace-client/')) return 'client-space'
     if (path === '/maquette-visuel' || path.startsWith('/maquette-visuel/')) return 'maquette-visual'
     if (path === '/documents') return 'documents'
