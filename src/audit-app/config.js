@@ -8,10 +8,6 @@
 
 export const API_URL = import.meta.env.VITE_AUDIT_API_URL || ''
 
-// URL du Calendly affiche apres un verdict en branche A.
-export const CALENDLY_URL =
-  'https://calendly.com/noecalmes-app/appel-app-mobile?primary_color=645cff'
-
 // Les 3 questions du hero (premiere personne, doutes pre-investissement).
 // Triangle classique qualite-cout-temps applique au pre-investissement app :
 // viabilite produit + cout d'entree + delai avant lancement.
@@ -38,7 +34,7 @@ export const FORM_STEPS = [
   {
     field: 'app_type',
     label: 'Type d\'app',
-    question: 'Votre projet, c\'est plutôt…',
+    question: 'Ton projet, c\'est plutôt…',
     infoItems: [
       { t: 'Mobile', d: 'une app téléchargeable sur tous les téléphones, via l\'App Store et le Google Play Store.' },
       { t: 'Web', d: 'une app accessible via une adresse internet (un site, ex : amazon.fr), sans rien à installer.' },
@@ -53,10 +49,10 @@ export const FORM_STEPS = [
   },
   {
     field: 'idea_text',
-    label: 'Votre idée',
+    label: 'Ton idée',
     question:
-      "Décrivez votre idée d'application : que ferait-elle et pour qui ?",
-    helper: 'Plus vous donnez de détails, plus l\'audit sera précis.',
+      "Décris ton idée d'application : que ferait-elle et pour qui ?",
+    helper: 'Plus tu donnes de détails, plus l\'audit sera précis.',
     placeholder: 'Une application qui permet à... pour...',
     // 30 chars min — seuil bas pour ne pas bloquer, mais force a sortir
     // une vraie phrase. Pour aller plus loin, le prospect peut joindre
@@ -74,8 +70,8 @@ export const FORM_STEPS = [
   },
   {
     field: 'project_stage_answer',
-    label: 'Votre stade',
-    question: "À quel stade en est votre projet d’application ?",
+    label: 'Ton stade',
+    question: "À quel stade en est ton projet d’application ?",
     type: 'choice',
     options: [
       {
@@ -126,11 +122,11 @@ export const FORM_STEPS = [
   },
   {
     field: 'known_competitors',
-    label: 'Vos références',
+    label: 'Tes références',
     question:
-      'Quelles applications similaires connaissez-vous déjà ?',
+      'Quelles applications similaires connais-tu déjà ?',
     helper:
-      'Optionnel — listez celles que vous avez en tête (séparées par des virgules). Ça aide à mieux situer votre projet et à comparer les angles. Vous pouvez passer si rien ne vous vient.',
+      'Optionnel — liste celles que tu as en tête (séparées par des virgules). Ça aide à mieux situer ton projet et à comparer les angles. Tu peux passer si rien ne te vient.',
     placeholder: 'Ex : App A, App B, App C',
     minLength: 0,
     maxLength: 600,
@@ -146,9 +142,9 @@ export const FORM_STEPS = [
   },
   {
     field: 'q2_answer',
-    label: 'Votre cible',
+    label: 'Ta cible',
     question:
-      'Combien de personnes de votre cible avez-vous interrogées ?',
+      'Combien de personnes de ta cible as-tu interrogées ?',
     type: 'choice',
     options: [
       {
@@ -172,7 +168,7 @@ export const FORM_STEPS = [
     field: 'q3_answer',
     label: 'Le modèle économique',
     question:
-      "Comment votre application va-t-elle gagner de l'argent ?",
+      "Comment ton application va-t-elle gagner de l'argent ?",
     type: 'choice',
     options: [
       {
@@ -204,7 +200,7 @@ export const FORM_STEPS = [
     field: 'q4_answer',
     label: 'Le budget',
     question:
-      'Quel budget pouvez-vous investir pour la première version ?',
+      'Quel budget peux-tu investir pour la première version ?',
     type: 'choice',
     options: [
       {

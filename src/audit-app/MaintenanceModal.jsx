@@ -67,9 +67,9 @@ export default function MaintenanceModal({ onRetry, onClose, retrying }) {
           </h2>
 
           <p className="text-grey text-[0.94rem] md:text-[0.98rem] leading-relaxed mb-7">
-            Notre service d'analyse est actuellement en travaux. Vos réponses
-            sont enregistrées — vous pourrez relancer l'audit dans un instant
-            ou revenir un peu plus tard, vous retrouverez votre progression.
+            Notre service d'analyse est actuellement en travaux. Tes réponses
+            sont enregistrées — tu pourras relancer l'audit dans un instant
+            ou revenir un peu plus tard, tu retrouveras ta progression.
           </p>
 
           <div className="flex flex-col gap-3">

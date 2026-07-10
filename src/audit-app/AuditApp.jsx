@@ -67,7 +67,7 @@ export default function AuditApp({ onBack, onLegal }) {
     const previousDesc = meta?.getAttribute('content')
     meta?.setAttribute(
       'content',
-      'Testez votre idée d\'application mobile avant d\'investir : potentiel business, budget, délai et points à valider en 2 minutes.'
+      'Teste ton idée d\'application mobile avant d\'investir : potentiel business, budget, délai et points à valider en 2 minutes.'
     )
     return () => {
       document.title = previousTitle

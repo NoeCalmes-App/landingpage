@@ -174,7 +174,7 @@ const AuditAppAttachment = forwardRef(function AuditAppAttachment({ onChange }, 
 
         if (text.length === 0) {
           const errMsg = isPdf
-            ? "Aucun texte n'a pu être lu dans ce PDF, même en reconnaissance optique. Essayez avec un autre fichier ou décrivez directement votre projet dans le champ."
+            ? "Aucun texte n'a pu être lu dans ce PDF, même en reconnaissance optique. Essaie avec un autre fichier ou décris directement ton projet dans le champ."
             : "Document vide."
           const next = updateFile(id, { status: 'error', error: errMsg })
           recompute(next)

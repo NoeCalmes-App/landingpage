@@ -70,12 +70,12 @@ export default function AuditAppVerdict({
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 border border-brand/20 mb-5">
             <CheckIcon className="text-brand" />
             <p className="text-brand text-[0.78rem] md:text-[0.82rem] font-semibold tracking-wide">
-              Votre audit est prêt
+              Ton audit est prêt
             </p>
           </div>
           <h1 className="font-heading text-text text-2xl md:text-[2.1rem] lg:text-[2.4rem] font-bold tracking-tight leading-tight mb-3">
             {firstName ? `${firstName}, voici ` : 'Voici '}
-            <span className="text-brand">mon analyse</span> de votre projet
+            <span className="text-brand">mon analyse</span> de ton projet
           </h1>
         </div>
       </section>
@@ -94,7 +94,7 @@ export default function AuditAppVerdict({
             >
               {verdict.pitch_reformule && (
                 <SectionCard
-                  label="Votre projet"
+                  label="Ton projet"
                   icon={<PitchIcon />}
                   accent="neutral"
                 >
@@ -137,7 +137,7 @@ export default function AuditAppVerdict({
                 >
                   <p className="text-grey text-[0.85rem] leading-relaxed mb-4 -mt-1">
                     Pour chaque app : ce qu'elle fait · ce qu'elle gagne · sa faille ·
-                    votre angle d'attaque.
+                    ton angle d'attaque.
                   </p>
                   <div className="space-y-3.5">
                     {verdict.concurrents.map((c, i) => (
@@ -161,7 +161,7 @@ export default function AuditAppVerdict({
                 )}
                 {hasDiff && (
                   <SectionCard
-                    label="Là où vous pouvez creuser"
+                    label="Là où tu peux creuser"
                     icon={<SparkIcon />}
                     accent="brand"
                   >
@@ -191,7 +191,7 @@ export default function AuditAppVerdict({
                 >
                   <p className="text-grey text-[0.85rem] leading-relaxed mb-4 -mt-1">
                     Pour chaque app : ce qu'elle fait · ce qu'elle gagne · sa faille ·
-                    votre angle d'attaque.
+                    ton angle d'attaque.
                   </p>
                   <div className="space-y-3.5">
                     {verdict.concurrents.map((c, i) => (
@@ -213,7 +213,7 @@ export default function AuditAppVerdict({
               )}
               {hasDiff && (
                 <SectionCard
-                  label="Là où vous pouvez creuser"
+                  label="Là où tu peux creuser"
                   icon={<SparkIcon />}
                   accent="brand"
                 >
@@ -458,7 +458,7 @@ function CompetitorCard({ competitor }) {
               <ArrowRightIcon size={11} />
             </span>
             <p className="text-text/85">
-              <span className="font-semibold text-brand">Votre angle : </span>
+              <span className="font-semibold text-brand">Ton angle : </span>
               {competitor.votre_angle}
             </p>
           </div>

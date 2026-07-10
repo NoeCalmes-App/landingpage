@@ -8,7 +8,7 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 const WELCOME_MESSAGE = {
   role: 'assistant',
-  text: "Bonjour 👋 Je suis l'assistant de Noé. Posez-moi vos questions sur votre projet d'application mobile.",
+  text: "Salut 👋 Je suis l'assistant de Noé. Pose-moi tes questions sur ton projet d'application mobile.",
 }
 
 const DEFAULT_WHATSAPP_URL = `https://wa.me/33658308210?${new URLSearchParams({
@@ -199,7 +199,7 @@ export default function ChatbotWidget({ onBookCall, contactMode = 'chatbot', wha
   //      donner un flash blanc en prod)
   const handleCalendlyClick = useCallback(() => {
     setOpen(false)
-    const el = document.getElementById('calendly-section')
+    const el = document.getElementById('contact-section')
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       history.pushState(null, '', '/rendez-vous')
@@ -342,9 +342,9 @@ export default function ChatbotWidget({ onBookCall, contactMode = 'chatbot', wha
                   onClick={handleCalendlyClick}
                   className="underline underline-offset-2 font-semibold cursor-pointer hover:text-orange-700"
                 >
-                  Prenez rendez-vous avec Noé
+                  Écris directement à Noé
                 </button>
-                {' '}pour répondre à vos questions.
+                {' '}pour répondre à tes questions.
               </div>
             )}
           </div>
@@ -371,7 +371,7 @@ export default function ChatbotWidget({ onBookCall, contactMode = 'chatbot', wha
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={onKeyDown}
-                  placeholder="Posez votre question…"
+                  placeholder="Pose ta question…"
                   rows={1}
                   maxLength={500}
                   disabled={loading}

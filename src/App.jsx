@@ -1,6 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
-import Autoplay from 'embla-carousel-autoplay'
 import './App.css'
 import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
 import MentionsLegales from './MentionsLegales.jsx'
@@ -9,7 +7,6 @@ import Document from './Document.jsx'
 import Documents, { DOCUMENTS } from './Documents.jsx'
 import ContactNoe, { EmailModal } from './ContactNoe.jsx'
 import Legales from './Legales.jsx'
-import Merci from './Merci.jsx'
 import { BlogList, BlogArticlePage, BLOG_ARTICLES } from './Blog.jsx'
 import AuditApp from './audit-app/AuditApp.jsx'
 import SmoothRideMockups from './SmoothRideMockups.jsx'
@@ -35,9 +32,6 @@ const hushIcon = '/assets/images/apps/hushapp.webp'
 const purgeIcon = '/assets/images/apps/purge.webp'
 const snapIcon = '/assets/images/apps/snapmaster.png'
 const calorieVisuel = '/assets/images/apps/calorievisuelle.png'
-const sophiePhoto = '/assets/images/people/fille.jpeg'
-const thomasPhoto = '/assets/images/people/gars.jpeg'
-const medhiPhoto = '/assets/images/people/chefprojet.jpeg'
 
 // Canal de contact unique : WhatsApp (message pré-rempli pour amorcer la qualif).
 // Les CTA de la landing passent d'abord par /rendez-vous. Seuls le bouton de
@@ -80,7 +74,7 @@ const SECTION_ROUTES = {
     description: 'Fais auditer ton application mobile : analyse rapide et recommandations concrètes pour repartir sur de bonnes bases.',
   },
   '/rendez-vous': {
-    id: 'calendly-section',
+    id: 'contact-section',
     title: 'Écrire à Noé sur WhatsApp — Application mobile | Noé Calmes',
     description: 'Un projet d\'application mobile ? Écris directement à Noé sur WhatsApp : c\'est lui qui répond, on voit en 2 messages si ton projet tient la route. Sans engagement.',
   },
@@ -122,77 +116,6 @@ function useScrollReveal(trigger) {
   }, [trigger])
 
   return ref
-}
-
-const REVIEWS = [
-  {
-    name: 'Sophie M.',
-    role: 'Fondatrice',
-    text: 'Noé a livré notre MVP en 6 semaines. Communication fluide il a su challenger nos idées pour aller à l\'essentiel. Je recommande à 100%.',
-    photo: sophiePhoto,
-  },
-  {
-    name: 'Thomas R.',
-    role: 'Co-fondateur',
-    text: 'On avait déjà travaillé avec une agence sans résultat. Noé a repris le projet et nous a livré une app stable et performante, dans les temps et un budget très raisonnable.',
-    photo: thomasPhoto,
-  },
-  {
-    name: 'Medhi D.',
-    role: 'Chef de projet',
-    text: 'Un vrai plaisir de travailler avec quelqu\'un qui comprend autant la technique que le produit. Il ne se contente pas de coder, il pense business.',
-    photo: medhiPhoto,
-  },
-]
-
-function ReviewCard({ name, role, text, photo }) {
-  return (
-    <div className="bg-surface border border-card-border rounded-[15px] p-7 md:p-8 flex flex-col text-left h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_28px_rgba(0,0,0,0.05)]">
-      <p className="text-brand font-bold text-5xl leading-none mb-4 select-none">&ldquo;</p>
-      <p className="text-text text-[0.93rem] leading-relaxed flex-1 mb-6 italic">{text}</p>
-      <div className="flex items-center gap-3">
-        <img
-          src={photo}
-          alt={name}
-          loading="lazy"
-          className="w-10 h-10 rounded-full object-cover shrink-0"
-        />
-        <div>
-          <p className="text-text font-semibold text-[0.9rem]">{name}</p>
-          <p className="text-grey text-[0.8rem]">{role}</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function ReviewsCarousel() {
-  const [emblaRef] = useEmblaCarousel(
-    { loop: true, align: 'start', dragFree: true },
-    [Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true })]
-  )
-
-  return (
-    <>
-      {/* Mobile: Embla infinite carousel */}
-      <div className="md:hidden overflow-hidden" ref={emblaRef}>
-        <div className="flex">
-          {REVIEWS.map(({ name, role, text, photo }) => (
-            <div key={name} className="flex-none w-[80vw] pr-4">
-              <ReviewCard name={name} role={role} text={text} photo={photo} />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Desktop: grid */}
-      <div className="hidden md:grid md:grid-cols-3 gap-6">
-        {REVIEWS.map(({ name, role, text, photo }) => (
-          <ReviewCard key={name} name={name} role={role} text={text} photo={photo} />
-        ))}
-      </div>
-    </>
-  )
 }
 
 const faqItems = [
@@ -250,10 +173,6 @@ function App() {
     const path = (redirect || window.location.pathname).replace(/\/$/, '') || '/'
     if (path === '/espace-client' || path.startsWith('/espace-client/')) return 'client-space'
     if (path === '/maquette-visuel' || path.startsWith('/maquette-visuel/')) return 'maquette-visual'
-    // Route /merci désactivée le 22/06/2026 (ancien funnel Calendly : page
-    // affichée après réservation d'un RDV). Composant Merci.jsx conservé.
-    // Réactiver = décommenter. Voir documentation/archive/funnels/funnel-calendly-2026-06.md
-    // if (path === '/merci') return 'merci'
     if (path === '/documents') return 'documents'
     if (path === '/contactnoe') return 'contact'
     if (path === '/legal') return 'legal'
@@ -324,39 +243,26 @@ function App() {
     }
   }, [])
 
-  // Charge le script Calendly une seule fois (idempotent).
-  // Extrait hors du useEffect pour pouvoir etre appele par goBookCall quand
-  // on bascule depuis une autre page (audit-app, blog, etc.) — le useEffect
-  // de mount ne suffit pas car au boot la section #calendly-section n'existe
-  // pas encore dans le DOM si on n'est pas sur la home.
-  // Calendly retiré du funnel : on ne charge plus son script. La fonction est
-  // conservée en no-op pour ne pas toucher les appelants existants
-  // (goBookCall, useEffect de scroll). La section #calendly-section affiche
-  // désormais un CTA WhatsApp.
-  const loadCalendlyScript = () => {}
-
   useEffect(() => {
-    // Charge le script Calendly :
-    //   - immédiatement si on arrive sur /rendez-vous (le widget est forcément vu)
+    // Déclenche l'indicateur de disponibilités de la section contact :
+    //   - immédiatement si on arrive sur /rendez-vous (la section est forcément vue)
     //   - sinon quand la section approche du viewport (rootMargin 600px)
     // Re-run quand `page` change : si l'utilisateur bascule sur la home depuis
     // une autre page, on a besoin de remonter l'observer car la section
-    // #calendly-section n'existait pas au mount initial.
+    // #contact-section n'existait pas au mount initial.
     if (page !== 'home') return
 
     if (window.location.pathname.replace(/\/$/, '') === '/rendez-vous') {
-      loadCalendlyScript()
       setTimeout(() => setSpotsLoaded(true), AVAILABILITY_CHECK_DELAY_MS)
       return
     }
 
-    const target = document.getElementById('calendly-section')
+    const target = document.getElementById('contact-section')
     if (!target) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          loadCalendlyScript()
           setTimeout(() => setSpotsLoaded(true), AVAILABILITY_CHECK_DELAY_MS)
           observer.disconnect()
         }
@@ -367,20 +273,6 @@ function App() {
     observer.observe(target)
     return () => observer.disconnect()
   }, [page])
-
-  // Listener Calendly désactivé le 22/06/2026 (Calendly retiré du funnel).
-  // Faisait basculer vers /merci après réservation d'un RDV. Conservé pour
-  // réactivation. Voir documentation/archive/funnels/funnel-calendly-2026-06.md
-  // useEffect(() => {
-  //   const handleCalendlyEvent = (e) => {
-  //     if (e.data?.event === 'calendly.event_scheduled') {
-  //       setPage('merci')
-  //       history.pushState(null, '', '/merci')
-  //     }
-  //   }
-  //   window.addEventListener('message', handleCalendlyEvent)
-  //   return () => window.removeEventListener('message', handleCalendlyEvent)
-  // }, [])
 
   const goHome = () => { setPage('home'); history.pushState(null, '', '/'); window.scrollTo(0, 0) }
 
@@ -457,7 +349,6 @@ function App() {
       onAuditApp={goAuditApp}
     />
   )
-  if (page === 'merci') return <Merci onBack={goHome} />
   if (page === 'client-space') return <ClientSpaceBridge />
   if (page === 'maquette-visual') return <MaquetteVisualBridge />
   if (page === 'smoothride-mockups') return <SmoothRideMockups />
@@ -929,8 +820,8 @@ function App() {
         </div>
       </section>
 
-      {/* ========== CALENDLY ========== */}
-      <section className="pt-16 md:pt-22 pb-0 md:pb-0 px-5 bg-card" id="calendly-section">
+      {/* ========== CONTACT WHATSAPP ========== */}
+      <section className="pt-16 md:pt-22 pb-0 md:pb-0 px-5 bg-card" id="contact-section">
         <div className="max-w-275 mx-auto text-center">
           <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-3 min-h-[1.5rem]">
             {spotsLoaded ? (

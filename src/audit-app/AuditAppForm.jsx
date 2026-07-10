@@ -170,13 +170,13 @@ function FormTunnel({ initialFirstName, onSubmit }) {
   return (
     <section className="flex-1 flex flex-col px-8 md:px-10 pt-10 pb-10 md:pt-12 md:pb-14 bg-card">
       <div className="w-full max-w-160 mx-auto">
-        {/* Header du tunnel : label "Votre audit" + pourcentage */}
+        {/* Header du tunnel : label "Ton audit" + pourcentage */}
         <div className="flex items-baseline justify-between mb-3 md:mb-4">
           <p
             className="text-text font-bold text-[0.95rem] md:text-[1.02rem] tracking-tight"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
-            Votre audit
+            Ton audit
           </p>
           <p className="text-brand font-heading font-bold text-[0.95rem] md:text-[1.05rem] tabular-nums">
             {progressPct}%
@@ -373,10 +373,10 @@ function FirstNameStep({ value, onChange, onSubmit, touched }) {
         Pour commencer
       </p>
       <h2 className="font-heading text-text text-xl md:text-2xl font-bold leading-tight mb-3">
-        Comment vous appelez-vous ?
+        Comment tu t'appelles ?
       </h2>
       <p className="text-grey text-[0.92rem] leading-relaxed mb-5">
-        Juste votre prénom, pour personnaliser votre audit.
+        Juste ton prénom, pour personnaliser ton audit.
       </p>
       <input
         ref={inputRef}
@@ -385,14 +385,14 @@ function FirstNameStep({ value, onChange, onSubmit, touched }) {
         value={value}
         onChange={(e) => onChange(capitalizeFirstName(e.target.value))}
         onKeyDown={handleKeyDown}
-        placeholder="Votre prénom"
+        placeholder="Ton prénom"
         className={`w-full px-4 py-3 rounded-xl bg-card border ${
           showError ? 'border-red-text/40' : 'border-card-border'
         } text-text text-[0.95rem] placeholder:text-light-grey focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/15 transition-colors`}
       />
       {showError && (
         <p className="text-red-text text-[0.82rem] mt-2">
-          Merci d'indiquer votre prénom.
+          Merci d'indiquer ton prénom.
         </p>
       )}
     </div>
@@ -606,7 +606,7 @@ function TextareaStep({
         setVoiceActive(false)
         if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
           setVoiceError(
-            'Autorisez l\'accès au micro dans les réglages de votre navigateur pour utiliser la dictée.'
+            'Autorise l\'accès au micro dans les réglages de ton navigateur pour utiliser la dictée.'
           )
         } else {
           setVoiceError('Micro indisponible sur cet appareil.')
@@ -939,7 +939,7 @@ function AnalysisLoading() {
   // 4 phases de ~2s chacune, defilent en boucle tant qu'on attend l'API
   const PHASES = [
     {
-      label: 'Lecture de vos réponses',
+      label: 'Lecture de tes réponses',
       detail: 'Idée, marché, validation, modèle, budget — tout est sur la table.',
     },
     {
@@ -951,7 +951,7 @@ function AnalysisLoading() {
       detail: 'Modèle économique, validation client, viabilité globale.',
     },
     {
-      label: 'Rédaction de votre audit',
+      label: 'Rédaction de ton audit',
       detail: 'Format clair, 3 observations clés, conseils concrets.',
     },
   ]
@@ -1020,7 +1020,7 @@ function AnalysisLoading() {
             Analyse en cours
           </h2>
           <p className="text-grey text-[0.92rem] md:text-[1rem] leading-relaxed mb-7">
-            Votre audit personnalisé est en cours de rédaction.
+            Ton audit personnalisé est en cours de rédaction.
           </p>
 
           {/* Barre de progression numerique */}

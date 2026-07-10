@@ -281,8 +281,10 @@ Le bon prospect n'est pas seulement quelqu'un qui "a une idée". C'est quelqu'un
 
 ## Tonalité
 
-- **Vouvoiement** dans les écrits client formels : landing page, emails, devis, contrats
-- **Tutoiement sur Instagram** (DM, captions, reels, stories) — canal peer-to-peer, cible petits entrepreneurs/créateurs solo, codes de la plateforme + bassin B2B (Théo Lion, Stan Leloup, etc.)
+- **Tutoiement sur tout le parcours chaud** : landing page, `/audit-app` (questions, verdict IA), chatbot, Instagram, WhatsApp (prospection, relances, conversations) — canal peer-to-peer, cible petits entrepreneurs/créateurs solo
+- **Vouvoiement sur le froid et le contractuel** : blog (lecteur SEO qui ne connaît pas Noé), emails, devis, contrats, CGV, LinkedIn (profil, posts, messages)
+- **Premier appel** : démarrer en vouvoiement, puis proposer tôt « est-ce qu'on peut se tutoyer ? » — ça crée la proximité tout en laissant le choix au prospect. Si la relation a commencé sur WhatsApp/Insta en tutoiement, on tutoie directement à l'appel.
+- **Règle transverse** : ne jamais changer de registre en cours de conversation. Un fil commencé en tutoiement (WhatsApp) reste en tutoiement, même si la suite passe par email.
 - Ton direct, structuré, pro mais pas corporate
 - Cadre clair > promesses floues
 - Affirmations > questions dans les écrits formels (le sous-titre hero est une affirmation). Exception : hook par question accepté sur les bios/pubs/reels Insta où le format direct-response l'exige.

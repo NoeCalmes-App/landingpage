@@ -20,7 +20,7 @@ Routes gerees dans `src/App.jsx` :
 
 - `/` — home landing page
 - `/audit-app` — audit gratuit d'idee d'application
-- `/rendez-vous` — section contact WhatsApp de la home (id historique `#calendly-section`)
+- `/rendez-vous` — section contact WhatsApp de la home (`#contact-section`)
 - `/documents` et routes documents
 - `/blog` et `/blog/...`
 - `/espace-client/:clientSlug/:token` et `/espace-client/:token` — facade publique vers l'espace client de Nowork, URL propre sans `/nowork` visible
@@ -29,7 +29,7 @@ Routes gerees dans `src/App.jsx` :
 - `/maquette/aretha`
 - `/maquette/kingfit-coach`
 - `/maquette/pac-assist`, `/maquette/cvc-assist`
-- `/merci`, `/contactnoe`, `/legal`, `/mentions`, `/privacy`, `/cgv`
+- `/contactnoe`, `/legal`, `/mentions`, `/privacy`, `/cgv`
 
 `scripts/generate-routes.js` genere des dossiers SEO dans `dist` pour les routes importantes apres le build.
 
@@ -69,11 +69,11 @@ Tous les CTA de contact de la home et des pages de contenu renvoient d'abord ver
 - le bouton principal dans la section `/rendez-vous` ;
 - le bouton flottant WhatsApp.
 
-Le message pre-rempli commence par `Bonjour Noé`.
+Le message pre-rempli commence par `Salut Noé` (tutoiement, coherent avec le ton de la landing et de l'audit).
 
 Pour les CTA prix/budget, preferer `/audit-app` : exemple dans la section comparaison, `Tarif fixe, sans surprise` puis lien secondaire `Combien coûterait mon app ?` vers `/audit-app`, qui finit lui aussi sur WhatsApp.
 
-`CALENDLY_URL` reste defini dans `src/audit-app/config.js` mais n'est plus utilise (conserve pour reactivation eventuelle). Detail du retrait : `documentation/archive/funnels/funnel-calendly-2026-06.md`.
+Le code Calendly a ete entierement retire du repo (07/2026) : plus de `CALENDLY_URL`, plus de no-op `loadCalendlyScript`, la section contact s'appelle `#contact-section` (ancien id `#calendly-section`). La route `/merci` (page post-RDV Calendly) et `src/Merci.jsx` ont ete supprimes ; `/merci` reste prerendu en noindex pour les vieilles URLs indexees. Detail du retrait : `documentation/archive/funnels/funnel-calendly-2026-06.md` et l'historique git.
 
 ## Tracking Meta
 

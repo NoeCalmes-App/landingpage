@@ -18,7 +18,7 @@ Fichiers principaux :
 - `src/audit-app/AuditAppHero.jsx` — premiere page du funnel.
 - `src/audit-app/AuditAppForm.jsx` — formulaire multi-etapes.
 - `src/audit-app/AuditAppVerdict.jsx` — rendu du recap IA.
-- `src/audit-app/config.js` — questions, options, endpoint API (`CALENDLY_URL` encore present mais inutilise depuis le retrait de Calendly).
+- `src/audit-app/config.js` — questions, options, endpoint API (`CALENDLY_URL` supprime en 07/2026).
 - `src/audit-app/api.js` — POST final vers `VITE_AUDIT_API_URL`.
 - `src/audit-app/storage.js` — persistence locale de l'etat du tunnel.
 

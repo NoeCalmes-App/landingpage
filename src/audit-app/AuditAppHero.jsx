@@ -8,7 +8,7 @@ import { HERO_QUESTIONS } from './config'
 import { trackAuditStart, trackDirectWhatsAppLead } from '../metaTracking.js'
 
 const DIRECT_WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
-  "Bonjour Noé, j'ai un projet d'application et j'aimerais ton avis. Mon projet en deux mots : "
+  "Salut Noé, j'ai un projet d'application et j'aimerais ton avis. Mon projet en deux mots : "
 )}`
 
 // Styles de "papier desordonné" : rotation legere visible sur mobile,
@@ -47,7 +47,7 @@ export default function AuditAppHero({ onStart, onLegal }) {
         </div>
 
         <h1 className="font-heading text-[2.05rem] sm:text-[2.45rem] md:text-[2.9rem] lg:text-[3.2rem] font-extrabold text-text tracking-tight leading-[1.08] mb-8 md:mb-10">
-          Vous vous posez
+          Tu te poses
           <br />
           ces{' '}
           <span className="relative z-0 inline-block whitespace-nowrap text-brand after:content-[''] after:absolute after:-left-2 after:-right-2 after:bottom-[-1px] after:h-[26%] after:rounded after:bg-[rgba(102,93,255,0.22)] after:z-[-1]">
