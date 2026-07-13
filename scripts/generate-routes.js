@@ -147,6 +147,13 @@ const blogRoutes = [
     content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
   },
   {
+    path: '/blog/modele-economique-application-mobile',
+    title: 'Modèle économique d\'une application mobile | Noé Calmes',
+    description: 'Abonnement, freemium, achats intégrés ou publicité : quel modèle économique choisir pour ton application mobile ? Le guide pour décider selon ton cas.',
+    heading: 'Modèle économique d\'une application mobile : lequel choisir',
+    content: 'Abonnement, freemium, achats intégrés ou publicité : comment choisir le modèle économique de ton application mobile selon la valeur qu\'elle apporte, la fréquence d\'usage et ton public. Le modèle ne suffit pas, la conception de la conversion fait la différence.',
+  },
+  {
     path: '/blog/combien-rapporte-application-mobile',
     title: 'Combien rapporte une application mobile en 2026 ? | Noé Calmes',
     description: 'Combien rapporte vraiment une application mobile en 2026 ? Chiffres réels, leviers de revenus et l\'exemple d\'une app à 13 000 € par mois.',
