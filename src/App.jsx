@@ -119,7 +119,7 @@ function useScrollReveal(trigger) {
 }
 
 const faqItems = [
-  { q: 'Comment fonctionne la tarification ?', a: 'Tarif fixe, défini avant de commencer : en général 5 à 10k en mobile selon la complexité. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.' },
+  { q: 'Comment fonctionne la tarification ?', a: 'Tarif fixe, défini avant de commencer : en général 5 à 12k en mobile selon la complexité. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.' },
   { q: 'Combien de temps faut-il pour avoir une application mobile ?', a: 'Une première version en 4 à 6 semaines en moyenne. Pour une application complète, le délai dépend du périmètre, on le cale ensemble.' },
   { q: 'Après la livraison de l\'application ?', a: 'Je disparais pas après la mise en ligne : corrections, mises à jour, évolutions, accompagnement, je reste dispo. On définit ensemble ce qui est nécessaire selon comment ton app évolue.' },
 ]
@@ -759,7 +759,7 @@ function App() {
                 {[
                   'Pensé pour transformer tes utilisateurs en clients',
                   'Maquette offerte avant de payer',
-                  'Tarif fixe, sans surprise',
+                  'Tarif fixe, à partir de 5 000 €',
                   'Joignable directement 6j/7',
                   'Livraison en 4 à 6 semaines',
                 ].map((item) => (
@@ -767,7 +767,7 @@ function App() {
                     <svg className="shrink-0 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    {item === 'Tarif fixe, sans surprise' ? (
+                    {item === 'Tarif fixe, à partir de 5 000 €' ? (
                       <span>
                         {item}.{' '}
                         <a
