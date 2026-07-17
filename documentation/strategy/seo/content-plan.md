@@ -30,7 +30,7 @@ On ne se bat PAS sur les têtes de gondole d'agence (« créer une application m
 | 1 | done | Comment rentabiliser une application mobile (PAGE PILIER) | Le hub du cluster, vue d'ensemble des modèles de revenus |
 | 2 | done | Combien rapporte une application mobile en 2026 | Curiosité + chiffres réels + preuve Calories |
 | 3 | done | Modèle économique d'une application mobile : lequel choisir | Abonnement vs freemium vs achats in-app vs pub |
-| 4 | pending | Application par abonnement : comment ça marche et combien ça rapporte | Le modèle le plus rentable, expliqué |
+| 4 | done | Application par abonnement : comment ça marche et combien ça rapporte | Le modèle le plus rentable, expliqué |
 | 5 | pending | Comment transformer une idée d'application en business rentable | De l'idée au revenu, la méthode |
 | 6 | pending | Pourquoi 90 % des applications ne rapportent rien (et comment éviter ça) | L'angle fort de Noé : la différence c'est l'expertise |
 | 7 | pending | Freemium ou abonnement : quel modèle pour ton application | Comparatif décisionnel |

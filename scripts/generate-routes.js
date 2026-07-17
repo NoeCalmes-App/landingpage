@@ -147,6 +147,13 @@ const blogRoutes = [
     content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
   },
   {
+    path: '/blog/application-par-abonnement',
+    title: 'Application par abonnement : combien ça rapporte | Noé Calmes',
+    description: 'Comment marche une application par abonnement, combien elle peut rapporter, et comment convertir tes utilisateurs en abonnés qui restent.',
+    heading: 'Application par abonnement : comment ça marche et combien ça rapporte',
+    content: 'Fonctionnement, revenu mensuel récurrent, formules mensuelles et annuelles, conversion et rétention : comment concevoir une application par abonnement qui transforme ses utilisateurs en clients qui restent.',
+  },
+  {
     path: '/blog/modele-economique-application-mobile',
     title: 'Modèle économique d\'une application mobile | Noé Calmes',
     description: 'Abonnement, freemium, achats intégrés ou publicité : quel modèle économique choisir pour ton application mobile ? Le guide pour décider selon ton cas.',
