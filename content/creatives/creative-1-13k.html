@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Créative 1 — 13 000 €/mois</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #665dff;
+    --brand2: #9e94ff;
+    --text: #131313;
+    --grey: #6b6b6b;
+    --bg: #fffefc;
+    --card: #f6f5ff;
+    --red: #e5484d;
+    --green: #18a058;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+  }
+  .slide {
+    position: absolute; inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5vh 7vw;
+    gap: 3.2vh;
+  }
+  .slide.active { display: flex; animation: pop .45s cubic-bezier(.2,.8,.25,1); }
+  @keyframes pop {
+    from { opacity: 0; transform: translateY(26px) scale(.985); }
+    to   { opacity: 1; transform: none; }
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: .55em;
+    background: #fff; border: 1.5px solid #e8e6ff;
+    border-radius: 999px; padding: .55em 1.1em;
+    font-size: 2.1vh; font-weight: 700; color: var(--text);
+    box-shadow: 0 2px 14px rgba(102,93,255,.12);
+  }
+  .pill .dot { width: .6em; height: .6em; border-radius: 50%; background: var(--brand); animation: pulse 1.6s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: .35 } }
+  h1 { font-size: 9.5vh; font-weight: 800; letter-spacing: -.02em; line-height: 1.06; }
+  h2 { font-size: 6.4vh; font-weight: 800; letter-spacing: -.02em; line-height: 1.12; }
+  .grad {
+    background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .sub { font-size: 3vh; color: var(--grey); font-weight: 500; max-width: 62vw; line-height: 1.45; }
+  .tags { display: flex; gap: 1.4vh; flex-wrap: wrap; justify-content: center; }
+  .tag {
+    background: var(--card); border: 1.5px solid #e8e6ff; border-radius: 999px;
+    padding: .7em 1.3em; font-size: 2.5vh; font-weight: 700;
+  }
+  .tag.bad { background: #fff5f5; border-color: #ffd9d9; color: var(--red); }
+  .statline { display: flex; align-items: baseline; gap: 1.2vw; }
+  .big { font-size: 14vh; font-weight: 800; letter-spacing: -.03em; }
+
+  /* Téléphone dessiné en CSS */
+  .phone {
+    width: 24vh; height: 48vh; background: #fff;
+    border: 3px solid #17171a; border-radius: 4.2vh;
+    box-shadow: 0 24px 60px -28px rgba(19,19,19,.35);
+    padding: 2vh 1.6vh; display: flex; flex-direction: column; gap: 1.2vh;
+    position: relative; text-align: left;
+  }
+  .phone::before {
+    content: ''; position: absolute; top: 1vh; left: 50%; transform: translateX(-50%);
+    width: 7vh; height: 1.1vh; background: #17171a; border-radius: 999px;
+  }
+  .p-title { margin-top: 2.2vh; font-size: 1.9vh; font-weight: 800; }
+  .p-line { height: 1.3vh; border-radius: 999px; background: #ececf4; }
+  .p-line.w60 { width: 60%; } .p-line.w80 { width: 80%; } .p-line.w40 { width: 40%; }
+  .p-cta {
+    margin-top: auto; background: var(--brand); color: #fff; border-radius: 999px;
+    text-align: center; font-size: 1.7vh; font-weight: 800; padding: 1.4vh 0;
+  }
+  .p-price { font-size: 3.4vh; font-weight: 800; margin: .6vh 0; }
+  .p-badge {
+    align-self: flex-start; font-size: 1.4vh; font-weight: 800; color: var(--brand);
+    background: #efedff; padding: .4em .9em; border-radius: 999px;
+  }
+  .p-check { display: flex; align-items: center; gap: .6em; font-size: 1.6vh; font-weight: 600; color: var(--grey); }
+  .p-check::before { content: '✓'; color: var(--green); font-weight: 800; }
+  .row { display: flex; align-items: center; gap: 4vw; }
+
+  .duo { display: flex; gap: 3vw; align-items: stretch; }
+  .duo .col {
+    background: #fff; border: 2px solid #ececf4; border-radius: 3vh;
+    padding: 4.5vh 3.5vw; width: 34vw;
+    display: flex; flex-direction: column; gap: 1.6vh; align-items: center; justify-content: center;
+  }
+  .duo .col.win { border-color: var(--brand); background: #f8f7ff; box-shadow: 0 22px 55px -34px rgba(102,93,255,.55); }
+  .duo .who { font-size: 2.3vh; font-weight: 800; color: var(--grey); text-transform: uppercase; letter-spacing: .08em; }
+  .duo .win .who { color: var(--brand); }
+  .duo .what { font-size: 4vh; font-weight: 800; line-height: 1.15; }
+
+  .strike { font-size: 6vh; font-weight: 800; color: #b7b7c4; text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: .09em; }
+  .arrowdown { font-size: 5vh; color: var(--brand); }
+
+  .cta-list { display: flex; flex-direction: column; gap: 1.8vh; align-items: flex-start; }
+  .cta-item { display: flex; align-items: center; gap: .7em; font-size: 3.4vh; font-weight: 700; }
+  .cta-item::before { content: '✓'; color: #fff; background: var(--brand); border-radius: 50%; width: 1.35em; height: 1.35em; display: inline-flex; align-items: center; justify-content: center; font-size: .75em; }
+
+  .counter {
+    position: fixed; bottom: 2.4vh; right: 2.4vw; z-index: 10;
+    font-size: 1.8vh; font-weight: 700; color: #c9c7d8;
+  }
+  .hint { position: fixed; bottom: 2.4vh; left: 2.4vw; font-size: 1.6vh; color: #d4d2e2; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — Hook -->
+<section class="slide active">
+  <div class="pill"><span class="dot"></span>Histoire vraie</div>
+  <h1><span class="grad">13 000 €</span> / mois</h1>
+  <p class="sub">générés par <strong>une seule application mobile</strong>.<br>Et l'idée est banale.</p>
+</section>
+
+<!-- SLIDE 2 — Le contexte -->
+<section class="slide">
+  <h2>Une app de <span class="grad">calories</span>.</h2>
+  <div class="tags">
+    <span class="tag bad">Marché saturé</span>
+    <span class="tag bad">Des géants en face</span>
+    <span class="tag bad">Peu de téléchargements</span>
+  </div>
+</section>
+
+<!-- SLIDE 3 — La vraie raison -->
+<section class="slide">
+  <p class="sub" style="font-size:3.4vh">Pourquoi elle rapporte autant&nbsp;?</p>
+  <h2>Pas l'idée.<br><span class="grad">La conception.</span></h2>
+</section>
+
+<!-- SLIDE 4 — Les 3 premières minutes -->
+<section class="slide">
+  <div class="row">
+    <div class="phone">
+      <span class="p-badge">Écran 1 sur 3</span>
+      <p class="p-title">Ton objectif&nbsp;?</p>
+      <div class="p-line w80"></div>
+      <div class="p-line w60"></div>
+      <div class="p-line w40"></div>
+      <div class="p-cta">Continuer</div>
+    </div>
+    <div style="text-align:left; max-width:38vw">
+      <h2 style="font-size:5.4vh">Les 3 premières minutes.</h2>
+      <p class="sub" style="max-width:none; margin-top:2vh"><strong style="color:var(--red)">55 % des utilisateurs</strong> abandonnent une app <strong>le premier jour</strong>.<br>Ici, chaque écran est pensé pour les garder.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — L'écran d'abonnement -->
+<section class="slide">
+  <div class="row">
+    <div style="text-align:right; max-width:38vw">
+      <h2 style="font-size:5.4vh">L'écran d'abonnement.</h2>
+      <p class="sub" style="max-width:none; margin-top:2vh">Posé <strong>au bon moment</strong>, avec <strong>la bonne offre</strong>.<br>C'est lui qui transforme un curieux en client payant.</p>
+    </div>
+    <div class="phone">
+      <span class="p-badge">Essai gratuit</span>
+      <p class="p-title">Passe en illimité</p>
+      <p class="p-price">4,99 € <span style="font-size:1.6vh; color:var(--grey); font-weight:600">/ semaine</span></p>
+      <div class="p-check">7 jours offerts</div>
+      <div class="p-check">Annulable en 1 clic</div>
+      <div class="p-check">Toutes les analyses</div>
+      <div class="p-cta">Commencer l'essai</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — La rétention -->
+<section class="slide">
+  <h2>Une raison de revenir<br><span class="grad">chaque jour</span>.</h2>
+  <p class="sub">Un client qui reste, c'est un abonnement<br>qui tourne <strong>tous les mois</strong>. Automatiquement.</p>
+</section>
+
+<!-- SLIDE 7 — Agence vs Noé -->
+<section class="slide">
+  <div class="duo">
+    <div class="col">
+      <span class="who">Une agence</span>
+      <p class="what">Te livre une app<br>qui existe.</p>
+    </div>
+    <div class="col win">
+      <span class="who">Moi</span>
+      <p class="what">Je conçois une app<br>qui rapporte.</p>
+    </div>
+  </div>
+  <p class="sub">C'est pas le même métier.</p>
+</section>
+
+<!-- SLIDE 8 — Le prix -->
+<section class="slide">
+  <p class="strike">Agence&nbsp;: 15 000 à 50 000 €</p>
+  <div class="arrowdown">↓</div>
+  <h1 style="font-size:8vh"><span class="grad">5 000 – 12 000 €</span></h1>
+  <p class="sub"><strong>Prix fixe.</strong> Tu sais tout avant de commencer.</p>
+</section>
+
+<!-- SLIDE 9 — CTA -->
+<section class="slide">
+  <h2>Ton idée + ce budget&nbsp;?</h2>
+  <div class="cta-list">
+    <span class="cta-item">Réponds au formulaire</span>
+    <span class="cta-item">Je t'appelle dans la journée</span>
+    <span class="cta-item">Ton idée reste entre nous — NDA</span>
+  </div>
+</section>
+
+<div class="counter"><span id="cur">1</span> / <span id="total"></span></div>
+<div class="hint">clic / espace → suivant · ← retour · R recommencer</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  let i = 0;
+  document.getElementById('total').textContent = slides.length;
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('active', k === i));
+    document.getElementById('cur').textContent = i + 1;
+  }
+  document.body.addEventListener('click', () => show(i + 1));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === ' ' || e.key === 'ArrowRight') { e.preventDefault(); show(i + 1); }
+    if (e.key === 'ArrowLeft') show(i - 1);
+    if (e.key.toLowerCase() === 'r') show(0);
+  });
+</script>
+</body>
+</html>

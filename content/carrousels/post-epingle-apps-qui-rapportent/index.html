@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Post épinglé — Applications qui rapportent</title>
+  <style>
+    @font-face {
+      font-family: "Geist";
+      src: url("../../../public/assets/fonts/geist/Geist-SemiBold.woff2") format("woff2");
+      font-weight: 600;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Geist";
+      src: url("../../../public/assets/fonts/geist/Geist-Bold.woff2") format("woff2");
+      font-weight: 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Geist";
+      src: url("../../../public/assets/fonts/geist/Geist-Black.woff2") format("woff2");
+      font-weight: 900;
+      font-display: swap;
+    }
+
+    :root {
+      --ink: #101014;
+      --paper: #f8f8f5;
+      --brand: #665dff;
+      --brand-soft: #9d96ff;
+      --night: #11101c;
+      --green: #baf04b;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      background: #dddde2;
+      color: var(--ink);
+      font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    .slide {
+      position: relative;
+      display: none;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      padding: 82px;
+      background: var(--paper);
+      isolation: isolate;
+    }
+    .slide.active { display: block; }
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .22;
+      background-image: radial-gradient(circle, rgba(16,16,20,.08) 0 .75px, transparent .9px);
+      background-size: 18px 18px;
+      pointer-events: none;
+    }
+
+    h1, p { margin: 0; }
+    h1 {
+      font-size: 94px;
+      font-weight: 900;
+      letter-spacing: -.065em;
+      line-height: .98;
+    }
+    .accent { color: var(--brand); }
+    .signature {
+      position: absolute;
+      z-index: 10;
+      top: 62px;
+      left: 82px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .signature::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 5px;
+      background: var(--brand);
+      transform: rotate(8deg);
+    }
+    .signature.light { color: #fff; }
+    .signature.light::before { background: #fff; }
+
+    /* Couverture */
+    .cover {
+      background: #f7f7f5;
+    }
+    .cover::after { display: none; }
+    .cover-copy {
+      position: absolute;
+      left: 152px;
+      right: 48px;
+      top: 715px;
+    }
+    .cover-copy .signature {
+      position: static;
+      margin-bottom: 56px;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: .075em;
+    }
+    .cover-line {
+      max-width: 880px;
+      font-size: 70px;
+      font-weight: 600;
+      letter-spacing: -.055em;
+      line-height: 1.03;
+    }
+    .cover-line.strong {
+      margin-top: 16px;
+      font-weight: 600;
+    }
+    .cover-line.strong span {
+      font-weight: 900;
+      background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Les trois leviers */
+    .levers {
+      color: var(--ink);
+      background: #f7f7f5;
+    }
+    .levers .signature {
+      display: flex;
+      color: var(--ink);
+    }
+    .levers::after { display: none; }
+    .lever-copy {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 790px;
+      transform: translate(-50%, -50%);
+    }
+    .lever-brace {
+      width: 760px;
+      margin: 0 auto 58px;
+      color: #5f57e9;
+      text-align: center;
+    }
+    .lever-brace span {
+      display: block;
+      margin-bottom: 13px;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -.025em;
+    }
+    .lever-brace svg {
+      display: block;
+      width: 100%;
+      height: 62px;
+      overflow: visible;
+    }
+    .lever-line {
+      font-size: 69px;
+      font-weight: 600;
+      letter-spacing: -.055em;
+      line-height: 1.04;
+    }
+    .lever-line + .lever-line { margin-top: 23px; }
+    .lever-line span {
+      color: var(--brand);
+      font-weight: 900;
+    }
+    .ui-row {
+      position: absolute;
+      left: 82px;
+      right: 82px;
+      bottom: 92px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .ui-card {
+      height: 470px;
+      padding: 25px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 37px;
+      background: rgba(255,255,255,.07);
+      box-shadow: 0 26px 65px rgba(0,0,0,.18);
+    }
+    .ui-card small {
+      display: block;
+      margin-bottom: 22px;
+      color: rgba(255,255,255,.42);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .ui-title {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      line-height: 1.08;
+    }
+    .progress {
+      display: flex;
+      gap: 7px;
+      margin: 25px 0 27px;
+    }
+    .progress i {
+      flex: 1;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.16);
+    }
+    .progress i.on { background: var(--brand-soft); }
+    .choice {
+      margin-top: 11px;
+      padding: 15px 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 15px;
+      color: rgba(255,255,255,.68);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .choice.on {
+      color: #fff;
+      border-color: rgba(157,150,255,.7);
+      background: rgba(102,93,255,.17);
+    }
+    .pay-icon {
+      width: 53px;
+      height: 53px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 24px 0 22px;
+      border-radius: 18px;
+      background: var(--brand);
+      font-size: 24px;
+      font-weight: 900;
+    }
+    .price {
+      margin-top: 22px;
+      padding: 16px;
+      border: 1px solid rgba(157,150,255,.65);
+      border-radius: 16px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 900;
+    }
+    .mini-button {
+      margin-top: 12px;
+      padding: 16px 10px;
+      border-radius: 15px;
+      color: #fff;
+      background: var(--brand);
+      text-align: center;
+      font-size: 14px;
+      font-weight: 900;
+    }
+    .days {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      height: 150px;
+      margin-top: 34px;
+      gap: 8px;
+    }
+    .day {
+      flex: 1;
+      border-radius: 9px 9px 5px 5px;
+      background: rgba(255,255,255,.13);
+    }
+    .day:nth-child(1) { height: 46%; }
+    .day:nth-child(2) { height: 68%; }
+    .day:nth-child(3) { height: 56%; }
+    .day:nth-child(4) { height: 92%; background: var(--brand-soft); }
+    .day:nth-child(5) { height: 78%; background: rgba(157,150,255,.62); }
+    .streak {
+      margin-top: 18px;
+      color: rgba(255,255,255,.68);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    /* Preuve */
+    .proof {
+      background:
+        radial-gradient(circle at 88% 12%, rgba(102,93,255,.12), transparent 30%),
+        #f7f7f5;
+    }
+    .proof::after { display: none; }
+    .proof-heading {
+      position: absolute;
+      left: 150px;
+      right: 100px;
+      top: 250px;
+      max-width: 760px;
+      font-size: 67px;
+      font-weight: 900;
+      letter-spacing: -.06em;
+      line-height: 1.02;
+    }
+    .proof-stats {
+      position: absolute;
+      left: 150px;
+      right: 100px;
+      top: 610px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+    }
+    .proof-stat + .proof-stat {
+      padding-left: 55px;
+      border-left: 2px solid #dedde8;
+    }
+    .proof-stat strong {
+      display: inline-block;
+      font-size: 120px;
+      font-weight: 900;
+      letter-spacing: -.08em;
+      line-height: .9;
+      background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .proof-stat span {
+      display: block;
+      max-width: 310px;
+      margin-top: 28px;
+      color: #4f4f5c;
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: -.025em;
+      line-height: 1.22;
+    }
+    .conclusion-copy {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: max-content;
+      max-width: 880px;
+      transform: translate(-50%, -50%);
+      text-align: left;
+    }
+    .conclusion-line {
+      max-width: none;
+      color: #aaaab4;
+      font-size: 68px;
+      font-weight: 600;
+      letter-spacing: -.055em;
+      line-height: 1.04;
+    }
+    .conclusion-line.final {
+      margin-top: 72px;
+      color: var(--ink);
+    }
+    .conclusion-line.final span {
+      font-weight: 900;
+      background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Signature finale */
+    .motto {
+      background: #f7f7f5;
+    }
+    .motto::after { display: none; }
+    .motto-copy {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 920px;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .motto-main {
+      font-size: 78px;
+      font-weight: 900;
+      letter-spacing: -.045em;
+      line-height: 1.04;
+    }
+    .motto-main span {
+      background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .motto-sub {
+      margin-top: 25px;
+      color: #777782;
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: -.025em;
+    }
+    @media (max-width: 1080px) {
+      body { overflow: hidden; }
+      .slide {
+        transform-origin: top left;
+        transform: scale(calc(100vw / 1080));
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="slide cover active" data-slide="1">
+    <div class="cover-copy">
+      <div class="signature">Noé Calmes</div>
+      <p class="cover-line">Je ne fais pas que créer<br>des apps.</p>
+      <p class="cover-line strong">Je crée des apps qui<br><span>rapportent.</span></p>
+    </div>
+  </section>
+
+  <section class="slide levers" data-slide="2">
+    <div class="lever-copy">
+      <div class="lever-brace">
+        <span>Ce qui fait la différence</span>
+        <svg viewBox="0 0 815 62" aria-hidden="true">
+          <path d="M3 55 C38 55 38 22 82 22 H332 C372 22 378 4 407 4 C436 4 442 22 482 22 H733 C777 22 777 55 812 55" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <p class="lever-line">Onboarding qui <span>convainc.</span></p>
+      <p class="lever-line">Paywall qui <span>convertit.</span></p>
+      <p class="lever-line">Rétention qui <span>fidélise.</span></p>
+    </div>
+  </section>
+
+  <section class="slide proof" data-slide="3">
+    <div class="conclusion-copy">
+      <p class="conclusion-line">Le but n'est pas d'avoir<br>des utilisateurs.</p>
+      <p class="conclusion-line final">Le but, c'est d'en faire<br><span>des clients qui paient.</span></p>
+    </div>
+  </section>
+
+  <section class="slide motto" data-slide="4">
+    <div class="motto-copy">
+      <p class="motto-main">UNE IDÉE. UNE APP.<br><span>DES REVENUS.</span></p>
+      <p class="motto-sub">De la stratégie au lancement.</p>
+    </div>
+  </section>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const params = new URLSearchParams(location.search);
+    let current = Math.min(Math.max(Number(params.get('slide') || 1), 1), slides.length) - 1;
+
+    function show(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+      const url = new URL(location.href);
+      url.searchParams.set('slide', String(current + 1));
+      history.replaceState({}, '', url);
+    }
+
+    addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight' || event.key === ' ') show(current + 1);
+      if (event.key === 'ArrowLeft') show(current - 1);
+    });
+
+    show(current);
+  </script>
+</body>
+</html>

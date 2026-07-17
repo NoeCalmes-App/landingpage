@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Créative 3 — La vérité sur le prix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #665dff;
+    --ink: #111114;
+    --grey: #6b6b73;
+    --ok: #16a34a;
+    --bad: #e11d48;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    background: #000;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  /* Scène au format exact de la zone haute de la vidéo (1080x920).
+     Le noir autour fusionne avec le fond CapCut : zéro recadrage. */
+  .stage {
+    position: relative; overflow: hidden;
+    background: #fff; color: var(--ink);
+    container-type: size;
+    width: min(1080px, 100vw, calc(100vh * 1080 / 920));
+    height: min(920px, 100vh, calc(100vw * 920 / 1080));
+    font-family: 'Inter', -apple-system, sans-serif;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'ss01' on, 'cv11' on;
+  }
+  .view {
+    position: absolute; inset: 0; display: none;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 5cqh 7cqw 9cqh;
+  }
+  .view.active { display: flex; animation: fade .35s ease; }
+  .block { display: flex; flex-direction: column; align-items: center; gap: 5.5cqh; }
+  @keyframes fade { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: none } }
+  .r  { animation: rise .5s .05s cubic-bezier(.2,.8,.25,1) backwards; }
+  .r2 { animation: rise .5s .18s cubic-bezier(.2,.8,.25,1) backwards; }
+  .r3 { animation: rise .5s .32s cubic-bezier(.2,.8,.25,1) backwards; }
+
+  h1 { font-size: 6.37cqh; font-weight: 800; letter-spacing: -.03em; line-height: 1.15; }
+  .huge { font-size: 9.44cqh; font-weight: 800; letter-spacing: -.04em; line-height: 1.1; }
+  .sub { font-size: 2.83cqh; font-weight: 600; color: var(--grey); }
+
+  /* P2 — devis décomposé */
+  .quote {
+    background: #fff; border: 1.5px solid #ececf1; border-radius: 3.54cqh;
+    box-shadow: 0 24px 55px -26px rgba(17,17,20,.3);
+    width: 73.16cqh; max-width: 82cqw; padding: 4.25cqh 4.25cqh 3.54cqh; text-align: left;
+    display: flex; flex-direction: column; gap: 2.12cqh;
+  }
+  .quote .qhead { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 1.89cqh; border-bottom: 1.5px solid #ececf1; }
+  .quote .qhead b { font-size: 3.07cqh; letter-spacing: -.015em; }
+  .quote .qhead .total { font-size: 3.78cqh; font-weight: 800; }
+  .qrow {
+    display: flex; justify-content: space-between; font-size: 2.71cqh; font-weight: 600; color: #4a4a52;
+    opacity: 0; animation: rise .4s cubic-bezier(.2,.8,.25,1) forwards;
+  }
+  .quote .qrow:nth-of-type(1){animation-delay:.1s}.quote .qrow:nth-of-type(2){animation-delay:.25s}
+  .quote .qrow:nth-of-type(3){animation-delay:.4s}.quote .qrow:nth-of-type(4){animation-delay:.55s}.quote .qrow:nth-of-type(5){animation-delay:.7s}.quote .qrow:nth-of-type(6){animation-delay:.85s}
+  .qrow .amt { font-weight: 700; }
+  .qrow.dim { color: #a1a1aa; }
+  .qrow.dim .amt { color: var(--bad); }
+
+  /* P3 — l'autre extrême */
+  .chips { display: flex; gap: 2.36cqh; flex-wrap: wrap; justify-content: center; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 1.42cqh;
+    background: #fff; border: 1.5px solid #ececf1; border-radius: 999px;
+    box-shadow: 0 12px 30px -18px rgba(17,17,20,.2);
+    padding: 2.12cqh 4.01cqh; font-size: 3.19cqh; font-weight: 700; letter-spacing: -.015em;
+    opacity: 0; animation: rise .45s cubic-bezier(.2,.8,.25,1) forwards;
+  }
+  .chips .chip:nth-child(1){animation-delay:.05s}.chips .chip:nth-child(2){animation-delay:.22s}.chips .chip:nth-child(3){animation-delay:.4s}
+  .chip .x { color: var(--bad); font-weight: 800; }
+
+  /* P4 — l'échelle */
+  .scale { display: flex; gap: 2.2cqh; align-items: stretch; flex-wrap: nowrap; justify-content: center; }
+  .tier {
+    border-radius: 3.07cqh; padding: 3.2cqh 2.8cqh; width: 28cqh; max-width: 29cqw;
+    display: flex; flex-direction: column; gap: 0.94cqh; align-items: center;
+    opacity: 0; animation: rise .45s cubic-bezier(.2,.8,.25,1) forwards;
+  }
+  .scale .tier:nth-child(1){animation-delay:.05s}.scale .tier:nth-child(2){animation-delay:.25s}.scale .tier:nth-child(3){animation-delay:.45s}
+  .tier .p { font-size: 3.78cqh; font-weight: 800; letter-spacing: -.02em; }
+  .tier .d { font-size: 2.24cqh; font-weight: 600; }
+  .tier.low { background: #fdf2f4; color: #b91c3c; }
+  .tier.mid { background: var(--brand); color: #fff; box-shadow: 0 20px 45px -18px rgba(102,93,255,.55); transform: scale(1.06); }
+  .tier.high { background: #f1f1f4; color: #6b6b73; }
+
+  /* P5 — inclus */
+  .terms { display: flex; flex-direction: column; gap: 2.24cqh; text-align: left; }
+  .term { display: flex; align-items: center; gap: 2.36cqh; opacity: 0; animation: rise .4s cubic-bezier(.2,.8,.25,1) forwards; }
+  .terms .term:nth-child(1){animation-delay:.05s}.terms .term:nth-child(2){animation-delay:.18s}
+  .terms .term:nth-child(3){animation-delay:.31s}.terms .term:nth-child(4){animation-delay:.44s}
+  .terms .term:nth-child(5){animation-delay:.57s}
+  .term .v { color: var(--ok); font-weight: 800; font-size: 3.07cqh; }
+  .term .t { font-size: 3.3cqh; font-weight: 700; letter-spacing: -.015em; }
+
+  /* P6 — identité */
+  .pills { display: flex; gap: 2.12cqh; flex-wrap: wrap; justify-content: center; }
+  .whopill {
+    display: inline-flex; align-items: center; gap: 1.42cqh;
+    border: 1.5px solid #ececf1; border-radius: 999px; padding: 1.65cqh 3.3cqh;
+    font-size: 2.48cqh; font-weight: 600; color: #3c3c44;
+    box-shadow: 0 8px 22px -14px rgba(17,17,20,.18);
+  }
+  .whopill .dot { width: 1.42cqh; height: 1.42cqh; border-radius: 50%; background: var(--brand); }
+
+  /* P7 — CTA */
+  .ctabtn {
+    display: inline-flex; align-items: center; gap: 1.65cqh;
+    background: var(--brand); color: #fff; border-radius: 999px;
+    font-weight: 700; font-size: 2.83cqh; letter-spacing: -.01em; padding: 2.48cqh 5.43cqh;
+    box-shadow: 0 18px 40px -16px rgba(102,93,255,.55);
+  }
+  .ctabtn svg { width: 2.6cqh; height: 2.6cqh; }
+  .conf { font-size: 2.36cqh; font-weight: 600; color: var(--grey); margin-top: -0.94cqh; }
+  .site { font-size: 2.48cqh; font-weight: 800; letter-spacing: -.01em; margin-top: -2.12cqh; }
+
+  .next {
+    position: absolute; bottom: 3.54cqh; left: 50%; transform: translateX(-50%);
+    width: 6.61cqh; height: 6.61cqh; border-radius: 50%;
+    background: var(--brand); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 12px 28px -10px rgba(102,93,255,.5);
+    transition: transform .15s ease;
+  }
+  .next:hover { transform: translateX(-50%) scale(1.06); }
+  .next svg { width: 2.48cqh; height: 2.48cqh; stroke: #fff; }
+</style>
+</head>
+<body>
+<div class="stage">
+
+<!-- P1 · HOOK -->
+<section class="view active">
+  <div class="block">
+    <p class="huge r">La vérité sur le prix<br>d'une application.</p>
+    <p class="sub r2">celle qu'on te dira jamais en rendez-vous</p>
+  </div>
+</section>
+
+<!-- P2 · LE DEVIS DÉCOMPOSÉ -->
+<section class="view">
+  <div class="block">
+    <h1 class="r">Un devis d'agence, en vrai.</h1>
+    <div class="quote r2">
+      <div class="qhead"><b>Devis — Application mobile</b><span class="total">30 000 €</span></div>
+      <div class="qrow"><span>Développement</span><span class="amt">10 000 €</span></div>
+      <div class="qrow"><span>Design des écrans</span><span class="amt">3 000 €</span></div>
+      <div class="qrow dim"><span>Chef de projet</span><span class="amt">5 000 €</span></div>
+      <div class="qrow dim"><span>Commercial & avant-vente</span><span class="amt">4 000 €</span></div>
+      <div class="qrow dim"><span>Frais de structure & marge</span><span class="amt">8 000 €</span></div>
+      <div class="qrow dim" style="border-top:1.5px solid #ececf1; padding-top:1.6cqh"><span>Délai de développement</span><span class="amt">6 mois</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- P3 · L'AUTRE EXTRÊME -->
+<section class="view">
+  <div class="block">
+    <h1 class="r">Et l'option pas chère.</h1>
+    <div class="chips">
+      <span class="chip"><span class="x">✕</span>Développeur à 3 000 €</span>
+      <span class="chip"><span class="x">✕</span>Application générée par IA</span>
+      <span class="chip"><span class="x">✕</span>No-code</span>
+    </div>
+    <p class="sub r3">une application qui existe… mais qui rapporte rien</p>
+  </div>
+</section>
+
+<!-- P4 · LA VÉRITÉ -->
+<section class="view">
+  <div class="block">
+    <h1 class="r">La vérité est au milieu.</h1>
+    <div class="scale">
+      <div class="tier low"><span class="p">3 000 €</span><span class="d">une application qui existe</span></div>
+      <div class="tier mid"><span class="p">5 – 12 000 €</span><span class="d">une application qui rapporte</span></div>
+      <div class="tier high"><span class="p">30 000 €</span><span class="d">le même travail, payé le triple</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- P5 · CE QUE ÇA INCLUT -->
+<section class="view">
+  <div class="block">
+    <h1 class="r">Ce que t'es en droit d'exiger.</h1>
+    <div class="terms">
+      <div class="term"><span class="v">✓</span><span class="t">La stratégie et le cadrage</span></div>
+      <div class="term"><span class="v">✓</span><span class="t">Des écrans conçus pour vendre</span></div>
+      <div class="term"><span class="v">✓</span><span class="t">Le développement iPhone & Android</span></div>
+      <div class="term"><span class="v">✓</span><span class="t">Le lancement sur les stores</span></div>
+      <div class="term"><span class="v">✓</span><span class="t">Quelqu'un qui reste après</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- P6 · IDENTITÉ -->
+<section class="view">
+  <div class="block">
+    <h1 class="r">En direct.<br>Sans intermédiaire.</h1>
+    <div class="pills r2">
+      <span class="whopill"><span class="dot"></span>Concepteur d'applications</span>
+      <span class="whopill"><span class="dot"></span>+20 apps lancées</span>
+      <span class="whopill"><span class="dot"></span>Prix fixe, zéro surprise</span>
+    </div>
+  </div>
+</section>
+
+<!-- P7 · CTA -->
+<section class="view">
+  <div class="block">
+    <h1 class="r">Ton projet devrait<br>coûter combien&nbsp;?</h1>
+    <div class="ctabtn r2">
+      Obtenir un devis
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg>
+    </div>
+    <p class="conf r3">Je t'appelle dans la journée · Contrat de confidentialité</p>
+    <p class="site r3">noecalmes.fr</p>
+  </div>
+</section>
+
+<button class="next" aria-label="Suivant">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg>
+</button>
+</div>
+
+<script>
+  const views = [...document.querySelectorAll('.view')];
+  const next = document.querySelector('.next');
+  let i = 0;
+  function show(n) {
+    i = Math.max(0, Math.min(views.length - 1, n));
+    views.forEach((v, k) => {
+      v.classList.toggle('active', k === i);
+      if (k === i) v.querySelectorAll('.r,.r2,.r3,.qrow,.chip,.tier,.term').forEach(el => {
+        el.style.animation = 'none'; el.offsetHeight; el.style.animation = '';
+      });
+    });
+    next.style.display = i === views.length - 1 ? 'none' : 'flex';
+  }
+  next.addEventListener('click', (e) => { e.stopPropagation(); show(i + 1); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === ' ' || e.key === 'ArrowRight') { e.preventDefault(); show(i + 1); }
+    if (e.key === 'ArrowLeft') show(i - 1);
+    if (e.key.toLowerCase() === 'r') show(0);
+  });
+  show(0);
+</script>
+</body>
+</html>

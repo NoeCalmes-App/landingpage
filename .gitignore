@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .env*.local
+
+# Archives de livraison locales (les sources restent versionnees)
+content/creatives/carrousel-instagram-apps-qui-rapportent.zip
