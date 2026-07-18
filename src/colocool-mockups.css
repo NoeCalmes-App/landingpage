@@ -589,6 +589,7 @@
 .cc-balance-green { background: linear-gradient(140deg, #16694a, #2FBF84); }
 .cc-balance span { font-size: 11px; font-weight: 700; opacity: 0.82; text-transform: uppercase; letter-spacing: 0.06em; }
 .cc-balance strong { display: block; margin: 8px 0 4px; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 30px; font-weight: 800; }
+.cc-balance-refunds strong { font-size: 25px; letter-spacing: -0.02em; white-space: nowrap; }
 .cc-balance small { font-size: 12px; opacity: 0.82; }
 
 /* ── Transfers (soldes) ── */

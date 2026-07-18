@@ -297,7 +297,7 @@ function BalancesScreen() {
   return (
     <div className="cc-content cc-pad-tab">
       <TopBar title="Soldes" />
-      <div className="cc-balance cc-balance-green">
+      <div className="cc-balance cc-balance-green cc-balance-refunds">
         <span>Équilibre de la coloc</span>
         <strong>2 remboursements</strong>
         <small>suffisent pour remettre tout le monde à zéro</small>
