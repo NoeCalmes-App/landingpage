@@ -303,6 +303,7 @@ const mockupRoutes = [
   '/maquette/cvc-assist',
   '/maquette/blush',
   '/maquette/moovye',
+  '/maquette/colocool',
 ]
 
 for (const path of mockupRoutes) {
