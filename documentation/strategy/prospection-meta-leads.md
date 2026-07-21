@@ -4,9 +4,23 @@
 > Contexte : le lead a rempli un formulaire pré-rempli (nom, prénom, email, téléphone) et coché son stade (prêt / bientôt / réflexion / juste une idée). **Il n'a PAS écrit son idée.**
 > Positionnement : `documentation/context/positionnement.md`. Tunnel : `documentation/strategy/tunnel.md`.
 
+## Le formulaire Meta (référence exacte)
+
+- Intro : « Ton projet d'application — Je transforme ton idée en application qui génère des revenus. À partir de 5 000 € · Ton idée reste confidentielle (NDA). »
+- Q1 « Où en es-tu avec ton projet d'application ? » : J'ai juste une idée / J'y réfléchis sérieusement / Je veux démarrer bientôt / Je suis prêt (budget / financement en place)
+- Q2 « Quel budget as-tu prévu pour ton application ? » : Moins de 5 000 € / 5 000-10 000 € / 10 000-20 000 € / Plus de 20 000 €
+- Coordonnées pré-remplies par Meta en un clic : nom complet, e-mail, téléphone.
+- Écran de fin : « Je te recontacte dans la journée. Tu veux aller plus vite ? Écris-moi sur WhatsApp… » + bouton vers `noecalmes.fr/whatsapp`.
+
+Les leads tombent en temps réel dans la Google Sheet Meta (connexion native).
+
+## Mise à jour 2026-07-19 — touche 1 automatisée
+
+La touche 1 ne dépend plus de l'import manuel (délai 24-48h) : elle part **automatiquement à T+5 min** après le formulaire, via Nowork (Sheet → Apps Script → Cloud Function → template WhatsApp Cloud API). Dédoublonnage automatique : lead déjà client ou qui a déjà écrit sur WhatsApp = pas d'envoi. Fenêtre d'envoi : lundi-samedi 9h-21h, sinon report au prochain créneau (dimanche → lundi 9h). Les touches 2-4 restent manuelles, pilotées par le CRM. Spec complète : `nowork/documentation/systems/lead-auto-import.md`.
+
 ## Principes
 
-1. **Vitesse** : le message 1 part dans l'heure après le lead, idéalement dans les 15 minutes. Le taux de réponse chute massivement après 24h.
+1. **Vitesse** : le message 1 part automatiquement à T+5 min après le lead (cf. mise à jour 2026-07-19). Le taux de réponse chute massivement après 24h (étude Lead Response Management : contacté < 5 min = ~21x plus de chances de qualifier qu'à 30 min).
 2. **4 touches max sur 12 jours.** Au-delà, on brûle le lead.
 3. **Un seul levier par message** (question OU preuve OU voix OU clôture). Jamais d'empilement.
 4. **Une seule question par message**, la plus facile possible.
@@ -15,7 +29,7 @@
 7. **Le visuel offert n'est jamais promis dans les relances.** Il se débloque en conversation, quand on a assez d'infos, comme récompense (« ton projet tient la route »).
 8. **Le visuel complet ne s'envoie jamais sur WhatsApp.** Teaser (1 capture) dans le chat, le reste se montre à l'appel. C'est l'aimant à rendez-vous.
 9. Chaque message tient sur un écran de téléphone sans scroller. Pas d'emoji en message 1.
-10. Heures d'envoi : 12h-13h30 ou 18h-20h en semaine. Pas le dimanche matin.
+10. Heures d'envoi des touches 2-4 : 12h-13h30 ou 18h-20h en semaine. Pas le dimanche matin. (La touche 1 auto suit sa propre fenêtre : 9h-21h lun-sam, la vitesse prime.)
 
 ## La séquence
 
@@ -26,13 +40,15 @@
 | 3 | J+5 | Appel, puis WhatsApp si pas de réponse | La voix |
 | 4 | J+12 | WhatsApp | Clôture digne |
 
-### Touche 1 — J0
+### Touche 1 — J0 (automatisée, template WhatsApp validé Meta)
 
 ```
 Bonjour {prénom}, c'est Noé, je conçois des applications mobiles (noecalmes.fr).
 Tu as rempli mon formulaire pour ton projet d'application.
 C'est quoi ton idée, dans les grandes lignes ?
 ```
+
+Ce texte est le template soumis à WhatsApp Manager (variable {{1}} = prénom). Envoi automatique à T+5 min par Nowork ; si le lead écrit en premier pendant ces 5 minutes, l'envoi est annulé et c'est une conversation classique.
 
 Variante stade « prêt / financement en place » :
 
