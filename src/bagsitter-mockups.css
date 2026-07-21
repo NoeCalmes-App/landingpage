@@ -1306,5 +1306,12 @@
 
 /* Logo BagSitter : l'emoji valise remplace l'icone lucide du modele.
    Taille pilotee ici pour rester centre et proportionne dans les deux formats. */
-.bs-mark-emoji { font-size: 26px; line-height: 1; }
+/* L'emoji porte beaucoup de vide interne : a taille egale il parait deux fois
+   plus petit qu'une icone vectorielle. On le pousse donc a environ 70 % de la
+   hauteur du cadre pour qu'il remplisse visuellement la pastille bleue. */
+/* Selecteur descendant obligatoire : sur les ecrans de formulaire, l'emoji est
+   un span dans .bs-public-head, et la regle ".bs-public-head span" (0,1,1) bat
+   une simple classe (0,1,0). Sans ".bs-app-mark" devant, la taille est ecrasee
+   a 13.5px et seule la grande pastille de l'ouverture change. */
+.bs-app-mark .bs-mark-emoji { font-size: 28px; line-height: 1; }
 .bs-app-mark-large .bs-mark-emoji { font-size: 40px; }
