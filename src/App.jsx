@@ -18,6 +18,7 @@ import MoovYeMockups from './MoovYeMockups.jsx'
 import ConvoiPiloteMockups from './ConvoiPiloteMockups.jsx'
 import ColocoolMockups from './ColocoolMockups.jsx'
 import BagSitterMockups from './BagSitterMockups.jsx'
+import BailoraMockups from './BailoraMockups.jsx'
 import Projets from './Projets.jsx'
 import ClientSpaceBridge from './ClientSpaceBridge.jsx'
 import MaquetteVisualBridge from './MaquetteVisualBridge.jsx'
@@ -209,6 +210,7 @@ function App() {
     if (['/maquette/convoipilote', '/maquette/convoi-pilote'].includes(path.toLowerCase())) return 'convoipilote-mockups'
     if (['/maquette/colocool', '/maquette/coloccool'].includes(path.toLowerCase())) return 'colocool-mockups'
     if (['/maquette/bagsitter', '/maquette/bag-sitter'].includes(path.toLowerCase())) return 'bagsitter-mockups'
+    if (path.toLowerCase() === '/maquette/bailora') return 'bailora-mockups'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
     if (path in SECTION_ROUTES) return 'home'
     return 'home'
@@ -375,6 +377,7 @@ function App() {
   if (page === 'convoipilote-mockups') return <ConvoiPiloteMockups />
   if (page === 'colocool-mockups') return <ColocoolMockups />
   if (page === 'bagsitter-mockups') return <BagSitterMockups />
+  if (page === 'bailora-mockups') return <BailoraMockups />
   if (page === 'projets') return <Projets onBack={goHome} />
   if (page === 'contact') return <ContactNoe />
   if (page === 'legal') return <Legales />
