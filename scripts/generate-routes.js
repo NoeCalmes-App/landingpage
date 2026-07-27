@@ -147,6 +147,13 @@ const blogRoutes = [
     content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
   },
   {
+    path: '/blog/idee-application-business-rentable',
+    title: 'Idée d\'application : en faire un business rentable | Noé Calmes',
+    description: 'La méthode pour passer d\'une idée d\'application à un vrai business : valider la valeur, choisir le revenu, concevoir la conversion, mesurer.',
+    heading: 'Comment transformer une idée d\'application en business rentable',
+    content: 'De l\'idée au premier euro récurrent : formuler un problème payant, valider avant de développer, choisir le modèle de revenu avant la première ligne de code, construire un scénario chiffré prudent et mesurer les bons indicateurs. Une application que j\'ai conçue génère 13 000 € par mois.',
+  },
+  {
     path: '/blog/application-par-abonnement',
     title: 'Application par abonnement : combien ça rapporte | Noé Calmes',
     description: 'Comment marche une application par abonnement, combien elle peut rapporter, et comment convertir tes utilisateurs en abonnés qui restent.',
