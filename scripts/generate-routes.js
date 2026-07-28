@@ -314,6 +314,7 @@ const mockupRoutes = [
   '/maquette/bagsitter',
   '/maquette/bailora',
   '/maquette/pet-solidarite',
+  '/maquette/sonora',
   '/maquette/guestride',
 ]
 
