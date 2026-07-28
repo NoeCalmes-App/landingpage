@@ -17,8 +17,10 @@ import BlushMockups from './BlushMockups.jsx'
 import MoovYeMockups from './MoovYeMockups.jsx'
 import ConvoiPiloteMockups from './ConvoiPiloteMockups.jsx'
 import ColocoolMockups from './ColocoolMockups.jsx'
+import PetSolidariteMockups from './PetSolidariteMockups.jsx'
 import BagSitterMockups from './BagSitterMockups.jsx'
 import BailoraMockups from './BailoraMockups.jsx'
+import GuestRideMockups from './GuestRideMockups.jsx'
 import Projets from './Projets.jsx'
 import ClientSpaceBridge from './ClientSpaceBridge.jsx'
 import MaquetteVisualBridge from './MaquetteVisualBridge.jsx'
@@ -209,8 +211,10 @@ function App() {
     if (['/maquette/moovye', '/maquette/moov-ye'].includes(path.toLowerCase())) return 'moovye-mockups'
     if (['/maquette/convoipilote', '/maquette/convoi-pilote'].includes(path.toLowerCase())) return 'convoipilote-mockups'
     if (['/maquette/colocool', '/maquette/coloccool'].includes(path.toLowerCase())) return 'colocool-mockups'
+    if (['/maquette/pet-solidarite', '/maquette/petsolidarite', '/maquette/pet-solidarité'].includes(path.toLowerCase())) return 'pet-solidarite-mockups'
     if (['/maquette/bagsitter', '/maquette/bag-sitter'].includes(path.toLowerCase())) return 'bagsitter-mockups'
     if (path.toLowerCase() === '/maquette/bailora') return 'bailora-mockups'
+    if (['/maquette/guestride', '/maquette/guest-ride'].includes(path.toLowerCase())) return 'guestride-mockups'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
     if (path in SECTION_ROUTES) return 'home'
     return 'home'
@@ -376,8 +380,10 @@ function App() {
   if (page === 'moovye-mockups') return <MoovYeMockups />
   if (page === 'convoipilote-mockups') return <ConvoiPiloteMockups />
   if (page === 'colocool-mockups') return <ColocoolMockups />
+  if (page === 'pet-solidarite-mockups') return <PetSolidariteMockups />
   if (page === 'bagsitter-mockups') return <BagSitterMockups />
   if (page === 'bailora-mockups') return <BailoraMockups />
+  if (page === 'guestride-mockups') return <GuestRideMockups />
   if (page === 'projets') return <Projets onBack={goHome} />
   if (page === 'contact') return <ContactNoe />
   if (page === 'legal') return <Legales />
