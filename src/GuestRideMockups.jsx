@@ -3,29 +3,26 @@ import {
   BadgeCheck,
   Bell,
   Building2,
-  Car,
   CarFront,
   Check,
   ChevronRight,
   Clock3,
+  CreditCard,
+  FileText,
+  Flag,
   MapPin,
-  Navigation,
   Phone,
   ShieldCheck,
-  Wallet,
+  Users,
 } from 'lucide-react'
 import './guestride-mockups.css'
 import StatusBarIcons from './StatusBarIcons'
 
 // Photos fixes et deterministes (cf. guide creation-maquette).
 // Une connexion internet est necessaire pour les afficher.
-const FACE = {
-  marc: 'https://i.pravatar.cc/96?img=52',
-}
-
+const FACE = { marc: 'https://i.pravatar.cc/96?img=52' }
 const PHOTO = {
-  cover: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=80',
-  map: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=700&q=80',
+  cover: 'https://www.partners-formation.fr/wp-content/uploads/formation-VTC-91-chauffeur-ecoutant-son-passager-partners-formation.jpg',
 }
 
 /* ───────────── Cadre telephone ───────────── */
@@ -53,10 +50,10 @@ function PhoneFrame({ children }) {
   )
 }
 
-/* ───────────── Composants partages ───────────── */
+/* ───────────── Composants ───────────── */
 
 function Mark({ large = false }) {
-  return <span className={`gr-mark${large ? ' gr-mark-lg' : ''}`}><CarFront size={large ? 28 : 21} /></span>
+  return <span className={`gr-mark${large ? ' gr-mark-lg' : ''}`}><CarFront size={large ? 28 : 21} strokeWidth={1.9} /></span>
 }
 
 function Button({ children, tone = 'primary' }) {
@@ -70,9 +67,9 @@ function IconBtn({ children }) {
 function TopBar({ title, back = false, action }) {
   return (
     <div className="gr-topbar">
-      {back ? <IconBtn><ChevronRight className="gr-back" size={17} /></IconBtn> : <span className="gr-topbar-ghost" />}
+      {back ? <IconBtn><ChevronRight className="gr-back" size={17} /></IconBtn> : <span className="gr-ghost" />}
       <strong>{title}</strong>
-      {action || <span className="gr-topbar-ghost" />}
+      {action || <span className="gr-ghost" />}
     </div>
   )
 }
@@ -81,22 +78,34 @@ function Tag({ tone = 'neutral', children }) {
   return <span className={`gr-tag${tone === 'neutral' ? '' : ` gr-tag-${tone}`}`}>{children}</span>
 }
 
-function Row({ title, meta, value, valueTone, tag }) {
+function Row({ icon, chip = 'wine', title, meta, value, tag }) {
   return (
-    <div className="gr-row">
-      <div>
+    <div className={`gr-row${icon ? '' : ' gr-row-plain'}`}>
+      {icon && <span className={`gr-chip${chip === 'wine' ? '' : ` gr-chip-${chip}`}`}>{icon}</span>}
+      <div className="gr-row-copy">
         <strong>{title}</strong>
         {meta && <small>{meta}</small>}
       </div>
-      {value && <span className={`gr-row-value${valueTone ? ` gr-row-value-${valueTone}` : ''}`}>{value}</span>}
+      {value && <span className="gr-row-value">{value}</span>}
       {tag}
     </div>
   )
 }
 
-function Field({ label, value, empty = false }) {
+function Hero({ label, value, meta, tone = 'wine', small = false, countdown }) {
   return (
-    <div className={`gr-field${empty ? ' gr-field-empty' : ''}`}>
+    <div className={`gr-hero gr-hero-center${tone === 'green' ? ' gr-hero-green' : ''}${small ? ' gr-hero-small' : ''}`}>
+      {countdown && <span className="gr-hero-countdown"><Clock3 size={12} />{countdown}</span>}
+      <span>{label}</span>
+      <strong>{value}</strong>
+      {meta && <small>{meta}</small>}
+    </div>
+  )
+}
+
+function Field({ label, value, empty = false, typing = false }) {
+  return (
+    <div className={`gr-field${empty ? ' gr-field-empty' : ''}${typing ? ' gr-field-typing' : ''}`}>
       <span className="gr-label">{label}</span>
       <div>{value}</div>
     </div>
@@ -105,7 +114,7 @@ function Field({ label, value, empty = false }) {
 
 function Route({ from, fromMeta, to, toMeta }) {
   return (
-    <div className="gr-route">
+    <div>
       <div className="gr-route-step"><i /><div><strong>{from}</strong><small>{fromMeta}</small></div></div>
       <div className="gr-route-link" />
       <div className="gr-route-step gr-route-step-end"><i /><div><strong>{to}</strong><small>{toMeta}</small></div></div>
@@ -116,40 +125,68 @@ function Route({ from, fromMeta, to, toMeta }) {
 function Step({ done, title, meta, tag }) {
   return (
     <div className="gr-step">
-      <span className={`gr-step-ico${done ? '' : ' gr-step-ico-wait'}`}>{done ? <Check size={14} /> : <Clock3 size={13} />}</span>
+      <span className={`gr-step-ico${done ? '' : ' gr-step-ico-wait'}`}>{done ? <Check size={13} /> : <Clock3 size={12} />}</span>
       <div><strong>{title}</strong>{meta && <small>{meta}</small>}</div>
       {tag}
     </div>
   )
 }
 
-function QrMini() {
-  const cells = [1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1]
-  return <span className="gr-qr"><span className="gr-qr-grid">{cells.map((c, i) => <i key={i} className={c ? 'on' : ''} />)}</span></span>
+// Carte dessinee : rues, parc, trace du trajet, position de la voiture
+// et destination. Rien de photographique, tout est vectoriel et stable.
+function MapView() {
+  return (
+    <svg viewBox="0 0 300 268" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="300" height="268" fill="#e9e6e3" />
+      <rect x="18" y="24" width="86" height="66" rx="6" fill="#e0ddd9" />
+      <rect x="196" y="34" width="92" height="58" rx="6" fill="#e0ddd9" />
+      <rect x="30" y="150" width="74" height="80" rx="6" fill="#e0ddd9" />
+      <rect x="206" y="164" width="80" height="72" rx="6" fill="#e0ddd9" />
+      <path d="M118 0 L118 268" stroke="#fdfcfb" strokeWidth="17" />
+      <path d="M182 0 L182 268" stroke="#fdfcfb" strokeWidth="11" />
+      <path d="M0 108 L300 108" stroke="#fdfcfb" strokeWidth="19" />
+      <path d="M0 236 L300 236" stroke="#fdfcfb" strokeWidth="11" />
+      <path d="M118 60 L300 60" stroke="#fdfcfb" strokeWidth="9" />
+      <path d="M124 46 C124 46 124 104 124 104 L176 104 C176 104 176 168 176 168" fill="none" stroke="#8c1d33" strokeOpacity=".22" strokeWidth="11" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M124 46 C124 46 124 104 124 104 L176 104" fill="none" stroke="#8c1d33" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+      <g transform="translate(176 168)">
+        <circle r="16" fill="#171516" opacity=".14" />
+        <circle r="13" fill="#171516" />
+        <path d="M-4.5 -1 h9 M0 -5.5 v11" stroke="#fff" strokeWidth="0" />
+        <circle r="4" fill="#fff" />
+      </g>
+      <g transform="translate(124 46)">
+        <circle r="19" fill="#8c1d33" opacity=".16" />
+        <circle r="14" fill="#8c1d33" />
+        <path d="M-6 1.5 h12 M-4.5 -2.5 l1.5 -3 h6 l1.5 3" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="-3.5" cy="3.5" r="1.5" fill="#fff" />
+        <circle cx="3.5" cy="3.5" r="1.5" fill="#fff" />
+      </g>
+    </svg>
+  )
 }
 
-/* ───────────── Ecrans chauffeur ───────────── */
+/* ───────────── Chauffeur ───────────── */
 
 function OnboardingScreen() {
   return (
     <div className="gr-content">
       <div className="gr-cover">
         <img src={PHOTO.cover} alt="" />
-        <span className="gr-cover-mark"><Mark large /></span>
+        <div className="gr-cover-brand">
+          <span className="gr-cover-mark"><CarFront size={26} strokeWidth={1.9} /></span>
+          <strong>GuestRide</strong>
+        </div>
       </div>
-      <div>
-        <p className="gr-label">GUESTRIDE</p>
-        <h1 className="gr-title">La voiture arrive, le prix est connu.</h1>
-      </div>
-      <p className="gr-sub">Les hôtels commandent, les chauffeurs conduisent. Sur Bordeaux.</p>
+      <h1 className="gr-title">La voiture arrive, le prix est connu.</h1>
+      <p className="gr-sub">Les hôtels commandent, les chauffeurs conduisent.</p>
       <div className="gr-roles">
-        <div className="gr-role gr-role-on"><CarFront size={22} /><strong>Chauffeur</strong></div>
-        <div className="gr-role"><Building2 size={22} /><strong>Établissement</strong></div>
+        <div className="gr-role gr-role-on"><CarFront size={22} strokeWidth={1.8} /><strong>Chauffeur</strong></div>
+        <div className="gr-role"><Building2 size={22} strokeWidth={1.8} /><strong>Établissement</strong></div>
       </div>
       <div className="gr-spacer" />
       <Button>Créer mon compte <ArrowRight size={17} /></Button>
       <Button tone="light">J&apos;ai déjà un compte</Button>
-      <p className="gr-legal">Connexion par email et mot de passe.</p>
     </div>
   )
 }
@@ -158,24 +195,19 @@ function VerificationScreen() {
   return (
     <div className="gr-content">
       <TopBar back title="Vérification" />
-      <div>
-        <h1 className="gr-title">Votre dossier est vérifié automatiquement.</h1>
-      </div>
+      <h1 className="gr-title">Votre dossier est vérifié tout seul.</h1>
       <div className="gr-card">
         <div className="gr-steps">
-          <Step done title="Identité confirmée" meta="Pièce d'identité et selfie" tag={<Tag tone="green">Validé</Tag>} />
-          <Step done title="Entreprise active" meta="SIRET vérifié auprès de l'INSEE" tag={<Tag tone="green">Validé</Tag>} />
-          <Step done title="Carte VTC au bon nom" meta="Correspond à votre identité" tag={<Tag tone="green">Validé</Tag>} />
+          <Step done title="Identité confirmée" meta="Pièce d'identité et selfie" />
+          <Step done title="Entreprise active" meta="SIRET vérifié auprès de l'INSEE" />
+          <Step done title="Carte VTC au bon nom" meta="Correspond à votre identité" />
           <Step title="Assurance" meta="Lecture du document en cours" tag={<Tag>···</Tag>} />
         </div>
       </div>
-      <div className="gr-banner">
-        <strong>Compte activé en 1 min 48</strong>
-        <small>Vous pouvez recevoir des courses dès maintenant, à toute heure.</small>
-      </div>
-      <div className="gr-card gr-card-tight">
-        <Row title="Mercedes Classe E, noire" meta="GA-418-RT, 4 places" tag={<Tag>Véhicule</Tag>} />
-        <Row title="Bordeaux Métropole" meta="Secteur des courses proposées" tag={<Tag>Zone</Tag>} />
+      <Hero label="Vérification terminée en 1 min 48" value="Compte activé" meta="Vous pouvez recevoir des courses dès maintenant" tone="green" small />
+      <div className="gr-card gr-card-flush">
+        <Row icon={<CarFront size={18} />} chip="neutral" title="Mercedes Classe E, noire" meta="GA-418-RT, 4 places" />
+        <Row icon={<MapPin size={18} />} chip="neutral" title="Bordeaux Métropole" meta="Secteur de vos courses" />
       </div>
       <div className="gr-spacer" />
       <Button>Passer en disponible <ArrowRight size={17} /></Button>
@@ -187,22 +219,23 @@ function DriverHomeScreen() {
   return (
     <div className="gr-content">
       <TopBar title="Marc Delaunay" action={<IconBtn><Bell size={17} /></IconBtn>} />
-      <div className="gr-duo">
-        <div><span>Gains du jour</span><strong>184 €</strong></div>
-        <div className="gr-duo-wine"><span>Commission due</span><strong>127 €</strong></div>
-      </div>
-      <div className="gr-card">
-        <Row title="Vous êtes disponible" meta="Bordeaux Métropole" tag={<Tag tone="green">En ligne</Tag>} />
+      <div className="gr-hero gr-hero-split">
+        <div>
+          <span>Vous êtes disponible</span>
+          <strong>184 €</strong>
+          <small>Gains du jour, 6 courses</small>
+        </div>
+        <span className="gr-hero-toggle"><i /></span>
       </div>
       <p className="gr-label">Courses du jour</p>
-      <div className="gr-card gr-card-tight">
-        <Row title="Le Palais Gallien" meta="Aéroport Mérignac, 11:20" value="38 €" />
-        <Row title="Villa Royale" meta="Gare Saint-Jean, 09:45" value="24 €" />
-        <Row title="Hôtel des Quinconces" meta="Saint-Émilion, 08:10" value="72 €" />
+      <div className="gr-card gr-card-flush">
+        <Row icon={<Building2 size={18} />} title="Le Palais Gallien" meta="Aéroport Mérignac" value="38 €" />
+        <Row icon={<Building2 size={18} />} title="Villa Royale" meta="Gare Saint-Jean" value="24 €" />
+        <Row icon={<Building2 size={18} />} title="Les Quinconces" meta="Saint-Émilion" value="72 €" />
       </div>
       <div className="gr-spacer" />
       <div className="gr-card">
-        <Row title="Facture de juillet" meta="À régler avant le 15 août" value="127 €" valueTone="green" />
+        <Row icon={<FileText size={18} />} chip="neutral" title="Facture de juillet" meta="Commission à régler avant le 15" value="127 €" />
       </div>
     </div>
   )
@@ -211,22 +244,13 @@ function DriverHomeScreen() {
 function OfferScreen() {
   return (
     <div className="gr-content">
-      <TopBar title="Nouvelle course" action={<Tag tone="wine">24 s</Tag>} />
-      <div className="gr-hero-figure gr-hero-figure-green">
-        <span>Votre gain net</span>
-        <strong>32,30 €</strong>
-        <small>38 € de course, commission déduite</small>
+      <TopBar title="Nouvelle course" />
+      <Hero label="Votre gain net" value="32,30 €" meta="38 € de course, commission déduite" tone="green" countdown="24 s" />
+      <div className="gr-card">
+        <Route from="Le Palais Gallien" fromMeta="À 4 minutes de vous" to="Aéroport de Mérignac" toMeta="14 km, environ 22 minutes" />
       </div>
       <div className="gr-card">
-        <Route
-          from="Le Palais Gallien"
-          fromMeta="À 4 minutes de vous"
-          to="Aéroport de Mérignac"
-          toMeta="14 km, environ 22 minutes"
-        />
-      </div>
-      <div className="gr-card">
-        <Row title="M. Ferrand, chambre 214" meta="2 passagers, 3 bagages" tag={<Tag>11:20</Tag>} />
+        <Row icon={<Users size={18} />} chip="neutral" title="M. Ferrand, chambre 214" meta="2 passagers, 3 bagages" />
       </div>
       <div className="gr-spacer" />
       <Button tone="green">Accepter <Check size={17} /></Button>
@@ -235,19 +259,37 @@ function OfferScreen() {
   )
 }
 
+// Le chauffeur est devant l'hotel et le client ne descend pas : il doit
+// pouvoir appeler la reception d'un geste, sans chercher le numero.
+function WaitingScreen() {
+  return (
+    <div className="gr-content">
+      <TopBar title="Arrivé à l'hôtel" />
+      <Hero label="Vous êtes sur place" value="4 min d'attente" meta="La réception a été prévenue de votre arrivée" small />
+      <div className="gr-card gr-card-flush">
+        <Row icon={<Users size={18} />} chip="neutral" title="M. Ferrand, chambre 214" meta="2 passagers, 3 bagages" />
+        <Row icon={<Phone size={18} />} title="Réception du Palais Gallien" meta="05 56 52 92 71" tag={<Tag tone="wine">Appeler</Tag>} />
+        <Row icon={<MapPin size={18} />} chip="neutral" title="6 rue Abbé de l&apos;Épée" meta="Entrée principale, Bordeaux" />
+      </div>
+      <div className="gr-spacer" />
+      <Button tone="green">Client à bord <Check size={17} /></Button>
+      <Button tone="light">Le client ne descend pas</Button>
+      <p className="gr-legal">Sans réponse au bout de 10 minutes, la réception est alertée et vous êtes libéré.</p>
+    </div>
+  )
+}
+
 function DriveScreen() {
   return (
-    <div className="gr-content gr-dark-screen">
+    <div className="gr-content">
       <TopBar title="Course en cours" action={<IconBtn><Phone size={16} /></IconBtn>} />
       <div className="gr-card">
-        <Route
-          from="Le Palais Gallien"
-          fromMeta="Client à bord"
-          to="Aéroport de Mérignac"
-          toMeta="Arrivée estimée 11:42"
-        />
+        <Route from="Le Palais Gallien" fromMeta="Client à bord" to="Aéroport de Mérignac" toMeta="Arrivée estimée 11:42" />
       </div>
-      <Button tone="light">Ouvrir dans Waze <Navigation size={16} /></Button>
+      <div className="gr-nav-pair">
+        <button className="gr-btn gr-btn-light"><MapPin size={16} strokeWidth={2.1} /> Waze</button>
+        <button className="gr-btn gr-btn-light"><MapPin size={16} strokeWidth={2.1} /> Google Maps</button>
+      </div>
       <p className="gr-label">Étapes</p>
       <div className="gr-card">
         <div className="gr-steps">
@@ -256,8 +298,9 @@ function DriveScreen() {
           <Step title="Arrivée à destination" tag={<Tag>18 min</Tag>} />
         </div>
       </div>
-      <div className="gr-card">
-        <Row title="M. Ferrand, chambre 214" meta="2 passagers, 3 bagages" tag={<Tag>38 €</Tag>} />
+      <div className="gr-card gr-card-flush">
+        <Row icon={<Users size={18} />} chip="neutral" title="M. Ferrand, chambre 214" meta="2 passagers, 3 bagages" />
+        <Row icon={<MapPin size={18} />} chip="neutral" title="Terminal B, départs" meta="Aéroport de Mérignac" />
       </div>
       <div className="gr-spacer" />
       <p className="gr-legal">Le montant à encaisser s&apos;affiche une fois à destination.</p>
@@ -267,43 +310,30 @@ function DriveScreen() {
 
 function ArrivalScreen() {
   return (
-    <div className="gr-content gr-dark-screen">
+    <div className="gr-content">
       <TopBar title="Arrivé à destination" />
-      <div className="gr-hero-figure">
-        <span>Montant à encaisser</span>
-        <strong>38,00 €</strong>
-        <small>Prix verrouillé à la réservation</small>
+      <Hero label="Montant à encaisser" value="38,00 €" meta="Prix verrouillé à la réservation" />
+      <div className="gr-card gr-card-flush">
+        <Row icon={<Users size={18} />} chip="neutral" title="M. Ferrand" meta="Le Palais Gallien, chambre 214" />
+        <Row icon={<CreditCard size={18} />} title="Commission plateforme" meta="15 % de la course" value="5,70 €" />
       </div>
       <div className="gr-card">
-        <Row title="M. Ferrand" meta="Le Palais Gallien, chambre 214" tag={<Tag>14 km</Tag>} />
-      </div>
-      <div className="gr-card">
-        <Row title="Commission plateforme" meta="15 % du montant de la course" value="5,70 €" />
-      </div>
-      <div className="gr-card">
-        <Route
-          from="Le Palais Gallien"
-          fromMeta="Départ 11:21"
-          to="Aéroport de Mérignac"
-          toMeta="Arrivée 11:43"
-        />
+        <Route from="Le Palais Gallien" fromMeta="Départ 11:21" to="Aéroport de Mérignac" toMeta="Arrivée 11:43, 14 km" />
       </div>
       <div className="gr-spacer" />
-      <Button tone="green">Paiement encaissé <Check size={17} /></Button>
+      <Button tone="blue"><CreditCard size={17} /> Paiement encaissé</Button>
       <p className="gr-legal">Encaissez sur votre terminal, puis validez ici.</p>
     </div>
   )
 }
 
-/* ───────────── Ecrans etablissement ───────────── */
+/* ───────────── Etablissement ───────────── */
 
 function PartnerLoginScreen() {
   return (
     <div className="gr-content">
       <TopBar back title="Votre établissement" />
-      <div>
-        <h1 className="gr-title">Connectez la tablette de la réception.</h1>
-      </div>
+      <h1 className="gr-title">Connectez la tablette de la réception.</h1>
       <Field label="Nom de l'établissement" value="Hôtel Le Palais Gallien" />
       <Field label="Adresse" value="6 rue Abbé de l'Épée, Bordeaux" />
       <Field label="Email de la réception" value="reception@palaisgallien.fr" />
@@ -319,19 +349,17 @@ function OrderScreen() {
   return (
     <div className="gr-content">
       <TopBar back title="Commander une voiture" />
-      <Field label="Destination" value="Aéroport de Bordeaux Mérignac" />
-      <Field label="Client" value="M. Ferrand, chambre 214" />
+      <Field label="Destination" value="Aéroport de Méri|" typing />
+      <div className="gr-suggest">
+        <Row icon={<MapPin size={18} />} chip="neutral" title="Aéroport de Bordeaux Mérignac" meta="Terminal B, 33700 Mérignac" />
+      </div>
       <div className="gr-duo">
         <div><span>Passagers</span><strong>2</strong></div>
         <div><span>Bagages</span><strong>3</strong></div>
       </div>
-      <div className="gr-hero-figure">
-        <span>Prix de la course</span>
-        <strong>38 €</strong>
-        <small>Ferme, quel que soit le trafic</small>
-      </div>
+      <Hero label="Prix de la course" value="38 €" meta="Ferme, quel que soit le trafic" />
       <div className="gr-card">
-        <Row title="4 chauffeurs disponibles" meta="Le plus proche à 4 minutes" tag={<Tag tone="green">Prêt</Tag>} />
+        <Row icon={<CarFront size={18} />} chip="green" title="4 chauffeurs disponibles" meta="Le plus proche à 4 minutes" />
       </div>
       <div className="gr-spacer" />
       <Button>Confirmer la course <Check size={17} /></Button>
@@ -343,10 +371,8 @@ function TrackingScreen() {
   return (
     <div className="gr-content">
       <div className="gr-map">
-        <img src={PHOTO.map} alt="" />
-        <span className="gr-map-eta"><Clock3 size={14} /> Marc arrive dans 4 min</span>
-        <span className="gr-map-pin gr-map-pin-car"><CarFront size={17} /></span>
-        <span className="gr-map-pin gr-map-pin-dest"><MapPin size={17} /></span>
+        <MapView />
+        <span className="gr-map-eta"><Clock3 size={12} />Marc arrive dans 4 min</span>
       </div>
       <div className="gr-card">
         <div className="gr-driver">
@@ -359,14 +385,9 @@ function TrackingScreen() {
           <IconBtn><Phone size={16} /></IconBtn>
         </div>
       </div>
-      <div className="gr-card">
-        <Row title="Course de M. Ferrand" meta="Vers l'aéroport de Mérignac" value="38 €" />
-      </div>
-      <div className="gr-card">
-        <div className="gr-qr-line">
-          <QrMini />
-          <div><strong style={{ fontSize: 12, fontWeight: 700 }}>Suivi client</strong><small style={{ display: 'block', marginTop: 3, color: 'var(--gr-muted)', fontSize: 10 }}>Le client scanne et suit l&apos;arrivée sur son téléphone.</small></div>
-        </div>
+      <div className="gr-card gr-card-flush">
+        <Row icon={<MapPin size={18} />} title="Vers l'aéroport de Mérignac" meta="Course de M. Ferrand" value="38 €" />
+        <Row icon={<Flag size={18} />} chip="neutral" title="Signaler un problème" meta="Transmis à l&apos;administrateur" />
       </div>
       <div className="gr-spacer" />
       <Button tone="light">Annuler la course</Button>
@@ -380,26 +401,18 @@ function AdminScreen() {
   return (
     <div className="gr-content">
       <TopBar title="Gestion" action={<IconBtn><ShieldCheck size={17} /></IconBtn>} />
+      <Hero label="Commissions du mois" value="2 840 €" meta="412 courses, 15 % de commission" />
       <div className="gr-duo">
-        <div><span>Chauffeurs actifs</span><strong>18</strong></div>
+        <div><span>Chauffeurs</span><strong>18</strong></div>
         <div><span>Établissements</span><strong>7</strong></div>
       </div>
-      <div className="gr-hero-figure">
-        <span>Commissions du mois</span>
-        <strong>2 840 €</strong>
-        <small>412 courses, 15 % de commission</small>
-      </div>
-      <div className="gr-alert">
-        <BadgeCheck size={22} />
-        <div><strong>2 dossiers à traiter</strong><small>Documents illisibles ou nom qui ne correspond pas</small></div>
-      </div>
       <p className="gr-label">À vérifier</p>
-      <div className="gr-card gr-card-tight">
-        <Row title="Julien Meyer" meta="Carte VTC illisible" tag={<Tag tone="wine">Bloqué</Tag>} />
-        <Row title="Karim Belhadj" meta="Assurance expire dans 21 jours" tag={<Tag>Alerte</Tag>} />
+      <div className="gr-card gr-card-flush">
+        <Row icon={<BadgeCheck size={18} />} title="Julien Meyer" meta="Carte VTC illisible" tag={<Tag tone="wine">Bloqué</Tag>} />
+        <Row icon={<ShieldCheck size={18} />} chip="neutral" title="Karim Belhadj" meta="Assurance expire dans 21 jours" tag={<Tag>Alerte</Tag>} />
       </div>
       <div className="gr-spacer" />
-      <Button tone="light">Voir tous les chauffeurs <Car size={16} /></Button>
+      <Button tone="light">Voir tous les chauffeurs <ChevronRight size={16} /></Button>
     </div>
   )
 }
@@ -407,13 +420,14 @@ function AdminScreen() {
 const mockups = [
   { id: 'onboarding', title: 'Ouverture de l’application', subtitle: 'Chauffeur ou établissement', screen: <OnboardingScreen /> },
   { id: 'verification', title: 'Vérification du chauffeur', subtitle: 'Automatique, à toute heure', screen: <VerificationScreen /> },
-  { id: 'driver-home', title: 'Accueil chauffeur', subtitle: 'Gains, commission et courses du jour', screen: <DriverHomeScreen /> },
+  { id: 'driver-home', title: 'Accueil chauffeur', subtitle: 'Disponibilité, gains et commission', screen: <DriverHomeScreen /> },
   { id: 'offer', title: 'Proposition de course', subtitle: 'Le gain net avant d’accepter', screen: <OfferScreen /> },
+  { id: 'waiting', title: 'Attente du client', subtitle: 'Appel direct de la réception', screen: <WaitingScreen /> },
   { id: 'drive', title: 'Course en cours', subtitle: 'Étapes du trajet, navigation dans Waze', screen: <DriveScreen /> },
   { id: 'arrival', title: 'Arrivée à destination', subtitle: 'Montant à encaisser et commission', screen: <ArrivalScreen /> },
   { id: 'partner-login', title: 'Connexion de l’établissement', subtitle: 'Sur la tablette de la réception', screen: <PartnerLoginScreen /> },
   { id: 'order', title: 'Commander une voiture', subtitle: 'Le prix avant de confirmer', screen: <OrderScreen /> },
-  { id: 'tracking', title: 'Suivi de la course', subtitle: 'Où est le chauffeur, en direct', screen: <TrackingScreen /> },
+  { id: 'tracking', title: 'Suivi de la course', subtitle: 'Le trajet et la voiture en direct', screen: <TrackingScreen /> },
   { id: 'admin', title: 'Espace d’administration', subtitle: 'Chauffeurs, commissions et alertes', screen: <AdminScreen /> },
 ]
 
