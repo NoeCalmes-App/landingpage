@@ -1,5 +1,6 @@
 import {
   ArrowRight,
+  Banknote,
   Bell,
   Building2,
   CalendarDays,
@@ -10,11 +11,14 @@ import {
   CircleAlert,
   CircleCheck,
   Clock3,
+  Download,
   FileCheck2,
+  FileSpreadsheet,
   FileText,
   FolderOpen,
   Home,
   Images,
+  KeyRound,
   Landmark,
   Mail,
   MessageSquareText,
@@ -22,13 +26,18 @@ import {
   MoreHorizontal,
   Paperclip,
   PenLine,
+  Percent,
   Plus,
   ReceiptText,
+  ScanLine,
   Search,
   Send,
   ShieldCheck,
   SlidersHorizontal,
+  Sparkles,
+  TrendingUp,
   Users,
+  Wallet,
 } from 'lucide-react'
 import './bailora-mockups.css'
 import StatusBarIcons from './StatusBarIcons'
@@ -536,8 +545,298 @@ function InspectionCompareScreen() {
   )
 }
 
+function SubscriptionScreen() {
+  return (
+    <div className="blr-content">
+      <TopBar title="Abonnement" back action={<MoreHorizontal size={18} />} />
+      <div className="blr-plan-hero">
+        <AppMark large />
+        <h1>Passez à Bailora</h1>
+        <p>7 jours d’essai offerts. Résiliable depuis votre téléphone.</p>
+      </div>
+      <div className="blr-plan-list">
+        <div className="blr-plan blr-plan-on">
+          <span className="blr-plan-badge">Le plus choisi</span>
+          <div className="blr-plan-head">
+            <div><strong>Illimité</strong><small>SCI et lots sans limite</small></div>
+            <b>39 €<i>/mois</i></b>
+          </div>
+          <ul>
+            <li><Check size={12} /> SCI illimitées</li>
+            <li><Check size={12} /> Les 10 documents générés</li>
+            <li><Check size={12} /> Espace locataire inclus</li>
+          </ul>
+        </div>
+        <div className="blr-plan">
+          <div className="blr-plan-head">
+            <div><strong>Essentiel</strong><small>Jusqu’à 2 SCI</small></div>
+            <b>19 €<i>/mois</i></b>
+          </div>
+          <ul>
+            <li><Check size={12} /> 2 SCI, lots illimités</li>
+            <li><Check size={12} /> Quittances et courriers</li>
+          </ul>
+        </div>
+      </div>
+      <div className="blr-plan-note">
+        <ShieldCheck size={16} />
+        <span>Changement de formule à tout moment. Vos données sont conservées.</span>
+      </div>
+      <div className="blr-bottom-actions">
+        <UiButton>Commencer l’essai gratuit <ArrowRight size={16} /></UiButton>
+        <small className="blr-plan-legal">Paiement via l’App Store, renouvellement automatique.</small>
+      </div>
+    </div>
+  )
+}
+
+const docTemplates = [
+  { icon: <CalendarDays size={16} />, tone: 'blue', title: 'Avis d’échéance', meta: 'Avant le paiement du loyer' },
+  { icon: <Percent size={16} />, tone: 'teal', title: 'Régularisation des charges', meta: 'Provisions contre charges réelles' },
+  { icon: <TrendingUp size={16} />, tone: 'violet', title: 'Révision du loyer', meta: 'Selon l’indice IRL que vous saisissez' },
+  { icon: <FileCheck2 size={16} />, tone: 'blue', title: 'Attestation de loyer', meta: 'Pour le dossier CAF' },
+  { icon: <Bell size={16} />, tone: 'amber', title: 'Relance d’impayé', meta: 'Périodes et montants dus' },
+  { icon: <CircleAlert size={16} />, tone: 'amber', title: 'Mise en demeure', meta: 'Si la relance reste sans réponse' },
+  { icon: <Banknote size={16} />, tone: 'teal', title: 'Restitution du dépôt', meta: 'Retenues justifiées détaillées' },
+]
+
+function DocumentGeneratorScreen() {
+  return (
+    <div className="blr-content blr-with-tab">
+      <TopBar title="Créer un document" back action={<Search size={17} />} />
+      <div className="blr-generator-intro">
+        <div><span>SCI Horizon · Yacine Martin</span><h1>7 courriers prêts</h1></div>
+        <Pill tone="teal">Préremplis</Pill>
+      </div>
+      <div className="blr-panel blr-template-panel">
+        {docTemplates.map((tpl) => (
+          <ListRow key={tpl.title} icon={tpl.icon} tone={tpl.tone} title={tpl.title} meta={tpl.meta} />
+        ))}
+      </div>
+      <button className="blr-scan-card blr-free-letter">
+        <PenLine size={18} />
+        <span><strong>Courrier libre</strong><small>Votre texte, l’en-tête de la SCI ajouté seul.</small></span>
+        <ArrowRight size={16} />
+      </button>
+      <TabBar active="docs" />
+    </div>
+  )
+}
+
+function DocumentPreviewScreen() {
+  return (
+    <div className="blr-content">
+      <TopBar title="Aperçu" back action={<MoreHorizontal size={18} />} />
+      <div className="blr-paper">
+        <div className="blr-paper-head">
+          <span className="blr-mini-mark"><Landmark size={14} /></span>
+          <div><strong>SCI Horizon</strong><small>12 rue des Lilas, 31000 Toulouse</small></div>
+        </div>
+        <h2>Régularisation des charges 2025</h2>
+        <p className="blr-paper-to">Yacine Martin · Résidence Victor-Hugo, Apt. 1</p>
+        <div className="blr-paper-lines">
+          <div><span>Provisions versées (12 mois)</span><strong>720 €</strong></div>
+          <div><span>Charges réelles constatées</span><strong>846 €</strong></div>
+          <div className="blr-paper-total"><span>Solde à votre charge</span><strong>126 €</strong></div>
+        </div>
+        <p className="blr-paper-body">
+          Conformément au bail, le décompte détaillé des charges est joint au présent
+          courrier. Le solde est exigible au prochain terme.
+        </p>
+      </div>
+      <div className="blr-check-strip">
+        <CircleCheck size={16} />
+        <span>Montants calculés à partir des dépenses enregistrées. Modifiables avant validation.</span>
+      </div>
+      <div className="blr-bottom-actions">
+        <UiButton><Send size={16} /> Valider et envoyer</UiButton>
+        <UiButton tone="light"><PenLine size={16} /> Corriger un montant</UiButton>
+      </div>
+    </div>
+  )
+}
+
+function CustomLetterScreen() {
+  return (
+    <div className="blr-content">
+      <TopBar title="Courrier libre" back action={<MoreHorizontal size={18} />} />
+      <div className="blr-auto-fill">
+        <Sparkles size={15} />
+        <span><strong>En-tête ajouté pour vous</strong><small>SCI, locataire, adresse du logement et date.</small></span>
+      </div>
+      <div className="blr-letter-head">
+        <div><span>De</span><strong>SCI Horizon</strong></div>
+        <div><span>À</span><strong>Yacine Martin</strong></div>
+      </div>
+      <div className="blr-mail-subject blr-letter-subject"><span>Objet</span><strong>Intervention plomberie du 6 août</strong></div>
+      <div className="blr-mail-body blr-letter-body">
+        <p>Bonjour Yacine,</p>
+        <p>Un plombier interviendra le mercredi 6 août entre 9h et 12h pour le remplacement du mitigeur de la salle de bain.</p>
+        <p>Merci de me confirmer votre présence.</p>
+        <button className="blr-dictation"><Mic size={15} /><span>Dicter le texte</span><b>FR</b></button>
+      </div>
+      <div className="blr-save-template">
+        <FileText size={15} />
+        <span>Enregistrer comme modèle réutilisable</span>
+        <span className="blr-toggle blr-toggle-on" />
+      </div>
+      <div className="blr-send-options">
+        <button><Clock3 size={15} /> Programmer</button>
+        <button className="blr-send-main"><Send size={15} /> Envoyer</button>
+      </div>
+    </div>
+  )
+}
+
+function VoiceAssistantScreen() {
+  return (
+    <div className="blr-content blr-assistant">
+      <TopBar title="Assistant" back action={<MoreHorizontal size={18} />} />
+      <div className="blr-listen">
+        <span className="blr-listen-ring" />
+        <span className="blr-listen-core"><Mic size={26} /></span>
+      </div>
+      <div className="blr-transcript">
+        <span>VOUS AVEZ DIT</span>
+        <p>« Ajoute une dépense de 246 euros, plomberie Martin, pour Victor-Hugo. »</p>
+      </div>
+      <SectionHead>Ce que j’ai compris</SectionHead>
+      <div className="blr-panel">
+        <ListRow icon={<Wallet size={16} />} tone="amber" title="Dépense · 246 €" meta="Plomberie Martin · 24 juillet" trailing={<PenLine size={14} />} />
+        <ListRow icon={<Building2 size={16} />} tone="blue" title="Résidence Victor-Hugo" meta="SCI Horizon · travaux" trailing={<PenLine size={14} />} />
+      </div>
+      <div className="blr-guard-card">
+        <ShieldCheck size={16} />
+        <span>Rien n’est enregistré tant que vous n’avez pas validé.</span>
+      </div>
+      <div className="blr-bottom-actions">
+        <UiButton><Check size={16} /> Enregistrer la dépense</UiButton>
+        <UiButton tone="light">Reprendre la dictée</UiButton>
+      </div>
+    </div>
+  )
+}
+
+function ExpenseCaptureScreen() {
+  return (
+    <div className="blr-content">
+      <TopBar title="Nouvelle dépense" back action={<MoreHorizontal size={18} />} />
+      <div className="blr-receipt-shot">
+        <div className="blr-receipt-paper">
+          <strong>PLOMBERIE MARTIN</strong>
+          <span>Facture n° 2026-0418</span>
+          <span>24 juillet 2026</span>
+          <b>246,00 €</b>
+        </div>
+        <span className="blr-scan-badge"><ScanLine size={13} /> Lu automatiquement</span>
+      </div>
+      <div className="blr-field-list">
+        <div><span>Montant</span><strong>246,00 €</strong><Pill tone="teal">Lu</Pill></div>
+        <div><span>Date</span><strong>24 juillet 2026</strong><Pill tone="teal">Lu</Pill></div>
+        <div><span>Fournisseur</span><strong>Plomberie Martin</strong><Pill tone="teal">Lu</Pill></div>
+        <div><span>Catégorie</span><strong>Travaux</strong><ChevronDown size={14} /></div>
+        <div><span>SCI et bien</span><strong>Horizon · Victor-Hugo</strong><ChevronDown size={14} /></div>
+      </div>
+      <div className="blr-check-strip">
+        <CircleAlert size={16} />
+        <span>Vérifiez les champs lus avant d’enregistrer, ils restent modifiables.</span>
+      </div>
+      <div className="blr-bottom-actions">
+        <UiButton><Check size={16} /> Enregistrer la dépense</UiButton>
+      </div>
+    </div>
+  )
+}
+
+function FiscalYearScreen() {
+  return (
+    <div className="blr-content blr-with-tab">
+      <TopBar title="Exercice 2025" filter="SCI Horizon" action={<SlidersHorizontal size={17} />} />
+      <div className="blr-fiscal-hero">
+        <span>Résultat de l’exercice</span>
+        <strong>+ 28 640 €</strong>
+        <small>41 880 € de recettes · 13 240 € de dépenses</small>
+      </div>
+      <SectionHead action="Détail">Dépenses par catégorie</SectionHead>
+      <div className="blr-bar-list">
+        <div><span>Travaux</span><i><b style={{ width: '78%' }} /></i><strong>5 180 €</strong></div>
+        <div><span>Intérêts d’emprunt</span><i><b style={{ width: '62%' }} /></i><strong>4 120 €</strong></div>
+        <div><span>Taxe foncière</span><i><b style={{ width: '34%' }} /></i><strong>2 260 €</strong></div>
+        <div><span>Assurance</span><i><b style={{ width: '24%' }} /></i><strong>1 680 €</strong></div>
+      </div>
+      <div className="blr-export-card">
+        <div className="blr-export-head"><FileSpreadsheet size={18} /><div><strong>Dossier pour l’expert-comptable</strong><small>Tableur, récapitulatif et justificatifs datés.</small></div></div>
+        <div className="blr-export-files">
+          <span><FileSpreadsheet size={13} /> exercice-2025.csv</span>
+          <span><FileText size={13} /> recapitulatif.pdf</span>
+          <span><FolderOpen size={13} /> 64 justificatifs</span>
+        </div>
+        <UiButton><Download size={16} /> Exporter en un geste</UiButton>
+      </div>
+      <TabBar active="docs" />
+    </div>
+  )
+}
+
+function TenantSpaceScreen() {
+  return (
+    <div className="blr-content">
+      <TopBar title="Mon logement" back action={<Bell size={17} />} />
+      <div className="blr-tenant-hero">
+        <Pill tone="glass">Bail actif</Pill>
+        <h1>Résidence Victor-Hugo</h1>
+        <p>Appartement 1 · Toulouse</p>
+        <div className="blr-tenant-amount"><span>Prochaine échéance</span><strong>850 €</strong><small>le 5 août</small></div>
+      </div>
+      <div className="blr-iban-card">
+        <div><span>Virement à</span><strong>SCI Horizon</strong></div>
+        <code>FR76 3000 4000 0312 3456 7890 143</code>
+      </div>
+      <SectionHead action="Tout voir">Mes documents</SectionHead>
+      <div className="blr-panel">
+        <ListRow icon={<ReceiptText size={16} />} tone="blue" title="Quittance de juillet 2026" meta="Disponible aujourd’hui" trailing={<Download size={15} />} />
+        <ListRow icon={<FileCheck2 size={16} />} tone="violet" title="Bail d’habitation" meta="Signé le 5 septembre 2024" trailing={<Download size={15} />} />
+        <ListRow icon={<Images size={16} />} tone="teal" title="État des lieux d’entrée" meta="26 photos · signé" trailing={<Download size={15} />} />
+      </div>
+      <div className="blr-readonly-note"><KeyRound size={15} /><span>Accès en lecture seule, ouvert par votre propriétaire.</span></div>
+    </div>
+  )
+}
+
+function AdminScreen() {
+  return (
+    <div className="blr-content blr-with-tab">
+      <TopBar title="Administration" action={<SlidersHorizontal size={17} />} />
+      <div className="blr-admin-kpis">
+        <div><span>Abonnés actifs</span><strong>184</strong><small>+12 ce mois</small></div>
+        <div><span>Revenu mensuel</span><strong>4 690 €</strong><small>récurrent</small></div>
+      </div>
+      <div className="blr-mix-bar">
+        <i className="blr-mix-a" style={{ width: '62%' }} />
+        <i className="blr-mix-b" style={{ width: '38%' }} />
+      </div>
+      <div className="blr-mix-legend">
+        <span><i className="blr-mix-a" /> 114 en Essentiel</span>
+        <span><i className="blr-mix-b" /> 70 en Illimité</span>
+      </div>
+      <SectionHead action="Tout voir">Derniers comptes</SectionHead>
+      <div className="blr-panel">
+        <ListRow icon={<Users size={16} />} tone="blue" title="Camille Roussel" meta="Illimité · inscrite le 22 juillet" trailing={<Pill tone="teal">39 €</Pill>} />
+        <ListRow icon={<Users size={16} />} tone="violet" title="Thomas Nguyen" meta="Essentiel · 2 SCI" trailing={<Pill tone="blue">19 €</Pill>} />
+        <ListRow icon={<Users size={16} />} tone="amber" title="Farid Belkacem" meta="Prélèvement échoué · relancé" trailing={<Pill tone="amber">Suspendu</Pill>} />
+      </div>
+      <div className="blr-privacy-card">
+        <ShieldCheck size={16} />
+        <span><strong>Vous voyez les comptes, jamais leurs données</strong><small>Baux, locataires et documents restent privés.</small></span>
+      </div>
+      <TabBar active="home" />
+    </div>
+  )
+}
+
 const mockups = [
   { id: 'onboarding', title: 'Ouverture de Bailora', subtitle: 'Connexion Apple ou Google', screen: <OnboardingScreen /> },
+  { id: 'subscription', title: 'Écran d’abonnement', subtitle: '19 € jusqu’à 2 SCI, 39 € en illimité', screen: <SubscriptionScreen /> },
   { id: 'dashboard', title: 'Tableau de bord', subtitle: 'Les actions utiles, immédiatement', screen: <DashboardScreen /> },
   { id: 'actions', title: 'Centre des actions', subtitle: 'Valider, agir ou reporter en un geste', screen: <ActionsScreen /> },
   { id: 'portfolio', title: 'Patrimoine', subtitle: 'Toutes les SCI et tous les biens', screen: <PortfolioScreen /> },
@@ -546,9 +845,17 @@ const mockups = [
   { id: 'payments', title: 'Suivi des loyers', subtitle: 'Reçus, attendus et à vérifier', screen: <PaymentsScreen />, tall: true, scrollable: true },
   { id: 'payment-validation', title: 'Validation d’un paiement', subtitle: 'La quittance est préparée automatiquement', screen: <PaymentValidationScreen /> },
   { id: 'message', title: 'Email intégré', subtitle: 'Prérempli, dicté ou programmé', screen: <MessageComposerScreen /> },
+  { id: 'doc-generator', title: 'Générateur de courriers', subtitle: 'Les 7 documents de la gestion locative', screen: <DocumentGeneratorScreen />, tall: true, scrollable: true },
+  { id: 'doc-preview', title: 'Aperçu avant envoi', subtitle: 'Les montants sont calculés, jamais ressaisis', screen: <DocumentPreviewScreen /> },
+  { id: 'custom-letter', title: 'Courrier libre', subtitle: 'Pour tout ce que les modèles ne couvrent pas', screen: <CustomLetterScreen /> },
   { id: 'documents', title: 'Coffre-fort documentaire', subtitle: 'Chaque fichier dans le bon dossier', screen: <DocumentsScreen />, tall: true, scrollable: true },
   { id: 'inspection', title: 'État des lieux guidé', subtitle: 'Photos, vérifications et dictée vocale', screen: <InspectionCaptureScreen /> },
   { id: 'comparison', title: 'Comparaison et signatures', subtitle: 'Les différences sont validées avant le PDF final', screen: <InspectionCompareScreen /> },
+  { id: 'expense', title: 'Dépense par photo', subtitle: 'Le justificatif remplit les champs tout seul', screen: <ExpenseCaptureScreen /> },
+  { id: 'assistant', title: 'Assistant vocal', subtitle: 'On dicte, on relit, on valide', screen: <VoiceAssistantScreen /> },
+  { id: 'fiscal', title: 'Exercice et export annuel', subtitle: 'Le dossier de l’expert-comptable en un geste', screen: <FiscalYearScreen />, tall: true, scrollable: true },
+  { id: 'tenant', title: 'Espace locataire', subtitle: 'Ses quittances, sans jamais les réclamer', screen: <TenantSpaceScreen /> },
+  { id: 'admin', title: 'Espace d’administration', subtitle: 'Les comptes abonnés, jamais leurs données', screen: <AdminScreen />, tall: true, scrollable: true },
 ]
 
 export default function BailoraMockupsPage() {
