@@ -19,7 +19,8 @@ On ne se bat PAS sur les têtes de gondole d'agence (« créer une application m
 - **Preuve réelle, jamais en frime** : intégrer naturellement « une application que j'ai conçue génère 13 000 €/mois », « +20 applications publiées », Hush (1ʳᵉ version, 300 000 utilisateurs) quand pertinent. Mener par l'expertise, le chiffre suit.
 - **Périmètre honnête** : Noé fait le marketing DANS l'app (conversion des utilisateurs en clients), PAS la publicité qui ramène les utilisateurs. Ne jamais promettre de l'acquisition/trafic.
 - **Contenu vraiment utile** (E-E-A-T) : conseils concrets, exemples, pas de remplissage. Google pénalise le contenu généré en masse sans valeur.
-- **Format** : HTML simple (`<p>`, `<h2>`, `<strong>`), comme les articles existants dans `src/Blog.jsx` (constante `BLOG_ARTICLES`). 700 à 1100 mots.
+- **Format** : HTML simple (`<p>`, `<h2>`, `<strong>`, `<ul>`, `<li>`), comme les articles existants dans `src/Blog.jsx` (constante `BLOG_ARTICLES`). 700 à 1100 mots.
+- **Lisibilité (règle du 03/08/2026)** : la longueur n'est pas le problème, la densité si. Paragraphes de 40 mots en moyenne, 80 au maximum, jamais deux gros blocs qui se suivent. Dès qu'une phrase énumère trois éléments ou plus (signaux, indicateurs, options, erreurs), la transformer en `<ul>` avec une phrase d'amorce finissant par deux points. Objectif : l'article doit rester scannable sur un écran de téléphone.
 - **CTA de fin** : `finalCta: 'audit'` (vers l'audit gratuit), comme les articles existants.
 - **Maillage interne** : lier vers la page pilier + 1-2 articles du cluster.
 - **Restitution à Noé** : dans le message final, toujours donner le titre puis **le corps complet de l'article en texte lisible** (pas seulement un résumé, pas de balises HTML), pour qu'il puisse le relire directement dans la conversation sans ouvrir le brouillon. Ensuite seulement, le chemin du fichier et l'URL.

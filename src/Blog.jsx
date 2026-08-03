@@ -13,40 +13,68 @@ export const BLOG_ARTICLES = [
     finalCta: 'audit',
     content: `
       <p>La très grande majorité des applications publiées sur les stores ne génère presque aucun revenu. Ce n'est pas une question de chance, ni de qualité du code, ni de nombre de téléchargements. C'est presque toujours la même cause : l'application a été conçue comme un outil, pas comme un produit qui vend. La bonne nouvelle : les raisons sont identifiables une par une, et elles se corrigent.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Une application que j'ai conçue génère environ <strong>13 000 € par mois</strong> avec une idée banale et un volume de téléchargements modeste. J'ai aussi vu l'inverse de très près : la première version de Hush a dépassé 300 000 utilisateurs sans modèle de revenu construit dès le départ. Beaucoup d'utilisateurs et peu de revenus : le scénario le plus fréquent, et le plus évitable.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Une application que j'ai conçue génère environ <strong>13 000 € par mois</strong> avec une idée banale et un volume de téléchargements modeste. J'ai aussi vu l'inverse de très près : la première version de Hush a dépassé 300 000 utilisateurs sans modèle de revenu construit dès le départ.</p>
+      <p>Beaucoup d'utilisateurs et peu de revenus : le scénario le plus fréquent, et le plus évitable.</p>
 
       <h2>Raison 1 : le modèle de revenu a été décidé à la fin</h2>
-      <p>C'est de loin la cause principale. Le projet démarre par les fonctionnalités, le développement dure des mois, et la question du paiement arrive une semaine avant la mise en ligne. À ce stade, il ne reste qu'une option : coller un écran d'abonnement quelque part et espérer. Le résultat est prévisible : personne ne paie, parce que rien dans le parcours n'a été construit pour amener l'utilisateur là.</p>
+      <p>C'est de loin la cause principale. Le projet démarre par les fonctionnalités, le développement dure des mois, et la question du paiement arrive une semaine avant la mise en ligne. À ce stade, il ne reste qu'une option : coller un écran d'abonnement quelque part et espérer.</p>
+      <p>Le résultat est prévisible : personne ne paie, parce que rien dans le parcours n'a été construit pour amener l'utilisateur là.</p>
       <p>Une application qui rapporte est pensée à l'envers. Tu décides d'abord ce qui sera payant et pourquoi quelqu'un accepterait de payer, puis tu construis le chemin qui mène là. La monétisation n'est pas une fonctionnalité de plus, c'est la colonne vertébrale du produit. Si tu hésites, lis <a href="/blog/modele-economique-application-mobile">quel modèle économique choisir pour ton application</a> avant de développer.</p>
 
       <h2>Raison 2 : l'utilisateur n'a jamais ressenti la valeur</h2>
-      <p>Personne ne paie pour une promesse. On paie après avoir ressenti un bénéfice concret. Dans une application qui ne rapporte rien, l'utilisateur télécharge, arrive sur un écran d'accueil vide, ne comprend pas quoi faire en premier, et repart. Il n'a jamais atteint ce que j'appelle le premier moment de valeur : le point précis où il se dit « d'accord, ça m'apporte quelque chose ».</p>
+      <p>Personne ne paie pour une promesse. On paie après avoir ressenti un bénéfice concret.</p>
+      <p>Dans une application qui ne rapporte rien, l'utilisateur télécharge, arrive sur un écran d'accueil vide, ne comprend pas quoi faire en premier, et repart. Il n'a jamais atteint ce que j'appelle le premier moment de valeur : le point précis où il se dit « d'accord, ça m'apporte quelque chose ».</p>
       <p>Ce moment doit arriver dans les deux premières minutes. Sur une application de suivi, c'est le premier repas enregistré et le chiffre affiché juste après. Identifie ce moment sur ton produit, puis supprime tout ce qui se met entre l'ouverture et lui. Chaque écran intermédiaire coûte des clients.</p>
 
       <h2>Raison 3 : l'offre payante arrive au mauvais moment</h2>
-      <p>Deux erreurs symétriques. La première, l'écran d'abonnement s'affiche dès l'ouverture, avant que l'utilisateur sache ce que fait l'application. Il ferme, il désinstalle. La seconde, l'offre est cachée dans les réglages. Personne ne la voit, donc personne ne l'achète.</p>
+      <p>Deux erreurs symétriques :</p>
+      <ul>
+        <li><strong>Trop tôt</strong> : l'écran d'abonnement s'affiche dès l'ouverture, avant que l'utilisateur sache ce que fait l'application. Il ferme, il désinstalle.</li>
+        <li><strong>Trop caché</strong> : l'offre dort dans les réglages. Personne ne la voit, donc personne ne l'achète.</li>
+      </ul>
       <p>Le bon moment se situe juste après le premier bénéfice ressenti, quand l'utilisateur veut aller plus loin et rencontre naturellement une limite. À cet instant, l'offre n'est plus une interruption, c'est une réponse à une envie qu'il vient d'avoir. Concrètement, place ton écran d'offre à la sortie d'une action réussie, pas à l'entrée de l'application.</p>
 
       <h2>Raison 4 : le prix a été fixé au hasard</h2>
-      <p>Un prix choisi en regardant vaguement un concurrent est un prix qui laisse de l'argent sur la table ou qui bloque la conversion. Le prix dépend de la fréquence d'usage et de ce que ton application remplace. Une application ouverte tous les jours qui économise du temps réel supporte un abonnement mensuel. Une application ouverte une fois par mois vivra mieux avec un achat unique ou un abonnement annuel.</p>
+      <p>Un prix choisi en regardant vaguement un concurrent est un prix qui laisse de l'argent sur la table ou qui bloque la conversion. Le prix dépend de la fréquence d'usage et de ce que ton application remplace.</p>
+      <p>Une application ouverte tous les jours qui économise du temps réel supporte un abonnement mensuel. Une application ouverte une fois par mois vivra mieux avec un achat unique ou un abonnement annuel.</p>
       <p>Autre point négligé : le prix affiché n'est pas le revenu. Retire la commission du store, la TVA et les impayés, sinon ton modèle repose sur un chiffre qui n'existe pas. L'article <a href="/blog/combien-rapporte-application-mobile">combien rapporte réellement une application mobile</a> détaille ces ordres de grandeur.</p>
 
       <h2>Raison 5 : la valeur ne se renouvelle pas</h2>
       <p>Un abonnement est une promesse répétée. Si ton application délivre tout son intérêt la première semaine, l'utilisateur résilie au deuxième mois et tes revenus n'augmentent jamais, ils se remplacent. C'est le piège le plus silencieux : la conversion a l'air correcte, mais le revenu récurrent stagne parce que la fuite est aussi rapide que l'entrée.</p>
-      <p>Pour qu'une valeur se renouvelle, il faut au moins un de ces trois éléments : un historique qui s'accumule et devient coûteux à perdre, un contenu qui se renouvelle, ou une progression visible dans le temps. Sur l'application à 13 000 € par mois, c'est l'historique accumulé qui retient : après trois mois d'utilisation, partir signifie perdre ses données. La rétention ne se rajoute pas après coup, elle se conçoit.</p>
+      <p>Pour qu'une valeur se renouvelle, il faut au moins un de ces trois éléments :</p>
+      <ul>
+        <li>un historique qui s'accumule et devient coûteux à perdre</li>
+        <li>un contenu qui se renouvelle</li>
+        <li>une progression visible dans le temps</li>
+      </ul>
+      <p>Sur l'application à 13 000 € par mois, c'est l'historique accumulé qui retient : après trois mois d'utilisation, partir signifie perdre ses données. La rétention ne se rajoute pas après coup, elle se conçoit.</p>
 
       <h2>Raison 6 : on mesure les téléchargements au lieu du parcours</h2>
-      <p>Le nombre de téléchargements est l'indicateur le plus rassurant et le moins utile : il ne dit pas où tu perds les gens. Suis plutôt quatre chiffres : combien d'utilisateurs terminent l'onboarding, combien atteignent le premier moment de valeur, combien passent au payant, combien sont encore actifs à trente jours.</p>
-      <p>Chaque chute désigne une correction précise. Peu d'onboardings terminés, ton entrée est trop longue. Beaucoup de moments de valeur et peu d'achats, ton offre est mal placée. Bonne conversion et rétention faible, ta valeur ne se renouvelle pas. Sans ces chiffres, tu modifies au hasard.</p>
+      <p>Le nombre de téléchargements est l'indicateur le plus rassurant et le moins utile : il ne dit pas où tu perds les gens. Suis plutôt quatre chiffres :</p>
+      <ul>
+        <li>combien d'utilisateurs terminent l'onboarding</li>
+        <li>combien atteignent le premier moment de valeur</li>
+        <li>combien passent au payant</li>
+        <li>combien sont encore actifs à trente jours</li>
+      </ul>
+      <p>Chaque chute désigne une correction précise :</p>
+      <ul>
+        <li>peu d'onboardings terminés : ton entrée est trop longue</li>
+        <li>beaucoup de moments de valeur et peu d'achats : ton offre est mal placée</li>
+        <li>bonne conversion et rétention faible : ta valeur ne se renouvelle pas</li>
+      </ul>
+      <p>Sans ces chiffres, tu modifies au hasard.</p>
 
       <h2>La vraie différence n'est pas l'idée</h2>
-      <p>On me présente souvent des idées comme si l'idée décidait du résultat. Elle décide de peu. L'application à 13 000 € par mois repose sur une idée banale, déjà occupée par de plus gros concurrents. Ce qui change tout, c'est la conception : où se situe le moment de valeur, quand apparaît l'offre, ce qui retient au troisième mois. Deux applications identiques sur l'idée et le nombre d'utilisateurs peuvent avoir un rapport de un à dix sur le revenu.</p>
+      <p>On me présente souvent des idées comme si l'idée décidait du résultat. Elle décide de peu. L'application à 13 000 € par mois repose sur une idée banale, déjà occupée par de plus gros concurrents.</p>
+      <p>Ce qui change tout, c'est la conception : où se situe le moment de valeur, quand apparaît l'offre, ce qui retient au troisième mois. Deux applications identiques sur l'idée et le nombre d'utilisateurs peuvent avoir un rapport de un à dix sur le revenu.</p>
 
       <h2>Ce que je fais, et ce que je ne fais pas</h2>
       <p>Je conçois et développe l'application qui transforme tes utilisateurs en clients : le parcours, le moment de valeur, l'écran d'offre, la logique d'abonnement et la rétention. Je ne fais pas la publicité qui amène les utilisateurs sur ton application. Tu amènes les personnes intéressées, je conçois le produit qui leur donne une raison de payer, puis de rester.</p>
 
       <h2>Par où commencer</h2>
-      <p>Reprends les six raisons une par une sur ton projet et note celles qui s'appliquent. Dans la plupart des cas, deux ou trois suffisent à expliquer pourquoi une application ne rapporte rien. Pour la vue d'ensemble du sujet, lis <a href="/blog/rentabiliser-application-mobile">comment rentabiliser une application mobile</a>. Si tu veux une lecture rapide du potentiel de revenus, du budget et du délai de ton projet, fais ton <a href="/audit-app">audit gratuit</a> en deux minutes.</p>
+      <p>Reprends les six raisons une par une sur ton projet et note celles qui s'appliquent. Dans la plupart des cas, deux ou trois suffisent à expliquer pourquoi une application ne rapporte rien.</p>
+      <p>Pour la vue d'ensemble du sujet, lis <a href="/blog/rentabiliser-application-mobile">comment rentabiliser une application mobile</a>. Si tu veux une lecture rapide du potentiel de revenus, du budget et du délai de ton projet, fais ton <a href="/audit-app">audit gratuit</a> en deux minutes.</p>
     `,
   },
   {
@@ -63,33 +91,68 @@ export const BLOG_ARTICLES = [
 
       <h2>Étape 1 : transformer l'idée en problème payant</h2>
       <p>Une idée se formule en général comme une fonctionnalité : « une application pour suivre ses entraînements ». Un business se formule comme un problème et une personne : « les coachs indépendants perdent du temps à envoyer des programmes par message et n'ont aucun moyen de faire payer ce suivi ». La deuxième formulation contient déjà un client, une douleur et une raison de payer.</p>
-      <p>Fais l'exercice à l'écrit, en une phrase : pour qui, quel problème, à quelle fréquence il se pose, et ce que la personne fait aujourd'hui à la place. Si la réponse à la dernière question est « rien, ça ne la dérange pas vraiment », le problème n'est pas assez cher pour justifier un abonnement. Cherche un problème qui revient chaque semaine, pas un agacement ponctuel.</p>
+      <p>Fais l'exercice à l'écrit, en une phrase. Quatre éléments :</p>
+      <ul>
+        <li>pour qui</li>
+        <li>quel problème</li>
+        <li>à quelle fréquence il se pose</li>
+        <li>ce que la personne fait aujourd'hui à la place</li>
+      </ul>
+      <p>Si la réponse à la dernière question est « rien, ça ne la dérange pas vraiment », le problème n'est pas assez cher pour justifier un abonnement. Cherche un problème qui revient chaque semaine, pas un agacement ponctuel.</p>
 
       <h2>Étape 2 : vérifier avant de développer</h2>
-      <p>La validation ne demande pas de code. Elle demande des conversations. Parle à quinze ou vingt personnes de ta cible, sans présenter ton idée en premier. Demande-leur comment elles gèrent le problème aujourd'hui, combien de temps ça leur prend, ce qu'elles ont déjà essayé et payé. Les réponses sur les outils qu'elles paient déjà valent dix fois plus que les « oui c'est une bonne idée » de politesse.</p>
-      <p>Trois signaux indiquent qu'un problème est monétisable : la personne a déjà dépensé de l'argent pour le résoudre, elle a bricolé une solution manuelle, elle en parle spontanément avec de la frustration. Si aucun des trois n'apparaît, ajuste l'idée maintenant. Un pivot à ce stade coûte une conversation, après le développement il coûte plusieurs mois.</p>
+      <p>La validation ne demande pas de code. Elle demande des conversations. Parle à quinze ou vingt personnes de ta cible, sans présenter ton idée en premier.</p>
+      <p>Demande-leur comment elles gèrent le problème aujourd'hui, combien de temps ça leur prend, ce qu'elles ont déjà essayé et payé. Les réponses sur les outils qu'elles paient déjà valent dix fois plus que les « oui c'est une bonne idée » de politesse.</p>
+      <p>Trois signaux indiquent qu'un problème est monétisable :</p>
+      <ul>
+        <li>la personne a déjà dépensé de l'argent pour le résoudre</li>
+        <li>elle a bricolé une solution manuelle</li>
+        <li>elle en parle spontanément avec de la frustration</li>
+      </ul>
+      <p>Si aucun des trois n'apparaît, ajuste l'idée maintenant. Un pivot à ce stade coûte une conversation, après le développement il coûte plusieurs mois.</p>
 
       <h2>Étape 3 : choisir le modèle de revenu avant la première ligne de code</h2>
-      <p>Le modèle de revenu n'est pas une décision de fin de projet, c'est une contrainte de conception. Une application par abonnement doit apporter une valeur qui se renouvelle, donc du contenu, une progression ou une synchronisation. Une application à achat unique doit délivrer sa valeur immédiatement. Une application avec achats intégrés doit rendre l'objet acheté désirable dans le parcours.</p>
+      <p>Le modèle de revenu n'est pas une décision de fin de projet, c'est une contrainte de conception :</p>
+      <ul>
+        <li><strong>Abonnement</strong> : la valeur doit se renouveler, donc du contenu, une progression ou une synchronisation.</li>
+        <li><strong>Achat unique</strong> : la valeur doit être délivrée immédiatement.</li>
+        <li><strong>Achats intégrés</strong> : l'objet acheté doit être désirable dans le parcours.</li>
+      </ul>
       <p>Décide donc tôt : qu'est-ce qui est gratuit, qu'est-ce qui est payant, et à quel moment précis l'utilisateur comprend que le payant vaut le coup. Cette frontière détermine l'architecture, les écrans et le rythme de l'application. Pour comparer les options en détail, lis <a href="/blog/modele-economique-application-mobile">quel modèle économique choisir pour ton application</a>.</p>
 
       <h2>Étape 4 : construire un scénario chiffré, prudent</h2>
-      <p>Avant d'investir, pose trois nombres : combien d'utilisateurs tu peux réalistement amener chaque mois, quel pourcentage passe au payant, et quel revenu net tu gardes après frais de store et taxes. Multiplie, puis divise ton budget de développement par ce revenu mensuel. Tu obtiens ton délai de retour sur investissement.</p>
-      <p>Un exemple concret pour situer les ordres de grandeur. Sur l'application à 13 000 € par mois, le passage au payant tourne autour de 3 %. Prends cette hypothèse, un revenu net moyen de 5 € par mois et par abonné, et 1 000 nouveaux utilisateurs par mois : cela donne 30 abonnés supplémentaires, soit environ 150 € de revenu récurrent ajouté chaque mois, avant les départs. Ce n'est pas spectaculaire au premier mois, mais c'est cumulatif. C'est cette mécanique lente qui construit un business, pas le pic du lancement.</p>
+      <p>Avant d'investir, pose trois nombres :</p>
+      <ul>
+        <li>combien d'utilisateurs tu peux réalistement amener chaque mois</li>
+        <li>quel pourcentage passe au payant</li>
+        <li>quel revenu net tu gardes après frais de store et taxes</li>
+      </ul>
+      <p>Multiplie, puis divise ton budget de développement par ce revenu mensuel. Tu obtiens ton délai de retour sur investissement.</p>
+      <p>Un exemple concret pour situer les ordres de grandeur. Sur l'application à 13 000 € par mois, le passage au payant tourne autour de 3 %. Prends cette hypothèse, un revenu net moyen de 5 € par mois et par abonné, et 1 000 nouveaux utilisateurs par mois : cela donne 30 abonnés supplémentaires, soit environ 150 € de revenu récurrent ajouté chaque mois, avant les départs.</p>
+      <p>Ce n'est pas spectaculaire au premier mois, mais c'est cumulatif. C'est cette mécanique lente qui construit un business, pas le pic du lancement.</p>
       <p>Si ton scénario prudent ne devient jamais rentable, le problème n'est pas le développement : c'est le prix, la cible ou la valeur. Corrige avant, pas après. Pour approfondir, lis <a href="/blog/combien-rapporte-application-mobile">combien rapporte réellement une application mobile</a>.</p>
 
       <h2>Étape 5 : lancer une première version qui vend déjà</h2>
-      <p>La première version ne doit pas contenir toutes les fonctionnalités, mais elle doit contenir tout le chemin de valeur : l'utilisateur arrive, comprend en moins d'une minute ce que l'application lui apporte, obtient un premier résultat concret, et rencontre l'offre payante à ce moment précis. Une application sans mécanique de paiement dès la première version ne collecte aucune information utile sur sa rentabilité.</p>
+      <p>La première version ne doit pas contenir toutes les fonctionnalités, mais elle doit contenir tout le chemin de valeur : l'utilisateur arrive, comprend en moins d'une minute ce que l'application lui apporte, obtient un premier résultat concret, et rencontre l'offre payante à ce moment précis.</p>
+      <p>Une application sans mécanique de paiement dès la première version ne collecte aucune information utile sur sa rentabilité.</p>
       <p>Coupe les fonctionnalités secondaires, jamais le parcours de conversion. C'est la seule partie qui te dira si ton business tient debout.</p>
 
       <h2>Étape 6 : mesurer les bons chiffres</h2>
-      <p>Le nombre de téléchargements ne dit presque rien. Suis quatre indicateurs : combien d'utilisateurs terminent l'onboarding, combien atteignent le premier moment de valeur, combien passent au payant, et combien sont encore actifs à trente jours. Chaque chute entre deux étapes t'indique exactement quoi corriger. Une conversion faible avec une bonne rétention signale un problème de prix ou de présentation de l'offre. Une bonne conversion avec une rétention faible signale que la valeur ne se renouvelle pas.</p>
+      <p>Le nombre de téléchargements ne dit presque rien. Suis quatre indicateurs :</p>
+      <ul>
+        <li>combien d'utilisateurs terminent l'onboarding</li>
+        <li>combien atteignent le premier moment de valeur</li>
+        <li>combien passent au payant</li>
+        <li>combien sont encore actifs à trente jours</li>
+      </ul>
+      <p>Chaque chute entre deux étapes t'indique exactement quoi corriger. Une conversion faible avec une bonne rétention signale un problème de prix ou de présentation de l'offre. Une bonne conversion avec une rétention faible signale que la valeur ne se renouvelle pas.</p>
 
       <h2>Ce que je prends en charge, et ce que je ne fais pas</h2>
       <p>Je conçois et développe l'application qui transforme tes utilisateurs en clients : le parcours, le moment de valeur, l'écran d'abonnement, la logique de paiement et la rétention. Je ne fais pas la publicité qui amène les utilisateurs sur ton application. Toi, tu amènes les personnes intéressées. Moi, je conçois le produit qui leur donne une raison de payer et de rester.</p>
 
       <h2>Par où commencer cette semaine</h2>
-      <p>Écris ton problème en une phrase avec une personne dedans, parle à dix personnes de ta cible, décide de ce qui sera payant, puis construis un scénario prudent sur douze mois. Pour la vue d'ensemble du sujet, lis <a href="/blog/rentabiliser-application-mobile">comment rentabiliser une application mobile</a>. Si tu veux une première lecture du potentiel, du budget et du délai de ton idée, fais ton <a href="/audit-app">audit gratuit</a> en deux minutes.</p>
+      <p>Écris ton problème en une phrase avec une personne dedans, parle à dix personnes de ta cible, décide de ce qui sera payant, puis construis un scénario prudent sur douze mois.</p>
+      <p>Pour la vue d'ensemble du sujet, lis <a href="/blog/rentabiliser-application-mobile">comment rentabiliser une application mobile</a>. Si tu veux une première lecture du potentiel, du budget et du délai de ton idée, fais ton <a href="/audit-app">audit gratuit</a> en deux minutes.</p>
     `,
   },
   {
