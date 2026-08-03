@@ -20,7 +20,7 @@
 ## Contenu HTML de l'article
 
 ```html
-      <p>Une idée d'application ne vaut rien tant qu'elle n'a pas rencontré une personne prête à payer pour ce qu'elle résout. C'est la partie que la plupart des porteurs de projet sautent : ils passent de l'idée au développement, puis découvrent après la mise en ligne que personne ne sort sa carte bancaire. La méthode qui suit remet les étapes dans l'ordre, de l'idée au premier euro récurrent.</p>
+      <p>Une idée d'application ne vaut rien tant qu'elle n'a pas rencontré une personne prête à payer pour ce qu'elle résout. C'est la partie que la plupart des porteurs de projet sautent : ils passent de l'idée au développement, puis découvrent après la mise en ligne que personne ne sort sa carte bancaire. La méthode qui suit remet les étapes dans l'ordre, de l'idée au premier euro récurrent, pour que ton application soit rentable et pas seulement fonctionnelle.</p>
       <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>. J'ai aussi vu de près l'autre face : la première version de Hush a atteint 300 000 utilisateurs sans modèle de revenu construit dès le départ. Une idée peut donc très bien marcher et ne rien rapporter. C'est exactement le problème que cet article traite.</p>
 
       <h2>Étape 1 : transformer l'idée en problème payant</h2>
@@ -38,7 +38,7 @@
       <h2>Étape 4 : construire un scénario chiffré, prudent</h2>
       <p>Avant d'investir, pose trois nombres : combien d'utilisateurs tu peux réalistement amener chaque mois, quel pourcentage passe au payant, et quel revenu net tu gardes après frais de store et taxes. Multiplie, puis divise ton budget de développement par ce revenu mensuel. Tu obtiens ton délai de retour sur investissement.</p>
       <p>Un exemple concret pour situer les ordres de grandeur. Sur l'application à 13 000 € par mois, le passage au payant tourne autour de 3 %. Prends cette hypothèse, un revenu net moyen de 5 € par mois et par abonné, et 1 000 nouveaux utilisateurs par mois : cela donne 30 abonnés supplémentaires, soit environ 150 € de revenu récurrent ajouté chaque mois, avant les départs. Ce n'est pas spectaculaire au premier mois, mais c'est cumulatif. C'est cette mécanique lente qui construit un business, pas le pic du lancement.</p>
-      <p>Si ton scénario prudent ne fonctionne pas, le problème n'est pas le développement : c'est le prix, la cible ou la valeur. Corrige avant, pas après. Pour approfondir, lis <a href="/blog/combien-rapporte-application-mobile">combien rapporte réellement une application mobile</a>.</p>
+      <p>Si ton scénario prudent ne devient jamais rentable, le problème n'est pas le développement : c'est le prix, la cible ou la valeur. Corrige avant, pas après. Pour approfondir, lis <a href="/blog/combien-rapporte-application-mobile">combien rapporte réellement une application mobile</a>.</p>
 
       <h2>Étape 5 : lancer une première version qui vend déjà</h2>
       <p>La première version ne doit pas contenir toutes les fonctionnalités, mais elle doit contenir tout le chemin de valeur : l'utilisateur arrive, comprend en moins d'une minute ce que l'application lui apporte, obtient un premier résultat concret, et rencontre l'offre payante à ce moment précis. Une application sans mécanique de paiement dès la première version ne collecte aucune information utile sur sa rentabilité.</p>
