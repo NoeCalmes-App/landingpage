@@ -8,7 +8,7 @@ export const BLOG_ARTICLES = [
     title: "Comment transformer une idée d'application en business rentable",
     metaTitle: "Idée d'application : en faire un business rentable | Noé Calmes",
     description: "La méthode pour passer d'une idée d'application à un vrai business : valider la valeur, choisir le revenu, concevoir la conversion, mesurer.",
-    date: '2026-07-27',
+    date: '2026-08-03',
     readTime: '7 min',
     finalCta: 'audit',
     content: `
