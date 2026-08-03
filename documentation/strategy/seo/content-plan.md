@@ -25,20 +25,42 @@ On ne se bat PAS sur les têtes de gondole d'agence (« créer une application m
 
 ## File de sujets (le prochain `pending` est rédigé chaque semaine)
 
-| # | Statut | Titre / mot-clé cible | Intention |
-|---|--------|------------------------|-----------|
-| 1 | done | Comment rentabiliser une application mobile (PAGE PILIER) | Le hub du cluster, vue d'ensemble des modèles de revenus |
-| 2 | done | Combien rapporte une application mobile en 2026 | Curiosité + chiffres réels + preuve Calories |
-| 3 | done | Modèle économique d'une application mobile : lequel choisir | Abonnement vs freemium vs achats in-app vs pub |
-| 4 | done | Application par abonnement : comment ça marche et combien ça rapporte | Le modèle le plus rentable, expliqué |
-| 5 | done | Comment transformer une idée d'application en business rentable | De l'idée au revenu, la méthode |
-| 6 | done | Pourquoi 90 % des applications ne rapportent rien (et comment éviter ça) | L'angle fort de Noé : la différence c'est l'expertise |
-| 7 | pending | Freemium ou abonnement : quel modèle pour ton application | Comparatif décisionnel |
-| 8 | pending | Comment fixer le prix d'un abonnement dans une application | Pricing, tactique concrète |
-| 9 | pending | Onboarding d'application : convertir tes utilisateurs en clients | Le marketing DANS l'app, coeur du métier de Noé |
-| 10 | pending | Comment une application transforme une audience en revenus récurrents | Pour ceux qui ont déjà une communauté |
-| 11 | pending | Application mobile pour entrepreneurs et coachs : transformer ton expertise en revenus | Cible ICP directe |
-| 12 | pending | Les erreurs qui empêchent une application de générer des revenus | Liste d'erreurs + comment les corriger |
+Deux colonnes, deux choses différentes. Ne pas les confondre.
+
+- **Statut** : pilote la tâche programmée. `pending` = pas encore rédigé, `done` = brouillon écrit dans `drafts/`. Seule la tâche modifie cette colonne.
+- **En ligne** : est-ce que l'article est publié sur le site (présent dans `Blog.jsx` + `generate-routes.js` + `sitemap.xml`) ? `non` = brouillon en attente de relecture. C'est Noé qui passe cette colonne à `oui` après avoir intégré et déployé.
+
+Un sujet peut donc être `done` et `non` en même temps : le brouillon existe, mais rien n'est publié.
+
+| # | Statut | En ligne | Titre / mot-clé cible | Intention |
+|---|--------|----------|------------------------|-----------|
+| 1 | done | oui | Comment rentabiliser une application mobile (PAGE PILIER) | Le hub du cluster, vue d'ensemble des modèles de revenus |
+| 2 | done | oui | Combien rapporte une application mobile en 2026 | Curiosité + chiffres réels + preuve Calories |
+| 3 | done | oui | Modèle économique d'une application mobile : lequel choisir | Abonnement vs freemium vs achats in-app vs pub |
+| 4 | done | oui | Application par abonnement : comment ça marche et combien ça rapporte | Le modèle le plus rentable, expliqué |
+| 5 | done | oui | Comment transformer une idée d'application en business rentable | De l'idée au revenu, la méthode |
+| 6 | done | non | Pourquoi 90 % des applications ne rapportent rien (et comment éviter ça) | L'angle fort de Noé : la différence c'est l'expertise |
+| 7 | pending | non | Freemium ou abonnement : quel modèle pour ton application | Comparatif décisionnel |
+| 8 | pending | non | Comment fixer le prix d'un abonnement dans une application | Pricing, tactique concrète |
+| 9 | pending | non | Onboarding d'application : convertir tes utilisateurs en clients | Le marketing DANS l'app, coeur du métier de Noé |
+| 10 | pending | non | Comment une application transforme une audience en revenus récurrents | Pour ceux qui ont déjà une communauté |
+| 11 | pending | non | Application mobile pour entrepreneurs et coachs : transformer ton expertise en revenus | Cible ICP directe |
+| 12 | pending | non | Les erreurs qui empêchent une application de générer des revenus | Liste d'erreurs + comment les corriger |
+
+## Dette SEO sur les anciens articles (audit du 03/08/2026)
+
+Les articles du cluster « monétisation » (1 à 5) respectent les limites : metaTitle ≤ 65 caractères, description ≤ 155. Les articles plus anciens, écrits avant cette stratégie, dépassent et se font tronquer dans les résultats Google. Ils sont aussi en « vous » et sur un angle générique d'agence, pas sur la cible entrepreneurs.
+
+| Article | metaTitle | description |
+|---------|-----------|-------------|
+| application-mobile-meilleur-investissement | 77 | 142 |
+| combien-coute-application-mobile | 78 | 162 |
+| creer-application-mobile-guide | 73 | 182 |
+| reprendre-application-mobile-existante | 68 | 171 |
+| faire-evoluer-application-mobile | 74 | 184 |
+| choisir-expert-application-mobile | 76 | 175 |
+
+À reprendre quand la file de sujets sera vidée : raccourcir les metaTitle et descriptions, passer en « tu », recentrer sur l'angle revenus.
 
 ## Comment intégrer un brouillon (côté Noé)
 
