@@ -147,6 +147,13 @@ const blogRoutes = [
     content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
   },
   {
+    path: '/blog/pourquoi-applications-ne-rapportent-rien',
+    title: 'Pourquoi ton application ne rapporte rien | Noé Calmes',
+    description: 'Les vraies raisons pour lesquelles une application ne génère aucun revenu, et ce que tu dois changer dans sa conception pour inverser la tendance.',
+    heading: 'Pourquoi 90 % des applications ne rapportent rien (et comment éviter ça)',
+    content: 'Modèle de revenu décidé trop tard, moment de valeur jamais atteint, offre mal placée, prix fixé au hasard, valeur qui ne se renouvelle pas, mauvais indicateurs suivis : les six raisons qui expliquent l\'absence de revenus d\'une application, et comment les corriger. Ce n\'est pas l\'idée qui décide, c\'est la conception.',
+  },
+  {
     path: '/blog/idee-application-business-rentable',
     title: 'Idée d\'application : en faire un business rentable | Noé Calmes',
     description: 'La méthode pour passer d\'une idée d\'application à un vrai business : valider la valeur, choisir le revenu, concevoir la conversion, mesurer.',

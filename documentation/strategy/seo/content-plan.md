@@ -39,7 +39,7 @@ Un sujet peut donc être `done` et `non` en même temps : le brouillon existe, m
 | 3 | done | oui | Modèle économique d'une application mobile : lequel choisir | Abonnement vs freemium vs achats in-app vs pub |
 | 4 | done | oui | Application par abonnement : comment ça marche et combien ça rapporte | Le modèle le plus rentable, expliqué |
 | 5 | done | oui | Comment transformer une idée d'application en business rentable | De l'idée au revenu, la méthode |
-| 6 | done | non | Pourquoi 90 % des applications ne rapportent rien (et comment éviter ça) | L'angle fort de Noé : la différence c'est l'expertise |
+| 6 | done | oui | Pourquoi 90 % des applications ne rapportent rien (et comment éviter ça) | L'angle fort de Noé : la différence c'est l'expertise |
 | 7 | pending | non | Freemium ou abonnement : quel modèle pour ton application | Comparatif décisionnel |
 | 8 | pending | non | Comment fixer le prix d'un abonnement dans une application | Pricing, tactique concrète |
 | 9 | pending | non | Onboarding d'application : convertir tes utilisateurs en clients | Le marketing DANS l'app, coeur du métier de Noé |
