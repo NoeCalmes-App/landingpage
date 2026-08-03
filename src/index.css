@@ -276,8 +276,12 @@ details summary {
   margin-bottom: 0.5rem;
 }
 
+/* Corps d'article : gris ardoise a 7:1 de contraste sur fond blanc.
+   L'ancien `gray` (#808080) plafonnait a 3,95:1, sous le minimum WCAG AA
+   de 4,5:1 pour du texte courant. Un corps sous-contraste se lit plus
+   lentement et donne l'impression d'un article plus long qu'il ne l'est. */
 .prose-blog p {
-  color: var(--color-grey);
+  color: #4b5a70;
   margin-bottom: 1rem;
   line-height: 1.75;
 }
@@ -286,7 +290,7 @@ details summary {
   list-style-type: disc;
   padding-left: 1.5rem;
   margin-bottom: 1rem;
-  color: var(--color-grey);
+  color: #4b5a70;
 }
 
 .prose-blog ul li {

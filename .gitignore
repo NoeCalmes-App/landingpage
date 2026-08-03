@@ -26,3 +26,8 @@ dist-ssr
 
 # Archives de livraison locales (les sources restent versionnees)
 content/creatives/carrousel-instagram-apps-qui-rapportent.zip
+
+# Sorties de build de verification (ne jamais versionner)
+dist-check*
+dist-verify*
+tmp/

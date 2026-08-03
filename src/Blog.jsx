@@ -821,7 +821,7 @@ function BlogArticlePage({ article, onBack, onBookCall, onAuditApp }) {
         </div>
       </nav>
 
-      <article className={`max-w-180 mx-auto px-5 pb-20 ${article.compactHeader ? 'pt-32 md:pt-36' : 'pt-36 md:pt-40'}`}>
+      <article className={`max-w-160 mx-auto px-5 pb-20 ${article.compactHeader ? 'pt-32 md:pt-36' : 'pt-36 md:pt-40'}`}>
         {article.compactHeader ? (
           <div className="flex items-center justify-between gap-4 text-[0.85rem] mb-4">
             <button onClick={onBack} className="text-brand font-medium inline-flex items-center gap-1.5 hover:underline cursor-pointer shrink-0">
