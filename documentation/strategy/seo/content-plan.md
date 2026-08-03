@@ -42,12 +42,13 @@ Un sujet peut donc être `done` et `non` en même temps : le brouillon existe, m
 | 4 | done | oui | Application par abonnement : comment ça marche et combien ça rapporte | Le modèle le plus rentable, expliqué |
 | 5 | done | oui | Comment transformer une idée d'application en business rentable | De l'idée au revenu, la méthode |
 | 6 | done | oui | Pourquoi 90 % des applications ne rapportent rien (et comment éviter ça) | L'angle fort de Noé : la différence c'est l'expertise |
-| 7 | pending | non | Freemium ou abonnement : quel modèle pour ton application | Comparatif décisionnel |
+| 7 | ~~pending~~ A REFORMULER | non | ~~Freemium ou abonnement : quel modèle pour ton application~~ | Risque de cannibalisation avec les sujets 3 et 4, qui traitent déjà cet arbitrage. Ne pas rédiger tel quel. |
 | 8 | pending | non | Comment fixer le prix d'un abonnement dans une application | Pricing, tactique concrète |
 | 9 | pending | non | Onboarding d'application : convertir tes utilisateurs en clients | Le marketing DANS l'app, coeur du métier de Noé |
 | 10 | pending | non | Comment une application transforme une audience en revenus récurrents | Pour ceux qui ont déjà une communauté |
 | 11 | pending | non | Application mobile pour entrepreneurs et coachs : transformer ton expertise en revenus | Cible ICP directe |
-| 12 | pending | non | Les erreurs qui empêchent une application de générer des revenus | Liste d'erreurs + comment les corriger |
+| 12 | ~~pending~~ SUPPRIME | non | ~~Les erreurs qui empêchent une application de générer des revenus~~ | Doublon direct du sujet 6, dont les six raisons sont déjà une liste d'erreurs. Ne pas rédiger. |
+| 13 | done | oui | Créer une application avec l'IA : la pire idée si tu veux qu'elle rapporte | Mot-clé chaud « application IA / vibe coding ». Sujet ajouté hors file le 03/08/2026. |
 
 ## Dette SEO sur les anciens articles (audit du 03/08/2026)
 

@@ -147,6 +147,13 @@ const blogRoutes = [
     content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
   },
   {
+    path: '/blog/creer-application-avec-ia',
+    title: 'Créer une application avec l\'IA : la pire idée | Noé Calmes',
+    description: 'L\'IA génère ton application en quelques heures. Pourquoi ça ne te fera pas gagner un euro, et ce qui décide vraiment du revenu.',
+    heading: 'Créer une application avec l\'IA : la pire idée si tu veux qu\'elle rapporte',
+    content: 'L\'IA génère une application en quelques heures, mais le revenu ne vient pas du code. Ce qu\'elle fait bien, ce qu\'elle ne peut pas décider à ta place (ce qui est payant, où se place l\'offre, le prix, la rétention), la dette de sécurité et de maintenance, et la bonne façon de l\'utiliser.',
+  },
+  {
     path: '/blog/pourquoi-applications-ne-rapportent-rien',
     title: 'Pourquoi ton application ne rapporte rien | Noé Calmes',
     description: 'Les vraies raisons pour lesquelles une application ne génère aucun revenu, et ce que tu dois changer dans sa conception pour inverser la tendance.',

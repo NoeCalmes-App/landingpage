@@ -4,6 +4,65 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'creer-application-avec-ia',
+    title: "Créer une application avec l'IA : la pire idée si tu veux qu'elle rapporte",
+    metaTitle: "Créer une application avec l'IA : la pire idée | Noé Calmes",
+    description: "L'IA génère ton application en quelques heures. Pourquoi ça ne te fera pas gagner un euro, et ce qui décide vraiment du revenu.",
+    date: '2026-08-03',
+    readTime: '5 min',
+    finalCta: 'audit',
+    content: `
+      <p>L'IA sait générer une application en quelques heures. Tu décris ce que tu veux, le code sort, l'écran s'affiche. C'est réel, et c'est impressionnant.</p>
+      <p>Le problème arrive après : cette application ne te rapportera probablement rien. Et la raison n'a rien à voir avec la qualité du code.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications et une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>. J'utilise l'IA tous les jours dans mon travail. Ce n'est donc pas un article contre l'IA, c'est un article contre l'idée qu'elle remplace la conception.</p>
+
+      <h2>Ce que l'IA fait vraiment bien</h2>
+      <p>Autant être honnête, elle est excellente sur une chose : aller vite jusqu'à quelque chose qui s'affiche.</p>
+      <ul>
+        <li>transformer une idée en écran visible en quelques heures</li>
+        <li>écrire le code répétitif qui n'a aucune valeur stratégique</li>
+        <li>tester une intuition sans engager de budget</li>
+      </ul>
+      <p>Pour un prototype qui sert à montrer une direction, c'est un gain énorme. Le piège commence quand ce prototype est confondu avec un produit.</p>
+
+      <h2>Ton application marche, et pourtant personne ne paie</h2>
+      <p>Une application générée par l'IA fonctionne. Les boutons répondent, les écrans s'enchaînent. Elle ne génère rien pour autant.</p>
+      <p>Parce que le revenu ne vient pas du code. Il vient de décisions que personne n'a prises : à quel moment exact l'utilisateur ressent la valeur, où se place l'offre payante, ce qui le fait revenir au troisième mois.</p>
+      <p>L'IA écrit ce que tu lui demandes. Elle ne te dira jamais que tu lui demandes la mauvaise chose. C'est le scénario que je détaille dans <a href="/blog/pourquoi-applications-ne-rapportent-rien">pourquoi 90 % des applications ne rapportent rien</a>, et l'IA ne fait que l'accélérer : elle te permet d'arriver plus vite à une application qui ne rapporte rien.</p>
+
+      <h2>Ce que l'IA ne peut pas décider à ta place</h2>
+      <p>Ces questions n'ont pas de réponse générique. Elles dépendent de ton marché, de tes utilisateurs et de ton prix.</p>
+      <ul>
+        <li>ce qui est gratuit et ce qui est payant</li>
+        <li>le moment précis où l'offre apparaît dans le parcours</li>
+        <li>le prix, et pourquoi celui-là plutôt qu'un autre</li>
+        <li>ce qui donne envie de rester après le premier mois</li>
+      </ul>
+      <p>Demande à une IA de générer un écran d'abonnement, elle le fera très bien. Elle ne te dira pas s'il est au bon endroit. Or c'est exactement cette décision qui sépare une application à zéro euro d'une application à 13 000 € par mois. Pour cadrer ces choix, lis <a href="/blog/modele-economique-application-mobile">quel modèle économique choisir pour ton application</a>.</p>
+
+      <h2>La dette que tu ne vois pas tout de suite</h2>
+      <p>Il y a aussi un coût différé, et il est mesuré. Le <a href="https://www.veracode.com/blog/2026-genai-code-security-report-ai-risk/">rapport 2026 de Veracode sur la sécurité du code généré par IA</a> montre que près de 44 % des tâches de génération introduisent une faille, et que le taux de réussite aux tests de sécurité stagne autour de 55 % depuis deux ans.</p>
+      <p>Sur une application qui encaisse des paiements et stocke des données personnelles, ça se traduit par des clés exposées, des contrôles d'accès incomplets, des validations absentes. Tant que tu as dix utilisateurs, personne ne le voit. Le jour où tu en as mille et que tu factures, ça devient ton problème.</p>
+      <p>S'ajoute la maintenance. Un code produit sans architecture cohérente devient très coûteux à faire évoluer : la première fonctionnalité est presque gratuite, la dixième te coûte plus cher que si tu avais commencé proprement.</p>
+
+      <h2>La bonne façon de l'utiliser</h2>
+      <p>L'IA est un outil d'exécution, pas une méthode. L'ordre qui fonctionne :</p>
+      <ul>
+        <li>décider d'abord du modèle de revenu et du parcours qui y mène</li>
+        <li>construire ensuite, avec l'IA si ça va plus vite</li>
+        <li>faire relire systématiquement ce qui touche au paiement, aux données et à la sécurité</li>
+      </ul>
+      <p>Utilisée dans cet ordre, elle fait gagner des semaines. Utilisée à l'envers, elle produit une application propre en apparence, qui ne rapporte rien et qu'on ne peut pas faire évoluer.</p>
+
+      <h2>Ce que je fais, et ce que je ne fais pas</h2>
+      <p>Je conçois et développe l'application qui transforme tes utilisateurs en clients : le parcours, le moment de valeur, l'écran d'offre, la logique d'abonnement et la rétention. Je ne fais pas la publicité qui amène les utilisateurs sur ton application. Tu amènes les personnes intéressées, je conçois le produit qui leur donne une raison de payer, puis de rester.</p>
+
+      <h2>Par où commencer</h2>
+      <p>Si tu as déjà une application générée par l'IA, ne la jette pas. Reprends-la avec les bonnes questions : où est le moment de valeur, où est l'offre, pourquoi quelqu'un paierait.</p>
+      <p>Pour la vue d'ensemble du sujet, lis <a href="/blog/rentabiliser-application-mobile">comment rentabiliser une application mobile</a>. Si tu veux une lecture rapide du potentiel, du budget et du délai de ton projet, fais ton <a href="/audit-app">audit gratuit</a> en deux minutes.</p>
+    `,
+  },
+  {
     slug: 'pourquoi-applications-ne-rapportent-rien',
     title: "Pourquoi 90 % des applications ne rapportent rien (et comment éviter ça)",
     metaTitle: "Pourquoi ton application ne rapporte rien | Noé Calmes",
