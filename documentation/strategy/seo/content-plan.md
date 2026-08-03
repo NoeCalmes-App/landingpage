@@ -22,6 +22,7 @@ On ne se bat PAS sur les têtes de gondole d'agence (« créer une application m
 - **Format** : HTML simple (`<p>`, `<h2>`, `<strong>`), comme les articles existants dans `src/Blog.jsx` (constante `BLOG_ARTICLES`). 700 à 1100 mots.
 - **CTA de fin** : `finalCta: 'audit'` (vers l'audit gratuit), comme les articles existants.
 - **Maillage interne** : lier vers la page pilier + 1-2 articles du cluster.
+- **Restitution à Noé** : dans le message final, toujours donner le titre puis **le corps complet de l'article en texte lisible** (pas seulement un résumé, pas de balises HTML), pour qu'il puisse le relire directement dans la conversation sans ouvrir le brouillon. Ensuite seulement, le chemin du fichier et l'URL.
 
 ## File de sujets (le prochain `pending` est rédigé chaque semaine)
 
