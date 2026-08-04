@@ -69,7 +69,37 @@ Tous les CTA de contact de la home et des pages de contenu renvoient d'abord ver
 - le bouton principal dans la section `/rendez-vous` ;
 - le bouton flottant WhatsApp.
 
-Le message pre-rempli commence par `Salut Noé` (tutoiement, coherent avec le ton de la landing et de l'audit).
+### Les messages pre-remplis (MaJ 04/08/2026)
+
+**Regle absolue : le message pre-rempli ne demande RIEN au prospect.** Il doit
+pouvoir partir en un seul tap. Les anciennes versions finissaient par « ton idee
+en 2 mots : » — c'etait un devoir a faire au moment ou la personne est la plus
+motivee, et ca faisait fuir ceux qui craignent de devoiler leur idee a un
+inconnu. La qualification se fait dans la **premiere reponse de Noe**, jamais
+dans le message pre-rempli.
+
+Tous commencent par **`Bonjour Noé`** (et non plus `Salut`).
+
+Chaque point d'entree a sa propre formulation, pour que Noe sache d'ou vient le
+contact sans rien demander :
+
+| Point d'entree | Fichier | Message |
+|---|---|---|
+| Section contact + bouton flottant | `src/App.jsx` (`WHATSAPP_PREFILL`) | Bonjour Noé, j'ai un projet d'application, on peut en parler ? |
+| Page `/contactnoe` | `src/ContactNoe.jsx` (`WHATSAPP_URL`) | Bonjour Noé, j'ai un projet d'application, on peut en parler ? |
+| Chatbot | `src/chatbot/Widget.jsx` (`DEFAULT_WHATSAPP_URL`) | Bonjour Noé, j'ai une question sur mon projet d'application. |
+| Haut de `/audit-app` | `src/audit-app/AuditAppHero.jsx` (`DIRECT_WHATSAPP_URL`) | Bonjour Noé, j'ai un projet d'application et j'aimerais ton avis. |
+| Fin d'audit | `src/audit-app/AuditAppVerdict.jsx` (`buildWhatsAppUrl`) | Bonjour Noé, moi c'est {prenom}. Je viens de faire ton audit… |
+| Retour formulaire Meta (`/whatsapp`, `/wa`) | `src/App.jsx` (route) | Bonjour Noé, je viens de remplir ton formulaire pour mon projet d'application. |
+
+Le tutoiement reste la regle **dans la conversation** (cf. `nowork` /
+`whatsapp-conversations.md`), il n'y a que la salutation qui passe en « Bonjour ».
+
+> Si un prospect refuse de decrire son idee (« c'est secret »), **ne pas sortir
+> le NDA en reponse** : ca formalise sa peur et alourdit l'echange. Repondre
+> qu'on n'a pas besoin de l'idee, poser une question factuelle (activite
+> existante ? delai ?) et proposer l'appel. Le NDA s'annonce au moment de
+> proposer l'appel, comme rassurance, jamais comme condition.
 
 Pour les CTA prix/budget, preferer `/audit-app` : exemple dans la section comparaison, `Tarif fixe, sans surprise` puis lien secondaire `Combien coûterait mon app ?` vers `/audit-app`, qui finit lui aussi sur WhatsApp.
 

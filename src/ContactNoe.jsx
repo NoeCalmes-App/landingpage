@@ -7,7 +7,11 @@ import { BsMicrosoftTeams } from 'react-icons/bs'
 import { MdEmail } from 'react-icons/md'
 
 const qrcode = '/assets/images/contact/qrcode.webp'
-const WHATSAPP_URL = 'https://wa.me/33658308210'
+// Message pré-rempli : aucune question posée, il part en un tap. Cf. le
+// commentaire de WHATSAPP_PREFILL dans App.jsx.
+const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
+  "Bonjour Noé, j'ai un projet d'application, on peut en parler ?"
+)}`
 const TEAMS_URL = 'https://teams.live.com/l/invite/FEAC7bmID--_ZezkAE?v=g1'
 const EMAIL = 'contact@noecalmes.fr'
 

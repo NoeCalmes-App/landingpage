@@ -7,8 +7,10 @@
 import { HERO_QUESTIONS } from './config'
 import { trackAuditStart, trackDirectWhatsAppLead } from '../metaTracking.js'
 
+// Message pré-rempli : aucune question posée, il part en un tap. Cf. le
+// commentaire de WHATSAPP_PREFILL dans App.jsx.
 const DIRECT_WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
-  "Salut Noé, j'ai un projet d'application et j'aimerais ton avis. Mon projet en deux mots : "
+  "Bonjour Noé, j'ai un projet d'application et j'aimerais ton avis."
 )}`
 
 // Styles de "papier desordonné" : rotation legere visible sur mobile,

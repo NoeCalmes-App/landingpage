@@ -11,8 +11,10 @@ const WELCOME_MESSAGE = {
   text: "Salut 👋 Je suis l'assistant de Noé. Pose-moi tes questions sur ton projet d'application mobile.",
 }
 
+// Message pré-rempli : aucune question posée, il part en un tap. Formulation
+// propre au chatbot pour que Noé sache d'où vient le contact.
 const DEFAULT_WHATSAPP_URL = `https://wa.me/33658308210?${new URLSearchParams({
-  text: "Bonjour Noé, j'ai un projet d'application et j'aimerais échanger avec toi pour voir comment le concrétiser.",
+  text: "Bonjour Noé, j'ai une question sur mon projet d'application.",
 })}`
 
 // Construit les composants markdown avec un callback pour fermer le chatbot

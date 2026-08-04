@@ -43,8 +43,13 @@ const calorieVisuel = '/assets/images/apps/calorievisuelle.png'
 // Les CTA de la landing passent d'abord par /rendez-vous. Seuls le bouton de
 // cette section et le bouton flottant ouvrent WhatsApp directement.
 const WHATSAPP_NUMBER = '33658308210'
+// Le message pré-rempli ne demande RIEN au prospect : il doit pouvoir partir
+// en un seul tap. Toute question posée ici (« ton idée en 2 mots ») ajoute de
+// la friction au moment où la personne est la plus motivée, et fait fuir ceux
+// qui craignent de dévoiler leur idée à un inconnu. La qualification se fait
+// dans la première réponse de Noé, pas dans le message pré-rempli.
 const WHATSAPP_PREFILL =
-  "Salut Noé, j'ai un projet d'application et je veux savoir si elle peut vraiment rapporter. En 2 mots : "
+  "Bonjour Noé, j'ai un projet d'application, on peut en parler ?"
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_PREFILL)}`
 
 const SECTION_ROUTES = {
@@ -183,7 +188,7 @@ function App() {
     if (path === '/whatsapp' || path === '/wa') {
       window.location.replace(
         `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-          "Salut Noé, je viens de remplir ton formulaire. Mon idée en deux lignes : "
+          "Bonjour Noé, je viens de remplir ton formulaire pour mon projet d'application."
         )}`
       )
       return 'home'
