@@ -6,6 +6,26 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const distDir = join(__dirname, '..', 'dist')
 const baseHtml = readFileSync(join(distDir, 'index.html'), 'utf-8')
 
+// URL publique d'un chemin — TOUJOURS avec la barre finale.
+//
+// POURQUOI, et c'est la correction du 8 août 2026 : ces pages sont écrites en
+// `chemin/index.html`, donc GitHub Pages les sert à l'adresse `/chemin/` et
+// répond à `/chemin` (sans barre) par une redirection 301. Or la canonique et
+// le sitemap disaient `/chemin` : Google suivait le sitemap → redirection →
+// lisait la page → la canonique le renvoyait sur `/chemin` → redirection à
+// nouveau. Une canonique qui pointe sur une URL qui redirige vers la page
+// elle-même = « Erreur liée à des redirections » dans Search Console. C'est ce
+// qui a tenu 27 pages (dont /audit-app et tout le blog) HORS de Google de
+// mars à août, pendant que le site marchait parfaitement pour les humains.
+//
+// La règle est donc : canonique = l'URL EXACTE que le serveur sert en 200,
+// barre comprise. Toute nouvelle URL absolue écrite ici doit passer par cette
+// fonction.
+function urlPublique(path) {
+  if (path === '/' || path === '') return 'https://noecalmes.fr/'
+  return `https://noecalmes.fr${path}/`
+}
+
 // Helper to patch all SEO meta tags
 function patchHtml(html, {
   path,
@@ -22,10 +42,10 @@ function patchHtml(html, {
 }) {
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
   html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/, `<meta name="description" content="${description}" />`)
-  html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, `<link rel="canonical" href="https://noecalmes.fr${canonicalPath}" />`)
+  html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${urlPublique(canonicalPath)}" />`)
   html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${title}" />`)
   html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${description}" />`)
-  html = html.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="https://noecalmes.fr${canonicalPath}" />`)
+  html = html.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${urlPublique(canonicalPath)}" />`)
   html = html.replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${title}" />`)
   html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${description}" />`)
 
@@ -49,7 +69,10 @@ function patchHtml(html, {
     `<script type="application/ld+json">\n    ${breadcrumbJson}\n    </script>`
   )
 
-  const siteNav = '<nav aria-label="Pages du site"><a href="https://noecalmes.fr/">Accueil</a> · <a href="https://noecalmes.fr/expertise">Concevoir une application qui rapporte</a> · <a href="https://noecalmes.fr/creation-application-mobile">Ma méthode</a> · <a href="https://noecalmes.fr/blog">Blog</a> · <a href="https://noecalmes.fr/audit-app">Tester ton idée</a> · <a href="https://noecalmes.fr/faq">FAQ</a></nav>'
+  // Liens internes en forme finale (barre comprise) : chaque lien sans barre
+  // coûte une redirection 301 à chaque passage de robot, et un maillage qui
+  // pointe partout sur des redirections brouille la version canonique.
+  const siteNav = `<nav aria-label="Pages du site"><a href="https://noecalmes.fr/">Accueil</a> · <a href="${urlPublique('/expertise')}">Concevoir une application qui rapporte</a> · <a href="${urlPublique('/creation-application-mobile')}">Ma méthode</a> · <a href="${urlPublique('/blog')}">Blog</a> · <a href="${urlPublique('/audit-app')}">Tester ton idée</a> · <a href="${urlPublique('/faq')}">FAQ</a></nav>`
   const seoContent = `<div id="root"></div><div data-seo-prerender style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden"><h1>${heading}</h1><p>${content}</p><a href="${backHref}">${backLink}</a>${siteNav}</div><noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1>${heading}</h1><p>${content}</p><a href="${backHref}">${backLink}</a>${siteNav}</div></noscript>`
   html = html.replace('<div id="root"></div>', seoContent)
 
@@ -102,7 +125,7 @@ for (const route of sectionRoutes) {
     ...route,
     breadcrumb: [
       { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://noecalmes.fr/" },
-      { "@type": "ListItem", "position": 2, "name": route.heading, "item": `https://noecalmes.fr${route.path}` },
+      { "@type": "ListItem", "position": 2, "name": route.heading, "item": urlPublique(route.path) },
     ],
   })
   const routeDir = join(distDir, route.path)
@@ -127,7 +150,7 @@ for (const route of legacySectionRoutes) {
     ...route,
     breadcrumb: [
       { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://noecalmes.fr/" },
-      { "@type": "ListItem", "position": 2, "name": route.heading, "item": `https://noecalmes.fr${route.canonicalPath}` },
+      { "@type": "ListItem", "position": 2, "name": route.heading, "item": urlPublique(route.canonicalPath) },
     ],
   })
   const routeDir = join(distDir, route.path)
@@ -256,16 +279,16 @@ const blogRoutes = [
 for (const route of blogRoutes) {
   const breadcrumb = [
     { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://noecalmes.fr/" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://noecalmes.fr/blog" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": urlPublique('/blog') },
   ]
   if (route.path !== '/blog') {
-    breadcrumb.push({ "@type": "ListItem", "position": 3, "name": route.heading, "item": `https://noecalmes.fr${route.path}` })
+    breadcrumb.push({ "@type": "ListItem", "position": 3, "name": route.heading, "item": urlPublique(route.path) })
   }
 
   let html = patchHtml(baseHtml, {
     ...route,
     backLink: '← Retour au blog',
-    backHref: 'https://noecalmes.fr/blog',
+    backHref: urlPublique('/blog'),
     breadcrumb,
   })
 
@@ -278,7 +301,7 @@ for (const route of blogRoutes) {
       "description": route.description,
       "author": { "@type": "Person", "name": "Noé Calmes", "url": "https://noecalmes.fr" },
       "publisher": { "@id": "https://noecalmes.fr/#person" },
-      "mainEntityOfPage": `https://noecalmes.fr${route.path}`,
+      "mainEntityOfPage": urlPublique(route.path),
       "image": "https://noecalmes.fr/assets/images/meta/new-og-image.png",
     }, null, 6)
     html = html.replace('</head>', `    <script type="application/ld+json">\n    ${articleJson}\n    </script>\n  </head>`)
@@ -306,7 +329,7 @@ const auditHtml = patchHtml(baseHtml, {
   ...auditAppRoute,
   breadcrumb: [
     { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://noecalmes.fr/" },
-    { "@type": "ListItem", "position": 2, "name": auditAppRoute.heading, "item": `https://noecalmes.fr${auditAppRoute.path}` },
+    { "@type": "ListItem", "position": 2, "name": auditAppRoute.heading, "item": urlPublique(auditAppRoute.path) },
   ],
 })
 const auditDir = join(distDir, auditAppRoute.path)

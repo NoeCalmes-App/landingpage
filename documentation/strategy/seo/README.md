@@ -35,10 +35,56 @@ MàJ : 24/06/2026
 
 - **Tâche programmée `seo-blog-hebdo`** (chaque lundi ~9h) : rédige 1 brouillon d'article du cluster monétisation dans `drafts/`, met à jour `content-plan.md`, et donne l'URL + le rappel d'indexation. Ne publie rien : Noé relit et publie. Tourne en continu (génère de nouveaux sujets quand les 12 sont faits).
 
+## État réel constaté dans Search Console — 8 août 2026
+
+**Le diagnostic qui change tout : ce n'était pas un problème de contenu, mais
+d'accès.** 7 pages indexées sur 45. Sur les 38 non indexées, 27 étaient en
+« erreur liée à des redirections » — dont `/audit-app`, `/blog` et la quasi
+totalité des articles. Googlebot échouait depuis le 21 mars ; dernière
+tentative le 24 juin, PUIS les correctifs pré-rendus ont été déployés. Le test
+en direct du 8 août répond « Google a accès à cette URL » : **le site est
+réparé, Google ne le savait juste pas** (après des mois d'échecs, il espace
+ses visites).
+
+**LA CAUSE RACINE, trouvée le soir même : une boucle de canonique.** Les pages
+sont des dossiers (`chemin/index.html`), donc GitHub Pages les sert à
+`/chemin/` (avec barre) et répond à `/chemin` par une 301. Or canoniques et
+sitemap disaient `/chemin` sans barre : Google suivait le sitemap → 301 →
+lisait la page → la canonique le renvoyait sur l'URL qui redirige → boucle →
+« erreur liée à des redirections ». C'est pour ça que des crawls du 3 août
+échouaient encore alors que le site marchait pour les humains, et que le test
+en direct passait (il ne vérifie pas la canonique). **Correctif dans
+`scripts/generate-routes.js`** (`urlPublique()` : canonique, og:url,
+breadcrumbs, mainEntityOfPage, liens du pré-rendu) **et `public/sitemap.xml`**
+(21 URLs en forme `/chemin/`, lastmod 2026-08-08). Règle pour la suite : une
+URL absolue écrite dans ces fichiers porte TOUJOURS la barre finale.
+
+Fait le 8 août dans Search Console :
+- [x] Test en direct de `/audit-app` : accessible, indexable.
+- [x] « Demander une indexation » sur `/audit-app` (file prioritaire).
+- [x] « Valider la correction » sur l'erreur de redirections → Google
+      re-crawle les 17 pages (délai : quelques jours à 2 semaines).
+- [x] Sitemap vérifié : un seul (`noecalmes.fr/sitemap.xml`), lu le 7 août,
+      21 pages découvertes, 0 erreur. Le doublon www n'existe plus.
+- Les 4 pages « noindex » sont volontaires (`/avis`, `/rendez-vous`…), rien à faire.
+
+**Google Business : les fiches EXISTENT — mais en DOUBLE, et c'est un risque.**
+Le gestionnaire montre deux établissements validés :
+1. « Noé Calmes » — Toulouse (une modification en attente sur le crayon).
+2. « Noé Calmes — Création d'application mobile (Flutter) » — France/Paris/Toulouse.
+
+La fiche 2 viole la règle notée plus haut dans CE fichier (« sans mots-clés
+ajoutés, sinon suspension ») et fait doublon : Google peut suspendre les deux.
+Décision à prendre par Noé : garder « Noé Calmes » (Toulouse), supprimer ou
+fusionner l'autre. Ne pas créer de troisième fiche.
+
 ## Ce qui reste à faire (par priorité)
 
-1. **Indexation** : déployer, puis dans Search Console supprimer le sitemap www, et demander l'indexation des pages clés (dont `/blog/creation-application-mobile-toulouse`). Détail dans `roadmap.md`.
-2. **Google Business** : créer et vérifier la fiche (`google-business.md`).
+1. **[Noé] Trancher le doublon Google Business** (garder la fiche sobre
+   Toulouse, supprimer la fiche à mots-clés) et publier la modification en
+   attente sur la fiche gardée.
+2. **Surveiller la validation Search Console** (10-15 jours) : les 17 pages
+   doivent passer en « indexées ». Si la validation échoue, me le dire.
 3. **Contenu** : page pilier « rentabiliser une application » (à écrire) + le cluster via la tâche hebdo.
 4. **Backlinks** : profils, annuaires, fiche Google Business, post « app à 13 000 €/mois ».
 5. **Technique (non urgent)** : optimiser le poids des images (webp).
