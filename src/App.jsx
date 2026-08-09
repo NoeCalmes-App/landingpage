@@ -194,12 +194,15 @@ function App() {
       return 'home'
     }
     // Alias vers /espace-client : les gens tapent /espace, /panel, etc. de
-    // mémoire. On les renvoie sur l'URL canonique plutôt que sur un 404.
-    // `replace` (pas `push`) : l'alias ne pollue pas l'historique du navigateur.
+    // mémoire. On corrige l'URL en /espace-client SANS recharger — un
+    // `location.replace` refait tout le cycle 404 → app une seconde fois.
+    // `history.replaceState` réécrit l'URL en place, l'écran client s'affiche
+    // au premier chargement, et le pont (qui lit `location.pathname` pour
+    // construire l'iframe) voit bien /espace-client.
     // Uniquement les chemins EXACTS — un vrai lien /espace-client/{token}
     // ne doit surtout pas être capturé ici.
     if (['/espace', '/espaceclient', '/panelclient', '/panel-client', '/panel'].includes(path.replace(/\/+$/, ''))) {
-      window.location.replace('/espace-client')
+      history.replaceState(null, '', '/espace-client')
       return 'client-space'
     }
     if (path === '/espace-client' || path.startsWith('/espace-client/')) return 'client-space'
