@@ -8,6 +8,7 @@ Lire `AGENTS.md` en premier. Ce fichier reste volontairement court pour ne pas c
 - Landing page : `documentation/architecture/landing-page.md`
 - Audit app : `documentation/architecture/audit-app.md`
 - Assets : `documentation/architecture/assets.md`
+- CGV (`public/cgv/`, versions datées, liens contractuels, publier une nouvelle version) : `documentation/architecture/cgv.md` — à lire AVANT de toucher un fichier CGV.
 - Futur espace client public : `documentation/architecture/client-space-public.md`
 - Tunnel d'acquisition (Instagram, LinkedIn, audit) : `documentation/strategy/tunnel.md`
 - Rediger un post / carrousel LinkedIn : `documentation/strategy/linkedin-posts.md`
