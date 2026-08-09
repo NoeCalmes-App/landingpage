@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Script d'appel — antisèche</title>
+<style>
+  :root { font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0f172a; color: #0f172a; padding: 16px; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 { color: #fff; font-size: 20px; margin: 4px 0 16px; }
+  h1 span { color: #94a3b8; font-weight: 400; font-size: 14px; display: block; margin-top: 2px; }
+  .card { background: #fff; border-radius: 14px; padding: 14px 16px 16px; margin-bottom: 12px; border-left: 8px solid var(--c); box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+  .tag { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--c); margin-bottom: 8px; }
+  .num { background: var(--c); color: #fff; width: 24px; height: 24px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; }
+  .say { font-size: 17.5px; line-height: 1.45; font-weight: 600; margin: 8px 0; }
+  .say.big { font-size: 18.5px; }
+  .muted { color: #64748b; font-size: 13px; font-weight: 600; margin: 10px 0 4px; }
+  ul { margin: 6px 0 2px; padding-left: 18px; }
+  li { font-size: 15px; line-height: 1.5; margin: 3px 0; color: #1e293b; }
+  .branch { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+  .pill { font-weight: 800; font-size: 12px; padding: 3px 9px; border-radius: 999px; color: #fff; }
+  .ok { background:#16a34a } .mid { background:#f59e0b } .no { background:#ef4444 }
+  .block { margin-top: 8px; padding: 8px 10px; border-radius: 9px; background: #f8fafc; }
+  .block .say { font-size: 16px; margin: 4px 0; }
+  .or-sep { display: flex; align-items: center; gap: 10px; margin: 14px 0 6px; color: #94a3b8; font-size: 12px; font-weight: 800; letter-spacing: .1em; }
+  .or-sep::before, .or-sep::after { content: ""; flex: 1; height: 1px; background: #e2e8f0; }
+  .nda-note { display: flex; align-items: center; gap: 8px; margin: 10px 0 2px; padding: 7px 10px; border-radius: 9px; background: #fff1f2; border: 1px solid #fecdd3; color: #9f1239; }
+  .nda-note .nda-label { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 5px; padding: 3px 7px; border-radius: 999px; background: #dc2626; color: #fff; font-size: 10px; line-height: 1; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+  .nda-note .nda-label::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #fecaca; }
+  .nda-note .nda-copy { font-size: 12px; line-height: 1.35; font-weight: 700; }
+  .reminders { background:#1e293b; color:#cbd5e1; border-radius:14px; padding:14px 18px; }
+  .reminders b { color:#fff; }
+  .reminders li { color:#cbd5e1; font-size:14px; }
+  .reminders .tag { color:#94a3b8; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Script d'appel <span>Ouvrir naturel → cadrer (c'est toi qui mènes) → il raconte → reformuler → se positionner → qualifier → proposer → verrouiller</span></h1>
+
+  <div class="card" style="--c:#2563eb">
+    <div class="tag"><span class="num">1</span> Ouverture</div>
+    <div class="muted">Rendez-vous fixé :</div>
+    <div class="say big">« Salut [Prénom] ? C'est Noé. Je t'appelle comme prévu pour ton projet d'application. C'est bon pour toi, t'as une dizaine de minutes devant toi ? »</div>
+    <div class="or-sep">OU</div>
+    <div class="say big">« Bonjour [Prénom], Noé Calmes à l'appareil. Je vous appelle concernant votre projet d'application : vous avez rempli mon formulaire sous une publicité Instagram / Facebook. Vous avez une dizaine de minutes devant vous pour qu'on en discute ? »</div>
+    <div class="muted">Après, dire :</div>
+    <div class="say">« Parfait. On peut se tutoyer ? »</div>
+    <div class="nda-note" aria-label="NDA">
+      <span class="nda-label">NDA</span>
+      <span class="nda-copy">« Pour protéger ton idée, je t'enverrai à la fin de l'appel un accord de confidentialité (NDA). »</span>
+    </div>
+    <div class="muted">S'il dit oui, pose le cadre. C'est toi qui parles en premier, ensuite tu lui donnes la parole :</div>
+    <div class="say">« Alors je fais simple. J'aimerais d'abord comprendre ton projet. Je vais te poser quelques questions assez précises, parce que dans un premier temps ça m'intéresse, mais aussi pour voir si ton idée d'application peut vraiment rapporter. Et à la fin de l'appel, je te dis franchement ce que j'en pense, et comment je peux t'accompagner. Ça marche ? Vas-y, raconte-moi ton projet. »</div>
+  </div>
+
+  <div class="card" style="--c:#16a34a">
+    <div class="tag"><span class="num">2</span> Il raconte (tu écoutes, 70 % — sans couper)</div>
+    <div class="muted">Le cadre de l'étape 1 se termine par « raconte-moi ton projet » → il parle. Tu écoutes jusqu'au bout. Puis tu creuses, une question à la fois :</div>
+    <ul>
+      <li>C'est pour des particuliers, des entreprises, ou un usage interne ?</li>
+      <li>Concrètement, quel problème ça résout pour eux ?</li>
+      <li>Et toi, ton objectif numéro un : des revenus, des clients, du temps, fidéliser ?</li>
+      <li><b>Et les utilisateurs, tu comptes les amener comment ?</b> (audience existante, réseaux, pub…) → prépare le « périmètre honnête » de l'étape 4</li>
+      <li>Si on gardait seulement trois fonctionnalités au départ, lesquelles ?</li>
+      <li>Tu en es où : l'idée, des notes, une maquette, un début de développement ?</li>
+      <li>Tu voudrais lancer dans quel délai ?</li>
+    </ul>
+  </div>
+
+  <div class="card" style="--c:#ea580c">
+    <div class="tag"><span class="num">3</span> Reformuler (il doit se sentir compris)</div>
+    <div class="say big">« Donc si je résume : tu veux [son application] pour [son objectif], et le vrai enjeu derrière, c'est [la valeur]. C'est bien ça ? »</div>
+  </div>
+
+  <div class="card" style="--c:#7c3aed">
+    <div class="tag"><span class="num">4</span> Ton positionnement, le périmètre honnête, puis ta preuve</div>
+    <div class="say">« Je vais être direct : si tu cherches juste un développeur pour coder une application, je ne serai pas la bonne personne. Moi, j'accompagne de l'idée jusqu'à la mise en ligne sur les stores, et surtout je conçois l'application pour transformer tes utilisateurs en clients : des parcours qui créent des habitudes et qui amènent naturellement à l'abonnement. Le but, c'est qu'elle te rapporte, pas juste qu'elle existe. »</div>
+    <div class="muted">Le périmètre honnête (ça te démarque, et ça évite les malentendus) :</div>
+    <div class="say">« Pour être clair sur qui fait quoi : moi je fais le marketing dans l'app : transformer ceux qui l'ouvrent en clients payants. La pub qui amène le monde, c'est ton terrain. Tu amènes les gens, je les transforme en clients. »</div>
+    <div class="muted">La preuve — seulement s'il a besoin d'être rassuré :</div>
+    <div class="say">« Pour te situer : une application que j'ai conçue génère 13 000 € par mois. J'ai publié plus de vingt applications, et j'ai réalisé la première version d'une application à 300 000 utilisateurs. Je sais ce qui fait qu'une application rapporte, pas seulement comment la coder. »</div>
+  </div>
+
+  <div class="card" style="--c:#dc2626">
+    <div class="tag"><span class="num">5</span> Le budget (tu le connais déjà via le formulaire — sers-t'en)</div>
+    <div class="say big">« Côté budget, tu m'avais indiqué [sa tranche du formulaire], c'est toujours ça ? Pour te situer, mes projets sont en général entre 5 et 10k selon la complexité. »</div>
+    <div class="muted">S'il vient sans formulaire (audit, direct) : « Pour te donner un ordre d'idée, je bosse en général entre 5 et 10k selon la complexité. C'est cohérent avec ce que tu avais en tête ? »</div>
+    <div class="branch">
+      <span class="pill ok">OUI</span><span class="pill mid">NE SAIT PAS</span><span class="pill no">TROP CHER</span>
+    </div>
+    <div class="block"><div class="muted" style="color:#16a34a">OUI</div><div class="say">« Parfait, on peut avancer sérieusement. Je finis de cadrer avec toi les écrans prioritaires et l'objectif exact de l'application. »</div></div>
+    <div class="block"><div class="muted" style="color:#d97706">NE SAIT PAS</div><div class="say">« C'est normal, et c'est justement mon rôle de cadrer. Je te le dis franchement : une vraie application, publiée sur iPhone et Android, c'est plusieurs milliers d'euros. Si tu cherches le prix le plus bas, je ne suis pas la bonne personne. Si tu veux une application qui te rapporte, c'est exactement mon métier. »</div></div>
+    <div class="block"><div class="muted" style="color:#dc2626">TROP CHER</div><div class="say">« Je comprends. C'est peut-être un peu tôt côté budget, et je préfère être honnête. Garde mon audit gratuit sous la main, et reviens quand ce sera le bon moment. Je réponds toujours. »</div></div>
+  </div>
+
+  <div class="card" style="--c:#0891b2">
+    <div class="tag"><span class="num">6</span> Le prochain pas (avec date — jamais « rapidement »)</div>
+    <div class="muted" style="color:#0891b2">Si le projet est clair :</div>
+    <div class="say">« C'est clair pour moi, j'ai ce qu'il faut. Voilà comment on avance : je t'envoie l'accord de confidentialité juste après l'appel. Ensuite je te prépare le cahier des charges, le devis précis, et je t'offre une première maquette de ton application pour que tu visualises avant de t'engager. Je t'envoie tout ça d'ici [jour précis, ex. jeudi], et on se cale un point de 10 minutes [jour suivant] pour débriefer la maquette ensemble. De ton côté, envoie-moi tout ce que tu as : notes, exemples d'apps, documents. Même brouillon, ça m'aide à être précis. »</div>
+    <div class="muted" style="color:#0891b2">Si le projet reste flou :</div>
+    <div class="say">« Pour être transparent, je n'ai pas encore assez d'éléments pour te donner un chiffre sérieux : te lancer un prix maintenant, ce serait au hasard, et tu serais perdant. Je t'envoie l'accord de confidentialité, tu m'envoies tout ce que tu as, et je reviens vers toi d'ici [jour précis] avec une proposition claire et un budget précis. »</div>
+    <div class="muted">S'il insiste pour un prix tout de suite :</div>
+    <div class="say">« Je peux te donner la fourchette : en général entre 5 et 10k. Le chiffre exact, je te le donne dans le devis, une fois le périmètre cadré, pour qu'il soit juste. »</div>
+  </div>
+
+  <div class="card" style="--c:#b45309">
+    <div class="tag"><span class="num">7</span> Objections (si ça bloque à la fin)</div>
+
+    <div class="block"><div class="muted">« C'est cher »</div>
+    <div class="say">« Je comprends. Mais la vraie question, ce n'est pas combien ça coûte, c'est combien ça te rapporte. Une application bien pensée se rembourse : si elle te ramène ne serait-ce que mille euros par mois, en quelques mois elle est payée. Ensuite, c'est du bénéfice. »</div></div>
+
+    <div class="block"><div class="muted">« J'ai un développeur qui peut le faire moins cher »</div>
+    <div class="say">« Bien sûr, un développeur peut coder ton application. Mais le sujet, ce n'est pas de la coder. C'est de la concevoir pour qu'elle rapporte. Coder, c'est la partie facile. La rendre rentable, c'est mon métier. Et la mise en ligne sur les stores, c'est une vraie galère quand on n'a pas l'habitude. »</div></div>
+
+    <div class="block"><div class="muted">« Je vais le faire moi-même avec l'IA »</div>
+    <div class="say">« L'IA peut te sortir un prototype, et c'est très bien pour tester une idée, moi-même je l'utilise. Mais l'IA génère du code, elle ne génère pas de revenus. Le parcours qui amène à l'abonnement, la rétention, tout ce qui fait qu'une application rapporte, c'est de la conception. Et la plupart des gens qui commencent comme ça finissent par chercher quelqu'un pour reprendre proprement. »</div></div>
+
+    <div class="block"><div class="muted">« Je veux réfléchir »</div>
+    <div class="say">« Pas de souci, c'est normal. Juste pour t'aider : c'est le budget, le timing, ou un point du projet qui te fait hésiter ? »</div></div>
+
+    <div class="block"><div class="muted">« Comment je sais que tu vas livrer ? »</div>
+    <div class="say">« C'est légitime. C'est exactement pour ça que je t'offre une maquette et un cahier des charges avant que tu paies quoi que ce soit. Tu vois concrètement ce que tu vas avoir, avant de t'engager. »</div></div>
+  </div>
+
+  <div class="reminders">
+    <div class="tag">Rappels</div>
+    <ul>
+      <li><b>Le pronom se décide à l'ouverture, et ne change plus ensuite.</b> <b>Rendez-vous fixé → tu</b> : l'appel est la suite du fil WhatsApp, jamais de « on peut se tutoyer ? » à quelqu'un déjà en tu. <b>Appel à l'improviste → vous</b> : il ne t'attend pas, « Noé Calmes à l'appareil » pose le cadre pro ; tu bascules en tu dès son accord, ou tu restes en vous tout l'appel s'il y reste. <b>Vous aussi en mirror</b> (il te vouvoie par écrit).</li>
+      <li><b>Le premium, c'est la préparation</b> : citer son projet et sa tranche budget dès l'ouverture prouve que tu as bossé son dossier. Ça pèse plus que n'importe quel pronom.</li>
+      <li><b>C'est toi qui mènes</b> : tu parles en premier (le cadre, 20 sec), tu donnes la parole, tu poses les questions. Le leader de l'appel, c'est celui qui pose le cadre — pas celui qui parle le plus.</li>
+      <li><b>Ensuite tu écoutes</b> (70 %), tu ne pitches pas.</li>
+      <li>Le <b>NDA</b> s'annonce au cadre et s'envoie juste après l'appel : ça rassure sur l'idée.</li>
+      <li>Le devis et la maquette se proposent <b>à la fin</b>, jamais au début.</li>
+      <li><b>Jamais</b> de prix exact à l'oral. Fourchette unique partout : <b>5 à 10k</b> (la même qu'en WhatsApp et dans la FAQ — jamais une autre).</li>
+      <li>Toujours finir avec <b>une date d'envoi + un point débrief calé</b>. « Je reviens vers toi rapidement » = ghosting assuré.</li>
+      <li>Tu es un <b>expert qui conçoit des apps qui rapportent</b>, pas un simple développeur.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

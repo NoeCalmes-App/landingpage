@@ -193,6 +193,15 @@ function App() {
       )
       return 'home'
     }
+    // Alias vers /espace-client : les gens tapent /espace, /panel, etc. de
+    // mémoire. On les renvoie sur l'URL canonique plutôt que sur un 404.
+    // `replace` (pas `push`) : l'alias ne pollue pas l'historique du navigateur.
+    // Uniquement les chemins EXACTS — un vrai lien /espace-client/{token}
+    // ne doit surtout pas être capturé ici.
+    if (['/espace', '/espaceclient', '/panelclient', '/panel-client', '/panel'].includes(path.replace(/\/+$/, ''))) {
+      window.location.replace('/espace-client')
+      return 'client-space'
+    }
     if (path === '/espace-client' || path.startsWith('/espace-client/')) return 'client-space'
     if (path === '/maquette-visuel' || path.startsWith('/maquette-visuel/')) return 'maquette-visual'
     if (path === '/documents') return 'documents'
