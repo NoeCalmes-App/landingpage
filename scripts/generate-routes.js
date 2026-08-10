@@ -170,6 +170,13 @@ const blogRoutes = [
     content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
   },
   {
+    path: '/blog/application-mobile-coach-formateur',
+    title: 'Application mobile pour coach et formateur | Noé Calmes',
+    description: 'Tu as des clients ou une audience : voici comment une application transforme ton expertise en revenus récurrents, et à partir de quand c\'est rentable.',
+    heading: 'Application mobile pour coach, formateur ou consultant : transformer ton expertise en revenus',
+    content: 'Quand une application a du sens pour une activité de coaching, de formation ou de conseil : les vrais déclencheurs, les quatre formats qui fonctionnent (suivi client, contenu premium, réservation, espace membre), ce que tu dois déjà avoir avant de te lancer, le calcul de rentabilité (environ 45 abonnés pour rembourser une application à 8 000 €) et l\'erreur de l\'application vitrine.',
+  },
+  {
     path: '/blog/creer-application-avec-ia',
     title: 'Créer une application avec l\'IA : la pire idée | Noé Calmes',
     description: 'L\'IA génère ton application en quelques heures. Pourquoi ça ne te fera pas gagner un euro, et ce qui décide vraiment du revenu.',

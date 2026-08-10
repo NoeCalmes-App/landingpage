@@ -25,6 +25,28 @@ On ne se bat PAS sur les têtes de gondole d'agence (« créer une application m
 - **Maillage interne** : lier vers la page pilier + 1-2 articles du cluster.
 - **Restitution à Noé** : dans le message final, toujours donner le titre puis **le corps complet de l'article en texte lisible** (pas seulement un résumé, pas de balises HTML), pour qu'il puisse le relire directement dans la conversation sans ouvrir le brouillon. Ensuite seulement, le chemin du fichier et l'URL.
 
+## Filtre d'intention (règle du 10/08/2026, à appliquer AVANT de rédiger)
+
+Un sujet peut être parfaitement dans l'angle « monétisation » et rester inutile commercialement. Le test n'est pas « est-ce que ça parle de revenus », c'est : **est-ce que la personne qui tape cette requête peut m'acheter une application ?**
+
+La cible (voir `documentation/context/positionnement.md`) : entrepreneur non technique ou semi-technique, avec une idée, des clients ou une audience, budget 5 000 à 30 000 €. Il n'a PAS encore d'application. C'est ça qui décide de tout.
+
+| Requête d'acheteur (à écrire) | Requête d'éditeur (à éviter) |
+|---|---|
+| « application mobile pour coach sportif » | « fixer le prix d'un abonnement in-app » |
+| « combien coûte une application » | « optimiser son onboarding » |
+| « transformer sa formation en application » | « améliorer son taux de rétention D30 » |
+| « faut-il une application pour mon entreprise » | « A/B tester un paywall » |
+
+Un sujet d'éditeur attire des gens qui ont déjà une application et la gèrent eux-mêmes : ce sont des pairs, pas des clients. Le trafic monte, les leads non.
+
+Deux tests rapides avant de rédiger :
+
+- **Test du prospect** : est-ce que quelqu'un qui tape ça pourrait finir sur `/audit-app` et remplir le formulaire ? Si non, changer de sujet.
+- **Test du vocabulaire** : le mot-clé contient-il un terme de métier (paywall, onboarding, churn, MRR, ARPU) ? Si oui, il est mal ciblé. Ces notions peuvent être expliquées DANS un article, elles ne doivent pas en être le mot-clé.
+
+Bon réflexe : ancrer le sujet dans l'activité du lecteur (coach, formateur, salle, consultant, créateur, commerçant) ou dans sa décision d'investissement (coût, potentiel, délai, risque), pas dans la mécanique produit.
+
 ## File de sujets (le prochain `pending` est rédigé chaque semaine)
 
 Deux colonnes, deux choses différentes. Ne pas les confondre.
@@ -43,12 +65,18 @@ Un sujet peut donc être `done` et `non` en même temps : le brouillon existe, m
 | 5 | done | oui | Comment transformer une idée d'application en business rentable | De l'idée au revenu, la méthode |
 | 6 | done | oui | Pourquoi 90 % des applications ne rapportent rien (et comment éviter ça) | L'angle fort de Noé : la différence c'est l'expertise |
 | 7 | ~~pending~~ A REFORMULER | non | ~~Freemium ou abonnement : quel modèle pour ton application~~ | Risque de cannibalisation avec les sujets 3 et 4, qui traitent déjà cet arbitrage. Ne pas rédiger tel quel. |
-| 8 | pending | non | Comment fixer le prix d'un abonnement dans une application | Pricing, tactique concrète |
-| 9 | pending | non | Onboarding d'application : convertir tes utilisateurs en clients | Le marketing DANS l'app, coeur du métier de Noé |
+| 8 | ~~done~~ HORS CIBLE | non | ~~Comment fixer le prix d'un abonnement dans une application~~ | Brouillon écrit le 10/08/2026 puis écarté : requête d'éditeur d'application, pas d'acheteur de prestation. Voir « Filtre d'intention » ci-dessous. Ne pas publier tel quel, ou le réécrire côté acheteur (« combien facturer l'abonnement de ton application »). |
+| 9 | ~~pending~~ A REQUALIFIER | non | ~~Onboarding d'application : convertir tes utilisateurs en clients~~ | Même problème que le 8 : « onboarding » est un mot d'éditeur. À réécrire en requête acheteur, par exemple « pourquoi les gens désinstallent ton application ». |
 | 10 | pending | non | Comment une application transforme une audience en revenus récurrents | Pour ceux qui ont déjà une communauté |
-| 11 | pending | non | Application mobile pour entrepreneurs et coachs : transformer ton expertise en revenus | Cible ICP directe |
+| 11 | done | non | Application mobile pour coach, formateur ou consultant : transformer ton expertise en revenus | Cible ICP directe. Rédigé le 10/08/2026 en remplacement du sujet 8. |
 | 12 | ~~pending~~ SUPPRIME | non | ~~Les erreurs qui empêchent une application de générer des revenus~~ | Doublon direct du sujet 6, dont les six raisons sont déjà une liste d'erreurs. Ne pas rédiger. |
 | 13 | done | oui | Créer une application avec l'IA : la pire idée si tu veux qu'elle rapporte | Mot-clé chaud « application IA / vibe coding ». Sujet ajouté hors file le 03/08/2026. |
+| 14 | pending | non | Transformer ta formation en application mobile : ce que ça change pour tes revenus | Formateurs et organismes. Requête acheteur : « transformer sa formation en application ». |
+| 15 | pending | non | Application mobile pour salle de sport et studio : à quoi elle sert vraiment | Salles, studios, box. Requête acheteur locale et sectorielle. |
+| 16 | pending | non | Application ou site web : lequel rapporte le plus pour ton activité | Arbitrage classique avant achat, forte intention. |
+| 17 | pending | non | Créer une application sans savoir coder : les vraies options et ce qu'elles coûtent | Requête massive de l'ICP non technique, angle honnête sur no-code et IA. |
+| 18 | pending | non | Combien de clients faut-il pour rentabiliser une application mobile | Calcul de retour sur investissement, la question que se pose l'acheteur. |
+| 19 | pending | non | Application mobile pour consultant et indépendant : vendre autrement que ton temps | ICP direct, angle revenus non horaires. |
 
 ## Dette SEO sur les anciens articles (audit du 03/08/2026)
 
