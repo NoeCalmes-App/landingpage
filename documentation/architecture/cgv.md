@@ -84,9 +84,7 @@ Elle enchaîne, en s'arrêtant net à la première anomalie :
    5 minutes, le temps du build GitHub Pages) ;
 7. seulement alors, réécrit `CGV_EDITION_COURANTE` dans
    `nowork/src/lib/cgvUrl.ts`, bascule l'édition sortante en historique, commit +
-   push `nowork` ;
-8. en dernier, crée le contrat dans Firestore avec le contenu du markdown et le
-   passe par défaut.
+   push `nowork`.
 
 L'ordre n'est plus une consigne : c'est le code. L'étape 7 ne peut pas s'exécuter
 avant que l'étape 6 ait prouvé que le fichier répond. Si le build traîne, la
@@ -118,16 +116,20 @@ seulement après avoir vérifié que le fichier répond.
   d'inopposabilité, le contrat suit la version référencée au devis au moment de
   la signature.
 
-## Le bouton « Télécharger » de la page Contrats ne publie plus
+## La page Contrats de Nowork a été retirée (10 août 2026)
 
-Il nommait le fichier avec la date du **clic** et écrivait ce nom dans
-`lastPdfFilename` : ouvrir ce bouton un jour quelconque, même juste pour relire,
-faisait pointer tous les nouveaux devis vers un fichier inexistant. La persistance
-a été retirée le 10 août. Ce bouton est une relecture, rien d'autre.
+L'édition en vigueur vivait dans une collection Firestore, alimentée par une page
+de l'app. Son bouton « Télécharger » nommait le fichier avec la date du **clic** et
+écrivait ce nom comme référence : ouvrir ce bouton un jour quelconque, même juste
+pour relire, faisait pointer tous les nouveaux devis vers un PDF inexistant.
 
-Il utilise par ailleurs l'ancien pipeline (`ContractPdfRenderer`, html2canvas,
-plusieurs Mo, texte non sélectionnable). **Le PDF publié vient toujours de
-`generer-cgv-pdf.py`**, appelé par la commande.
+L'édition en vigueur vit désormais dans `nowork/src/lib/cgvUrl.ts`, réécrit par la
+commande — et seulement après vérification que le fichier répond. Il n'y a plus de
+texte éditable ni de nom de fichier écrasable.
+
+Le PDF publié a toujours été produit par `generer-cgv-pdf.py` ; l'ancien pipeline
+de l'app (html2canvas, plusieurs Mo, texte non sélectionnable) a été retiré avec
+la page.
 
 ## Pourquoi les vieilles versions pesaient 10-12 Mo
 
@@ -136,6 +138,10 @@ L'ancien pipeline de l'app rasterisait chaque page en image JPEG (html2canvas).
 netteté parfaite, texte cherchable. Toute nouvelle version passe par lui.
 
 Le titre des métadonnées du PDF — ce que le client voit dans l'onglet de son
-navigateur — est fixe : « Conditions Générales de Vente de Noé Calmes ». Ni numéro
-de version (cuisine interne), ni date (déjà sur la couverture, dans le nom du
-fichier et dans l'article de date d'application).
+navigateur — est **fixe** : « Conditions Générales de Vente de Noé Calmes ». Ni
+numéro de version (cuisine interne), ni date (déjà sur la couverture, dans le nom
+du fichier et dans l'article de date d'application). Écrit en dur dans
+`generer-cgv-pdf.py`.
+
+Les éditions **antérieures** au 10 août portent encore l'ancien titre, avec
+« (Version N) » — on n'y touche pas : modifier un PDF publié est interdit.
