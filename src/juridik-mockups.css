@@ -1,0 +1,301 @@
+/* ══════════════════════════════════════════════════════════════════════
+   JURIDIK — maquettes visuelles
+
+   Univers : le droit congolais. Bordeaux des robes et des reliures, papier
+   parchemin, laiton des sceaux. Application professionnelle, donc aucune
+   fantaisie : pas d'emoji, icones sobres, hierarchie typographique stricte.
+
+   Deux signatures propres au projet :
+   1. Chaque texte porte un filet vertical colore selon son niveau dans la
+      hierarchie des normes. On lit la hierarchie avant meme les titres.
+   2. Les extraits de loi sont composes en Libre Baskerville italique, comme
+      une citation dans un ouvrage juridique. Tout le reste est en Inter.
+   ══════════════════════════════════════════════════════════════════════ */
+
+.juridik-mockups-page {
+  /* Couleurs */
+  --jk-page: #EFE8DD;
+  --jk-page-deep: #E4DACB;
+  --jk-bg: #FCFAF6;
+  --jk-surface: #FFFFFF;
+  --jk-surface-soft: #F6F1E8;
+  --jk-line: #E8DFD1;
+  --jk-line-strong: #D8CBB7;
+  --jk-ink: #24201D;
+  --jk-muted: #6E655C;
+  --jk-muted-2: #9B9188;
+  --jk-bordeaux: #7A1B2E;
+  --jk-bordeaux-deep: #571020;
+  --jk-bordeaux-soft: rgba(122, 27, 46, .10);
+  --jk-gold: #B08432;
+  --jk-gold-deep: #8A6420;
+  --jk-gold-soft: rgba(176, 132, 50, .15);
+  --jk-green: #2C7A57;
+  --jk-green-soft: rgba(44, 122, 87, .13);
+  --jk-clay: #B4552F;
+  --jk-clay-soft: rgba(180, 85, 47, .13);
+
+  /* Echelle de controles : une hauteur par role, jamais par ecran */
+  --jk-radius-control: 11px;
+  --jk-control-compact: 32px;
+  --jk-control-inline: 38px;
+  --jk-control-primary: 48px;
+  --jk-control-tile: 76px;
+
+  /* Typographie : --jk-type-min est le plancher, rien en dessous */
+  --jk-type-min: 9.2px;
+  --jk-type-meta: 9.2px;
+  --jk-type-button: 10px;
+  --jk-type-button-primary: 12px;
+  --jk-type-card-title: 11px;
+  --jk-type-card-title-strong: 11.5px;
+  --jk-type-legal: 11.5px;
+
+  --jk-serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+
+  width: 100%;
+  min-height: 100vh;
+  padding: 72px 34px 96px;
+  color: var(--jk-ink);
+  /* Trame de papier, sans halo radial */
+  background:
+    repeating-linear-gradient(0deg, rgba(36, 32, 29, .022) 0 1px, transparent 1px 4px),
+    linear-gradient(180deg, var(--jk-page), var(--jk-page-deep));
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.juridik-mockups-page *,
+.juridik-mockups-page *::before,
+.juridik-mockups-page *::after { box-sizing: border-box; }
+.juridik-mockups-page :where(button) { font-family: inherit; font-size: var(--jk-type-button); line-height: 1; }
+
+/* ── Page de proposition ── */
+.jk-landing-hero { width: min(100%, 1160px); margin: 0 auto 56px; }
+.jk-eyebrow { margin: 0 0 18px; color: var(--jk-bordeaux); font-size: 12px; line-height: 1; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; }
+.jk-landing-hero h1 { max-width: 820px; margin: 0; color: var(--jk-ink); font-size: 66px; line-height: .98; font-weight: 800; letter-spacing: -.035em; }
+.jk-reference { margin: 22px 0 0; color: var(--jk-gold-deep); font-size: 14px; font-weight: 800; letter-spacing: .04em; }
+.jk-disclaimer { max-width: 680px; margin: 20px 0 0; color: var(--jk-muted); font-size: 14px; line-height: 1.55; }
+
+.jk-gallery { width: min(100%, 1280px); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 32px; align-items: start; }
+.jk-mockup-card { min-width: 0; padding: 28px; border: 1px solid var(--jk-line-strong); border-radius: 20px; background: linear-gradient(180deg, #FFFDF9, #FAF6EE); box-shadow: 0 26px 64px rgba(36, 32, 29, .10); }
+.jk-card-head { min-height: 44px; margin-bottom: 16px; }
+.jk-card-head h2 { margin: 0; color: var(--jk-ink); font-size: 22px; line-height: 1.1; font-weight: 800; letter-spacing: -.015em; }
+.jk-card-head p { margin: 6px 0 0; color: var(--jk-muted-2); font-size: 13px; font-weight: 500; }
+.jk-scroll-hint { width: fit-content; height: 25px; margin-top: 10px; padding: 0 10px; display: inline-flex; align-items: center; justify-content: center; gap: 4px; border: 1px solid rgba(122, 27, 46, .16); border-radius: 99px; color: var(--jk-bordeaux); background: var(--jk-bordeaux-soft); font-size: 10px; font-weight: 800; }
+.jk-export-wrap { display: flex; align-items: center; justify-content: center; }
+
+/* ── Cadre telephone ── */
+.jk-phone-export { width: 330px; padding: 13px; border-radius: 50px; background: linear-gradient(150deg, #3A2F2B, #191412 74%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .07), 0 30px 68px rgba(36, 32, 29, .26); }
+.jk-phone { position: relative; width: 304px; overflow: hidden; border-radius: 39px; background: var(--jk-bg); }
+.jk-screen { position: relative; width: 100%; height: auto; overflow: hidden; border-radius: 39px; background: var(--jk-bg); }
+.jk-statusbar { position: absolute; z-index: 50; top: 0; left: 0; right: 0; height: 38px; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; color: var(--jk-ink); font-size: 11px; font-weight: 750; }
+.jk-status-icons { display: flex; align-items: center; gap: 4px; }
+.jk-home-indicator { position: absolute; z-index: 55; left: 50%; bottom: 8px; width: 92px; height: 4px; transform: translateX(-50%); border-radius: 99px; background: rgba(36, 32, 29, .3); }
+.jk-content { position: relative; min-height: 674px; padding: 48px 16px 26px; overflow: hidden; display: flex; flex-direction: column; }
+/* Plancher des ecrans defilables. Volontairement bas : chaque ecran long
+   grandit ensuite selon son contenu reel, ce qui evite tout blanc en bas. */
+.jk-phone-export-tall .jk-content { min-height: 760px; }
+.jk-with-tab { padding-bottom: 25px; }
+
+/* ── Composants partages ── */
+.jk-app-mark, .jk-icon-button, .jk-avatar, .jk-list-icon { display: inline-flex; align-items: center; justify-content: center; }
+.jk-app-mark { width: 44px; height: 44px; border-radius: 13px; color: #F6E7C8; background: linear-gradient(145deg, var(--jk-bordeaux), var(--jk-bordeaux-deep)); box-shadow: 0 11px 24px rgba(87, 16, 32, .32); }
+.jk-app-mark-large { width: 70px; height: 70px; border-radius: 21px; }
+
+.jk-ui-button { width: 100%; height: var(--jk-control-primary); padding: 0 17px; border: 0; border-radius: 13px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: #FBF3E2; background: linear-gradient(135deg, var(--jk-bordeaux), var(--jk-bordeaux-deep)); box-shadow: 0 10px 22px rgba(87, 16, 32, .24); font-size: var(--jk-type-button-primary); font-weight: 800; cursor: pointer; }
+.jk-ui-button-light { color: var(--jk-ink); background: var(--jk-surface); border: 1px solid var(--jk-line-strong); box-shadow: none; }
+
+.jk-icon-button { width: var(--jk-control-inline); height: var(--jk-control-inline); padding: 0; border: 1px solid var(--jk-line); border-radius: var(--jk-radius-control); color: var(--jk-ink); background: rgba(255, 255, 255, .9); cursor: pointer; }
+.jk-back-icon { transform: rotate(180deg); }
+
+.jk-chip { height: var(--jk-control-compact); padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--jk-line-strong); border-radius: 99px; color: var(--jk-muted); background: var(--jk-surface); font-size: var(--jk-type-button); font-weight: 700; white-space: nowrap; cursor: pointer; }
+.jk-chip-on { border-color: transparent; color: #FBF3E2; background: var(--jk-bordeaux); }
+.jk-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.jk-pill { height: 23px; padding: 0 9px; display: inline-flex; align-items: center; justify-content: center; border-radius: 99px; font-size: var(--jk-type-button); line-height: 1; font-weight: 800; white-space: nowrap; text-align: center; }
+.jk-pill-neutral { color: var(--jk-muted); background: var(--jk-surface-soft); }
+.jk-pill-green { color: var(--jk-green); background: var(--jk-green-soft); }
+.jk-pill-gold { color: var(--jk-gold-deep); background: var(--jk-gold-soft); }
+.jk-pill-clay { color: var(--jk-clay); background: var(--jk-clay-soft); }
+
+.jk-avatar { flex: 0 0 auto; overflow: hidden; border-radius: 50%; background: var(--jk-surface-soft); }
+.jk-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.jk-avatar-top { width: 38px; height: 38px; border: 2px solid #fff; box-shadow: 0 5px 14px rgba(36, 32, 29, .12); }
+.jk-avatar-md { width: 38px; height: 38px; }
+.jk-avatar-lg { width: 62px; height: 62px; border: 3px solid #fff; box-shadow: 0 7px 18px rgba(36, 32, 29, .14); }
+
+.jk-topbar { min-height: 40px; margin-bottom: 16px; display: grid; grid-template-columns: 38px 1fr 38px; align-items: center; gap: 10px; }
+.jk-topbar-title { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.jk-topbar-title strong { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--jk-ink); font-size: 15.5px; font-weight: 800; letter-spacing: -.01em; }
+.jk-topbar-title span { color: var(--jk-muted); font-size: 10px; font-weight: 650; }
+
+.jk-section-head { margin: 15px 1px 8px; display: flex; align-items: center; justify-content: space-between; }
+.jk-section-head strong { color: var(--jk-ink); font-size: 11.5px; font-weight: 800; letter-spacing: .01em; }
+.jk-section-head span { color: var(--jk-bordeaux); font-size: 10.5px; font-weight: 750; }
+
+.jk-screen-heading { text-align: center; }
+.jk-screen-heading p { margin: 0 0 7px; color: var(--jk-gold-deep); font-size: 9.5px; font-weight: 850; letter-spacing: .18em; }
+.jk-screen-heading h1 { margin: 0; color: var(--jk-ink); font-size: 25px; line-height: 1.08; font-weight: 850; letter-spacing: -.03em; }
+.jk-screen-heading span { display: block; max-width: 250px; margin: 9px auto 0; color: var(--jk-muted); font-size: 11.5px; line-height: 1.42; }
+
+.jk-panel { padding: 4px; border: 1px solid var(--jk-line); border-radius: 15px; background: var(--jk-surface); }
+.jk-list-row { min-height: 54px; padding: 7px 9px; display: grid; grid-template-columns: 36px 1fr auto; align-items: center; gap: 10px; color: var(--jk-ink); }
+.jk-list-row + .jk-list-row { border-top: 1px solid var(--jk-line); }
+.jk-list-icon { width: 36px; height: 36px; border-radius: 10px; }
+.jk-list-icon-bordeaux { color: var(--jk-bordeaux); background: var(--jk-bordeaux-soft); }
+.jk-list-icon-gold { color: var(--jk-gold-deep); background: var(--jk-gold-soft); }
+.jk-list-icon-green { color: var(--jk-green); background: var(--jk-green-soft); }
+.jk-list-icon-clay { color: var(--jk-clay); background: var(--jk-clay-soft); }
+.jk-list-copy { min-width: 0; }
+.jk-list-copy strong { display: block; color: var(--jk-ink); font-size: var(--jk-type-card-title-strong); line-height: 1.18; font-weight: 750; }
+.jk-list-copy small { display: block; margin-top: 3px; color: var(--jk-muted); font-size: var(--jk-type-meta); line-height: 1.25; }
+.jk-list-row > svg { color: var(--jk-muted-2); }
+.jk-star-on { color: var(--jk-gold); fill: var(--jk-gold); }
+
+.jk-field { display: block; }
+.jk-field + .jk-field { margin-top: 11px; }
+.jk-field > span { display: block; margin-bottom: 5px; color: var(--jk-muted); font-size: var(--jk-type-meta); font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
+.jk-input { min-height: 42px; padding: 12px 13px; display: flex; align-items: center; border: 1px solid var(--jk-line-strong); border-radius: 10px; background: var(--jk-surface); color: var(--jk-ink); font-size: var(--jk-type-card-title-strong); font-weight: 600; }
+.jk-field > small { display: block; margin-top: 5px; color: var(--jk-muted-2); font-size: var(--jk-type-meta); line-height: 1.3; }
+.jk-form { margin-top: 4px; }
+
+.jk-stack-bottom { margin-top: auto; padding-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.jk-legal-note { display: block; margin: 0 auto; max-width: 250px; text-align: center; color: var(--jk-muted-2); font-size: var(--jk-type-meta); line-height: 1.35; }
+
+/* ── Navigation ── */
+.jk-tabbar { margin-top: auto; min-height: 60px; padding: 0 6px; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; border: 1px solid var(--jk-line); border-radius: 18px; background: rgba(255, 255, 255, .95); box-shadow: 0 13px 32px rgba(36, 32, 29, .1); }
+.jk-tab { display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--jk-muted-2); }
+.jk-tab-icon { display: inline-flex; align-items: center; justify-content: center; }
+/* Les libelles ne doivent jamais passer a la ligne : 4 colonnes dans 260 px
+   utiles laissent 65 px par onglet, tout libelle plus large casse la barre. */
+.jk-tab small { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--jk-type-min); font-weight: 700; }
+.jk-tab-active { color: var(--jk-bordeaux); }
+
+/* ── Hierarchie des normes : la signature du projet ── */
+.jk-norm { position: relative; margin-bottom: 8px; padding: 11px 12px 11px 15px; border: 1px solid var(--jk-line); border-radius: 13px; background: var(--jk-surface); overflow: hidden; }
+.jk-norm-rule { position: absolute; top: 0; bottom: 0; left: 0; width: 4px; }
+.jk-norm-body { min-width: 0; }
+.jk-norm-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 9px; }
+.jk-norm-head strong { color: var(--jk-ink); font-size: var(--jk-type-card-title-strong); line-height: 1.22; font-weight: 800; }
+.jk-norm-tag { flex: 0 0 auto; height: 20px; padding: 0 8px; display: inline-flex; align-items: center; justify-content: center; border-radius: 99px; font-size: var(--jk-type-min); font-weight: 800; letter-spacing: .02em; }
+.jk-norm-meta { display: block; margin-top: 3px; color: var(--jk-muted); font-size: var(--jk-type-meta); line-height: 1.3; }
+
+.jk-norm-loi .jk-norm-rule { background: var(--jk-bordeaux); }
+.jk-norm-loi .jk-norm-tag { color: var(--jk-bordeaux); background: var(--jk-bordeaux-soft); }
+.jk-norm-decret .jk-norm-rule { background: var(--jk-gold); }
+.jk-norm-decret .jk-norm-tag { color: var(--jk-gold-deep); background: var(--jk-gold-soft); }
+.jk-norm-arrete .jk-norm-rule { background: var(--jk-clay); }
+.jk-norm-arrete .jk-norm-tag { color: var(--jk-clay); background: var(--jk-clay-soft); }
+.jk-norm-jurisprudence .jk-norm-rule { background: var(--jk-green); }
+.jk-norm-jurisprudence .jk-norm-tag { color: var(--jk-green); background: var(--jk-green-soft); }
+
+/* Les extraits de loi sont composes comme une citation d'ouvrage */
+.jk-quote { margin: 8px 0 0; padding-left: 9px; border-left: 2px solid var(--jk-line-strong); color: var(--jk-ink); font-family: var(--jk-serif); font-style: italic; font-size: var(--jk-type-legal); line-height: 1.5; }
+.jk-quote-full { margin: 14px 0 0; padding: 14px 15px; border: 0; border-left: 3px solid var(--jk-bordeaux); border-radius: 0 12px 12px 0; background: var(--jk-surface); font-size: 12px; line-height: 1.62; }
+
+.jk-sources, .jk-divergence, .jk-collected { margin-top: 8px; display: inline-flex; align-items: center; gap: 4px; font-size: var(--jk-type-meta); font-weight: 750; }
+.jk-sources { color: var(--jk-green); }
+.jk-divergence { color: var(--jk-clay); }
+.jk-collected { color: var(--jk-muted); }
+
+/* ── Ouverture ── */
+.jk-onboarding { justify-content: flex-start; padding-top: 48px; }
+.jk-hero-photo { position: relative; height: 208px; flex: 0 0 auto; overflow: visible; border-radius: 18px; background: var(--jk-surface-soft); }
+.jk-hero-photo > img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.jk-hero-overlay { position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(180deg, rgba(87, 16, 32, .22), rgba(25, 20, 18, .68)); }
+.jk-sticker { position: absolute; top: 13px; left: 12px; height: 28px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; border-radius: 6px; color: #FBF3E2; background: rgba(36, 32, 29, .82); font-size: 10px; font-weight: 800; letter-spacing: .04em; }
+.jk-hero-mark { position: absolute; z-index: 3; left: 50%; bottom: -35px; transform: translateX(-50%); }
+.jk-hero-mark .jk-app-mark-large { border: 5px solid var(--jk-bg); }
+.jk-onboarding-copy { margin-top: 52px; text-align: center; }
+.jk-onboarding-copy > p { margin: 0 0 8px; color: var(--jk-gold-deep); font-size: 9.5px; font-weight: 850; letter-spacing: .24em; }
+.jk-onboarding-copy h1 { margin: 0; color: var(--jk-ink); font-size: 27px; line-height: 1.06; font-weight: 850; letter-spacing: -.035em; }
+.jk-onboarding-copy > span { display: block; max-width: 252px; margin: 11px auto 0; color: var(--jk-muted); font-size: 11.5px; line-height: 1.45; }
+.jk-onboarding-actions { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
+.jk-onboarding-actions small { display: block; margin: 3px auto 0; max-width: 258px; text-align: center; color: var(--jk-muted-2); font-size: var(--jk-type-meta); line-height: 1.35; }
+
+/* ── Recherche ── */
+.jk-searchbar { height: 46px; padding: 0 14px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--jk-line-strong); border-radius: 13px; color: var(--jk-muted-2); background: var(--jk-surface); box-shadow: 0 6px 16px rgba(36, 32, 29, .06); }
+.jk-searchbar > svg { flex: 0 0 auto; color: var(--jk-bordeaux); }
+.jk-searchbar span { flex: 1; font-size: var(--jk-type-card-title-strong); font-weight: 600; }
+.jk-hint-strip { margin-top: 9px; padding: 9px 11px; display: flex; align-items: center; gap: 7px; border-radius: 9px; color: var(--jk-muted); background: var(--jk-surface-soft); font-size: var(--jk-type-meta); line-height: 1.35; }
+.jk-hint-strip > svg { flex: 0 0 auto; color: var(--jk-gold-deep); }
+
+.jk-code-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.jk-code-tile { position: relative; height: var(--jk-control-tile); padding: 0 12px 0 15px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 3px; overflow: hidden; border: 1px solid var(--jk-line); border-radius: 13px; background: var(--jk-surface); text-align: left; cursor: pointer; }
+.jk-code-tile::before { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 4px; }
+.jk-code-tile.jk-norm-loi::before { background: var(--jk-bordeaux); }
+.jk-code-tile.jk-norm-decret::before { background: var(--jk-gold); }
+.jk-code-tile.jk-norm-jurisprudence::before { background: var(--jk-green); }
+.jk-code-tile > svg { color: var(--jk-muted); }
+.jk-code-tile strong { color: var(--jk-ink); font-size: var(--jk-type-card-title-strong); font-weight: 800; }
+.jk-code-tile small { color: var(--jk-muted-2); font-size: var(--jk-type-meta); font-weight: 600; }
+
+/* ── Resultats ── */
+.jk-summary { padding: 12px 13px; border: 1px solid var(--jk-line); border-radius: 13px; background: var(--jk-surface-soft); }
+.jk-summary-tag { display: inline-flex; align-items: center; gap: 4px; color: var(--jk-gold-deep); font-size: var(--jk-type-min); font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+.jk-summary p { margin: 7px 0 0; color: var(--jk-ink); font-size: var(--jk-type-card-title); line-height: 1.48; }
+.jk-summary strong { font-weight: 800; color: var(--jk-bordeaux); }
+
+/* ── Filtres ── */
+.jk-filter-block + .jk-filter-block { margin-top: 4px; }
+
+/* ── Fiche d'un texte ── */
+.jk-text-head { position: relative; padding: 13px 14px 13px 17px; overflow: hidden; border: 1px solid var(--jk-line); border-radius: 13px; background: var(--jk-surface); }
+.jk-text-head::before { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 4px; background: var(--jk-bordeaux); }
+.jk-text-head h2 { margin: 7px 0 0; color: var(--jk-ink); font-size: 21px; font-weight: 850; letter-spacing: -.02em; }
+.jk-text-head small { display: block; margin-top: 3px; color: var(--jk-muted); font-size: var(--jk-type-meta); }
+.jk-trust { margin-top: 9px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.jk-trust .jk-sources, .jk-trust .jk-collected { margin-top: 0; }
+.jk-text-actions { margin-top: auto; padding-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+/* ── Mes documents ── */
+.jk-folder-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ── Abonnement ── */
+.jk-plans { margin-top: 16px; display: flex; flex-direction: column; gap: 9px; }
+/* Role documente : carte selectionnable. Sa hauteur vient de son contenu et
+   non de l'echelle de controles, comme toute carte a choix unique. */
+.jk-plan { position: relative; width: 100%; padding: 14px 15px; display: block; border: 1px solid var(--jk-line-strong); border-radius: 15px; background: var(--jk-surface); text-align: left; cursor: pointer; }
+.jk-plan-on { border-color: var(--jk-bordeaux); box-shadow: 0 0 0 3px var(--jk-bordeaux-soft); }
+.jk-plan-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.jk-plan-head strong { color: var(--jk-ink); font-size: 14px; font-weight: 850; }
+.jk-plan-price { color: var(--jk-bordeaux); font-size: 20px; font-weight: 850; letter-spacing: -.02em; }
+.jk-plan-price small { font-size: var(--jk-type-meta); font-weight: 700; }
+.jk-plan ul { margin: 10px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.jk-plan li { display: flex; align-items: center; gap: 6px; color: var(--jk-muted); font-size: var(--jk-type-card-title); font-weight: 600; }
+.jk-plan li svg { flex: 0 0 auto; color: var(--jk-green); }
+/* Le badge est dans le flux, au-dessus du titre : en absolu en haut a droite
+   il chevauchait le prix, qui occupe deja ce coin. */
+.jk-plan .jk-pill { margin-bottom: 9px; }
+
+/* ── Profil ── */
+.jk-profile-head { display: flex; flex-direction: column; align-items: center; gap: 3px; margin-top: 4px; text-align: center; }
+.jk-profile-head strong { margin-top: 8px; color: var(--jk-ink); font-size: 17px; font-weight: 850; letter-spacing: -.02em; }
+.jk-profile-head small { color: var(--jk-muted); font-size: var(--jk-type-card-title); }
+.jk-sub-card { margin-top: 15px; padding: 13px 14px; border: 1px solid var(--jk-line); border-radius: 13px; background: var(--jk-surface); }
+.jk-sub-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.jk-sub-name { color: var(--jk-bordeaux); font-size: 14px; font-weight: 850; letter-spacing: -.01em; }
+.jk-sub-card p { margin: 7px 0 0; color: var(--jk-muted); font-size: var(--jk-type-card-title); line-height: 1.4; }
+
+/* ── Signalement ── */
+.jk-report-target { position: relative; padding: 12px 13px 12px 16px; overflow: hidden; border: 1px solid var(--jk-line); border-radius: 13px; background: var(--jk-surface); }
+.jk-report-target::before { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 4px; background: var(--jk-clay); }
+.jk-report-target strong { display: block; margin-top: 7px; color: var(--jk-ink); font-size: var(--jk-type-card-title-strong); font-weight: 800; }
+.jk-report-target small { display: block; margin-top: 3px; color: var(--jk-muted); font-size: var(--jk-type-meta); }
+.jk-notice { margin-top: 13px; padding: 11px 12px; display: flex; align-items: flex-start; gap: 8px; border-left: 3px solid var(--jk-gold); border-radius: 0 10px 10px 0; background: var(--jk-gold-soft); color: var(--jk-ink); font-size: var(--jk-type-meta); line-height: 1.42; }
+.jk-notice > svg { flex: 0 0 auto; margin-top: 1px; color: var(--jk-gold-deep); }
+
+/* ── Administration ── */
+.jk-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.jk-stat { padding: 11px 13px; border: 1px solid var(--jk-line); border-radius: 12px; background: var(--jk-surface); }
+.jk-stat span { display: block; color: var(--jk-muted); font-size: var(--jk-type-meta); font-weight: 700; }
+.jk-stat strong { display: block; margin-top: 2px; color: var(--jk-ink); font-size: 19px; font-weight: 850; letter-spacing: -.02em; }
+.jk-stat small { display: block; margin-top: 1px; color: var(--jk-muted-2); font-size: var(--jk-type-min); }
+
+/* ── Media queries ── */
+@media (max-width: 720px) {
+  .juridik-mockups-page { padding: 48px 18px 64px; }
+  .jk-landing-hero h1 { font-size: 44px; }
+  .jk-gallery { grid-template-columns: 1fr; gap: 24px; }
+  .jk-mockup-card { padding: 20px; }
+}

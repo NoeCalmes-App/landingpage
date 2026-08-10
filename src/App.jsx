@@ -20,6 +20,7 @@ import ColocoolMockups from './ColocoolMockups.jsx'
 import PetSolidariteMockups from './PetSolidariteMockups.jsx'
 import SonoraMockups from './SonoraMockups.jsx'
 import BagSitterMockups from './BagSitterMockups.jsx'
+import JuridikMockups from './JuridikMockups.jsx'
 import BailoraMockups from './BailoraMockups.jsx'
 import GuestRideMockups from './GuestRideMockups.jsx'
 import Projets from './Projets.jsx'
@@ -232,6 +233,7 @@ function App() {
     if (['/maquette/pet-solidarite', '/maquette/petsolidarite', '/maquette/pet-solidarité'].includes(path.toLowerCase())) return 'pet-solidarite-mockups'
     if (['/maquette/sonora'].includes(path.toLowerCase())) return 'sonora-mockups'
     if (['/maquette/bagsitter', '/maquette/bag-sitter'].includes(path.toLowerCase())) return 'bagsitter-mockups'
+    if (['/maquette/juridik', '/maquette/juridique'].includes(path.toLowerCase())) return 'juridik-mockups'
     if (path.toLowerCase() === '/maquette/bailora') return 'bailora-mockups'
     if (['/maquette/guestride', '/maquette/guest-ride'].includes(path.toLowerCase())) return 'guestride-mockups'
     if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
@@ -402,6 +404,7 @@ function App() {
   if (page === 'pet-solidarite-mockups') return <PetSolidariteMockups />
   if (page === 'sonora-mockups') return <SonoraMockups />
   if (page === 'bagsitter-mockups') return <BagSitterMockups />
+  if (page === 'juridik-mockups') return <JuridikMockups />
   if (page === 'bailora-mockups') return <BailoraMockups />
   if (page === 'guestride-mockups') return <GuestRideMockups />
   if (page === 'projets') return <Projets onBack={goHome} />
