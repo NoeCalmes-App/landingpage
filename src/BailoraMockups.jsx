@@ -1481,7 +1481,7 @@ function DirectionArtistique() {
             <div className="blr-state-mini">
               <h4>Un écran vide</h4>
               <div style={{ textAlign: 'center', padding: '6px 0' }}>
-                <div className="blr-empty-icon" style={{ width: 44, height: 44, margin: '0 auto', borderRadius: 14 }}><Landmark size={19} /></div>
+                <div className="blr-empty-icon" style={{ width: 44, height: 44, margin: '0 auto', borderRadius: 14 }}><BailoraLogo size={17} /></div>
                 <p style={{ margin: '8px 0 0', fontSize: 11, color: 'var(--ink-soft)' }}>Aucune SCI, créez la première.</p>
               </div>
             </div>
