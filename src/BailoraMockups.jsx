@@ -111,7 +111,7 @@ function BailoraLogo({ size = 18 }) {
 function AppMark({ large = false }) {
   return (
     <div className={`blr-app-mark${large ? ' blr-app-mark-large' : ''}`}>
-      <BailoraLogo size={large ? 38 : 22} />
+      <BailoraLogo size={large ? 34 : 20} />
     </div>
   )
 }
@@ -340,8 +340,7 @@ function SignupScreen() {
 function PaywallScreen() {
   return (
     <div className="blr-content">
-      <div style={{ textAlign: 'center', paddingTop: 2, marginBottom: 14 }}><AppMark large /></div>
-      <ScreenHeading title="Abonnement" subtitle="Essai en cours : 22 jours restants, sur les deux formules." />
+      <ScreenHeading eyebrow="BAILORA" title="Abonnement" subtitle="Essai en cours : 22 jours restants, sur les deux formules." />
       <div className="blr-plan-list">
         <div className="blr-plan blr-plan-on">
           <div className="blr-plan-head">
@@ -1266,7 +1265,7 @@ function EmptySciScreen() {
     <div className="blr-content blr-with-tab">
       <TopBar title="Mon patrimoine" noAction />
       <div className="blr-empty" style={{ paddingBottom: 10 }}>
-        <div className="blr-empty-icon"><BailoraLogo size={26} /></div>
+        <div className="blr-empty-icon" style={{ width: 52, height: 52, borderRadius: 16 }}><BailoraLogo size={20} /></div>
         <h2>Par où commencer ?</h2>
         <p>Deux façons de gérer, choisissez la vôtre. Vous pourrez toujours ajouter l’autre plus tard.</p>
       </div>
