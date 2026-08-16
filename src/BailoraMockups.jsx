@@ -331,6 +331,7 @@ function SignupScreen() {
       />
       <div className="blr-bottom-actions">
         <UiButton goto="paywall">Créer mon compte</UiButton>
+        <small className="blr-legal">En créant votre compte, vous acceptez les CGU et la politique de confidentialité.</small>
       </div>
     </div>
   )
