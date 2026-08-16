@@ -466,6 +466,64 @@ function PaymentsScreen() {
 // FLUX C, PATRIMOINE (5 écrans)
 // ============================================================
 
+function SciCreateScreen() {
+  return (
+    <div className="blr-content">
+      <TopBar title="Nouvelle SCI" back noAction />
+      <div style={{ marginTop: 2 }}>
+        <div className="blr-input"><Landmark size={15} /><span>Nom de la SCI</span></div>
+        <div className="blr-input"><FileText size={15} /><span>Forme juridique · SCI</span></div>
+        <div className="blr-input"><ShieldCheck size={15} /><span>Numéro SIREN</span></div>
+        <div className="blr-input"><Home size={15} /><span>Adresse du siège</span></div>
+        <div className="blr-input"><Banknote size={15} /><span>IBAN</span></div>
+        <div className="blr-input"><Banknote size={15} /><span>BIC</span></div>
+        <div className="blr-input"><Mail size={15} /><span>Email d’expédition</span></div>
+      </div>
+      <Note
+        tone="brand"
+        icon={<ReceiptText size={15} />}
+        title="L’IBAN apparaîtra sur vos quittances"
+        text="Et dans l’espace de vos locataires, pour leurs virements."
+      />
+      <div className="blr-bottom-actions">
+        <UiButton goto="sci-detail"><Check size={15} /> Enregistrer la SCI</UiButton>
+      </div>
+    </div>
+  )
+}
+
+function PropertyCreateScreen() {
+  return (
+    <div className="blr-content">
+      <TopBar title="Nouveau logement" back noAction />
+      <div className="blr-segmented" style={{ marginBottom: 8 }}>
+        <button className="blr-seg-on">Appartement</button>
+        <button>Maison</button>
+        <button>Autre</button>
+      </div>
+      <div className="blr-input"><Home size={15} /><span>Adresse</span></div>
+      <div className="blr-input"><Home size={15} /><span>Complément d’adresse (facultatif)</span></div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 7, marginTop: 7 }}>
+        <div className="blr-input" style={{ marginTop: 0 }}><span>Code postal</span></div>
+        <div className="blr-input" style={{ marginTop: 0 }}><span>Ville</span></div>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 7, marginTop: 7 }}>
+        <div className="blr-input" style={{ marginTop: 0 }}><span>Surface</span></div>
+        <div className="blr-input" style={{ marginTop: 0 }}><span>Pièces</span></div>
+        <div className="blr-input" style={{ marginTop: 0 }}><span>Lot (facult.)</span></div>
+      </div>
+      <SectionHead>Rattacher à</SectionHead>
+      <div className="blr-panel">
+        <ListRow icon={<Landmark size={16} />} tone="brand" title="SCI Horizon" meta="les loyers et documents iront dans cette société" trailing={<CircleCheck size={16} style={{ color: 'var(--positive)' }} />} />
+        <ListRow icon={<Home size={16} />} tone="positive" title="En nom propre" meta="sans société, détenu en direct" />
+      </div>
+      <div className="blr-bottom-actions">
+        <UiButton goto="property"><Check size={15} /> Enregistrer le logement</UiButton>
+      </div>
+    </div>
+  )
+}
+
 function SciListScreen() {
   return (
     <div className="blr-content blr-with-tab">
@@ -1210,11 +1268,11 @@ function EmptySciScreen() {
         <p>Deux façons de gérer, choisissez la vôtre. Vous pourrez toujours ajouter l’autre plus tard.</p>
       </div>
       <div className="blr-value-list" style={{ marginTop: 0 }}>
-        <div className="blr-value-card" role="button" tabIndex={0} onClick={() => goTo('sci-detail')} style={{ cursor: 'pointer' }}>
+        <div className="blr-value-card" role="button" tabIndex={0} onClick={() => goTo('sci-create')} style={{ cursor: 'pointer' }}>
           <i><Landmark size={18} /></i>
-          <div><strong>J’ai une SCI</strong><small>Créez votre société, puis rangez-y vos logements et leurs locataires.</small></div>
+          <div><strong>J’ai une ou plusieurs SCI</strong><small>Créez vos sociétés, puis rangez-y vos logements et leurs locataires.</small></div>
         </div>
-        <div className="blr-value-card" role="button" tabIndex={0} onClick={() => goTo('property')} style={{ cursor: 'pointer' }}>
+        <div className="blr-value-card" role="button" tabIndex={0} onClick={() => goTo('property-create')} style={{ cursor: 'pointer' }}>
           <i><Home size={18} /></i>
           <div><strong>Je loue en mon nom</strong><small>Ajoutez directement un appartement ou une maison, sans société.</small></div>
         </div>
@@ -1270,6 +1328,8 @@ const FLOWS = [
     title: 'Le patrimoine',
     note: 'Il crée sa SCI ou son logement en nom propre, puis tout s’emboîte : la société, ses biens, leurs locataires et les baux.',
     mockups: [
+      { id: 'sci-create', title: 'Créer une SCI', subtitle: 'Nom, SIREN, IBAN : tout ce que les documents rempliront', screen: <SciCreateScreen />, notes: ['Cliquable : Enregistrer'] },
+      { id: 'property-create', title: 'Ajouter un logement', subtitle: 'En SCI ou en nom propre, au choix', screen: <PropertyCreateScreen />, notes: ['Cliquable : Enregistrer'] },
       { id: 'sci-list', title: 'Mon patrimoine', subtitle: 'Sociétés et biens en nom propre', screen: <SciListScreen />, notes: ['Cliquable : ouvrir une SCI'] },
       { id: 'sci-detail', title: 'Fiche SCI', subtitle: 'SIREN, IBAN et biens rattachés', screen: <SciDetailScreen />, notes: ['IBAN repris sur les quittances'] },
       { id: 'property', title: 'Fiche bien', subtitle: 'Le logement, son lot, son historique', screen: <PropertyScreen />, notes: ['Historique conservé'] },
