@@ -1423,6 +1423,14 @@ function DirectionArtistique() {
       <div className="blr-da">
         <div className="blr-da-grid">
           <div>
+            <h3>Le logo</h3>
+            <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginTop: 4 }}>
+              <AppMark />
+              <span style={{ width: 40, height: 40, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: 12, color: 'var(--accent)', background: 'var(--accent-soft)' }}><BailoraLogo size={22} /></span>
+              <span style={{ width: 40, height: 40, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: 12, color: 'var(--ink)', background: 'var(--card-soft)' }}><BailoraLogo size={22} /></span>
+            </div>
+          </div>
+          <div>
             <h3>Les couleurs, chacune a un sens</h3>
             <div className="blr-swatches">
               <div className="blr-swatch"><i style={{ background: '#7a2e3a' }} /><code>Bordeaux</code><span>la couleur de Bailora</span></div>
