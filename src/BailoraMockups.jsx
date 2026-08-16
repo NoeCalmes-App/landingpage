@@ -20,7 +20,6 @@ import {
   FolderOpen,
   Home,
   KeyRound,
-  Landmark,
   Lock,
   Mail,
   Mic,
@@ -340,7 +339,7 @@ function SignupScreen() {
 function PaywallScreen() {
   return (
     <div className="blr-content">
-      <ScreenHeading eyebrow="BAILORA" title="Abonnement" subtitle="Essai en cours : 22 jours restants, sur les deux formules." />
+      <ScreenHeading eyebrow="BAILORA" title="Abonnement" subtitle="30 jours d’essai gratuit, sans carte bancaire, sur les deux formules." />
       <div className="blr-plan-list">
         <div className="blr-plan blr-plan-on">
           <div className="blr-plan-head">
@@ -364,7 +363,7 @@ function PaywallScreen() {
       </div>
       <div className="blr-bottom-actions">
         <UiButton goto="empty-sci">Continuer l’essai gratuit</UiButton>
-        <small className="blr-legal" style={{ maxWidth: 'none' }}>Via l’App Store · résiliable à tout moment · données conservées</small>
+        <small className="blr-legal" style={{ maxWidth: 'none' }}>Aucune carte pour l’essai · abonnement ensuite via l’App Store ou Google Play · résiliable à tout moment · données conservées</small>
       </div>
     </div>
   )
@@ -473,7 +472,7 @@ function SciCreateScreen() {
     <div className="blr-content">
       <TopBar title="Nouvelle SCI" back noAction />
       <div style={{ marginTop: 2 }}>
-        <div className="blr-input"><Landmark size={15} /><span>Nom de la SCI</span></div>
+        <div className="blr-input"><Building2 size={15} /><span>Nom de la SCI</span></div>
         <div className="blr-input"><FileText size={15} /><span>Forme juridique · SCI</span></div>
         <div className="blr-input"><ShieldCheck size={15} /><span>Numéro SIREN</span></div>
         <div className="blr-input"><Home size={15} /><span>Adresse du siège</span></div>
@@ -516,7 +515,7 @@ function PropertyCreateScreen() {
       </div>
       <SectionHead>Rattacher à</SectionHead>
       <div className="blr-panel">
-        <ListRow icon={<Landmark size={16} />} tone="brand" title="SCI Horizon" meta="les loyers et documents iront dans cette société" trailing={<CircleCheck size={16} style={{ color: 'var(--positive)' }} />} />
+        <ListRow icon={<Building2 size={16} />} tone="brand" title="SCI Horizon" meta="les loyers et documents iront dans cette société" trailing={<CircleCheck size={16} style={{ color: 'var(--positive)' }} />} />
         <ListRow icon={<Home size={16} />} tone="positive" title="En nom propre" meta="sans société, détenu en direct" />
       </div>
       <div className="blr-bottom-actions">
@@ -543,7 +542,7 @@ function SciListScreen() {
       <div className="blr-panel">
         <div role="button" tabIndex={0} onClick={() => goTo('sci-detail')} style={{ cursor: 'pointer' }}>
           <ListRow
-            icon={<Landmark size={17} />}
+            icon={<Building2 size={17} />}
             tone="brand"
             title="SCI Horizon"
             meta="2 biens · 5 lots · Sofiane, gérant"
@@ -551,7 +550,7 @@ function SciListScreen() {
           />
         </div>
         <ListRow
-          icon={<Landmark size={17} />}
+          icon={<Building2 size={17} />}
           tone="terra"
           title="SCI Les Cèdres"
           meta="1 bien · 2 lots · gestion familiale"
@@ -1265,13 +1264,13 @@ function EmptySciScreen() {
     <div className="blr-content blr-with-tab">
       <TopBar title="Mon patrimoine" noAction />
       <div className="blr-empty" style={{ paddingBottom: 10 }}>
-        <div className="blr-empty-icon" style={{ width: 52, height: 52, borderRadius: 16 }}><Building2 size={22} /></div>
+        <div className="blr-empty-icon" style={{ width: 52, height: 52, borderRadius: 16 }}><BailoraLogo size={20} /></div>
         <h2>Par où commencer ?</h2>
         <p>Deux façons de gérer, choisissez la vôtre. Vous pourrez toujours ajouter l’autre plus tard.</p>
       </div>
       <div className="blr-value-list" style={{ marginTop: 0 }}>
         <div className="blr-value-card" role="button" tabIndex={0} onClick={() => goTo('sci-create')} style={{ cursor: 'pointer' }}>
-          <i><Landmark size={18} /></i>
+          <i><Building2 size={18} /></i>
           <div><strong>J’ai une ou plusieurs SCI</strong><small>Créez vos sociétés, puis rangez-y vos logements et leurs locataires.</small></div>
         </div>
         <div className="blr-value-card" role="button" tabIndex={0} onClick={() => goTo('property-create')} style={{ cursor: 'pointer' }}>
