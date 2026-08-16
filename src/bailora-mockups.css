@@ -78,7 +78,11 @@
 .bailora-mockups-page *::before,
 .bailora-mockups-page *::after { box-sizing: border-box; }
 .bailora-mockups-page :where(button) { font-family: inherit; font-size: var(--type-label); line-height: 1; cursor: pointer; white-space: nowrap; }
-.bailora-mockups-page :where(button) svg { flex: 0 0 auto; }
+/* GARDE-FOU ALIGNEMENT (regle absolue) : toute icone SVG est un bloc sans
+   espace de ligne de base et ne retrecit jamais — dans un conteneur flex
+   align-items:center, elle est MATHEMATIQUEMENT centree avec son texte.
+   C'est ce qui rend le decalage icone/texte impossible par construction. */
+.bailora-mockups-page svg { display: block; flex: 0 0 auto; }
 
 /* État pressé — micro-interaction sur TOUT contrôle interactif. */
 .bailora-mockups-page :where(button):active { transform: scale(0.97); filter: brightness(0.95); }
