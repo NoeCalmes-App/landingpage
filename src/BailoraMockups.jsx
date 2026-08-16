@@ -738,7 +738,7 @@ function ReceiptScreen() {
       <TopBar title="Quittance de loyer" back />
       <div className="blr-paper">
         <div className="blr-paper-head">
-          <div className="blr-mini-mark"><BailoraLogo size={16} /></div>
+          <div className="blr-mini-mark"><Building2 size={14} /></div>
           <div><strong>SCI Horizon</strong><small>FR76 3000 4028 · SIREN 912 845 237</small></div>
         </div>
         <h2>Quittance, juillet 2026</h2>
@@ -809,7 +809,7 @@ function GeneratorPreviewScreen() {
       </div>
       <div className="blr-paper" style={{ marginTop: 10 }}>
         <div className="blr-paper-head">
-          <div className="blr-mini-mark"><BailoraLogo size={16} /></div>
+          <div className="blr-mini-mark"><Building2 size={14} /></div>
           <div><strong>Aperçu avant validation</strong><small>SCI Horizon · régularisation 2025</small></div>
         </div>
         <div className="blr-paper-lines">
