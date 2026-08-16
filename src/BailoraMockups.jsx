@@ -1265,7 +1265,7 @@ function EmptySciScreen() {
     <div className="blr-content blr-with-tab">
       <TopBar title="Mon patrimoine" noAction />
       <div className="blr-empty" style={{ paddingBottom: 10 }}>
-        <div className="blr-empty-icon" style={{ width: 52, height: 52, borderRadius: 16 }}><BailoraLogo size={20} /></div>
+        <div className="blr-empty-icon" style={{ width: 52, height: 52, borderRadius: 16 }}><Building2 size={22} /></div>
         <h2>Par où commencer ?</h2>
         <p>Deux façons de gérer, choisissez la vôtre. Vous pourrez toujours ajouter l’autre plus tard.</p>
       </div>
@@ -1481,7 +1481,7 @@ function DirectionArtistique() {
             <div className="blr-state-mini">
               <h4>Un écran vide</h4>
               <div style={{ textAlign: 'center', padding: '6px 0' }}>
-                <div className="blr-empty-icon" style={{ width: 44, height: 44, margin: '0 auto', borderRadius: 14 }}><BailoraLogo size={17} /></div>
+                <div className="blr-empty-icon" style={{ width: 44, height: 44, margin: '0 auto', borderRadius: 14 }}><Building2 size={19} /></div>
                 <p style={{ margin: '8px 0 0', fontSize: 11, color: 'var(--ink-soft)' }}>Aucune SCI, créez la première.</p>
               </div>
             </div>
