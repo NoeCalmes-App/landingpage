@@ -111,7 +111,7 @@ function BailoraLogo({ size = 18 }) {
 function AppMark({ large = false }) {
   return (
     <div className={`blr-app-mark${large ? ' blr-app-mark-large' : ''}`}>
-      <BailoraLogo size={large ? 42 : 25} />
+      <BailoraLogo size={large ? 38 : 22} />
     </div>
   )
 }
