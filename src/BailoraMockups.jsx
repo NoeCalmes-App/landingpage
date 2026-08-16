@@ -97,10 +97,13 @@ function PhoneFrame({ children, tall = false, lightBar = false }) {
   )
 }
 
+// Logo officiel Bailora — « Le toit-clé » (choix Noé, 2026-08-16) :
+// le toit qui protège, la clé qui habite. Grille de 96, deux formes.
 function BailoraLogo({ size = 18 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" fillRule="evenodd" aria-hidden="true">
-      <path d="M12 2.4c.37 0 .73.13 1.02.36l7.06 5.83c.45.37.72.93.72 1.52V19a2.6 2.6 0 0 1-2.6 2.6H5.8A2.6 2.6 0 0 1 3.2 19v-8.89c0-.59.27-1.15.72-1.52l7.06-5.83c.29-.23.65-.36 1.02-.36Zm0 6.5a2.45 2.45 0 0 0-2.45 2.45c0 .93.52 1.74 1.28 2.15l-.5 3.4a1.06 1.06 0 0 0 1.05 1.22h1.24a1.06 1.06 0 0 0 1.05-1.22l-.5-3.4a2.45 2.45 0 0 0 1.28-2.15A2.45 2.45 0 0 0 12 8.9Z" />
+    <svg width={size} height={size} viewBox="0 0 96 96" fill="currentColor" aria-hidden="true">
+      <path d="M48 8 86 39.5l-6.4 7.7L48 21.4 16.4 47.2 10 39.5Z" />
+      <path fillRule="evenodd" d="M48 34a16 16 0 0 1 6.5 30.6V78a6.5 6.5 0 0 1-13 0V64.6A16 16 0 0 1 48 34Zm0 10.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z" />
     </svg>
   )
 }
@@ -154,7 +157,7 @@ function TopBar({ title, back = false, action, filter, noAction = false }) {
         <strong>{title}</strong>
         {filter && <span>{filter}<ChevronDown size={11} /></span>}
       </div>
-      {noAction ? <span /> : <IconButton>{action || <Bell size={17} />}</IconButton>}
+      {action ? <IconButton>{action}</IconButton> : <span />}
     </div>
   )
 }
@@ -1134,7 +1137,7 @@ function TenantHomeScreen() {
       <div className="blr-topbar">
         <Avatar src={FACE.yacine} size="top" />
         <div className="blr-topbar-title"><strong>Mon logement</strong><span>Espace locataire</span></div>
-        <IconButton><Bell size={17} /></IconButton>
+        <span />
       </div>
       <div className="blr-hero-card">
         <Pill tone="glass">Appartement 1 · Victor-Hugo</Pill>
