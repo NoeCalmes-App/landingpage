@@ -101,7 +101,7 @@ function PhoneFrame({ children, tall = false, lightBar = false }) {
 // le toit qui protège, la clé qui habite. Grille de 96, deux formes.
 function BailoraLogo({ size = 18 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 96 96" fill="currentColor" aria-hidden="true">
+    <svg width={size} height={size} viewBox="7 5 82 82" fill="currentColor" aria-hidden="true">
       <path d="M48 8 86 39.5l-6.4 7.7L48 21.4 16.4 47.2 10 39.5Z" />
       <path fillRule="evenodd" d="M48 34a16 16 0 0 1 6.5 30.6V78a6.5 6.5 0 0 1-13 0V64.6A16 16 0 0 1 48 34Zm0 10.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z" />
     </svg>
@@ -111,7 +111,7 @@ function BailoraLogo({ size = 18 }) {
 function AppMark({ large = false }) {
   return (
     <div className={`blr-app-mark${large ? ' blr-app-mark-large' : ''}`}>
-      <BailoraLogo size={large ? 30 : 18} />
+      <BailoraLogo size={large ? 42 : 25} />
     </div>
   )
 }
@@ -740,7 +740,7 @@ function ReceiptScreen() {
       <TopBar title="Quittance de loyer" back />
       <div className="blr-paper">
         <div className="blr-paper-head">
-          <div className="blr-mini-mark"><Landmark size={13} /></div>
+          <div className="blr-mini-mark"><BailoraLogo size={16} /></div>
           <div><strong>SCI Horizon</strong><small>FR76 3000 4028 · SIREN 912 845 237</small></div>
         </div>
         <h2>Quittance, juillet 2026</h2>
@@ -811,7 +811,7 @@ function GeneratorPreviewScreen() {
       </div>
       <div className="blr-paper" style={{ marginTop: 10 }}>
         <div className="blr-paper-head">
-          <div className="blr-mini-mark"><Landmark size={13} /></div>
+          <div className="blr-mini-mark"><BailoraLogo size={16} /></div>
           <div><strong>Aperçu avant validation</strong><small>SCI Horizon · régularisation 2025</small></div>
         </div>
         <div className="blr-paper-lines">
