@@ -1419,7 +1419,6 @@ function DirectionArtistique() {
       <div className="blr-flow-head">
         <span>01</span>
         <h2>La charte graphique</h2>
-        <p>Le bordeaux du patrimoine, des couleurs qui ont un sens, des écrans lisibles. Voici l’identité visuelle de Bailora.</p>
       </div>
       <div className="blr-da">
         <div className="blr-da-grid">
@@ -1444,7 +1443,6 @@ function DirectionArtistique() {
               <div><b style={{ fontSize: 12 }}>Texte courant, ce que vous lisez le plus</b><span>lisible partout</span></div>
               <div><b style={{ fontSize: 10.5, fontWeight: 750 }}>Boutons et étiquettes</b><span>toujours nets</span></div>
             </div>
-            <p style={{ margin: '12px 0 0', color: 'var(--ink-faint)', fontSize: 11 }}>Les montants gardent des chiffres alignés, ils ne « dansent » jamais d’une ligne à l’autre.</p>
           </div>
           <div>
             <h3>Les boutons, trois niveaux</h3>
@@ -1536,11 +1534,6 @@ export default function BailoraMockupsPage() {
           <p className="blr-eyebrow">Proposition design</p>
           <h1>Bailora, Maquette V2</h1>
           <p className="blr-reference">Bailora · MOB-2026-157</p>
-          <p className="blr-disclaimer">
-            Dossier de conception : la charte graphique, puis tous les écrans, parcours par parcours.
-            Le design reste ajustable avant développement, seuls le devis signé et le
-            cahier des charges fixent le périmètre contractuel. Non contractuel.
-          </p>
           <span className="blr-proto-note"><Sparkles size={14} /> Maquette interactive, touchez les boutons</span>
         </div>
       </section>
