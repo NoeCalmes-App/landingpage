@@ -517,7 +517,7 @@ function PropertyCreateScreen() {
         <div className="blr-input" style={{ marginTop: 0 }}><span>Pièces</span></div>
         <div className="blr-input" style={{ marginTop: 0 }}><span>Lot (facult.)</span></div>
       </div>
-      <div className="blr-input"><CalendarDays size={15} /><span>Loyer attendu le… · 5 du mois</span></div>
+      <div className="blr-input" style={{ marginTop: 7 }}><CalendarDays size={15} /><span>Loyer attendu le… · 5 du mois</span></div>
       <SectionHead>Rattacher à</SectionHead>
       <div className="blr-panel">
         <ListRow icon={<Building2 size={16} />} tone="brand" title="SCI Horizon" meta="les loyers et documents iront dans cette société" trailing={<CircleCheck size={16} style={{ color: 'var(--positive)' }} />} />
