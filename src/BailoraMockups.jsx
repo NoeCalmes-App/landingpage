@@ -359,6 +359,7 @@ function PaywallScreen() {
       <div className="blr-bottom-actions">
         <UiButton goto="empty-sci">Continuer l’essai gratuit</UiButton>
         <small className="blr-legal" style={{ maxWidth: 'none' }}>Aucune carte pour l’essai · abonnement ensuite via l’App Store · résiliable à tout moment · données conservées</small>
+        <small className="blr-legal" style={{ marginTop: 2 }}><span style={{ color: 'var(--accent)', fontWeight: 700 }}>CGU</span> · <span style={{ color: 'var(--accent)', fontWeight: 700 }}>Politique de confidentialité</span></small>
       </div>
     </div>
   )
