@@ -1113,7 +1113,7 @@ function AssistantScreen() {
       <div style={{ display: 'flex', justifyContent: 'center', gap: 6, flexWrap: 'wrap', marginTop: 10 }}>
         <Pill tone="neutral">Un loyer reçu</Pill>
         <Pill tone="neutral">Une dépense</Pill>
-        <Pill tone="neutral">Retrouver une fiche</Pill>
+        <Pill tone="neutral">Retrouver une fiche ou un document</Pill>
       </div>
       <div className="blr-listen">
         <span className="blr-listen-ring" />
