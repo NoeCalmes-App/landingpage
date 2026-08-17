@@ -732,6 +732,7 @@ function TenantFileScreen() {
       <SectionHead action="4 fichiers">Documents du bail</SectionHead>
       <div className="blr-panel">
         <ListRow icon={<FileCheck2 size={16} />} tone="positive" title="Bail signé" meta="importé le 12 mars 2024" />
+        <ListRow icon={<KeyRound size={16} />} tone="terra" title="État des lieux d’entrée" meta="signé le 12 mars 2024 · figé, seul celui de sortie reste à faire" />
         <ListRow icon={<ReceiptText size={16} />} tone="brand" title="Quittance de juin" meta="envoyée le 4 juillet" />
       </div>
     </div>
@@ -936,11 +937,6 @@ function EdlRoomScreen() {
         <img src={PHOTO.livingExit} alt="" />
         <span className="blr-photo-badge"><Camera size={12} /> 3 photos · horodatées</span>
         <button aria-label="Prendre une photo"><Camera size={16} /></button>
-      </div>
-      <div className="blr-condition-row">
-        <button>Bon état</button>
-        <button className="blr-condition-on">Usure normale</button>
-        <button>Dégradé</button>
       </div>
       <Note
         tone="brand"
@@ -1194,6 +1190,7 @@ function TenantDocsScreen() {
         <ListRow icon={<ReceiptText size={16} />} tone="positive" title="Quittance, mai 2026" meta="850,00 € · reçue le 5 juin" trailing={<Download size={15} />} />
         <ListRow icon={<FileCheck2 size={16} />} tone="brand" title="Bail signé" meta="3 ans · depuis mars 2024" trailing={<Download size={15} />} />
         <ListRow icon={<KeyRound size={16} />} tone="terra" title="État des lieux d’entrée" meta="12 mars 2024 · signé" trailing={<Download size={15} />} />
+        <ListRow icon={<KeyRound size={16} />} tone="terra" title="État des lieux de sortie" meta="23 juillet 2026 · signé, photos comprises" trailing={<Download size={15} />} />
       </div>
       <Note
         tone="positive"
