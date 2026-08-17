@@ -347,21 +347,15 @@ function PaywallScreen() {
             <div><strong>Particulier</strong><small>Avec ou sans SCI · 5 logements au total</small></div>
             <b className="blr-num">19,99 € <i>/ mois</i></b>
           </div>
-          <ul>
-            <li><Check size={12} /> En SCI ou en votre nom : appartement, maison, saisonnier</li>
-            <li><Check size={12} /> Tout Bailora : documents, états des lieux, espace locataire</li>
-          </ul>
         </div>
         <div className="blr-plan">
           <div className="blr-plan-head">
-            <div><strong>Professionnel</strong><small>Jusqu’à 10 SCI · 30 logements</small></div>
+            <div><strong>Professionnel</strong><small>Jusqu’à 10 SCI · 30 logements au total</small></div>
             <b className="blr-num">39,99 € <i>/ mois</i></b>
           </div>
-          <ul>
-            <li><Check size={12} /> Un vrai portefeuille locatif, une seule application</li>
-          </ul>
         </div>
       </div>
+      <small className="blr-legal" style={{ maxWidth: 'none', marginTop: 10 }}>Toutes les fonctionnalités, dans les deux formules.</small>
       <div className="blr-bottom-actions">
         <UiButton goto="empty-sci">Continuer l’essai gratuit</UiButton>
         <small className="blr-legal" style={{ maxWidth: 'none' }}>Aucune carte pour l’essai · abonnement ensuite via l’App Store ou Google Play · résiliable à tout moment · données conservées</small>
