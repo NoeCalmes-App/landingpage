@@ -517,6 +517,10 @@ function PropertyCreateScreen() {
         <div className="blr-input" style={{ marginTop: 0 }}><span>Pièces</span></div>
         <div className="blr-input" style={{ marginTop: 0 }}><span>Lot (facult.)</span></div>
       </div>
+      <div className="blr-segmented" style={{ marginTop: 8 }}>
+        <button>Meublé</button>
+        <button className="blr-seg-on">Non meublé</button>
+      </div>
       <div className="blr-input" style={{ marginTop: 7 }}><CalendarDays size={15} /><span>Loyer attendu le… · 5 du mois</span></div>
       <SectionHead>Rattacher à</SectionHead>
       <div className="blr-panel">
@@ -1349,7 +1353,7 @@ const FLOWS = [
     note: 'Il crée sa SCI ou son logement en nom propre, puis tout s’emboîte : la société, ses biens, leurs locataires et les baux.',
     mockups: [
       { id: 'sci-create', title: 'Créer une SCI', subtitle: 'Nom, SIREN, IBAN : tout ce que les documents rempliront', screen: <SciCreateScreen />, notes: ['Cliquable : Enregistrer'] },
-      { id: 'property-create', title: 'Ajouter un logement', subtitle: 'En SCI ou en nom propre, au choix', screen: <PropertyCreateScreen />, notes: ['Cliquable : Enregistrer'] },
+      { id: 'property-create', title: 'Ajouter un logement', subtitle: 'En SCI ou en nom propre, au choix', screen: <PropertyCreateScreen />, notes: ['Meublé ou non meublé : la durée du bail s’en déduit (1 an ou 3 ans)', 'Cliquable : Enregistrer'] },
       { id: 'sci-list', title: 'Mon patrimoine', subtitle: 'Sociétés et biens en nom propre', screen: <SciListScreen />, notes: ['Cliquable : ouvrir une SCI'] },
       { id: 'sci-detail', title: 'Fiche SCI', subtitle: 'SIREN, IBAN et biens rattachés', screen: <SciDetailScreen />, notes: ['IBAN repris sur les quittances'] },
       { id: 'property', title: 'Fiche bien', subtitle: 'Le logement, son lot, son historique', screen: <PropertyScreen />, notes: ['Historique conservé'] },
