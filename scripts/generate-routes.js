@@ -170,6 +170,13 @@ const blogRoutes = [
     content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
   },
   {
+    path: '/blog/application-audience-revenus-recurrents',
+    title: 'Transformer ton audience en revenus récurrents | Noé Calmes',
+    description: 'Tu as une communauté qui te suit mais des revenus irréguliers : voici comment une application transforme cette attention en abonnements récurrents.',
+    heading: 'Comment une application transforme une audience en revenus récurrents',
+    content: 'Pourquoi une audience ne se transforme pas toute seule en revenus, ce qu\'une application fait qu\'un lien en bio ne fait pas (fréquence, paiement récurrent, propriété du lien), les trois formats qui convertissent une communauté (programme suivi, bibliothèque vivante, outil du quotidien), le calcul de rentabilité (environ 68 abonnés pour rembourser une application à 9 000 €) et l\'erreur de confondre volume d\'utilisateurs et revenus.',
+  },
+  {
     path: '/blog/application-mobile-coach-formateur',
     title: 'Application mobile pour coach et formateur | Noé Calmes',
     description: 'Tu as des clients ou une audience : voici comment une application transforme ton expertise en revenus récurrents, et à partir de quand c\'est rentable.',
