@@ -1113,6 +1113,11 @@ function AssistantScreen() {
     <div className="blr-content">
       <TopBar title="Assistant" back />
       <ScreenHeading eyebrow="JE VOUS ÉCOUTE" title="Dictez, je prépare." subtitle="Rien n’est enregistré tant que vous n’avez pas validé le récapitulatif." />
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 6, flexWrap: 'wrap', marginTop: 10 }}>
+        <Pill tone="neutral">Un loyer reçu</Pill>
+        <Pill tone="neutral">Une dépense</Pill>
+        <Pill tone="neutral">Retrouver une fiche</Pill>
+      </div>
       <div className="blr-listen">
         <span className="blr-listen-ring" />
         <span className="blr-listen-core"><Mic size={24} /></span>
