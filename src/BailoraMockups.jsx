@@ -344,7 +344,7 @@ function PaywallScreen() {
       <div className="blr-plan-list">
         <div className="blr-plan blr-plan-on">
           <div className="blr-plan-head">
-            <div><strong>Particulier</strong><small>Avec ou sans SCI · 5 logements au total</small></div>
+            <div><strong>Particulier</strong><small>Jusqu’à 1 SCI · 5 logements au total</small></div>
             <b className="blr-num">19,99 € <i>/ mois</i></b>
           </div>
         </div>
