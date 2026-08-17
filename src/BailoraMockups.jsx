@@ -946,7 +946,7 @@ function EdlRoomScreen() {
         tone="brand"
         icon={<Mic size={16} />}
         title="« Trace de meuble sur le mur ouest, peinture à rafraîchir »"
-        text="Observation dictée, modifiable avant validation."
+        text="Note ajoutée à l’état des lieux, modifiable avant validation."
       />
       <div className="blr-bottom-actions">
         <UiButton goto="edl-meters">Pièce suivante <ArrowRight size={15} /></UiButton>
@@ -1025,6 +1025,7 @@ function EdlCompareScreen() {
       </div>
       <div className="blr-bottom-actions">
         <UiButton><FileCheck2 size={15} /> Générer le PDF signé</UiButton>
+        <small className="blr-legal">Rangé dans Documents et remis au locataire dans son espace.</small>
       </div>
     </div>
   )

@@ -160,7 +160,7 @@
 .blr-avatar-sm { width: 31px; height: 31px; }
 
 /* Pastilles de statut — la couleur dit le rôle, le libellé le confirme */
-.blr-pill { display: inline-flex; align-items: center; justify-content: center; gap: 4px; height: 23px; padding: 0 9px; border-radius: 99px; white-space: nowrap; font-size: var(--type-label); line-height: 1; font-weight: 800; letter-spacing: 0.015em; }
+.blr-pill { display: inline-flex; align-items: center; justify-content: center; gap: 4px; padding: 6px 9px; border-radius: 99px; white-space: nowrap; font-size: var(--type-label); line-height: 1; font-weight: 800; letter-spacing: 0.015em; }
 .blr-pill-neutral { color: var(--ink-soft); background: var(--card-soft); }
 .blr-pill-brand { color: var(--accent-deep); background: var(--accent-soft); }
 .blr-pill-paid { color: var(--positive); background: var(--positive-soft); }
@@ -228,7 +228,7 @@
 .blr-rent-row > div:nth-child(2) small { display: block; margin-top: 2px; color: var(--ink-soft); font-size: var(--type-meta); }
 .blr-rent-row > div:last-child { align-self: stretch; padding-top: 8px; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
 .blr-rent-row > div:last-child b { font-size: var(--type-label); font-weight: 850; font-variant-numeric: tabular-nums; }
-.blr-rent-row .blr-pill { height: 20px; padding: 0 7px; font-size: var(--type-meta); }
+.blr-rent-row .blr-pill { padding: 5px 7px; font-size: var(--type-meta); }
 .blr-confirm-btn { height: var(--control-list-action); padding: 0 7px; display: inline-flex; align-items: center; gap: 4px; border: 0; border-radius: 99px; color: #fff; background: var(--positive); font-size: var(--type-meta); font-weight: 800; }
 
 /* Champs / formulaires */
@@ -237,7 +237,7 @@
 .blr-field-list > div + div { border-top: 1px solid var(--line); }
 .blr-field-list span { color: var(--ink-soft); font-size: var(--type-meta); font-weight: 700; }
 .blr-field-list strong { font-size: var(--type-label); font-weight: 800; }
-.blr-field-list .blr-pill { height: 19px; padding: 0 7px; font-size: var(--type-meta); }
+.blr-field-list .blr-pill { padding: 4.5px 7px; font-size: var(--type-meta); }
 .blr-input { min-height: var(--control-assistive); padding: 0 12px; display: flex; align-items: center; gap: 8px; border: 1px solid var(--line-strong); border-radius: var(--radius-control); color: var(--ink); background: var(--card); font-size: var(--type-label); font-weight: 650; }
 .blr-input span { color: var(--ink-faint); }
 .blr-input + .blr-input { margin-top: 7px; }
@@ -481,7 +481,7 @@
 .blr-plan-list { margin-top: 15px; display: flex; flex-direction: column; gap: 8px; }
 .blr-plan { position: relative; padding: 13px 13px 11px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--card); }
 .blr-plan-on { border-color: transparent; color: #fff; background: var(--gradient-brand); box-shadow: var(--shadow-float); }
-.blr-plan-badge { position: absolute; top: -9px; right: 13px; height: 20px; padding: 0 9px; display: inline-flex; align-items: center; border-radius: 99px; color: var(--positive); background: #ddefe6; font-size: var(--type-meta); font-weight: 850; letter-spacing: 0.05em; text-transform: uppercase; }
+.blr-plan-badge { position: absolute; top: -9px; right: 13px; padding: 5px 9px; display: inline-flex; align-items: center; border-radius: 99px; color: var(--positive); background: #ddefe6; font-size: var(--type-meta); font-weight: 850; letter-spacing: 0.05em; text-transform: uppercase; }
 .blr-plan-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
 .blr-plan-head strong { display: block; font-size: var(--type-heading); font-weight: 850; }
 .blr-plan-head small { display: block; margin-top: 3px; color: var(--ink-soft); font-size: var(--type-meta); }
