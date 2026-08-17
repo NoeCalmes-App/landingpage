@@ -1192,6 +1192,17 @@ function TenantDocsScreen() {
         <ListRow icon={<KeyRound size={16} />} tone="terra" title="État des lieux d’entrée" meta="12 mars 2024 · signé" trailing={<Download size={15} />} />
         <ListRow icon={<KeyRound size={16} />} tone="terra" title="État des lieux de sortie" meta="23 juillet 2026 · signé, photos comprises" trailing={<Download size={15} />} />
       </div>
+      <SectionHead>Entrée et sortie, côte à côte</SectionHead>
+      <div className="blr-photo-compare" style={{ marginTop: 4 }}>
+        <figure>
+          <img src={PHOTO.victorHugo} alt="" />
+          <figcaption><span>ENTRÉE</span><strong>12 mars 2024</strong></figcaption>
+        </figure>
+        <figure>
+          <img src={PHOTO.livingExit} alt="" />
+          <figcaption><span>SORTIE</span><strong>23 juillet 2026</strong></figcaption>
+        </figure>
+      </div>
       <Note
         tone="positive"
         icon={<Bell size={15} />}
@@ -1416,7 +1427,7 @@ const FLOWS = [
     mockups: [
       { id: 'error-code', title: 'Connexion locataire', subtitle: 'Le code à 6 chiffres, et l’erreur qui dit quoi faire', screen: <ErrorCodeScreen />, notes: ['Champ en faute souligné'] },
       { id: 'tenant-home', title: 'Accueil locataire', subtitle: 'Son logement, son loyer, l’IBAN', screen: <TenantHomeScreen />, notes: ['Lecture seule', 'Cliquable : documents'] },
-      { id: 'tenant-docs', title: 'Quittances et documents', subtitle: 'Tout se télécharge, rien ne se demande', screen: <TenantDocsScreen />, notes: ['Prévenu à chaque document'] },
+      { id: 'tenant-docs', title: 'Quittances et documents', subtitle: 'Tout se télécharge, rien ne se demande', screen: <TenantDocsScreen />, scroll: true, notes: ['Photos entrée / sortie comparables'], tall: true },
     ],
   },
 ]
