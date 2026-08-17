@@ -1016,7 +1016,7 @@ function EdlCompareScreen() {
       </div>
       <div className="blr-bottom-actions">
         <UiButton><FileCheck2 size={15} /> Générer le PDF signé</UiButton>
-        <small className="blr-legal">Rangé dans Documents et remis au locataire dans son espace.</small>
+        <small className="blr-legal">Rangé dans Documents et remis au locataire dans son espace. L’app propose ensuite de clôturer le bail : Sarah passe dans l’historique du logement, son accès est retiré, ses documents sont conservés.</small>
       </div>
     </div>
   )
