@@ -344,7 +344,7 @@ function PaywallScreen() {
       <div className="blr-plan-list">
         <div className="blr-plan blr-plan-on">
           <div className="blr-plan-head">
-            <div><strong>Particulier</strong><small>Avec ou sans SCI · 3 logements au total</small></div>
+            <div><strong>Particulier</strong><small>Avec ou sans SCI · 5 logements au total</small></div>
             <b className="blr-num">19,99 € <i>/ mois</i></b>
           </div>
           <ul>
@@ -398,6 +398,14 @@ function DashboardScreen() {
       <div className="blr-stat-pair">
         <div><span>En retard</span><strong className="blr-num">1 loyer</strong><small>relance prête à partir</small></div>
         <div><span>Occupation</span><strong className="blr-num">6 / 7</strong><small>lots occupés</small></div>
+      </div>
+      <div role="button" tabIndex={0} onClick={() => goTo('assistant')} style={{ cursor: 'pointer' }}>
+        <Note
+          tone="brand"
+          icon={<Mic size={16} />}
+          title="Assistant : dictez, c’est enregistré"
+          text="« Le loyer de Yacine est arrivé », et la fiche se met à jour."
+        />
       </div>
       <SectionHead action="Tout voir">Échéances proches</SectionHead>
       <div className="blr-thread">
@@ -514,6 +522,7 @@ function PropertyCreateScreen() {
         <div className="blr-input" style={{ marginTop: 0 }}><span>Pièces</span></div>
         <div className="blr-input" style={{ marginTop: 0 }}><span>Lot (facult.)</span></div>
       </div>
+      <div className="blr-input"><CalendarDays size={15} /><span>Loyer attendu le… · 5 du mois</span></div>
       <SectionHead>Rattacher à</SectionHead>
       <div className="blr-panel">
         <ListRow icon={<Building2 size={16} />} tone="brand" title="SCI Horizon" meta="les loyers et documents iront dans cette société" trailing={<CircleCheck size={16} style={{ color: 'var(--positive)' }} />} />
@@ -712,7 +721,7 @@ function TenantFileScreen() {
         <div><span>Loyer HC</span><strong className="blr-num">760 €</strong><Pill tone="neutral">échéance le 5</Pill></div>
         <div><span>Charges</span><strong className="blr-num">90 €</strong><span /></div>
         <div><span>Dépôt de garantie</span><strong className="blr-num">760 €</strong><span /></div>
-        <div><span>Bail</span><strong>3 ans · depuis mars 2024</strong><span /></div>
+        <div><span>Bail</span><strong>Non meublé · 3 ans · depuis mars 2024</strong><Pill tone="neutral">minimum légal</Pill></div>
       </div>
       <div className="blr-quick-actions">
         <button onClick={() => goTo('receipt')}><ReceiptText size={17} /><span>Quittance</span></button>
