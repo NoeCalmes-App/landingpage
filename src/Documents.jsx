@@ -34,8 +34,12 @@ const A_FAIRE = [
     // UN PROJET, PAS UN COMPTE. Le compte, c'est le compte Google que le
     // client a déjà ; Firebase ne demande que de créer un projet dedans.
     // « Création compte » laissait croire à une inscription de plus.
-    title: 'Création projet Firebase',
-    soustitre: 'Et inviter Noé dessus',
+    // « SANS ABONNEMENT », PAS « GRATUIT ». Le guide juste derrière demande une
+    // carte bancaire et explique qu'on paie à l'usage : promettre « gratuit »
+    // sur la carte, c'est se faire démentir au clic suivant. Ce qui est vrai
+    // et rassurant, c'est l'absence de mensualité.
+    title: 'Projet Firebase',
+    soustitre: 'Le serveur de l’application. Sans abonnement.',
     pdf: ajoutMembrePdf,
     icone: ICONES.firebase,
     emailAInviter: EMAIL_A_INVITER,
@@ -43,7 +47,11 @@ const A_FAIRE = [
   {
     id: 'google-play-console',
     route: '/google-play-console',
-    title: 'Création compte Google Play',
+    // LE NOM COMPLET PORTE LA DISTINCTION. « Création compte Google » faisait
+    // dire « j'en ai déjà un » et sauter l'étape ; « Google Play Console » ne
+    // se confond avec rien. Le nom exact suffit, une phrase pour expliquer
+    // qu'il ne s'agit pas du même compte serait le doute qu'on veut éviter.
+    title: 'Compte Google Play Console',
     soustitre: 'Pour publier sur Android',
     pdf: googlePlayPdf,
     icone: ICONES.android,
@@ -52,7 +60,10 @@ const A_FAIRE = [
   {
     id: 'apple-developer',
     route: '/apple-developer',
-    title: 'Création compte Apple',
+    // Même piège, en pire : tout le monde a un compte Apple. « Developer » est
+    // le mot qui dit que ce n'est pas celui-là — un abonnement annuel par
+    // dessus, sans lequel rien ne sort sur l'App Store.
+    title: 'Compte Apple Developer',
     soustitre: 'Pour publier sur iPhone',
     pdf: appleDevPdf,
     icone: ICONES.apple,
@@ -129,8 +140,14 @@ function Documents({ onOpenDocument }) {
             À faire maintenant
           </h1>
         </div>
+        {/* DIRE « OBLIGATOIRE », ET DIRE À QUI ILS APPARTIENNENT. Sans ces
+            accès, le développement ne peut pas commencer : ce n'est pas de
+            l'administratif qu'on repousse. Et ils restent au client — c'est ce
+            qui justifie qu'il les crée lui-même plutôt que Noé à sa place. */}
         <p className="text-grey text-[1rem] leading-relaxed max-w-xl">
-          Pour que Noé puisse commencer la phase de développement (code), il faut créer ces trois comptes.
+          <strong className="text-text font-semibold">Obligatoire avant de commencer le développement.</strong>{' '}
+          Ces trois accès sont à votre nom et vous appartiennent : c&apos;est sur eux que
+          l&apos;application sera publiée.
         </p>
       </div>
 
