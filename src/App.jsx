@@ -208,6 +208,16 @@ function App() {
     }
     if (path === '/espace-client' || path.startsWith('/espace-client/')) return 'client-space'
     if (path === '/maquette-visuel' || path.startsWith('/maquette-visuel/')) return 'maquette-visual'
+    // Alias vers /documents, même mécanique que /espace ci-dessus : cette
+    // adresse se donne de vive voix ou se recopie d'un PDF, et le singulier
+    // vient tout seul. Un client bloqué sur une 404 n'insiste pas, il attend
+    // — et c'est justement la page qui débloque le développement.
+    // `history.replaceState` remet l'adresse canonique dans la barre sans
+    // recharger : un lien copié depuis la page est alors le bon.
+    if (['/document', '/docs', '/doc'].includes(path.replace(/\/+$/, '').toLowerCase())) {
+      history.replaceState(null, '', '/documents')
+      return 'documents'
+    }
     if (path === '/documents') return 'documents'
     if (path === '/contactnoe') return 'contact'
     if (path === '/legal') return 'legal'
