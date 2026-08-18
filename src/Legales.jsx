@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import NavDocuments from './NavDocuments.jsx'
 
 const LEGAL_INFO = [
   { label: 'Nom commercial', value: 'Noé Calmes' },
@@ -67,26 +68,7 @@ function Legales() {
   return (
     <div className="min-h-screen bg-[#f9f9f9] flex flex-col">
       {/* Header */}
-      <div className="sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b border-[#e5e5e5] px-5 py-4 flex items-center justify-center gap-2">
-        <a
-          href="/documents"
-          className="px-5 py-2 rounded-full bg-[#f3f3f3] text-[#131313] font-semibold text-sm transition-colors hover:bg-[#e8e8e8]"
-        >
-          Documents
-        </a>
-        <a
-          href="/contactnoe"
-          className="px-5 py-2 rounded-full bg-[#f3f3f3] text-[#131313] font-semibold text-sm transition-colors hover:bg-[#e8e8e8]"
-        >
-          Contact
-        </a>
-        <a
-          href="/legal"
-          className="px-5 py-2 rounded-full bg-[#665dff] text-white font-semibold text-sm transition-opacity hover:opacity-80"
-        >
-          Légal
-        </a>
-      </div>
+      <NavDocuments />
 
       {/* Content */}
       <div className="flex-1 px-5 pt-12 pb-20 max-w-lg mx-auto w-full">

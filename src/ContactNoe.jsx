@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
-import { SiGmail } from 'react-icons/si'
-import { FaYahoo } from 'react-icons/fa'
-import { PiMicrosoftOutlookLogoFill } from 'react-icons/pi'
 import { BsMicrosoftTeams } from 'react-icons/bs'
 import { MdEmail } from 'react-icons/md'
+import NavDocuments from './NavDocuments.jsx'
+// Réexportée pour ne casser aucun import existant (`App.jsx`).
+import EmailModal, { EMAIL } from './EmailModal.jsx'
+export { EmailModal }
 
 const qrcode = '/assets/images/contact/qrcode.webp'
 // Message pré-rempli : aucune question posée, il part en un tap. Cf. le
@@ -13,113 +14,6 @@ const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
   "Bonjour Noé, j'ai un projet d'application, on peut en parler ?"
 )}`
 const TEAMS_URL = 'https://teams.live.com/l/invite/FEAC7bmID--_ZezkAE?v=g1'
-const EMAIL = 'contact@noecalmes.fr'
-
-const EMAIL_OPTIONS = [
-  {
-    label: 'Gmail',
-    sublabel: 'Ouvrir dans Gmail',
-    href: `https://mail.google.com/mail/?view=cm&to=${EMAIL}`,
-    iconBg: '#fff',
-    icon: <SiGmail size={22} color="#EA4335" />,
-  },
-  {
-    label: 'Outlook',
-    sublabel: 'Ouvrir dans Outlook',
-    href: `https://outlook.live.com/mail/0/deeplink/compose?to=${EMAIL}`,
-    iconBg: '#fff',
-    icon: <PiMicrosoftOutlookLogoFill size={22} color="#0078D4" />,
-  },
-  {
-    label: 'Yahoo Mail',
-    sublabel: 'Ouvrir dans Yahoo',
-    href: `https://compose.mail.yahoo.com/?to=${EMAIL}`,
-    iconBg: '#fff',
-    icon: <FaYahoo size={22} color="#6001D2" />,
-  },
-  {
-    label: 'Application mail',
-    sublabel: 'Mac Mail, Outlook desktop…',
-    href: `mailto:${EMAIL}`,
-    iconBg: '#f3f3f3',
-    icon: <MdEmail size={24} color="#131313" />,
-  },
-]
-
-export function EmailModal({ onClose }) {
-  const [copied, setCopied] = useState(false)
-
-  const copy = () => {
-    navigator.clipboard.writeText(EMAIL)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
-
-  return (
-    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center px-4 pb-4 sm:pb-0" onClick={onClose}>
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
-      <div
-        className="relative bg-white rounded-[22px] p-6 w-full max-w-sm shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between mb-5">
-          <div>
-            <h3 className="font-heading text-[#131313] font-bold text-base">Envoyer un email</h3>
-            <p className="text-grey text-[0.8rem] mt-0.5">{EMAIL}</p>
-          </div>
-          <button onClick={onClose} className="text-grey hover:text-[#131313] transition-colors cursor-pointer">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </button>
-        </div>
-
-        <div className="flex flex-col gap-2 mb-4">
-          {EMAIL_OPTIONS.map(({ label, sublabel, href, iconBg, icon }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith('mailto') ? undefined : '_blank'}
-              rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-              onClick={onClose}
-              className="flex items-center gap-4 px-4 py-3 rounded-[14px] hover:bg-[#f5f5f5] transition-colors"
-            >
-              <div className="w-9 h-9 rounded-[10px] flex items-center justify-center shrink-0 border border-[#e8e8e8]" style={{ backgroundColor: iconBg }}>
-                {icon}
-              </div>
-              <div>
-                <p className="text-[#131313] font-semibold text-[0.88rem]">{label}</p>
-                <p className="text-grey text-[0.78rem]">{sublabel}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        <button
-          onClick={copy}
-          className="w-full flex items-center justify-center gap-2 border border-[#e5e5e5] rounded-[14px] py-3 text-[#131313] text-[0.88rem] font-semibold hover:bg-[#f5f5f5] transition-colors cursor-pointer"
-        >
-          {copied ? (
-            <>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-              <span className="text-[#22c55e]">Copié !</span>
-            </>
-          ) : (
-            <>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-              </svg>
-              Copier l'adresse
-            </>
-          )}
-        </button>
-      </div>
-    </div>
-  )
-}
 
 function ContactItem({ href, icon, label, sublabel, iconBg = '#f3f3f3', onClick }) {
   const Tag = onClick ? 'button' : 'a'
@@ -160,26 +54,7 @@ function ContactNoe() {
   return (
     <div className="min-h-screen bg-[#f9f9f9] flex flex-col">
       {/* Header */}
-      <div className="sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b border-[#e5e5e5] px-5 py-4 flex items-center justify-center gap-2">
-        <a
-          href="/documents"
-          className="px-5 py-2 rounded-full bg-[#f3f3f3] text-[#131313] font-semibold text-sm transition-colors hover:bg-[#e8e8e8]"
-        >
-          Documents
-        </a>
-        <a
-          href="/contactnoe"
-          className="px-5 py-2 rounded-full bg-[#665dff] text-white font-semibold text-sm transition-opacity hover:opacity-80"
-        >
-          Contact
-        </a>
-        <a
-          href="/legal"
-          className="px-5 py-2 rounded-full bg-[#f3f3f3] text-[#131313] font-semibold text-sm transition-colors hover:bg-[#e8e8e8]"
-        >
-          Légal
-        </a>
-      </div>
+      <NavDocuments />
 
       {/* Content */}
       <div className="flex-1 px-5 pt-12 pb-20 max-w-lg mx-auto w-full">

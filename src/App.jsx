@@ -316,6 +316,34 @@ function App() {
     return () => observer.disconnect()
   }, [page])
 
+  // LE BOUTON « PRÉCÉDENT » DU NAVIGATEUR, pour le seul parcours documents.
+  //
+  // L'app change d'écran avec `history.pushState` et n'écoute pas `popstate` :
+  // reculer réécrit l'URL sans changer l'affichage. Partout ailleurs on s'en
+  // accommode, mais pas ici : ces pages sont ouvertes par un client qui vient
+  // de signer, souvent sur son téléphone, et qui recule au pouce par réflexe.
+  // Il se retrouvait sur le guide avec /documents dans la barre d'adresse,
+  // sans plus aucun moyen de sortir.
+  //
+  // L'ÉCOUTEUR EST BORNÉ À CE PARCOURS (`page` dans la garde) : ailleurs, rien
+  // ne change. Et pour toute destination hors documents, on RECHARGE au lieu
+  // de recopier la table des routes — elle fait quarante lignes, un double
+  // affaibli aurait divergé au premier ajout.
+  useEffect(() => {
+    if (page !== 'documents' && page !== 'document-viewer') return
+
+    const reculer = () => {
+      const chemin = window.location.pathname
+      const doc = DOCUMENTS.find((d) => d.route === chemin)
+      if (doc) { setCurrentDoc(doc); setPage('document-viewer'); window.scrollTo(0, 0); return }
+      if (chemin === '/documents') { setPage('documents'); window.scrollTo(0, 0); return }
+      window.location.reload()
+    }
+
+    window.addEventListener('popstate', reculer)
+    return () => window.removeEventListener('popstate', reculer)
+  }, [page])
+
   const goHome = () => { setPage('home'); history.pushState(null, '', '/'); window.scrollTo(0, 0) }
 
   const goDocuments = () => { setPage('documents'); history.pushState(null, '', '/documents'); window.scrollTo(0, 0) }
@@ -416,7 +444,6 @@ function App() {
   if (page === 'cgv') return <CGV onBack={goLegalBack} />
   if (page === 'documents') return (
     <Documents
-      onBack={goHome}
       onOpenDocument={(doc) => {
         setCurrentDoc(doc)
         setPage('document-viewer')
