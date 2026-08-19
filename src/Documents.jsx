@@ -67,6 +67,11 @@ const A_FAIRE = [
     soustitre: 'Pour publier sur iPhone',
     pdf: appleDevPdf,
     icone: ICONES.apple,
+    // L'ADRESSE MANQUAIT SUR CETTE PAGE, et c'est celle des trois où elle est
+    // le plus difficile à retrouver : le guide renvoie l'étape d'invitation à
+    // une capture d'écran, donc rien dans le texte ne la donne. Affichée dans
+    // la barre, copiable au doigt, elle ne dépend plus d'une image.
+    emailAInviter: EMAIL_A_INVITER,
   },
 ]
 
