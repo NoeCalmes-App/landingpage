@@ -19,6 +19,11 @@ Le chemin prioritaire pour les visiteurs qui se posent une question de prix/budg
 Routes gerees dans `src/App.jsx` :
 
 - `/` — home landing page
+- `/expertise` — page SEO autonome : ce que je fais qu'un developpeur ne fait pas (`src/PagesSeo.jsx`)
+- `/creation-application-mobile` — page SEO autonome : la methode en 5 etapes (`src/PagesSeo.jsx`)
+- `/faq` — page SEO autonome + donnees structurees FAQPage (`src/PagesSeo.jsx`)
+- `/quiz` et `/quiz/{slug}` — pages quizz SEO (`src/Quiz.jsx`)
+- `/projets` — realisations (`src/Projets.jsx`)
 - `/audit-app` — audit gratuit d'idee d'application
 - `/rendez-vous` — section contact WhatsApp de la home (`#contact-section`)
 - `/documents` et routes documents
@@ -31,7 +36,24 @@ Routes gerees dans `src/App.jsx` :
 - `/maquette/pac-assist`, `/maquette/cvc-assist`
 - `/contactnoe`, `/legal`, `/mentions`, `/privacy`, `/cgv`
 
-`scripts/generate-routes.js` genere des dossiers SEO dans `dist` pour les routes importantes apres le build.
+`scripts/generate-routes.js` genere des dossiers SEO dans `dist` pour les routes importantes apres le build, **et genere aussi `dist/sitemap.xml`**.
+
+### Regles SEO non negociables (MaJ 20/08/2026)
+
+Ces trois regles sont verifiees automatiquement : le build echoue si l'une est violee. Ne pas les contourner.
+
+1. **Toute URL interne porte la barre finale.** Les pages sont ecrites en `chemin/index.html`, donc GitHub Pages sert `/chemin/` et repond a `/chemin` par une 301. Une canonique ou un lien sans barre envoie Google dans une boucle de redirection : c'est ce qui a tenu 27 pages hors de l'index de mars a aout 2026. Utiliser `lienInterne()` / `urlPublique()` de `src/seo.js`, jamais un chemin ecrit a la main.
+2. **Une seule source par meta.** `metaTitle` et `description` des articles vivent dans `src/Blog.jsx`, celles des pages SEO dans `src/PagesSeo.jsx`, celles des quizz dans `src/Quiz.jsx`. `generate-routes.js` les LIT, il ne les redefinit pas. Les redefinir les ferait diverger du DOM rendu, qui est la version que Google indexe.
+3. **Chaque article a au moins 2 liens entrants**, declares dans la table `ARTICLES_LIES` de `src/Blog.jsx`.
+
+Deux consequences pratiques :
+
+- Le **sitemap est genere**, plus maintenu a la main. `public/sitemap.xml` a ete supprime. Une nouvelle page indexable entre au sitemap parce qu'elle appelle `declarerSitemap()`, pas parce qu'on a pense a editer un fichier.
+- Le **bloc pre-rendu** (`[data-seo-prerender]`) est retire du DOM des que React est monte (`retirerPrerender()`), pour ne pas laisser un second `<h1>` et un pave de texte cache dans la page rendue.
+
+### Donnees structurees
+
+`index.html` sert de gabarit a toutes les pages generees. Attention : tout JSON-LD ajoute dans `index.html` se retrouve **sur chaque page generee**. C'est pour ca que `generate-routes.js` retire le bloc `FAQPage` partout sauf sur la home et `/faq`, ou il est regenere depuis `FAQ_ITEMS`. Une page qui declare une FAQ invisible enfreint les regles de Google.
 
 ## Maquettes
 

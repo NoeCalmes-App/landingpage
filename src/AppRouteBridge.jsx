@@ -32,6 +32,11 @@ export default function AppRouteBridge({
   const iframeSrc = useMemo(() => buildNoworkSrc(publicBasePath), [publicBasePath])
   const routeIsComplete = segmentCount(window.location.pathname, publicBasePath) >= minSegments
 
+  // Exception assumee a la regle de la barre finale (src/seo.js) : ces routes
+  // (/espace-client, /maquette-visuel) sont passees en `noindex, nofollow`
+  // quelques lignes plus bas. Elles ne sont ni indexees ni au sitemap, donc la
+  // forme de leur canonique n'a aucun effet SEO. Ne pas « corriger » ca sans
+  // verifier le pont vers Nowork, qui depend du chemin exact.
   useEffect(() => {
     const canonicalPath = normalizePublicPath(window.location.pathname, publicBasePath)
     document.title = title

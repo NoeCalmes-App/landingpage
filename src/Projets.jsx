@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { appliquerMeta, retirerPrerender } from './seo.js'
 
 /*
  * Page /projets — portfolio envoyé après un échange (l'audience a déjà le WhatsApp).
@@ -244,16 +245,16 @@ function ProjectCard({ p }) {
 }
 
 export default function Projets({ onBack }) {
+  // Meta lues par scripts/generate-routes.js depuis ce fichier : source unique,
+  // pour que le titre rendu soit exactement celui du HTML servi.
   useEffect(() => {
-    const prevTitle = document.title
-    document.title = 'Les applications que j\'ai conçues | Noé Calmes'
-    document
-      .querySelector('meta[name="description"]')
-      ?.setAttribute('content', 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. +20 applications publiées sur iOS et Android.')
+    appliquerMeta({
+      path: '/projets',
+      title: "Les applications que j'ai conçues | Noé Calmes",
+      description: "Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. +20 applications publiées sur iOS et Android.",
+    })
+    retirerPrerender()
     window.scrollTo(0, 0)
-    return () => {
-      document.title = prevTitle
-    }
   }, [])
 
   const [zoom, setZoom] = useState(false)

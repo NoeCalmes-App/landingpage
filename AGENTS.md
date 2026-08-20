@@ -18,7 +18,9 @@ Lire seulement la doc utile au sujet demande.
 | Sujet demande | Doc a lire en premier |
 |---|---|
 | Positionnement, ton, offre, expertise Noe | `documentation/context/positionnement.md` |
-| Architecture landing page, routes, SEO, maquettes | `documentation/architecture/landing-page.md` |
+| Architecture landing page, routes, SEO technique, maquettes | `documentation/architecture/landing-page.md` |
+| Etat SEO, Search Console, publier un article | `documentation/strategy/seo/README.md` |
+| Rediger un nouvel article de blog | `documentation/strategy/seo/idees-articles.md` puis `modele-article.md` |
 | Audit app, funnel, questions, verdict IA, Firebase audit | `documentation/architecture/audit-app.md` |
 | Assets, images, icones, fonts, documents PDF | `documentation/architecture/assets.md` |
 | Espace client public `/espace-client/...` | `documentation/architecture/client-space-public.md` |
@@ -61,7 +63,9 @@ Les fichiers sous `public` se referencent avec une URL absolue depuis la racine,
 
 - `public/404.html` gere les redirects GitHub Pages.
 - Les pages HTML statiques dans `public/` peuvent aussi referencer des assets. Les verifier apres tout deplacement.
-- `scripts/generate-routes.js` genere des pages SEO dans `dist` apres le build.
+- `scripts/generate-routes.js` genere des pages SEO dans `dist` apres le build, **et genere `dist/sitemap.xml`** (il n'y a plus de `public/sitemap.xml`).
+- Toute URL interne porte la barre finale. Passer par `lienInterne()` / `urlPublique()` de `src/seo.js`. Le build echoue sur un lien sans barre : voir `documentation/architecture/landing-page.md`.
+- Les `metaTitle` / `description` ont une source unique (`src/Blog.jsx`, `src/PagesSeo.jsx`, `src/Quiz.jsx`). `generate-routes.js` les lit, ne les redefinit pas.
 - `/maquette/...` est une route landing page pour les maquettes HTML faites a la main.
 - `/maquette-visuel/...` appartient a Nowork et passe par une facade landing page vers `/nowork`.
 - Le backend audit app utilise le projet Firebase `manychatia-82692`.

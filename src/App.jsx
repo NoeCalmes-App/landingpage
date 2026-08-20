@@ -28,6 +28,9 @@ import ClientSpaceBridge from './ClientSpaceBridge.jsx'
 import MaquetteVisualBridge from './MaquetteVisualBridge.jsx'
 import ChatbotWidget from './chatbot/Widget'
 import { trackDirectWhatsAppLead } from './metaTracking.js'
+import { lienInterne, appliquerMeta, retirerPrerender } from './seo.js'
+import { PageExpertise, PageMethode, PageFaq, FAQ_ITEMS } from './PagesSeo.jsx'
+import { PageQuiz, PageQuizHub, quizParSlug } from './Quiz.jsx'
 import { ExternalLink } from 'lucide-react'
 
 const meetingSvg = '/assets/images/illustrations/meetingdev.svg'
@@ -54,31 +57,10 @@ const WHATSAPP_PREFILL =
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_PREFILL)}`
 
 const SECTION_ROUTES = {
-  '/expertise': {
-    id: 'calories-proof',
-    title: 'Pourquoi travailler avec Noé Calmes — Expert en applications mobiles',
-    description: 'Expert en applications mobiles indépendant. Création, reprise et évolution d\'applications iOS et Android — de la stratégie au lancement, pour les entreprises en France.',
-  },
-  '/creation-application-mobile': {
-    id: 'offre',
-    title: 'Méthode de création d\'application mobile | Noé Calmes',
-    description: 'Découvre ma méthode pour créer ton application mobile : cadrage clair, développement, puis lancement sur l\'App Store et Google Play.',
-  },
-  '/etapes': {
-    id: 'offre',
-    title: 'Méthode de création d\'application mobile | Noé Calmes',
-    description: 'Découvre ma méthode pour créer ton application mobile : cadrage clair, développement, puis lancement sur l\'App Store et Google Play.',
-    canonicalPath: '/creation-application-mobile',
-  },
   '/avis': {
     id: 'avis',
     title: 'Avis clients — Noé Calmes, expert en applications mobiles',
     description: 'Ce que disent les clients qui ont fait confiance à Noé Calmes pour créer, reprendre ou faire évoluer leur application mobile.',
-  },
-  '/faq': {
-    id: 'faq',
-    title: 'FAQ — Création d\'application mobile | Noé Calmes',
-    description: 'Questions fréquentes sur la création, la reprise et l\'évolution d\'application mobile : délais, tarifs, livraison et suivi après mise en ligne.',
   },
   '/audit': {
     id: 'audit',
@@ -92,10 +74,20 @@ const SECTION_ROUTES = {
   },
 }
 
+// Meta de la page d'accueil, alignees sur celles ecrites dans index.html.
+// Necessaires parce que les pages internes ecrivent leurs propres meta : sans
+// ca, revenir sur la home en navigation SPA laissait le titre et la canonique
+// de la page precedente.
+const META_HOME = {
+  path: '/',
+  title: 'Créer une application mobile qui génère des revenus | Noé Calmes',
+  description: "Je ne fais pas que développer ton application mobile : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois.",
+}
+
 const NAV_LINKS = [
-  { href: '/expertise', label: 'Preuves' },
-  { href: '/creation-application-mobile', label: 'Méthode' },
-  { href: '/audit', label: 'Audit' },
+  { ancre: 'calories-proof', label: 'Preuves' },
+  { ancre: 'offre', label: 'Méthode' },
+  { ancre: 'audit', label: 'Audit' },
 ]
 
 // `trigger` permet de re-attacher l'observer quand la page change.
@@ -130,11 +122,10 @@ function useScrollReveal(trigger) {
   return ref
 }
 
-const faqItems = [
-  { q: 'Comment fonctionne la tarification ?', a: 'Tarif fixe, défini avant de commencer : en général 5 à 12k en mobile selon la complexité. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.' },
-  { q: 'Combien de temps faut-il pour avoir une application mobile ?', a: 'Une première version en 4 à 6 semaines en moyenne. Pour une application complète, le délai dépend du périmètre, on le cale ensemble.' },
-  { q: 'Après la livraison de l\'application ?', a: 'Je disparais pas après la mise en ligne : corrections, mises à jour, évolutions, accompagnement, je reste dispo. On définit ensemble ce qui est nécessaire selon comment ton app évolue.' },
-]
+// La home garde ses 3 questions historiques, /faq affiche la liste complete.
+// Une seule source (FAQ_ITEMS dans PagesSeo.jsx) : les reponses ne peuvent
+// plus diverger entre les deux pages.
+const faqItems = FAQ_ITEMS.slice(0, 3)
 
 const AVAILABILITY_CHECK_DELAY_MS = 2200
 
@@ -225,6 +216,13 @@ function App() {
     if (path === '/cgv') return 'cgv'
     if (path === '/mentions') return 'mentions'
     if (path === '/privacy') return 'privacy'
+    // Vraies pages, contenu unique. Elles rendaient la home avant le
+    // 20/08/2026, ce qui dupliquait la page d'accueil sur 3 URLs du sitemap.
+    if (path === '/expertise') return 'page-expertise'
+    if (path === '/creation-application-mobile' || path === '/etapes') return 'page-methode'
+    if (path === '/faq') return 'page-faq'
+    if (path === '/quiz') return 'quiz-hub'
+    if (path.startsWith('/quiz/') && quizParSlug(path.replace('/quiz/', ''))) return 'quiz'
     if (path === '/blog') return 'blog'
     if (path.startsWith('/blog/')) return 'blog-article'
     if (path.toLowerCase() === '/projets' || path.toLowerCase() === '/projet') return 'projets'
@@ -250,6 +248,10 @@ function App() {
     if (path in SECTION_ROUTES) return 'home'
     return 'home'
   })
+  const [currentQuiz, setCurrentQuiz] = useState(() => {
+    const path = (sessionStorage.getItem('redirect') || window.location.pathname).replace(/\/+$/, '')
+    return path.startsWith('/quiz/') ? quizParSlug(path.replace('/quiz/', '')) : null
+  })
   const [currentArticle, setCurrentArticle] = useState(() => {
     const path = (sessionStorage.getItem('redirect') || window.location.pathname).replace(/\/$/, '')
     if (path.startsWith('/blog/')) {
@@ -263,18 +265,32 @@ function App() {
   // ils restent invisibles (opacity: 0 par defaut dans le CSS).
   const scrollRef = useScrollReveal(page)
 
+  // Le pre-rendu cache (`[data-seo-prerender]`) n'est la que pour les robots
+  // qui n'executent pas le JavaScript. Une fois le vrai contenu affiche, il
+  // duplique le <h1> et laisse un pave de texte en `left:-10000px`. On le
+  // retire pour que le DOM rendu, celui que Google indexe, soit propre.
+  useEffect(() => {
+    retirerPrerender()
+  }, [])
+
+  // Meta de la home au retour de navigation. Les routes de section
+  // (/avis, /audit, /rendez-vous) sont traitees par l'effet suivant.
+  useEffect(() => {
+    if (page !== 'home') return
+    const chemin = window.location.pathname.replace(/\/+$/, '') || '/'
+    if (chemin in SECTION_ROUTES) return
+    appliquerMeta(META_HOME)
+  }, [page])
+
   // Auto-scroll vers la section et mise à jour des meta tags si on arrive sur une route de section
   useEffect(() => {
     const path = window.location.pathname.replace(/\/$/, '') || '/'
     const section = SECTION_ROUTES[path]
     if (section) {
       const canonicalPath = section.canonicalPath || path
-      document.title = section.title
-      document.querySelector('meta[name="description"]')?.setAttribute('content', section.description)
-      document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://noecalmes.fr${canonicalPath}`)
-      document.querySelector('meta[property="og:title"]')?.setAttribute('content', section.title)
-      document.querySelector('meta[property="og:description"]')?.setAttribute('content', section.description)
-      document.querySelector('meta[property="og:url"]')?.setAttribute('content', `https://noecalmes.fr${canonicalPath}`)
+      // appliquerMeta ecrit la canonique AVEC la barre finale. Ecrire l'URL a
+      // la main ici reintroduirait la boucle de redirection (voir src/seo.js).
+      appliquerMeta({ path: canonicalPath, title: section.title, description: section.description })
       // Scroll vers la section une fois le DOM prêt
       // Réessayer plusieurs fois car le contenu peut mettre du temps à se charger
       const scrollToSection = () => {
@@ -356,18 +372,18 @@ function App() {
 
   const goHome = () => { setPage('home'); history.pushState(null, '', '/'); window.scrollTo(0, 0) }
 
-  const goDocuments = () => { setPage('documents'); history.pushState(null, '', '/documents'); window.scrollTo(0, 0) }
+  const goDocuments = () => { setPage('documents'); history.pushState(null, '', lienInterne('/documents')); window.scrollTo(0, 0) }
 
-  const goBlog = () => { setPage('blog'); history.pushState(null, '', '/blog'); window.scrollTo(0, 0) }
+  const goBlog = () => { setPage('blog'); history.pushState(null, '', lienInterne('/blog')); window.scrollTo(0, 0) }
 
-  const goAuditApp = () => { setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }
+  const goAuditApp = () => { setPage('audit-app'); history.pushState(null, '', lienInterne('/audit-app')); window.scrollTo(0, 0) }
 
   // Point de passage commun a tous les CTA de contact de la landing. Depuis
   // une page secondaire, on remonte la home avant de scroller vers la section.
   const goBookCall = (event) => {
     event?.preventDefault?.()
     setPage('home')
-    history.pushState(null, '', '/rendez-vous')
+    history.pushState(null, '', lienInterne('/rendez-vous'))
 
     const scrollToContact = (attempts = 0) => {
       const section = document.getElementById(SECTION_ROUTES['/rendez-vous'].id)
@@ -385,20 +401,20 @@ function App() {
     const path = returnPath || '/'
     setLegalReturnPath(path === '/cgv' || path === '/mentions' || path === '/privacy' ? '/' : path)
     setPage(target)
-    history.pushState(null, '', `/${target}`)
+    history.pushState(null, '', lienInterne(`/${target}`))
     window.scrollTo(0, 0)
   }
 
   const goLegalBack = () => {
     if (legalReturnPath === '/audit-app') {
       setPage('audit-app')
-      history.pushState(null, '', '/audit-app')
+      history.pushState(null, '', lienInterne('/audit-app'))
       window.scrollTo(0, 0)
       return
     }
 
     setPage('home')
-    history.pushState(null, '', legalReturnPath || '/')
+    history.pushState(null, '', lienInterne(legalReturnPath || '/'))
 
     const section = SECTION_ROUTES[legalReturnPath]
     if (section) {
@@ -410,14 +426,55 @@ function App() {
     }
   }
 
+  const allerVers = (chemin) => {
+    history.pushState(null, '', lienInterne(chemin))
+    if (chemin === '/expertise') return setPage('page-expertise')
+    if (chemin === '/creation-application-mobile') return setPage('page-methode')
+    if (chemin === '/faq') return setPage('page-faq')
+    if (chemin === '/quiz') return setPage('quiz-hub')
+    if (chemin.startsWith('/quiz/')) {
+      const quiz = quizParSlug(chemin.replace('/quiz/', ''))
+      if (quiz) { setCurrentQuiz(quiz); setPage('quiz'); window.scrollTo(0, 0); return }
+    }
+    if (chemin === '/projets') return setPage('projets')
+    if (chemin === '/blog') return setPage('blog')
+    if (chemin.startsWith('/blog/')) {
+      const article = BLOG_ARTICLES.find((a) => a.slug === chemin.replace('/blog/', ''))
+      if (article) {
+        setCurrentArticle(article)
+        setPage('blog-article')
+        window.scrollTo(0, 0)
+        return
+      }
+    }
+    if (chemin === '/audit-app') return setPage('audit-app')
+    setPage('home')
+  }
+
+  const propsPageSeo = {
+    onAccueil: goHome,
+    onBookCall: goBookCall,
+    onAuditApp: goAuditApp,
+    onNaviguer: allerVers,
+  }
+
+  if (page === 'page-expertise') return <PageExpertise {...propsPageSeo} />
+  if (page === 'page-methode') return <PageMethode {...propsPageSeo} />
+  if (page === 'page-faq') return <PageFaq {...propsPageSeo} />
+  if (page === 'quiz-hub') return <PageQuizHub onAccueil={goHome} onBookCall={goBookCall} onNaviguer={allerVers} />
+  if (page === 'quiz' && currentQuiz) return (
+    <PageQuiz quiz={currentQuiz} onAccueil={goHome} onBookCall={goBookCall} onAuditApp={goAuditApp} onNaviguer={allerVers} />
+  )
   if (page === 'blog') return (
     <BlogList
       onBack={goHome}
       onBookCall={goBookCall}
+      onAuditApp={goAuditApp}
+      onNaviguer={allerVers}
       onArticle={(article) => {
         setCurrentArticle(article)
         setPage('blog-article')
-        history.pushState(null, '', `/blog/${article.slug}`)
+        history.pushState(null, '', lienInterne(`/blog/${article.slug}`))
       }}
     />
   )
@@ -427,6 +484,13 @@ function App() {
       onBack={goBlog}
       onBookCall={goBookCall}
       onAuditApp={goAuditApp}
+      onArticle={(article) => {
+        setCurrentArticle(article)
+        history.pushState(null, '', lienInterne(`/blog/${article.slug}`))
+        window.scrollTo(0, 0)
+      }}
+      onAccueil={goHome}
+      onNaviguer={allerVers}
     />
   )
   if (page === 'client-space') return <ClientSpaceBridge />
@@ -457,7 +521,7 @@ function App() {
       onOpenDocument={(doc) => {
         setCurrentDoc(doc)
         setPage('document-viewer')
-        history.pushState(null, '', doc.route)
+        history.pushState(null, '', lienInterne(doc.route))
         window.scrollTo(0, 0)
       }}
     />
@@ -497,9 +561,9 @@ function App() {
 
               {/* Desktop links (lg+) */}
               <div className="hidden lg:flex items-center gap-6">
-                {NAV_LINKS.map(({ href, label }) => (
-                  <a key={label} href={href} className="text-text text-[0.95rem] font-semibold hover:text-brand transition-colors"
-                    onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES[href].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', href) }}>
+                {NAV_LINKS.map(({ ancre, label }) => (
+                  <a key={label} href={`/#${ancre}`} className="text-text text-[0.95rem] font-semibold hover:text-brand transition-colors"
+                    onClick={(e) => { e.preventDefault(); document.getElementById(ancre)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', `/#${ancre}`) }}>
                     {label}
                   </a>
                 ))}
@@ -508,7 +572,7 @@ function App() {
               {/* Right — CTA + Hamburger */}
               <div className="flex items-center gap-3">
                 <a
-                  href="/rendez-vous"
+                  href={lienInterne('/rendez-vous')}
                   onClick={goBookCall}
                   className="hidden sm:inline-block bg-[#131313] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors cursor-pointer"
                 >
@@ -534,18 +598,18 @@ function App() {
             >
               <div className="overflow-hidden">
                 <div className="border-t border-black/5 px-6 pb-5 pt-4 flex flex-col gap-3">
-                  {NAV_LINKS.map(({ href, label }) => (
+                  {NAV_LINKS.map(({ ancre, label }) => (
                     <a
                       key={label}
-                      href={href}
+                      href={`/#${ancre}`}
                       className="text-text text-base font-medium hover:text-brand transition-colors"
-                      onClick={(e) => { e.preventDefault(); setMenuOpen(false); document.getElementById(SECTION_ROUTES[href].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', href) }}
+                      onClick={(e) => { e.preventDefault(); setMenuOpen(false); document.getElementById(ancre)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', `/#${ancre}`) }}
                     >
                       {label}
                     </a>
                   ))}
                   <a
-                    href="/rendez-vous"
+                    href={lienInterne('/rendez-vous')}
                     className="min-[480px]:hidden text-center bg-[#131313] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer"
                     onClick={(event) => { setMenuOpen(false); goBookCall(event) }}
                   >
@@ -634,7 +698,7 @@ function App() {
           {/* CTA mobile */}
           <div className="flex justify-center mb-3 sm:hidden">
             <a
-              href="/rendez-vous"
+              href={lienInterne('/rendez-vous')}
               onClick={goBookCall}
               className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
             >
@@ -648,7 +712,7 @@ function App() {
           {/* CTA desktop */}
           <div className="hidden sm:flex justify-center mt-8 md:mt-10 mb-3 md:mb-5">
             <a
-              href="/rendez-vous"
+              href={lienInterne('/rendez-vous')}
               onClick={goBookCall}
               className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
             >
@@ -846,7 +910,7 @@ function App() {
                       <span>
                         {item}.{' '}
                         <a
-                          href="/audit-app"
+                          href={lienInterne('/audit-app')}
                           onClick={(e) => { e.preventDefault(); goAuditApp() }}
                           className="inline-flex items-center gap-1 text-[0.9rem] text-[#2563eb] underline underline-offset-4 decoration-[#2563eb]/50 hover:text-brand hover:decoration-brand transition-colors"
                         >
@@ -863,7 +927,7 @@ function App() {
 
           <div className="reveal text-center mt-6 md:mt-4">
             <a
-              href="/rendez-vous"
+              href={lienInterne('/rendez-vous')}
               onClick={goBookCall}
               className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
@@ -1011,7 +1075,7 @@ function App() {
               </p>
 
               <button
-                onClick={() => { setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }}
+                onClick={() => { setPage('audit-app'); history.pushState(null, '', lienInterne('/audit-app')); window.scrollTo(0, 0) }}
                 className="group inline-flex items-center gap-2.5 bg-brand text-white font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
               >
                 Lancer mon audit
@@ -1066,10 +1130,25 @@ function App() {
 
           {/* Nav links */}
           <div className="flex flex-row flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-8">
-            <a href="/creation-application-mobile" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/creation-application-mobile'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/creation-application-mobile') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Méthode</a>
-            <a href="/audit-app" onClick={(e) => { e.preventDefault(); setPage('audit-app'); history.pushState(null, '', '/audit-app'); window.scrollTo(0, 0) }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Audit gratuit</a>
-            <a href="/rendez-vous" onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/rendez-vous'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', '/rendez-vous') }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Discuter avec Noé</a>
-            <a href="/blog" onClick={(e) => { e.preventDefault(); goBlog() }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Blog</a>
+            {[
+              { href: '/expertise', label: 'Expertise' },
+              { href: '/creation-application-mobile', label: 'Méthode' },
+              { href: '/projets', label: 'Projets' },
+              { href: '/blog', label: 'Blog' },
+              { href: '/quiz', label: 'Tests' },
+              { href: '/faq', label: 'FAQ' },
+              { href: '/audit-app', label: 'Audit gratuit' },
+            ].map(({ href, label }) => (
+              <a
+                key={href}
+                href={lienInterne(href)}
+                onClick={(e) => { e.preventDefault(); allerVers(href) }}
+                className="text-white text-sm font-semibold hover:text-white/60 transition-colors"
+              >
+                {label}
+              </a>
+            ))}
+            <a href={lienInterne('/rendez-vous')} onClick={(e) => { e.preventDefault(); document.getElementById(SECTION_ROUTES['/rendez-vous'].id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); history.pushState(null, '', lienInterne('/rendez-vous')) }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Discuter avec Noé</a>
           </div>
 
           {/* Nous contacter + socials */}

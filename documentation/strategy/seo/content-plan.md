@@ -11,6 +11,18 @@ On ne se bat PAS sur les têtes de gondole d'agence (« créer une application m
 - **Page pilier** (à créer en priorité) : « Comment rentabiliser une application mobile » — page longue qui chapeaute le sujet et lie vers tous les articles satellites.
 - **Articles satellites** : un par mot-clé long-tail ci-dessous, chacun reliant vers la page pilier et vers 1-2 autres articles (maillage interne).
 
+## Où trouver le prochain sujet
+
+> La file opérationnelle est dans **`idees-articles.md`** : 12 briefs prêts,
+> avec le format, l'angle, les questions de FAQ et les liens à poser. Ce
+> fichier-ci garde la stratégie et les mots-clés ; le brief hebdo est là-bas.
+
+## Format d'un article
+
+> Le format complet (champs obligatoires, blocs visuels, structure du corps)
+> est dans **`modele-article.md`**. À lire avant de rédiger : depuis la refonte
+> du 20/08/2026, un article ne se résume plus à un titre et du texte.
+
 ## Règles de rédaction (NON négociables)
 
 - **« Tu » partout.** Jamais « vous ».
@@ -23,6 +35,14 @@ On ne se bat PAS sur les têtes de gondole d'agence (« créer une application m
 - **Lisibilité (règle du 03/08/2026)** : la longueur n'est pas le problème, la densité si. Paragraphes de 40 mots en moyenne, 80 au maximum, jamais deux gros blocs qui se suivent. Dès qu'une phrase énumère trois éléments ou plus (signaux, indicateurs, options, erreurs), la transformer en `<ul>` avec une phrase d'amorce finissant par deux points. Objectif : l'article doit rester scannable sur un écran de téléphone.
 - **CTA de fin** : `finalCta: 'audit'` (vers l'audit gratuit), comme les articles existants.
 - **Maillage interne** : lier vers la page pilier + 1-2 articles du cluster.
+  **Tous les liens internes écrits dans le corps de l'article portent la barre
+  finale** (`/blog/rentabiliser-application-mobile/`, `/audit-app/`). Sans elle,
+  chaque lien coûte une redirection 301 à chaque passage de robot, et le build
+  échoue. En plus de ces liens dans le texte, l'article reçoit automatiquement
+  un bloc « À lire aussi » alimenté par `ARTICLES_LIES`.
+- **Quizz** : trois pages de test existent (`/quiz/`), sur des requêtes
+  d'acheteur (besoin réel, application ou site web, budget). Un article peut
+  renvoyer vers le test pertinent, c'est un bon relais avant l'audit.
 - **Restitution à Noé** : dans le message final, toujours donner le titre puis **le corps complet de l'article en texte lisible** (pas seulement un résumé, pas de balises HTML), pour qu'il puisse le relire directement dans la conversation sans ouvrir le brouillon. Ensuite seulement, le chemin du fichier et l'URL.
 
 ## Filtre d'intention (règle du 10/08/2026, à appliquer AVANT de rédiger)
@@ -78,6 +98,76 @@ Un sujet peut donc être `done` et `non` en même temps : le brouillon existe, m
 | 18 | pending | non | Combien de clients faut-il pour rentabiliser une application mobile | Calcul de retour sur investissement, la question que se pose l'acheteur. |
 | 19 | pending | non | Application mobile pour consultant et indépendant : vendre autrement que ton temps | ICP direct, angle revenus non horaires. |
 
+## Mots-clés cibles (établi le 20/08/2026)
+
+> Ce tableau remplace le choix de sujet au feeling. Chaque ligne a passé les
+> deux tests du filtre d'intention ci-dessus : la personne qui tape ça peut
+> acheter une application, et le mot-clé ne contient aucun terme de métier.
+
+**La logique de priorisation.** On ne classe pas par volume de recherche. On
+classe par **distance à l'achat**. Une requête à 200 recherches par mois tapée
+par quelqu'un qui a un budget vaut mieux que 5 000 recherches de curieux. C'est
+tout l'inverse du réflexe habituel, et c'est ce qui rend la niche gagnable.
+
+### Priorité 1 — décision d'investissement (le lecteur a un budget)
+
+| Mot-clé cible | Intention | État |
+|---|---|---|
+| combien coûte une application mobile | Prix, comparaison de devis | En ligne |
+| créer une application sans savoir coder | ICP non technique, angle honnête sur no-code et IA | À écrire (sujet 17) |
+| combien de clients pour rentabiliser une application | Calcul de retour sur investissement | À écrire (sujet 18) |
+| cahier des charges application mobile | Prépare son projet, très proche de l'achat | **À ajouter** |
+| combien de temps pour créer une application mobile | Délai, objection fréquente | **À ajouter** |
+| application mobile sur mesure ou no-code | Arbitrage avant achat | **À ajouter** |
+
+### Priorité 2 — le lecteur a une activité à transformer
+
+| Mot-clé cible | Intention | État |
+|---|---|---|
+| application mobile pour coach / formateur / consultant | ICP direct | En ligne |
+| transformer sa formation en application | Formateurs, organismes | À écrire (sujet 14) |
+| application mobile pour salle de sport | Salles, studios, box | À écrire (sujet 15) |
+| application mobile pour son entreprise | Requête large mais acheteuse | **À ajouter** |
+| application mobile pour artisan / commerçant | Secteur peu travaillé, concurrence faible | **À ajouter** |
+
+### Priorité 3 — monétisation (la niche qu'on possède)
+
+Le cluster est déjà bien couvert. Ne pas en rajouter tant que les priorités 1
+et 2 ne sont pas traitées : on y est déjà, chaque article de plus se
+cannibalise avec les précédents.
+
+### Priorité 4 — local
+
+| Mot-clé cible | Intention | État |
+|---|---|---|
+| application mobile Toulouse | Requête n°1 du site en impressions | En ligne |
+| création application mobile Occitanie | Élargissement régional | **À ajouter, après Toulouse** |
+
+Ne pas créer de page pour Montpellier, Bordeaux ou Paris. Sans présence réelle
+ni avis locaux, ce sont des pages vides que Google traite comme du contenu
+dupliqué de faible qualité, et elles affaiblissent la page Toulouse.
+
+### Requêtes à NE PAS viser
+
+- « développeur mobile », « créer une application mobile », « agence
+  application mobile » : têtes de gondole tenues par des sites à très forte
+  autorité, ingagnables pour un site jeune.
+- « développeur Flutter », « application React Native » : requêtes de
+  recruteurs et de techniciens, pas d'acheteurs.
+- Tout ce qui contient paywall, onboarding, churn, MRR, ARPU, rétention D30 :
+  requêtes d'éditeurs d'applications, donc de pairs, pas de clients.
+
+### Couverture par les quizz
+
+Trois requêtes d'arbitrage sont désormais traitées par des pages de test
+plutôt que par des articles, parce que le format y répond mieux :
+
+- « faut-il une application pour mon entreprise » → `/quiz/ai-je-besoin-application-mobile/`
+- « application ou site web » → `/quiz/application-ou-site-web/`
+- « quel budget pour une application » → `/quiz/budget-application-mobile/`
+
+Ne pas écrire d'article sur ces trois sujets, il ferait doublon.
+
 ## Dette SEO sur les anciens articles (audit du 03/08/2026)
 
 Les articles du cluster « monétisation » (1 à 5) respectent les limites : metaTitle ≤ 65 caractères, description ≤ 155. Les articles plus anciens, écrits avant cette stratégie, dépassent et se font tronquer dans les résultats Google. Ils sont aussi en « vous » et sur un angle générique d'agence, pas sur la cible entrepreneurs.
@@ -91,15 +181,44 @@ Les articles du cluster « monétisation » (1 à 5) respectent les limites : me
 | faire-evoluer-application-mobile | 74 | 184 |
 | choisir-expert-application-mobile | 76 | 175 |
 
-À reprendre quand la file de sujets sera vidée : raccourcir les metaTitle et descriptions, passer en « tu », recentrer sur l'angle revenus.
+**Soldée le 20/08/2026.** Les 7 articles concernés (les 6 ci-dessus plus
+`mvp-application-mobile`) ont été repris : metaTitle ≤ 65, description ≤ 155,
+voix en « tu ». Le tableau ci-dessus est conservé comme trace de l'audit.
+
+Deux choses avaient été découvertes en les corrigeant, qui expliquent pourquoi
+raccourcir les titres n'avait servi à rien jusque-là :
+
+- Les titres et descriptions existaient **en double**, dans `src/Blog.jsx` et
+  dans `scripts/generate-routes.js`, et avaient divergé sur 6 articles sur 17.
+  Google exécutant le JavaScript, c'est la version de `Blog.jsx` qui gagnait :
+  des titres raccourcis exprès dans le script étaient re-rallongés au rendu.
+- `src/Blog.jsx` est désormais la **seule** source. Le build échoue si une
+  limite est dépassée, donc la dette ne peut plus se reconstituer en silence.
 
 ## Comment intégrer un brouillon (côté Noé)
 
+> Process modifié le 20/08/2026. L'étape sitemap a disparu, une étape de
+> maillage est devenue obligatoire, et le build refuse maintenant un article
+> mal intégré.
+
 1. Ouvrir le brouillon dans `documentation/strategy/seo/drafts/`.
 2. Relire, ajuster la voix si besoin.
-3. Copier l'objet article dans la constante `BLOG_ARTICLES` de `src/Blog.jsx` (slug, title, metaTitle, description, date, readTime, finalCta, content).
-4. Ajouter la route correspondante dans `scripts/generate-routes.js` (tableau `blogRoutes`) pour la meta + le pré-rendu SEO.
-5. Ajouter l'URL dans `public/sitemap.xml`.
-6. `npm run build`, vérifier, commit, push, déployer.
+3. Copier l'objet article dans la constante `BLOG_ARTICLES` de `src/Blog.jsx`
+   (slug, title, metaTitle, description, date, readTime, finalCta, content).
+   **`metaTitle` ≤ 65 caractères, `description` ≤ 155.** C'est la seule source :
+   ne pas les redéfinir ailleurs.
+4. **Ajouter le slug à la table `ARTICLES_LIES` de `src/Blog.jsx`** : lui donner
+   3 liens sortants, et le citer dans au moins 2 autres entrées pour qu'il
+   reçoive des liens entrants. Un article sans lien entrant est un cul-de-sac
+   pour Google ; c'était le cas de 11 articles sur 17 avant cette date.
+5. Ajouter la route dans `scripts/generate-routes.js` (tableau `blogRoutes`),
+   avec **seulement** `path`, `heading` et `content` pour le pré-rendu.
+6. `npm run build`. Le build s'arrête et explique quoi corriger si le maillage,
+   les longueurs de meta ou les liens internes ne passent pas.
+7. Commit, push, déployer, puis demander l'indexation de l'URL (avec la barre
+   finale) dans Search Console.
+
+Le sitemap n'est plus à toucher : il est généré à partir des pages réellement
+produites.
 
 > Quand les 12 sont `done`, prévenir Noé pour planifier la vague suivante (ou approfondir/mettre à jour les articles existants).

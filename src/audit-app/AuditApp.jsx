@@ -5,6 +5,7 @@
 // (manipulation directe de l'historique HTML5 via history.pushState).
 
 import { useEffect, useState } from 'react'
+import { appliquerMeta } from '../seo.js'
 import AuditAppHero from './AuditAppHero'
 import AuditAppForm from './AuditAppForm'
 import AuditAppVerdict from './AuditAppVerdict'
@@ -59,20 +60,20 @@ export default function AuditApp({ onBack, onLegal }) {
     saveAuditState({ stage, firstName, verdict, appType, budgetAnswer })
   }, [stage, firstName, verdict, appType, budgetAnswer])
 
-  // Meta tags propres a la page
+  // Meta de la page. Passe par appliquerMeta pour ecrire aussi la canonique et
+  // le hreflang, et surtout pour que le titre RENDU soit celui du HTML servi :
+  // ici les deux avaient diverge (« Tester une idée ... — Noé Calmes » cote
+  // React contre « Tester ton idée ... en 2 minutes | Noé Calmes » cote HTML),
+  // et c'est la version rendue que Google indexe.
+  // Le titre est lu depuis ce fichier par scripts/generate-routes.js : source
+  // unique, voir documentation/architecture/landing-page.md.
   useEffect(() => {
-    const previousTitle = document.title
-    document.title = 'Tester une idée d\'application mobile — Noé Calmes'
-    const meta = document.querySelector('meta[name="description"]')
-    const previousDesc = meta?.getAttribute('content')
-    meta?.setAttribute(
-      'content',
-      'Teste ton idée d\'application mobile avant d\'investir : potentiel business, budget, délai et points à valider en 2 minutes.'
-    )
-    return () => {
-      document.title = previousTitle
-      if (previousDesc) meta?.setAttribute('content', previousDesc)
-    }
+    appliquerMeta({
+      path: '/audit-app',
+      title: "Tester ton idée d'application mobile en 2 minutes | Noé Calmes",
+      description: "Teste ton idée d'application mobile avant d'investir : potentiel, budget, délai et si elle peut générer des revenus, en 2 minutes.",
+      ogImage: 'https://noecalmes.fr/assets/images/meta/audit-app-og.png',
+    })
   }, [])
 
   // Remonte en haut a chaque changement d'etape

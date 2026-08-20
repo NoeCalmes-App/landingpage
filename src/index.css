@@ -302,3 +302,248 @@ details summary {
   color: var(--color-text);
   font-weight: 600;
 }
+
+/* ─── Article enrichi (20/08/2026) ──────────────────────────────────────────
+   Avant : un article = un bloc de <p> et de <h2> a la suite, sans aucun point
+   d'accroche. Un lecteur qui scanne sur telephone ne trouvait aucune prise et
+   repartait. Ces styles donnent au corps de l'article des reperes visuels :
+   titres marques, encadres, tableaux, citations. Ils s'appliquent au HTML
+   ecrit dans `content` (BLOG_ARTICLES), donc a TOUS les articles, sans avoir
+   a toucher un seul d'entre eux. */
+
+/* Titre de section avec barre d'accent : donne le rythme au scroll et rend le
+   sommaire lisible d'un coup d'oeil. */
+.prose-blog h2 {
+  position: relative;
+  padding-left: 0.9rem;
+  scroll-margin-top: 7rem; /* la navbar fixe ne doit pas masquer l'ancre */
+}
+
+.prose-blog h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.28em;
+  bottom: 0.28em;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--color-brand);
+}
+
+.prose-blog h3 {
+  scroll-margin-top: 7rem;
+}
+
+/* Puces personnalisees : la puce ronde grise par defaut se confond avec le
+   texte. Un chevron dans la couleur de marque accroche l'oeil en scan. */
+.prose-blog ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose-blog ul li {
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.prose-blog ul li::before {
+  content: '';
+  position: absolute;
+  left: 0.35rem;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-brand-light);
+}
+
+.prose-blog ol {
+  list-style: none;
+  counter-reset: etape;
+  padding-left: 0;
+  margin-bottom: 1rem;
+  color: #4b5a70;
+}
+
+.prose-blog ol li {
+  position: relative;
+  padding-left: 2.1rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.65;
+  counter-increment: etape;
+}
+
+.prose-blog ol li::before {
+  content: counter(etape);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  width: 1.45rem;
+  height: 1.45rem;
+  border-radius: 999px;
+  background: var(--color-brand-wash);
+  color: var(--color-brand);
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Encadres. Trois intentions, trois couleurs, jamais plus :
+   .astuce (marque) = conseil, .attention (rouge) = piege qui coute de l'argent,
+   .cle (vert) = ce qu'il faut retenir. Au-dela de trois, l'oeil ne fait plus
+   la difference et tout redevient du texte. */
+.prose-blog .encadre {
+  position: relative;
+  margin: 1.75rem 0;
+  padding: 1.15rem 1.25rem 1.15rem 3.1rem;
+  border-radius: 14px;
+  border: 1px solid var(--color-card-border);
+  background: var(--color-card);
+  line-height: 1.7;
+}
+
+.prose-blog .encadre::before {
+  position: absolute;
+  left: 1.1rem;
+  top: 1.05rem;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.prose-blog .encadre > *:last-child {
+  margin-bottom: 0;
+}
+
+.prose-blog .encadre p {
+  margin-bottom: 0.6rem;
+  color: #3f4d61;
+}
+
+.prose-blog .encadre-titre {
+  display: block;
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-text);
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+.prose-blog .encadre.astuce {
+  border-left: 3px solid var(--color-brand);
+  background: var(--color-brand-wash);
+}
+.prose-blog .encadre.astuce::before { content: '💡'; }
+
+.prose-blog .encadre.attention {
+  border-left: 3px solid var(--color-red-text);
+  background: var(--color-red-bg);
+}
+.prose-blog .encadre.attention::before { content: '⚠️'; }
+.prose-blog .encadre.attention .encadre-titre { color: var(--color-red-text); }
+
+.prose-blog .encadre.cle {
+  border-left: 3px solid var(--color-green-text);
+  background: var(--color-green-bg);
+}
+.prose-blog .encadre.cle::before { content: '✅'; }
+.prose-blog .encadre.cle .encadre-titre { color: var(--color-green-text); }
+
+/* Chiffre mis en avant au fil du texte : une preuve chiffree noyee dans un
+   paragraphe ne se voit pas, isolee elle devient un point d'arret. */
+.prose-blog .chiffre {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  margin: 1.6rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  background: var(--color-brand-wash);
+  border: 1px solid var(--color-brand-pale);
+}
+
+.prose-blog .chiffre-valeur {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--color-brand);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.prose-blog .chiffre-texte {
+  font-size: 0.9rem;
+  color: #3f4d61;
+  line-height: 1.55;
+}
+
+/* Tableaux comparatifs : format le plus lisible pour un arbitrage
+   (agence contre expert, abonnement contre achat unique). */
+.prose-blog table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.6rem 0;
+  font-size: 0.88rem;
+}
+
+.prose-blog thead th {
+  text-align: left;
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 700;
+  color: var(--color-text);
+  padding: 0.7rem 0.85rem;
+  border-bottom: 2px solid var(--color-brand-pale);
+}
+
+.prose-blog tbody td {
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid var(--color-card-border);
+  color: #4b5a70;
+  line-height: 1.6;
+}
+
+.prose-blog tbody tr:last-child td { border-bottom: none; }
+
+/* Le tableau doit pouvoir defiler seul sur telephone, jamais pousser la page. */
+.prose-blog .table-scroll {
+  overflow-x: auto;
+  margin: 1.6rem 0;
+}
+.prose-blog .table-scroll table { margin: 0; }
+
+.prose-blog blockquote {
+  margin: 1.6rem 0;
+  padding: 0.2rem 0 0.2rem 1.15rem;
+  border-left: 3px solid var(--color-brand-pale);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.prose-blog blockquote p { color: inherit; }
+
+/* Liens de contenu : soulignes et dans la couleur de marque. Un lien interne
+   invisible ne se clique pas, et le maillage ne sert alors a rien cote humain. */
+.prose-blog a {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--color-brand) 35%, transparent);
+  font-weight: 500;
+  transition: text-decoration-color 0.15s ease;
+}
+
+.prose-blog a:hover {
+  text-decoration-color: var(--color-brand);
+}
+
+/* Premiere phrase de l'article legerement plus grande : rampe de lecture. */
+.prose-blog > p:first-child {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #3f4d61;
+}
