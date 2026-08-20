@@ -263,10 +263,28 @@ caractères côte à côte donnaient une grille où rien ne ressortait et où ri
 n'invitait au clic. Les 17 liens restent de vrais `<a href>` avec barre finale,
 le correctif SEO central n'a pas bougé.
 
+### Déployé le 20/08/2026 (commit 810fc04)
+
+Vérifié en ligne juste après la mise en production :
+
+| Contrôle | Avant | Après |
+|---|---|---|
+| Canonique dans le DOM rendu | sans barre finale | **avec barre** |
+| Balises hreflang | 0 | **2 par page** |
+| Liens crawlables sur `/blog/` | 0 | **17** |
+| `<h1>` par page | 2 | **1** |
+| URLs au sitemap | 23 | **28** |
+| `/expertise/` | 599 mots dupliqués de la home | **808 mots uniques** |
+| Pages `/quiz/` | 404 | **200** |
+
 ## Ce qui reste à faire (par priorité)
 
-1. **[Noé] Déployer le chantier du 20/08** : `git add -A`, commit, `git push`.
-   Rien n'est en ligne avant ça, et tout le reste en dépend.
+1. ~~Déployer le chantier du 20/08~~ **fait le 20/08/2026** (commit 810fc04).
+2. **[Search Console] Renvoyer le sitemap** (23 → 28 URLs), **relancer
+   « Valider la correction »** sur « Erreur liée à des redirections », et
+   demander l'indexation des nouvelles URLs. Voir la section Search Console
+   plus haut. À faire maintenant que le correctif est en ligne : la validation
+   du 08/08 avait échoué parce que le site était encore cassé au rendu.
 2. **[Noé] Trancher le doublon Google Business** (garder la fiche sobre
    Toulouse, supprimer la fiche à mots-clés) et publier la modification en
    attente sur la fiche gardée.
