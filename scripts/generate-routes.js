@@ -518,7 +518,7 @@ const blogRoutes = [
     // BlogList) : ne pas les redefinir ici.
     path: '/blog',
     heading: 'Blog, créer une application mobile qui rapporte',
-    content: 'Guides et conseils pour créer, reprendre ou faire évoluer votre application mobile. Coûts, MVP, choix d\'expert, évolution — rédigés par un expert en applications mobiles indépendant.',
+    content: 'Guides concrets pour créer une application mobile qui génère des revenus : coûts réels, modèles économiques, MVP, choix de l\'expert et retours d\'expérience.',
   },
   {
     path: '/blog/application-audience-revenus-recurrents',
@@ -583,27 +583,27 @@ const blogRoutes = [
   {
     path: '/blog/creer-application-mobile-guide',
     heading: 'Comment créer une application mobile : le guide complet',
-    content: 'De l\'idée au lancement sur les stores : guide complet pour créer une application mobile en 2026. Étapes, choix techniques, erreurs à éviter et bonnes pratiques pour réussir votre projet mobile.',
+    content: 'De l\'idée au lancement sur les stores : les étapes, les choix techniques et les erreurs qui coûtent cher quand tu crées ton application mobile.',
   },
   {
     path: '/blog/reprendre-application-mobile-existante',
     heading: 'Reprendre une application mobile existante',
-    content: 'Votre application mobile est instable, abandonnée ou mal codée ? Découvrez comment reprendre une app existante : audit technique, plan d\'action et remise sur de bonnes bases pour la faire évoluer sereinement.',
+    content: 'Ton application est instable, abandonnée ou mal codée : comment l\'auditer, la stabiliser et la relancer sans repartir de zéro.',
   },
   {
     path: '/blog/faire-evoluer-application-mobile',
     heading: 'Comment faire évoluer une application mobile sans tout casser',
-    content: 'Ajouter des fonctionnalités, réduire la dette technique, améliorer les performances : guide pratique pour faire évoluer votre application mobile sans tout casser ni repartir de zéro.',
+    content: 'Ajouter des fonctionnalités, réduire la dette technique, améliorer l\'expérience : faire évoluer ton application sans tout casser.',
   },
   {
     path: '/blog/mvp-application-mobile',
     heading: 'MVP application mobile : lancer vite sans sacrifier la qualité',
-    content: 'Qu\'est-ce qu\'un MVP mobile, pourquoi en avoir un et comment le construire ? Guide complet pour lancer votre première version d\'application en 45 jours, valider votre idée et éviter les erreurs classiques.',
+    content: 'Ce qu\'est vraiment un MVP mobile et comment le construire : lancer ta première version en 45 jours, valider ton idée, éviter les pièges.',
   },
   {
     path: '/blog/choisir-expert-application-mobile',
-    heading: 'Comment choisir le bon expert pour créer votre application mobile',
-    content: 'Freelance spécialisé, agence digitale ou no-code : comment choisir le bon partenaire pour créer votre application mobile ? Les critères essentiels, les questions à poser et les pièges à éviter.',
+    heading: 'Comment choisir le bon expert pour ton application mobile',
+    content: 'Freelance, agence ou no-code : les critères pour choisir qui va créer ton application mobile, les questions à poser et les signaux d\'alerte.',
   },
 ]
 

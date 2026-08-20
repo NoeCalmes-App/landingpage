@@ -277,6 +277,32 @@ Vérifié en ligne juste après la mise en production :
 | `/expertise/` | 599 mots dupliqués de la home | **808 mots uniques** |
 | Pages `/quiz/` | 404 | **200** |
 
+### Tutoiement du blog (20/08/2026)
+
+Les 7 plus anciens articles avaient encore un corps au vouvoiement, alors que
+tous les blocs ajoutés lors de la refonte étaient en « tu ». Les pages
+mélangeaient donc les deux registres, ce qui se voyait à la lecture.
+
+- **98 occurrences** de vous/votre/vos converties, plus 3 impératifs
+  (`Demandez`, `Commencez`, `Divisez-les`) qu'un simple remplacer-tout aurait
+  laissés passer.
+- **53 tirets cadratins** supprimés du corps des articles, remplacés par des
+  virgules ou des deux-points selon le sens, et les titres `Étape N — Titre`
+  passés en `Étape N : Titre`.
+- **7 champs de pré-rendu** de `generate-routes.js` également repris : le corps
+  de l'article était corrigé mais la copie SEO servie dans le HTML restait au
+  vouvoiement.
+- **4 « vous » volontairement conservés**, dans `choisir-expert-application-mobile` :
+  ce sont les questions que le lecteur pose à un prestataire, le vouvoiement y
+  est correct.
+- **Effet de bord utile** : plusieurs de ces articles promettaient encore « un
+  appel gratuit de 30 minutes », vestige du Calendly retiré le 22/06/2026. Ces
+  passages renvoient maintenant vers l'audit ou WhatsApp.
+
+La contradiction de documentation qui avait produit ce mélange est tranchée :
+`documentation/context/positionnement.md` classait le blog en vouvoiement,
+`content-plan.md` imposait « tu » partout. Le blog tutoie.
+
 ## Ce qui reste à faire (par priorité)
 
 1. ~~Déployer le chantier du 20/08~~ **fait le 20/08/2026** (commit 810fc04).

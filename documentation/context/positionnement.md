@@ -282,7 +282,17 @@ Le bon prospect n'est pas seulement quelqu'un qui "a une idée". C'est quelqu'un
 ## Tonalité
 
 - **Tutoiement sur tout le parcours chaud** : landing page, `/audit-app` (questions, verdict IA), chatbot, Instagram, WhatsApp (prospection, relances, conversations) — canal peer-to-peer, cible petits entrepreneurs/créateurs solo
-- **Vouvoiement sur le froid et le contractuel** : blog (lecteur SEO qui ne connaît pas Noé), emails, devis, contrats, CGV, LinkedIn (profil, posts, messages)
+- **Vouvoiement sur le froid et le contractuel** : emails, devis, contrats, CGV, LinkedIn (profil, posts, messages)
+- **Le blog est passé au tutoiement le 20/08/2026.** Cette ligne disait « blog »
+  dans la colonne vouvoiement, alors que `documentation/strategy/seo/content-plan.md`
+  imposait « tu » partout depuis août. Les deux se contredisaient, et les
+  articles étaient devenus un mélange des deux registres. Arbitrage retenu : le
+  blog tutoie, comme la landing, l'audit et WhatsApp, parce que le lecteur SEO
+  arrive sur les mêmes pages et suit le même parcours. Les 17 articles ont été
+  harmonisés.
+  Seule exception conservée : dans `choisir-expert-application-mobile`, les
+  questions que le lecteur doit poser à un prestataire restent au vouvoiement,
+  puisque c'est lui qui les pose à quelqu'un d'autre.
 - **Premier appel** : démarrer en vouvoiement, puis proposer tôt « est-ce qu'on peut se tutoyer ? » — ça crée la proximité tout en laissant le choix au prospect. Si la relation a commencé sur WhatsApp/Insta en tutoiement, on tutoie directement à l'appel.
 - **Règle transverse** : ne jamais changer de registre en cours de conversation. Un fil commencé en tutoiement (WhatsApp) reste en tutoiement, même si la suite passe par email.
 - Ton direct, structuré, pro mais pas corporate

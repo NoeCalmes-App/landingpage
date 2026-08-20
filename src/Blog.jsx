@@ -855,14 +855,14 @@ export const BLOG_ARTICLES = [
       <p>Quand on parle d'investissement, on pense souvent immobilier, publicité ou matériel. Mais il y a un actif que beaucoup d'entrepreneurs sous-estiment encore : <strong>l'application mobile</strong>.</p>
       <p>Peu d'investissements cochent autant de cases : revenus mensuels, faibles frais, distribution mondiale, valorisation et revente possible.</p>
 
-      <h2>Communauté, métier, réseau : vous avez déjà un point d'entrée</h2>
-      <p>Si vous avez une audience, une clientèle ou une communauté, vous avez déjà le plus dur : l'attention. Une application peut transformer cette attention en revenus récurrents.</p>
-      <p>Et si vous n'avez pas de communauté, partez de votre métier. Un plombier connaît les problèmes des techniciens. Un restaurateur connaît les contraintes de réservation. Un consultant connaît les blocages de ses clients. Cette expérience peut devenir une application B2B ou B2C.</p>
+      <h2>Communauté, métier, réseau : tu as déjà un point d'entrée</h2>
+      <p>Si tu as une audience, une clientèle ou une communauté, tu as déjà le plus dur : l'attention. Une application peut transformer cette attention en revenus récurrents.</p>
+      <p>Et si tu n'as pas de communauté, pars de ton métier. Un plombier connaît les problèmes des techniciens. Un restaurateur connaît les contraintes de réservation. Un consultant connaît les blocages de ses clients. Cette expérience peut devenir une application B2B ou B2C.</p>
 
       <h2>Une application, c'est un actif</h2>
       <p>Bien pensée, une application mobile peut avoir des utilisateurs, des revenus, une marque, une base de données et un parcours de vente. Ce n'est pas juste un outil : c'est un actif.</p>
       <p>Comme l'immobilier, elle peut produire du revenu. Mais avec un coût de départ souvent plus accessible, peu de frais de fonctionnement, et une distribution possible partout dès le premier jour.</p>
-      <p>Si elle génère du revenu mensuel, elle peut aussi se valoriser. Et si elle ne décolle pas tout de suite, vous pouvez ajuster, vous associer avec quelqu'un de fort en marketing, ou repartir d'une première version plus claire.</p>
+      <p>Si elle génère du revenu mensuel, elle peut aussi se valoriser. Et si elle ne décolle pas tout de suite, tu peux ajuster, t'associer avec quelqu'un de fort en marketing, ou repartir d'une première version plus claire.</p>
 
       <h2>Le point clé : ne pas construire au hasard</h2>
       <p>Une application mal pensée ne rapporte rien. Avant de développer, il faut valider le besoin, le public, le modèle économique et la première version à lancer.</p>
@@ -905,29 +905,29 @@ export const BLOG_ARTICLES = [
       { q: "Quels coûts après la mise en ligne ?", a: "Comptes développeur Apple (99 $ par an) et Google (25 $ une fois), hébergement selon l'usage, et la maintenance liée aux mises à jour des systèmes. On définit ensemble ce qui est nécessaire selon comment l'application évolue." },
     ],
     content: `
-      <p>C'est souvent la première question. Et c'est une bonne question. Créer une application mobile représente un investissement réel — autant savoir à quoi s'attendre avant de commencer.</p>
+      <p>C'est souvent la première question. Et c'est une bonne question. Créer une application mobile représente un investissement réel, autant savoir à quoi s'attendre avant de commencer.</p>
 
       <h2>Les fourchettes de prix en France en 2026</h2>
-      <p>Le coût d'une application mobile dépend du périmètre, du type de projet et de l'interlocuteur que vous choisissez. Voici les grandes catégories :</p>
+      <p>Le coût d'une application mobile dépend du périmètre, du type de projet et de l'interlocuteur que tu choisis. Voici les grandes catégories :</p>
       <ul>
-        <li><strong>MVP — première version</strong> : à partir de 5 000 €. Une version ciblée sur les fonctionnalités essentielles, livrée en 45 jours environ. L'objectif : valider votre idée sans tout miser d'un coup.</li>
+        <li><strong>MVP, première version</strong> : à partir de 5 000 €. Une version ciblée sur les fonctionnalités essentielles, livrée en 45 jours environ. L'objectif : valider ton idée sans tout miser d'un coup.</li>
         <li><strong>Projet plus complet</strong> : pour des besoins plus larges, le budget peut atteindre une dizaine de milliers d'euros selon le périmètre fonctionnel et les intégrations nécessaires.</li>
         <li><strong>Reprise ou évolution d'une app existante</strong> : variable selon l'état de la base technique et le périmètre des évolutions. Souvent plus rapide et moins cher que de repartir de zéro.</li>
-        <li><strong>Grande agence ou ESN</strong> : 50 000 € à 300 000 €+. Des équipes importantes, des délais longs, des processus lourds — pertinent pour des projets très complexes.</li>
+        <li><strong>Grande agence ou ESN</strong> : 50 000 € à 300 000 €+. Des équipes importantes, des délais longs, des processus lourds, pertinent pour des projets très complexes.</li>
       </ul>
 
       <h2>Expert indépendant vs agence : ce que ça change vraiment</h2>
       <p>Travailler avec un <strong>expert en applications mobiles indépendant</strong> coûte en moyenne 30 à 50 % moins cher qu'une agence. Les raisons sont concrètes : pas de marge d'agence, pas de chef de projet intermédiaire, pas de dispersion entre plusieurs prestataires.</p>
-      <p>Vous travaillez directement avec la personne qui comprend votre besoin et qui construit votre application. La communication est directe, les décisions vont vite.</p>
-      <p>Autre avantage souvent sous-estimé : un expert indépendant spécialisé vous apporte une <strong>vision produit</strong> en plus de l'exécution technique. Il vous aide à cadrer, prioriser et faire les bons choix dès le départ — ce qui évite des aller-retours coûteux.</p>
+      <p>Tu travailles directement avec la personne qui comprend ton besoin et qui construit ton application. La communication est directe, les décisions vont vite.</p>
+      <p>Autre avantage souvent sous-estimé : un expert indépendant spécialisé t'apporte une <strong>vision produit</strong> en plus de l'exécution technique. Il t'aide à cadrer, prioriser et faire les bons choix dès le départ, ce qui évite des aller-retours coûteux.</p>
 
       <h2>Les facteurs qui influencent le prix</h2>
       <ul>
         <li><strong>Type de projet</strong> : création de zéro, reprise d'un existant, ou évolution d'une app déjà en ligne. Ce ne sont pas les mêmes enjeux ni le même travail.</li>
-        <li><strong>Complexité des fonctionnalités</strong> : authentification, paiement en ligne, géolocalisation, chat en temps réel, notifications push — chaque fonctionnalité a un coût.</li>
+        <li><strong>Complexité des fonctionnalités</strong> : authentification, paiement en ligne, géolocalisation, chat en temps réel, notifications push, chaque fonctionnalité a un coût.</li>
         <li><strong>Design et UX</strong> : une expérience utilisateur travaillée demande plus de temps, mais elle fait la différence sur la rétention et l'usage réel.</li>
-        <li><strong>Intégrations</strong> : API tierces, bases de données, outils internes — plus les connexions sont complexes, plus le développement prend de temps.</li>
-        <li><strong>Plateformes cibles</strong> : iOS uniquement, Android uniquement, ou les deux. Avec une technologie cross-platform, une seule codebase couvre les deux plateformes — ce qui réduit le coût par rapport à deux développements séparés.</li>
+        <li><strong>Intégrations</strong> : API tierces, bases de données, outils internes, plus les connexions sont complexes, plus le développement prend de temps.</li>
+        <li><strong>Plateformes cibles</strong> : iOS uniquement, Android uniquement, ou les deux. Avec une technologie cross-platform, une seule codebase couvre les deux plateformes, ce qui réduit le coût par rapport à deux développements séparés.</li>
       </ul>
 
       <div class="encadre attention"><span class="encadre-titre">Attention aux devis très bas</span><p>Un tarif nettement en dessous du marché se paie toujours après : code impossible à reprendre, prestataire injoignable, ou périmètre qui se réduit en cours de route. Le vrai coût d'une application, c'est son coût sur trois ans, pas sur son premier devis.</p></div>
@@ -936,13 +936,13 @@ export const BLOG_ARTICLES = [
       <p>C'est pourquoi le <strong>cadrage</strong> est la première étape de tout projet sérieux. Avant de commencer à développer, il faut définir précisément ce qu'on lance, pour qui, et pourquoi.</p>
 
       <h2>MVP ou application complète : que choisir ?</h2>
-      <p>Si vous lancez votre premier projet ou si vous n'avez pas encore validé votre idée : partez sur un MVP. Une première version simple, livrée rapidement, qui vous permet de tester votre concept avec de vrais utilisateurs avant d'investir davantage.</p>
-      <p>Si votre besoin est clair, votre marché validé et vos fonctionnalités bien définies : une application plus complète peut être la bonne approche dès le départ.</p>
-      <p>Dans tous les cas, <strong>une application pensée pour générer des revenus commence par un besoin clair</strong> — pas par une liste de fonctionnalités.</p>
+      <p>Si tu lances ton premier projet ou si tu n'as pas encore validé ton idée : pars sur un MVP. Une première version simple, livrée rapidement, qui te permet de tester ton concept avec de vrais utilisateurs avant d'investir davantage.</p>
+      <p>Si ton besoin est clair, ton marché validé et tes fonctionnalités bien définies : une application plus complète peut être la bonne approche dès le départ.</p>
+      <p>Dans tous les cas, <strong>une application pensée pour générer des revenus commence par un besoin clair</strong>, pas par une liste de fonctionnalités.</p>
 
       <div class="encadre astuce"><span class="encadre-titre">Le raccourci</span><p>Plutôt que de demander cinq devis sur un besoin encore flou, commence par cadrer le périmètre. Un devis précis sur un besoin flou n'existe pas, et c'est justement ce flou qui fait exploser les écarts de prix entre prestataires.</p></div>
       <h2>Comment obtenir une estimation précise ?</h2>
-      <p>Chaque projet est unique. La meilleure façon d'avoir une fourchette réaliste est d'en discuter directement. Je propose un appel gratuit de 30 minutes pour comprendre votre projet — création, reprise ou évolution — et vous donner une estimation claire.</p>
+      <p>Chaque projet est unique. La meilleure façon d'avoir une fourchette réaliste est d'en discuter directement. Fais l'audit gratuit en 2 minutes : tu obtiens une première lecture du potentiel, du budget à prévoir et du délai. Et si tu préfères en parler de vive voix, écris-moi sur WhatsApp, c'est moi qui réponds.</p>
     `,
   },
   {
@@ -980,55 +980,55 @@ export const BLOG_ARTICLES = [
       { q: "Qu'est-ce qu'on met dans la première version ?", a: "Le strict nécessaire pour que l'application apporte sa valeur et puisse encaisser. Tout le reste attend d'avoir des utilisateurs réels : c'est eux qui disent quoi construire ensuite, pas une liste écrite avant le lancement." },
     ],
     content: `
-      <p>Vous avez une idée d'application mobile. Vous voulez la lancer. Mais vous ne savez pas par où commencer — ni comment éviter de perdre du temps et de l'argent sur des faux problèmes.</p>
-      <p>Ce guide vous explique les étapes concrètes pour créer une application mobile qui fonctionne, qui est utilisée, et qui peut générer des revenus.</p>
+      <p>Tu as une idée d'application mobile. Tu veux la lancer. Mais tu ne sais pas par où commencer, ni comment éviter de perdre du temps et de l'argent sur des faux problèmes.</p>
+      <p>Ce guide t'explique les étapes concrètes pour créer une application mobile qui fonctionne, qui est utilisée, et qui peut générer des revenus.</p>
 
-      <h2>Étape 1 — Cadrer le besoin avant de penser au code</h2>
+      <h2>Étape 1 : Cadrer le besoin avant de penser au code</h2>
       <p>C'est l'étape que la plupart des gens sautent. Et c'est souvent là que les projets partent dans le mauvais sens.</p>
-      <p>Avant d'écrire une seule ligne de code, posez-vous ces questions :</p>
+      <p>Avant d'écrire une seule ligne de code, pose-toi ces questions :</p>
       <ul>
-        <li>Quel problème concret résout votre application ?</li>
-        <li>Qui sont vos utilisateurs cibles ? Comment ils se comportent aujourd'hui ?</li>
-        <li>Qu'est-ce qui vous différencie de ce qui existe déjà ?</li>
+        <li>Quel problème concret résout ton application ?</li>
+        <li>Qui sont tes utilisateurs cibles ? Comment ils se comportent aujourd'hui ?</li>
+        <li>Qu'est-ce qui te différencie de ce qui existe déjà ?</li>
         <li>Quelle est la version minimale pertinente à lancer ?</li>
       </ul>
       <p>Un projet bien cadré avance vite. Un projet flou accumule les aller-retours, gonfle le budget et aboutit rarement à quelque chose d'utilisable.</p>
 
-      <h2>Étape 2 — Définir votre MVP</h2>
-      <p>Un MVP (Minimum Viable Product) est une première version concentrée sur l'essentiel. Pas toutes les fonctionnalités rêvées — juste ce qui permet de valider que votre idée fonctionne avec de vrais utilisateurs.</p>
+      <h2>Étape 2 : Définir ton MVP</h2>
+      <p>Un MVP (Minimum Viable Product) est une première version concentrée sur l'essentiel. Pas toutes les fonctionnalités rêvées, juste ce qui permet de valider que ton idée fonctionne avec de vrais utilisateurs.</p>
       <p>Les avantages d'un MVP :</p>
       <ul>
-        <li>Lancement rapide — environ 45 jours pour une application mobile bien définie</li>
-        <li>Budget maîtrisé — vous investissez sur ce qui compte vraiment</li>
+        <li>Lancement rapide, environ 45 jours pour une application mobile bien définie</li>
+        <li>Budget maîtrisé, tu investis sur ce qui compte vraiment</li>
         <li>Retours utilisateurs réels avant d'aller plus loin</li>
         <li>Capacité à pivoter si nécessaire sans avoir tout construit</li>
       </ul>
       <p>Une première version simple et utile vaut mieux qu'une application complète qui n'est jamais terminée.</p>
 
-      <h2>Étape 3 — Choisir la bonne technologie</h2>
+      <h2>Étape 3 : Choisir la bonne technologie</h2>
       <p>En 2026, deux grandes approches dominent le développement d'applications mobiles :</p>
       <ul>
         <li><strong>Développement natif</strong> : une application dédiée iOS (Swift) et une dédiée Android (Kotlin). Performances maximales, mais deux fois plus de travail, de coût et de délai.</li>
         <li><strong>Développement cross-platform</strong> : une seule codebase pour iOS et Android. Plus rapide, moins cher, et les performances sont excellentes pour la grande majorité des projets.</li>
       </ul>
-      <p>Pour la majorité des projets — startup, PME, porteur de projet — le cross-platform est le choix le plus pertinent. Il permet de couvrir iOS et Android d'un seul développement, avec des performances quasi-natives.</p>
+      <p>Pour la majorité des projets, startup, PME ou porteur de projet, le cross-platform est le choix le plus pertinent. Il permet de couvrir iOS et Android d'un seul développement, avec des performances quasi-natives.</p>
 
-      <h2>Étape 4 — Design et expérience utilisateur</h2>
+      <h2>Étape 4 : Design et expérience utilisateur</h2>
       <p>Une application mobile qui génère des revenus, c'est avant tout une application que les gens utilisent. Et les gens n'utilisent que ce qui est simple et agréable.</p>
       <p>Le design ne se résume pas à "faire beau". C'est penser les parcours utilisateurs, la navigation, les micro-interactions. C'est s'assurer que l'utilisateur comprend ce qu'il doit faire sans avoir besoin d'explications.</p>
       <p>Un bon design dès le départ évite des refontes coûteuses après le lancement.</p>
 
-      <h2>Étape 5 — Développement structuré et transparent</h2>
-      <p>Le développement d'une application mobile doit être structuré et visible. Vous ne devez pas attendre des mois pour voir quelque chose — vous devez voir l'avancement régulièrement.</p>
+      <h2>Étape 5 : Développement structuré et transparent</h2>
+      <p>Le développement d'une application mobile doit être structuré et visible. Tu ne dois pas attendre des mois pour voir quelque chose, tu dois voir l'avancement régulièrement.</p>
       <p>Ce que ça implique concrètement :</p>
       <ul>
-        <li>Des échanges réguliers sur l'avancement — pas juste un livrable final</li>
+        <li>Des échanges réguliers sur l'avancement, pas juste un livrable final</li>
         <li>Des démos intermédiaires pour valider chaque étape</li>
         <li>Des tests sur de vrais appareils iOS et Android</li>
         <li>Un interlocuteur unique qui comprend à la fois le produit et la technique</li>
       </ul>
 
-      <h2>Étape 6 — Mise en ligne sur les stores</h2>
+      <h2>Étape 6 : Mise en ligne sur les stores</h2>
       <p>La publication sur l'App Store (Apple) et Google Play est une étape technique qui a ses propres règles. Elle nécessite :</p>
       <ul>
         <li>Un compte développeur Apple et/ou Google</li>
@@ -1036,22 +1036,22 @@ export const BLOG_ARTICLES = [
         <li>Des captures d'écran et descriptions optimisées</li>
         <li>Des tests de validation avant la soumission</li>
       </ul>
-      <p>Un expert expérimenté prend en charge cette étape pour vous, jusqu'à la publication effective. Ce n'est pas une formalité — c'est une étape qui peut bloquer un projet si elle est mal préparée.</p>
+      <p>Un expert expérimenté prend en charge cette étape pour toi, jusqu'à la publication effective. Ce n'est pas une formalité : c'est une étape qui peut bloquer un projet si elle est mal préparée.</p>
 
-      <h2>Étape 7 — Après le lancement</h2>
-      <p>Une application ne s'arrête pas à la mise en ligne. Elle a besoin d'évoluer — corrections, nouvelles fonctionnalités, optimisations techniques, mise à jour des stores.</p>
-      <p>C'est pourquoi il est important de travailler avec quelqu'un qui reste disponible après le lancement — et pas seulement jusqu'à la livraison.</p>
+      <h2>Étape 7 : Après le lancement</h2>
+      <p>Une application ne s'arrête pas à la mise en ligne. Elle a besoin d'évoluer, corrections, nouvelles fonctionnalités, optimisations techniques, mise à jour des stores.</p>
+      <p>C'est pourquoi il est important de travailler avec quelqu'un qui reste disponible après le lancement, et pas seulement jusqu'à la livraison.</p>
 
       <h2>Les erreurs les plus fréquentes à éviter</h2>
       <ul>
         <li><strong>Vouloir tout dans la première version.</strong> Ça rallonge les délais, gonfle le budget et dilue ce qui compte vraiment.</li>
         <li><strong>Négliger le cadrage.</strong> Commencer à développer sans avoir défini précisément le besoin, c'est la garantie de faire des aller-retours coûteux.</li>
         <li><strong>Choisir un prestataire sur le seul critère du prix.</strong> Le développement le moins cher n'est presque jamais le moins cher sur la durée.</li>
-        <li><strong>Sous-estimer la phase de design.</strong> Une app mal pensée n'est pas utilisée — peu importe la qualité du code.</li>
+        <li><strong>Sous-estimer la phase de design.</strong> Une app mal pensée n'est pas utilisée, peu importe la qualité du code.</li>
       </ul>
 
-      <h2>Prêt à lancer votre projet mobile ?</h2>
-      <p>Que vous partiez de zéro, que vous ayez un projet à reprendre ou une application à faire évoluer, commençons par en discuter. Un appel gratuit de 30 minutes suffit pour cadrer les contours de votre projet et vous donner une première estimation.</p>
+      <h2>Prêt à lancer ton projet mobile ?</h2>
+      <p>Que tu partes de zéro, que tu aies un projet à reprendre ou une application à faire évoluer, on commence par en parler. L'audit gratuit prend 2 minutes et te donne une première lecture du potentiel, du budget et du délai. Pour le reste, écris-moi sur WhatsApp.</p>
     `,
   },
   {
@@ -1089,12 +1089,12 @@ export const BLOG_ARTICLES = [
       { q: "Il me faut quoi pour démarrer une reprise ?", a: "L'accès au code, aux comptes développeur Apple et Google, et à l'hébergement. Sans ces trois éléments, aucune reprise sérieuse n'est possible, et c'est souvent le premier point à débloquer." },
     ],
     content: `
-      <p>Vous avez une application mobile qui existe déjà. Peut-être développée par un prestataire qui n'est plus disponible. Peut-être une base technique qui s'est accumulée sans architecture claire. Peut-être une app qui fonctionnait, mais qui ne tient plus la route aujourd'hui.</p>
-      <p>La reprise d'une application mobile existante est un cas fréquent — et souvent plus complexe qu'une création de zéro, parce qu'il faut d'abord comprendre ce qui existe avant de pouvoir avancer.</p>
+      <p>Tu as une application mobile qui existe déjà. Peut-être développée par un prestataire qui n'est plus disponible. Peut-être une base technique qui s'est accumulée sans architecture claire. Peut-être une app qui fonctionnait, mais qui ne tient plus la route aujourd'hui.</p>
+      <p>La reprise d'une application mobile existante est un cas fréquent, et souvent plus complexe qu'une création de zéro, parce qu'il faut d'abord comprendre ce qui existe avant de pouvoir avancer.</p>
 
       <h2>Pourquoi reprendre une application mobile plutôt que la recréer ?</h2>
       <p>La réponse dépend de l'état de la base existante. Dans certains cas, une reprise est clairement plus rapide et moins chère que de repartir de zéro. Dans d'autres, la base est tellement désorganisée qu'une reconstruction est plus sage.</p>
-      <p>Un audit technique honnête permet de trancher. L'objectif n'est pas de tout garder — c'est de garder ce qui vaut la peine d'être gardé, et de remettre sur de bonnes bases ce qui ne tient pas.</p>
+      <p>Un audit technique honnête permet de trancher. L'objectif n'est pas de tout garder : c'est de garder ce qui vaut la peine d'être gardé, et de remettre sur de bonnes bases ce qui ne tient pas.</p>
 
       <h2>Les situations les plus fréquentes</h2>
       <ul>
@@ -1110,29 +1110,29 @@ export const BLOG_ARTICLES = [
       <p>L'audit donne une vision claire de ce qui est repris tel quel, ce qui est amélioré, et ce qui est reconstruit.</p>
 
       <h3>2. La remise en contexte produit</h3>
-      <p>Reprendre une application, c'est aussi reprendre le projet dans sa globalité — comprendre l'intention initiale, ce qui a fonctionné, ce qui n'a pas fonctionné, et où vous voulez aller.</p>
+      <p>Reprendre une application, c'est aussi reprendre le projet dans sa globalité, comprendre l'intention initiale, ce qui a fonctionné, ce qui n'a pas fonctionné, et où tu veux aller.</p>
 
       <h3>3. La phase de reprise technique</h3>
       <p>Selon les conclusions de l'audit : mise à jour des dépendances, refactoring des parties critiques, mise en place d'une architecture plus claire, correction des points de fragilité identifiés.</p>
 
       <h3>4. La reprise des évolutions</h3>
-      <p>Une fois la base stabilisée, on peut avancer. Nouvelles fonctionnalités, améliorations UX, optimisations — sur une base saine cette fois.</p>
+      <p>Une fois la base stabilisée, on peut avancer. Nouvelles fonctionnalités, améliorations UX, optimisations, sur une base saine cette fois.</p>
 
       <h2>Les questions à poser avant de confier une reprise</h2>
       <ul>
-        <li>Avez-vous accès au code source complet ?</li>
-        <li>Avez-vous les accès aux comptes développeurs (App Store, Google Play) ?</li>
+        <li>As-tu accès au code source complet ?</li>
+        <li>As-tu les accès aux comptes développeurs (App Store, Google Play) ?</li>
         <li>Y a-t-il une documentation technique existante ?</li>
         <li>Quelles sont les fonctionnalités prioritaires à faire évoluer ?</li>
       </ul>
       <p>Ces éléments déterminent directement la complexité et le coût d'une reprise.</p>
 
       <h2>Reprendre ou reconstruire ?</h2>
-      <p>La réponse honnête : ça dépend. Si la base est saine — même imparfaite — une reprise est souvent plus rapide. Si la base est trop fragile ou trop éloignée de ce que vous voulez faire, reconstruire sur des bases claires peut être plus efficace sur le long terme.</p>
-      <p>Dans tous les cas, cette décision doit être prise après un audit sérieux — pas sur une impression ou une hypothèse.</p>
+      <p>La réponse honnête : ça dépend. Si la base est saine, même imparfaite, une reprise est souvent plus rapide. Si la base est trop fragile ou trop éloignée de ce que tu veux faire, reconstruire sur des bases claires peut être plus efficace sur le long terme.</p>
+      <p>Dans tous les cas, cette décision doit être prise après un audit sérieux, pas sur une impression ou une hypothèse.</p>
 
-      <h2>Vous avez une application mobile à reprendre ?</h2>
-      <p>Discutons-en. Un appel de 30 minutes permet de comprendre votre situation, d'évaluer les enjeux et de vous donner une première orientation — gratuit, sans engagement.</p>
+      <h2>Tu as une application mobile à reprendre ?</h2>
+      <p>Discutons-en. Écris-moi sur WhatsApp avec le lien de ton application et ce qui bloque. Je regarde, j'évalue les enjeux et je te dis franchement ce qui est récupérable.</p>
     `,
   },
   {
@@ -1170,44 +1170,44 @@ export const BLOG_ARTICLES = [
       { q: "À quelle fréquence mettre à jour une application ?", a: "Au minimum à chaque version majeure d'iOS et d'Android, sinon l'application finit par être retirée des stores. Au-delà, le rythme dépend de ton activité : mieux vaut des mises à jour régulières et petites que des refontes annuelles." },
     ],
     content: `
-      <p>Votre application mobile est en ligne. Elle fonctionne. Mais elle doit avancer — nouvelles fonctionnalités, améliorations UX, optimisations techniques, adaptation aux retours utilisateurs.</p>
+      <p>Ton application mobile est en ligne. Elle fonctionne. Mais elle doit avancer, nouvelles fonctionnalités, améliorations UX, optimisations techniques, adaptation aux retours utilisateurs.</p>
       <p>Faire évoluer une application mobile, ce n'est pas juste "ajouter des choses". C'est arbitrer, prioriser, et construire de façon à ce que le produit reste maintenable et cohérent dans le temps.</p>
 
       <h2>Pourquoi l'évolution d'une app est souvent sous-estimée</h2>
-      <p>La mise en ligne n'est pas la fin du projet — c'est le début. Une application qui ne change pas est une application qui prend du retard sur ses concurrents, qui accumule de la dette technique, et qui perd progressivement ses utilisateurs.</p>
+      <p>La mise en ligne n'est pas la fin du projet : c'est le début. Une application qui ne change pas est une application qui prend du retard sur ses concurrents, qui accumule de la dette technique, et qui perd progressivement ses utilisateurs.</p>
       <p>Les erreurs les plus fréquentes à ce stade :</p>
       <ul>
         <li>Ajouter des fonctionnalités sans réfléchir à la cohérence d'ensemble</li>
-        <li>Négliger la dette technique au profit de nouvelles features — jusqu'à ce que tout casse</li>
+        <li>Négliger la dette technique au profit de nouvelles features, jusqu'à ce que tout casse</li>
         <li>Ne pas prioriser selon l'usage réel des utilisateurs</li>
         <li>Vouloir tout faire en même temps</li>
       </ul>
 
       <h2>Comment prioriser les évolutions ?</h2>
-      <p>Avant de commencer à développer quoi que ce soit, posez-vous trois questions :</p>
+      <p>Avant de commencer à développer quoi que ce soit, pose-toi trois questions :</p>
       <ul>
         <li><strong>Quel est l'impact utilisateur ?</strong> Cette évolution améliore-t-elle vraiment l'expérience ou la valeur pour l'utilisateur ?</li>
         <li><strong>Quel est l'impact business ?</strong> Est-ce que ça génère plus de revenus, réduit le churn, améliore la rétention ?</li>
         <li><strong>Quel est l'effort technique ?</strong> Certaines évolutions à fort impact peuvent être réalisées rapidement. D'autres demandent un travail de fond important.</li>
       </ul>
-      <p>Les meilleures évolutions sont celles qui ont un fort impact et un effort raisonnable. Commencez par là.</p>
+      <p>Les meilleures évolutions sont celles qui ont un fort impact et un effort raisonnable. Commence par là.</p>
 
       <h2>Dette technique : ce qu'il faut savoir</h2>
       <p>Toute application accumule de la dette technique avec le temps. Des dépendances qui vieillissent, des raccourcis pris sous pression, du code qui n'a jamais été refactorisé.</p>
       <p>Ignorer la dette technique, c'est comme ignorer une fuite d'eau. Ça s'aggrave. Et à un moment, ça empêche d'avancer.</p>
-      <p>Un expert mobile identifie et traite la dette technique progressivement — sans tout arrêter, en maintenant l'app en production.</p>
+      <p>Un expert mobile identifie et traite la dette technique progressivement, sans tout arrêter, en maintenant l'app en production.</p>
 
       <h2>Les mises à jour des stores : une contrainte réelle</h2>
-      <p>Apple et Google imposent régulièrement des mises à jour obligatoires — nouvelles versions du SDK, nouvelles guidelines, nouvelles exigences de sécurité. Ne pas les suivre, c'est risquer le retrait de l'app des stores.</p>
-      <p>Un expert en applications mobiles qui reste disponible après le lancement prend en charge ces mises à jour techniques — vous n'avez pas à vous en préoccuper.</p>
+      <p>Apple et Google imposent régulièrement des mises à jour obligatoires, nouvelles versions du SDK, nouvelles guidelines, nouvelles exigences de sécurité. Ne pas les suivre, c'est risquer le retrait de l'app des stores.</p>
+      <p>Un expert en applications mobiles qui reste disponible après le lancement prend en charge ces mises à jour techniques, tu n'as pas à t'en préoccuper.</p>
 
       <h2>Évolution vs refonte : quelle différence ?</h2>
-      <p>Une évolution, c'est faire avancer ce qui existe — en ajoutant, en améliorant, en optimisant. Une refonte, c'est remettre en question l'architecture ou l'UX de façon profonde.</p>
+      <p>Une évolution, c'est faire avancer ce qui existe, en ajoutant, en améliorant, en optimisant. Une refonte, c'est remettre en question l'architecture ou l'UX de façon profonde.</p>
       <p>La plupart du temps, une série d'évolutions bien priorisées est plus efficace qu'une grande refonte. Les grandes refontes prennent du temps, coûtent cher, et introduisent souvent de nouveaux problèmes.</p>
       <p>Quand une refonte s'impose, c'est en général parce que la dette technique est trop importante ou parce que le positionnement du produit a fondamentalement changé.</p>
 
-      <h2>Vous avez une application mobile à faire évoluer ?</h2>
-      <p>Discutons de votre situation concrète. Un appel de 30 minutes permet d'identifier les priorités et de voir comment avancer de façon structurée — gratuit, sans engagement.</p>
+      <h2>Tu as une application mobile à faire évoluer ?</h2>
+      <p>Écris-moi sur WhatsApp, on regarde ta situation concrète. Un appel de 30 minutes permet d'identifier les priorités et de voir comment avancer de façon structurée, gratuit, sans engagement.</p>
     `,
   },
   {
@@ -1245,32 +1245,32 @@ export const BLOG_ARTICLES = [
       { q: "On garde le code du MVP pour la suite ?", a: "Oui, c'est tout l'intérêt de le faire correctement. Un MVP écrit proprement sert de base à la version complète. Un MVP bâclé se jette, et le budget économisé au départ est perdu deux fois." },
     ],
     content: `
-      <p>Vous avez une idée d'application mobile. Vous voulez la lancer sans y mettre toutes vos économies, sans attendre un an, et sans construire quelque chose que personne n'utilisera.</p>
+      <p>Tu as une idée d'application mobile. Tu veux la lancer sans y mettre toutes tes économies, sans attendre un an, et sans construire quelque chose que personne n'utilisera.</p>
       <p>La réponse, c'est le MVP.</p>
 
       <h2>Qu'est-ce qu'un MVP d'application mobile ?</h2>
-      <p>MVP signifie Minimum Viable Product — produit minimum viable. C'est la version la plus simple de votre application qui permet quand même de répondre au besoin principal de vos utilisateurs.</p>
-      <p>Ce n'est pas une version bâclée ou incomplète. C'est une version <strong>ciblée</strong> — qui fait une chose bien, plutôt que dix choses moyennement.</p>
-      <p>L'objectif du MVP est de valider votre idée avec de vrais utilisateurs, le plus vite possible, avec le minimum d'investissement.</p>
+      <p>MVP signifie Minimum Viable Product, produit minimum viable. C'est la version la plus simple de ton application qui permet quand même de répondre au besoin principal de tes utilisateurs.</p>
+      <p>Ce n'est pas une version bâclée ou incomplète. C'est une version <strong>ciblée</strong>, qui fait une chose bien, plutôt que dix choses moyennement.</p>
+      <p>L'objectif du MVP est de valider ton idée avec de vrais utilisateurs, le plus vite possible, avec le minimum d'investissement.</p>
 
       <h2>Pourquoi commencer par un MVP ?</h2>
       <ul>
-        <li><strong>Valider avant d'investir.</strong> Vous testez votre idée sur le marché réel avant de tout construire.</li>
-        <li><strong>Obtenir des retours utilisateurs réels.</strong> Ce que vous imaginez et ce que les utilisateurs veulent sont souvent différents.</li>
+        <li><strong>Valider avant d'investir.</strong> Tu testes ton idée sur le marché réel avant de tout construire.</li>
+        <li><strong>Obtenir des retours utilisateurs réels.</strong> Ce que tu imagines et ce que les utilisateurs veulent sont souvent différents.</li>
         <li><strong>Réduire le risque.</strong> Un MVP mal reçu se corrige. Une application complète mal reçue, c'est des dizaines de milliers d'euros perdus.</li>
-        <li><strong>Aller vite.</strong> Un MVP bien défini peut être livré en 45 jours — versus 6 à 9 mois pour une application complète.</li>
+        <li><strong>Aller vite.</strong> Un MVP bien défini peut être livré en 45 jours, versus 6 à 9 mois pour une application complète.</li>
       </ul>
 
-      <h2>Comment définir votre MVP ?</h2>
-      <p>La question centrale : <strong>quel est le problème numéro un que votre application résout ?</strong></p>
-      <p>Votre MVP doit résoudre ce problème, et ce problème seulement. Tout le reste vient après.</p>
-      <p>Exercice utile : listez toutes les fonctionnalités que vous voulez. Divisez-les en deux colonnes — "indispensable pour résoudre le problème principal" et "tout le reste". Le MVP, c'est la première colonne.</p>
+      <h2>Comment définir ton MVP ?</h2>
+      <p>La question centrale : <strong>quel est le problème numéro un que ton application résout ?</strong></p>
+      <p>Ton MVP doit résoudre ce problème, et ce problème seulement. Tout le reste vient après.</p>
+      <p>Exercice utile : liste toutes les fonctionnalités que tu veux. Divise-les en deux colonnes, "indispensable pour résoudre le problème principal" et "tout le reste". Le MVP, c'est la première colonne.</p>
 
       <h2>45 jours : comment c'est possible ?</h2>
       <p>45 jours est un délai réaliste pour un MVP bien cadré. Ce qui le permet :</p>
       <ul>
         <li>Un périmètre clairement défini avant de commencer</li>
-        <li>Un interlocuteur unique qui comprend à la fois le produit et la technique — pas de perte de temps en réunions de coordination</li>
+        <li>Un interlocuteur unique qui comprend à la fois le produit et la technique, pas de perte de temps en réunions de coordination</li>
         <li>Une technologie cross-platform qui couvre iOS et Android en une seule passe</li>
         <li>Un processus de travail structuré, sans dispersion</li>
       </ul>
@@ -1278,17 +1278,17 @@ export const BLOG_ARTICLES = [
 
       <h2>MVP : ce que ça n'est pas</h2>
       <ul>
-        <li>Ce n'est pas une application sans design — l'UX compte dès la première version</li>
-        <li>Ce n'est pas un prototype cliquable — c'est une vraie application publiée sur les stores</li>
-        <li>Ce n'est pas une version "jetable" — la base technique doit permettre d'évoluer ensuite</li>
+        <li>Ce n'est pas une application sans design, l'UX compte dès la première version</li>
+        <li>Ce n'est pas un prototype cliquable : c'est une vraie application publiée sur les stores</li>
+        <li>Ce n'est pas une version "jetable", la base technique doit permettre d'évoluer ensuite</li>
       </ul>
 
       <h2>Après le MVP : et ensuite ?</h2>
-      <p>Le MVP est le point de départ, pas la destination. Une fois en ligne, vous collectez des données et des retours réels. Vous identifiez ce qui fonctionne, ce qui bloque, ce que les utilisateurs veulent vraiment.</p>
-      <p>C'est cette boucle — lancer, mesurer, améliorer — qui transforme un MVP en un produit qui génère des revenus.</p>
+      <p>Le MVP est le point de départ, pas la destination. Une fois en ligne, tu collectes des données et des retours réels. Tu identifies ce qui fonctionne, ce qui bloque, ce que les utilisateurs veulent vraiment.</p>
+      <p>C'est cette boucle, lancer puis mesurer puis améliorer, qui transforme un MVP en un produit qui génère des revenus.</p>
 
-      <h2>Vous avez une idée à lancer ?</h2>
-      <p>Discutons de votre projet. Un appel de 30 minutes suffit pour évaluer si un MVP est la bonne approche, définir le périmètre et voir comment avancer concrètement.</p>
+      <h2>Tu as une idée à lancer ?</h2>
+      <p>Fais l'audit gratuit en 2 minutes, ou écris-moi directement sur WhatsApp. Un appel de 30 minutes suffit pour évaluer si un MVP est la bonne approche, définir le périmètre et voir comment avancer concrètement.</p>
     `,
   },
   {
@@ -1326,7 +1326,7 @@ export const BLOG_ARTICLES = [
       { q: "Comment repérer un mauvais devis ?", a: "Un périmètre flou, une promesse de tout faire sans spécialisation affichée, aucune référence en production, une communication qui passe par des intermédiaires dès le départ, et un tarif anormalement bas." },
     ],
     content: `
-      <p>Vous avez un projet d'application mobile. Vous devez maintenant choisir avec qui le réaliser. Agence digitale, freelance, expert indépendant — les options ne manquent pas. Et les erreurs de casting coûtent cher.</p>
+      <p>Tu as un projet d'application mobile. Tu dois maintenant choisir avec qui le réaliser. Agence digitale, freelance, expert indépendant, les options ne manquent pas. Et les erreurs de casting coûtent cher.</p>
       <p>Voici les critères qui comptent vraiment.</p>
 
       <h2>Les 3 profils principaux</h2>
@@ -1336,11 +1336,11 @@ export const BLOG_ARTICLES = [
       <p>Les limites : coût élevé (marges d'agence, équipes importantes), délais longs, communication souvent filtrée par un chef de projet. Pour un projet de 5 000 à 20 000 €, la plupart des agences ne sont pas le bon choix.</p>
 
       <h3>Le freelance généraliste</h3>
-      <p>Un profil technique qui développe selon votre brief. Moins cher qu'une agence, disponible rapidement. Mais souvent sans vision produit — il exécute ce que vous lui demandez, sans forcément vous aider à faire les bons choix.</p>
-      <p>Le risque : vous vous retrouvez à prendre toutes les décisions techniques et produit sans en avoir forcément l'expertise.</p>
+      <p>Un profil technique qui développe selon ton brief. Moins cher qu'une agence, disponible rapidement. Mais souvent sans vision produit, il exécute ce que tu lui demandes, sans forcément t'aider à faire les bons choix.</p>
+      <p>Le risque : tu te retrouves à prendre toutes les décisions techniques et produit sans en avoir forcément l'expertise.</p>
 
       <h3>L'expert indépendant spécialisé</h3>
-      <p>Un profil qui combine expertise technique et compréhension produit. Il connaît son domaine en profondeur, il vous aide à cadrer autant qu'à construire. Il est joignable directement — pas de chef de projet intermédiaire.</p>
+      <p>Un profil qui combine expertise technique et compréhension produit. Il connaît son domaine en profondeur, il t'aide à cadrer autant qu'à construire. Il est joignable directement, pas de chef de projet intermédiaire.</p>
       <p>C'est le profil le plus pertinent pour la majorité des projets d'application mobile : plus accessible qu'une agence, plus structuré qu'un généraliste.</p>
 
       <h2>Les critères qui comptent vraiment</h2>
@@ -1349,16 +1349,16 @@ export const BLOG_ARTICLES = [
       <p>Créer une application mobile, ce n'est pas créer un site web. Les contraintes sont différentes : performances sur mobile, publication sur les stores, UX tactile, gestion des mises à jour. Un expert spécialisé mobile connaît ces enjeux par cœur.</p>
 
       <h3>La vision produit</h3>
-      <p>Un bon prestataire ne se contente pas d'exécuter votre liste de fonctionnalités. Il vous aide à réfléchir à ce qui est vraiment utile, à ce qui peut être simplifié, à ce qui fera revenir vos utilisateurs. C'est cette capacité qui fait la différence entre une app qui fonctionne et une app qui génère des revenus.</p>
+      <p>Un bon prestataire ne se contente pas d'exécuter ta liste de fonctionnalités. Il t'aide à réfléchir à ce qui est vraiment utile, à ce qui peut être simplifié, à ce qui fera revenir tes utilisateurs. C'est cette capacité qui fait la différence entre une app qui fonctionne et une app qui génère des revenus.</p>
 
       <h3>La transparence sur le tarif</h3>
-      <p>Méfiez-vous des devis flous ou des facturations à la journée sans périmètre clair. Un bon prestataire vous donne un tarif fixe pour un périmètre défini — vous savez ce que vous payez avant de commencer.</p>
+      <p>Méfie-toi des devis flous ou des facturations à la journée sans périmètre clair. Un bon prestataire te donne un tarif fixe pour un périmètre défini, tu sais ce que tu paies avant de commencer.</p>
 
       <h3>La disponibilité après le lancement</h3>
-      <p>Votre application aura besoin d'évoluer. Les stores imposent des mises à jour. Des bugs apparaissent en production. Vérifiez que votre prestataire est disponible après la mise en ligne — pas seulement jusqu'à la livraison.</p>
+      <p>Ton application aura besoin d'évoluer. Les stores imposent des mises à jour. Des bugs apparaissent en production. Vérifie que ton prestataire est disponible après la mise en ligne, pas seulement jusqu'à la livraison.</p>
 
       <h3>Les références concrètes</h3>
-      <p>Des applications réellement publiées sur les stores, utilisées par de vrais utilisateurs. Pas des maquettes, pas des "projets en cours". Demandez à voir des apps en production.</p>
+      <p>Des applications réellement publiées sur les stores, utilisées par de vrais utilisateurs. Pas des maquettes, pas des "projets en cours". Demande à voir des apps en production.</p>
 
       <h2>Les questions à poser avant de choisir</h2>
       <ul>
@@ -1367,7 +1367,7 @@ export const BLOG_ARTICLES = [
         <li>Quel est votre process de suivi pendant le développement ?</li>
         <li>Êtes-vous disponible après la mise en ligne ?</li>
         <li>Le tarif est-il fixe ou à la journée ?</li>
-        <li>Qui fait réellement le travail — vous ou un sous-traitant ?</li>
+        <li>Qui fait réellement le travail, vous ou un sous-traitant ?</li>
       </ul>
 
       <h2>Les signaux d'alerte</h2>
@@ -1376,11 +1376,11 @@ export const BLOG_ARTICLES = [
         <li>Une promesse de "tout faire" sans spécialisation affichée</li>
         <li>Pas de références en production</li>
         <li>Une communication qui passe par des intermédiaires dès le départ</li>
-        <li>Un tarif anormalement bas — le développement de qualité a un coût</li>
+        <li>Un tarif anormalement bas, le développement de qualité a un coût</li>
       </ul>
 
-      <h2>Vous cherchez un expert en applications mobiles ?</h2>
-      <p>Je travaille sur des projets de création, de reprise et d'évolution d'applications mobiles, avec une approche qui combine vision produit et exécution technique. Un appel gratuit de 30 minutes pour discuter de votre projet.</p>
+      <h2>Tu cherches un expert en application mobile ?</h2>
+      <p>Je travaille sur des projets de création, de reprise et d'évolution d'applications mobiles, avec une approche qui combine vision produit et exécution technique. Écris-moi sur WhatsApp, c'est moi qui réponds, et on voit en deux messages si ton projet tient la route.</p>
     `,
   },
 ]
