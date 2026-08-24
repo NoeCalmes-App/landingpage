@@ -581,6 +581,11 @@ const blogRoutes = [
     content: 'Freelance, agence, no-code : combien faut-il réellement budgétiser pour créer une application mobile en 2026 ? Analyse complète des prix selon le type de projet et les acteurs du marché.',
   },
   {
+    path: '/blog/creer-application-sans-savoir-coder',
+    heading: 'Créer une application sans savoir coder : les trois vraies options',
+    content: 'Les trois chemins possibles quand on ne sait pas coder : le no-code (ce qu\'il fait bien, et le mur de l\'abonnement dans les stores, de la publication et de la propriété du code), l\'IA (du code très vite, mais pas un produit publiable), et l\'expert (ce qu\'on paie en plus du code, entre 5 000 et 12 000 € pour une première version). Le comparatif à deux ans, le critère qui élimine une option sur trois, et le cas où aucune des trois n\'est la bonne réponse.',
+  },
+  {
     path: '/blog/creer-application-mobile-guide',
     heading: 'Comment créer une application mobile : le guide complet',
     content: 'De l\'idée au lancement sur les stores : les étapes, les choix techniques et les erreurs qui coûtent cher quand tu crées ton application mobile.',

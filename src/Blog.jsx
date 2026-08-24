@@ -21,6 +21,138 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'creer-application-sans-savoir-coder',
+    title: "Créer une application sans savoir coder : les trois vraies options",
+    metaTitle: "Créer une application sans savoir coder | Noé Calmes",
+    description: "No-code, IA ou expert : ce que chaque option coûte vraiment, jusqu'où elle va, et le mur que tu finis par rencontrer avec chacune.",
+    date: '2026-08-22',
+    readTime: '7 min',
+    finalCta: 'audit',
+    categorie: "Créer",
+    accroche: "Trois options honnêtes, et le mur que chacune finit par poser.",
+    tldr: {
+      verdict: "Tu peux créer une application sans écrire une ligne de code, et les trois chemins existent vraiment. Ce qui les sépare n'est pas la difficulté technique, c'est le moment où chacun s'arrête et ce que ça te coûte de repartir.",
+      points: [
+        { label: "Le sujet", valeur: "No-code, IA ou expert : ce que chaque option permet réellement" },
+        { label: "Pour qui", valeur: "Tu as une idée d'application et aucune compétence technique" },
+        { label: "À retenir", valeur: "Le no-code s'arrête à l'abonnement dans les stores et à la propriété du code" },
+        { label: "Repère", valeur: "Une première version sérieuse se situe entre 5 000 et 12 000 €" },
+      ],
+    },
+    pourQui: [
+      "Tu as une idée d'application et tu ne sais pas coder",
+      "Tu hésites entre te débrouiller seul et faire appel à quelqu'un",
+      "Tu veux savoir ce que chaque option coûte au bout de deux ans",
+    ],
+    pasPourQui: [
+      "Ton seul critère est de trouver le moyen le moins cher d'avoir une application",
+      "Tu veux apprendre à développer toi-même, ce n'est pas le sujet ici",
+      "Ton application existe déjà et tu cherches à la faire évoluer",
+    ],
+    faq: [
+      { q: "Est-ce que je peux commencer en no-code et migrer ensuite ?", a: "Techniquement non, il n'existe pas d'export utilisable vers du sur-mesure. Tu ne migres pas, tu refais. Ce n'est pas forcément une mauvaise décision : si le no-code t'a prouvé que des gens paient, tu repars avec une certitude qui vaut plus cher que les mois perdus." },
+      { q: "Qui possède le code dans chaque cas ?", a: "En no-code, personne ne te le donne : ton application vit dans la plateforme. Avec l'IA ou avec un expert, le code est à toi. C'est le point à vérifier dans tout contrat, parce qu'il décide de ta liberté de changer de prestataire ensuite." },
+      { q: "Et si mon idée n'est pas encore assez claire pour choisir ?", a: "C'est le cas le plus fréquent, et c'est normal. Tant que tu ne sais pas dire ce qui sera payant dans ton application, aucune des trois options ne peut être évaluée. Clarifier l'idée coûte quelques heures, se tromper de technologie coûte des mois." },
+    ],
+    content: `
+      <p>Tu as une idée d'application. Tu ne sais pas coder, et tu as déjà lu trois choses contradictoires : que le no-code suffit, que l'IA fait le travail à ta place, ou qu'il faut absolument passer par un développeur.</p>
+      <p>Les trois sont vraies. Le problème, c'est qu'elles ne le sont pas au même moment, ni pour le même projet.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et je me sers des trois options selon les cas. Voici ce que chacune permet réellement, et surtout où elle s'arrête.</p>
+
+      <h2>La vraie question n'est pas « est-ce que je peux »</h2>
+      <p>Tu peux. C'est acquis depuis longtemps, et ce n'est pas ça qui décide.</p>
+      <p>La vraie question est celle-ci : à quel moment cette option va-t-elle m'arrêter, et combien ça me coûtera de repartir ?</p>
+      <p>Parce qu'aucune des trois ne t'accompagne jusqu'au bout. Chacune pose un mur, à un endroit différent, et le prix de ce mur est très inégal.</p>
+
+      <div class="encadre astuce">
+        <span class="encadre-titre">La règle en une phrase</span>
+        <p>Ne compare pas les trois options sur ce qu'elles coûtent à la création. Compare-les sur ce qu'elles coûtent le jour où tu veux en changer.</p>
+      </div>
+
+      <h2>Le no-code : jusqu'où il va vraiment</h2>
+      <p>Bubble, Glide, FlutterFlow et les autres font un vrai travail. Tu assembles ton application dans une interface, tu la mets en ligne, et tu obtiens quelque chose qui fonctionne en quelques semaines.</p>
+      <p>Ce que le no-code fait très bien :</p>
+      <ul>
+        <li>tester une idée devant de vrais utilisateurs, vite et pour presque rien</li>
+        <li>un outil interne pour ton équipe, sans passage par les stores</li>
+        <li>une application simple, sans logique métier compliquée</li>
+      </ul>
+      <p>Et voilà où il s'arrête, précisément :</p>
+      <ul>
+        <li><strong>l'abonnement dans les stores</strong> : le paiement récurrent d'Apple et Google est l'endroit où la plupart des projets no-code se cassent, parce qu'il ne s'assemble pas, il se code</li>
+        <li><strong>la publication</strong> : Apple refuse régulièrement les applications qui ne sont qu'un site web emballé</li>
+        <li><strong>la performance</strong> : ça tient à cent utilisateurs, ça rame à dix mille</li>
+        <li><strong>la propriété</strong> : ton application vit sur une plateforme dont tu ne possèdes pas le code, et dont tu subis les changements de tarif</li>
+      </ul>
+
+      <div class="encadre attention">
+        <span class="encadre-titre">Le piège le plus cher</span>
+        <p>Le no-code ne coûte pas cher à l'entrée, il coûte cher à la sortie. Le jour où tu atteins son plafond, tu ne migres pas ton application, tu la refais entièrement. Tu paies donc deux fois, et tu as perdu les mois passés dessus.</p>
+      </div>
+
+      <h2>L'IA : elle écrit du code, pas un produit</h2>
+      <p>L'IA génère du code très vite, et je m'en sers tous les jours. Mais elle fait exactement ce que tu lui demandes, sans jamais te dire que tu lui demandes la mauvaise chose.</p>
+      <p>Sans compétence technique, tu obtiens un résultat qui ressemble à une application. Puis arrivent les choses qu'aucune démonstration ne montre : la publication sur les stores, les comptes développeur, les paiements, la sécurité des données de tes utilisateurs, et le premier bug que tu ne sais ni lire ni corriger.</p>
+      <p>J'ai écrit un article entier là-dessus, parce que le sujet mérite mieux que trois lignes : <a href="/blog/creer-application-avec-ia/">créer une application avec l'IA</a>.</p>
+
+      <h2>L'expert : ce que tu paies en plus du code</h2>
+      <p>C'est l'option la plus chère à l'entrée, et il faut être honnête sur ce qu'elle contient. Le code n'est pas la partie qui coûte.</p>
+      <p>Ce que tu achètes en plus :</p>
+      <ul>
+        <li>les décisions prises avant d'écrire la moindre ligne : ce qui sera payant, ce qui attend la version suivante</li>
+        <li>la publication sur les deux stores, comptes développeur et passage en revue compris</li>
+        <li>un code qui t'appartient, que n'importe qui peut reprendre après</li>
+        <li>quelqu'un à qui parler le jour où ça casse</li>
+      </ul>
+      <p>Pour une première version sérieuse publiée sur les deux stores, compte entre 5 000 et 12 000 €. Le détail de ce qui fait monter ce chiffre est ici : <a href="/blog/combien-coute-application-mobile/">combien coûte une application mobile</a>.</p>
+
+      <h2>Le vrai comparatif se fait à deux ans</h2>
+      <p>À la création, le no-code gagne toujours. C'est à deux ans que la comparaison devient honnête.</p>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Ce qui compte</th><th>No-code</th><th>IA seule</th><th>Expert</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Coût de départ</td><td>Faible</td><td>Très faible</td><td>5 000 à 12 000 €</td></tr>
+            <tr><td>Coût qui revient</td><td>Abonnement mensuel, qui monte avec l'usage</td><td>Hébergement</td><td>Hébergement</td></tr>
+            <tr><td>Abonnement dans les stores</td><td>Difficile à impossible</td><td>Possible, risqué</td><td>Oui</td></tr>
+            <tr><td>Publication Apple et Google</td><td>Refus fréquents</td><td>À ta charge</td><td>Incluse</td></tr>
+            <tr><td>Propriété du code</td><td>Non</td><td>Oui</td><td>Oui</td></tr>
+            <tr><td>Coût pour en changer</td><td>Tout refaire</td><td>Tout reprendre</td><td>Reprise normale</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Laquelle choisir, selon où tu en es</h2>
+      <p><strong>Choisis le no-code si</strong> tu veux prouver que ton idée intéresse quelqu'un, que tu n'as pas encore de client payant, et que tu acceptes de tout refaire si ça marche. C'est un test, pas un lancement.</p>
+      <p><strong>Choisis l'IA si</strong> tu sais déjà lire du code, ou si tu construis un outil pour toi seul. Comme accélérateur elle est excellente. Comme unique compétence technique, elle est un piège.</p>
+      <p><strong>Choisis un expert si</strong> ton application doit encaisser de l'argent, vivre sur les stores et durer plus de deux ans. Autrement dit, si elle est censée rapporter quelque chose. Le calcul est ici : <a href="/blog/rentabiliser-application-mobile/">rentabiliser une application mobile</a>.</p>
+
+      <h2>Le cas où aucune des trois n'est la bonne réponse</h2>
+      <p>C'est le paragraphe que personne n'écrit, alors je le mets quand même.</p>
+      <p>Dans beaucoup de situations, tu n'as pas besoin d'une application. Si tes utilisateurs viennent une fois par mois, si tu n'as besoin ni de notification ni d'usage hors connexion, un site fait le travail pour bien moins cher.</p>
+      <p>L'application se justifie quand il y a de la fréquence, une habitude à créer et quelque chose à encaisser. Si ces trois éléments manquent, aucune des trois options ne sauvera le projet.</p>
+
+      <h2>Ce que je ne fais pas, pour être clair</h2>
+      <p>Je conçois le marketing dans l'application, c'est-à-dire ce qui transforme un utilisateur en client. Je ne fais pas venir les utilisateurs. L'acquisition de trafic est un autre métier, et te promettre les deux serait malhonnête.</p>
+
+      <h2>Par où commencer</h2>
+      <p>Trois actions, dans cet ordre :</p>
+      <ol>
+        <li>Écris en trois phrases ce que ton application fait, pour qui, et ce qui sera payant. Si tu n'y arrives pas, aucune technologie ne comblera ce trou.</li>
+        <li>Réponds à une seule question : est-ce que je dois encaisser de l'argent dedans ? Elle élimine à elle seule une option sur les trois.</li>
+        <li>Fais estimer ton idée avant d'engager quoi que ce soit, pour partir avec un budget et un délai au lieu d'une intuition.</li>
+      </ol>
+
+      <div class="chiffre">
+        <span class="chiffre-valeur">2 fois</span>
+        <span class="chiffre-texte">ce que paie celui qui démarre en no-code puis atteint son plafond : la première version, puis la vraie.</span>
+      </div>
+    `,
+  },
+  {
     slug: 'application-audience-revenus-recurrents',
     title: "Comment une application transforme une audience en revenus récurrents",
     metaTitle: "Transformer ton audience en revenus récurrents | Noé Calmes",
@@ -1408,11 +1540,12 @@ export const ARTICLES_LIES = {
   'pourquoi-applications-ne-rapportent-rien': ['rentabiliser-application-mobile', 'modele-economique-application-mobile', 'creer-application-avec-ia'],
   'application-audience-revenus-recurrents': ['application-mobile-coach-formateur', 'application-par-abonnement', 'rentabiliser-application-mobile'],
   'application-mobile-coach-formateur': ['application-audience-revenus-recurrents', 'modele-economique-application-mobile', 'combien-coute-application-mobile'],
-  'creer-application-avec-ia': ['pourquoi-applications-ne-rapportent-rien', 'choisir-expert-application-mobile', 'reprendre-application-mobile-existante'],
+  'creer-application-avec-ia': ['pourquoi-applications-ne-rapportent-rien', 'choisir-expert-application-mobile', 'creer-application-sans-savoir-coder'],
   'application-mobile-meilleur-investissement': ['rentabiliser-application-mobile', 'combien-coute-application-mobile', 'creation-application-mobile-toulouse'],
 
   // Cluster creation / conduite de projet
-  'creer-application-mobile-guide': ['mvp-application-mobile', 'combien-coute-application-mobile', 'choisir-expert-application-mobile'],
+  'creer-application-sans-savoir-coder': ['creer-application-avec-ia', 'combien-coute-application-mobile', 'creer-application-mobile-guide'],
+  'creer-application-mobile-guide': ['mvp-application-mobile', 'creer-application-sans-savoir-coder', 'choisir-expert-application-mobile'],
   'combien-coute-application-mobile': ['creer-application-mobile-guide', 'mvp-application-mobile', 'creation-application-mobile-toulouse'],
   'mvp-application-mobile': ['creer-application-mobile-guide', 'idee-application-business-rentable', 'faire-evoluer-application-mobile'],
   'choisir-expert-application-mobile': ['creer-application-mobile-guide', 'reprendre-application-mobile-existante', 'combien-coute-application-mobile'],
