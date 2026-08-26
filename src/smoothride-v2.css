@@ -1,0 +1,342 @@
+/* ==========================================================================
+   SmoothRide V2 — charte + composants
+   Direction validee sur la piste visuelle de Noe : jade pour le confort,
+   rouge pour le dos-d'ane, typo large, sombre par defaut, clair pour le jour.
+   Tokens nommes par ROLE : changer de theme ne touche aucun ecran.
+   ========================================================================== */
+
+.srv {
+  --canvas:      #EEF1F3;
+  --canvas-ink:  #10171C;
+  --canvas-soft: #5B6772;
+  --canvas-line: #D8DFE4;
+
+  /* typographie : SIX crans. Cadre 300 px pour un ecran de 393 pt,
+     facteur 0,76 : ces valeurs sont celles du CADRE. */
+  --t-display: 26px;
+  --t-title:   19px;
+  --t-lead:    13px;
+  --t-body:    11.5px;
+  --t-label:   10px;
+  --t-meta:    9px;
+
+  --h-compact: 30px;
+  --h-inline:  38px;
+  --h-primary: 48px;
+
+  --r-card:    16px;
+  --r-control: 12px;
+  --r-pill:    999px;
+
+  --sh-raised: 0 2px 10px rgba(3, 8, 12, .30);
+  --sh-float:  0 20px 44px -20px rgba(3, 8, 12, .70);
+
+  --gutter:    18px;
+
+  background: var(--canvas);
+  color: var(--canvas-ink);
+  min-height: 100vh;
+  font-family: 'Overpass', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   LES COULEURS DE MARQUE SONT LES MEMES DANS LES DEUX THEMES.
+   Seuls le FOND et le TEXTE changent. Le logo, le jade, le corail, les
+   traces et les icones ne bougent pas d'un theme a l'autre : c'est ce qui
+   fait qu'on reconnait l'application.
+
+   Une seule exception, imposee par la lisibilite : un texte jade sur fond
+   blanc tombe a 3,0 de contraste, sous le seuil. Les tokens `-txt` servent
+   donc au TEXTE et aux fines bordures sur fond clair. Les aplats, eux,
+   gardent la couleur de marque exacte.
+
+   Pour Flutter : ces blocs se mappent 1:1 sur deux ThemeData.
+   ========================================================================== */
+
+/* --- marque, commune aux deux themes --- */
+.srv-dark, .srv-light {
+  --jade:       #3FE0AC;
+  --jade-ink:   #04231A;
+  --rouge:      #FF6B5E;
+  --rouge-ink:  #2B0A06;
+}
+
+/* ---------- SOMBRE ---------- */
+.srv-dark {
+  --bg: #0B1512; --bg-deep: #060D0B;
+  --surface: #12201C; --surface-2: #1A2C26;
+  --line: #24382F; --line-soft: rgba(240,253,248,.10);
+  --ink: #F0FDF8; --ink-2: #9FB3AC; --ink-3: #7C918A;
+  --jade-txt: #3FE0AC;
+  --rouge-txt: #FF9A90;
+  --jade-soft: rgba(63,224,172,.14); --jade-line: rgba(63,224,172,.34);
+  --rouge-soft: rgba(255,107,94,.16);
+}
+
+/* ---------- CLAIR : meme marque, fond et texte inverses ---------- */
+.srv-light {
+  --bg: #FFFFFF; --bg-deep: #FFFFFF;
+  --surface: #FFFFFF; --surface-2: #F2F6F5;
+  --line: #E2EAE7; --line-soft: rgba(10,31,25,.08);
+  --ink: #0A1F19; --ink-2: #48635A; --ink-3: #556D64;
+  --jade-txt: #077A55;
+  --rouge-txt: #C4271B;
+  --jade-soft: rgba(63,224,172,.16); --jade-line: rgba(7,122,85,.28);
+  --rouge-soft: rgba(255,107,94,.14);
+}
+
+.srv *, .srv *::before, .srv *::after { box-sizing: border-box; }
+/* GARDE-FOU : tue l'espace de ligne de base qui fait flotter les icones. */
+.srv svg { display: block; flex: 0 0 auto; }
+/* `:where` a une specificite nulle : ne peut jamais ecraser un composant. */
+.srv :where(button) { font: inherit; color: inherit; border: none; background: none; cursor: pointer; }
+.srv .num { font-variant-numeric: tabular-nums; }
+
+/* ========================= PAGE ========================= */
+.srv-wrap { max-width: 1180px; margin: 0 auto; padding: 0 22px; }
+.srv-hero { padding: 60px 0 34px; text-align: center; }
+.srv-hero-eyebrow { margin: 0 0 12px; font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--canvas-soft); }
+.srv-hero h1 { margin: 0 0 10px; font-size: clamp(30px, 4.6vw, 44px); font-weight: 800; letter-spacing: -.03em; line-height: 1.04; text-wrap: balance; }
+.srv-hero-ref { margin: 0 0 18px; font-size: 13px; color: var(--canvas-soft); font-weight: 600; }
+.srv-chip { display: inline-flex; align-items: center; gap: 8px; background: #0B1512; color: #F0FDF8; padding: 9px 15px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.srv-chip i { width: 7px; height: 7px; border-radius: 50%; background: #3FE0AC; display: block; }
+
+.srv-sec { padding: 44px 0; border-top: 1px solid var(--canvas-line); }
+.srv-sec-num { margin: 0 0 7px; font-size: 11px; font-weight: 700; letter-spacing: .18em; color: var(--canvas-soft); }
+.srv-sec h2 { margin: 0 0 8px; font-size: 27px; font-weight: 800; letter-spacing: -.028em; text-wrap: balance; }
+.srv-sec-note { margin: 0 0 28px; font-size: 14.5px; line-height: 1.6; color: var(--canvas-soft); max-width: 64ch; }
+
+.srv-gallery { display: grid; gap: 28px 20px; grid-template-columns: repeat(auto-fill, minmax(336px, 1fr)); }
+.srv-slot { display: flex; flex-direction: column; gap: 11px; }
+.srv-slot-head h4 { margin: 0 0 2px; font-size: 14.5px; font-weight: 700; letter-spacing: -.01em; }
+.srv-slot-head p { margin: 0; font-size: 12.5px; color: var(--canvas-soft); line-height: 1.45; }
+.srv-notes { display: flex; flex-wrap: wrap; gap: 6px; }
+.srv-notes span { font-size: 10.5px; font-weight: 600; padding: 4px 9px; border-radius: 999px; background: #E3E9ED; color: var(--canvas-soft); }
+.srv-notes span[data-s="yes"] { background: rgba(15,169,122,.14); color: #0B7052; }
+.srv-duo { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(336px, 1fr)); }
+.srv-duo-label { margin: 0 0 9px; font-size: 10.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--canvas-soft); }
+
+/* ========================= CADRE ========================= */
+.srv-phone { width: 336px; height: 730px; flex: none; background: var(--bg); border-radius: 42px; border: 9px solid #040A08; box-shadow: var(--sh-float); overflow: hidden; position: relative; display: flex; flex-direction: column; color: var(--ink); }
+.srv-phone-tall { height: 800px; }
+.srv-status { height: 48px; flex: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 20px 0 24px; font-size: var(--t-label); font-weight: 700; position: relative; z-index: 5; }
+/* Dynamic Island, cotes reels de l'iPhone 16 Pro : 125 x 36 pt a 11 pt du
+   haut, ramenes a l'echelle du cadre (facteur 0,8358). */
+.srv-island {
+  position: absolute; top: 9px; left: 50%; transform: translateX(-50%);
+  width: 104px; height: 30px; border-radius: 999px;
+  background: #000; z-index: 6; pointer-events: none;
+}
+.srv-status-r { display: flex; align-items: center; gap: 4px; }
+.srv-home { position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%); width: 104px; height: 4px; border-radius: 3px; background: color-mix(in srgb, var(--ink) 32%, transparent); z-index: 6; }
+.srv-body { flex: 1 1 auto; min-height: 0; position: relative; display: flex; flex-direction: column; gap: 10px; padding: 2px var(--gutter) 26px; }
+.srv-body-scroll { overflow-y: auto; }
+.srv-body-flush { padding: 0; }
+.srv-body-tab { padding-bottom: 66px; }
+
+/* ========================= COMPOSANTS ========================= */
+.srv-brand { display: flex; align-items: center; justify-content: center; gap: 9px; flex: none; padding: 4px 0 2px; }
+.srv-brand span { font-size: var(--t-lead); font-weight: 800; letter-spacing: -.02em; }
+
+.srv-h { margin: 0; font-size: var(--t-display); font-weight: 800; letter-spacing: -.032em; line-height: 1.1; text-wrap: balance; }
+.srv-h em { font-style: normal; color: var(--jade-txt); display: block; }
+.srv-lead { margin: 0; font-size: var(--t-lead); line-height: 1.5; color: var(--ink-2); }
+.srv-title { margin: 0; font-size: var(--t-title); font-weight: 800; letter-spacing: -.022em; line-height: 1.16; text-wrap: balance; }
+
+.srv-top { display: flex; align-items: center; gap: 10px; min-height: 38px; flex: none; }
+.srv-top h2 { margin: 0; flex: 1 1 auto; font-size: var(--t-lead); font-weight: 800; line-height: 1; }
+.srv-back { width: 30px; height: 30px; border-radius: 999px; flex: none; background: var(--surface-2); display: grid; place-items: center; color: var(--ink-2); }
+
+.srv-btn { height: var(--h-primary); width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; background: var(--jade); color: var(--jade-ink); font-size: var(--t-lead); font-weight: 800; line-height: 1; transition: transform .12s ease, filter .12s ease; }
+.srv-btn:active { transform: scale(.975); filter: brightness(.93); }
+.srv-btn:focus-visible { outline: 2px solid var(--jade); outline-offset: 3px; }
+.srv-btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.srv-btn-off { background: var(--surface-2); color: var(--ink-3); pointer-events: none; }
+.srv-btn-inline { height: var(--h-inline); width: auto; padding: 0 18px; }
+.srv-btn-compact { height: var(--h-compact); width: auto; padding: 0 13px; font-size: var(--t-label); font-weight: 700; }
+.srv-link { font-size: var(--t-body); font-weight: 800; color: var(--ink); text-align: center; padding: 6px 0; width: 100%; }
+.srv-legal { margin: 0; font-size: var(--t-meta); line-height: 1.45; color: var(--ink-3); text-align: center; }
+.srv-legal b { color: var(--ink-2); font-weight: 700; }
+.srv-icon-btn { width: var(--h-inline); height: var(--h-inline); flex: none; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); display: grid; place-items: center; color: var(--ink); box-shadow: var(--sh-raised); }
+.srv-bottom { margin-top: auto; display: flex; flex-direction: column; gap: 7px; flex: none; }
+
+.srv-pill { white-space: nowrap; display: inline-flex; align-items: center; gap: 5px; padding: 4px 8px; border-radius: 999px; font-size: var(--t-label); font-weight: 800; line-height: 1; background: var(--surface-2); color: var(--ink-2); }
+.srv-pill-jade { background: var(--jade-soft); color: var(--jade-txt); }
+.srv-pill-rouge { background: var(--rouge-soft); color: var(--rouge-txt); }
+.srv-pill-wait { background: transparent; color: var(--ink-2); border: 1px dashed var(--line); }
+
+.srv-dots { display: flex; align-items: center; justify-content: center; gap: 5px; flex: none; padding: 2px 0; }
+.srv-dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--line); display: block; }
+.srv-dots i[data-on="yes"] { width: 17px; border-radius: 3px; background: var(--jade); }
+
+/* ---- SCHEMA des deux trajets : volontairement PAS une carte. A cette
+   taille un fond cartographique reel est bruite ; le schema dit la
+   promesse en une seconde. ---- */
+.srv-scheme { flex: 1 1 auto; min-height: 172px; position: relative; display: block; }
+.srv-scheme svg { width: 100%; height: 100%; display: block; }
+.srv-scheme-grid { stroke: var(--line); stroke-width: 1; opacity: .5; }
+.srv-scheme-fast { stroke: var(--rouge); stroke-width: 3; stroke-dasharray: 7 5; fill: none; stroke-linecap: round; }
+.srv-scheme-halo { stroke: var(--jade); stroke-width: 11; opacity: .16; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.srv-scheme-soft { stroke: var(--jade); stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---- CARTE REELLE : uniquement la ou l'on navigue ---- */
+.srv-map { position: absolute; inset: 0; overflow: hidden; background: var(--surface-2);
+  background-image: linear-gradient(color-mix(in srgb, var(--ink) 5%, transparent) 1px, transparent 1px),
+                    linear-gradient(90deg, color-mix(in srgb, var(--ink) 5%, transparent) 1px, transparent 1px);
+  background-size: 34px 34px; }
+.srv-map img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.srv-layer { position: absolute; inset: 0; padding: 2px var(--gutter) 0; display: flex; flex-direction: column; gap: 9px; }
+.srv-search { display: flex; align-items: center; gap: 9px; height: var(--h-primary); padding: 0 15px; border-radius: 999px; flex: none; background: color-mix(in srgb, var(--surface) 84%, transparent); backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%); border: 1px solid var(--line-soft); box-shadow: var(--sh-raised); color: var(--ink-2); font-size: var(--t-body); font-weight: 700; }
+.srv-search strong { color: var(--ink); font-weight: 800; }
+.srv-tag { position: absolute; display: inline-flex; align-items: center; gap: 5px; padding: 5px 9px; border-radius: 999px; font-size: var(--t-label); font-weight: 800; line-height: 1; box-shadow: var(--sh-raised); white-space: nowrap; }
+.srv-tag[data-k="soft"] { background: var(--jade); color: var(--jade-ink); }
+.srv-tag[data-k="fast"] { background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(10px); color: var(--ink-2); border: 1px solid var(--line-soft); }
+
+/* feuille : translucide, lisere clair, jamais plus de la moitie de l'ecran */
+.srv-sheet { margin: auto calc(var(--gutter) * -1) 0; background: color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter: blur(22px) saturate(150%); -webkit-backdrop-filter: blur(22px) saturate(150%); border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent); border-radius: 22px 22px 0 0; padding: 11px var(--gutter) 15px; display: flex; flex-direction: column; gap: 8px; box-shadow: var(--sh-float); position: relative; z-index: 3; flex: none; max-height: 50%; overflow: hidden; }
+.srv-grab { width: 32px; height: 4px; border-radius: 3px; margin: 0 auto 3px; background: color-mix(in srgb, var(--ink) 22%, transparent); }
+
+/* ---- carte d'itineraire, composant signature ---- */
+.srv-route { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 9px; align-items: center; width: 100%; text-align: left; padding: 10px 12px; border-radius: var(--r-control); background: var(--surface); border: 1px solid var(--line); transition: transform .12s ease; }
+.srv-route:active { transform: scale(.985); }
+.srv-route[data-on="yes"] { border-color: var(--jade); background: transparent; box-shadow: inset 0 0 0 1px var(--jade); }
+.srv-route-name { display: flex; align-items: center; gap: 7px; font-size: var(--t-body); font-weight: 800; line-height: 1; white-space: nowrap; }
+.srv-route-name i { width: 7px; height: 7px; border-radius: 50%; display: block; }
+.srv-route-time { grid-column: 3; grid-row: 1; font-size: var(--t-title); font-weight: 800; line-height: 1; letter-spacing: -.024em; white-space: nowrap; }
+.srv-route-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: var(--t-label); color: var(--ink-2); line-height: 1.3; }
+.srv-profile { display: block; width: 100%; height: 13px; overflow: visible; }
+.srv-profile-base { stroke: var(--ink-3); stroke-width: 1.4; stroke-linecap: round; opacity: .55; }
+.srv-profile-t { stroke-width: 2; stroke-linecap: round; }
+.srv-profile[data-k="fast"] .srv-profile-t { stroke: var(--rouge); }
+.srv-profile[data-k="soft"] .srv-profile-t { stroke: var(--jade-txt); }
+
+/* ---- navigation ---- */
+.srv-instr { display: flex; align-items: center; gap: 13px; flex: none; padding: 12px 14px; border-radius: var(--r-card); background: color-mix(in srgb, var(--bg-deep) 88%, transparent); backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%); border: 1px solid var(--line-soft); box-shadow: var(--sh-raised); }
+.srv-instr-d { font-size: var(--t-title); font-weight: 800; line-height: 1; letter-spacing: -.024em; }
+.srv-instr small { display: block; margin-top: 3px; font-size: var(--t-label); color: var(--ink-2); line-height: 1.25; }
+.srv-drive { display: flex; align-items: center; justify-content: space-between; flex: none; padding: 10px 15px; border-radius: var(--r-card); background: color-mix(in srgb, var(--surface) 86%, transparent); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid var(--line-soft); }
+.srv-drive div { text-align: center; }
+.srv-drive strong { display: block; font-size: var(--t-lead); font-weight: 800; line-height: 1; }
+.srv-drive small { display: block; margin-top: 3px; font-size: var(--t-meta); color: var(--ink-3); letter-spacing: .09em; text-transform: uppercase; line-height: 1; }
+.srv-fab { width: 54px; height: 54px; border-radius: 999px; flex: none; background: var(--rouge); color: #FFF; display: grid; place-items: center; box-shadow: var(--sh-float); transition: transform .12s ease; }
+.srv-fab:active { transform: scale(.93); }
+
+/* ---- listes, panneaux, champs ---- */
+.srv-panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); overflow: hidden; flex: none; }
+.srv-row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; padding: 10px 12px; width: 100%; text-align: left; border-bottom: 1px solid var(--line); }
+.srv-row:last-child { border-bottom: none; }
+.srv-row:active { background: var(--surface-2); }
+.srv-row-i { width: 29px; height: 29px; border-radius: 9px; display: grid; place-items: center; background: var(--surface-2); color: var(--ink-2); }
+.srv-row-i[data-t="jade"] { background: var(--jade-soft); color: var(--jade-txt); }
+.srv-row-i[data-t="rouge"] { background: var(--rouge-soft); color: var(--rouge-txt); }
+.srv-row-b { min-width: 0; }
+.srv-row-b strong { display: block; font-size: var(--t-body); font-weight: 800; line-height: 1.3; }
+.srv-row-b small { display: block; margin-top: 1px; font-size: var(--t-label); color: var(--ink-2); line-height: 1.35; }
+.srv-head { display: flex; align-items: baseline; justify-content: space-between; gap: 9px; flex: none; margin-top: 3px; font-size: var(--t-meta); font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-3); }
+.srv-field { display: flex; align-items: center; gap: 9px; flex: none; height: var(--h-primary); padding: 0 13px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-control); color: var(--ink-2); font-size: var(--t-body); }
+.srv-field strong { color: var(--ink); font-weight: 700; }
+.srv-field-on { border-color: var(--jade); }
+.srv-note { display: grid; grid-template-columns: auto 1fr; gap: 9px; align-items: start; flex: none; padding: 10px 12px; border-radius: var(--r-control); background: var(--jade-soft); border: 1px solid var(--jade-line); }
+.srv-note[data-t="rouge"] { background: var(--rouge-soft); border-color: rgba(255,107,94,.34); }
+.srv-note[data-t="neutral"] { background: var(--surface); border-color: var(--line); }
+.srv-note strong { display: block; font-size: var(--t-body); font-weight: 800; line-height: 1.3; }
+.srv-note small { display: block; margin-top: 2px; font-size: var(--t-label); color: var(--ink-2); line-height: 1.4; }
+
+.srv-tabs { position: absolute; left: 9px; right: 9px; bottom: 13px; height: 54px; z-index: 4; background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); border: 1px solid var(--line-soft); border-radius: 999px; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; padding: 0 5px; }
+.srv-tab { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 0; color: var(--ink-3); }
+.srv-tab span { font-size: var(--t-label); font-weight: 700; line-height: 1; }
+.srv-tab[data-on="yes"] { color: var(--jade-txt); }
+
+.srv-empty { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 9px; padding: 16px 6px; }
+.srv-empty-i { width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); }
+.srv-empty h2 { margin: 3px 0 0; font-size: var(--t-lead); font-weight: 800; }
+.srv-empty p { margin: 0; font-size: var(--t-body); line-height: 1.5; color: var(--ink-2); max-width: 30ch; }
+
+.srv-skel { border-radius: 9px; background: var(--surface-2); position: relative; overflow: hidden; }
+.srv-skel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--ink) 9%, transparent), transparent); animation: srv-sh 1.4s infinite; }
+@keyframes srv-sh { to { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { .srv-skel::after { animation: none; } .srv * { transition: none !important; } }
+
+.srv-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; flex: none; }
+.srv-kpi { padding: 10px 12px; border-radius: var(--r-control); background: var(--surface); border: 1px solid var(--line); }
+.srv-kpi span { display: block; margin-bottom: 4px; font-size: var(--t-meta); letter-spacing: .11em; text-transform: uppercase; color: var(--ink-3); line-height: 1; }
+.srv-kpi strong { display: block; font-size: var(--t-title); font-weight: 800; line-height: 1; letter-spacing: -.024em; }
+.srv-kpi small { display: block; margin-top: 3px; font-size: var(--t-meta); color: var(--ink-2); }
+.srv-plan { display: grid; grid-template-columns: 1fr auto; gap: 2px 9px; align-items: center; width: 100%; text-align: left; padding: 11px 13px; border-radius: var(--r-control); background: var(--surface); border: 1px solid var(--line); }
+.srv-plan[data-on="yes"] { border-color: var(--jade); background: var(--jade-soft); }
+.srv-plan strong { font-size: var(--t-body); font-weight: 800; line-height: 1.2; }
+.srv-plan small { font-size: var(--t-label); color: var(--ink-2); line-height: 1.3; }
+.srv-plan-p { grid-row: span 2; font-size: var(--t-lead); font-weight: 800; line-height: 1; }
+.srv-benef { display: flex; align-items: center; gap: 9px; padding: 5px 0; }
+.srv-benef span { font-size: var(--t-body); color: var(--ink-2); line-height: 1.35; }
+.srv-benef strong { color: var(--ink); font-weight: 800; }
+
+@media (max-width: 640px) {
+  .srv-wrap { padding: 0 14px; }
+  .srv-gallery { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+}
+
+/* ==========================================================================
+   PLANCHE DE CHARTE — en langage client. Le jargon (tokens, px) vit dans le
+   CSS, pas sur cette page.
+   ========================================================================== */
+.srv-da { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); }
+.srv-da-card { background: #FFF; border: 1px solid var(--canvas-line); border-radius: 16px; padding: 20px; }
+.srv-da-card h3 { margin: 0 0 15px; font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--canvas-soft); }
+.srv-da-wide { grid-column: 1 / -1; }
+
+/* --- logos --- */
+.srv-logos { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+/* la rangee d'icones a besoin de toute la largeur : a 210 px les quatre
+   tailles s'empilent et on ne peut plus les comparer d'un coup d'oeil. */
+.srv-logo-box[data-full="yes"] { grid-column: 1 / -1; }
+.srv-logo-box { border-radius: 14px; padding: 22px 18px; display: flex; flex-direction: column; align-items: center; gap: 12px; border: 1px solid var(--canvas-line); }
+.srv-logo-box[data-bg="clair"] { background: #FFFFFF; }
+.srv-logo-box[data-bg="sombre"] { background: #0B1512; border-color: #24382F; }
+.srv-logo-box small { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+.srv-logo-box[data-bg="clair"] small { color: var(--canvas-soft); }
+.srv-logo-box[data-bg="sombre"] small { color: #7C918A; }
+.srv-logotype { display: flex; align-items: center; gap: 11px; }
+.srv-logotype b { font-size: 22px; font-weight: 800; letter-spacing: -.03em; color: var(--ink, #0A1F19); }
+.srv-logo-box[data-bg="clair"] .srv-logotype b { color: #0A1F19; }
+.srv-logo-box[data-bg="sombre"] .srv-logotype b { color: #F0FDF8; }
+
+/* --- icône d'application iOS : squircle 22,37 %, glyphe a 65 % --- */
+.srv-appicons { display: flex; flex-wrap: wrap; gap: 26px; align-items: flex-end; justify-content: center; }
+.srv-appicon { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.srv-appicon span { font-size: 10.5px; color: var(--canvas-soft); font-variant-numeric: tabular-nums; }
+.srv-appicon-tile { display: grid; place-items: center; border-radius: 22.37%; overflow: hidden; }
+.srv-appicon-tile[data-shadow="yes"] { box-shadow: 0 8px 22px -8px rgba(3,8,12,.45); }
+
+/* --- echelle de textes --- */
+.srv-scale > div { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--canvas-line); }
+.srv-scale > div:last-child { border-bottom: none; }
+.srv-scale span { font-size: 11.5px; color: var(--canvas-soft); flex: none; }
+
+/* --- couleurs --- */
+.srv-swatches { display: grid; gap: 11px; }
+.srv-swatch { display: flex; align-items: center; gap: 12px; }
+.srv-swatch i { width: 32px; height: 32px; border-radius: 10px; display: block; flex: none; border: 1px solid rgba(0,0,0,.10); }
+.srv-swatch b { font-size: 13px; font-weight: 700; }
+.srv-swatch span { font-size: 12px; color: var(--canvas-soft); }
+.srv-swatch div { display: flex; flex-direction: column; }
+
+/* --- etats --- */
+.srv-da-states { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.srv-da-state { background: #0B1512; border-radius: 14px; padding: 14px; }
+.srv-da-state h4 { margin: 0 0 10px; font-size: 10.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: #7C918A; }
+
+/* Socle statique sous la carte deplacable : garantit qu'un fond de carte est
+   visible meme si le rendu WebGL est suspendu. La carte vivante se fond
+   par-dessus une fois qu'elle a reellement peint. */
+.srv-map-fixe { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.srv-map-live { position: absolute; inset: 0; opacity: 0; transition: opacity .35s ease; }
+.srv-map-live[data-pret="yes"] { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .srv-map-live { transition: none; } }
+
+/* ---- selecteur de theme : un seul jeu d'ecrans, deux ambiances ---- */
+.srv-switch { display: inline-flex; gap: 3px; padding: 3px; border-radius: 999px; background: #E3E9ED; margin-bottom: 26px; }
+.srv-switch button { padding: 8px 18px; border-radius: 999px; font-size: 12.5px; font-weight: 700; color: var(--canvas-soft); }
+.srv-switch button[aria-pressed="true"] { background: #FFF; color: var(--canvas-ink); box-shadow: 0 1px 3px rgba(3,8,12,.14); }
+.srv-switch button:focus-visible { outline: 2px solid #076B4C; outline-offset: 2px; }

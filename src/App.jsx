@@ -10,6 +10,7 @@ import Legales from './Legales.jsx'
 import { BlogList, BlogArticlePage, BLOG_ARTICLES } from './Blog.jsx'
 import AuditApp from './audit-app/AuditApp.jsx'
 import SmoothRideMockups from './SmoothRideMockups.jsx'
+import SmoothRideMockupsV2 from './SmoothRideMockupsV2.jsx'
 import ArethaMockups from './ArethaMockups.jsx'
 import PacAssistMockups from './PacAssistMockups.jsx'
 import CoachAppMockups from './CoachAppMockups.jsx'
@@ -495,7 +496,7 @@ function App() {
   )
   if (page === 'client-space') return <ClientSpaceBridge />
   if (page === 'maquette-visual') return <MaquetteVisualBridge />
-  if (page === 'smoothride-mockups') return <SmoothRideMockups />
+  if (page === 'smoothride-mockups') return <SmoothRideMockupsV2 />
   if (page === 'aretha-mockups') return <ArethaMockups />
   if (page === 'pac-assist-mockups') return <PacAssistMockups />
   if (page === 'coach-app-mockups') return <CoachAppMockups />
