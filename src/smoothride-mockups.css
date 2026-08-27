@@ -1,1494 +1,836 @@
-.smoothride-mockups-page {
-  --sr-page: #0e1413;
-  --sr-page-soft: #151c1a;
-  --sr-phone: #121816;
-  --sr-surface: rgba(28, 34, 31, 0.72);
-  --sr-surface-strong: rgba(36, 43, 39, 0.88);
-  --sr-surface-soft: rgba(255, 255, 255, 0.05);
-  --sr-line: rgba(255, 255, 255, 0.1);
-  --sr-line-soft: rgba(255, 255, 255, 0.065);
-  --sr-white: #f7faf7;
-  --sr-muted: #9da69f;
-  --sr-muted-2: #707a73;
-  --sr-lime: #ccff00;
-  --sr-lime-soft: rgba(204, 255, 0, 0.16);
-  --sr-blue: #6c8cff;
-  --sr-red: #ff5a3d;
-  --sr-black: #0b0e0c;
-  width: 100%;
+/* ==========================================================================
+   SmoothRide V2 — charte + composants.  Ref. MOB-2026-088.
+
+   UNE seule regle gouverne la couleur de marque, et elle vaut dans les deux
+   ambiances : le jade et le corail sont des APLATS, jamais du texte. Un vert
+   ne peut pas contraster a la fois avec du noir et du blanc — c'est physique.
+   On ne change donc ni le vert ni son role selon le theme : on ne s'en sert
+   jamais comme encre, nulle part. Le theme ne deplace que les SURFACES.
+   ========================================================================== */
+
+/* ========================= LA PAGE (autour des cadres) ========================= */
+.srv {
+  --canvas:      #EEF1F3;
+  --canvas-ink:  #10171C;
+  --canvas-soft: #5B6772;
+  --canvas-line: #D8DFE4;
+  --canvas-card: #FFFFFF;
+
+  /* --- MARQUE ---------------------------------------------------------
+     UN SEUL VERT PAR AMBIANCE, et il sert a TOUT : le bouton, le texte, le
+     trace, la puce. C'est la regle qui compte, parce que c'est celle qui se
+     voit : sur un ecran donne, l'oeil ne rencontre jamais deux verts.
+     La version precedente figeait l'aplat et assombrissait le texte — deux
+     verts cote a cote sur le meme ecran, exactement ce qu'on voulait eviter.
+     Le vert clair et le vert sombre ont la MEME teinte (161 degres) ; seule
+     leur clarte suit le fond, comme une encre.
+     Les valeurs vivent donc dans les blocs d'ambiance, plus haut. --------- */
+  --rouge:     #FF6B5E;
+  --rouge-ink: #2B0A06;
+  --nuit:      #0B1512;
+  --encre:     #0A1F19;
+
+  /* typographie : SEPT crans, et rien entre les deux. Cadre 336 px pour un
+     ecran de 393 pt, facteur 0,855 : ces valeurs sont celles du CADRE.
+     `metric` existe parce qu'une duree posee au meme corps qu'un titre de
+     feuille se battait avec lui : deux voix au meme volume, aucune ne porte. */
+  --t-display: 24px;
+  --t-title:   17px;
+  --t-metric:  15px;
+  --t-lead:    13px;
+  --t-body:    11.5px;
+  --t-label:   10px;
+  --t-meta:    9px;
+
+  --h-compact: 30px;
+  --h-inline:  38px;
+  --h-primary: 48px;
+
+  /* rayons : QUATRE valeurs. Chaque « 9px », « 11px », « 13px », « 18px »
+     pose au jugé creait une incoherence de plus. */
+  --r-pill:    999px;
+  --r-card:    16px;
+  --r-control: 12px;
+  --r-tile:    10px;
+
+  --sh-raised: 0 2px 10px rgba(3, 8, 12, .30);
+  --sh-float:  0 20px 44px -20px rgba(3, 8, 12, .70);
+
+  --gutter:    18px;
+  --stack:     10px;
+
+  background: var(--canvas);
+  color: var(--canvas-ink);
   min-height: 100vh;
-  padding: 72px 34px 96px;
-  color: var(--sr-white);
-  background:
-    radial-gradient(circle at 80% -10%, rgba(204, 255, 0, 0.06), transparent 50%),
-    radial-gradient(circle at 10% 100%, rgba(204, 255, 0, 0.03), transparent 60%),
-    linear-gradient(180deg, #0e1110 0%, #07090a 100%);
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-.smoothride-mockups-page *,
-.smoothride-mockups-page *::before,
-.smoothride-mockups-page *::after {
-  box-sizing: border-box;
-}
-
-.smoothride-mockups-page button {
-  font: inherit;
-}
-
-.sr-landing-hero {
-  width: min(100%, 1160px);
-  margin: 0 auto 56px;
-  display: block;
-}
-
-.sr-eyebrow {
-  margin: 0 0 18px;
-  color: var(--sr-lime);
-  font-size: 12px;
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-}
-
-.sr-landing-hero h1 {
-  max-width: 820px;
-  margin: 0;
-  color: var(--sr-white);
-  font-size: 64px;
-  line-height: 0.98;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-}
-
-.sr-reference {
-  margin: 24px 0 0;
-  color: var(--sr-lime);
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  font-feature-settings: 'tnum' 1;
-}
-
-.sr-disclaimer {
-  max-width: 680px;
-  margin: 22px 0 0;
-  color: var(--sr-muted);
-  font-size: 14px;
-  line-height: 1.55;
-  font-weight: 400;
-  opacity: 0.85;
-}
-
-.sr-download-all-button {
-  height: 46px;
-  margin-top: 22px;
-  border: 0;
-  border-radius: 23px;
-  padding: 0 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  color: #0b0e0c;
-  background: var(--sr-lime);
-  box-shadow: 0 16px 34px rgba(204, 255, 0, 0.16);
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 860;
-  cursor: pointer;
-}
-
-.sr-download-all-button:disabled {
-  cursor: wait;
-  opacity: 0.72;
-}
-
-.sr-system-card {
-  border: 1px solid var(--sr-line);
-  border-radius: 8px;
-  padding: 16px;
-  background: rgba(20, 25, 23, 0.76);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
-}
-
-.sr-system-card span {
-  display: block;
-  margin-bottom: 12px;
-  color: var(--sr-muted);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0;
-}
-
-.sr-palette {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
-}
-
-.sr-palette i {
-  display: block;
-  height: 54px;
-  border: 1px solid var(--sr-line);
-  border-radius: 8px;
-}
-
-.sr-gallery {
-  width: min(100%, 1280px);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 32px;
-  align-items: start;
-}
-
-.sr-mockup-card {
-  min-width: 0;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 28px;
-  padding: 28px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 60%),
-    rgba(20, 24, 22, 0.68);
-  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.32);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-.sr-card-head {
-  min-height: 42px;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.sr-card-head h2 {
-  margin: 0;
-  color: var(--sr-white);
-  font-size: 20px;
-  line-height: 1.15;
-  font-weight: 800;
-  letter-spacing: -0.015em;
-}
-
-.sr-card-head p {
-  margin: 6px 0 0;
-  color: var(--sr-muted-2);
-  font-size: 13px;
-  line-height: 1.35;
-  font-weight: 500;
-}
-
-/* Bouton "PNG" individuel masqué (mai 2026) — la logique JS reste en place
-   pour pouvoir réactiver facilement plus tard via cette règle. */
-.sr-card-head button {
-  display: none;
-  height: 34px;
-  padding: 0 12px;
-  border: 1px solid rgba(204, 255, 0, 0.22);
-  border-radius: 17px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  color: var(--sr-lime);
-  background: rgba(204, 255, 0, 0.09);
-  font-size: 12px;
-  font-weight: 840;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.sr-export-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.sr-phone-export {
-  width: 330px;
-  padding: 13px;
-  border-radius: 50px;
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.02)),
-    #050605;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 34px 84px rgba(0, 0, 0, 0.36);
-}
-
-.sr-phone {
-  position: relative;
-  width: 304px;
-  height: 658px;
-  overflow: hidden;
-  border-radius: 39px;
-  background: var(--sr-phone);
-}
-
-.sr-screen {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 39px;
-  background: var(--sr-phone);
-}
-
-.sr-statusbar {
-  position: absolute;
-  z-index: 40;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 38px;
-  padding: 0 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.sr-status-icons {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.sr-signal,
-.sr-wifi,
-.sr-battery {
-  display: block;
-  background: rgba(255, 255, 255, 0.88);
-}
-
-.sr-signal {
-  width: 13px;
-  height: 8px;
-  clip-path: polygon(0 100%, 16% 70%, 32% 100%, 48% 44%, 64% 100%, 80% 18%, 100% 100%);
-}
-
-.sr-wifi {
-  width: 11px;
-  height: 8px;
-  clip-path: polygon(50% 100%, 0 40%, 12% 26%, 50% 64%, 88% 26%, 100% 40%);
-}
-
-.sr-battery {
-  width: 18px;
-  height: 8px;
-  border-radius: 3px;
-}
-
-.sr-home-indicator {
-  position: absolute;
-  z-index: 45;
-  left: 50%;
-  bottom: 9px;
-  width: 92px;
-  height: 4px;
-  transform: translateX(-50%);
-  border-radius: 99px;
-  background: rgba(255, 255, 255, 0.76);
-}
-
-.sr-phone-content {
-  position: absolute;
-  inset: 0;
-  padding: 50px 18px 28px;
-}
-
-.sr-mapbox-surface {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  background: #0d100f;
-}
-
-.sr-mapbox-soft::after,
-.sr-map-vignette {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.sr-mapbox-soft::after {
-  z-index: 1;
-  background:
-    linear-gradient(180deg, rgba(8, 11, 10, 0.22), rgba(8, 11, 10, 0.72)),
-    rgba(8, 11, 10, 0.1);
-}
-
-.sr-map-vignette {
-  z-index: 2;
-  background:
-    radial-gradient(circle at 54% 47%, transparent 0%, rgba(8, 11, 10, 0.18) 48%, rgba(8, 11, 10, 0.72) 100%),
-    linear-gradient(180deg, rgba(8, 11, 10, 0.68) 0%, transparent 24%, transparent 62%, rgba(8, 11, 10, 0.88) 100%);
-}
-
-.sr-map-svg {
-  position: absolute;
-  inset: -12px;
-  width: calc(100% + 24px);
-  height: calc(100% + 24px);
-}
-
-.sr-map-blocks path {
-  fill: url("#sr-block");
-  stroke: rgba(255, 255, 255, 0.035);
-  stroke-width: 1;
-}
-
-.sr-map-minor-roads path,
-.sr-map-main-roads path,
-.sr-map-routes path {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.sr-map-minor-roads path {
-  stroke: rgba(255, 255, 255, 0.09);
-  stroke-width: 2;
-}
-
-.sr-map-main-roads path {
-  stroke: rgba(255, 255, 255, 0.18);
-  stroke-width: 6;
-}
-
-.sr-map-labels text {
-  fill: rgba(255, 255, 255, 0.24);
-  font-size: 10px;
-  font-weight: 650;
-  letter-spacing: 0;
-}
-
-.sr-map-route-safe,
-.sr-map-route-fast {
-  stroke-width: 8;
-  filter: drop-shadow(0 0 12px rgba(204, 255, 0, 0.34));
-}
-
-.sr-map-route-safe {
-  stroke: url("#sr-safe-route");
-}
-
-.sr-map-route-fast {
-  stroke: url("#sr-fast-route");
-  filter: drop-shadow(0 0 10px rgba(108, 140, 255, 0.34));
-}
-
-.sr-app-mark,
-.sr-icon-button,
-.sr-map-marker,
-.sr-confirm-icon,
-.sr-premium-icon,
-.sr-turn-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sr-app-mark {
-  width: 38px;
-  height: 38px;
-  border-radius: 15px;
-  color: #0b0e0c;
-  background: var(--sr-lime);
-  box-shadow: 0 16px 36px rgba(204, 255, 0, 0.2);
-}
-
-.sr-app-mark-large {
-  width: 64px;
-  height: 64px;
-  border-radius: 22px;
-}
-
-.sr-ui-button {
-  height: 46px;
-  min-width: 0;
-  border: 0;
-  border-radius: 9999px;
-  padding: 0 22px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: -0.005em;
-  cursor: pointer;
-  transition: transform 0.1s ease;
-}
-
-.sr-ui-button-primary {
-  color: #0b0e0c;
-  background: var(--sr-lime);
-  box-shadow: 0 12px 28px rgba(204, 255, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-}
-
-.sr-ui-button-secondary {
-  color: var(--sr-white);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.sr-ui-button-danger {
-  color: #fff;
-  background: var(--sr-red);
-}
-
-.sr-ui-button-ghost {
-  color: var(--sr-muted);
-  background: transparent;
-  box-shadow: none;
-}
-
-.sr-icon-button {
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 9999px;
-  color: var(--sr-white);
-  background: rgba(20, 24, 22, 0.55);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  cursor: pointer;
-}
-
-.sr-screen-title {
-  position: relative;
-  z-index: 4;
-}
-
-.sr-screen-title-centered {
-  text-align: center;
-}
-
-.sr-screen-title p {
-  margin: 0 0 9px;
-  color: var(--sr-lime);
-  font-size: 11px;
-  line-height: 1;
-  font-weight: 850;
-  letter-spacing: 0;
-}
-
-.sr-screen-title h1 {
-  margin: 0;
-  color: var(--sr-white);
-  font-size: 30px;
-  line-height: 1.06;
-  font-weight: 860;
-  letter-spacing: 0;
-}
-
-.sr-screen-title span {
-  display: block;
-  margin-top: 10px;
-  color: var(--sr-muted);
-  font-size: 13px;
-  line-height: 1.45;
-}
-
-.sr-top-navigation {
-  position: relative;
-  z-index: 5;
-  min-height: 40px;
-  display: grid;
-  grid-template-columns: 40px 1fr 40px;
-  align-items: center;
-  gap: 10px;
-}
-
-.sr-top-navigation strong {
-  color: #fff;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 840;
-  letter-spacing: 0;
-}
-
-.sr-bottom-card,
-.sr-search-sheet,
-.sr-list-panel,
-.sr-admin-stat,
-.sr-admin-list,
-.sr-paywall-card,
-.sr-empty-card,
-.sr-turn-panel,
-.sr-nav-bottom {
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 30%),
-    rgba(18, 24, 22, 0.62);
-  backdrop-filter: blur(28px) saturate(140%);
-  -webkit-backdrop-filter: blur(28px) saturate(140%);
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.38),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.sr-intro-screen {
-  padding: 0;
-}
-
-.sr-intro-center {
-  position: absolute;
-  z-index: 4;
-  left: 24px;
-  right: 24px;
-  top: 132px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 22px;
-}
-
-.sr-intro-center .sr-screen-title h1 {
-  font-size: 33px;
-}
-
-.sr-intro-bottom {
-  position: absolute;
-  z-index: 4;
-  left: 18px;
-  right: 18px;
-  bottom: 34px;
-}
-
-.sr-intro-bottom .sr-ui-button {
-  width: 100%;
-}
-
-.sr-step-dots {
-  margin-top: 16px;
-  display: flex;
-  justify-content: center;
-  gap: 7px;
-}
-
-.sr-step-dots span {
-  width: 6px;
-  height: 6px;
-  border-radius: 99px;
-  background: rgba(255, 255, 255, 0.22);
-}
-
-.sr-step-dots span:first-child {
-  width: 22px;
-  background: var(--sr-lime);
-}
-
-.sr-map-screen {
-  padding: 0;
-}
-
-.sr-map-topbar {
-  position: absolute;
-  z-index: 6;
-  top: 48px;
-  left: 14px;
-  right: 14px;
-  display: grid;
-  grid-template-columns: 40px 1fr 40px;
-  align-items: center;
-  gap: 10px;
-}
-
-.sr-avatar {
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 9999px;
-  color: #0b0e0c;
-  background: var(--sr-lime);
-  font-size: 15px;
-  font-weight: 800;
-  cursor: pointer;
-  box-shadow: 0 8px 18px rgba(204, 255, 0, 0.18);
-}
-
-.sr-search-pill {
-  height: 46px;
-  min-width: 0;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 9999px;
-  padding: 0 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--sr-muted);
-  background: rgba(20, 24, 22, 0.55);
-  backdrop-filter: blur(26px) saturate(140%);
-  -webkit-backdrop-filter: blur(26px) saturate(140%);
-  font-size: 13px;
-  font-weight: 740;
-}
-
-.sr-map-marker {
-  position: absolute;
-  z-index: 5;
-  width: 34px;
-  height: 34px;
-  border-radius: 17px;
-  color: #0b0e0c;
-  border: 2px solid rgba(255, 255, 255, 0.42);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.3);
-}
-
-.sr-map-marker-lime {
-  background: var(--sr-lime);
-  box-shadow: 0 0 0 8px rgba(204, 255, 0, 0.12), 0 18px 38px rgba(0, 0, 0, 0.28);
-}
-
-.sr-map-marker-red {
-  color: #fff;
-  background: var(--sr-red);
-  box-shadow: 0 0 0 7px rgba(255, 90, 61, 0.12), 0 18px 38px rgba(0, 0, 0, 0.28);
-}
-
-.sr-map-marker-blue {
-  color: #fff;
-  background: var(--sr-blue);
-}
-
-.sr-map-marker-gray {
-  color: #fff;
-  background: #6a716c;
-}
-
-.sr-marker-user {
-  left: 128px;
-  top: 372px;
-}
-
-.sr-marker-bump-one {
-  left: 56px;
-  top: 190px;
-}
-
-.sr-marker-bump-two {
-  right: 58px;
-  top: 260px;
-}
-
-.sr-marker-bump-three {
-  left: 82px;
-  top: 452px;
-}
-
-.sr-marker-start {
-  left: 48px;
-  top: 462px;
-}
-
-.sr-marker-end {
-  right: 35px;
-  top: 188px;
-}
-
-.sr-marker-report {
-  left: 125px;
-  top: 242px;
-  width: 54px;
-  height: 54px;
-  border-radius: 22px;
-}
-
-.sr-floating-locate {
-  position: absolute;
-  z-index: 6;
-  right: 18px;
-  bottom: 138px;
-}
-
-.sr-bottom-card {
-  position: absolute;
-  z-index: 8;
-  left: 14px;
-  right: 14px;
-  bottom: 16px;
-  border-radius: 24px;
-  padding: 16px;
-}
-
-.sr-home-card {
-  min-height: 92px;
-  display: grid;
-  grid-template-columns: 1fr 104px;
-  align-items: center;
-  gap: 14px;
-}
-
-.sr-home-card span,
-.sr-route-option span,
-.sr-metric span,
-.sr-admin-stat span,
-.sr-admin-report span {
-  display: block;
-  color: var(--sr-muted);
-  font-size: 11px;
-  font-weight: 780;
-  line-height: 1;
-}
-
-.sr-home-card strong {
-  display: block;
-  margin-top: 5px;
-  color: #fff;
-  font-size: 18px;
-  line-height: 1.12;
-  font-weight: 850;
-}
-
-.sr-home-button {
-  width: 104px;
-}
-
-.sr-search-screen {
-  background: #0b0f0e;
-}
-
-.sr-search-screen .sr-top-navigation,
-.sr-list-screen .sr-top-navigation,
-.sr-admin-screen .sr-top-navigation {
-  margin-bottom: 22px;
-}
-
-.sr-search-sheet {
-  position: absolute;
-  z-index: 5;
-  left: 14px;
-  right: 14px;
-  top: 112px;
-  bottom: 18px;
-  border-radius: 24px;
-  padding: 14px;
-  overflow: hidden;
-}
-
-.sr-trip-field {
-  min-height: 58px;
-  margin-bottom: 10px;
-  border: 1px solid var(--sr-line-soft);
-  border-radius: 18px;
-  padding: 0 14px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.sr-trip-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 6px;
-  flex: 0 0 auto;
-}
-
-.sr-trip-dot-start {
-  background: var(--sr-lime);
-}
-
-.sr-trip-dot-end {
-  background: var(--sr-red);
-}
-
-.sr-trip-field small {
-  display: block;
-  color: var(--sr-muted);
-  font-size: 10px;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.sr-trip-field strong {
-  display: block;
-  margin-top: 5px;
-  color: #fff;
-  font-size: 13px;
-  line-height: 1.1;
-  font-weight: 820;
-}
-
-.sr-section-label {
-  margin: 18px 0 8px;
-  color: var(--sr-muted);
-  font-size: 11px;
-  font-weight: 850;
-  letter-spacing: 0;
-}
-
-.sr-list-row {
-  min-height: 54px;
-  display: grid;
-  grid-template-columns: 36px 1fr 18px;
-  align-items: center;
-  gap: 10px;
-  border-radius: 18px;
-  padding: 8px;
-  color: #fff;
-}
-
-.sr-list-row > span {
-  width: 36px;
-  height: 36px;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--sr-lime);
-  background: var(--sr-lime-soft);
-}
-
-.sr-list-row strong {
-  display: block;
-  color: #fff;
-  font-size: 13px;
-  line-height: 1.12;
-  font-weight: 820;
-}
-
-.sr-list-row small {
-  display: block;
-  margin-top: 4px;
-  color: var(--sr-muted);
-  font-size: 11px;
-  line-height: 1.15;
-}
-
-.sr-list-row svg:last-child {
-  color: rgba(255, 255, 255, 0.28);
-}
-
-.sr-route-chip {
-  position: absolute;
-  z-index: 6;
-  height: 28px;
-  border-radius: 14px;
-  padding: 0 11px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  line-height: 1;
-  font-weight: 860;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
-}
-
-.sr-route-chip-fast {
-  left: 38px;
-  top: 286px;
-  color: #fff;
-  background: var(--sr-blue);
-}
-
-.sr-route-chip-safe {
-  right: 34px;
-  top: 338px;
-  color: #0b0e0c;
-  background: var(--sr-lime);
-}
-
-.sr-route-sheet .sr-screen-title h1 {
-  font-size: 23px;
-}
-
-.sr-route-sheet .sr-screen-title span {
-  max-width: 230px;
-  font-size: 12px;
-}
-
-.sr-route-options {
-  margin: 16px 0 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.sr-route-option {
-  min-height: 94px;
-  border: 1px solid var(--sr-line-soft);
-  border-radius: 19px;
-  padding: 13px;
-  text-align: left;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.055);
-  cursor: pointer;
-}
-
-.sr-route-option strong {
-  display: block;
-  margin-top: 8px;
-  color: #fff;
-  font-size: 26px;
-  line-height: 1;
-  font-weight: 880;
-}
-
-.sr-route-option small {
-  display: block;
-  margin-top: 8px;
-  color: var(--sr-muted);
-  font-size: 11px;
-  line-height: 1.15;
-  font-weight: 750;
-}
-
-.sr-route-option-active {
-  color: #0b0e0c;
-  background: var(--sr-lime);
-}
-
-.sr-route-option-active span,
-.sr-route-option-active strong,
-.sr-route-option-active small {
-  color: #0b0e0c;
-}
-
-.sr-route-sheet .sr-ui-button,
-.sr-report-sheet .sr-ui-button,
-.sr-paywall-card .sr-ui-button,
-.sr-empty-card .sr-ui-button {
-  width: 100%;
-}
-
-.sr-navigation-screen {
-  padding: 0;
-  background: #070a09;
-}
-
-.sr-drive-scene {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(44, 54, 49, 0.72) 0%, rgba(10, 13, 12, 0.92) 44%, #050706 100%);
-}
-
-.sr-drive-map {
-  position: absolute;
-  inset: 0 0 210px;
-  opacity: 0.72;
-  background:
-    linear-gradient(112deg, transparent 22%, rgba(255, 255, 255, 0.08) 22.5%, transparent 23%) 0 0 / 80px 80px,
-    linear-gradient(54deg, transparent 30%, rgba(255, 255, 255, 0.06) 30.5%, transparent 31%) 0 0 / 68px 68px,
-    #111716;
-}
-
-.sr-drive-road-line {
-  position: absolute;
-  height: 2px;
-  width: 160%;
-  left: -30%;
-  border-radius: 99px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.sr-drive-road-line-a {
-  top: 90px;
-  transform: rotate(-24deg);
-}
-
-.sr-drive-road-line-b {
-  top: 170px;
-  transform: rotate(16deg);
-}
-
-.sr-drive-road-line-c {
-  top: 250px;
-  transform: rotate(-9deg);
-}
-
-.sr-horizon {
-  position: absolute;
-  z-index: 2;
-  left: 0;
-  right: 0;
-  top: 185px;
-  height: 86px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 8px;
-  opacity: 0.52;
-}
-
-.sr-horizon span {
-  width: 36px;
-  border-radius: 5px 5px 0 0;
-  background: linear-gradient(180deg, #29332e, #151b18);
-}
-
-.sr-horizon span:nth-child(1) {
-  height: 48px;
-}
-
-.sr-horizon span:nth-child(2) {
-  height: 76px;
-}
-
-.sr-horizon span:nth-child(3) {
-  height: 58px;
-}
-
-.sr-horizon span:nth-child(4) {
-  height: 66px;
-}
-
-.sr-road-perspective {
-  position: absolute;
-  z-index: 3;
-  left: -74px;
-  right: -74px;
-  bottom: -54px;
-  height: 452px;
-  clip-path: polygon(41% 0, 59% 0, 100% 100%, 0 100%);
-  background:
-    linear-gradient(90deg, transparent 0 47%, rgba(255, 255, 255, 0.16) 47.3% 47.8%, transparent 48.1% 52%, rgba(255, 255, 255, 0.16) 52.2% 52.7%, transparent 53% 100%),
-    linear-gradient(180deg, #1d2420 0%, #0f1412 54%, #090d0b 100%);
-  box-shadow: inset 0 42px 78px rgba(0, 0, 0, 0.16);
-}
-
-.sr-guidance-lane {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 140px;
-  height: 420px;
-  transform: translateX(-50%);
-  clip-path: polygon(47% 0, 53% 0, 92% 100%, 8% 100%);
-  background: linear-gradient(180deg, rgba(204, 255, 0, 0.04), rgba(204, 255, 0, 0.54) 48%, rgba(204, 255, 0, 0.88));
-  box-shadow: 0 0 42px rgba(204, 255, 0, 0.2);
-}
-
-.sr-guidance-lane i {
-  position: absolute;
-  left: 50%;
-  width: 28px;
-  height: 28px;
-  border-top: 3px solid rgba(255, 255, 255, 0.72);
-  border-left: 3px solid rgba(255, 255, 255, 0.72);
-  transform: translateX(-50%) rotate(45deg);
-}
-
-.sr-guidance-lane i:nth-child(1) {
-  bottom: 82px;
-}
-
-.sr-guidance-lane i:nth-child(2) {
-  bottom: 156px;
-  opacity: 0.72;
-}
-
-.sr-guidance-lane i:nth-child(3) {
-  bottom: 238px;
-  opacity: 0.46;
-}
-
-.sr-road-edge {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: rgba(255, 255, 255, 0.14);
-}
-
-.sr-road-edge-left {
-  left: 41%;
-}
-
-.sr-road-edge-right {
-  right: 41%;
-}
-
-.sr-turn-panel {
-  position: absolute;
-  z-index: 8;
-  left: 14px;
-  right: 14px;
-  top: 48px;
-  min-height: 84px;
-  border-radius: 28px;
-  padding: 16px;
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  align-items: center;
-  gap: 14px;
-}
-
-.sr-turn-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 9999px;
-  color: #0b0e0c;
-  background: var(--sr-lime);
-  box-shadow: 0 8px 22px rgba(204, 255, 0, 0.28);
-}
-
-.sr-turn-panel span {
-  display: block;
-  color: var(--sr-muted);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.sr-turn-panel strong {
-  display: block;
-  margin-top: 6px;
-  color: #fff;
-  font-size: 18px;
-  line-height: 1.1;
-  font-weight: 800;
-  letter-spacing: -0.015em;
-}
-
-.sr-report-button {
-  position: absolute;
-  z-index: 9;
-  right: 16px;
-  bottom: 128px;
-  height: 46px;
-  border: 0;
-  border-radius: 23px;
-  padding: 0 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  color: #fff;
-  background: var(--sr-red);
-  box-shadow: 0 18px 38px rgba(255, 90, 61, 0.2);
-  font-size: 12px;
-  font-weight: 860;
-  cursor: pointer;
-}
-
-.sr-nav-bottom {
-  position: absolute;
-  z-index: 8;
-  left: 14px;
-  right: 14px;
-  bottom: 16px;
-  min-height: 92px;
-  border-radius: 24px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  gap: 8px;
-  padding: 14px;
-}
-
-.sr-metric {
-  min-width: 0;
-  text-align: center;
-}
-
-.sr-metric strong {
-  display: block;
-  margin-top: 4px;
-  color: #fff;
-  font-size: 22px;
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  font-feature-settings: 'tnum' 1;
-}
-
-.sr-metric small {
-  display: block;
-  margin-top: 6px;
-  color: var(--sr-muted);
-  font-size: 10px;
-  line-height: 1;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.sr-report-sheet {
-  text-align: center;
-}
-
-.sr-confirm-icon,
-.sr-premium-icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 16px;
-  border-radius: 21px;
-  color: #0b0e0c;
-  background: var(--sr-lime);
-}
-
-.sr-report-sheet .sr-screen-title h1,
-.sr-empty-card .sr-screen-title h1 {
-  font-size: 26px;
-}
-
-.sr-status-pill {
-  width: fit-content;
-  margin: 14px auto 12px;
-  border: 1px solid var(--sr-line);
-  border-radius: 999px;
-  padding: 7px 12px;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.07);
-  font-size: 11px;
-  font-weight: 820;
-}
-
-.sr-paywall-screen {
-  padding: 0;
-  background: #0a0d0c;
-}
-
-.sr-paywall-card {
-  position: absolute;
-  z-index: 5;
-  left: 16px;
-  right: 16px;
-  top: 76px;
-  border-radius: 26px;
-  padding: 22px;
-  text-align: center;
-}
-
-.sr-paywall-card .sr-screen-title h1 {
-  font-size: 29px;
-}
-
-.sr-benefits {
-  margin: 22px 0 18px;
-  display: grid;
-  gap: 9px;
-  text-align: left;
-}
-
-.sr-benefit {
-  min-height: 40px;
-  border-radius: 18px;
-  padding: 0 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.06);
-  font-size: 12px;
-  line-height: 1.2;
-  font-weight: 800;
-}
-
-.sr-benefit svg {
-  color: var(--sr-lime);
-  flex: 0 0 auto;
-}
-
-.sr-price-line {
-  margin-bottom: 12px;
-}
-
-.sr-price-line strong {
-  color: #fff;
-  font-size: 44px;
-  line-height: 1;
-  font-weight: 880;
-}
-
-.sr-price-line span {
-  margin-left: 5px;
-  color: var(--sr-muted);
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.sr-paywall-card .sr-ui-button + .sr-ui-button {
-  margin-top: 6px;
-}
-
-.sr-list-screen,
-.sr-admin-screen {
-  background:
-    linear-gradient(180deg, rgba(204, 255, 0, 0.08), transparent 210px),
-    var(--sr-phone);
-}
-
-.sr-list-screen .sr-screen-title,
-.sr-admin-screen .sr-screen-title {
-  margin-bottom: 18px;
-}
-
-.sr-list-screen .sr-screen-title h1,
-.sr-admin-screen .sr-screen-title h1 {
-  font-size: 31px;
-}
-
-.sr-list-panel {
-  position: relative;
-  z-index: 4;
-  border-radius: 24px;
-  padding: 8px;
-}
-
-.sr-admin-grid {
-  position: relative;
-  z-index: 4;
-  margin-top: 4px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.sr-admin-stat {
-  min-height: 82px;
-  border-radius: 22px;
-  padding: 14px;
-}
-
-.sr-admin-stat strong {
-  display: block;
-  margin-top: 11px;
-  color: #fff;
-  font-size: 29px;
-  line-height: 1;
-  font-weight: 880;
-}
-
-.sr-admin-list {
-  position: relative;
-  z-index: 4;
-  margin-top: 12px;
-  border-radius: 24px;
-  padding: 12px;
-}
-
-.sr-admin-list .sr-section-label {
-  margin-top: 2px;
-}
-
-.sr-admin-report {
-  min-height: 58px;
-  border-radius: 18px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.sr-admin-report strong {
-  display: block;
-  color: #fff;
-  font-size: 13px;
-  line-height: 1.1;
-  font-weight: 820;
-}
-
-.sr-admin-report span {
-  margin-top: 5px;
-}
-
-.sr-admin-actions {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.sr-admin-actions button {
-  width: 30px;
-  height: 30px;
-  border: 0;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #0b0e0c;
-  background: var(--sr-lime);
-  cursor: pointer;
-}
-
-.sr-admin-actions .sr-danger-action {
-  color: #fff;
-  background: var(--sr-red);
-}
-
-.sr-empty-card {
-  position: absolute;
-  z-index: 8;
-  left: 18px;
-  right: 18px;
-  top: 188px;
-  border-radius: 26px;
-  padding: 24px 20px 20px;
-  text-align: center;
-}
-
-.sr-empty-card .sr-ui-button {
-  margin-top: 18px;
-}
-
-@media (max-width: 900px) {
-  .smoothride-mockups-page {
-    padding: 44px 16px 64px;
-  }
-
-  .sr-landing-hero {
-    margin-bottom: 36px;
-  }
-
-  .sr-landing-hero h1 {
-    font-size: 40px;
-    line-height: 1;
-  }
-
-  .sr-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-  }
-
-  .sr-reference {
-    font-size: 13px;
-  }
-
-  .sr-mockup-card {
-    border-radius: 24px;
-    padding: 22px;
-  }
-
-  .sr-card-head h2 {
-    font-size: 18px;
-  }
-
-  .sr-gallery {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}
-
-@media (max-width: 420px) {
-  .sr-phone-export {
-    width: 304px;
-    padding: 11px;
-    border-radius: 46px;
-  }
-
-  .sr-phone {
-    width: 282px;
-    height: 611px;
-    border-radius: 37px;
-  }
-}
+  font-family: 'Overpass', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  /* INTERLIGNE POSE ICI, ET C'EST IMPORTANT.
+     La maquette vit dans une page qui charge Tailwind et `index.css`. Leur
+     remise a zero impose `line-height: 24px` a `body`, et cet interligne
+     DESCENDAIT dans la maquette : 1 499 elements sur 1 939 ne rendaient pas la
+     meme chose chez le client et sur le banc de test — d'ou des boutons a
+     1 px pres et 219 px de hauteur de page en trop. La compensation verticale
+     etant mesuree au pixel, elle etait donc calee sur le mauvais rendu.
+     `normal` est la valeur pour laquelle tout le reste de cette feuille a ete
+     mesure ; ecrite ici, elle ne depend plus de la page qui accueille. */
+  line-height: normal;
+}
+/* Meme raison : la pile monospace est ecrite, pas heritee. */
+.srv code, .srv kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+/* ========================= LA MARQUE =========================
+   Declaree UNE fois, sur la page. Ni `.srv-dark` ni `.srv-light` ne la
+   redefinissent : structurellement, le theme ne PEUT PAS toucher a la
+   marque. C'est la difference avec la V2, ou un commentaire l'affirmait
+   pendant que deux blocs plus bas la contredisaient. */
+
+/* ---------- SOMBRE : seules les surfaces changent ---------- */
+.srv-dark {
+  --bg: #0A1310; --bg-deep: #060D0B;
+  /* la surface se detache franchement du fond : a #12201C sur #0B1512, les
+     panneaux de la page Compte se confondaient avec l'ecran. */
+  --surface: #16241F; --surface-2: #1F312A;
+  --line: #2B4139;
+  --ink: #F0FDF8; --ink-2: #9FB3AC; --ink-3: #7C918A;
+  --map-base: #0E1A16;
+  --map-grid: rgba(240,253,248,.055);
+  --scrim: rgba(6,13,11,.55);
+  /* Base des teintes CORAIL. Melangé a la surface (verte), le corail vire au
+     brun : c'est de la physique, pas un reglage. On le melange donc a un
+     neutre de meme clarte, et il reste rouge. */
+  --tint-base: #191817;
+  /* le vert de la nuit : vif, il porte sur le noir en aplat comme en texte */
+  --jade:     #3FE0AC;
+  --jade-ink: #04231A;   /* l'encre posee SUR l'aplat */
+  --jade-fg:  var(--jade);
+  --rouge-fg: #FF8C80;
+}
+
+/* ---------- CLAIR ---------- */
+.srv-light {
+  --bg: #FFFFFF; --bg-deep: #FFFFFF;
+  --surface: #FFFFFF; --surface-2: #F2F6F5;
+  --line: #DDE7E3;
+  --ink: #0A1F19; --ink-2: #48635A; --ink-3: #647873;
+  /* la carte n'est JAMAIS blanche : sinon la feuille blanche posee dessus
+     disparait, et le haut de l'ecran passe pour une zone vide. */
+  --map-base: #E4EBE8;
+  --map-grid: rgba(10,31,25,.055);
+  --scrim: rgba(255,255,255,.55);
+  --tint-base: #FFFFFF;
+  /* le vert du jour : meme teinte (161 deg), assombrie pour tenir sur du
+     blanc. 4,7 de contraste en texte, 4,7 en blanc sur aplat. */
+  --jade:     #07845E;
+  --jade-ink: #FFFFFF;   /* l'encre posee SUR l'aplat */
+  --jade-fg:  var(--jade);
+  --rouge-fg: #B32D1F;
+}
+
+/* Les fonds discrets se calculent A PARTIR de la surface, jamais en
+   `rgba()` : une meme opacite donne deux couleurs percues selon ce qu'il y a
+   dessous. Ici, une seule formule, deux ambiances, un seul rapport. */
+.srv-dark, .srv-light {
+  /* trois densites, une seule formule : le lavis pour une etiquette, la
+     teinte pour une pastille d'icone, le liseré pour poser le bord. */
+  --jade-wash:  color-mix(in srgb, var(--jade) 8%,  var(--surface));
+  --jade-soft:  color-mix(in srgb, var(--jade) 15%, var(--surface));
+  --jade-line:  color-mix(in srgb, var(--jade) 30%, var(--surface));
+  --rouge-wash: color-mix(in srgb, var(--rouge) 10%, var(--tint-base));
+  --rouge-soft: color-mix(in srgb, var(--rouge) 20%, var(--tint-base));
+  --rouge-line: color-mix(in srgb, var(--rouge) 34%, var(--tint-base));
+  /* la densite qui porte un grand glyphe : au-dessous, un rouge sur fond
+     sombre ne se lit plus comme du rouge */
+  --rouge-full: color-mix(in srgb, var(--rouge) 38%, var(--tint-base));
+}
+
+.srv *, .srv *::before, .srv *::after { box-sizing: border-box; }
+
+/* ==========================================================================
+   CALAGE VERTICAL DU TEXTE — la correction la plus visible de la maquette.
+
+   Overpass a une boite de fonte tres asymetrique : 0,88 d'ascendante contre
+   0,38 de descendante, pour seulement 0,70 de hauteur de capitale. Centrer
+   cette boite dans un bouton place donc les capitales
+   (0,88 - 0,38 - 0,70) / 2 = 0,15 em TROP HAUT — mesure au rendu, la valeur
+   ci-dessous. Ce n'est pas un reglage rate composant par composant : le
+   decalage est le meme partout et ne depend meme pas de l'interligne.
+   Il saute aux yeux sur les libelles SANS jambage (« Continuer », « 147 »,
+   « Carte ») et se voit moins des qu'un « p » descend.
+
+   Deux approches ont ete essayees. `text-box: trim-both cap alphabetic` est
+   l'outil prevu pour ca, MAIS il ne s'applique pas au texte nu d'un conteneur
+   flex — or le bouton, la pastille et le champ en sont tous. Pire : il
+   prenait sur les `<span>` internes et pas sur le texte autour, donc dans
+   « 4 dos-d'ane » le chiffre et les mots tombaient a deux hauteurs. Abandonne.
+
+   Ce qui marche partout, flex compris : decaler le contenu par le
+   remplissage. Une boite a hauteur fixe qui centre son contenu se decale de
+   la MOITIE du remplissage haut ; une boite a hauteur libre se decale de la
+   difference entre haut et bas. D'ou les deux formes ci-dessous.
+   ========================================================================== */
+/* Les valeurs sont MESUREES au rendu, pas deduites. Elles varient de 1 a
+   2,5 px parce que le navigateur arrondit les positions au demi-pixel et que
+   les composants n'ont pas tous le meme interligne — un bouton en
+   `line-height: 1` n'arrondit pas comme un champ en interligne normal.
+   Methode, si ca doit etre refait : mesurer le decalage a cale = 0, puis a
+   cale = 4px ; la pente est lineaire, la cale ideale se lit directement. */
+.srv { --cale: 1px; }
+.srv-btn                  { --cale: 2.5px; }
+.srv-btn-compact          { --cale: 2px; }
+.srv-field, .srv-search,
+.srv-chip                 { --cale: 1px; }
+.srv-pill, .srv-tag,
+.srv-notes span,
+.srv-switch button, .srv-tab { --cale: 1.5px; }
+.srv-route-name              { --cale: 1.75px; }
+
+/* La cale ne concerne QUE le texte : une icone posee a cote etait deja
+   centree, et le remplissage la fait descendre avec lui. On la remonte donc
+   d'autant. Sans ca, le texte tombe juste mais l'icone d'un cran trop bas —
+   et c'est le groupe entier qui parait decale. */
+.srv-btn > svg, .srv-sso > svg,
+.srv-field > svg, .srv-field > i,
+.srv-search > svg, .srv-pill > svg,
+.srv-tag > svg, .srv-chip > i,
+.srv-route-name > i { position: relative; top: calc(var(--cale) * -1); }
+
+/* GARDE-FOU : tue l'espace de ligne de base qui fait flotter les icones. */
+.srv svg { display: block; flex: 0 0 auto; }
+/* `:where` a une specificite nulle : ne peut jamais ecraser un composant. */
+/* Remise a zero des controles natifs. `padding: 0` n'est pas decoratif : la
+   feuille du navigateur donne `padding: 1px 6px` a tout `<button>`, et ce
+   1px du BAS survivait a toutes nos regles — qui ne posent que le haut. Sur
+   la page du client, Tailwind l'effacait ; sur le banc de test, non. Les deux
+   rendus differaient donc d'un pixel sur 35 boutons, et la compensation
+   verticale etait mesuree sur le mauvais des deux. Ecrit ici, c'est le meme
+   partout. */
+.srv :where(button, input, textarea, select) { font: inherit; color: inherit; border: none;
+  background: none; padding: 0; margin: 0; text-align: left; }
+.srv :where(button) { cursor: pointer; }
+.srv .num { font-variant-numeric: tabular-nums; }
+
+/* ========================= STRUCTURE DE PAGE ========================= */
+.srv-wrap { max-width: 1180px; margin: 0 auto; padding: 0 22px; }
+.srv-hero { padding: 60px 0 34px; text-align: center; }
+.srv-hero-eyebrow { margin: 0 0 12px; font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--canvas-soft); }
+.srv-hero-logo { display: flex; justify-content: center; margin-bottom: 14px; }
+.srv-hero-ref { margin: 0 0 18px; font-size: 13px; color: var(--canvas-soft); font-weight: 600; }
+.srv-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--nuit, #0B1512); color: #F0FDF8; padding: calc(9px + var(--cale)) 15px calc(9px - var(--cale)); border-radius: var(--r-pill); font-size: 12px; font-weight: 700; }
+.srv-chip i { width: 7px; height: 7px; border-radius: 50%; background: #3FE0AC; display: block; }
+
+.srv-sec { padding: 44px 0; border-top: 1px solid var(--canvas-line); }
+.srv-sec-num { margin: 0 0 7px; font-size: 11px; font-weight: 700; letter-spacing: .18em; color: var(--canvas-soft); }
+/* `>` limite la regle aux titres de SECTION : sans lui, `.srv-sec h2`
+   ecrasait le titre des feuilles, qui repassait a 27 px, hors echelle. */
+.srv-sec > h2 { margin: 0 0 8px; font-size: 27px; font-weight: 800; letter-spacing: -.028em; text-wrap: balance; }
+.srv-sec-note { margin: 0 0 28px; font-size: 14.5px; line-height: 1.6; color: var(--canvas-soft); max-width: 64ch; }
+.srv-center { display: flex; justify-content: center; }
+
+.srv-gallery { display: grid; gap: 28px 20px; grid-template-columns: repeat(auto-fill, minmax(336px, 1fr)); }
+.srv-slot { display: flex; flex-direction: column; gap: 11px; }
+.srv-slot-head h4 { margin: 0 0 2px; font-size: 14.5px; font-weight: 700; letter-spacing: -.01em; }
+.srv-slot-head p { margin: 0; font-size: 12.5px; color: var(--canvas-soft); line-height: 1.45; }
+.srv-notes { display: flex; flex-wrap: wrap; gap: 6px; }
+.srv-notes span { font-size: 10.5px; font-weight: 600; padding: calc(4px + var(--cale)) 9px calc(4px - var(--cale)); border-radius: var(--r-pill); background: #E3E9ED; color: var(--canvas-soft); }
+.srv-notes span[data-s="yes"] { background: rgba(15,169,122,.14); color: #0B7052; }
+
+/* selecteur d'ambiance */
+/* Blanc sur gris tres clair, l'etat choisi ne se voyait pas. Il se marque
+   maintenant a l'inverse : pastille sombre, texte clair. */
+.srv-switch { display: inline-flex; gap: 3px; padding: 3px; border-radius: var(--r-pill); background: #E3E9ED; margin-bottom: 26px; }
+.srv-switch button { padding: calc(8px + var(--cale)) 18px calc(8px - var(--cale)); border-radius: var(--r-pill); font-size: 12.5px; font-weight: 700; color: var(--canvas-soft); }
+.srv-switch button[aria-checked="true"] { background: var(--nuit); color: #F0FDF8; }
+.srv-switch button:focus-visible { outline: 2px solid var(--nuit); outline-offset: 2px; }
+
+/* ========================= LE CADRE ========================= */
+.srv-phone { width: 336px; height: 730px; flex: none; background: var(--bg); border-radius: 42px; border: 9px solid #040A08; box-shadow: var(--sh-float); overflow: hidden; position: relative; display: flex; flex-direction: column; color: var(--ink); }
+.srv-phone-tall { height: 800px; }
+.srv-status { height: 48px; flex: none; display: flex; align-items: center; justify-content: space-between; padding: 14px 20px 0 24px; font-size: var(--t-label); font-weight: 700; position: relative; z-index: 5; }
+/* L'ombre portee ne sert QUE sur les ecrans ou la barre passe sur la carte.
+   Ailleurs elle salit un texte pose sur un fond uni. */
+.srv-phone:has(.srv-body-flush) .srv-status { text-shadow: 0 1px 3px var(--scrim); }
+/* Dynamic Island, cotes reels de l'iPhone 16 Pro : 125 x 36 pt a 11 pt du
+   haut, ramenes a l'echelle du cadre (facteur 0,8358). */
+.srv-island { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 104px; height: 30px; border-radius: var(--r-pill); background: #000; z-index: 6; pointer-events: none; }
+.srv-status-r { display: flex; align-items: center; gap: 4px; }
+.srv-home { position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%); width: 104px; height: 4px; border-radius: 3px; background: color-mix(in srgb, var(--ink) 32%, transparent); z-index: 6; }
+.srv-body { flex: 1 1 auto; min-height: 0; position: relative; display: flex; flex-direction: column; gap: var(--stack); padding: 2px var(--gutter) 26px; }
+.srv-body-scroll { overflow-y: auto; }
+.srv-body-flush { padding: 0; }
+.srv-body-tab { padding-bottom: 76px; }
+.srv-body-flush.srv-body-tab { padding: 0; }
+
+/* ========================= TYPO ET BLOCS ========================= */
+/* La marque de l'ecran d'accueil. Le pictogramme est un CARRE : son centre
+   geometrique est son centre optique. Le mot, lui, subit les metriques
+   d'Overpass et ses capitales tombaient 2 px trop haut — mesure, pas estime.
+   On applique donc la meme methode que partout : le remplissage descend le
+   contenu de `--cale`, et le pictogramme remonte d'autant. Hauteur de la
+   rangee inchangee (6 + 0 = 4 + 2). */
+.srv-brand { --cale: 2px; display: flex; align-items: center; justify-content: center; gap: 10px; flex: none;
+  padding: calc(4px + var(--cale)) 0 calc(2px - var(--cale)); }
+.srv-brand > svg { position: relative; top: calc(var(--cale) * -1); }
+/* Le verrou de marque n'est pas du texte d'interface : il a sa taille
+   propre, calee sur le signe qui l'accompagne (0,57 x la tuile). */
+.srv-brand span { font-size: 16px; font-weight: 800; letter-spacing: -.03em; }
+
+.srv-h { margin: 0; font-size: var(--t-display); font-weight: 800; letter-spacing: -.032em; line-height: 1.1; text-wrap: balance; }
+/* La promesse est ecrite EN VERT, dans les deux ambiances. Meme geste, meme
+   teinte de marque ; seule sa densite s'ajuste au fond, comme une encre. */
+.srv-h em { font-style: normal; display: block; color: var(--jade-fg); }
+.srv-lead { margin: 0; font-size: var(--t-lead); line-height: 1.5; color: var(--ink-2); }
+.srv-lead b { color: var(--ink); font-weight: 800; }
+.srv-title { margin: 0; font-size: var(--t-title); font-weight: 800; letter-spacing: -.022em; line-height: 1.16; text-wrap: balance; }
+
+.srv-stack { display: flex; flex-direction: column; gap: 7px; flex: none; }
+.srv-stack-tight { gap: 4px; }
+.srv-stack-flush { gap: 1px; }
+.srv-inline { display: flex; align-items: center; gap: 8px; flex: none; }
+.srv-spacer { margin-top: auto; }
+
+.srv-top { display: flex; align-items: center; gap: 10px; min-height: 38px; flex: none; }
+.srv-top h2 { margin: 0; flex: 1 1 auto; font-size: var(--t-lead); font-weight: 800; line-height: 1; }
+.srv-top-end { justify-content: flex-end; }
+.srv-back { width: 30px; height: 30px; border-radius: var(--r-pill); flex: none; background: var(--surface-2); display: grid; place-items: center; padding-top: calc(var(--cale) * 2); color: var(--ink-2); }
+
+/* ========================= BOUTONS ========================= */
+.srv-btn { height: var(--h-primary); width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding-top: calc(var(--cale) * 2); border-radius: var(--r-pill); background: var(--jade); color: var(--jade-ink); font-size: var(--t-lead); font-weight: 800; line-height: 1; text-align: center; transition: transform .12s ease, filter .12s ease; }
+.srv-btn:active { transform: scale(.975); filter: brightness(.93); }
+.srv-btn:focus-visible { outline: 2px solid var(--jade); outline-offset: 3px; }
+.srv-btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.srv-btn-off { background: var(--surface-2); color: var(--ink-3); pointer-events: none; }
+.srv-btn-inline { height: var(--h-inline); width: auto; padding-left: 18px; padding-right: 18px; }
+.srv-btn-compact { height: var(--h-compact); width: auto; padding-left: 13px; padding-right: 13px; font-size: var(--t-label); font-weight: 700; }
+.srv-link { font-size: var(--t-body); font-weight: 800; color: var(--ink); text-align: center; padding: 6px 0; width: 100%; }
+.srv-legal { margin: 0; font-size: var(--t-meta); line-height: 1.45; color: var(--ink-3); text-align: center; }
+.srv-legal b { color: var(--ink-2); font-weight: 700; }
+/* Le chrome flottant a UNE matiere : translucide et floutee. Un bouton rond
+   opaque a cote d'une barre de recherche translucide, ce sont deux
+   materiaux dans le meme ecran. */
+.srv-icon-btn { width: var(--h-inline); height: var(--h-inline); flex: none; border-radius: var(--r-pill); background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%); border: 1px solid var(--line); display: grid; place-items: center; color: var(--ink); box-shadow: var(--sh-raised); }
+.srv-icon-btn-sm { width: 30px; height: 30px; }
+.srv-bottom { margin-top: auto; display: flex; flex-direction: column; gap: 7px; flex: none; }
+
+/* ECRANS D'ENTREE : le vide se partage, il ne s'accumule pas en bas.
+   Deux `margin-top: auto` dans une colonne flex se repartissent l'espace
+   libre a parts egales — l'illustration descend de la moitie de ce qui
+   restait, et le groupe du bas garde sa place. Sans ca, un ecran qui ne porte
+   qu'un titre et une phrase colle tout en haut et laisse un trou. */
+.srv-body-entree .srv-illus { margin-top: auto; }
+
+/* ========================= PASTILLES =========================
+   Une pastille N'EST PAS un bouton : elle informe, elle ne s'appuie pas.
+   Elle porte donc un fond discret et du texte de marque, jamais un aplat
+   plein avec du noir dessus — ca sonnait comme une action a chaque fois. */
+.srv-pill { white-space: nowrap; display: inline-flex; align-items: center; gap: 5px; padding: calc(4px + var(--cale)) 8px calc(4px - var(--cale)); border-radius: var(--r-pill); font-size: var(--t-label); font-weight: 800; line-height: 1; background: var(--surface-2); color: var(--ink-2); }
+/* Fond de surface + liseré de marque : un lavis colore sous un texte de
+   marque tombait sous le seuil de contraste avec le vert du jour. */
+.srv-pill-jade  { background: var(--surface); color: var(--jade-fg);  box-shadow: inset 0 0 0 1px var(--jade-line); }
+.srv-pill-rouge { background: var(--surface); color: var(--rouge-fg); box-shadow: inset 0 0 0 1px var(--rouge-line); }
+.srv-pill-wait  { background: transparent; color: var(--ink-2); border: 1px dashed var(--line); }
+
+.srv-dots { display: flex; align-items: center; justify-content: center; gap: 5px; flex: none; padding: 2px 0; }
+.srv-dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--line); display: block; }
+.srv-dots i[data-on="yes"] { width: 17px; border-radius: 3px; background: var(--jade); }
+
+/* ========================= SCHEMA D'OUVERTURE =========================
+   Volontairement PAS une carte : a 300 px de large un fond cartographique
+   reel est bruite, le schema dit la promesse en une seconde. */
+.srv-scheme { flex: 1 1 auto; min-height: 172px; position: relative; display: block; }
+.srv-scheme svg { width: 100%; height: 100%; display: block; }
+.srv-scheme-grid { stroke: var(--line); stroke-width: 1; opacity: .5; }
+.srv-scheme-fast { stroke: var(--rouge); stroke-width: 3; stroke-dasharray: 7 5; fill: none; stroke-linecap: round; }
+/* halo opaque calcule sur le fond : meme rapport percu dans les deux
+   ambiances, la ou une opacite donnait deux verts differents. */
+.srv-scheme-halo { stroke: color-mix(in srgb, var(--jade) 26%, var(--bg)); stroke-width: 11; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.srv-scheme-soft { stroke: var(--jade); stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.srv-scheme-bump { fill: var(--rouge); }
+.srv-scheme-bump-glyph { stroke: var(--rouge-ink); stroke-width: 1.7; fill: none; stroke-linecap: round; }
+/* Depart : le vert de la marque, c'est toi. Arrivee : l'encre, sous la
+   plaquette — une destination se repere, elle n'agit pas. */
+.srv-scheme-start { fill: var(--jade); stroke: var(--bg); stroke-width: 2.5; }
+.srv-scheme-end { fill: var(--ink); stroke: var(--bg); stroke-width: 2.5; }
+
+/* Plaquette d'arrivee : blanche dans les deux ambiances, comme un vrai
+   panneau. Le damier est en encre par-dessus une silhouette de papier —
+   sans elle, les carreaux clairs du PNG d'origine sont des TROUS et le
+   drapeau disparait sur fond sombre. */
+.srv-flag-plaque { fill: #FFFFFF; stroke: rgba(3,8,12,.16); stroke-width: .8; }
+.srv-flag-paper  { fill: #FFFFFF; }
+.srv-flag-ink    { fill: #1B2A25; }
+
+/* ========================= CARTE REELLE =========================
+   Elle va bord a bord et passe DERRIERE la barre d'etat et l'ile, comme
+   dans une vraie application. Les 48 px sont la hauteur de .srv-status. */
+.srv-map { position: absolute; inset: -48px 0 0 0; overflow: hidden; background: var(--map-base);
+  background-image: linear-gradient(var(--map-grid) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--map-grid) 1px, transparent 1px);
+  background-size: 34px 34px; }
+.srv-map img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Le socle est une IMAGE : il ne prend jamais le geste, sinon il intercepte
+   ce qui revient a la carte vivante posee au-dessus. */
+.srv-map-fixe { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+/* LA CAUSE DE « LA CARTE EST UNE IMAGE ».
+   `mapbox-gl.css` est injecte APRES cette feuille et contient
+   `.mapboxgl-map { position: relative }`. Des que `new mapboxgl.Map()`
+   s'execute, il pose cette classe sur le conteneur : a specificite egale, la
+   regle la plus tardive gagne, le conteneur repasse en `relative`, et un
+   `relative` sans contenu a une hauteur de ZERO. La carte vivante peignait
+   donc dans une boite de 318 x 0 px — invisible — et le socle statique, qui
+   est un `<img>`, restait seul a l'ecran.
+   On selectionne donc par le parent (specificite 0,2,0), et la hauteur est
+   ecrite en clair pour ne dependre d'aucun `inset`. */
+.srv-map .srv-map-live,
+.srv-map .srv-map-live.mapboxgl-map {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  opacity: 0; transition: opacity .35s ease; }
+.srv-map .srv-map-live[data-pret="yes"] { opacity: 1; }
+.srv-map .mapboxgl-canvas-container, .srv-map .mapboxgl-canvas { width: 100%; height: 100%; }
+.srv-map-live[data-pret="yes"] { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .srv-map-live { transition: none; } }
+
+.srv-layer { position: absolute; inset: 0; padding: 6px var(--gutter) 0; display: flex; flex-direction: column; gap: 9px; }
+.srv-search { display: flex; align-items: center; gap: 9px; height: var(--h-primary); padding: calc(var(--cale) * 2) 15px 0; border-radius: var(--r-pill); flex: none; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%); border: 1px solid var(--line); box-shadow: var(--sh-raised); color: var(--ink-2); font-size: var(--t-body); font-weight: 700; }
+.srv-search strong { color: var(--ink); font-weight: 800; }
+
+/* etiquettes posees sur le trace : jamais collees au bord du cadre */
+.srv-tag { position: absolute; display: inline-flex; align-items: center; gap: 5px; max-width: calc(100% - var(--gutter) * 2); padding: calc(5px + var(--cale)) 9px calc(5px - var(--cale)); border-radius: var(--r-pill); font-size: var(--t-label); font-weight: 800; line-height: 1; box-shadow: var(--sh-raised); white-space: nowrap; }
+.srv-tag[data-k="soft"] { left: var(--gutter); background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(10px); color: var(--jade-fg); border: 1px solid var(--jade-line); }
+.srv-tag[data-k="fast"] { right: var(--gutter); background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(10px); color: var(--ink-2); border: 1px solid var(--line); }
+
+/* ========================= FEUILLE =========================
+   Opaque a 94 % : au-dessus, elle se confond avec une carte claire et
+   l'ecran passe pour vide. C'est le defaut le plus visible de la V2. */
+.srv-sheet { margin: auto calc(var(--gutter) * -1) 0; background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(22px) saturate(150%); -webkit-backdrop-filter: blur(22px) saturate(150%); border: 1px solid var(--line); border-bottom: none; border-radius: 22px 22px 0 0; padding: 11px var(--gutter) 15px; display: flex; flex-direction: column; gap: 8px; box-shadow: var(--sh-float); position: relative; z-index: 3; flex: none; max-height: 52%; overflow: hidden; }
+/* variante posee, qui ne touche pas le bas de l'ecran */
+.srv-sheet-card { margin: 0; border-radius: var(--r-card); border-bottom: 1px solid var(--line); max-height: none; }
+.srv-sheet-title { margin: 2px 0 4px; font-size: var(--t-title); font-weight: 800; letter-spacing: -.024em; line-height: 1.2; text-wrap: balance; }
+.srv-sheet-sub { margin: 0 0 2px; font-size: var(--t-body); color: var(--ink-2); line-height: 1.45; }
+.srv-grab { width: 32px; height: 4px; border-radius: 3px; margin: 0 auto 3px; background: color-mix(in srgb, var(--ink) 22%, transparent); flex: none; }
+
+/* ========================= CARTE D'ITINERAIRE =========================
+   Composant signature. Le temps a sa COLONNE : en une seule ligne avec le
+   nom et la pastille il debordait du cadre et « 20 min » etait coupe. */
+/* Une colonne de contenu, et le chiffre a cote, centre sur toute la hauteur.
+   En grille, `grid-row: 1 / -1` ne s'etirait pas : sans `grid-template-rows`
+   declare, la ligne -1 est celle de la grille EXPLICITE, qui n'existe pas.
+   Le chiffre restait cale en haut a droite. */
+/* Deux colonnes, deux rangees DECLAREES. Les rangees explicites sont la
+   correction qui manquait au premier essai : sans `grid-template-rows`, la
+   ligne `-1` designe la fin de la grille EXPLICITE — qui n'existe pas — et le
+   chiffre restait cale en haut a droite au lieu de s'etirer.
+   L'ecart entre les rangees est porte par le profil, pas par `row-gap` :
+   une carte sans dos-d'ane n'a pas de seconde rangee, elle ne doit pas
+   gagner un vide au passage. */
+.srv-route { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; column-gap: 10px; row-gap: 0; align-items: center; width: 100%; padding: 11px 13px; border-radius: var(--r-control); background: var(--surface); border: 1px solid var(--line); transition: transform .12s ease; }
+.srv-route-main { grid-area: 1 / 1 / 2 / 2; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 7px; }
+.srv-route:active { transform: scale(.985); }
+.srv-route[data-on="yes"] { border-color: var(--jade); box-shadow: inset 0 0 0 1px var(--jade); }
+.srv-route-name { align-self: stretch; display: flex; align-items: center; gap: 7px; min-width: 0; font-size: var(--t-body); font-weight: 800; line-height: 1; }
+
+.srv-route-name i { width: 7px; height: 7px; border-radius: 50%; display: block; flex: none; }
+.srv-route-name[data-k="soft"] i { background: var(--jade); }
+.srv-route-name[data-k="fast"] i { background: var(--rouge); }
+/* Le chiffre le plus important de l'ecran : centre sur la hauteur de sa
+   carte, quel que soit le nombre de lignes a cote. */
+.srv-route-time { grid-area: 1 / 2 / 3 / 3; align-self: center; justify-self: end; font-size: var(--t-metric); font-weight: 800; line-height: 1; letter-spacing: -.024em; white-space: nowrap; }
+/* LA CHAUSSEE, et les dos-d'ane poses dessus.
+   Une dent verticale, c'etait un graphique ; une bosse arrondie, c'est la
+   chose elle-meme vue de profil — et c'est l'arrondi du glyphe pose dans les
+   pastilles du schema d'ouverture. */
+.srv-profile { grid-area: 2 / 1 / 3 / 3; position: relative; display: flex; align-items: flex-end;
+  justify-content: space-between; width: 100%; height: 16px; margin-top: 9px; padding: 0 9px; }
+/* la chaussee va bord a bord, les bosses sont rentrees : sinon les deux des
+   extremites touchent le bord de la carte */
+.srv-profile::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1.6px;
+  border-radius: 2px; background: var(--ink-3); opacity: .45; }
+/* Chaque bosse est un petit SVG a taille fixe distribue par le flux : un
+   seul SVG etire sur toute la largeur ecraserait les arrondis d'autant plus
+   que la carte est large. */
+.srv-bosse { flex: 0 0 auto; position: relative; z-index: 1; overflow: visible; }
+.srv-bosse path { fill: none; stroke-width: 2.3; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.srv-profile[data-k="fast"] .srv-bosse path { stroke: var(--rouge); }
+.srv-profile[data-k="soft"] .srv-bosse path { stroke: var(--jade); }
+
+/* ========================= CONDUITE ========================= */
+.srv-instr { display: flex; align-items: center; gap: 13px; flex: none; padding: 12px 14px; border-radius: var(--r-card); background: color-mix(in srgb, var(--bg-deep) 92%, transparent); backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%); border: 1px solid var(--line); box-shadow: var(--sh-raised); color: var(--ink); }
+.srv-instr-d { font-size: var(--t-metric); font-weight: 800; line-height: 1; letter-spacing: -.024em; }
+.srv-instr small { display: block; margin-top: 3px; font-size: var(--t-label); color: var(--ink-2); line-height: 1.25; }
+.srv-instr-turn { color: var(--jade); transform: rotate(-45deg); }
+.srv-drive { display: flex; align-items: center; justify-content: space-between; flex: none; margin-top: 9px; margin-bottom: 20px; padding: 10px 15px; border-radius: var(--r-card); background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid var(--line); }
+.srv-drive div { text-align: center; }
+.srv-drive strong { display: block; font-size: var(--t-lead); font-weight: 800; line-height: 1; }
+.srv-drive small { display: block; margin-top: 3px; font-size: var(--t-meta); color: var(--ink-3); letter-spacing: .09em; text-transform: uppercase; line-height: 1; }
+/* Aplat corail plein et encre foncee dessus : exactement la regle du bouton
+   principal, appliquee au corail. Le disque clair a glyphe corail se lisait
+   comme un bouton de chrome, pas comme le rouge du produit. */
+/* Le bouton flottant est une PASTILLE de la charte, ronde : meme fond, meme
+   encre, meme liseré que `.srv-tile[data-t="rouge"]`. Ni disque blanc a glyphe
+   rouge, ni aplat plein — la charte a une seule facon de dire « alerte ». */
+.srv-fab { width: 56px; height: 56px; border-radius: var(--r-pill); flex: none;
+  background: var(--rouge-soft); color: var(--rouge-fg);
+  border: 1px solid var(--rouge-line);
+  display: grid; place-items: center; box-shadow: var(--sh-float);
+  transition: transform .12s ease; }
+.srv-fab:active { transform: scale(.93); }
+.srv-drive-row { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; }
+
+/* ========================= LISTES ET PANNEAUX ========================= */
+.srv-panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); overflow: hidden; flex: none; }
+/* simple rembourrage : le composant pose a l'interieur apporte sa propre
+   disposition. En faisant AUSSI de ce bloc un conteneur flex, l'enfant
+   devenait un element flex non retrecissable et depassait du cadre. */
+.srv-panel-pad { padding: 12px 13px; }
+.srv-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 10px 12px; width: 100%; border-bottom: 1px solid var(--line); }
+.srv-row:last-child { border-bottom: none; }
+.srv-row:active { background: var(--surface-2); }
+.srv-row-top { align-items: flex-start; grid-template-columns: auto minmax(0, 1fr); }
+.srv-row-b { min-width: 0; }
+.srv-row-b strong { display: block; font-size: var(--t-body); font-weight: 800; line-height: 1.3; }
+.srv-row-b small { display: block; margin-top: 1px; font-size: var(--t-label); color: var(--ink-2); line-height: 1.35; }
+.srv-row-end { color: var(--ink-3); font-size: var(--t-label); display: flex; align-items: center; }
+
+/* pastille d'icone : teinte + encre, jamais une icone vert sur vert */
+.srv-tile { width: 29px; height: 29px; flex: none; border-radius: var(--r-tile); display: grid; place-items: center; background: var(--surface-2); color: var(--ink-2); }
+.srv-tile[data-t="jade"]  { background: var(--jade-soft);  color: var(--jade-fg); }
+.srv-tile[data-t="rouge"] { background: var(--rouge-soft); color: var(--rouge-fg); }
+.srv-tile-md { width: 36px; height: 36px; border-radius: var(--r-control); }
+/* Icone d'ouverture. Un aplat vert plein de 76 px avec un glyphe noir
+   dedans, c'est une vignette de site marchand ; les systemes posent un
+   glyphe de couleur sur une pastille teintee, et ca respire. */
+.srv-tile[data-t="jade-solid"]  { background: var(--jade);  color: var(--jade-ink); }
+.srv-tile[data-t="rouge-solid"] { background: var(--rouge); color: var(--rouge-ink); }
+
+.srv-head { display: flex; align-items: baseline; justify-content: space-between; gap: 9px; flex: none; margin-top: 3px; font-size: var(--t-meta); font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-3); }
+.srv-field { display: flex; align-items: center; gap: 9px; flex: none; height: var(--h-primary); padding: calc(var(--cale) * 2) 13px 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-control); color: var(--ink-2); font-size: var(--t-body); }
+.srv-field strong { color: var(--ink); font-weight: 700; }
+.srv-field-on { border-color: var(--jade); box-shadow: inset 0 0 0 1px var(--jade); }
+.srv-field i { width: 7px; height: 7px; border-radius: var(--r-pill); display: block; flex: none; background: var(--ink-3); }
+.srv-field-on i { background: var(--jade); }
+
+.srv-note { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 9px; align-items: start; flex: none; padding: 10px 12px; border-radius: var(--r-control); background: var(--jade-wash); border: 1px solid var(--jade-line); color: var(--ink); }
+/* Version qu'on peut toucher : trois colonnes, tout sur une ligne, et le
+   chevron qui annonce que ca mene ailleurs. */
+.srv-note[data-clic="yes"] { grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; width: 100%; text-align: left; }
+.srv-note[data-clic="yes"] > svg:first-child { margin-top: 0; }
+.srv-note[data-clic="yes"] > svg:last-child { color: var(--ink-3); }
+.srv-note[data-clic="yes"] strong { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.srv-note[data-clic="yes"]:active { filter: brightness(.97); }
+.srv-note[data-t="rouge"]   { background: var(--rouge-wash); border-color: var(--rouge-line); }
+.srv-note[data-t="neutral"] { background: var(--surface); border-color: var(--line); }
+/* le glyphe porte la couleur de l'encart, il n'est plus une forme sombre
+   posee sur un fond colore */
+.srv-note > svg              { color: var(--jade-fg); margin-top: 1px; }
+.srv-note[data-t="rouge"]   > svg { color: var(--rouge-fg); }
+.srv-note[data-t="neutral"] > svg { color: var(--ink-2); }
+.srv-note strong { display: block; font-size: var(--t-body); font-weight: 800; line-height: 1.3; }
+.srv-note small { display: block; margin-top: 2px; font-size: var(--t-label); color: var(--ink-2); line-height: 1.4; }
+
+/* ========================= BARRE D'ONGLETS =========================
+   UNE seule regle. L'etat actif se lit a l'encre pleine plus un trait de
+   marque : le vert en texte est illisible sur blanc, une pastille verte
+   alourdit la barre. Meme rendu dans les deux ambiances. */
+/* 22 px : la barre d'accueil de l'iPhone occupe les 11 premiers, il faut de
+   l'air entre les deux sinon la barre d'onglets parait posee dessus. */
+.srv-tabs { position: absolute; left: 9px; right: 9px; bottom: 22px; height: 54px; z-index: 4; background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); border: 1px solid var(--line); border-radius: var(--r-pill); display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; align-items: center; padding: 0 5px; box-shadow: var(--sh-raised); }
+.srv-tab { position: relative; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: calc(6px + var(--cale)) 0 calc(8px - var(--cale)); color: var(--ink-3); }
+.srv-tab span { font-size: var(--t-label); font-weight: 700; line-height: 1; }
+.srv-tab[data-on="yes"] { color: var(--ink); }
+.srv-tab[data-on="yes"] span { font-weight: 800; }
+.srv-tab[data-on="yes"]::after { content: ''; position: absolute; bottom: 1px; left: 50%; transform: translateX(-50%); width: 14px; height: 3px; border-radius: 3px; background: var(--jade); }
+
+/* Illustration des ecrans d'entree : ta position sur une route, avec ses
+   cercles de precision.
+
+   Hauteur FIXE — en `flex: 1 1 auto` elle avalait la moitie de l'ecran et le
+   vide quadrille devenait le sujet. 150px : assez pour porter l'ecran, assez
+   peu pour que le titre reste le sujet.
+
+   SANS CADRE. Un rectangle bordé decoupe un bloc etranger dans la page ; ici
+   le quadrillage se dissout sur les bords (masque radial dans le SVG) et le
+   fond s'eteint avec lui. C'est la meme image, posee au lieu d'etre encadree. */
+.srv-illus { flex: none; height: 150px; overflow: hidden;
+  background: radial-gradient(closest-side circle at 50% 50%,
+    var(--surface-2) 0%, var(--surface-2) 58%, transparent 100%); }
+.srv-illus svg { width: 100%; height: 100%; display: block; }
+.srv-illus-grille line { stroke: var(--line); stroke-width: 1; }
+.srv-illus-route { fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round;
+  stroke: var(--ink-3); opacity: .45; }
+.srv-illus[data-on="yes"] .srv-illus-route { stroke: var(--jade); opacity: 1; }
+/* Les cercles de precision sont TRACES, pas remplis : un grand aplat corail
+   melangé au fond vert de la surface vire au brun et se lit comme une tache.
+   Un trait garde la teinte, et deux cercles concentriques disent « precision »
+   mieux qu'un disque. */
+.srv-illus-onde   { fill: none; stroke: var(--rouge); stroke-width: 2;   opacity: .30; }
+.srv-illus-onde-2 { fill: none; stroke: var(--rouge); stroke-width: 2.5; opacity: .55; }
+.srv-illus-point  { fill: var(--rouge); stroke: var(--surface-2); stroke-width: 3; }
+.srv-illus[data-on="yes"] .srv-illus-onde   { stroke: var(--jade); }
+.srv-illus[data-on="yes"] .srv-illus-onde-2 { stroke: var(--jade); }
+.srv-illus[data-on="yes"] .srv-illus-point  { fill: var(--jade); }
+.srv-illus-gaine { stroke: var(--surface-2); stroke-width: 9; stroke-linecap: round; fill: none; }
+.srv-illus-barre { stroke: var(--rouge); stroke-width: 5; stroke-linecap: round; fill: none; }
+
+/* ========================= ETATS ========================= */
+
+.srv-skel { border-radius: var(--r-tile); background: var(--surface-2); position: relative; overflow: hidden; flex: none; }
+.srv-skel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--ink) 10%, transparent), transparent); animation: srv-sh 1.4s infinite; }
+@keyframes srv-sh { to { transform: translateX(100%); } }
+/* Le seul `!important` de la feuille, et il est a sa place : la preference
+   systeme « moins d'animations » doit gagner contre CHAQUE transition posee
+   par un composant, sans avoir a les enumerer. */
+@media (prefers-reduced-motion: reduce) { .srv-skel::after { animation: none; } .srv * { transition: none !important; } }
+
+.srv-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; flex: none; }
+.srv-kpi { padding: 10px 12px; border-radius: var(--r-control); background: var(--surface); border: 1px solid var(--line); }
+.srv-kpi span { display: block; margin-bottom: 7px; font-size: var(--t-meta); letter-spacing: .11em; text-transform: uppercase; color: var(--ink-3); line-height: 1; }
+.srv-kpi strong { display: block; font-size: var(--t-metric); font-weight: 800; line-height: 1; letter-spacing: -.024em; }
+.srv-kpi small { display: block; margin-top: 5px; font-size: var(--t-meta); color: var(--ink-2); }
+
+.srv-plan { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 9px; align-items: center; width: 100%; padding: 11px 13px; border-radius: var(--r-control); background: var(--surface); border: 1px solid var(--line); flex: none; }
+.srv-plan[data-on="yes"] { border-color: var(--jade); box-shadow: inset 0 0 0 1px var(--jade); background: var(--jade-soft); }
+.srv-plan strong { font-size: var(--t-body); font-weight: 800; line-height: 1.2; }
+.srv-plan small { font-size: var(--t-label); color: var(--ink-2); line-height: 1.3; }
+.srv-plan-p { grid-column: 2; grid-row: span 2; font-size: var(--t-lead); font-weight: 800; line-height: 1; justify-self: end; }
+.srv-benef { display: flex; align-items: center; gap: 9px; padding: 5px 0; }
+.srv-benef > span:last-child { font-size: var(--t-body); color: var(--ink-2); line-height: 1.35; }
+.srv-benef strong { color: var(--ink); font-weight: 800; }
+/* meme regle pour les icones que pour le texte : le jade est un aplat.
+   Une coche verte sur blanc plafonne a 1,7 de contraste. */
+.srv-benef-i { width: 18px; height: 18px; flex: none; border-radius: var(--r-pill); background: var(--jade); color: var(--jade-ink); display: grid; place-items: center; }
+
+
+/* connexions tierces */
+.srv-sso { height: var(--h-primary); width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding-top: calc(var(--cale) * 2); border-radius: var(--r-pill); font-size: var(--t-body); font-weight: 700; line-height: 1; background: var(--surface-2); color: var(--ink); border: 1px solid var(--line); transition: transform .12s ease, filter .12s ease; }
+.srv-sso:active { transform: scale(.975); filter: brightness(.96); }
+/* Les deux marques ne se mesurent pas a la meme boite : dans un carre de 24,
+   le G de Google occupe 22,4 x 23 et la pomme seulement 13,9 x 17. A boite
+   egale la pomme parait minuscule ; on l'agrandit donc jusqu'a peser autant.
+   `flex: none` : sinon la boite flex les rogne. */
+.srv-sso > svg { flex: none; }
+.srv-dark  .srv-sso[data-p="apple"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.srv-light .srv-sso[data-p="apple"] { background: #000; color: #FFF; border-color: #000; }
+
+/* Le poids des icones est fixe UNE fois, en React (IconContext), pas au CSS.
+   La regle globale d'avant ecrasait aussi les glyphes pleins, les logos
+   tiers et le schema : trois exceptions a maintenir pour une seule intention. */
+
+@media (max-width: 640px) {
+  .srv-wrap { padding: 0 14px; }
+  .srv-gallery { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+}
+
+/* ==========================================================================
+   PLANCHE DE CHARTE — en langage client. Le jargon vit dans le CSS.
+   ========================================================================== */
+.srv-da { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); align-items: start; }
+.srv-da-card { background: var(--canvas-card); border: 1px solid var(--canvas-line); border-radius: var(--r-card); padding: 20px; }
+.srv-da-card h3 { margin: 0 0 15px; font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--canvas-soft); }
+.srv-da-card p { margin: 14px 0 0; font-size: 12.5px; color: var(--canvas-soft); line-height: 1.55; }
+.srv-da-wide { grid-column: 1 / -1; }
+
+/* --- logos : la rangee de logos et la rangee d'icones partagent la meme
+       grille, sinon la carte des icones garde un grand vide a gauche. --- */
+.srv-logos { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.srv-logo-box { border-radius: var(--r-card); padding: 22px 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; border: 1px solid var(--canvas-line); }
+.srv-logo-box[data-bg="clair"]  { background: #FFFFFF; }
+.srv-logo-box[data-bg="sombre"] { background: #0B1512; border-color: #24382F; }
+.srv-logo-box small { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+.srv-logo-box[data-bg="clair"] small  { color: var(--canvas-soft); }
+.srv-logo-box[data-bg="sombre"] small { color: #7C918A; }
+.srv-logotype { display: flex; align-items: center; gap: 11px; }
+.srv-logotype b { font-size: 22px; font-weight: 800; letter-spacing: -.03em; }
+.srv-logo-box[data-bg="clair"]  .srv-logotype b { color: #0A1F19; }
+.srv-logo-box[data-bg="sombre"] .srv-logotype b { color: #F0FDF8; }
+.srv-hero-logo .srv-logotype b { color: var(--canvas-ink); }
+
+/* --- icone d'application : squircle 22,37 %, glyphe a 74 % --- */
+.srv-appicons { display: flex; flex-wrap: wrap; gap: 26px; align-items: flex-end; justify-content: center; }
+.srv-appicon { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.srv-appicon span { font-size: 10.5px; color: var(--canvas-soft); font-variant-numeric: tabular-nums; }
+.srv-appicon-tile { display: grid; place-items: center; background: #3FE0AC; border-radius: 22.37%; overflow: hidden; }
+.srv-appicon-tile[data-store="google"] { border-radius: 4%; }
+.srv-appicon-tile[data-shadow="yes"] { box-shadow: 0 8px 22px -8px rgba(3,8,12,.45); }
+
+/* --- echelle de textes : les tailles viennent des JETONS, elles ne sont
+       plus reecrites a la main. La planche ne peut plus mentir. --- */
+.srv-scale > div { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--canvas-line); }
+.srv-scale > div:last-child { border-bottom: none; }
+.srv-scale b { font-weight: 800; letter-spacing: -.02em; color: var(--canvas-ink); }
+.srv-scale span { font-size: 11.5px; color: var(--canvas-soft); flex: none; text-align: right; }
+.srv-scale span i { display: block; font-style: normal; font-size: 10px; opacity: .7; font-variant-numeric: tabular-nums; }
+
+/* --- couleurs : le nom, le role ET la valeur. Deux encres presque noires
+       ne se distinguent pas a l'oeil, la valeur les separe. --- */
+.srv-swatches { display: grid; gap: 11px; }
+.srv-swatch { display: flex; align-items: center; gap: 12px; }
+.srv-swatch i { width: 34px; height: 34px; border-radius: var(--r-tile); display: block; flex: none; border: 1px solid var(--canvas-line); box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
+.srv-swatch div { display: flex; flex-direction: column; min-width: 0; }
+.srv-swatch b { font-size: 13px; font-weight: 700; }
+.srv-swatch span { font-size: 12px; color: var(--canvas-soft); }
+.srv-swatch code { font-size: 11px; color: var(--canvas-soft); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+
+/* --- etats --- */
+.srv-da-states { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.srv-da-state { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-card); padding: 14px; }
+.srv-da-state h4 { margin: 0 0 10px; font-size: 10.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); }
+/* Les boutons se peignent avec les jetons du theme choisi : poses a nu sur
+   une carte blanche, le fantome devenait blanc sur blanc et l'indisponible
+   sombre sur blanc. Ils ont donc leur propre fond, comme les etats. */
+.srv-da-buttons { display: flex; flex-direction: column; gap: 10px; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-card); padding: 14px; }
+
+/* ==========================================================================
+   CLASSES UTILITAIRES — elles remplacent les 83 style={{}} de la V2.
+   Elles sont volontairement peu nombreuses : au-dela, ce n'est plus une
+   charte, c'est un second langage a maintenir.
+   ========================================================================== */
+/* L'element qui prend la place est DESIGNE, jamais deduit de sa position :
+   sur l'ecran de comparaison, « premier enfant » designait le bouton retour,
+   et c'est lui qui s'etirait. Declare ici, apres les composants qui posent
+   `flex: none`, sinon il ne gagne pas. */
+.srv-grow { flex: 1 1 auto; min-width: 0; }
+.srv-inline-wrap { flex-wrap: wrap; margin-top: 7px; }
+.srv-end { justify-content: flex-end; }
+.srv-layer-tab { padding-bottom: 82px; }
+
+/* Le signe. DANS l'application, la tuile prend le vert de l'ambiance : sinon
+   le logo apporte un second vert sur un ecran qui n'en a qu'un.
+   HORS ambiance — la planche de charte, l'en-tete du dossier — il retombe sur
+   le vert de reference : c'est l'icone livree aux stores, un fichier unique
+   qui ne change pas selon l'heure. */
+.srv-mark-tile  { fill: var(--jade, #3FE0AC); }
+.srv-mark-glyph { stroke: var(--jade-ink, #04231A); fill: none; }
+
+/* squelettes : ils reprennent la forme de ce qui va les remplacer */
+.srv-skel-title     { height: 15px; width: 62%; }
+.srv-skel-route     { height: 56px; border-radius: var(--r-control); }
+.srv-skel-row       { height: 32px; }
+.srv-skel-row-short { height: 32px; width: 82%; }
+.srv-skel-btn       { height: var(--h-primary); border-radius: var(--r-pill); }
+
+/* etiquettes sur le trace : deux hauteurs prevues, pas de valeur au hasard */
+.srv-tag[data-y="1"] { top: 62px; }
+.srv-tag[data-y="2"] { top: 100px; }
+
+/* echelle de la planche : les tailles viennent des JETONS */
+.srv-scale b[data-t="display"] { font-size: var(--t-display); letter-spacing: -.03em; }
+.srv-scale b[data-t="title"]   { font-size: var(--t-title); }
+.srv-scale b[data-t="lead"]    { font-size: var(--t-lead); }
+.srv-scale b[data-t="body"]    { font-size: var(--t-body); font-weight: 400; }
+.srv-scale b[data-t="label"]   { font-size: var(--t-label); }
+
+/* nuanciers : la valeur vient du JETON, jamais d'une copie */
+.srv-swatch i[data-c="jade"]     { background: var(--jade); }
+.srv-swatch i[data-c="jade-ink"]  { background: var(--jade-ink); }
+.srv-swatch i[data-c="rouge"]    { background: var(--rouge); }
+.srv-swatch i[data-c="rouge-fg"] { background: var(--rouge-fg); }
+.srv-swatch i[data-c="nuit"]  { background: var(--nuit); }
+.srv-swatch i[data-c="jour"]  { background: #FFFFFF; }
+.srv-swatch i[data-c="encre"] { background: var(--encre); }
+
+/* ==========================================================================
+   PLANCHE DES COMPOSANTS — chaque piece sortie de son ecran, posee a plat
+   sur la vraie surface du theme. Une piece qui ne tient pas ici ne tient
+   nulle part : le contexte ne la sauve plus.
+   ========================================================================== */
+/* Une grille laissait des trous : des fiches de hauteurs tres differentes
+   alignees en rangees. Des COLONNES les empilent sans vide. */
+.srv-specs-wrap { display: flex; flex-direction: column; gap: 14px; }
+.srv-specs { columns: 262px; column-gap: 14px; }
+.srv-specs > .srv-spec { break-inside: avoid; margin: 0 0 14px; display: inline-block; width: 100%; }
+.srv-spec { background: var(--canvas-card); border: 1px solid var(--canvas-line); border-radius: var(--r-card); padding: 16px; }
+.srv-spec-wide { width: 100%; }
+.srv-spec h4 { margin: 0 0 11px; font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--canvas-soft); }
+.srv-spec p { margin: 11px 0 0; font-size: 11.5px; line-height: 1.5; color: var(--canvas-soft); }
+.srv-spec-stage { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-control); padding: 13px; display: flex; flex-direction: column; gap: 8px; color: var(--ink); }
+.srv-spec-row { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; }
+.srv-spec-center { justify-content: center; }
+.srv-spec-marks { align-items: flex-end; gap: 14px; }
+.srv-spec-duo { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+
+/* le cran « metric » sur la planche typographique */
+.srv-scale b[data-t="metric"] { font-size: var(--t-metric); }
+
+/* ==========================================================================
+   RACCOURCI CLAVIER — la bascule d'ambiance se pilote aux fleches. Un
+   raccourci qui ne s'annonce pas n'existe pas : il est ecrit sous le
+   selecteur, avec les touches dessinees.
+   ========================================================================== */
+.srv-center-col { flex-direction: column; align-items: center; gap: 0; }
+.srv-switch-hint { margin: -18px 0 26px; font-size: 11.5px; color: var(--canvas-soft); display: flex; align-items: center; }
+.srv-switch-hint kbd { font: inherit; font-weight: 700; background: var(--canvas-card); border: 1px solid var(--canvas-line); border-bottom-width: 2px; border-radius: 6px; padding: 1px 6px; margin-right: 5px; color: var(--canvas-ink); }
+
+/* ========================= LA CARTE VIVANTE ========================= */
+/* `cooperativeGestures` de Mapbox affiche un bandeau « Ctrl + molette » par
+   dessus la carte. Sa mise en forme d'origine est un voile noir plein cadre,
+   illisible dans un telephone de 336 px : on la ramene a une pastille de la
+   maquette. */
+.srv-map .mapboxgl-scroll-zoom-blocker,
+.srv-map .mapboxgl-touch-pan-blocker {
+  background: var(--scrim); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  color: var(--ink); font-family: inherit; font-size: var(--t-body); font-weight: 600; }
+.srv-map .mapboxgl-scroll-zoom-blocker > *,
+.srv-map .mapboxgl-touch-pan-blocker > * { padding: 0 14px; text-align: center; }
+.srv-map .mapboxgl-canvas { outline: none; }
+
+/* ========================= L'ALERTE PLEIN CADRE ========================= */
+/* Un panneau destine a quelqu'un qui conduit : au CENTRE de l'ecran, un grand
+   signe, trois mots, un bouton. Il etait auparavant dans une feuille en bas,
+   noye parmi deux notes de texte — invisible d'un coup d'oeil. */
+.srv-milieu { flex: 1 1 auto; display: grid; place-items: center; padding-bottom: 34px; }
+.srv-alerte { width: 100%; display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 10px; padding: 22px 18px 18px; border-radius: var(--r-card);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid var(--line); box-shadow: var(--sh-float); }
+.srv-alerte-i { width: 58px; height: 58px; border-radius: var(--r-pill); display: grid; place-items: center;
+  background: var(--rouge-soft); color: var(--rouge-fg); border: 1px solid var(--rouge-line); }
+/* Un GRAND glyphe demande une teinte plus dense : sous ~35 %, un corail pose
+   sur un fond sombre cesse d'etre lu comme du rouge. */
+.srv-dark .srv-alerte-i { background: var(--rouge-full); border-color: transparent; color: #FFC9C3; }
+.srv-alerte strong { font-size: var(--t-title); font-weight: 900; letter-spacing: -.02em;
+  line-height: 1.1; color: var(--ink); padding-top: calc(var(--cale) * 2); }
+.srv-alerte p { margin: -4px 0 2px; font-size: var(--t-lead); font-weight: 600; color: var(--ink-2); }
+.srv-alerte .srv-btn { width: 100%; }
+.srv-alerte small { display: flex; align-items: center; justify-content: center; gap: 6px;
+  font-size: var(--t-meta); font-weight: 700; color: var(--ink-3);
+  padding-top: calc(var(--cale) * 2); }
+.srv-alerte small > svg { position: relative; top: calc(var(--cale) * -1); flex: none; }
+
+/* ==========================================================================
+   LE CALQUE FLOTTANT NE VOLE PLUS LA CARTE
+
+   Voici pourquoi la carte passait pour une image : `.srv-layer` est un calque
+   `inset: 0` pose PAR-DESSUS elle. Il n'a pas de fond, on ne le voit pas —
+   mais il recouvre tout l'ecran et capte donc TOUS les gestes. Le glisser
+   n'atteignait jamais la carte. La carte etait bien vivante ; elle etait
+   simplement hors d'atteinte, ce qui revient exactement au meme.
+
+   Regle : le calque et ses conteneurs laissent passer le geste, et seules les
+   surfaces qu'on voit — feuilles, champs, boutons, barre d'onglets — le
+   reprennent.
+   ========================================================================== */
+.srv-layer, .srv-layer * { pointer-events: none; }
+.srv-layer button,
+.srv-layer a,
+.srv-layer input,
+.srv-layer .srv-sheet,
+.srv-layer .srv-search,
+.srv-layer .srv-alerte,
+.srv-layer .srv-tabs,
+.srv-layer .srv-note,
+.srv-layer .srv-route { pointer-events: auto; }
+
+/* La carte s'attrape : le curseur le dit. */
+.srv-map-live { cursor: grab; }
+.srv-map-live:active { cursor: grabbing; }
+
+/* L'attribution Mapbox. Elle est OBLIGATOIRE des qu'on affiche une carte
+   Mapbox, on ne la retire donc pas — mais dans un cadre de 336 px elle
+   s'ecrasait sur la barre d'accueil. On la reduit et on la remonte : lisible,
+   discrete, jamais dans le passage. La mention complete vit par ailleurs dans
+   l'interface (« Source OpenStreetMap », et la ligne Donnees cartographiques
+   de l'ecran Compte). */
+.srv-map .mapboxgl-ctrl-bottom-left { bottom: 4px; left: 3px; z-index: 1; }
+.srv-map .mapboxgl-ctrl-logo { transform: scale(.62); transform-origin: 0 100%; opacity: .55; }
+.srv-map .mapboxgl-ctrl-bottom-right { display: none; }
