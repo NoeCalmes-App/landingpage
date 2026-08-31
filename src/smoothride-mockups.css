@@ -838,3 +838,8 @@
 /* Fond de secours, sans aucune cle externe : la maquette montre toujours le
    trajet, meme quand le build sort sans jeton Mapbox. */
 .srv-map-secours { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--ink); display: block; }
+
+/* Quand le jeton Mapbox manque, le filet SVG dessine sa propre grille. Celle
+   de `.srv-map` passerait derriere et on verrait deux quadrillages superposes,
+   ce qui donne justement l'impression de panne qu'on veut eviter. */
+.srv-map:has(.srv-map-secours) { background-image: none; }

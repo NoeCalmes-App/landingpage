@@ -167,7 +167,11 @@ function chargerGL() {
 function FondDeSecours({ routes, bumps, depart, arrivee, sombre }) {
   const pts = routes.flatMap((r) => r.coords)
   if (!pts.length) return null
-  const my = (lat) => Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360))
+  // Mercator. Le facteur 180/PI est indispensable : sans lui, x reste en
+  // degres de longitude pendant que y sort en radians, soit ~30 fois plus
+  // petit aux latitudes francaises. L'itineraire s'aplatissait alors en un
+  // trait horizontal de quelques pixels de haut.
+  const my = (lat) => (180 / Math.PI) * Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360))
   const xs = pts.map((p) => p[0]), ys = pts.map((p) => my(p[1]))
   const x0 = Math.min(...xs), x1 = Math.max(...xs)
   const y0 = Math.min(...ys), y1 = Math.max(...ys)
@@ -188,13 +192,18 @@ function FondDeSecours({ routes, bumps, depart, arrivee, sombre }) {
       ))}
       {routes.map((r, i) => (
         <g key={i}>
-          <path d={d(r.coords)} fill="none" stroke={C.gaine} strokeWidth={r.w + 4} strokeOpacity=".3" strokeLinecap="round" strokeLinejoin="round" />
-          <path d={d(r.coords)} fill="none" stroke={r.color} strokeWidth={r.w} strokeLinecap="round" strokeLinejoin="round" />
+          <path d={d(r.coords)} fill="none" stroke={C.gaine} strokeWidth={r.w + 4} strokeOpacity=".35" strokeLinecap="round" strokeLinejoin="round" />
+          {/* La route porte `ton` (un nom de teinte), jamais une couleur toute
+              faite : c'est `teinte()` qui tranche selon le theme, exactement
+              comme la couche Mapbox plus haut. Lire `r.color` renvoyait
+              undefined, donc `stroke: none` : seul le liseré sombre restait,
+              invisible sur fond sombre. */}
+          <path d={d(r.coords)} fill="none" stroke={teinte(r.ton, sombre)} strokeWidth={r.w} strokeLinecap="round" strokeLinejoin="round" />
         </g>
       ))}
       {bumps.slice(0, 22).map((b, i) => {
         const [cx, cy] = px(b)
-        return <circle key={i} cx={cx} cy={cy} r="4.5" fill={teinte('rouge', sombre)} stroke="#fff" strokeWidth="2" />
+        return <circle key={i} cx={cx} cy={cy} r="5.5" fill={teinte('rouge', sombre)} stroke={sombre ? '#0A1310' : '#FFFFFF'} strokeWidth="2.5" />
       })}
       {[[depart, teinte('jade', sombre)], [arrivee, C.gaine]].map(([pt, col], i) => {
         if (!pt) return null
