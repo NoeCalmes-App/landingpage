@@ -1251,7 +1251,15 @@ const CONDUITE = (() => {
     if (Math.abs(d) >= 50) break
     j += 1
   }
-  const flCo = co.filter((pt) => distEntre(pt, brut[j]) < 45)
+  // La fleche s'etend LE LONG du trace, 30 m avant et apres le virage.
+  // Pas dans un rayon autour de lui : la route frole ce point sur toute
+  // la boucle du carrefour, et le rayon etirait la fleche sur 150 m.
+  const jf = presDe(co, brut[j])
+  let fa = jf, dosF = 0
+  while (fa > 0 && dosF < 30) { dosF += distEntre(co[fa - 1], co[fa]); fa -= 1 }
+  let fb = jf, faceF = 0
+  while (fb < co.length - 1 && faceF < 30) { faceF += distEntre(co[fb], co[fb + 1]); fb += 1 }
+  const flCo = co.slice(fa, fb + 1)
   const { derriere, devant } = fenetreTrace(co, i, 800, 2500)
   return {
     puck: co[i],
