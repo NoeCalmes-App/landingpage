@@ -369,6 +369,20 @@ function MapLive({
       m.on('load', () => {
         if (mort) return
         if (conduite) {
+          // Les styles navigation embarquent le TRAFIC temps reel : chaque
+          // route fluide est peinte en vert, et le trace jade s'y noyait.
+          // Waze fait l'inverse — routes neutres, la ligne de guidage est
+          // la seule couleur saturee. On eteint donc les couches trafic :
+          // il reste la hierarchie routiere et les cartouches, sans le
+          // bruit vert. (Dans l'app, meme reglage : le trafic se coupe par
+          // couche, pas en changeant de style.)
+          try {
+            m.getStyle().layers.forEach((l) => {
+              if (/traffic/i.test(l.id) || /traffic/i.test(l['source-layer'] || '')) {
+                m.setLayoutProperty(l.id, 'visibility', 'none')
+              }
+            })
+          } catch { /* style sans trafic : rien a eteindre */ }
           // Le volume de mapbox.com/navigation : les batiments en 3D. La
           // couche s'insere SOUS la premiere couche d'etiquettes pour que
           // les noms de rues restent lisibles ; les traces, ajoutes apres,
