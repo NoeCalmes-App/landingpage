@@ -58,8 +58,9 @@ function urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite, f
   const ov = []
   routes.forEach((r) => {
     const p = encodeURIComponent(encPoly(r.coords))
-    ov.push(`path-${r.w + 3}+${C.gaine.replace('#', '')}-0.45(${p})`)
-    ov.push(`path-${r.w}+${teinte(r.ton, sombre).replace('#', '')}-1(${p})`)
+    const col = conduite && r.ton === 'jade' ? C.jade.sombre : teinte(r.ton, sombre)
+    ov.push(`path-${r.w + 3}+${C.gaine.replace('#', '')}-${conduite ? '0.8' : '0.45'}(${p})`)
+    ov.push(`path-${r.w}+${col.replace('#', '')}-1(${p})`)
   })
   if (fleche) {
     const f = encodeURIComponent(encPoly(fleche.coords))
@@ -245,11 +246,19 @@ function FondDeSecours({ routes, bumps, depart, arrivee, sombre }) {
         const [cx, cy] = px(b)
         return <circle key={i} cx={cx} cy={cy} r="5.5" fill={teinte('rouge', sombre)} stroke={sombre ? '#0A1310' : '#FFFFFF'} strokeWidth="2.5" />
       })}
-      {[[depart, teinte('jade', sombre)], [arrivee, C.gaine]].map(([pt, col], i) => {
-        if (!pt) return null
-        const [cx, cy] = px(pt)
-        return <circle key={i} cx={cx} cy={cy} r="7" fill={col} stroke="#fff" strokeWidth="3" />
-      })}
+      {depart && (() => {
+        const [cx, cy] = px(depart)
+        return <circle cx={cx} cy={cy} r="7" fill={C.gaine} stroke="#fff" strokeWidth="3" />
+      })()}
+      {arrivee && (() => {
+        const [cx, cy] = px(arrivee)
+        return (
+          <g>
+            <circle cx={cx} cy={cy} r="4" fill={C.gaine} stroke="#fff" strokeWidth="2" />
+            <Flag x={cx} y={cy} plaque={20} ecart={4} />
+          </g>
+        )
+      })()}
     </svg>
   )
 }
@@ -339,15 +348,40 @@ function MapLive({
       // Avec `streets-v12` et `dark-v11`, tout ce filet devient inutile.
       m.on('load', () => {
         if (mort) return
+        if (conduite) {
+          // Le volume de mapbox.com/navigation : les batiments en 3D. La
+          // couche s'insere SOUS la premiere couche d'etiquettes pour que
+          // les noms de rues restent lisibles ; les traces, ajoutes apres,
+          // passent au-dessus. En try/catch : un style sans couche
+          // `building` coute juste le volume, jamais la carte.
+          try {
+            const etiquette = m.getStyle().layers.find((l) => l.type === 'symbol')
+            m.addLayer({
+              id: 'bati-3d', type: 'fill-extrusion', source: 'composite', 'source-layer': 'building',
+              filter: ['==', 'extrude', 'true'], minzoom: 14,
+              paint: {
+                'fill-extrusion-color': sombre ? '#232F36' : '#E3E8EB',
+                'fill-extrusion-height': ['get', 'height'],
+                'fill-extrusion-base': ['get', 'min_height'],
+                'fill-extrusion-opacity': 0.8,
+              },
+            }, etiquette && etiquette.id)
+          } catch { /* pas de bati dans ce style */ }
+        }
         routes.forEach((r, i2) => {
           const id = `r${i2}`
           m.addSource(id, { type: 'geojson', data: { type: 'Feature', geometry: { type: 'LineString', coordinates: r.coords } } })
           // gaine sombre sous le trace, puis le trace : il se detache de la
           // carte sans qu'on ait a l'epaissir
+          // En conduite, le trace jade est toujours le jade VIF, gaine
+          // sombre appuyee : navigation-day peint les routes en vert
+          // trafic, et le jade clair s'y noyait. Une ligne de guidage se
+          // detache de N'IMPORTE QUEL fond, c'est sa definition.
+          const couleurTrace = conduite && r.ton === 'jade' ? C.jade.sombre : teinte(r.ton, sombre)
           m.addLayer({ id: `${id}-c`, type: 'line', source: id, layout: { 'line-cap': 'round', 'line-join': 'round' },
-            paint: { 'line-color': C.gaine, 'line-width': r.w + 4, 'line-opacity': 0.35 } })
+            paint: { 'line-color': C.gaine, 'line-width': r.w + 4, 'line-opacity': conduite ? 0.8 : 0.35 } })
           m.addLayer({ id, type: 'line', source: id, layout: { 'line-cap': 'round', 'line-join': 'round' },
-            paint: { 'line-color': teinte(r.ton, sombre), 'line-width': r.w } })
+            paint: { 'line-color': couleurTrace, 'line-width': r.w } })
         })
         if (bumps.length) {
           m.addSource('b', { type: 'geojson', data: { type: 'FeatureCollection',
@@ -384,12 +418,25 @@ function MapLive({
           new gl.Marker({ element: puck, rotation: cap, rotationAlignment: 'map', pitchAlignment: 'map' })
             .setLngLat(depart).addTo(m)
         }
-        ;[[conduite ? null : depart, teinte('jade', sombre)], [arrivee, C.gaine]].forEach(([pt, col]) => {
-          if (!pt) return
+        // Le depart est un point NOIR (valide de longue date), jamais jade :
+        // le jade marque le trajet et la position, pas d'ou l'on vient.
+        if (!conduite && depart) {
           const el2 = document.createElement('div')
-          el2.style.cssText = `width:15px;height:15px;border-radius:50%;background:${col};border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)`
-          new gl.Marker({ element: el2 }).setLngLat(pt).addTo(m)
-        })
+          el2.style.cssText = `width:15px;height:15px;border-radius:50%;background:${C.gaine};border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)`
+          new gl.Marker({ element: el2 }).setLngLat(depart).addTo(m)
+        }
+        // L'arrivee porte PARTOUT le meme drapeau damier que l'ecran de
+        // promesse : plaquette blanche identique dans les deux ambiances,
+        // posee au-dessus d'un pied qui marque le point geographique exact.
+        if (arrivee) {
+          const dr = document.createElement('div')
+          dr.className = 'srv-flag-marqueur'
+          dr.innerHTML = '<span class="srv-flag-carte"><svg viewBox="0 0 512 509" aria-hidden="true">'
+            + '<g transform="translate(0,509) scale(0.1,-0.1)">'
+            + `<path d="${FLAG_SIL}" fill="#FFFFFF"/><path d="${FLAG_INK}" fill="#1B2A25"/>`
+            + '</g></svg></span><span class="srv-flag-pied"></span>'
+          new gl.Marker({ element: dr, anchor: 'bottom' }).setLngLat(arrivee).addTo(m)
+        }
         setPrete(true)
       })
 
@@ -1046,7 +1093,7 @@ function SearchScreen() {
 function Loading() {
   return (
     <div className="srv-body srv-body-flush">
-      <MapLive routes={[{ coords: D.rapide.coords, ton: 'neutre', w: 4 }]} depart={D.depart} arrivee={D.arrivee} zoom={12.6} />
+      <MapLive routes={[{ coords: D.rapide.coords, ton: 'neutre', w: 4 }]} depart={D.depart} arrivee={D.arrivee} zoom={12.25} />
       <div className="srv-layer">
         <div className="srv-search"><Path size={14} /><span>Je compare les deux trajets…</span></div>
         <Sheet>
@@ -1065,7 +1112,7 @@ function Compare() {
     <div className="srv-body srv-body-flush">
       <MapLive
         routes={[{ coords: D.rapide.coords, ton: 'rouge', w: 4 }, { coords: D.confort.coords, ton: 'jade', w: 6 }]}
-        bumps={D.rapide.bumps} depart={D.depart} arrivee={D.arrivee} zoom={12.6}
+        bumps={D.rapide.bumps} depart={D.depart} arrivee={D.arrivee} zoom={12.25}
       />
       <div className="srv-layer">
         <div className="srv-inline">
@@ -1094,7 +1141,7 @@ function Compare() {
 function NoBump() {
   return (
     <div className="srv-body srv-body-flush">
-      <MapLive routes={[{ coords: D.rapide.coords, ton: 'jade', w: 6 }]} depart={D.depart} arrivee={D.arrivee} zoom={12.6} />
+      <MapLive routes={[{ coords: D.rapide.coords, ton: 'jade', w: 6 }]} depart={D.depart} arrivee={D.arrivee} zoom={12.25} />
       <div className="srv-layer">
         <div className="srv-inline">
           <IconButton goto="search" label="Retour"><ArrowLeft size={16} /></IconButton>
@@ -1227,7 +1274,7 @@ function Report() {
 function Reroute() {
   return (
     <div className="srv-body srv-body-flush">
-      <MapLive routes={[{ coords: D.rapide.coords, ton: 'neutre', w: 4 }, { coords: D.confort.coords, ton: 'jade', w: 6 }]} bumps={D.rapide.bumps.slice(0, 6)} depart={D.depart} arrivee={D.arrivee} zoom={12.6} />
+      <MapLive routes={[{ coords: D.rapide.coords, ton: 'neutre', w: 4 }, { coords: D.confort.coords, ton: 'jade', w: 6 }]} bumps={D.rapide.bumps.slice(0, 6)} depart={D.depart} arrivee={D.arrivee} zoom={12.25} />
       <div className="srv-layer">
         <div className="srv-instr">
           <Path size={23} />

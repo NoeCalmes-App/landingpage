@@ -863,3 +863,11 @@
    (alignement carte), donc pas de taille en dur cote perspective. */
 .srv-fleche-tete { width: 24px; height: 24px; }
 .srv-fleche-tete svg { width: 100%; height: 100%; display: block; }
+
+/* Le drapeau d'arrivee en marqueur de carte : la meme plaquette que sur
+   l'ecran de promesse, au-dessus d'un pied qui marque le point exact. Une
+   plaquette est un objet physique, elle ne change pas avec le theme. */
+.srv-flag-marqueur { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.srv-flag-carte { width: 25px; height: 25px; border-radius: 8px; background: #FFFFFF; border: 1px solid rgba(3, 8, 12, .16); box-shadow: 0 2px 7px rgba(0, 0, 0, .35); display: grid; place-items: center; }
+.srv-flag-carte svg { width: 72%; height: 72%; display: block; }
+.srv-flag-pied { width: 9px; height: 9px; border-radius: 50%; background: #0A1F19; border: 2px solid #FFFFFF; box-shadow: 0 1px 3px rgba(0, 0, 0, .4); }
