@@ -53,7 +53,7 @@ function encPoly(coords) {
 }
 
 /** URL d'image statique equivalente a la carte interactive. */
-function urlStatique({ routes, center, zoom, bearing, pitch, sombre }) {
+function urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite }) {
   if (!TOKEN) return null
   const ov = []
   routes.forEach((r) => {
@@ -64,7 +64,7 @@ function urlStatique({ routes, center, zoom, bearing, pitch, sombre }) {
   // Volontairement AUCUN marqueur sur le socle : les `pin-s` de l'API Static
   // sont des gouttes d'eau avec une ombre, impossibles a accorder a la
   // charte. Les dos-d'ane se dessinent en pastilles nettes sur la carte GL.
-  return `https://api.mapbox.com/styles/v1/mapbox/${styleDe(sombre)}/static/`
+  return `https://api.mapbox.com/styles/v1/mapbox/${styleDe(sombre, conduite)}/static/`
     + `${ov.length ? ov.join(',') + '/' : ''}`
     + `${center[0]},${center[1]},${zoom},${bearing},${pitch}/600x1180@2x`
     + `?access_token=${TOKEN}&logo=false&attribution=false`
@@ -90,7 +90,32 @@ const BASE = import.meta.env.BASE_URL || '/'
 // est la MEME pour mapbox-gl-js (web) et pour les SDK iOS et Android. Le
 // rendu de cette page est donc bien celui de l'application mobile.
 const STYLE = { clair: 'streets-v12', sombre: 'dark-v11' }
-const styleDe = (sombre) => (sombre ? STYLE.sombre : STYLE.clair)
+// Les ecrans de CONDUITE prennent les styles du SDK Navigation de Mapbox :
+// routes surdimensionnees, contraste pense pour un regard de 2 secondes.
+// `dark-v11` est un fond d'ambiance ; en vue conduite il passe pour du
+// satellite. Ces deux styles-la sont ceux que l'application Flutter
+// utilisera reellement en guidage.
+const STYLE_CONDUITE = { clair: 'navigation-day-v1', sombre: 'navigation-night-v1' }
+const styleDe = (sombre, conduite) => {
+  const jeu = conduite ? STYLE_CONDUITE : STYLE
+  return sombre ? jeu.sombre : jeu.clair
+}
+
+/** Cap geodesique de a vers b, en degres depuis le nord : l'orientation du
+ *  puck de position, celle que le GPS calcule en continu. */
+const capVers = (a, b) => {
+  const l1 = (a[1] * Math.PI) / 180, l2 = (b[1] * Math.PI) / 180
+  const dl = ((b[0] - a[0]) * Math.PI) / 180
+  const y = Math.sin(dl) * Math.cos(l2)
+  const x = Math.cos(l1) * Math.sin(l2) - Math.sin(l1) * Math.cos(l2) * Math.cos(dl)
+  return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360
+}
+
+/** L'indice du sommet du trace le plus proche d'une cible : ou poser le
+ *  puck pour que le conducteur soit A L'ECRAN, pres de ce qu'il regarde. */
+const presDe = (coords, cible) => coords.reduce((imin, p, i) =>
+  Math.hypot(p[0] - cible[0], p[1] - cible[1])
+  < Math.hypot(coords[imin][0] - cible[0], coords[imin][1] - cible[1]) ? i : imin, 0)
 
 /** Le theme descend par contexte : la carte doit se reconstruire quand il
  *  change, un style Mapbox ne se remplace pas a chaud sans perdre les
@@ -218,6 +243,9 @@ function MapLive({
   routes = [], bumps = [], depart, arrivee,
   center = D.centre, zoom = 12.4, bearing = 0, pitch = 0,
   interactive = true,
+  // Vue conduite : style Navigation de Mapbox, et `depart` devient le puck
+  // de position temps reel (fleche orientee au cap `cap`) au lieu du point.
+  conduite = false, cap = 0,
 }) {
   const sombre = useContext(ThemeCtx) === 'dark'
   const hote = useRef(null)
@@ -261,7 +289,7 @@ function MapLive({
       gl.accessToken = TOKEN
       const m = new gl.Map({
         container: hote.current,
-        style: `mapbox://styles/mapbox/${styleDe(sombre)}`,
+        style: `mapbox://styles/mapbox/${styleDe(sombre, conduite)}`,
         center, zoom, bearing, pitch,
         interactive,
         attributionControl: false,
@@ -311,7 +339,20 @@ function MapLive({
             paint: { 'circle-radius': 5.5, 'circle-color': teinte('rouge', sombre),
                      'circle-stroke-width': 2.5, 'circle-stroke-color': sombre ? '#0A1310' : '#FFFFFF' } })
         }
-        ;[[depart, teinte('jade', sombre)], [arrivee, C.gaine]].forEach(([pt, col]) => {
+        if (conduite && depart) {
+          // Le puck du SDK Navigation : halo qui pulse, pastille blanche,
+          // fleche bleue orientee au cap. Colle a la carte — il tourne et se
+          // couche avec elle, la ou un marqueur d'ecran resterait debout.
+          const puck = document.createElement('div')
+          puck.className = 'srv-puck'
+          puck.innerHTML = '<span class="srv-puck-halo"></span>'
+            + '<span class="srv-puck-corps"><svg viewBox="0 0 24 24" aria-hidden="true">'
+            + '<path d="M12 3.2 19 20.2a.75.75 0 0 1-1.05.94L12 18.2l-5.95 2.94A.75.75 0 0 1 5 20.2Z" fill="#fff"/>'
+            + '</svg></span>'
+          new gl.Marker({ element: puck, rotation: cap, rotationAlignment: 'map', pitchAlignment: 'map' })
+            .setLngLat(depart).addTo(m)
+        }
+        ;[[conduite ? null : depart, teinte('jade', sombre)], [arrivee, C.gaine]].forEach(([pt, col]) => {
           if (!pt) return
           const el2 = document.createElement('div')
           el2.style.cssText = `width:15px;height:15px;border-radius:50%;background:${col};border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)`
@@ -324,7 +365,7 @@ function MapLive({
     })
     return () => { mort = true; if (carte.current) { carte.current.remove(); carte.current = null } }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible, sombre])
+  }, [visible, sombre, conduite])
 
   if (!TOKEN) {
     return (
@@ -333,7 +374,7 @@ function MapLive({
       </div>
     )
   }
-  const fixe = urlStatique({ routes, center, zoom, bearing, pitch, sombre })
+  const fixe = urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite })
   return (
     <div className="srv-map" aria-hidden="true">
       {/* L'image statique s'affiche TOUT DE SUITE. La carte deplacable se
@@ -1068,7 +1109,7 @@ const Instruction = () => (
 function NavScreen() {
   return (
     <div className="srv-body srv-body-flush">
-      <MapLive routes={[{ coords: D.confort.coords, ton: 'jade', w: 8 }]} depart={D.confort.coords[18]} arrivee={D.arrivee} center={D.confort.coords[18]} zoom={16.2} bearing={34} pitch={58} />
+      <MapLive conduite cap={capVers(D.confort.coords[18], D.confort.coords[19])} routes={[{ coords: D.confort.coords, ton: 'jade', w: 8 }]} depart={D.confort.coords[18]} arrivee={D.arrivee} center={D.confort.coords[18]} zoom={16.2} bearing={34} pitch={58} />
       <div className="srv-layer">
         <Instruction />
         <div className="srv-drive-row">
@@ -1090,7 +1131,12 @@ function NavScreen() {
 function Report() {
   return (
     <div className="srv-body srv-body-flush">
-      <MapLive routes={[{ coords: D.confort.coords, ton: 'jade', w: 8 }]} bumps={[D.confort.bumps[0]]} center={D.confort.bumps[0]} zoom={15.8} bearing={34} pitch={54} />
+      {/* Le conducteur est DANS le cadre, juste avant le dos-d'ane qu'il
+          signale : c'est lui qui appuie sur le bouton. */}
+      <MapLive conduite
+        cap={capVers(D.confort.coords[Math.max(presDe(D.confort.coords, D.confort.bumps[0]) - 1, 0)], D.confort.coords[presDe(D.confort.coords, D.confort.bumps[0])])}
+        depart={D.confort.coords[Math.max(presDe(D.confort.coords, D.confort.bumps[0]) - 1, 0)]}
+        routes={[{ coords: D.confort.coords, ton: 'jade', w: 8 }]} bumps={[D.confort.bumps[0]]} center={D.confort.bumps[0]} zoom={15.8} bearing={34} pitch={54} />
       <div className="srv-layer">
         <Instruction />
         <Sheet>
