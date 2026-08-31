@@ -53,7 +53,7 @@ function encPoly(coords) {
 }
 
 /** URL d'image statique equivalente a la carte interactive. */
-function urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite, fleche }) {
+function urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite }) {
   if (!TOKEN) return null
   const ov = []
   routes.forEach((r) => {
@@ -62,11 +62,6 @@ function urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite, f
     ov.push(`path-${r.w + 3}+${gaineCol}-${conduite ? '0.9' : '0.45'}(${p})`)
     ov.push(`path-${r.w}+${teinte(r.ton, sombre).replace('#', '')}-1(${p})`)
   })
-  if (fleche) {
-    const f = encodeURIComponent(encPoly(fleche.coords))
-    ov.push(`path-10+${C.gaine.replace('#', '')}-0.85(${f})`)
-    ov.push(`path-6+ffffff-1(${f})`)
-  }
   // Volontairement AUCUN marqueur sur le socle : les `pin-s` de l'API Static
   // sont des gouttes d'eau avec une ombre, impossibles a accorder a la
   // charte. Les dos-d'ane se dessinent en pastilles nettes sur la carte GL.
@@ -288,10 +283,8 @@ function MapLive({
   center = D.centre, zoom = 12.4, bearing = 0, pitch = 0,
   interactive = true,
   // Vue conduite : style Navigation de Mapbox, et `depart` devient le puck
-  // de position temps reel (fleche orientee au cap `cap`) au lieu du point.
-  // `fleche` = { coords, cap } : la fleche de manoeuvre blanche posee SUR
-  // la route au prochain virage, celle du SDK Navigation.
-  conduite = false, cap = 0, fleche = null,
+  // de position temps reel (oriente au cap `cap`) au lieu du point.
+  conduite = false, cap = 0,
 }) {
   const sombre = useContext(ThemeCtx) === 'dark'
   const hote = useRef(null)
@@ -432,21 +425,6 @@ function MapLive({
             + '</svg>'
           new gl.Marker({ element: be }).setLngLat(c2).addTo(m)
         })
-        if (fleche) {
-          m.addSource('fl', { type: 'geojson', data: { type: 'Feature', geometry: { type: 'LineString', coordinates: fleche.coords } } })
-          m.addLayer({ id: 'fl-c', type: 'line', source: 'fl', layout: { 'line-cap': 'round', 'line-join': 'round' },
-            paint: { 'line-color': C.gaine, 'line-width': 11, 'line-opacity': 0.85 } })
-          m.addLayer({ id: 'fl', type: 'line', source: 'fl', layout: { 'line-cap': 'round', 'line-join': 'round' },
-            paint: { 'line-color': '#FFFFFF', 'line-width': 6 } })
-          // La tete de fleche est couchee sur la route et orientee au cap
-          // de SORTIE du virage : elle montre ou l'on ressort, pas ou l'on
-          // entre.
-          const tete = document.createElement('div')
-          tete.className = 'srv-fleche-tete'
-          tete.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4 21 20 12 15.8 3 20Z" fill="#fff" stroke="#0A1F19" stroke-width="1.5" stroke-linejoin="round"/></svg>'
-          new gl.Marker({ element: tete, rotation: fleche.cap, rotationAlignment: 'map', pitchAlignment: 'map' })
-            .setLngLat(fleche.coords[fleche.coords.length - 1]).addTo(m)
-        }
         if (conduite && depart) {
           // Le puck du SDK Navigation : halo qui pulse, pastille blanche,
           // fleche bleue orientee au cap. Colle a la carte — il tourne et se
@@ -504,7 +482,7 @@ function MapLive({
       </div>
     )
   }
-  const fixe = urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite, fleche })
+  const fixe = urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite })
   return (
     <div className="srv-map" aria-hidden="true">
       {/* L'image statique s'affiche TOUT DE SUITE. La carte deplacable se
@@ -1229,9 +1207,8 @@ const FlecheManoeuvre = ({ nom, size = 30 }) => {
 /* Les deux scenes de conduite, calculees depuis la geometrie REELLE du
    trajet : le conducteur, son cap, la camera de poursuite placee derriere
    lui (elle vise un point devant, donc le puck tombe en bas de l'ecran et
-   la route monte), le troncon deja parcouru qui s'eteint en neutre, et le
-   prochain virage franc ou se pose la fleche de manoeuvre. Rien n'est
-   place a la main : si le trajet change, la scene suit. */
+   la route monte), et le troncon deja parcouru qui s'eteint en neutre.
+   Rien n'est place a la main : si le trajet change, la scene suit. */
 const CONDUITE = (() => {
   // `trace` : la geometrie recalee sur le reseau routier par l'API Map
   // Matching (656 points, ~20 m entre chaque). C'est elle qui epouse les
@@ -1243,32 +1220,8 @@ const CONDUITE = (() => {
   let k = i, av = 0
   while (k < co.length - 1 && av < 30) { av += distEntre(co[k], co[k + 1]); k += 1 }
   const cap = capVers(co[i], co[k])
-  // le virage franc se detecte sur la geometrie BRUTE (angles nets), puis
-  // la fleche suit les points FINS qui le traversent
-  let j = 19
-  while (j < brut.length - 1) {
-    const d = ((capVers(brut[j], brut[j + 1]) - capVers(brut[j - 1], brut[j]) + 540) % 360) - 180
-    if (Math.abs(d) >= 50) break
-    j += 1
-  }
-  // La fleche s'etend LE LONG du trace, 30 m avant et apres le virage.
-  // Pas dans un rayon autour de lui : la route frole ce point sur toute
-  // la boucle du carrefour, et le rayon etirait la fleche sur 150 m.
-  const jf = presDe(co, brut[j])
-  let fa = jf, dosF = 0
-  while (fa > 0 && dosF < 30) { dosF += distEntre(co[fa - 1], co[fa]); fa -= 1 }
-  let fb = jf, faceF = 0
-  while (fb < co.length - 1 && faceF < 30) { faceF += distEntre(co[fb], co[fb + 1]); fb += 1 }
-  const flCo = co.slice(fa, fb + 1)
   const { derriere, devant } = fenetreTrace(co, i, 800, 2500)
-  return {
-    puck: co[i],
-    cap,
-    centre: versLe(co[i], cap, 95),
-    derriere,
-    devant,
-    fleche: flCo.length > 1 ? { coords: flCo, cap: capVers(flCo[flCo.length - 2], flCo[flCo.length - 1]) } : null,
-  }
+  return { puck: co[i], cap, centre: versLe(co[i], cap, 95), derriere, devant }
 })()
 
 const SIGNALEMENT = (() => {
@@ -1297,8 +1250,9 @@ function NavScreen() {
   return (
     <div className="srv-body srv-body-flush">
       {/* Camera de poursuite : cap au nord de la route (bearing = cap du
-          conducteur), le deja-parcouru en neutre, la fleche au virage. */}
-      <MapLive conduite cap={CONDUITE.cap} fleche={CONDUITE.fleche}
+          conducteur), le deja-parcouru eteint en neutre. La manoeuvre se
+          lit dans le bandeau ; sur la carte, seul le trace guide. */}
+      <MapLive conduite cap={CONDUITE.cap}
         routes={[{ coords: CONDUITE.derriere, ton: 'neutre', w: 8 }, { coords: CONDUITE.devant, ton: 'jade', w: 8 }]}
         depart={CONDUITE.puck} arrivee={D.arrivee}
         center={CONDUITE.centre} zoom={17.05} bearing={CONDUITE.cap} pitch={60} />

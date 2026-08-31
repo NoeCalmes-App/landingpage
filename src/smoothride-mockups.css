@@ -862,10 +862,6 @@
   100% { transform: scale(1.12); opacity: 0; }
 }
 
-/* La tete de la fleche de manoeuvre : couchee sur la route par le marqueur
-   (alignement carte), donc pas de taille en dur cote perspective. */
-.srv-fleche-tete { width: 24px; height: 24px; }
-.srv-fleche-tete svg { width: 100%; height: 100%; display: block; }
 
 /* Le drapeau d'arrivee en marqueur de carte : la meme plaquette que sur
    l'ecran de promesse, au-dessus d'un pied qui marque le point exact. Une
