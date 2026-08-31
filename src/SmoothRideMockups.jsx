@@ -439,9 +439,19 @@ function MapLive({
           // couche avec elle, la ou un marqueur d'ecran resterait debout.
           const puck = document.createElement('div')
           puck.className = 'srv-puck'
+          // Le dard 3D de Waze, construit en quatre couches : l'epaisseur
+          // (le meme dard decale vers le bas, bleu profond), puis les deux
+          // faces du dessus eclairees differemment — la lumiere vient de
+          // gauche — separees par une arete centrale, et un lisere blanc.
+          // Couche sur la carte par la perspective, il a du volume sans
+          // aucune image.
           puck.innerHTML = '<span class="srv-puck-halo"></span>'
-            + '<span class="srv-puck-corps"><svg viewBox="0 0 24 24" aria-hidden="true">'
-            + '<path d="M12 3.2 19 20.2a.75.75 0 0 1-1.05.94L12 18.2l-5.95 2.94A.75.75 0 0 1 5 20.2Z" fill="#fff"/>'
+            + '<span class="srv-puck-corps"><svg viewBox="0 0 28 32" aria-hidden="true">'
+            + '<path d="M14 4.4 25 29.4 14 23.4 3 29.4Z" fill="#0B57B8"/>'
+            + '<path d="M14 2 3 27 14 21Z" fill="#7CC1FF"/>'
+            + '<path d="M14 2 25 27 14 21Z" fill="#1F7BE0"/>'
+            + '<path d="M14 2V21" stroke="rgba(255,255,255,.5)" stroke-width=".9"/>'
+            + '<path d="M14 2 25 27 14 21 3 27Z" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round"/>'
             + '</svg></span>'
           new gl.Marker({ element: puck, rotation: cap, rotationAlignment: 'map', pitchAlignment: 'map' })
             .setLngLat(depart).addTo(m)
