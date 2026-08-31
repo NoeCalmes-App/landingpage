@@ -850,10 +850,13 @@
    pastille blanche, fleche bleue. Le bleu est celui de la localisation
    systeme, PAS le jade de la marque : le jade dit « SmoothRide », le bleu
    dit « c'est toi, la, maintenant » — deux messages differents. */
-.srv-puck { width: 48px; height: 48px; position: relative; display: grid; place-items: center; }
+.srv-puck { width: 60px; height: 60px; position: relative; display: grid; place-items: center; }
 .srv-puck-halo { position: absolute; inset: 0; border-radius: 50%; background: rgba(10, 132, 255, .3); animation: srv-puck-pulse 2.4s ease-out infinite; }
-.srv-puck-corps { position: relative; width: 27px; height: 27px; border-radius: 50%; background: #0A84FF; border: 3.5px solid #fff; box-shadow: 0 2px 9px rgba(0, 0, 0, .5); display: grid; place-items: center; }
-.srv-puck-corps svg { width: 14px; height: 14px; display: block; }
+/* Le relief vient du degrade et du rehaut interieur, pas d'une image : le
+   marqueur est couche sur la carte par la perspective, c'est elle qui
+   fait le reste. */
+.srv-puck-corps { position: relative; width: 35px; height: 35px; border-radius: 50%; background: linear-gradient(180deg, #43A4FF, #0668D8); border: 3.5px solid #fff; box-shadow: 0 3px 11px rgba(0, 0, 0, .5), inset 0 1px 2px rgba(255, 255, 255, .55); display: grid; place-items: center; }
+.srv-puck-corps svg { width: 19px; height: 19px; display: block; filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .35)); }
 @keyframes srv-puck-pulse {
   0% { transform: scale(.45); opacity: .85; }
   100% { transform: scale(1.12); opacity: 0; }
@@ -871,3 +874,11 @@
 .srv-flag-carte { width: 25px; height: 25px; border-radius: 8px; background: #FFFFFF; border: 1px solid rgba(3, 8, 12, .16); box-shadow: 0 2px 7px rgba(0, 0, 0, .35); display: grid; place-items: center; }
 .srv-flag-carte svg { width: 72%; height: 72%; display: block; }
 .srv-flag-pied { width: 9px; height: 9px; border-radius: 50%; background: #0A1F19; border: 2px solid #FFFFFF; box-shadow: 0 1px 3px rgba(0, 0, 0, .4); }
+
+/* Le dos-d'ane en marqueur de carte : la pastille de l'ecran de promesse,
+   cercle corail avec la bosse dessinee dedans — la forme retenue par le
+   client. Les couleurs sont les variables du theme, herites du telephone. */
+.srv-bump-marqueur { width: 17px; height: 17px; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .4)); }
+.srv-bump-marqueur svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.srv-bump-marqueur circle { fill: var(--rouge); }
+.srv-bump-marqueur path { fill: none; stroke: var(--rouge-ink); stroke-width: 1.7; stroke-linecap: round; }

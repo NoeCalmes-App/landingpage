@@ -58,9 +58,9 @@ function urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite, f
   const ov = []
   routes.forEach((r) => {
     const p = encodeURIComponent(encPoly(r.coords))
-    const col = conduite && r.ton === 'jade' ? C.jade.sombre : teinte(r.ton, sombre)
-    ov.push(`path-${r.w + 3}+${C.gaine.replace('#', '')}-${conduite ? '0.8' : '0.45'}(${p})`)
-    ov.push(`path-${r.w}+${col.replace('#', '')}-1(${p})`)
+    const gaineCol = (conduite && !sombre ? '#FFFFFF' : C.gaine).replace('#', '')
+    ov.push(`path-${r.w + 3}+${gaineCol}-${conduite ? '0.9' : '0.45'}(${p})`)
+    ov.push(`path-${r.w}+${teinte(r.ton, sombre).replace('#', '')}-1(${p})`)
   })
   if (fleche) {
     const f = encodeURIComponent(encPoly(fleche.coords))
@@ -125,6 +125,26 @@ const versLe = ([lng, lat], capDeg, m) => {
   const dLat = (m * Math.cos(br)) / 6371000
   const dLng = (m * Math.sin(br)) / (6371000 * Math.cos((lat * Math.PI) / 180))
   return [lng + (dLng * 180) / Math.PI, lat + (dLat * 180) / Math.PI]
+}
+
+/** Distance en metres entre deux points [lng, lat]. */
+const distEntre = (a, b) => {
+  const p1 = (a[1] * Math.PI) / 180, p2 = (b[1] * Math.PI) / 180
+  const dp = p2 - p1, dl = ((b[0] - a[0]) * Math.PI) / 180
+  const x = Math.sin(dp / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2
+  return 12742000 * Math.asin(Math.sqrt(x))
+}
+
+/** Une fenetre du trace autour du point d'indice `i` : `dosM` metres en
+ *  arriere, `faceM` devant. Le trace fin compte 656 points ; en montrer
+ *  3 km suffit a la camera et garde l'URL du socle statique sous la
+ *  limite des 8 192 caracteres. */
+const fenetreTrace = (co, i, dosM, faceM) => {
+  let a2 = i, dos = 0
+  while (a2 > 0 && dos < dosM) { dos += distEntre(co[a2 - 1], co[a2]); a2 -= 1 }
+  let b2 = i, face = 0
+  while (b2 < co.length - 1 && face < faceM) { face += distEntre(co[b2], co[b2 + 1]); b2 += 1 }
+  return { derriere: co.slice(a2, i + 1), devant: co.slice(i, b2 + 1) }
 }
 
 /** L'indice du sommet du trace le plus proche d'une cible : ou poser le
@@ -373,23 +393,31 @@ function MapLive({
           m.addSource(id, { type: 'geojson', data: { type: 'Feature', geometry: { type: 'LineString', coordinates: r.coords } } })
           // gaine sombre sous le trace, puis le trace : il se detache de la
           // carte sans qu'on ait a l'epaissir
-          // En conduite, le trace jade est toujours le jade VIF, gaine
-          // sombre appuyee : navigation-day peint les routes en vert
-          // trafic, et le jade clair s'y noyait. Une ligne de guidage se
-          // detache de N'IMPORTE QUEL fond, c'est sa definition.
-          const couleurTrace = conduite && r.ton === 'jade' ? C.jade.sombre : teinte(r.ton, sombre)
+          // Le trace garde la couleur PRIMAIRE de chaque ambiance (jade
+          // vif la nuit, jade profond le jour) et c'est la GAINE qui
+          // change de camp : sombre sur fond nuit, blanche sur fond jour.
+          // C'est le halo de Waze — navigation-day peint les routes en
+          // vert trafic, seul un lisere clair en detache le trace.
+          const gaineCol = conduite && !sombre ? '#FFFFFF' : C.gaine
           m.addLayer({ id: `${id}-c`, type: 'line', source: id, layout: { 'line-cap': 'round', 'line-join': 'round' },
-            paint: { 'line-color': C.gaine, 'line-width': r.w + 4, 'line-opacity': conduite ? 0.8 : 0.35 } })
+            paint: { 'line-color': gaineCol, 'line-width': r.w + 4, 'line-opacity': conduite ? 0.9 : 0.35 } })
           m.addLayer({ id, type: 'line', source: id, layout: { 'line-cap': 'round', 'line-join': 'round' },
-            paint: { 'line-color': couleurTrace, 'line-width': r.w } })
+            paint: { 'line-color': teinte(r.ton, sombre), 'line-width': r.w } })
         })
-        if (bumps.length) {
-          m.addSource('b', { type: 'geojson', data: { type: 'FeatureCollection',
-            features: bumps.map((c) => ({ type: 'Feature', geometry: { type: 'Point', coordinates: c }, properties: {} })) } })
-          m.addLayer({ id: 'b', type: 'circle', source: 'b',
-            paint: { 'circle-radius': 5.5, 'circle-color': teinte('rouge', sombre),
-                     'circle-stroke-width': 2.5, 'circle-stroke-color': sombre ? '#0A1310' : '#FFFFFF' } })
-        }
+        // La pastille de l'ecran de promesse, PARTOUT ou il y a un
+        // dos-d'ane : cercle corail, la bosse dessinee dedans. La forme
+        // retenue par le client — un point rouge nu ne disait rien. Les
+        // variables du theme descendent jusqu'au marqueur, la pastille
+        // suit donc l'ambiance toute seule.
+        bumps.forEach((c2) => {
+          const be = document.createElement('div')
+          be.className = 'srv-bump-marqueur'
+          be.innerHTML = '<svg viewBox="0 0 16 16" aria-hidden="true">'
+            + '<circle cx="8" cy="8" r="8"/>'
+            + '<path d="M4.4 9.4 q3.6 -4.6 7.2 0"/>'
+            + '</svg>'
+          new gl.Marker({ element: be }).setLngLat(c2).addTo(m)
+        })
         if (fleche) {
           m.addSource('fl', { type: 'geojson', data: { type: 'Feature', geometry: { type: 'LineString', coordinates: fleche.coords } } })
           m.addLayer({ id: 'fl-c', type: 'line', source: 'fl', layout: { 'line-cap': 'round', 'line-join': 'round' },
@@ -1182,31 +1210,46 @@ const FlecheManoeuvre = ({ nom, size = 30 }) => {
    prochain virage franc ou se pose la fleche de manoeuvre. Rien n'est
    place a la main : si le trajet change, la scene suit. */
 const CONDUITE = (() => {
-  const co = D.confort.coords
-  const i = 18
-  const cap = capVers(co[i], co[i + 1])
-  let j = i + 1
-  while (j < co.length - 1) {
-    const d = ((capVers(co[j], co[j + 1]) - capVers(co[j - 1], co[j]) + 540) % 360) - 180
+  // `trace` : la geometrie recalee sur le reseau routier par l'API Map
+  // Matching (656 points, ~20 m entre chaque). C'est elle qui epouse les
+  // virages ; les 68 points bruts coupaient les angles a ce zoom.
+  const brut = D.confort.coords
+  const co = D.confort.trace || brut
+  const i = presDe(co, brut[18])
+  // cap moyen sur ~30 m : point a point, la geometrie fine est bruitee
+  let k = i, av = 0
+  while (k < co.length - 1 && av < 30) { av += distEntre(co[k], co[k + 1]); k += 1 }
+  const cap = capVers(co[i], co[k])
+  // le virage franc se detecte sur la geometrie BRUTE (angles nets), puis
+  // la fleche suit les points FINS qui le traversent
+  let j = 19
+  while (j < brut.length - 1) {
+    const d = ((capVers(brut[j], brut[j + 1]) - capVers(brut[j - 1], brut[j]) + 540) % 360) - 180
     if (Math.abs(d) >= 50) break
     j += 1
   }
-  const entre = (m, n, t) => [m[0] + (n[0] - m[0]) * t, m[1] + (n[1] - m[1]) * t]
+  const flCo = co.filter((pt) => distEntre(pt, brut[j]) < 45)
+  const { derriere, devant } = fenetreTrace(co, i, 800, 2500)
   return {
     puck: co[i],
     cap,
-    centre: versLe(co[i], cap, 120),
-    derriere: co.slice(0, i + 1),
-    devant: co.slice(i),
-    fleche: { coords: [entre(co[j - 1], co[j], 0.35), co[j], entre(co[j], co[j + 1], 0.35)], cap: capVers(co[j], co[j + 1]) },
+    centre: versLe(co[i], cap, 95),
+    derriere,
+    devant,
+    fleche: flCo.length > 1 ? { coords: flCo, cap: capVers(flCo[flCo.length - 2], flCo[flCo.length - 1]) } : null,
   }
 })()
 
 const SIGNALEMENT = (() => {
-  const co = D.confort.coords
-  const i = Math.max(presDe(co, D.confort.bumps[0]) - 1, 0)
-  const cap = capVers(co[i], co[i + 1])
-  return { puck: co[i], cap, centre: versLe(co[i], cap, 90), derriere: co.slice(0, i + 1), devant: co.slice(i) }
+  const co = D.confort.trace || D.confort.coords
+  // le conducteur ~35 m avant le dos-d'ane qu'il signale
+  let i = presDe(co, D.confort.bumps[0]), re = 0
+  while (i > 0 && re < 35) { re += distEntre(co[i - 1], co[i]); i -= 1 }
+  let k = i, av = 0
+  while (k < co.length - 1 && av < 30) { av += distEntre(co[k], co[k + 1]); k += 1 }
+  const cap = capVers(co[i], co[k])
+  const { derriere, devant } = fenetreTrace(co, i, 800, 2000)
+  return { puck: co[i], cap, centre: versLe(co[i], cap, 80), derriere, devant }
 })()
 
 const Instruction = () => (
@@ -1227,7 +1270,7 @@ function NavScreen() {
       <MapLive conduite cap={CONDUITE.cap} fleche={CONDUITE.fleche}
         routes={[{ coords: CONDUITE.derriere, ton: 'neutre', w: 8 }, { coords: CONDUITE.devant, ton: 'jade', w: 8 }]}
         depart={CONDUITE.puck} arrivee={D.arrivee}
-        center={CONDUITE.centre} zoom={16.6} bearing={CONDUITE.cap} pitch={60} />
+        center={CONDUITE.centre} zoom={17.05} bearing={CONDUITE.cap} pitch={60} />
       <div className="srv-layer">
         <Instruction />
         <div className="srv-drive-row">
@@ -1254,7 +1297,7 @@ function Report() {
       <MapLive conduite cap={SIGNALEMENT.cap}
         routes={[{ coords: SIGNALEMENT.derriere, ton: 'neutre', w: 8 }, { coords: SIGNALEMENT.devant, ton: 'jade', w: 8 }]}
         depart={SIGNALEMENT.puck} bumps={[D.confort.bumps[0]]}
-        center={SIGNALEMENT.centre} zoom={16.3} bearing={SIGNALEMENT.cap} pitch={56} />
+        center={SIGNALEMENT.centre} zoom={16.7} bearing={SIGNALEMENT.cap} pitch={56} />
       <div className="srv-layer">
         <Instruction />
         <Sheet>
