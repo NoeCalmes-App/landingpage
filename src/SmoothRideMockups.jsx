@@ -53,7 +53,7 @@ function encPoly(coords) {
 }
 
 /** URL d'image statique equivalente a la carte interactive. */
-function urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite }) {
+function urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite, fleche }) {
   if (!TOKEN) return null
   const ov = []
   routes.forEach((r) => {
@@ -61,6 +61,11 @@ function urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite })
     ov.push(`path-${r.w + 3}+${C.gaine.replace('#', '')}-0.45(${p})`)
     ov.push(`path-${r.w}+${teinte(r.ton, sombre).replace('#', '')}-1(${p})`)
   })
+  if (fleche) {
+    const f = encodeURIComponent(encPoly(fleche.coords))
+    ov.push(`path-10+${C.gaine.replace('#', '')}-0.85(${f})`)
+    ov.push(`path-6+ffffff-1(${f})`)
+  }
   // Volontairement AUCUN marqueur sur le socle : les `pin-s` de l'API Static
   // sont des gouttes d'eau avec une ombre, impossibles a accorder a la
   // charte. Les dos-d'ane se dessinent en pastilles nettes sur la carte GL.
@@ -109,6 +114,16 @@ const capVers = (a, b) => {
   const y = Math.sin(dl) * Math.cos(l2)
   const x = Math.cos(l1) * Math.sin(l2) - Math.sin(l1) * Math.cos(l2) * Math.cos(dl)
   return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360
+}
+
+/** Le point situe a `m` metres de `pt` dans la direction `cap` : la ou
+ *  la camera de poursuite regarde quand le conducteur est en bas de
+ *  l'ecran, comme dans le SDK Navigation. */
+const versLe = ([lng, lat], capDeg, m) => {
+  const br = (capDeg * Math.PI) / 180
+  const dLat = (m * Math.cos(br)) / 6371000
+  const dLng = (m * Math.sin(br)) / (6371000 * Math.cos((lat * Math.PI) / 180))
+  return [lng + (dLng * 180) / Math.PI, lat + (dLat * 180) / Math.PI]
 }
 
 /** L'indice du sommet du trace le plus proche d'une cible : ou poser le
@@ -245,7 +260,9 @@ function MapLive({
   interactive = true,
   // Vue conduite : style Navigation de Mapbox, et `depart` devient le puck
   // de position temps reel (fleche orientee au cap `cap`) au lieu du point.
-  conduite = false, cap = 0,
+  // `fleche` = { coords, cap } : la fleche de manoeuvre blanche posee SUR
+  // la route au prochain virage, celle du SDK Navigation.
+  conduite = false, cap = 0, fleche = null,
 }) {
   const sombre = useContext(ThemeCtx) === 'dark'
   const hote = useRef(null)
@@ -339,6 +356,21 @@ function MapLive({
             paint: { 'circle-radius': 5.5, 'circle-color': teinte('rouge', sombre),
                      'circle-stroke-width': 2.5, 'circle-stroke-color': sombre ? '#0A1310' : '#FFFFFF' } })
         }
+        if (fleche) {
+          m.addSource('fl', { type: 'geojson', data: { type: 'Feature', geometry: { type: 'LineString', coordinates: fleche.coords } } })
+          m.addLayer({ id: 'fl-c', type: 'line', source: 'fl', layout: { 'line-cap': 'round', 'line-join': 'round' },
+            paint: { 'line-color': C.gaine, 'line-width': 11, 'line-opacity': 0.85 } })
+          m.addLayer({ id: 'fl', type: 'line', source: 'fl', layout: { 'line-cap': 'round', 'line-join': 'round' },
+            paint: { 'line-color': '#FFFFFF', 'line-width': 6 } })
+          // La tete de fleche est couchee sur la route et orientee au cap
+          // de SORTIE du virage : elle montre ou l'on ressort, pas ou l'on
+          // entre.
+          const tete = document.createElement('div')
+          tete.className = 'srv-fleche-tete'
+          tete.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4 21 20 12 15.8 3 20Z" fill="#fff" stroke="#0A1F19" stroke-width="1.5" stroke-linejoin="round"/></svg>'
+          new gl.Marker({ element: tete, rotation: fleche.cap, rotationAlignment: 'map', pitchAlignment: 'map' })
+            .setLngLat(fleche.coords[fleche.coords.length - 1]).addTo(m)
+        }
         if (conduite && depart) {
           // Le puck du SDK Navigation : halo qui pulse, pastille blanche,
           // fleche bleue orientee au cap. Colle a la carte — il tourne et se
@@ -374,7 +406,7 @@ function MapLive({
       </div>
     )
   }
-  const fixe = urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite })
+  const fixe = urlStatique({ routes, center, zoom, bearing, pitch, sombre, conduite, fleche })
   return (
     <div className="srv-map" aria-hidden="true">
       {/* L'image statique s'affiche TOUT DE SUITE. La carte deplacable se
@@ -1096,6 +1128,40 @@ const FlecheManoeuvre = ({ nom, size = 30 }) => {
     </span>
   )
 }
+/* Les deux scenes de conduite, calculees depuis la geometrie REELLE du
+   trajet : le conducteur, son cap, la camera de poursuite placee derriere
+   lui (elle vise un point devant, donc le puck tombe en bas de l'ecran et
+   la route monte), le troncon deja parcouru qui s'eteint en neutre, et le
+   prochain virage franc ou se pose la fleche de manoeuvre. Rien n'est
+   place a la main : si le trajet change, la scene suit. */
+const CONDUITE = (() => {
+  const co = D.confort.coords
+  const i = 18
+  const cap = capVers(co[i], co[i + 1])
+  let j = i + 1
+  while (j < co.length - 1) {
+    const d = ((capVers(co[j], co[j + 1]) - capVers(co[j - 1], co[j]) + 540) % 360) - 180
+    if (Math.abs(d) >= 50) break
+    j += 1
+  }
+  const entre = (m, n, t) => [m[0] + (n[0] - m[0]) * t, m[1] + (n[1] - m[1]) * t]
+  return {
+    puck: co[i],
+    cap,
+    centre: versLe(co[i], cap, 120),
+    derriere: co.slice(0, i + 1),
+    devant: co.slice(i),
+    fleche: { coords: [entre(co[j - 1], co[j], 0.35), co[j], entre(co[j], co[j + 1], 0.35)], cap: capVers(co[j], co[j + 1]) },
+  }
+})()
+
+const SIGNALEMENT = (() => {
+  const co = D.confort.coords
+  const i = Math.max(presDe(co, D.confort.bumps[0]) - 1, 0)
+  const cap = capVers(co[i], co[i + 1])
+  return { puck: co[i], cap, centre: versLe(co[i], cap, 90), derriere: co.slice(0, i + 1), devant: co.slice(i) }
+})()
+
 const Instruction = () => (
   <div className="srv-instr">
     <FlecheManoeuvre nom={D.instruction.manoeuvre} />
@@ -1109,7 +1175,12 @@ const Instruction = () => (
 function NavScreen() {
   return (
     <div className="srv-body srv-body-flush">
-      <MapLive conduite cap={capVers(D.confort.coords[18], D.confort.coords[19])} routes={[{ coords: D.confort.coords, ton: 'jade', w: 8 }]} depart={D.confort.coords[18]} arrivee={D.arrivee} center={D.confort.coords[18]} zoom={16.2} bearing={34} pitch={58} />
+      {/* Camera de poursuite : cap au nord de la route (bearing = cap du
+          conducteur), le deja-parcouru en neutre, la fleche au virage. */}
+      <MapLive conduite cap={CONDUITE.cap} fleche={CONDUITE.fleche}
+        routes={[{ coords: CONDUITE.derriere, ton: 'neutre', w: 8 }, { coords: CONDUITE.devant, ton: 'jade', w: 8 }]}
+        depart={CONDUITE.puck} arrivee={D.arrivee}
+        center={CONDUITE.centre} zoom={16.6} bearing={CONDUITE.cap} pitch={60} />
       <div className="srv-layer">
         <Instruction />
         <div className="srv-drive-row">
@@ -1131,12 +1202,12 @@ function NavScreen() {
 function Report() {
   return (
     <div className="srv-body srv-body-flush">
-      {/* Le conducteur est DANS le cadre, juste avant le dos-d'ane qu'il
-          signale : c'est lui qui appuie sur le bouton. */}
-      <MapLive conduite
-        cap={capVers(D.confort.coords[Math.max(presDe(D.confort.coords, D.confort.bumps[0]) - 1, 0)], D.confort.coords[presDe(D.confort.coords, D.confort.bumps[0])])}
-        depart={D.confort.coords[Math.max(presDe(D.confort.coords, D.confort.bumps[0]) - 1, 0)]}
-        routes={[{ coords: D.confort.coords, ton: 'jade', w: 8 }]} bumps={[D.confort.bumps[0]]} center={D.confort.bumps[0]} zoom={15.8} bearing={34} pitch={54} />
+      {/* Meme camera de poursuite : le conducteur en bas, le dos-d'ane
+          qu'il vient de signaler juste devant lui. */}
+      <MapLive conduite cap={SIGNALEMENT.cap}
+        routes={[{ coords: SIGNALEMENT.derriere, ton: 'neutre', w: 8 }, { coords: SIGNALEMENT.devant, ton: 'jade', w: 8 }]}
+        depart={SIGNALEMENT.puck} bumps={[D.confort.bumps[0]]}
+        center={SIGNALEMENT.centre} zoom={16.3} bearing={SIGNALEMENT.cap} pitch={56} />
       <div className="srv-layer">
         <Instruction />
         <Sheet>
