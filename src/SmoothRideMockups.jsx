@@ -1124,7 +1124,7 @@ function Paywall() {
       </div>
       <button type="button" className="srv-plan" data-on="yes">
         <strong>Sans engagement</strong>
-        <span className="srv-plan-p num">14,99 €</span>
+        <span className="srv-plan-p num">9,99 €</span>
         <small>Par mois, résiliable quand tu veux</small>
       </button>
       <div className="srv-bottom">
@@ -1144,7 +1144,7 @@ function Subscribed() {
         <Banner
           icon={<CreditCard size={17} />}
           title="Abonnement actif"
-          text={<><span className="num">15 €</span> par mois, prochain le <span className="num">26 septembre</span></>}
+          text={<><span className="num">9,99 €</span> par mois, prochain le <span className="num">26 septembre</span></>}
           action={<Pill tone="jade">Actif</Pill>}
         />
       </div>
@@ -1170,7 +1170,7 @@ function SettingsScreen() {
       <TopBar title="Compte" />
       <div className="srv-panel">
         <Row icon={<User size={14} />} tone="jade" title="alex.moreau@mail.fr" meta="Compte créé le 12 août 2026" />
-        <Row icon={<CreditCard size={14} />} title="Abonnement" meta="Actif, 14,99 € par mois" trailing={<Pill tone="jade">Actif</Pill>} goto="subscribed" />
+        <Row icon={<CreditCard size={14} />} title="Abonnement" meta="Actif, 9,99 € par mois" trailing={<Pill tone="jade">Actif</Pill>} goto="subscribed" />
       </div>
       <Head>Conduite</Head>
       <div className="srv-panel">
