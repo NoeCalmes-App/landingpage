@@ -439,19 +439,18 @@ function MapLive({
           // couche avec elle, la ou un marqueur d'ecran resterait debout.
           const puck = document.createElement('div')
           puck.className = 'srv-puck'
-          // Le dard 3D de Waze, construit en quatre couches : l'epaisseur
-          // (le meme dard decale vers le bas, bleu profond), puis les deux
-          // faces du dessus eclairees differemment — la lumiere vient de
-          // gauche — separees par une arete centrale, et un lisere blanc.
-          // Couche sur la carte par la perspective, il a du volume sans
-          // aucune image.
+          // Le dard d'Apple Plans : une seule forme aux angles ADOUCIS —
+          // le trace est redessine par son propre trait epais a jointures
+          // rondes, c'est ce qui arrondit les pointes — un lisere blanc
+          // genereux dessous, un degrade doux dessus, et l'ombre au sol.
+          // Pas de facettes : la modernite d'Apple, c'est la sobriete.
           puck.innerHTML = '<span class="srv-puck-halo"></span>'
-            + '<span class="srv-puck-corps"><svg viewBox="0 0 28 32" aria-hidden="true">'
-            + '<path d="M14 4.4 25 29.4 14 23.4 3 29.4Z" fill="#0B57B8"/>'
-            + '<path d="M14 2 3 27 14 21Z" fill="#7CC1FF"/>'
-            + '<path d="M14 2 25 27 14 21Z" fill="#1F7BE0"/>'
-            + '<path d="M14 2V21" stroke="rgba(255,255,255,.5)" stroke-width=".9"/>'
-            + '<path d="M14 2 25 27 14 21 3 27Z" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round"/>'
+            + '<span class="srv-puck-corps"><svg viewBox="0 0 32 36" aria-hidden="true">'
+            + '<defs><linearGradient id="srv-puck-g" x1="0" y1="0" x2="0" y2="1">'
+            + '<stop offset="0" stop-color="#71B8FF"/><stop offset="1" stop-color="#0E5FD4"/>'
+            + '</linearGradient></defs>'
+            + '<path d="M16 3.4 27 30 16 23.8 5 30Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="7" stroke-linejoin="round"/>'
+            + '<path d="M16 3.4 27 30 16 23.8 5 30Z" fill="url(#srv-puck-g)" stroke="url(#srv-puck-g)" stroke-width="3.2" stroke-linejoin="round"/>'
             + '</svg></span>'
           new gl.Marker({ element: puck, rotation: cap, rotationAlignment: 'map', pitchAlignment: 'map' })
             .setLngLat(depart).addTo(m)
