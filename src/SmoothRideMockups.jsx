@@ -275,6 +275,13 @@ function MapLive({
         // et un bandeau le dit au premier essai. C'est aussi ce bandeau qui
         // prouve, en une seconde, qu'on n'a pas affaire a une image.
         cooperativeGestures: true,
+        // Les messages du bandeau, sinon Mapbox les sert en anglais au
+        // milieu d'une application entierement francaise.
+        locale: {
+          'ScrollZoomBlocker.CtrlMessage': 'Ctrl + molette pour zoomer la carte',
+          'ScrollZoomBlocker.CmdMessage': '\u2318 + molette pour zoomer la carte',
+          'TouchPanBlocker.Message': 'Deux doigts pour d\u00e9placer la carte',
+        },
       })
       // Pas de `NavigationControl` : les boutons +/- de Mapbox sont du
       // mobilier Mapbox, pas de la maquette. Glisser, double-cliquer, pincer
@@ -358,6 +365,7 @@ function goTo(id) {
    gagne rien en lisibilite.
 --------------------------------------------------------------------------- */
 const T = {
+  ArrowUp: ['M208.49,120.49a12,12,0,0,1-17,0L140,69V216a12,12,0,0,1-24,0V69L64.49,120.49a12,12,0,0,1-17-17l72-72a12,12,0,0,1,17,0l72,72A12,12,0,0,1,208.49,120.49Z', 0, 0],
   ArrowBendUpRight: ['M232.49,112.49l-48,48a12,12,0,0,1-17-17L195,116H128a84.09,84.09,0,0,0-84,84,12,12,0,0,1-24,0A108.12,108.12,0,0,1,128,92h67L167.51,64.48a12,12,0,0,1,17-17l48,48A12,12,0,0,1,232.49,112.49Z', -0, 0],
   ArrowLeft: ['M228,128a12,12,0,0,1-12,12H69l51.52,51.51a12,12,0,0,1-17,17l-72-72a12,12,0,0,1,0-17l72-72a12,12,0,0,1,17,17L69,116H216A12,12,0,0,1,228,128Z', 0, -0],
   Bell: ['M225.29,165.93C216.61,151,212,129.57,212,104a84,84,0,0,0-168,0c0,25.58-4.59,47-13.27,61.93A20.08,20.08,0,0,0,30.66,186,19.77,19.77,0,0,0,48,196H84.18a44,44,0,0,0,87.64,0H208a19.77,19.77,0,0,0,17.31-10A20.08,20.08,0,0,0,225.29,165.93ZM128,212a20,20,0,0,1-19.6-16h39.2A20,20,0,0,1,128,212ZM54.66,172C63.51,154,68,131.14,68,104a60,60,0,0,1,120,0c0,27.13,4.48,50,13.33,68Z', 0, -0],
@@ -404,6 +412,7 @@ function glyphe(nom) {
   }
 }
 
+const ArrowUp = glyphe('ArrowUp')
 const ArrowBendUpRight = glyphe('ArrowBendUpRight')
 const ArrowLeft = glyphe('ArrowLeft')
 const Bell = glyphe('Bell')
@@ -1030,9 +1039,25 @@ function NoBump() {
 
 /* ========================= ROULER ========================= */
 
+/* La fleche de manoeuvre, comme sur un GPS : grosse, a gauche, et elle dit
+   EXACTEMENT ce que dit le texte. C'est la donnee qui choisit, jamais le
+   composant : une fleche de virage devant « Continuez » est un mensonge. */
+const FLECHES = {
+  'tout-droit': [ArrowUp, 0],
+  'droite': [ArrowBendUpRight, 0],
+  'gauche': [ArrowBendUpRight, 0, true],
+}
+const FlecheManoeuvre = ({ nom, size = 30 }) => {
+  const [Ic, rot, miroir] = FLECHES[nom] || FLECHES['tout-droit']
+  return (
+    <span className="srv-instr-turn" style={(rot || miroir) ? { transform: `${miroir ? 'scaleX(-1) ' : ''}${rot ? `rotate(${rot}deg)` : ''}` } : undefined}>
+      <Ic size={size} />
+    </span>
+  )
+}
 const Instruction = () => (
   <div className="srv-instr">
-    <ArrowBendUpRight size={26} weight="bold" className="srv-instr-turn" />
+    <FlecheManoeuvre nom={D.instruction.manoeuvre} />
     <div>
       <span className="srv-instr-d num">{D.instruction.m} m</span>
       <small>{D.instruction.texte}</small>

@@ -456,7 +456,9 @@
 .srv-instr { display: flex; align-items: center; gap: 13px; flex: none; padding: 12px 14px; border-radius: var(--r-card); background: color-mix(in srgb, var(--bg-deep) 92%, transparent); backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%); border: 1px solid var(--line); box-shadow: var(--sh-raised); color: var(--ink); }
 .srv-instr-d { font-size: var(--t-metric); font-weight: 800; line-height: 1; letter-spacing: -.024em; }
 .srv-instr small { display: block; margin-top: 3px; font-size: var(--t-label); color: var(--ink-2); line-height: 1.25; }
-.srv-instr-turn { color: var(--jade); transform: rotate(-45deg); }
+/* Plus de rotation ici : l'orientation appartient a la manoeuvre, pas au
+   style. Le -45deg d'avant tordait n'importe quelle fleche qu'on y mettait. */
+.srv-instr-turn { color: var(--jade); display: inline-flex; flex: none; }
 .srv-drive { display: flex; align-items: center; justify-content: space-between; flex: none; margin-top: 9px; margin-bottom: 20px; padding: 10px 15px; border-radius: var(--r-card); background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid var(--line); }
 .srv-drive div { text-align: center; }
 .srv-drive strong { display: block; font-size: var(--t-lead); font-weight: 800; line-height: 1; }
