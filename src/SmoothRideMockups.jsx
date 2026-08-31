@@ -152,6 +152,59 @@ function chargerGL() {
  * injouable sur telephone. Le zoom a la molette est desactive, sinon la
  * page ne defile plus des qu'on survole une carte.
  */
+/**
+ * Fond de secours, dessine SANS aucune cle externe.
+ *
+ * Constate en production : `.env.local` n'etant pas commite, le build
+ * GitHub sortait sans jeton Mapbox. La carte renvoyait alors un cadre vide
+ * et seul le quadrillage d'attente restait visible, sur tous les ecrans.
+ *
+ * Une maquette ne doit jamais dependre d'un service tiers pour montrer
+ * quelque chose. On projette donc les VRAIES coordonnees en Mercator et on
+ * trace les itineraires : le client voit son trajet, meme sans jeton, meme
+ * sans reseau.
+ */
+function FondDeSecours({ routes, bumps, depart, arrivee, sombre }) {
+  const pts = routes.flatMap((r) => r.coords)
+  if (!pts.length) return null
+  const my = (lat) => Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360))
+  const xs = pts.map((p) => p[0]), ys = pts.map((p) => my(p[1]))
+  const x0 = Math.min(...xs), x1 = Math.max(...xs)
+  const y0 = Math.min(...ys), y1 = Math.max(...ys)
+  const W = 300, H = 560, pad = 38
+  const e = Math.min((W - pad * 2) / (x1 - x0 || 1), (H - pad * 2) / (y1 - y0 || 1))
+  const px = (p) => [
+    (W - (x1 - x0) * e) / 2 + (p[0] - x0) * e,
+    (H + (y1 - y0) * e) / 2 - (my(p[1]) - y0) * e,
+  ]
+  const d = (co) => co.map((p, i) => `${i ? 'L' : 'M'}${px(p).map((v) => v.toFixed(1)).join(' ')}`).join(' ')
+  return (
+    <svg className="srv-map-secours" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      {[0.18, 0.38, 0.58, 0.78].map((f) => (
+        <line key={f} x1="0" y1={H * f} x2={W} y2={H * f} stroke="currentColor" strokeWidth="1" opacity=".1" />
+      ))}
+      {[0.24, 0.52, 0.8].map((f) => (
+        <line key={f} x1={W * f} y1="0" x2={W * f} y2={H} stroke="currentColor" strokeWidth="1" opacity=".1" />
+      ))}
+      {routes.map((r, i) => (
+        <g key={i}>
+          <path d={d(r.coords)} fill="none" stroke={C.gaine} strokeWidth={r.w + 4} strokeOpacity=".3" strokeLinecap="round" strokeLinejoin="round" />
+          <path d={d(r.coords)} fill="none" stroke={r.color} strokeWidth={r.w} strokeLinecap="round" strokeLinejoin="round" />
+        </g>
+      ))}
+      {bumps.slice(0, 22).map((b, i) => {
+        const [cx, cy] = px(b)
+        return <circle key={i} cx={cx} cy={cy} r="4.5" fill={teinte('rouge', sombre)} stroke="#fff" strokeWidth="2" />
+      })}
+      {[[depart, teinte('jade', sombre)], [arrivee, C.gaine]].map(([pt, col], i) => {
+        if (!pt) return null
+        const [cx, cy] = px(pt)
+        return <circle key={i} cx={cx} cy={cy} r="7" fill={col} stroke="#fff" strokeWidth="3" />
+      })}
+    </svg>
+  )
+}
+
 function MapLive({
   routes = [], bumps = [], depart, arrivee,
   center = D.centre, zoom = 12.4, bearing = 0, pitch = 0,
@@ -257,7 +310,13 @@ function MapLive({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible, sombre])
 
-  if (!TOKEN) return <div className="srv-map" aria-hidden="true" />
+  if (!TOKEN) {
+    return (
+      <div className="srv-map" aria-hidden="true">
+        <FondDeSecours routes={routes} bumps={bumps} depart={depart} arrivee={arrivee} sombre={sombre} />
+      </div>
+    )
+  }
   const fixe = urlStatique({ routes, center, zoom, bearing, pitch, sombre })
   return (
     <div className="srv-map" aria-hidden="true">

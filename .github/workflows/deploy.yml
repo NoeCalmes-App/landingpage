@@ -26,7 +26,13 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npm run build
+      - name: Build
+        run: npm run build
+        env:
+          # Jeton PUBLIC Mapbox (pk.). Sans lui, le build de production sort
+          # sans carte : .env.local n'est pas commite, donc absent ici.
+          # A creer dans Settings > Secrets and variables > Actions.
+          VITE_MAPBOX_TOKEN: ${{ secrets.VITE_MAPBOX_TOKEN }}
 
       - name: Checkout Nowork
         id: checkout-nowork
