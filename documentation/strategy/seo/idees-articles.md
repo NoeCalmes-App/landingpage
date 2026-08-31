@@ -95,12 +95,36 @@ manque d'énergie, c'est toujours celui qui marche.
 
 ## La file de briefs
 
+### ✅ Publié — Lovable, Base44 : est-ce que ça marche pour une application mobile ?
+**Publié le 31/08/2026** · **Format** : comparaison · **Mot-clé** : lovable base44 application mobile
+
+L'angle qui fait la force de cet article : il ne dit jamais que ces outils sont
+mauvais. Il constate un fait vérifiable, **ils produisent une application web,
+pas une application iOS ou Android**, et il en tire la conséquence business :
+la règle 4.2 d'Apple rejette les sites réempaquetés, donc pas d'App Store, donc
+pas d'abonnement encaissé par les stores.
+
+> **Leçon à réutiliser sur les prochaines comparaisons.** La version « Lovable
+> c'est nul » aurait moins bien classé et moins bien converti. Google récompense
+> la profondeur argumentée, pas l'invective, et `positionnement.md` dit
+> explicitement de ne pas dénigrer l'IA. Un fait précis est plus dur à
+> contredire qu'une opinion, et il positionne Noé en expert plutôt qu'en
+> concurrent aigri.
+>
+> Deuxième règle : **reconnaître honnêtement ce que le concurrent fait bien**
+> (section « Quand ces outils sont le bon choix »). C'est ce qui rend crédible
+> tout le reste, et ça évite le procès d'intention.
+>
+> Troisième règle : **ne jamais titrer sur « Noé Calmes vs X »**. Personne ne
+> cherche le nom de Noé. On se positionne sur le nom de l'outil, que des
+> milliers de gens tapent déjà.
+
 Statut : `à écrire` → `rédigé` → `publié`.
 
 ---
 
 ### 1. Créer une application sans savoir coder : les vraies options
-**Statut** : à écrire · **Format** : comparaison · **Mot-clé** : créer une application sans savoir coder
+**Statut** : ✅ publié le 30/08/2026 · **Format** : comparaison · **Mot-clé** : créer une application sans savoir coder
 
 Requête massive de ton ICP. Trois options honnêtes : no-code, IA, expert. Ce
 que chacune coûte vraiment, jusqu'où elle va, et le mur qu'on rencontre avec

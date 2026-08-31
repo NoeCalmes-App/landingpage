@@ -21,6 +21,110 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'lovable-base44-application-mobile',
+    title: "Lovable, Base44 : est-ce que ça marche pour une application mobile ?",
+    metaTitle: "Lovable ou Base44 pour une application mobile ? | Noé Calmes",
+    description: "Ces outils génèrent une application web, pas une application iOS ou Android. Ce que ça change pour les stores, ton modèle de revenus et ton budget.",
+    date: '2026-08-31',
+    readTime: '8 min',
+    finalCta: 'audit',
+    categorie: "Créer",
+    accroche: "Ils génèrent un site, pas une application. Ce que ça change vraiment.",
+    tldr: {
+      verdict: "Ces outils sont excellents pour prototyper, et je les recommande pour ça. Mais ils produisent une application web, pas une application iOS ou Android. Apple rejette explicitement les sites réempaquetés, ce qui ferme l'App Store et l'abonnement qui va avec.",
+      points: [
+        { label: "Le sujet", valeur: "Ce que ces générateurs font bien, et où ils s'arrêtent" },
+        { label: "Pour qui", valeur: "Tu envisages Lovable, Base44 ou un équivalent pour ton projet" },
+        { label: "Le bloqueur", valeur: "La règle 4.2 d'Apple rejette les sites web réempaquetés" },
+        { label: "À retenir", valeur: "Parfaits pour valider une idée, inadaptés à un produit qui encaisse sur mobile" },
+      ],
+    },
+    pourQui: [
+      "Tu hésites à lancer ton projet sur un générateur d'applications",
+      "Tu as déjà un prototype généré et tu te demandes quoi en faire",
+      "Tu veux un avis argumenté plutôt qu'un discours anti-IA",
+    ],
+    pasPourQui: [
+      "Tu cherches uniquement le chemin le moins cher, quel qu'en soit le résultat",
+      "Ton produit est un outil web et n'a pas besoin des stores",
+      "Tu veux qu'on te confirme qu'un générateur suffit pour tout",
+    ],
+    faq: [
+      { q: "Peut-on publier une application Lovable sur l'App Store ?", a: "Pas directement. Lovable produit une application web, et Apple exige un binaire natif. Sa règle 4.2 rejette les sites réempaquetés, et la sous-règle 4.2.2 vise les « web clippings ». Emballer le site dans une coquille native reste possible techniquement, mais se heurte à la même règle et les refus sont fréquents." },
+      { q: "Un prototype généré est-il récupérable par un développeur ?", a: "Souvent oui, mais ça demande un audit avant toute promesse. Le code compile, ce qui rassure, mais il est rarement structuré pour évoluer et les questions de sécurité et de données personnelles y sont fréquemment absentes. Ce qui se récupère toujours, en revanche, c'est ce que le prototype t'a appris sur ton marché." },
+      { q: "Ces outils vont-ils finir par produire de vraies applications natives ?", a: "C'est possible, et ce serait une bonne nouvelle. Mais générer un binaire natif ne réglerait pas le sujet de fond : décider ce qui est payant, à quel moment l'offre apparaît et pourquoi quelqu'un reviendrait demain. Ces décisions ne se génèrent pas, elles se prennent." },
+    ],
+    content: `
+      <p>Tu as vu les démos. Tu décris ton idée en trois phrases, et quelques minutes plus tard il y a quelque chose à l'écran qui ressemble à une application. C'est bluffant, et ce n'est pas un trucage : ces outils font vraiment ce qu'ils montrent.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications sur l'App Store et Google Play, et j'utilise l'IA tous les jours pour écrire du code. Cet article n'est pas un procès contre ces outils. C'est la réponse à une question précise que personne ne pose avant de s'abonner : <strong>est-ce que ce que tu vas obtenir est bien une application mobile ?</strong></p>
+
+      <h2>Ce que ces outils font vraiment bien</h2>
+      <p>Autant commencer par là, parce que c'est réel et que beaucoup d'articles le passent sous silence pour vendre autre chose.</p>
+      <ul>
+        <li><strong>La vitesse de prototypage.</strong> Passer d'une idée à un écran cliquable en une soirée, aucun développeur ne fait ça, moi compris.</li>
+        <li><strong>La levée de la barrière technique.</strong> Base de données, authentification et hébergement sont branchés sans que tu aies à comprendre comment.</li>
+        <li><strong>Le coût d'entrée.</strong> Quelques dizaines d'euros par mois contre plusieurs milliers pour un développement sur mesure.</li>
+        <li><strong>La validation d'une intuition.</strong> Montrer un écran réel à dix personnes de ta cible vaut mieux que le décrire à l'oral.</li>
+      </ul>
+      <p>Si ton objectif est de tester une idée avant d'engager un budget, ce sont d'excellents outils. Je le dis sans réserve, et c'est même ce que je recommande à des gens qui me contactent trop tôt.</p>
+
+      <h2>Le point que les démos ne montrent jamais : c'est un site, pas une application</h2>
+      <p>Voilà la chose la plus importante de cet article, et elle n'a rien d'une opinion.</p>
+      <p>Lovable génère une application <strong>web</strong>, en React. Tu peux l'ouvrir sur ton téléphone, l'épingler sur l'écran d'accueil, lui donner une icône. Ça reste un site qui tourne dans un navigateur. Ce n'est pas une application iOS ou Android.</p>
+      <p>La différence n'est pas cosmétique, elle est bloquante. Apple exige un binaire natif, et sa règle de validation <strong>4.2 « Minimum Functionality »</strong> rejette explicitement les sites web réempaquetés. La sous-règle 4.2.2 vise nommément les « web clippings ». Apple précise même qu'ajouter des notifications ou la géolocalisation ne suffit pas à rendre un site acceptable sur l'App Store.</p>
+      <div class="encadre attention">
+        <span class="encadre-titre">Ce que ça veut dire concrètement</span>
+        <p>Tu peux passer trois mois à construire ton produit sur ces outils, puis découvrir au moment de la publication que l'App Store le refuse. Le refus n'arrive pas au début, il arrive à la fin, quand tu as déjà tout investi.</p>
+      </div>
+      <p>Il existe des solutions de contournement, qui consistent à emballer le site dans une coquille native. Elles se heurtent à la même règle 4.2, et les refus sont fréquents.</p>
+
+      <h2>Pas d'App Store, pas d'abonnement App Store</h2>
+      <p>C'est la conséquence business, et c'est celle qui coûte le plus cher.</p>
+      <p>Le modèle de revenus le plus rentable en mobile est l'abonnement encaissé par l'App Store et Google Play. Il fonctionne parce qu'il est intégré au téléphone : deux taps, l'empreinte digitale, c'est payé, et ça se renouvelle tout seul. Un paiement web demande une carte bancaire saisie à la main sur un petit écran, et il convertit bien moins.</p>
+      <div class="chiffre">
+        <span class="chiffre-valeur">13 000 €</span>
+        <span class="chiffre-texte">générés chaque mois par une application que j'ai conçue, via un abonnement encaissé par les stores. Ce mécanisme précis n'est pas accessible à une application web.</span>
+      </div>
+      <p>Si ton projet vit de la récurrence, la question n'est donc plus « quel outil est le plus rapide », mais « lequel me permet d'encaisser ». Le sujet est développé dans <a href="/blog/application-par-abonnement/">application par abonnement : combien ça rapporte</a>.</p>
+
+      <h2>Pourquoi elles se ressemblent toutes</h2>
+      <p>Ouvre cinq applications générées par ces outils et tu verras la même chose : les mêmes cartes arrondies, les mêmes dégradés, la même barre de navigation, la même page d'accueil avec trois blocs et un bouton violet.</p>
+      <p>Ce n'est pas un hasard. Ces générateurs s'appuient sur les mêmes bibliothèques de composants et sur les mêmes conventions apprises pendant leur entraînement. Ils produisent donc une moyenne statistique du design existant. C'est propre, c'est correct, et c'est interchangeable.</p>
+      <p>Le problème n'est pas esthétique. Une interface générée est optimisée pour paraître crédible sur une capture d'écran, pas pour amener un utilisateur au moment où il comprend l'intérêt de ton produit, puis à l'écran qui lui propose de payer. Ce chemin-là se décide, il ne se génère pas.</p>
+
+      <h2>Le vrai coût, celui qui arrive après</h2>
+      <p>L'abonnement mensuel n'est pas le coût de ces outils. Le coût réel apparaît le jour où tu veux dépasser ce qu'ils savent faire.</p>
+      <ul>
+        <li><strong>La dépendance à la plateforme.</strong> Ton produit vit chez un éditeur qui peut changer ses tarifs, ses limites ou sa direction. Base44 appartient désormais à Wix.</li>
+        <li><strong>Le code que personne n'a relu.</strong> Il compile, donc il rassure. La gestion des données personnelles et la sécurité y sont rarement traitées, et ça ne se voit pas tant que rien n'a explosé.</li>
+        <li><strong>La reprise.</strong> Quand un expert récupère le projet, il passe d'abord du temps à comprendre du code que personne n'a écrit intentionnellement. C'est facturé, et ce temps n'existerait pas sur une base construite à la main.</li>
+      </ul>
+      <div class="encadre attention">
+        <span class="encadre-titre">L'erreur la plus fréquente</span>
+        <p>Croire qu'on économise en commençant là, puis payer deux fois : l'abonnement pendant des mois, puis la reprise complète. Le budget total finit régulièrement au-dessus de ce qu'aurait coûté un développement cadré dès le départ.</p>
+      </div>
+      <p>Pour les ordres de grandeur d'un développement sur mesure, regarde <a href="/blog/combien-coute-application-mobile/">combien coûte une application mobile</a>.</p>
+
+      <h2>Quand ces outils sont le bon choix</h2>
+      <p>Ils le sont vraiment dans trois cas, et je préfère te le dire plutôt que de te vendre autre chose.</p>
+      <ul>
+        <li><strong>Tu veux valider une idée.</strong> Construis le prototype, montre-le, mesure si des gens s'inscrivent. C'est du temps et de l'argent économisés.</li>
+        <li><strong>Ton produit est un outil web.</strong> Un tableau de bord, un back-office, un espace client utilisé sur ordinateur : le mobile natif n'apporte rien, et ces outils sont pertinents.</li>
+        <li><strong>Tu as besoin d'un support de démonstration.</strong> Pour convaincre un associé ou un financeur, un écran cliquable vaut mieux qu'un document.</li>
+      </ul>
+      <p>Dans ces trois cas, la réponse est oui. Le piège n'est pas l'outil, il est de confondre un prototype avec un produit qui encaisse.</p>
+
+      <h2>Par où commencer</h2>
+      <p>Trois choses, dans cet ordre.</p>
+      <ol>
+        <li><strong>Réponds à une seule question : ton produit a-t-il besoin d'être sur les stores ?</strong> S'il vit d'un usage quotidien sur téléphone, de notifications ou d'un abonnement récurrent, la réponse est oui, et aucun générateur ne t'y emmènera.</li>
+        <li><strong>Si tu n'es pas sûr de ton idée, prototype d'abord.</strong> Utilise ces outils pour ça, c'est exactement leur terrain.</li>
+        <li><strong>Si tu es sûr, ne passe pas par la case prototype payant.</strong> Cadre le modèle de revenus, puis construis directement ce qui pourra encaisser.</li>
+      </ol>
+      <p>Si tu as déjà un prototype généré et que tu te demandes ce qui est récupérable, c'est une question fréquente et elle a une vraie réponse, mais elle demande de regarder le code. Le fond du sujet est traité dans <a href="/blog/creer-application-avec-ia/">créer une application avec l'IA</a>.</p>
+    `,
+  },
+  {
     slug: 'creer-application-sans-savoir-coder',
     title: "Créer une application sans savoir coder : les trois vraies options",
     metaTitle: "Créer une application sans savoir coder | Noé Calmes",
@@ -1531,6 +1635,7 @@ export const BLOG_ARTICLES = [
 // orphelin. Ajouter un article implique donc de le citer ici au moins deux fois.
 
 export const ARTICLES_LIES = {
+  'lovable-base44-application-mobile': ['creer-application-avec-ia', 'creer-application-sans-savoir-coder', 'combien-coute-application-mobile'],
   // Cluster monetisation, pilier : rentabiliser-application-mobile
   'rentabiliser-application-mobile': ['modele-economique-application-mobile', 'combien-rapporte-application-mobile', 'pourquoi-applications-ne-rapportent-rien'],
   'combien-rapporte-application-mobile': ['rentabiliser-application-mobile', 'combien-coute-application-mobile', 'application-mobile-meilleur-investissement'],
@@ -1544,11 +1649,11 @@ export const ARTICLES_LIES = {
   'application-mobile-meilleur-investissement': ['rentabiliser-application-mobile', 'combien-coute-application-mobile', 'creation-application-mobile-toulouse'],
 
   // Cluster creation / conduite de projet
-  'creer-application-sans-savoir-coder': ['creer-application-avec-ia', 'combien-coute-application-mobile', 'creer-application-mobile-guide'],
+  'creer-application-sans-savoir-coder': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'creer-application-mobile-guide'],
   'creer-application-mobile-guide': ['mvp-application-mobile', 'creer-application-sans-savoir-coder', 'choisir-expert-application-mobile'],
   'combien-coute-application-mobile': ['creer-application-mobile-guide', 'mvp-application-mobile', 'creation-application-mobile-toulouse'],
   'mvp-application-mobile': ['creer-application-mobile-guide', 'idee-application-business-rentable', 'faire-evoluer-application-mobile'],
-  'choisir-expert-application-mobile': ['creer-application-mobile-guide', 'reprendre-application-mobile-existante', 'combien-coute-application-mobile'],
+  'choisir-expert-application-mobile': ['creer-application-mobile-guide', 'reprendre-application-mobile-existante', 'lovable-base44-application-mobile'],
   'reprendre-application-mobile-existante': ['faire-evoluer-application-mobile', 'choisir-expert-application-mobile', 'creer-application-avec-ia'],
   'faire-evoluer-application-mobile': ['reprendre-application-mobile-existante', 'choisir-expert-application-mobile', 'rentabiliser-application-mobile'],
 

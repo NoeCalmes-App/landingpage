@@ -514,6 +514,11 @@ for (const route of legacySectionRoutes) {
 // `lireMetaArticles()` : ne pas les redefinir ici, ils seraient ignores.
 const blogRoutes = [
   {
+    path: '/blog/lovable-base44-application-mobile',
+    heading: 'Lovable, Base44 : est-ce que ça marche pour une application mobile ?',
+    content: 'Ces générateurs sont excellents pour prototyper une idée, mais ils produisent une application web, pas une application iOS ou Android. Apple exige un binaire natif et sa règle 4.2 rejette explicitement les sites réempaquetés, ce qui ferme l\'App Store et l\'abonnement encaissé par les stores. Ce que ça change pour ton modèle de revenus, pourquoi ces applications se ressemblent toutes, et les trois cas où ces outils sont le bon choix.',
+  },
+  {
     // title/description lus depuis src/Blog.jsx (appel a appliquerMeta dans
     // BlogList) : ne pas les redefinir ici.
     path: '/blog',
