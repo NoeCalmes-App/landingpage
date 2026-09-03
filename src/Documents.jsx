@@ -1,5 +1,6 @@
 import NavDocuments from './NavDocuments.jsx'
 import { ICONES, IconeMarque } from './iconesDocument.jsx'
+import { ROUTE_APP_MOBILE } from './routesDocuments.js'
 
 // L'adresse à inviter sur les comptes du client (Firebase, Play Console,
 // Apple Developer). Affichée SUR LA PAGE et copiable, pas seulement écrite
@@ -13,13 +14,15 @@ const appleDevPdf = '/assets/documents/guides/Création compte Apple Développeu
 
 // FLUTTER & FIREBASE N'EST PAS DANS LA LISTE, volontairement. C'est un
 // document d'EXPLICATION, dont le lien est collé dans les diapositives du
-// devis : `https://noecalmes.fr/documents/flutter-firebase`. Sa route reste
-// donc servie, mais l'afficher ici diluerait la page — elle ne doit contenir
+// devis : `https://noecalmes.fr/documents/app-mobile/flutter-firebase`, son
+// ancienne adresse `/documents/flutter-firebase` restant servie. Sa route est
+// donc bien là, mais l'afficher ici diluerait la page — elle ne doit contenir
 // que ce qui est À FAIRE.
 const EXPLICATIONS = [
   {
     id: 'flutter-firebase',
-    route: '/documents/flutter-firebase',
+    route: `${ROUTE_APP_MOBILE}/flutter-firebase`,
+    anciennesRoutes: ['/documents/flutter-firebase'],
     title: 'Flutter & Firebase',
     pdf: '/assets/documents/document.pdf',
     icone: ICONES.firebase,
@@ -30,7 +33,8 @@ const EXPLICATIONS = [
 const A_FAIRE = [
   {
     id: 'new-membre',
-    route: '/new-membre',
+    route: `${ROUTE_APP_MOBILE}/new-membre`,
+    anciennesRoutes: ['/new-membre'],
     // UN PROJET, PAS UN COMPTE. Le compte, c'est le compte Google que le
     // client a déjà ; Firebase ne demande que de créer un projet dedans.
     // « Création compte » laissait croire à une inscription de plus.
@@ -46,7 +50,8 @@ const A_FAIRE = [
   },
   {
     id: 'google-play-console',
-    route: '/google-play-console',
+    route: `${ROUTE_APP_MOBILE}/google-play-console`,
+    anciennesRoutes: ['/google-play-console'],
     // LE NOM COMPLET PORTE LA DISTINCTION. « Création compte Google » faisait
     // dire « j'en ai déjà un » et sauter l'étape ; « Google Play Console » ne
     // se confond avec rien. Le nom exact suffit, une phrase pour expliquer
@@ -59,7 +64,8 @@ const A_FAIRE = [
   },
   {
     id: 'apple-developer',
-    route: '/apple-developer',
+    route: `${ROUTE_APP_MOBILE}/apple-developer`,
+    anciennesRoutes: ['/apple-developer'],
     // Même piège, en pire : tout le monde a un compte Apple. « Developer » est
     // le mot qui dit que ce n'est pas celui-là — un abonnement annuel par
     // dessus, sans lequel rien ne sort sur l'App Store.
@@ -193,7 +199,8 @@ function Documents({ onOpenDocument }) {
 }
 
 // `DOCUMENTS` reste exporté avec TOUT : c'est lui que le routeur parcourt
-// pour retrouver un document par son adresse, y compris `/documents/flutter-firebase`.
+// pour retrouver un document par son adresse, y compris le document
+// d'explication `flutter-firebase` absent de la page.
 const DOCUMENTS = [...A_FAIRE, ...EXPLICATIONS]
 
 export { DOCUMENTS }

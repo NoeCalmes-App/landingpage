@@ -5,6 +5,8 @@ import MentionsLegales from './MentionsLegales.jsx'
 import CGV from './CGV.jsx'
 import Document from './Document.jsx'
 import Documents, { DOCUMENTS } from './Documents.jsx'
+import DocumentsIndex from './DocumentsIndex.jsx'
+import { ROUTE_DOCUMENTS, ROUTE_APP_MOBILE, estRouteDocuments, estRouteAppMobile, trouverDocument } from './routesDocuments.js'
 import ContactNoe, { EmailModal } from './ContactNoe.jsx'
 import Legales from './Legales.jsx'
 import { BlogList, BlogArticlePage, BLOG_ARTICLES } from './Blog.jsx'
@@ -165,7 +167,7 @@ function App() {
   const [legalReturnPath, setLegalReturnPath] = useState('/')
   const [currentDoc, setCurrentDoc] = useState(() => {
     const path = sessionStorage.getItem('redirect') || window.location.pathname
-    return DOCUMENTS.find((d) => d.route === path) || null
+    return trouverDocument(DOCUMENTS, path)
   })
   const [page, setPage] = useState(() => {
     const redirect = sessionStorage.getItem('redirect')
@@ -199,17 +201,24 @@ function App() {
     }
     if (path === '/espace-client' || path.startsWith('/espace-client/')) return 'client-space'
     if (path === '/maquette-visuel' || path.startsWith('/maquette-visuel/')) return 'maquette-visual'
-    // Alias vers /documents, même mécanique que /espace ci-dessus : cette
-    // adresse se donne de vive voix ou se recopie d'un PDF, et le singulier
-    // vient tout seul. Un client bloqué sur une 404 n'insiste pas, il attend
-    // — et c'est justement la page qui débloque le développement.
-    // `history.replaceState` remet l'adresse canonique dans la barre sans
+    // Deux écrans documents : le sommaire `/documents`, puis les accès à créer
+    // sous `/documents/app-mobile`. Chacun avec ses alias — le singulier et les
+    // abréviations viennent tout seuls, et l'adresse se recopie d'un PDF. Les
+    // listes vivent dans `routesDocuments.js`, à côté des adresses canoniques.
+    // `history.replaceState` remet la bonne adresse dans la barre sans
     // recharger : un lien copié depuis la page est alors le bon.
-    if (['/document', '/docs', '/doc'].includes(path.replace(/\/+$/, '').toLowerCase())) {
-      history.replaceState(null, '', '/documents')
+    if (estRouteDocuments(path)) {
+      if (path.toLowerCase() !== ROUTE_DOCUMENTS) {
+        history.replaceState(null, '', lienInterne(ROUTE_DOCUMENTS))
+      }
+      return 'documents-index'
+    }
+    if (estRouteAppMobile(path)) {
+      if (path.toLowerCase() !== ROUTE_APP_MOBILE) {
+        history.replaceState(null, '', lienInterne(ROUTE_APP_MOBILE))
+      }
       return 'documents'
     }
-    if (path === '/documents') return 'documents'
     if (path === '/contactnoe') return 'contact'
     if (path === '/legal') return 'legal'
     if (path === '/audit-app') return 'audit-app'
@@ -244,7 +253,16 @@ function App() {
     if (['/maquette/juridik', '/maquette/juridique'].includes(path.toLowerCase())) return 'juridik-mockups'
     if (path.toLowerCase() === '/maquette/bailora') return 'bailora-mockups'
     if (['/maquette/guestride', '/maquette/guest-ride'].includes(path.toLowerCase())) return 'guestride-mockups'
-    if (DOCUMENTS.some((d) => d.route === path)) return 'document-viewer'
+    // Les guides, adresse actuelle ou ancienne. Une ancienne adresse ouvre le
+    // bon guide PUIS se réécrit en canonique : les liens des devis déjà
+    // envoyés continuent de marcher sans figer l'ancienne arborescence.
+    const documentTrouve = trouverDocument(DOCUMENTS, path)
+    if (documentTrouve) {
+      if (documentTrouve.route !== path) {
+        history.replaceState(null, '', lienInterne(documentTrouve.route))
+      }
+      return 'document-viewer'
+    }
     if (path in SECTION_ROUTES) return 'home'
     return 'home'
   })
@@ -348,7 +366,7 @@ function App() {
   // reculer réécrit l'URL sans changer l'affichage. Partout ailleurs on s'en
   // accommode, mais pas ici : ces pages sont ouvertes par un client qui vient
   // de signer, souvent sur son téléphone, et qui recule au pouce par réflexe.
-  // Il se retrouvait sur le guide avec /documents dans la barre d'adresse,
+  // Il se retrouvait sur le guide avec /documents/app-mobile dans la barre,
   // sans plus aucun moyen de sortir.
   //
   // L'ÉCOUTEUR EST BORNÉ À CE PARCOURS (`page` dans la garde) : ailleurs, rien
@@ -356,13 +374,14 @@ function App() {
   // de recopier la table des routes — elle fait quarante lignes, un double
   // affaibli aurait divergé au premier ajout.
   useEffect(() => {
-    if (page !== 'documents' && page !== 'document-viewer') return
+    if (page !== 'documents' && page !== 'documents-index' && page !== 'document-viewer') return
 
     const reculer = () => {
-      const chemin = window.location.pathname
-      const doc = DOCUMENTS.find((d) => d.route === chemin)
+      const chemin = window.location.pathname.replace(/\/+$/, '').toLowerCase() || '/'
+      const doc = trouverDocument(DOCUMENTS, chemin)
       if (doc) { setCurrentDoc(doc); setPage('document-viewer'); window.scrollTo(0, 0); return }
-      if (chemin === '/documents') { setPage('documents'); window.scrollTo(0, 0); return }
+      if (estRouteAppMobile(chemin)) { setPage('documents'); window.scrollTo(0, 0); return }
+      if (estRouteDocuments(chemin)) { setPage('documents-index'); window.scrollTo(0, 0); return }
       window.location.reload()
     }
 
@@ -372,7 +391,7 @@ function App() {
 
   const goHome = () => { setPage('home'); history.pushState(null, '', '/'); window.scrollTo(0, 0) }
 
-  const goDocuments = () => { setPage('documents'); history.pushState(null, '', lienInterne('/documents')); window.scrollTo(0, 0) }
+  const goDocuments = () => { setPage('documents'); history.pushState(null, '', lienInterne(ROUTE_APP_MOBILE)); window.scrollTo(0, 0) }
 
   const goBlog = () => { setPage('blog'); history.pushState(null, '', lienInterne('/blog')); window.scrollTo(0, 0) }
 
@@ -516,6 +535,7 @@ function App() {
   if (page === 'privacy') return <PolitiqueConfidentialite onBack={goLegalBack} />
   if (page === 'mentions') return <MentionsLegales onBack={goLegalBack} />
   if (page === 'cgv') return <CGV onBack={goLegalBack} />
+  if (page === 'documents-index') return <DocumentsIndex onOpenAppMobile={goDocuments} />
   if (page === 'documents') return (
     <Documents
       onOpenDocument={(doc) => {

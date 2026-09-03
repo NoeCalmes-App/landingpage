@@ -906,7 +906,11 @@ for (const path of mockupRoutes) {
 // ─── Legacy routes — noindex (old URLs that may still be indexed by Google) ──
 
 const legacyRoutes = ['/a-propos', '/offre', '/contact', '/merci']
-const noindexRoutes = ['/avis', '/rendez-vous', '/mentions', '/privacy', '/cgv', '/documents', '/contactnoe', '/legal', '/espace-client', '/maquette-visuel', ...legacyRoutes]
+// Les deux ecrans documents sont generes : `/documents` (le sommaire) et
+// `/documents/app-mobile` (les acces a creer). Les deux adresses circulent
+// dans des devis deja envoyes ; sans dossier a servir, elles passeraient par
+// la 404 avant de rebondir.
+const noindexRoutes = ['/avis', '/rendez-vous', '/mentions', '/privacy', '/cgv', '/documents', '/documents/app-mobile', '/contactnoe', '/legal', '/espace-client', '/maquette-visuel', ...legacyRoutes]
 
 for (const path of noindexRoutes) {
   let html = retirerFaqPage(baseHtml)
