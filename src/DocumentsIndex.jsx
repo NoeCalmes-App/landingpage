@@ -21,7 +21,11 @@ const FAMILLES = [
     id: 'app-mobile',
     route: ROUTE_APP_MOBILE,
     titre: "Création d'application mobile",
-    soustitre: 'Les trois accès à créer avant que le développement commence.',
+    // QUATRE CARTES DERRIÈRE, PLUS TROIS. Le nom de domaine s'est ajouté à la
+    // liste et le sommaire annonçait encore « trois accès » : le compte n'y
+    // était plus, et un domaine ne s'accorde pas, il s'achète. On le nomme
+    // donc à part, ce qui dit au passage par quoi commencer.
+    soustitre: 'Le nom de domaine et les accès à créer avant le développement.',
     // Un téléphone, pas un logo de marque : la famille couvre Firebase, Google
     // et Apple à la fois, aucun des trois ne peut la représenter seul.
     icone: (

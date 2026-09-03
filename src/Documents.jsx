@@ -13,6 +13,15 @@ const ajoutMembrePdf = '/assets/documents/guides/Ajout_Membre_Firebase.pdf'
 const googlePlayPdf = '/assets/documents/guides/Création Compte Google Play Console.pdf'
 const appleDevPdf = '/assets/documents/guides/Création compte Apple Développeur.pdf'
 
+// DANS `guides/` COMME LES AUTRES, ET C'EST UNE CORRECTION. La page servait
+// `/assets/documents/document.pdf`, une copie figée en mars. Le document a été
+// refait depuis (trois pages, refonte complète) et seule la version de
+// `guides/` a suivi : le client qui ouvrait « Flutter & Firebase » depuis le
+// site tombait donc sur l'ancienne, pendant que le lien collé dans les
+// diapositives du devis pointait la même adresse. Un seul fichier, celui que
+// l'on tient à jour.
+const flutterFirebasePdf = '/assets/documents/guides/Doc Expliquatif Flutter,Firebase.pdf'
+
 // FLUTTER & FIREBASE N'EST PAS DANS LA LISTE, volontairement. C'est un
 // document d'EXPLICATION, dont le lien est collé dans les diapositives du
 // devis : `https://noecalmes.fr/documents/app-mobile/flutter-firebase`, son
@@ -25,7 +34,7 @@ const EXPLICATIONS = [
     route: routeGuide('flutter-firebase'),
     anciennesRoutes: ['/documents/flutter-firebase'],
     title: 'Flutter & Firebase',
-    pdf: '/assets/documents/document.pdf',
+    pdf: flutterFirebasePdf,
     icone: ICONES.firebase,
   },
 ]
