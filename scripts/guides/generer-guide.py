@@ -235,4 +235,4 @@ BLOCS = [
 
 if __name__ == '__main__':
     construire('Achat nom de domaine.pdf', 'Nom de domaine + e-mail pro',
-               'Entreprise · Temps estimé : 10 min', BLOCS)
+               'Entreprise · Temps estimé : 15 min', BLOCS)
