@@ -31,3 +31,15 @@ content/creatives/carrousel-instagram-apps-qui-rapportent.zip
 dist-check*
 dist-verify*
 tmp/
+
+# Ce que les sessions Cowork n'ont pas le droit d'effacer.
+#
+# Une session travaille sur ce dossier monte depuis le Mac et ne peut PAS y
+# supprimer de fichier (le pont l'interdit) : ce qui doit disparaitre est donc
+# deplace ici, et c'est Noe qui vide le dossier. Rien de ce qui s'y trouve ne
+# doit entrer dans un commit.
+_to_delete/
+
+# Ce que Cowork depose quand il rend un fichier dans la conversation. Ce sont
+# des sorties de session (captures, archives), pas des sources du site.
+Claude outputs/

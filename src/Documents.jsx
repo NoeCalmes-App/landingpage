@@ -1,6 +1,6 @@
 import NavDocuments from './NavDocuments.jsx'
 import { ICONES, IconeMarque } from './iconesDocument.jsx'
-import { ROUTE_APP_MOBILE } from './routesDocuments.js'
+import { ROUTE_APP_MOBILE, routeGuide } from './routesDocuments.js'
 
 // L'adresse à inviter sur les comptes du client (Firebase, Play Console,
 // Apple Developer). Affichée SUR LA PAGE et copiable, pas seulement écrite
@@ -21,7 +21,7 @@ const appleDevPdf = '/assets/documents/guides/Création compte Apple Développeu
 const EXPLICATIONS = [
   {
     id: 'flutter-firebase',
-    route: `${ROUTE_APP_MOBILE}/flutter-firebase`,
+    route: routeGuide('flutter-firebase'),
     anciennesRoutes: ['/documents/flutter-firebase'],
     title: 'Flutter & Firebase',
     pdf: '/assets/documents/document.pdf',
@@ -33,7 +33,7 @@ const EXPLICATIONS = [
 const A_FAIRE = [
   {
     id: 'new-membre',
-    route: `${ROUTE_APP_MOBILE}/new-membre`,
+    route: routeGuide('new-membre'),
     anciennesRoutes: ['/new-membre'],
     // UN PROJET, PAS UN COMPTE. Le compte, c'est le compte Google que le
     // client a déjà ; Firebase ne demande que de créer un projet dedans.
@@ -50,7 +50,7 @@ const A_FAIRE = [
   },
   {
     id: 'google-play-console',
-    route: `${ROUTE_APP_MOBILE}/google-play-console`,
+    route: routeGuide('google-play-console'),
     anciennesRoutes: ['/google-play-console'],
     // LE NOM COMPLET PORTE LA DISTINCTION. « Création compte Google » faisait
     // dire « j'en ai déjà un » et sauter l'étape ; « Google Play Console » ne
@@ -64,7 +64,7 @@ const A_FAIRE = [
   },
   {
     id: 'apple-developer',
-    route: `${ROUTE_APP_MOBILE}/apple-developer`,
+    route: routeGuide('apple-developer'),
     anciennesRoutes: ['/apple-developer'],
     // Même piège, en pire : tout le monde a un compte Apple. « Developer » est
     // le mot qui dit que ce n'est pas celui-là — un abonnement annuel par

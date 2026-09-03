@@ -37,6 +37,40 @@ export const ROUTE_APP_MOBILE = '/documents/app-mobile'
  */
 export const ALIAS_APP_MOBILE = ['/documents/appmobile', '/mobile']
 
+/**
+ * LES GUIDES, par identifiant. La route de chacun est ROUTE_APP_MOBILE/<id> :
+ * une seule façon de la fabriquer, ici, pour que `Documents.jsx` (qui les
+ * affiche) et `scripts/generate-routes.js` (qui écrit leurs dossiers dans
+ * `dist/`) ne puissent pas diverger.
+ *
+ * ⚠️ POURQUOI LE BUILD DOIT LES ÉCRIRE. Ces adresses sont collées dans des
+ * devis et des PDF déjà envoyés. Sans dossier à servir, l'hébergeur répond
+ * 404 : la page finit par s'afficher grâce au script de rattrapage du
+ * `404.html`, mais Google, lui, voit un 404 et le client voit passer une
+ * page d'erreur. Un guide ajouté ici est donc servi le jour même.
+ */
+export const IDS_GUIDES = ['new-membre', 'google-play-console', 'apple-developer', 'flutter-firebase']
+
+/** La route canonique d'un guide. */
+export function routeGuide(id) {
+  return `${ROUTE_APP_MOBILE}/${id}`
+}
+
+export const ROUTES_GUIDES = IDS_GUIDES.map(routeGuide)
+
+/**
+ * Les adresses d'AVANT le déménagement sous `/documents/app-mobile`, servies
+ * elles aussi : elles vivent dans des devis signés, elles ne peuvent pas
+ * cesser de répondre. Le routeur les réécrit en canonique une fois la page
+ * affichée (`anciennesRoutes` de chaque document, dans `Documents.jsx`).
+ */
+export const ANCIENNES_ROUTES_GUIDES = [
+  '/new-membre',
+  '/google-play-console',
+  '/apple-developer',
+  '/documents/flutter-firebase',
+]
+
 /** Chemin comparable : sans barre finale, en minuscules. */
 function normaliser(chemin) {
   return (chemin || '').replace(/\/+$/, '').toLowerCase() || '/'
