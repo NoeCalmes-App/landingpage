@@ -21,6 +21,12 @@
 const BASE = '/assets/icons/document'
 
 export const ICONES = {
+  // PAS UN LOGO DE MARQUE, et c'est le seul. Le guide du nom de domaine
+  // renvoie chez OVHcloud, mais la carte ne porte pas leur logo : le domaine
+  // s'achète où le client veut, et un logo sur la carte se lirait comme une
+  // obligation. Un globe dit « adresse web » sans engager personne. Dessiné
+  // dans la couleur de marque, il tient sa place à côté des vrais logos.
+  domaine: { src: `${BASE}/Domaine.svg`, echelle: 1 },
   firebase: { src: `${BASE}/Firebase.svg`, echelle: 1 },
   android: { src: `${BASE}/Android.svg`, echelle: 1 },
   gmail: { src: `${BASE}/Mail.svg`, echelle: 1 },

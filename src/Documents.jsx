@@ -8,6 +8,7 @@ import { ROUTE_APP_MOBILE, routeGuide } from './routesDocuments.js'
 // et une adresse retapée à la main finit par avoir une faute.
 export const EMAIL_A_INVITER = 'noecalmes.pro@gmail.com'
 
+const nomDeDomainePdf = '/assets/documents/guides/Achat nom de domaine.pdf'
 const ajoutMembrePdf = '/assets/documents/guides/Ajout_Membre_Firebase.pdf'
 const googlePlayPdf = '/assets/documents/guides/Création Compte Google Play Console.pdf'
 const appleDevPdf = '/assets/documents/guides/Création compte Apple Développeur.pdf'
@@ -31,6 +32,30 @@ const EXPLICATIONS = [
 
 /** Les comptes à créer avant que le développement puisse commencer. */
 const A_FAIRE = [
+  {
+    // ⚠️ EN PREMIER, ET CE N'EST PAS UN CHOIX D'ORDRE. Le compte Apple
+    // Developer réclame un site web au nom de la société ET une adresse e-mail
+    // à ce domaine : un client qui commence par Apple se fait arrêter au
+    // milieu du formulaire le plus long des quatre, et repart acheter un
+    // domaine qu'il aurait pu prendre en dix minutes le premier jour.
+    //
+    // « NOM DE DOMAINE », PAS « ACHAT DU NOM DE DOMAINE ». Les autres cartes
+    // nomment la chose, pas le geste ; et le mot « achat » en tête de la
+    // première carte fait passer la page entière pour une note de frais.
+    //
+    // « + E-MAIL PRO » DANS LE TITRE : l'adresse professionnelle vient du même
+    // achat, et c'est la deuxième chose qu'Apple réclame. Sans elle dans le
+    // titre, le client croyait avoir fini en achetant le domaine.
+    id: 'nom-de-domaine',
+    route: routeGuide('nom-de-domaine'),
+    title: 'Nom de domaine + e-mail pro',
+    soustitre: 'Exigés pour publier sur l’App Store',
+    pdf: nomDeDomainePdf,
+    icone: ICONES.domaine,
+    // Pas d'`emailAInviter` : il n'y a personne à inviter sur un domaine. La
+    // barre du guide n'affiche donc pas d'adresse à copier — elle n'aurait
+    // rien à faire là, et on ne met pas un bouton pour l'équilibre.
+  },
   {
     id: 'new-membre',
     route: routeGuide('new-membre'),
@@ -155,15 +180,30 @@ function Documents({ onOpenDocument }) {
             accès, le développement ne peut pas commencer : ce n'est pas de
             l'administratif qu'on repousse. Et ils restent au client — c'est ce
             qui justifie qu'il les crée lui-même plutôt que Noé à sa place. */}
+        {/* TROIS PHRASES, PAS DAVANTAGE. La version longue expliquait aussi que
+            « c'est sur eux que l'application sera publiée » : vrai, mais
+            personne n'en avait besoin pour agir, et chaque ligne de plus
+            repousse les cartes sous la ligne de flottaison.
+            On ne dit plus « ces trois accès » : un domaine n'est pas un accès,
+            il s'achète. Et on donne l'ORDRE, parce que le nom de domaine
+            débloque le compte Apple — un client qui commence par Apple se fait
+            arrêter au milieu du formulaire. */}
         <p className="text-grey text-[1rem] leading-relaxed max-w-xl">
           <strong className="text-text font-semibold">Obligatoire avant de commencer le développement.</strong>{' '}
-          Ces trois accès sont à votre nom et vous appartiennent : c&apos;est sur eux que
-          l&apos;application sera publiée.
+          Ces quatre éléments sont à votre nom.{' '}
+          <strong className="text-text font-semibold">Commencez par le nom de domaine</strong> : la licence
+          Apple l&apos;exige.
         </p>
       </div>
 
       <div className="px-5 md:px-8 lg:px-11 pb-24 max-w-4xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* DEUX PAR DEUX, PAS QUATRE DE FRONT. Sur quatre colonnes dans cette
+            largeur, « Compte Google Play Console » tombait sur quatre lignes
+            et les sous-titres sur cinq : la rangée disait bien l'ordre, mais
+            plus rien ne se lisait. Trois colonnes plus une orpheline en
+            dessous, non plus. À deux, les cartes gardent la largeur pour
+            laquelle elles ont été dessinées, et l'ordre reste évident. */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {A_FAIRE.map((doc) => (
             <DocumentCard key={doc.id} doc={doc} onClick={() => onOpenDocument(doc)} />
           ))}
@@ -173,7 +213,7 @@ function Documents({ onOpenDocument }) {
             placé au-dessus il ressemblerait à un prérequis de plus et
             retarderait le clic. Ici, il ne se lit qu'au moment où le client
             choisit son moment.
-            Et ce n'est pas une quatrième carte : ni bouton, ni logo, ni ombre
+            Et ce n'est pas une carte de plus : ni bouton, ni logo, ni ombre
             au survol — sinon on croit qu'il y a une étape supplémentaire. */}
         <div className="mt-6 flex items-start gap-3 rounded-[14px] border border-brand-pale bg-brand-wash px-4 py-3.5">
           <span className="text-brand shrink-0 mt-[1px]">

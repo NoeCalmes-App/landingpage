@@ -49,7 +49,7 @@ export const ALIAS_APP_MOBILE = ['/documents/appmobile', '/mobile']
  * `404.html`, mais Google, lui, voit un 404 et le client voit passer une
  * page d'erreur. Un guide ajouté ici est donc servi le jour même.
  */
-export const IDS_GUIDES = ['new-membre', 'google-play-console', 'apple-developer', 'flutter-firebase']
+export const IDS_GUIDES = ['nom-de-domaine', 'new-membre', 'google-play-console', 'apple-developer', 'flutter-firebase']
 
 /** La route canonique d'un guide. */
 export function routeGuide(id) {
