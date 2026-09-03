@@ -227,10 +227,13 @@ BLOCS = [
     # le guide sur une deuxième page qui ne portait qu'elle. Les autres guides
     # ferment déjà leurs sections par une ligne grise du même genre
     # (« Prévenez-moi une fois envoyée… ») : c'est le bon poids.
-    Paragraph(
-        'Prévenez-moi une fois le domaine acheté : je m’occupe du site, et de le relier à votre '
-        'compte Apple Developer.',
-        NOTE),
+    #
+    # ET ELLE NE PROMET PLUS RIEN. Elle annonçait « je m'occupe du site, et de
+    # le relier à votre compte Apple Developer » : deux travaux qui viennent
+    # plus tard, sur lesquels le client n'a rien à faire, et dont il n'a pas
+    # besoin ici. Le guide dit dès son ouverture qu'on ne parle pas du site ;
+    # sa dernière ligne le rouvrait. Reste ce qui est demandé : un signal.
+    Paragraph('Prévenez-moi une fois que c’est fait.', NOTE),
 ]
 
 if __name__ == '__main__':
