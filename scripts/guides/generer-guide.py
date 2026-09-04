@@ -70,9 +70,14 @@ CORPS = ParagraphStyle('corps', fontName='Lato', fontSize=10, leading=14.2,
 PUCE = ParagraphStyle('puce', parent=CORPS, spaceAfter=3)
 NOTE = ParagraphStyle('note', fontName='Lato', fontSize=9, leading=12.6,
                       textColor=GRIS, spaceBefore=5, spaceAfter=9)
+# La même note, en couleur de marque : réservée à ce qui ARRÊTE le client. Une
+# consigne d'attente en gris se lit comme un commentaire et se saute ; ici elle
+# doit se voir sans crier, le rouge étant déjà pris par les avertissements.
+NOTE_MARQUE = ParagraphStyle('note-marque', parent=NOTE, fontName='Lato-Semibold',
+                             textColor=MARQUE, fontSize=9.5, leading=13.3)
 
 
-def liste(items, numerotee=False):
+def liste(items, numerotee=False, depart=1):
     """
     Une liste à puces ou numérotée, aux retraits EXACTS des guides existants :
     puce à +2 du bord de texte et texte à +14 ; numéro à +2 et texte à +16.
@@ -87,18 +92,30 @@ def liste(items, numerotee=False):
         bulletFontName='Helvetica',
         bulletFontSize=12 if numerotee else 8,
         bulletFormat='%s.' if numerotee else None,
-        start='1' if numerotee else '\u2022',
+        start=str(depart) if numerotee else '\u2022',
         leftIndent=retrait,
         bulletDedent=retrait - 2,
-        # La marque est posée 0.7 pt (puce) / 0.5 pt (numéro) SOUS le haut de
-        # la ligne dans les guides existants. `bulletOffsetY` remonte, d'où le
-        # signe. Sans ça la puce flottait au-dessus de son texte.
-        bulletOffsetY=-0.19 if numerotee else -1.18,
+        # ⚠️ LES NUMÉROS SONT ALIGNÉS SUR LA LIGNE DE BASE DU TEXTE, pas sur
+        # le haut de la ligne. Les trois guides composés à la main posaient le
+        # « 1. » 2,5 pt plus bas que sa phrase : mesuré, et visible — le chiffre
+        # a l'air tombé. Un chiffre de 12 pt à côté d'un texte de 10 pt ne
+        # s'aligne pas par le haut, il s'aligne par le pied.
+        # La puce, elle, garde le calage des guides existants : c'est un point,
+        # il se centre à l'œil sur les minuscules, pas sur une ligne de base.
+        bulletOffsetY=2.35 if numerotee else -1.18,
     )
 
 
 def entete(canevas, doc):
-    """La ligne de contexte, en haut de CHAQUE page — page 2 comprise."""
+    """
+    La ligne de contexte, en haut de la PREMIÈRE page seulement.
+
+    Répétée en tête de chaque page, elle annonçait « Temps estimé : 20 min » à
+    quelqu'un qui en a déjà passé quinze : elle se lit comme un compteur qui
+    repart. C'est une étiquette de couverture, pas un en-tête courant.
+    """
+    if canevas.getPageNumber() != 1:
+        return
     canevas.saveState()
     canevas.setFont('Lato', 9)
     canevas.setFillColor(GRIS)
@@ -166,9 +183,9 @@ BLOCS = [
 
     Paragraph('Le nom de domaine, c’est quoi ?', SECTION),
     Paragraph(
-        'L’adresse de votre site, du type <font name="Lato-Semibold">monapplication.fr</font>. '
+        'L’adresse de votre site, du type <font name="Lato-Semibold">monapp.fr</font>. '
         'C’est moi qui construis le site ; le domaine, lui, s’achète à votre nom et vous appartient. '
-        'Votre adresse e-mail professionnelle en découle : ' + g('contact@monapplication.fr') + '.',
+        'Votre adresse e-mail professionnelle en découle : ' + g('contact@monapp.fr') + '.',
         CORPS),
 
     Paragraph('Prérequis', SECTION),
@@ -212,6 +229,11 @@ BLOCS = [
     # elle n'est jamais relevée. Redirigée, l'adresse arrive dans la boîte que
     # le client consulte déjà, et « Conserver une copie » garde tout chez OVH
     # le jour où il voudra la lire ailleurs.
+    # PAS DE SAUT DE PAGE FORCÉ. Une version en posait un ici pour équilibrer
+    # les deux pages ; il ouvrait surtout un blanc au milieu du guide, juste
+    # après une capture d'écran, là où l'on suit une suite de gestes. Les
+    # étapes se lisent à la file : le texte tombe où il tombe, `keepWithNext`
+    # garde chaque titre avec son contenu.
     Paragraph('4) Créer l’adresse e-mail pro', SECTION),
     liste([
         'En haut à gauche, ' + g('Tableau de bord') + ', puis cliquer sur votre nom de domaine '
@@ -222,6 +244,80 @@ BLOCS = [
         'de votre application.',
         'Mode de copie : ' + g('Conserver une copie') + ', puis ' + g('Valider') + '.',
     ], numerotee=True),
+    # ⚠️ LE DNS SE FAIT LE JOUR DE L'ACHAT, pas le jour de la mise en ligne.
+    #
+    # Les quatre adresses sont celles de GitHub Pages : elles ne dépendent ni du
+    # domaine, ni du dépôt, ni du client, et ne changent pas. Rien n'oblige donc
+    # à attendre que le site existe. Le faire ici évite le pire des allers-
+    # retours : rappeler le client des semaines plus tard, quand le site est
+    # prêt, pour lui demander de retourner dans une interface qu'il a oubliée —
+    # et attendre qu'il trouve le temps.
+    #
+    # LES DEUX PIÈGES SONT DITS, parce que les deux se produisent. L'entrée A
+    # d'origine renvoie vers la page d'attente d'OVH : laissée là, le domaine
+    # répond une fois sur cinq « ce domaine est enregistré chez OVH ». Et les
+    # lignes MX viennent d'être créées à l'étape 4 : les toucher casse l'adresse
+    # e-mail que le client vient de mettre en place.
+    Paragraph('5) Brancher le domaine sur le site', SECTION),
+    Paragraph(
+        'Dans la barre de gauche, ' + g('Noms de domaine') + ', puis votre domaine (exemple : '
+        + g('monapp.fr') + '). Au milieu, onglet ' + g('Zone DNS') + '.',
+        CORPS),
+    # ⚠️ LE FILTRE D'ABORD, LA SUPPRESSION ENSUITE. La zone contient des lignes
+    # de plusieurs types, dont les MX qui font marcher l'e-mail créé à l'étape
+    # 4. Demander « supprimez les entrées A » devant une liste mélangée, c'est
+    # demander à quelqu'un qui ne connaît pas ces sigles de trier lui-même.
+    # Filtré sur A, l'écran ne montre plus que ce qu'il faut supprimer, et le
+    # reste est hors de portée.
+    liste([
+        '<font color="#6659FF">Voir la capture ci-dessous.</font> En haut à droite, cliquer sur '
+        + g('Filtrer') + '. Colonne : ' + g('Type') + '. Condition : ' + g('est égal à') + '. Valeur : '
+        + g('A') + '. Puis ' + g('Ajouter') + '.',
+        # ⚠️ PLUS DE « NE SUPPRIMEZ PAS LES AUTRES ». Une interdiction devant un
+        # écran filtré parle de lignes qu'on ne voit plus : elle inquiète sans
+        # rien protéger. Ce qui protège, c'est de regarder le type avant de
+        # cliquer, et c'est ce que la consigne demande maintenant.
+        'Vérifier que la ligne est bien de type ' + g('A') + ', puis la supprimer : les '
+        + g('trois petits points') + ' à droite, puis ' + g('Supprimer') + '.',
+    ], numerotee=True),
+    Spacer(1, 3),
+    capture('filtre-dns-ovh.png', largeur=150),
+    # De l'air entre l'image et la suite : collée, la reprise de la liste a
+    # l'air d'une légende de la capture, pas de l'étape d'après.
+    Spacer(1, 14),
+    liste([
+        '<font color="#6659FF">Voir la capture ci-dessous.</font> '
+        + g('Ajouter une entrée') + ', type ' + g('A') + '. Sous-domaine : ' + g('@') + '. Cible : '
+        + g('185.199.108.153') + '. TTL : ' + g('Par défaut') + '. Valider.',
+        'Recommencer 3 fois, toujours avec ' + g('@') + ' : ' + g('185.199.109.153') + ', '
+        + g('185.199.110.153') + ', ' + g('185.199.111.153') + '.',
+        # ⚠️ LE COMPTE SE FAIT AVEC LE FILTRE ENCORE POSÉ. Une version demandait
+        # « il doit y avoir 8 entrées, pas plus » : une zone DNS en contient
+        # trente (MX, SRV, TXT, CNAME de messagerie…), et compter les siennes
+        # sur cette phrase-là fait peur ou fait supprimer. Filtré sur A, il n'y
+        # a que 4 lignes à voir, et la vérification tient en un coup d'œil.
+        # ⚠️ ON NOMME LES QUATRE, ON NE LES COMPTE PAS. « Recommencer 3 fois »
+        # puis « vous devez voir 4 lignes » fait douter : 3 ou 4 ? Expliquer le
+        # calcul (1 + 3) ne suffisait pas non plus. Les quatre adresses écrites
+        # côte à côte se vérifient à l'œil, sans arithmétique, et montrent tout
+        # de suite laquelle manque — chez le premier client, c'était la 108.
+        'Le filtre est toujours posé : vous devez voir 4 lignes, une par adresse : ' + g('108') + ', '
+        + g('109') + ', ' + g('110') + ', ' + g('111') + '. Pas une de plus.',
+        # LE WWW EST UN CNAME, PAS QUATRE ENTRÉES A DE PLUS. C'est la
+        # configuration de noecalmes.fr, qui marche : une seule ligne à créer au
+        # lieu de quatre, et la cible ne change jamais d'un client à l'autre.
+        'Une dernière entrée, type ' + g('CNAME') + ' cette fois. Sous-domaine : ' + g('www') + '. Cible : '
+        + g('noecalmes-app.github.io.') + ' Valider.',
+    ], numerotee=True, depart=3),
+    Spacer(1, 3),
+    # LA PREMIÈRE DES HUIT, EN IMAGE, avec le chemin complet annoté 1 à 7 : les
+    # sept autres entrées sont le même écran avec une valeur qui change.
+    capture('zone-dns-ovh.png'),
+    Paragraph(
+        'Tant que le site n’est pas mis en ligne, votre adresse affiche une page d’erreur : c’est normal, '
+        'elle disparaît le jour de la publication.',
+        NOTE),
+
     # ⚠️ « ME PRÉVENIR » EST UNE LIGNE, PAS UNE SECTION. En section numérotée,
     # elle prenait un titre et un paragraphe pour une seule phrase, et poussait
     # le guide sur une deuxième page qui ne portait qu'elle. Les autres guides
@@ -234,8 +330,19 @@ BLOCS = [
     # besoin ici. Le guide dit dès son ouverture qu'on ne parle pas du site ;
     # sa dernière ligne le rouvrait. Reste ce qui est demandé : un signal.
     Paragraph('Prévenez-moi une fois que c’est fait.', NOTE),
+
+    # ⚠️ LA DERNIÈRE LIGNE EST UN FEU ROUGE, pas une politesse. Le document
+    # suivant est le compte Apple Developer, et Apple exige un site EN LIGNE au
+    # nom de la société : un client qui enchaîne tout de suite se fait refuser,
+    # et il faut tout recommencer. Le domaine vient d'être branché, la
+    # propagation prend quelques heures, et le site n'est pas encore publié —
+    # d'où l'attente.
+    Paragraph(
+        'Attendez ma confirmation avant de passer au document suivant : le site doit d’abord être en '
+        'ligne et fonctionner sur votre domaine.',
+        NOTE_MARQUE),
 ]
 
 if __name__ == '__main__':
     construire('Achat nom de domaine.pdf', 'Nom de domaine + e-mail pro',
-               'Entreprise · Temps estimé : 15 min', BLOCS)
+               'Entreprise · Temps estimé : 20 min', BLOCS)
