@@ -43,3 +43,7 @@ _to_delete/
 # Ce que Cowork depose quand il rend un fichier dans la conversation. Ce sont
 # des sorties de session (captures, archives), pas des sources du site.
 Claude outputs/
+
+# Cache Python du générateur de guides.
+__pycache__/
+*.pyc
