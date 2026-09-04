@@ -339,8 +339,23 @@ BLOCS = [
     # le relier à votre compte Apple Developer » : deux travaux qui viennent
     # plus tard, sur lesquels le client n'a rien à faire, et dont il n'a pas
     # besoin ici. Le guide dit dès son ouverture qu'on ne parle pas du site ;
-    # sa dernière ligne le rouvrait. Reste ce qui est demandé : un signal.
-    Paragraph('Prévenez-moi une fois que c’est fait.', NOTE),
+    # sa dernière ligne le rouvrait.
+    #
+    # ⚠️ ELLE RÉCLAME LES DEUX VALEURS, ET C'EST NOUVEAU. « Prévenez-moi » seul
+    # ouvrait un aller-retour : le client dit que c'est fait, on redemande le
+    # domaine, il répond, on redemande l'adresse e-mail. Deux jours perdus sur
+    # deux questions qui tiennent dans la même phrase. Or ces deux valeurs sont
+    # exactement ce qui débloque la suite : le domaine pour publier le site,
+    # l'adresse e-mail pour le compte Apple Developer.
+    #
+    # LES EXEMPLES SONT CEUX DU HAUT DU GUIDE, pas de nouveaux. `monapp.fr` et
+    # `contact@monapp.fr` ont déjà été lus dans « Le nom de domaine, c'est
+    # quoi ? » : en inventer d'autres ici ferait douter qu'on parle de la même
+    # chose.
+    Paragraph(
+        'Prévenez-moi une fois que c’est fait, en m’indiquant votre nom de domaine et votre adresse '
+        'e-mail pro (exemple : ' + g('monapp.fr') + ' et ' + g('contact@monapp.fr') + ').',
+        NOTE),
 
     # ⚠️ LA DERNIÈRE LIGNE EST UN FEU ROUGE, pas une politesse. Le document
     # suivant est le compte Apple Developer, et Apple exige un site EN LIGNE au
