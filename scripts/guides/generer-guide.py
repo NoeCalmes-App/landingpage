@@ -296,18 +296,29 @@ BLOCS = [
         # trente (MX, SRV, TXT, CNAME de messagerie…), et compter les siennes
         # sur cette phrase-là fait peur ou fait supprimer. Filtré sur A, il n'y
         # a que 4 lignes à voir, et la vérification tient en un coup d'œil.
-        # ⚠️ ON NOMME LES QUATRE, ON NE LES COMPTE PAS. « Recommencer 3 fois »
-        # puis « vous devez voir 4 lignes » fait douter : 3 ou 4 ? Expliquer le
-        # calcul (1 + 3) ne suffisait pas non plus. Les quatre adresses écrites
-        # côte à côte se vérifient à l'œil, sans arithmétique, et montrent tout
-        # de suite laquelle manque — chez le premier client, c'était la 108.
-        'Le filtre est toujours posé : vous devez voir 4 lignes, une par adresse : ' + g('108') + ', '
-        + g('109') + ', ' + g('110') + ', ' + g('111') + '. Pas une de plus.',
-        # LE WWW EST UN CNAME, PAS QUATRE ENTRÉES A DE PLUS. C'est la
-        # configuration de noecalmes.fr, qui marche : une seule ligne à créer au
-        # lieu de quatre, et la cible ne change jamais d'un client à l'autre.
-        'Une dernière entrée, type ' + g('CNAME') + ' cette fois. Sous-domaine : ' + g('www') + '. Cible : '
-        + g('noecalmes-app.github.io.') + ' Valider.',
+        # ⚠️ LE WWW EN ENTRÉES A, PAS EN CNAME, ET C'EST UN CHOIX MESURÉ.
+        #
+        # Le CNAME de GitHub vise `<propriétaire>.github.io` : il porte le nom
+        # du compte qui héberge. Le jour où le dépôt passe chez le client, ce
+        # nom change et la ligne ne pointe plus nulle part — il faut retourner
+        # dans OVH, chez lui, lui réexpliquer. Les quatre adresses IP, elles,
+        # ne dépendent d'aucun compte : le transfert ne les touche pas.
+        #
+        # ET ÇA MARCHE : vérifié en forçant www.noecalmes.fr sur chacune des
+        # quatre adresses, hors DNS. GitHub répond 301 vers l'apex, en HTTPS
+        # valide. Il route sur le NOM demandé, pas sur le chemin emprunté pour
+        # arriver — un nom inconnu sur la même adresse répond 404.
+        #
+        # Le seul avantage du CNAME serait de suivre un changement d'adresses
+        # chez GitHub. Mais les quatre entrées de l'apex ne le suivraient pas
+        # non plus : le risque est déjà là, le CNAME n'en enlève aucun.
+        'Refaire ces 4 mêmes entrées avec ' + g('www') + ' à la place du ' + g('@') + '.',
+        # ON NOMME, ON NE COMPTE PAS. « Recommencer 3 fois » puis « 4 lignes »
+        # faisait douter. Les adresses écrites côte à côte se vérifient à l'œil
+        # et montrent laquelle manque — chez le premier client, la 108.
+        'Le filtre est toujours posé : vous devez voir 8 lignes, les 4 adresses ('
+        + g('108') + ', ' + g('109') + ', ' + g('110') + ', ' + g('111') + ') sur ' + g('@')
+        + ', et les 4 mêmes sur ' + g('www') + '.',
     ], numerotee=True, depart=3),
     Spacer(1, 3),
     # LA PREMIÈRE DES HUIT, EN IMAGE, avec le chemin complet annoté 1 à 7 : les
