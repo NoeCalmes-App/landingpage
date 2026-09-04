@@ -348,13 +348,18 @@ BLOCS = [
     # exactement ce qui débloque la suite : le domaine pour publier le site,
     # l'adresse e-mail pour le compte Apple Developer.
     #
+    # « LE NOM DE VOTRE SITE », PAS « VOTRE NOM DE DOMAINE ». C'est ce que le
+    # client vient d'acheter, dans les mots où il le pense. L'exemple qui suit
+    # lève l'ambiguïté sans qu'on ait à replacer le terme technique.
+    #
     # LES EXEMPLES SONT CEUX DU HAUT DU GUIDE, pas de nouveaux. `monapp.fr` et
     # `contact@monapp.fr` ont déjà été lus dans « Le nom de domaine, c'est
     # quoi ? » : en inventer d'autres ici ferait douter qu'on parle de la même
     # chose.
     Paragraph(
-        'Prévenez-moi une fois que c’est fait, en m’indiquant votre nom de domaine et votre adresse '
-        'e-mail pro (exemple : ' + g('monapp.fr') + ' et ' + g('contact@monapp.fr') + ').',
+        'Prévenez-moi une fois que c’est fait. Donnez-moi aussi le nom de votre site et l’adresse '
+        'e-mail pro que vous venez de créer (exemple : ' + g('monapp.fr') + ' et '
+        + g('contact@monapp.fr') + ').',
         NOTE),
 
     # ⚠️ LA DERNIÈRE LIGNE EST UN FEU ROUGE, pas une politesse. Le document
