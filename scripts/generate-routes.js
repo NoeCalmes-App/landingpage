@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url'
 // Les adresses de l'espace documents viennent de leur source unique — jamais
 // recopiees ici. `routesDocuments.js` est du JS pur, sans JSX ni image : Node
 // le lit tel quel, comme le navigateur.
-import { ROUTES_GUIDES, ANCIENNES_ROUTES_GUIDES } from '../src/routesDocuments.js'
+import { ROUTE_APP_WEB, ROUTES_GUIDES, ROUTES_GUIDES_WEB, ANCIENNES_ROUTES_GUIDES } from '../src/routesDocuments.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const distDir = join(__dirname, '..', 'dist')
@@ -920,7 +920,7 @@ const legacyRoutes = ['/a-propos', '/offre', '/contact', '/merci']
 // ne s'affichaient que grace au script de rattrapage du `404.html` — le client
 // voyait passer une page d'erreur, et Google enregistrait un 404 sur des
 // adresses collees dans des devis signes.
-const noindexRoutes = ['/avis', '/rendez-vous', '/mentions', '/privacy', '/cgv', '/documents', '/documents/app-mobile', ...ROUTES_GUIDES, ...ANCIENNES_ROUTES_GUIDES, '/contactnoe', '/legal', '/espace-client', '/maquette-visuel', ...legacyRoutes]
+const noindexRoutes = ['/avis', '/rendez-vous', '/mentions', '/privacy', '/cgv', '/documents', '/documents/app-mobile', ROUTE_APP_WEB, ...ROUTES_GUIDES, ...ROUTES_GUIDES_WEB, ...ANCIENNES_ROUTES_GUIDES, '/contactnoe', '/legal', '/espace-client', '/maquette-visuel', ...legacyRoutes]
 
 for (const path of noindexRoutes) {
   let html = retirerFaqPage(baseHtml)

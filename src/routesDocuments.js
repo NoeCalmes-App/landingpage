@@ -59,6 +59,36 @@ export function routeGuide(id) {
 export const ROUTES_GUIDES = IDS_GUIDES.map(routeGuide)
 
 /**
+ * LA FAMILLE « SITE WEB », deuxième du sommaire.
+ *
+ * POURQUOI UNE FAMILLE À PART ET PAS UNE CARTE DE PLUS SOUS `app-mobile`. Un
+ * client qui vient pour un site vitrine n'a ni Firebase, ni Google Play, ni
+ * Apple à créer : lui montrer trois cartes qui ne le concernent pas lui fait
+ * douter de la quatrième, la seule qui le concerne. Et le guide du domaine
+ * n'est pas le même des deux côtés — celui du mobile justifie l'achat par la
+ * licence Apple, ce qui ne veut rien dire ici.
+ */
+export const ROUTE_APP_WEB = '/documents/app-web'
+
+/** Les raccourcis qu'on tape ou qu'on recopie de travers. */
+export const ALIAS_APP_WEB = ['/documents/appweb', '/documents/site-web', '/appweb', '/site-web', '/web']
+
+/**
+ * Les guides de la famille site web. Le nom de domaine y a le MÊME
+ * identifiant que dans l'autre famille — deux documents distincts, deux PDF
+ * distincts, mais le même sujet : c'est la route complète qui les sépare, pas
+ * une astuce de nommage.
+ */
+export const IDS_GUIDES_WEB = ['nom-de-domaine']
+
+/** La route canonique d'un guide de la famille site web. */
+export function routeGuideWeb(id) {
+  return `${ROUTE_APP_WEB}/${id}`
+}
+
+export const ROUTES_GUIDES_WEB = IDS_GUIDES_WEB.map(routeGuideWeb)
+
+/**
  * Les adresses d'AVANT le déménagement sous `/documents/app-mobile`, servies
  * elles aussi : elles vivent dans des devis signés, elles ne peuvent pas
  * cesser de répondre. Le routeur les réécrit en canonique une fois la page
@@ -86,6 +116,12 @@ export function estRouteDocuments(chemin) {
 export function estRouteAppMobile(chemin) {
   const propre = normaliser(chemin)
   return propre === ROUTE_APP_MOBILE || ALIAS_APP_MOBILE.includes(propre)
+}
+
+/** Vrai si l'adresse donnée doit afficher la famille « site web ». */
+export function estRouteAppWeb(chemin) {
+  const propre = normaliser(chemin)
+  return propre === ROUTE_APP_WEB || ALIAS_APP_WEB.includes(propre)
 }
 
 /**

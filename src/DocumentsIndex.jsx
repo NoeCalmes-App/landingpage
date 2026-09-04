@@ -7,12 +7,14 @@
 // documents existe — et il faudrait alors reprendre tous les liens déjà
 // donnés. Le sommaire coûte un clic ; il rend l'adresse générique durable.
 //
-// UNE SEULE ENTRÉE AUJOURD'HUI, ET C'EST NORMAL. La page ne fait pas semblant
-// d'en avoir plusieurs : un titre, une carte, rien autour. Un sommaire d'un
-// seul élément se lit en une seconde.
+// DEUX FAMILLES DEPUIS LE 4 SEPTEMBRE 2026 : les projets d'application mobile,
+// et les sites web seuls. Elles ne partagent qu'un document, le nom de domaine,
+// et encore : pas le même PDF — celui du mobile justifie l'achat par la licence
+// Apple et fait créer une adresse e-mail qu'Apple exige, deux choses qui ne
+// veulent rien dire pour un site vitrine.
 
 import NavDocuments from './NavDocuments.jsx'
-import { ROUTE_APP_MOBILE } from './routesDocuments.js'
+import { ROUTE_APP_MOBILE, ROUTE_APP_WEB } from './routesDocuments.js'
 import { lienInterne } from './seo.js'
 
 /** Les familles de documents. `route` est l'adresse canonique de chacune. */
@@ -32,6 +34,23 @@ const FAMILLES = [
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
         <rect x="6" y="2" width="12" height="20" rx="2.5" />
         <line x1="10.5" y1="18.5" x2="13.5" y2="18.5" />
+      </svg>
+    ),
+  },
+  {
+    id: 'app-web',
+    route: ROUTE_APP_WEB,
+    titre: 'Création de site web',
+    // ON DIT CE QUI EST BLOQUÉ, pas ce qu'il y a dedans. « Un document » ne
+    // donne aucune raison de cliquer ; « je ne peux pas publier sans » en donne
+    // une, et c'est vrai.
+    soustitre: 'Le nom de domaine, sans lequel le site ne peut pas être publié.',
+    // Un globe : la famille ne parle que du site et de son adresse.
+    icone: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18" />
+        <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18" />
       </svg>
     ),
   },
@@ -74,7 +93,7 @@ function CarteFamille({ famille, onOuvrir }) {
   )
 }
 
-function DocumentsIndex({ onOpenAppMobile }) {
+function DocumentsIndex({ onOuvrirFamille }) {
   return (
     <div className="min-h-screen bg-[#f9f9f9]">
       <NavDocuments />
@@ -93,7 +112,7 @@ function DocumentsIndex({ onOpenAppMobile }) {
       <div className="px-5 md:px-8 lg:px-11 pb-24 max-w-4xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {FAMILLES.map((famille) => (
-            <CarteFamille key={famille.id} famille={famille} onOuvrir={onOpenAppMobile} />
+            <CarteFamille key={famille.id} famille={famille} onOuvrir={() => onOuvrirFamille(famille.id)} />
           ))}
         </div>
       </div>

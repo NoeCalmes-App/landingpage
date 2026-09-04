@@ -1,6 +1,6 @@
 import NavDocuments from './NavDocuments.jsx'
 import { ICONES, IconeMarque } from './iconesDocument.jsx'
-import { ROUTE_APP_MOBILE, routeGuide } from './routesDocuments.js'
+import { ROUTE_APP_MOBILE, routeGuide, routeGuideWeb } from './routesDocuments.js'
 
 // L'adresse à inviter sur les comptes du client (Firebase, Play Console,
 // Apple Developer). Affichée SUR LA PAGE et copiable, pas seulement écrite
@@ -9,6 +9,12 @@ import { ROUTE_APP_MOBILE, routeGuide } from './routesDocuments.js'
 export const EMAIL_A_INVITER = 'noecalmes.pro@gmail.com'
 
 const nomDeDomainePdf = '/assets/documents/guides/Achat nom de domaine.pdf'
+// LE MÊME ACHAT, SANS RIEN DE CE QUI VIENT D'APPLE. Deux PDF plutôt qu'un :
+// celui du mobile justifie le domaine par la licence Apple et fait créer une
+// adresse e-mail parce qu'Apple en exige une. Un client qui vient pour un site
+// vitrine n'a ni App Store ni boîte à ouvrir. Le branchement DNS, lui, est
+// partagé dans le générateur (`etapes_dns`) : il ne peut pas diverger.
+const nomDeDomaineWebPdf = '/assets/documents/guides/Achat nom de domaine - site web.pdf'
 const ajoutMembrePdf = '/assets/documents/guides/Ajout_Membre_Firebase.pdf'
 const googlePlayPdf = '/assets/documents/guides/Création Compte Google Play Console.pdf'
 const appleDevPdf = '/assets/documents/guides/Création compte Apple Développeur.pdf'
@@ -115,7 +121,28 @@ const A_FAIRE = [
   },
 ]
 
-function DocumentCard({ doc, onClick }) {
+/**
+ * LA FAMILLE « SITE WEB ». Une seule chose à faire, et c'est voulu : sans
+ * application mobile il n'y a ni Firebase, ni Google Play, ni Apple Developer.
+ * La page ne fait pas semblant d'avoir une liste.
+ */
+const A_FAIRE_WEB = [
+  {
+    // ⚠️ UN IDENTIFIANT DISTINCT DE CELUI DU MOBILE. Les deux documents parlent
+    // du nom de domaine et vivent sous la même clé de rendu ; c'est la ROUTE
+    // complète qui les sépare, mais `key={doc.id}` a besoin d'unicité.
+    id: 'nom-de-domaine-web',
+    famille: 'app-web',
+    route: routeGuideWeb('nom-de-domaine'),
+    // PAS DE « + E-MAIL PRO » : il n'y a pas de boîte à créer de ce côté.
+    title: 'Nom de domaine',
+    soustitre: 'L’adresse à laquelle votre site répondra',
+    pdf: nomDeDomaineWebPdf,
+    icone: ICONES.domaine,
+  },
+]
+
+export function DocumentCard({ doc, onClick }) {
   return (
     // PLUS DE MARGE INTÉRIEURE SUR GRAND ÉCRAN. À 20 px partout, le texte
     // touchait presque le bord et la carte se lisait comme un bloc serré. Sur
@@ -250,7 +277,7 @@ function Documents({ onOpenDocument }) {
 // `DOCUMENTS` reste exporté avec TOUT : c'est lui que le routeur parcourt
 // pour retrouver un document par son adresse, y compris le document
 // d'explication `flutter-firebase` absent de la page.
-const DOCUMENTS = [...A_FAIRE, ...EXPLICATIONS]
+const DOCUMENTS = [...A_FAIRE, ...A_FAIRE_WEB, ...EXPLICATIONS]
 
-export { DOCUMENTS }
+export { DOCUMENTS, A_FAIRE_WEB }
 export default Documents

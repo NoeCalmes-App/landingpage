@@ -167,6 +167,111 @@ def capture(fichier, largeur=None):
     return Image(str(chemin), width=largeur, height=largeur * h / w, hAlign='LEFT')
 
 
+
+def etapes_dns(numero, domaine_exemple='monapp.fr'):
+    """
+    LE BRANCHEMENT DU DOMAINE, PARTAGÉ PAR LES DEUX GUIDES.
+
+    ⚠️ IL EST STRICTEMENT LE MÊME côté mobile et côté site web : les quatre
+    adresses sont celles de GitHub Pages, elles ne dépendent ni du domaine, ni
+    du dépôt, ni du client. Recopié dans les deux fichiers, ce bloc aurait
+    divergé au premier correctif — et c'est le plus long, le plus technique et
+    le plus coûteux à rater des deux guides.
+
+    Deux choses changent seulement : le NUMÉRO de l'étape — la 5e quand
+    l'adresse e-mail la précède, la 4e sinon — et le domaine donné en exemple,
+    « monapp.fr » pour une application, « monsite.fr » pour un site. Le reste,
+    y compris les quatre adresses et l'ordre des gestes, ne se paramètre pas :
+    il n'y a qu'une bonne façon de le faire.
+    """
+    return [
+    # ⚠️ LE DNS SE FAIT LE JOUR DE L'ACHAT, pas le jour de la mise en ligne.
+    #
+    # Les quatre adresses sont celles de GitHub Pages : elles ne dépendent ni du
+    # domaine, ni du dépôt, ni du client, et ne changent pas. Rien n'oblige donc
+    # à attendre que le site existe. Le faire ici évite le pire des allers-
+    # retours : rappeler le client des semaines plus tard, quand le site est
+    # prêt, pour lui demander de retourner dans une interface qu'il a oubliée —
+    # et attendre qu'il trouve le temps.
+    #
+    # LES DEUX PIÈGES SONT DITS, parce que les deux se produisent. L'entrée A
+    # d'origine renvoie vers la page d'attente d'OVH : laissée là, le domaine
+    # répond une fois sur cinq « ce domaine est enregistré chez OVH ». Et les
+    # lignes MX viennent d'être créées à l'étape 4 : les toucher casse l'adresse
+    # e-mail que le client vient de mettre en place.
+    Paragraph(f'{numero}) Brancher le domaine sur le site', SECTION),
+    Paragraph(
+        'Dans la barre de gauche, ' + g('Noms de domaine') + ', puis votre domaine (exemple : '
+        + g(domaine_exemple) + '). Au milieu, onglet ' + g('Zone DNS') + '.',
+        CORPS),
+    # ⚠️ LE FILTRE D'ABORD, LA SUPPRESSION ENSUITE. La zone contient des lignes
+    # de plusieurs types, dont les MX qui font marcher l'e-mail créé à l'étape
+    # 4. Demander « supprimez les entrées A » devant une liste mélangée, c'est
+    # demander à quelqu'un qui ne connaît pas ces sigles de trier lui-même.
+    # Filtré sur A, l'écran ne montre plus que ce qu'il faut supprimer, et le
+    # reste est hors de portée.
+    liste([
+        '<font color="#6659FF">Voir la capture ci-dessous.</font> En haut à droite, cliquer sur '
+        + g('Filtrer') + '. Colonne : ' + g('Type') + '. Condition : ' + g('est égal à') + '. Valeur : '
+        + g('A') + '. Puis ' + g('Ajouter') + '.',
+        # ⚠️ PLUS DE « NE SUPPRIMEZ PAS LES AUTRES ». Une interdiction devant un
+        # écran filtré parle de lignes qu'on ne voit plus : elle inquiète sans
+        # rien protéger. Ce qui protège, c'est de regarder le type avant de
+        # cliquer, et c'est ce que la consigne demande maintenant.
+        'Vérifier que la ligne est bien de type ' + g('A') + ', puis la supprimer : les '
+        + g('trois petits points') + ' à droite, puis ' + g('Supprimer') + '.',
+    ], numerotee=True),
+    Spacer(1, 3),
+    capture('filtre-dns-ovh.png', largeur=150),
+    # De l'air entre l'image et la suite : collée, la reprise de la liste a
+    # l'air d'une légende de la capture, pas de l'étape d'après.
+    Spacer(1, 14),
+    liste([
+        '<font color="#6659FF">Voir la capture ci-dessous.</font> '
+        + g('Ajouter une entrée') + ', type ' + g('A') + '. Sous-domaine : ' + g('@') + '. Cible : '
+        + g('185.199.108.153') + '. TTL : ' + g('Par défaut') + '. Valider.',
+        'Recommencer 3 fois, toujours avec ' + g('@') + ' : ' + g('185.199.109.153') + ', '
+        + g('185.199.110.153') + ', ' + g('185.199.111.153') + '.',
+        # ⚠️ LE COMPTE SE FAIT AVEC LE FILTRE ENCORE POSÉ. Une version demandait
+        # « il doit y avoir 8 entrées, pas plus » : une zone DNS en contient
+        # trente (MX, SRV, TXT, CNAME de messagerie…), et compter les siennes
+        # sur cette phrase-là fait peur ou fait supprimer. Filtré sur A, il n'y
+        # a que 4 lignes à voir, et la vérification tient en un coup d'œil.
+        # ⚠️ LE WWW EN ENTRÉES A, PAS EN CNAME, ET C'EST UN CHOIX MESURÉ.
+        #
+        # Le CNAME de GitHub vise `<propriétaire>.github.io` : il porte le nom
+        # du compte qui héberge. Le jour où le dépôt passe chez le client, ce
+        # nom change et la ligne ne pointe plus nulle part — il faut retourner
+        # dans OVH, chez lui, lui réexpliquer. Les quatre adresses IP, elles,
+        # ne dépendent d'aucun compte : le transfert ne les touche pas.
+        #
+        # ET ÇA MARCHE : vérifié en forçant www.noecalmes.fr sur chacune des
+        # quatre adresses, hors DNS. GitHub répond 301 vers l'apex, en HTTPS
+        # valide. Il route sur le NOM demandé, pas sur le chemin emprunté pour
+        # arriver — un nom inconnu sur la même adresse répond 404.
+        #
+        # Le seul avantage du CNAME serait de suivre un changement d'adresses
+        # chez GitHub. Mais les quatre entrées de l'apex ne le suivraient pas
+        # non plus : le risque est déjà là, le CNAME n'en enlève aucun.
+        'Refaire ces 4 mêmes entrées avec ' + g('www') + ' à la place du ' + g('@') + '.',
+        # ON NOMME, ON NE COMPTE PAS. « Recommencer 3 fois » puis « 4 lignes »
+        # faisait douter. Les adresses écrites côte à côte se vérifient à l'œil
+        # et montrent laquelle manque — chez le premier client, la 108.
+        'Le filtre est toujours posé : vous devez voir 8 lignes, les 4 adresses ('
+        + g('108') + ', ' + g('109') + ', ' + g('110') + ', ' + g('111') + ') sur ' + g('@')
+        + ', et les 4 mêmes sur ' + g('www') + '.',
+    ], numerotee=True, depart=3),
+    Spacer(1, 3),
+    # LA PREMIÈRE DES HUIT, EN IMAGE, avec le chemin complet annoté 1 à 7 : les
+    # sept autres entrées sont le même écran avec une valeur qui change.
+    capture('zone-dns-ovh.png'),
+    Paragraph(
+        'Tant que le site n’est pas mis en ligne, votre adresse affiche une page d’erreur : c’est normal, '
+        'elle disparaît le jour de la publication.',
+        NOTE),
+    ]
+
+
 # ─── LE GUIDE « NOM DE DOMAINE » ─────────────────────────────────────────────
 #
 # IL PASSE EN PREMIER dans la liste des accès à créer, et ce n'est pas un choix
@@ -259,90 +364,7 @@ BLOCS = [
         'Vers l’adresse : celle où vous recevrez les e-mails de votre application.',
         'Mode de copie : ' + g('Conserver une copie') + ', puis ' + g('Valider') + '.',
     ], numerotee=True),
-    # ⚠️ LE DNS SE FAIT LE JOUR DE L'ACHAT, pas le jour de la mise en ligne.
-    #
-    # Les quatre adresses sont celles de GitHub Pages : elles ne dépendent ni du
-    # domaine, ni du dépôt, ni du client, et ne changent pas. Rien n'oblige donc
-    # à attendre que le site existe. Le faire ici évite le pire des allers-
-    # retours : rappeler le client des semaines plus tard, quand le site est
-    # prêt, pour lui demander de retourner dans une interface qu'il a oubliée —
-    # et attendre qu'il trouve le temps.
-    #
-    # LES DEUX PIÈGES SONT DITS, parce que les deux se produisent. L'entrée A
-    # d'origine renvoie vers la page d'attente d'OVH : laissée là, le domaine
-    # répond une fois sur cinq « ce domaine est enregistré chez OVH ». Et les
-    # lignes MX viennent d'être créées à l'étape 4 : les toucher casse l'adresse
-    # e-mail que le client vient de mettre en place.
-    Paragraph('5) Brancher le domaine sur le site', SECTION),
-    Paragraph(
-        'Dans la barre de gauche, ' + g('Noms de domaine') + ', puis votre domaine (exemple : '
-        + g('monapp.fr') + '). Au milieu, onglet ' + g('Zone DNS') + '.',
-        CORPS),
-    # ⚠️ LE FILTRE D'ABORD, LA SUPPRESSION ENSUITE. La zone contient des lignes
-    # de plusieurs types, dont les MX qui font marcher l'e-mail créé à l'étape
-    # 4. Demander « supprimez les entrées A » devant une liste mélangée, c'est
-    # demander à quelqu'un qui ne connaît pas ces sigles de trier lui-même.
-    # Filtré sur A, l'écran ne montre plus que ce qu'il faut supprimer, et le
-    # reste est hors de portée.
-    liste([
-        '<font color="#6659FF">Voir la capture ci-dessous.</font> En haut à droite, cliquer sur '
-        + g('Filtrer') + '. Colonne : ' + g('Type') + '. Condition : ' + g('est égal à') + '. Valeur : '
-        + g('A') + '. Puis ' + g('Ajouter') + '.',
-        # ⚠️ PLUS DE « NE SUPPRIMEZ PAS LES AUTRES ». Une interdiction devant un
-        # écran filtré parle de lignes qu'on ne voit plus : elle inquiète sans
-        # rien protéger. Ce qui protège, c'est de regarder le type avant de
-        # cliquer, et c'est ce que la consigne demande maintenant.
-        'Vérifier que la ligne est bien de type ' + g('A') + ', puis la supprimer : les '
-        + g('trois petits points') + ' à droite, puis ' + g('Supprimer') + '.',
-    ], numerotee=True),
-    Spacer(1, 3),
-    capture('filtre-dns-ovh.png', largeur=150),
-    # De l'air entre l'image et la suite : collée, la reprise de la liste a
-    # l'air d'une légende de la capture, pas de l'étape d'après.
-    Spacer(1, 14),
-    liste([
-        '<font color="#6659FF">Voir la capture ci-dessous.</font> '
-        + g('Ajouter une entrée') + ', type ' + g('A') + '. Sous-domaine : ' + g('@') + '. Cible : '
-        + g('185.199.108.153') + '. TTL : ' + g('Par défaut') + '. Valider.',
-        'Recommencer 3 fois, toujours avec ' + g('@') + ' : ' + g('185.199.109.153') + ', '
-        + g('185.199.110.153') + ', ' + g('185.199.111.153') + '.',
-        # ⚠️ LE COMPTE SE FAIT AVEC LE FILTRE ENCORE POSÉ. Une version demandait
-        # « il doit y avoir 8 entrées, pas plus » : une zone DNS en contient
-        # trente (MX, SRV, TXT, CNAME de messagerie…), et compter les siennes
-        # sur cette phrase-là fait peur ou fait supprimer. Filtré sur A, il n'y
-        # a que 4 lignes à voir, et la vérification tient en un coup d'œil.
-        # ⚠️ LE WWW EN ENTRÉES A, PAS EN CNAME, ET C'EST UN CHOIX MESURÉ.
-        #
-        # Le CNAME de GitHub vise `<propriétaire>.github.io` : il porte le nom
-        # du compte qui héberge. Le jour où le dépôt passe chez le client, ce
-        # nom change et la ligne ne pointe plus nulle part — il faut retourner
-        # dans OVH, chez lui, lui réexpliquer. Les quatre adresses IP, elles,
-        # ne dépendent d'aucun compte : le transfert ne les touche pas.
-        #
-        # ET ÇA MARCHE : vérifié en forçant www.noecalmes.fr sur chacune des
-        # quatre adresses, hors DNS. GitHub répond 301 vers l'apex, en HTTPS
-        # valide. Il route sur le NOM demandé, pas sur le chemin emprunté pour
-        # arriver — un nom inconnu sur la même adresse répond 404.
-        #
-        # Le seul avantage du CNAME serait de suivre un changement d'adresses
-        # chez GitHub. Mais les quatre entrées de l'apex ne le suivraient pas
-        # non plus : le risque est déjà là, le CNAME n'en enlève aucun.
-        'Refaire ces 4 mêmes entrées avec ' + g('www') + ' à la place du ' + g('@') + '.',
-        # ON NOMME, ON NE COMPTE PAS. « Recommencer 3 fois » puis « 4 lignes »
-        # faisait douter. Les adresses écrites côte à côte se vérifient à l'œil
-        # et montrent laquelle manque — chez le premier client, la 108.
-        'Le filtre est toujours posé : vous devez voir 8 lignes, les 4 adresses ('
-        + g('108') + ', ' + g('109') + ', ' + g('110') + ', ' + g('111') + ') sur ' + g('@')
-        + ', et les 4 mêmes sur ' + g('www') + '.',
-    ], numerotee=True, depart=3),
-    Spacer(1, 3),
-    # LA PREMIÈRE DES HUIT, EN IMAGE, avec le chemin complet annoté 1 à 7 : les
-    # sept autres entrées sont le même écran avec une valeur qui change.
-    capture('zone-dns-ovh.png'),
-    Paragraph(
-        'Tant que le site n’est pas mis en ligne, votre adresse affiche une page d’erreur : c’est normal, '
-        'elle disparaît le jour de la publication.',
-        NOTE),
+    *etapes_dns(5, 'monapp.fr'),
 
     # ⚠️ « ME PRÉVENIR » EST UNE LIGNE, PAS UNE SECTION. En section numérotée,
     # elle prenait un titre et un paragraphe pour une seule phrase, et poussait
@@ -389,6 +411,95 @@ BLOCS = [
         NOTE_MARQUE),
 ]
 
+# ─── LE GUIDE « NOM DE DOMAINE », VERSION SITE WEB ───────────────────────────
+#
+# LE MÊME ACHAT, SANS RIEN DE CE QUI VIENT D'APPLE. Le guide mobile justifie le
+# domaine par la licence Apple, le classe premier des quatre accès à créer, et
+# fait ouvrir une adresse e-mail parce qu'Apple en réclame une sur le domaine.
+# Un client qui vient pour un site vitrine n'a ni App Store, ni Google Play, ni
+# Firebase : lui laisser ces phrases, c'est lui faire lire des conditions qui ne
+# le concernent pas et lui faire créer une boîte dont personne n'a besoin.
+#
+# ⚠️ ET PAS D'ADRESSE E-MAIL, DONC. Elle n'était pas là pour le confort du
+# client, elle était là parce qu'Apple l'exige. Sans Apple, c'est une étape en
+# plus dans un document dont tout l'intérêt est d'être court.
+#
+# CE QUI RESTE EST IDENTIQUE : l'achat chez OVH, et le branchement de la zone
+# DNS — le même `etapes_dns`, jamais recopié.
+
+BLOCS_WEB = [
+    Paragraph('Nom de domaine', TITRE),
+
+    Paragraph('Le nom de domaine, c’est quoi ?', SECTION),
+    Paragraph(
+        'L’adresse de votre site, du type <font name="Lato-Semibold">monsite.fr</font>. '
+        'C’est moi qui construis le site ; le domaine, lui, s’achète à votre nom et vous appartient. '
+        'Sans lui, le site n’a pas d’adresse à laquelle répondre.',
+        CORPS),
+
+    Paragraph('Prérequis', SECTION),
+    Paragraph('Une carte bancaire, et le nom que portera votre site.', CORPS),
+
+    Paragraph('À retenir', SECTION),
+    liste([
+        # LE ROUGE DIT CE QUI BLOQUE, ici comme dans l'autre guide. Ce n'est pas
+        # Apple qui bloque, c'est plus simple : sans domaine, il n'y a pas de
+        # site à mettre en ligne, seulement des fichiers sur ma machine.
+        rouge(g('Sans lui, le site ne peut pas être publié.') + ' C’est l’adresse à laquelle il '
+              'répondra, et elle s’achète avant que je puisse le mettre en ligne.'),
+        'Environ 5 € par an, à renouveler chaque année.',
+        'Privilégiez le ' + g('.fr') + ', sinon le ' + g('.com') + '.',
+    ]),
+
+    Paragraph('1) Choisir le nom', SECTION),
+    liste([
+        'Ouvrir ' + lien('https://www.ovhcloud.com/fr/domains/', 'ovhcloud.com/fr/domains') + '.',
+        'Saisir le nom de votre site, puis lancer la recherche.',
+        'Prendre le ' + g('.fr') + ' s’il est libre, sinon le ' + g('.com') + '.',
+    ], numerotee=True),
+
+    Paragraph('2) Commander', SECTION),
+    liste([
+        g('Acheter') + ', puis ' + g('Poursuivre la commande') + '.',
+        'Forfait ' + g('1 an') + ', le moins cher. ' + g('Poursuivre la commande') + '.',
+        'Aucune option à ajouter. ' + g('Poursuivre la commande') + '.',
+        'Se connecter à son compte OVHcloud, ou en créer un.',
+        'En bas à droite, ' + g('Continuer') + '.',
+        'Cocher les ' + g('quatre') + ' cases, descendre jusqu’au paiement, ' + g('payer') + '.',
+    ], numerotee=True),
+
+    Paragraph('3) Attendre la livraison', SECTION),
+    liste([
+        'Un e-mail arrive en moins de 5 minutes. Cliquer sur ' + g('Suivre la commande') + '.',
+        'Attendre que ' + g('« Votre produit est disponible »') + ' soit coché — 5 minutes au plus.',
+    ], numerotee=True),
+    Spacer(1, 3),
+    capture('suivi-commande-ovh.png'),
+
+    *etapes_dns(4, 'monsite.fr'),
+
+    # ON NE DEMANDE QUE LE DOMAINE : il n'y a pas d'adresse e-mail à récupérer,
+    # et c'est la seule valeur dont j'ai besoin pour publier.
+    Paragraph(
+        'Prévenez-moi une fois que c’est fait. Donnez-moi aussi le nom de votre site (exemple : '
+        + g('monsite.fr') + ').',
+        NOTE),
+
+    # ⚠️ PAS DE FEU ROUGE ICI, contrairement au guide mobile. Là-bas, la
+    # dernière ligne retient le client avant le document suivant, parce
+    # qu'Apple refuse un site pas encore en ligne. Ici il n'y a pas de document
+    # suivant : ce qui suit, c'est mon travail. La dernière ligne dit donc ce
+    # qui se passe, et combien de temps ça prend — un client qui voit une page
+    # d'erreur sans avoir été prévenu rappelle le lendemain.
+    Paragraph(
+        'Je mets ensuite le site en ligne sur votre domaine. Comptez quelques heures avant qu’il '
+        'réponde partout : le temps que la modification se propage sur Internet.',
+        NOTE_MARQUE),
+]
+
 if __name__ == '__main__':
     construire('Achat nom de domaine.pdf', 'Nom de domaine + e-mail pro',
                'Entreprise · Temps estimé : 20 min', BLOCS)
+    # 15 min et non 20 : l'étape de l'adresse e-mail est retirée.
+    construire('Achat nom de domaine - site web.pdf', 'Nom de domaine',
+               'Entreprise · Temps estimé : 15 min', BLOCS_WEB)
