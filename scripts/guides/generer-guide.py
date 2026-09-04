@@ -185,7 +185,7 @@ BLOCS = [
     Paragraph(
         'L’adresse de votre site, du type <font name="Lato-Semibold">monapp.fr</font>. '
         'C’est moi qui construis le site ; le domaine, lui, s’achète à votre nom et vous appartient. '
-        'Votre adresse e-mail professionnelle en découle : ' + g('contact@monapp.fr') + '.',
+        'Votre adresse e-mail professionnelle en découle : ' + g('monentreprise@monapp.fr') + '.',
         CORPS),
 
     Paragraph('Prérequis', SECTION),
@@ -224,6 +224,20 @@ BLOCS = [
     Spacer(1, 3),
     capture('suivi-commande-ovh.png'),
 
+    # ⚠️ L'ADRESSE PORTE LE NOM DE LA SOCIÉTÉ, PAS « contact ».
+    #
+    # Apple n'exige que le domaine (« your work email address needs to be
+    # associated with your organization's domain name ») : `contact@` passerait.
+    # Ce qui se joue est ailleurs. Apple n'inscrit que l'ENTITÉ LÉGALE, jamais
+    # un nom commercial — un client dont la société s'appelle GERFAUT MICKAEL
+    # publie sous le domaine de sa marque. L'examinateur voit alors un dossier
+    # à un nom et un domaine à un autre. L'adresse est le seul endroit du
+    # dossier où les deux se rejoignent : elle porte le nom de l'entité, sur le
+    # domaine de la marque.
+    #
+    # D'où « vos nom et prénom » en micro-entreprise : c'est très exactement le
+    # nom de l'entité légale, il n'y en a pas d'autre.
+    #
     # L'ADRESSE PRO SE FAIT EN REDIRECTION, pas en boîte à part. Une boîte de
     # plus, c'est un mot de passe de plus et une application de plus à ouvrir :
     # elle n'est jamais relevée. Redirigée, l'adresse arrive dans la boîte que
@@ -240,8 +254,9 @@ BLOCS = [
         '(exemple : monapp.fr).',
         'À côté d’' + g('Informations générales') + ', ouvrir ' + g('E-mails') + '.',
         'À droite, ' + g('Gestion des redirections') + ', puis ' + g('Ajouter une redirection') + '.',
-        'De l’adresse : ' + g('contact') + '. Vers l’adresse : celle où vous recevrez les e-mails '
-        'de votre application.',
+        'De l’adresse : le nom de votre société, sans espace ni accent (exemple : '
+        + g('monentreprise') + '). En micro-entreprise, vos nom et prénom collés : ' + g('jeandupont') + '.',
+        'Vers l’adresse : celle où vous recevrez les e-mails de votre application.',
         'Mode de copie : ' + g('Conserver une copie') + ', puis ' + g('Valider') + '.',
     ], numerotee=True),
     # ⚠️ LE DNS SE FAIT LE JOUR DE L'ACHAT, pas le jour de la mise en ligne.
@@ -359,7 +374,7 @@ BLOCS = [
     Paragraph(
         'Prévenez-moi une fois que c’est fait. Donnez-moi aussi le nom de votre site et l’adresse '
         'e-mail pro que vous venez de créer (exemple : ' + g('monapp.fr') + ' et '
-        + g('contact@monapp.fr') + ').',
+        + g('monentreprise@monapp.fr') + ').',
         NOTE),
 
     # ⚠️ LA DERNIÈRE LIGNE EST UN FEU ROUGE, pas une politesse. Le document
