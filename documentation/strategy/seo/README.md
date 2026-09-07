@@ -9,6 +9,7 @@ MàJ : 20/08/2026
 - `roadmap.md` : la stratégie complète et l'ordre de priorité (le plan d'ensemble).
 - `content-plan.md` : la file des sujets, les mots-clés cibles et les règles de rédaction.
 - `modele-article.md` : le FORMAT d'un article (champs obligatoires, blocs visuels, structure). À lire avant de rédiger.
+- `journal.md` : **l'historique des chantiers et des arbitrages rendus.** À lire pour comprendre pourquoi une décision a été prise, avant de la remettre en cause.
 - `idees-articles.md` : **la banque de briefs prêts à écrire.** C'est le fichier à ouvrir chaque semaine : tu prends le brief du haut, tu écris.
 - `google-business.md` : le pas-à-pas de la fiche Google Business + tous les textes prêts à coller.
 - `drafts/` : les brouillons d'articles écrits chaque semaine, à relire.
