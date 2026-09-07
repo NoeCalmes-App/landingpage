@@ -59,10 +59,21 @@ export const BLOG_ARTICLES = [
       <p>Claude écrit du vrai code d'application mobile. Pas une maquette, pas un site déguisé en application : du code source natif, dans un vrai projet, celui qu'un développeur ouvrirait. Si tu as passé un week-end dessus et que quelque chose tourne sur ton téléphone, tu n'as pas rêvé.</p>
       <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus, j'en ai publié plus de 20 sur l'App Store et Google Play, et j'utilise l'IA tous les jours pour coder. Cet article n'est pas là pour te dire que tu t'es trompé. Il est là pour répondre à la question qui arrive juste après, et à laquelle aucun tutoriel ne répond : <strong>pourquoi ça marche sur ton téléphone et pourquoi ça ne part pas sur les stores.</strong></p>
 
+      <h2>Le oui est même plus large que tu ne crois</h2>
+      <p>Deux choses méritent d'être dites, parce qu'elles sont récentes et que beaucoup de gens les ignorent encore.</p>
+      <p>D'abord, ça se passe désormais dans l'outil officiel d'Apple. En février 2026, Apple a annoncé l'arrivée du codage agentique dans Xcode, son environnement de développement. Son communiqué cite deux agents en exemple, celui d'Anthropic et celui d'OpenAI, les met exactement sur le même plan et n'en recommande aucun. C'est une intégration technique, pas une caution, et il faut le lire comme ça. Connecter des modèles Claude au chat de Xcode était d'ailleurs déjà possible avant : ce qui a changé, c'est le mode agent, capable d'avancer seul sur un objectif et de vérifier son travail.</p>
+      <p>Ensuite, l'application de bureau de Claude Code sait maintenant piloter un simulateur d'iPhone. Elle compile ton application, l'installe, la lance, tape dans l'écran et relit le résultat pour vérifier ses propres modifications, pendant que tu regardes. Ce n'est pas de la démo, c'est utilisable.</p>
+      <p>Donc non, tu n'es pas en train de bricoler dans ton coin avec un outil de seconde zone.</p>
+      <div class="encadre astuce">
+        <span class="encadre-titre">Deux détails qui coûtent du temps si on les ignore</span>
+        <p>Ce pilotage du simulateur ne marche que sur un Mac, uniquement en local, et surtout uniquement sur des <strong>simulateurs</strong> : jamais sur un vrai iPhone. Et côté Anthropic, se connecter avec un compte Claude dans Xcode suppose une offre payante, une clé API facturée à l'usage étant l'autre voie possible.</p>
+      </div>
+
       <h2>Ce que Claude te rend vraiment</h2>
       <p>C'est le malentendu numéro un, et il n'a rien d'une faute de ta part.</p>
       <p>Ce qui sort, c'est un <strong>projet de développement</strong>. Du code source, des fichiers, une structure. C'est déjà énorme, et c'est très différent de ce que produisent les générateurs type Lovable ou Base44, qui te rendent une application web, donc un site. Là, tu as du natif, du vrai. J'ai détaillé cette différence dans <a href="/blog/lovable-base44-application-mobile/">Lovable, Base44 et les générateurs d'applications</a>.</p>
-      <p>Mais un projet de développement n'est pas une application publiable. Entre les deux, il y a une chaîne d'étapes qui n'a rien à voir avec le code, que personne ne t'annonce, et qui n'est pas technique : elle est administrative, contractuelle et fiscale.</p>
+      <p>Et c'est là que la frontière apparaît, précisément à l'endroit où l'outil s'arrête. Claude pilote un simulateur, jamais un vrai téléphone. Un simulateur ne demande ni signature, ni certificat, ni compte vérifié : c'est un logiciel qui tourne sur ton Mac. Le jour où tu veux sortir de cette bulle, tout ce qui suit t'attend d'un coup.</p>
+      <p>Un projet de développement n'est pas une application publiable. Entre les deux, il y a une chaîne d'étapes qui n'a rien à voir avec le code, que personne ne t'annonce, et qui n'est pas technique : elle est administrative, contractuelle et fiscale.</p>
       <div class="encadre astuce">
         <span class="encadre-titre">La bonne nouvelle d'abord</span>
         <p>Ce que tu as construit n'est pas perdu. Le code est un point de départ réel, et surtout tu as appris quelque chose sur ton produit que personne n'aurait pu t'apprendre à ta place. Ce qui te bloque maintenant n'est pas dans ton code.</p>
@@ -70,7 +81,7 @@ export const BLOG_ARTICLES = [
 
       <h2>Le ticket d'entrée, avant même la première ligne utile</h2>
       <p>Pour compiler et signer une application iOS, il faut Xcode. Xcode ne tourne que sur macOS. Pas de Mac, pas de build iOS, et aucun assistant au monde ne contourne ça.</p>
-      <p>Ensuite viennent les comptes. Le programme développeur d'Apple est un abonnement annuel, celui de Google une inscription unique. Les montants sont publics et changent peu, mais ce n'est pas le sujet : le sujet est que ces comptes ne s'achètent pas comme un abonnement en ligne. Ils demandent une vérification d'identité, et cette vérification prend le temps qu'elle prend.</p>
+      <p>Ensuite viennent les comptes : 99 dollars par an chez Apple, 25 dollars une seule fois chez Google. Ce n'est pas le montant qui pose problème, c'est que ces comptes ne s'achètent pas comme un abonnement en ligne. Ils demandent une vérification d'identité, et cette vérification prend le temps qu'elle prend.</p>
       <p>C'est le premier délai que tu ne contrôles pas. Et c'est le seul de toute la chaîne qui ne dépend ni de toi, ni de ton code, ni de ton budget.</p>
 
       <h2>Le piège des sept jours</h2>
@@ -97,7 +108,7 @@ export const BLOG_ARTICLES = [
 
       <h2>La revue, puis l'entretien à vie</h2>
       <p>Une fois soumise, ton application est relue par un humain chez Apple. Les refus sont courants, y compris pour des équipes expérimentées, et la plupart se corrigent puis repassent. Ce n'est donc pas un mur, mais c'est un aller-retour, et il faut savoir lire ce qu'on te reproche pour le corriger.</p>
-      <p>Ensuite vient ce que presque personne n'anticipe : une application publiée n'est pas finie. Les stores imposent régulièrement de recompiler avec des versions plus récentes de leurs outils, sous peine de ne plus pouvoir publier de mise à jour. Une application que personne ne tient devient donc injoignable toute seule, sans qu'une ligne de code ait bougé. C'est le sujet de <a href="/blog/faire-evoluer-application-mobile/">faire évoluer une application mobile</a>.</p>
+      <p>Ensuite vient ce que presque personne n'anticipe : une application publiée n'est pas finie. Les stores imposent régulièrement de recompiler avec des versions plus récentes de leurs outils, sous peine de ne plus pouvoir publier de mise à jour. Ce n'est pas théorique : côté Google, les nouvelles applications et les mises à jour doivent depuis fin août 2026 viser Android 16, et si tu as besoin de temps tu peux demander un délai, jusqu'au 1er novembre 2026 seulement. Une application que personne ne tient devient donc injoignable toute seule, sans qu'une ligne de code ait bougé. C'est le sujet de <a href="/blog/faire-evoluer-application-mobile/">faire évoluer une application mobile</a>.</p>
 
       <h2>Alors, Claude oui ou non ?</h2>
       <p>Oui, et sans réserve, pour ce qu'il fait bien : écrire du code, aller vite, te faire passer de l'idée à quelque chose de tangible sans dépenser un euro de développement.</p>
