@@ -21,6 +21,101 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'application-mobile-avec-claude',
+    title: "Créer une application mobile avec Claude : oui, et voilà où ça coince",
+    metaTitle: "Créer une application avec Claude : et après ? | Noé Calmes",
+    description: "Claude écrit vraiment le code de ton application. Ce qui bloque ensuite n'est pas technique : c'est la chaîne d'identité, de contrat et d'encaissement.",
+    date: '2026-09-07',
+    readTime: '8 min',
+    finalCta: 'whatsapp',
+    categorie: "Créer",
+    accroche: "Il t'emmène jusqu'à la porte des stores. Il ne la franchit pas.",
+    tldr: {
+      verdict: "Oui, Claude écrit du vrai code natif, et ce que tu as construit est réel. Ce qui bloque ensuite n'est pas dans ton code : c'est une chaîne d'identité, de contrat et d'encaissement que personne ne t'annonce et qu'aucun assistant ne peut franchir à ta place.",
+      points: [
+        { label: "Le sujet", valeur: "Ce qui sépare un projet qui tourne d'une application publiable" },
+        { label: "Pour qui", valeur: "Tu as du code généré qui marche, et rien ne part sur les stores" },
+        { label: "Le blocage", valeur: "Administratif et contractuel, jamais technique" },
+        { label: "À retenir", valeur: "Lance les comptes développeur en premier, c'est le seul délai que tu ne contrôles pas" },
+      ],
+    },
+    pourQui: [
+      "Tu as fait générer du code et quelque chose tourne déjà sur ton téléphone",
+      "Tu ne comprends pas pourquoi ça ne part pas sur l'App Store",
+      "Tu veux savoir ce qui est récupérable avant de remettre du budget",
+    ],
+    pasPourQui: [
+      "Tu cherches un tutoriel pas à pas pour tout faire seul",
+      "Tu veux qu'on te dise que l'IA est nulle, ce n'est pas mon avis",
+      "Ton produit est un outil web et n'a pas besoin des stores",
+    ],
+    faq: [
+      { q: "Pourquoi mon application arrête de fonctionner au bout d'une semaine ?", a: "Parce que ton compte Apple est gratuit. Un compte gratuit délivre des autorisations d'installation temporaires qui expirent au bout de sept jours, et l'application refuse alors de s'ouvrir. Ce n'est pas un bug de ton code. Il faut soit la réinstaller depuis un Mac à chaque fois, soit passer sur un compte développeur payant." },
+      { q: "Puis-je publier sans créer de société ?", a: "Oui. Tu peux publier en ton nom propre, c'est parfaitement prévu. Deux conséquences à connaître : c'est ton nom légal qui apparaît sur la fiche, et dès que tu vends en Europe tu dois te déclarer vendeur professionnel avec des coordonnées de contact publiques. Une adresse professionnelle ou de domiciliation suffit, tu n'es pas obligé d'afficher ton domicile." },
+      { q: "Le code généré par Claude est-il récupérable par un développeur ?", a: "Souvent oui, mais ça demande de le lire avant de promettre quoi que ce soit. Le code compile, ce qui rassure, mais il est rarement structuré pour évoluer et les questions de sécurité et de données personnelles y sont fréquemment absentes. Ce qui se récupère toujours, en revanche, c'est ce que ce prototype t'a appris sur ton produit." },
+    ],
+    content: `
+      <p>Commençons par la réponse, parce qu'elle est oui.</p>
+      <p>Claude écrit du vrai code d'application mobile. Pas une maquette, pas un site déguisé en application : du code source natif, dans un vrai projet, celui qu'un développeur ouvrirait. Si tu as passé un week-end dessus et que quelque chose tourne sur ton téléphone, tu n'as pas rêvé.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus, j'en ai publié plus de 20 sur l'App Store et Google Play, et j'utilise l'IA tous les jours pour coder. Cet article n'est pas là pour te dire que tu t'es trompé. Il est là pour répondre à la question qui arrive juste après, et à laquelle aucun tutoriel ne répond : <strong>pourquoi ça marche sur ton téléphone et pourquoi ça ne part pas sur les stores.</strong></p>
+
+      <h2>Ce que Claude te rend vraiment</h2>
+      <p>C'est le malentendu numéro un, et il n'a rien d'une faute de ta part.</p>
+      <p>Ce qui sort, c'est un <strong>projet de développement</strong>. Du code source, des fichiers, une structure. C'est déjà énorme, et c'est très différent de ce que produisent les générateurs type Lovable ou Base44, qui te rendent une application web, donc un site. Là, tu as du natif, du vrai. J'ai détaillé cette différence dans <a href="/blog/lovable-base44-application-mobile/">Lovable, Base44 et les générateurs d'applications</a>.</p>
+      <p>Mais un projet de développement n'est pas une application publiable. Entre les deux, il y a une chaîne d'étapes qui n'a rien à voir avec le code, que personne ne t'annonce, et qui n'est pas technique : elle est administrative, contractuelle et fiscale.</p>
+      <div class="encadre astuce">
+        <span class="encadre-titre">La bonne nouvelle d'abord</span>
+        <p>Ce que tu as construit n'est pas perdu. Le code est un point de départ réel, et surtout tu as appris quelque chose sur ton produit que personne n'aurait pu t'apprendre à ta place. Ce qui te bloque maintenant n'est pas dans ton code.</p>
+      </div>
+
+      <h2>Le ticket d'entrée, avant même la première ligne utile</h2>
+      <p>Pour compiler et signer une application iOS, il faut Xcode. Xcode ne tourne que sur macOS. Pas de Mac, pas de build iOS, et aucun assistant au monde ne contourne ça.</p>
+      <p>Ensuite viennent les comptes. Le programme développeur d'Apple est un abonnement annuel, celui de Google une inscription unique. Les montants sont publics et changent peu, mais ce n'est pas le sujet : le sujet est que ces comptes ne s'achètent pas comme un abonnement en ligne. Ils demandent une vérification d'identité, et cette vérification prend le temps qu'elle prend.</p>
+      <p>C'est le premier délai que tu ne contrôles pas. Et c'est le seul de toute la chaîne qui ne dépend ni de toi, ni de ton code, ni de ton budget.</p>
+
+      <h2>Le piège des sept jours</h2>
+      <p>Voilà le mur invisible le plus fréquent, et celui qui donne la fausse impression d'avoir terminé.</p>
+      <p>Avec un compte Apple gratuit, tu peux installer ton application sur ton propre iPhone. Elle s'ouvre, elle fonctionne, tu la montres autour de toi. Sauf qu'un compte gratuit délivre des autorisations temporaires : au bout de sept jours, l'application refuse de s'ouvrir. Il faut la réinstaller depuis un Mac. À chaque fois.</p>
+      <div class="encadre attention">
+        <span class="encadre-titre">Pourquoi c'est traître</span>
+        <p>Ça ne ressemble pas à un blocage, ça ressemble à un bug. Beaucoup de gens passent des jours à chercher ce qui cloche dans leur code alors qu'il n'y a rien à corriger : c'est le compte qui est gratuit. Et tant qu'il l'est, ni TestFlight ni l'App Store ne sont accessibles, donc tu ne peux même pas faire tester ton application à dix personnes.</p>
+      </div>
+
+      <h2>Ce que Claude ne peut pas signer à ta place</h2>
+      <p>C'est le cœur du sujet, et la partie dont personne ne parle en français.</p>
+      <p>Publier une application, ce n'est pas déposer un fichier. C'est <strong>engager une identité</strong>. Trois chaînes séparées, chacune avec ses délais.</p>
+      <ul>
+        <li><strong>L'identité.</strong> Tu publies soit en ton nom propre, soit au nom d'une société. En société, Apple demande un identifiant d'entreprise rattaché à une entité juridique réelle, et le vérifie. Un nom commercial ou une enseigne ne suffit pas. En nom propre, c'est ton nom légal qui apparaît sur la fiche.</li>
+        <li><strong>Le statut de vendeur.</strong> Dès que tu vends, en Europe, tu dois te déclarer vendeur professionnel et fournir des coordonnées de contact qui deviennent visibles du public. Une adresse professionnelle ou de domiciliation convient, tu n'es pas obligé d'afficher ton domicile, mais tu dois en avoir une.</li>
+        <li><strong>L'encaissement.</strong> Avant qu'un seul euro puisse te revenir, il faut accepter le contrat des applications payantes, remplir des formulaires fiscaux et renseigner des coordonnées bancaires validées. Tant que cette chaîne n'est pas complète, tu peux publier une application gratuite, mais tu ne peux rien vendre.</li>
+      </ul>
+      <p>Aucune de ces trois étapes ne se code. Claude peut t'expliquer chacune, il ne peut en franchir aucune. Ce n'est pas une limite technique, c'est une limite de nature : ces étapes engagent une personne ou une société, et il n'y a personne derrière un assistant.</p>
+      <div class="chiffre">
+        <span class="chiffre-valeur">0 €</span>
+        <span class="chiffre-texte">c'est ce que rapporte une application parfaitement fonctionnelle tant que la chaîne d'encaissement n'est pas ouverte. Le code n'y change rien.</span>
+      </div>
+
+      <h2>La revue, puis l'entretien à vie</h2>
+      <p>Une fois soumise, ton application est relue par un humain chez Apple. Les refus sont courants, y compris pour des équipes expérimentées, et la plupart se corrigent puis repassent. Ce n'est donc pas un mur, mais c'est un aller-retour, et il faut savoir lire ce qu'on te reproche pour le corriger.</p>
+      <p>Ensuite vient ce que presque personne n'anticipe : une application publiée n'est pas finie. Les stores imposent régulièrement de recompiler avec des versions plus récentes de leurs outils, sous peine de ne plus pouvoir publier de mise à jour. Une application que personne ne tient devient donc injoignable toute seule, sans qu'une ligne de code ait bougé. C'est le sujet de <a href="/blog/faire-evoluer-application-mobile/">faire évoluer une application mobile</a>.</p>
+
+      <h2>Alors, Claude oui ou non ?</h2>
+      <p>Oui, et sans réserve, pour ce qu'il fait bien : écrire du code, aller vite, te faire passer de l'idée à quelque chose de tangible sans dépenser un euro de développement.</p>
+      <p>Ce qu'il ne fait pas, ce n'est pas du code non plus. C'est décider ce qui sera payant, à quel moment l'offre apparaît, et pourquoi quelqu'un reviendrait demain. Je développe ce point dans <a href="/blog/creer-application-avec-ia/">créer une application avec l'IA</a>.</p>
+      <p>La bonne façon de voir les choses : Claude t'emmène jusqu'à la porte des stores, très vite et très loin. Il ne la franchit pas avec toi.</p>
+
+      <h2>Par où commencer si tu es déjà bloqué</h2>
+      <p>Dans cet ordre précis, parce qu'il est fait pour que les délais tournent pendant que tu travailles.</p>
+      <ol>
+        <li><strong>Décide qui publie, aujourd'hui.</strong> Nom propre ou société. Ça conditionne tout le reste et ça se décide en dix minutes.</li>
+        <li><strong>Ouvre les comptes développeur immédiatement.</strong> C'est le seul délai que tu ne peux pas raccourcir, alors lance-le en premier et code pendant qu'il court.</li>
+        <li><strong>Règle la chaîne d'encaissement avant de construire l'écran d'abonnement.</strong> Contrat, informations fiscales, banque. Construire le paywall avant d'avoir le droit d'encaisser, c'est travailler dans le vide.</li>
+        <li><strong>Prépare la soumission en dernier.</strong> Fiche, captures, politique de confidentialité, gestion des données. Là seulement.</li>
+      </ol>
+      <p>Et si tu as déjà du code qui tourne et que tu veux savoir ce qui est récupérable : envoie-le moi. Je regarde et je te dis franchement ce qui tient, ce qui est à reprendre, et ce qui te sépare vraiment du premier euro encaissé.</p>
+    `,
+  },
+  {
     slug: 'lovable-base44-application-mobile',
     title: "Lovable, Base44 : est-ce que ça marche pour une application mobile ?",
     metaTitle: "Lovable ou Base44 pour une application mobile ? | Noé Calmes",
@@ -1635,7 +1730,8 @@ export const BLOG_ARTICLES = [
 // orphelin. Ajouter un article implique donc de le citer ici au moins deux fois.
 
 export const ARTICLES_LIES = {
-  'lovable-base44-application-mobile': ['creer-application-avec-ia', 'creer-application-sans-savoir-coder', 'combien-coute-application-mobile'],
+  'application-mobile-avec-claude': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'faire-evoluer-application-mobile'],
+  'lovable-base44-application-mobile': ['creer-application-avec-ia', 'creer-application-sans-savoir-coder', 'application-mobile-avec-claude'],
   // Cluster monetisation, pilier : rentabiliser-application-mobile
   'rentabiliser-application-mobile': ['modele-economique-application-mobile', 'combien-rapporte-application-mobile', 'pourquoi-applications-ne-rapportent-rien'],
   'combien-rapporte-application-mobile': ['rentabiliser-application-mobile', 'combien-coute-application-mobile', 'application-mobile-meilleur-investissement'],
@@ -1645,7 +1741,7 @@ export const ARTICLES_LIES = {
   'pourquoi-applications-ne-rapportent-rien': ['rentabiliser-application-mobile', 'modele-economique-application-mobile', 'creer-application-avec-ia'],
   'application-audience-revenus-recurrents': ['application-mobile-coach-formateur', 'application-par-abonnement', 'rentabiliser-application-mobile'],
   'application-mobile-coach-formateur': ['application-audience-revenus-recurrents', 'modele-economique-application-mobile', 'combien-coute-application-mobile'],
-  'creer-application-avec-ia': ['pourquoi-applications-ne-rapportent-rien', 'choisir-expert-application-mobile', 'creer-application-sans-savoir-coder'],
+  'creer-application-avec-ia': ['pourquoi-applications-ne-rapportent-rien', 'application-mobile-avec-claude', 'creer-application-sans-savoir-coder'],
   'application-mobile-meilleur-investissement': ['rentabiliser-application-mobile', 'combien-coute-application-mobile', 'creation-application-mobile-toulouse'],
 
   // Cluster creation / conduite de projet

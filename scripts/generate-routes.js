@@ -518,6 +518,11 @@ for (const route of legacySectionRoutes) {
 // `lireMetaArticles()` : ne pas les redefinir ici, ils seraient ignores.
 const blogRoutes = [
   {
+    path: '/blog/application-mobile-avec-claude',
+    heading: 'Créer une application mobile avec Claude : oui, et voilà où ça coince',
+    content: 'Claude écrit du vrai code natif, dans un vrai projet, et ce que tu as construit est réel. Mais un projet de développement n\'est pas une application publiable : entre les deux il y a une chaîne d\'identité, de contrat et d\'encaissement qui n\'a rien de technique. Le Mac obligatoire pour compiler, la vérification des comptes développeur, les autorisations qui expirent au bout de sept jours sur un compte gratuit, le statut de vendeur professionnel en Europe, le contrat et les informations bancaires sans lesquels aucun euro ne peut te revenir.',
+  },
+  {
     path: '/blog/lovable-base44-application-mobile',
     heading: 'Lovable, Base44 : est-ce que ça marche pour une application mobile ?',
     content: 'Ces générateurs sont excellents pour prototyper une idée, mais ils produisent une application web, pas une application iOS ou Android. Apple exige un binaire natif et sa règle 4.2 rejette explicitement les sites réempaquetés, ce qui ferme l\'App Store et l\'abonnement encaissé par les stores. Ce que ça change pour ton modèle de revenus, pourquoi ces applications se ressemblent toutes, et les trois cas où ces outils sont le bon choix.',
