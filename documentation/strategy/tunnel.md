@@ -13,7 +13,7 @@
 
 ## Mise à jour 2026-07-19 — formulaire Meta = entrée principale, touche 1 automatisée
 
-L'acquisition principale est désormais **Meta Ads → formulaire instantané** (stade + budget + coordonnées pré-remplies, détail exact dans `prospection-meta-leads.md`). Les leads tombent en temps réel dans la Google Sheet Meta, sont importés automatiquement dans Nowork (dédoublonnage inclus) et reçoivent le premier message WhatsApp **à T+5 min** (template validé, fenêtre 9h-21h lun-sam) — au lieu de l'import manuel tous les 2 jours. L'écran de fin du formulaire continue d'inviter le lead à écrire en premier ; s'il le fait, l'envoi auto est annulé. Séquence de relance : `prospection-meta-leads.md`. Spec technique : `nowork/documentation/systems/lead-auto-import.md`.
+L'acquisition principale est désormais **Meta Ads → formulaire instantané** (stade + budget + coordonnées pré-remplies, détail exact dans `prospection-meta-leads.md`). Les leads tombent en temps réel dans la Google Sheet Meta, sont importés automatiquement dans Nowork (dédoublonnage inclus) et reçoivent le premier message WhatsApp **à T+10 min** (template validé, fenêtre 9h-21h lun-sam) — au lieu de l'import manuel tous les 2 jours. L'écran de fin du formulaire continue d'inviter le lead à écrire en premier ; s'il le fait, l'envoi auto est annulé. Séquence de relance : `prospection-meta-leads.md`. Spec technique : `nowork/documentation/systems/lead-auto-import.md`.
 
 ## Schéma global
 

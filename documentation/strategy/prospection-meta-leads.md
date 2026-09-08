@@ -16,11 +16,11 @@ Les leads tombent en temps réel dans la Google Sheet Meta (connexion native).
 
 ## Mise à jour 2026-07-19 — touche 1 automatisée
 
-La touche 1 ne dépend plus de l'import manuel (délai 24-48h) : elle part **automatiquement à T+5 min** après le formulaire, via Nowork (Sheet → Apps Script → Cloud Function → template WhatsApp Cloud API). Dédoublonnage automatique : lead déjà client ou qui a déjà écrit sur WhatsApp = pas d'envoi. Fenêtre d'envoi : lundi-samedi 9h-21h, sinon report au prochain créneau (dimanche → lundi 9h). Les touches 2-4 restent manuelles, pilotées par le CRM. Spec complète : `nowork/documentation/systems/lead-auto-import.md`.
+La touche 1 ne dépend plus de l'import manuel (délai 24-48h) : elle part **automatiquement à T+10 min** après le formulaire, via Nowork (Sheet → Apps Script → Cloud Function → template WhatsApp Cloud API). Dédoublonnage automatique : lead déjà client ou qui a déjà écrit sur WhatsApp = pas d'envoi. Fenêtre d'envoi : lundi-samedi 9h-21h, sinon report au prochain créneau (dimanche → lundi 9h). Les touches 2-4 restent manuelles, pilotées par le CRM. Spec complète : `nowork/documentation/systems/lead-auto-import.md`.
 
 ## Principes
 
-1. **Vitesse** : le message 1 part automatiquement à T+5 min après le lead (cf. mise à jour 2026-07-19). Le taux de réponse chute massivement après 24h (étude Lead Response Management : contacté < 5 min = ~21x plus de chances de qualifier qu'à 30 min).
+1. **Vitesse** : le message 1 part automatiquement à T+10 min après le lead (cf. mise à jour 2026-07-19). Le taux de réponse chute massivement après 24h (étude Lead Response Management : contacté < 5 min = ~21x plus de chances de qualifier qu'à 30 min). Les dix minutes sont un choix assumé : elles laissent au lead motivé le temps d'écrire en premier — l'écran de fin du formulaire l'y invite — auquel cas l'envoi automatique est annulé, la conversation est initiée par lui, et le template n'est pas facturé.
 2. **4 touches max sur 12 jours.** Au-delà, on brûle le lead.
 3. **Un seul levier par message** (question OU preuve OU voix OU clôture). Jamais d'empilement.
 4. **Une seule question par message**, la plus facile possible.
@@ -48,7 +48,7 @@ Tu as rempli mon formulaire pour ton projet d'application.
 C'est quoi ton idée, dans les grandes lignes ?
 ```
 
-Ce texte est le template soumis à WhatsApp Manager (variable {{1}} = prénom). Envoi automatique à T+5 min par Nowork ; si le lead écrit en premier pendant ces 5 minutes, l'envoi est annulé et c'est une conversation classique.
+Ce texte est le template soumis à WhatsApp Manager (variable {{1}} = prénom). Envoi automatique à T+10 min par Nowork ; si le lead écrit en premier pendant ces dix minutes, l'envoi est annulé et c'est une conversation classique.
 
 Variante stade « prêt / financement en place » :
 
