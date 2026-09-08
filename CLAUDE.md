@@ -17,6 +17,7 @@ Lire `AGENTS.md` en premier. Ce fichier reste volontairement court pour ne pas c
 - Rediger un post / carrousel LinkedIn : `documentation/strategy/linkedin-posts.md`
 - Strategie commerciale : `documentation/strategy/strategie-commerciale.md`
 - Prospection leads Meta (relances WhatsApp) : `documentation/strategy/prospection-meta-leads.md`
+- Script d'appel : **il n'est plus ici.** Les deux `script-appel.html` (racine et `documentation/strategy/`) ont ete supprimes le 2026-09-08 : ils divergeaient, et le script vit desormais dans Nowork, page « Scripts », modifiable et propose automatiquement sur les fiches CRM sans devis. Source : `nowork/src/services/scripts.service.ts`.
 - Supports stories/posts : `content/README.md`
 
 ## Regle
