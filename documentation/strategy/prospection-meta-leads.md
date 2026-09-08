@@ -4,6 +4,27 @@
 > Contexte : le lead a rempli un formulaire pré-rempli (nom, prénom, email, téléphone) et coché son stade (prêt / bientôt / réflexion / juste une idée). **Il n'a PAS écrit son idée.**
 > Positionnement : `documentation/context/positionnement.md`. Tunnel : `documentation/strategy/tunnel.md`.
 
+## 🔴 2026-09-08 : la touche 1 automatique NE PART PLUS
+
+Tout ce qui suit décrit la séquence telle qu'elle est conçue. **Elle est à
+l'arrêt en émission**, et deux murs différents la bloquent :
+
+1. `appsecret_proof` depuis le 2026-09-02 : aucun appel à l'API Meta ne passe,
+   donc aucun template n'est même tenté.
+2. La configuration de paiement du compte WhatsApp, jamais reprouvée depuis le
+   2026-08-07 : ce jour-là, quatre messages ont été acceptés par Meta puis
+   refusés à la livraison. Lever le premier mur ne lève pas celui-ci.
+
+Les deux dépendent de Dualhook, pas du code. **Ne pas relancer de campagne à
+formulaire Meta tant que ce n'est pas levé** : chaque lead payé créerait une
+fiche que personne ne contacterait.
+
+Le chemin « landing page → bouton WhatsApp », lui, fonctionne : le prospect
+écrit en premier, la réception n'utilise pas l'API bloquée.
+
+Verdict à jour, interrogé chez Meta en vrai : `npm run verifier-pubs` dans
+`nowork`. État complet : `nowork/documentation/context/en-cours.md`.
+
 ## Le formulaire Meta (référence exacte)
 
 - Intro : « Ton projet d'application — Je transforme ton idée en application qui génère des revenus. À partir de 5 000 € · Ton idée reste confidentielle (NDA). »
