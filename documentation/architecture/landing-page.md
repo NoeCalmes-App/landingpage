@@ -53,6 +53,28 @@ Deux consequences pratiques :
 - Le **sitemap est genere**, plus maintenu a la main. `public/sitemap.xml` a ete supprime. Une nouvelle page indexable entre au sitemap parce qu'elle appelle `declarerSitemap()`, pas parce qu'on a pense a editer un fichier.
 - Le **bloc pre-rendu** (`[data-seo-prerender]`) est retire du DOM des que React est monte (`retirerPrerender()`), pour ne pas laisser un second `<h1>` et un pave de texte cache dans la page rendue.
 
+### Visibilite dans les moteurs de reponse (GEO)
+
+Les robots des IA generatives **n'executent pas le JavaScript**. GPTBot,
+ClaudeBot et PerplexityBot telechargent parfois les fichiers .js mais ne les
+lancent jamais (etude Vercel/MERJ sur des centaines de millions de requetes).
+Google et Copilot font exception : ils heritent du rendu de Googlebot et Bingbot.
+
+Consequence mesuree le 10/09/2026, avant correction : un article de 2 044 mots
+avec 12 sections n'exposait que **165 mots et zero `<h2>`** dans le HTML servi.
+Google voyait l'article entier, ChatGPT et Claude voyaient un resume.
+
+Trois regles en decoulent, toutes appliquees au build :
+
+1. Le corps COMPLET de l'article est servi dans le `<noscript>`, pas seulement
+   un resume. C'est la que les robots des IA lisent.
+2. **Un seul `<h1>` dans le HTML servi.** Le meme bloc etait auparavant emis a
+   l'identique dans la div masquee et dans le `<noscript>`, ce qui en donnait
+   deux. La div masquee ne porte plus de `<h1>`, seulement un resume.
+3. `llms.txt` et `robots.txt` sont **generes**, jamais ecrits a la main. Le
+   premier oriente les moteurs de reponse, le second nomme explicitement les
+   robots des IA. Ne pas recreer `public/robots.txt`, il serait ecrase.
+
 ### Donnees structurees
 
 `index.html` sert de gabarit a toutes les pages generees. Attention : tout JSON-LD ajoute dans `index.html` se retrouve **sur chaque page generee**. C'est pour ca que `generate-routes.js` retire le bloc `FAQPage` partout sauf sur la home et `/faq`, ou il est regenere depuis `FAQ_ITEMS`. Une page qui declare une FAQ invisible enfreint les regles de Google.

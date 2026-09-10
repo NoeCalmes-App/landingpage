@@ -9,6 +9,33 @@
 
 ---
 
+## 10/09/2026 · Visibilite dans les IA : le site etait coupe en deux
+
+Point de depart : un audit GEO externe (geolify.ai) note le site **63/100**.
+Verification faite point par point sur le site reel, l'audit dit vrai.
+
+**Le probleme de fond, mesure.** Les robots des IA generatives n'executent pas
+le JavaScript. Sur un article de 2 044 mots avec 12 sections, le HTML servi
+n'exposait que **165 mots et zero `<h2>`**. Google, qui rend le JavaScript,
+voyait tout ; ChatGPT, Claude et Perplexity voyaient un resume. Un facteur 12,
+invisible depuis Search Console puisque Google n'etait pas concerne.
+
+**Corrige** : corps complet de l'article servi dans le `<noscript>`, un seul
+`<h1>` dans le HTML servi (le meme bloc etait emis deux fois), `llms.txt` cree
+et genere au build, `robots.txt` genere et nommant explicitement les robots des
+IA.
+
+**Resultat sur les articles** : de 165 a 1 802 mots servis, de 0 a 8 sections,
+de 2 a 1 `<h1>`.
+
+**Ce qu'on en retient.** Search Console ne mesure que Google. Un site peut etre
+parfaitement indexe et malgre tout quasi invisible dans les moteurs de reponse,
+qui prennent une part croissante des recherches. Les deux canaux se verifient
+separement, et la commande qui tranche est un simple `curl` : ce que renvoie le
+serveur est ce que lisent les IA.
+
+---
+
 ## 07/09/2026 · Article Claude, et une leçon de méthode
 
 **Commits** : `3ea325a` puis `97fd66f`

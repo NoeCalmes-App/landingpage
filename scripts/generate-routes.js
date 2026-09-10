@@ -51,6 +51,39 @@ function urlPublique(path) {
 // /creation-application-mobile et /faq sont lus depuis `src/PagesSeo.jsx`
 // (les appels a `appliquerMeta`). Les redefinir ici les ferait diverger du
 // DOM rendu, qui est la version que Google indexe.
+// Corps COMPLET des articles, lu depuis `src/Blog.jsx`.
+//
+// POURQUOI (10/09/2026) : les robots des IA generatives (GPTBot d'OpenAI,
+// ClaudeBot d'Anthropic, PerplexityBot) n'executent PAS le JavaScript. Une
+// etude Vercel/MERJ sur des centaines de millions de requetes n'a releve aucune
+// execution de JS cote client par un seul de ces robots : ils telechargent
+// parfois les fichiers .js, ils ne les lancent jamais.
+//
+// Consequence mesuree sur ce site avant correction : un article de 2 044 mots
+// avec 12 sections n'exposait que 165 mots et ZERO <h2> dans le HTML servi.
+// Google, qui rend le JavaScript, voyait l'article entier ; ChatGPT, Claude et
+// Perplexity voyaient un resume de 165 mots. Un facteur 12.
+//
+// Le corps complet est donc desormais servi dans le <noscript>, qui est
+// l'emplacement prevu pour ca et qui n'introduit aucun texte masque.
+function lireContenuArticles() {
+  const blog = readFileSync(join(__dirname, '..', 'src', 'Blog.jsx'), 'utf-8')
+  const corps = blog.split('export const ARTICLES_LIES')[0]
+  const parSlug = {}
+
+  const positions = [...corps.matchAll(/^    slug: '([^']+)',$/gm)]
+  for (let i = 0; i < positions.length; i += 1) {
+    const slug = positions[i][1]
+    const debut = positions[i].index
+    const fin = i + 1 < positions.length ? positions[i + 1].index : corps.length
+    const morceau = corps.slice(debut, fin)
+
+    const m = morceau.match(/\n    content: `([\s\S]*?)`,\n/)
+    if (m) parSlug[slug] = m[1].trim()
+  }
+  return parSlug
+}
+
 // FAQ propre a chaque article, lue depuis `src/Blog.jsx`.
 //
 // POURQUOI : une FAQ par article capte des requetes longue traine que le corps
@@ -353,6 +386,7 @@ function patchHtml(html, {
   ogImageAlt,
   liensLies = [],
   liensLiesTitre = 'À lire aussi',
+  corpsComplet = '',
 }) {
   html = retirerFaqPage(html)
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
@@ -400,8 +434,22 @@ function patchHtml(html, {
     ? `<nav aria-label="${liensLiesTitre}"><p>${liensLiesTitre} :</p><ul>${liensLies.map((l) => `<li><a href="${urlPublique(l.path)}">${l.heading}</a></li>`).join('')}</ul></nav>`
     : ''
 
-  const corpsSeo = `<h1>${heading}</h1><p>${content}</p>${navLies}<a href="${backHref}">${backLink}</a>${siteNav}`
-  const seoContent = `<div id="root"></div><div data-seo-prerender style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden">${corpsSeo}</div><noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif">${corpsSeo}</div></noscript>`
+  // Deux blocs, deux roles distincts, et surtout UN SEUL <h1> dans le HTML servi.
+  //
+  // Avant le 10/09/2026, le meme bloc etait emis a l'identique dans la div
+  // masquee ET dans le <noscript>, ce qui donnait deux <h1> identiques a tout
+  // agent qui n'execute pas le JavaScript.
+  //
+  // <noscript> : le corps COMPLET de l'article, avec ses <h2>. C'est ce que
+  // lisent les robots des IA generatives, qui ne rendent pas le JavaScript.
+  // Aucun texte n'y est masque, c'est l'usage prevu de la balise.
+  //
+  // Div masquee : un resume seulement, sans <h1>, pour les analyseurs qui
+  // ignorent <noscript>. Elle est retiree du DOM des que React est monte
+  // (retirerPrerender), donc elle n'apparait jamais dans la page rendue.
+  const corpsNoscript = `<h1>${heading}</h1>${corpsComplet || `<p>${content}</p>`}${navLies}<a href="${backHref}">${backLink}</a>${siteNav}`
+  const corpsResume = `<p><strong>${heading}</strong></p><p>${content}</p>${navLies}<a href="${backHref}">${backLink}</a>${siteNav}`
+  const seoContent = `<div id="root"></div><div data-seo-prerender style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden">${corpsResume}</div><noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif">${corpsNoscript}</div></noscript>`
   html = html.replace('<div id="root"></div>', seoContent)
 
   return html
@@ -636,6 +684,23 @@ const tableLiens = verifierMaillage(slugsPublies)
 // Titres et descriptions lus depuis src/Blog.jsx, jamais redefinis ici.
 const metaArticles = lireMetaArticles()
 verifierArticlesPublies(metaArticles, slugsPublies)
+
+// Corps complet des articles, pour le <noscript> lu par les robots des IA.
+const contenuArticles = lireContenuArticles()
+
+// Categories des articles, pour regrouper le llms.txt par theme.
+const categoriesArticles = (() => {
+  const blog = readFileSync(join(__dirname, '..', 'src', 'Blog.jsx'), 'utf-8')
+  const corps = blog.split('export const ARTICLES_LIES')[0]
+  const positions = [...corps.matchAll(/^    slug: '([^']+)',$/gm)]
+  const out = {}
+  for (let i = 0; i < positions.length; i += 1) {
+    const fin = i + 1 < positions.length ? positions[i + 1].index : corps.length
+    const m = corps.slice(positions[i].index, fin).match(/categorie: "([^"]+)"/)
+    if (m) out[positions[i][1]] = m[1]
+  }
+  return out
+})()
 verifierAppelsAction(slugsPublies)
 verifierLongueurs(metaArticles, slugsPublies)
 
@@ -683,6 +748,7 @@ for (const route of blogRoutes) {
     breadcrumb,
     liensLies,
     liensLiesTitre: route.path === '/blog' ? 'Tous les articles' : 'À lire aussi',
+    corpsComplet: contenuArticles[slug] || '',
   })
 
   // Balisage local sur la page Toulouse.
@@ -1013,6 +1079,107 @@ if (doublons.length) {
   console.error(`\n✗ URLs en double dans le sitemap : ${[...new Set(doublons)].join(', ')}\n`)
   process.exit(1)
 }
+
+// ─── llms.txt ────────────────────────────────────────────────────────────────
+//
+// Fichier d'orientation pour les moteurs de reponse (ChatGPT, Claude,
+// Perplexity). Il ne remplace pas le sitemap : le sitemap sert a explorer, le
+// llms.txt sert a comprendre. Il dit en une page qui est Noe, ce qu'il fait, et
+// quelle page repond a quelle question.
+//
+// Genere au build a partir des pages reellement produites, comme le sitemap.
+// Un fichier ecrit a la main serait perime au premier article publie.
+const groupes = {
+  'Monétisation': [], 'Budget': [], 'Créer': [],
+  'Ton activité': [], 'Reprendre': [], 'Toulouse': [],
+}
+for (const slug of slugsPublies) {
+  const m = metaArticles[slug]
+  if (!m) continue
+  const cat = categoriesArticles[slug] || 'Créer'
+  if (!groupes[cat]) groupes[cat] = []
+  groupes[cat].push(`- [${m.heading}](${urlPublique('/blog/' + slug)}) : ${m.description}`)
+}
+
+const llms = `# Noé Calmes, expert en application mobile
+
+> Je conçois des applications mobiles iOS et Android pensées pour générer des
+> revenus, de la stratégie au lancement. Pas une agence, pas un développeur à la
+> mission : un seul interlocuteur, tarif fixe défini avant de commencer.
+> Plus de 20 applications publiées sur l'App Store et Google Play. Une
+> application que j'ai conçue génère environ 13 000 € par mois.
+
+Basé près de Toulouse, j'interviens à distance partout en France sur trois
+situations : créer une application à partir d'une idée, reprendre une
+application existante instable ou abandonnée, faire évoluer une application déjà
+en ligne. Budget habituel de 5 000 à 30 000 €, première version en 4 à 6
+semaines.
+
+## Pages principales
+
+- [Accueil](${urlPublique('/')}) : le positionnement et les preuves
+- [Concevoir une application qui rapporte](${urlPublique('/expertise')}) : ce que je fais qu'un développeur ne fait pas
+- [Ma méthode](${urlPublique('/creation-application-mobile')}) : les 5 étapes, du cadrage au lancement sur les stores
+- [Les applications que j'ai conçues](${urlPublique('/projets')}) : réalisations et résultats
+- [FAQ](${urlPublique('/faq')}) : budget, délai, reprise, stores, suivi après mise en ligne
+- [Audit gratuit](${urlPublique('/audit-app')}) : évaluer le potentiel, le budget et le délai d'une idée en 2 minutes
+
+## Tests d'orientation
+
+- [Ai-je besoin d'une application mobile ?](${urlPublique('/quiz/ai-je-besoin-application-mobile')})
+- [Application mobile ou site web ?](${urlPublique('/quiz/application-ou-site-web')})
+- [Quel budget prévoir ?](${urlPublique('/quiz/budget-application-mobile')})
+
+## Articles${Object.entries(groupes).filter(([, v]) => v.length).map(([cat, v]) => `
+
+### ${cat}
+
+${v.join('\n')}`).join('')}
+
+## À savoir
+
+- Canal de contact unique : WhatsApp. C'est Noé Calmes qui répond directement.
+- Le blog est écrit à la première personne par Noé Calmes, pas par une rédaction.
+- Site : ${urlPublique('/')}
+`
+writeFileSync(join(distDir, 'llms.txt'), llms)
+
+// robots.txt genere lui aussi, pour deux raisons : nommer explicitement les
+// robots des IA (un `Allow` generique les couvre deja, mais un audit qui
+// cherche les user-agents par nom ne les voit pas), et declarer le llms.txt.
+const robots = `User-agent: *
+Allow: /
+
+# Robots des moteurs de reponse, autorises explicitement.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: ${urlPublique('/').replace(/\/$/, '')}/sitemap.xml
+`
+writeFileSync(join(distDir, 'robots.txt'), robots)
+console.log('✓ robots.txt genere : robots des IA nommes explicitement')
+console.log(`✓ llms.txt genere : ${llms.split('\n').length} lignes, ${slugsPublies.length} articles references`)
 
 // ─── Controle final : aucun lien interne sans barre finale ───────────────────
 //
