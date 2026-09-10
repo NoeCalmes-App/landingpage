@@ -202,6 +202,40 @@ un lecteur qui ne savait pas encore à qui il avait affaire.
 Longueur : 900 à 1 300 mots dans `content`. Les blocs du modèle ajoutent
 environ 300 mots.
 
+## Ce que lisent les IA, et pourquoi ton texte compte double
+
+Les robots des moteurs de réponse (ChatGPT, Claude, Perplexity) **n'exécutent
+pas le JavaScript**. Ils lisent le HTML brut et repartent. Google, lui, exécute
+le JavaScript : les deux ne voient donc pas la même chose.
+
+Jusqu'au 10/09/2026, ils ne recevaient qu'un résumé de deux phrases là où Google
+lisait l'article entier. Mesuré sur un article de 2 044 mots : **165 mots servis,
+zéro `<h2>`**. Corrigé depuis.
+
+**Ce que ça change pour toi quand tu écris : rien dans le processus.** Le corps
+complet est repris automatiquement du champ `content` de `BLOG_ARTICLES` et
+servi dans le `<noscript>`. Tu n'as aucune étape supplémentaire.
+
+**Ce que ça change dans les enjeux : ton HTML est maintenant lu tel quel.**
+
+- Tes `<h2>` sont la seule structure que voit une IA. Un titre de section vague
+  (« Aller plus loin ») ne lui apprend rien ; un titre explicite
+  (« Combien de clients pour rembourser une application à 9 000 € ») lui donne
+  une question à laquelle ta page répond.
+- Ce qui n'est pas dans `content` n'existe pas pour elles. Les blocs rendus par
+  React (En bref, Pour qui, FAQ, bloc auteur) ne sont **pas** dans le
+  `<noscript>` : ils servent le lecteur humain et Google, pas les IA. Si une
+  information est décisive, elle doit apparaître dans le corps de l'article.
+- Un seul `<h1>` par page, celui du `<noscript>`. Ne jamais écrire de `<h1>`
+  dans `content`, il ferait doublon.
+
+Pour vérifier ce qu'une IA lit réellement sur une page, il n'y a qu'une commande
+et elle ne ment pas :
+
+```bash
+curl -s https://noecalmes.fr/blog/mon-article/ | wc -w
+```
+
 ## Règles de rédaction
 
 Elles complètent celles de `content-plan.md`, qui restent la référence.
@@ -224,7 +258,10 @@ Elles complètent celles de `content-plan.md`, qui restent la référence.
 1. Le slug est ajouté à `ARTICLES_LIES` avec 3 liens sortants, **et cité dans
    au moins 2 autres entrées**.
 2. La route est ajoutée à `blogRoutes` (`scripts/generate-routes.js`), avec
-   seulement `path`, `heading` et `content`.
+   seulement `path`, `heading` et `content`. Attention au piège de nommage :
+   ce `content`-là n'est **pas** l'article, c'est un résumé de deux ou trois
+   phrases. L'article, lui, est repris automatiquement depuis le champ `content`
+   de `BLOG_ARTICLES`. Voir la section ci-dessous.
 3. `npm run build` affiche les cinq contrôles au vert. Si tu oublies l'étape 2,
    le build refuse de passer et te dit exactement quoi corriger.
 4. Commit, push, puis indexation dans Search Console.
