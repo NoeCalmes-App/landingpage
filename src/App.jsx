@@ -26,6 +26,7 @@ import BagSitterMockups from './BagSitterMockups.jsx'
 import JuridikMockups from './JuridikMockups.jsx'
 import BailoraMockups from './BailoraMockups.jsx'
 import GuestRideMockups from './GuestRideMockups.jsx'
+import ImmoMatchMockups from './ImmoMatchMockups.jsx'
 import Projets from './Projets.jsx'
 import ClientSpaceBridge from './ClientSpaceBridge.jsx'
 import MaquetteVisualBridge from './MaquetteVisualBridge.jsx'
@@ -260,6 +261,7 @@ function App() {
     if (['/maquette/juridik', '/maquette/juridique'].includes(path.toLowerCase())) return 'juridik-mockups'
     if (path.toLowerCase() === '/maquette/bailora') return 'bailora-mockups'
     if (['/maquette/guestride', '/maquette/guest-ride'].includes(path.toLowerCase())) return 'guestride-mockups'
+    if (['/maquette/immomatch', '/maquette/immo-match'].includes(path.toLowerCase())) return 'immomatch-mockups'
     // Les guides, adresse actuelle ou ancienne. Une ancienne adresse ouvre le
     // bon guide PUIS se réécrit en canonique : les liens des devis déjà
     // envoyés continuent de marcher sans figer l'ancienne arborescence.
@@ -541,6 +543,7 @@ function App() {
   if (page === 'juridik-mockups') return <JuridikMockups />
   if (page === 'bailora-mockups') return <BailoraMockups />
   if (page === 'guestride-mockups') return <GuestRideMockups />
+  if (page === 'immomatch-mockups') return <ImmoMatchMockups />
   if (page === 'projets') return <Projets onBack={goHome} />
   if (page === 'contact') return <ContactNoe />
   if (page === 'legal') return <Legales />
