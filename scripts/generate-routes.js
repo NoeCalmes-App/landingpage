@@ -566,6 +566,11 @@ for (const route of legacySectionRoutes) {
 // `lireMetaArticles()` : ne pas les redefinir ici, ils seraient ignores.
 const blogRoutes = [
   {
+    path: '/blog/application-avec-ia-rentable',
+    heading: "Mettre de l'IA dans ton application : ce que ça rapporte, ce que ça coûte",
+    content: "Une application classique ne coûte presque rien par utilisateur : ses frais sont fixes. Une application qui appelle un modèle d'IA paie à chaque usage, donc son coût est variable et suit le succès. Sur un abonnement affiché 9,99 € qui laisse 7,08 € nets, un utilisateur occasionnel consomme 0,60 € d'appels, un utilisateur intensif jusqu'à 6 €, soit 85 % de la marge. Le seuil de rentabilité d'une application à 9 000 € passe d'environ 106 à 134 abonnés. Le piège du gratuit, mille utilisateurs gratuits coûtant environ 200 € par mois sans revenu, les trois garde-fous à poser dès la conception (quota visible, petit modèle sur les tâches simples, cache sur les réponses répétées) et pourquoi monter le prix absorbe le coût variable mieux que toute optimisation technique.",
+  },
+  {
     path: '/blog/combien-de-clients-pour-rentabiliser-application',
     heading: 'Combien de clients faut-il pour rentabiliser ton application ?',
     content: 'La formule tient en une ligne : cout de l\'application divise par le revenu net par client multiplie par la duree d\'abonnement. L\'erreur qui fausse tout est le prix affiche : apres TVA et commission du store il reste environ 70 pour cent. Le calcul est deroule sur trois budgets reels, 8 000, 15 000 et 25 000 euros, avec le nombre d\'abonnes actifs puis le nombre de clients a convaincre en tenant compte de ceux qui partent.',

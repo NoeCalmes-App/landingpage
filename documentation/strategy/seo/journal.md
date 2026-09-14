@@ -9,6 +9,38 @@
 
 ---
 
+## 14/09/2026 · Un article qui contredit un autre, volontairement
+
+**Ce qui a ete fait** : deux articles publies le meme jour,
+`combien-de-clients-pour-rentabiliser-application` puis
+`application-avec-ia-rentable`. Le second nuance frontalement une affirmation du
+premier cluster : « frais de fonctionnement faibles, donc marge elevee », ecrite
+dans `application-mobile-meilleur-investissement`.
+
+**Pourquoi ce choix** : l'affirmation est vraie pour une application classique
+et fausse des qu'un modele d'IA est appele, puisque le cout devient variable et
+suit l'usage. Deux options se presentaient : corriger discretement l'ancien
+article, ou publier l'exception et relier les deux. La seconde a ete retenue.
+Corriger aurait fait disparaitre un sujet entier, alors que l'exception est
+precisement ce que cherchent les gens qui veulent mettre de l'IA dans leur app.
+Le lien entrant a donc ete pose depuis l'article contredit vers l'article qui le
+nuance, et l'article s'ouvre en assumant la contradiction.
+
+**Ce qu'on en retient** : une contradiction interne est une opportunite
+editoriale, pas une erreur a effacer. Deux conditions pour que ca marche : le
+nouvel article doit citer l'ancien explicitement, et l'ancien doit pointer vers
+le nouveau. Sinon les deux pages se concurrencent au lieu de se completer.
+
+Second arbitrage, sur le territoire : le site comptait deja quatre articles
+« IA ». Aucun ne traitait de l'IA **dans le produit**, tous traitaient de l'IA
+**comme outil de fabrication**. La distinction entre « creer une app avec l'IA »
+et « creer une app qui contient de l'IA » est un territoire a part entiere, avec
+une intention d'achat differente. Verifier ca par un `grep` sur le vocabulaire
+metier (cout par requete, cout variable, marge) avant d'ecrire a pris deux
+minutes et a evite un cinquieme article redondant.
+
+---
+
 ## 10/09/2026 · Visibilite dans les IA : le site etait coupe en deux
 
 Point de depart : un audit GEO externe (geolify.ai) note le site **63/100**.

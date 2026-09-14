@@ -21,6 +21,140 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'application-avec-ia-rentable',
+    title: "Mettre de l'IA dans ton application : ce que ça rapporte, ce que ça coûte",
+    metaTitle: "Application avec de l'IA : est-ce rentable ? | Noé Calmes",
+    description: "L'IA ne coûte pas qu'au développement : chaque utilisateur consomme des appels payants tous les mois. Le calcul, et les trois garde-fous.",
+    date: '2026-09-14',
+    readTime: '8 min',
+    finalCta: 'audit',
+    categorie: "Monétisation",
+    accroche: "Le seul type d'application qui te coûte de l'argent chaque mois, même sans nouveau client.",
+    tldr: {
+      verdict: "Une application classique ne te coûte presque rien par utilisateur. Une application qui appelle un modèle d'IA paie à chaque usage. Sur un abonnement à 9,99 € qui te laisse 7,08 € nets, un utilisateur intensif peut en consommer 6 en appels. Ça ne rend pas l'IA inintéressante, au contraire : ça change la façon de fixer le prix et de concevoir le produit.",
+      points: [
+        { label: "Le sujet", valeur: "Ce que coûte l'IA dans une application, par utilisateur et par mois" },
+        { label: "Pour qui", valeur: "Tu veux mettre de l'IA dans ton app et savoir si la marge tient" },
+        { label: "Le repère", valeur: "Un utilisateur intensif peut absorber 85 % de ton revenu net" },
+        { label: "À retenir", valeur: "Le quota se décide à la conception, pas après la première facture" },
+      ],
+    },
+    pourQui: [
+      "Tu veux ajouter une fonction d'IA à une application existante ou à venir",
+      "Tu vends un abonnement et tu veux savoir si la marge tient une fois l'IA dedans",
+      "Tu préfères connaître le coût récurrent avant de le découvrir sur ta facture",
+    ],
+    pasPourQui: [
+      "Tu veux mettre de l'IA parce que c'est le mot du moment",
+      "Ton application ne prévoit aucun revenu : le coût sera alors entièrement pour toi",
+      "Tu cherches une estimation au centime près, les tarifs des modèles bougent souvent",
+    ],
+    faq: [
+      { q: "Combien coûte concrètement une requête à un modèle d'IA ?", a: "Elle se facture au token, c'est-à-dire au morceau de texte, en entrée comme en sortie. L'ordre de grandeur utile : quelques centimes pour une requête qui produit une vraie réponse avec un bon modèle, nettement moins avec un petit modèle sur une tâche simple. Les tarifs baissent régulièrement, donc ne retiens pas le chiffre du jour. Retiens que ce coût existe, qu'il se répète à chaque usage, et qu'il faut le poser dans ton calcul dès le départ." },
+      { q: "Est-ce que l'IA peut tourner sur le téléphone plutôt que dans le cloud ?", a: "Oui, pour une partie des usages. Transcription vocale, classification, reconnaissance d'image, recommandation simple : iOS et Android embarquent des modèles locaux, et le coût par requête tombe à zéro. La limite est la taille et la qualité, un modèle embarqué ne rédige pas comme un grand modèle. C'est le bon choix quand la tâche est cadrée et le volume élevé, et c'est souvent la première optimisation à regarder." },
+      { q: "Faut-il proposer une version gratuite ?", a: "Oui, mais pas n'importe comment. Avec de l'IA, chaque utilisateur gratuit est un coût pur : mille utilisateurs gratuits qui font dix requêtes par mois, c'est environ 200 € mensuels sans un euro de revenu. La règle est de limiter le gratuit en nombre de requêtes plutôt qu'en durée. Une limite de requêtes se maîtrise, un essai de trente jours ne se maîtrise pas." },
+      { q: "L'IA justifie-t-elle un prix plus élevé ?", a: "Souvent oui, et c'est le vrai levier. Une application qui fait gagner une heure par semaine se vend plus cher qu'une application qui affiche du contenu, parce que le client compare à ce que cette heure lui coûte. Doubler le prix absorbe largement le coût des appels et divise par deux le nombre de clients nécessaires. C'est presque toujours la bonne réponse avant d'aller chercher des économies techniques." },
+    ],
+    content: `
+      <p>Il y a une phrase qu'on répète partout sur les applications mobiles : une fois lancée, elle ne coûte presque rien à faire tourner. C'est vrai. Je l'ai écrite moi-même dans <a href="/blog/application-mobile-meilleur-investissement/">l'application mobile comme investissement</a>, et je la maintiens.</p>
+      <p>Elle devient fausse le jour où tu mets de l'IA dedans.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et une application que j'ai conçue génère environ 13 000 € par mois. Voici ce que change réellement l'IA dans un modèle économique, avec les chiffres.</p>
+
+      <h2>Ce que l'IA change dans ton modèle économique</h2>
+      <p>Une application classique a un coût de départ, puis des frais fixes : comptes développeur, hébergement, maintenance. Que tu aies cent ou dix mille utilisateurs, ces frais bougent à peine. C'est exactement ce qui rend le modèle intéressant : chaque nouvel abonné arrive presque entièrement en marge.</p>
+      <p>Une application qui appelle un modèle d'IA fonctionne autrement. Chaque fois qu'un utilisateur appuie sur le bouton, une requête part vers un modèle et cette requête est facturée. Ton coût ne dépend plus du nombre d'utilisateurs, il dépend du nombre d'utilisations.</p>
+      <div class="encadre cle">
+        <span class="encadre-titre">La bascule en une phrase</span>
+        <p>Tu passes d'un <strong>coût fixe</strong> à un <strong>coût variable</strong>. Et un coût variable ne se découvre pas, il se conçoit. C'est la seule vraie différence, mais elle change tout le reste.</p>
+      </div>
+      <p>Ce n'est pas une mauvaise nouvelle. Un coût variable veut dire que tu ne paies que pour de l'usage réel, donc pour de la valeur réellement délivrée. Mais il doit être posé dans le calcul de rentabilité, pas ajouté après coup.</p>
+
+      <h2>Ce que ça coûte, par utilisateur et par mois</h2>
+      <p>Prenons une hypothèse volontairement prudente : 2 centimes par requête. C'est l'ordre de grandeur d'une requête qui produit une réponse utile avec un bon modèle. Un petit modèle sur une tâche simple coûte beaucoup moins.</p>
+      <p>Côté revenus, on reprend la base de <a href="/blog/combien-de-clients-pour-rentabiliser-application/">combien de clients pour rentabiliser ton application</a> : un abonnement affiché 9,99 € te laisse environ 7,08 € nets, après TVA et commission du store.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Profil d'utilisateur</th><th>Requêtes par mois</th><th>Coût IA</th><th>Ce qu'il te reste</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Occasionnel</td><td>30</td><td>0,60 €</td><td>6,48 € · 92 %</td></tr>
+            <tr><td>Régulier</td><td>100</td><td>2,00 €</td><td>5,08 € · 72 %</td></tr>
+            <tr><td>Intensif</td><td>300</td><td>6,00 €</td><td>1,08 € · 15 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Regarde la dernière ligne. Ce n'est pas un utilisateur théorique : c'est dix requêtes par jour, ce que fait n'importe qui qui trouve ton application utile. Autrement dit, <strong>ton meilleur utilisateur est celui qui te coûte le plus cher</strong>, et sur une application classique c'était exactement l'inverse.</p>
+      <div class="encadre attention">
+        <span class="encadre-titre">L'erreur à ne pas faire</span>
+        <p>Raisonner sur l'utilisateur moyen. La moyenne est rassurante et elle ment : dans la plupart des applications, une petite fraction des utilisateurs génère la majorité des appels. Ce sont eux qui décident de ta facture, pas la moyenne.</p>
+      </div>
+
+      <h2>Ce que ça fait au nombre de clients nécessaires</h2>
+      <p>Le coût variable ne se contente pas de rogner la marge, il déplace le seuil de rentabilité. Voici le nombre d'abonnés nécessaires pour rembourser une application à 9 000 € en douze mois, selon le coût IA moyen par abonné.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Coût IA moyen par abonné</th><th>Net qui te revient</th><th>Abonnés nécessaires</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>aucun (application classique)</td><td>7,08 €</td><td>environ 106</td></tr>
+            <tr><td>0,60 € · usage occasionnel</td><td>6,48 €</td><td>environ 116</td></tr>
+            <tr><td>1,50 € · usage mixte réaliste</td><td>5,58 €</td><td>environ 134</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Vingt-huit abonnés de plus entre la première et la dernière ligne. Ce n'est pas dramatique, et c'est précisément le point : <strong>le coût de l'IA est gérable tant qu'il est prévu</strong>. Il ne devient un problème que lorsqu'il n'a jamais été posé dans le calcul, et qu'on le découvre au troisième mois sur une facture qui a triplé.</p>
+
+      <h2>Le piège du gratuit</h2>
+      <p>C'est là que la plupart des projets se font mal.</p>
+      <p>Sur une application classique, un utilisateur gratuit ne coûte rien. Il occupe une ligne dans une base de données et c'est tout. Le raisonnement « je laisse entrer tout le monde, je convertirai ensuite » est sain.</p>
+      <p>Avec de l'IA, ce raisonnement se retourne.</p>
+      <div class="chiffre">
+        <span class="chiffre-valeur">200 € par mois</span>
+        <span class="chiffre-texte">c'est ce que coûtent mille utilisateurs gratuits qui font dix requêtes mensuelles, à 2 centimes la requête. Sans un euro de revenu en face. Et ce montant grandit exactement au rythme de ton succès.</span>
+      </div>
+      <p>La solution n'est pas de supprimer le gratuit, il reste le meilleur moyen de convaincre. Elle est de le compter en requêtes et non en jours. Cinq requêtes offertes, c'est un coût maximal de dix centimes par inscrit, connu à l'avance. Un essai gratuit de trente jours, c'est un montant que tu ne maîtrises pas.</p>
+
+      <h2>Ce que l'IA rapporte vraiment</h2>
+      <p>Jusqu'ici je n'ai parlé que de coûts. Passons à l'autre côté, parce que c'est là que se trouve l'intérêt réel.</p>
+      <p>L'IA ne rapporte pas parce qu'elle est de l'IA. Elle rapporte parce qu'elle permet de vendre plus cher, et c'est un levier bien plus puissant que toutes les économies techniques réunies.</p>
+      <ul>
+        <li><strong>Elle déplace la comparaison.</strong> Une application de contenu se compare à d'autres applications, donc à quelques euros. Une application qui fait gagner une heure par semaine se compare à ce que vaut cette heure. Le client ne raisonne plus au même niveau de prix.</li>
+        <li><strong>Elle justifie un abonnement.</strong> Payer tous les mois pour du contenu figé est difficile à défendre. Payer tous les mois pour quelque chose qui produit un résultat neuf à chaque usage est naturel. Voir <a href="/blog/application-par-abonnement/">l'application par abonnement</a>.</li>
+        <li><strong>Elle crée une raison de revenir.</strong> Et la fréquence d'usage est ce qui fait tenir la rétention, donc le nombre de mois pendant lesquels chaque client te rapporte.</li>
+      </ul>
+      <div class="encadre astuce">
+        <span class="encadre-titre">Le calcul qui règle le problème</span>
+        <p>Passer de 9,99 € à 19,99 € fait monter ton net de 7,08 € à environ 14,16 €. Le coût IA d'un utilisateur intensif, 6 €, passe de 85 % de ta marge à 42 %. <strong>Le prix absorbe le coût variable bien mieux que n'importe quelle optimisation technique.</strong></p>
+      </div>
+
+      <h2>Les trois garde-fous à poser avant d'écrire une ligne de code</h2>
+      <p>Ces trois décisions se prennent à la conception. Après, elles coûtent une refonte.</p>
+      <ol>
+        <li><strong>Un quota par utilisateur, visible.</strong> Un nombre de requêtes incluses dans l'abonnement, affiché clairement, avec la possibilité d'en acheter plus. Ce n'est pas une contrainte subie : c'est ce qui rend ton coût prévisible et ce qui ouvre une seconde source de revenus sur tes utilisateurs les plus engagés.</li>
+        <li><strong>Le bon modèle pour chaque tâche.</strong> Toutes les requêtes ne se valent pas. Classer, résumer, extraire une information : un petit modèle suffit, pour une fraction du prix. Réserve le gros modèle aux tâches qui le méritent vraiment. C'est souvent le levier qui divise la facture par cinq sans que l'utilisateur voie la différence.</li>
+        <li><strong>Un cache sur les réponses répétées.</strong> Si dix utilisateurs posent la même question, la deuxième à la dixième réponse peuvent être servies sans repayer. Sur certains usages, cela supprime une grande partie des appels. C'est purement technique, ça se décide au moment de l'architecture, et personne n'y pense après.</li>
+      </ol>
+      <p>Ces trois points ne sont pas des optimisations de fin de projet. Ce sont des choix de structure : un quota se dessine dans l'interface, un modèle se choisit dans le code, un cache se pose dans l'architecture.</p>
+
+      <h2>Les cas où l'IA ne rapporte rien</h2>
+      <p>Il faut aussi le dire franchement, parce que je le vois souvent.</p>
+      <p>L'IA ne rapporte rien quand elle est décorative. Un bouton « résumer avec l'IA » sur une application qui n'a rien à résumer ajoute une ligne sur la fiche du store, un coût par clic, et pas un euro de plus. Le test est simple : si tu retires la fonction d'IA et que personne ne se plaint, elle ne crée pas de valeur, elle crée une facture.</p>
+      <p>Elle ne rapporte rien non plus quand elle remplace une fonction qu'un calcul classique faisait très bien. Trier une liste, filtrer des résultats, recommander selon des règles claires : un algorithme normal est plus rapide, plus fiable et gratuit. Appeler un modèle pour ça, c'est payer pour être moins bon.</p>
+      <p>Et elle ne rapporte rien si ton application n'a pas de modèle de revenus. Le sujet est traité dans <a href="/blog/pourquoi-applications-ne-rapportent-rien/">pourquoi la plupart des applications ne rapportent rien</a> : l'IA n'a jamais réparé un produit qui n'avait pas de raison d'être payé.</p>
+
+      <h2>Par où commencer</h2>
+      <p>Trois étapes, dans cet ordre, et aucune ne demande de développer quoi que ce soit.</p>
+      <ol>
+        <li><strong>Écris la phrase que l'IA permet de dire à ton client.</strong> Pas la technologie, le résultat : « tu récupères deux heures par semaine », « tu n'as plus à rédiger ça toi-même ». Si la phrase ne vient pas, la fonction n'est pas mûre.</li>
+        <li><strong>Estime le nombre de requêtes par utilisateur et par mois.</strong> Compte le profil intensif, pas la moyenne. Multiplie par 2 centimes. Tu as ton coût variable, et tu sais s'il tient dans ton prix.</li>
+        <li><strong>Fixe ton prix à partir de ce coût, pas l'inverse.</strong> Puis reprends la formule de <a href="/blog/combien-de-clients-pour-rentabiliser-application/">combien de clients pour rentabiliser ton application</a> avec le net réel, coût IA déduit.</li>
+      </ol>
+      <p>Si tu veux que je fasse ce calcul sur ton projet, avec ta fonction d'IA, ton volume estimé et ton prix, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes et te donne le seuil réel avant d'engager quoi que ce soit.</p>
+    `,
+  },
+  {
     slug: 'combien-de-clients-pour-rentabiliser-application',
     title: "Combien de clients faut-il pour rentabiliser ton application ?",
     metaTitle: "Combien de clients pour rentabiliser ton app ? | Noé Calmes",
@@ -1850,6 +1984,7 @@ export const BLOG_ARTICLES = [
 // orphelin. Ajouter un article implique donc de le citer ici au moins deux fois.
 
 export const ARTICLES_LIES = {
+  'application-avec-ia-rentable': ['combien-de-clients-pour-rentabiliser-application', 'application-mobile-meilleur-investissement', 'creer-application-avec-ia'],
   'combien-de-clients-pour-rentabiliser-application': ['combien-rapporte-application-mobile', 'combien-coute-application-mobile', 'rentabiliser-application-mobile'],
   'application-mobile-avec-claude': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'faire-evoluer-application-mobile'],
   'lovable-base44-application-mobile': ['creer-application-avec-ia', 'creer-application-sans-savoir-coder', 'application-mobile-avec-claude'],
@@ -1859,11 +1994,11 @@ export const ARTICLES_LIES = {
   'modele-economique-application-mobile': ['application-par-abonnement', 'rentabiliser-application-mobile', 'idee-application-business-rentable'],
   'application-par-abonnement': ['modele-economique-application-mobile', 'combien-rapporte-application-mobile', 'application-audience-revenus-recurrents'],
   'idee-application-business-rentable': ['rentabiliser-application-mobile', 'application-mobile-meilleur-investissement', 'application-mobile-coach-formateur'],
-  'pourquoi-applications-ne-rapportent-rien': ['rentabiliser-application-mobile', 'modele-economique-application-mobile', 'creer-application-avec-ia'],
+  'pourquoi-applications-ne-rapportent-rien': ['rentabiliser-application-mobile', 'modele-economique-application-mobile', 'application-avec-ia-rentable'],
   'application-audience-revenus-recurrents': ['application-mobile-coach-formateur', 'application-par-abonnement', 'combien-de-clients-pour-rentabiliser-application'],
   'application-mobile-coach-formateur': ['application-audience-revenus-recurrents', 'modele-economique-application-mobile', 'combien-coute-application-mobile'],
-  'creer-application-avec-ia': ['pourquoi-applications-ne-rapportent-rien', 'application-mobile-avec-claude', 'creer-application-sans-savoir-coder'],
-  'application-mobile-meilleur-investissement': ['rentabiliser-application-mobile', 'combien-coute-application-mobile', 'creation-application-mobile-toulouse'],
+  'creer-application-avec-ia': ['pourquoi-applications-ne-rapportent-rien', 'application-mobile-avec-claude', 'application-avec-ia-rentable'],
+  'application-mobile-meilleur-investissement': ['rentabiliser-application-mobile', 'application-avec-ia-rentable', 'creation-application-mobile-toulouse'],
 
   // Cluster creation / conduite de projet
   'creer-application-sans-savoir-coder': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'creer-application-mobile-guide'],
