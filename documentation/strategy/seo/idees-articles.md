@@ -138,7 +138,7 @@ Liens : `/blog/creer-application-avec-ia/`, `/blog/combien-coute-application-mob
 ---
 
 ### 2. Combien de clients faut-il pour rentabiliser ton application
-**Statut** : à écrire · **Format** : calcul · **Mot-clé** : rentabiliser une application combien de clients
+**Statut** : ✅ publié le 14/09/2026 · **Format** : calcul · **Mot-clé** : rentabiliser une application combien de clients
 
 Le calcul que se fait tout acheteur avant de signer. Poser la formule : coût de
 l'application ÷ (prix mensuel net × durée moyenne d'abonnement). Dérouler trois
@@ -147,6 +147,15 @@ commission des stores et TVA. Utiliser un `<div class="chiffre">` pour le
 résultat central.
 
 Liens : `/blog/combien-rapporte-application-mobile/`, `/blog/combien-coute-application-mobile/`.
+
+> **Ce que la rédaction a révélé, et qui a servi au-delà de l'article.** Deux
+> articles déjà en ligne chiffraient le remboursement en **brut**, sans déduire
+> la TVA ni la commission du store : 68 abonnés pour 9 000 €, 45 pour 8 000 €.
+> Les vrais chiffres sont 96 et 63. Les six mentions ont été corrigées et
+> renvoient désormais vers l'article de calcul.
+>
+> Règle à garder : dès qu'un article avance un chiffre de rentabilité, il part
+> du **net**, jamais du prix affiché. Compter environ 70 % du prix TTC.
 
 ---
 

@@ -21,6 +21,115 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'combien-de-clients-pour-rentabiliser-application',
+    title: "Combien de clients faut-il pour rentabiliser ton application ?",
+    metaTitle: "Combien de clients pour rentabiliser ton app ? | Noé Calmes",
+    description: "La formule, avec les trois budgets réels et l'erreur qui fausse tout : le prix affiché n'est pas ce que tu touches. Compte 70 %, pas 100 %.",
+    date: '2026-09-14',
+    readTime: '7 min',
+    finalCta: 'audit',
+    categorie: "Budget",
+    accroche: "Le calcul que tout le monde fait mal avant de signer.",
+    tldr: {
+      verdict: "Coût de l'application ÷ (revenu net par client × durée d'abonnement). L'erreur qui fausse tout : le prix affiché n'est pas ce que tu touches. Après TVA et commission du store, il te reste environ 70 %, et un calcul fait sur le prix brut sous-estime d'un tiers le nombre de clients nécessaires.",
+      points: [
+        { label: "Le sujet", valeur: "La formule, et les trois budgets déroulés en chiffres" },
+        { label: "Pour qui", valeur: "Tu veux savoir si ton projet tient avant d'engager un budget" },
+        { label: "Le repère", valeur: "Environ 95 abonnés pour rembourser une application à 8 000 €" },
+        { label: "À retenir", valeur: "La vraie question n'est pas le prix, c'est le nombre de clients" },
+      ],
+    },
+    pourQui: [
+      "Tu as un devis en main et tu veux savoir si le projet tient debout",
+      "Tu as une audience et tu veux estimer ce qu'elle peut convertir",
+      "Tu préfères un calcul honnête à une projection flatteuse",
+    ],
+    pasPourQui: [
+      "Tu cherches une garantie de revenus, personne de sérieux n'en donne",
+      "Tu comptes ajuster les hypothèses jusqu'à ce que le calcul tombe juste",
+      "Ton application ne prévoit aucun revenu direct",
+    ],
+    faq: [
+      { q: "Pourquoi seulement 70 % du prix affiché ?", a: "Parce que deux prélèvements passent avant toi. La TVA d'abord, puisque le prix affiché sur les stores est TTC : à 20 %, un abonnement à 9,99 € ne fait plus que 8,33 € hors taxes. La commission du store ensuite, 15 % dans le programme petits éditeurs, ce qui laisse 7,08 €. Hors de ce programme la commission monte à 30 % et il ne reste que 5,83 €, soit 58 %." },
+      { q: "Faut-il compter les abonnés actifs ou les clients à convaincre ?", a: "Les deux, et ce ne sont pas les mêmes nombres. Les abonnés actifs sont ceux que tu dois avoir en même temps pour couvrir le coût. Les clients à convaincre tiennent compte de ceux qui partent : si chacun reste huit mois, il t'en faut environ une fois et demie plus. C'est le second chiffre qui compte pour piloter." },
+      { q: "Et si je n'ai pas encore d'audience ?", a: "Alors le calcul te dit surtout par où commencer. Convaincre 140 personnes quand tu pars de zéro demande un budget d'acquisition qui ne figure nulle part dans ton devis de développement. Dans ce cas, construire l'audience avant l'application est presque toujours la bonne séquence." },
+    ],
+    content: `
+      <p>C'est le calcul que tout le monde fait dans sa tête avant de signer, souvent mal, et toujours trop vite. Il tient pourtant en une ligne, à condition de ne pas oublier ce que presque tous les calculs oublient.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et une application que j'ai conçue génère environ 13 000 € par mois. Voici la formule que j'utilise avec mes clients avant d'écrire la moindre ligne de code.</p>
+
+      <h2>La formule, en une ligne</h2>
+      <p>Nombre de clients à acquérir = coût de l'application ÷ (revenu net par client et par mois × nombre de mois où il reste abonné).</p>
+      <p>Trois variables seulement. La première, tu la connais : c'est ton devis. Les deux autres sont celles où tout se joue, et ce sont précisément celles que les calculs rapides massacrent.</p>
+
+      <h2>Le prix affiché n'est pas ce que tu touches</h2>
+      <p>Voilà l'erreur numéro un, et elle fausse tout d'un facteur qu'on n'imagine pas.</p>
+      <p>Sur l'App Store et Google Play, le prix que voit ton client est toujours TTC. Avant que quoi que ce soit t'arrive, deux prélèvements passent : la TVA d'abord, la commission du store ensuite.</p>
+      <p>Prenons un abonnement à 9,99 € par mois, avec une TVA à 20 % et la commission réduite de 15 % du programme petits éditeurs, celui dont relèvent la quasi-totalité des projets dont je parle ici.</p>
+      <div class="chiffre">
+        <span class="chiffre-valeur">7,08 €</span>
+        <span class="chiffre-texte">c'est ce qui te reste sur un abonnement affiché 9,99 €. Soit 71 % du prix. Si tu n'es pas dans le programme petits éditeurs, la commission passe à 30 % et il ne te reste plus que 5,83 €, soit 58 %.</span>
+      </div>
+      <div class="encadre attention">
+        <span class="encadre-titre">Le réflexe à prendre</span>
+        <p>Compte environ <strong>70 % du prix affiché</strong>. Un calcul fait sur le prix brut te donne un nombre de clients inférieur d'un tiers à la réalité. C'est exactement la marge d'erreur qui fait qu'un projet semble rentable sur le papier et ne l'est pas.</p>
+      </div>
+
+      <h2>Le calcul, sur trois budgets réels</h2>
+      <p>Sur la base de 9,99 € par mois, donc 7,08 € nets, voici le nombre d'abonnés que tu dois avoir <strong>en même temps</strong> pour rembourser ton application en douze mois.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Coût de l'application</th><th>Abonnés actifs nécessaires</th><th>Revenu mensuel net</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>8 000 €</td><td>environ 95</td><td>environ 670 €</td></tr>
+            <tr><td>15 000 €</td><td>environ 180</td><td>environ 1 250 €</td></tr>
+            <tr><td>25 000 €</td><td>environ 295</td><td>environ 2 080 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Regarde ces nombres avant de regarder ton budget. La question n'est pas « est-ce que 15 000 € est cher », elle est « est-ce que je peux atteindre 180 abonnés ». Ce sont deux discussions complètement différentes, et seule la seconde décide.</p>
+
+      <h2>La variable que personne ne met dans le calcul</h2>
+      <p>Le tableau ci-dessus suppose que tes abonnés restent. Dans la vraie vie, ils partent, et c'est normal.</p>
+      <p>Or si tu dois avoir 180 abonnés actifs en permanence et que chacun reste en moyenne huit mois, tu ne dois pas en convaincre 180 : tu dois en convaincre bien plus, et continuer d'en convaincre chaque mois pour remplacer ceux qui s'en vont.</p>
+      <p>Le calcul honnête devient alors celui-ci, avec une durée moyenne d'abonnement de huit mois :</p>
+      <ul>
+        <li>Une application à <strong>8 000 €</strong> : environ 140 clients à convaincre.</li>
+        <li>Une application à <strong>15 000 €</strong> : environ 265 clients.</li>
+        <li>Une application à <strong>25 000 €</strong> : environ 440 clients.</li>
+      </ul>
+      <p>C'est moins confortable que le premier tableau, et c'est le vrai chiffre. Mieux vaut le connaître avant de signer qu'au huitième mois.</p>
+
+      <h2>Alors, est-ce que c'est atteignable ?</h2>
+      <p>Pose-toi la question dans l'autre sens, c'est là qu'elle devient utile.</p>
+      <p>Si tu as une audience, une clientèle ou un fichier, tu as déjà un dénominateur. Cent quarante clients sur une liste de deux mille personnes qui te connaissent, c'est sept pour cent : discutable, mais crédible. Cent quarante clients à partir de zéro, sans audience et sans budget d'acquisition, c'est une autre histoire, et il faut le dire franchement.</p>
+      <div class="encadre cle">
+        <span class="encadre-titre">Le test en une question</span>
+        <p>Combien de personnes peux-tu toucher aujourd'hui, sans rien dépenser de plus ? Divise ton nombre de clients nécessaires par ce chiffre. Si le taux qui en sort dépasse dix pour cent, ton projet repose sur une hypothèse optimiste, et il faut soit baisser le coût, soit monter le prix, soit élargir l'audience avant de développer.</p>
+      </div>
+
+      <h2>Les trois leviers pour faire baisser ce nombre</h2>
+      <p>Quand le chiffre ne passe pas, il y a exactement trois choses à faire, et une quatrième à ne pas faire.</p>
+      <ul>
+        <li><strong>Monter le prix.</strong> C'est le levier le plus puissant et le plus négligé. Passer de 9,99 € à 19,99 € divise par deux le nombre de clients nécessaires. Si ta valeur le justifie, c'est immédiat et ça ne coûte rien.</li>
+        <li><strong>Réduire le périmètre de la première version.</strong> Une application à 8 000 € plutôt qu'à 15 000 € demande 125 clients de moins. C'est souvent le même produit, avec trois écrans en moins qui pourront venir plus tard, financés par les revenus.</li>
+        <li><strong>Allonger la durée d'abonnement.</strong> Passer de huit à douze mois de rétention fait baisser le nombre de clients d'un tiers. Ça se joue dans la conception : une valeur qui se renouvelle, une raison de revenir.</li>
+      </ul>
+      <p>Ce qu'il ne faut pas faire, c'est gonfler l'hypothèse d'audience pour que le calcul tombe juste. Le tableur finit toujours par avoir raison.</p>
+
+      <h2>Par où commencer</h2>
+      <p>Trois étapes, dans cet ordre, et aucune ne demande de développer quoi que ce soit.</p>
+      <ol>
+        <li><strong>Pose ton prix avant ton budget.</strong> Ce que tu comptes facturer par mois détermine tout le reste. Si tu ne sais pas encore, regarde ce que ton client paie déjà pour résoudre ce problème autrement.</li>
+        <li><strong>Calcule ton nombre de clients avec 70 % du prix affiché.</strong> Pas avec le prix brut. Puis divise par ton audience réelle pour obtenir le taux à atteindre.</li>
+        <li><strong>Si le taux te paraît haut, agis sur le prix ou le périmètre.</strong> Pas sur l'hypothèse d'audience.</li>
+      </ol>
+      <p>Pour les ordres de grandeur de coût, regarde <a href="/blog/combien-coute-application-mobile/">combien coûte une application mobile</a>. Pour ce qu'une application peut rapporter au-delà du remboursement, <a href="/blog/combien-rapporte-application-mobile/">combien rapporte une application mobile</a>. Et si tu veux que je fasse ce calcul sur ton projet précis, avec ton prix et ton audience, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes.</p>
+    `,
+  },
+  {
     slug: 'application-mobile-avec-claude',
     title: "Créer une application mobile avec Claude : oui, et voilà où ça coince",
     metaTitle: "Créer une application avec Claude : et après ? | Noé Calmes",
@@ -377,7 +486,7 @@ export const BLOG_ARTICLES = [
       points: [
         { label: "Le sujet", valeur: "Comment une communauté devient un revenu qui revient seul" },
         { label: "Pour qui", valeur: "Tu as une audience mais des revenus irréguliers" },
-        { label: "Repère", valeur: "Environ 68 abonnés pour rembourser une application à 9 000 €" },
+        { label: "Repère", valeur: "Environ 96 abonnés pour rembourser une application à 9 000 €" },
         { label: "Erreur classique", valeur: "Confondre volume d'abonnés et revenus" },
       ],
     },
@@ -435,8 +544,8 @@ export const BLOG_ARTICLES = [
       <h2>Le calcul qui décide si ça vaut le coup</h2>
       <p>Un ordre de grandeur vaut mieux qu'une promesse. Une première version sérieuse se situe le plus souvent entre 5 000 € et 12 000 € selon le périmètre.</p>
       <p>Prends une application à 9 000 € et un abonnement à 14,99 € par mois. Après commission du store et TVA, il te reste autour de 11 € net par abonné.</p>
-      <p>Il te faut donc à peu près 68 abonnés actifs pour rembourser l'investissement en un an. Au delà, chaque abonné supplémentaire est du revenu récurrent qui ne te demande plus de vendre.</p>
-      <p>Sur une audience de 10 000 personnes, 68 abonnés représentent moins de 1 % de conversion. C'est un objectif discutable et vérifiable, pas un pari. Refais ce calcul avec tes propres chiffres avant de parler technique.</p>
+      <p>Attention au calcul rapide : sur les 11 €, la TVA et la commission du store passent avant toi, et il t'en reste environ 7,80. Il te faut donc à peu près 96 abonnés actifs pour rembourser l'investissement en un an, pas 68. Le détail est dans <a href="/blog/combien-de-clients-pour-rentabiliser-application/">combien de clients pour rentabiliser ton application</a>. Au delà, chaque abonné supplémentaire est du revenu récurrent qui ne te demande plus de vendre.</p>
+      <p>Sur une audience de 10 000 personnes, 96 abonnés représentent environ 1 % de conversion. C'est un objectif discutable et vérifiable, pas un pari. Refais ce calcul avec tes propres chiffres avant de parler technique.</p>
 
       <h2>L'erreur classique : confondre volume et revenus</h2>
       <p>Beaucoup d'audience ne veut pas dire beaucoup de revenus. J'ai vu ce scénario de très près : la première version de Hush a dépassé 300 000 utilisateurs sans modèle de revenu pensé dès le départ. Énormément de monde, presque pas de chiffre d'affaires.</p>
@@ -461,13 +570,13 @@ export const BLOG_ARTICLES = [
     readTime: '7 min',
     finalCta: 'audit',
     categorie: "Ton activité",
-    accroche: "Vendre autre chose que ton temps. À partir de 45 abonnés.",
+    accroche: "Vendre autre chose que ton temps. À partir de 63 abonnés.",
     tldr: {
       verdict: "Une application a du sens pour un coach, un formateur ou un consultant quand ton temps est devenu le plafond de tes revenus. Elle sert à délivrer sans toi, pas à te remplacer.",
       points: [
         { label: "Le sujet", valeur: "Les 4 formats qui fonctionnent et quand se lancer" },
         { label: "Pour qui", valeur: "Coachs, formateurs, consultants avec des clients existants" },
-        { label: "Repère", valeur: "Environ 45 abonnés pour rembourser une application à 8 000 €" },
+        { label: "Repère", valeur: "Environ 63 abonnés pour rembourser une application à 8 000 €" },
         { label: "Erreur classique", valeur: "L'application vitrine, qui ne délivre rien" },
       ],
     },
@@ -533,8 +642,8 @@ export const BLOG_ARTICLES = [
 
       <h2>À partir de quand c'est rentable</h2>
       <p>Un ordre de grandeur vaut mieux qu'un discours. Une première version sérieuse se situe le plus souvent entre 5 000 € et 12 000 € selon le périmètre.</p>
-      <p>Prends une application à 8 000 € avec un abonnement à 19,99 € par mois. Après commission du store et TVA, il te reste autour de 15 € net. Il te faut donc à peu près 45 abonnés actifs pour rembourser l'investissement en un an. Au delà, c'est du revenu récurrent.</p>
-      <p>45 abonnés, sur une audience existante ou un portefeuille client, c'est un objectif discutable et atteignable, pas un pari. C'est exactement le calcul que je fais avec mes clients avant de lancer quoi que ce soit. Les ordres de grandeur complets sont dans <a href="/blog/combien-rapporte-application-mobile/">combien rapporte réellement une application mobile</a>.</p>
+      <p>Prends une application à 8 000 € avec un abonnement à 19,99 € par mois. Après commission du store et TVA, il te reste autour de 15 € net. Attention au calcul rapide : la TVA et la commission du store passent avant toi, et il ne te reste qu'environ 10,60 € sur 15. Il te faut donc à peu près 63 abonnés actifs pour rembourser l'investissement en un an, pas 45. Au delà, c'est du revenu récurrent.</p>
+      <p>63 abonnés, sur une audience existante ou un portefeuille client, c'est un objectif discutable et atteignable, pas un pari. C'est exactement le calcul que je fais avec mes clients avant de lancer quoi que ce soit. Les ordres de grandeur complets sont dans <a href="/blog/combien-rapporte-application-mobile/">combien rapporte réellement une application mobile</a>.</p>
 
       <h2>L'erreur qui coûte le plus cher</h2>
       <p>Elle est presque toujours la même : faire une application vitrine. Une belle interface qui affiche tes offres, un bouton de contact, et rien qui donne une raison de revenir la semaine suivante.</p>
@@ -768,7 +877,7 @@ export const BLOG_ARTICLES = [
     ],
     faq: [
       { q: "Comment valider une idée sans développer l'application ?", a: "Tu vends l'idée avant de la construire : une page qui décrit l'offre, un formulaire, des conversations avec dix personnes de ta cible. Si personne ne s'inscrit ni ne pose de question sur le prix, le problème n'est pas assez douloureux." },
-      { q: "Il faut combien d'utilisateurs pour que ce soit rentable ?", a: "Beaucoup moins que ce que les gens imaginent. Une application à 9 000 € se rembourse avec environ 68 abonnés à 11 € par mois sur un an. La question utile n'est pas « des millions ? » mais « est-ce que je peux atteindre 68 personnes ? »." },
+      { q: "Il faut combien d'utilisateurs pour que ce soit rentable ?", a: "Beaucoup moins que ce que les gens imaginent. Une application à 9 000 € se rembourse avec environ 96 abonnés à 11 € par mois sur un an, une fois la TVA et la commission du store déduites. La question utile n'est pas « des millions ? » mais « est-ce que je peux atteindre 68 personnes ? »." },
       { q: "Faut-il un cahier des charges avant de te contacter ?", a: "Non. Une idée et une cible suffisent. Traduire une idée en périmètre fait partie de mon travail, et un cahier des charges écrit trop tôt fige souvent de mauvaises décisions." },
     ],
     content: `
@@ -1741,16 +1850,17 @@ export const BLOG_ARTICLES = [
 // orphelin. Ajouter un article implique donc de le citer ici au moins deux fois.
 
 export const ARTICLES_LIES = {
+  'combien-de-clients-pour-rentabiliser-application': ['combien-rapporte-application-mobile', 'combien-coute-application-mobile', 'rentabiliser-application-mobile'],
   'application-mobile-avec-claude': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'faire-evoluer-application-mobile'],
   'lovable-base44-application-mobile': ['creer-application-avec-ia', 'creer-application-sans-savoir-coder', 'application-mobile-avec-claude'],
   // Cluster monetisation, pilier : rentabiliser-application-mobile
   'rentabiliser-application-mobile': ['modele-economique-application-mobile', 'combien-rapporte-application-mobile', 'pourquoi-applications-ne-rapportent-rien'],
-  'combien-rapporte-application-mobile': ['rentabiliser-application-mobile', 'combien-coute-application-mobile', 'application-mobile-meilleur-investissement'],
+  'combien-rapporte-application-mobile': ['combien-de-clients-pour-rentabiliser-application', 'combien-coute-application-mobile', 'application-mobile-meilleur-investissement'],
   'modele-economique-application-mobile': ['application-par-abonnement', 'rentabiliser-application-mobile', 'idee-application-business-rentable'],
   'application-par-abonnement': ['modele-economique-application-mobile', 'combien-rapporte-application-mobile', 'application-audience-revenus-recurrents'],
   'idee-application-business-rentable': ['rentabiliser-application-mobile', 'application-mobile-meilleur-investissement', 'application-mobile-coach-formateur'],
   'pourquoi-applications-ne-rapportent-rien': ['rentabiliser-application-mobile', 'modele-economique-application-mobile', 'creer-application-avec-ia'],
-  'application-audience-revenus-recurrents': ['application-mobile-coach-formateur', 'application-par-abonnement', 'rentabiliser-application-mobile'],
+  'application-audience-revenus-recurrents': ['application-mobile-coach-formateur', 'application-par-abonnement', 'combien-de-clients-pour-rentabiliser-application'],
   'application-mobile-coach-formateur': ['application-audience-revenus-recurrents', 'modele-economique-application-mobile', 'combien-coute-application-mobile'],
   'creer-application-avec-ia': ['pourquoi-applications-ne-rapportent-rien', 'application-mobile-avec-claude', 'creer-application-sans-savoir-coder'],
   'application-mobile-meilleur-investissement': ['rentabiliser-application-mobile', 'combien-coute-application-mobile', 'creation-application-mobile-toulouse'],

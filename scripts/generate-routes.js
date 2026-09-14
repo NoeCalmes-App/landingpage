@@ -566,6 +566,11 @@ for (const route of legacySectionRoutes) {
 // `lireMetaArticles()` : ne pas les redefinir ici, ils seraient ignores.
 const blogRoutes = [
   {
+    path: '/blog/combien-de-clients-pour-rentabiliser-application',
+    heading: 'Combien de clients faut-il pour rentabiliser ton application ?',
+    content: 'La formule tient en une ligne : cout de l\'application divise par le revenu net par client multiplie par la duree d\'abonnement. L\'erreur qui fausse tout est le prix affiche : apres TVA et commission du store il reste environ 70 pour cent. Le calcul est deroule sur trois budgets reels, 8 000, 15 000 et 25 000 euros, avec le nombre d\'abonnes actifs puis le nombre de clients a convaincre en tenant compte de ceux qui partent.',
+  },
+  {
     path: '/blog/application-mobile-avec-claude',
     heading: 'Créer une application mobile avec Claude : oui, et voilà où ça coince',
     content: 'Claude écrit du vrai code natif, dans un vrai projet, et ce que tu as construit est réel. Mais un projet de développement n\'est pas une application publiable : entre les deux il y a une chaîne d\'identité, de contrat et d\'encaissement qui n\'a rien de technique. Le Mac obligatoire pour compiler, la vérification des comptes développeur, les autorisations qui expirent au bout de sept jours sur un compte gratuit, le statut de vendeur professionnel en Europe, le contrat et les informations bancaires sans lesquels aucun euro ne peut te revenir.',
