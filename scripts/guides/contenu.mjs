@@ -109,9 +109,9 @@ const acces = (numero) => ({
         'Cliquer sur ton nom en haut à droite, puis sur <b>Mes contacts</b>.',
         'Ton domaine apparaît sur <b>plusieurs lignes</b> : une « Domaine », une « Emails », et une <b>« Zone DNS »</b>. <b>C’est la ligne « Zone DNS » qu’il faut.</b>',
         'Tout à droite de cette ligne, cliquer sur les <b>trois petits points</b>, puis sur <b>Modifier les contacts</b>.',
-        `Trois champs s’affichent. <b>Ne changer que le champ « Contact technique »</b>, et y mettre&nbsp;: <span class="mono">${NICHANDLE}</span>. Si une proposition apparaît sous le champ, clique dessus.`,
+        `Trois champs s’affichent. <b>Ne changer que le champ « Contact technique »</b>, et y coller mon identifiant client OVH, c’est moi&nbsp;: <span class="mono">${NICHANDLE}</span>. Si une proposition apparaît sous le champ, clique dessus.`,
         'Cocher <b>« Répliquer cette modification de contact sur le service Domaine associé »</b>, puis valider.',
-        'Un e-mail d’OVH arrive avec un lien de confirmation : cliquer dessus. Je reçois un message séparé de mon côté et je confirme aussi. <b>S’il n’arrive pas</b>, c’est que l’adresse de ton profil OVH n’est plus la bonne : la corriger dans ton profil, puis refaire cette étape.',
+        'Un e-mail d’OVH arrive dans les minutes qui suivent, avec un lien de confirmation : cliquer dessus. <b>Regarde aussi tes spams</b>, il y atterrit souvent. Je reçois un message séparé de mon côté et je confirme aussi. <b>Rien au bout de 15 minutes ?</b> L’adresse de ton profil OVH n’est plus la bonne : ton nom en haut à droite, ouvrir ton profil, corriger l’adresse, puis refaire cette étape.',
       ],
     },
   ],
@@ -135,12 +135,13 @@ export const GUIDES = [
       titre: 'Et ensuite ?',
       liste: [
         'Envoie-moi <b>le nom de ton domaine</b> et <b>l’adresse e-mail pro</b> que tu viens de créer (exemple : monapp.fr et monentreprise@monapp.fr).',
+        'Et <b>l’adresse de ton compte Google</b>, un Gmail suffit. C’est elle qui recevra la propriété de ton domaine chez Google, et c’est avec elle que tu ouvriras ta Google Play Console.',
         'Je configure le domaine et je mets le site en ligne.',
       ],
       // ⚠️ LA PHRASE QUI ÉVITE UN DOSSIER REFUSÉ. Apple et Google vérifient que
       // le site de l'entreprise répond vraiment. L'explication a été retirée le
       // 15/09 ; la consigne, elle, reste.
-      attente: '<b>Attends ma confirmation que le site est en ligne</b> avant d’acheter les licences Apple Developer et Google Play.',
+      attente: 'Compte quelques heures avant que le site réponde partout, le temps que la modification se propage sur Internet. <b>Attends ma confirmation qu’il est en ligne</b> avant d’acheter les licences Apple Developer et Google Play.',
     },
   },
   {
@@ -159,6 +160,7 @@ export const GUIDES = [
       titre: 'Et ensuite ?',
       liste: [
         'Envoie-moi <b>le nom de ton domaine</b> (exemple : monsite.fr).',
+        'Et <b>l’adresse de ton compte Google</b>, un Gmail suffit : c’est elle qui recevra la propriété de ton domaine chez Google, pour que tu n’aies pas à passer par moi dessus.',
         'Je configure le domaine et je mets le site en ligne sur ton adresse.',
       ],
       attente: 'Compte quelques heures avant que le site réponde partout, le temps que la modification se propage sur Internet.',
