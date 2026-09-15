@@ -118,3 +118,56 @@ Ce qui est arrivé :
   cher ».
 
 Les deux guides tiennent maintenant en **2 pages** au lieu de 3.
+
+## Passage au tutoiement, 15 septembre 2026
+
+Décision de Noé. Ses clients sont des artisans et des dirigeants de TPE qu'il a
+au téléphone avant de leur envoyer le document : un « vous » sonnait plus
+distant à l'écrit que la voix qu'ils venaient d'entendre.
+
+⚠️ **TOUTE PHRASE AJOUTÉE ICI DOIT TUTOYER.** Un seul « vous » oublié fait lire
+le document comme un copier-coller.
+
+### ⚠️ SAUF LES LIBELLÉS CITÉS D'UNE INTERFACE
+
+La bascule a mordu sur un message affiché par OVH : le guide disait d'attendre
+que **« Ton produit est disponible »** soit coché, alors que la page de suivi de
+commande affiche **« Votre produit est disponible »**. Le client cherchait à
+l'écran un texte qui n'y est pas.
+
+**Un libellé cité n'est pas notre phrase, c'est une CAPTURE.** Nom de bouton,
+d'onglet, de champ, de case à cocher, message de confirmation : ça se recopie
+tel quel, vouvoiement compris. La règle est aussi écrite en commentaire dans
+`contenu.mjs`, à l'endroit exact où la faute s'est produite.
+
+### La section « vérifier votre adresse e-mail » a été retirée
+
+Elle occupait une sous-section entière avec un encadré d'avertissement, pour une
+précaution. Trop de texte.
+
+⚠️ **MAIS LE FAIT RESTE VRAI, ET LA CONSIGNE A DÉMÉNAGÉ, ELLE N'A PAS DISPARU.**
+OVH envoie le lien de confirmation à l'adresse du PROFIL, pas à celle qu'on
+relève tous les jours, et tant que le client n'a pas cliqué, la demande reste en
+attente **sans que personne soit prévenu**. La phrase vit maintenant dans
+l'étape où l'e-mail est censé arriver, en une ligne, lue seulement par qui en a
+besoin. Ne pas la supprimer : sans elle, un compte OVH ouvert il y a huit ans
+bloque le dossier en silence.
+
+### Relecture par trois lentilles
+
+Neuf corrections proposées, six retenues. Les deux écartées, et pourquoi :
+
+- **« Répliquer cette modification de contact sur le service Domaine associé »**,
+  qu'un relecteur voulait tronquer par prudence sur le libellé exact. ⚠️ Noé a
+  lu cette phrase sur son propre écran OVH et l'a recopiée mot pour mot : la
+  citation est juste, c'est le relecteur qui doutait à tort.
+- **« E-mails » à écrire « Emails »**, par cohérence avec la ligne des contacts.
+  Le PDF d'origine, fait à partir de captures réelles, écrivait « E-mails » : on
+  ne corrige pas un libellé relevé à l'écran sur la foi d'une supposition.
+
+Les six retenues : le libellé OVH rétabli, « son compte » devenu « ton compte »,
+« les quatre cases » devenu « toutes les cases » (le nombre varie selon la
+commande, et un client qui en compte trois croit s'être trompé d'écran), la
+partie avant le @ explicitée pour la redirection, « vers l'adresse » clarifiée
+(on pouvait comprendre qu'il fallait créer une NOUVELLE boîte, payante et
+inutile), et le champ « Contact technique » nommé au lieu d'être compté.

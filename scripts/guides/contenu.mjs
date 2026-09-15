@@ -9,6 +9,12 @@
 // ⚠️ LES DEUX FAMILLES PARTAGENT TOUT SAUF TROIS CHOSES : le titre, la boîte
 // mail (qui n'existe que sur un projet d'application, pour le dossier Apple) et
 // le mot de la fin. Le reste est écrit UNE fois.
+//
+// ⚠️ ON TUTOIE. Décision de Noé, le 15 septembre 2026. Ses clients sont des
+// artisans et des dirigeants de TPE qu'il a au téléphone avant de leur envoyer
+// le document : un « vous » sonnait plus distant à l'écrit que la voix qu'ils
+// venaient d'entendre. En corollaire, toute phrase ajoutée ici doit tutoyer —
+// un seul « vous » oublié fait lire le document comme un copier-coller.
 
 export const NICHANDLE = 'cn440614-ovh'
 
@@ -23,19 +29,19 @@ export const NICHANDLE = 'cn440614-ovh'
 const MINUTES = 10
 
 /**
- * ⚠️ « CONSEIL » ET NON « PRIVILÉGIEZ LE .FR ». L'ancienne ligne fermait la
+ * ⚠️ « CONSEIL » ET NON « PRIVILÉGIE LE .FR ». L'ancienne ligne fermait la
  * porte au .app, qui est l'extension naturelle d'un projet d'application et
  * que des clients demandent d'eux-mêmes. Une recommandation qui interdit se
  * fait contourner en silence, et on l'apprend après l'achat.
  */
 const CONSEIL_EXTENSION = '<b>Conseil</b> : .fr, .com ou .app.'
 
-const acheter = (mot, exemple) => [
+const acheter = (mot) => [
   {
     titre: '1) Choisir le nom',
     liste: [
       'Ouvrir <b>ovhcloud.com/fr/domains</b>.',
-      `Saisir le nom de votre ${mot}, puis lancer la recherche.`,
+      `Saisir le nom de ton ${mot}, puis lancer la recherche.`,
       'Prendre celui qui est libre : <b>.fr</b>, <b>.com</b> ou <b>.app</b>.',
     ],
   },
@@ -43,17 +49,21 @@ const acheter = (mot, exemple) => [
     titre: '2) Commander',
     liste: [
       '<b>Acheter</b>, puis <b>Poursuivre la commande</b>.',
-      'Forfait <b>1, 2 ou 3 ans</b>, à vous de choisir. <b>Poursuivre la commande</b>.',
+      'Forfait <b>1, 2 ou 3 ans</b>, à toi de choisir. <b>Poursuivre la commande</b>.',
       'Aucune option à ajouter. <b>Poursuivre la commande</b>.',
-      'Se connecter à son compte OVHcloud, ou en créer un.',
+      'Se connecter à ton compte OVHcloud, ou en créer un.',
       'En bas à droite, <b>Continuer</b>.',
-      'Cocher les quatre cases, descendre jusqu’au paiement, payer.',
+      'Cocher toutes les cases d’acceptation, descendre jusqu’au paiement, payer.',
     ],
   },
   {
     titre: '3) Attendre la livraison',
     liste: [
       'Un e-mail arrive en moins de 5 minutes. Cliquer sur <b>Suivre la commande</b>.',
+      // ⚠️ « VOTRE PRODUIT » ET NON « TON PRODUIT ». C'est le message AFFICHÉ
+      // PAR OVH, pas notre phrase : le client doit le retrouver mot pour mot à
+      // l'écran. Tutoyé par la bascule du 15/09, il envoyait chercher un texte
+      // qui n'existe pas. ⚠️ Même règle pour tout libellé cité d'une interface.
       'Attendre que « Votre produit est disponible » soit coché, 5 minutes au plus.',
     ],
   },
@@ -62,11 +72,11 @@ const acheter = (mot, exemple) => [
 const emailPro = {
   titre: '4) Créer l’adresse e-mail pro',
   liste: [
-    'En haut à gauche, <b>Tableau de bord</b>, puis cliquer sur votre nom de domaine (exemple : monapp.fr).',
+    'En haut à gauche, <b>Tableau de bord</b>, puis cliquer sur ton nom de domaine (exemple : monapp.fr).',
     'À côté d’<b>Informations générales</b>, ouvrir <b>E-mails</b>.',
     'À droite, <b>Gestion des redirections</b>, puis <b>Ajouter une redirection</b>.',
-    '<b>De l’adresse</b> : le nom de votre société, sans espace ni accent (exemple : monentreprise). En micro-entreprise, vos nom et prénom collés : jeandupont.',
-    '<b>Vers l’adresse</b> : celle où vous recevrez les e-mails de votre application.',
+    '<b>De l’adresse</b> : seulement ce qui va AVANT le @, le reste est déjà rempli à côté. Le nom de ta société, sans espace ni accent (exemple : monentreprise). En micro-entreprise, tes nom et prénom collés : jeandupont.',
+    '<b>Vers l’adresse</b> : ton adresse e-mail habituelle, celle que tu consultes déjà.',
     '<b>Mode de copie</b> : Conserver une copie, puis <b>Valider</b>.',
   ],
 }
@@ -80,34 +90,28 @@ const emailPro = {
  * le domaine sans dire pourquoi. Un client n'a ni le vocabulaire d'une zone
  * DNS, ni le moyen de vérifier son travail.
  *
- * ⚠️ L'ÉTAPE DE L'E-MAIL VIENT EN PREMIER, ET CE N'EST PAS DÉCORATIF. OVH
- * envoie le code de confirmation à l'adresse du PROFIL, pas à celle qu'on
- * utilise tous les jours. Sur un compte ouvert il y a huit ans, elle est morte :
- * le message part dans le vide et les deux côtés attendent sans savoir pourquoi.
- * C'est le blocage numéro un.
+ * ⚠️ IL RESTE UNE LIGNE SUR L'ADRESSE E-MAIL DU PROFIL, ET ELLE EST PORTEUSE.
+ * Le 15/09, la section entière qui demandait de la vérifier AVANT a été
+ * retirée : trop de texte pour une précaution. Mais le fait reste vrai — OVH
+ * envoie le lien de confirmation à l'adresse du PROFIL, pas à celle qu'on
+ * relève tous les jours, et la demande reste en attente sans que personne soit
+ * prévenu. La consigne a donc déménagé À L'ENDROIT OÙ ELLE SERT : dans l'étape
+ * où l'e-mail est censé arriver, en une ligne. Ne pas la supprimer : sans elle,
+ * un compte OVH ouvert il y a huit ans bloque le dossier en silence.
  */
 const acces = (numero) => ({
-  titre: `${numero}) M’autoriser à configurer votre domaine`,
-  intro: 'Vous n’avez aucun réglage technique à faire : je m’en occupe. Il faut seulement m’y autoriser, une fois.',
+  titre: `${numero}) M’autoriser à configurer ton domaine`,
+  intro: 'Tu n’as aucun réglage technique à faire : je m’en occupe. Il faut seulement m’y autoriser, une fois.',
   sousSections: [
     {
-      titre: 'Étape 1 — vérifier votre adresse e-mail OVH',
-      texte: 'OVH va vous envoyer un message de confirmation à l’étape suivante. Il part à l’adresse enregistrée dans votre <b>profil OVH</b>, qui n’est pas toujours celle que vous utilisez tous les jours.',
+      titre: 'Dans ton espace client OVH',
       liste: [
-        'Cliquer sur votre nom en haut à droite, puis sur votre profil.',
-        'Vérifier que l’adresse affichée est bien une adresse que vous relevez. La corriger si besoin.',
-      ],
-      note: 'Ne sautez pas cette étape. C’est de loin la cause numéro un de blocage : le message part dans le vide, et nous attendons tous les deux sans savoir pourquoi.',
-    },
-    {
-      titre: 'Étape 2 — m’ajouter en contact technique',
-      liste: [
-        'Cliquer sur votre nom en haut à droite, puis sur <b>Mes contacts</b>.',
-        'Votre domaine apparaît sur <b>plusieurs lignes</b> : une « Domaine », une « Emails », et une <b>« Zone DNS »</b>. <b>C’est la ligne « Zone DNS » qu’il faut.</b>',
+        'Cliquer sur ton nom en haut à droite, puis sur <b>Mes contacts</b>.',
+        'Ton domaine apparaît sur <b>plusieurs lignes</b> : une « Domaine », une « Emails », et une <b>« Zone DNS »</b>. <b>C’est la ligne « Zone DNS » qu’il faut.</b>',
         'Tout à droite de cette ligne, cliquer sur les <b>trois petits points</b>, puis sur <b>Modifier les contacts</b>.',
-        `Trois champs s’affichent. <b>Ne changer que celui du milieu</b>, « Contact technique », et y mettre&nbsp;: <span class="mono">${NICHANDLE}</span>`,
+        `Trois champs s’affichent. <b>Ne changer que le champ « Contact technique »</b>, et y mettre&nbsp;: <span class="mono">${NICHANDLE}</span>. Si une proposition apparaît sous le champ, clique dessus.`,
         'Cocher <b>« Répliquer cette modification de contact sur le service Domaine associé »</b>, puis valider.',
-        'Un e-mail d’OVH arrive avec un lien de confirmation : cliquer dessus. Je reçois de mon côté un message séparé et je confirme aussi.',
+        'Un e-mail d’OVH arrive avec un lien de confirmation : cliquer dessus. Je reçois un message séparé de mon côté et je confirme aussi. <b>S’il n’arrive pas</b>, c’est que l’adresse de ton profil OVH n’est plus la bonne : la corriger dans ton profil, puis refaire cette étape.',
       ],
     },
   ],
@@ -119,25 +123,24 @@ export const GUIDES = [
     titre: 'Nom de domaine + e-mail pro',
     minutes: MINUTES,
     objectif: 'Acheter un nom de domaine (exemple : monapp.fr)',
-    quoi: 'L’adresse de votre site, du type <b>monapp.fr</b>. C’est moi qui construis le site ; le domaine, lui, s’achète à votre nom et vous appartient. Votre adresse e-mail professionnelle en découle : monentreprise@monapp.fr.',
-    prerequis: 'Une carte bancaire, et le nom que portera votre application.',
+    quoi: 'L’adresse de ton site, du type <b>monapp.fr</b>. C’est moi qui construis le site ; le domaine, lui, s’achète à ton nom et t’appartient. Ton adresse e-mail professionnelle en découle : monentreprise@monapp.fr.',
+    prerequis: 'Une carte bancaire, et le nom que portera ton application.',
     retenir: [
-      '<b>Obligatoire pour publier sur l’App Store.</b> La licence Apple exige un site et une adresse e-mail à votre domaine. D’où la première place.',
+      '<b>Obligatoire pour publier sur l’App Store et le Google Play Store.</b>',
       'Environ <b>5 € par an</b>, à renouveler chaque année.',
       CONSEIL_EXTENSION,
     ],
-    sections: [...acheter('application', 'monapp.fr'), emailPro, acces(5)],
+    sections: [...acheter('application'), emailPro, acces(5)],
     fin: {
       titre: 'Et ensuite ?',
       liste: [
-        'Envoyez-moi <b>le nom de votre domaine</b> et <b>l’adresse e-mail pro</b> que vous venez de créer (exemple : monapp.fr et monentreprise@monapp.fr).',
+        'Envoie-moi <b>le nom de ton domaine</b> et <b>l’adresse e-mail pro</b> que tu viens de créer (exemple : monapp.fr et monentreprise@monapp.fr).',
         'Je configure le domaine et je mets le site en ligne.',
       ],
       // ⚠️ LA PHRASE QUI ÉVITE UN DOSSIER REFUSÉ. Apple et Google vérifient que
-      // le site de l'entreprise répond vraiment. Ouvrir le dossier avant, c'est
-      // le faire refuser, et un dossier refusé se rouvre bien plus
-      // difficilement qu'il ne s'ouvre.
-      attente: '<b>Attendez ma confirmation que le site est en ligne</b> avant d’acheter les licences Apple Developer et Google Play.',
+      // le site de l'entreprise répond vraiment. L'explication a été retirée le
+      // 15/09 ; la consigne, elle, reste.
+      attente: '<b>Attends ma confirmation que le site est en ligne</b> avant d’acheter les licences Apple Developer et Google Play.',
     },
   },
   {
@@ -145,20 +148,20 @@ export const GUIDES = [
     titre: 'Nom de domaine',
     minutes: MINUTES,
     objectif: 'Acheter un nom de domaine (exemple : monsite.fr)',
-    quoi: 'L’adresse de votre site, du type <b>monsite.fr</b>. C’est moi qui construis le site ; le domaine, lui, s’achète à votre nom et vous appartient.',
-    prerequis: 'Une carte bancaire, et le nom que portera votre site.',
+    quoi: 'L’adresse de ton site, du type <b>monsite.fr</b>. C’est moi qui construis le site ; le domaine, lui, s’achète à ton nom et t’appartient.',
+    prerequis: 'Une carte bancaire, et le nom que portera ton site.',
     retenir: [
       'Environ <b>5 € par an</b>, à renouveler chaque année.',
       CONSEIL_EXTENSION,
     ],
-    sections: [...acheter('site', 'monsite.fr'), acces(4)],
+    sections: [...acheter('site'), acces(4)],
     fin: {
       titre: 'Et ensuite ?',
       liste: [
-        'Envoyez-moi <b>le nom de votre domaine</b> (exemple : monsite.fr).',
-        'Je configure le domaine et je mets le site en ligne sur votre adresse.',
+        'Envoie-moi <b>le nom de ton domaine</b> (exemple : monsite.fr).',
+        'Je configure le domaine et je mets le site en ligne sur ton adresse.',
       ],
-      attente: 'Comptez quelques heures avant que le site réponde partout, le temps que la modification se propage sur Internet.',
+      attente: 'Compte quelques heures avant que le site réponde partout, le temps que la modification se propage sur Internet.',
     },
   },
 ]
