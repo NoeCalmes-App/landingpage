@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 17mm 16mm 15mm; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: 'Lato', system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.55; color: #1c2430;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  /* L'en-tête se répète sur chaque page : « position: fixed » est reproduit par
+     l'imprimante de Chrome sur toutes les feuilles. C'est la seule façon
+     d'avoir un bandeau courant sans passer par le protocole de débogage. */
+  .bandeau {
+    position: fixed; top: -11mm; left: 0; right: 0;
+    text-align: right; font-size: 8pt; color: #8b93a1; letter-spacing: .01em;
+  }
+  h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+    font-size: 22pt; line-height: 1.15; color: #033475;
+    text-align: center; margin: 1mm 0 5.5mm;
+  }
+  h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+    font-size: 13pt; color: #033475; margin: 5.5mm 0 1.8mm;
+    break-after: avoid;
+  }
+  h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
+    font-size: 11pt; color: #665dff; margin: 5mm 0 1.5mm;
+    break-after: avoid;
+  }
+  p { margin: 0 0 2.5mm; }
+  .intro { color: #4a5464; }
+  ol, ul { margin: 0 0 3mm; padding-left: 5.5mm; }
+  li { margin-bottom: 1.6mm; }
+  li::marker { color: #665dff; font-weight: 700; }
+  b { font-weight: 700; color: #0f1720; }
+  /* ⚠️ « white-space: nowrap », ET C'EST UNE CORRECTION DE BOGUE RÉEL.
+     Sans lui, « cn440614-ovh » se coupait en fin de ligne sur le trait
+     d'union, et le trait DISPARAISSAIT à l'extraction du texte : un client
+     qui copie collait « cn440614ovh », un identifiant qui n'existe pas. La
+     procédure entière échouait sans que personne comprenne pourquoi. */
+  .mono {
+    font-family: 'Liberation Mono', 'SFMono-Regular', Menlo, monospace;
+    font-size: 10pt; background: #f0eeff; color: #3b31c9;
+    padding: .4mm 1.4mm; border-radius: 1mm; font-weight: 700;
+    white-space: nowrap;
+  }
+  /* La mise en garde : discrète mais impossible à sauter. Barre à gauche
+     plutôt que fond plein, qui ferait un pavé au milieu d'une liste. */
+  .note {
+    border-left: 2.2pt solid #ffb020; background: #fff8ec;
+    padding: 2mm 3mm; margin: 0 0 3mm; font-size: 9.5pt; color: #6b4b12;
+    break-inside: avoid;
+  }
+  .encadre {
+    border: .8pt solid #ccd2ff; background: #f6f5ff;
+    border-radius: 2.5mm; padding: 3.5mm 4mm; margin: 4mm 0 2mm;
+    font-size: 9.8pt; color: #33405c; break-inside: avoid;
+  }
+  .encadre-titre {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
+    color: #033475; font-size: 10.2pt; margin-bottom: 1.5mm;
+  }
+  .bloc { break-inside: auto; }
+  .fin {
+    border-top: .8pt solid #e3e6ee; margin-top: 5mm; padding-top: 3.5mm;
+    break-inside: avoid;
+  }
+  .fin h2 { margin-top: 0; }
+  .attente {
+    background: #eef6ff; border-radius: 2.5mm; padding: 3.5mm 4mm;
+    font-size: 9.8pt; color: #12365f; margin-top: 1mm;
+  }
+</style></head>
+<body>
+  <div class="bandeau">Entreprise &middot; Temps estimé : 10 min</div>
+  <h1>Nom de domaine + e-mail pro</h1>
+
+  <section class="bloc">
+    <h2>Le nom de domaine, c’est quoi ?</h2>
+    <p>L’adresse de votre site, du type <b>monapp.fr</b>. C’est moi qui construis le site ; le domaine, lui, s’achète à votre nom et vous appartient. Votre adresse e-mail professionnelle en découle : monentreprise@monapp.fr.</p>
+  </section>
+
+  <section class="bloc">
+    <h2>Prérequis</h2>
+    <p>Une carte bancaire, et le nom que portera votre application.</p>
+  </section>
+
+  <section class="bloc">
+    <h2>À retenir</h2>
+    <ul><li><b>Obligatoire pour publier sur l’App Store.</b> La licence Apple exige un site et une adresse e-mail à votre domaine. D’où la première place.</li><li>Environ <b>5 € par an</b>, à renouveler chaque année.</li><li>Privilégiez le <b>.fr</b>, sinon le <b>.com</b>.</li></ul>
+  </section>
+
+  <section class="bloc"><h2>1) Choisir le nom</h2><ol><li>Ouvrir <b>ovhcloud.com/fr/domains</b>.</li><li>Saisir le nom de votre application, puis lancer la recherche.</li><li>Prendre le <b>.fr</b> s’il est libre, sinon le <b>.com</b>.</li></ol></section>
+<section class="bloc"><h2>2) Commander</h2><ol><li><b>Acheter</b>, puis <b>Poursuivre la commande</b>.</li><li>Forfait <b>1 an</b>, le moins cher. <b>Poursuivre la commande</b>.</li><li>Aucune option à ajouter. <b>Poursuivre la commande</b>.</li><li>Se connecter à son compte OVHcloud, ou en créer un.</li><li>En bas à droite, <b>Continuer</b>.</li><li>Cocher les quatre cases, descendre jusqu’au paiement, payer.</li></ol></section>
+<section class="bloc"><h2>3) Attendre la livraison</h2><ol><li>Un e-mail arrive en moins de 5 minutes. Cliquer sur <b>Suivre la commande</b>.</li><li>Attendre que « Votre produit est disponible » soit coché, 5 minutes au plus.</li></ol></section>
+<section class="bloc"><h2>4) Créer l’adresse e-mail pro</h2><ol><li>En haut à gauche, <b>Tableau de bord</b>, puis cliquer sur votre nom de domaine (exemple : monapp.fr).</li><li>À côté d’<b>Informations générales</b>, ouvrir <b>E-mails</b>.</li><li>À droite, <b>Gestion des redirections</b>, puis <b>Ajouter une redirection</b>.</li><li><b>De l’adresse</b> : le nom de votre société, sans espace ni accent (exemple : monentreprise). En micro-entreprise, vos nom et prénom collés : jeandupont.</li><li><b>Vers l’adresse</b> : celle où vous recevrez les e-mails de votre application.</li><li><b>Mode de copie</b> : Conserver une copie, puis <b>Valider</b>.</li></ol></section>
+<section class="bloc"><h2>5) M’autoriser à configurer votre domaine</h2><p class="intro">Vous n’avez aucun réglage technique à faire : je m’en occupe. Il faut seulement m’y autoriser, une fois.</p><h3>Étape 1 — vérifier votre adresse e-mail OVH</h3><p>OVH va vous envoyer un message de confirmation à l’étape suivante. Il part à l’adresse enregistrée dans votre <b>profil OVH</b>, qui n’est pas toujours celle que vous utilisez tous les jours.</p><ol><li>Cliquer sur votre nom en haut à droite, puis sur votre profil.</li><li>Vérifier que l’adresse affichée est bien une adresse que vous relevez. La corriger si besoin.</li></ol><p class="note">Ne sautez pas cette étape. C’est de loin la cause numéro un de blocage : le message part dans le vide, et nous attendons tous les deux sans savoir pourquoi.</p><h3>Étape 2 — m’ajouter en contact technique</h3><ol><li>Cliquer sur votre nom en haut à droite, puis sur <b>Mes contacts</b>.</li><li>Votre domaine apparaît sur <b>plusieurs lignes</b> : une « Domaine », une « Emails », et une <b>« Zone DNS »</b>. <b>C’est la ligne « Zone DNS » qu’il faut.</b></li><li>Tout à droite de cette ligne, cliquer sur les <b>trois petits points</b>, puis sur <b>Modifier les contacts</b>.</li><li>Trois champs s’affichent. <b>Ne changer que celui du milieu</b>, « Contact technique », et y mettre&nbsp;: <span class="mono">cn440614-ovh</span></li><li>Cocher <b>« Répliquer cette modification de contact sur le service Domaine associé »</b>, puis valider.</li><li>Un e-mail d’OVH arrive avec un lien de confirmation : cliquer dessus. Je reçois de mon côté un message séparé et je confirme aussi.</li></ol><p class="note">Les trois lignes se ressemblent : regardez la colonne du milieu. C’est l’erreur la plus fréquente.</p><div class="encadre"><p class="encadre-titre">Ce que cet accès permet, et ce qu’il ne permet pas</p><p>Votre nom de domaine reste à 100 % à votre nom, vous en restez propriétaire. Je ne peux ni le transférer, ni le revendre, ni changer son titulaire. Je n’ai accès ni à vos factures ni à vos moyens de paiement. Vous pouvez me retirer cet accès quand vous voulez, en un clic, depuis ce même écran. Ne m’envoyez jamais votre mot de passe OVH : je n’en ai pas besoin, et OVH le déconseille.</p></div></section>
+
+  <section class="fin">
+    <h2>Et ensuite ?</h2>
+    <ol><li>Envoyez-moi <b>le nom de votre domaine</b> et <b>l’adresse e-mail pro</b> que vous venez de créer (exemple : monapp.fr et monentreprise@monapp.fr).</li><li>Je configure le domaine et je mets le site en ligne.</li></ol>
+    <p class="attente"><b>Attendez ma confirmation que le site est en ligne</b> avant d’acheter les licences Apple Developer et Google Play. Apple et Google vérifient que le site de votre entreprise répond vraiment, sur votre nom de domaine. Ouvrir le dossier trop tôt, c’est le faire refuser, et un dossier refusé se rouvre bien plus difficilement qu’il ne s’ouvre. Je vous préviens dès que c’est prêt : vous n’avez rien à surveiller.</p>
+  </section>
+</body></html>

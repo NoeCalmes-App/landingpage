@@ -1,156 +1,83 @@
-# Guides « Nom de domaine » — le texte à jour
+# Guides clients « Nom de domaine »
 
-**À coller dans les DEUX guides**, dans l'outil où les PDF ont été faits :
+Les deux guides ne sont plus des PDF orphelins : **leur texte est du code**, et
+le PDF se refabrique.
 
-- `public/assets/documents/guides/Achat nom de domaine.pdf` (famille app-mobile)
-- `public/assets/documents/guides/Achat nom de domaine - site web.pdf` (famille app-web)
+```bash
+npm run generer-guides
+```
 
-Le texte est **identique dans les deux** : un site seul et une application se
-préparent de la même façon.
+| Fichier | Famille | Pages |
+| --- | --- | --- |
+| `Achat nom de domaine.pdf` | app-mobile | 3 |
+| `Achat nom de domaine - site web.pdf` | app-web | 2 |
 
-## Pourquoi ce fichier existe
+- **Le texte** : `scripts/guides/contenu.mjs`
+- **La mise en page** : `scripts/generer-guides.mjs`
+- **La sortie** : `public/assets/documents/guides/`
 
-⚠️ **LES DEUX GUIDES SONT DES PDF SANS SOURCE DANS LE DÉPÔT.** Trois pages, six
-polices embarquées, des captures d'écran. On ne peut ni les relire ni les
-corriger depuis ici, et une page ajoutée par un outil tiers sortirait dans une
-autre typographie. Le texte vit donc ici, en clair : c'est le seul endroit où il
-se corrige, se compare et se retrouve.
+## ⚠️ Pourquoi ils ont été refaits
 
-⚠️ **ET PAS DANS LA PAGE WEB QUI AFFICHE LE PDF.** `src/Document.jsx` redirige
-les téléphones vers le fichier lui-même : tout ce qui entoure le lecteur est
-invisible sur mobile, là où les clients lisent. Ce qui doit être lu doit être
-DANS le PDF.
+Les deux guides sortaient d'un outil de mise en page, **sans aucune source dans
+le dépôt** : trois pages, six polices embarquées, des captures. On ne pouvait ni
+les relire, ni les comparer, ni corriger une faute sans rouvrir un outil qu'on
+ne retrouvait pas. Une erreur dans un guide client se voyait chez le client et y
+restait.
 
-## Le changement du 15 septembre 2026
+Chrome imprime maintenant du HTML en PDF, avec **les polices d'origine** (Plus
+Jakarta Sans pour les titres, Lato pour le texte) : le document reste dans la
+même famille visuelle que les cinq autres de l'espace client, et son contenu se
+relit en clair.
 
-**TOUTE LA PARTIE « CONFIGURATION DE LA ZONE DNS » SORT DU GUIDE.**
+## Ce qui a changé le 15 septembre 2026
 
-Elle demandait au client de poser lui-même huit enregistrements A, de supprimer
-les entrées de parking du registrar, et de ne pas se tromper de type. C'est le
-passage qui coûtait le plus cher : des jours d'aller-retour, des entrées à
-moitié posées, un domaine qui répond une fois sur cinq, et GitHub qui refuse le
-domaine sans dire pourquoi.
+**TOUTE LA SECTION « BRANCHER LE DOMAINE SUR LE SITE » A DISPARU.**
 
-⚠️ **UN CLIENT N'A RIEN À FAIRE DANS UNE ZONE DNS.** Il n'a ni le vocabulaire,
-ni les moyens de vérifier son travail. À la place il accorde un accès, une fois,
-en cinq minutes, et c'est Noé qui pose les entrées en deux minutes, sans se
-tromper, et qui les vérifie.
+Elle faisait poser au client **huit enregistrements DNS** à la main, après avoir
+supprimé les deux entrées de parking d'OVH. C'était le passage le plus cher du
+dossier : des jours d'aller-retour, des entrées à moitié posées, un domaine qui
+répond une fois sur cinq, et GitHub qui refuse le domaine sans dire pourquoi.
 
-Ce qui reste dans le guide : acheter le domaine, donner l'accès, envoyer deux
-informations, attendre. Rien d'autre.
+⚠️ **UN CLIENT N'A NI LE VOCABULAIRE D'UNE ZONE DNS, NI LE MOYEN DE VÉRIFIER SON
+TRAVAIL.** Il accorde maintenant un accès, une fois, et c'est Noé qui pose les
+entrées en deux minutes et les vérifie.
 
----
+À la place, trois gestes qu'un non-technicien sait faire :
 
-## Le texte à coller
+1. **Vérifier l'adresse e-mail de son profil OVH.** ⚠️ En premier, et ce n'est
+   pas décoratif : OVH envoie le code de confirmation à l'adresse du PROFIL, pas
+   à celle qu'il utilise tous les jours. Sur un compte ouvert il y a huit ans
+   elle est morte, le message part dans le vide, et les deux côtés attendent
+   sans savoir pourquoi. C'est le blocage numéro un.
+2. **Ajouter Noé en contact technique sur la ligne « Zone DNS ».** ⚠️ Pas sur la
+   ligne « Domaine » : chez OVH ce sont deux services, chaque domaine apparaît
+   sur trois lignes, et c'est l'erreur la plus fréquente.
+3. **Envoyer son domaine** (et l'adresse e-mail pro, sur un projet mobile).
 
-> ### Ce qu'il vous reste à faire, en 5 minutes
->
-> Votre nom de domaine est acheté. Il reste trois choses, et vous n'aurez aucun
-> réglage technique à faire : c'est moi qui m'en occupe.
->
-> ---
->
-> #### 1. Vérifiez l'adresse e-mail de votre compte OVH
->
-> OVH va vous envoyer un message de confirmation à l'étape suivante. Il part à
-> l'adresse enregistrée dans votre **profil OVH**, qui n'est pas toujours celle
-> que vous utilisez tous les jours.
->
-> Dans votre espace client OVH, cliquez sur votre nom en haut à droite, puis sur
-> votre profil, et vérifiez que l'adresse affichée est bien une adresse que vous
-> relevez. Corrigez-la si besoin.
->
-> **Ne sautez pas cette étape.** C'est de loin la cause numéro un de blocage :
-> le message part dans le vide, et on attend tous les deux sans savoir pourquoi.
->
-> ---
->
-> #### 2. Autorisez-moi à configurer votre domaine
->
-> Toujours dans votre espace client OVH :
->
-> 1. Cliquez sur votre nom en haut à droite, puis sur **Mes contacts**.
->    Adresse directe : `https://www.ovh.com/manager/#/account/contacts/services`
-> 2. Vous voyez la liste de vos services. Votre domaine y apparaît sur
->    **plusieurs lignes** : une ligne « Domaine », une ligne « Emails », et une
->    ligne **« Zone DNS »**.
->
->    **C'est la ligne « Zone DNS » qu'il vous faut.** C'est l'erreur la plus
->    fréquente : les lignes se ressemblent, regardez bien la colonne du milieu.
-> 3. Tout à droite de cette ligne, cliquez sur les **trois petits points**, puis
->    sur **Modifier les contacts**.
-> 4. Trois champs s'affichent. **Ne changez que celui du milieu**, « Contact
->    technique », et remplacez ce qu'il contient par :
->
->    **cn440614-ovh**
->
->    Ne touchez ni au contact administrateur, ni au contact de facturation.
-> 5. Cochez la case **« Répliquer cette modification de contact sur le service
->    Domaine associé »**, puis validez.
-> 6. Vous recevez un e-mail d'OVH avec un lien de confirmation : cliquez dessus.
->    Je reçois de mon côté un message séparé, avec un code différent du vôtre,
->    et je confirme aussi. Tant que l'un des deux manque, rien ne se passe.
->
-> **Ce que cet accès permet, et ce qu'il ne permet pas.** Votre nom de domaine
-> reste à 100 % à votre nom, vous en restez propriétaire. Je ne peux ni le
-> transférer, ni le revendre, ni changer son titulaire. Je n'ai accès ni à vos
-> factures ni à vos moyens de paiement. Et vous pouvez me retirer cet accès
-> quand vous voulez, en un clic, depuis ce même écran.
->
-> **Ne m'envoyez jamais votre mot de passe OVH.** Je n'en ai pas besoin, et OVH
-> le déconseille.
->
-> ---
->
-> #### 3. Envoyez-moi deux informations
->
-> Par message, simplement :
->
-> - **Votre nom de domaine**, exactement comme vous l'avez acheté
-> - **L'adresse e-mail** de votre compte OVH
->
-> C'est tout. Je m'occupe du reste : la configuration technique du domaine, la
-> mise en ligne du site, et la vérification auprès de Google.
->
-> ---
->
-> ### Et ensuite ?
->
-> **Attendez que je vous confirme que le site est en ligne** avant de passer à
-> l'achat des licences Apple Developer et Google Play.
->
-> Ce n'est pas une formalité d'ordre : Apple et Google vérifient que le site de
-> votre entreprise répond vraiment, avec du contenu, sur votre nom de domaine.
-> Ouvrir le dossier avant que le site soit en ligne, c'est le faire refuser, et
-> un dossier refusé se rouvre beaucoup plus difficilement qu'il ne s'ouvre.
->
-> Je vous préviens dès que c'est prêt. Vous n'avez rien à surveiller.
+Et **l'encadré qui fait accepter au lieu de reporter** : l'accès ne permet ni
+transfert, ni revente, ni changement de titulaire, ni accès aux factures, et se
+retire en un clic.
 
----
+## ⚠️ Le temps annoncé est passé de 20 à 10 minutes
+
+La moitié servait à poser les huit entrées. Laisser « 20 min » aurait fait
+reporter la lecture d'un quart d'heure qu'on ne demande plus.
+
+## ⚠️ Le nichandle ne doit JAMAIS pouvoir se couper
+
+`cn440614-ovh` est écrit en dur dans `contenu.mjs` : il ne change jamais et vaut
+pour tous les clients.
+
+**Bogue réel, corrigé le 15/09 :** sans `white-space: nowrap`, l'identifiant se
+coupait en fin de ligne sur le trait d'union, et **le trait disparaissait à
+l'extraction du texte**. Un client qui copie collait `cn440614ovh`, un
+identifiant qui n'existe pas, et la procédure entière échouait sans que personne
+comprenne pourquoi. Le style est vérifié à chaque génération : après toute
+modification, relire le PDF produit et confirmer que `cn440614-ovh` en ressort
+d'un seul tenant.
 
 ## Ce que Noé fait ensuite, seul
 
-Pour mémoire, et parce que c'est ce qui a disparu du guide client :
-
-1. Les 8 enregistrements A de GitHub Pages, et la suppression des entrées de
-   parking du registrar
-2. Le TXT de vérification Google Search Console, dans la même visite
-3. La propriété Google Search Console en type **« Domaine »**, jamais
-   « Préfixe de l'URL » : le préfixe ne couvre qu'une adresse exacte, et Google
-   Play n'interroge que la propriété Domaine quand il valide le site d'un compte
-   d'organisation
-
-La liste complète, avec les valeurs exactes, vit dans nowork : fiche client,
-bouton « À faire » de l'étape Comptes.
-
-## Le nichandle
-
-`cn440614-ovh` est l'identifiant OVH de Noé, relevé dans son espace client le
-15 septembre 2026. **Il ne change jamais et il est le même pour tous les
-clients**, comme un numéro de téléphone : c'est ce qui permet de figer le texte
-du guide une bonne fois, au lieu d'y laisser un trou à remplir à chaque envoi.
-
-⚠️ **CE N'EST PAS UN SECRET, mais ce n'est pas non plus un mot de passe.** Un
-nichandle sert à DÉSIGNER un compte, pas à y entrer. Le donner à un client ne
-lui ouvre rien. Ce qui ouvrirait quelque chose, c'est un mot de passe : il ne
-doit jamais circuler, dans aucun sens, et OVH le déconseille explicitement.
+La liste complète vit dans **nowork** : fiche client, étape Comptes, bouton
+« À faire », onglet « Nom de domaine et Google ». Elle porte les 8 adresses IP,
+le TXT de Search Console, et la marche à suivre Google Play.
