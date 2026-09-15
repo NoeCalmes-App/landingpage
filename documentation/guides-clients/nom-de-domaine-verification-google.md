@@ -82,7 +82,7 @@ informations, attendre. Rien d'autre.
 > 4. Trois champs s'affichent. **Ne changez que celui du milieu**, « Contact
 >    technique », et remplacez ce qu'il contient par :
 >
->    **[NICHANDLE DE NOÉ]**
+>    **cn440614-ovh**
 >
 >    Ne touchez ni au contact administrateur, ni au contact de facturation.
 > 5. Cochez la case **« Répliquer cette modification de contact sur le service
@@ -145,6 +145,12 @@ bouton « À faire » de l'étape Comptes.
 
 ## Le nichandle
 
-`[NICHANDLE DE NOÉ]` est à remplacer par l'identifiant OVH réel, de la forme
-`ab12345-ovh`. Il ne change jamais : c'est le même pour tous les clients, comme
-un numéro de téléphone. Il se lit dans le profil OVH.
+`cn440614-ovh` est l'identifiant OVH de Noé, relevé dans son espace client le
+15 septembre 2026. **Il ne change jamais et il est le même pour tous les
+clients**, comme un numéro de téléphone : c'est ce qui permet de figer le texte
+du guide une bonne fois, au lieu d'y laisser un trou à remplir à chaque envoi.
+
+⚠️ **CE N'EST PAS UN SECRET, mais ce n'est pas non plus un mot de passe.** Un
+nichandle sert à DÉSIGNER un compte, pas à y entrer. Le donner à un client ne
+lui ouvre rien. Ce qui ouvrirait quelque chose, c'est un mot de passe : il ne
+doit jamais circuler, dans aucun sens, et OVH le déconseille explicitement.
