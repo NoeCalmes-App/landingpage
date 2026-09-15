@@ -1,115 +1,150 @@
-# Vérification Google du domaine — texte à ajouter aux guides « Nom de domaine »
+# Guides « Nom de domaine » — le texte à jour
 
-**À coller à la fin des DEUX guides**, dans l'outil où les PDF ont été faits :
+**À coller dans les DEUX guides**, dans l'outil où les PDF ont été faits :
 
 - `public/assets/documents/guides/Achat nom de domaine.pdf` (famille app-mobile)
 - `public/assets/documents/guides/Achat nom de domaine - site web.pdf` (famille app-web)
 
+Le texte est **identique dans les deux** : un site seul et une application se
+préparent de la même façon.
+
 ## Pourquoi ce fichier existe
 
-⚠️ **LES DEUX GUIDES SONT DES PDF SANS SOURCE DANS LE DÉPÔT.** Trois pages,
-six polices embarquées, des captures d'écran. On ne peut donc ni les relire ni
-les corriger depuis ici, et une page ajoutée par un outil tiers sortirait dans
-une autre typographie, visiblement rapportée. Le texte vit donc ici, en clair :
-c'est le seul endroit où il se corrige, se compare et se retrouve.
+⚠️ **LES DEUX GUIDES SONT DES PDF SANS SOURCE DANS LE DÉPÔT.** Trois pages, six
+polices embarquées, des captures d'écran. On ne peut ni les relire ni les
+corriger depuis ici, et une page ajoutée par un outil tiers sortirait dans une
+autre typographie. Le texte vit donc ici, en clair : c'est le seul endroit où il
+se corrige, se compare et se retrouve.
 
 ⚠️ **ET PAS DANS LA PAGE WEB QUI AFFICHE LE PDF.** `src/Document.jsx` redirige
-les téléphones vers le fichier lui-même : tout ce qui est écrit autour du
-lecteur est invisible sur mobile, là où les clients lisent. Ce qui doit être lu
-doit être DANS le PDF.
+les téléphones vers le fichier lui-même : tout ce qui entoure le lecteur est
+invisible sur mobile, là où les clients lisent. Ce qui doit être lu doit être
+DANS le PDF.
 
-## Pourquoi cette étape existe
+## Le changement du 15 septembre 2026
 
-Google Play, pour un compte d'**organisation**, demande de valider le site de
-l'entreprise. Le formulaire le dit mot pour mot : *« Prouvez que ce site Web
-appartient à votre organisation en envoyant une demande de validation au
-propriétaire enregistré dans la Google Search Console. »*
+**TOUTE LA PARTIE « CONFIGURATION DE LA ZONE DNS » SORT DU GUIDE.**
 
-Play Console ne regarde donc pas le site : il regarde **qui est propriétaire du
-domaine dans Search Console**, et envoie la demande à cette personne. Sans
-propriétaire déclaré, il n'y a personne à qui l'envoyer, et le compte reste
-bloqué sur « Action requise ».
+Elle demandait au client de poser lui-même huit enregistrements A, de supprimer
+les entrées de parking du registrar, et de ne pas se tromper de type. C'est le
+passage qui coûtait le plus cher : des jours d'aller-retour, des entrées à
+moitié posées, un domaine qui répond une fois sur cinq, et GitHub qui refuse le
+domaine sans dire pourquoi.
 
-⚠️ **CETTE ÉTAPE NE DÉPEND PAS DU SITE.** La vérification lit la zone DNS,
-jamais les pages. Elle se fait donc **dès l'achat du domaine**, avant même que
-le site existe — et c'est tout l'intérêt : le client ouvre sa zone OVH UNE
-FOIS, pour les entrées A et pour ce TXT. Lui redemander trois semaines plus
-tard coûte une relance, une explication, et souvent une semaine d'attente.
+⚠️ **UN CLIENT N'A RIEN À FAIRE DANS UNE ZONE DNS.** Il n'a ni le vocabulaire,
+ni les moyens de vérifier son travail. À la place il accorde un accès, une fois,
+en cinq minutes, et c'est Noé qui pose les entrées en deux minutes, sans se
+tromper, et qui les vérifie.
+
+Ce qui reste dans le guide : acheter le domaine, donner l'accès, envoyer deux
+informations, attendre. Rien d'autre.
 
 ---
 
 ## Le texte à coller
 
-> ### Dernière étape : prouver à Google que le domaine est à vous
+> ### Ce qu'il vous reste à faire, en 5 minutes
 >
-> Google demande cette preuve pour publier une application au nom de votre
-> entreprise. Elle se fait une seule fois, et elle ne dépend pas du site : vous
-> pouvez la faire maintenant, même si le site n'est pas encore en ligne.
+> Votre nom de domaine est acheté. Il reste trois choses, et vous n'aurez aucun
+> réglage technique à faire : c'est moi qui m'en occupe.
 >
-> **1.** Allez sur **search.google.com/search-console** et connectez-vous avec
-> votre compte Google.
+> ---
 >
-> **2.** Cliquez sur **Ajouter une propriété**.
+> #### 1. Vérifiez l'adresse e-mail de votre compte OVH
 >
-> **3.** Deux choix s'affichent. Prenez celui de gauche, **Domaine**. C'est le
-> seul qui couvre votre site en entier. Ignorez « Préfixe de l'URL ».
+> OVH va vous envoyer un message de confirmation à l'étape suivante. Il part à
+> l'adresse enregistrée dans votre **profil OVH**, qui n'est pas toujours celle
+> que vous utilisez tous les jours.
 >
-> **4.** Saisissez votre nom de domaine **sans https:// et sans www**, par
-> exemple `monsite.fr`. Puis **Continuer**.
+> Dans votre espace client OVH, cliquez sur votre nom en haut à droite, puis sur
+> votre profil, et vérifiez que l'adresse affichée est bien une adresse que vous
+> relevez. Corrigez-la si besoin.
 >
-> **5.** Google affiche une ligne qui commence par
-> `google-site-verification=`, suivie d'une longue suite de lettres et de
-> chiffres. **Copiez-la en entier.** Laissez cette fenêtre ouverte.
+> **Ne sautez pas cette étape.** C'est de loin la cause numéro un de blocage :
+> le message part dans le vide, et on attend tous les deux sans savoir pourquoi.
 >
-> **6.** Dans un autre onglet, connectez-vous sur **ovh.com**, avec les
-> identifiants créés à l'achat du domaine.
+> ---
 >
-> **7.** En haut à gauche, cliquez sur **Tableau de bord**, puis sur votre nom
-> de domaine dans la liste.
+> #### 2. Autorisez-moi à configurer votre domaine
 >
-> **8.** Ouvrez l'onglet **Zone DNS**, puis **Ajouter une entrée**.
+> Toujours dans votre espace client OVH :
 >
-> **9.** Choisissez le type **TXT**.
+> 1. Cliquez sur votre nom en haut à droite, puis sur **Mes contacts**.
+>    Adresse directe : `https://www.ovh.com/manager/#/account/contacts/services`
+> 2. Vous voyez la liste de vos services. Votre domaine y apparaît sur
+>    **plusieurs lignes** : une ligne « Domaine », une ligne « Emails », et une
+>    ligne **« Zone DNS »**.
 >
-> **10.** Laissez le champ **Sous-domaine** complètement **vide**.
+>    **C'est la ligne « Zone DNS » qu'il vous faut.** C'est l'erreur la plus
+>    fréquente : les lignes se ressemblent, regardez bien la colonne du milieu.
+> 3. Tout à droite de cette ligne, cliquez sur les **trois petits points**, puis
+>    sur **Modifier les contacts**.
+> 4. Trois champs s'affichent. **Ne changez que celui du milieu**, « Contact
+>    technique », et remplacez ce qu'il contient par :
 >
-> **11.** Dans **Valeur**, collez la ligne copiée à l'étape 5. N'ajoutez pas de
-> guillemets : OVH les met tout seul.
+>    **[NICHANDLE DE NOÉ]**
 >
-> **12.** Validez. Attendez deux ou trois minutes.
+>    Ne touchez ni au contact administrateur, ni au contact de facturation.
+> 5. Cochez la case **« Répliquer cette modification de contact sur le service
+>    Domaine associé »**, puis validez.
+> 6. Vous recevez un e-mail d'OVH avec un lien de confirmation : cliquez dessus.
+>    Je reçois de mon côté un message séparé, avec un code différent du vôtre,
+>    et je confirme aussi. Tant que l'un des deux manque, rien ne se passe.
 >
-> **13.** Revenez sur l'onglet Google Search Console et cliquez sur
-> **VALIDER**.
+> **Ce que cet accès permet, et ce qu'il ne permet pas.** Votre nom de domaine
+> reste à 100 % à votre nom, vous en restez propriétaire. Je ne peux ni le
+> transférer, ni le revendre, ni changer son titulaire. Je n'ai accès ni à vos
+> factures ni à vos moyens de paiement. Et vous pouvez me retirer cet accès
+> quand vous voulez, en un clic, depuis ce même écran.
 >
-> S'il répond qu'il ne trouve rien, ne retouchez à rien : attendez dix minutes
-> et recliquez sur Valider.
+> **Ne m'envoyez jamais votre mot de passe OVH.** Je n'en ai pas besoin, et OVH
+> le déconseille.
 >
-> **Deux choses à ne jamais faire ensuite :**
+> ---
 >
-> - Ne supprimez jamais cette ligne. Google revérifie de temps en temps, et la
->   retirer ferait perdre la validation plusieurs semaines plus tard, sans
->   prévenir.
-> - Ne touchez pas à la ligne qui commence par `v=spf1`, déjà présente dans
->   votre zone. C'est elle qui fait fonctionner votre adresse e-mail.
+> #### 3. Envoyez-moi deux informations
+>
+> Par message, simplement :
+>
+> - **Votre nom de domaine**, exactement comme vous l'avez acheté
+> - **L'adresse e-mail** de votre compte OVH
+>
+> C'est tout. Je m'occupe du reste : la configuration technique du domaine, la
+> mise en ligne du site, et la vérification auprès de Google.
+>
+> ---
+>
+> ### Et ensuite ?
+>
+> **Attendez que je vous confirme que le site est en ligne** avant de passer à
+> l'achat des licences Apple Developer et Google Play.
+>
+> Ce n'est pas une formalité d'ordre : Apple et Google vérifient que le site de
+> votre entreprise répond vraiment, avec du contenu, sur votre nom de domaine.
+> Ouvrir le dossier avant que le site soit en ligne, c'est le faire refuser, et
+> un dossier refusé se rouvre beaucoup plus difficilement qu'il ne s'ouvre.
+>
+> Je vous préviens dès que c'est prêt. Vous n'avez rien à surveiller.
 
 ---
 
-## Ce qui change selon la famille
+## Ce que Noé fait ensuite, seul
 
-Rien. Le texte est identique dans les deux guides : un site seul comme une
-application se valident de la même façon. Seule la suite diffère, et elle n'est
-pas dans ce document : pour une application, la validation débloque « Valider
-le site Web de votre organisation » dans Google Play Console.
+Pour mémoire, et parce que c'est ce qui a disparu du guide client :
 
-## Qui reçoit la demande de Play Console
+1. Les 8 enregistrements A de GitHub Pages, et la suppression des entrées de
+   parking du registrar
+2. Le TXT de vérification Google Search Console, dans la même visite
+3. La propriété Google Search Console en type **« Domaine »**, jamais
+   « Préfixe de l'URL » : le préfixe ne couvre qu'une adresse exacte, et Google
+   Play n'interroge que la propriété Domaine quand il valide le site d'un compte
+   d'organisation
 
-**Le propriétaire déclaré dans Search Console.** Si c'est le compte de Noé, la
-demande arrive chez Noé, qui l'approuve. Si c'est le client, elle arrive chez
-lui. Les deux marchent — mais il faut savoir lequel avant de chercher l'e-mail
-pendant une heure.
+La liste complète, avec les valeurs exactes, vit dans nowork : fiche client,
+bouton « À faire » de l'étape Comptes.
 
-Pour passer la propriété au client plus tard : Search Console → Paramètres →
-Utilisateurs et autorisations → Ajouter un utilisateur → rôle **Propriétaire**.
-⚠️ **NE RETIRE PAS LE TXT EXISTANT en le faisant.** Plusieurs lignes
-`google-site-verification` cohabitent sans se gêner ; retirer celle qui portait
-la validation la fait tomber, et la validation Play Console avec elle.
+## Le nichandle
+
+`[NICHANDLE DE NOÉ]` est à remplacer par l'identifiant OVH réel, de la forme
+`ab12345-ovh`. Il ne change jamais : c'est le même pour tous les clients, comme
+un numéro de téléphone. Il se lit dans le profil OVH.
