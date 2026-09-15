@@ -22,20 +22,28 @@ export const NICHANDLE = 'cn440614-ovh'
  */
 const MINUTES = 10
 
+/**
+ * ⚠️ « CONSEIL » ET NON « PRIVILÉGIEZ LE .FR ». L'ancienne ligne fermait la
+ * porte au .app, qui est l'extension naturelle d'un projet d'application et
+ * que des clients demandent d'eux-mêmes. Une recommandation qui interdit se
+ * fait contourner en silence, et on l'apprend après l'achat.
+ */
+const CONSEIL_EXTENSION = '<b>Conseil</b> : .fr, .com ou .app.'
+
 const acheter = (mot, exemple) => [
   {
     titre: '1) Choisir le nom',
     liste: [
       'Ouvrir <b>ovhcloud.com/fr/domains</b>.',
       `Saisir le nom de votre ${mot}, puis lancer la recherche.`,
-      'Prendre le <b>.fr</b> s’il est libre, sinon le <b>.com</b>.',
+      'Prendre celui qui est libre : <b>.fr</b>, <b>.com</b> ou <b>.app</b>.',
     ],
   },
   {
     titre: '2) Commander',
     liste: [
       '<b>Acheter</b>, puis <b>Poursuivre la commande</b>.',
-      'Forfait <b>1 an</b>, le moins cher. <b>Poursuivre la commande</b>.',
+      'Forfait <b>1, 2 ou 3 ans</b>, à vous de choisir. <b>Poursuivre la commande</b>.',
       'Aucune option à ajouter. <b>Poursuivre la commande</b>.',
       'Se connecter à son compte OVHcloud, ou en créer un.',
       'En bas à droite, <b>Continuer</b>.',
@@ -101,13 +109,8 @@ const acces = (numero) => ({
         'Cocher <b>« Répliquer cette modification de contact sur le service Domaine associé »</b>, puis valider.',
         'Un e-mail d’OVH arrive avec un lien de confirmation : cliquer dessus. Je reçois de mon côté un message séparé et je confirme aussi.',
       ],
-      note: 'Les trois lignes se ressemblent : regardez la colonne du milieu. C’est l’erreur la plus fréquente.',
     },
   ],
-  encadre: {
-    titre: 'Ce que cet accès permet, et ce qu’il ne permet pas',
-    texte: 'Votre nom de domaine reste à 100 % à votre nom, vous en restez propriétaire. Je ne peux ni le transférer, ni le revendre, ni changer son titulaire. Je n’ai accès ni à vos factures ni à vos moyens de paiement. Vous pouvez me retirer cet accès quand vous voulez, en un clic, depuis ce même écran. Ne m’envoyez jamais votre mot de passe OVH : je n’en ai pas besoin, et OVH le déconseille.',
-  },
 })
 
 export const GUIDES = [
@@ -115,12 +118,13 @@ export const GUIDES = [
     fichier: 'Achat nom de domaine.pdf',
     titre: 'Nom de domaine + e-mail pro',
     minutes: MINUTES,
+    objectif: 'Acheter un nom de domaine (exemple : monapp.fr)',
     quoi: 'L’adresse de votre site, du type <b>monapp.fr</b>. C’est moi qui construis le site ; le domaine, lui, s’achète à votre nom et vous appartient. Votre adresse e-mail professionnelle en découle : monentreprise@monapp.fr.',
     prerequis: 'Une carte bancaire, et le nom que portera votre application.',
     retenir: [
       '<b>Obligatoire pour publier sur l’App Store.</b> La licence Apple exige un site et une adresse e-mail à votre domaine. D’où la première place.',
       'Environ <b>5 € par an</b>, à renouveler chaque année.',
-      'Privilégiez le <b>.fr</b>, sinon le <b>.com</b>.',
+      CONSEIL_EXTENSION,
     ],
     sections: [...acheter('application', 'monapp.fr'), emailPro, acces(5)],
     fin: {
@@ -133,19 +137,19 @@ export const GUIDES = [
       // le site de l'entreprise répond vraiment. Ouvrir le dossier avant, c'est
       // le faire refuser, et un dossier refusé se rouvre bien plus
       // difficilement qu'il ne s'ouvre.
-      attente: '<b>Attendez ma confirmation que le site est en ligne</b> avant d’acheter les licences Apple Developer et Google Play. Apple et Google vérifient que le site de votre entreprise répond vraiment, sur votre nom de domaine. Ouvrir le dossier trop tôt, c’est le faire refuser, et un dossier refusé se rouvre bien plus difficilement qu’il ne s’ouvre. Je vous préviens dès que c’est prêt : vous n’avez rien à surveiller.',
+      attente: '<b>Attendez ma confirmation que le site est en ligne</b> avant d’acheter les licences Apple Developer et Google Play.',
     },
   },
   {
     fichier: 'Achat nom de domaine - site web.pdf',
     titre: 'Nom de domaine',
     minutes: MINUTES,
-    quoi: 'L’adresse de votre site, du type <b>monsite.fr</b>. C’est moi qui construis le site ; le domaine, lui, s’achète à votre nom et vous appartient. Sans lui, le site n’a pas d’adresse à laquelle répondre.',
+    objectif: 'Acheter un nom de domaine (exemple : monsite.fr)',
+    quoi: 'L’adresse de votre site, du type <b>monsite.fr</b>. C’est moi qui construis le site ; le domaine, lui, s’achète à votre nom et vous appartient.',
     prerequis: 'Une carte bancaire, et le nom que portera votre site.',
     retenir: [
-      '<b>Sans lui, le site ne peut pas être publié.</b> C’est l’adresse à laquelle il répondra, et elle s’achète avant que je puisse le mettre en ligne.',
       'Environ <b>5 € par an</b>, à renouveler chaque année.',
-      'Privilégiez le <b>.fr</b>, sinon le <b>.com</b>.',
+      CONSEIL_EXTENSION,
     ],
     sections: [...acheter('site', 'monsite.fr'), acces(4)],
     fin: {
@@ -154,7 +158,7 @@ export const GUIDES = [
         'Envoyez-moi <b>le nom de votre domaine</b> (exemple : monsite.fr).',
         'Je configure le domaine et je mets le site en ligne sur votre adresse.',
       ],
-      attente: 'Comptez quelques heures avant que le site réponde partout : le temps que la modification se propage sur Internet. Je vous préviens dès qu’il est en ligne, vous n’avez rien à surveiller.',
+      attente: 'Comptez quelques heures avant que le site réponde partout, le temps que la modification se propage sur Internet.',
     },
   },
 ]

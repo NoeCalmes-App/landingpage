@@ -9,7 +9,7 @@ npm run generer-guides
 
 | Fichier | Famille | Pages |
 | --- | --- | --- |
-| `Achat nom de domaine.pdf` | app-mobile | 3 |
+| `Achat nom de domaine.pdf` | app-mobile | 2 |
 | `Achat nom de domaine - site web.pdf` | app-web | 2 |
 
 - **Le texte** : `scripts/guides/contenu.mjs`
@@ -81,3 +81,40 @@ d'un seul tenant.
 La liste complète vit dans **nowork** : fiche client, étape Comptes, bouton
 « À faire », onglet « Nom de domaine et Google ». Elle porte les 8 adresses IP,
 le TXT de Search Console, et la marche à suivre Google Play.
+
+## Passe de dégraissage du 15 septembre 2026, après relecture de Noé
+
+Les deux guides étaient justes mais bavards. Ce qui est parti, et pourquoi :
+
+- **Le bandeau « Entreprise · Temps estimé »** se répétait sur chaque feuille.
+  ⚠️ Répétée, une durée se lit comme le temps de CHAQUE page : le lecteur
+  croyait en avoir pour une demi-heure. Elle qualifie le document, elle
+  s'affiche **une fois**, en haut à droite. Et sans « Entreprise », qui ne
+  disait rien à personne.
+- **L'encadré « Ce que cet accès permet, et ce qu'il ne permet pas ».**
+  ⚠️ C'était la réponse écrite à la peur du client. Retiré sur décision de Noé,
+  qui la donne de vive voix : il prend ses clients au téléphone à cette
+  étape-là. **Si un client se met un jour à repousser cette autorisation sans
+  expliquer pourquoi, c'est le premier texte à remettre.**
+- **La note « les trois lignes se ressemblent ».** L'étape dit déjà en gras que
+  c'est la ligne « Zone DNS » qu'il faut : le redire à côté ne se lisait plus.
+- **L'explication du refus Apple et Google** en fin de document. La consigne
+  reste (« attendez ma confirmation »), la démonstration part.
+- **« Sans lui, le site ne peut pas être publié »** et **« Privilégiez le .fr,
+  sinon le .com »**.
+
+Ce qui est arrivé :
+
+- **Un objectif en tête de document** : « Acheter un nom de domaine (exemple :
+  monapp.fr), ici », avec le lien. Ce qu'on vient faire, avant toute
+  explication.
+- **« Conseil : .fr, .com ou .app »**. ⚠️ L'ancienne formule fermait la porte au
+  `.app`, l'extension naturelle d'un projet d'application, que des clients
+  demandent d'eux-mêmes. Une recommandation qui interdit se fait contourner en
+  silence, et on l'apprend après l'achat. L'étape « Choisir le nom » a été
+  alignée dans le même mouvement : elle répétait l'ancienne règle trois lignes
+  plus bas, et la contredisait.
+- **« Forfait 1, 2 ou 3 ans, à vous de choisir »** au lieu de « 1 an, le moins
+  cher ».
+
+Les deux guides tiennent maintenant en **2 pages** au lieu de 3.

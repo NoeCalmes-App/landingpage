@@ -61,13 +61,21 @@ function page(guide) {
     font-size: 10.5pt; line-height: 1.55; color: #1c2430;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
-  /* L'en-tête se répète sur chaque page : « position: fixed » est reproduit par
-     l'imprimante de Chrome sur toutes les feuilles. C'est la seule façon
-     d'avoir un bandeau courant sans passer par le protocole de débogage. */
+  /* ⚠️ UNE SEULE FOIS, EN HAUT À DROITE. C'était un bandeau courant, répété
+     sur chaque feuille par « position: fixed ». Répétée, une durée se lit
+     comme le temps de CHAQUE page : le lecteur croyait en avoir pour trente
+     minutes. Elle qualifie le document entier, elle s'affiche une fois. */
   .bandeau {
-    position: fixed; top: -11mm; left: 0; right: 0;
     text-align: right; font-size: 8pt; color: #8b93a1; letter-spacing: .01em;
+    margin-bottom: 1mm;
   }
+  /* L'objectif ouvre le document : ce qu'on vient y faire, en une ligne, avant
+     toute explication. */
+  .objectif {
+    text-align: center; font-size: 10.5pt; color: #4a5464;
+    margin: -3mm 0 6mm;
+  }
+  .objectif a { color: #665dff; font-weight: 700; text-decoration: none; }
   h1 {
     font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
     font-size: 22pt; line-height: 1.15; color: #033475;
@@ -128,8 +136,9 @@ function page(guide) {
   }
 </style></head>
 <body>
-  <div class="bandeau">Entreprise &middot; Temps estimé : ${guide.minutes} min</div>
+  <div class="bandeau">Temps estimé : ${guide.minutes} min</div>
   <h1>${guide.titre}</h1>
+  <p class="objectif">${guide.objectif}, <a href="https://www.ovhcloud.com/fr/domains/">ici</a>.</p>
 
   <section class="bloc">
     <h2>Le nom de domaine, c’est quoi ?</h2>

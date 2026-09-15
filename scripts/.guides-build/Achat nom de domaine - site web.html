@@ -11,13 +11,21 @@
     font-size: 10.5pt; line-height: 1.55; color: #1c2430;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
-  /* L'en-tête se répète sur chaque page : « position: fixed » est reproduit par
-     l'imprimante de Chrome sur toutes les feuilles. C'est la seule façon
-     d'avoir un bandeau courant sans passer par le protocole de débogage. */
+  /* ⚠️ UNE SEULE FOIS, EN HAUT À DROITE. C'était un bandeau courant, répété
+     sur chaque feuille par « position: fixed ». Répétée, une durée se lit
+     comme le temps de CHAQUE page : le lecteur croyait en avoir pour trente
+     minutes. Elle qualifie le document entier, elle s'affiche une fois. */
   .bandeau {
-    position: fixed; top: -11mm; left: 0; right: 0;
     text-align: right; font-size: 8pt; color: #8b93a1; letter-spacing: .01em;
+    margin-bottom: 1mm;
   }
+  /* L'objectif ouvre le document : ce qu'on vient y faire, en une ligne, avant
+     toute explication. */
+  .objectif {
+    text-align: center; font-size: 10.5pt; color: #4a5464;
+    margin: -3mm 0 6mm;
+  }
+  .objectif a { color: #665dff; font-weight: 700; text-decoration: none; }
   h1 {
     font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
     font-size: 22pt; line-height: 1.15; color: #033475;
@@ -78,12 +86,13 @@
   }
 </style></head>
 <body>
-  <div class="bandeau">Entreprise &middot; Temps estimé : 10 min</div>
+  <div class="bandeau">Temps estimé : 10 min</div>
   <h1>Nom de domaine</h1>
+  <p class="objectif">Acheter un nom de domaine (exemple : monsite.fr), <a href="https://www.ovhcloud.com/fr/domains/">ici</a>.</p>
 
   <section class="bloc">
     <h2>Le nom de domaine, c’est quoi ?</h2>
-    <p>L’adresse de votre site, du type <b>monsite.fr</b>. C’est moi qui construis le site ; le domaine, lui, s’achète à votre nom et vous appartient. Sans lui, le site n’a pas d’adresse à laquelle répondre.</p>
+    <p>L’adresse de votre site, du type <b>monsite.fr</b>. C’est moi qui construis le site ; le domaine, lui, s’achète à votre nom et vous appartient.</p>
   </section>
 
   <section class="bloc">
@@ -93,17 +102,17 @@
 
   <section class="bloc">
     <h2>À retenir</h2>
-    <ul><li><b>Sans lui, le site ne peut pas être publié.</b> C’est l’adresse à laquelle il répondra, et elle s’achète avant que je puisse le mettre en ligne.</li><li>Environ <b>5 € par an</b>, à renouveler chaque année.</li><li>Privilégiez le <b>.fr</b>, sinon le <b>.com</b>.</li></ul>
+    <ul><li>Environ <b>5 € par an</b>, à renouveler chaque année.</li><li><b>Conseil</b> : .fr, .com ou .app.</li></ul>
   </section>
 
-  <section class="bloc"><h2>1) Choisir le nom</h2><ol><li>Ouvrir <b>ovhcloud.com/fr/domains</b>.</li><li>Saisir le nom de votre site, puis lancer la recherche.</li><li>Prendre le <b>.fr</b> s’il est libre, sinon le <b>.com</b>.</li></ol></section>
-<section class="bloc"><h2>2) Commander</h2><ol><li><b>Acheter</b>, puis <b>Poursuivre la commande</b>.</li><li>Forfait <b>1 an</b>, le moins cher. <b>Poursuivre la commande</b>.</li><li>Aucune option à ajouter. <b>Poursuivre la commande</b>.</li><li>Se connecter à son compte OVHcloud, ou en créer un.</li><li>En bas à droite, <b>Continuer</b>.</li><li>Cocher les quatre cases, descendre jusqu’au paiement, payer.</li></ol></section>
+  <section class="bloc"><h2>1) Choisir le nom</h2><ol><li>Ouvrir <b>ovhcloud.com/fr/domains</b>.</li><li>Saisir le nom de votre site, puis lancer la recherche.</li><li>Prendre celui qui est libre : <b>.fr</b>, <b>.com</b> ou <b>.app</b>.</li></ol></section>
+<section class="bloc"><h2>2) Commander</h2><ol><li><b>Acheter</b>, puis <b>Poursuivre la commande</b>.</li><li>Forfait <b>1, 2 ou 3 ans</b>, à vous de choisir. <b>Poursuivre la commande</b>.</li><li>Aucune option à ajouter. <b>Poursuivre la commande</b>.</li><li>Se connecter à son compte OVHcloud, ou en créer un.</li><li>En bas à droite, <b>Continuer</b>.</li><li>Cocher les quatre cases, descendre jusqu’au paiement, payer.</li></ol></section>
 <section class="bloc"><h2>3) Attendre la livraison</h2><ol><li>Un e-mail arrive en moins de 5 minutes. Cliquer sur <b>Suivre la commande</b>.</li><li>Attendre que « Votre produit est disponible » soit coché, 5 minutes au plus.</li></ol></section>
-<section class="bloc"><h2>4) M’autoriser à configurer votre domaine</h2><p class="intro">Vous n’avez aucun réglage technique à faire : je m’en occupe. Il faut seulement m’y autoriser, une fois.</p><h3>Étape 1 — vérifier votre adresse e-mail OVH</h3><p>OVH va vous envoyer un message de confirmation à l’étape suivante. Il part à l’adresse enregistrée dans votre <b>profil OVH</b>, qui n’est pas toujours celle que vous utilisez tous les jours.</p><ol><li>Cliquer sur votre nom en haut à droite, puis sur votre profil.</li><li>Vérifier que l’adresse affichée est bien une adresse que vous relevez. La corriger si besoin.</li></ol><p class="note">Ne sautez pas cette étape. C’est de loin la cause numéro un de blocage : le message part dans le vide, et nous attendons tous les deux sans savoir pourquoi.</p><h3>Étape 2 — m’ajouter en contact technique</h3><ol><li>Cliquer sur votre nom en haut à droite, puis sur <b>Mes contacts</b>.</li><li>Votre domaine apparaît sur <b>plusieurs lignes</b> : une « Domaine », une « Emails », et une <b>« Zone DNS »</b>. <b>C’est la ligne « Zone DNS » qu’il faut.</b></li><li>Tout à droite de cette ligne, cliquer sur les <b>trois petits points</b>, puis sur <b>Modifier les contacts</b>.</li><li>Trois champs s’affichent. <b>Ne changer que celui du milieu</b>, « Contact technique », et y mettre&nbsp;: <span class="mono">cn440614-ovh</span></li><li>Cocher <b>« Répliquer cette modification de contact sur le service Domaine associé »</b>, puis valider.</li><li>Un e-mail d’OVH arrive avec un lien de confirmation : cliquer dessus. Je reçois de mon côté un message séparé et je confirme aussi.</li></ol><p class="note">Les trois lignes se ressemblent : regardez la colonne du milieu. C’est l’erreur la plus fréquente.</p><div class="encadre"><p class="encadre-titre">Ce que cet accès permet, et ce qu’il ne permet pas</p><p>Votre nom de domaine reste à 100 % à votre nom, vous en restez propriétaire. Je ne peux ni le transférer, ni le revendre, ni changer son titulaire. Je n’ai accès ni à vos factures ni à vos moyens de paiement. Vous pouvez me retirer cet accès quand vous voulez, en un clic, depuis ce même écran. Ne m’envoyez jamais votre mot de passe OVH : je n’en ai pas besoin, et OVH le déconseille.</p></div></section>
+<section class="bloc"><h2>4) M’autoriser à configurer votre domaine</h2><p class="intro">Vous n’avez aucun réglage technique à faire : je m’en occupe. Il faut seulement m’y autoriser, une fois.</p><h3>Étape 1 — vérifier votre adresse e-mail OVH</h3><p>OVH va vous envoyer un message de confirmation à l’étape suivante. Il part à l’adresse enregistrée dans votre <b>profil OVH</b>, qui n’est pas toujours celle que vous utilisez tous les jours.</p><ol><li>Cliquer sur votre nom en haut à droite, puis sur votre profil.</li><li>Vérifier que l’adresse affichée est bien une adresse que vous relevez. La corriger si besoin.</li></ol><p class="note">Ne sautez pas cette étape. C’est de loin la cause numéro un de blocage : le message part dans le vide, et nous attendons tous les deux sans savoir pourquoi.</p><h3>Étape 2 — m’ajouter en contact technique</h3><ol><li>Cliquer sur votre nom en haut à droite, puis sur <b>Mes contacts</b>.</li><li>Votre domaine apparaît sur <b>plusieurs lignes</b> : une « Domaine », une « Emails », et une <b>« Zone DNS »</b>. <b>C’est la ligne « Zone DNS » qu’il faut.</b></li><li>Tout à droite de cette ligne, cliquer sur les <b>trois petits points</b>, puis sur <b>Modifier les contacts</b>.</li><li>Trois champs s’affichent. <b>Ne changer que celui du milieu</b>, « Contact technique », et y mettre&nbsp;: <span class="mono">cn440614-ovh</span></li><li>Cocher <b>« Répliquer cette modification de contact sur le service Domaine associé »</b>, puis valider.</li><li>Un e-mail d’OVH arrive avec un lien de confirmation : cliquer dessus. Je reçois de mon côté un message séparé et je confirme aussi.</li></ol></section>
 
   <section class="fin">
     <h2>Et ensuite ?</h2>
     <ol><li>Envoyez-moi <b>le nom de votre domaine</b> (exemple : monsite.fr).</li><li>Je configure le domaine et je mets le site en ligne sur votre adresse.</li></ol>
-    <p class="attente">Comptez quelques heures avant que le site réponde partout : le temps que la modification se propage sur Internet. Je vous préviens dès qu’il est en ligne, vous n’avez rien à surveiller.</p>
+    <p class="attente">Comptez quelques heures avant que le site réponde partout, le temps que la modification se propage sur Internet.</p>
   </section>
 </body></html>
