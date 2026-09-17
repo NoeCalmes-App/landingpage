@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { EmailModal } from './ContactNoe.jsx'
 import { lienInterne } from './seo.js'
 
@@ -19,6 +19,36 @@ import { lienInterne } from './seo.js'
  */
 export default function Footer({ allerVers, onLegal }) {
   const [emailOuvert, setEmailOuvert] = useState(false)
+  const racine = useRef(null)
+
+  /**
+   * ⚠️ LE PIED DE PAGE SE RÉVÈLE TOUT SEUL, ET C'EST UNE CORRECTION DE BOGUE.
+   *
+   * Il porte la classe `reveal`, dont le CSS est `opacity: 0`. Sur l'accueil,
+   * un IntersectionObserver attaché au conteneur d'App lui ajoute `visible`.
+   * Mais /blog et /blog/article sortent AVANT ce conteneur : l'observateur ne
+   * les voit jamais, et le pied de page restait donc RIGOUREUSEMENT INVISIBLE.
+   * Présent dans le DOM, lisible par un robot, invisible à l'œil.
+   *
+   * ⚠️ ET IL NE DOIT PAS DÉPENDRE DE JAVASCRIPT POUR EXISTER. Si l'observateur
+   * manque, on montre sans animer : un pied de page qui porte les mentions
+   * légales ne peut pas disparaître parce qu'une API du navigateur manque.
+   */
+  useEffect(() => {
+    const noeud = racine.current
+    if (!noeud) return
+    if (typeof IntersectionObserver !== 'function') {
+      noeud.classList.add('visible')
+      return
+    }
+    const observateur = new IntersectionObserver(([entree]) => {
+      if (!entree.isIntersecting) return
+      entree.target.classList.add('visible')
+      observateur.disconnect()
+    }, { threshold: 0.15 })
+    observateur.observe(noeud)
+    return () => observateur.disconnect()
+  }, [])
 
   /**
    * ⚠️ LA SECTION CONTACT N'EXISTE QUE SUR L'ACCUEIL. Le lien faisait un
@@ -50,7 +80,7 @@ export default function Footer({ allerVers, onLegal }) {
 
   return (
     <>
-  <footer className="reveal bg-brand py-14 px-6 relative overflow-hidden">
+  <footer ref={racine} className="reveal bg-brand py-14 px-6 relative overflow-hidden">
     {/* Background big text */}
     <div
       className="pointer-events-none absolute inset-x-0 bottom-0 md:bottom-6 z-0 select-none text-center font-bold leading-[0.9]"
