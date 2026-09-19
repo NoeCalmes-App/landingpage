@@ -960,6 +960,7 @@ console.log(`✓ Generated ${auditAppRoute.path}/index.html`)
 const mockupRoutes = [
   '/maquette/smoothride',
   '/maquette/aretha',
+  '/maquette/vietcollab',
   '/maquette/kingfit-coach',
   '/maquette/pac-assist',
   '/maquette/cvc-assist',

@@ -28,6 +28,7 @@ import JuridikMockups from './JuridikMockups.jsx'
 import BailoraMockups from './BailoraMockups.jsx'
 import GuestRideMockups from './GuestRideMockups.jsx'
 import ImmoMatchMockups from './ImmoMatchMockups.jsx'
+import VietCollabMockups from './VietCollabMockups.jsx'
 import Projets from './Projets.jsx'
 import ClientSpaceBridge from './ClientSpaceBridge.jsx'
 import MaquetteVisualBridge from './MaquetteVisualBridge.jsx'
@@ -249,6 +250,7 @@ function App() {
     // pour un slug inconnu).
     if (path.toLowerCase() === '/maquette/smoothride') return 'smoothride-mockups'
     if (path.toLowerCase() === '/maquette/aretha') return 'aretha-mockups'
+    if (path.toLowerCase() === '/maquette/vietcollab') return 'vietcollab-mockups'
     if (['/maquette/pac-assist', '/maquette/cvc-assist', '/maquette/pacassist', '/maquette/cvcassist'].includes(path.toLowerCase())) return 'pac-assist-mockups'
     if (['/maquette/kingfit-coach', '/maquette/kingfit', '/maquette/coach-app', '/maquette/app-coach'].includes(path.toLowerCase())) return 'coach-app-mockups'
     if (['/maquette/blush', '/maquette/blush-rencontre', '/maquette/blushrencontre'].includes(path.toLowerCase())) return 'blush-mockups'
@@ -537,6 +539,7 @@ function App() {
   if (page === 'maquette-visual') return <MaquetteVisualBridge />
   if (page === 'smoothride-mockups') return <SmoothRideMockups />
   if (page === 'aretha-mockups') return <ArethaMockups />
+  if (page === 'vietcollab-mockups') return <VietCollabMockups />
   if (page === 'pac-assist-mockups') return <PacAssistMockups />
   if (page === 'coach-app-mockups') return <CoachAppMockups />
   if (page === 'blush-mockups') return <BlushMockups />
