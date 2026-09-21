@@ -158,6 +158,127 @@ function lireFaq() {
   return items
 }
 
+// ─── Corps complet des pages hors blog, pour les robots sans JavaScript ──────
+//
+// Le correctif GEO du 10/09/2026 n'avait ete applique qu'aux articles de blog.
+// L'audit du 21/09 a mesure ce que les pages commerciales servaient vraiment :
+// 85 mots pour l'accueil, 94 pour /expertise/, 65 pour /faq/, la ou Google en
+// voit respectivement 522, 811 et 727. Google rend le JavaScript, donc rien ne
+// changeait pour lui. Les moteurs de reponse (GPTBot, ClaudeBot,
+// PerplexityBot) ne le rendent pas et ne voyaient presque rien.
+//
+// Regle de construction : ces corps sont DERIVES des sources React, jamais
+// reecrits a la main. Une divergence entre la page et son pre-rendu est donc
+// impossible, contrairement aux meta qui vivaient en double et avaient diverge
+// sur 6 articles sur 17 en aout.
+
+const BALISES_BLOC = new Set(['p', 'h1', 'h2', 'h3', 'h4', 'li', 'div', 'section', 'article', 'header', 'footer', 'ul', 'ol', 'br', 'td', 'th', 'tr', 'blockquote', 'aside', 'nav', 'button'])
+
+// Ne garde que le texte situe ENTRE deux balises. Les accolades du corps de
+// fonction ne peuvent donc pas etre confondues avec des expressions JSX : un
+// fragment qui en contient encore apres nettoyage est ecarte.
+function texteDuComposant(source, nom) {
+  const sansCommentaires = source
+    .replace(/\/\*[\s\S]*?\*\//g, ' ')
+    .replace(/^[ \t]*\/\/.*$/gm, ' ')
+
+  const debut = sansCommentaires.indexOf(`export function ${nom}(`) >= 0
+    ? sansCommentaires.indexOf(`export function ${nom}(`)
+    : sansCommentaires.indexOf(`function ${nom}(`)
+  if (debut < 0) return []
+
+  const suite = sansCommentaires.slice(debut)
+  const apres = suite.slice(50).search(/\n(?:export )?function |\nexport const |\nconst [A-Z][A-Z_]/)
+  const bloc = apres > 0 ? suite.slice(0, apres + 50) : suite
+
+  const morceaux = []
+  const motif = /<\/?([a-zA-Z][a-zA-Z0-9]*)[^>]*>/g
+  let pos = 0
+  let m
+  let premiere = true
+  while ((m = motif.exec(bloc)) !== null) {
+    if (!premiere) {
+      const net = bloc.slice(pos, m.index).replace(/\{[^{}]*\}/g, ' ')
+      if (!net.includes('{') && !net.includes('}') && net.trim()) {
+        morceaux.push({ t: 'texte', v: net })
+      }
+    }
+    premiere = false
+    morceaux.push({ t: 'balise', nom: m[1].toLowerCase() })
+    pos = motif.lastIndex
+  }
+
+  const paras = []
+  let courant = ''
+  // Un composant contient aussi du code entre ses balises : retours anticipes,
+  // conditions, appels de fonction. Sans ce filtre, `if (page === 'x') return`
+  // se retrouvait dans le texte servi aux robots.
+  const ressembleADuCode = (p) => /\breturn\b|=>|===|!==|\bif\s*\(|\bconst\b|\blet\b|&&|\|\||\)\s*$|^\s*\)/.test(p)
+
+  const pousser = () => {
+    const p = courant.replace(/\s+/g, ' ').trim()
+    if (p.split(' ').length >= 5 && /[a-zàéèêîôûç]/i.test(p) && !ressembleADuCode(p)) paras.push(p)
+    courant = ''
+  }
+  for (const x of morceaux) {
+    if (x.t === 'texte') courant += x.v
+    else if (BALISES_BLOC.has(x.nom)) pousser()
+  }
+  pousser()
+
+  // La landing porte des variantes mobile et desktop du meme texte, et des
+  // libelles de bouton repetes. Servis tels quels aux robots, ils ressemblent
+  // a du bourrage de mots-cles. On ne garde que la premiere occurrence.
+  const vus = new Set()
+  return paras.filter((p) => {
+    const cle = p.toLowerCase().replace(/[^a-zà-ÿ0-9]/g, '')
+    if (vus.has(cle)) return false
+    vus.add(cle)
+    return true
+  })
+}
+
+// Les cinq etapes de /creation-application-mobile/ sont rendues par un .map(),
+// donc leur texte vit dans le tableau et non dans le JSX.
+function lireEtapes() {
+  const src = readFileSync(join(__dirname, '..', 'src', 'PagesSeo.jsx'), 'utf-8')
+  const bloc = src.match(/const ETAPES = \[([\s\S]*?)\n\]/)
+  if (!bloc) throw new Error('ETAPES introuvable dans src/PagesSeo.jsx')
+  const motif = /titre: (?:'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)"),\s*\n\s*texte: (?:"((?:[^"\\]|\\.)*)"|'((?:[^'\\]|\\.)*)'),/g
+  const etapes = []
+  for (const m of bloc[1].matchAll(motif)) {
+    etapes.push({
+      titre: (m[1] ?? m[2]).replace(/\\(["'])/g, '$1'),
+      texte: (m[3] ?? m[4]).replace(/\\(["'])/g, '$1'),
+    })
+  }
+  if (!etapes.length) throw new Error('Aucune etape lue dans ETAPES')
+  return etapes
+}
+
+const echapper = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+// Le premier paragraphe extrait est le <h1> de la page : il est retire ici,
+// car le pre-rendu pose deja son propre <h1> a partir de `heading`. Sans ca,
+// tout agent sans JavaScript verrait deux titres de niveau 1.
+function corpsDepuisComposant(fichier, nom) {
+  const src = readFileSync(join(__dirname, '..', 'src', fichier), 'utf-8')
+  return texteDuComposant(src, nom).slice(1).map((p) => `<p>${echapper(p)}</p>`).join('')
+}
+
+// L'accueil : son corps vit dans le composant App de src/App.jsx.
+const corpsSeoAccueil = corpsDepuisComposant('App.jsx', 'App')
+
+const corpsSeoPages = {
+  '/expertise': corpsDepuisComposant('PagesSeo.jsx', 'PageExpertise'),
+  '/creation-application-mobile':
+    corpsDepuisComposant('PagesSeo.jsx', 'PageMethode')
+    + lireEtapes().map((e) => `<h2>${echapper(e.titre)}</h2><p>${echapper(e.texte)}</p>`).join(''),
+  '/faq':
+    corpsDepuisComposant('PagesSeo.jsx', 'PageFaq')
+    + lireFaq().map((f) => `<h2>${echapper(f.q)}</h2><p>${echapper(f.a)}</p>`).join(''),
+}
+
 // ─── Meta des articles : source unique ───────────────────────────────────────
 //
 // Les titres et descriptions des articles vivaient en DOUBLE : dans
@@ -508,6 +629,7 @@ for (const route of sectionRoutes) {
   let html = patchHtml(baseHtml, {
     ...route,
     ...(meta ? { title: meta.title, description: meta.description } : {}),
+    corpsComplet: corpsSeoPages[route.canonicalPath || route.path] || '',
     breadcrumb: [
       { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://noecalmes.fr/" },
       { "@type": "ListItem", "position": 2, "name": route.heading, "item": urlPublique(route.canonicalPath || route.path) },
@@ -1051,9 +1173,17 @@ const libelles = {
 }
 const navHomeHtml = navHome.map((p) => `<a href="${urlPublique(p)}">${libelles[p]}</a>`).join(' · ')
 
+// Le bloc masque ci-dessous existait deja : il sert aux analyseurs qui ignorent
+// <noscript>, et il est retire du DOM des que React est monte. Le <noscript>
+// qui le suit est l'ajout du 21/09/2026 : il porte le corps COMPLET de la page,
+// seul moyen pour les moteurs de reponse de voir autre chose que le titre.
+const noscriptAccueil = corpsSeoAccueil
+  ? `<noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1>Je transforme ton idée en app qui génère des revenus.</h1>${corpsSeoAccueil}<nav aria-label="Pages du site">${navHomeHtml}</nav></div></noscript>`
+  : ''
+
 const homeHtml = baseHome.replace(
   '<div id="root"></div>',
-  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif;visibility:hidden" aria-hidden="true"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">Je transforme ton idée en app qui génère des revenus.</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Je ne fais pas que développer ton application : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois. Plus de 20 applications publiées.</p><a href="${urlPublique('/audit-app')}" style="display:inline-block;background:#6760ff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Tester mon idée d'application</a><nav aria-label="Pages du site" style="margin-top:1.5rem;font-size:0.85rem">${navHomeHtml}</nav></div></div>`
+  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif;visibility:hidden" aria-hidden="true"><p style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem"><strong>Je transforme ton idée en app qui génère des revenus.</strong></p><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Je ne fais pas que développer ton application : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois. Plus de 20 applications publiées.</p><a href="${urlPublique('/audit-app')}" style="display:inline-block;background:#6760ff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Tester mon idée d'application</a><nav aria-label="Pages du site" style="margin-top:1.5rem;font-size:0.85rem">${navHomeHtml}</nav></div></div>` + noscriptAccueil
 )
 writeFileSync(join(distDir, 'index.html'), homeHtml)
 pagesGenerees.push(join(distDir, 'index.html'))
