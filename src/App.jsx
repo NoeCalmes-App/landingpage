@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import './App.css'
 import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
 import MentionsLegales from './MentionsLegales.jsx'
@@ -12,24 +12,6 @@ import ContactNoe, { EmailModal } from './ContactNoe.jsx'
 import Footer from './Footer.jsx'
 import Legales from './Legales.jsx'
 import { BlogList, BlogArticlePage, BLOG_ARTICLES } from './Blog.jsx'
-import AuditApp from './audit-app/AuditApp.jsx'
-import SmoothRideMockups from './SmoothRideMockups.jsx'
-import ArethaMockups from './ArethaMockups.jsx'
-import PacAssistMockups from './PacAssistMockups.jsx'
-import CoachAppMockups from './CoachAppMockups.jsx'
-import BlushMockups from './BlushMockups.jsx'
-import MoovYeMockups from './MoovYeMockups.jsx'
-import ConvoiPiloteMockups from './ConvoiPiloteMockups.jsx'
-import ColocoolMockups from './ColocoolMockups.jsx'
-import PetSolidariteMockups from './PetSolidariteMockups.jsx'
-import SonoraMockups from './SonoraMockups.jsx'
-import BagSitterMockups from './BagSitterMockups.jsx'
-import JuridikMockups from './JuridikMockups.jsx'
-import BailoraMockups from './BailoraMockups.jsx'
-import GuestRideMockups from './GuestRideMockups.jsx'
-import ImmoMatchMockups from './ImmoMatchMockups.jsx'
-import VietCollabMockups from './VietCollabMockups.jsx'
-import Projets from './Projets.jsx'
 import ClientSpaceBridge from './ClientSpaceBridge.jsx'
 import MaquetteVisualBridge from './MaquetteVisualBridge.jsx'
 import ChatbotWidget from './chatbot/Widget'
@@ -38,6 +20,34 @@ import { lienInterne, appliquerMeta, retirerPrerender } from './seo.js'
 import { PageExpertise, PageMethode, PageFaq, FAQ_ITEMS } from './PagesSeo.jsx'
 import { PageQuiz, PageQuizHub, quizParSlug } from './Quiz.jsx'
 import { ExternalLink } from 'lucide-react'
+
+// ─── Chargement differe des pages hors accueil (21/09/2026) ──────────────────
+//
+// Les 16 maquettes, l'audit et la page projets etaient importes statiquement,
+// donc livres a tout visiteur de l'accueil qui ne les ouvrira jamais. A elles
+// seules les maquettes pesaient 491 Ko de source dans un bundle de 1 286 Ko.
+//
+// React.lazy demande a Vite de produire un fichier par page et de ne l'envoyer
+// qu'au moment ou elle est demandee. Le rendu est inchange : ces pages sont
+// affichees par des retours anticipes, jamais par l'accueil.
+const SmoothRideMockups = lazy(() => import('./SmoothRideMockups.jsx'))
+const ArethaMockups = lazy(() => import('./ArethaMockups.jsx'))
+const PacAssistMockups = lazy(() => import('./PacAssistMockups.jsx'))
+const CoachAppMockups = lazy(() => import('./CoachAppMockups.jsx'))
+const BlushMockups = lazy(() => import('./BlushMockups.jsx'))
+const MoovYeMockups = lazy(() => import('./MoovYeMockups.jsx'))
+const ConvoiPiloteMockups = lazy(() => import('./ConvoiPiloteMockups.jsx'))
+const ColocoolMockups = lazy(() => import('./ColocoolMockups.jsx'))
+const PetSolidariteMockups = lazy(() => import('./PetSolidariteMockups.jsx'))
+const SonoraMockups = lazy(() => import('./SonoraMockups.jsx'))
+const BagSitterMockups = lazy(() => import('./BagSitterMockups.jsx'))
+const JuridikMockups = lazy(() => import('./JuridikMockups.jsx'))
+const BailoraMockups = lazy(() => import('./BailoraMockups.jsx'))
+const GuestRideMockups = lazy(() => import('./GuestRideMockups.jsx'))
+const ImmoMatchMockups = lazy(() => import('./ImmoMatchMockups.jsx'))
+const VietCollabMockups = lazy(() => import('./VietCollabMockups.jsx'))
+const AuditApp = lazy(() => import('./audit-app/AuditApp.jsx'))
+const Projets = lazy(() => import('./Projets.jsx'))
 
 const meetingSvg = '/assets/images/illustrations/meetingdev.svg'
 const devSvg = '/assets/images/illustrations/devmobile.svg'
@@ -537,26 +547,26 @@ function App() {
   )
   if (page === 'client-space') return <ClientSpaceBridge />
   if (page === 'maquette-visual') return <MaquetteVisualBridge />
-  if (page === 'smoothride-mockups') return <SmoothRideMockups />
-  if (page === 'aretha-mockups') return <ArethaMockups />
-  if (page === 'vietcollab-mockups') return <VietCollabMockups />
-  if (page === 'pac-assist-mockups') return <PacAssistMockups />
-  if (page === 'coach-app-mockups') return <CoachAppMockups />
-  if (page === 'blush-mockups') return <BlushMockups />
-  if (page === 'moovye-mockups') return <MoovYeMockups />
-  if (page === 'convoipilote-mockups') return <ConvoiPiloteMockups />
-  if (page === 'colocool-mockups') return <ColocoolMockups />
-  if (page === 'pet-solidarite-mockups') return <PetSolidariteMockups />
-  if (page === 'sonora-mockups') return <SonoraMockups />
-  if (page === 'bagsitter-mockups') return <BagSitterMockups />
-  if (page === 'juridik-mockups') return <JuridikMockups />
-  if (page === 'bailora-mockups') return <BailoraMockups />
-  if (page === 'guestride-mockups') return <GuestRideMockups />
-  if (page === 'immomatch-mockups') return <ImmoMatchMockups />
-  if (page === 'projets') return <Projets onBack={goHome} />
+  if (page === 'smoothride-mockups') return <Suspense fallback={null}><SmoothRideMockups /></Suspense>
+  if (page === 'aretha-mockups') return <Suspense fallback={null}><ArethaMockups /></Suspense>
+  if (page === 'vietcollab-mockups') return <Suspense fallback={null}><VietCollabMockups /></Suspense>
+  if (page === 'pac-assist-mockups') return <Suspense fallback={null}><PacAssistMockups /></Suspense>
+  if (page === 'coach-app-mockups') return <Suspense fallback={null}><CoachAppMockups /></Suspense>
+  if (page === 'blush-mockups') return <Suspense fallback={null}><BlushMockups /></Suspense>
+  if (page === 'moovye-mockups') return <Suspense fallback={null}><MoovYeMockups /></Suspense>
+  if (page === 'convoipilote-mockups') return <Suspense fallback={null}><ConvoiPiloteMockups /></Suspense>
+  if (page === 'colocool-mockups') return <Suspense fallback={null}><ColocoolMockups /></Suspense>
+  if (page === 'pet-solidarite-mockups') return <Suspense fallback={null}><PetSolidariteMockups /></Suspense>
+  if (page === 'sonora-mockups') return <Suspense fallback={null}><SonoraMockups /></Suspense>
+  if (page === 'bagsitter-mockups') return <Suspense fallback={null}><BagSitterMockups /></Suspense>
+  if (page === 'juridik-mockups') return <Suspense fallback={null}><JuridikMockups /></Suspense>
+  if (page === 'bailora-mockups') return <Suspense fallback={null}><BailoraMockups /></Suspense>
+  if (page === 'guestride-mockups') return <Suspense fallback={null}><GuestRideMockups /></Suspense>
+  if (page === 'immomatch-mockups') return <Suspense fallback={null}><ImmoMatchMockups /></Suspense>
+  if (page === 'projets') return <Suspense fallback={null}><Projets onBack={goHome} /></Suspense>
   if (page === 'contact') return <ContactNoe />
   if (page === 'legal') return <Legales />
-  if (page === 'audit-app') return <AuditApp onBack={goHome} onLegal={(p) => openLegal(p, '/audit-app')} />
+  if (page === 'audit-app') return <Suspense fallback={null}><AuditApp onBack={goHome} onLegal={(p) => openLegal(p, '/audit-app')} /></Suspense>
   if (page === 'privacy') return <PolitiqueConfidentialite onBack={goLegalBack} />
   if (page === 'mentions') return <MentionsLegales onBack={goLegalBack} />
   if (page === 'cgv') return <CGV onBack={goLegalBack} />
