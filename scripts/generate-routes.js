@@ -654,8 +654,8 @@ const blogRoutes = [
   },
   {
     path: '/blog/combien-coute-application-mobile',
-    heading: 'Combien coûte une application mobile en 2026 ?',
-    content: 'Freelance, agence, no-code : combien faut-il réellement budgétiser pour créer une application mobile en 2026 ? Analyse complète des prix selon le type de projet et les acteurs du marché.',
+    heading: "Prix d'une application mobile : les fourchettes réelles",
+    content: "Le prix ne depend presque pas de la technologie, il depend du perimetre. Compte 5 000 a 8 000 euros pour une premiere version resserree livree en 4 a 6 semaines, 8 000 a 15 000 euros pour une application complete a un seul profil d'utilisateur, 15 000 a 25 000 euros des qu'il y a deux profils ou du temps reel, 50 000 euros et plus en agence ou ESN. Deux devis sur un meme projet vont du simple au triple parce qu'ils ne chiffrent pas le meme travail : ce qui disparait d'un devis bas est d'abord les tests sur appareils reels, la preparation des fiches store et la gestion des cas d'erreur. Les cinq facteurs qui font monter le prix sont le nombre de types d'utilisateurs, le temps reel, les integrations avec l'existant, le paiement et le niveau de finition. Trois postes echappent au devis : le cout d'acquisition, les 70 pour cent qui restent apres TVA et commission des stores, et le delai avant la mise en vente.",
   },
   {
     path: '/blog/creer-application-sans-savoir-coder',

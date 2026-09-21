@@ -1580,77 +1580,133 @@ export const BLOG_ARTICLES = [
   },
   {
     slug: 'combien-coute-application-mobile',
-    title: 'Combien coûte une application mobile en 2026 ?',
-    metaTitle: "Combien coûte une application mobile en 2026 ? | Noé Calmes",
-    description: "Le vrai coût d'une application mobile en 2026 : freelance, agence, no-code. Les fourchettes de prix et ce qui fait varier ton budget.",
-    date: '2026-04-29',
-    readTime: '6 min',
+    title: "Prix d'une application mobile : les fourchettes réelles",
+    metaTitle: "Prix d'une application mobile : combien prévoir ? | Noé Calmes",
+    description: "Les fourchettes par type de projet, ce qui fait monter le prix, et pourquoi deux devis pour la même application vont du simple au triple.",
+    date: '2026-09-21',
+    readTime: '11 min',
     finalCta: 'audit',
     categorie: "Budget",
-    accroche: "Les fourchettes réelles, et les 3 choses qui font monter le prix.",
+    accroche: "Les vraies fourchettes, et pourquoi deux devis pour la même app varient du simple au triple.",
     tldr: {
-      verdict: "Le prix d'une application dépend du périmètre, pas de la technologie. Trois choses le font monter : le nombre de types d'utilisateurs, le temps réel, et les connexions à des outils existants.",
+      verdict: "Compte 5 000 à 8 000 € pour une première version sérieuse, 8 000 à 15 000 € pour une application complète à un seul profil d'utilisateur, 15 000 à 25 000 € dès qu'il y a deux profils ou du temps réel. Le prix ne dépend presque pas de la technologie : il dépend du périmètre, et c'est pour ça que deux devis sur un besoin flou peuvent aller du simple au triple.",
       points: [
-        { label: "Le sujet", valeur: "Les fourchettes réelles en 2026 et ce qui fait varier le budget" },
-        { label: "Pour qui", valeur: "Tu veux savoir combien prévoir avant de demander des devis" },
-        { label: "Repère", valeur: "5 000 à 12 000 € pour une première version sérieuse" },
-        { label: "À retenir", valeur: "Un devis sans périmètre clair n'est pas un devis" },
+        { label: "Le sujet", valeur: "Les fourchettes par type de projet, et ce qui les fait bouger" },
+        { label: "Pour qui", valeur: "Tu construis un budget ou tu compares des devis très écartés" },
+        { label: "Le repère", valeur: "5 000 à 8 000 € pour une première version livrée en 4 à 6 semaines" },
+        { label: "À retenir", valeur: "Un devis précis sur un besoin flou n'existe pas" },
       ],
     },
     pourQui: [
       "Tu construis un budget et tu veux des ordres de grandeur honnêtes",
-      "Tu compares des devis très différents et tu ne sais pas pourquoi",
-      "Tu veux comprendre ce qui coûte cher avant d'arbitrer",
+      "Tu as reçu des devis très différents et tu ne comprends pas l'écart",
+      "Tu veux savoir ce qui coûte cher avant d'arbitrer ton périmètre",
     ],
     pasPourQui: [
       "Tu cherches uniquement le devis le moins cher",
       "Tu veux un prix ferme sans avoir défini ce que fait l'application",
-      "Ton budget est en dessous de 5 000 € et non extensible",
+      "Ton budget est sous 5 000 € et non extensible",
     ],
     faq: [
-      { q: "Pourquoi les devis varient autant d'un prestataire à l'autre ?", a: "Parce qu'ils ne décrivent pas la même chose. Un devis à 3 000 € et un devis à 15 000 € couvrent rarement le même périmètre, le même niveau de finition et le même suivi après mise en ligne. Compare les périmètres avant de comparer les prix." },
-      { q: "Le tarif fixe, c'est vraiment sans surprise ?", a: "Oui, à une condition : que le périmètre soit posé au cadrage. Le tarif est fixe pour ce qui a été défini. Si tu ajoutes des fonctionnalités en cours de route, on chiffre l'ajout, on ne le glisse pas discrètement dans la facture." },
-      { q: "Quels coûts après la mise en ligne ?", a: "Comptes développeur Apple (99 $ par an) et Google (25 $ une fois), hébergement selon l'usage, et la maintenance liée aux mises à jour des systèmes. On définit ensemble ce qui est nécessaire selon comment l'application évolue." },
+      { q: "Pourquoi les devis varient autant d'un prestataire à l'autre ?", a: "Parce qu'ils ne décrivent pas la même chose. Un devis à 3 000 € et un devis à 15 000 € couvrent rarement le même périmètre, le même niveau de finition, les mêmes tests et le même suivi après la mise en ligne. Avant de comparer deux prix, mets les deux périmètres côte à côte, ligne par ligne. Dans la majorité des cas l'écart s'explique entièrement, et le moins cher se révèle être le plus incomplet." },
+      { q: "Développer iOS et Android coûte-t-il deux fois plus cher ?", a: "Non, pas avec une technologie multiplateforme comme Flutter : le code est écrit une fois et compilé pour les deux systèmes. Ce qui s'ajoute est réel mais limité, quelques jours de tests sur les deux familles d'appareils et deux publications à préparer au lieu d'une. Compte une marge de l'ordre de 10 à 15 %, pas un doublement. Deux développements natifs séparés, eux, coûtent effectivement près du double." },
+      { q: "Quels sont les coûts après la mise en ligne ?", a: "Le compte développeur Apple à 99 $ par an, le compte Google Play à 25 $ une seule fois, l'hébergement selon l'usage réel, et la maintenance liée aux mises à jour d'iOS et d'Android. Ces frais sont faibles rapportés au revenu potentiel, mais ils ne sont pas nuls : une application laissée sans mise à jour finit par être retirée des stores. Une exception importante, si ton application appelle un modèle d'IA, le coût devient variable et suit l'usage." },
+      { q: "Peut-on descendre sous 5 000 € ?", a: "Oui, en changeant de produit plutôt que de prix. Sous ce seuil, ce qui est réaliste est une application web, un outil no-code, ou un périmètre tellement réduit qu'il tient en deux écrans. Ce sont des options honnêtes et parfois les bonnes. Ce qui n'est pas réaliste, c'est une application native publiée sur les deux stores, avec comptes et paiement, pour 2 500 €. Le devis existera, le résultat non." },
+      { q: "Le tarif fixe est-il vraiment sans surprise ?", a: "Oui, à une condition : que le périmètre soit posé au cadrage. Le tarif est fixe pour ce qui a été défini. Si tu ajoutes une fonctionnalité en cours de route, elle est chiffrée à part et tu décides, elle ne se glisse pas discrètement dans la facture finale. C'est justement pour ça que le cadrage est facturé comme du travail : c'est lui qui rend le reste prévisible." },
+      { q: "Faut-il tout payer d'avance ?", a: "Non. Le fonctionnement habituel est un paiement échelonné, adossé à des étapes livrées et vérifiables : le cadrage, les maquettes validées, la version testable, la mise en ligne. Tu paies en face de quelque chose que tu as vu. Un prestataire qui demande la totalité avant d'avoir montré quoi que ce soit est un signal d'alerte." },
     ],
     content: `
-      <p>C'est souvent la première question. Et c'est une bonne question. Créer une application mobile représente un investissement réel, autant savoir à quoi s'attendre avant de commencer.</p>
+      <p>C'est la première question de tous les projets, et c'est une bonne question. Voici les fourchettes réelles, ce qu'elles couvrent, et surtout ce qui explique qu'un même projet reçoive un devis à 4 000 € et un autre à 18 000 €.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et une application que j'ai conçue génère environ 13 000 € par mois. Les chiffres qui suivent sont ceux que je pratique et que je vois pratiquer.</p>
 
-      <h2>Les fourchettes de prix en France en 2026</h2>
-      <p>Le coût d'une application mobile dépend du périmètre, du type de projet et de l'interlocuteur que tu choisis. Voici les grandes catégories :</p>
+      <h2>La réponse courte, en un tableau</h2>
+      <p>Le prix ne dépend presque pas de la technologie. Il dépend du périmètre, c'est-à-dire de ce que l'application fait et pour combien de types d'utilisateurs différents.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Type de projet</th><th>Fourchette</th><th>Délai</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Première version resserrée</td><td><strong>5 000 à 8 000 €</strong></td><td>4 à 6 semaines</td></tr>
+            <tr><td>Application complète, un profil d'utilisateur</td><td><strong>8 000 à 15 000 €</strong></td><td>2 à 3 mois</td></tr>
+            <tr><td>Deux profils, ou temps réel</td><td><strong>15 000 à 25 000 €</strong></td><td>3 à 5 mois</td></tr>
+            <tr><td>Reprise d'une application existante</td><td>très variable</td><td>selon l'état du code</td></tr>
+            <tr><td>Agence ou ESN</td><td>50 000 à 300 000 €</td><td>6 à 12 mois</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Si tu ne retiens qu'une ligne, retiens la première. C'est celle qui correspond à la très grande majorité des projets qui viennent me voir, et c'est celle qui permet de tester une idée sans engager un budget qu'on ne récupère pas.</p>
+
+      <h2>Ce que couvre réellement chaque fourchette</h2>
+      <p>Un prix sans son périmètre ne veut rien dire. Voici ce qu'il y a derrière.</p>
       <ul>
-        <li><strong>MVP, première version</strong> : à partir de 5 000 €. Une version ciblée sur les fonctionnalités essentielles, livrée en 45 jours environ. L'objectif : valider ton idée sans tout miser d'un coup.</li>
-        <li><strong>Projet plus complet</strong> : pour des besoins plus larges, le budget peut atteindre une dizaine de milliers d'euros selon le périmètre fonctionnel et les intégrations nécessaires.</li>
-        <li><strong>Reprise ou évolution d'une app existante</strong> : variable selon l'état de la base technique et le périmètre des évolutions. Souvent plus rapide et moins cher que de repartir de zéro.</li>
-        <li><strong>Grande agence ou ESN</strong> : 50 000 € à 300 000 €+. Des équipes importantes, des délais longs, des processus lourds, pertinent pour des projets très complexes.</li>
+        <li><strong>5 000 à 8 000 €.</strong> Un seul type d'utilisateur, cinq à huit écrans, des comptes, éventuellement un paiement, une publication sur les deux stores. Pas de temps réel, pas d'interface d'administration. C'est une vraie application, pas une maquette.</li>
+        <li><strong>8 000 à 15 000 €.</strong> La même chose avec plus de profondeur fonctionnelle, du contenu structuré, des notifications, une interface d'administration légère, et un vrai travail de design plutôt qu'un habillage.</li>
+        <li><strong>15 000 à 25 000 €.</strong> Deux populations distinctes, par exemple un client et un professionnel, ou une fonction en temps réel comme une messagerie. Ce sont deux parcours, deux jeux de droits et deux fois les tests.</li>
+        <li><strong>50 000 € et au-delà.</strong> Des équipes, des processus, plusieurs interlocuteurs. C'est pertinent pour des projets réellement complexes, et surdimensionné pour une première version.</li>
       </ul>
 
-      <h2>Expert indépendant vs agence : ce que ça change vraiment</h2>
-      <p>Travailler avec un <strong>expert en applications mobiles indépendant</strong> coûte en moyenne 30 à 50 % moins cher qu'une agence. Les raisons sont concrètes : pas de marge d'agence, pas de chef de projet intermédiaire, pas de dispersion entre plusieurs prestataires.</p>
-      <p>Tu travailles directement avec la personne qui comprend ton besoin et qui construit ton application. La communication est directe, les décisions vont vite.</p>
-      <p>Autre avantage souvent sous-estimé : un expert indépendant spécialisé t'apporte une <strong>vision produit</strong> en plus de l'exécution technique. Il t'aide à cadrer, prioriser et faire les bons choix dès le départ, ce qui évite des aller-retours coûteux.</p>
+      <h2>Pourquoi deux devis vont du simple au triple</h2>
+      <p>C'est la question qui revient le plus, et la réponse est presque toujours la même.</p>
+      <p>Ce n'est pas que l'un est cher et l'autre honnête. C'est qu'ils ne chiffrent pas le même travail. Sur un besoin décrit en trois phrases, chaque prestataire comble les trous avec ses propres hypothèses, et les hypothèses coûtent cher ou pas cher selon qui les fait.</p>
+      <div class="encadre cle">
+        <span class="encadre-titre">Le test qui règle la question</span>
+        <p>Demande à chaque prestataire de <strong>lister ce qui n'est pas inclus</strong>. C'est plus révélateur que la liste de ce qui l'est. Celui qui répond précisément a compris le projet. Celui qui répond que tout est inclus n'a pas encore lu le besoin.</p>
+      </div>
+      <p>Ce qui disparaît le plus souvent d'un devis bas, dans l'ordre de fréquence : les tests sur appareils réels, la préparation des fiches store, la gestion des cas d'erreur, l'accompagnement à la publication, et la reprise après le premier retour d'utilisateurs.</p>
 
-      <h2>Les facteurs qui influencent le prix</h2>
+      <h2>Les cinq choses qui font monter le prix</h2>
+      <p>Classées par impact réel sur le devis, pas par fréquence dans les discussions.</p>
+      <ol>
+        <li><strong>Le nombre de types d'utilisateurs.</strong> C'est de loin le premier facteur. Passer d'un profil à deux ne double pas le travail, mais il l'augmente souvent de moitié : deux parcours, deux jeux de permissions, deux fois les tests, et toutes les interactions entre les deux.</li>
+        <li><strong>Le temps réel.</strong> Messagerie, position en direct, synchronisation entre appareils, notifications instantanées. Chacune a l'air d'une case à cocher et demande une infrastructure à part entière.</li>
+        <li><strong>Les intégrations avec l'existant.</strong> Ton logiciel de réservation, ton CRM, ton outil de facturation. Le coût ne dépend alors plus seulement de nous, mais de la qualité de la documentation d'en face.</li>
+        <li><strong>Le paiement.</strong> Un abonnement géré par les stores est du travail cadré mais réel : plans, période d'essai, restauration d'achat, résiliations, cas limites. Ce n'est jamais une ligne de plus.</li>
+        <li><strong>Le niveau de finition.</strong> La différence entre une application qui fonctionne et une application qu'on a envie d'utiliser se joue sur les détails, et les détails se paient en jours.</li>
+      </ol>
+      <div class="encadre astuce">
+        <span class="encadre-titre">Le levier que personne n'utilise</span>
+        <p>Quand un devis dépasse ton budget, ne demande pas une remise. Demande <strong>ce qu'on peut retirer de la première version</strong>. Le second levier fonctionne toujours, le premier dégrade juste la qualité à prix affiché constant. Et ce qui est retiré n'est pas perdu : c'est la version suivante, financée par les revenus de la première.</p>
+      </div>
+
+      <h2>Expert indépendant, agence, offshore</h2>
+      <p>Les trois existent, les trois ont leur logique, et l'écart de prix a des causes identifiables.</p>
+      <p>Un <strong>expert indépendant</strong> coûte en général 30 à 50 % de moins qu'une agence à périmètre égal. Pas de marge d'agence, pas de chef de projet intermédiaire, pas de transmission d'information entre trois personnes. Tu parles directement à celui qui construit.</p>
+      <p>Une <strong>agence</strong> apporte une capacité que l'indépendant n'a pas : plusieurs personnes en parallèle, une continuité si quelqu'un part, des process. Ça se paie, et pour un projet à plusieurs équipes c'est justifié.</p>
+      <p>L'<strong>offshore</strong> affiche des prix imbattables. Ce qu'il faut savoir avant de trancher : le décalage horaire sur les allers-retours, la barrière de langue sur un besoin qui se précise en discutant, et surtout la question de savoir qui reprendra le code dans un an. Le coût réel d'une application se mesure sur trois ans, pas sur le premier devis.</p>
+
+      <h2>Ce que le devis ne dit pas</h2>
+      <p>Trois postes échappent presque toujours au chiffrage initial, et ce sont eux qui font les mauvaises surprises.</p>
       <ul>
-        <li><strong>Type de projet</strong> : création de zéro, reprise d'un existant, ou évolution d'une app déjà en ligne. Ce ne sont pas les mêmes enjeux ni le même travail.</li>
-        <li><strong>Complexité des fonctionnalités</strong> : authentification, paiement en ligne, géolocalisation, chat en temps réel, notifications push, chaque fonctionnalité a un coût.</li>
-        <li><strong>Design et UX</strong> : une expérience utilisateur travaillée demande plus de temps, mais elle fait la différence sur la rétention et l'usage réel.</li>
-        <li><strong>Intégrations</strong> : API tierces, bases de données, outils internes, plus les connexions sont complexes, plus le développement prend de temps.</li>
-        <li><strong>Plateformes cibles</strong> : iOS uniquement, Android uniquement, ou les deux. Avec une technologie cross-platform, une seule codebase couvre les deux plateformes, ce qui réduit le coût par rapport à deux développements séparés.</li>
+        <li><strong>Le coût d'acquisition.</strong> Développer une application ne fait pas venir d'utilisateurs. Si tu pars sans audience, le budget pour aller chercher tes premiers clients ne figure dans aucun devis de développement, et il est rarement plus petit que le développement lui-même.</li>
+        <li><strong>Ce que tu touches réellement.</strong> Sur les stores, le prix affiché est TTC. Après TVA et commission, il te reste environ <strong>70 %</strong>. Un calcul de rentabilité fait sur le prix brut sous-estime d'un tiers le nombre de clients nécessaires. Le détail est dans <a href="/blog/combien-de-clients-pour-rentabiliser-application/">combien de clients pour rentabiliser ton application</a>.</li>
+        <li><strong>Le temps avant le premier euro.</strong> Le délai annoncé mesure la fin du développement, pas la mise en vente. Entre les deux il y a une chaîne administrative détaillée dans <a href="/blog/combien-de-temps-creer-application-mobile/">combien de temps pour créer une application mobile</a>.</li>
       </ul>
 
-      <div class="encadre attention"><span class="encadre-titre">Attention aux devis très bas</span><p>Un tarif nettement en dessous du marché se paie toujours après : code impossible à reprendre, prestataire injoignable, ou périmètre qui se réduit en cours de route. Le vrai coût d'une application, c'est son coût sur trois ans, pas sur son premier devis.</p></div>
-      <h2>Ce qui fait vraiment monter le budget</h2>
-      <p>Dans la plupart des projets qui dépassent le budget prévu, la cause est la même : le besoin n'était pas assez cadré au départ. On ajoute des fonctionnalités en cours de route, on change d'avis sur des choix techniques, on repense l'UX à mi-chemin.</p>
-      <p>C'est pourquoi le <strong>cadrage</strong> est la première étape de tout projet sérieux. Avant de commencer à développer, il faut définir précisément ce qu'on lance, pour qui, et pourquoi.</p>
+      <h2>Le piège du devis très bas</h2>
+      <div class="encadre attention">
+        <span class="encadre-titre">Ce qui se passe ensuite</span>
+        <p>Un tarif nettement sous le marché se paie toujours après, et de trois façons : un code que personne d'autre ne peut reprendre, un prestataire qui devient injoignable une fois la dernière facture payée, ou un périmètre qui se réduit silencieusement en cours de route. Le vrai coût d'une application, c'est <strong>son coût sur trois ans</strong>.</p>
+      </div>
+      <p>Une application à 4 000 € qu'il faut entièrement réécrire dix-huit mois plus tard coûte plus cher qu'une application à 8 000 € qui tient cinq ans. Ce n'est pas une formule commerciale, c'est le cas que je reprends le plus souvent.</p>
 
-      <h2>MVP ou application complète : que choisir ?</h2>
-      <p>Si tu lances ton premier projet ou si tu n'as pas encore validé ton idée : pars sur un MVP. Une première version simple, livrée rapidement, qui te permet de tester ton concept avec de vrais utilisateurs avant d'investir davantage.</p>
-      <p>Si ton besoin est clair, ton marché validé et tes fonctionnalités bien définies : une application plus complète peut être la bonne approche dès le départ.</p>
-      <p>Dans tous les cas, <strong>une application pensée pour générer des revenus commence par un besoin clair</strong>, pas par une liste de fonctionnalités.</p>
+      <h2>Ce que tu peux faire baisser sans rien perdre</h2>
+      <p>Trois arbitrages font baisser le devis sans dégrader le produit.</p>
+      <ol>
+        <li><strong>Un seul profil d'utilisateur en version 1.</strong> Si ton application prévoit un client et un professionnel, sors d'abord celle du client. C'est souvent 30 à 40 % du budget en moins, et tu apprends avant de construire la seconde moitié.</li>
+        <li><strong>Reporter le temps réel.</strong> Une messagerie peut commencer par des notifications et un échange asynchrone. La différence de budget est importante, la différence d'usage en version 1 est faible.</li>
+        <li><strong>Fournir tes contenus toi-même.</strong> Textes, photos, conditions générales. C'est du temps facturé si quelqu'un doit les produire, et c'est aussi la première cause de retard.</li>
+      </ol>
+      <p>Ce qu'il ne faut pas couper : les tests, et la préparation de la publication. Ce sont les deux postes dont la suppression ne se voit pas sur le devis et se voit immédiatement après.</p>
 
-      <div class="encadre astuce"><span class="encadre-titre">Le raccourci</span><p>Plutôt que de demander cinq devis sur un besoin encore flou, commence par cadrer le périmètre. Un devis précis sur un besoin flou n'existe pas, et c'est justement ce flou qui fait exploser les écarts de prix entre prestataires.</p></div>
-      <h2>Comment obtenir une estimation précise ?</h2>
-      <p>Chaque projet est unique. La meilleure façon d'avoir une fourchette réaliste est d'en discuter directement. Fais l'audit gratuit en 2 minutes : tu obtiens une première lecture du potentiel, du budget à prévoir et du délai. Et si tu préfères en parler de vive voix, écris-moi sur WhatsApp, c'est moi qui réponds.</p>
+      <h2>Comment obtenir un chiffre sur ton projet</h2>
+      <p>Trois étapes, dans cet ordre, et aucune ne demande d'engager un budget.</p>
+      <ol>
+        <li><strong>Écris ton périmètre en une page.</strong> Le problème résolu, pour qui, combien de types d'utilisateurs, ce qui est payant. Pas un cahier des charges de trente pages, une page. Voir <a href="/blog/creer-application-mobile-guide/">le guide de création d'une application mobile</a>.</li>
+        <li><strong>Demande des devis sur ce périmètre précis.</strong> Les écarts vont se resserrer d'un coup, et ceux qui resteront s'expliqueront.</li>
+        <li><strong>Vérifie que le nombre de clients nécessaires est atteignable</strong> avant de signer, pas après.</li>
+      </ol>
+      <p>Si tu veux une fourchette sur ton projet précis, avec ton périmètre et tes contraintes, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes et te donne un ordre de grandeur plutôt qu'une promesse. Et si tu hésites entre une première version resserrée et une application complète, <a href="/blog/mvp-application-mobile/">le MVP d'application mobile</a> détaille l'arbitrage.</p>
     `,
   },
   {
