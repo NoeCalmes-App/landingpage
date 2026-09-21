@@ -251,7 +251,7 @@ export default function Projets({ onBack }) {
     appliquerMeta({
       path: '/projets',
       title: "Les applications que j'ai conçues | Noé Calmes",
-      description: "Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. +20 applications publiées sur iOS et Android.",
+      description: "Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. Plus de 20 publiées sur iOS et Android.",
     })
     retirerPrerender()
     window.scrollTo(0, 0)

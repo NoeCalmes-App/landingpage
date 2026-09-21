@@ -479,7 +479,7 @@ const sectionRoutes = [
   {
     path: '/projets',
     title: 'Les applications que j\'ai conçues | Noé Calmes',
-    description: 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. +20 applications publiées sur iOS et Android.',
+    description: 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. Plus de 20 publiées sur iOS et Android.',
     heading: 'Les applications que j\'ai conçues',
     content: 'Applications mobiles conçues sur-mesure, de la stratégie au lancement : Calorie (13 000 € générés par mois), Hush (300 000 utilisateurs), Plouff Habitudes (lancée en 45 jours), Wake Up Alarme, Purge. +20 applications publiées sur iOS et Android.',
   },
@@ -487,7 +487,7 @@ const sectionRoutes = [
     path: '/projet',
     canonicalPath: '/projets',
     title: 'Les applications que j\'ai conçues | Noé Calmes',
-    description: 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. +20 applications publiées sur iOS et Android.',
+    description: 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. Plus de 20 publiées sur iOS et Android.',
     heading: 'Les applications que j\'ai conçues',
     content: 'Applications mobiles conçues sur-mesure, de la stratégie au lancement : Calorie (13 000 € générés par mois), Hush (300 000 utilisateurs), Plouff Habitudes (lancée en 45 jours), Wake Up Alarme, Purge. +20 applications publiées sur iOS et Android.',
   },
@@ -1222,11 +1222,46 @@ function liensSansBarre(html) {
   return [...trouves]
 }
 
+// Garde-fou longueurs, mesure sur le HTML genere et non sur la source.
+//
+// `verifierLongueurs()` plus haut ne lit que `src/Blog.jsx`. Les autres sources
+// de meta (Projets.jsx, PagesSeo.jsx, Quiz.jsx, AuditApp.jsx) lui echappaient :
+// l'audit du 21/09/2026 a trouve /projets/ avec une description de 156
+// caracteres, passee sans alerte. Ce controle-ci lit le resultat final, donc il
+// couvre toutes les sources d'un coup, y compris celles ajoutees plus tard.
+function metaHorsLimites(html) {
+  if (/<meta name="robots" content="[^"]*noindex/.test(html)) return []
+  const ecarts = []
+  const titre = html.match(/<title>([\s\S]*?)<\/title>/)
+  const desc = html.match(/<meta\s+name="description"\s+content="([\s\S]*?)"/)
+  const propre = (v) => v.replace(/\s+/g, ' ').trim()
+
+  if (!titre) ecarts.push('title absent')
+  else if (propre(titre[1]).length > LIMITE_META_TITRE) {
+    ecarts.push(`title de ${propre(titre[1]).length} caracteres (max ${LIMITE_META_TITRE})`)
+  }
+  if (!desc) ecarts.push('description absente')
+  else if (propre(desc[1]).length > LIMITE_DESCRIPTION) {
+    ecarts.push(`description de ${propre(desc[1]).length} caracteres (max ${LIMITE_DESCRIPTION})`)
+  }
+  return ecarts
+}
+
 const fautes = []
+const fautesMeta = []
 for (const fichier of pagesGenerees) {
   const html = readFileSync(fichier, 'utf-8')
   const mauvais = liensSansBarre(html)
   if (mauvais.length) fautes.push(`${fichier.replace(distDir, '')} : ${mauvais.join(', ')}`)
+  const ecarts = metaHorsLimites(html)
+  if (ecarts.length) fautesMeta.push(`${fichier.replace(distDir, '')} : ${ecarts.join(', ')}`)
+}
+
+if (fautesMeta.length) {
+  console.error('\n✗ Meta hors limites sur des pages indexables :')
+  for (const f of fautesMeta) console.error(`  - ${f}`)
+  console.error('\nCorrige la source correspondante (Blog.jsx, PagesSeo.jsx, Quiz.jsx, Projets.jsx, AuditApp.jsx).\n')
+  process.exit(1)
 }
 
 if (fautes.length) {
@@ -1236,5 +1271,6 @@ if (fautes.length) {
   process.exit(1)
 }
 console.log(`✓ Liens internes verifies : ${pagesGenerees.length} pages, aucune redirection interne`)
+console.log(`✓ Meta du HTML genere verifiees : toutes sources confondues, dans les limites (${LIMITE_META_TITRE} / ${LIMITE_DESCRIPTION})`)
 
 console.log('Done! All route pages generated.')
