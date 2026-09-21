@@ -159,12 +159,24 @@ Liens : `/blog/combien-rapporte-application-mobile/`, `/blog/combien-coute-appli
 
 ---
 
-### 3. Application sur mesure ou no-code : ce que ça change dans deux ans
-**Statut** : à écrire · **Format** : comparaison · **Mot-clé** : application sur mesure ou no-code
+### 3. ~~Application sur mesure ou no-code : ce que ça change dans deux ans~~
+**Statut** : ❌ abandonné le 21/09/2026, déjà couvert · **Mot-clé** : application sur mesure ou no-code
 
-L'angle qui différencie : tout le monde compare au moment de l'achat, personne
-ne compare à deux ans. Coût de sortie, propriété du code, plafond de
-performance, dépendance à une plateforme qui peut changer ses tarifs.
+**Ne pas écrire.** La vérification faite avant rédaction a montré que
+`/blog/creer-application-sans-savoir-coder/` traite déjà exactement cet angle :
+il contient un H2 intitulé « Le vrai comparatif se fait à deux ans », plus les
+FAQ « Qui possède le code dans chaque cas ? » et « Est-ce que je peux commencer
+en no-code et migrer ensuite ? ». Coût de sortie, propriété du code et
+dépendance à la plateforme y sont donc déjà traités.
+
+> **Leçon de méthode.** Un brief écrit il y a un mois peut avoir été absorbé
+> entre-temps par un article qui a grossi en cours de rédaction. Avant d'écrire,
+> lister les H2 et les FAQ des articles voisins, pas seulement leurs titres :
+> c'est au niveau des sections que la cannibalisation se joue. La commande qui
+> a servi est dans le rituel hebdo, étape 2.
+>
+> Si ce mot-clé doit être travaillé un jour, ce sera en enrichissant l'article
+> existant, jamais en créant une seconde page.
 
 ---
 
@@ -179,12 +191,29 @@ qu'un lecteur vidéo.
 ---
 
 ### 5. Combien de temps pour créer une application mobile
-**Statut** : à écrire · **Format** : question fermée · **Mot-clé** : combien de temps pour créer une application mobile
+**Statut** : ✅ publié le 21/09/2026 · **Format** : question fermée · **Mot-clé** : combien de temps pour créer une application mobile
 
 Requête à fort volume, objection classique. Répondre 4 à 6 semaines dès le
 TL;DR, puis détailler ce qui allonge : nombre de types d'utilisateurs, temps
 réel, validation des stores. Un encadré `attention` sur les délais de
 validation Apple, première source de retard imprévu.
+
+> **Ce que la rédaction a changé par rapport au brief.** Le brief annonçait la
+> validation Apple comme première source de retard. C'est faux, et l'article dit
+> l'inverse : la validation est rapide, souvent moins de deux jours, et le vrai
+> risque est le refus, pas la durée. La première cause de retard constatée est
+> le **délai de réponse du client**, une semaine d'attente valant un sixième
+> d'un planning de six semaines. L'encadré `attention` a donc été déplacé sur ce
+> point, qui est à la fois plus vrai et plus utile au lecteur.
+>
+> Deuxième apport : l'article réconcilie publiquement les deux chiffres du site,
+> « 4 à 6 semaines » et « 45 jours ». Ils coexistaient dans six articles sans
+> qu'aucun n'explique qu'ils mesurent deux choses différentes, le temps de
+> travail et le temps calendaire. C'est désormais une question de la FAQ.
+>
+> Règle à garder : quand deux chiffres du site semblent se contredire, ne pas en
+> supprimer un. Expliquer ce que chacun mesure, dans une FAQ. Un site qui
+> explique ses propres écarts inspire plus confiance qu'un site lissé.
 
 ---
 

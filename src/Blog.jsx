@@ -21,6 +21,129 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'combien-de-temps-creer-application-mobile',
+    title: "Combien de temps faut-il pour créer une application mobile ?",
+    metaTitle: "Créer une application mobile : combien de temps ? | Noé Calmes",
+    description: "4 à 6 semaines de développement. Mais ce n'est pas le délai avant ton premier euro : ce qui allonge vraiment, et ce qui se prépare en parallèle.",
+    date: '2026-09-21',
+    readTime: '8 min',
+    finalCta: 'audit',
+    categorie: "Créer",
+    accroche: "La vraie question n'est pas quand le code est fini, c'est quand tu encaisses.",
+    tldr: {
+      verdict: "4 à 6 semaines de développement pour une première version au périmètre clair. Mais ce délai ne compte que le code. Entre le code livré et ton premier euro encaissé, il y a une chaîne administrative qui prend son propre temps, et qui peut être préparée pendant le développement au lieu de s'ajouter après.",
+      points: [
+        { label: "Le sujet", valeur: "Le délai réel, développement et mise en vente comprises" },
+        { label: "Pour qui", valeur: "Tu veux savoir quand ton application peut rapporter, pas quand le code finit" },
+        { label: "Le repère", valeur: "4 à 6 semaines de développement, environ 45 jours porte à porte" },
+        { label: "À retenir", valeur: "La première cause de retard n'est pas technique, c'est le temps de réponse" },
+      ],
+    },
+    pourQui: [
+      "Tu as une date en tête et tu veux savoir si elle tient",
+      "Tu prépares un lancement et tu dois remonter le planning à l'envers",
+      "Tu veux savoir ce que tu peux préparer dès maintenant, avant même de signer",
+    ],
+    pasPourQui: [
+      "Tu cherches à faire tenir une application complète en deux semaines",
+      "Tu veux un délai garanti sans périmètre défini, personne de sérieux n'en donne",
+      "Tu penses que le délai dépend uniquement du développeur",
+    ],
+    faq: [
+      { q: "Pourquoi je lis 45 jours à certains endroits et 4 à 6 semaines à d'autres ?", a: "Parce que les deux mesurent des choses différentes, et autant le dire clairement. Quatre à six semaines, c'est le temps de développement effectif. Quarante-cinq jours, c'est la durée porte à porte du projet, cadrage et allers-retours compris, sur un périmètre de première version. Six semaines de développement font 42 jours : les deux chiffres décrivent le même projet, l'un compte le travail, l'autre compte le calendrier. Si un délai t'est annoncé, demande toujours lequel des deux il désigne." },
+      { q: "Combien de temps prend la validation sur les stores ?", a: "La validation elle-même est rapide, souvent moins de deux jours ouvrés. Le vrai risque n'est pas sa durée, c'est le refus : chaque refus renvoie en fin de file et relance le compteur. Les motifs classiques sont connus et évitables, une politique de confidentialité manquante, un compte de test qui ne fonctionne pas, des captures d'écran non conformes, ou une application jugée trop pauvre au regard de la règle 4.2 d'Apple. Une soumission préparée passe en général du premier coup." },
+      { q: "Faire iOS et Android en même temps double-t-il le délai ?", a: "Non, pas avec une technologie multiplateforme comme Flutter : le code est écrit une fois et compilé pour les deux systèmes. Ce qui s'ajoute est réel mais limité, quelques jours de tests sur les deux familles d'appareils et deux publications à préparer au lieu d'une. Compte une marge, pas un doublement." },
+      { q: "Peut-on aller plus vite que quatre semaines ?", a: "Oui, en réduisant le périmètre, jamais en compressant le travail. Une application à un seul type d'utilisateur, sans temps réel et sans paiement intégré, peut sortir plus vite. En revanche accélérer sans rien retirer produit une version fragile qu'il faut reprendre, et le temps regagné est perdu deux fois." },
+    ],
+    content: `
+      <p>C'est la deuxième question qu'on me pose, juste après le prix. Et la réponse honnête tient en deux temps, parce que la question en cache une autre.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Voici les vrais délais, y compris ceux dont personne ne parle.</p>
+
+      <h2>La réponse courte</h2>
+      <div class="chiffre">
+        <span class="chiffre-valeur">4 à 6 semaines</span>
+        <span class="chiffre-texte">c'est le temps de développement d'une première version au périmètre clair. Porte à porte, cadrage et allers-retours compris, compte environ 45 jours. Une application complète, avec plusieurs profils d'utilisateurs et des fonctionnalités avancées, se compte en 6 à 9 mois.</span>
+      </div>
+      <p>Retiens la condition, elle fait tout le délai : <strong>au périmètre clair</strong>. Ce n'est pas une formule de prudence, c'est la variable principale. Un projet cadré en une semaine se développe en quatre. Un projet qui se redéfinit en cours de route n'a pas de délai, il a une direction.</p>
+
+      <h2>Ce que ces semaines contiennent vraiment</h2>
+      <p>Le découpage type d'une première version, pour que tu saches ce qui se passe et quand tu es attendu.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Période</th><th>Ce qui avance</th><th>Ce qu'on attend de toi</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Semaine 1</td><td>Cadrage, périmètre, parcours utilisateur</td><td>Beaucoup. C'est la semaine la plus dense pour toi</td></tr>
+            <tr><td>Semaines 2 à 4</td><td>Design puis développement des écrans</td><td>Des retours rapides sur les maquettes</td></tr>
+            <tr><td>Semaine 5</td><td>Paiement, comptes, cas limites</td><td>Tes accès et tes contenus définitifs</td></tr>
+            <tr><td>Semaine 6</td><td>Tests, corrections, préparation des fiches store</td><td>Tes tests réels, sur ton téléphone</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Regarde la colonne de droite. Sur six semaines, tu es sollicité pendant quatre. C'est exactement là que les plannings se décalent, et ce n'est presque jamais du côté du code.</p>
+
+      <h2>Le délai dont personne ne parle</h2>
+      <p>Voilà le point important, celui qui transforme une bonne nouvelle en mauvaise surprise.</p>
+      <p>Le délai qu'on t'annonce mesure la fin du développement. Ce que tu veux savoir, toi, c'est <strong>quand ton application peut encaisser</strong>. Entre les deux, il y a une chaîne qui n'a rien de technique et qui prend son propre temps.</p>
+      <ul>
+        <li><strong>Les comptes développeur.</strong> Apple et Google vérifient ton identité, et pour une société cette vérification peut demander des justificatifs et plusieurs jours.</li>
+        <li><strong>Le statut de vendeur.</strong> Pour vendre un abonnement, il faut un contrat accepté, des informations fiscales et des coordonnées bancaires validées. Sans ça, l'application peut être en ligne sans qu'un seul euro puisse te revenir.</li>
+        <li><strong>La validation des stores.</strong> Rapide en soi, mais chaque refus relance le compteur.</li>
+      </ul>
+      <p>Cette chaîne est détaillée dans <a href="/blog/application-mobile-avec-claude/">créer une application mobile avec Claude</a>, où elle est le vrai mur, bien après le code.</p>
+      <div class="encadre cle">
+        <span class="encadre-titre">Ce qui change tout</span>
+        <p>Cette chaîne <strong>se prépare en parallèle du développement</strong>, pas après. Lancée en semaine 1, elle est prête quand l'application l'est. Lancée à la livraison, elle ajoute deux à trois semaines à ton lancement. Même travail, même durée, mais placée au bon endroit du planning.</p>
+      </div>
+
+      <h2>Les quatre choses qui allongent le développement</h2>
+      <p>Par ordre d'impact réel, pas par ordre de fréquence dans les discussions.</p>
+      <ol>
+        <li><strong>Le nombre de types d'utilisateurs.</strong> Une application avec un seul profil est un produit. Avec un client et un professionnel, ce sont deux parcours, deux jeux de droits et deux fois les tests. C'est le facteur qui coûte le plus cher en temps, et c'est celui qu'on sous-estime le plus.</li>
+        <li><strong>Le temps réel.</strong> Messagerie, notifications instantanées, position en direct, synchronisation entre appareils. Chacune de ces fonctions a l'air d'une case à cocher et demande une infrastructure à part entière.</li>
+        <li><strong>Les intégrations avec l'existant.</strong> Ton logiciel de réservation, ton CRM, ton outil de facturation. Le délai ne dépend alors plus seulement de nous, mais de la qualité de la documentation d'en face, et parfois de leur délai de réponse.</li>
+        <li><strong>Le paiement.</strong> Un abonnement géré par les stores est du travail cadré mais réel : plans, période d'essai, restauration d'achat, gestion des résiliations. Ce n'est jamais une case à cocher.</li>
+      </ol>
+      <div class="encadre astuce">
+        <span class="encadre-titre">Le réflexe utile</span>
+        <p>Quand tu veux tenir une date, ne demande pas d'aller plus vite. Demande <strong>ce qu'on peut retirer de la première version</strong>. Le second levier fonctionne toujours, le premier jamais. Et ce qui est retiré n'est pas perdu : c'est la version suivante, financée par les revenus de la première.</p>
+      </div>
+
+      <h2>La première cause de retard n'est pas technique</h2>
+      <p>Il faut le dire franchement, parce que c'est ce que je constate sur la majorité des projets.</p>
+      <p>Ce qui décale un planning, ce n'est presque jamais une difficulté de développement. C'est un délai de réponse. Une maquette validée en huit jours au lieu de deux, des textes qui arrivent la veille de la mise en ligne, des photos qui n'existent pas encore, un accès qu'on attend.</p>
+      <p>Une semaine d'attente sur un projet de six semaines, ce n'est pas un contretemps : c'est <strong>un sixième du planning</strong>. Deux allers-retours lents suffisent à transformer six semaines en neuf, sans qu'une seule ligne de code ait été plus lente à écrire.</p>
+      <div class="encadre attention">
+        <span class="encadre-titre">La question à poser avant de signer</span>
+        <p>Pas seulement « en combien de temps », mais aussi <strong>« qu'est-ce que vous attendez de moi, et à quel moment »</strong>. Un interlocuteur qui sait répondre précisément à la seconde question tiendra la première. C'est le meilleur test que je connaisse.</p>
+      </div>
+
+      <h2>Ce que tu peux préparer dès aujourd'hui</h2>
+      <p>Tout ce qui suit se fait sans développeur, sans budget engagé, et retire directement des jours au calendrier.</p>
+      <ul>
+        <li><strong>Ouvrir les comptes développeur Apple et Google.</strong> La vérification d'identité peut prendre plusieurs jours, autant qu'elle tourne pendant que tu réfléchis encore.</li>
+        <li><strong>Rassembler tes contenus.</strong> Textes, logo, photos, conditions générales, politique de confidentialité. C'est la cause de retard la plus fréquente et la plus évitable.</li>
+        <li><strong>Écrire ton périmètre en une page.</strong> Le problème résolu, pour qui, ce qui est payant. Pas un cahier des charges de trente pages, une page. C'est ce qui détermine si tu es à quatre ou à six semaines.</li>
+        <li><strong>Décider de ton prix.</strong> Il conditionne la façon dont le paiement est construit, et il vaut mieux le trancher avant qu'après. Le calcul est dans <a href="/blog/combien-de-clients-pour-rentabiliser-application/">combien de clients pour rentabiliser ton application</a>.</li>
+      </ul>
+
+      <h2>Et une application complète ?</h2>
+      <p>Six à neuf mois, et c'est précisément pour ça qu'il ne faut pas commencer par là.</p>
+      <p>Neuf mois de développement, c'est neuf mois sans un seul retour d'utilisateur réel, sans un euro encaissé, et avec un budget entièrement engagé sur des hypothèses que personne n'a vérifiées. Le risque n'est pas de rater le délai, il est de livrer exactement ce qui était prévu et de découvrir que ce n'était pas ce qu'il fallait.</p>
+      <p>C'est tout l'intérêt de la première version resserrée, détaillé dans <a href="/blog/mvp-application-mobile/">le MVP d'application mobile</a> : tu apprends en six semaines ce que neuf mois ne t'auraient pas appris.</p>
+
+      <h2>Par où commencer</h2>
+      <p>Trois étapes, dans cet ordre, et aucune ne demande d'engager un budget.</p>
+      <ol>
+        <li><strong>Écris ton périmètre en une page.</strong> C'est lui qui te place à quatre semaines ou à six mois, bien plus que le choix du prestataire.</li>
+        <li><strong>Ouvre tes comptes développeur et rassemble tes contenus.</strong> Deux à trois semaines de gagnées sur le lancement, dès maintenant.</li>
+        <li><strong>Remonte ton planning à l'envers depuis ta date cible.</strong> Compte le développement, puis la chaîne de mise en vente, puis une marge pour un refus de store. Si ça ne tient pas, retire du périmètre plutôt que des semaines.</li>
+      </ol>
+      <p>Si tu veux un délai sur ton projet précis, avec ton périmètre et ta date, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes et te donne une fourchette réaliste plutôt qu'une promesse.</p>
+    `,
+  },
+  {
     slug: 'application-avec-ia-rentable',
     title: "Mettre de l'IA dans ton application : ce que ça rapporte, ce que ça coûte",
     metaTitle: "Application avec de l'IA : est-ce rentable ? | Noé Calmes",
@@ -1984,6 +2107,7 @@ export const BLOG_ARTICLES = [
 // orphelin. Ajouter un article implique donc de le citer ici au moins deux fois.
 
 export const ARTICLES_LIES = {
+  'combien-de-temps-creer-application-mobile': ['mvp-application-mobile', 'creer-application-mobile-guide', 'application-mobile-avec-claude'],
   'application-avec-ia-rentable': ['combien-de-clients-pour-rentabiliser-application', 'application-mobile-meilleur-investissement', 'creer-application-avec-ia'],
   'combien-de-clients-pour-rentabiliser-application': ['combien-rapporte-application-mobile', 'combien-coute-application-mobile', 'rentabiliser-application-mobile'],
   'application-mobile-avec-claude': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'faire-evoluer-application-mobile'],
@@ -2002,15 +2126,15 @@ export const ARTICLES_LIES = {
 
   // Cluster creation / conduite de projet
   'creer-application-sans-savoir-coder': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'creer-application-mobile-guide'],
-  'creer-application-mobile-guide': ['mvp-application-mobile', 'creer-application-sans-savoir-coder', 'choisir-expert-application-mobile'],
-  'combien-coute-application-mobile': ['creer-application-mobile-guide', 'mvp-application-mobile', 'creation-application-mobile-toulouse'],
+  'creer-application-mobile-guide': ['combien-de-temps-creer-application-mobile', 'creer-application-sans-savoir-coder', 'choisir-expert-application-mobile'],
+  'combien-coute-application-mobile': ['combien-de-temps-creer-application-mobile', 'mvp-application-mobile', 'creation-application-mobile-toulouse'],
   'mvp-application-mobile': ['creer-application-mobile-guide', 'idee-application-business-rentable', 'faire-evoluer-application-mobile'],
   'choisir-expert-application-mobile': ['creer-application-mobile-guide', 'reprendre-application-mobile-existante', 'lovable-base44-application-mobile'],
   'reprendre-application-mobile-existante': ['faire-evoluer-application-mobile', 'choisir-expert-application-mobile', 'creer-application-avec-ia'],
   'faire-evoluer-application-mobile': ['reprendre-application-mobile-existante', 'choisir-expert-application-mobile', 'rentabiliser-application-mobile'],
 
   // Local
-  'creation-application-mobile-toulouse': ['combien-coute-application-mobile', 'creer-application-mobile-guide', 'rentabiliser-application-mobile'],
+  'creation-application-mobile-toulouse': ['combien-de-temps-creer-application-mobile', 'creer-application-mobile-guide', 'rentabiliser-application-mobile'],
 }
 
 // Articles lies d'un slug, resolus en objets complets et filtres des slugs

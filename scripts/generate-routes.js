@@ -566,6 +566,11 @@ for (const route of legacySectionRoutes) {
 // `lireMetaArticles()` : ne pas les redefinir ici, ils seraient ignores.
 const blogRoutes = [
   {
+    path: '/blog/combien-de-temps-creer-application-mobile',
+    heading: 'Combien de temps faut-il pour créer une application mobile ?',
+    content: "Quatre à six semaines de développement pour une première version au périmètre clair, environ 45 jours porte à porte, six à neuf mois pour une application complète. Mais ce délai ne mesure que le code : entre le code livré et le premier euro encaissé il y a une chaîne administrative, comptes développeur vérifiés, statut de vendeur, contrat et coordonnées bancaires, validation des stores, qui se prépare en parallèle du développement plutôt qu'après. Les quatre facteurs qui allongent réellement sont le nombre de types d'utilisateurs, le temps réel, les intégrations avec l'existant et le paiement. La première cause de retard n'est pas technique : c'est le délai de réponse du client, une semaine d'attente valant un sixième du planning.",
+  },
+  {
     path: '/blog/application-avec-ia-rentable',
     heading: "Mettre de l'IA dans ton application : ce que ça rapporte, ce que ça coûte",
     content: "Une application classique ne coûte presque rien par utilisateur : ses frais sont fixes. Une application qui appelle un modèle d'IA paie à chaque usage, donc son coût est variable et suit le succès. Sur un abonnement affiché 9,99 € qui laisse 7,08 € nets, un utilisateur occasionnel consomme 0,60 € d'appels, un utilisateur intensif jusqu'à 6 €, soit 85 % de la marge. Le seuil de rentabilité d'une application à 9 000 € passe d'environ 106 à 134 abonnés. Le piège du gratuit, mille utilisateurs gratuits coûtant environ 200 € par mois sans revenu, les trois garde-fous à poser dès la conception (quota visible, petit modèle sur les tâches simples, cache sur les réponses répétées) et pourquoi monter le prix absorbe le coût variable mieux que toute optimisation technique.",
