@@ -1,0 +1,106 @@
+# Modèle de travail, pas un fichier interprété par un scanner.
+# null = inconnu ; [] = inventaire encore à réaliser, pas absence confirmée.
+# Ne stocker ici aucun secret ni document d'identité.
+app:
+  name: null
+  bundle_id: null
+  android_application_id: null
+  stack: null
+  source_commit: null
+  version: null
+  build: null
+  android_version_code: null
+  archive_path: null
+  archive_sha256: null
+  android_aab_path: null
+  android_aab_sha256: null
+  supported_platforms: []
+  territories: []
+  languages: []
+  purpose_and_audience: null
+  business_model: null
+  public_or_restricted_distribution: null
+
+publisher:
+  legal_entity: null
+  brand_relationship: null
+  # Champs compte Apple ; les champs Google sont explicites plus bas.
+  account_type: null
+  new_organization_account: null
+  first_app_submission: null
+  client_is_account_holder: null
+  enrollment_complete: null
+  website: null
+  domain_relationship_verified: null
+  professional_email_domain: null
+  agency_role: null
+  google_account_type: null
+  google_new_organization_account: null
+  google_verification_complete: null
+  google_production_access_status: null
+  google_console_specific_requirements: []
+
+surfaces:
+  app_repository: null
+  website_repository: null
+  backend_repository: null
+  app_store_connect_app_id: null
+  app_store_connect_evidence_date: null
+  play_console_evidence_date: null
+  play_console_app_access_status: null
+  google_data_safety_status: null
+  google_account_deletion_web_url: null
+  support_url: null
+  privacy_url: null
+  terms_or_eula_url: null
+  sales_terms_url_if_applicable: null
+  signup_url_if_applicable: null
+  deletion_url_if_applicable: null
+  production_backend: null
+
+# Ce sont des hypothèses à confirmer par code/configuration/runtime.
+capabilities:
+  account_creation: null
+  social_login: null
+  subscriptions_or_digital_goods: null
+  physical_goods_or_services: null
+  location: null
+  background_location: null
+  camera_or_photos: null
+  notifications: null
+  analytics: null
+  advertising_or_tracking: null
+  user_generated_content: null
+  third_party_ai: null
+  children_or_regulated_activity: null
+  external_hardware: null
+
+# Remplir chaque SDK direct/transitif détecté avec :
+# platform, name, native_version, wrapper_version, evidence_file, shipped_in_archive,
+# actual_use, permissions, collected_data, official_docs_url, docs_checked_at,
+# applicable_checks, runtime_evidence, unknowns.
+sdk_inventory: []
+
+review:
+  demo_roles: []
+  credentials_validated_at: null
+  credentials_destination: "Champs App Review Information / Play App access ; aucun secret dans Git"
+  setup_instructions: null
+  regional_differences: null
+  tested_devices_and_os: []
+  physical_device_video_private_reference: null
+  backend_availability_verified_at: null
+  original_apple_message_private_reference: null
+  original_google_message_private_reference: null
+  google_pre_review_checks: null
+  google_pre_launch_report_private_reference: null
+
+audit:
+  date: null
+  evidence_private_directory: null
+  current_official_sources: []
+  unknowns: []
+  findings: []
+  decision: "INCOMPLET"
+  apple_decision: null
+  google_decision: null

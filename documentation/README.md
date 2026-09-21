@@ -21,6 +21,10 @@ Les anciennes strategies Instagram detaillees (flows ManyChat elabores) sont dan
 
 Les fichiers dans `archive/` sont des analyses et strategies historiques. Ils peuvent expliquer pourquoi certains choix ont ete faits, mais ne doivent pas remplacer les docs actives ni le code actuel. Notamment : `archive/funnels/` (anciennes hypotheses prix/CTA/capture email), `archive/strategy/` (strategies Instagram basees sur ManyChat, abandonne), `archive/sales/relance-no-show.md` (sequence de relance des no-show pubs Facebook, terminee), `archive/sales/script-appel-client.md` (script d'appel jamais utilise en pratique), `archive/content/stories-mes-apps-brief.md` (range tarifaire et tonalite obsoletes), `archive/architecture/client-space-public-bridge-2026-06.md` (plan termine du bridge espace client).
 
+## Workflows reutilisables
+
+- `workflows/app-store-preflight/SKILL.md` — kit portable d'audit avant soumission Apple et Google Play, adapte aux nouveaux comptes organisation des clients : app, SDK, site, parcours, dossiers stores et estimations de temps. A copier dans le depot de l'app concernee.
+
 ## Supports creatifs hors documentation
 
 Les briefs de posts/stories sont dans `../content/`. Ce sont des supports de creation, pas des sources de verite produit.
