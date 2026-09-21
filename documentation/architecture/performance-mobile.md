@@ -6,7 +6,37 @@
 >
 > URL testée : `https://noecalmes.fr/`
 
-## Les scores
+## Résultat des corrections, appliquées le 21/09
+
+| | Avant | Après |
+|---|---|---|
+| **Score performance** | 57 | **72** |
+| Premier affichage | 6,2 s | **3,3 s** |
+| Contenu principal (LCP) | 14,7 s | **5,7 s** |
+| Blocage du fil principal | 182 ms | 223 ms |
+| Poids de la page | 2 544 Ko | **990 Ko** |
+
+Trois corrections appliquées : images redimensionnées, scripts de mesure
+différés, pages hors accueil en chargement différé.
+
+> **Le piège rencontré, et qui vaut d'être noté.** Après les deux premières
+> corrections, le poids avait chuté de 53 % et le LCP de 40 %, mais le score
+> restait bloqué à 56. Le relevé par origine a donné la cause : ce n'était pas
+> le découpage du bundle, qui était passé de 232 à 162 ms d'exécution. C'était
+> le fait d'avoir différé les scripts tiers. Leurs 520 ms de travail n'avaient
+> pas disparu, ils avaient changé de place : d'avant le premier affichage, où
+> ils le retardaient, à après, où ils comptent dans la mesure du blocage.
+>
+> La correction a été de remplacer le délai fixe par `requestIdleCallback`, qui
+> laisse le navigateur placer ce travail pendant ses temps morts. Le score est
+> alors passé de 56 à 72.
+>
+> Règle à retenir : différer un script ne supprime pas son coût, ça le déplace.
+> Il faut ensuite lui trouver un moment où il ne gêne personne.
+
+---
+
+## Les scores relevés avant correction
 
 | Catégorie | Score |
 |---|---|
