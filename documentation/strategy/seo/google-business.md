@@ -6,6 +6,33 @@
 > Ce fichier a remplacé le guide de création : la fiche existe et elle est
 > validée. Il sert désormais à l'auditer et à l'entretenir.
 
+## Ce qui a été fait le 21/09
+
+| Action | État |
+|---|---|
+| Description remplacée | ✅ appliquée, 740 caractères |
+| Catégorie secondaire « Consultant informatique » | ✅ ajoutée, en attente d'examen |
+| Service « Conseil informatique » | ✅ ajouté |
+| Zones Haute-Garonne et Occitanie | ✅ ajoutées, en attente d'examen |
+| Téléphone | ⏸️ **laissé à Noé**, donnée personnelle |
+| Lien WhatsApp refusé | ⏸️ **laissé à Noé**, lié au téléphone |
+| Avis, publications, photos | ⏸️ à faire |
+
+> **Deux découvertes en appliquant les changements.**
+>
+> **Le champ description refuse les URL.** La version préparée se terminait par
+> « Teste-la gratuitement en 2 minutes sur noecalmes.fr » et Google a répondu
+> « Ce champ n'accepte pas les URL ». L'ancienne description contenait pourtant
+> la même mention : la règle a donc été durcie depuis. La fin a été réécrite.
+>
+> **« Développeur de logiciels » n'existe pas** dans la liste française des
+> catégories Google, alors que la version précédente de ce fichier la
+> recommandait comme catégorie principale. La recherche ne renvoie rien. La
+> catégorie retenue est **« Consultant informatique »**, qui existe et qui est
+> pertinente.
+
+---
+
 ## L'état relevé
 
 | Élément | État |
@@ -81,20 +108,26 @@ Une seule catégorie aujourd'hui, « Entreprise de logiciels ». **Les catégori
 sont le premier facteur de classement local**, avant la description et avant les
 services.
 
-À ajouter, par ordre de pertinence : **Développeur de logiciels**, **Consultant
-en informatique**, **Service de conception de sites Internet**.
+**Fait le 21/09** : **« Consultant informatique »** ajoutée en catégorie
+secondaire, avec le service « Conseil informatique » qui l'accompagne.
 
-Ne garde que celles où tu interviens vraiment. Une catégorie hors sujet dilue la
-pertinence au lieu de l'élargir.
+Attention, « Développeur de logiciels » **n'existe pas** dans la liste française
+de Google, contrairement à ce que ce fichier indiquait avant. Les libellés se
+cherchent dans le champ, ils ne se devinent pas.
+
+« Service de conception de sites Internet » n'a volontairement pas été ajoutée :
+elle attirerait des demandes de sites web, que tu ne fais pas.
 
 ### 5. ⚠️ Élargir les zones desservies
 
 Une seule zone aujourd'hui, « Toulouse, France ». Pour une activité qui couvre
 l'Occitanie et travaille à distance, c'est trop étroit.
 
-À ajouter : **Haute-Garonne**, **Occitanie**, et les communes de l'agglomération
-où tu veux apparaître, par exemple **Blagnac**, **Colomiers**, **Balma**,
-**Tournefeuille**.
+**Fait le 21/09** : **Haute-Garonne** et **Occitanie** ajoutées en plus de
+Toulouse, en attente de validation Google.
+
+Reste possible si tu veux couvrir plus finement l'agglomération : **Blagnac**,
+**Colomiers**, **Balma**, **Tournefeuille**.
 
 ### 6. ❌ Publier régulièrement
 
@@ -136,7 +169,11 @@ Les réponses sont déjà dans la FAQ du site, il suffit de les reprendre.
 
 ## La nouvelle description, à coller telle quelle
 
-Longueur : **713 caractères** sur les 750 autorisés.
+Longueur : **740 caractères** sur les 750 autorisés. **Déjà appliquée sur la
+fiche le 21/09.**
+
+Attention si tu la modifies : **le champ refuse les URL.** Toute mention du type
+`noecalmes.fr` fait échouer l'enregistrement.
 
 Ce qu'elle change : elle **ouvre sur « Toulouse »** au lieu de le mentionner au
 milieu, ajoute la Haute-Garonne et l'Occitanie, nomme les profils de clients, et
@@ -144,7 +181,7 @@ pose le tarif fixe et le délai. Google pondère davantage le début de la
 description.
 
 ```
-Expert en applications mobiles à Toulouse, je conçois des applications iOS et Android pensées pour générer des revenus, pas juste pour exister. Au-delà du code, je travaille la stratégie, le modèle économique et la conversion des utilisateurs en clients, de l'idée au lancement sur l'App Store et Google Play. Une application que j'ai conçue génère 13 000 € par mois, et j'ai publié plus de 20 applications. J'accompagne entrepreneurs, coachs, formateurs et porteurs de projet à Toulouse, en Haute-Garonne, en Occitanie et à distance partout en France. Un seul interlocuteur, tarif fixe défini avant de commencer, première version en 4 à 6 semaines. Une idée ? Teste-la gratuitement en 2 minutes sur noecalmes.fr.
+Expert en applications mobiles à Toulouse, je conçois des applications iOS et Android pensées pour générer des revenus, pas juste pour exister. Au-delà du code, je travaille la stratégie, le modèle économique et la conversion des utilisateurs en clients, de l'idée au lancement sur l'App Store et Google Play. Une application que j'ai conçue génère 13 000 € par mois, et j'ai publié plus de 20 applications. J'accompagne entrepreneurs, coachs, formateurs et porteurs de projet à Toulouse, en Haute-Garonne, en Occitanie et à distance partout en France. Un seul interlocuteur, tarif fixe défini avant de commencer, première version en 4 à 6 semaines. Une idée d'application ? L'audit gratuit en 2 minutes te donne potentiel, budget et délai.
 ```
 
 ---
