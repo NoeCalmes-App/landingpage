@@ -11,7 +11,7 @@ Lire `AGENTS.md` en premier. Ce fichier reste volontairement court pour ne pas c
 - CGV (`public/cgv/`, versions datées, liens contractuels, publier une nouvelle version) : `documentation/architecture/cgv.md` — à lire AVANT de toucher un fichier CGV.
 - SEO (regles techniques, maillage, sitemap genere, garde-fous du build) : `documentation/architecture/landing-page.md` section « Regles SEO non negociables » — a lire AVANT de toucher une URL, une meta ou `scripts/generate-routes.js`.
 - Tableau de bord SEO (etat, Search Console, process de publication) : `documentation/strategy/seo/README.md`.
-- Rediger un article de blog : `documentation/strategy/seo/idees-articles.md` (quoi ecrire) puis `documentation/strategy/seo/modele-article.md` (comment le formater).
+- **Rediger et publier un article de blog : `documentation/strategy/seo/publier-un-article.md`.** C'est le runbook a suivre de bout en bout, phase par phase. Il commence par un controle anti-doublon obligatoire (phase 0) et se termine par la ligne d'indexation a donner a Noe (phase 8). Les deux autres fichiers sont ses annexes : `idees-articles.md` (quoi ecrire, la file de briefs) et `modele-article.md` (comment formater l'article).
 - Futur espace client public : `documentation/architecture/client-space-public.md`
 - Tunnel d'acquisition (Instagram, LinkedIn, audit) : `documentation/strategy/tunnel.md`
 - Rediger un post / carrousel LinkedIn : `documentation/strategy/linkedin-posts.md`

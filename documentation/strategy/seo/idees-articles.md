@@ -10,18 +10,27 @@
 >
 > Créé le 20/08/2026.
 
-## Le rituel hebdo, en 6 étapes
+## Le rituel hebdo
+
+**La procédure complète est dans `publier-un-article.md`**, huit phases à suivre
+dans l'ordre. Ce fichier-ci ne sert qu'à choisir le sujet.
+
+Le résumé, pour mémoire :
 
 1. Prendre le premier brief non publié de la file.
-2. Écrire le corps en suivant `modele-article.md` (900 à 1 300 mots).
-3. Remplir `tldr`, `pourQui`, `pasPourQui`, `faq`. Ces champs ne sont pas
-   optionnels : ce sont eux qui font rester le lecteur.
-4. Ajouter le slug dans `ARTICLES_LIES` : 3 sortants, et le citer dans 2 autres
-   entrées.
-5. `npm run build`, vérifier les 4 lignes vertes.
-6. Push, puis demander l'indexation dans Search Console.
+2. **Phase 0 du runbook : vérifier que le territoire est libre.** Lister les H2
+   et les FAQ des articles voisins, pas leurs titres. Cinq minutes, et c'est
+   l'étape qui évite d'écrire un concurrent interne.
+3. Écrire en suivant `modele-article.md` (900 à 1 300 mots).
+4. Câbler les liens entrants avec le script du runbook, pas de tête.
+5. `npm run build` et `npm test`, six garde-fous au vert.
+6. Push, vérification en ligne, puis **donner la ligne d'indexation à Noé**.
 
 Compte 2 h la première fois, 1 h ensuite.
+
+> Les étapes 2 et 6 sont celles qu'on saute quand on est pressé, et ce sont
+> exactement les deux qui coûtent le plus cher : la première fait perdre une
+> heure de rédaction inutile, la seconde fait attendre l'article des semaines.
 
 ## La règle qui décide de tout
 

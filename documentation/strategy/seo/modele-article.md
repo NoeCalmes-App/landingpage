@@ -3,6 +3,10 @@
 > Source de vérité du FORMAT d'un article. `content-plan.md` décide **de quoi**
 > on parle, ce fichier décide **comment** l'article est construit.
 >
+> **Si tu es en train de publier un article, ouvre d'abord
+> `publier-un-article.md`** : c'est le runbook complet, et il te renvoie ici au
+> bon moment. Ce fichier-ci ne couvre que le format, pas le processus.
+>
 > Créé le 20/08/2026, en même temps que la refonte du blog.
 
 ## Pourquoi ce fichier existe

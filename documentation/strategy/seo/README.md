@@ -8,6 +8,7 @@ MàJ : 20/08/2026
 
 - `roadmap.md` : la stratégie complète et l'ordre de priorité (le plan d'ensemble).
 - `content-plan.md` : la file des sujets, les mots-clés cibles et les règles de rédaction.
+- **`publier-un-article.md` : la PROCÉDURE de bout en bout.** Le fichier à ouvrir en premier quand on publie. Huit phases, de la vérification anti-doublon jusqu'à la ligne d'indexation. Les deux fichiers ci-dessous en sont les annexes.
 - `modele-article.md` : le FORMAT d'un article (champs obligatoires, blocs visuels, structure). À lire avant de rédiger.
 - `journal.md` : **l'historique des chantiers et des arbitrages rendus.** À lire pour comprendre pourquoi une décision a été prise, avant de la remettre en cause.
 - `idees-articles.md` : **la banque de briefs prêts à écrire.** C'est le fichier à ouvrir chaque semaine : tu prends le brief du haut, tu écris.

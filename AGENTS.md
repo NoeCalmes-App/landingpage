@@ -20,7 +20,7 @@ Lire seulement la doc utile au sujet demande.
 | Positionnement, ton, offre, expertise Noe | `documentation/context/positionnement.md` |
 | Architecture landing page, routes, SEO technique, maquettes | `documentation/architecture/landing-page.md` |
 | Etat SEO, Search Console, publier un article | `documentation/strategy/seo/README.md` |
-| Rediger un nouvel article de blog | `documentation/strategy/seo/idees-articles.md` puis `modele-article.md` |
+| Rediger et publier un article de blog | `documentation/strategy/seo/publier-un-article.md` (runbook complet, phase 0 anti-doublon obligatoire, phase 8 ligne d'indexation) |
 | Audit app, funnel, questions, verdict IA, Firebase audit | `documentation/architecture/audit-app.md` |
 | Assets, images, icones, fonts, documents PDF | `documentation/architecture/assets.md` |
 | Espace client public `/espace-client/...` | `documentation/architecture/client-space-public.md` |
