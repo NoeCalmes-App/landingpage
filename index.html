@@ -227,9 +227,18 @@
         evenements.forEach(function (e) {
           window.addEventListener(e, charger, { once: true, passive: true })
         })
-        if (document.readyState === 'complete') setTimeout(charger, 500)
-        else window.addEventListener('load', function () { setTimeout(charger, 500) })
-        setTimeout(charger, 3000)
+        // requestIdleCallback plutot qu'un delai fixe : le navigateur execute
+        // les 520 ms de scripts tiers pendant ses temps morts, au lieu de les
+        // lancer a un instant precis ou il a peut-etre encore du travail. Le
+        // timeout de 4 s sert de filet, et la mesure part de toute facon des la
+        // premiere interaction.
+        function planifier() {
+          if (window.requestIdleCallback) requestIdleCallback(charger, { timeout: 4000 })
+          else setTimeout(charger, 1500)
+        }
+        if (document.readyState === 'complete') planifier()
+        else window.addEventListener('load', planifier)
+        setTimeout(charger, 5000)
       })()
     </script>
   </head>
