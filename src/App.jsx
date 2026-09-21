@@ -46,8 +46,8 @@ const mePhoto = '/assets/images/profile/me.webp'
 const calorieIcon = '/assets/images/apps/calorie.webp'
 const hushIcon = '/assets/images/apps/hushapp.webp'
 const purgeIcon = '/assets/images/apps/purge.webp'
-const snapIcon = '/assets/images/apps/snapmaster.png'
-const calorieVisuel = '/assets/images/apps/calorievisuelle.png'
+const snapIcon = '/assets/images/apps/snapmaster.webp'
+const calorieVisuel = '/assets/images/apps/calorievisuelle.webp'
 
 // Canal de contact unique : WhatsApp (message pré-rempli pour amorcer la qualif).
 // Les CTA de la landing passent d'abord par /rendez-vous. Seuls le bouton de

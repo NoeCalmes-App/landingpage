@@ -2,8 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K5SWRR85PN"></script>
+    <!-- Google tag (gtag.js) : file d'attente seulement, le script est charge plus bas -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -170,14 +169,11 @@
 
     <!-- Meta Pixel Code -->
     <script>
-    !function(f,b,e,v,n,t,s)
+    !function(f,n)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+    n.queue=[]}(window);
     fbq('init', '952622783774477');
     fbq('track', 'PageView');
     </script>
@@ -195,6 +191,47 @@
     <noscript>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:ital,wght@1,400;1,700&family=Overpass:wght@400;600;700;800;900&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
     </noscript>
+
+    <!-- Chargement differe des scripts de mesure (21/09/2026)
+         gtag.js et fbevents.js pesaient 413 Ko telecharges AVANT le premier
+         affichage. Sur mobile bride, ils retardaient le rendu de plusieurs
+         secondes alors qu'ils ne servent ni a afficher la page ni a l'utiliser.
+
+         Aucune mesure n'est perdue : gtag() et fbq() empilent leurs appels dans
+         une file d'attente des le chargement du document. Les appels config et
+         PageView ci-dessus sont donc deja enregistres, et ils partent des que le
+         script arrive.
+
+         Declencheurs, le premier qui vient : fin du chargement, premiere
+         interaction du visiteur, ou 3 secondes au plus tard. Ce dernier filet
+         garantit qu'un visiteur immobile est compte quand meme. -->
+    <script>
+      (function () {
+        var charge = false
+        var evenements = ['pointerdown', 'keydown', 'scroll', 'touchstart']
+        function charger() {
+          if (charge) return
+          charge = true
+          var urls = [
+            'https://www.googletagmanager.com/gtag/js?id=G-K5SWRR85PN',
+            'https://connect.facebook.net/en_US/fbevents.js',
+          ]
+          for (var i = 0; i < urls.length; i++) {
+            var s = document.createElement('script')
+            s.async = true
+            s.src = urls[i]
+            document.head.appendChild(s)
+          }
+          evenements.forEach(function (e) { window.removeEventListener(e, charger) })
+        }
+        evenements.forEach(function (e) {
+          window.addEventListener(e, charger, { once: true, passive: true })
+        })
+        if (document.readyState === 'complete') setTimeout(charger, 500)
+        else window.addEventListener('load', function () { setTimeout(charger, 500) })
+        setTimeout(charger, 3000)
+      })()
+    </script>
   </head>
   <body>
     <noscript><img height="1" width="1" style="display:none"
