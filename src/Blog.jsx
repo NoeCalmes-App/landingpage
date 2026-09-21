@@ -1482,7 +1482,7 @@ export const BLOG_ARTICLES = [
       verdict: "Je conçois des applications iOS et Android à Toulouse et en Occitanie, pensées pour générer des revenus. Un seul interlocuteur, joignable directement, tarif fixe posé avant de commencer.",
       points: [
         { label: "Zone", valeur: "Toulouse, Haute-Garonne, Occitanie, et à distance partout en France" },
-        { label: "Budget", valeur: "Tarif fixe, en général 5 000 à 12 000 € selon la complexité" },
+        { label: "Budget", valeur: "Tarif fixe, en général une dizaine de milliers d'euros selon la complexité" },
         { label: "Délai", valeur: "Première version en 4 à 6 semaines" },
         { label: "Différence", valeur: "Une application conçue pour rapporter, pas seulement livrée" },
       ],
@@ -1500,7 +1500,7 @@ export const BLOG_ARTICLES = [
     faq: [
       { q: "Tu travailles uniquement sur Toulouse ?", a: "Non. Je suis basé près de Toulouse et j'interviens en direct sur l'Occitanie, mais je travaille à distance partout en France. Le suivi se fait sur WhatsApp, et c'est moi qui réponds." },
       { q: "On peut se rencontrer physiquement ?", a: "Sur Toulouse et les environs, oui, si ça t'aide à démarrer. Dans les faits la plupart des projets se pilotent très bien à distance, avec des points réguliers et des versions testables." },
-      { q: "Quel est le budget pour une application à Toulouse ?", a: "Le même que partout ailleurs : le prix dépend du périmètre, pas de la ville. En général 5 000 à 12 000 € pour une première version sérieuse, avec un tarif fixe défini avant de commencer." },
+      { q: "Quel est le budget pour une application à Toulouse ?", a: "Le même que partout ailleurs : le prix dépend du périmètre, pas de la ville. En général une dizaine de milliers d'euros selon la complexité, avec un tarif fixe défini avant de commencer." },
       { q: "Pourquoi choisir un indépendant plutôt qu'une agence toulousaine ?", a: "Pour une raison de structure, pas de qualité : chez un indépendant tu parles directement à celui qui construit, sans commercial ni chef de projet intermédiaire, et l'écart de prix à périmètre égal va de 30 à 50 %. Une agence reste le bon choix quand le projet demande plusieurs personnes en parallèle ou une continuité que je ne peux pas garantir seul. Le comparatif complet est dans choisir le bon expert pour ton application." },
     ],
     content: `
