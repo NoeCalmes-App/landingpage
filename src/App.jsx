@@ -700,7 +700,7 @@ function App() {
                     alt=""
                     width="30"
                     height="30"
-                    className="w-6 h-6 sm:w-7 sm:h-7 rounded-[28%] border border-white object-cover"
+                    className="w-6 h-6 sm:w-7 sm:h-7 rounded-[28%] object-cover"
                     style={{ marginLeft: i === 0 ? 0 : '-7px', zIndex: i }}
                   />
                 ))}
