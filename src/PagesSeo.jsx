@@ -25,7 +25,7 @@ const mePhoto = '/assets/images/profile/me.webp'
 export const FAQ_ITEMS = [
   {
     q: 'Comment fonctionne la tarification ?',
-    a: "Tarif fixe, défini avant de commencer : en général 5 à 12k en mobile selon la complexité. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.",
+    a: "Tarif fixe, défini avant de commencer : en général une dizaine de milliers d'euros en mobile selon la complexité. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.",
   },
   {
     q: 'Combien de temps faut-il pour avoir une application mobile ?',
