@@ -4,6 +4,11 @@
 > `sc-domain:noecalmes.fr`. Période de 90 jours complète.
 >
 > Chaque chiffre de ce fichier vient de l'interface, aucun n'est estimé.
+>
+> **Mise à jour du 21/09/2026, après vérification URL par URL.** Deux conclusions
+> de la première version étaient fausses et sont corrigées plus bas, dans la
+> section « Ce que la vérification a démenti ». Les actions exécutées le jour
+> même sont marquées ✅.
 
 ## Vue d'ensemble
 
@@ -175,11 +180,63 @@ plus discret, sur `/blog/creer-application-avec-ia` (2 impressions sans barre).
 
 ---
 
+## Ce que la vérification a démenti
+
+Le rapport « Indexation des pages » est **agrégé et décalé** : sa dernière mise à
+jour datait du 18/09. L'outil d'inspection d'URL, lui, interroge l'index en
+direct. Quand les deux se contredisent, **c'est l'inspection qui fait foi.**
+
+### Démenti n°1 : trois des quatre pages « non indexées » l'étaient
+
+| Page | Rapport agrégé | Inspection d'URL (21/09) |
+|---|---|---|
+| `creer-application-mobile-guide` | Explorée, non indexée | **Indexée** |
+| `application-mobile-avec-claude` | Détectée, jamais explorée | **Indexée** |
+| `reprendre-application-mobile-existante` | Détectée, jamais explorée | **Indexée** |
+| `choisir-expert-application-mobile` | Explorée, non indexée | **Non indexée**, confirmé |
+
+Une seule page sur quatre était réellement absente de l'index. L'explication la
+plus probable des trois autres : les demandes d'indexation faites le 14/09 ont
+abouti, et le rapport agrégé n'avait pas encore rattrapé.
+
+**Leçon de méthode.** Une recherche `site:` ne prouve pas la non-indexation :
+elle ne fait pas remonter les pages mal classées. Le rapport Pages ne la prouve
+pas non plus, il a plusieurs jours de retard. Seule l'inspection d'URL tranche,
+page par page.
+
+### Le diagnostic de la seule vraie non-indexée
+
+`choisir-expert-application-mobile` porte la trace exacte de sa cause. Dans
+l'inspection d'URL, au 21/09 :
+
+- Dernière exploration : **21 juillet 2026, 09:51**
+- URL canonique déclarée par l'utilisateur :
+  `https://noecalmes.fr/blog/choisir-expert-application-mobile` — **sans barre finale**
+
+C'est le canonical cassé d'avant la refonte d'août. Google a vu un canonical
+pointant vers une URL qui redirige, a refusé d'indexer, et n'est jamais revenu.
+Le correctif est en ligne depuis août, vérifié le 21/09 : la page sert
+aujourd'hui un canonical avec la barre. Google ne l'avait simplement jamais
+réexplorée.
+
+### Démenti n°2 : la validation des redirections ne peut pas être relancée
+
+L'action 2 de la première version demandait de cliquer sur « Valider la
+correction ». Ce bouton n'existe pas : **une validation est déjà en cours depuis
+le 20/08**, et Google n'en autorise pas une seconde par-dessus. Son état au
+21/09 est « 11 en attente, 0 échec », donc rien n'a échoué, tout attend une
+réexploration.
+
+Le seul levier disponible est donc l'inspection d'URL, qui force l'exploration
+de la version canonique et résout la redirection au passage.
+
+---
+
 ## Le plan priorisé
 
 Classé par gain attendu rapporté à l'effort.
 
-### 1. Refondre `combien-coute-application-mobile`
+### 1. ✅ Refondre `combien-coute-application-mobile` — fait le 21/09
 
 | | |
 |---|---|
@@ -191,7 +248,7 @@ Classé par gain attendu rapporté à l'effort.
 C'est la seule action de la liste qui peut changer l'ordre de grandeur du
 trafic. Toutes les autres rapportent quelques clics.
 
-### 2. Relancer la validation des 11 erreurs de redirection
+### 2. ⚠️ Relancer la validation des 11 erreurs — impossible, voir le démenti n°2
 
 | | |
 |---|---|
@@ -199,7 +256,7 @@ trafic. Toutes les autres rapportent quelques clics.
 | **Problème** | Validation lancée le 20/08, toujours ouverte un mois après. Deux articles non indexés sont bloqués par ce conflit. |
 | **Action** | Search Console → Indexation → « Erreur liée à des redirections » → **Valider la correction**. La cause a été corrigée côté site, seule la revalidation manque. |
 
-### 3. Forcer la réexploration du guide
+### 3. ✅ Forcer la réexploration du guide — indexation demandée le 21/09
 
 | | |
 |---|---|
@@ -207,7 +264,7 @@ trafic. Toutes les autres rapportent quelques clics.
 | **Problème** | Dernière exploration le **26 avril**, avant la refonte. Google juge une version qui n'existe plus. 6 liens entrants, donc ce n'est pas un problème de maillage. |
 | **Action** | Inspection d'URL → Demander une indexation. C'est la seule façon de forcer une réexploration. |
 
-### 4. Même opération sur les trois autres pages bloquées
+### 4. ✅ Les autres pages — trois étaient déjà indexées, la quatrième demandée le 21/09
 
 | | |
 |---|---|
@@ -215,7 +272,7 @@ trafic. Toutes les autres rapportent quelques clics.
 | **Problème** | Une explorée en juillet et écartée, deux jamais explorées. |
 | **Action** | Demander l'indexation des trois. Quota journalier limité, étaler si nécessaire. |
 
-### 5. Gagner la page 1 sur « application mobile toulouse »
+### 5. ✅ Gagner la page 1 sur « application mobile toulouse » — page enrichie le 21/09
 
 | | |
 |---|---|
@@ -224,7 +281,7 @@ trafic. Toutes les autres rapportent quelques clics.
 | **Problème** | Bas de page 1, donc quasi invisible. Le gain de deux à trois places change tout à cet endroit précis. |
 | **Action** | Requête locale à faible concurrence. Enrichir avec des éléments géographiques réels, et créer la fiche Google Business si elle n'existe pas : c'est le levier le plus fort sur une requête locale. |
 
-### 6. Consolider le cluster MVP
+### 6. ✅ Consolider le cluster MVP — fait le 21/09
 
 | | |
 |---|---|
@@ -241,7 +298,7 @@ trafic. Toutes les autres rapportent quelques clics.
 | **Problème** | La version sans barre capte 44 impressions et l'unique clic du blog, la version canonique n'en a que 14. L'autorité est coupée en deux. |
 | **Action** | Se résout avec l'action 2. À vérifier ensuite : une seule des deux formes doit subsister dans le rapport Pages. |
 
-### 8. Retirer l'année du titre de la page prix
+### 8. ✅ Retirer l'année du titre de la page prix — fait avec l'action 1
 
 | | |
 |---|---|
@@ -249,15 +306,15 @@ trafic. Toutes les autres rapportent quelques clics.
 | **Problème** | Le titre affiché est « Combien coûte une application mobile en 2026 ? Prix & fourchettes... ». Il est tronqué dans les résultats, et « 2026 » se périme dans trois mois. |
 | **Action** | Titre plus court, sans année, centré sur « prix application mobile ». À faire en même temps que l'action 1. |
 
-### 9. Traiter les deux pages fantômes
+### 9. ⚠️ Les deux pages fantômes — rien à faire, voir ci-dessous
 
 | | |
 |---|---|
 | **Pages** | `/avis` et `/rendez-vous/` |
 | **Problème** | `/avis` est explorée et non indexée. `/rendez-vous/` apparaît en position 3,0 avec 2 impressions alors qu'elle n'est pas au sitemap. |
-| **Action** | Décider pour chacune : page réelle à assumer et à mettre au sitemap, ou `noindex`. Une page ni assumée ni exclue consomme du budget d'exploration. |
+| **Action** | **Aucune.** Vérification faite le 21/09 : les deux servent déjà `noindex, nofollow` avec un canonical vers l'accueil, et ne sont pas au sitemap. C'est exactement la configuration voulue. Les impressions de `/rendez-vous/` sont antérieures à la pose du `noindex`. |
 
-### 10. Combler le trou GEO des pages commerciales
+### 10. ✅ Combler le trou GEO des pages commerciales — fait le 21/09
 
 | | |
 |---|---|
@@ -278,6 +335,26 @@ vaut plus que les neuf autres actions réunies.
 Quatre articles sont bloqués par un conflit d'URL vieux d'un mois dont la
 correction est déjà en place côté site : il ne manque qu'un clic sur
 « Valider la correction ».
+
+---
+
+## Ce qui a été exécuté le 21/09
+
+| Action | État |
+|---|---|
+| 1 · Refonte de la page prix | ✅ 793 → 1 559 mots, titre recentré sur « prix application mobile », année retirée |
+| 3 et 4 · Indexation | ✅ 2 demandes envoyées, 3 pages déjà indexées |
+| 5 · Page Toulouse | ✅ 580 → 1 012 mots, tableau de prix, profils locaux |
+| 6 · Cluster MVP | ✅ 559 → 1 103 mots, vouvoiement du titre corrigé |
+| 8 · Titre sans année | ✅ fait avec l'action 1 |
+| 10 · Trou GEO | ✅ /expertise/ 94 → 667, /faq/ 65 → 584, /methode 87 → 548, accueil 85 → 261 |
+| 2 · Validation des redirections | ⚠️ impossible, une validation tourne déjà depuis le 20/08 |
+| 7 · Dédoublement d'URL | ⏳ se résout quand Google réexplore |
+| 9 · Pages fantômes | ⚠️ rien à faire, configuration déjà correcte |
+
+**Reste ouvert, et seul Noé peut le faire :** la fiche Google Business, qui
+demande une vérification d'identité. C'est le levier le plus fort sur
+« application mobile toulouse », actuellement en position 8,6.
 
 ---
 
