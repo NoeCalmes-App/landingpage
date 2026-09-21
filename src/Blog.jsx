@@ -1531,7 +1531,7 @@ export const BLOG_ARTICLES = [
           </thead>
           <tbody>
             <tr><td>Première version resserrée</td><td>5 000 à 8 000 €</td><td>4 à 6 semaines</td></tr>
-            <tr><td>Application complète, un profil</td><td>8 000 à 15 000 €</td><td>2 à 3 mois</td></tr>
+            <tr><td>Application complète, un profil</td><td>8 000 à 12 000 €</td><td>2 à 3 mois</td></tr>
             <tr><td>Reprise d'une application existante</td><td>variable</td><td>selon l'état du code</td></tr>
           </tbody>
         </table>
@@ -1625,7 +1625,7 @@ export const BLOG_ARTICLES = [
     categorie: "Budget",
     accroche: "Les vraies fourchettes, et pourquoi deux devis pour la même app varient du simple au triple.",
     tldr: {
-      verdict: "Compte 5 000 à 8 000 € pour une première version sérieuse, 8 000 à 15 000 € pour une application complète à un seul profil d'utilisateur, 15 000 à 25 000 € dès qu'il y a deux profils ou du temps réel. Le prix ne dépend presque pas de la technologie : il dépend du périmètre, et c'est pour ça que deux devis sur un besoin flou peuvent aller du simple au triple.",
+      verdict: "Compte 5 000 à 8 000 € pour une première version sérieuse, 8 000 à 12 000 € pour une application complète à un seul profil d'utilisateur, et en général une dizaine de milliers d'euros dès qu'il y a deux profils ou du temps réel. Le prix ne dépend presque pas de la technologie : il dépend du périmètre, et c'est pour ça que deux devis sur un besoin flou peuvent aller du simple au triple.",
       points: [
         { label: "Le sujet", valeur: "Les fourchettes par type de projet, et ce qui les fait bouger" },
         { label: "Pour qui", valeur: "Tu construis un budget ou tu compares des devis très écartés" },
@@ -1664,8 +1664,8 @@ export const BLOG_ARTICLES = [
           </thead>
           <tbody>
             <tr><td>Première version resserrée</td><td><strong>5 000 à 8 000 €</strong></td><td>4 à 6 semaines</td></tr>
-            <tr><td>Application complète, un profil d'utilisateur</td><td><strong>8 000 à 15 000 €</strong></td><td>2 à 3 mois</td></tr>
-            <tr><td>Deux profils, ou temps réel</td><td><strong>15 000 à 25 000 €</strong></td><td>3 à 5 mois</td></tr>
+            <tr><td>Application complète, un profil d'utilisateur</td><td><strong>8 000 à 12 000 €</strong></td><td>2 à 3 mois</td></tr>
+            <tr><td>Deux profils, ou temps réel</td><td><strong>une dizaine de milliers d'euros</strong></td><td>3 à 5 mois</td></tr>
             <tr><td>Reprise d'une application existante</td><td>très variable</td><td>selon l'état du code</td></tr>
             <tr><td>Agence ou ESN</td><td>50 000 à 300 000 €</td><td>6 à 12 mois</td></tr>
           </tbody>
@@ -1677,8 +1677,8 @@ export const BLOG_ARTICLES = [
       <p>Un prix sans son périmètre ne veut rien dire. Voici ce qu'il y a derrière.</p>
       <ul>
         <li><strong>5 000 à 8 000 €.</strong> Un seul type d'utilisateur, cinq à huit écrans, des comptes, éventuellement un paiement, une publication sur les deux stores. Pas de temps réel, pas d'interface d'administration. C'est une vraie application, pas une maquette.</li>
-        <li><strong>8 000 à 15 000 €.</strong> La même chose avec plus de profondeur fonctionnelle, du contenu structuré, des notifications, une interface d'administration légère, et un vrai travail de design plutôt qu'un habillage.</li>
-        <li><strong>15 000 à 25 000 €.</strong> Deux populations distinctes, par exemple un client et un professionnel, ou une fonction en temps réel comme une messagerie. Ce sont deux parcours, deux jeux de droits et deux fois les tests.</li>
+        <li><strong>8 000 à 12 000 €.</strong> La même chose avec plus de profondeur fonctionnelle, du contenu structuré, des notifications, une interface d'administration légère, et un vrai travail de design plutôt qu'un habillage.</li>
+        <li><strong>Une dizaine de milliers d'euros.</strong> Deux populations distinctes, par exemple un client et un professionnel, ou une fonction en temps réel comme une messagerie. Ce sont deux parcours, deux jeux de droits et deux fois les tests, et le chiffre dépend alors surtout du nombre d'écrans partagés entre les deux.</li>
         <li><strong>50 000 € et au-delà.</strong> Des équipes, des processus, plusieurs interlocuteurs. C'est pertinent pour des projets réellement complexes, et surdimensionné pour une première version.</li>
       </ul>
 
@@ -1729,7 +1729,7 @@ export const BLOG_ARTICLES = [
       <h2>Ce que tu peux faire baisser sans rien perdre</h2>
       <p>Trois arbitrages font baisser le devis sans dégrader le produit.</p>
       <ol>
-        <li><strong>Un seul profil d'utilisateur en version 1.</strong> Si ton application prévoit un client et un professionnel, sors d'abord celle du client. C'est souvent 30 à 40 % du budget en moins, et tu apprends avant de construire la seconde moitié.</li>
+        <li><strong>Un seul profil d'utilisateur en version 1.</strong> Si ton application prévoit un client et un professionnel, sors d'abord celle du client. C'est souvent un tiers du budget en moins, et tu apprends avant de construire la seconde moitié.</li>
         <li><strong>Reporter le temps réel.</strong> Une messagerie peut commencer par des notifications et un échange asynchrone. La différence de budget est importante, la différence d'usage en version 1 est faible.</li>
         <li><strong>Fournir tes contenus toi-même.</strong> Textes, photos, conditions générales. C'est du temps facturé si quelqu'un doit les produire, et c'est aussi la première cause de retard.</li>
       </ol>
