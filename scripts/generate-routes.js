@@ -644,8 +644,8 @@ const blogRoutes = [
   },
   {
     path: '/blog/creation-application-mobile-toulouse',
-    heading: 'Création d\'application mobile à Toulouse',
-    content: 'Développeur d\'applications mobiles à Toulouse et en Occitanie. Je conçois ton application iOS et Android pour qu\'elle génère des revenus, pas juste pour exister, de la stratégie au lancement sur l\'App Store et Google Play. Une application que j\'ai conçue génère 13 000 € par mois.',
+    heading: "Création d'application mobile à Toulouse",
+    content: "Conception et developpement d'applications iOS et Android a Toulouse, en Haute-Garonne et en Occitanie, et a distance partout en France. Un seul interlocuteur, joignable directement, tarif fixe pose avant de commencer, premiere version en 4 a 6 semaines. Le prix depend du perimetre et non de la ville : 5 000 a 8 000 euros pour une premiere version resserree, 8 000 a 15 000 euros pour une application complete a un profil. Les profils toulousains les plus frequents sont les independants du sport et du bien-etre, les formateurs et organismes, le commerce de proximite qui fidelise, et les porteurs de projet issus de l'ecosysteme local. La proximite geographique change surtout le demarrage d'un projet flou, elle ne change ni le prix, ni le delai, ni la qualite. Trois interventions possibles : creer de zero, reprendre une application instable, faire evoluer une application en ligne.",
   },
   {
     path: '/blog/application-mobile-meilleur-investissement',
@@ -679,8 +679,8 @@ const blogRoutes = [
   },
   {
     path: '/blog/mvp-application-mobile',
-    heading: 'MVP application mobile : lancer vite sans sacrifier la qualité',
-    content: 'Ce qu\'est vraiment un MVP mobile et comment le construire : lancer ta première version en 45 jours, valider ton idée, éviter les pièges.',
+    heading: "MVP d'application mobile : lancer ton idée en 45 jours",
+    content: "MVP signifie Minimum Viable Product, produit minimum viable, aussi appele premiere version ou format MVP. Le mot qui compte dans le sigle est viable, pas minimum : une application qui fait peu mais bien en est un, une application qui fait beaucoup mais mal n'en est pas un. Compte 5 000 a 8 000 euros et 45 jours, soit 4 a 6 semaines de developpement plus le cadrage, contre 6 a 9 mois pour une application complete. Ce qu'on garde : le parcours principal de bout en bout, un seul type d'utilisateur, le paiement, un design soigne sur ces ecrans. Ce qu'on coupe : les profils multiples, l'administration, le hors ligne, la personnalisation. Un MVP a 6 000 euros se rembourse avec environ 70 abonnes sur un an a 9,99 euros par mois. Le choix entre MVP mobile et MVP web ne se fait pas sur le prix mais sur l'usage.",
   },
   {
     path: '/blog/choisir-expert-application-mobile',

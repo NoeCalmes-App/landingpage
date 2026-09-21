@@ -1473,8 +1473,8 @@ export const BLOG_ARTICLES = [
     title: "Création d'application mobile à Toulouse",
     metaTitle: "Création d'application mobile à Toulouse | Noé Calmes",
     description: "Développeur d'applications mobiles à Toulouse : je conçois ton application iOS et Android pour qu'elle génère des revenus, de l'idée au lancement.",
-    date: '2026-06-24',
-    readTime: '5 min',
+    date: '2026-09-21',
+    readTime: '8 min',
     finalCta: 'audit',
     categorie: "Toulouse",
     accroche: "Toulouse et Occitanie : un seul interlocuteur, tarif fixe.",
@@ -1501,6 +1501,7 @@ export const BLOG_ARTICLES = [
       { q: "Tu travailles uniquement sur Toulouse ?", a: "Non. Je suis basé près de Toulouse et j'interviens en direct sur l'Occitanie, mais je travaille à distance partout en France. Le suivi se fait sur WhatsApp, et c'est moi qui réponds." },
       { q: "On peut se rencontrer physiquement ?", a: "Sur Toulouse et les environs, oui, si ça t'aide à démarrer. Dans les faits la plupart des projets se pilotent très bien à distance, avec des points réguliers et des versions testables." },
       { q: "Quel est le budget pour une application à Toulouse ?", a: "Le même que partout ailleurs : le prix dépend du périmètre, pas de la ville. En général 5 000 à 12 000 € pour une première version sérieuse, avec un tarif fixe défini avant de commencer." },
+      { q: "Pourquoi choisir un indépendant plutôt qu'une agence toulousaine ?", a: "Pour une raison de structure, pas de qualité : chez un indépendant tu parles directement à celui qui construit, sans commercial ni chef de projet intermédiaire, et l'écart de prix à périmètre égal va de 30 à 50 %. Une agence reste le bon choix quand le projet demande plusieurs personnes en parallèle ou une continuité que je ne peux pas garantir seul. Le comparatif complet est dans choisir le bon expert pour ton application." },
     ],
     content: `
       <p>Tu cherches un <strong>développeur d'application mobile à Toulouse</strong> pour concrétiser ton projet ? Avant même de parler de code, il y a une question plus importante : est-ce que ton application va vraiment te <strong>rapporter</strong> ? C'est exactement là-dessus que je travaille.</p>
@@ -1519,6 +1520,41 @@ export const BLOG_ARTICLES = [
 
       <h2>Ma méthode, de l'idée au lancement</h2>
       <p>On commence par cadrer ton projet et ton modèle économique. Je te livre un cahier des charges clair, un devis transparent et une première maquette de ton application pour que tu visualises avant de décider quoi que ce soit. Ensuite je développe, avec des points réguliers, et je publie sur l'App Store et Google Play. Compte en général 4 à 6 semaines pour une première version.</p>
+
+
+      <h2>Combien coûte une application à Toulouse</h2>
+      <p>Le même prix que partout ailleurs, et c'est une bonne nouvelle : <strong>le prix dépend du périmètre, pas de la ville</strong>. Un développement ne coûte pas moins cher parce qu'il est fait en province, et il ne coûte pas plus cher parce qu'il est fait près de chez toi.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Type de projet</th><th>Fourchette</th><th>Délai</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Première version resserrée</td><td>5 000 à 8 000 €</td><td>4 à 6 semaines</td></tr>
+            <tr><td>Application complète, un profil</td><td>8 000 à 15 000 €</td><td>2 à 3 mois</td></tr>
+            <tr><td>Reprise d'une application existante</td><td>variable</td><td>selon l'état du code</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Le détail de ce que couvre chaque fourchette est dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>.</p>
+
+      <h2>Les projets toulousains où une application a du sens</h2>
+      <p>Toulouse a un tissu économique particulier, et certains profils reviennent plus souvent que d'autres dans les projets qu'on me soumet.</p>
+      <ul>
+        <li><strong>Les indépendants du sport et du bien-être.</strong> Coachs, studios, salles : suivi des adhérents, réservation de créneaux, abonnement. C'est le cas où l'application remplace un carnet et trois outils qui ne se parlent pas.</li>
+        <li><strong>Les formateurs et organismes.</strong> La ville en compte beaucoup, portés par les écoles et le tissu aéronautique. Une application change la fréquence d'usage d'une formation, là où une plateforme web est consultée une fois puis oubliée.</li>
+        <li><strong>Le commerce de proximité qui fidélise.</strong> Pas une vitrine, une raison de revenir : carte de fidélité, commande à l'avance, notification utile.</li>
+        <li><strong>Les porteurs de projet issus de l'écosystème local.</strong> Sortie d'école, essaimage, reconversion : un premier produit à valider vite, sans lever de fonds.</li>
+      </ul>
+      <div class="encadre attention">
+        <span class="encadre-titre">Le cas où je dis non</span>
+        <p>Si ton besoin est une présence en ligne, une application n'est pas la réponse : un site et une fiche Google suffisent, pour bien moins cher. Je le dis avant le devis, pas après. Le test rapide est dans le quiz <a href="/quiz/application-ou-site-web/">application ou site web</a>.</p>
+      </div>
+
+      <h2>Ce que change la proximité, et ce qu'elle ne change pas</h2>
+      <p>Autant être honnête : sur un projet d'application, la proximité géographique compte moins qu'on ne le croit. Le travail se pilote très bien à distance, avec des versions testables et des points réguliers.</p>
+      <p>Ce qu'elle change vraiment, c'est le démarrage. Un premier rendez-vous en face à face pour cadrer un projet flou va souvent plus vite que trois visioconférences, et pour certains c'est aussi une question de confiance : savoir que la personne existe, qu'elle est à vingt minutes, et qu'elle ne disparaîtra pas après la dernière facture.</p>
+      <p>Ce qu'elle ne change pas : le prix, le délai, et la qualité. Si quelqu'un te vend la proximité comme un argument technique, méfie-toi.</p>
 
       <h2>Teste ton idée avant d'investir</h2>
       <p>Avant même qu'on échange, tu peux tester gratuitement ton idée d'application en 2 minutes : tu obtiens une première lecture sur son potentiel, le budget à prévoir et le délai. C'est par ici, fais ton <a href="/audit-app/">audit gratuit</a>. Et si tu veux creuser le budget, regarde aussi <a href="/blog/combien-coute-application-mobile/">combien coûte une application mobile</a>.</p>
@@ -1976,25 +2012,25 @@ export const BLOG_ARTICLES = [
   },
   {
     slug: 'mvp-application-mobile',
-    title: 'MVP application mobile : lancer votre idée en 45 jours',
+    title: "MVP d'application mobile : lancer ton idée en 45 jours",
     metaTitle: "MVP application mobile : lancer en 45 jours | Noé Calmes",
-    description: "Ce qu'est vraiment un MVP mobile et comment le construire : lancer ta première version en 45 jours, valider ton idée, éviter les pièges.",
-    date: '2026-04-29',
-    readTime: '5 min',
+    description: "Ce qu'est vraiment un MVP mobile, ce qu'on garde et ce qu'on coupe, ce que ça coûte, et pourquoi 45 jours est un délai réaliste.",
+    date: '2026-09-21',
+    readTime: '9 min',
     finalCta: 'audit',
     categorie: "Budget",
     accroche: "Une première version en 45 jours, sans la bâcler.",
     tldr: {
-      verdict: "Un MVP n'est pas une application au rabais, c'est une application réduite au périmètre qui prouve le modèle. L'objectif est de savoir si des gens paient, avant d'engager tout le budget.",
+      verdict: "Un MVP n'est pas une application au rabais, c'est une application réduite au périmètre qui prouve le modèle. L'objectif n'est pas de sortir vite, il est de savoir si des gens paient avant d'engager le reste du budget. Compte 5 000 à 8 000 € et 45 jours quand le périmètre est clair.",
       points: [
-        { label: "Le sujet", valeur: "Ce qu'est vraiment un MVP mobile et comment le définir" },
-        { label: "Pour qui", valeur: "Tu veux valider vite sans tout dépenser" },
-        { label: "Délai", valeur: "45 jours possibles quand le périmètre est clair" },
-        { label: "Erreur classique", valeur: "Un MVP bâclé, qui teste la qualité au lieu de l'idée" },
+        { label: "Le sujet", valeur: "Ce qu'est un MVP mobile, ce qu'on coupe, ce que ça coûte" },
+        { label: "Pour qui", valeur: "Tu veux valider vite sans engager tout ton budget" },
+        { label: "Le repère", valeur: "5 000 à 8 000 € et 45 jours pour un périmètre clair" },
+        { label: "À retenir", valeur: "Un MVP teste l'idée, pas la qualité. Le bâcler fausse le test" },
       ],
     },
     pourQui: [
-      "Tu veux tester le marché avant d'investir la totalité du budget",
+      "Tu veux tester le marché avant d'engager la totalité du budget",
       "Tu as une urgence réelle ou une fenêtre à saisir",
       "Tu acceptes de sortir avec moins de fonctionnalités que prévu",
     ],
@@ -2004,55 +2040,96 @@ export const BLOG_ARTICLES = [
       "Tu confonds première version et version bâclée",
     ],
     faq: [
-      { q: "Un MVP, ça coûte combien ?", a: "En général 5 000 à 8 000 € pour un périmètre resserré : peu d'écrans, un compte utilisateur simple, pas de complexité serveur. C'est le format d'entrée le plus fréquent, et souvent la meilleure décision même quand le budget permet plus." },
-      { q: "Qu'est-ce qu'on coupe dans un MVP ?", a: "Tout ce qui n'est pas nécessaire pour que l'utilisateur atteigne la valeur et puisse payer. Les paramètres avancés, les statistiques, les rôles multiples, les intégrations secondaires : ça attend d'avoir des utilisateurs réels." },
-      { q: "On garde le code du MVP pour la suite ?", a: "Oui, c'est tout l'intérêt de le faire correctement. Un MVP écrit proprement sert de base à la version complète. Un MVP bâclé se jette, et le budget économisé au départ est perdu deux fois." },
+      { q: "Un MVP d'application, ça coûte combien ?", a: "En général 5 000 à 8 000 € pour un périmètre resserré : cinq à huit écrans, un compte utilisateur simple, éventuellement un paiement, pas de complexité serveur. C'est le format d'entrée le plus fréquent, et souvent la meilleure décision même quand le budget permettrait plus. Les fourchettes complètes sont dans le prix d'une application mobile." },
+      { q: "Qu'est-ce qu'on coupe exactement dans un MVP ?", a: "Tout ce qui n'est pas nécessaire pour que l'utilisateur atteigne la valeur et puisse payer. Les paramètres avancés, les statistiques, les profils multiples, le mode hors ligne, les intégrations secondaires, la personnalisation. Ça attend d'avoir des utilisateurs réels, qui te diront lesquelles de ces choses comptent vraiment. La plupart du temps, ce ne sont pas celles que tu aurais devinées." },
+      { q: "On garde le code du MVP pour la suite ?", a: "Oui, et c'est tout l'intérêt de le faire correctement. Un MVP écrit proprement sert de base à la version complète : on ajoute par-dessus, on ne recommence pas. Un MVP bâclé se jette, et le budget économisé au départ est alors perdu deux fois, une fois dans le code jeté et une fois dans le temps perdu." },
+      { q: "Faut-il un MVP mobile ou un MVP web d'abord ?", a: "Le web coûte moins cher et sort plus vite, donc il est tentant. La bonne question n'est pas le prix mais l'usage : si ton produit a besoin d'être utilisé souvent, hors du bureau, avec des notifications, le mobile n'est pas une version plus chère du web, c'est le produit. Si ton usage est ponctuel et se fait assis devant un écran, commence par le web." },
+      { q: "45 jours, ce n'est pas un argument commercial ?", a: "C'est un délai conditionnel, et la condition fait tout : un périmètre arrêté avant de commencer. Sur un projet qui se redéfinit en cours de route, aucun délai ne tient, et ce n'est pas une question de rapidité du développeur. Quarante-cinq jours, c'est quatre à six semaines de développement plus le cadrage et les allers-retours." },
     ],
     content: `
-      <p>Tu as une idée d'application mobile. Tu veux la lancer sans y mettre toutes tes économies, sans attendre un an, et sans construire quelque chose que personne n'utilisera.</p>
-      <p>La réponse, c'est le MVP.</p>
+      <p>Tu as une idée d'application. Tu veux la lancer sans y mettre toutes tes économies, sans attendre un an, et sans construire quelque chose que personne n'utilisera.</p>
+      <p>C'est exactement ce à quoi sert un MVP. Encore faut-il savoir ce qu'on met dedans, et surtout ce qu'on en retire.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et la plupart ont commencé par une première version resserrée.</p>
 
-      <h2>Qu'est-ce qu'un MVP d'application mobile ?</h2>
-      <p>MVP signifie Minimum Viable Product, produit minimum viable. C'est la version la plus simple de ton application qui permet quand même de répondre au besoin principal de tes utilisateurs.</p>
-      <p>Ce n'est pas une version bâclée ou incomplète. C'est une version <strong>ciblée</strong>, qui fait une chose bien, plutôt que dix choses moyennement.</p>
-      <p>L'objectif du MVP est de valider ton idée avec de vrais utilisateurs, le plus vite possible, avec le minimum d'investissement.</p>
+      <h2>Ce que veut dire MVP, concrètement</h2>
+      <p>MVP est le sigle de Minimum Viable Product, produit minimum viable. On parle aussi de première version, de version 1, ou simplement de format MVP.</p>
+      <p>C'est la version la plus simple de ton application qui répond quand même au besoin principal de tes utilisateurs. Pas une version bâclée : une version <strong>ciblée</strong>, qui fait une chose bien plutôt que dix choses moyennement.</p>
+      <div class="encadre cle">
+        <span class="encadre-titre">Le mot qui compte dans le sigle</span>
+        <p>Ce n'est pas <em>minimum</em>, c'est <strong>viable</strong>. Une application qui fait peu mais le fait bien est un MVP. Une application qui fait beaucoup mais mal n'en est pas un, c'est un produit raté qui coûte le même prix.</p>
+      </div>
 
-      <h2>Pourquoi commencer par un MVP ?</h2>
+      <h2>Pourquoi commencer par là</h2>
       <ul>
-        <li><strong>Valider avant d'investir.</strong> Tu testes ton idée sur le marché réel avant de tout construire.</li>
-        <li><strong>Obtenir des retours utilisateurs réels.</strong> Ce que tu imagines et ce que les utilisateurs veulent sont souvent différents.</li>
-        <li><strong>Réduire le risque.</strong> Un MVP mal reçu se corrige. Une application complète mal reçue, c'est des dizaines de milliers d'euros perdus.</li>
-        <li><strong>Aller vite.</strong> Un MVP bien défini peut être livré en 45 jours, versus 6 à 9 mois pour une application complète.</li>
+        <li><strong>Valider avant d'engager.</strong> Tu testes ton idée sur le marché réel avant de construire la totalité.</li>
+        <li><strong>Obtenir de vrais retours.</strong> Ce que tu imagines et ce que les utilisateurs veulent sont presque toujours différents, et c'est la seule façon de le découvrir.</li>
+        <li><strong>Réduire le risque.</strong> Un MVP mal reçu se corrige. Une application complète mal reçue, ce sont des dizaines de milliers d'euros déjà dépensés.</li>
+        <li><strong>Financer la suite.</strong> Une première version qui encaisse paie une partie de la seconde. C'est le seul mode de financement qui ne dilue rien.</li>
       </ul>
 
-      <h2>Comment définir ton MVP ?</h2>
-      <p>La question centrale : <strong>quel est le problème numéro un que ton application résout ?</strong></p>
-      <p>Ton MVP doit résoudre ce problème, et ce problème seulement. Tout le reste vient après.</p>
-      <p>Exercice utile : liste toutes les fonctionnalités que tu veux. Divise-les en deux colonnes, "indispensable pour résoudre le problème principal" et "tout le reste". Le MVP, c'est la première colonne.</p>
+      <h2>Ce qu'on garde et ce qu'on coupe</h2>
+      <p>C'est la partie difficile, parce qu'elle demande de renoncer à des choses auxquelles on tient. Voici la répartition que j'applique.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Dans le MVP</th><th>Après le MVP</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Le parcours principal, de bout en bout</td><td>Les parcours secondaires</td></tr>
+            <tr><td>Un seul type d'utilisateur</td><td>Les autres profils, l'administration</td></tr>
+            <tr><td>Le paiement, s'il y en a un</td><td>Les offres multiples, les codes promo</td></tr>
+            <tr><td>Un design soigné sur ces écrans</td><td>La personnalisation, les thèmes</td></tr>
+            <tr><td>Les cas d'erreur du parcours principal</td><td>Le mode hors ligne, la synchronisation</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>L'exercice qui aide : liste toutes les fonctionnalités que tu veux, puis pose à chacune une seule question. <strong>Sans elle, l'utilisateur peut-il quand même arriver au bout et payer ?</strong> Si oui, elle attend.</p>
 
-      <h2>45 jours : comment c'est possible ?</h2>
-      <p>45 jours est un délai réaliste pour un MVP bien cadré. Ce qui le permet :</p>
+      <h2>Pourquoi 45 jours est réaliste</h2>
+      <div class="chiffre">
+        <span class="chiffre-valeur">45 jours</span>
+        <span class="chiffre-texte">soit 4 à 6 semaines de développement plus le cadrage et les allers-retours. À comparer aux 6 à 9 mois d'une application complète. Le délai n'est pas tenu en allant plus vite, il est tenu en construisant moins.</span>
+      </div>
+      <p>Quatre conditions le rendent possible, et elles se préparent avant la première ligne de code.</p>
       <ul>
-        <li>Un périmètre clairement défini avant de commencer</li>
-        <li>Un interlocuteur unique qui comprend à la fois le produit et la technique, pas de perte de temps en réunions de coordination</li>
-        <li>Une technologie cross-platform qui couvre iOS et Android en une seule passe</li>
-        <li>Un processus de travail structuré, sans dispersion</li>
+        <li>Un périmètre arrêté avant de commencer, pas pendant.</li>
+        <li>Un interlocuteur unique qui comprend le produit et la technique, sans réunion de coordination entre trois personnes.</li>
+        <li>Une technologie multiplateforme qui couvre iOS et Android en une seule passe.</li>
+        <li>Des retours rapides de ta part. C'est la condition qu'on oublie, et c'est la première cause de décalage : le détail est dans <a href="/blog/combien-de-temps-creer-application-mobile/">combien de temps pour créer une application mobile</a>.</li>
       </ul>
-      <p>45 jours ne veut pas dire "fait vite et mal". Ça veut dire concentré sur l'essentiel, sans superflu.</p>
 
-      <h2>MVP : ce que ça n'est pas</h2>
+      <h2>Combien ça coûte</h2>
+      <p>Compte <strong>5 000 à 8 000 €</strong> pour un MVP au périmètre resserré. C'est l'entrée de gamme sérieuse : une vraie application native, publiée sur les deux stores, avec comptes et éventuellement paiement.</p>
+      <p>En dessous, ce qui reste réaliste change de nature, application web ou outil no-code, et ce sont parfois de bons choix. Les fourchettes complètes par type de projet sont dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>.</p>
+      <div class="encadre astuce">
+        <span class="encadre-titre">Le calcul à faire avant de signer</span>
+        <p>Un MVP à 6 000 € se rembourse avec environ <strong>70 abonnés</strong> sur un an à 9,99 € par mois, en comptant les 70 % qui te reviennent réellement après TVA et commission des stores. Pose-toi la question dans ce sens plutôt que dans celui du budget. La formule complète est dans <a href="/blog/combien-de-clients-pour-rentabiliser-application/">combien de clients pour rentabiliser ton application</a>.</p>
+      </div>
+
+      <h2>MVP mobile ou MVP web : lequel d'abord</h2>
+      <p>Le web coûte moins cher et sort plus vite, donc la tentation est réelle. Mais le choix ne se fait pas sur le prix, il se fait sur l'usage.</p>
+      <p>Si ton produit doit être utilisé <strong>souvent, hors du bureau, avec des notifications</strong>, le mobile n'est pas une version plus chère du web : c'est le produit. Un MVP web ne testerait pas ton idée, il en testerait une autre, et te donnerait une réponse qui ne s'applique pas.</p>
+      <p>Si l'usage est ponctuel et se fait assis devant un écran, commence par le web. C'est moins cher, plus rapide, et tu pourras passer au mobile une fois le besoin prouvé.</p>
+
+      <h2>Ce qu'un MVP n'est pas</h2>
       <ul>
-        <li>Ce n'est pas une application sans design, l'UX compte dès la première version</li>
-        <li>Ce n'est pas un prototype cliquable : c'est une vraie application publiée sur les stores</li>
-        <li>Ce n'est pas une version "jetable", la base technique doit permettre d'évoluer ensuite</li>
+        <li><strong>Ce n'est pas une application sans design.</strong> L'expérience compte dès la première version, parce qu'un utilisateur qui décroche à cause de l'interface ne te dit rien sur ton idée.</li>
+        <li><strong>Ce n'est pas un prototype cliquable.</strong> C'est une vraie application, publiée, que de vraies personnes installent.</li>
+        <li><strong>Ce n'est pas une version jetable.</strong> La base technique doit permettre de construire par-dessus, sinon l'économie du départ se paie au double.</li>
+        <li><strong>Ce n'est pas un test de qualité.</strong> Si tu bâcles, tu mesures ta réalisation, pas ton idée. Le test devient inutilisable.</li>
       </ul>
 
-      <h2>Après le MVP : et ensuite ?</h2>
-      <p>Le MVP est le point de départ, pas la destination. Une fois en ligne, tu collectes des données et des retours réels. Tu identifies ce qui fonctionne, ce qui bloque, ce que les utilisateurs veulent vraiment.</p>
-      <p>C'est cette boucle, lancer puis mesurer puis améliorer, qui transforme un MVP en un produit qui génère des revenus.</p>
+      <h2>Après le MVP</h2>
+      <p>Le MVP est le point de départ, pas la destination. Une fois en ligne, tu récoltes des données et des retours réels : ce qui fonctionne, ce qui bloque, ce que les gens font que tu n'avais pas prévu.</p>
+      <p>C'est cette boucle, lancer puis mesurer puis améliorer, qui transforme une première version en produit qui rapporte. La suite est détaillée dans <a href="/blog/faire-evoluer-application-mobile/">faire évoluer une application mobile</a>.</p>
 
-      <h2>Tu as une idée à lancer ?</h2>
-      <p>Fais l'audit gratuit en 2 minutes, ou écris-moi directement sur WhatsApp. Un appel de 30 minutes suffit pour évaluer si un MVP est la bonne approche, définir le périmètre et voir comment avancer concrètement.</p>
+      <h2>Par où commencer</h2>
+      <ol>
+        <li><strong>Écris le problème numéro un</strong> que ton application résout, en une phrase. Si tu en écris trois, tu n'as pas encore de MVP.</li>
+        <li><strong>Trie tes fonctionnalités</strong> avec la question du paragraphe plus haut. Garde la colonne de gauche.</li>
+        <li><strong>Vérifie que le nombre de clients nécessaires est atteignable</strong> avec ton audience actuelle, avant de développer quoi que ce soit.</li>
+      </ol>
+      <p>Si tu veux savoir si un MVP est la bonne approche pour ton projet et ce qu'il contiendrait, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes.</p>
     `,
   },
   {
