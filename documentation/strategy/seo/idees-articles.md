@@ -189,8 +189,22 @@ dépendance à la plateforme y sont donc déjà traités.
 
 ---
 
-### 4. Transformer ta formation en application mobile
-**Statut** : à écrire · **Format** : sectoriel · **Mot-clé** : transformer sa formation en application
+### 4. ~~Transformer ta formation en application mobile~~
+**Statut** : ❌ abandonné le 28/09/2026, déjà couvert · **Mot-clé** : transformer sa formation en application
+
+**Ne pas écrire.** La phase 0 a montré que
+`/blog/application-mobile-coach-formateur/` traite déjà l'angle du brief : sa
+FAQ « Application ou plateforme de formation existante ? » est exactement la
+comparaison prévue ici, et sa section « À partir de quand c'est rentable »
+couvre le calcul sur une promo d'apprenants.
+
+> **Deuxième brief abandonné en deux semaines**, après le n°3. Ce n'est pas un
+> problème de file, c'est le signe que le site est devenu dense : les articles
+> ont absorbé les angles prévus en grossissant. La phase 0 du runbook fait
+> exactement son travail.
+>
+> Si ce mot-clé doit être travaillé, ce sera en ajoutant un H2 dédié dans
+> l'article coach-formateur, jamais en créant une seconde page.
 
 Formateurs et organismes. Ce que l'application change par rapport à une
 plateforme : la fréquence, la notification, le suivi. Le calcul de rentabilité
@@ -236,7 +250,7 @@ sectorielle, concurrence faible.
 ---
 
 ### 7. Cahier des charges d'application mobile : ce qu'il faut vraiment écrire
-**Statut** : à écrire · **Format** : guide · **Mot-clé** : cahier des charges application mobile
+**Statut** : ✅ publié le 28/09/2026 · **Format** : guide · **Mot-clé** : cahier des charges application mobile
 
 Requête très proche de l'achat : la personne prépare sa consultation. Angle
 contre-intuitif et honnête : un cahier des charges écrit trop tôt fige de
@@ -244,6 +258,21 @@ mauvaises décisions. Donner la trame minimale qui suffit réellement (problème
 cible, ce qui est payant, contraintes), et dire que le reste se cadre ensemble.
 Excellent article pour capter des gens qui vont demander des devis dans la
 semaine.
+
+> **Ce que la rédaction a apporté au-delà du brief.** Le brief prévoyait la
+> trame minimale. L'article y ajoute deux choses qui valent d'être réutilisées.
+>
+> D'abord un usage du document auquel personne ne pense : **la façon dont un
+> prestataire répond à ta page en dit plus long que ses références.** Celui qui
+> interroge ton modèle de revenus a compris l'enjeu, celui qui chiffre sans
+> rien demander a chiffré ses propres hypothèses, celui qui réclame trente
+> pages te fait faire son cadrage.
+>
+> Ensuite une section qui reconnaît les cas où le document long est justifié,
+> appel d'offres public, contrainte réglementaire, reprise d'existant, équipes
+> multiples. C'est la règle « reconnaître ce que l'autre fait bien » appliquée
+> à une pratique plutôt qu'à un concurrent : sans elle, l'article passerait
+> pour une position de confort.
 
 ---
 

@@ -688,6 +688,11 @@ for (const route of legacySectionRoutes) {
 // `lireMetaArticles()` : ne pas les redefinir ici, ils seraient ignores.
 const blogRoutes = [
   {
+    path: '/blog/cahier-des-charges-application-mobile',
+    heading: "Cahier des charges d'application mobile : ce qu'il faut vraiment ecrire",
+    content: "Un cahier des charges a une seule utilite pratique : permettre a plusieurs prestataires de chiffrer la meme chose. Ce qui rend deux devis incomparables n'est presque jamais le manque de detail technique, c'est le flou sur trois points, le nombre de types d'utilisateurs, la presence d'un paiement et la presence de temps reel. Ecrit trop tot, un document de trente pages fige des decisions prises au pire moment, quand on ignore encore ce que chacune coute. Une page repondant a cinq questions suffit : le probleme resolu, pour qui et combien de profils, ce qui sera payant, ce que l'utilisateur doit pouvoir faire en cinq points, et les contraintes de budget, de date et d'outils a connecter. Annoncer son budget ne fait pas payer plus cher, ca permet d'arbitrer le perimetre. A ne pas y mettre : la description ecran par ecran, le choix de la technologie, la liste exhaustive des fonctionnalites et les formulations qui n'engagent a rien. Le document long reste justifie pour un appel d'offres public, une contrainte reglementaire, une reprise d'existant ou plusieurs equipes en parallele.",
+  },
+  {
     path: '/blog/combien-de-temps-creer-application-mobile',
     heading: 'Combien de temps faut-il pour créer une application mobile ?',
     content: "Quatre à six semaines de développement pour une première version au périmètre clair, environ 45 jours porte à porte, six à neuf mois pour une application complète. Mais ce délai ne mesure que le code : entre le code livré et le premier euro encaissé il y a une chaîne administrative, comptes développeur vérifiés, statut de vendeur, contrat et coordonnées bancaires, validation des stores, qui se prépare en parallèle du développement plutôt qu'après. Les quatre facteurs qui allongent réellement sont le nombre de types d'utilisateurs, le temps réel, les intégrations avec l'existant et le paiement. La première cause de retard n'est pas technique : c'est le délai de réponse du client, une semaine d'attente valant un sixième du planning.",

@@ -21,6 +21,137 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'cahier-des-charges-application-mobile',
+    title: "Cahier des charges d'application mobile : ce qu'il faut vraiment écrire",
+    metaTitle: "Cahier des charges application mobile : le modèle | Noé Calmes",
+    description: "La trame d'une page qui suffit pour obtenir des devis comparables, et pourquoi un document de trente pages écrit trop tôt te coûte cher.",
+    date: '2026-09-28',
+    readTime: '9 min',
+    finalCta: 'audit',
+    categorie: "Créer",
+    accroche: "Une page bien écrite vaut mieux que trente pages écrites trop tôt.",
+    tldr: {
+      verdict: "Un cahier des charges sert à obtenir des devis comparables, pas à décrire l'application écran par écran. Écrit trop tôt, il fige des décisions que tu n'es pas encore en mesure de prendre, et tu les paies deux fois : une fois en développement, une fois en correction. Une page qui répond à cinq questions suffit, et elle est plus utile qu'un document de trente.",
+      points: [
+        { label: "Le sujet", valeur: "La trame minimale qui suffit, et ce qu'il ne faut pas y mettre" },
+        { label: "Pour qui", valeur: "Tu prépares tes demandes de devis et tu ne sais pas jusqu'où détailler" },
+        { label: "Le repère", valeur: "Une page, cinq questions, une heure d'écriture" },
+        { label: "À retenir", valeur: "Décris le problème à résoudre, pas la solution que tu imagines" },
+      ],
+    },
+    pourQui: [
+      "Tu vas demander des devis et tu veux qu'ils soient comparables",
+      "On t'a réclamé un cahier des charges et tu ne sais pas quoi mettre dedans",
+      "Tu préfères écrire une page utile que trente pages inutilisables",
+    ],
+    pasPourQui: [
+      "Ton projet est soumis à un appel d'offres public au formalisme imposé",
+      "Tu veux un document qui te dispense de toute décision pendant le projet",
+      "Tu cherches un modèle à remplir sans réfléchir",
+    ],
+    faq: [
+      { q: "Faut-il vraiment un cahier des charges pour demander un devis ?", a: "Il faut un document, mais pas forcément celui qu'on imagine. Une page qui dit quel problème tu résous, pour qui, ce qui sera payant et quelles sont tes contraintes suffit pour obtenir des devis comparables. Ce qui rend deux devis incomparables n'est jamais le manque de détail technique, c'est le flou sur le périmètre : combien de types d'utilisateurs, y a-t-il du paiement, y a-t-il du temps réel. Réponds à ces trois-là et les écarts de prix se resserrent d'un coup." },
+      { q: "Combien de pages, concrètement ?", a: "Une, et deux si ton activité est complexe à expliquer. Au-delà, tu écris des décisions que tu n'es pas encore en état de prendre, et chacune coûtera à défaire. Un document long rassure celui qui l'écrit et complique la vie de celui qui le lit : il doit deviner ce qui est ferme et ce qui est une idée en passant." },
+      { q: "Et si le prestataire en exige un de trente pages ?", a: "C'est un signal à écouter, dans les deux sens. Certaines structures en ont besoin parce que plusieurs personnes vont travailler sur le projet sans jamais te parler, et c'est légitime. Mais si on te demande de spécifier toi-même les écrans et les règles métier avant toute discussion, tu paies un travail de conception que tu fais toi-même, et tu le paies mal, parce que ce n'est pas ton métier." },
+      { q: "Qui doit écrire le cahier des charges, toi ou moi ?", a: "Toi la page de départ, moi le document de cadrage. Tu es le seul à savoir quel problème tu résous et pour qui. Moi je transforme ça en périmètre chiffrable, en arbitrant ce qui entre dans la première version et ce qui attend. C'est ce document de cadrage, écrit à deux, qui sert ensuite de référence pendant le développement." },
+      { q: "Faut-il des maquettes dans le cahier des charges ?", a: "Non, et c'est souvent contre-productif. Des maquettes faites avant le cadrage figent une interface avant qu'on sache ce qu'elle doit permettre, et il devient difficile de les remettre en cause sans donner l'impression de repartir de zéro. Les maquettes viennent après le périmètre, pas avant. En revanche, des captures d'applications que tu aimes ou que tu détestes sont très utiles : elles disent en trente secondes ce qu'un paragraphe met une page à expliquer." },
+    ],
+    content: `
+      <p>Tu as décidé de faire développer ton application, on t'a dit qu'il fallait un cahier des charges, et tu es devant une page blanche. Combien de pages, quel niveau de détail, faut-il décrire les écrans ?</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Voici ce que je demande réellement avant un devis, et pourquoi c'est beaucoup moins que ce que tu crois.</p>
+
+      <h2>À quoi sert vraiment ce document</h2>
+      <p>Un cahier des charges a une seule utilité pratique : <strong>permettre à plusieurs prestataires de chiffrer la même chose</strong>. C'est tout. Ce n'est ni un contrat, ni un plan de développement, ni une garantie.</p>
+      <p>Or ce qui rend deux devis incomparables n'est presque jamais le manque de détail technique. C'est le flou sur trois points seulement : combien de types d'utilisateurs, y a-t-il un paiement, y a-t-il du temps réel. Ce sont eux qui font le prix, comme détaillé dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>.</p>
+      <div class="encadre cle">
+        <span class="encadre-titre">Le test en une phrase</span>
+        <p>Si ton document permet à deux prestataires qui ne se connaissent pas d'arriver à des chiffrages proches, il est bon. S'il fait dix pages et que les devis vont du simple au triple, il est long, pas précis.</p>
+      </div>
+
+      <h2>Pourquoi l'écrire trop tôt coûte cher</h2>
+      <p>C'est la partie contre-intuitive, et c'est celle qui compte.</p>
+      <p>Quand tu écris trente pages avant d'avoir parlé à qui que ce soit, tu prends des dizaines de décisions de conception. Sauf que tu les prends au pire moment : tu ne sais pas encore ce que chacune coûte, ni laquelle est réellement nécessaire.</p>
+      <ul>
+        <li><strong>Tu figes des choix sans en connaître le prix.</strong> Écrire une messagerie interne dans le document prend une ligne. La développer ajoute plusieurs semaines. Personne ne te l'a dit avant que tu l'écrives.</li>
+        <li><strong>Tu transformes des idées en engagements.</strong> Ce qui est écrit devient dur à retirer, parce que le retirer donne l'impression de reculer. Un besoin exprimé oralement se discute, un besoin écrit se défend.</li>
+        <li><strong>Tu paies deux fois.</strong> Une fois pour développer ce qui était dans le document, une fois pour corriger quand les premiers utilisateurs montrent que ce n'était pas ça.</li>
+      </ul>
+      <div class="chiffre">
+        <span class="chiffre-valeur">1 page</span>
+        <span class="chiffre-texte">c'est ce qui suffit pour obtenir des devis comparables, et c'est une heure d'écriture. Le reste du cadrage se fait à deux, au moment où tu sais enfin ce que chaque choix coûte.</span>
+      </div>
+
+      <h2>La page qui suffit vraiment</h2>
+      <p>Cinq questions. Réponds-y en quelques lignes chacune, sans jargon, et tu as un document meilleur que 90 % de ce que je reçois.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Ce que tu écris</th><th>Pourquoi ça compte</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Le problème que tu résous</strong>, en une phrase</td><td>Si tu n'y arrives pas en une phrase, le périmètre n'est pas encore clair</td></tr>
+            <tr><td><strong>Pour qui</strong>, et combien de profils différents</td><td>C'est le premier facteur de prix, de loin</td></tr>
+            <tr><td><strong>Ce qui sera payant</strong>, et à quel prix</td><td>Ça détermine l'architecture, pas seulement le modèle de revenus</td></tr>
+            <tr><td><strong>Ce que l'utilisateur doit pouvoir faire</strong>, en cinq points maximum</td><td>Cinq, pas quarante. Les quarante viendront ensuite</td></tr>
+            <tr><td><strong>Tes contraintes</strong> : budget, date, outils à connecter</td><td>Une date et un budget annoncés font gagner deux allers-retours</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Sur le budget, une précision qui surprend souvent : <strong>l'annoncer ne te fait pas payer plus cher</strong>. Il permet d'arbitrer le périmètre en face. Sans lui, on chiffre au hasard et tu reçois un devis hors de portée ou une proposition au rabais.</p>
+
+      <h2>Ce qu'il ne faut pas y mettre</h2>
+      <p>Autant que ce qu'il faut écrire, voici ce qui alourdit sans rien apporter.</p>
+      <ul>
+        <li><strong>La description écran par écran.</strong> C'est le travail de conception, il se fait après le cadrage et avec quelqu'un dont c'est le métier.</li>
+        <li><strong>Le choix de la technologie.</strong> Sauf contrainte réelle, par exemple un existant à reprendre, ce n'est pas à toi de trancher, et l'imposer coûte parfois cher sans raison.</li>
+        <li><strong>La liste exhaustive des fonctionnalités.</strong> Une liste de quarante lignes ne dit pas ce qui est indispensable. Elle oblige à tout chiffrer, donc à te faire un devis trop cher pour une première version.</li>
+        <li><strong>Les formulations qui n'engagent à rien.</strong> « Interface moderne et intuitive », « performant », « évolutif ». Tout le monde est d'accord, personne ne sait ce que ça veut dire, et ça ne se chiffre pas.</li>
+      </ul>
+      <div class="encadre astuce">
+        <span class="encadre-titre">Ce qui vaut mieux qu'une page de texte</span>
+        <p>Deux ou trois <strong>captures d'applications que tu aimes</strong>, avec une phrase disant ce qui te plaît dedans, et une que tu détestes avec ce qui te gêne. Ça transmet en trente secondes ce qu'un paragraphe met une page à expliquer, et ça évite les malentendus de goût.</p>
+      </div>
+
+      <h2>Ce que ton document révèle du prestataire</h2>
+      <p>C'est un usage auquel on ne pense pas : la façon dont on te répond en dit plus long que n'importe quelle référence.</p>
+      <p>Envoie ta page à trois personnes et regarde ce qui revient.</p>
+      <ul>
+        <li><strong>Celui qui te pose des questions sur ton modèle de revenus</strong> a compris que l'enjeu n'est pas technique.</li>
+        <li><strong>Celui qui te renvoie un devis immédiat sans rien demander</strong> a chiffré des hypothèses. Ce sont les siennes, pas les tiennes.</li>
+        <li><strong>Celui qui te demande de compléter un formulaire de trente pages</strong> te fait faire son travail de cadrage.</li>
+      </ul>
+      <p>Le détail de ce qu'on peut demander à chaque profil est dans <a href="/blog/choisir-expert-application-mobile/">choisir le bon expert pour ton application</a>.</p>
+
+      <h2>Le cas où un vrai cahier des charges s'impose</h2>
+      <p>Il faut être honnête, il existe des situations où le document long est justifié, et les balayer serait malhonnête.</p>
+      <ul>
+        <li><strong>Un appel d'offres public</strong>, où le formalisme est imposé et non négociable.</li>
+        <li><strong>Une contrainte réglementaire</strong> : santé, données sensibles, accessibilité obligatoire. Ce qui est réglementaire s'écrit, parce que ça ne se discute pas.</li>
+        <li><strong>Une reprise d'existant</strong>, où il faut décrire ce qui existe déjà et doit être conservé. Voir <a href="/blog/reprendre-application-mobile-existante/">reprendre une application mobile existante</a>.</li>
+        <li><strong>Plusieurs équipes en parallèle</strong>, qui ne peuvent pas toutes te parler.</li>
+      </ul>
+      <p>Hors de ces cas, le document long est un confort pour celui qui l'écrit, et un coût pour le projet.</p>
+
+      <h2>Ce qui se décide ensemble, et pourquoi c'est mieux</h2>
+      <p>Une fois ta page envoyée, le vrai cadrage commence, et il se fait à deux. C'est là qu'on tranche les questions qui décident du budget :</p>
+      <ol>
+        <li><strong>Combien de profils dans la première version.</strong> Sortir d'abord celui du client plutôt que client et professionnel fait souvent baisser le devis d'un tiers.</li>
+        <li><strong>Ce qui attend la version suivante.</strong> Retirer n'est pas renoncer : c'est financer la suite avec les revenus de la première version.</li>
+        <li><strong>Où se place l'offre payante.</strong> Cette décision change l'architecture, elle ne s'ajoute pas à la fin.</li>
+      </ol>
+      <p>Ce cadrage produit un document précis, chiffré, qui sert de référence pendant tout le projet. <strong>C'est lui, le vrai cahier des charges.</strong> Il est écrit à deux, et il arrive au moment où tu sais ce que chaque ligne coûte.</p>
+
+      <h2>Par où commencer</h2>
+      <p>Trois étapes, une heure en tout, et aucune ne demande de compétence technique.</p>
+      <ol>
+        <li><strong>Écris les cinq réponses du tableau plus haut.</strong> En vrac, sans mise en forme, dans un simple document texte.</li>
+        <li><strong>Ajoute deux captures d'applications que tu aimes</strong> et une que tu n'aimes pas, avec une phrase pour chacune.</li>
+        <li><strong>Envoie ça tel quel.</strong> Ne l'embellis pas, ne l'allonge pas. Un document brut mais honnête se chiffre mieux qu'un document soigné mais flou.</li>
+      </ol>
+      <p>Pour savoir combien de temps prendra ensuite la réalisation, regarde <a href="/blog/combien-de-temps-creer-application-mobile/">combien de temps pour créer une application mobile</a>. Et si tu préfères que ces cinq questions te soient posées plutôt que de les écrire seul, l'<a href="/audit-app/">audit gratuit</a> les pose en deux minutes et te renvoie une première lecture du potentiel, du budget et du délai.</p>
+    `,
+  },
+  {
     slug: 'combien-de-temps-creer-application-mobile',
     title: "Combien de temps faut-il pour créer une application mobile ?",
     metaTitle: "Créer une application mobile : combien de temps ? | Noé Calmes",
@@ -2240,7 +2371,8 @@ export const BLOG_ARTICLES = [
 // orphelin. Ajouter un article implique donc de le citer ici au moins deux fois.
 
 export const ARTICLES_LIES = {
-  'combien-de-temps-creer-application-mobile': ['mvp-application-mobile', 'creer-application-mobile-guide', 'application-mobile-avec-claude'],
+  'cahier-des-charges-application-mobile': ['creer-application-mobile-guide', 'combien-coute-application-mobile', 'choisir-expert-application-mobile'],
+  'combien-de-temps-creer-application-mobile': ['mvp-application-mobile', 'cahier-des-charges-application-mobile', 'application-mobile-avec-claude'],
   'application-avec-ia-rentable': ['combien-de-clients-pour-rentabiliser-application', 'application-mobile-meilleur-investissement', 'creer-application-avec-ia'],
   'combien-de-clients-pour-rentabiliser-application': ['combien-rapporte-application-mobile', 'combien-coute-application-mobile', 'rentabiliser-application-mobile'],
   'application-mobile-avec-claude': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'faire-evoluer-application-mobile'],
@@ -2259,9 +2391,9 @@ export const ARTICLES_LIES = {
 
   // Cluster creation / conduite de projet
   'creer-application-sans-savoir-coder': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'creer-application-mobile-guide'],
-  'creer-application-mobile-guide': ['combien-de-temps-creer-application-mobile', 'creer-application-sans-savoir-coder', 'choisir-expert-application-mobile'],
+  'creer-application-mobile-guide': ['cahier-des-charges-application-mobile', 'creer-application-sans-savoir-coder', 'choisir-expert-application-mobile'],
   'combien-coute-application-mobile': ['combien-de-temps-creer-application-mobile', 'mvp-application-mobile', 'creation-application-mobile-toulouse'],
-  'mvp-application-mobile': ['creer-application-mobile-guide', 'idee-application-business-rentable', 'faire-evoluer-application-mobile'],
+  'mvp-application-mobile': ['cahier-des-charges-application-mobile', 'idee-application-business-rentable', 'faire-evoluer-application-mobile'],
   'choisir-expert-application-mobile': ['creer-application-mobile-guide', 'reprendre-application-mobile-existante', 'lovable-base44-application-mobile'],
   'reprendre-application-mobile-existante': ['faire-evoluer-application-mobile', 'choisir-expert-application-mobile', 'creer-application-avec-ia'],
   'faire-evoluer-application-mobile': ['reprendre-application-mobile-existante', 'choisir-expert-application-mobile', 'rentabiliser-application-mobile'],
