@@ -178,7 +178,7 @@ Le tutoiement reste la regle **dans la conversation** (cf. `nowork` /
 > existante ? delai ?) et proposer l'appel. Le NDA s'annonce au moment de
 > proposer l'appel, comme rassurance, jamais comme condition.
 
-Pour les CTA prix/budget, preferer `/audit-app` : exemple dans la section comparaison, `Tarif fixe, sans surprise` puis lien secondaire `Combien coûterait mon app ?` vers `/audit-app`, qui finit lui aussi sur WhatsApp.
+Pour les CTA prix/budget, `/audit-app` reste le chemin des pages de contenu. Exception dans la section comparaison de l'accueil : le lien secondaire `Combien coûterait mon app ?` mene a `/rendez-vous` (section WhatsApp) depuis le 02/10/2026, a la demande de Noe ; il pointait vers `/audit-app` avant.
 
 Le code Calendly a ete entierement retire du repo (07/2026) : plus de `CALENDLY_URL`, plus de no-op `loadCalendlyScript`, la section contact s'appelle `#contact-section` (ancien id `#calendly-section`). La route `/merci` (page post-RDV Calendly) et `src/Merci.jsx` ont ete supprimes ; `/merci` reste prerendu en noindex pour les vieilles URLs indexees. Detail du retrait : `documentation/archive/funnels/funnel-calendly-2026-06.md` et l'historique git.
 

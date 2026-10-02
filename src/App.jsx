@@ -21,7 +21,6 @@ import { trackDirectWhatsAppLead } from './metaTracking.js'
 import { lienInterne, appliquerMeta, retirerPrerender } from './seo.js'
 import { PageExpertise, PageMethode, PageFaq, FAQ_ITEMS } from './PagesSeo.jsx'
 import { PageQuiz, PageQuizHub, quizParSlug } from './Quiz.jsx'
-import { ExternalLink } from 'lucide-react'
 
 // ─── Chargement differe des pages hors accueil (21/09/2026) ──────────────────
 //
@@ -97,7 +96,7 @@ const SECTION_ROUTES = {
 // de la page precedente.
 const META_HOME = {
   path: '/',
-  title: 'Créer une application mobile qui génère des revenus | Noé Calmes',
+  title: 'Application mobile & web qui génère des revenus | Noé Calmes',
   description: "Je ne fais pas que développer ton application mobile : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois.",
 }
 
@@ -412,6 +411,60 @@ function App() {
     return () => window.removeEventListener('popstate', reculer)
   }, [page])
 
+  // L'ONGLET QUI APPELLE AU RETOUR. Quand le visiteur part sur un autre
+  // onglet, le titre alterne entre deux messages au bout de quelques
+  // secondes ; il revient au vrai titre dès que l'onglet est rouvert.
+  //
+  // ⚠️ SEULEMENT SUR LES PAGES DE VENTE. Un client qui consulte son espace,
+  // une maquette ou un guide ne doit pas lire « Ton idée t'attend » : il a
+  // déjà signé. Et rien ne touche au titre tant que l'onglet est visible,
+  // donc les robots et le référencement voient le vrai titre.
+  //
+  // Le vrai titre est relu au moment du départ, pas mémorisé une fois pour
+  // toutes : chaque page écrit le sien en navigation (appliquerMeta).
+  useEffect(() => {
+    const pagesDeVente = ['home', 'blog', 'blog-article', 'audit-app', 'page-expertise', 'page-methode', 'page-faq', 'quiz-hub', 'quiz', 'projets']
+    if (!pagesDeVente.includes(page)) return
+
+    const MESSAGES = ['👀 Tu reviens ?', '💡 Ton idée t’attend']
+    let vraiTitre = document.title
+    let depart = null
+    let alternance = null
+
+    const arreter = () => {
+      clearTimeout(depart)
+      clearInterval(alternance)
+      depart = null
+      alternance = null
+    }
+
+    const auChangement = () => {
+      if (document.hidden) {
+        vraiTitre = document.title
+        depart = setTimeout(() => {
+          let i = 0
+          document.title = MESSAGES[i]
+          alternance = setInterval(() => {
+            i = (i + 1) % MESSAGES.length
+            document.title = MESSAGES[i]
+          }, 2500)
+        }, 3000)
+      } else {
+        arreter()
+        document.title = vraiTitre
+      }
+    }
+
+    document.addEventListener('visibilitychange', auChangement)
+    return () => {
+      document.removeEventListener('visibilitychange', auChangement)
+      if (depart || alternance) {
+        arreter()
+        document.title = vraiTitre
+      }
+    }
+  }, [page])
+
   const goHome = () => { setPage('home'); history.pushState(null, '', '/'); window.scrollTo(0, 0) }
 
   const goDocuments = () => { setPage('documents'); history.pushState(null, '', lienInterne(ROUTE_APP_MOBILE)); window.scrollTo(0, 0) }
@@ -615,7 +668,7 @@ function App() {
                     Noé Calmes
                   </span>
                   <span className="text-grey text-[0.68rem] md:text-[0.75rem] leading-none font-normal truncate">
-                    Expert en applications mobiles
+                    Expert en applications mobiles et web
                   </span>
                 </span>
               </a>
@@ -732,7 +785,7 @@ function App() {
 
           {/* Sous-titre */}
           <p className="text-grey text-[0.92rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-xl mx-auto mb-9 md:mb-11">
-            Je conçois ton application iOS et Android pour transformer tes utilisateurs en clients.
+            Je conçois ton application mobile & web pour que tes utilisateurs deviennent des clients qui paient.
           </p>
 
           {/* Flux idée → application → revenus */}
@@ -800,14 +853,14 @@ function App() {
               <svg className="text-brand" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19a5.5 5.5 0 0111 0" /><path d="M16 5.5a3 3 0 010 5.8M20.5 19a5.5 5.5 0 00-3-4.9" /></svg>
             </div>
             <p className="font-jakarta text-text font-bold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-none">+300k utilisateurs</p>
-            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">Application Hush · 1ère version</p>
+            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">Hush App · 1ère version</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-2xl bg-white border border-card-border shadow-sm flex items-center justify-center mb-4">
               <svg className="text-brand" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></svg>
             </div>
             <p className="font-jakarta text-text font-bold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-none">+20 applications</p>
-            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">publiées sur les stores</p>
+            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">publiées sur les stores et en ligne</p>
           </div>
         </div>
       </section>
@@ -926,7 +979,7 @@ function App() {
                   'Pensé pour transformer tes utilisateurs en clients',
                   'Maquette offerte avant de payer',
                   'Tarif fixe, à partir de 5 000 €',
-                  'Joignable directement 6j/7',
+                  'Joignable à tout moment, 6j/7',
                   'Première version en 45 jours en moyenne',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3.5 text-text text-[0.95rem] font-semibold leading-relaxed">
@@ -937,12 +990,11 @@ function App() {
                       <span>
                         {item}.{' '}
                         <a
-                          href={lienInterne('/audit-app')}
-                          onClick={(e) => { e.preventDefault(); goAuditApp() }}
+                          href={lienInterne('/rendez-vous')}
+                          onClick={goBookCall}
                           className="inline-flex items-center gap-1 text-[0.9rem] text-[#2563eb] underline underline-offset-4 decoration-[#2563eb]/50 hover:text-brand hover:decoration-brand transition-colors"
                         >
                           Combien coûterait mon app&nbsp;?
-                          <ExternalLink size={14} strokeWidth={2.4} aria-hidden="true" />
                         </a>
                       </span>
                     ) : item}
@@ -980,7 +1032,7 @@ function App() {
             {[
               { num: '1', title: 'On cadre', desc: 'Tu me présentes ton idée. Je te fais un cahier des charges offert, une première maquette et un devis clair.', img: meetingSvg },
               { num: '2', title: 'Je conçois et développe', desc: 'Je construis ton application pour qu\'elle convertisse, pas juste pour qu\'elle existe.', img: devSvg },
-              { num: '3', title: 'Tu lances', desc: 'En ligne sur l\'App Store et Google Play. Je reste dispo après.', img: postSvg },
+              { num: '3', title: 'Tu lances', desc: 'Ton application est en ligne : sur l\'App Store et Google Play, sur le web, ou les deux, selon ce qu\'on a choisi ensemble. Je reste dispo après.', img: postSvg },
             ].map(({ num, title, desc, img }) => (
               <div key={num} className="group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
                 <img src={img} alt={title} loading="lazy" width="280" height="160" className="w-full h-32 md:h-40 object-contain mb-6" />

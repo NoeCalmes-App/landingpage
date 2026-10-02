@@ -82,7 +82,7 @@ Règle pour la section comparaison "Agences vs Noé Calmes" :
 
 - Côté agences : garder l'ancrage prix élevé (`À partir de 15 000 €`) pour poser le contraste.
 - Côté Noé : ne pas mettre le prix d'appel en frontal dans cette carte. Utiliser `Tarif fixe, sans surprise`.
-- Juste dessous, ajouter un lien bleu/souligné du type `Combien coûterait mon app ?` vers `/audit-app`.
+- Juste dessous, un lien bleu/souligné `Combien coûterait mon app ?` vers `/rendez-vous` (la section WhatsApp de l'accueil). Il pointait vers `/audit-app` jusqu'au 02/10/2026 : Noé préfère que la question du prix ouvre directement la conversation.
 
 Objectif : capter le réflexe naturel "ok, mais moi ça coûterait combien ?", puis faire entrer le visiteur dans l'audit. L'audit donne potentiel, budget, délai, puis pousse vers WhatsApp. Ce chemin est plus doux et plus qualifiant qu'une prise de RDV directe.
 

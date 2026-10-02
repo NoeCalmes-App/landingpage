@@ -28,7 +28,7 @@ export const FAQ_ITEMS = [
     a: "Tarif fixe, défini avant de commencer : en général une dizaine de milliers d'euros pour une application mobile ou web, selon la complexité. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.",
   },
   {
-    q: 'Combien de temps faut-il pour avoir une application mobile ?',
+    q: 'Combien de temps faut-il pour avoir une application ?',
     a: "Une première version en 45 jours en moyenne. Pour une application complète, le délai dépend du périmètre, on le cale ensemble.",
   },
   {
@@ -84,7 +84,7 @@ function EnteteSeo({ onAccueil, onBookCall }) {
                   Noé Calmes
                 </span>
                 <span className="text-grey text-xs md:text-md leading-tight font-normal truncate">
-                  Expert en applications mobiles
+                  Expert en applications mobiles et web
                 </span>
               </span>
             </a>
