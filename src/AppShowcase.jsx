@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowLeft, ArrowRight, ChevronRight, Pause, Play, Repeat2 } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ChevronRight, Repeat2 } from 'lucide-react'
 import './app-showcase.css'
 
 const SCREENS = [
@@ -14,7 +14,7 @@ const SCREENS = [
 
 function PhoneCarousel() {
   const [active, setActive] = useState(0)
-  const [paused, setPaused] = useState(false)
+  const [keyboardFocused, setKeyboardFocused] = useState(false)
   const [resumeAt, setResumeAt] = useState(0)
   const [dragging, setDragging] = useState(false)
   const [visible, setVisible] = useState(false)
@@ -22,8 +22,7 @@ function PhoneCarousel() {
   const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
   const root = useRef(null)
   const pointer = useRef(null)
-  const rotationIntent = useRef(null)
-  const playing = !paused && !reducedMotion
+  const playing = !keyboardFocused && !reducedMotion
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -54,26 +53,15 @@ function PhoneCarousel() {
 
   return (
     <div className="app-gallery" ref={root} role="region" aria-roledescription="carrousel" aria-label="Interfaces conçues par Noé Calmes"
-      onFocusCapture={(event) => { if (event.target.matches(':focus-visible')) setPaused(true) }}
+      onFocusCapture={(event) => { if (event.target.matches(':focus-visible')) setKeyboardFocused(true) }}
+      onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setKeyboardFocused(false) }}
       onKeyDown={(event) => {
         if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
           event.preventDefault()
-          setPaused(true)
+          setKeyboardFocused(true)
           move(event.key === 'ArrowLeft' ? -1 : 1)
         }
       }}>
-      <button className="app-gallery-play" type="button" disabled={reducedMotion}
-        aria-label={playing ? 'Mettre le défilement en pause' : 'Lancer le défilement automatique'}
-        onPointerDown={() => { rotationIntent.current = playing }}
-        onPointerCancel={() => { rotationIntent.current = null }}
-        onClick={(event) => {
-          // Keyboard focus pauses first; preserve a pointer click's original intent.
-          setPaused(event.detail > 0 ? (rotationIntent.current ?? !paused) : !paused)
-          setResumeAt(0)
-          rotationIntent.current = null
-        }}>
-        {playing ? <Pause size={14} /> : <Play size={14} />}
-      </button>
       <div className="app-gallery-stage"
         onPointerDown={(event) => {
           if (event.button !== 0) return

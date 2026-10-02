@@ -15,8 +15,6 @@
 .app-proof-example strong { display: block; color: #033475; font-weight: 700; }
 .app-proof-example b { font-weight: 600; color: #033475; }
 .app-gallery { --phone-width: 218px; position: relative; min-width: 0; padding: 0; isolation: isolate; }
-.app-gallery-play { position: absolute; right: 0; top: 10px; width: 34px; height: 34px; border: 1px solid #e3e0ec; border-radius: 50%; display: grid; place-items: center; background: #fffafc; color: #707789; cursor: pointer; }
-.app-gallery-play:disabled { opacity: .45; cursor: default; }
 .app-gallery-stage { position: relative; height: 485px; margin-top: 0; touch-action: pan-y; user-select: none; cursor: grab; }
 .app-gallery-stage:active { cursor: grabbing; }
 .app-gallery-halo { position: absolute; inset: 6% -2% 0; background: radial-gradient(ellipse, #e5e0ff 0, #f0ecff88 43%, transparent 70%); pointer-events: none; }
@@ -36,7 +34,7 @@
 .app-phone-power { left: auto; right: -4px; top: 112px; height: 45px; }
 .app-gallery-controls { display: flex; align-items: center; justify-content: center; gap: 19px; margin-top: 15px; }
 .app-gallery-controls button { width: 40px; height: 40px; border-radius: 50%; background: #fff; color: #033475; border: 1px solid #e0deec; display: grid; place-items: center; cursor: pointer; transition: background 180ms; }
-.app-gallery-controls button:hover, .app-gallery-play:hover:not(:disabled) { background: #edeaff; }
+.app-gallery-controls button:hover { background: #edeaff; }
 .app-gallery button:focus-visible { outline: 3px solid #665dff; outline-offset: 5px; }
 .app-gallery-dots { display: flex; gap: 5px; align-items: center; }
 .app-gallery-dots span { width: 5px; height: 5px; border-radius: 5px; background: #d2cedf; transition: width 350ms, background 350ms; }
@@ -53,7 +51,6 @@
   .app-gallery-stage { height: clamp(350px, 112vw, 480px); margin-top: 0; }
   .app-phone-position[data-position='-1'] { transform: translate3d(-48%, 38px, 0) scale(.74) rotate(-6deg); }
   .app-phone-position[data-position='1'] { transform: translate3d(48%, 38px, 0) scale(.74) rotate(6deg); }
-  .app-gallery-play { top: 0; right: -5px; }
   .app-gallery-controls { margin-top: 8px; }
   .app-proof-copy { max-width: 520px; margin: 0 auto; }
   .app-proof-copy h2 { font-size: clamp(31px, 8vw, 40px); }

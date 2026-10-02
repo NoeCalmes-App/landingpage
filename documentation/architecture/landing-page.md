@@ -97,11 +97,12 @@ boutons. La liste `SCREENS` définit l’ordre et les descriptions accessibles
 
 Trois téléphones visibles, défilement toutes les 3,5 secondes, glissement,
 flèches et clavier. Un clic sur une flèche ou un glissement suspend le défilement
-30 secondes avant reprise automatique. Le focus clavier et la commande pause
-l’arrêtent jusqu’à reprise explicite. L’animation se suspend hors écran,
+30 secondes avant reprise automatique. Aucun bouton pause n’est affiché.
+L’animation se suspend tant que le focus clavier est dans le carrousel, hors écran,
 pendant un glissement et dans un onglet masqué. `prefers-reduced-motion`
 désactive l’automatisme et les transitions. Les illustrations vectorielles des
-livrables sont dans `src/DeliverableVisual.jsx` et `src/App.css`.
+livrables sont dans `src/DeliverableVisual.jsx` et `src/App.css` : format compact
+(80 px sur ordinateur, 64 px sur mobile) et violet de marque commun aux trois.
 Références de conception : [Embla, exemples](https://www.embla-carousel.com/docs/v8/examples/predefined),
 [Swiper, coverflow](https://swiperjs.com/demos), [W3C, carrousels accessibles](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).
 
