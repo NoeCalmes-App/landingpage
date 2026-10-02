@@ -2474,7 +2474,7 @@ function BlogArticlePage({ article, onBack, onBookCall, onAuditApp, onArticle, o
                     Noé Calmes
                   </span>
                   <span className="text-grey text-xs md:text-md leading-tight font-normal truncate">
-                    Expert en applications mobiles et web
+                    Expert en applications mobiles
                   </span>
                 </span>
               </a>
@@ -2713,7 +2713,7 @@ function BlogList({ onBack, onArticle, onBookCall, onAuditApp, onNaviguer }) {
                     Noé Calmes
                   </span>
                   <span className="text-grey text-xs md:text-md leading-tight font-normal truncate">
-                    Expert en applications mobiles et web
+                    Expert en applications mobiles
                   </span>
                 </span>
               </a>

@@ -20,7 +20,6 @@ import { lienInterne, appliquerMeta, retirerPrerender } from './seo.js'
 import { PageExpertise, PageMethode, PageFaq, FAQ_ITEMS } from './PagesSeo.jsx'
 import { PageQuiz, PageQuizHub, quizParSlug } from './Quiz.jsx'
 import { ExternalLink } from 'lucide-react'
-import MurEcrans from './MurEcrans.jsx'
 
 // ─── Chargement differe des pages hors accueil (21/09/2026) ──────────────────
 //
@@ -97,8 +96,8 @@ const SECTION_ROUTES = {
 // de la page precedente.
 const META_HOME = {
   path: '/',
-  title: 'Application mobile ou web qui génère des revenus | Noé Calmes',
-  description: "Je ne fais pas que développer ton application, mobile ou web : je la conçois pour qu'elle rapporte. Une application que j'ai conçue fait 13 000 €/mois.",
+  title: 'Créer une application mobile qui génère des revenus | Noé Calmes',
+  description: "Je ne fais pas que développer ton application mobile : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois.",
 }
 
 const NAV_LINKS = [
@@ -615,7 +614,7 @@ function App() {
                     Noé Calmes
                   </span>
                   <span className="text-grey text-[0.68rem] md:text-[0.75rem] leading-none font-normal truncate">
-                    Expert en applications mobiles et web
+                    Expert en applications mobiles
                   </span>
                 </span>
               </a>
@@ -732,7 +731,7 @@ function App() {
 
           {/* Sous-titre */}
           <p className="text-grey text-[0.92rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-xl mx-auto mb-9 md:mb-11">
-            Je conçois ton application, sur téléphone ou dans le navigateur, pour transformer tes utilisateurs en clients.
+            Je conçois ton application iOS et Android pour transformer tes utilisateurs en clients.
           </p>
 
           {/* Flux idée → application → revenus */}
@@ -784,9 +783,6 @@ function App() {
 
         </div>
       </section>
-
-      {/* ========== MOBILE OU WEB : LE MUR D'ÉCRANS ========== */}
-      <MurEcrans />
 
       {/* ========== BARRE DE PREUVE ========== */}
       <section className="py-10 md:py-12 px-5 bg-card">
@@ -939,7 +935,6 @@ function App() {
               <ul className="space-y-5">
                 {[
                   'Projet livré, débrouille-toi',
-                  'Te vendent mobile, web et site',
                   'Pas de maquette avant de payer',
                   'À partir de 15 000 €',
                   'Difficile à joindre',
@@ -962,7 +957,6 @@ function App() {
               <ul className="space-y-5">
                 {[
                   'Pensé pour transformer tes utilisateurs en clients',
-                  'Mobile ou web : le support qui sert ton idée',
                   'Maquette offerte avant de payer',
                   'Tarif fixe, à partir de 5 000 €',
                   'Joignable directement 6j/7',
@@ -1017,7 +1011,7 @@ function App() {
 
           <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 max-w-230 mx-auto">
             {[
-              { num: '1', title: 'On cadre', desc: 'Tu me présentes ton idée. On tranche mobile ou web, puis je te fais un cahier des charges offert, une première maquette et un devis clair.', img: meetingSvg },
+              { num: '1', title: 'On cadre', desc: 'Tu me présentes ton idée. Je te fais un cahier des charges offert, une première maquette et un devis clair.', img: meetingSvg },
               { num: '2', title: 'Je conçois et développe', desc: 'Je construis ton application pour qu\'elle convertisse, pas juste pour qu\'elle existe.', img: devSvg },
               { num: '3', title: 'Tu lances', desc: 'En ligne sur l\'App Store et Google Play. Je reste dispo après.', img: postSvg },
             ].map(({ num, title, desc, img }) => (

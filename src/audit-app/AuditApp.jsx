@@ -286,7 +286,7 @@ function AuditAppTopBar({ onBack }) {
                   Noé Calmes
                 </span>
                 <span className="text-grey text-[0.72rem] md:text-[0.78rem] leading-tight font-normal">
-                  Expert en applications mobiles et web
+                  Expert en applications
                 </span>
               </div>
             </button>

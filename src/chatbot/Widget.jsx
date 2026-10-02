@@ -287,7 +287,7 @@ export default function ChatbotWidget({ onBookCall, contactMode = 'chatbot', wha
               <div className="font-heading font-bold text-text text-sm">Noé Calmes</div>
               <div className="text-grey text-[0.7rem] flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-text" />
-                Expert mobile et web · En ligne
+                Expert mobile · En ligne
               </div>
             </div>
             <button

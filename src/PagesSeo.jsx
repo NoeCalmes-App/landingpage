@@ -28,12 +28,8 @@ export const FAQ_ITEMS = [
     a: "Tarif fixe, défini avant de commencer : en général une dizaine de milliers d'euros en mobile selon la complexité. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.",
   },
   {
-    q: 'Combien de temps faut-il pour avoir une application ?',
-    a: "Une première version en 4 à 6 semaines en moyenne. Une application web se lance plus vite : pas de validation Apple ou Google. Pour une application complète, le délai dépend du périmètre, on le cale ensemble.",
-  },
-  {
-    q: 'Mobile ou web, comment choisir ?',
-    a: "Ça dépend de l'usage, pas de l'envie. Une application mobile quand tes utilisateurs s'en servent souvent, en déplacement, et que tu veux les faire revenir : notification, abonnement, place sur l'écran d'accueil. Une application web quand ils travaillent sur un écran, qu'il n'y a rien à installer, ou que c'est ton équipe qui s'en sert. Souvent les deux : l'app dans la poche de l'utilisateur, le pilotage sur ton écran. On tranche à l'étape de cadrage, avant d'écrire une ligne de code.",
+    q: 'Combien de temps faut-il pour avoir une application mobile ?',
+    a: "Une première version en 4 à 6 semaines en moyenne. Pour une application complète, le délai dépend du périmètre, on le cale ensemble.",
   },
   {
     q: "Après la livraison de l'application ?",
@@ -56,12 +52,8 @@ export const FAQ_ITEMS = [
     a: "Oui, c'est un cas fréquent : une application instable, abandonnée par un prestataire, ou dont le code est devenu impossible à faire évoluer. On commence par un audit technique, on stabilise, puis on repart sur de bonnes bases sans tout jeter quand ce n'est pas nécessaire.",
   },
   {
-    q: "Tu fais aussi des sites web ?",
-    a: "Je conçois des applications web, pas des sites vitrine. La différence : une application a des utilisateurs qui se connectent, des données, et un modèle de revenus (abonnement, réservation, espace membre, outil pour ton équipe). Un site qui présente ton activité, c'est un autre métier, et je te le dirai franchement si c'est ça qu'il te faut.",
-  },
-  {
     q: "Sur quelles plateformes tu développes ?",
-    a: "Sur iPhone et Android avec une seule base de code, publiée sur l'App Store et Google Play. Et sur le web : une application accessible depuis un navigateur, rien à installer, mise en ligne sur ton nom de domaine. Dans les deux cas je m'occupe de la mise en ligne et des allers-retours de validation.",
+    a: "iOS et Android, avec une seule base de code. Ton application est publiée sur l'App Store et sur Google Play, et je m'occupe de la mise en ligne, des fiches et des allers-retours de validation avec les stores.",
   },
   {
     q: "Il me faut quoi avant de te contacter ?",
@@ -92,7 +84,7 @@ function EnteteSeo({ onAccueil, onBookCall }) {
                   Noé Calmes
                 </span>
                 <span className="text-grey text-xs md:text-md leading-tight font-normal truncate">
-                  Expert en applications mobiles et web
+                  Expert en applications mobiles
                 </span>
               </span>
             </a>

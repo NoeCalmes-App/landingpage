@@ -64,7 +64,7 @@ function ContactNoe() {
             Contact
           </h1>
           <p className="text-grey text-[0.95rem]">
-            Noé Calmes, expert en applications mobiles et web
+            Noé Calmes — Expert mobile spécialisé Flutter
           </p>
         </div>
 
