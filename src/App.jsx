@@ -1065,7 +1065,7 @@ function App() {
             {[
               { num: '1', title: 'On cadre', desc: 'Tu me présentes ton idée. Je te fais un cahier des charges offert, une première maquette et un devis clair.', img: meetingSvg },
               { num: '2', title: 'Je conçois et développe', desc: 'Je construis ton application pour qu\'elle convertisse, pas juste pour qu\'elle existe.', img: devSvg },
-              { num: '3', title: 'Tu lances', desc: 'En ligne sur l\'App Store et Google Play. Je reste dispo après.', img: postSvg },
+              { num: '3', title: 'Tu lances', desc: 'Ton application est en ligne : sur l\'App Store et Google Play, sur le web, ou les deux, selon ce qu\'on a choisi ensemble. Je reste dispo après.', img: postSvg },
             ].map(({ num, title, desc, img }) => (
               <div key={num} className="group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
                 <img src={img} alt={title} loading="lazy" width="280" height="160" className="w-full h-32 md:h-40 object-contain mb-6" />

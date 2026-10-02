@@ -25,11 +25,11 @@ const mePhoto = '/assets/images/profile/me.webp'
 export const FAQ_ITEMS = [
   {
     q: 'Comment fonctionne la tarification ?',
-    a: "Tarif fixe, défini avant de commencer : en général une dizaine de milliers d'euros en mobile selon la complexité. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.",
+    a: "Tarif fixe, défini avant de commencer. En moyenne, une application mobile ou web se situe autour d'une dizaine de milliers d'euros, selon ce qu'elle doit faire. Pas de compteur qui tourne : tu sais exactement ce que tu investis avant de signer. Et tu vois une maquette de ton application avant de décider quoi que ce soit.",
   },
   {
-    q: 'Combien de temps faut-il pour avoir une application mobile ?',
-    a: "Une première version en 4 à 6 semaines en moyenne. Pour une application complète, le délai dépend du périmètre, on le cale ensemble.",
+    q: 'Combien de temps faut-il pour avoir une application ?',
+    a: "En général, une première version est en ligne en quelques semaines. Une application web va un peu plus vite : elle est accessible dès qu'elle est prête. Pour une application mobile, compte quelques jours de plus : Apple et Google vérifient chaque application avant de la publier sur leurs stores. Pour une application plus complète, on fixe le délai ensemble, avant de commencer.",
   },
   {
     q: "Après la livraison de l'application ?",
