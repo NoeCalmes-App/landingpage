@@ -143,6 +143,8 @@ function useScrollReveal(trigger) {
 // plus diverger entre les deux pages.
 const faqItems = FAQ_ITEMS.slice(0, 3)
 
+const AVAILABILITY_CHECK_DELAY_MS = 2200
+
 function FaqAccordion() {
   const [openIndex, setOpenIndex] = useState(null)
 
@@ -174,6 +176,7 @@ function FaqAccordion() {
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [spotsLoaded, setSpotsLoaded] = useState(false)
   const [legalReturnPath, setLegalReturnPath] = useState('/')
   const [currentDoc, setCurrentDoc] = useState(() => {
     const path = sessionStorage.getItem('redirect') || window.location.pathname
@@ -346,6 +349,37 @@ function App() {
       window.addEventListener('load', () => setTimeout(scrollToSection, 100), { once: true })
     }
   }, [])
+
+  useEffect(() => {
+    // Déclenche l'indicateur de disponibilités de la section contact :
+    //   - immédiatement si on arrive sur /rendez-vous (la section est forcément vue)
+    //   - sinon quand la section approche du viewport (rootMargin 600px)
+    // Re-run quand `page` change : si l'utilisateur bascule sur la home depuis
+    // une autre page, on a besoin de remonter l'observer car la section
+    // #contact-section n'existait pas au mount initial.
+    if (page !== 'home') return
+
+    if (window.location.pathname.replace(/\/$/, '') === '/rendez-vous') {
+      setTimeout(() => setSpotsLoaded(true), AVAILABILITY_CHECK_DELAY_MS)
+      return
+    }
+
+    const target = document.getElementById('contact-section')
+    if (!target) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setSpotsLoaded(true), AVAILABILITY_CHECK_DELAY_MS)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '600px' }
+    )
+
+    observer.observe(target)
+    return () => observer.disconnect()
+  }, [page])
 
   // LE BOUTON « PRÉCÉDENT » DU NAVIGATEUR, pour le seul parcours documents.
   //
@@ -999,15 +1033,21 @@ function App() {
       {/* ========== CONTACT WHATSAPP ========== */}
       <section className="pt-16 md:pt-22 pb-0 md:pb-0 px-5 bg-card" id="contact-section">
         <div className="max-w-275 mx-auto text-center">
-          {/* UNE PHRASE VRAIE, SANS SIMULATION. Il y avait ici « 2 projets par
-              mois · 1 place disponible en {mois} », affiché après 2,2 secondes
-              d'une fausse « Vérification des disponibilités… » : rien n'était
-              vérifié, et il restait « 1 place » tous les mois de l'année. Le
-              dépôt est public, n'importe qui pouvait le lire dans le code. On
-              ne remet une rareté ici que le jour où Nowork la fournit pour de
-              vrai. */}
-          <p className="reveal text-xs md:text-sm text-grey mb-3">
-            <strong className="text-text font-semibold">Joignable directement, 6 jours sur 7.</strong>
+          <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-3 min-h-[1.5rem]">
+            {spotsLoaded ? (
+              <>
+                <span className="relative flex h-2 w-2 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                </span>
+                <strong className="text-text font-semibold animate-fadeIn">2 projets par mois · 1 place disponible en {new Date().toLocaleString('fr-FR', { month: 'long' })}</strong>
+              </>
+            ) : (
+              <span className="inline-flex gap-1 items-center text-grey/50 text-xs">
+                <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
+                Vérification des disponibilités…
+              </span>
+            )}
           </p>
           <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-3 md:mb-4">
             Parlons de <span className="text-brand">ton application</span>
