@@ -20,7 +20,6 @@ import { lienInterne, appliquerMeta, retirerPrerender } from './seo.js'
 import { PageExpertise, PageMethode, PageFaq, FAQ_ITEMS } from './PagesSeo.jsx'
 import { PageQuiz, PageQuizHub, quizParSlug } from './Quiz.jsx'
 import { ExternalLink } from 'lucide-react'
-import TelephoneDefilant from './TelephoneDefilant.jsx'
 
 // ─── Chargement differe des pages hors accueil (21/09/2026) ──────────────────
 //
@@ -58,6 +57,7 @@ const calorieIcon = '/assets/images/apps/calorie.webp'
 const hushIcon = '/assets/images/apps/hushapp.webp'
 const purgeIcon = '/assets/images/apps/purge.webp'
 const snapIcon = '/assets/images/apps/snapmaster.webp'
+const calorieVisuel = '/assets/images/apps/calorievisuelle.webp'
 
 // Canal de contact unique : WhatsApp (message pré-rempli pour amorcer la qualif).
 // Les CTA de la landing passent d'abord par /rendez-vous. Seuls le bouton de
@@ -731,7 +731,7 @@ function App() {
 
           {/* Sous-titre */}
           <p className="text-grey text-[0.92rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-xl mx-auto mb-9 md:mb-11">
-            Je conçois ton application mobile et web pour transformer tes utilisateurs en clients.
+            Je conçois ton application mobile & web pour que tes utilisateurs deviennent des clients qui paient.
           </p>
 
           {/* Flux idée → application → revenus */}
@@ -816,7 +816,7 @@ function App() {
         <div className="max-w-275 mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
             <div className="reveal shrink-0">
-              <TelephoneDefilant />
+              <img src={calorieVisuel} alt="Calories, application rentable" loading="lazy" className="w-full max-w-[195px] md:max-w-[270px] rounded-[28px] mx-auto" />
             </div>
             <div className="reveal max-w-[520px]">
               <h2 className="font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-5 leading-[1.15]">
