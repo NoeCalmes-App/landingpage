@@ -25,7 +25,7 @@ const mePhoto = '/assets/images/profile/me.webp'
 export const FAQ_ITEMS = [
   {
     q: 'Comment fonctionne la tarification ?',
-    a: "Un prix fixe, écrit dans le devis, jamais facturé à la journée. En moyenne, une application mobile ou web coûte une dizaine de milliers d'euros.",
+    a: "Tarif fixe, écrit dans le devis, jamais facturé à la journée. En moyenne, une application coûte une dizaine de milliers d'euros. Le montant dépend de son périmètre : les fonctionnalités, le temps de développement et la stratégie à mettre en place.",
   },
   {
     q: 'Combien de temps faut-il pour avoir une application ?',
