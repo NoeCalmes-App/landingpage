@@ -96,7 +96,7 @@ const SECTION_ROUTES = {
 // de la page precedente.
 const META_HOME = {
   path: '/',
-  title: 'Créer une application mobile qui génère des revenus | Noé Calmes',
+  title: 'Application mobile & web qui génère des revenus | Noé Calmes',
   description: "Je ne fais pas que développer ton application mobile : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois.",
 }
 
@@ -409,6 +409,60 @@ function App() {
 
     window.addEventListener('popstate', reculer)
     return () => window.removeEventListener('popstate', reculer)
+  }, [page])
+
+  // L'ONGLET QUI APPELLE AU RETOUR. Quand le visiteur part sur un autre
+  // onglet, le titre alterne entre deux messages au bout de quelques
+  // secondes ; il revient au vrai titre dès que l'onglet est rouvert.
+  //
+  // ⚠️ SEULEMENT SUR LES PAGES DE VENTE. Un client qui consulte son espace,
+  // une maquette ou un guide ne doit pas lire « Ton idée t'attend » : il a
+  // déjà signé. Et rien ne touche au titre tant que l'onglet est visible,
+  // donc les robots et le référencement voient le vrai titre.
+  //
+  // Le vrai titre est relu au moment du départ, pas mémorisé une fois pour
+  // toutes : chaque page écrit le sien en navigation (appliquerMeta).
+  useEffect(() => {
+    const pagesDeVente = ['home', 'blog', 'blog-article', 'audit-app', 'page-expertise', 'page-methode', 'page-faq', 'quiz-hub', 'quiz', 'projets']
+    if (!pagesDeVente.includes(page)) return
+
+    const MESSAGES = ['👀 Tu reviens ?', '💡 Ton idée t’attend']
+    let vraiTitre = document.title
+    let depart = null
+    let alternance = null
+
+    const arreter = () => {
+      clearTimeout(depart)
+      clearInterval(alternance)
+      depart = null
+      alternance = null
+    }
+
+    const auChangement = () => {
+      if (document.hidden) {
+        vraiTitre = document.title
+        depart = setTimeout(() => {
+          let i = 0
+          document.title = MESSAGES[i]
+          alternance = setInterval(() => {
+            i = (i + 1) % MESSAGES.length
+            document.title = MESSAGES[i]
+          }, 2500)
+        }, 3000)
+      } else {
+        arreter()
+        document.title = vraiTitre
+      }
+    }
+
+    document.addEventListener('visibilitychange', auChangement)
+    return () => {
+      document.removeEventListener('visibilitychange', auChangement)
+      if (depart || alternance) {
+        arreter()
+        document.title = vraiTitre
+      }
+    }
   }, [page])
 
   const goHome = () => { setPage('home'); history.pushState(null, '', '/'); window.scrollTo(0, 0) }
