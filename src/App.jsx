@@ -904,13 +904,20 @@ function App() {
         </div>
       </section>
 
-      {/* ========== AVANT DE PAYER (offre) ========== */}
-      <section className="py-16 md:pt-28 md:pb-22 px-5" id="offre-livrables">
+      {/* ========== LIVRABLES OFFERTS ========== */}
+      <section className="py-12 md:pt-28 md:pb-22 px-5" id="offre-livrables">
         <div className="max-w-275 mx-auto">
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-10 md:mb-12">
-            Avant de payer un euro, <span className="text-brand">tu repars avec</span>
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-7 md:mb-10">
+            Avant de payer un euro, <span className="text-brand">je t’offre</span>&nbsp;:
           </h2>
-          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 max-w-230 mx-auto">
+          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-230 mx-auto">
+            <div className="deliverable-card bg-brand-wash border border-brand/20 rounded-[20px] p-5 md:p-8 text-left flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
+              <DeliverableVisual type="mockup" />
+              <div>
+                <h3 className="font-heading text-text text-[1.05rem] font-bold mb-1 md:mb-2">Une maquette offerte</h3>
+                <p className="text-grey text-[0.92rem] leading-relaxed">Tu vois ton application avant de décider.</p>
+              </div>
+            </div>
             <div className="deliverable-card bg-surface border border-card-border rounded-[20px] p-5 md:p-8 text-left flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
               <DeliverableVisual type="brief" />
               <div>
@@ -918,18 +925,11 @@ function App() {
                 <p className="text-grey text-[0.92rem] leading-relaxed">Ton application cadrée noir sur blanc.</p>
               </div>
             </div>
-            <div className="deliverable-card bg-surface border border-card-border rounded-[20px] p-5 md:p-8 text-left flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
+            <div className="deliverable-card deliverable-quote md:col-span-2 bg-surface border border-card-border rounded-[20px] p-5 md:px-8 text-left flex items-center gap-4">
               <DeliverableVisual type="quote" />
               <div>
-                <h3 className="font-heading text-text text-[1.05rem] font-bold mb-1 md:mb-2">Un devis clair</h3>
+                <h3 className="font-heading text-text text-[1.05rem] font-bold mb-1">Un devis clair</h3>
                 <p className="text-grey text-[0.92rem] leading-relaxed">Tarif et délai fixes, définis d'avance.</p>
-              </div>
-            </div>
-            <div className="deliverable-card bg-surface border border-card-border rounded-[20px] p-5 md:p-8 text-left flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
-              <DeliverableVisual type="mockup" />
-              <div>
-                <h3 className="font-heading text-text text-[1.05rem] font-bold mb-1 md:mb-2">Une maquette offerte</h3>
-                <p className="text-grey text-[0.92rem] leading-relaxed">Tu vois ton application avant de décider.</p>
               </div>
             </div>
           </div>
@@ -1022,21 +1022,21 @@ function App() {
       </section>
 
       {/* ========== PROCESS ========== */}
-      <section className="py-16 md:py-22 px-5" id="offre">
+      <section className="py-12 md:py-22 px-5" id="offre">
         <div className="max-w-275 mx-auto">
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-10 md:mb-12">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-6 md:mb-12">
             Comment <span className="text-brand">ça se passe ?</span>
           </h2>
 
-          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 max-w-230 mx-auto">
+          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-3.5 md:gap-7 max-w-230 mx-auto">
             {[
               { num: '1', title: 'On cadre', desc: 'Tu me présentes ton idée. Je te fais un cahier des charges offert, une première maquette et un devis clair.', img: meetingSvg },
               { num: '2', title: 'Je conçois et développe', desc: 'Je construis ton application pour qu\'elle convertisse, pas juste pour qu\'elle existe.', img: devSvg },
               { num: '3', title: 'Tu lances', desc: 'Ton application est en ligne : sur l\'App Store et Google Play, sur le web, ou les deux, selon ce qu\'on a choisi ensemble. Je reste dispo après.', img: postSvg },
             ].map(({ num, title, desc, img }) => (
-              <div key={num} className="group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
-                <img src={img} alt={title} loading="lazy" width="280" height="160" className="w-full h-32 md:h-40 object-contain mb-6" />
-                <div className="flex flex-col justify-center flex-1">
+              <div key={num} className="process-card group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
+                <img src={img} alt={title} loading="lazy" width="280" height="160" className="process-illustration w-full h-32 md:h-40 object-contain mb-6" />
+                <div className="process-copy flex flex-col justify-center flex-1">
                   <span className="self-start text-brand text-[0.8rem] font-semibold bg-brand/10 px-3 py-1 rounded-full mb-3 transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">
                     Étape {num}
                   </span>
@@ -1095,8 +1095,18 @@ function App() {
         </div>
       </section>
 
+      {/* ========== FAQ ========== */}
+      <section className="pt-8 pb-12 md:py-22 px-5 bg-white" id="faq">
+        <div className="max-w-275 mx-auto">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-6 md:mb-12">
+            Pour y voir <span className="text-brand">plus clair</span>
+          </h2>
+          <FaqAccordion />
+        </div>
+      </section>
+
       {/* ========== INSTA (remplace les anciens témoignages en attendant un vrai client) ========== */}
-      <section className="py-16 md:py-22 px-5" id="avis">
+      <section className="py-16 md:py-22 px-5 bg-card" id="avis">
         <div className="max-w-275 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_400px] gap-8 md:gap-14 items-center">
             <div className="reveal text-center md:text-left">
@@ -1127,7 +1137,7 @@ function App() {
       </section>
 
       {/* ========== AUDIT GRATUIT ========== */}
-      <section className="pt-2 pb-12 md:pt-2 md:pb-14 px-4 md:px-6" id="audit">
+      <section className="pt-2 pb-12 md:pt-2 md:pb-14 px-4 md:px-6 bg-card" id="audit">
         <div className="max-w-210 mx-auto">
           <div className="reveal relative overflow-hidden rounded-[28px] md:rounded-[34px] border border-brand/10 bg-white px-5 py-11 md:px-10 md:py-12 text-center shadow-[0_20px_55px_-44px_rgba(102,93,255,0.55)]">
             <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-[#665dff] opacity-[0.12] blur-[58px]" />
@@ -1169,16 +1179,6 @@ function App() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ========== FAQ ========== */}
-      <section className="py-16 md:py-22 px-5 bg-card" id="faq">
-        <div className="max-w-275 mx-auto">
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-6 md:mb-12">
-            <span className="text-brand">Tes questions</span>, mes réponses
-          </h2>
-          <FaqAccordion />
         </div>
       </section>
 

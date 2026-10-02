@@ -110,6 +110,20 @@ du texte (`--color-text`), avec détails blancs.
 Références de conception : [Embla, exemples](https://www.embla-carousel.com/docs/v8/examples/predefined),
 [Swiper, coverflow](https://swiperjs.com/demos), [W3C, carrousels accessibles](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).
 
+## Livrables et fin de page d’accueil
+
+La section « Avant de payer un euro, je t’offre : » présente d’abord la maquette offerte sur fond violet
+pâle, puis le cahier des charges. Sur ordinateur, ces deux cartes sont côte à
+côte ; le devis forme une ligne compacte en dessous. Les cartes n’ont pas
+d’ombre ni de déplacement au survol.
+
+Sur mobile, les cartes « Comment ça se passe ? » placent une illustration de 104 × 96 px
+à droite du début du texte pour rapprocher le numéro, le titre et la description.
+La fin de page suit l’ordre : contact WhatsApp, FAQ, Instagram, audit express,
+pied de page. La FAQ s’intitule « Pour y voir plus clair », sur fond blanc avec
+un espacement supérieur réduit sur mobile. Instagram et l’audit partagent un
+fond gris clair.
+
 ## Maquettes
 
 Les maquettes HTML faites a la main vivent dans la landing page avec des routes `/maquette/...`.
