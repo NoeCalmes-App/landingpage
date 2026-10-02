@@ -927,7 +927,7 @@ function App() {
                   'Maquette offerte avant de payer',
                   'Tarif fixe, à partir de 5 000 €',
                   'Joignable directement 6j/7',
-                  'Livraison en 4 à 6 semaines',
+                  'Première version en 45 jours en moyenne',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3.5 text-text text-[0.95rem] font-semibold leading-relaxed">
                     <svg className="shrink-0 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">

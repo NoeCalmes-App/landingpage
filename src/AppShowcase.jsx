@@ -18,7 +18,7 @@ function PhoneCarousel() {
   const [resumeAt, setResumeAt] = useState(0)
   const [dragging, setDragging] = useState(false)
   const [visible, setVisible] = useState(false)
-  const [pageVisible, setPageVisible] = useState(true)
+  const [pageVisible, setPageVisible] = useState(() => !document.hidden)
   const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
   const root = useRef(null)
   const pointer = useRef(null)
@@ -28,7 +28,11 @@ function PhoneCarousel() {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)')
     const onMotion = () => setReducedMotion(media.matches)
     const onVisibility = () => setPageVisible(!document.hidden)
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.3 })
+    // isIntersecting alone is true as soon as a single pixel enters the viewport.
+    // Keep the first screen until at least half the gallery is actually visible.
+    const observer = new IntersectionObserver(([entry]) => {
+      setVisible(entry.isIntersecting && entry.intersectionRatio >= 0.5)
+    }, { threshold: [0, 0.5] })
     observer.observe(root.current)
     media.addEventListener('change', onMotion)
     document.addEventListener('visibilitychange', onVisibility)

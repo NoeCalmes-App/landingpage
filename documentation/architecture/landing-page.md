@@ -96,7 +96,9 @@ boutons. La liste `SCREENS` définit l’ordre et les descriptions accessibles
 (application/maquette) ; aucune légende visible ne surcharge les écrans.
 
 Trois téléphones visibles, défilement toutes les 3,5 secondes, glissement,
-flèches et clavier. Un clic sur une flèche ou un glissement suspend le défilement
+flèches et clavier. La première capture reste affichée jusqu’à ce qu’au moins
+la moitié de la galerie entre dans l’écran ; le défilement démarre alors et se
+suspend dès que la galerie repasse sous ce seuil. Un clic sur une flèche ou un glissement suspend le défilement
 30 secondes avant reprise automatique. Aucun bouton pause n’est affiché.
 L’animation se suspend tant que le focus clavier est dans le carrousel, hors écran,
 pendant un glissement et dans un onglet masqué. `prefers-reduced-motion`
