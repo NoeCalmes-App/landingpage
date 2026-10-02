@@ -104,7 +104,9 @@ L’animation se suspend tant que le focus clavier est dans le carrousel, hors �
 pendant un glissement et dans un onglet masqué. `prefers-reduced-motion`
 désactive l’automatisme et les transitions. Les illustrations vectorielles des
 livrables sont dans `src/DeliverableVisual.jsx` et `src/App.css` : format compact
-(80 px sur ordinateur, 64 px sur mobile) et noir commun aux trois.
+(80 px sur ordinateur, 64 px sur mobile), illustrations en violet de marque ;
+seuls les fonds des pastilles coche/euro et le curseur utilisent le bleu foncé
+du texte (`--color-text`), avec détails blancs.
 Références de conception : [Embla, exemples](https://www.embla-carousel.com/docs/v8/examples/predefined),
 [Swiper, coverflow](https://swiperjs.com/demos), [W3C, carrousels accessibles](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).
 
