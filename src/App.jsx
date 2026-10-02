@@ -19,7 +19,6 @@ import { trackDirectWhatsAppLead } from './metaTracking.js'
 import { lienInterne, appliquerMeta, retirerPrerender } from './seo.js'
 import { PageExpertise, PageMethode, PageFaq, FAQ_ITEMS } from './PagesSeo.jsx'
 import { PageQuiz, PageQuizHub, quizParSlug } from './Quiz.jsx'
-import { ExternalLink } from 'lucide-react'
 
 // ─── Chargement differe des pages hors accueil (21/09/2026) ──────────────────
 //
@@ -1029,7 +1028,6 @@ function App() {
                           className="inline-flex items-center gap-1 text-[0.9rem] text-[#2563eb] underline underline-offset-4 decoration-[#2563eb]/50 hover:text-brand hover:decoration-brand transition-colors"
                         >
                           Combien coûterait mon app&nbsp;?
-                          <ExternalLink size={14} strokeWidth={2.4} aria-hidden="true" />
                         </a>
                       </span>
                     ) : item}
