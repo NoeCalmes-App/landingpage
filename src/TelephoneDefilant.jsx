@@ -1,27 +1,37 @@
 import { useEffect, useState } from 'react'
 
-// Le téléphone du bloc « Une idée banale » : un seul cadre, et l'écran change
-// tout seul, un écran par application, toutes les 1,8 seconde. Pas de
-// défilement, un fondu : on passe d'une application à l'autre.
+// Le téléphone du bloc « Une idée banale » : un vrai cadre d'iPhone (îlot
+// dynamique, boutons latéraux, coins au bon rayon), et l'écran passe d'une
+// application à l'autre en fondu toutes les 1,8 seconde. Un écran par
+// application, le plus parlant de chacune, tous au même format que le
+// téléphone (ratio 393 × 852, comme une capture d'iPhone 15), barre de statut
+// comprise : chaque image a l'heure et les icônes, comme une capture réelle.
 //
-// ⚠️ CE QUI PEUT Y FIGURER. Les CGV (article 10.6) n'autorisent à montrer que ce
-// qui est déjà public après mise en ligne : visuels de la fiche store ou du
-// site public du client. Calorie est déjà sur la page ; SmoothRide et Bailora
-// viennent de leurs sites publics. Une maquette de projet non publié n'entre
-// pas ici, même belle, sauf accord écrit du client.
-//
-// Les écrans sont servis sans coque, à 540 px de large (le cadre affiche 270 px
-// au plus, donc net sur les écrans haute densité), tous au même ratio.
+// Les écrans viennent des pages /maquette/... de ce dépôt (captures des
+// maquettes clients, sans nom affiché), de Calorie, et sont servis en WebP à
+// 540 × 1170 (le cadre affiche 330 px au plus, donc net en haute densité).
+// Le premier se charge tout de suite, les autres en différé.
 const ECRANS = [
-  { src: '/assets/images/ecrans/calorie-ecran.webp', app: 'Calorie', alt: 'Calorie, suivi du parcours alimentaire' },
-  { src: '/assets/images/ecrans/smoothride-onboarding.webp', app: 'SmoothRide', alt: 'SmoothRide, le même trajet sans les secousses' },
-  { src: '/assets/images/ecrans/bailora-accueil.webp', app: 'Bailora', alt: 'Bailora, accueil' },
-  { src: '/assets/images/ecrans/smoothride-carte.webp', app: 'SmoothRide', alt: 'SmoothRide, carte du trajet' },
-  { src: '/assets/images/ecrans/bailora-tableau-de-bord.webp', app: 'Bailora', alt: 'Bailora, tableau de bord' },
-  { src: '/assets/images/ecrans/smoothride-comparatif.webp', app: 'SmoothRide', alt: 'SmoothRide, comparatif des trajets' },
-  { src: '/assets/images/ecrans/bailora-loyers.webp', app: 'Bailora', alt: 'Bailora, suivi des loyers' },
+  { src: 'calorie.webp', alt: 'Calorie, suivi du parcours alimentaire' },
+  { src: 'smoothride-promesse.webp', alt: 'SmoothRide, écran de promesse' },
+  { src: 'kingfit-onboarding.webp', alt: 'Application de coaching, premier écran' },
+  { src: 'bailora-tableau-de-bord.webp', alt: 'Bailora, tableau de bord' },
+  { src: 'sonora-ouverture.webp', alt: 'Application musicale, écran d’ouverture' },
+  { src: 'immomatch-tableau-de-bord.webp', alt: 'Application immobilière, tableau de bord' },
+  { src: 'blush-match.webp', alt: 'Application de rencontre, écran de match' },
+  { src: 'aretha-tableau-de-bord.webp', alt: 'Application pour artistes, tableau de bord' },
+  { src: 'convoipilote-navigation.webp', alt: 'Application de navigation, vue conduite' },
+  { src: 'pet-solidarite-ouverture.webp', alt: 'Application d’entraide animale, ouverture' },
+  { src: 'bagsitter-garde.webp', alt: 'Application de garde de bagages, garde en cours' },
+  { src: 'juridik-ouverture.webp', alt: 'Application juridique, ouverture' },
+  { src: 'vietcollab-accueil.webp', alt: 'Application de collaborations, accueil' },
+  { src: 'guestride-course.webp', alt: 'Application de VTC, proposition de course' },
+  { src: 'colocool-tableau-de-bord.webp', alt: 'Application de colocation, tableau de bord' },
+  { src: 'pac-assist-onboarding.webp', alt: 'Application pour techniciens, premier écran' },
+  { src: 'moovye-scanner.webp', alt: 'Application logistique, scan d’un bagage' },
 ]
 
+const DOSSIER = '/assets/images/ecrans/'
 const INTERVALLE_MS = 1800
 
 export default function TelephoneDefilant() {
@@ -35,25 +45,27 @@ export default function TelephoneDefilant() {
   }, [])
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <div className="tel-cadre w-[195px] md:w-[270px]">
-        <div className="tel-ecran">
-          {ECRANS.map((e, i) => (
-            <img
-              key={e.src}
-              src={e.src}
-              alt={i === index ? e.alt : ''}
-              width="540"
-              height="1161"
-              loading={i === 0 ? 'eager' : 'lazy'}
-              decoding="async"
-              aria-hidden={i !== index}
-              className={i === index ? 'tel-visible' : ''}
-            />
-          ))}
-        </div>
+    <div className="tel-cadre w-[250px] md:w-[330px]" role="img" aria-label="Écrans d'applications conçues par Noé Calmes">
+      <span className="tel-bouton tel-bouton-silence" aria-hidden="true" />
+      <span className="tel-bouton tel-bouton-vol-haut" aria-hidden="true" />
+      <span className="tel-bouton tel-bouton-vol-bas" aria-hidden="true" />
+      <span className="tel-bouton tel-bouton-marche" aria-hidden="true" />
+      <div className="tel-ecran">
+        {ECRANS.map((e, i) => (
+          <img
+            key={e.src}
+            src={DOSSIER + e.src}
+            alt={i === index ? e.alt : ''}
+            width="540"
+            height="1170"
+            loading={i === 0 ? 'eager' : 'lazy'}
+            decoding="async"
+            aria-hidden={i !== index}
+            className={i === index ? 'tel-visible' : ''}
+          />
+        ))}
+        <span className="tel-ilot" aria-hidden="true" />
       </div>
-      <p className="text-grey text-[0.8rem] font-medium" aria-live="polite">{ECRANS[index].app}</p>
     </div>
   )
 }
