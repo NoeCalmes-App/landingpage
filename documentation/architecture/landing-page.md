@@ -79,6 +79,27 @@ Trois regles en decoulent, toutes appliquees au build :
 
 `index.html` sert de gabarit a toutes les pages generees. Attention : tout JSON-LD ajoute dans `index.html` se retrouve **sur chaque page generee**. C'est pour ca que `generate-routes.js` retire le bloc `FAQPage` partout sauf sur la home et `/faq`, ou il est regenere depuis `FAQ_ITEMS`. Une page qui declare une FAQ invisible enfreint les regles de Google.
 
+## Galerie d’interfaces sur l’accueil
+
+La section `#calories-proof` est portée par `src/AppShowcase.jsx` et
+`src/app-showcase.css`. Elle associe la preuve Calorie (13 000 €/mois, deux mois
+après le lancement) à trois leviers produit : premiers pas, passage à l’achat,
+fidélité. Deux cartes expliquent l’approche sur un marché existant ou nouveau.
+
+Le carrousel utilise sept captures fournies par Noé, converties en WebP de
+660 px sous `public/assets/images/apps/captures/` (environ 375 Ko au total).
+Les fichiers originaux restent inchangés. Les captures contiennent déjà
+l’encoche et la barre d’état : le cadre CSS ajoute seulement la coque et les
+boutons. La liste `SCREENS` définit l’ordre, les légendes et la distinction
+application/maquette ; les revenus annoncés concernent Calorie uniquement.
+
+Trois téléphones visibles, défilement toutes les 4,5 secondes, glissement,
+flèches et clavier. Le défilement se suspend au survol, hors écran et dans un
+onglet masqué ; une interaction manuelle ou le focus le met en pause jusqu’à
+reprise explicite. `prefers-reduced-motion` désactive l’automatisme et les
+transitions. Références de conception : [Embla, exemples](https://www.embla-carousel.com/docs/v8/examples/predefined),
+[Swiper, coverflow](https://swiperjs.com/demos), [W3C, carrousels accessibles](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).
+
 ## Maquettes
 
 Les maquettes HTML faites a la main vivent dans la landing page avec des routes `/maquette/...`.

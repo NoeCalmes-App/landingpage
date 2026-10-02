@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import './App.css'
+import AppShowcase from './AppShowcase.jsx'
 import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
 import MentionsLegales from './MentionsLegales.jsx'
 import CGV from './CGV.jsx'
@@ -57,7 +58,6 @@ const calorieIcon = '/assets/images/apps/calorie.webp'
 const hushIcon = '/assets/images/apps/hushapp.webp'
 const purgeIcon = '/assets/images/apps/purge.webp'
 const snapIcon = '/assets/images/apps/snapmaster.webp'
-const calorieVisuel = '/assets/images/apps/calorievisuelle.webp'
 
 // Canal de contact unique : WhatsApp (message pré-rempli pour amorcer la qualif).
 // Les CTA de la landing passent d'abord par /rendez-vous. Seuls le bouton de
@@ -811,42 +811,8 @@ function App() {
         </div>
       </section>
 
-      {/* ========== PREUVE CALORIES ========== */}
-      <section className="py-16 md:py-22 px-5" id="calories-proof">
-        <div className="max-w-275 mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
-            <div className="reveal shrink-0">
-              <img src={calorieVisuel} alt="Calories, application rentable" loading="lazy" className="w-full max-w-[195px] md:max-w-[270px] rounded-[28px] mx-auto" />
-            </div>
-            <div className="reveal max-w-[520px]">
-              <h2 className="font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-5 leading-[1.15]">
-                Une idée banale. Une petite application. <span className="text-brand">13 000 €/mois.</span>
-              </h2>
-              <p className="text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed mb-3">
-                Marché saturé, idée pas révolutionnaire, peu de téléchargements.
-              </p>
-              <p className="text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed mb-7">
-                Et pourtant elle rapporte. La différence&nbsp;: la façon dont elle est conçue pour convertir.
-              </p>
-              <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2 md:gap-x-2 md:gap-y-3">
-                {['Arrivée', 'Onboarding', 'Essai gratuit', 'Habitude', 'Abonnement', 'Revenu récurrent'].map((step, i, arr) => (
-                  <span key={step} className={`flex items-center gap-2 ${i === arr.length - 1 ? 'md:w-full md:basis-full md:mt-1' : ''}`}>
-                    <span className={`inline-flex items-center gap-1 md:gap-1.5 text-[0.85rem] md:text-[0.95rem] font-semibold rounded-full px-3.5 py-2 md:px-4 md:py-2 border ${i === arr.length - 1 ? 'bg-brand text-white border-brand' : 'bg-card text-text border-card-border'}`}>
-                      {i === arr.length - 1 && (
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 1l4 4-4 4" /><path d="M3 11V9a4 4 0 014-4h14" /><path d="M7 23l-4-4 4-4" /><path d="M21 13v2a4 4 0 01-4 4H3" /></svg>
-                      )}
-                      {step}
-                    </span>
-                    {i < arr.length - 1 && (
-                      <svg className="text-grey/40 shrink-0 w-3 h-3 md:w-4 md:h-4" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>
-                    )}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Applications, preuve Calorie et méthode produit */}
+      <AppShowcase />
 
       {/* ========== CE QUE JE FAIS / PAS ========== */}
       <section className="py-16 md:py-22 px-5 bg-card" id="metier">

@@ -1,0 +1,87 @@
+.app-proof { padding: 88px 24px 72px; overflow: clip; background: linear-gradient(180deg, #fffefc, #faf9ff 70%, #fffefc); }
+.app-proof-inner { max-width: 1100px; margin: 0 auto; }
+.app-proof-main { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.app-proof-eyebrow, .app-gallery-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.app-proof-eyebrow { color: #665dff; margin-bottom: 16px; }
+.app-proof-copy h2 { font-family: 'Plus Jakarta Sans Local', sans-serif; font-size: clamp(30px, 3.1vw, 42px); font-weight: 800; letter-spacing: -.045em; line-height: 1.14; margin: 0 0 20px; }
+.app-proof-copy h2 > span { color: #665dff; }
+.app-proof-intro { font-size: 14px; line-height: 1.8; color: #667185; max-width: 490px; }
+.app-proof-intro strong { color: #033475; font-weight: 600; }
+.app-proof-method { margin-top: 26px; padding-top: 22px; border-top: 1px solid #dedeea; }
+.app-proof-method h3 { font-size: 14px; font-weight: 700; margin: 0 0 20px; }
+.app-proof-method ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 19px; }
+.app-proof-method li { display: flex; gap: 14px; }
+.app-proof-step { flex: 0 0 30px; height: 30px; display: grid; place-items: center; border: 1px solid #dcd7ff; border-radius: 10px; color: #665dff; background: #f0eeff; font-size: 10px; font-weight: 800; }
+.app-proof-method h4 { font-size: 14px; font-weight: 700; margin: 0 0 4px; }
+.app-proof-method li p { font-size: 13px; line-height: 1.65; color: #667185; margin: 0; }
+.app-gallery { --phone-width: 218px; position: relative; min-width: 0; padding: 20px 0; isolation: isolate; }
+.app-gallery-eyebrow { color: #707789; text-align: center; font-size: 9px; letter-spacing: .08em; display: flex; align-items: center; justify-content: center; gap: 8px; padding-right: 26px; }
+.app-gallery-eyebrow > span { width: 5px; height: 5px; border-radius: 50%; background: #665dff; }
+.app-gallery-play { position: absolute; right: 0; top: 10px; width: 34px; height: 34px; border: 1px solid #e3e0ec; border-radius: 50%; display: grid; place-items: center; background: #fffafc; color: #707789; cursor: pointer; }
+.app-gallery-play:disabled { opacity: .45; cursor: default; }
+.app-gallery-stage { position: relative; height: 505px; margin-top: 26px; touch-action: pan-y; user-select: none; cursor: grab; }
+.app-gallery-stage:active { cursor: grabbing; }
+.app-gallery-halo { position: absolute; inset: 6% -2% 0; background: radial-gradient(ellipse, #e5e0ff 0, #f0ecff88 43%, transparent 70%); pointer-events: none; }
+.app-phone-position { width: var(--phone-width); position: absolute; left: calc(50% - var(--phone-width) / 2); top: 0; transition: transform 850ms cubic-bezier(.22,.75,.2,1), opacity 650ms ease, filter 850ms ease; will-change: transform; pointer-events: none; }
+.app-phone-position[data-position='0'] { transform: translate3d(0, 0, 0); z-index: 3; opacity: 1; }
+.app-phone-position[data-position='-1'] { transform: translate3d(-57%, 43px, 0) scale(.8) rotate(-7deg); z-index: 2; opacity: .82; filter: saturate(.8); }
+.app-phone-position[data-position='1'] { transform: translate3d(57%, 43px, 0) scale(.8) rotate(7deg); z-index: 2; opacity: .82; filter: saturate(.8); }
+.app-phone-position[data-position='-2'], .app-phone-position[data-position='-3'] { transform: translate3d(-68%, 60px, 0) scale(.65) rotate(-10deg); z-index: 0; opacity: 0; }
+.app-phone-position[data-position='2'], .app-phone-position[data-position='3'] { transform: translate3d(68%, 60px, 0) scale(.65) rotate(10deg); z-index: 0; opacity: 0; }
+.app-phone { position: relative; padding: 6px; border-radius: 37px; background: #141519; border: 2px solid #85858c; box-shadow: inset 0 0 0 1px #d2d1d6, inset 0 0 0 3px #313236, 0 25px 35px -18px #25213a70, 0 5px 10px #27243c20; }
+.app-phone-screen { overflow: hidden; border-radius: 29px; background: #fff; isolation: isolate; }
+.app-phone-screen img { display: block; width: 100%; height: auto; aspect-ratio: 1179 / 2556; object-fit: cover; }
+.app-phone-button { position: absolute; width: 3px; background: linear-gradient(90deg, #42434a, #b5b5bd, #55565c); border-radius: 2px; left: -4px; }
+.app-phone-action { top: 65px; height: 15px; }
+.app-phone-volume-up { top: 99px; height: 29px; }
+.app-phone-volume-down { top: 138px; height: 29px; }
+.app-phone-power { left: auto; right: -4px; top: 112px; height: 45px; }
+.app-gallery-caption { text-align: center; min-height: 53px; }
+.app-gallery-caption > p:first-child { display: flex; gap: 9px; align-items: center; justify-content: center; margin: 0 0 7px; }
+.app-gallery-caption strong { font-size: 14px; font-weight: 700; }
+.app-gallery-caption span { font-size: 9px; border: 1px solid #dedbe8; padding: 2px 6px; border-radius: 5px; color: #727388; }
+.app-gallery-caption > p:last-child { font-size: 12px; color: #727388; margin: 0; }
+.app-gallery-controls { display: flex; align-items: center; justify-content: center; gap: 19px; margin-top: 15px; }
+.app-gallery-controls button { width: 40px; height: 40px; border-radius: 50%; background: #fff; color: #033475; border: 1px solid #e0deec; display: grid; place-items: center; cursor: pointer; transition: background 180ms; }
+.app-gallery-controls button:hover, .app-gallery-play:hover:not(:disabled) { background: #edeaff; }
+.app-gallery button:focus-visible, .app-proof-next a:focus-visible { outline: 3px solid #665dff; outline-offset: 5px; }
+.app-gallery-dots { display: flex; gap: 5px; align-items: center; }
+.app-gallery-dots span { width: 5px; height: 5px; border-radius: 5px; background: #d2cedf; transition: width 350ms, background 350ms; }
+.app-gallery-dots .is-active { width: 20px; background: #665dff; }
+.app-market-grid { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.app-market-grid article { display: flex; gap: 14px; padding: 24px; border-radius: 18px; border: 1px solid #e7e4f0; background: #ffffffa8; }
+.app-market-icon { color: #665dff; flex-shrink: 0; margin-top: 2px; }
+.app-market-grid h3 { font-size: 15px; font-weight: 700; margin: 0 0 8px; }
+.app-market-grid p { font-size: 13px; line-height: 1.7; color: #667185; margin: 0; }
+.app-proof-next { display: flex; justify-content: space-between; align-items: center; gap: 22px; padding-top: 26px; font-size: 12px; }
+.app-proof-next p, .app-proof-next a { display: flex; align-items: center; gap: 8px; }
+.app-proof-next p { color: #667185; }
+.app-proof-next a { color: #665dff; font-weight: 700; text-underline-offset: 4px; }
+.app-proof-next a:hover { text-decoration: underline; }
+@media (max-width: 1000px) and (min-width: 761px) {
+  .app-proof-main { gap: 32px; grid-template-columns: .9fr 1fr; }
+  .app-gallery { --phone-width: 182px; }
+  .app-gallery-stage { height: 440px; }
+}
+@media (max-width: 760px) {
+  .app-proof { padding: 44px 22px 48px; }
+  .app-proof-main { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .app-gallery { --phone-width: clamp(158px, 49vw, 218px); max-width: 480px; width: 100%; margin: 0 auto; padding: 12px 0 0; }
+  .app-gallery-stage { height: clamp(375px, 116vw, 500px); margin-top: 24px; }
+  .app-phone-position[data-position='-1'] { transform: translate3d(-48%, 38px, 0) scale(.74) rotate(-6deg); }
+  .app-phone-position[data-position='1'] { transform: translate3d(48%, 38px, 0) scale(.74) rotate(6deg); }
+  .app-gallery-play { top: 1px; }
+  .app-gallery-caption { min-height: 49px; }
+  .app-gallery-controls { margin-top: 8px; }
+  .app-proof-copy { max-width: 520px; margin: 0 auto; }
+  .app-proof-copy h2 { font-size: clamp(31px, 8vw, 40px); }
+  .app-proof-intro { font-size: 14px; }
+  .app-proof-method li p { font-size: 13px; }
+  .app-market-grid { grid-template-columns: 1fr; margin-top: 30px; gap: 12px; }
+  .app-market-grid article { padding: 20px; }
+  .app-proof-next { flex-direction: column; align-items: flex-start; gap: 18px; font-size: 12px; line-height: 1.6; }
+  .app-proof-next p svg { flex-shrink: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app-phone-position, .app-gallery-dots span, .app-gallery-controls button { transition: none; }
+}
