@@ -20,6 +20,7 @@ import { lienInterne, appliquerMeta, retirerPrerender } from './seo.js'
 import { PageExpertise, PageMethode, PageFaq, FAQ_ITEMS } from './PagesSeo.jsx'
 import { PageQuiz, PageQuizHub, quizParSlug } from './Quiz.jsx'
 import { ExternalLink } from 'lucide-react'
+import TelephoneDefilant from './TelephoneDefilant.jsx'
 
 // ─── Chargement differe des pages hors accueil (21/09/2026) ──────────────────
 //
@@ -57,7 +58,6 @@ const calorieIcon = '/assets/images/apps/calorie.webp'
 const hushIcon = '/assets/images/apps/hushapp.webp'
 const purgeIcon = '/assets/images/apps/purge.webp'
 const snapIcon = '/assets/images/apps/snapmaster.webp'
-const calorieVisuel = '/assets/images/apps/calorievisuelle.webp'
 
 // Canal de contact unique : WhatsApp (message pré-rempli pour amorcer la qualif).
 // Les CTA de la landing passent d'abord par /rendez-vous. Seuls le bouton de
@@ -614,7 +614,7 @@ function App() {
                     Noé Calmes
                   </span>
                   <span className="text-grey text-[0.68rem] md:text-[0.75rem] leading-none font-normal truncate">
-                    Expert en applications mobiles
+                    Expert en applications mobiles et web
                   </span>
                 </span>
               </a>
@@ -731,7 +731,7 @@ function App() {
 
           {/* Sous-titre */}
           <p className="text-grey text-[0.92rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-xl mx-auto mb-9 md:mb-11">
-            Je conçois ton application iOS et Android pour transformer tes utilisateurs en clients.
+            Je conçois ton application mobile et web pour transformer tes utilisateurs en clients.
           </p>
 
           {/* Flux idée → application → revenus */}
@@ -799,14 +799,14 @@ function App() {
               <svg className="text-brand" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19a5.5 5.5 0 0111 0" /><path d="M16 5.5a3 3 0 010 5.8M20.5 19a5.5 5.5 0 00-3-4.9" /></svg>
             </div>
             <p className="font-jakarta text-text font-bold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-none">300k utilisateurs</p>
-            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">Application Hush · 1ère version</p>
+            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">Hush App · 1ère version</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-2xl bg-white border border-card-border shadow-sm flex items-center justify-center mb-4">
               <svg className="text-brand" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></svg>
             </div>
             <p className="font-jakarta text-text font-bold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-none">+20 applications</p>
-            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">publiées sur les stores</p>
+            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">publiées sur les stores et en ligne</p>
           </div>
         </div>
       </section>
@@ -816,7 +816,7 @@ function App() {
         <div className="max-w-275 mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
             <div className="reveal shrink-0">
-              <img src={calorieVisuel} alt="Calories, application rentable" loading="lazy" className="w-full max-w-[195px] md:max-w-[270px] rounded-[28px] mx-auto" />
+              <TelephoneDefilant />
             </div>
             <div className="reveal max-w-[520px]">
               <h2 className="font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-5 leading-[1.15]">

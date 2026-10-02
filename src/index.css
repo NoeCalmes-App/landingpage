@@ -547,3 +547,36 @@ details summary {
   line-height: 1.7;
   color: #3f4d61;
 }
+
+/* ─── Téléphone à écran changeant (bloc « Une idée banale ») ─────────────────
+   Le cadre est en CSS, les écrans sont des captures sans coque, empilées ;
+   un seul est visible, le passage se fait en fondu. */
+.tel-cadre {
+  aspect-ratio: 464 / 998;
+  padding: 9px;
+  border-radius: 44px;
+  background: #17171b;
+  box-shadow:
+    inset 0 0 0 2px #3b3b42,
+    0 30px 60px -28px rgba(3, 52, 117, 0.5);
+}
+@media (min-width: 768px) { .tel-cadre { padding: 11px; border-radius: 54px; } }
+.tel-ecran {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 36px;
+  background: #000;
+}
+@media (min-width: 768px) { .tel-ecran { border-radius: 44px; } }
+.tel-ecran img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.tel-ecran img.tel-visible { opacity: 1; }
