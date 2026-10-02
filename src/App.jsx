@@ -1013,8 +1013,8 @@ function App() {
                   'Pensé pour transformer tes utilisateurs en clients',
                   'Maquette offerte avant de payer',
                   'Tarif fixe, à partir de 5 000 €',
-                  'Joignable directement 6j/7',
-                  'Livraison en 4 à 6 semaines',
+                  'Joignable à tout moment, 6j/7',
+                  'Livraison en quelques semaines',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3.5 text-text text-[0.95rem] font-semibold leading-relaxed">
                     <svg className="shrink-0 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
@@ -1024,8 +1024,8 @@ function App() {
                       <span>
                         {item}.{' '}
                         <a
-                          href={lienInterne('/audit-app')}
-                          onClick={(e) => { e.preventDefault(); goAuditApp() }}
+                          href={lienInterne('/rendez-vous')}
+                          onClick={goBookCall}
                           className="inline-flex items-center gap-1 text-[0.9rem] text-[#2563eb] underline underline-offset-4 decoration-[#2563eb]/50 hover:text-brand hover:decoration-brand transition-colors"
                         >
                           Combien coûterait mon app&nbsp;?

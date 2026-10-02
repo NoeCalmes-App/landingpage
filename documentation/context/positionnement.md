@@ -189,7 +189,7 @@ Note landing page : dans la carte de comparaison publique, ne pas faire du prix 
 
 - Agences : `À partir de 15 000 €`
 - Noé : `Tarif fixe, sans surprise`
-- Lien secondaire bleu/souligné : `Combien coûterait mon app ?` -> `/audit-app`
+- Lien secondaire bleu/souligné : `Combien coûterait mon app ?` -> `/rendez-vous` (section WhatsApp ; vers `/audit-app` jusqu'au 02/10/2026)
 
 Pourquoi : la valeur reste l'application pensee pour generer des revenus. Le seuil `5 000 €` sert de filtre secondaire dans les publicites d'acquisition et dans l'audit, pas d'accroche principale sur la landing. Le lien vers l'audit transforme la curiosite prix en lead qualifie : le visiteur repond aux questions, obtient potentiel/budget/delai, puis arrive naturellement sur WhatsApp.
 
