@@ -61,7 +61,7 @@ const snapIcon = '/assets/images/apps/snapmaster.webp'
 
 // Canal de contact unique : WhatsApp (message pré-rempli pour amorcer la qualif).
 // Les CTA de la landing passent d'abord par /rendez-vous. Seuls le bouton de
-// cette section et le bouton flottant ouvrent WhatsApp directement.
+// cette section, le lien sous la FAQ et le bouton flottant ouvrent WhatsApp directement.
 const WHATSAPP_NUMBER = '33658308210'
 // Le message pré-rempli ne demande RIEN au prospect : il doit pouvoir partir
 // en un seul tap. Toute question posée ici (« ton idée en 2 mots ») ajoute de
@@ -1102,6 +1102,18 @@ function App() {
             Pour y voir <span className="text-brand">plus clair</span>
           </h2>
           <FaqAccordion />
+          <p className="reveal mt-6 text-center text-grey text-[0.9rem] leading-relaxed">
+            Une autre question ?{' '}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackDirectWhatsAppLead('home_faq')}
+              className="inline-block font-semibold text-brand underline underline-offset-4 decoration-brand/40 hover:decoration-brand focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-4"
+            >
+              Écris-moi sur WhatsApp.
+            </a>
+          </p>
         </div>
       </section>
 

@@ -4,7 +4,7 @@
 @media (max-width: 767px) {
   .deliverable-visual { width: 64px; height: 60px; margin: 0 0 0 -8px; }
   .process-card { display: flow-root; padding: 20px; }
-  .process-illustration { float: right; width: 104px; height: 96px; margin: -2px -3px 6px 12px; }
+  .process-illustration { float: right; width: 128px; height: 118px; margin: -2px -3px 6px 12px; }
   .process-copy { display: block; }
   .process-copy > span { display: inline-flex; margin-bottom: 8px; }
   .process-copy h3 { margin-bottom: 7px; }
