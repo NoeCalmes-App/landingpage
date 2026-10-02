@@ -82,22 +82,27 @@ Trois regles en decoulent, toutes appliquees au build :
 ## Galerie d’interfaces sur l’accueil
 
 La section `#calories-proof` est portée par `src/AppShowcase.jsx` et
-`src/app-showcase.css`. Elle associe la preuve Calorie (13 000 €/mois, deux mois
-après le lancement) à trois leviers produit : premiers pas, passage à l’achat,
-fidélité. Deux cartes expliquent l’approche sur un marché existant ou nouveau.
+`src/app-showcase.css`. Elle présente la stratégie produit en une phrase et
+cinq pastilles : premiers pas, essai gratuit, habitude, abonnement/commission,
+revenus récurrents. Calorie (13 000 €/mois) reste un exemple secondaire de marché
+concurrentiel. La barre de preuve affiche +900k téléchargements cumulés,
++300k utilisateurs pour Hush et +20 applications, chiffres fournis par Noé.
 
 Le carrousel utilise sept captures fournies par Noé, converties en WebP de
 660 px sous `public/assets/images/apps/captures/` (environ 375 Ko au total).
 Les fichiers originaux restent inchangés. Les captures contiennent déjà
 l’encoche et la barre d’état : le cadre CSS ajoute seulement la coque et les
-boutons. La liste `SCREENS` définit l’ordre, les légendes et la distinction
-application/maquette ; les revenus annoncés concernent Calorie uniquement.
+boutons. La liste `SCREENS` définit l’ordre et les descriptions accessibles
+(application/maquette) ; aucune légende visible ne surcharge les écrans.
 
-Trois téléphones visibles, défilement toutes les 4,5 secondes, glissement,
-flèches et clavier. Le défilement se suspend au survol, hors écran et dans un
-onglet masqué ; une interaction manuelle ou le focus le met en pause jusqu’à
-reprise explicite. `prefers-reduced-motion` désactive l’automatisme et les
-transitions. Références de conception : [Embla, exemples](https://www.embla-carousel.com/docs/v8/examples/predefined),
+Trois téléphones visibles, défilement toutes les 3,5 secondes, glissement,
+flèches et clavier. Un clic sur une flèche ou un glissement suspend le défilement
+30 secondes avant reprise automatique. Le focus clavier et la commande pause
+l’arrêtent jusqu’à reprise explicite. L’animation se suspend hors écran,
+pendant un glissement et dans un onglet masqué. `prefers-reduced-motion`
+désactive l’automatisme et les transitions. Les illustrations vectorielles des
+livrables sont dans `src/DeliverableVisual.jsx` et `src/App.css`.
+Références de conception : [Embla, exemples](https://www.embla-carousel.com/docs/v8/examples/predefined),
 [Swiper, coverflow](https://swiperjs.com/demos), [W3C, carrousels accessibles](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).
 
 ## Maquettes

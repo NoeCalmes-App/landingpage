@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import './App.css'
 import AppShowcase from './AppShowcase.jsx'
+import DeliverableVisual from './DeliverableVisual.jsx'
 import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
 import MentionsLegales from './MentionsLegales.jsx'
 import CGV from './CGV.jsx'
@@ -789,16 +790,16 @@ function App() {
         <div className="max-w-275 mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center">
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-2xl bg-white border border-card-border shadow-sm flex items-center justify-center mb-4">
-              <svg className="text-brand" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 17 9 11 13 15 21 7" /><polyline points="15 7 21 7 21 13" /></svg>
+              <svg className="text-brand" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" /></svg>
             </div>
-            <p className="font-jakarta text-text font-bold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-none">13 000 €/mois</p>
-            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">Application Calories</p>
+            <p className="font-jakarta text-text font-bold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-none">+900k téléchargements</p>
+            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">sur l’ensemble de mes applications</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-2xl bg-white border border-card-border shadow-sm flex items-center justify-center mb-4">
               <svg className="text-brand" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19a5.5 5.5 0 0111 0" /><path d="M16 5.5a3 3 0 010 5.8M20.5 19a5.5 5.5 0 00-3-4.9" /></svg>
             </div>
-            <p className="font-jakarta text-text font-bold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-none">300k utilisateurs</p>
+            <p className="font-jakarta text-text font-bold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-none">+300k utilisateurs</p>
             <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">Application Hush · 1ère version</p>
           </div>
           <div className="flex flex-col items-center">
@@ -857,22 +858,22 @@ function App() {
             Avant de payer un euro, <span className="text-brand">tu repars avec</span>
           </h2>
           <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7 max-w-230 mx-auto">
-            <div className="bg-surface border border-card-border rounded-[15px] p-5 md:p-8 text-left flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
-              <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center shrink-0 md:mb-5"><svg className="text-brand" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2h9l5 5v15H6z" /><path d="M14 2v6h6M9 13h6M9 17h6" /></svg></div>
+            <div className="deliverable-card bg-surface border border-card-border rounded-[20px] p-5 md:p-8 text-left flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
+              <DeliverableVisual type="brief" />
               <div>
                 <h3 className="font-heading text-text text-[1.05rem] font-bold mb-1 md:mb-2">Un cahier des charges</h3>
                 <p className="text-grey text-[0.92rem] leading-relaxed">Ton application cadrée noir sur blanc.</p>
               </div>
             </div>
-            <div className="bg-surface border border-card-border rounded-[15px] p-5 md:p-8 text-left flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
-              <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center shrink-0 md:mb-5"><svg className="text-brand" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20 12l-8 8-9-9V3h8z" /><path d="M7.5 7.5h.01" /></svg></div>
+            <div className="deliverable-card bg-surface border border-card-border rounded-[20px] p-5 md:p-8 text-left flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
+              <DeliverableVisual type="quote" />
               <div>
                 <h3 className="font-heading text-text text-[1.05rem] font-bold mb-1 md:mb-2">Un devis clair</h3>
                 <p className="text-grey text-[0.92rem] leading-relaxed">Tarif et délai fixes, définis d'avance.</p>
               </div>
             </div>
-            <div className="bg-surface border border-card-border rounded-[15px] p-5 md:p-8 text-left flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
-              <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center shrink-0 md:mb-5"><svg className="text-brand" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="2" width="12" height="20" rx="3" /><path d="M11 18h2" /></svg></div>
+            <div className="deliverable-card bg-surface border border-card-border rounded-[20px] p-5 md:p-8 text-left flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
+              <DeliverableVisual type="mockup" />
               <div>
                 <h3 className="font-heading text-text text-[1.05rem] font-bold mb-1 md:mb-2">Une maquette offerte</h3>
                 <p className="text-grey text-[0.92rem] leading-relaxed">Tu vois ton application avant de décider.</p>
