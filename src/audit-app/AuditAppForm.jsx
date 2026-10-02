@@ -940,7 +940,7 @@ function AnalysisLoading() {
   const PHASES = [
     {
       label: 'Lecture de tes réponses',
-      detail: 'Idée, marché, validation, modèle, budget — tout est sur la table.',
+      detail: 'Idée, marché, validation, modèle, budget : tout est sur la table.',
     },
     {
       label: 'Croisement avec le marché',
