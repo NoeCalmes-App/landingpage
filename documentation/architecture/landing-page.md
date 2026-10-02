@@ -83,7 +83,7 @@ Trois regles en decoulent, toutes appliquees au build :
 
 La section `#calories-proof` est portée par `src/AppShowcase.jsx` et
 `src/app-showcase.css`. Elle présente la stratégie produit en une phrase et
-cinq pastilles : premiers pas, essai gratuit, habitude, abonnement/commission,
+cinq pastilles : premiers écrans, essai gratuit, habitude, abonnement/commission,
 revenus récurrents. Calorie (13 000 €/mois) reste un exemple secondaire de marché
 concurrentiel. La barre de preuve affiche +900k téléchargements cumulés,
 +300k utilisateurs pour Hush et +20 applications, chiffres fournis par Noé.

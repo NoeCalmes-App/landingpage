@@ -127,9 +127,9 @@ export default function AppShowcase() {
           <PhoneCarousel />
           <div className="app-proof-copy">
             <h2 id="app-proof-title">Une stratégie<br /><span>derrière chaque écran.</span></h2>
-            <p className="app-proof-intro">Idée nouvelle ou marché déjà occupé : je pense le design et le parcours pour <strong>convertir et fidéliser.</strong></p>
+            <p className="app-proof-intro">Que ton idée d’application soit inédite ou ait déjà des concurrents, je pense chaque écran pour <strong>convertir et fidéliser.</strong></p>
             <ol className="app-proof-journey" aria-label="Un parcours pensé pour générer des revenus">
-              {['Premiers pas', 'Essai gratuit', 'Habitude', 'Abonnement / commission', 'Revenus récurrents'].map((step, index, steps) => (
+              {['Premiers écrans', 'Essai gratuit', 'Habitude', 'Abonnement / commission', 'Revenus récurrents'].map((step, index, steps) => (
                 <li key={step}>
                   <span className={index === steps.length - 1 ? 'app-proof-chip app-proof-chip-result' : 'app-proof-chip'}>
                     {index === steps.length - 1 && <Repeat2 size={15} aria-hidden="true" />}{step}
@@ -140,7 +140,7 @@ export default function AppShowcase() {
             </ol>
             <div className="app-proof-example">
               <img src="/assets/images/apps/calorie.webp" alt="" width="36" height="36" loading="lazy" />
-              <p><strong>Ton idée existe déjà ?</strong> Calorie a atteint <b>13 000 €/mois</b> sur un marché saturé.</p>
+              <p><strong>Ton idée existe déjà ?</strong> Calorie a atteint <b>13 000 €/mois</b> sur un marché totalement saturé.</p>
             </div>
           </div>
         </div>
