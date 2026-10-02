@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Écrans du téléphone de l'accueil</title>
+<!--
+  LA SOURCE DES ÉCRANS DU TÉLÉPHONE DE L'ACCUEIL (bloc « Une idée banale »).
+  Quatre écrans dessinés sur mesure, au format exact d'une capture d'iPhone 15
+  (393 × 852 points), barre de statut comprise. L'îlot dynamique n'est PAS
+  dessiné ici : c'est le cadre CSS de la landing qui le pose, par-dessus.
+  Pour régénérer les images : `node scripts/ecrans-telephone/capturer.mjs`.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: 'Geist'; src: url('../../public/assets/fonts/geist/Geist-Black.woff2') format('woff2'); font-weight: 900; }
+  @font-face { font-family: 'Geist'; src: url('../../public/assets/fonts/geist/Geist-Bold.woff2') format('woff2'); font-weight: 700; }
+  @font-face { font-family: 'Geist'; src: url('../../public/assets/fonts/geist/Geist-SemiBold.woff2') format('woff2'); font-weight: 600; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #777; font-family: Inter, system-ui, sans-serif; display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; -webkit-font-smoothing: antialiased; }
+  .ecran { width: 393px; height: 852px; position: relative; overflow: hidden; flex: none; }
+  .ecran * { font-feature-settings: 'tnum' 1; }
+  .geist { font-family: Geist, Inter, sans-serif; }
+
+  /* ── Barre de statut iOS et indicateur home, communs ── */
+  .statut { position: absolute; top: 0; left: 0; right: 0; height: 54px; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 29px 10px 38px; z-index: 20; }
+  .heure { font-weight: 600; font-size: 16.5px; letter-spacing: -.2px; }
+  .icones { display: flex; align-items: center; gap: 7px; }
+  .home { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 139px; height: 5px; border-radius: 3px; background: currentColor; z-index: 20; }
+
+  /* ═══════════ 1. SMOOTHRIDE, PROMESSE (ambiance claire) ═══════════ */
+  .sr { background: #fff; color: #0A1F19; }
+  .sr .marque { position: absolute; top: 64px; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 9px; font-weight: 800; font-size: 17px; letter-spacing: -.3px; z-index: 5; }
+  .sr .mark { width: 28px; height: 28px; border-radius: 7px; background: #07845E; display: grid; place-items: center; }
+  .sr .carte { position: absolute; top: 96px; left: 0; right: 0; height: 330px; background: #E8EEEB; }
+  .sr .carte svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .sr .carte::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 110px; background: linear-gradient(to bottom, rgba(255,255,255,0), #fff); }
+  .sr .texte { position: absolute; top: 400px; left: 28px; right: 28px; }
+  .sr h1 { font-family: Geist, Inter, sans-serif; font-weight: 900; font-size: 34px; line-height: 1.05; letter-spacing: -.8px; }
+  .sr h1 em { font-style: normal; color: #07845E; display: block; }
+  .sr .lead { margin-top: 12px; font-size: 14.5px; line-height: 1.45; color: #48635A; }
+  .sr .options { position: absolute; top: 546px; left: 24px; right: 24px; display: flex; flex-direction: column; gap: 10px; }
+  .sr .opt { border: 1.5px solid #DDE7E3; border-radius: 18px; padding: 11px 15px; background: #fff; display: grid; grid-template-columns: 1fr auto; align-items: center; row-gap: 6px; }
+  .sr .opt.choisi { border: 2px solid #07845E; background: #F2FAF7; }
+  .sr .opt .nom { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; }
+  .sr .opt .pt { width: 9px; height: 9px; border-radius: 50%; }
+  .sr .opt .duree { font-family: Geist, Inter, sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -.3px; }
+  .sr .opt .chip { justify-self: start; font-size: 12px; font-weight: 700; padding: 4px 9px; border-radius: 999px; border: 1px solid; }
+  .sr .opt .bosses { height: 14px; justify-self: stretch; grid-column: 1 / -1; }
+  .sr .opt .ok { width: 24px; height: 24px; border-radius: 50%; background: #07845E; display: grid; place-items: center; justify-self: end; }
+  .sr .cta { position: absolute; top: 752px; left: 24px; right: 24px; height: 54px; border-radius: 999px; background: #07845E; color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 16.5px; box-shadow: 0 12px 24px -12px rgba(7,132,94,.6); }
+  .sr .lien { position: absolute; top: 816px; left: 0; right: 0; text-align: center; font-weight: 600; font-size: 14px; color: #0A1F19; }
+  .sr .points { position: absolute; top: 732px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px; }
+  .sr .points i { width: 7px; height: 7px; border-radius: 4px; background: #CFDBD6; }
+  .sr .points i:first-child { width: 22px; background: #07845E; }
+
+  /* ═══════════ 2. SMOOTHRIDE, NAVIGATION (nuit, en mouvement) ═══════════ */
+  .nav { background: #070F0C; color: #F0FDF8; }
+  .nav .ciel { position: absolute; inset: 0; background: radial-gradient(ellipse 120% 50% at 50% 36%, rgba(63,224,172,.18), rgba(7,15,12,0) 60%), linear-gradient(#070F0C 0%, #0B1714 44%, #0A1310 100%); }
+  .nav .silhouettes { position: absolute; left: -20px; right: -20px; top: 296px; height: 26px; display: flex; align-items: flex-end; gap: 7px; opacity: .9; }
+  .nav .silhouettes i { flex: 1; background: #0F1D18; border-radius: 2px 2px 0 0; }
+  .nav .route-vue { position: absolute; left: 0; right: 0; top: 322px; height: 536px; perspective: 520px; perspective-origin: 50% 0%; overflow: hidden; }
+  .nav .sol { position: absolute; left: 50%; top: -10px; width: 1400px; height: 1800px; margin-left: -700px; transform-origin: 50% 0; transform: rotateX(62deg); background: #0B1512; }
+  .nav .chaussee { position: absolute; left: 50%; top: 0; width: 420px; height: 100%; margin-left: -210px; background: #121F1A; border-left: 10px solid #1E2F28; border-right: 10px solid #1E2F28; }
+  .nav .chaussee::before, .nav .chaussee::after { content: ''; position: absolute; top: 0; bottom: 0; width: 6px; background: repeating-linear-gradient(to bottom, #2C4239 0 70px, transparent 70px 140px); }
+  .nav .chaussee::before { left: 128px; } .nav .chaussee::after { right: 128px; }
+  .nav .trace { position: absolute; left: 50%; top: 0; bottom: 0; width: 54px; margin-left: -27px; background: linear-gradient(to bottom, rgba(63,224,172,.75), rgba(63,224,172,.95)); border-radius: 32px; box-shadow: 0 0 60px 18px rgba(63,224,172,.28); }
+  .nav .trace i { position: absolute; left: 50%; width: 30px; height: 30px; margin-left: -15px; border-left: 7px solid #042D20; border-top: 7px solid #042D20; transform: rotate(45deg); opacity: .85; }
+  .nav .halo { position: absolute; left: 50%; bottom: 128px; width: 180px; height: 180px; margin-left: -90px; border-radius: 50%; background: radial-gradient(circle, rgba(63,224,172,.35), rgba(63,224,172,0) 70%); }
+  .nav .puck { position: absolute; left: 50%; bottom: 196px; width: 42px; height: 42px; margin-left: -21px; border-radius: 50%; background: #3FE0AC; border: 5px solid #fff; box-shadow: 0 0 0 10px rgba(63,224,172,.22), 0 10px 24px rgba(0,0,0,.5); z-index: 6; }
+  .nav .instruction { position: absolute; top: 72px; left: 16px; right: 16px; height: 118px; border-radius: 26px; background: rgba(22,36,31,.86); backdrop-filter: blur(10px); border: 1px solid rgba(240,253,248,.08); display: grid; grid-template-columns: 86px 1fr; align-items: center; padding: 0 18px 0 14px; gap: 14px; z-index: 10; box-shadow: 0 20px 40px -20px rgba(0,0,0,.8); }
+  .nav .fleche { width: 76px; height: 76px; border-radius: 22px; background: #3FE0AC; display: grid; place-items: center; }
+  .nav .dist { font-family: Geist, Inter, sans-serif; font-weight: 900; font-size: 40px; letter-spacing: -1.2px; line-height: 1; }
+  .nav .ordre { font-weight: 700; font-size: 17px; margin-top: 4px; }
+  .nav .voie { font-size: 13px; color: #9FB3AC; margin-top: 3px; }
+  .nav .alerte { position: absolute; top: 410px; left: 50%; transform: translateX(-50%); z-index: 8; display: flex; align-items: center; gap: 9px; background: #FF6B5E; color: #2A0A07; font-weight: 800; font-size: 14px; padding: 9px 14px 9px 10px; border-radius: 999px; white-space: nowrap; box-shadow: 0 0 0 8px rgba(255,107,94,.22), 0 0 0 18px rgba(255,107,94,.08), 0 14px 30px -10px rgba(255,107,94,.7); }
+  .nav .alerte b { width: 24px; height: 24px; border-radius: 50%; background: #2A0A07; display: grid; place-items: center; }
+  .nav .vitesse { position: absolute; left: 18px; top: 286px; z-index: 8; background: rgba(22,36,31,.9); border: 1px solid rgba(240,253,248,.1); border-radius: 18px; padding: 10px 14px; text-align: center; }
+  .nav .vitesse .n { font-family: Geist, Inter, sans-serif; font-weight: 900; font-size: 26px; line-height: 1; letter-spacing: -.6px; }
+  .nav .vitesse .u { font-size: 11px; color: #9FB3AC; margin-top: 3px; font-weight: 600; }
+  .nav .bas { position: absolute; left: 16px; right: 16px; bottom: 28px; border-radius: 28px; background: rgba(22,36,31,.92); backdrop-filter: blur(10px); border: 1px solid rgba(240,253,248,.08); padding: 18px 20px 16px; z-index: 10; }
+  .nav .bas .ligne { display: flex; justify-content: space-between; align-items: flex-end; }
+  .nav .bas .arr { font-family: Geist, Inter, sans-serif; font-weight: 900; font-size: 34px; letter-spacing: -1px; line-height: 1; color: #3FE0AC; }
+  .nav .bas .arr small { font-family: Inter, sans-serif; font-weight: 600; font-size: 12px; color: #9FB3AC; display: block; margin-bottom: 6px; letter-spacing: 0; }
+  .nav .bas .kv { text-align: right; font-weight: 700; font-size: 17px; }
+  .nav .bas .kv small { display: block; font-weight: 600; font-size: 12px; color: #9FB3AC; margin-bottom: 4px; }
+  .nav .bas .btn { margin-top: 14px; height: 50px; border-radius: 999px; background: #3FE0AC; color: #04231A; font-weight: 800; font-size: 15.5px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+  /* ═══════════ 3. BAILORA, ACCUEIL ═══════════ */
+  .ba { background: #faf6f0; color: #2b2320; }
+  .ba .entete { position: absolute; top: 66px; left: 24px; right: 24px; display: flex; align-items: center; gap: 12px; }
+  .ba .avatar { width: 46px; height: 46px; border-radius: 50%; background: #7a2e3a; color: #fff; display: grid; place-items: center; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 20px; }
+  .ba .salut { font-family: Geist, Inter, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -.5px; line-height: 1.05; }
+  .ba .date { font-size: 13px; color: #6e625b; margin-top: 3px; }
+  .ba .cloche { margin-left: auto; width: 42px; height: 42px; border-radius: 50%; background: #fff; border: 1px solid #e6dccf; display: grid; place-items: center; position: relative; }
+  .ba .cloche i { position: absolute; top: 9px; right: 10px; width: 9px; height: 9px; border-radius: 50%; background: #be8a2f; border: 2px solid #fff; }
+  .ba .loyers { position: absolute; top: 132px; left: 20px; right: 20px; height: 164px; border-radius: 26px; background: linear-gradient(135deg, #8a3744 0%, #7a2e3a 45%, #5a2029 100%); color: #fff; padding: 20px 22px; overflow: hidden; box-shadow: 0 24px 44px -24px rgba(90,32,41,.7); }
+  .ba .loyers::after { content: ''; position: absolute; right: -60px; top: -70px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.16), rgba(255,255,255,0) 70%); }
+  .ba .loyers .lab { font-size: 11.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; opacity: .85; }
+  .ba .loyers .somme { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 44px; line-height: 1; margin-top: 8px; letter-spacing: -.5px; }
+  .ba .loyers .sous { font-size: 13.5px; margin-top: 8px; opacity: .92; }
+  .ba .loyers .barre { margin-top: 13px; height: 8px; border-radius: 4px; background: rgba(255,255,255,.22); }
+  .ba .loyers .barre i { display: block; height: 100%; width: 83%; border-radius: 4px; background: #fff; }
+  .ba .loyers .cases { position: absolute; right: 22px; top: 22px; display: flex; gap: 5px; }
+  .ba .loyers .cases i { width: 10px; height: 10px; border-radius: 3px; background: #fff; }
+  .ba .loyers .cases i.att { background: rgba(255,255,255,.3); }
+  .ba .question { position: absolute; top: 310px; left: 20px; right: 20px; border-radius: 20px; background: #fff; border: 1px solid #e6dccf; padding: 13px 16px; }
+  .ba .question .q { font-weight: 700; font-size: 14.5px; line-height: 1.3; }
+  .ba .question .q b { color: #7a2e3a; }
+  .ba .question .rep { display: flex; gap: 8px; margin-top: 10px; }
+  .ba .question .rep span { flex: 1; height: 36px; border-radius: 999px; display: grid; place-items: center; font-weight: 700; font-size: 13.5px; }
+  .ba .question .rep .oui { background: #2e7d5b; color: #fff; }
+  .ba .question .rep .non { background: #f4ede4; color: #2b2320; }
+  .ba .titre { position: absolute; left: 24px; right: 24px; display: flex; justify-content: space-between; align-items: baseline; }
+  .ba .titre h2 { font-family: Geist, Inter, sans-serif; font-weight: 700; font-size: 17px; letter-spacing: -.3px; }
+  .ba .titre a { font-size: 12.5px; font-weight: 700; color: #7a2e3a; }
+  .ba .actions { position: absolute; top: 452px; left: 20px; right: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .ba .act { display: grid; grid-template-columns: 36px 1fr auto; align-items: center; gap: 11px; background: #fff; border: 1px solid #e6dccf; border-radius: 16px; padding: 9px 12px; }
+  .ba .act .ic { width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center; }
+  .ba .act .t { font-weight: 700; font-size: 13.5px; white-space: nowrap; }
+  .ba .act .m { font-size: 12px; color: #6e625b; margin-top: 2px; }
+  .ba .act .tag { font-size: 11px; font-weight: 700; padding: 5px 9px; border-radius: 999px; }
+  .ba .biens { position: absolute; top: 680px; left: 20px; right: 20px; display: flex; gap: 10px; }
+  .ba .bien { flex: 1; height: 82px; border-radius: 18px; background: #fff; border: 1px solid #e6dccf; padding: 12px 14px; position: relative; overflow: hidden; }
+  .ba .bien .n { font-weight: 700; font-size: 13px; }
+  .ba .bien .l { font-size: 12px; color: #6e625b; margin-top: 2px; }
+  .ba .bien svg { position: absolute; right: 10px; bottom: 8px; }
+  .ba .onglets { position: absolute; left: 0; right: 0; bottom: 0; height: 76px; background: #fff; border-top: 1px solid #e6dccf; display: grid; grid-template-columns: repeat(5, 1fr); align-items: start; padding-top: 10px; }
+  .ba .onglets div { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10.5px; font-weight: 600; color: #9c8f84; }
+  .ba .onglets div.actif { color: #7a2e3a; }
+  .ba .onglets .plus { width: 48px; height: 48px; border-radius: 50%; background: #7a2e3a; display: grid; place-items: center; margin-top: -8px; box-shadow: 0 10px 20px -10px rgba(122,46,58,.8); }
+
+  /* ═══════════ 4. SONORA, EN LECTURE ═══════════ */
+  .sn { background: linear-gradient(#1a1322 0%, #120e18 55%, #0d0a12 100%); color: #f6f2f9; }
+  .sn .lueur { position: absolute; top: 120px; left: 50%; width: 330px; height: 330px; margin-left: -165px; border-radius: 40px; background: linear-gradient(135deg, #ff6b3d, #ff3d7a 45%, #a77dff); filter: blur(46px); opacity: .55; }
+  .sn .haut { position: absolute; top: 68px; left: 24px; right: 24px; display: flex; justify-content: space-between; align-items: center; }
+  .sn .haut .u { text-align: center; }
+  .sn .haut .u small { display: block; font-size: 10.5px; letter-spacing: 1.4px; font-weight: 700; color: #a79fb4; text-transform: uppercase; }
+  .sn .haut .u b { display: block; font-size: 14px; font-weight: 700; margin-top: 3px; }
+  .sn .art { position: absolute; top: 128px; left: 50%; width: 318px; height: 318px; margin-left: -159px; border-radius: 30px; overflow: hidden; box-shadow: 0 40px 60px -30px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.08); background: #1c1724; }
+  .sn .art .fond { position: absolute; inset: 0; background: radial-gradient(circle at 30% 28%, #ffb37a 0, #ff6b3d 22%, #e8336b 48%, #7a3cff 78%, #2b1546 100%); }
+  .sn .art .anneaux { position: absolute; inset: -40px; background: repeating-radial-gradient(circle at 68% 70%, rgba(255,255,255,.14) 0 2px, rgba(255,255,255,0) 2px 22px); mix-blend-mode: overlay; }
+  .sn .art .soleil { position: absolute; right: 36px; bottom: 38px; width: 118px; height: 118px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #fff3d6, #ffc24b 45%, #ff6b3d 100%); box-shadow: 0 0 60px 10px rgba(255,194,75,.55); }
+  .sn .art .silhouette { position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(to top, #14081c, rgba(20,8,28,0)); }
+  .sn .art .trait { position: absolute; left: 26px; top: 26px; font-size: 10.5px; letter-spacing: 1.6px; font-weight: 800; color: rgba(255,255,255,.85); text-transform: uppercase; }
+  .sn .art .trait b { display: block; font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 500; font-size: 30px; letter-spacing: 0; text-transform: none; margin-top: 6px; line-height: 1; }
+  .sn .infos { position: absolute; top: 480px; left: 28px; right: 28px; display: flex; justify-content: space-between; align-items: flex-start; }
+  .sn .infos .t { font-family: Geist, Inter, sans-serif; font-weight: 700; font-size: 29px; letter-spacing: -.7px; line-height: 1; }
+  .sn .infos .a { font-size: 15.5px; font-weight: 600; color: #ff6b3d; margin-top: 8px; }
+  .sn .coeur { width: 42px; height: 42px; border-radius: 50%; background: #1c1724; border: 1px solid rgba(255,255,255,.08); display: grid; place-items: center; }
+  .sn .onde { position: absolute; top: 574px; left: 28px; right: 28px; height: 54px; display: flex; align-items: center; gap: 3px; }
+  .sn .onde i { flex: 1; border-radius: 2px; background: #3a3246; }
+  .sn .onde i.lu { background: #ff6b3d; }
+  .sn .temps { position: absolute; top: 636px; left: 28px; right: 28px; display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: #a79fb4; }
+  .sn .ctrl { position: absolute; top: 668px; left: 28px; right: 28px; display: flex; justify-content: space-between; align-items: center; }
+  .sn .ctrl .play { width: 78px; height: 78px; border-radius: 50%; background: linear-gradient(135deg, #ff8a5c, #ff6b3d 50%, #ff3d7a); display: grid; place-items: center; box-shadow: 0 18px 40px -12px rgba(255,107,61,.75); }
+  .sn .suivant { position: absolute; left: 20px; right: 20px; bottom: 30px; height: 62px; border-radius: 18px; background: #1c1724; border: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; gap: 12px; padding: 0 14px; }
+  .sn .suivant .mini { width: 38px; height: 38px; border-radius: 10px; background: radial-gradient(circle at 30% 30%, #3dd68c, #0f5f3f 70%); }
+  .sn .suivant small { display: block; white-space: nowrap; font-size: 10.5px; font-weight: 700; color: #a79fb4; letter-spacing: 1px; text-transform: uppercase; }
+  .sn .suivant b { display: block; font-size: 14px; margin-top: 2px; }
+  .sn .suivant .soutien { margin-left: auto; white-space: nowrap; font-size: 12px; font-weight: 800; color: #ff6b3d; border: 1.5px solid rgba(255,107,61,.6); padding: 7px 11px; border-radius: 999px; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ 1. SMOOTHRIDE, PROMESSE ═══════════ -->
+<section class="ecran sr" data-nom="smoothride-promesse">
+  <div class="statut"><span class="heure">9:41</span><span class="icones">
+    <svg width="18" height="12" viewBox="0 0 15 10" fill="currentColor"><rect y="6" width="2.6" height="4" rx="1"/><rect x="4" y="4" width="2.6" height="6" rx="1"/><rect x="8" y="2" width="2.6" height="8" rx="1"/><rect x="12" width="2.6" height="10" rx="1"/></svg>
+    <svg width="17" height="12" viewBox="0 0 14 11" fill="currentColor"><path d="M7 9.6 4.2 6.8a4 4 0 0 1 5.6 0L7 9.6ZM1.4 4a8 8 0 0 1 11.2 0l-1.3 1.3a6.1 6.1 0 0 0-8.6 0L1.4 4Z"/></svg>
+    <svg width="27" height="13" viewBox="0 0 22 11" fill="none"><rect x=".5" y=".5" width="18" height="10" rx="3" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="14" height="7" rx="1.6" fill="currentColor"/><path d="M20 4v3a2 2 0 0 0 0-3Z" fill="currentColor" opacity=".45"/></svg>
+  </span></div>
+  <div class="marque"><span class="mark"><svg width="18" height="18" viewBox="0 0 40 40" fill="none"><path d="M2.5 25 C2.5 12 14.5 12 14.5 25 L37.5 25" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>SmoothRide</div>
+  <div class="carte">
+    <svg viewBox="0 0 393 330" preserveAspectRatio="none">
+      <defs>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="ombre" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#0A1F19" flood-opacity=".25"/></filter>
+      </defs>
+      <!-- parcs et eau -->
+      <path d="M-10 60 C60 30 120 70 150 40 S260 10 330 50 L330 120 C280 140 200 110 150 130 S40 150 -10 120Z" fill="#DCE8E1"/>
+      <path d="M250 190 C300 170 360 200 410 180 L410 260 C350 280 290 250 250 270Z" fill="#D9E4EA"/>
+      <circle cx="80" cy="260" r="46" fill="#DCE8E1"/>
+      <!-- rues -->
+      <g stroke="#CBD6D1" stroke-width="3" fill="none">
+        <path d="M0 95 H393"/><path d="M0 175 H393"/><path d="M0 255 H393"/><path d="M0 320 H393"/>
+        <path d="M60 0 V350"/><path d="M135 0 V350"/><path d="M215 0 V350"/><path d="M300 0 V350"/>
+      </g>
+      <g stroke="#BFCCC6" stroke-width="7" fill="none" stroke-linecap="round">
+        <path d="M0 135 C100 125 180 150 393 130"/><path d="M175 0 C170 120 200 220 180 350"/>
+      </g>
+      <!-- route rapide, en pointillé rouge, avec ses dos-d'âne -->
+      <path d="M72 292 L140 296 L232 236 L300 170 L336 108" stroke="#FF6B5E" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 10" opacity=".95"/>
+      <g filter="url(#ombre)">
+        <g transform="translate(118 294)"><circle r="11" fill="#FF6B5E"/><path d="M-6 3 Q0 -7 6 3" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
+        <g transform="translate(186 266)"><circle r="11" fill="#FF6B5E"/><path d="M-6 3 Q0 -7 6 3" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
+        <g transform="translate(266 203)"><circle r="11" fill="#FF6B5E"/><path d="M-6 3 Q0 -7 6 3" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
+        <g transform="translate(318 139)"><circle r="11" fill="#FF6B5E"/><path d="M-6 3 Q0 -7 6 3" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
+      </g>
+      <!-- route douce, jade, continue -->
+      <path d="M72 292 L62 160 L120 128 L250 122 L336 108" stroke="#07845E" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".18" filter="url(#glow)"/>
+      <path d="M72 292 L62 160 L120 128 L250 122 L336 108" stroke="#07845E" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- départ et arrivée -->
+      <circle cx="72" cy="292" r="10" fill="#fff" stroke="#07845E" stroke-width="5"/>
+      <g transform="translate(336 108)" filter="url(#ombre)"><circle r="12" fill="#fff" stroke="#0A1F19" stroke-width="3"/><rect x="-18" y="-50" width="36" height="36" rx="9" fill="#fff"/><path d="M-9 -41 h5 v5 h-5z M-4 -36 h5 v5 h-5z M1 -41 h5 v5 h-5z M6 -36 h5 v5 h-5z M-9 -31 h5 v5 h-5z M1 -31 h5 v5 h-5z" fill="#0A1F19"/><path d="M-10 -42 V-22" stroke="#0A1F19" stroke-width="2.5" stroke-linecap="round"/></g>
+    </svg>
+  </div>
+  <div class="texte">
+    <h1>Le même trajet,<em>sans les secousses.</em></h1>
+    <p class="lead">Deux routes, le nombre de dos-d'âne sur chacune, et ce que le confort coûte en minutes.</p>
+  </div>
+  <div class="options">
+    <div class="opt">
+      <div class="nom"><span class="pt" style="background:#FF6B5E"></span>Le plus rapide</div>
+      <div class="duree">18 min</div>
+      <span class="chip" style="color:#B32D1F;border-color:#F3B9B3;background:#FFF3F1">4 dos-d'âne</span>
+      <svg class="bosses" viewBox="0 0 300 16" preserveAspectRatio="none"><path d="M0 13 H300" stroke="#E7ECEA" stroke-width="2"/><path d="M28 13 q7-13 14 0 M98 13 q7-13 14 0 M168 13 q7-13 14 0 M238 13 q7-13 14 0" stroke="#FF6B5E" stroke-width="2.4" fill="none"/></svg>
+    </div>
+    <div class="opt choisi">
+      <div class="nom"><span class="pt" style="background:#07845E"></span>Le plus doux</div>
+      <div class="duree">20 min</div>
+      <span class="chip" style="color:#07845E;border-color:#A9DECB;background:#E9F6F1">0 dos-d'âne</span>
+      <span class="ok"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+    </div>
+  </div>
+  <div class="points"><i></i><i></i><i></i></div>
+  <div class="cta">Commencer</div>
+  <div class="lien">J'ai déjà un compte</div>
+  <div class="home"></div>
+</section>
+
+<!-- ═══════════ 2. SMOOTHRIDE, NAVIGATION ═══════════ -->
+<section class="ecran nav" data-nom="smoothride-navigation">
+  <div class="ciel"></div>
+  <div class="statut"><span class="heure">9:41</span><span class="icones">
+    <svg width="18" height="12" viewBox="0 0 15 10" fill="currentColor"><rect y="6" width="2.6" height="4" rx="1"/><rect x="4" y="4" width="2.6" height="6" rx="1"/><rect x="8" y="2" width="2.6" height="8" rx="1"/><rect x="12" width="2.6" height="10" rx="1"/></svg>
+    <svg width="17" height="12" viewBox="0 0 14 11" fill="currentColor"><path d="M7 9.6 4.2 6.8a4 4 0 0 1 5.6 0L7 9.6ZM1.4 4a8 8 0 0 1 11.2 0l-1.3 1.3a6.1 6.1 0 0 0-8.6 0L1.4 4Z"/></svg>
+    <svg width="27" height="13" viewBox="0 0 22 11" fill="none"><rect x=".5" y=".5" width="18" height="10" rx="3" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="14" height="7" rx="1.6" fill="currentColor"/><path d="M20 4v3a2 2 0 0 0 0-3Z" fill="currentColor" opacity=".45"/></svg>
+  </span></div>
+  <div class="instruction">
+    <div class="fleche"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#04231A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20V11a4 4 0 0 1 4-4h8"/><path d="M14 3l4 4-4 4"/></svg></div>
+    <div><div class="dist">300 m</div><div class="ordre">Tournez à droite</div><div class="voie">N88 · Avenue de Lattre</div></div>
+  </div>
+  <div class="silhouettes"><i style="height:10px"></i><i style="height:18px"></i><i style="height:8px"></i><i style="height:24px"></i><i style="height:14px"></i><i style="height:26px"></i><i style="height:9px"></i><i style="height:20px"></i><i style="height:12px"></i><i style="height:22px"></i><i style="height:8px"></i><i style="height:16px"></i><i style="height:25px"></i><i style="height:11px"></i><i style="height:19px"></i><i style="height:9px"></i><i style="height:23px"></i><i style="height:13px"></i></div>
+  <div class="vitesse"><div class="n">48</div><div class="u">km/h</div></div>
+  <div class="route-vue">
+    <div class="sol">
+      <div class="chaussee"><div class="trace"><i style="top:120px"></i><i style="top:300px"></i><i style="top:480px"></i><i style="top:660px"></i><i style="top:840px"></i><i style="top:1020px"></i><i style="top:1200px"></i></div></div>
+    </div>
+    <div class="halo"></div>
+    <div class="puck"></div>
+  </div>
+  <div class="alerte"><b><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FF6B5E" stroke-width="3.5" stroke-linecap="round"><path d="M4 16 Q12 2 20 16"/></svg></b>Dos-d'âne dans 120 m</div>
+  <div class="bas">
+    <div class="ligne">
+      <div class="arr"><small>Arrivée</small>18:56</div>
+      <div class="kv"><small>Restant</small>12,7 km · 14 min</div>
+    </div>
+    <div class="btn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#04231A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16 Q12 2 20 16"/><path d="M12 20v-1"/></svg>Signaler un dos-d'âne</div>
+  </div>
+  <div class="home"></div>
+</section>
+
+<!-- ═══════════ 3. BAILORA, ACCUEIL ═══════════ -->
+<section class="ecran ba" data-nom="bailora-accueil">
+  <div class="statut"><span class="heure">9:41</span><span class="icones">
+    <svg width="18" height="12" viewBox="0 0 15 10" fill="currentColor"><rect y="6" width="2.6" height="4" rx="1"/><rect x="4" y="4" width="2.6" height="6" rx="1"/><rect x="8" y="2" width="2.6" height="8" rx="1"/><rect x="12" width="2.6" height="10" rx="1"/></svg>
+    <svg width="17" height="12" viewBox="0 0 14 11" fill="currentColor"><path d="M7 9.6 4.2 6.8a4 4 0 0 1 5.6 0L7 9.6ZM1.4 4a8 8 0 0 1 11.2 0l-1.3 1.3a6.1 6.1 0 0 0-8.6 0L1.4 4Z"/></svg>
+    <svg width="27" height="13" viewBox="0 0 22 11" fill="none"><rect x=".5" y=".5" width="18" height="10" rx="3" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="14" height="7" rx="1.6" fill="currentColor"/><path d="M20 4v3a2 2 0 0 0 0-3Z" fill="currentColor" opacity=".45"/></svg>
+  </span></div>
+  <div class="entete">
+    <div class="avatar">S</div>
+    <div><div class="salut">Bonjour Sofiane</div><div class="date">Jeudi 25 juillet · 2 SCI, 4 lots</div></div>
+    <div class="cloche"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b2320" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><i></i></div>
+  </div>
+  <div class="loyers">
+    <div class="cases"><i></i><i></i><i></i><i></i><i></i><i class="att"></i></div>
+    <div class="lab">Loyers de juillet</div>
+    <div class="somme">4 390 €</div>
+    <div class="sous">5 loyers reçus sur 6 · 850 € attendus</div>
+    <div class="barre"><i></i></div>
+  </div>
+  <div class="question">
+    <div class="q"><b>850 €</b> de Yacine Martin, reçus ?<br><span style="font-weight:500;color:#6e625b;font-size:12.5px">Appartement 1 · échéance le 5 juillet</span></div>
+    <div class="rep"><span class="oui">Oui, reçu</span><span class="non">Pas encore</span></div>
+  </div>
+  <div class="titre" style="top:424px"><h2>3 actions à traiter</h2><a>Tout voir</a></div>
+  <div class="actions">
+    <div class="act"><div class="ic" style="background:#f4ede4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7a2e3a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><div><div class="t">Avis d'échéance d'août</div><div class="m">3 locataires · prêts à envoyer</div></div><span class="tag" style="background:#f4ede4;color:#7a2e3a">À faire</span></div>
+    <div class="act"><div class="ic" style="background:#fff5e6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#be8a2f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div><div><div class="t">État des lieux de sortie</div><div class="m">Appartement 1 · demain, 10 h</div></div><span class="tag" style="background:#fff5e6;color:#be8a2f">Demain</span></div>
+    <div class="act"><div class="ic" style="background:#e8f3ee"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e7d5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div><div><div class="t">Charges 2025 à régulariser</div><div class="m">SCI Horizon · 3 lots</div></div><span class="tag" style="background:#e8f3ee;color:#2e7d5b">Prêt</span></div>
+  </div>
+  <div class="titre" style="top:652px"><h2>Mon patrimoine</h2><a>2 SCI</a></div>
+  <div class="biens">
+    <div class="bien"><div class="n">Victor-Hugo</div><div class="l">3 lots · Bordeaux</div><svg width="54" height="39" viewBox="0 0 64 46" fill="none" stroke="#7a2e3a" stroke-width="2" stroke-linejoin="round"><rect x="6" y="14" width="24" height="31" fill="#f4ede4"/><rect x="30" y="4" width="28" height="41" fill="#f4ede4"/><path d="M11 20h4v4h-4zM19 20h4v4h-4zM11 29h4v4h-4zM19 29h4v4h-4zM36 10h4v4h-4zM46 10h4v4h-4zM36 19h4v4h-4zM46 19h4v4h-4zM36 28h4v4h-4zM46 28h4v4h-4zM40 37h8v8h-8z"/></svg></div>
+    <div class="bien"><div class="n">Maison des Ormes</div><div class="l">1 lot · Pessac</div><svg width="54" height="39" viewBox="0 0 64 46" fill="none" stroke="#7a2e3a" stroke-width="2" stroke-linejoin="round"><path d="M8 24 32 6l24 18" /><path d="M14 20v25h36V20" fill="#f4ede4"/><path d="M27 45V31h10v14M18 27h6v6h-6zM40 27h6v6h-6z"/></svg></div>
+  </div>
+  <div class="onglets">
+    <div class="actif"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 3l9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>Accueil</div>
+    <div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M9 16h2M13 16h2"/></svg>Patrimoine</div>
+    <div><div class="plus"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div></div>
+    <div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20"/></svg>Argent</div>
+    <div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Documents</div>
+  </div>
+  <div class="home" style="background:#2b2320"></div>
+</section>
+
+<!-- ═══════════ 4. SONORA, EN LECTURE ═══════════ -->
+<section class="ecran sn" data-nom="sonora-lecture">
+  <div class="lueur"></div>
+  <div class="statut"><span class="heure">9:41</span><span class="icones">
+    <svg width="18" height="12" viewBox="0 0 15 10" fill="currentColor"><rect y="6" width="2.6" height="4" rx="1"/><rect x="4" y="4" width="2.6" height="6" rx="1"/><rect x="8" y="2" width="2.6" height="8" rx="1"/><rect x="12" width="2.6" height="10" rx="1"/></svg>
+    <svg width="17" height="12" viewBox="0 0 14 11" fill="currentColor"><path d="M7 9.6 4.2 6.8a4 4 0 0 1 5.6 0L7 9.6ZM1.4 4a8 8 0 0 1 11.2 0l-1.3 1.3a6.1 6.1 0 0 0-8.6 0L1.4 4Z"/></svg>
+    <svg width="27" height="13" viewBox="0 0 22 11" fill="none"><rect x=".5" y=".5" width="18" height="10" rx="3" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="14" height="7" rx="1.6" fill="currentColor"/><path d="M20 4v3a2 2 0 0 0 0-3Z" fill="currentColor" opacity=".45"/></svg>
+  </span></div>
+  <div class="haut">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6f2f9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    <div class="u"><small>En lecture depuis</small><b>Sonorités africaines</b></div>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="#f6f2f9"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+  </div>
+  <div class="art"><div class="fond"></div><div class="anneaux"></div><div class="soleil"></div><div class="silhouette"></div><div class="trait">Aïcha Diallo<b>Mama Africa</b></div></div>
+  <div class="infos">
+    <div><div class="t">Mama Africa</div><div class="a">Aïcha Diallo</div></div>
+    <div class="coeur"><svg width="19" height="19" viewBox="0 0 24 24" fill="#ff6b3d" stroke="#ff6b3d" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-7-4.6-9.3-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.3 6c-2.3 4.4-9.3 9-9.3 9z"/></svg></div>
+  </div>
+  <div class="onde">
+    <i class="lu" style="height:18px"></i><i class="lu" style="height:30px"></i><i class="lu" style="height:44px"></i><i class="lu" style="height:26px"></i><i class="lu" style="height:38px"></i><i class="lu" style="height:52px"></i><i class="lu" style="height:34px"></i><i class="lu" style="height:20px"></i><i class="lu" style="height:40px"></i><i class="lu" style="height:48px"></i><i class="lu" style="height:28px"></i><i class="lu" style="height:36px"></i><i class="lu" style="height:54px"></i><i class="lu" style="height:30px"></i><i class="lu" style="height:22px"></i><i class="lu" style="height:42px"></i><i class="lu" style="height:50px"></i><i class="lu" style="height:32px"></i><i class="lu" style="height:24px"></i><i class="lu" style="height:46px"></i>
+    <i style="height:38px"></i><i style="height:28px"></i><i style="height:50px"></i><i style="height:34px"></i><i style="height:20px"></i><i style="height:44px"></i><i style="height:30px"></i><i style="height:52px"></i><i style="height:26px"></i><i style="height:40px"></i><i style="height:22px"></i><i style="height:36px"></i><i style="height:48px"></i><i style="height:30px"></i><i style="height:18px"></i><i style="height:42px"></i><i style="height:34px"></i><i style="height:24px"></i><i style="height:46px"></i><i style="height:28px"></i><i style="height:38px"></i><i style="height:20px"></i><i style="height:32px"></i><i style="height:44px"></i><i style="height:26px"></i><i style="height:16px"></i>
+  </div>
+  <div class="temps"><span>1:44</span><span>-2:24</span></div>
+  <div class="ctrl">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a79fb4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="#f6f2f9"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg>
+    <div class="play"><svg width="34" height="34" viewBox="0 0 24 24" fill="#2a0d08"><path d="M8 5v14l11-7z"/></svg></div>
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="#f6f2f9"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a79fb4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+  </div>
+  <div class="suivant"><div class="mini"></div><div><small>À suivre</small><b>Nuit à Bamako</b></div><span class="soutien">Soutenir Aïcha</span></div>
+  <div class="home"></div>
+</section>
+
+</body>
+</html>
