@@ -25,11 +25,11 @@ const mePhoto = '/assets/images/profile/me.webp'
 export const FAQ_ITEMS = [
   {
     q: 'Comment fonctionne la tarification ?',
-    a: "Un prix fixe, écrit dans le devis, jamais facturé à la journée. En moyenne, une application mobile ou web coûte une dizaine de milliers d'euros, selon ce qu'elle doit faire. Le chiffre exact arrive avec le devis, accompagné d'une maquette de ton application.",
+    a: "Un prix fixe, écrit dans le devis, jamais facturé à la journée. En moyenne, une application mobile ou web coûte une dizaine de milliers d'euros.",
   },
   {
     q: 'Combien de temps faut-il pour avoir une application ?',
-    a: "Une première version est en ligne en quelques semaines. Un peu plus vite en web, quelques jours de plus en mobile : Apple et Google vérifient chaque application avant de la publier. Le délai exact est écrit dans le devis.",
+    a: "Quelques semaines pour une application web. Pour une application mobile, compte quelques semaines de plus : l'ouverture de tes comptes Apple et Google, puis la vérification de ton application par les stores avant sa publication.",
   },
   {
     q: "Après la livraison de l'application ?",
