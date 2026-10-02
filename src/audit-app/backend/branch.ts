@@ -16,53 +16,55 @@ export function computeBranch(budget: BudgetTag): Branch {
 }
 
 const PINCETTES =
-  "Audit etabli en 2 minutes sur la base de 5 reponses. Il sert a poser un cadre, pas a chiffrer precisement votre projet.";
+  "Audit établi en 2 minutes sur la base de 5 réponses. Il sert à poser un cadre, pas à chiffrer précisément ton projet.";
 
 export const FALLBACK_VERDICTS: Record<Branch, VerdictBody> = {
+  // Memes regles que le verdict genere : tutoiement, pas de tiret cadratin,
+  // pas de « devis ferme » ni de duree d'appel imposee.
   A: {
     pincettes_disclaimer: PINCETTES,
     pitch_reformule:
-      "Sur la base de vos reponses, je vois les contours d'un cas qui peut tenir la route business. Pour aller plus loin, il faut creuser ensemble.",
+      "Sur la base de tes réponses, je vois les contours d'un cas qui peut tenir la route. Pour aller plus loin, il faut creuser ensemble.",
     ce_qui_est_solide: [
-      "Vous avez engage la demarche : c'est deja un signal d'intention serieuse.",
+      "Tu as engagé la démarche : c'est déjà un signal d'intention sérieuse.",
     ],
     ce_qui_manque: [
-      "Notre IA n'a pas pu generer un audit detaille a l'instant, nous reglerons cela au telephone.",
+      "Mon IA n'a pas pu générer un audit détaillé à l'instant, on réglera ça de vive voix.",
     ],
     concurrents: [],
     differenciation: [],
     defi_principal:
-      "Le defi principal a votre stade : trancher rapidement les arbitrages MVP pour ne pas exploser le budget en V1.",
+      "Le défi principal à ton stade : trancher rapidement le périmètre de la première version pour ne pas faire exploser le budget.",
     plan_action: [
-      "Prendre un appel 30 minutes pour qu'on regarde votre projet ensemble.",
+      "Cadrer ton projet en détail avec moi.",
     ],
     prix_indicatif:
-      "Impossible de donner un prix honnete sans cadrer precisement votre application. Le tarif depend du perimetre a developper, du niveau de design attendu, des integrations et du niveau de finition souhaite. Le bon reflexe est de prendre rendez-vous pour transformer cet audit en devis clair.",
+      "Impossible de donner un prix honnête sans cadrer précisément ton application. Le tarif dépend du périmètre à développer, du niveau de design attendu, des intégrations et du niveau de finition souhaité. Le plus simple, c'est qu'on en parle directement pour transformer cet audit en devis clair.",
     delai_indicatif:
-      "A premiere vue, comptez environ 7 semaines pour construire une version serieuse. Le planning exact se valide en appel, une fois le perimetre et le niveau de finition clarifies.",
+      "À première vue, compte environ 7 semaines pour construire une version sérieuse. Le délai exact se cale en appel, une fois le périmètre et le niveau de finition clarifiés.",
     cta_message:
-      "Le plus simple, c'est qu'on en discute 30 minutes ensemble. On rentrera dans le detail de votre projet, puis je vous enverrai un devis ferme avec un prix et un planning clairs.",
+      "Avec seulement 5 questions, je peux déjà te donner de bons repères, mais pour un prix fixe et un délai précis, je dois d'abord bien comprendre ton projet. Pour avoir un vrai prix, écris-moi sur WhatsApp : on en parle, puis je te fais un devis avec une maquette de ton app.",
   },
   C: {
     pincettes_disclaimer: PINCETTES,
     pitch_reformule:
-      "Sur la base de vos reponses, partir en developpement serait premature compte tenu du budget annonce.",
+      "Sur la base de tes réponses, partir en développement serait prématuré compte tenu du budget annoncé.",
     ce_qui_est_solide: [],
     ce_qui_manque: [
-      "Un budget structure suffisant pour livrer une application pensee comme un produit rentable.",
+      "Un budget de départ suffisant pour livrer une application pensée comme un vrai produit.",
     ],
     concurrents: [],
     differenciation: [],
     defi_principal:
-      "Le risque a ce niveau d'investissement : livrer une V1 qui ne tient pas la route en production, faute de cadrage strategique, design serieux et dev maintenable.",
+      "Le risque à ce niveau d'investissement : livrer une première version qui ne tient pas la route en production, faute de cadrage, de design sérieux et de code maintenable.",
     plan_action: [
-      "Continuer a valider votre idee aupres de votre cible.",
-      "Structurer un budget realiste avant de relancer un projet de developpement.",
+      "Continuer à valider ton idée auprès de ta cible.",
+      "Structurer un budget réaliste avant de relancer un projet de développement.",
     ],
     prix_indicatif: null,
     delai_indicatif:
-      "Sans cadre budgetaire serieux, il est premature de parler de delai.",
+      "Sans cadre budgétaire sérieux, il est prématuré de parler de délai.",
     cta_message:
-      "Votre budget annonce semble encore trop fragile pour lancer une application dans de bonnes conditions. A ce stade, donner un prix serait malhonnete sans cadrer votre idee, votre modele de revenus et votre perimetre. Prenez le temps de stabiliser votre budget et de valider votre idee aupres de votre cible. Quand le moment sera juste, le plus simple sera d'en parler avec moi pour transformer votre idee en projet clair.",
+      "Avec ce budget, c'est encore un peu juste pour faire une application qui tienne la route, et je préfère te le dire franchement. Une app qui doit te rapporter, ce n'est pas que du code : il faut concevoir comment elle transforme tes utilisateurs en clients. Ça demande juste un budget de départ un peu plus solide. Prends le temps de le consolider, et reviens quand c'est prêt, on en parle.",
   },
 };

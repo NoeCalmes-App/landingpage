@@ -50,7 +50,7 @@ export async function generateVerdict(payload) {
   try {
     response = await fetchWithRetry(API_URL, request)
   } catch {
-    throw new Error('Connexion impossible. Vérifiez votre réseau et réessayez.')
+    throw new Error('Connexion impossible. Vérifie ton réseau et réessaie.')
   }
 
   if (response.status === 429) {
@@ -61,7 +61,7 @@ export async function generateVerdict(payload) {
 
   if (!response.ok) {
     throw new Error(
-      `Erreur serveur (${response.status}). Réessayez dans un instant.`
+      `Erreur serveur (${response.status}). Réessaie dans un instant.`
     )
   }
 

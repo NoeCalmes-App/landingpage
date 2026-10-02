@@ -11,7 +11,7 @@ import { BudgetTag, VerdictCompetitor, VerdictGenerated } from "../types";
 const VALID_BUDGET_TAGS: BudgetTag[] = ["HIGH", "MID", "LOW", "OUT"];
 
 const DEFAULT_PINCETTES =
-  "Audit etabli en 2 minutes sur la base de 5 reponses — il sert a poser un cadre, pas a chiffrer precisement votre projet.";
+  "Audit établi en 2 minutes sur la base de 5 réponses. Il sert à poser un cadre, pas à chiffrer précisément ton projet.";
 
 export function parseVerdictJson(raw: string): VerdictGenerated {
   let cleaned = raw.trim();

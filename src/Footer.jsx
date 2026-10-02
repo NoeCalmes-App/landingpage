@@ -111,7 +111,6 @@ export default function Footer({ allerVers, onLegal }) {
           { href: '/creation-application-mobile', label: 'Méthode' },
           { href: '/projets', label: 'Projets' },
           { href: '/blog', label: 'Blog' },
-          { href: '/quiz', label: 'Tests' },
           { href: '/faq', label: 'FAQ' },
           { href: '/audit-app', label: 'Audit gratuit' },
         ].map(({ href, label }) => (
@@ -153,9 +152,9 @@ export default function Footer({ allerVers, onLegal }) {
           &copy; 2026 No&eacute; Calmes. Tous droits r&eacute;serv&eacute;s.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-          <button onClick={() => openLegal('cgv')} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">CGV</button>
-          <button onClick={() => openLegal('mentions')} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">Mentions l&eacute;gales</button>
-          <button onClick={() => openLegal('privacy')} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">Politique de confidentialit&eacute;</button>
+          <button onClick={() => onLegal('cgv')} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">CGV</button>
+          <button onClick={() => onLegal('mentions')} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">Mentions l&eacute;gales</button>
+          <button onClick={() => onLegal('privacy')} className="text-white/40 text-xs hover:text-white/80 transition-colors cursor-pointer">Politique de confidentialit&eacute;</button>
         </div>
       </div>
 

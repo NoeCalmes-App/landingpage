@@ -62,60 +62,64 @@ function computeBranch(budget: BudgetTag): Branch {
 }
 
 const FALLBACK_VERDICTS: Record<Branch, VerdictGenerated> = {
+  // TUTOIEMENT, comme le prompt et la landing. Ces textes sont affiches a un
+  // vrai prospect quand tous les fournisseurs IA echouent : ils doivent
+  // respecter les memes regles que le verdict genere (tu, pas de tiret
+  // cadratin, pas de « devis ferme », pas de duree d'appel imposee).
   A: {
     pincettes_disclaimer:
-      "Cet audit est genere a partir de 5 questions. Il vous donne des reperes, mais ne remplace pas une discussion pour creuser votre cas precis.",
+      "Cet audit est généré à partir de 5 questions. Il te donne des repères, mais il ne remplace pas une discussion pour creuser ton cas précis.",
     pitch_reformule:
-      "Sur la base des elements fournis, votre projet merite d'etre creuse. Pour vous donner une analyse vraiment personnalisee, j'ai besoin d'echanger directement avec vous.",
+      "Sur la base des éléments fournis, ton projet mérite d'être creusé. Pour te donner une analyse vraiment personnalisée, j'ai besoin d'échanger directement avec toi.",
     ce_qui_est_solide: [
-      "Vous avez pris le temps de remplir cet audit, c'est deja un signal de serieux.",
+      "Tu as pris le temps de remplir cet audit, c'est déjà un signal de sérieux.",
     ],
     ce_qui_manque: [
-      "Le profil exact de votre cible et son comportement actuel",
-      "La mecanique centrale de l'application en une phrase",
-      "Vos contraintes business : timing, ressources, equipe",
+      "Le profil exact de ta cible et son comportement actuel",
+      "La mécanique centrale de l'application en une phrase",
+      "Tes contraintes business : timing, ressources, équipe",
     ],
     concurrents: [],
     differenciation: [],
     defi_principal:
-      "Sans plus de precision sur votre projet, le defi principal a clarifier est : qu'est-ce qui vous rend unique par rapport aux acteurs deja en place ?",
+      "Sans plus de précision sur ton projet, le défi principal à clarifier est : qu'est-ce qui te rend unique par rapport aux acteurs déjà en place ?",
     plan_action: [
-      "Prendre 30 minutes avec moi pour cadrer votre projet en detail",
-      "Identifier votre cible exacte et son comportement actuel",
-      "Definir la mecanique centrale de la V1",
-      "Etablir un budget realiste et un delai coherent avec vos contraintes",
+      "Cadrer ton projet en détail avec moi",
+      "Identifier ta cible exacte et son comportement actuel",
+      "Définir la mécanique centrale de la première version",
+      "Établir un budget réaliste et un délai cohérent avec tes contraintes",
     ],
     prix_indicatif:
-      "Pour une premiere version serieuse, comptez une estimation large, autour de 6 000 a 10 000 EUR selon le perimetre. La fourchette est large parce que c'est une estimation sans cadrage precis. Pour un vrai prix et un delai exact, le plus simple c'est qu'on en parle directement.",
+      "Pour une première version sérieuse, compte une estimation large, autour de 6 000 à 10 000 € selon le périmètre. La fourchette est large parce que c'est une estimation sans cadrage précis. Pour un vrai prix et un délai exact, le plus simple, c'est qu'on en parle directement.",
     delai_indicatif:
-      "A premiere vue, comptez environ 7 semaines pour construire une version serieuse. Le delai exact se cale en appel, une fois le perimetre et le niveau de finition clarifies.",
+      "À première vue, compte environ 7 semaines pour construire une version sérieuse. Le délai exact se cale en appel, une fois le périmètre et le niveau de finition clarifiés.",
     cta_message:
-      "Avec seulement 5 questions, je peux deja vous donner de bons reperes, mais pour un prix fixe et un delai precis, je dois d'abord bien comprendre votre projet. Pour avoir un vrai prix, ecrivez-moi sur WhatsApp : on en parle, puis je vous fais un devis avec une maquette de votre app.",
+      "Avec seulement 5 questions, je peux déjà te donner de bons repères, mais pour un prix fixe et un délai précis, je dois d'abord bien comprendre ton projet. Pour avoir un vrai prix, écris-moi sur WhatsApp : on en parle, puis je te fais un devis avec une maquette de ton app.",
     budget_tag: "MID",
   },
   C: {
     pincettes_disclaimer:
-      "Cet audit est genere a partir de 5 questions. Il vous donne des reperes generaux.",
+      "Cet audit est généré à partir de 5 questions. Il te donne des repères généraux.",
     pitch_reformule:
-      "Sur la base de ce que vous decrivez, votre projet est dans une phase trop amont pour que je puisse vous accompagner serieusement dans son developpement.",
+      "Sur la base de ce que tu décris, ton projet est dans une phase trop en amont pour que je puisse t'accompagner sérieusement dans son développement.",
     ce_qui_est_solide: [
-      "Vous prenez le temps de reflechir avant d'investir, c'est deja mieux que la majorite des fondateurs.",
+      "Tu prends le temps de réfléchir avant d'investir, c'est déjà mieux que la majorité des fondateurs.",
     ],
     ce_qui_manque: [],
     concurrents: [],
     differenciation: [],
     defi_principal:
-      "Le vrai defi a votre stade : securiser un budget realiste et valider votre idee aupres de votre cible avant tout developpement.",
+      "Le vrai défi à ton stade : sécuriser un budget réaliste et valider ton idée auprès de ta cible avant tout développement.",
     plan_action: [
-      "Continuer a valider votre idee en parlant a 10 personnes minimum de votre cible",
-      "Construire une landing page simple pour tester la pre-vente",
-      "Stabiliser votre budget pour pouvoir investir serieusement",
-      "Revenir vers moi quand vous etes pret",
+      "Continuer à valider ton idée en parlant à 10 personnes minimum de ta cible",
+      "Construire une page de présentation simple pour tester la prévente",
+      "Stabiliser ton budget pour pouvoir investir sérieusement",
+      "Revenir vers moi quand tu es prêt",
     ],
     prix_indicatif: null,
     delai_indicatif: "",
     cta_message:
-      "Votre budget annonce semble encore trop fragile pour lancer une application dans de bonnes conditions. A ce stade, donner un prix serait malhonnete sans cadrer votre idee, votre modele de revenus et votre perimetre. Prenez le temps de stabiliser votre budget et de valider votre idee aupres de votre cible. Quand le moment sera juste, le plus simple sera d'en parler avec moi pour transformer votre idee en projet clair.",
+      "Avec ce budget, c'est encore un peu juste pour faire une application qui tienne la route, et je préfère te le dire franchement. Une app qui doit te rapporter, ce n'est pas que du code : il faut concevoir comment elle transforme tes utilisateurs en clients. Ça demande juste un budget de départ un peu plus solide. Prends le temps de le consolider, et reviens quand c'est prêt, on en parle.",
     budget_tag: "OUT",
   },
 };

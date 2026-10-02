@@ -283,7 +283,7 @@ INTERDICTIONS ABSOLUES (verifier chaque sortie avant d'envoyer)
 - Phrases "qui rapporte de l'argent", "qui genere des revenus", "produit rentable", "vendre du code"
 - "ce qu'on garde, ce qu'on coupe" ou variantes (le client decide de son perimetre)
 - Markdown dans les valeurs, emoji
-- Tutoiement
+- Vouvoiement (le verdict tutoie, voir TONALITE)
 - "Ton idee est mauvaise"
 
 REPONDEZ UNIQUEMENT AVEC LE JSON.`;

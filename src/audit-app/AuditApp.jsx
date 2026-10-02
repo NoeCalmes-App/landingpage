@@ -115,7 +115,7 @@ export default function AuditApp({ onBack, onLegal }) {
       setPendingPayload(null)
       saveAuditState({ pendingPayload: null })
     } catch (e) {
-      setError(e?.message || 'Erreur inattendue. Réessayez.')
+      setError(e?.message || 'Erreur inattendue. Réessaie.')
     } finally {
       setSubmitting(false)
     }
