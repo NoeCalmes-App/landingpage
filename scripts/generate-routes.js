@@ -266,8 +266,10 @@ function corpsDepuisComposant(fichier, nom) {
   return texteDuComposant(src, nom).slice(1).map((p) => `<p>${echapper(p)}</p>`).join('')
 }
 
-// L'accueil : son corps vit dans le composant App de src/App.jsx.
-const corpsSeoAccueil = corpsDepuisComposant('App.jsx', 'App')
+// L'accueil : son corps vit dans le composant App de src/App.jsx, plus la
+// section « Mobile ou web ? », qui a son propre fichier (src/MurEcrans.jsx)
+// et serait sinon invisible pour les robots sans JavaScript.
+const corpsSeoAccueil = corpsDepuisComposant('App.jsx', 'App') + corpsDepuisComposant('MurEcrans.jsx', 'MurEcrans')
 
 const corpsSeoPages = {
   '/expertise': corpsDepuisComposant('PagesSeo.jsx', 'PageExpertise'),

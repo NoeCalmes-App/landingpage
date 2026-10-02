@@ -282,7 +282,7 @@ export default function Projets({ onBack }) {
                     Noé Calmes
                   </span>
                   <span className="text-grey text-[0.68rem] md:text-[0.75rem] leading-tight font-normal truncate">
-                    Expert en applications mobiles
+                    Expert en applications mobiles et web
                   </span>
                 </span>
               </button>
@@ -490,7 +490,7 @@ export default function Projets({ onBack }) {
         )}
 
         <p className="relative text-center text-grey text-[0.8rem] mt-16 lg:mt-20 font-medium">
-          Noé Calmes · Expert en application mobile · iOS &amp; Android
+          Noé Calmes · Expert en applications mobiles et web
         </p>
       </main>
     </div>

@@ -445,7 +445,7 @@ export function BlocAuteur({ onNaviguer }) {
         <img src={mePhoto} alt="Noé Calmes" width="60" height="60" className="w-15 h-15 rounded-full object-cover shrink-0" />
         <div className="min-w-0">
           <p className="font-heading text-text text-[1rem] font-bold leading-tight">Noé Calmes</p>
-          <p className="text-grey text-[0.85rem] mb-3">Expert en application mobile</p>
+          <p className="text-grey text-[0.85rem] mb-3">Expert en applications mobiles et web</p>
           <p className="text-[#4b5a70] text-[0.88rem] leading-relaxed mb-4">
             Je ne livre pas une application, je livre un produit fini pensé pour rapporter :
             faire gagner du temps sur tes tâches, créer une routine chez tes clients et
