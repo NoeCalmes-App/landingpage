@@ -12,7 +12,8 @@
     "build:watch": "tsc --watch",
     "serve": "npm run build && firebase emulators:start --only functions",
     "deploy": "firebase deploy --only functions:audit-web",
-    "logs": "firebase functions:log --only verdictWeb"
+    "logs": "firebase functions:log --only verdictWeb",
+    "test": "npm run build && node --test tests/*.spec.cjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",

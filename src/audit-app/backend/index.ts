@@ -10,3 +10,5 @@
 export { verdictWeb } from "./verdict-web";
 export { auditPartial } from "./audit-partial";
 export { auditStatsAdmin } from "./audit-stats-admin";
+
+export { syncAuditContact } from "./sync-audit-contact";

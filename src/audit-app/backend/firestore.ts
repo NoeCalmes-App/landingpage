@@ -46,6 +46,8 @@ function computeLeadTemperature(input: {
 }
 
 export interface PendingAuditPayload {
+  contactEmail?: string;
+  contactPhone?: string;
   firstName: string;
   sessionId: string | null;
   ideaText: string;

@@ -155,6 +155,8 @@ export const verdictWeb = onRequest(
 
       const input: VerdictRequest = {
         ...parsed.data,
+        contact_email: "",
+        contact_phone: "",
         idea_text: enrichedIdea.slice(0, 160000),
         attached_content: "", // deja injecte dans idea_text
         free_text_budget: true,
@@ -174,6 +176,8 @@ export const verdictWeb = onRequest(
         createCompletedAudit(
           {
             firstName: parsed.data.first_name,
+            contactEmail: parsed.data.contact_email,
+            contactPhone: parsed.data.contact_phone,
             sessionId: parsed.data.session_id ?? null,
             ideaText: parsed.data.idea_text,
             appType: parsed.data.app_type || null,
@@ -197,6 +201,8 @@ export const verdictWeb = onRequest(
           }
         )
       );
+
+      if (!auditId) throw new Error("Audit persistence failed");
 
       logger.info("verdictWeb : verdict retourne", {
         first_name: parsed.data.first_name,

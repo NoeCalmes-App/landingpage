@@ -16,8 +16,10 @@ import { useEffect, useRef, useState } from 'react'
 import { FORM_STEPS, FIRST_NAME_MIN_LENGTH } from './config'
 import { loadAuditState, saveAuditState, getOrCreateSessionId } from './storage'
 import AuditAppAttachment from './AuditAppAttachment'
+import { normalizeContactPhone } from './backend/contact.ts'
+import { lienInterne } from '../seo'
 
-const TOTAL_STEPS = FORM_STEPS.length + 1 // +1 pour l'etape prenom
+const TOTAL_STEPS = FORM_STEPS.length + 2 // prénom + coordonnées
 
 export default function AuditAppForm({
   initialFirstName,
@@ -41,6 +43,37 @@ export default function AuditAppForm({
 // Tunnel principal
 // ===================================================================
 
+function ContactStep({ contact, onChange, onSubmit, onBack }) {
+  return (
+    <form onSubmit={(event) => { event.preventDefault(); onSubmit() }}>
+      <p className="text-brand font-semibold text-sm mb-2">Dernière étape</p>
+      <h2 className="font-heading font-bold text-2xl md:text-3xl text-text mb-3">Être recontacté par Noé pour un audit gratuit de ton idée</h2>
+      <p className="text-grey leading-relaxed mb-6">Indique tes coordonnées pour échanger avec Noé sur ton projet. Ton récapitulatif IA s’affiche juste après.</p>
+      <div className="space-y-4">
+        <label className="block text-text font-semibold text-sm" htmlFor="audit-email">Ton email
+          <input id="audit-email" type="email" required autoComplete="email" maxLength={254} value={contact.email} onChange={(e) => {
+            const value = e.target.value
+            e.target.setCustomValidity(value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()) ? 'Indique une adresse email valide.' : '')
+            onChange({ ...contact, email: value })
+          }} placeholder="toi@exemple.fr" className="mt-2 w-full rounded-xl border border-card-border bg-card px-4 py-3 text-base font-normal outline-none focus:border-brand focus:ring-2 focus:ring-brand/15" />
+        </label>
+        <label className="block text-text font-semibold text-sm" htmlFor="audit-phone">Ton téléphone <span className="text-grey font-normal">(facultatif)</span>
+          <input id="audit-phone" type="tel" autoComplete="tel" maxLength={30} value={contact.phone} onChange={(e) => {
+            const value = e.target.value
+            e.target.setCustomValidity(value && !normalizeContactPhone(value) ? 'Indique un numéro valide, avec son indicatif pour un numéro étranger.' : '')
+            onChange({ ...contact, phone: value })
+          }} placeholder="06 12 34 56 78 ou +41…" title="Indique un numéro valide, avec l’indicatif pour un numéro étranger." className="mt-2 w-full rounded-xl border border-card-border bg-card px-4 py-3 text-base font-normal outline-none focus:border-brand focus:ring-2 focus:ring-brand/15" />
+        </label>
+      </div>
+      <p className="text-grey text-xs leading-relaxed mt-4"><a href={lienInterne('/privacy/')} target="_blank" rel="noreferrer" className="underline">Confidentialité</a></p>
+      <div className="mt-7 flex flex-wrap items-center justify-between gap-4">
+        <button type="button" onClick={onBack} className="text-grey font-semibold cursor-pointer">Retour</button>
+        <button type="submit" className="bg-brand text-white rounded-full px-6 py-3 font-semibold cursor-pointer">Voir mon résultat</button>
+      </div>
+    </form>
+  )
+}
+
 function FormTunnel({ initialFirstName, onSubmit }) {
   // Restauration depuis localStorage : si le prospect a deja commence
   // un audit, on lui rend ses reponses et le step ou il s'etait arrete.
@@ -62,6 +95,7 @@ function FormTunnel({ initialFirstName, onSubmit }) {
   const [attachedContent, setAttachedContent] = useState(
     () => restored.attachedContent || ''
   )
+  const [contact, setContact] = useState({ email: '', phone: '' })
   const [touched, setTouched] = useState(false)
 
   // Sauvegarde a chaque changement — pas besoin de debounce, l'utilisateur
@@ -71,7 +105,8 @@ function FormTunnel({ initialFirstName, onSubmit }) {
   }, [stepIndex, firstName, answers, attachedContent])
 
   const isFirstNameStep = stepIndex === 0
-  const currentStep = isFirstNameStep ? null : FORM_STEPS[stepIndex - 1]
+  const isContactStep = stepIndex === TOTAL_STEPS - 1
+  const currentStep = isFirstNameStep || isContactStep ? null : FORM_STEPS[stepIndex - 1]
 
   // Trouve l'index du prochain step a afficher en sautant ceux qui ont
   // un skipIf(answers) vrai. Retourne TOTAL_STEPS si on a fini.
@@ -103,10 +138,6 @@ function FormTunnel({ initialFirstName, onSubmit }) {
     return 0
   }
 
-  // isLastStep : il n'y a plus aucun step visible apres stepIndex
-  const nextVisibleIdx = findNextVisibleStep(stepIndex + 1, answers)
-  const isLastStep = nextVisibleIdx >= TOTAL_STEPS
-
   const goToNext = (overrideAnswers = null) => {
     setTouched(false)
     const currentAnswers = overrideAnswers || answers
@@ -117,6 +148,8 @@ function FormTunnel({ initialFirstName, onSubmit }) {
         session_id: getOrCreateSessionId(),
         ...currentAnswers,
         attached_content: attachedContent || '',
+        contact_email: contact.email.trim(),
+        contact_phone: contact.phone.trim(),
       })
       return
     }
@@ -205,6 +238,8 @@ function FormTunnel({ initialFirstName, onSubmit }) {
               onSubmit={handleFirstNameSubmit}
               touched={touched}
             />
+          ) : isContactStep ? (
+            <ContactStep contact={contact} onChange={setContact} onSubmit={() => goToNext()} onBack={handleBack} />
           ) : currentStep.type === 'textarea' ? (
             <TextareaStep
               step={currentStep}

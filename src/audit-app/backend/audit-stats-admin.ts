@@ -97,6 +97,9 @@ function publicAudit(id: string, data: FirebaseFirestore.DocumentData) {
   return {
     id,
     firstName: data.firstName || "",
+    contactEmail: data.contactEmail || "",
+    contactPhone: data.contactPhone || "",
+    crmSync: data.crmSync || null,
     sessionId: data.sessionId || null,
     appType: data.appType || null,
     ideaText: data.ideaText || "",

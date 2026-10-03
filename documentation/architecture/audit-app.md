@@ -112,7 +112,7 @@ La logique de branche est dans `src/audit-app/backend/branch.ts`.
 
 Nowork ne stocke pas directement les audits dans son Firestore. Il lit les audits du projet `manychatia-82692` via la function `auditStatsAdmin`, qui verifie un token Firebase du projet historique `devis-app-8e216`.
 
-But cote admin : voir les audits termines, les dates, les reponses et le verdict, puis creer/suivre le prospect dans le CRM Nowork.
+Historique : la création de prospect était manuelle. Le branchement automatique préparé est décrit ci-dessous.
 
 ## Positionnement
 
@@ -121,3 +121,41 @@ Pour les questions de copywriting ou de strategie autour de l'audit, lire aussi 
 - `documentation/context/positionnement.md`
 - `documentation/strategy/funnel-instagram-profil.md`
 - `documentation/archive/funnels/diagnostic-audit-app.md` (archive historique, a verifier avant usage)
+
+## Coordonnées et création CRM (préparé, non déployé)
+
+Une dernière étape après le budget demande **email obligatoire et téléphone facultatif** :
+« Être recontacté par Noé pour un audit gratuit de ton idée ».
+Le récapitulatif IA s'affiche ensuite pour tous les visiteurs, y compris ceux
+dont les coordonnées sont déjà dans Nowork. Les coordonnées ne sont pas envoyées
+au modèle IA, ni aux événements publicitaires. Elles sont validées côté client
+et serveur et conservées dans l'audit terminé (`contactEmail`, `contactPhone`).
+
+`syncAuditContact` est un déclencheur sur la création d'un audit terminé. Il
+appelle `ingestAuditContact` (projet Nowork) avec le secret `AUDIT_CRM_SECRET`.
+Le résultat de synchronisation figure dans `crmSync` et dans le détail de
+l'audit Nowork. Une indisponibilité CRM ne bloque pas le récapitulatif IA ;
+Eventarc réessaie. Un échec d'enregistrement de l'audit renvoie une erreur au
+visiteur pour éviter une perte silencieuse des coordonnées.
+
+Le récepteur vérifie l'email (casse/espaces ignorés) OU le téléphone normalisé.
+Si un contact correspond, il ne crée ni ne modifie la fiche. Sinon il crée
+un client `audit_done` / « Audit fait », source « Audit app », avec projet,
+budget et avancement. Aucun email ni WhatsApp automatique n'est envoyé.
+L'import est transactionnel et idempotent par auditId.
+
+### Mise en ligne coordonnée (pas encore exécutée)
+
+1. Configurer une même valeur aléatoire du secret `AUDIT_CRM_SECRET` dans les
+   deux projets Firebase, sans la versionner ni l'exposer au navigateur.
+2. Depuis Nowork, déployer **uniquement** `functions:ingestAuditContact`, puis
+   publier son interface avec le nouveau statut et l'affichage du suivi.
+3. Depuis `src/audit-app/backend`, compiler et déployer `syncAuditContact` et
+   `auditStatsAdmin` du codebase `audit-web`.
+4. Publier l'étape de coordonnées avec `verdictWeb` mis à jour. Ce dernier
+   exige désormais l’email : coordonner les versions pour éviter que
+   l'ancien formulaire soumette une requête refusée pendant la transition.
+5. Vérifier un audit réel autorisé et son état CRM. Aucun faux contact n'a été
+   ajouté en production lors du développement. En cas de panne durable après
+   la fenêtre de réessai Eventarc, réenvoyer l'audit au récepteur avec le même
+   auditId ; le reçu Nowork empêche la duplication.

@@ -413,7 +413,7 @@ function App() {
 
   // L'ONGLET QUI APPELLE AU RETOUR. Quand le visiteur part sur un autre
   // onglet, le titre alterne entre deux messages au bout de quelques
-  // secondes ; il revient au vrai titre dès que l'onglet est rouvert.
+  // minutes ; il revient au vrai titre dès que l'onglet est rouvert.
   //
   // ⚠️ SEULEMENT SUR LES PAGES DE VENTE. Un client qui consulte son espace,
   // une maquette ou un guide ne doit pas lire « Ton idée t'attend » : il a
@@ -426,7 +426,7 @@ function App() {
     const pagesDeVente = ['home', 'blog', 'blog-article', 'audit-app', 'page-expertise', 'page-methode', 'page-faq', 'quiz-hub', 'quiz', 'projets']
     if (!pagesDeVente.includes(page)) return
 
-    const MESSAGES = ['👀 Tu reviens ?', '💡 Ton idée t’attend']
+    const MESSAGES = ['Maquette offerte pour ton app', 'Parlons de ton idée d’app']
     let vraiTitre = document.title
     let depart = null
     let alternance = null
@@ -447,8 +447,8 @@ function App() {
           alternance = setInterval(() => {
             i = (i + 1) % MESSAGES.length
             document.title = MESSAGES[i]
-          }, 2500)
-        }, 3000)
+          }, 60000)
+        }, 60000)
       } else {
         arreter()
         document.title = vraiTitre

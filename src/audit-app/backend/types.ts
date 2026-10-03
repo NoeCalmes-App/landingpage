@@ -9,6 +9,7 @@
  */
 
 import { z } from "zod";
+import { normalizeContactPhone } from "./contact";
 
 // ===== Tags =====
 
@@ -22,6 +23,8 @@ export type Branch = z.infer<typeof BranchSchema>;
 
 export const VerdictRequestSchema = z.object({
   first_name: z.string().min(1).max(50),
+  contact_email: z.string().trim().toLowerCase().max(254).email(),
+  contact_phone: z.string().trim().max(30).refine((value) => !value || !!normalizeContactPhone(value), "Invalid phone").transform((value) => value ? normalizeContactPhone(value) : "").default(""),
   // Identifiant de session genere cote navigateur. Permet de transformer
   // le doc partiel `partial_{sessionId}` en audit completed au lieu de
   // creer un doublon "abandonné" + "complété".
