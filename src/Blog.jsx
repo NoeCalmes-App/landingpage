@@ -21,6 +21,124 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'application-mobile-salle-de-sport',
+    title: "Application mobile pour salle de sport : ce qu'elle change vraiment",
+    metaTitle: "Application mobile pour salle de sport | Noé Calmes",
+    description: "Une salle n'a pas un problème d'inscriptions, elle a un problème de résiliations. Ce que l'application change, et le calcul sur 200 adhérents.",
+    date: '2026-10-05',
+    readTime: '9 min',
+    finalCta: 'audit',
+    categorie: "Ton activité",
+    accroche: "Ton problème n'est pas d'attirer des adhérents. C'est de les garder.",
+    tldr: {
+      verdict: "Une salle de sport ne gagne pas d'argent avec une application, elle en perd moins. Le revenu existe déjà, il est prélevé chaque mois. Ce que l'application change, c'est la fréquence de venue, et la fréquence décide de la résiliation. Le calcul se fait donc sur les adhérents retenus, jamais sur de nouveaux inscrits.",
+      points: [
+        { label: "Le sujet", valeur: "Ce qu'une application change dans une salle, et ce qu'elle ne change pas" },
+        { label: "Pour qui", valeur: "Tu gères une salle, un studio ou un box et tu te demandes si ça vaut le coup" },
+        { label: "Le repère", valeur: "5 adhérents retenus par mois remboursent une application en un peu plus d'un an" },
+        { label: "À retenir", valeur: "Celui qui vient trois fois par semaine ne résilie pas" },
+      ],
+    },
+    pourQui: [
+      "Tu gères une salle, un studio ou un box et ton chiffre stagne malgré les inscriptions",
+      "Tu connais ton taux de résiliation et il te préoccupe",
+      "Tu as déjà un logiciel de gestion et tu te demandes ce qu'une application ajouterait",
+    ],
+    pasPourQui: [
+      "Tu cherches à faire venir de nouveaux adhérents : c'est de la publicité, pas une application",
+      "Ta salle a moins de 50 adhérents, le calcul ne tient pas encore",
+      "Tu veux remplacer ton logiciel de gestion, ce n'est pas le même produit",
+    ],
+    faq: [
+      { q: "J'ai déjà un logiciel de gestion, pourquoi une application en plus ?", a: "Parce qu'ils ne servent pas la même personne. Ton logiciel est fait pour toi : il gère les contrats, les paiements, les plannings, les accès. Une application est faite pour ton adhérent, et elle vit sur son téléphone. La plupart des logiciels de salle proposent bien un espace en ligne, mais il faut y aller, et personne n'y va. La différence tient en un mot : une application peut faire le premier pas, pas un site." },
+      { q: "Mes adhérents vont-ils vraiment l'installer ?", a: "Une partie seulement, et c'est suffisant. Compte entre 30 et 50 % sur les premiers mois, en l'installant avec eux à l'accueil plutôt qu'en espérant qu'ils le fassent seuls. Et surtout, ceux qui l'installent sont précisément ceux qui viennent, donc ceux que tu veux garder. Celui qui ne l'installera jamais est déjà à moitié parti, l'application n'aurait rien changé pour lui." },
+      { q: "Faut-il faire payer l'abonnement dans l'application ?", a: "Non, et c'est important. Ton abonnement est déjà prélevé par ton logiciel de gestion, directement sur le compte de l'adhérent. Le faire passer par l'application ferait entrer les commissions des stores dans l'équation et te coûterait une part de chaque mensualité, pour rien. L'application sert la fréquentation, pas l'encaissement. En revanche, vendre un service ponctuel dedans, un coaching, un stage, un produit, a du sens." },
+      { q: "Combien ça coûte et en combien de temps ?", a: "Une première version au périmètre clair se situe entre 5 000 et 8 000 €, livrée en quatre à six semaines. Une application complète avec deux profils distincts, adhérent et coach, monte vers 8 000 à 12 000 €. Le détail des fourchettes est dans le prix d'une application mobile." },
+      { q: "Et si je n'ai qu'un petit studio de 50 personnes ?", a: "Alors le calcul ne tient probablement pas encore, et je préfère te le dire. Avec 50 adhérents, retenir cinq personnes de plus par mois est irréaliste : il n'y en a pas assez qui partent. En dessous d'une centaine d'adhérents, le levier est ailleurs, dans la relation directe que tu as déjà avec chacun. Une application devient intéressante quand tu ne peux plus connaître tout le monde par son prénom." },
+    ],
+    content: `
+      <p>Les salles qui m'appellent pensent souvent avoir un problème d'inscriptions. Dans presque tous les cas, en regardant les chiffres, c'est un problème de résiliations.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Voici ce qu'une application change réellement dans une salle, et ce qu'elle ne change pas.</p>
+
+      <h2>Ton revenu existe déjà</h2>
+      <p>C'est la différence avec la plupart des projets d'application, et elle change tout le raisonnement.</p>
+      <p>Une salle de sport n'a pas à inventer un modèle économique : l'abonnement est déjà là, prélevé chaque mois, sur un compte bancaire. Une application ne va donc pas créer de revenu.</p>
+      <p>Elle agit ailleurs, sur la seule variable qui compte vraiment chez toi : <strong>combien de temps un adhérent reste</strong>.</p>
+      <div class="encadre cle">
+        <span class="encadre-titre">Le mécanisme, en une phrase</span>
+        <p>Celui qui vient trois fois par semaine ne résilie pas. Celui qui a arrêté de venir résilie au prochain prélèvement, et souvent il a arrêté depuis six semaines sans que personne ne l'ait remarqué.</p>
+      </div>
+      <p>Toute la question est donc là : est-ce qu'une application peut faire revenir quelqu'un qui commence à décrocher. La réponse est oui, à condition de savoir qu'il décroche.</p>
+
+      <h2>Pourquoi ton logiciel de gestion ne suffit pas</h2>
+      <p>Tu en as déjà un, et il fait très bien son travail. Contrats, prélèvements, plannings, contrôle d'accès : ce sont des outils solides et je ne conseille à personne de les remplacer.</p>
+      <p>Mais ils ont tous le même angle mort : <strong>ils sont faits pour toi, pas pour ton adhérent</strong>.</p>
+      <p>Beaucoup proposent un espace en ligne où l'adhérent peut réserver. Il faut y aller. Retenir une adresse, un identifiant, un mot de passe. Personne ne le fait, et surtout pas celui qui hésite déjà à venir.</p>
+      <p>Une application change une seule chose, et elle est décisive : <strong>elle peut faire le premier pas</strong>. Une notification part toute seule. Un site attend qu'on vienne le chercher.</p>
+
+      <h2>Les quatre choses qu'une application change vraiment</h2>
+      <p>Par ordre d'effet réel sur ta rétention, pas par ordre de ce qui se vend le mieux.</p>
+      <ol>
+        <li><strong>Détecter l'absence avant la résiliation.</strong> C'est le levier principal et presque personne ne l'exploite. Ton système sait qui n'est pas venu depuis trois semaines. Un message à ce moment-là rattrape des gens. Le même message après la résiliation n'en rattrape aucun.</li>
+        <li><strong>Réserver en trois secondes.</strong> Un cours qui se réserve pendant une pause, depuis l'écran d'accueil du téléphone, se remplit mieux qu'un cours qui demande d'ouvrir un navigateur et de se connecter.</li>
+        <li><strong>Donner une raison de revenir entre deux séances.</strong> Un suivi de progression, un programme qui avance, un défi collectif. L'adhérent garde un lien avec la salle les jours où il n'y vient pas.</li>
+        <li><strong>Vendre ce qui se vend mal au comptoir.</strong> Coaching individuel, stages, séances supplémentaires. Une offre proposée au bon moment dans l'application, après une séance réussie, se vend sans que personne ait à la proposer de vive voix.</li>
+      </ol>
+
+      <h2>Le calcul, sur une salle de 200 adhérents</h2>
+      <p>Prenons une salle de 200 adhérents à 40 € par mois. Le calcul ne porte pas sur de nouvelles inscriptions, mais sur des départs évités.</p>
+      <p>Un adhérent qui reste trois mois de plus, c'est 120 € que tu n'aurais pas eus. Et contrairement à une application qui vend des abonnements dans les stores, ces 120 € te reviennent presque entièrement : le prélèvement passe par ta banque, pas par une plateforme qui prend sa part.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Adhérents retenus par mois</th><th>Gain mensuel</th><th>Sur un an</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>2 adhérents</td><td>240 €</td><td>2 880 €</td></tr>
+            <tr><td>5 adhérents</td><td>600 €</td><td>7 200 €</td></tr>
+            <tr><td>10 adhérents</td><td>1 200 €</td><td>14 400 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="chiffre">
+        <span class="chiffre-valeur">5 adhérents</span>
+        <span class="chiffre-texte">retenus chaque mois suffisent à rembourser une application à 8 000 € en un peu plus d'un an. Sur 200 adhérents, ça représente moins de 3 % de ton effectif.</span>
+      </div>
+      <p>Regarde ce pourcentage avant de regarder le devis. La question n'est pas « est-ce que 8 000 € est cher », elle est « est-ce que je peux retenir 3 % de mes adhérents en plus ». Ce sont deux discussions différentes, et seule la seconde décide.</p>
+
+      <h2>Ce que tu dois déjà avoir</h2>
+      <p>Une application ne répare pas une salle qui perd ses adhérents pour une autre raison. Avant d'engager quoi que ce soit, trois choses doivent être vraies.</p>
+      <ul>
+        <li><strong>Un effectif suffisant.</strong> En dessous d'une centaine d'adhérents, tu connais encore tout le monde, et ta relation directe fait mieux que n'importe quelle notification.</li>
+        <li><strong>Un planning qui tient.</strong> Si les cours changent sans prévenir, l'application affichera ce désordre et l'amplifiera.</li>
+        <li><strong>Une raison de revenir qui existe déjà.</strong> Un cours qu'on aime, un coach qu'on suit, une ambiance. L'application rappelle une raison, elle n'en crée pas.</li>
+      </ul>
+      <div class="encadre attention">
+        <span class="encadre-titre">Le test honnête</span>
+        <p>Demande à cinq adhérents qui ont résilié cette année pourquoi ils sont partis. Si les réponses parlent du matériel, des horaires ou de l'ambiance, l'application n'y changera rien. Si elles parlent de perte d'habitude ou de manque de temps, <strong>c'est exactement là qu'elle agit</strong>.</p>
+      </div>
+
+      <h2>L'erreur la plus fréquente</h2>
+      <p>C'est l'application qui ne sert qu'à réserver.</p>
+      <p>Elle paraît logique, elle coûte moins cher, et elle ne produit presque rien. Parce que réserver est un geste que fait déjà celui qui vient. Tu construis donc un outil pour tes adhérents les plus fidèles, c'est-à-dire ceux qui n'allaient pas partir.</p>
+      <p>Ceux que tu veux garder, ce sont les autres. Ceux qui ne réservent plus, justement. Une application de réservation ne les voit pas, une application qui détecte l'absence les voit tout de suite.</p>
+
+      <h2>Le cas où je dis non</h2>
+      <p>Il existe, et autant l'énoncer franchement.</p>
+      <p>Si ton besoin est d'être trouvé par de nouveaux adhérents, une application ne sert à rien : personne ne télécharge l'application d'une salle où il n'est pas inscrit. Ce qu'il te faut alors, c'est une fiche Google à jour, des avis et de la publicité locale, pour bien moins cher.</p>
+      <p>L'application travaille sur les gens qui sont déjà chez toi. C'est sa force et c'est sa limite.</p>
+
+      <h2>Par où commencer</h2>
+      <p>Trois étapes, aucune ne demande d'engager un budget.</p>
+      <ol>
+        <li><strong>Sors ton taux de résiliation des douze derniers mois.</strong> Combien d'adhérents sont partis, et combien de temps ils étaient restés. Tout le calcul part de là.</li>
+        <li><strong>Regarde combien d'entre eux avaient cessé de venir avant de résilier.</strong> C'est le chiffre qui dit si une application a quelque chose à faire chez toi.</li>
+        <li><strong>Décide de ce que ta première version détecte.</strong> L'absence, avant tout le reste. La réservation peut venir ensuite.</li>
+      </ol>
+      <p>Pour les ordres de grandeur de budget, regarde <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>. Si ton activité tient davantage du coaching individuel que de la salle, <a href="/blog/application-mobile-coach-formateur/">l'application pour coach et formateur</a> traite ce cas. Et si tu veux que je fasse ce calcul sur tes chiffres réels, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes.</p>
+    `,
+  },
+  {
     slug: 'cahier-des-charges-application-mobile',
     title: "Cahier des charges d'application mobile : ce qu'il faut vraiment écrire",
     metaTitle: "Cahier des charges application mobile : le modèle | Noé Calmes",
@@ -2371,6 +2489,7 @@ export const BLOG_ARTICLES = [
 // orphelin. Ajouter un article implique donc de le citer ici au moins deux fois.
 
 export const ARTICLES_LIES = {
+  'application-mobile-salle-de-sport': ['application-mobile-coach-formateur', 'application-par-abonnement', 'combien-de-clients-pour-rentabiliser-application'],
   'cahier-des-charges-application-mobile': ['creer-application-mobile-guide', 'combien-coute-application-mobile', 'choisir-expert-application-mobile'],
   'combien-de-temps-creer-application-mobile': ['mvp-application-mobile', 'cahier-des-charges-application-mobile', 'application-mobile-avec-claude'],
   'application-avec-ia-rentable': ['combien-de-clients-pour-rentabiliser-application', 'application-mobile-meilleur-investissement', 'creer-application-avec-ia'],
@@ -2381,11 +2500,11 @@ export const ARTICLES_LIES = {
   'rentabiliser-application-mobile': ['modele-economique-application-mobile', 'combien-rapporte-application-mobile', 'pourquoi-applications-ne-rapportent-rien'],
   'combien-rapporte-application-mobile': ['combien-de-clients-pour-rentabiliser-application', 'combien-coute-application-mobile', 'application-mobile-meilleur-investissement'],
   'modele-economique-application-mobile': ['application-par-abonnement', 'rentabiliser-application-mobile', 'idee-application-business-rentable'],
-  'application-par-abonnement': ['modele-economique-application-mobile', 'combien-rapporte-application-mobile', 'application-audience-revenus-recurrents'],
+  'application-par-abonnement': ['modele-economique-application-mobile', 'application-mobile-salle-de-sport', 'application-audience-revenus-recurrents'],
   'idee-application-business-rentable': ['rentabiliser-application-mobile', 'application-mobile-meilleur-investissement', 'application-mobile-coach-formateur'],
   'pourquoi-applications-ne-rapportent-rien': ['rentabiliser-application-mobile', 'modele-economique-application-mobile', 'application-avec-ia-rentable'],
   'application-audience-revenus-recurrents': ['application-mobile-coach-formateur', 'application-par-abonnement', 'combien-de-clients-pour-rentabiliser-application'],
-  'application-mobile-coach-formateur': ['application-audience-revenus-recurrents', 'modele-economique-application-mobile', 'combien-coute-application-mobile'],
+  'application-mobile-coach-formateur': ['application-audience-revenus-recurrents', 'modele-economique-application-mobile', 'application-mobile-salle-de-sport'],
   'creer-application-avec-ia': ['pourquoi-applications-ne-rapportent-rien', 'application-mobile-avec-claude', 'application-avec-ia-rentable'],
   'application-mobile-meilleur-investissement': ['rentabiliser-application-mobile', 'application-avec-ia-rentable', 'creation-application-mobile-toulouse'],
 
@@ -2399,7 +2518,7 @@ export const ARTICLES_LIES = {
   'faire-evoluer-application-mobile': ['reprendre-application-mobile-existante', 'choisir-expert-application-mobile', 'rentabiliser-application-mobile'],
 
   // Local
-  'creation-application-mobile-toulouse': ['combien-de-temps-creer-application-mobile', 'creer-application-mobile-guide', 'rentabiliser-application-mobile'],
+  'creation-application-mobile-toulouse': ['combien-de-temps-creer-application-mobile', 'application-mobile-salle-de-sport', 'rentabiliser-application-mobile'],
 }
 
 // Articles lies d'un slug, resolus en objets complets et filtres des slugs

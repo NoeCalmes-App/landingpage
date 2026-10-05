@@ -241,11 +241,30 @@ validation Apple, première source de retard imprévu.
 ---
 
 ### 6. Application mobile pour salle de sport et studio
-**Statut** : à écrire · **Format** : sectoriel · **Mot-clé** : application mobile salle de sport
+**Statut** : ✅ publié le 05/10/2026 · **Format** : sectoriel · **Mot-clé** : application mobile salle de sport
 
 Réservation de cours, suivi des membres, abonnement, réduction du taux de
 résiliation. Le calcul sur une salle de 200 adhérents. Requête locale et
 sectorielle, concurrence faible.
+
+**Ce que la phase 0 a tranché.** Le contrôle vocabulaire a sorti
+`application-mobile-coach-formateur` avec 4 mentions, et deux passages
+inquiétants dans son corps : « Coaching, formation, accompagnement, studio,
+consulting » et « La réservation : créneaux, séances, salles ». Vérification
+faite, ce sont deux énumérations : **aucun H2, aucune FAQ** n'y traite la salle.
+Territoire libre, donc écrit.
+
+**L'angle trouvé en écrivant, et qui vaut pour les prochains sectoriels.**
+Le brief parlait de réservation. C'est justement la mauvaise entrée : une salle
+encaisse déjà son abonnement par prélèvement, donc l'application **ne crée pas
+de revenu, elle en retient**. Le calcul porte sur les départs évités, pas sur
+des inscriptions. Et le levier n'est pas la réservation (que font les fidèles,
+ceux qui n'allaient pas partir) mais **la détection de l'absence**.
+À chercher pour chaque secteur : où est le revenu déjà encaissé, et qu'est-ce
+qui le fait fuir. C'est plus fort que la liste de fonctionnalités.
+
+**Angle laissé de côté** : l'application pour les coachs *employés* de la salle
+(suivi de leurs clients, planning). Autre cible, autre acheteur, à ne pas mélanger.
 
 ---
 
