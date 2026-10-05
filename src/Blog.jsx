@@ -2857,9 +2857,9 @@ function BlogList({ onBack, onArticle, onBookCall, onAuditApp, onNaviguer }) {
             Faire une application <span className="text-brand">qui rapporte</span>
           </h1>
           <p className="text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed">
-            Ce que j&apos;aurais voulu qu&apos;on me dise avant de publier ma première application.
-            Budget réel, modèles de revenus, erreurs qui coûtent cher. Écrit par quelqu&apos;un
-            dont une application génère <strong className="text-text font-semibold">13 000 € par mois</strong>.
+            Ce que j&apos;aurais voulu qu&apos;on me dise avant de lancer ma première application.
+            Mobile ou web, budget réel, modèles de revenus, erreurs qui coûtent cher. Écrit par
+            quelqu&apos;un dont une application génère <strong className="text-text font-semibold">13 000 € par mois</strong>.
           </p>
         </div>
 
