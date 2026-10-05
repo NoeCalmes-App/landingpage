@@ -126,91 +126,102 @@ export const QUIZZES = [
     slug: 'application-ou-site-web',
     h1: "Application mobile ou site web : lequel pour ton activité ?",
     metaTitle: "Application mobile ou site web : lequel choisir | Noé Calmes",
-    description: "6 questions pour trancher entre une application mobile et un site web selon ton activité, ton budget et la façon dont tes clients t'utilisent.",
-    resume: "6 questions pour trancher entre application et site web selon ton activité et tes clients.",
+    description: "6 questions pour savoir si ton projet est une application mobile, une application web, les deux, ou juste un site vitrine. Pas une question de budget.",
+    resume: "6 questions pour trancher entre application mobile, application web et simple site vitrine.",
     intro: [
-      "C'est l'arbitrage le plus fréquent, et le plus mal tranché. Beaucoup paient une application là où un site aurait suffi, et quelques-uns s'entêtent sur un site alors que leur usage est clairement mobile et répété.",
-      "La bonne réponse ne dépend pas de la mode ni du budget. Elle dépend de trois choses : à quelle fréquence tes clients t'utilisent, dans quel contexte, et si tu as besoin d'un lien direct avec eux.",
+      "C'est l'arbitrage le plus fréquent, et le plus mal tranché. Beaucoup paient une application mobile là où une application web aurait mieux fait le travail, pour moins de contraintes et plus vite. Et quelques-uns paient une application alors qu'un simple site vitrine aurait suffi.",
+      "Attention, trois choses différentes se cachent derrière le mot « web ». Un site vitrine présente ton activité, il sert à être trouvé sur Google. Une application web est un outil : on s'y connecte, on y travaille, elle gère des utilisateurs et de l'argent. Ce ne sont pas les mêmes produits, ni les mêmes budgets.",
+      "La bonne réponse ne dépend ni de la mode ni du budget. Elle dépend de qui va s'en servir, dans quel contexte, et à quelle fréquence.",
     ],
     questions: [
       {
-        q: "À quelle fréquence tes clients auraient-ils besoin de ton outil ?",
+        q: "Qui va s'en servir au quotidien ?",
         options: [
-          { label: "Tous les jours ou presque", points: 3 },
-          { label: "Une fois par semaine", points: 2 },
-          { label: "Quelques fois par an", points: 0 },
+          { label: "Des professionnels, dans leur travail", points: 3, web: 3 },
+          { label: "Le grand public, des particuliers", points: 3, web: -3 },
+          { label: "Des particuliers qui échangent entre eux", points: 3, web: -2 },
+          { label: "Personne vraiment, je veux surtout être trouvé", points: 0, web: 0 },
+        ],
+      },
+      {
+        q: "À quelle fréquence s'en serviraient-ils ?",
+        options: [
+          { label: "Tous les jours ou presque", points: 3, web: 0 },
+          { label: "Une fois par semaine", points: 2, web: 0 },
+          { label: "Quelques fois par an", points: 0, web: 0 },
         ],
       },
       {
         q: "Dans quel contexte l'utiliseraient-ils ?",
         options: [
-          { label: "En déplacement, sur le terrain, au quotidien", points: 3 },
-          { label: "Chez eux, indifféremment", points: 1 },
-          { label: "Assis devant un ordinateur, en session longue", points: 0 },
+          { label: "Assis devant un ordinateur, en session longue", points: 2, web: 3 },
+          { label: "En déplacement, sur le terrain, au quotidien", points: 2, web: -3 },
+          { label: "Chez eux, indifféremment", points: 1, web: 0 },
         ],
       },
       {
-        q: "As-tu besoin d'envoyer des notifications pour les faire revenir ?",
+        q: "As-tu besoin de notifications pour les faire revenir ?",
         options: [
-          { label: "Oui, c'est central pour mon service", points: 3 },
-          { label: "Ce serait un plus", points: 1 },
-          { label: "Non, un email suffit", points: 0 },
+          { label: "Oui, c'est central pour mon service", points: 2, web: -3 },
+          { label: "Ce serait un plus", points: 1, web: -1 },
+          { label: "Non, un email suffit", points: 0, web: 1 },
         ],
       },
       {
-        q: "Ton service a-t-il besoin du téléphone lui-même (appareil photo, position, capteurs, hors ligne) ?",
+        q: "Ton service a-t-il besoin du téléphone lui-même (appareil photo, position, hors connexion) ?",
         options: [
-          { label: "Oui, c'est indispensable", points: 3 },
-          { label: "Ce serait utile parfois", points: 1 },
-          { label: "Non, pas du tout", points: 0 },
+          { label: "Oui, c'est indispensable", points: 2, web: -3 },
+          { label: "Ce serait utile parfois", points: 1, web: -1 },
+          { label: "Non, pas du tout", points: 0, web: 1 },
         ],
       },
       {
-        q: "Comment veux-tu être payé ?",
+        q: "Combien de profils différents vont s'y connecter (toi, ton équipe, tes clients) ?",
         options: [
-          { label: "Par abonnement récurrent", points: 3 },
-          { label: "Par vente ponctuelle", points: 1 },
-          { label: "Je ne vends pas directement, je veux être trouvé", points: 0 },
-        ],
-      },
-      {
-        q: "Aujourd'hui, comment tes clients te trouvent-ils ?",
-        options: [
-          { label: "Ils me connaissent déjà, j'ai une communauté", points: 3 },
-          { label: "Bouche-à-oreille et réseaux sociaux", points: 2 },
-          { label: "Par une recherche Google", points: 0 },
+          { label: "Plusieurs, avec des droits différents et un espace d'administration", points: 3, web: 3 },
+          { label: "Deux, moi et mes utilisateurs", points: 2, web: 1 },
+          { label: "Un seul type d'utilisateur", points: 1, web: -1 },
         ],
       },
     ],
     resultats: [
       {
-        min: 13,
+        maxPoints: 4,
+        titre: "Un site vitrine, et ce n'est pas mon métier",
+        texte: "Usage rare, pas de vrai outil derrière, et surtout un enjeu de visibilité plutôt que d'usage : ce qu'il te faut, c'est un site qui présente ton activité et qui se trouve sur Google. Ça coûte bien moins cher qu'une application, et je préfère te le dire franchement plutôt que de te vendre autre chose. Je ne fais pas de site vitrine. Reviens me voir le jour où tu as un outil à construire ou quelque chose à encaisser.",
+      },
+      {
+        minWeb: 4,
+        titre: "Une application web",
+        titreCourt: "Une application web",
+        texte: "Des professionnels, devant un écran, avec plusieurs profils et des droits différents : ton projet est une plateforme, pas une application de téléphone. Personne ne va chercher son outil de travail dans l'App Store. Et le web t'avantage sur deux points que tu n'avais probablement pas en tête. Le délai d'abord : pas de compte développeur à ouvrir, pas de validation d'Apple à attendre, tu mets en ligne le jour où tu veux, compte deux à trois semaines de moins. L'argent ensuite : aucun store ne prend sa commission, il te reste environ 78 % de ce que tu encaisses, contre environ 70 % sur mobile. Attention, ce n'est pas un site vitrine et ça ne coûte pas le prix d'un site vitrine : c'est un vrai produit, au même budget qu'une application mobile équivalente.",
+      },
+      {
+        maxWeb: -7,
         titre: "Une application mobile",
-        texte: "Usage fréquent, contexte mobile, besoin de faire revenir tes utilisateurs et un modèle par abonnement : c'est exactement le terrain d'une application. Un site ne te donnera ni la place sur l'écran d'accueil, ni la notification, ni le paiement récurrent intégré aux stores.",
+        texte: "Usage fréquent, contexte mobile, besoin de faire revenir tes utilisateurs et un service qui a besoin du téléphone lui-même : c'est exactement le terrain d'une application mobile. Une plateforme web ne te donnera ni la place sur l'écran d'accueil, ni la notification, ni le paiement en deux taps. Le store prend 15 à 30 % au passage, mais c'est lui qui t'amène le passage et qui encaisse sans que personne ait à saisir une carte. Pour du grand public, ce loyer se paie.",
       },
       {
-        min: 7,
         titre: "Les deux, mais dans cet ordre",
-        texte: "Ton activité a besoin d'être trouvée ET d'outiller ses clients. Commence par le site pour la visibilité, puis ajoute l'application pour la partie récurrente, réservée à tes clients. L'inverse coûte plus cher et convertit moins.",
-      },
-      {
-        min: 0,
-        titre: "Un site web",
-        texte: "Usage rare, contexte bureau, et surtout un enjeu de visibilité plutôt que de fidélisation : un site fait le travail pour une fraction du budget. Une application ne serait pas ouverte assez souvent pour justifier son coût, et elle n'améliorerait pas ta présence sur Google.",
+        texte: "Tes signaux se partagent, et c'est le cas le plus courant des projets sérieux : des utilisateurs sur leur téléphone d'un côté, et toi qui as besoin d'un espace d'administration de l'autre pour piloter, facturer et suivre. Commence par le support où se trouve la valeur immédiate, ajoute l'autre ensuite, une fois que le premier tourne. C'est moins cher que de tout lancer d'un coup, et ça évite de construire la moitié d'un produit sur deux fronts à la fois.",
       },
     ],
     contenu: [
       {
-        h2: "Ce qu'une application fait qu'un site ne fait pas",
-        p: "Trois choses, concrètement. Elle occupe une place sur l'écran d'accueil, donc elle est ouverte sans intention préalable. Elle peut envoyer une notification, donc elle décide du moment où l'utilisateur revient. Et elle encaisse un abonnement via l'App Store ou Google Play, avec un paiement récurrent que l'utilisateur oublie de résilier bien plus souvent qu'un prélèvement web.",
+        h2: "Site vitrine, application web, application mobile : trois produits différents",
+        p: "Le mot « web » recouvre deux choses qui n'ont rien à voir. Un site vitrine présente ton activité : quelques pages, un formulaire de contact, un objectif de visibilité sur Google. Une application web est un outil de travail : on s'y connecte avec un identifiant, il y a des profils, des droits, des données, souvent des paiements. Le premier coûte quelques centaines à quelques milliers d'euros. Le second coûte le prix d'une application, parce que c'en est une. Confondre les deux est l'erreur la plus chère de ce sujet, dans les deux sens.",
       },
       {
-        h2: "Ce qu'un site fait qu'une application ne fait pas",
-        p: "Un site est trouvé sur Google. Une application, non : personne ne découvre une application par une recherche, il faut déjà connaître son nom ou tomber dessus dans le store. Si ton enjeu numéro un est d'être découvert par des inconnus, une application ne répond pas à la question, quel que soit son budget.",
+        h2: "Ce qu'une application mobile fait qu'une application web ne fait pas",
+        p: "Trois choses, concrètement. Elle occupe une place sur l'écran d'accueil, donc elle est ouverte sans intention préalable. Elle peut envoyer une notification, donc elle décide du moment où l'utilisateur revient. Et elle encaisse un abonnement via l'App Store ou Google Play, avec un paiement en deux taps que l'utilisateur oublie de résilier bien plus souvent qu'un prélèvement classique. Si ton service vise le grand public et vit de la répétition, ces trois choses valent leur prix.",
+      },
+      {
+        h2: "Ce qu'une application web fait qu'une application mobile ne fait pas",
+        p: "Elle se met en ligne le jour où tu veux : pas de compte développeur, pas de validation d'Apple, pas de calendrier de mise à jour imposé. À périmètre égal, ça représente deux à trois semaines de moins. Elle n'a pas de commission de store, donc il te reste environ 78 % de ce que tu encaisses contre environ 70 % sur mobile. Et elle n'a rien à installer : un professionnel qui doit équiper son équipe envoie une adresse, pas une demande de téléchargement. En contrepartie, personne ne t'amène d'utilisateurs : c'est toi qui vas les chercher.",
       },
       {
         h2: "L'erreur de croire que c'est une question de budget",
-        p: "On choisit rarement entre les deux pour des raisons de prix. On choisit selon la fréquence d'usage. Un service utilisé trois fois par an ne mérite pas une application, même avec un budget confortable. Un service utilisé quotidiennement en mérite une, même si ça implique de réduire le périmètre de la première version.",
+        p: "On choisit rarement entre les deux pour des raisons de prix, et surtout pas parce que le web serait l'option économique. Une application web dense, avec plusieurs profils et un espace d'administration, coûte le même prix qu'une application mobile équivalente : c'est le périmètre qui fait le montant, pas le support. On choisit selon qui s'en sert et dans quel contexte. Un outil utilisé trois fois par an ne mérite aucune application, même avec un budget confortable. Un outil utilisé tous les jours en mérite une, quitte à réduire le périmètre de la première version.",
       },
     ],
   },
@@ -312,8 +323,31 @@ export function quizParSlug(slug) {
   return QUIZZES.find((q) => q.slug === slug) || null
 }
 
-function resultatPour(quiz, score) {
-  return quiz.resultats.find((r) => score >= r.min) || quiz.resultats[quiz.resultats.length - 1]
+// Deux axes. `points` mesure l'intensite du besoin (un vrai outil, ou juste etre trouve).
+// `web` est signe : positif pousse vers l'ordinateur, negatif vers le telephone.
+// Les resultats sont evalues dans l'ordre, le premier compatible gagne.
+function scoresDe(quiz, reponses) {
+  let points = 0
+  let web = 0
+  quiz.questions.forEach((question, i) => {
+    const option = question.options[reponses[i]]
+    if (!option) return
+    points += option.points || 0
+    web += option.web || 0
+  })
+  return { points, web }
+}
+
+function resultatPour(quiz, scores) {
+  const { points, web } = scores
+  const compatible = (r) => {
+    if (r.min !== undefined && points < r.min) return false
+    if (r.maxPoints !== undefined && points > r.maxPoints) return false
+    if (r.minWeb !== undefined && web < r.minWeb) return false
+    if (r.maxWeb !== undefined && web > r.maxWeb) return false
+    return true
+  }
+  return quiz.resultats.find(compatible) || quiz.resultats[quiz.resultats.length - 1]
 }
 
 // ─── Briques ─────────────────────────────────────────────────────────────────
@@ -369,8 +403,7 @@ function MoteurQuiz({ quiz, onAuditApp, onBookCall }) {
 
   const total = quiz.questions.length
   const repondues = Object.keys(reponses).length
-  const score = Object.values(reponses).reduce((a, b) => a + b, 0)
-  const resultat = termine ? resultatPour(quiz, score) : null
+  const resultat = termine ? resultatPour(quiz, scoresDe(quiz, reponses)) : null
 
   return (
     <div className="mt-10">
@@ -391,13 +424,13 @@ function MoteurQuiz({ quiz, onAuditApp, onBookCall }) {
                   <span className="text-brand mr-2">{i + 1}.</span>{question.q}
                 </p>
                 <div className="flex flex-col gap-2.5">
-                  {question.options.map((option) => {
-                    const choisi = reponses[i] === option.points && Object.prototype.hasOwnProperty.call(reponses, i)
+                  {question.options.map((option, j) => {
+                    const choisi = reponses[i] === j
                     return (
                       <button
                         key={option.label}
                         type="button"
-                        onClick={() => setReponses((r) => ({ ...r, [i]: option.points }))}
+                        onClick={() => setReponses((r) => ({ ...r, [i]: j }))}
                         className={`text-left text-[0.9rem] leading-relaxed px-4 py-3 rounded-[10px] border transition-colors cursor-pointer ${
                           choisi
                             ? 'border-brand bg-brand/8 text-text font-medium'

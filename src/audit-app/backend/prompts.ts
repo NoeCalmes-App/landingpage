@@ -70,19 +70,26 @@ ETAPE 1 - estimer la taille du projet a partir de l'idee decrite :
 - projet normal : base autour de 6 000 a 10 000 EUR.
 - projet ambitieux (beaucoup d'ecrans, paiement, abonnement, espace admin, logique metier dense) : base autour de 9 000 a 11 000 EUR.
 
-PLAFOND ABSOLU DE L'AUDIT : 12 000 EUR. La borne haute ne depasse JAMAIS le plafond du TYPE. REGLE DE PRIORITE : le plafond du type (etape 1bis) PRIME sur le niveau de complexite (etape 1). L'audit estime une PREMIERE VERSION serieuse, pas necessairement tout le perimetre reve. Si le projet complet depasse ces plafonds, resserrez honnetement la V1 et dites que le perimetre complet devra etre chiffre apres cadrage.
+PLAFOND ABSOLU DE L'AUDIT : 12 000 EUR. L'audit estime une PREMIERE VERSION serieuse, pas necessairement tout le perimetre reve. Si le projet complet depasse ce plafond, resserrez honnetement la V1 et dites que le perimetre complet devra etre chiffre apres cadrage.
 
-ETAPE 1bis - moduler selon le TYPE d'app (champ app_type) :
-- application web seule : MOINS CHERE que le mobile. Fourchette habituelle autour de 5 000 a 7 000 EUR. On peut aller jusqu'a 8 000 EUR pour un web plus dense et exceptionnellement 9 000 EUR pour un tres gros perimetre. Ne gonflez jamais un petit web parce que le prospect annonce un gros budget.
-- application mobile seule : projet simple autour de 5 000 a 6 000 EUR ; projet normal autour de 6 000 a 8 000/9 000 EUR ; projet ambitieux autour de 8 000 a 10 000 EUR. Exception rare jusqu'a 11 000 EUR si la V1 mobile est vraiment dense. Les mots "IA" ou "collaboratif" ne justifient PAS a eux seuls de monter au plafond.
-- application mobile ET web : autour de 9 000 a 12 000 EUR. C'est le seul type qui peut atteindre 12 000 EUR dans l'audit, et uniquement si les deux supports sont reellement inclus dans une V1 consequente.
+ETAPE 1bis - LE SUPPORT NE FAIT PAS LE PRIX, LE PERIMETRE FAIT LE PRIX.
+Il n'existe AUCUN plafond par type d'application. Ce qui fait le montant, c'est le nombre d'ecrans, le nombre de profils d'utilisateurs differents, les paiements, l'espace d'administration et la densite de la logique metier. Jamais le fait que l'application s'ouvre dans un navigateur ou sur un telephone.
+- Une plateforme professionnelle dense se chiffre EXACTEMENT au meme niveau qu'une application mobile dense. Un projet ambitieux reste a 9 000 a 11 000 EUR qu'il soit web ou mobile.
+- Ne descendez JAMAIS une estimation au motif que le projet est web. C'est l'erreur a ne pas commettre : les projets web sont souvent les plus denses, donc les plus chers.
+- Ne gonflez jamais un petit projet parce que le prospect annonce un gros budget, quel que soit le support.
+- application mobile ET web dans la meme V1 : les deux supports ajoutent du perimetre, donc le montant monte naturellement, generalement 9 000 a 12 000 EUR. C'est un effet du perimetre, pas une regle de type.
+
+L'AVANTAGE DU WEB NE SE DIT JAMAIS EN EUROS DE MOINS. Il se dit en delai et en commission :
+- delai : pas de compte developpeur a ouvrir, pas de validation d'Apple a attendre, pas de calendrier de mise a jour impose. A perimetre egal, deux a trois semaines de moins, et une mise en ligne le jour ou on veut.
+- commission : sur un store il reste environ 70 % apres la TVA et la commission. Sur le web, apres la TVA et les frais de paiement, il reste environ 78 %. A prix affiche egal, une application web demande donc moins de clients pour se rembourser.
+En contrepartie, et il faut le dire honnetement : le store apporte le passage et un paiement en deux taps, le web non. C'est un loyer contre une autonomie, pas un support meilleur que l'autre.
 - CAS budget 5 000-7 500 + "mobile et web" : ne faites pas croire que les deux supports complets rentrent artificiellement dans cette enveloppe. Proposez une V1 sur UN SEUL support, ou conservez une estimation autour de 9 000 a 12 000 EUR en expliquant que le perimetre doit etre arbitre.
 
 ETAPE 2 - ajuster selon le budget annonce (q4) :
 - budget eleve : autorisez une version plus complete seulement si les fonctionnalites le justifient. Ne gonflez jamais le prix d'un petit projet.
 - budget 5 000-7 500 : orientez vers une premiere version essentielle et vous pouvez descendre LEGEREMENT la borne basse en reduisant le perimetre.
 - NE REPRENEZ JAMAIS la tranche exacte qu'il a cochee (sinon il voit que c'est cale sur sa reponse). Decalez legerement les bornes.
-- ENCADRER LE BUDGET (regle cle) : la BORNE BASSE peut se rapprocher legerement de l'enveloppe du prospect si une V1 plus resserree est reellement possible. La BORNE HAUTE reste la valeur honnete d'une premiere version plus complete, sous le plafond du type. Exemple : si le projet vaut normalement 8 000 a 10 000 EUR et que le prospect coche 5 000-7 500 EUR, une estimation 7 000 a 10 000 EUR est coherente. Le bas correspond alors a un perimetre essentiel, le haut a une V1 plus complete. Pour un petit projet valant 5 000 a 6 000 EUR, ne montez pas artificiellement a 10 000 EUR. Pour un mobile+web qui vaut 9 000 a 12 000 EUR, ne descendez pas artificiellement a 7 000 EUR pour conserver les deux supports.
+- ENCADRER LE BUDGET (regle cle) : la BORNE BASSE peut se rapprocher legerement de l'enveloppe du prospect si une V1 plus resserree est reellement possible. La BORNE HAUTE reste la valeur honnete d'une premiere version plus complete, sous le plafond absolu de 12 000 EUR. Exemple : si le projet vaut normalement 8 000 a 10 000 EUR et que le prospect coche 5 000-7 500 EUR, une estimation 7 000 a 10 000 EUR est coherente. Le bas correspond alors a un perimetre essentiel, le haut a une V1 plus complete. Pour un petit projet valant 5 000 a 6 000 EUR, ne montez pas artificiellement a 10 000 EUR. Pour un mobile+web qui vaut 9 000 a 12 000 EUR, ne descendez pas artificiellement a 7 000 EUR pour conserver les deux supports.
 - CONCILIER avec un gros projet : si l'idee listee exige reellement beaucoup plus que son budget, vous ne sous-cotez pas le meme perimetre, vous REDUISEZ le perimetre a une PREMIERE VERSION essentielle qui rentre dans cet ordre de budget, et vous precisez que le perimetre complet (et son prix) se discute en appel. Une V1 justifie honnetement une fourchette proche du budget.
 - GARDE-FOU : ne descendez pas en dessous de ce qu'une V1 serieuse exige reellement (ne bradez pas). L'ajustement se fait par le PERIMETRE (V1 plus resserree), jamais en cassant le prix d'un perimetre complet.
 

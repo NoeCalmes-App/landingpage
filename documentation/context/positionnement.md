@@ -6,23 +6,33 @@
 
 ## Ce que je suis
 
-**Expert en application mobile.**
+**Expert en applications mobiles & web.**
 
-Je ne suis pas un développeur à la mission. Je ne suis pas une agence. Je suis quelqu'un qui prend un sujet mobile en main — de la stratégie au lancement.
+Je ne suis pas un développeur à la mission. Je ne suis pas une agence. Je suis spécialisé dans les applications pensées pour générer des revenus, et ma spécialité n'est pas un support, c'est un résultat.
+
+Le mobile est mon métier d'origine, c'est là que j'ai mes preuves, et c'est encore la moitié de ce que je livre. C'est justement pour ça que je sais te dire quand ton projet n'en a pas besoin : un outil que des professionnels utilisent pour travailler n'a rien à gagner sur l'App Store, et la commission du store y serait une perte sèche.
+
+Alors je tranche avant de te vendre quoi que ce soit. Téléphone, ordinateur, ou les deux dans cet ordre. Tu as la réponse avant le devis, elle est gratuite, et elle fait partie de ce que tu achètes.
 
 ---
 
 ## Ma phrase de référence (landing page)
 
-> "Je transforme votre idée en application mobile pensée pour générer des revenus."
+> "Je conçois ton application pour qu'elle te rapporte. Sur téléphone ou sur ordinateur : je te dis lequel avant que tu paies un euro."
+
+Variante courte, déjà neutre, toujours valable :
 
 > "Votre application pensée pour générer des revenus, de la stratégie au lancement."
+
+Note : on dit **téléphone** et **ordinateur** au prospect, pas « mobile » et « web ». Sa cible n'est pas technique, et ces deux mots-là se comprennent sans effort.
 
 ---
 
 ## Mon positionnement en une phrase
 
-J'aide les entrepreneurs et porteurs de projet à **transformer une idée en application mobile** — en la pensant comme un actif capable de générer des revenus avant de la penser comme un projet technique.
+J'aide les **entrepreneurs sans compétence technique** à transformer une idée en **application qui rapporte**, et je décide avec eux si elle doit vivre sur un téléphone ou sur un ordinateur.
+
+Le support n'est pas une préférence, c'est un arbitrage que je fais pour le client avant qu'il dépense un euro. C'est gratuit, et c'est la première chose qu'il achète sans le savoir.
 
 ---
 
@@ -224,22 +234,29 @@ Nuance importante : ne pas dénigrer l'IA (je l'utilise moi-même). Le message n
 
 ## Ma cible
 
-**Cœur de cible actuel** : entrepreneurs non techniques ou semi-techniques qui ont une idée d'application mobile et veulent en faire un vrai produit générateur de revenus.
+**Cœur de cible** : l'entrepreneur qui a de l'argent à investir et **aucune compétence technique**.
 
-Le bon prospect n'est pas seulement quelqu'un qui "a une idée". C'est quelqu'un qui voit l'application comme un **investissement** : une app capable de vendre, fidéliser, encaisser, réserver, proposer un abonnement, générer des leads ou créer un revenu supplémentaire.
+Il arrive avec une idée, pas avec un support. Il ne connaît ni son marché, ni le parcours de son futur utilisateur, et personne ne lui a jamais dit que son idée tenait peut-être mieux sur un ordinateur que sur un téléphone. Il ne sait pas ce qu'il devrait acheter : c'est exactement ça qu'il vient acheter.
 
-**Range tarifaire** : 5 000 € – ~30 000 € (tarif fixe, pas de TJM). La plupart des projets sérieux se situent plutôt autour de 6 000 € à 12 000 €, avec une première version simple possible à partir de 5 000 €.
+**Ce qu'il cherche vraiment : un seul gars qui fait tout.** Il ne veut pas piloter un projet, il ne veut pas recruter, il ne veut pas arbitrer entre un designer, un développeur et un prestataire de maintenance. Il veut payer et que ça se fasse. C'est une délégation totale, et c'est précisément ce que je vends : un interlocuteur unique de l'idée à la mise en ligne. Celui qui veut « juste un dev » pour piloter lui-même n'est pas mon client.
 
-**Priorité commerciale actuelle** :
+Ce qui le définit ensuite, ce n'est pas son secteur, c'est son **cadre de décision**. Il a une enveloppe, le plus souvent 5 000 à 12 000 €, parfois constituée à plusieurs ou en cours de financement, et il la compare à d'autres placements. Quatre questions l'intéressent, dans cet ordre : combien je mets, quand c'est en ligne, combien ça peut rapporter, qu'est-ce que je risque. La technique ne l'intéresse pas. Le débat mobile contre web encore moins : il attend que je tranche, et que je lui dise pourquoi.
 
-1. **Porteurs d'idée d'application**
-   Fondateurs solo, indépendants, créateurs early-stage, profils non techniques ou semi-techniques. Ils savent déjà qu'ils veulent une application et cherchent surtout à comprendre le potentiel, le budget, le délai et le bon périmètre.
+**Range tarifaire** : 5 000 à 8 000 € pour une première version, 8 000 à 12 000 € pour une application complète. Tarif fixe, jamais de TJM. **Même grille en mobile, en web et en mobile et web : ce qui fait le prix, c'est le périmètre, pas le support.** Une plateforme professionnelle dense se facture au même niveau qu'une application mobile dense.
 
-2. **Entrepreneurs avec clients, audience ou communauté**
-   Coachs, formateurs, salles/studios, consultants, créateurs de contenu, organismes de formation ou indépendants avec une clientèle existante. Ils ne cherchent pas toujours une app au départ, mais leur activité peut être transformée en app mobile : suivi client, contenu premium, abonnement, réservation, espace membre, option payante.
+**Priorité commerciale** :
 
-3. **Prospects en financement**
-   Projets sérieux mais pas encore finançables immédiatement : associés qui cotisent, demande de prêt, recherche d'investisseur, budget en cours de constitution. Ce ne sont pas des leads à jeter, mais des leads à classer en cycle long.
+1. **Porteurs d'idée avec du capital à investir.**
+   Fondateurs solo, indépendants, créateurs early-stage, profils non techniques. Ils voient l'application comme un investissement et attendent un retour, pas une livraison. C'est la priorité numéro un, et de loin. La plupart imaginent du mobile en arrivant, et ils ont raison une fois sur deux.
+
+2. **Professionnels dont l'outil de travail ne tient plus.**
+   Gestion, planning, logistique, suivi de chantier, réservation, facturation. Aujourd'hui sur Excel, sur WhatsApp ou sur un no-code à bout de souffle. C'est presque toujours une application web, et c'est le segment que je laissais passer parce que mon site ne parlait que de mobile.
+
+3. **Prospects en financement.**
+   Associés qui cotisent, prêt en cours, investisseur en discussion. Même profil, cycle plus long, à classer et pas à jeter. L'arbitrage du support y a une valeur immédiate, parce qu'il change le montant à lever.
+
+4. **Entrepreneurs avec une clientèle existante** (opportunité secondaire, plus une priorité d'acquisition).
+   Coachs, formateurs, salles, consultants, créateurs de contenu. **J'en ai eu très peu dans les faits.** Je ne construis plus l'acquisition autour d'eux, je les prends quand ils viennent.
 
 **Pourquoi cette cible** :
 - profils souvent non techniques → ils achètent mon cadrage, ma capacité à traduire l'idée et ma livraison complète, pas une ressource au TJM
@@ -270,7 +287,9 @@ Le bon prospect n'est pas seulement quelqu'un qui "a une idée". C'est quelqu'un
 - CTO, recruteurs, équipes techniques qui cherchent une ressource Flutter au TJM
 - grandes PME structurées avec cycles longs et intégration SI lourde
 - agences mobiles concurrentes (utile ponctuellement en sous-traitance, pas cible principale)
-- projets web simples qui relèvent d'un site vitrine ou d'un outil interne sans logique mobile
+- demandes de **site vitrine** : une page de présentation, une brochure en ligne. Aucun modèle de revenus derrière, ce n'est pas mon métier
+
+> **La frontière de refus a changé.** Elle ne passe plus par le support, elle passe par le **modèle économique**. Une plateforme ou un outil qui fait gagner ou encaisser de l'argent est dans mon métier, qu'il s'ouvre sur un téléphone ou sur un ordinateur. Un site vitrine ne l'est pas, et ne le sera jamais : c'est ce « non » qui empêche de glisser vers un métier à 1 500 €.
 
 **À éviter absolument** :
 - chasseurs de prix bas
