@@ -15,7 +15,9 @@ import {
   MapPin,
   Mic,
   Navigation,
+  PartyPopper,
   Plus,
+  Search,
   Receipt,
   Send,
   Share2,
@@ -400,19 +402,58 @@ function EventScreen() {
   )
 }
 
-function SetlistScreen() {
+// LE CLIENT CHOISIT SES TITRES dans le répertoire de l'artiste (CDC :
+// « Suggestion côté client » et « Action client : valider, modifier ou
+// laisser l'artiste décider »). C'est l'artiste qui remplit son répertoire ;
+// le client ne voit que ses chansons, triées par moment de la soirée.
+function SongPickScreen() {
   const songs = [
+    ['At Last', 'Etta James', true, true],
+    ['La Vie en rose', 'Édith Piaf', true, false],
+    ['L-O-V-E', 'Nat King Cole', false, true],
+    ['Can’t Help Falling in Love', 'Elvis Presley', false, false],
+  ]
+  return (
+    <div className="ar-content ar-content-web">
+      <div className="ar-browser"><Lock size={10} /> aretha.app/noemie/titres</div>
+      <p className="ar-pick-for">Léa et Thomas · mariage du 14 nov.</p>
+      <h1 className="ar-title">Choisissez vos titres</h1>
+      <p className="ar-lead ar-pick-lead">Dans le répertoire de Noémie, moment par moment.</p>
+      <div className="ar-chips ar-pick-moments">
+        <Chip>Cocktail</Chip><Chip on>Première danse</Chip><Chip>Soirée</Chip>
+      </div>
+      <div className="ar-input ar-pick-search"><Search size={13} /> Chercher parmi 86 titres</div>
+      <div className="ar-card ar-list">
+        {songs.map(([t, a, picked, advised]) => (
+          <div key={t} className="ar-row">
+            <span className={`ar-check${picked ? ' ar-check-on' : ''}`}>{picked && <Check size={11} strokeWidth={3} />}</span>
+            <div className="ar-row-copy"><strong>{t}</strong><small>{advised ? <em>Conseillé pour ce moment</em> : a}</small></div>
+          </div>
+        ))}
+      </div>
+      <div className="ar-bottom-actions">
+        <UiButton goto="setlist">Valider mes 2 titres <ArrowRight size={15} /></UiButton>
+        <button className="ar-text-link">Laisser Noémie choisir</button>
+      </div>
+    </div>
+  )
+}
+
+function SetlistScreen() {
+  // Le set 2 ouvre le bal : c'est là que tombent les deux titres choisis
+  // par les mariés sur l'écran précédent (Jour J : 22:30).
+  const songs = [
+    ['At Last', 'Etta James', '3:00', 'Choisi par les mariés'],
+    ['La Vie en rose', 'Édith Piaf', '3:07', 'Choisi par les mariés'],
+    ['Valerie', 'Amy Winehouse', '3:53', null],
     ['Feeling Good', 'Nina Simone', '3:52', null],
     ['Fly Me to the Moon', 'Frank Sinatra', '2:28', null],
-    ['At Last', 'Etta James', '3:00', 'Choisi par les mariés'],
-    ['Valerie', 'Amy Winehouse', '3:53', null],
-    ['Ain’t No Sunshine', 'Bill Withers', '2:05', 'Choisi par les mariés'],
   ]
   return (
     <div className="ar-content ar-with-tab">
       <TopBar title="Setlist · 14 nov." back goBack="event" action={<Plus size={18} />} />
       <div className="ar-set-head">
-        <div><strong>Set 1 · cocktail</strong><small>Glissez un titre pour changer l’ordre</small></div>
+        <div><strong>Set 2 · ouverture du bal</strong><small>Glissez un titre pour changer l’ordre</small></div>
         <span className="ar-num">12 titres · 44 min</span>
       </div>
       <div className="ar-card ar-list">
@@ -597,6 +638,7 @@ function SettingsScreen() {
       <SectionHead>Mon activité</SectionHead>
       <div className="ar-card ar-list">
         <Row lead={<span className="ar-doc"><Receipt size={15} /></span>} title="Statut juridique" meta="Micro-entreprise · TVA non applicable" />
+        <Row lead={<span className="ar-doc"><PartyPopper size={15} /></span>} title="Mes prestations" meta="Mariage, anniversaire, entreprise" />
         <Row lead={<span className="ar-doc"><Users size={15} /></span>} title="Mes musiciens" meta="4 membres" />
       </div>
       <SectionHead>Notifications</SectionHead>
@@ -681,6 +723,7 @@ const FLOWS = [
     note: 'Tout ce qui concerne un concert au même endroit : l’équipe, la setlist, les répétitions.',
     mockups: [
       { id: 'event', title: 'Fiche du concert', subtitle: 'L’équipe et ce qui reste à préparer', screen: <EventScreen />, notes: ['Cliquable : Ouvrir le Jour J'] },
+      { id: 'pick', title: 'Le choix des mariés', subtitle: 'Côté client, par lien, sans compte', screen: <SongPickScreen />, notes: ['Seulement les chansons de l’artiste', 'Cliquable : Valider'] },
       { id: 'setlist', title: 'Setlist', subtitle: 'Glisser-déposer, durée calculée', screen: <SetlistScreen />, notes: ['Les choix des mariés repérés'] },
       { id: 'rehearsal', title: 'Répétition', subtitle: 'Qui vient, qui n’a pas répondu', screen: <RehearsalScreen />, notes: ['Rappels envoyés tout seuls'] },
     ],
@@ -700,7 +743,7 @@ const FLOWS = [
     note: 'Un plan gratuit pour commencer, Premium pour aller plus loin. Le Jour J reste toujours inclus.',
     mockups: [
       { id: 'paywall', title: 'Premium', subtitle: 'Annuel ou mensuel, via les stores', screen: <PaywallScreen />, notes: ['Prix indicatifs'] },
-      { id: 'settings', title: 'Réglages', subtitle: 'Statut, notifications, langue', screen: <SettingsScreen />, tall: true, scroll: true },
+      { id: 'settings', title: 'Réglages', subtitle: 'Statut, prestations, notifications, langue', screen: <SettingsScreen />, tall: true, scroll: true, notes: ['Ses prestations remplissent le formulaire client'] },
       { id: 'admin', title: 'Administration', subtitle: 'Réservé à la propriétaire de l’application', screen: <AdminScreen /> },
     ],
   },

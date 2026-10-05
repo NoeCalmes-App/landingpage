@@ -345,6 +345,12 @@
 .ar-suggest strong { display: block; color: var(--ink); font-size: var(--type-label); }
 .ar-suggest small { display: block; margin-top: 3px; color: var(--ink-soft); font-size: var(--type-meta); }
 
+.ar-pick-for { color: var(--accent-ink); font-size: var(--type-meta); font-weight: 800; letter-spacing: 0.04em; }
+.ar-pick-for + .ar-title { margin-top: 6px; }
+.ar-pick-lead { margin-top: 5px; }
+.ar-pick-moments { margin-top: 12px; }
+.ar-pick-search { margin: 10px 0 8px; color: var(--ink-soft); }
+
 /* Répétition */
 .ar-rehearsal { padding: 12px; display: flex; align-items: center; gap: 13px; }
 .ar-date-block { width: 54px; padding: 8px 0; display: flex; flex-direction: column; align-items: center; border-radius: var(--radius-control); color: #fff; background: var(--action); }
