@@ -5,6 +5,7 @@ Lire `AGENTS.md` en premier. Ce fichier reste volontairement court pour ne pas c
 ## Carte rapide
 
 - Positionnement Noe : `documentation/context/positionnement.md`
+- **Mobile ou web : quel mot employer, et pourquoi · `documentation/context/vocabulaire-mobile-web.md`.** A lire AVANT d'ecrire un article, une page, un email ou un post. Noe ne vend plus seulement du mobile : remplacer mecaniquement « mobile » par « mobile et web » rend la moitie des phrases fausses. Le fichier donne le test du predicat, les deux listes fermees, et la regle qui protege le prix (« site » ne designe jamais une application web).
 - Landing page : `documentation/architecture/landing-page.md`
 - Audit app : `documentation/architecture/audit-app.md`
 - Assets : `documentation/architecture/assets.md`

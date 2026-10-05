@@ -146,6 +146,14 @@ On peut lancer une première version (MVP) pour valider que les gens paient, ava
 
 ## Vocabulaire — À UTILISER
 
+> **La règle complète mobile/web est dans `documentation/context/vocabulaire-mobile-web.md`.**
+> Le tableau ci-dessous en est le résumé. En cas de doute sur un mot, c'est l'autre fichier qui tranche.
+>
+> Les trois lignes qui comptent le plus : le défaut d'écriture est **« une application »** ·
+> on nomme le support dès que le mécanisme décrit n'existe que d'un côté (notification, store,
+> commission, navigateur, profils) · **« site », « site web » et « site vitrine » ne désignent
+> jamais une application web**, ce sont les mots de ce que Noé refuse.
+
 | ✅ Utiliser | ❌ Éviter |
 |---|---|
 | Expert en application mobile | Expert Flutter / Expert Dart |

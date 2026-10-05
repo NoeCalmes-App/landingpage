@@ -149,6 +149,43 @@ enrichir, pas à autoriser.
 Le format complet des champs et des blocs est dans **`modele-article.md`**. Ne
 le réinvente pas ici.
 
+### Mobile, web, ou juste « une application » ?
+
+**Avant d'écrire une ligne, lis `documentation/context/vocabulaire-mobile-web.md`.**
+Noé ne vend plus seulement du mobile. Il conçoit aussi des applications web, et
+il arbitre le support pour le client avant le devis.
+
+Le raccourci qui tue : remplacer « application mobile » par « application mobile
+et web » partout. Ça rend la moitié des phrases **fausses**, parce que leur
+prédicat est mobile (la notification, le store, les 70 % après commission).
+
+**Le test, phrase par phrase** : retire le qualificatif, puis demande-toi si la
+phrase reste vraie quand le produit s'ouvre dans un navigateur.
+
+- Oui → écris **« une application »**. C'est le défaut pour tout ce qui parle de
+  coût, de délai, de rentabilité, de périmètre, de cahier des charges, de
+  prestataire ou de risque.
+- Non → **nomme le support dans la même phrase**.
+
+**Trois pièges à éviter absolument :**
+
+1. **Ne jamais écrire « site », « site web » ou « site vitrine » pour parler
+   d'une application web.** Un site se vend 1 500 € dans la tête du lecteur, une
+   application web se vend 5 000 à 12 000 €. Ces mots désignent ce que Noé
+   refuse, et seulement ça.
+2. **Ne jamais écrire que le web coûte moins cher.** Le support ne fait pas le
+   prix, le périmètre fait le prix. L'avantage du web se dit en **délai** (deux
+   à trois semaines de moins, pas de validation d'Apple) et en **commission**
+   (environ 78 % encaissés contre environ 70 % sur mobile).
+3. **Ne jamais écrire une phrase qui disqualifie le web.** Il en restait cinq
+   dans le blog, du type « ce mécanisme n'est pas accessible à une application
+   web ». C'est le site de Noé qui disqualifiait la moitié de son offre.
+
+**Exemption pour les titres, les slugs et les metaTitle** : là on suit la demande
+mesurée, pas la voix. « prix application mobile » fait 173 impressions,
+« prix application » en fait 5. On garde donc « mobile » dans le titre quand la
+requête le porte. Et **on ne renomme jamais un slug déjà indexé**.
+
 ### Les arbitrages éditoriaux, non négociables
 
 Ils ont chacun coûté une leçon, ils ne se rediscutent pas.
