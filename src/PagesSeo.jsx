@@ -298,8 +298,8 @@ const ETAPES = [
   },
   {
     n: '04',
-    titre: 'Lancement : mise en ligne sur l\'App Store et Google Play',
-    texte: "Je m'occupe de la publication, des fiches store et des allers-retours de validation, qui sont la première source de retard imprévu sur un projet mobile. Tu n'as pas à apprendre les règles d'Apple et de Google.",
+    titre: 'Lancement : en ligne, là où tes utilisateurs sont',
+    texte: "Pour une application mobile, je m'occupe de la publication, des fiches store et des allers-retours de validation, qui sont la première source de retard imprévu. Tu n'as pas à apprendre les règles d'Apple et de Google. Pour une application web, il n'y a personne à qui demander la permission : nom de domaine, hébergement, mise en ligne le jour où on veut. C'est souvent deux à trois semaines de moins.",
   },
   {
     n: '05',

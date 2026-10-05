@@ -1,5 +1,18 @@
 # Prospection Instagram DM — messages selon le signal
 
+> ### Mobile ou web : l'outbound qualifie, il ne tranche jamais
+>
+> Noé conçoit des applications mobiles **et** des applications web, et il arbitre
+> le support selon le projet. Mais **ce n'est jamais le premier message qui
+> tranche** : on écrit « une application », sans qualificatif. L'audit et l'appel
+> décident ensuite.
+>
+> Deux interdits absolus : ne jamais écrire « site », « site web » ou « site
+> vitrine » pour parler d'une application web, et ne jamais présenter le web
+> comme l'option moins chère. Règle complète :
+> `documentation/context/vocabulaire-mobile-web.md`.
+
+
 Objectif : transformer les signaux faibles Instagram en conversations, sans faire de prospection dure.
 
 Principe : le premier message ne doit pas vendre. Il doit ouvrir une réponse simple.
@@ -112,7 +125,7 @@ Ce signal est faible. Ne pas être agressif. À utiliser surtout si le profil es
 
 Message recommandé :
 
-> Salut [Prénom], j'ai vu que tu avais réagi à ma publication sur les applications mobiles.  
+> Salut [Prénom], j'ai vu que tu avais réagi à ma publication sur les applications.  
 > Je préfère demander plutôt que supposer : tu as un projet d'app en tête, ou c'est juste le sujet qui t'a parlé ?
 
 Version plus douce :
@@ -196,7 +209,7 @@ Message recommandé :
 Version courte :
 
 > Salut [Prénom], j'ai vu ton activité autour de [activité].  
-> Tu as déjà pensé à une application mobile pour tes clients, ou ce n'est pas du tout dans tes plans ?
+> Tu as déjà pensé à une application pour tes clients, ou ce n'est pas du tout dans tes plans ?
 
 Si elle répond "pas du tout" :
 
@@ -278,7 +291,7 @@ Message universel après abonnement :
 Message universel froid :
 
 > Salut [Prénom], j'ai vu ton activité autour de [activité].  
-> Tu as déjà pensé à une application mobile pour tes clients, ou ce n'est pas du tout dans tes plans ?
+> Tu as déjà pensé à une application pour tes clients, ou ce n'est pas du tout dans tes plans ?
 
 Phrase de qualification :
 

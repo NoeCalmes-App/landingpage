@@ -181,7 +181,7 @@ pose le tarif fixe et le délai. Google pondère davantage le début de la
 description.
 
 ```
-Expert en applications mobiles à Toulouse, je conçois des applications iOS et Android pensées pour générer des revenus, pas juste pour exister. Au-delà du code, je travaille la stratégie, le modèle économique et la conversion des utilisateurs en clients, de l'idée au lancement sur l'App Store et Google Play. Une application que j'ai conçue génère 13 000 € par mois, et j'ai publié plus de 20 applications. J'accompagne entrepreneurs, coachs, formateurs et porteurs de projet à Toulouse, en Haute-Garonne, en Occitanie et à distance partout en France. Un seul interlocuteur, tarif fixe défini avant de commencer, première version en 4 à 6 semaines. Une idée d'application ? L'audit gratuit en 2 minutes te donne potentiel, budget et délai.
+Expert en applications mobiles et web à Toulouse, je conçois des applications pensées pour générer des revenus, pas juste pour exister. Je commence par trancher le support : une plateforme utilisée par des professionnels se fait en web, une application grand public sur mobile. Au-delà du code, je travaille la stratégie, le modèle économique et la conversion des utilisateurs en clients, de l'idée au lancement. Une application que j'ai conçue génère 13 000 € par mois, et j'ai publié plus de 20 applications. J'accompagne les entrepreneurs qui ont un projet mais pas les compétences techniques, à Toulouse, en Haute-Garonne, en Occitanie et à distance partout en France. Tarif fixe, première version en 4 à 6 semaines.
 ```
 
 ---

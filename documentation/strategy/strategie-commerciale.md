@@ -11,7 +11,9 @@ Document de référence interne. Sert de guide pour structurer la landing, le ch
 ### Offre A — « Première version » (ex-MVP)
 
 **Nom commercial** : *« Application Lancement »* ou *« Première Version »*
-**Slogan court** : *« Une première version pensée pour générer des revenus, sur les stores rapidement. »*
+**Slogan court** : *« Une première version pensée pour générer des revenus, en ligne rapidement. »*
+
+> **Les deux offres sont deux niveaux de PÉRIMÈTRE, pas deux supports.** Chacune se décline en application mobile, en application web, ou en séquence des deux. Le support se tranche au début de l'appel, avant le chiffrage, et il ne change pas le prix. Détail : `documentation/context/vocabulaire-mobile-web.md`.
 
 Le « 45 jours » se dit uniquement quand on parle d'un MVP au périmètre clair. Ce n'est pas l'argument de vente principal : l'argument, c'est l'app pensée pour rapporter, à un prix loin des agences.
 
@@ -284,7 +286,16 @@ Réponds aux questions, puis :
 
 ### « Vous faites du web aussi ? »
 
-> *Oui, ma spécialité c'est l'application mobile (iPhone et Android), mais je fais aussi du site internet et de l'application web. Si votre projet a besoin des deux (l'application sur le téléphone et un site web associé), je gère les deux en parallèle avec le même budget global.*
+> *Oui, et c'est même souvent ce que je recommande. Je conçois des applications mobiles et des applications web, et je tranche le support avec vous avant le devis. Une plateforme que vos équipes ou vos clients professionnels utilisent pour travailler, c'est du web : personne ne cherche son outil de travail sur l'App Store. Une application grand public, c'est du mobile. Et quand les deux sont utiles, on commence par celui qui rapporte le plus vite.*
+
+**Deux pièges à ne jamais commettre sur cette réponse :**
+
+1. **Ne dites jamais « site internet » ni « site web ».** Ces mots valent 1 500 € dans la tête du client. Une application web, c'est un outil avec des comptes, des profils et un espace d'administration, et ça se vend 5 000 à 12 000 € comme une application mobile. Les sites vitrines, vous n'en faites pas, et c'est ce « non » qui protège vos prix.
+2. **Ne dites jamais « le même budget global » pour deux supports.** Deux supports, c'est plus de périmètre, donc plus cher : 9 000 à 12 000 €. Ce qui fait le prix, c'est le périmètre, jamais le support.
+
+### « Une application web, c'est moins cher, non ? »
+
+> *Non, et c'est une confusion fréquente. Ce qui fait le prix, c'est le périmètre : le nombre d'écrans, les profils qui se connectent, les paiements, l'espace d'administration. Une plateforme professionnelle dense coûte la même chose qu'une application mobile dense. Ce que le web vous fait gagner, c'est ailleurs : deux à trois semaines de moins parce qu'il n'y a ni compte développeur à ouvrir ni validation d'Apple à attendre, et aucune commission de store, donc il vous reste environ 78 % de ce que vous encaissez au lieu d'environ 70 %.*
 
 ### « Je n'ai pas de logo ni de design »
 

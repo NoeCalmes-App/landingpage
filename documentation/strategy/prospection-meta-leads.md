@@ -1,5 +1,18 @@
 # Prospection leads Meta (formulaires Insta/Facebook) — séquence WhatsApp
 
+> ### Mobile ou web : l'outbound qualifie, il ne tranche jamais
+>
+> Noé conçoit des applications mobiles **et** des applications web, et il arbitre
+> le support selon le projet. Mais **ce n'est jamais le premier message qui
+> tranche** : on écrit « une application », sans qualificatif. L'audit et l'appel
+> décident ensuite.
+>
+> Deux interdits absolus : ne jamais écrire « site », « site web » ou « site
+> vitrine » pour parler d'une application web, et ne jamais présenter le web
+> comme l'option moins chère. Règle complète :
+> `documentation/context/vocabulaire-mobile-web.md`.
+
+
 > Source de vérité pour la relance des leads issus des formulaires Meta.
 > Contexte : le lead a rempli un formulaire pré-rempli (nom, prénom, email, téléphone) et coché son stade (prêt / bientôt / réflexion / juste une idée). **Il n'a PAS écrit son idée.**
 > Positionnement : `documentation/context/positionnement.md`. Tunnel : `documentation/strategy/tunnel.md`.
@@ -64,7 +77,7 @@ La touche 1 ne dépend plus de l'import manuel (délai 24-48h) : elle part **aut
 ### Touche 1 — J0 (automatisée, template WhatsApp validé Meta)
 
 ```
-Bonjour {prénom}, c'est Noé, je conçois des applications mobiles (noecalmes.fr).
+Bonjour {prénom}, c'est Noé, je conçois des applications mobiles et web (noecalmes.fr).
 Tu as rempli mon formulaire pour ton projet d'application.
 C'est quoi ton idée, dans les grandes lignes ?
 ```
@@ -74,7 +87,7 @@ Ce texte est le template soumis à WhatsApp Manager (variable {{1}} = prénom). 
 Variante stade « prêt / financement en place » :
 
 ```
-Bonjour {prénom}, c'est Noé, je conçois des applications mobiles (noecalmes.fr).
+Bonjour {prénom}, c'est Noé, je conçois des applications mobiles et web (noecalmes.fr).
 Tu as indiqué être prêt à démarrer ton projet d'application.
 C'est quoi ton idée, dans les grandes lignes ?
 ```
@@ -82,7 +95,7 @@ C'est quoi ton idée, dans les grandes lignes ?
 Variante lead sans formulaire (vieux lead, contact hors campagne) :
 
 ```
-Bonjour {prénom}, c'est Noé, je conçois des applications mobiles (noecalmes.fr).
+Bonjour {prénom}, c'est Noé, je conçois des applications mobiles et web (noecalmes.fr).
 Tu t'étais renseigné il y a quelque temps pour créer une application.
 C'est quoi ton idée, dans les grandes lignes ?
 ```

@@ -1,5 +1,18 @@
 # Rédaction de posts LinkedIn — Noé Calmes
 
+> ### Mobile ou web : l'outbound qualifie, il ne tranche jamais
+>
+> Noé conçoit des applications mobiles **et** des applications web, et il arbitre
+> le support selon le projet. Mais **ce n'est jamais le premier message qui
+> tranche** : on écrit « une application », sans qualificatif. L'audit et l'appel
+> décident ensuite.
+>
+> Deux interdits absolus : ne jamais écrire « site », « site web » ou « site
+> vitrine » pour parler d'une application web, et ne jamais présenter le web
+> comme l'option moins chère. Règle complète :
+> `documentation/context/vocabulaire-mobile-web.md`.
+
+
 > **Source de vérité pour écrire les posts LinkedIn de Noé.**
 > À lire en entier dès qu'on parle de post, carrousel ou contenu LinkedIn.
 > Pour le fond (positionnement, ICP, vocabulaire) : `documentation/context/positionnement.md`.
@@ -15,7 +28,7 @@ Ce document part du principe que tu n'as pas encore d'audience. Chaque post a do
 
 ## 1. Rappel express — qui parle et pour qui
 
-**Qui** : Noé Calmes, **expert en application mobile**. Ni dev à la mission, ni agence. Il prend un sujet mobile de la stratégie au lancement (cadrage → design → dev Flutter → publication → suivi).
+**Qui** : Noé Calmes, **expert en applications mobiles & web**. Ni dev à la mission, ni agence. Il prend un sujet mobile de la stratégie au lancement (cadrage → design → dev Flutter → publication → suivi).
 
 **Angle cœur, le fil rouge de TOUT** :
 > « Je ne livre pas une app, je livre un actif qui génère des revenus. »
@@ -247,7 +260,7 @@ Chaque semaine, dans la conversation, préparer les posts **lundi → vendredi d
 
 | ✅ Utiliser | ❌ Éviter |
 |---|---|
-| Expert en application mobile | Expert Flutter / Dart |
+| Expert en applications mobiles & web | Expert Flutter / Dart, site web, site vitrine |
 | Application qui génère des revenus / actif mobile | Livrer du code / dépense technique |
 | Créer · reprendre · faire évoluer | Refonte / développer |
 | Stratégie au lancement | Accompagnement / coaching |
