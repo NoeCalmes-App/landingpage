@@ -355,6 +355,10 @@ function InvoiceScreen() {
           <div><span>Acompte reçu le 20 oct.</span><strong className="ar-num">− 360 €</strong></div>
           <div className="ar-paper-total"><span>Reste à payer</span><strong className="ar-num">840 €</strong></div>
         </div>
+        {/* LE CLIENT PAIE HORS DE L'APP, par virement : l'IBAN de l'artiste est
+            sur la facture, l'app ne fait que suivre le paiement (devis, ligne 6).
+            Le seul achat dans l'app est l'abonnement Premium de l'artiste. */}
+        <div className="ar-paper-iban"><small>Règlement par virement</small><strong className="ar-num">FR76 3000 4000 0312 3456 7890 143</strong></div>
         <p className="ar-paper-note">TVA non applicable, art. 293 B du CGI. À régler avant le 14 nov. 2026.</p>
       </div>
       <div className="ar-bottom-actions">
@@ -715,7 +719,7 @@ const FLOWS = [
     note: 'Le devis naît de la demande acceptée, la facture du devis signé. Rien n’est ressaisi.',
     mockups: [
       { id: 'finances', title: 'Cachets, devis et factures', subtitle: 'Ce qui est payé, ce qui attend', screen: <FinancesScreen />, notes: ['Les retards en premier', 'Cliquable : la facture'] },
-      { id: 'invoice', title: 'La facture', subtitle: 'Prête à envoyer, en PDF', screen: <InvoiceScreen />, notes: ['Mentions adaptées au statut de l’artiste'] },
+      { id: 'invoice', title: 'La facture', subtitle: 'Prête à envoyer, en PDF', screen: <InvoiceScreen />, notes: ['Mentions adaptées au statut de l’artiste', 'Le client paie par virement'] },
     ],
   },
   {

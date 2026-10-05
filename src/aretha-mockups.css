@@ -322,6 +322,9 @@
 .ar-paper-lines strong { font-size: var(--type-label); font-weight: 750; }
 .ar-paper-lines .ar-paper-total span { color: var(--ink); font-weight: 800; }
 .ar-paper-lines .ar-paper-total strong { font-size: var(--type-heading); font-weight: 800; }
+.ar-paper-iban { margin-top: 10px; padding: 9px 11px; border: 1px dashed var(--line-strong); border-radius: var(--radius-control); }
+.ar-paper-iban small { display: block; color: var(--ink-soft); font-size: var(--type-meta); }
+.ar-paper-iban strong { display: block; margin-top: 3px; font-size: var(--type-label); font-weight: 750; letter-spacing: 0.02em; }
 .ar-paper-note { margin-top: 11px; color: var(--ink-soft); font-size: var(--type-meta); line-height: 1.45; }
 
 /* Fiche concert */
