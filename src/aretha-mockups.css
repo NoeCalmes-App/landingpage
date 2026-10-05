@@ -146,8 +146,12 @@
    COMPOSANTS, définis une fois, réutilisés partout
    ============================================================ */
 .ar-app-mark, .ar-icon-button, .ar-avatar, .ar-doc { display: inline-flex; align-items: center; justify-content: center; }
-.ar-app-mark { width: 40px; height: 40px; border-radius: var(--radius-control); color: var(--accent); background: var(--action); box-shadow: var(--shadow-raised); }
+/* Le logo : un dessin, pas du texte. Ses tailles de lettre sont donc hors de
+   l'échelle typographique, volontairement. */
+.ar-app-mark { width: 40px; height: 40px; border-radius: var(--radius-control); color: #17161c; background: linear-gradient(150deg, #e3c47c, #c9a14a 55%, #a9802f); box-shadow: var(--shadow-raised); }
+.ar-app-mark span { font-family: var(--font-display); font-size: 25px; font-weight: 600; line-height: 1; transform: translateY(1px); }
 .ar-app-mark-large { width: 64px; height: 64px; border-radius: var(--radius-hero); }
+.ar-app-mark-large span { font-size: 40px; transform: translateY(2px); }
 
 /* Boutons : trois rôles. Un seul bouton plein par écran. */
 .ar-ui-button { width: 100%; height: var(--control-primary); border: 0; border-radius: var(--radius-control); padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: var(--on-action); background: var(--action); font-size: var(--type-body); font-weight: 750; }

@@ -84,12 +84,13 @@ function PhoneFrame({ children, tall = false, night = false }) {
   )
 }
 
-// Logo provisoire : le micro de scène. Le logo définitif se dessine après
-// signature (CGV 8.7), il remplacera ce seul bloc.
+// Logo provisoire : le « A » à empattements, encre sur laiton. Le micro en
+// carré noir a été jugé pas esthétique (Noé, 5 octobre 2026). Le logo
+// définitif se dessine après signature (CGV 8.7), il remplacera ce seul bloc.
 function AppMark({ large = false }) {
   return (
-    <div className={`ar-app-mark${large ? ' ar-app-mark-large' : ''}`}>
-      <Mic size={large ? 30 : 19} strokeWidth={2.1} />
+    <div className={`ar-app-mark${large ? ' ar-app-mark-large' : ''}`} aria-label="Aretha">
+      <span>A</span>
     </div>
   )
 }
@@ -379,9 +380,9 @@ function EventScreen() {
         <div><small>Cachet</small><strong className="ar-num">1 200 €</strong></div>
         <div><small>Durée</small><strong className="ar-num">2 × 45 min</strong></div>
       </div>
-      <SectionHead action="4 musiciens">L’équipe</SectionHead>
+      <SectionHead action="4 personnes">L’équipe</SectionHead>
       <div className="ar-card ar-team">
-        {[['Thomas', FACE.thomas, 'Piano', true], ['Hugo', FACE.hugo, 'Basse', true], ['Sami', FACE.sami, 'Batterie', true], ['Clara', FACE.clara, 'Chœurs', false]].map(([n, src, role, ok]) => (
+        {[['Thomas', FACE.thomas, 'Piano', true], ['Hugo', FACE.hugo, 'Ingé son', true], ['Sami', FACE.sami, 'DJ', true], ['Clara', FACE.clara, 'Chœurs', false]].map(([n, src, role, ok]) => (
           <div key={n} className="ar-team-member">
             <span className="ar-team-face"><Avatar src={src} name={n} />{ok && <i className="ar-team-ok"><Check size={8} strokeWidth={4} /></i>}</span>
             <strong>{n}</strong>
@@ -482,8 +483,8 @@ function SetlistScreen() {
 function RehearsalScreen() {
   const team = [
     ['Thomas', FACE.thomas, 'Piano', 'yes'],
-    ['Hugo', FACE.hugo, 'Basse', 'yes'],
-    ['Sami', FACE.sami, 'Batterie', 'maybe'],
+    ['Hugo', FACE.hugo, 'Ingé son', 'yes'],
+    ['Sami', FACE.sami, 'DJ', 'maybe'],
     ['Clara', FACE.clara, 'Chœurs', 'none'],
   ]
   const label = { yes: ['paid', 'Oui'], maybe: ['late', 'Peut-être'], none: ['neutral', 'Pas répondu'] }
@@ -639,7 +640,7 @@ function SettingsScreen() {
       <div className="ar-card ar-list">
         <Row lead={<span className="ar-doc"><Receipt size={15} /></span>} title="Statut juridique" meta="Micro-entreprise · TVA non applicable" />
         <Row lead={<span className="ar-doc"><PartyPopper size={15} /></span>} title="Mes prestations" meta="Mariage, anniversaire, entreprise" />
-        <Row lead={<span className="ar-doc"><Users size={15} /></span>} title="Mes musiciens" meta="4 membres" />
+        <Row lead={<span className="ar-doc"><Users size={15} /></span>} title="Mon équipe" meta="4 personnes" />
       </div>
       <SectionHead>Notifications</SectionHead>
       <div className="ar-card ar-list">
@@ -731,9 +732,9 @@ const FLOWS = [
   {
     n: '04',
     title: 'Le Jour J',
-    note: 'Chaque musicien reçoit sa feuille de route la veille. Le soir même, toute l’équipe suit le même déroulé, en direct.',
+    note: 'Chaque membre de l’équipe reçoit sa feuille de route la veille. Le soir même, tout le monde suit le même déroulé, en direct.',
     mockups: [
-      { id: 'crew', title: 'Espace musicien', subtitle: 'Par lien, sans compte à créer', screen: <CrewScreen />, notes: ['Son heure d’arrivée en grand'] },
+      { id: 'crew', title: 'Espace équipe', subtitle: 'Par lien, sans compte à créer', screen: <CrewScreen />, notes: ['Son heure d’arrivée en grand'] },
       { id: 'live', title: 'Jour J en direct', subtitle: 'Le déroulé, minute par minute', screen: <LiveScreen />, night: true, notes: ['Mode nuit, lisible en coulisses', 'Un retard prévient toute l’équipe'] },
     ],
   },
