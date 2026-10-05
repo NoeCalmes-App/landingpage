@@ -80,6 +80,7 @@ Quand Noe demande de creer une maquette pour un nouveau projet, utiliser la page
 - Structure attendue : page autonome sans navbar/footer landing, hero simple, galerie de maquettes, cartes de presentation, frames mobile propres, rendu premium et coherent.
 - Pour un nouveau projet, reprendre la structure et le niveau de finition, mais jamais le contenu, les fonctionnalites, les couleurs ou la marque Aretha si le projet est different.
 - Les maquettes HTML vivent dans `landing-page` sur une route `/maquette/{slug}`. Le devis et le cahier des charges restent geres cote Nowork.
+- L'apercu de partage (WhatsApp, iMessage, LinkedIn) de TOUTES les routes `/maquette/...` est commun : image `assets/images/meta/maquette-og.png`, rendue depuis le gabarit `public/maquette-og.html`, posee par `scripts/generate-routes.js` (bloc `mockupRoutes`). Sans ca, un prospect qui recoit sa maquette voit l'image de l'accueil. Rien a faire par maquette.
 
 En-tete standard a conserver pour les routes `/maquette/...` :
 
@@ -94,6 +95,6 @@ En-tete standard a conserver pour les routes `/maquette/...` :
 Apres modification d'assets ou chemins :
 
 ```bash
-rg -n "src/assets|assets/lib|assets/app/|assets/appicon|assets/person|assets/contact|assets/docs|assets/font|/node_modules/geist|/document\\.pdf|/favicon\\.png|/new-og-image\\.png|/audit-app-og\\.png|/cgv/" -g '!node_modules' -g '!dist'
+rg -n "src/assets|assets/lib|assets/app/|assets/appicon|assets/person|assets/contact|assets/docs|assets/font|/node_modules/geist|/document\\.pdf|/favicon\\.png|/new-og-image\\.png|/audit-app-og\\.png|/maquette-og\\.png|/cgv/" -g '!node_modules' -g '!dist'
 npm run build
 ```

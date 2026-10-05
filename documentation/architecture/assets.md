@@ -64,6 +64,7 @@ Ces fichiers peuvent referencer directement des assets :
 - `public/slides-matchup.html`
 - `public/proposition-matchup.html`
 - `public/audit-app-og.html`
+- `public/maquette-og.html`
 - `public/legal/index.html`
 - `scripts/generate-routes.js`
 
@@ -74,7 +75,7 @@ Apres tout deplacement :
 ```bash
 find . -path './node_modules' -prune -o -path './dist' -prune -o -type f \\( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.svg' -o -iname '*.gif' -o -iname '*.ttf' -o -iname '*.otf' -o -iname '*.woff' -o -iname '*.woff2' -o -iname '*.pdf' \\) -print | sort
 
-rg -n "src/assets|assets/lib|assets/app/|assets/appicon|assets/person|assets/contact|assets/docs|assets/font|/node_modules/geist|/document\\.pdf|/favicon\\.png|/new-og-image\\.png|/audit-app-og\\.png|/cgv/" -g '!node_modules' -g '!dist'
+rg -n "src/assets|assets/lib|assets/app/|assets/appicon|assets/person|assets/contact|assets/docs|assets/font|/node_modules/geist|/document\\.pdf|/favicon\\.png|/new-og-image\\.png|/audit-app-og\\.png|/maquette-og\\.png|/cgv/" -g '!node_modules' -g '!dist'
 
 npm run build
 ```

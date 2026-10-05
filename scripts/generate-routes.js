@@ -1113,6 +1113,19 @@ const mockupRoutes = [
   '/maquette/immomatch',
 ]
 
+// L'APERCU DE PARTAGE D'UNE MAQUETTE PARLE DE LA MAQUETTE (5 octobre 2026).
+//
+// Ces pages heritent de la tete de l'accueil, donc de son image OG : un
+// prospect qui recevait « noecalmes.fr/maquette/metimo » sur WhatsApp voyait
+// « Je transforme votre idee en app qui genere des revenus », l'image de la
+// page d'accueil. Il recoit SA maquette ; l'apercu doit le dire. Meme
+// composition, mots changes : gabarit public/maquette-og.html, rendu en
+// 1200 x 630 dans assets/images/meta/maquette-og.png (c'est le PNG que lisent
+// WhatsApp et consorts, pas le gabarit).
+const MAQUETTE_OG_IMAGE = 'https://noecalmes.fr/assets/images/meta/maquette-og.png'
+const MAQUETTE_OG_ALT = 'La maquette de votre application, par Noé Calmes'
+const MAQUETTE_DESCRIPTION = 'Votre idée prend forme : découvrez la maquette visuelle de votre application, écran par écran.'
+
 for (const path of mockupRoutes) {
   let html = retirerFaqPage(baseHtml)
   html = html.replace(
@@ -1120,6 +1133,16 @@ for (const path of mockupRoutes) {
     '<meta name="robots" content="noindex, nofollow" />'
   )
   html = html.replace(/<title>[^<]*<\/title>/, `<title>Maquettes visuelles — Noé Calmes</title>`)
+  html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/, `<meta name="description" content="${MAQUETTE_DESCRIPTION}" />`)
+  html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/, `<meta property="og:title" content="Maquettes visuelles — Noé Calmes" />`)
+  html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${MAQUETTE_DESCRIPTION}" />`)
+  html = html.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${urlPublique(path)}" />`)
+  html = html.replace(/<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/, `<meta property="og:image" content="${MAQUETTE_OG_IMAGE}" />`)
+  html = html.replace(/<meta\s+property="og:image:alt"\s+content="[^"]*"\s*\/?>/, `<meta property="og:image:alt" content="${MAQUETTE_OG_ALT}" />`)
+  html = html.replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="Maquettes visuelles — Noé Calmes" />`)
+  html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${MAQUETTE_DESCRIPTION}" />`)
+  html = html.replace(/<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:image" content="${MAQUETTE_OG_IMAGE}" />`)
+  html = html.replace(/<meta\s+name="twitter:image:alt"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:image:alt" content="${MAQUETTE_OG_ALT}" />`)
   const routeDir = join(distDir, path)
   mkdirSync(routeDir, { recursive: true })
   writeFileSync(join(routeDir, 'index.html'), html)

@@ -143,6 +143,27 @@ Pour les URLs collees dans un devis, preferer des slugs minuscules et stables :
 - `https://noecalmes.fr/maquette/kingfit-coach/`
 - `https://noecalmes.fr/maquette/cvc-assist/`
 
+### Apercu de partage (image OG)
+
+Toutes les routes `/maquette/...` partagent le meme apercu quand le lien est
+colle dans WhatsApp, iMessage ou LinkedIn (5 octobre 2026) :
+
+- image : `public/assets/images/meta/maquette-og.png`, 1200 x 630 ;
+- gabarit : `public/maquette-og.html`, meme composition que l'image de
+  l'accueil (portrait rond, titre en deux lignes avec l'accent serif et la fin
+  en violet, pastilles), seuls les mots changent : « Votre idee prend forme :
+  la maquette de votre app » ;
+- branchement : bloc `mockupRoutes` de `scripts/generate-routes.js`, qui pose
+  `og:image`, `twitter:image`, leurs `alt`, `og:url` et une description propre
+  aux maquettes.
+
+Avant, ces pages heritaient de l'image OG de l'accueil : un prospect qui
+recevait SA maquette voyait « Je transforme votre idee en app qui genere des
+revenus ». Pour refaire le PNG apres une retouche du gabarit : ouvrir
+`maquette-og.html` en 1200 x 630 (serveur de dev) et le capturer, c'est le PNG
+que lisent les reseaux, jamais la page. Rien a faire par maquette : une
+nouvelle route `/maquette/{slug}` herite de l'apercu.
+
 ### Reference de structure pour nouvelles maquettes
 
 Quand une nouvelle maquette client doit etre creee, prendre Aretha comme reference de structure, pas comme contenu a copier.

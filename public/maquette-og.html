@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Preview Maquette</title>
+    <!--
+      GABARIT DE L'IMAGE OG DES PAGES /maquette/[slug] (5 octobre 2026).
+
+      Quand Noé partage « noecalmes.fr/maquette/metimo » sur WhatsApp, l'aperçu
+      prenait l'image OG de l'accueil (« Je transforme votre idée en app qui
+      génère des revenus »). Un prospect qui reçoit SA maquette doit voir que
+      le lien parle de sa maquette, pas de la page d'accueil.
+
+      Même composition que new-og-image.png : portrait rond à gauche, titre en
+      deux lignes à droite avec l'accent serif italique et la fin en violet de
+      marque, quatre pastilles dessous. Seuls les mots changent.
+
+      Rendu : capture de cette page en 1200 × 630 → assets/images/meta/maquette-og.png
+      (le PNG est ce que lisent WhatsApp et consorts, pas cette page).
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #4b4b4b;
+        --brand: #665dff;
+        --paper: #fbfbfe;
+        --line: rgba(102, 93, 255, 0.075);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        margin: 0;
+        overflow: hidden;
+        background: var(--paper);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .canvas {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        padding: 0 0 0 215px;
+        background:
+          radial-gradient(60% 55% at 50% 118%, rgba(140, 128, 255, 0.42) 0%, rgba(140, 128, 255, 0) 100%),
+          radial-gradient(40% 40% at 6% -4%, rgba(140, 128, 255, 0.2) 0%, rgba(140, 128, 255, 0) 100%),
+          linear-gradient(180deg, #fcfcff 0%, #f5f4fd 100%);
+      }
+
+      /* Le quadrillage de l'image d'origine : des lignes lavande très pâles,
+         qui s'effacent vers le bas sous le halo violet. */
+      .canvas::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--line) 1px, transparent 1px);
+        background-size: 96px 96px;
+        background-position: 48px 30px;
+        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 70%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 0%, #000 70%, transparent 100%);
+      }
+
+      .portrait {
+        position: relative;
+        z-index: 2;
+        width: 330px;
+        height: 330px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 30px 70px rgba(102, 93, 255, 0.18);
+      }
+
+      .portrait img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        width: 520px;
+        flex: 0 0 auto;
+      }
+
+      h1 {
+        margin: 0 0 24px;
+        font-size: 40px;
+        line-height: 1.15;
+        font-weight: 500;
+        letter-spacing: -0.005em;
+        color: var(--ink);
+        white-space: nowrap;
+      }
+
+      .serif {
+        display: inline-block;
+        margin: 0 2px;
+        font-family: "Libre Baskerville", Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      .accent {
+        display: inline-block;
+        background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        padding-bottom: 2px;
+      }
+
+      .pills {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 11px 5px 9px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(102, 93, 255, 0.1);
+        box-shadow: 0 8px 22px rgba(7, 17, 41, 0.05);
+        font-size: 15px;
+        font-weight: 500;
+        color: #3a3a3a;
+        white-space: nowrap;
+      }
+
+      .pill svg {
+        width: 13px;
+        height: 13px;
+        flex: 0 0 auto;
+        color: #2b2b2b;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="canvas">
+      <div class="portrait">
+        <img src="/assets/images/profile/me.png" alt="" />
+      </div>
+      <section class="content">
+        <h1>
+          Votre idée <span class="serif">prend forme</span> :<br />
+          la <span class="accent">maquette de votre app</span>
+        </h1>
+        <div class="pills">
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7" /><path d="M9 7h8v8" /></svg>Maquette</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7" /><path d="M9 7h8v8" /></svg>Écrans</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7" /><path d="M9 7h8v8" /></svg>Mobile &amp; web</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7" /><path d="M9 7h8v8" /></svg>Sur mesure</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
