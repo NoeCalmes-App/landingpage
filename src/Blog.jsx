@@ -2292,7 +2292,7 @@ export const BLOG_ARTICLES = [
       { q: "Un MVP d'application, ça coûte combien ?", a: "En général 5 000 à 8 000 € pour un périmètre resserré : cinq à huit écrans, un compte utilisateur simple, éventuellement un paiement, pas de complexité serveur. C'est le format d'entrée le plus fréquent, et souvent la meilleure décision même quand le budget permettrait plus. Les fourchettes complètes sont dans le prix d'une application mobile." },
       { q: "Qu'est-ce qu'on coupe exactement dans un MVP ?", a: "Tout ce qui n'est pas nécessaire pour que l'utilisateur atteigne la valeur et puisse payer. Les paramètres avancés, les statistiques, les profils multiples, le mode hors ligne, les intégrations secondaires, la personnalisation. Ça attend d'avoir des utilisateurs réels, qui te diront lesquelles de ces choses comptent vraiment. La plupart du temps, ce ne sont pas celles que tu aurais devinées." },
       { q: "On garde le code du MVP pour la suite ?", a: "Oui, et c'est tout l'intérêt de le faire correctement. Un MVP écrit proprement sert de base à la version complète : on ajoute par-dessus, on ne recommence pas. Un MVP bâclé se jette, et le budget économisé au départ est alors perdu deux fois, une fois dans le code jeté et une fois dans le temps perdu." },
-      { q: "Faut-il un MVP mobile ou un MVP web d'abord ?", a: "Le web coûte moins cher et sort plus vite, donc il est tentant. La bonne question n'est pas le prix mais l'usage : si ton produit a besoin d'être utilisé souvent, hors du bureau, avec des notifications, le mobile n'est pas une version plus chère du web, c'est le produit. Si ton usage est ponctuel et se fait assis devant un écran, commence par le web." },
+      { q: "Faut-il un MVP mobile ou un MVP web d'abord ?", a: "Le web sort plus vite, il n'y a ni compte développeur à ouvrir ni validation d'Apple à attendre, donc il est tentant. Mais attention à une idée fausse : le web n'est pas l'option économique. Ce qui fait le prix, c'est le périmètre, pas le support. La bonne question est l'usage : si ton produit a besoin d'être utilisé souvent, hors du bureau, avec des notifications, le mobile n'est pas une version plus chère du web, c'est le produit. Si ton usage est ponctuel et se fait assis devant un écran, commence par le web." },
       { q: "45 jours, ce n'est pas un argument commercial ?", a: "C'est un délai conditionnel, et la condition fait tout : un périmètre arrêté avant de commencer. Sur un projet qui se redéfinit en cours de route, aucun délai ne tient, et ce n'est pas une question de rapidité du développeur. Quarante-cinq jours, c'est quatre à six semaines de développement plus le cadrage et les allers-retours." },
     ],
     content: `
@@ -2356,7 +2356,7 @@ export const BLOG_ARTICLES = [
       </div>
 
       <h2>MVP mobile ou MVP web : lequel d'abord</h2>
-      <p>Le web coûte moins cher et sort plus vite, donc la tentation est réelle. Mais le choix ne se fait pas sur le prix, il se fait sur l'usage.</p>
+      <p>Le web sort plus vite, donc la tentation est réelle. Mais il ne coûte pas moins cher : ce qui fait le prix, c'est le périmètre, pas le support. Le choix se fait sur l'usage.</p>
       <p>Si ton produit doit être utilisé <strong>souvent, hors du bureau, avec des notifications</strong>, le mobile n'est pas une version plus chère du web : c'est le produit. Un MVP web ne testerait pas ton idée, il en testerait une autre, et te donnerait une réponse qui ne s'applique pas.</p>
       <p>Si l'usage est ponctuel et se fait assis devant un écran, commence par le web. C'est moins cher, plus rapide, et tu pourras passer au mobile une fois le besoin prouvé.</p>
 
@@ -2757,8 +2757,8 @@ function BlogList({ onBack, onArticle, onBookCall, onAuditApp, onNaviguer }) {
     retirerPrerender()
     appliquerMeta({
       path: '/blog',
-      title: "Blog, créer une application mobile qui rapporte | Noé Calmes",
-      description: "Guides concrets pour créer une application mobile qui génère des revenus : coûts, modèles économiques, MVP, choix de l'expert et retours d'expérience.",
+      title: "Blog : créer une application mobile ou web | Noé Calmes",
+      description: "Guides concrets pour créer une application mobile ou web qui génère des revenus : coûts réels, modèles économiques, première version, choix de l'expert.",
     })
   }, [])
 

@@ -354,8 +354,31 @@ Elles reviennent régulièrement à l'esprit, et elles sont mauvaises.
   aucun acheteur ne tape ça avant de commander une application.
 - **Une page locale par grande ville** sans présence réelle : Google traite ça
   comme du contenu dupliqué de faible qualité, et ça affaiblit la page Toulouse.
-- **Un sujet déjà couvert par un quizz** : besoin réel, application ou site
-  web, budget. L'article ferait doublon avec la page de test.
+- **Un sujet déjà couvert par un quizz**, à une exception près détaillée
+  ci-dessous : besoin réel, budget.
+
+> **Levée du 05/10/2026 sur le sujet « application web ou mobile ».** Cette règle
+> interdisait l'article d'arbitrage au motif qu'il doublonnait le quizz
+> `/quiz/application-ou-site-web`. Le motif ne tient plus, pour deux raisons.
+>
+> D'abord, l'ancien quizz n'arbitrait pas le même sujet : il opposait une
+> application mobile à un **site vitrine**, sur des critères de visibilité
+> Google, et il présentait le web comme l'option « pour une fraction du
+> budget ». Il n'a jamais traité l'application web comme un produit.
+>
+> Ensuite, il a été refondu le 05/10 et rend désormais quatre verdicts
+> (application mobile · application web · les deux · site vitrine, que Noé
+> refuse). Le quizz et l'article ne se font donc pas concurrence, **ils se
+> relaient** :
+>
+> | | Ce qu'il fait |
+> |---|---|
+> | **Le quizz** | Donne un verdict personnalisé en 6 questions. Il tranche. |
+> | **L'article** | Explique le raisonnement, capte la requête informationnelle, et renvoie vers le quizz. |
+>
+> Les deux doivent se lier l'un à l'autre. Règle générale qui en découle : un
+> quizz et un article peuvent coexister sur un même territoire **si l'article
+> explique ce que le quizz se contente de trancher**.
 
 ## Quand la file sera vide
 

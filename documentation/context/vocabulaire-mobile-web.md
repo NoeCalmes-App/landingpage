@@ -79,6 +79,18 @@ Un site se vend 1 500 € dans la tête du prospect. Une application web se vend
 « site vitrine » reste utile à ce titre : c'est ce « non » qui empêche de
 glisser vers un métier à 1 500 €.
 
+## 6 bis. « SaaS » : autorisé, mais toujours accompagné
+
+Décision de Noé du 05/10/2026. Le mot aide certains prospects à comprendre qu'une
+application web est un produit et pas une vitrine. On l'écrit donc, mais **jamais
+seul** : toujours sous la forme « une application web, ce qu'on appelle aussi un
+SaaS », et au plus une fois par page.
+
+**La façon la plus efficace de le faire comprendre reste l'exemple**, pas le
+vocabulaire : leboncoin.fr, airbnb.com, un logiciel de facturation en ligne. On
+s'y connecte, on y gère un compte, on y encaisse. Personne ne confond ça avec un
+site vitrine.
+
 ## 7. « Plateforme »
 
 Autorisé **dans le corps**, comme description : « une plateforme que des
@@ -91,7 +103,7 @@ requête d'acheteur.
 
 ## 8. Interdits en public, sans exception
 
-B2B · B2C · C2C · SaaS · outil métier · MRR · stack · techno · Flutter ·
+B2B · B2C · C2C · outil métier · MRR · stack · techno · Flutter ·
 Firebase · cross-platform · multiplateforme · solution digitale · produit
 digital · TJM · freelance · prestataire.
 
@@ -141,7 +153,7 @@ de poids :
 | **Combien de profils** | plusieurs, avec des droits différents | un seul type d'utilisateur |
 | **Où on s'en sert** | assis devant un écran, session longue | debout, dehors, en déplacement |
 | **Fonctions du téléphone** | aucune | notifications, photo, position, hors connexion |
-| **Le budget** | serré : moins cher à lancer, sort plus vite | confortable |
+| **Le budget et le délai** | serré ou pressé : sort 2 à 3 semaines plus vite | confortable, pas pressé |
 | **Le délai** | pressé | pas pressé |
 
 **La cause commune, et c'est la clé** : tous ces arguments découlent du store.
@@ -153,9 +165,10 @@ autonomie**. Un professionnel ne cherche pas son outil de travail dans l'App
 Store, donc la commission y serait une perte sèche. Un particulier qui ne te
 connaît pas, il faut l'attraper là où il est, donc le loyer vaut le coup.
 
-**En cas d'égalité des signaux, le web l'emporte** : moins cher pour le client,
-plus rapide à lancer. Mais jamais contre un signal fort : si les notifications
-sont le cœur du produit, c'est mobile, point.
+**En cas d'égalité des signaux, le web l'emporte** : il sort plus vite et il
+demande moins de travail, donc meilleure marge à prix affiché comparable. Mais
+jamais contre un signal fort : si les notifications sont le cœur du produit,
+c'est mobile, point.
 
 ## Ce que le prix ne fait jamais
 
@@ -166,7 +179,14 @@ application mobile dense : 8 000 à 12 000 €. Ce qui fait le montant, c'est le
 nombre d'écrans, les profils, les paiements, l'espace d'administration et la
 densité de la logique métier.
 
-**L'avantage du web ne se dit jamais en euros de moins.** Il se dit :
+**On ne compare jamais les prix des deux supports devant le prospect.** Ni « le
+web coûte moins cher », ni « c'est le même prix que le mobile ». Les deux
+phrases donnent au client une prise sur le devis qu'il n'a pas à avoir. Ce qu'on
+lui dit, et rien d'autre : **ce qui fait le prix, c'est le périmètre**. Décision
+de Noé le 05/10/2026 : « il ne doit pas voir ça, c'est moi qui le mets quasiment
+au même prix ».
+
+**Donc l'avantage du web ne se dit jamais en euros.** Il se dit :
 
 - **en délai** : pas de compte développeur, pas de validation d'Apple, deux à
   trois semaines de moins à périmètre égal, mise en ligne le jour voulu ;

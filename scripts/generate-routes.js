@@ -726,8 +726,8 @@ const blogRoutes = [
     // title/description lus depuis src/Blog.jsx (appel a appliquerMeta dans
     // BlogList) : ne pas les redefinir ici.
     path: '/blog',
-    heading: 'Blog, créer une application mobile qui rapporte',
-    content: 'Guides concrets pour créer une application mobile qui génère des revenus : coûts réels, modèles économiques, MVP, choix de l\'expert et retours d\'expérience.',
+    heading: 'Blog, créer une application qui rapporte, sur mobile ou sur le web',
+    content: 'Guides concrets pour créer une application qui génère des revenus, qu\'elle soit mobile ou web : coûts réels, modèles économiques, première version, cahier des charges, choix de l\'expert et retours d\'expérience. Comment trancher entre une application mobile et une application web, ce qu\'une application web n\'est pas (un site vitrine), et ce que le support change vraiment au délai et à la commission prélevée.',
   },
   {
     path: '/blog/application-audience-revenus-recurrents',

@@ -242,7 +242,7 @@ Nuance importante : ne pas dénigrer l'IA (je l'utilise moi-même). Le message n
 
 ## Ma cible
 
-**Cœur de cible** : l'entrepreneur qui a de l'argent à investir et **aucune compétence technique**.
+**Cœur de cible** : l'entrepreneur qui **délègue tout le développement** et attend un produit fini qui rapporte.
 
 Il arrive avec une idée, pas avec un support. Il ne connaît ni son marché, ni le parcours de son futur utilisateur, et personne ne lui a jamais dit que son idée tenait peut-être mieux sur un ordinateur que sur un téléphone. Il ne sait pas ce qu'il devrait acheter : c'est exactement ça qu'il vient acheter.
 
@@ -250,12 +250,18 @@ Il arrive avec une idée, pas avec un support. Il ne connaît ni son marché, ni
 
 Ce qui le définit ensuite, ce n'est pas son secteur, c'est son **cadre de décision**. Il a une enveloppe, le plus souvent 5 000 à 12 000 €, parfois constituée à plusieurs ou en cours de financement, et il la compare à d'autres placements. Quatre questions l'intéressent, dans cet ordre : combien je mets, quand c'est en ligne, combien ça peut rapporter, qu'est-ce que je risque. La technique ne l'intéresse pas. Le débat mobile contre web encore moins : il attend que je tranche, et que je lui dise pourquoi.
 
-**Range tarifaire** : 5 000 à 8 000 € pour une première version, 8 000 à 12 000 € pour une application complète. Tarif fixe, jamais de TJM. **Même grille en mobile, en web et en mobile et web : ce qui fait le prix, c'est le périmètre, pas le support.** Une plateforme professionnelle dense se facture au même niveau qu'une application mobile dense.
+**Range tarifaire** : 5 000 à 8 000 € pour une première version, 8 000 à 12 000 € pour une application complète. Au-delà, une plateforme vraiment dense se chiffre après cadrage et peut monter plus haut : ces montants ne sont pas un plafond commercial, ce sont les deux paliers les plus courants. Tarif fixe, jamais de TJM.
+
+**Même grille en mobile, en web et en mobile et web : ce qui fait le prix, c'est le périmètre, pas le support.** Une plateforme professionnelle dense se facture au même niveau qu'une application mobile dense.
+
+> **Attention à ne pas confondre deux choses.** L'audit en ligne plafonne volontairement son estimation à 12 000 € parce qu'il chiffre une **première version sérieuse**, pas le périmètre rêvé. Le devis réel, lui, suit le cadrage et n'a pas ce plafond. Si un prospect arrive avec une estimation d'audit à 10 000 à 12 000 € et que le cadrage révèle une plateforme à 20 000 €, ce n'est pas une contradiction : l'audit a fait son travail, qui est de donner un ordre de grandeur de départ.
 
 **Priorité commerciale** :
 
-1. **Porteurs d'idée avec du capital à investir.**
-   Fondateurs solo, indépendants, créateurs early-stage, profils non techniques. Ils voient l'application comme un investissement et attendent un retour, pas une livraison. C'est la priorité numéro un, et de loin. La plupart imaginent du mobile en arrivant, et ils ont raison une fois sur deux.
+1. **L'entrepreneur qui délègue tout le développement et attend un produit fini qui rapporte.**
+   **C'est l'ICP numéro un, et de loin.** Souvent un solopreneur, ou quelqu'un qui investit dans un produit comme il investirait ailleurs. Il a une idée. Il n'a ni le temps ni les compétences pour la réaliser, et il ne veut pas les acquérir. Alors il passe par un expert pour la faire réaliser **de A à Z** : il paie, il obtient un résultat, et il attend un retour sur cet investissement. Une application qui rapporte, pas une application qui existe.
+   Ce qu'il achète n'est pas du développement, c'est **le fait de ne plus avoir à s'en occuper**. Un seul interlocuteur, de l'idée à la mise en ligne. Celui qui veut « juste un dev » pour piloter lui-même n'est pas ce client-là.
+   La plupart imaginent du mobile en arrivant, et ils ont raison une fois sur deux : c'est à moi de trancher le support.
 
 2. **Professionnels dont l'outil de travail ne tient plus.**
    Gestion, planning, logistique, suivi de chantier, réservation, facturation. Aujourd'hui sur Excel, sur WhatsApp ou sur un no-code à bout de souffle. C'est presque toujours une application web, et c'est le segment que je laissais passer parce que mon site ne parlait que de mobile.

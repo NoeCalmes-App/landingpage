@@ -192,9 +192,8 @@ export const QUIZZES = [
       },
       {
         minWeb: 4,
-        titre: "Une application web",
-        titreCourt: "Une application web",
-        texte: "Des professionnels, devant un écran, avec plusieurs profils et des droits différents : ton projet est une plateforme, pas une application de téléphone. Personne ne va chercher son outil de travail dans l'App Store. Et le web t'avantage sur deux points que tu n'avais probablement pas en tête. Le délai d'abord : pas de compte développeur à ouvrir, pas de validation d'Apple à attendre, tu mets en ligne le jour où tu veux, compte deux à trois semaines de moins. L'argent ensuite : aucun store ne prend sa commission, il te reste environ 78 % de ce que tu encaisses, contre environ 70 % sur mobile. Attention, ce n'est pas un site vitrine et ça ne coûte pas le prix d'un site vitrine : c'est un vrai produit, au même budget qu'une application mobile équivalente.",
+        titre: "Une application web (SaaS)",
+        texte: "Des professionnels, devant un écran, avec plusieurs profils : ton projet est une application web, pas une application de téléphone. Personne ne cherche son outil de travail dans l'App Store. Attention à la confusion la plus fréquente : une application web n'est pas un site vitrine. leboncoin.fr, airbnb.com ou ton logiciel de facturation en ligne sont des applications web : on s'y connecte, on y gère un compte, on y encaisse. Deux avantages concrets : la mise en ligne se fait le jour où tu veux, sans compte développeur ni validation d'Apple, et aucun store ne prélève de commission sur ce que tu encaisses.",
       },
       {
         maxWeb: -7,
@@ -209,7 +208,7 @@ export const QUIZZES = [
     contenu: [
       {
         h2: "Site vitrine, application web, application mobile : trois produits différents",
-        p: "Le mot « web » recouvre deux choses qui n'ont rien à voir. Un site vitrine présente ton activité : quelques pages, un formulaire de contact, un objectif de visibilité sur Google. Une application web est un outil de travail : on s'y connecte avec un identifiant, il y a des profils, des droits, des données, souvent des paiements. Le premier coûte quelques centaines à quelques milliers d'euros. Le second coûte le prix d'une application, parce que c'en est une. Confondre les deux est l'erreur la plus chère de ce sujet, dans les deux sens.",
+        p: "Le mot « web » recouvre deux choses qui n'ont rien à voir. Un site vitrine présente ton activité : quelques pages, un formulaire de contact, un objectif de visibilité sur Google. Une application web, ce qu'on appelle aussi un SaaS, est un produit : on s'y connecte avec un identifiant, il y a des comptes, des profils, des données, souvent des paiements. leboncoin.fr et airbnb.com sont des applications web. Confondre les deux est l'erreur la plus chère de ce sujet, dans les deux sens.",
       },
       {
         h2: "Ce qu'une application mobile fait qu'une application web ne fait pas",
@@ -221,7 +220,7 @@ export const QUIZZES = [
       },
       {
         h2: "L'erreur de croire que c'est une question de budget",
-        p: "On choisit rarement entre les deux pour des raisons de prix, et surtout pas parce que le web serait l'option économique. Une application web dense, avec plusieurs profils et un espace d'administration, coûte le même prix qu'une application mobile équivalente : c'est le périmètre qui fait le montant, pas le support. On choisit selon qui s'en sert et dans quel contexte. Un outil utilisé trois fois par an ne mérite aucune application, même avec un budget confortable. Un outil utilisé tous les jours en mérite une, quitte à réduire le périmètre de la première version.",
+        p: "On ne choisit pas son support pour des raisons de prix, et surtout pas en se disant que le web serait l'option économique. Ce qui fait le montant d'un projet, c'est son périmètre : le nombre d'écrans, les profils qui se connectent, les paiements, l'espace d'administration. On choisit selon qui s'en sert et dans quel contexte. Un outil utilisé trois fois par an ne mérite aucune application, même avec un budget confortable. Un outil utilisé tous les jours en mérite une, quitte à réduire le périmètre de la première version.",
       },
     ],
   },
