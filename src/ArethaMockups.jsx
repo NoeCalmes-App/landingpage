@@ -159,7 +159,7 @@ function TabBar({ active = 'home' }) {
   const tabs = [
     { id: 'home', icon: <Home size={19} />, label: 'Accueil', goto: 'dashboard' },
     { id: 'events', icon: <CalendarDays size={19} />, label: 'Concerts', goto: 'event' },
-    { id: 'music', icon: <ListMusic size={19} />, label: 'Répertoire', goto: 'setlist' },
+    { id: 'music', icon: <ListMusic size={19} />, label: 'Répertoire', goto: 'song' },
     { id: 'money', icon: <Wallet size={19} />, label: 'Finances', goto: 'finances' },
   ]
   return (
@@ -402,6 +402,41 @@ function EventScreen() {
       </div>
       <div className="ar-bottom-actions">
         <UiButton goto="live">Ouvrir le Jour J <ArrowRight size={15} /></UiButton>
+      </div>
+    </div>
+  )
+}
+
+// L'ARTISTE RANGE SES CHANSONS, et c'est ce rangement qui fait les
+// suggestions (devis, ligne 7 : « algorithme de suggestion de titres
+// adaptés au profil de l'événement »). Elle coche les événements et les
+// moments d'une chanson ; un client qui réserve un mariage se voit proposer
+// les chansons cochées « mariage », moment par moment. Champs du CDC :
+// titre, durée, tonalité, genre et thème.
+function SongAddScreen() {
+  return (
+    <div className="ar-content">
+      <TopBar title="Nouvelle chanson" back goBack="event" />
+      <div className="ar-field-grid ar-song-main">
+        <div><div className="ar-field-label">Titre</div><div className="ar-input">At Last</div></div>
+        <div><div className="ar-field-label">Interprète d’origine</div><div className="ar-input">Etta James</div></div>
+      </div>
+      <div className="ar-field-grid">
+        <div><div className="ar-field-label">Durée</div><div className="ar-input ar-num">3:00</div></div>
+        <div><div className="ar-field-label">Tonalité</div><div className="ar-input">Fa majeur</div></div>
+      </div>
+      <div className="ar-field-label">Genre</div>
+      <div className="ar-chips"><Chip on>Soul</Chip><Chip>Jazz</Chip><Chip>Pop</Chip><Chip>Variété</Chip></div>
+      <div className="ar-field-label">Pour quels événements ?</div>
+      <div className="ar-chips"><Chip on>Mariage</Chip><Chip on>Anniversaire</Chip><Chip>Entreprise</Chip></div>
+      <div className="ar-field-label">Pour quels moments ?</div>
+      <div className="ar-chips"><Chip>Cocktail</Chip><Chip on>Première danse</Chip><Chip>Soirée</Chip></div>
+      <div className="ar-note ar-song-note">
+        <Sparkles size={15} />
+        <div><strong>Proposée aux mariés pour leur première danse</strong><small>et aux anniversaires, quand le client choisit ses titres</small></div>
+      </div>
+      <div className="ar-bottom-actions">
+        <UiButton goto="pick"><Plus size={15} /> Ajouter au répertoire</UiButton>
       </div>
     </div>
   )
@@ -725,9 +760,10 @@ const FLOWS = [
   {
     n: '03',
     title: 'Préparer le concert',
-    note: 'Tout ce qui concerne un concert au même endroit : l’équipe, la setlist, les répétitions.',
+    note: 'L’artiste range ses chansons une fois, l’app les propose aux clients selon leur événement. Puis la setlist et les répétitions.',
     mockups: [
       { id: 'event', title: 'Fiche du concert', subtitle: 'L’équipe et ce qui reste à préparer', screen: <EventScreen />, notes: ['Cliquable : Ouvrir le Jour J'] },
+      { id: 'song', title: 'Ajouter une chanson', subtitle: 'L’artiste range son répertoire', screen: <SongAddScreen />, notes: ['Ce rangement fait les suggestions', 'Cliquable : Ajouter'] },
       { id: 'pick', title: 'Le choix des mariés', subtitle: 'Côté client, par lien, sans compte', screen: <SongPickScreen />, notes: ['Seulement les chansons de l’artiste', 'Cliquable : Valider'] },
       { id: 'setlist', title: 'Setlist', subtitle: 'Glisser-déposer, durée calculée', screen: <SetlistScreen />, notes: ['Les choix des mariés repérés'] },
       { id: 'rehearsal', title: 'Répétition', subtitle: 'Qui vient, qui n’a pas répondu', screen: <RehearsalScreen />, notes: ['Rappels envoyés tout seuls'] },
