@@ -785,7 +785,7 @@ function App() {
 
           {/* Sous-titre */}
           <p className="text-grey text-[0.92rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-xl mx-auto mb-9 md:mb-11">
-            Je conçois ton application mobile & web pour que tes utilisateurs deviennent des clients qui paient.
+            Je conçois ton application pour qu'elle te rapporte. Sur téléphone ou sur ordinateur : je te dis lequel avant que tu paies un euro.
           </p>
 
           {/* Flux idée → application → revenus */}

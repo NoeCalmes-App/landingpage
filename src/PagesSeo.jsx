@@ -52,8 +52,12 @@ export const FAQ_ITEMS = [
     a: "Oui, c'est un cas fréquent : une application instable, abandonnée par un prestataire, ou dont le code est devenu impossible à faire évoluer. On commence par un audit technique, on stabilise, puis on repart sur de bonnes bases sans tout jeter quand ce n'est pas nécessaire.",
   },
   {
-    q: "Sur quelles plateformes tu développes ?",
-    a: "iOS et Android, avec une seule base de code. Ton application est publiée sur l'App Store et sur Google Play, et je m'occupe de la mise en ligne, des fiches et des allers-retours de validation avec les stores.",
+    q: "Mobile ou web, comment on choisit ?",
+    a: "C'est la première chose que je tranche, avant tout devis. Une plateforme que des professionnels utilisent pour travailler n'a rien à gagner sur l'App Store : personne n'y cherche son outil de travail, et la commission du store y serait une perte sèche. C'est donc une application web. Une application grand public, ou qui met des particuliers en relation, a besoin de l'écran d'accueil, des notifications et du paiement en deux taps : c'est du mobile. Et quand les deux sont utiles, on commence par celui qui porte la valeur immédiate. Le support ne change pas le prix, c'est le périmètre qui le fait.",
+  },
+  {
+    q: "Et concrètement, ça se publie où ?",
+    a: "Pour une application mobile : sur l'App Store et sur Google Play, iOS et Android avec une seule base de code. Je m'occupe de la mise en ligne, des fiches et des allers-retours de validation avec les stores. Pour une application web : sur ton propre nom de domaine, avec l'hébergement, et sans personne à qui demander la permission. C'est d'ailleurs un avantage concret du web, la mise en ligne se fait le jour où on veut, ce qui représente souvent deux à trois semaines de moins.",
   },
   {
     q: "Il me faut quoi avant de te contacter ?",
@@ -217,7 +221,7 @@ export function PageExpertise({ onAccueil, onBookCall, onAuditApp, onNaviguer })
 
         <Corps>
           <p>La plupart des applications ne rapportent rien. Ce n'est presque jamais un problème de code : elles sont bien développées, elles fonctionnent, elles sont en ligne. Elles n'ont simplement jamais été pensées pour encaisser quoi que ce soit.</p>
-          <p>Je m'appelle Noé Calmes, je suis expert en application mobile. J'ai publié plus de 20 applications sur l'App Store et Google Play, et une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>. Mon métier ne s'arrête pas au développement : je conçois ton application comme un actif, pas comme une livraison technique.</p>
+          <p>Je m'appelle Noé Calmes, je suis expert en applications mobiles et web. J'ai publié plus de 20 applications sur l'App Store et Google Play, et une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>. Mon métier ne s'arrête pas au développement : je conçois ton application comme un actif, pas comme une livraison technique.</p>
 
           <h2>Ce que je fais qu'un développeur ne fait pas</h2>
           <p>Un développeur exécute ce que tu lui demandes. C'est utile quand tu sais déjà exactement quoi demander. Le problème, c'est que la question qui décide des revenus se pose avant : qu'est-ce qui sera payant, pourquoi quelqu'un accepterait de payer, et à quel moment il comprend que ça vaut le coup.</p>
