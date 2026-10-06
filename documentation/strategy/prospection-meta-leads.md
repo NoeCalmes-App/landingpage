@@ -118,7 +118,43 @@ Une relance assume d'être une relance : on référence le silence (factuel, san
 
 ### Touche 3 — J+5 : appel
 
-Créneaux : 11h30-12h30 ou 17h-19h. S'il ne décroche pas, message WhatsApp dans la foulée :
+Créneaux : 11h30-12h30 ou 17h-19h. S'il ne décroche pas, **message vocal sur sa
+messagerie**, puis message WhatsApp dans la foulée.
+
+**Le message vocal** (validé le 06/10/2026, vit aussi dans Nowork, page Script
+d'appel, bouton rouge « Messagerie », `[Prénom]` rempli depuis la fiche CRM) :
+
+```
+Bonjour {prénom}, Noé Calmes à l'appareil.
+
+Tu as laissé tes coordonnées sous une de mes publicités, pour la création
+d'une application.
+
+Je suis expert indépendant en applications web et mobile, et mon objectif,
+c'est de créer des applications qui génèrent des revenus récurrents, à
+travers diverses stratégies.
+
+Si ça t'intéresse, rappelle-moi : j'offre un audit gratuit de ton idée, et
+je te dis si ton app peut fonctionner, et te rapporter.
+
+Bonne journée {prénom}.
+```
+
+Environ 70 mots, 27 secondes. Se lit d'une traite, voix posée, sans accélérer :
+si ça dépasse à voix haute, couper un mot, jamais parler plus vite.
+
+Ce que la mesure dit de ce message (Gong, 300 millions d'appels) : les
+prospects rappellent rarement après un vocal, mais le vocal **double la réponse
+sur le WhatsApp qui suit** (2,7 % → 5,9 %). Donc on juge ce message aux
+réponses WhatsApp dans les 48 h, pas aux rappels. Pas plus de trois vocaux par
+lead au total, au-delà l'effet s'effondre.
+
+Pourquoi « sous une de mes publicités » et pas « sur Instagram » : il a validé
+un formulaire pré-rempli par Meta en trois secondes, il ne se souvient pas du
+réseau. « Mes publicités » lui rend le souvenir et dit au passage que Noé est
+une vraie activité, pas un démarcheur.
+
+Le WhatsApp qui suit :
 
 ```
 {prénom}, je viens d'essayer de t'appeler pour ton projet d'application.
