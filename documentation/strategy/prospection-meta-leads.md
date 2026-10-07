@@ -16,6 +16,8 @@
 > Source de vérité pour la relance des leads issus des formulaires Meta.
 > Contexte : le lead a rempli un formulaire pré-rempli (nom, prénom, email, téléphone) et coché son stade (prêt / bientôt / réflexion / juste une idée). **Il n'a PAS écrit son idée.**
 > Positionnement : `documentation/context/positionnement.md`. Tunnel : `documentation/strategy/tunnel.md`.
+>
+> **Depuis le 7 octobre 2026, ce document tient aussi le setting des leads qui écrivent en premier** (publicité « clic vers WhatsApp », bouton du site, fin d'audit) : section « Leads qui écrivent en premier ». Le process tient en une ligne : un message automatique qui pose la question de l'idée, une relance de Noé s'il se tait, une question sur le stade, l'appel. **Le prix et l'accord de confidentialité se traitent à l'appel, jamais dans le fil.**
 
 ## 🔴 2026-09-08 : la touche 1 automatique NE PART PLUS
 
@@ -59,11 +61,13 @@ La touche 1 ne dépend plus de l'import manuel (délai 24-48h) : elle part **aut
 3. **Un seul levier par message** (question OU preuve OU voix OU clôture). Jamais d'empilement.
 4. **Une seule question par message**, la plus facile possible.
 5. **Jamais « c'est toujours d'actualité ? »** ni aucune formulation qui invite le « non ».
-6. **Pas de prix dans les relances.** Fourchette uniquement si demandée, prix précis uniquement après l'appel (devis écrit).
+6. **Pas de prix dans le fil.** Fourchette uniquement si le prospect la demande, le chiffre à l'appel. Expliqué de vive voix, le prix passe (« ok, je comprends ») ; écrit à froid dans WhatsApp, il fait fuir des gens qui auraient dit oui. On n'ancre donc pas le budget par écrit, même pour un lead dont on ne sait rien : la question « tu en es où ? » écarte les curieux, et un appel de 15 minutes pour rien coûte moins cher qu'un projet perdu.
 7. **Le visuel offert n'est jamais promis dans les relances.** Il se débloque en conversation, quand on a assez d'infos, comme récompense (« ton projet tient la route »).
 8. **Le visuel complet ne s'envoie jamais sur WhatsApp.** Teaser (1 capture) dans le chat, le reste se montre à l'appel. C'est l'aimant à rendez-vous.
 9. Chaque message tient sur un écran de téléphone sans scroller. Pas d'emoji en message 1.
 10. Heures d'envoi des touches 2-4 : 12h-13h30 ou 18h-20h en semaine. Pas le dimanche matin. (La touche 1 auto suit sa propre fenêtre : 9h-21h lun-sam, la vitesse prime.)
+11. **Pas de NDA proposé par écrit.** Cette cible n'aime pas les mots « contrat » et « confidentialité » avant d'avoir parlé à quelqu'un. L'accord se propose à la fin de l'appel, avec le devis et la maquette, comme le prévoit le script d'appel ; plus tôt **seulement si le prospect hésite lui-même** à dévoiler son idée. La question « c'est quoi, et pour qui ? » ne demande rien de secret : personne ne se fait voler une idée en disant « une app de coaching sportif pour particuliers ».
+12. **Pas de présentation quand c'est lui qui écrit** : son téléphone affiche déjà « Noé Calmes ». Quand c'est nous qui écrivons en premier (formulaire), une présentation en trois mots, « ici Noé Calmes », jamais « c'est Noé ».
 
 ## La séquence
 
@@ -74,35 +78,37 @@ La touche 1 ne dépend plus de l'import manuel (délai 24-48h) : elle part **aut
 | 3 | J+5 | Appel, puis WhatsApp si pas de réponse | La voix |
 | 4 | J+12 | WhatsApp | Clôture digne |
 
-### Touche 1 — J0 (automatisée, template WhatsApp validé Meta)
+### Touche 1 — J0 (à la main depuis Nowork tant que l'API est coupée)
+
+Le texte qui part est le modèle Nowork **« Premier contact »** (page Templates), que la fenêtre « Premier message » de la carte CRM reprend mot pour mot (texte du 7 octobre 2026) :
 
 ```
-Bonjour {prénom}, c'est Noé, je conçois des applications mobiles et web (noecalmes.fr).
+Bonjour {prénom}, ici Noé Calmes (noecalmes.fr).
 Tu as rempli mon formulaire pour ton projet d'application.
-C'est quoi ton idée, dans les grandes lignes ?
+C'est quoi ton idée, en deux phrases : c'est quoi, et pour qui ?
 ```
 
-Ce texte est le template soumis à WhatsApp Manager (variable {{1}} = prénom). Envoi automatique à T+10 min par Nowork ; si le lead écrit en premier pendant ces dix minutes, l'envoi est annulé et c'est une conversation classique.
+⚠️ Le template Meta `premier_contact_lead` (celui de l'envoi automatique à T+10 min) porte encore l'ancien texte, « c'est Noé, je conçois des applications mobiles… dans les grandes lignes ? ». Le jour où l'envoi automatique repart, soumettre un template au texte du modèle Nowork, sinon un lead contacté à la main et un lead contacté par l'API ne reçoivent pas la même chose (rappel dans `nowork/documentation/context/en-cours.md`). Si le lead écrit en premier, le message ne part pas : c'est une conversation classique, voir « Leads qui écrivent en premier ».
 
 Variante stade « prêt / financement en place » :
 
 ```
-Bonjour {prénom}, c'est Noé, je conçois des applications mobiles et web (noecalmes.fr).
+Bonjour {prénom}, ici Noé Calmes (noecalmes.fr).
 Tu as indiqué être prêt à démarrer ton projet d'application.
-C'est quoi ton idée, dans les grandes lignes ?
+C'est quoi ton idée, en deux phrases : c'est quoi, et pour qui ?
 ```
 
 Variante lead sans formulaire (vieux lead, contact hors campagne) :
 
 ```
-Bonjour {prénom}, c'est Noé, je conçois des applications mobiles et web (noecalmes.fr).
+Bonjour {prénom}, ici Noé Calmes (noecalmes.fr).
 Tu t'étais renseigné il y a quelque temps pour créer une application.
-C'est quoi ton idée, dans les grandes lignes ?
+C'est quoi ton idée, en deux phrases : c'est quoi, et pour qui ?
 ```
 
 Règle d'ancrage : toujours ouvrir sur le fait le plus précis et vrai qu'on a (formulaire rempli, stade coché, simple renseignement). Jamais « j'ai vu que tu étais intéressé » : effet surveillance.
 
-Notes : le domaine entre parenthèses = vérification d'identité passive (il peut voir qui je suis sans répondre), pas un CTA. « Dans les grandes lignes » désamorce la peur de dévoiler l'idée. Envoi possible en 2 bulles (présentation, puis question).
+Notes : le domaine entre parenthèses = vérification d'identité passive (il peut voir qui je suis sans répondre), pas un CTA. « En deux phrases : c'est quoi, et pour qui » borne la question : il sait exactement quoi répondre, et il ne livre rien de secret. Pas de « quand es-tu disponible ? » ici : c'est une question ouverte sur un engagement, posée à quelqu'un qui n'a pas encore de raison de donner son temps ; l'appel se propose après l'idée et le stade, avec deux créneaux.
 
 ### Touche 2 — J+2
 
@@ -121,27 +127,29 @@ Une relance assume d'être une relance : on référence le silence (factuel, san
 Créneaux : 11h30-12h30 ou 17h-19h. S'il ne décroche pas, **message vocal sur sa
 messagerie**, puis message WhatsApp dans la foulée.
 
-**Le message vocal** (validé le 06/10/2026, vit aussi dans Nowork, page Script
-d'appel, bouton rouge « Messagerie », `[Prénom]` rempli depuis la fiche CRM) :
+**Le message vocal** (version du 07/10/2026, vit aussi dans Nowork, page Script
+d'appel, bouton rouge « Messagerie ») :
 
 ```
-Bonjour {prénom}, Noé Calmes à l'appareil.
+Bonjour, Noé Calmes à l'appareil.
 
-Tu as laissé tes coordonnées sous une de mes publicités, pour la création
-d'une application.
+Vous avez laissé vos coordonnées sous une de mes publicités, pour un projet
+d'application.
 
-Je suis expert indépendant en applications web et mobile, et mon objectif,
-c'est de créer des applications qui génèrent des revenus récurrents, à
-travers diverses stratégies.
+Je conçois des applications pensées pour générer des revenus. Rappelez-moi,
+ou répondez-moi sur WhatsApp : je vous dis si votre idée peut fonctionner,
+et vous rapporter.
 
-Si ça t'intéresse, rappelle-moi : j'offre un audit gratuit de ton idée, et
-je te dis si ton app peut fonctionner, et te rapporter.
-
-Bonne journée {prénom}.
+Bonne journée.
 ```
 
-Environ 70 mots, 27 secondes. Se lit d'une traite, voix posée, sans accélérer :
-si ça dépasse à voix haute, couper un mot, jamais parler plus vite.
+Une quarantaine de mots, moins de 20 secondes, un seul souffle. Au
+**vouvoiement** : la personne ne nous attend pas et ne nous connaît pas, c'est
+l'appel à l'improviste. **Sans prénom** : la fiche d'un lead n'a pas toujours le
+sien, et quand le champ porte un nom de famille, le vocal le disait à voix
+haute. La version précédente (70 mots, 27 secondes, au tutoiement) a été
+retirée le 07/10 ; Nowork remplace de lui-même toute copie enregistrée qui
+porte encore « Tu as laissé tes coordonnées ».
 
 Ce que la mesure dit de ce message (Gong, 300 millions d'appels) : les
 prospects rappellent rarement après un vocal, mais le vocal **double la réponse
@@ -169,25 +177,58 @@ Si l'envie revient dans 1 mois ou dans 6, écris-moi ici.
 Bonne continuation !
 ```
 
-Règle transverse : « Bonjour » + « c'est Noé » uniquement au message 1. Ensuite on est dans un fil de conversation, on parle normalement ({prénom} ou rien).
+Règle transverse : « Bonjour » + « ici Noé Calmes » uniquement au message 1, et uniquement quand c'est nous qui écrivons en premier. Ensuite on est dans un fil de conversation, on parle normalement ({prénom} ou rien).
 
 Puis stop. Classer le lead dans Nowork (cycle long), plus aucune relance.
+
+## Leads qui écrivent en premier (publicité « clic vers WhatsApp », bouton du site, fin d'audit)
+
+C'est l'entrée principale tant que l'API est coupée : le lead écrit, la réception ne dépend d'aucune API, et personne n'a de message à lui envoyer en premier. Il arrive avec un texte pré-rempli, le même partout (ne pas y mettre la source, la vidéo ou le support : le suivi Meta le sait, et le support se tranche à l'appel) :
+
+```
+Bonjour Noé, j'ai une idée d'application, on peut en parler ?
+```
+
+**Le message de bienvenue automatique** de l'application WhatsApp Business (Outils professionnels > Message de bienvenue > destinataires : tout le monde). Il part dans la seconde au premier message d'un nouveau contact, sans l'API : c'est lui qui pose la première question à notre place, et c'est ce qui tient la règle des 5 minutes même quand Noé développe.
+
+```
+Bonjour, bien reçu. Je te réponds dans la journée.
+En attendant, dis-moi ton idée en deux phrases : c'est quoi, et pour qui ? Pas besoin d'entrer dans les détails.
+```
+
+**Le premier message de Noé**, seulement s'il n'a pas répondu au message automatique (sinon on passe directement à l'étape suivante). Pas de présentation, son téléphone affiche déjà le nom ; pas de lien, pas de prix :
+
+```
+Bonjour {prénom}. C'est quoi ton idée, en deux phrases : c'est quoi, et pour qui ?
+```
+
+Ensuite, le chemin est le même que pour un lead formulaire : la section suivante.
 
 ## Dès qu'il répond : le chemin vers l'appel
 
 Objectif unique : l'appel de 15 minutes. Le funnel :
 
-il donne son idée → proposition d'appel directe → appel (cadrage + fourchette) → devis sous 48h.
+il donne son idée → une question sur le stade → l'appel, deux créneaux → appel (cadrage + fourchette + accord de confidentialité en fin d'appel) → devis sous 48h.
+
+Deux questions avant l'appel, pas plus : c'est ce que la page `/rendez-vous` promet (« on voit en 2 messages si ton projet tient la route »), et c'est ce qui filtre les curieux sans parler d'argent. Pour un lead formulaire ou audit, dont on connaît déjà le stade, une seule question suffit : l'idée, puis l'appel.
 
 Le visuel offert n'est PAS une étape obligatoire : c'est le joker pour ceux qui hésitent à prendre l'appel.
 
-**1. Il donne son idée** → valider + proposer l'appel dans la foulée :
+**1. Il donne son idée** → valider, puis le stade (trois choix, il répond en deux mots) :
 
 ```
-Ok, ça se tient, je vois bien comment lancer un projet comme ça.
-Le plus simple : on s'appelle 15 minutes, tu m'expliques ton idée et je te dis concrètement comment je la lancerais, budget et délai compris.
+Ok, ça se tient, je vois comment lancer un projet comme ça.
+Tu en es où : juste l'idée, tu y réfléchis sérieusement, ou tu veux démarrer bientôt ?
+```
+
+**1 bis. Il a répondu** → l'appel. « Budget et délai de vive voix » annonce que le prix se parle à l'appel, ce qui coupe le « c'est combien ? » :
+
+```
+Parfait. On s'appelle 15 minutes : tu m'expliques ton idée, je te dis concrètement comment je la lancerais, et on parle budget et délai de vive voix.
 Plutôt demain 12h30 ou jeudi 18h ?
 ```
+
+« Juste l'idée » sans audience ni activité derrière → l'audit plutôt que l'appel (voir « Stade juste une idée qui patine »). « Juste l'idée » mais un coach, un commerçant, un formateur avec des clients → l'appel quand même : l'audience vaut plus que le stade.
 
 **2. Caler le rendez-vous** (Calendly retiré du funnel, voir `tunnel.md` : tout se cale à la main dans le chat) :
 
@@ -212,11 +253,24 @@ Réciprocité + curiosité (il vient voir SON application), et le visuel se mont
 Aucun engagement derrière, c'est 15 minutes : tu vois ton application en visuel, tu sais combien elle coûterait et en combien de temps elle sort. Au pire tu repars avec des idées plus claires.
 ```
 
-**Il demande le prix avant l'appel :**
+**Il demande le prix avant l'appel** (le seul cas où un chiffre s'écrit, et jamais seul : le prix et la question qui relance) :
 
 ```
 Ordre d'idée : une première version démarre à 5 000 €, un projet complet plutôt 8 000 à 12 000.
-Pour ton projet je te donne un chiffre précis à l'appel, une fois la première version cadrée ensemble. Mardi ou jeudi ?
+Le chiffre précis, je te le donne à l'appel, une fois ton idée cadrée. C'est quoi, et pour qui ?
+```
+
+**Il veut une visio ou se voir :**
+
+```
+On commence par 15 minutes au téléphone, c'est le plus efficace pour cadrer. Ensuite je te prépare un visuel de ton application et on le regarde ensemble en visio.
+Plutôt demain 12h30 ou jeudi 18h ?
+```
+
+**Il ne décroche pas à l'heure de l'appel** (le jour même, un seul message, un seul report ; au deuxième, la séquence silence reprend à J+5) :
+
+```
+J'ai essayé de t'appeler à 18h comme prévu. On décale à demain 12h30 ou jeudi 18h ?
 ```
 
 **« C'est trop cher » :**
@@ -226,11 +280,11 @@ Je comprends. Une agence facture 15 000 à 30 000 € pour le même travail, et 
 Et on peut ajuster la première version à ton budget. Tu avais prévu quelle enveloppe ?
 ```
 
-**« Je ne veux pas trop dévoiler mon idée » :**
+**« Je ne veux pas trop dévoiler mon idée »** (le seul moment où l'accord de confidentialité s'écrit : en réponse à une peur exprimée, jamais avant) :
 
 ```
-Je comprends, et c'est plutôt bon signe que tu protèges ton idée. Pas besoin des détails : dis-moi juste le domaine et à qui ça s'adresse.
-Et si on avance ensemble, je signe un accord de confidentialité avant que tu me dévoiles quoi que ce soit.
+Normal, et c'est bon signe. Pas besoin des détails : juste le domaine et pour qui.
+Et si on avance ensemble, je te signe un accord de confidentialité avant que tu me montres quoi que ce soit.
 ```
 
 **Financement pas encore prêt** (cycle long, ne pas jeter, voir Offre C dans `strategie-commerciale.md`) :
