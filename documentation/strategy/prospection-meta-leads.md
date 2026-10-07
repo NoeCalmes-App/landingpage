@@ -17,6 +17,8 @@
 > Contexte : le lead a rempli un formulaire pré-rempli (nom, prénom, email, téléphone) et coché son stade (prêt / bientôt / réflexion / juste une idée). **Il n'a PAS écrit son idée.**
 > Positionnement : `documentation/context/positionnement.md`. Tunnel : `documentation/strategy/tunnel.md`.
 >
+> **Version à copier-coller : Nowork, page `/scripts/setting`** (pastille « Script WhatsApp » sur la fiche d'un lead). Les textes y vivent et s'y modifient ; ce document garde le pourquoi des règles. Changer une règle ici, c'est changer les textes là-bas dans le même geste.
+>
 > **Depuis le 7 octobre 2026, ce document tient aussi le setting des leads qui écrivent en premier** (publicité « clic vers WhatsApp », bouton du site, fin d'audit) : section « Leads qui écrivent en premier ». Le process tient en une ligne : un message automatique qui pose la question de l'idée, une relance de Noé s'il se tait, une question sur le stade, l'appel. **Le prix et l'accord de confidentialité se traitent à l'appel, jamais dans le fil.**
 
 ## 🔴 2026-09-08 : la touche 1 automatique NE PART PLUS
