@@ -254,6 +254,7 @@ function ClientFormScreen() {
       <div className="ar-bottom-actions">
         <UiButton goto="dashboard">Envoyer ma demande <ArrowRight size={15} /></UiButton>
         <small className="ar-legal">Sans compte. Vous recevez une confirmation par e-mail.</small>
+        <small className="ar-made-with">Fait avec <b>Aretha</b></small>
       </div>
     </div>
   )
@@ -638,11 +639,11 @@ function PaywallScreen() {
       <div className="ar-paywall-hero">
         <AppMark large />
         <h1 className="ar-display">Aretha Premium</h1>
-        <p className="ar-lead">Le Jour J reste gratuit, pour toujours.</p>
+        <p className="ar-lead">Gratuit jusqu’à 2 concerts par mois, Jour J compris. Sans limite avec Premium.</p>
       </div>
       <div className="ar-card ar-list ar-benefits">
-        <Row lead={<Check size={14} className="ar-benefit-check" />} title="Demandes et devis illimités" trailing={null} />
-        <Row lead={<Check size={14} className="ar-benefit-check" />} title="Factures en PDF et alertes de paiement" trailing={null} />
+        <Row lead={<Check size={14} className="ar-benefit-check" />} title="Concerts et demandes illimités" trailing={null} />
+        <Row lead={<Check size={14} className="ar-benefit-check" />} title="Devis et factures en PDF" trailing={null} />
         <Row lead={<Check size={14} className="ar-benefit-check" />} title="Setlists et répétitions illimitées" trailing={null} />
       </div>
       <div className="ar-plans">
@@ -706,8 +707,6 @@ function AdminScreen() {
     ['Noémie', FACE.noemie, 'Marseille', 'gold', 'Premium'],
     ['Julien Moreau', FACE.julien, 'Lyon', 'neutral', 'Gratuit'],
     ['Inès Dahan', null, 'Paris', 'gold', 'Premium'],
-    ['Malik Benali', null, 'Toulouse', 'neutral', 'Gratuit'],
-    ['Chloé Martin', null, 'Nantes', 'gold', 'Premium'],
   ]
   return (
     <div className="ar-content">
@@ -721,6 +720,13 @@ function AdminScreen() {
         <strong className="ar-num">386</strong>
         <div className="ar-mix-bar"><i style={{ width: '71%' }} /></div>
         <span>71 % avec un Jour J suivi en direct</span>
+      </div>
+      {/* LA LIMITE DE L'OFFRE GRATUITE EST UN RÉGLAGE, PAS DU CODE (Noé,
+          8 octobre 2026) : la propriétaire la change elle-même, sans
+          développeur ni nouvelle version de l'app dans les stores. */}
+      <SectionHead>Offre gratuite</SectionHead>
+      <div className="ar-card ar-list">
+        <Row lead={<span className="ar-doc"><Sparkles size={15} /></span>} title="2 concerts par mois" meta="Jour J compris" trailing={<button className="ar-act">Modifier</button>} />
       </div>
       <SectionHead action="Tout voir">Artistes</SectionHead>
       <div className="ar-card ar-list">
@@ -744,7 +750,7 @@ const FLOWS = [
     note: 'Le client remplit un lien, sans compte. La demande arrive sur l’accueil de l’artiste, qui répond en un geste.',
     mockups: [
       { id: 'login', title: 'Connexion', subtitle: 'Apple, Google ou e-mail', screen: <LoginScreen />, notes: ['Français ou anglais dès l’ouverture'] },
-      { id: 'form', title: 'Formulaire client', subtitle: 'Une page par lien, sans compte', screen: <ClientFormScreen />, notes: ['Les questions s’adaptent au type d’événement', 'Cliquable : Envoyer'] },
+      { id: 'form', title: 'Formulaire client', subtitle: 'Une page par lien, sans compte', screen: <ClientFormScreen />, notes: ['Un lien à partager, rien à télécharger', 'Les questions s’adaptent au type d’événement', 'Cliquable : Envoyer'] },
       { id: 'dashboard', title: 'Accueil de l’artiste', subtitle: 'Le prochain concert, puis les demandes', screen: <DashboardScreen />, notes: ['Accepter en un geste', 'Cliquable : Accepter'] },
     ],
   },
@@ -783,9 +789,9 @@ const FLOWS = [
     title: 'Le compte',
     note: 'Un plan gratuit pour commencer, Premium pour aller plus loin. Le Jour J reste toujours inclus.',
     mockups: [
-      { id: 'paywall', title: 'Premium', subtitle: 'Annuel ou mensuel, via les stores', screen: <PaywallScreen />, notes: ['Prix indicatifs'] },
+      { id: 'paywall', title: 'Premium', subtitle: 'Annuel ou mensuel, via les stores', screen: <PaywallScreen />, notes: ['Gratuit : 2 concerts par mois', 'Prix indicatifs'] },
       { id: 'settings', title: 'Réglages', subtitle: 'Statut, prestations, notifications, langue', screen: <SettingsScreen />, tall: true, scroll: true, notes: ['Ses prestations remplissent le formulaire client'] },
-      { id: 'admin', title: 'Administration', subtitle: 'Réservé à la propriétaire de l’application', screen: <AdminScreen /> },
+      { id: 'admin', title: 'Administration', subtitle: 'Réservé à la propriétaire de l’application', screen: <AdminScreen />, notes: ['La limite gratuite se change ici, sans mise à jour de l’app'] },
     ],
   },
 ]
