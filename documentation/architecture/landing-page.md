@@ -79,6 +79,51 @@ Trois regles en decoulent, toutes appliquees au build :
 
 `index.html` sert de gabarit a toutes les pages generees. Attention : tout JSON-LD ajoute dans `index.html` se retrouve **sur chaque page generee**. C'est pour ca que `generate-routes.js` retire le bloc `FAQPage` partout sauf sur la home et `/faq`, ou il est regenere depuis `FAQ_ITEMS`. Une page qui declare une FAQ invisible enfreint les regles de Google.
 
+## Hero
+
+Construit comme celui d'Ikovaline (ikovaline.com), à la demande de Noé : un grand titre, une ligne, un
+bouton, puis la vidéo, le plus haut possible.
+
+- Titre : « Je transforme ton idée en application qui génère des revenus » (« app » sur ordinateur pour
+  tenir en deux lignes). Grand sur ordinateur (jusqu'à 4,15 rem) ; sur téléphone, les tailles sont
+  mesurées pour garder trois lignes sans débordement jusqu'à 320 px.
+- Ligne sous le titre : « Stratégie, design et développement : je m'occupe de tout, de l'idée à la mise
+  en ligne. » Elle ne répète pas la vidéo (qui dit déjà « pour qu'elle rapporte ») : elle dit ce que la
+  cible numéro un achète, un seul interlocuteur qui fait tout.
+- Bouton « J'ai une idée d'application », sans icône, plus grand sur ordinateur. Il mène à la section
+  contact, dont le bouton porte le même texte et ouvre WhatsApp. La barre du haut dit « J'ai une idée »
+  (plus court, comme Ikovaline), sur l'accueil, le blog et les quiz.
+- La pastille « +20 applications déjà publiées » est passée sous la vidéo, pour que la vidéo remonte.
+- Fond : le violet monte jusqu'au bouton et entoure la vidéo dès le premier écran ; le haut reste blanc
+  derrière la barre et le titre (`.hero-bg` dans `src/index.css`).
+
+## Film du hero
+
+Sous le bouton « J'ai une idée d'application » du hero, un film de 26 secondes en motion design
+(voix off et bruitages, pas de musique). Code : `src/HeroVideo.jsx` et `src/hero-video.css`.
+Fichiers : `public/assets/videos/hero-v10-1080.mp4` (ordinateur), `hero-v10-720.mp4` (mobile,
+connexion lente, économiseur de données) et deux affiches `hero-v10-poster*.jpg`. Les sources du film
+(textes, voix, réglages) sont dans `content/video-hero/v10/`. Pour publier un nouveau montage,
+changer le numéro dans les noms de fichiers (v11…) : le navigateur ne ressert pas l'ancien film en cache.
+
+Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
+
+- La page s'affiche d'abord avec l'affiche (une vraie image, la bonne taille choisie par le navigateur),
+  la vidéo ne se charge que 0,7 s après. Elle joue alors seule, muette et en boucle, dès que 15 % est à
+  l'écran (sur un portable 1366×768, on en voit à peu près la moitié au chargement).
+- Une barre reste toujours visible en bas de la vidéo : lecture/pause, avancement (clic ou glisser),
+  « Activer le son », plein écran. Un clic sur la vidéo la met en pause ou la relance. Clavier : espace,
+  M, F, flèches. À la fin, elle reprend au début (boucle), comme chez Ikovaline.
+- En plus d'Ikovaline : le premier « Activer le son » (ou un premier clic sur la vidéo, ou le plein écran)
+  repart du début, pour entendre le film en entier. Ensuite, le bouton coupe et remet le son sans revenir
+  en arrière.
+- Muette, elle se met en pause hors de l'écran et dans un onglet masqué. Avec le son, elle continue.
+- Plein écran : le bloc entier sur ordinateur, Android et iPad (la barre s'efface quand la souris ne
+  bouge plus) ; le lecteur natif sur iPhone.
+- Lecture automatique refusée (iPhone en mode économie d'énergie, Safari ou Firefox réglés pour bloquer,
+  navigateur intégré d'une application) ou non souhaitée (`prefers-reduced-motion`, économiseur de
+  données) : l'affiche reste, avec un gros bouton « Lancer la vidéo », qui la lance avec le son.
+
 ## Galerie d’interfaces sur l’accueil
 
 La section `#calories-proof` est portée par `src/AppShowcase.jsx` et

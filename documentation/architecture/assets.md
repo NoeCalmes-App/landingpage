@@ -53,6 +53,7 @@ public/assets/
 - Icônes marque/framework/UI : `public/assets/icons/...`
 - Fonts : `public/assets/fonts/...`
 - PDF publics : `public/assets/documents/...`
+- Vidéos (film du hero) : `public/assets/videos/...`, MP4 H.264 en « faststart » et une affiche JPEG par taille
 - CGV versionnées : `public/assets/documents/cgv/CGV-JJ-MM-AAAA.pdf`. Les fichiers peuvent aussi être exposés sous `public/cgv/` pour garder les liens courts `/cgv/{filename}`, mais le dossier `assets/documents/cgv` reste le chemin public de compatibilité.
 
 ## Fichiers statiques a surveiller

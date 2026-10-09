@@ -125,18 +125,20 @@ section[id] {
 .anim-hero > *:nth-child(7) { animation-delay: 0.85s; }
 
 /* ===== HERO BACKGROUND ===== */
+/* Le violet monte jusqu'au bouton : il entoure la vidéo dès le premier écran (avant, il ne commençait
+   que sous la ligne de flottaison). Le haut reste blanc derrière la barre et le titre. */
 .hero-bg {
   background:
-    radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 66%, transparent),
-    linear-gradient(0deg, #f9f9f9, #b8b3ff 18%, #9a93ff 54%, white 97%);
+    radial-gradient(ellipse 80% 34% at 50% 0%, var(--color-surface) 45%, rgba(255, 254, 252, 0)),
+    linear-gradient(180deg, var(--color-surface) 0%, #f3f1ff 24%, #d6d2ff 44%, #bdb7ff 64%, #aaa3ff 82%, #f9f9f9 100%);
   isolation: isolate;
 }
 
 @media (min-width: 768px) {
   .hero-bg {
     background:
-      radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 72%, transparent),
-      linear-gradient(0deg, #f9f9f9, #cbc8ff 14%, #b6b1ff 45%, white 97%);
+      radial-gradient(ellipse 70% 30% at 50% 0%, var(--color-surface) 50%, rgba(255, 254, 252, 0)),
+      linear-gradient(180deg, var(--color-surface) 0%, #f5f4ff 20%, #dedaff 36%, #c8c3ff 56%, #b9b3ff 78%, #f9f9f9 100%);
   }
 }
 

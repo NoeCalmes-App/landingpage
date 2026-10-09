@@ -1,0 +1,122 @@
+/* Vidéo du hero (src/HeroVideo.jsx), sur le modèle du lecteur d'Ikovaline : lecture auto muette en boucle,
+   barre toujours visible en bas (lecture/pause, avancement, son, plein écran).
+   Plus large que la colonne de texte du hero : centrée avec left + marge négative, sans transform,
+   parce que l'animation d'entrée du hero (.anim-hero > *) anime déjà transform. */
+.hv-zone {
+  --hv-w: min(1100px, calc(100vw - 24px));
+  position: relative;
+  left: 50%;
+  width: var(--hv-w);
+  margin-left: calc(var(--hv-w) / -2);
+  margin-top: 1.75rem;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .hv-zone { --hv-w: min(1100px, calc(100vw - 72px)); margin-top: 2.25rem; }
+}
+
+.hv {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #efedff;
+  outline: 1px solid rgba(102, 93, 255, 0.16);
+  box-shadow: 0 24px 60px -18px rgba(66, 54, 220, 0.42), 0 6px 18px rgba(3, 52, 117, 0.08);
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Plus Jakarta Sans Local', 'Inter', -apple-system, sans-serif;
+}
+@media (min-width: 768px) { .hv { border-radius: 22px; } }
+
+.hv-video { display: block; width: 100%; height: 100%; object-fit: cover; cursor: pointer; background: #efedff; }
+
+/* l'affiche couvre la vidéo jusqu'à sa première image, puis s'efface */
+.hv-affiche {
+  position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%;
+  object-fit: cover; pointer-events: none; transition: opacity 0.35s ease;
+}
+.hv--image .hv-affiche { opacity: 0; }
+
+.hv--plein { border-radius: 0; outline: 0; background: #000; }
+.hv--plein .hv-video { object-fit: contain; background: #000; }
+.hv--plein .hv-affiche { object-fit: contain; }
+
+.hv button { font: inherit; -webkit-tap-highlight-color: transparent; }
+.hv button:focus-visible, .hv [role="slider"]:focus-visible { outline: 2px solid #fffefc; outline-offset: 2px; }
+
+/* ---------- barre du bas, toujours visible ---------- */
+.hv-barre {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
+  display: flex; align-items: center; gap: 4px;
+  padding: 34px 8px 6px;
+  background: linear-gradient(to top, rgba(3, 18, 52, 0.66), rgba(3, 18, 52, 0.26) 55%, rgba(3, 18, 52, 0));
+  color: #fffefc;
+  pointer-events: none;            /* le dégradé laisse passer les clics vers la vidéo… */
+  transition: opacity 0.3s ease;
+}
+.hv-barre > * { pointer-events: auto; }   /* …les boutons et la barre d'avancement, eux, répondent */
+@media (min-width: 640px) { .hv-barre { gap: 10px; padding: 64px 18px 14px; } }
+
+/* plein écran sans bouger la souris : la barre s'efface, comme sur un lecteur vidéo */
+.hv--calme .hv-barre { opacity: 0; }
+.hv--calme .hv-barre > * { pointer-events: none; }
+.hv--calme .hv-video { cursor: none; }
+
+.hv-btn {
+  display: inline-grid; place-items: center; flex: none;
+  width: 34px; height: 34px; border: 0; border-radius: 999px;
+  background: transparent; color: rgba(255, 254, 252, 0.92); cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+.hv-btn:hover { background: rgba(255, 255, 255, 0.16); color: #fffefc; }
+.hv-btn:active { transform: scale(0.95); }
+.hv-btn svg { width: 18px; height: 18px; }
+@media (min-width: 640px) { .hv-btn { width: 40px; height: 40px; } .hv-btn svg { width: 21px; height: 21px; } }
+
+/* son coupé : le bouton dit ce qu'il fait, pour qu'on le trouve tout de suite */
+.hv-son {
+  display: inline-flex; align-items: center; gap: 6px; width: auto;
+  padding: 0 11px 0 8px;
+  background: rgba(255, 255, 255, 0.18);
+  font-weight: 700; font-size: 0.74rem; line-height: 1; letter-spacing: -0.01em; white-space: nowrap;
+}
+.hv-son:hover { background: rgba(255, 255, 255, 0.28); }
+@media (min-width: 640px) { .hv-son { gap: 8px; padding: 0 16px 0 12px; font-size: 0.9rem; } }
+
+/* barre d'avancement : fine, elle s'épaissit sous la souris ; zone de clic plus haute que le trait */
+.hv-piste { position: relative; flex: 1; min-width: 40px; height: 28px; display: flex; align-items: center; cursor: pointer; touch-action: none; }
+.hv-piste-fond { position: relative; width: 100%; height: 3px; border-radius: 3px; background: rgba(255, 255, 255, 0.3); transition: height 0.15s ease; }
+.hv-piste:hover .hv-piste-fond, .hv-piste:focus-visible .hv-piste-fond { height: 5px; }
+.hv-piste-fond i { position: absolute; inset: 0; border-radius: inherit; background: #a59dff; transform-origin: 0 50%; transform: scaleX(0); }
+
+/* ---------- lecture auto refusée (iPhone en économie d'énergie, navigateur réglé pour bloquer…) ---------- */
+.hv-lancer {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  padding-bottom: 28px;
+  border: 0; background: rgba(3, 20, 60, 0.16); color: #fffefc; cursor: pointer;
+}
+.hv-lancer-rond {
+  width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center;
+  background: #665dff; box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.28), 0 14px 34px -8px rgba(66, 54, 220, 0.7);
+  transition: transform 0.2s ease;
+}
+.hv-lancer:hover .hv-lancer-rond { transform: scale(1.06); }
+.hv-lancer-rond svg { width: 26px; height: 26px; margin-left: 3px; }
+/* le texte sur une pastille sombre : lisible sur toutes les images de l'affiche */
+.hv-lancer-txt {
+  font-weight: 700; font-size: 0.85rem; line-height: 1; padding: 8px 14px; border-radius: 999px;
+  background: rgba(3, 18, 52, 0.62); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.hv-lancer-txt em { font-style: normal; font-weight: 500; opacity: 0.85; }
+@media (min-width: 640px) {
+  .hv-lancer { padding-bottom: 48px; }
+  .hv-lancer-rond { width: 84px; height: 84px; }
+  .hv-lancer-rond svg { width: 32px; height: 32px; }
+  .hv-lancer-txt { font-size: 1rem; padding: 10px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hv-affiche, .hv-barre { transition: none; }
+}

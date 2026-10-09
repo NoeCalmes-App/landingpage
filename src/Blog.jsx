@@ -2599,9 +2599,9 @@ function BlogArticlePage({ article, onBack, onBookCall, onAuditApp, onArticle, o
               </a>
               <button
                 onClick={onBookCall}
-                className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
+                className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer whitespace-nowrap"
               >
-                Discuter avec Noé
+                J'ai une idée
               </button>
             </div>
           </div>
@@ -2838,9 +2838,9 @@ function BlogList({ onBack, onArticle, onBookCall, onAuditApp, onNaviguer }) {
               </a>
               <button
                 onClick={onBookCall}
-                className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
+                className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer whitespace-nowrap"
               >
-                Discuter avec Noé
+                J'ai une idée
               </button>
             </div>
           </div>

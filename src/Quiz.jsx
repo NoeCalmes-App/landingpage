@@ -364,8 +364,8 @@ function Entete({ onAccueil, onBookCall }) {
                 <span className="text-grey text-xs md:text-md leading-tight font-normal truncate">Expert en applications mobiles et web</span>
               </span>
             </a>
-            <button onClick={onBookCall} className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer">
-              Discuter avec Noé
+            <button onClick={onBookCall} className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer whitespace-nowrap">
+              J'ai une idée
             </button>
           </div>
         </div>
