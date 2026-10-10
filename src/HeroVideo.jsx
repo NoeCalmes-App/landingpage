@@ -7,18 +7,20 @@ import './hero-video.css'
 //
 // Ce qu'on fait en plus d'eux :
 // - elle attend que la personne fasse défiler la page jusqu'à elle (demande de Noé, octobre 2026) : au
-//   chargement, on lit encore le titre, et on raterait le début du film. En attendant, une affiche est à sa
-//   place, comme chez Ikovaline : une image dans le style du film, avec peu d'éléments (le blanc du film,
-//   « Et si ton idée décollait ? » et la flèche des revenus qui monte). Le film se charge quand même en fond,
-//   pour partir sans attendre ;
+//   chargement, on lit encore le titre, et on raterait le début du film. En attendant, une miniature est à sa
+//   place, comme chez Ikovaline : une « diapo » sur le fond blanc du film, pour qu'on comprenne tout de suite
+//   que c'est une vidéo. Le film se charge quand même en fond, pour partir sans attendre ;
 // - le premier geste pour la regarder (lecture, « Activer le son », clic sur la vidéo, plein écran) la lance
 //   avec le son, depuis le début. Ensuite, le bouton du son coupe et remet le son sans revenir en arrière ;
 // - si le navigateur refuse la lecture automatique (iPhone en économie d'énergie, Safari ou Firefox réglés
 //   pour bloquer, navigateur intégré d'une application), ou si la personne a demandé moins d'animations ou
 //   économise ses données : l'affiche reste, avec un gros bouton « Lancer la vidéo » ;
 // - plein écran : le bloc entier (ordinateur, Android, iPad), le lecteur natif sur iPhone ;
-// - la vidéo muette se met en pause hors de l'écran et dans un onglet masqué. Avec le son, elle continue :
-//   la personne écoute peut-être en lisant la suite.
+// - hors de l'écran, elle se met en pause, même avec le son, et reprend quand elle revient (demande de Noé,
+//   10/10/2026). Si elle est sortie entièrement de l'écran, elle repart du début, muette, avec la miniature en
+//   attendant d'en voir la moitié : c'est une nouvelle vue du film ;
+// - dans un onglet masqué, la vidéo muette se met en pause. Avec le son, elle continue : la personne écoute
+//   peut-être en faisant autre chose.
 //
 // iPhone : la lecture auto ne marche que si la vidéo est muette ET « inline » : les attributs sont posés à la
 // main, parce que React ne pose pas l'attribut `muted`.
@@ -28,16 +30,18 @@ const SOURCES = {
   sd: '/assets/videos/hero-v10-720.mp4',
 }
 // L'affiche est une vraie image (et pas l'attribut `poster`) : le navigateur choisit la bonne taille et la
-// charge en priorité. Elle couvre la vidéo jusqu'à sa première image. Faite avec le fond blanc, la police, le
-// dégradé violet et la courbe « Revenus » du film (content/video-hero/v10) : la vidéo démarre sur ce même blanc.
-const AFFICHE = { petite: '/assets/videos/hero-v10-affiche-decolle-960.webp', grande: '/assets/videos/hero-v10-affiche-decolle.webp' }
+// charge en priorité. Elle couvre la vidéo jusqu'à sa première image. C'est la miniature de la vidéo, dessinée
+// sur le fond blanc du film (celui de « En 2026, un vrai pari ») : « Ton app va décoller. » et une courbe qui
+// monte jusqu'à un point violet. Peu d'éléments, et tout dans les deux tiers du haut : sur ordinateur, le bas de
+// l'écran coupe la vidéo à l'arrivée ; sur téléphone, la barre du lecteur couvre le dernier tiers.
+const AFFICHE = { petite: '/assets/videos/hero-v10-miniature-960.webp', grande: '/assets/videos/hero-v10-miniature.webp' }
 const TAILLES_AFFICHE = '(min-width: 1172px) 1100px, (min-width: 768px) calc(100vw - 72px), calc(100vw - 24px)'
 const DUREE_PAR_DEFAUT = 26
 // Premier départ : il faut avoir fait défiler la page (un vrai geste, pas un rebond) et voir au moins la
 // moitié de la vidéo.
 const DEFILEMENT_MIN = 24
 const SEUIL_DEPART = 0.5
-// Une fois partie, la vidéo muette se met en pause sous 15 % à l'écran, et reprend au-dessus.
+// Une fois partie, la vidéo se met en pause sous 15 % à l'écran (avec ou sans le son), et reprend au-dessus.
 const SEUIL_VISIBLE = 0.15
 // La page s'affiche d'abord (texte, boutons, affiche), la vidéo ne se charge qu'ensuite, comme chez Ikovaline.
 const DELAI_DEMARRAGE = 700
@@ -135,12 +139,28 @@ export default function HeroVideo() {
     let obs = null
     let part = 0            // part de la vidéo à l'écran, de 0 à 1
     let aDefile = false     // la personne a fait défiler la page
+    let sortie = false      // elle a joué, puis elle est sortie entièrement de l'écran : au retour, on recommence
+    const enPleinEcran = () => Boolean(document.fullscreenElement || document.webkitFullscreenElement || v.webkitDisplayingFullscreen)
 
     const decider = () => {
       const vu = part >= SEUIL_VISIBLE - 0.001
       visible.current = vu
-      if (!vu) { if (!v.paused && v.muted) v.pause(); return }
+      if (!vu) {
+        // hors de l'écran : elle s'arrête, même avec le son
+        if (!v.paused && !enPleinEcran()) v.pause()
+        // sortie entièrement alors qu'elle jouait : la miniature revient, et le film repartira du début
+        if (part === 0 && dejaPartie.current && veutJouer.current && !sortie) { sortie = true; setImage(false) }
+        return
+      }
       if (document.hidden || !v.paused || !veutJouer.current) return
+      if (sortie) {
+        // retour après une sortie complète : depuis le début et sans le son, quand on en voit la moitié
+        if (part < SEUIL_DEPART - 0.001) return
+        sortie = false
+        try { v.currentTime = 0 } catch { /* rien de chargé : elle part déjà de 0 */ }
+        v.muted = true
+        sonDejaMis.current = false   // « Activer le son » la relance avec le son, depuis le début
+      }
       // la première fois, seulement quand on est arrivé jusqu'à elle ; ensuite, dès qu'elle revient à l'écran
       if (dejaPartie.current || (aDefile && part >= SEUIL_DEPART - 0.001)) jouer()
     }

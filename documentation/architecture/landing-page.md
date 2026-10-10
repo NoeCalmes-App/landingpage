@@ -91,20 +91,27 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
 - Phrase sous le titre : « Stratégie, design et développement : je m'occupe de tout, de l'idée à la mise
   en ligne. » Noé l'a préférée à l'ancienne (« Je conçois ton application mobile & web pour qu'elle
   rapporte vraiment… »).
-- Bouton « J'ai une idée d'application », avec la flèche du bouton « Discuter de mon projet », plus grand
-  sur ordinateur et sur une seule ligne jusqu'à 320 px. Il mène à la section contact, dont le bouton
-  porte le même texte et ouvre WhatsApp. La barre du haut dit « J'ai une idée » (plus court, comme
-  Ikovaline), sur l'accueil, le blog et les quiz.
-- Au survol, ces deux boutons « J'ai une idée d'application » ont le reflet de la fin du film (« Audit
-  offert ») : un trait de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les
-  traverse et passe sous le texte (`.btn-reflet` dans `src/index.css`). Seulement à la souris, et pas
-  quand moins d'animations sont demandées.
+- Bouton « Discuter avec Noé » (avant le 10/10/2026 : « J'ai une idée d'application », changé à la
+  demande de Noé), avec la flèche du bouton « Discuter de mon projet », plus grand sur ordinateur et sur
+  une seule ligne jusqu'à 320 px. Il mène à la section contact, « Parlons de ton projet » (avant : « …de
+  ton application »), dont le bouton porte le même texte et ouvre WhatsApp, comme celui du menu sur
+  téléphone. Au-dessus de ce titre, « 2 projets par mois · 1 place disponible en <mois> » est dans une
+  pastille au fond violet léger, en plus petit (même style que « Audit express · 2 min »). La barre du
+  haut dit « J'ai une idée » (plus court, comme Ikovaline), sur l'accueil, le blog et les quiz.
+- Au survol, tous les boutons de l'accueil ont le reflet de la fin du film (« Audit offert ») : un trait
+  de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les traverse et passe sous le
+  texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (« Discuter avec Noé », « Discuter de
+  mon projet », « Voir mon Instagram », « Lancer mon audit ») et les boutons noirs (« J'ai une idée » en
+  haut, le bouton du menu sur téléphone), où le même trait blanc se voit comme un reflet gris clair
+  (demande de Noé du 10/10/2026 : « tous les autres boutons », « travailler en noir »). Seulement à la
+  souris, et pas quand moins d'animations sont demandées.
 - Espacement (demande de Noé du 10/10/2026 : plus d'air au-dessus du titre, la vidéo plus bas) : sur
   ordinateur, 88 px entre la barre du haut et le titre, puis 28 px jusqu'à la phrase, 40 px jusqu'au
-  bouton et 60 px jusqu'à la vidéo (titre à 176 px du haut, vidéo à 524 px). Sur téléphone : 20, 32 et
-  40 px. Le hero reste centré en hauteur quand l'écran est plus haut que son contenu. Sur un ordinateur
-  bas (hauteur 820 px ou moins : portables 1366×768, 1280×720), l'air est réduit (48, 20, 32, 40 px) pour
-  que le message de l'affiche de la vidéo se voie dès l'arrivée (`src/index.css`).
+  bouton et 80 px jusqu'à la vidéo (titre à 176 px du haut, vidéo à 544 px sur l'écran de Noé, 1710 ×
+  951 : « la vidéo un peu plus bas », 10/10/2026). Sur téléphone : 20, 32 et 40 px. Le hero reste centré
+  en hauteur quand l'écran est plus haut que son contenu. Sur un ordinateur bas (hauteur 820 px ou
+  moins : portables 1366×768, 1280×720), l'air est réduit (48, 20, 32, 40 px) pour que la miniature de
+  la vidéo se voie dès l'arrivée (`src/index.css`).
 - Fond (`.hero-bg` dans `src/index.css`) : une lueur violette en arc de cercle. Un grand cercle blanc
   centré en haut (blanc jusqu'à 34 % du rayon, fondu jusqu'à 70 %) laisse le violet monter haut sur les
   côtés, descendre doucement vers le milieu et remonter de l'autre côté ; il entoure la vidéo. Même
@@ -112,28 +119,31 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
 
 ## Film du hero
 
-Sous le bouton « J'ai une idée d'application » du hero, un film de 26 secondes en motion design
+Sous le bouton « Discuter avec Noé » du hero, un film de 26 secondes en motion design
 (voix off et bruitages, pas de musique). Code : `src/HeroVideo.jsx` et `src/hero-video.css`.
 Fichiers : `public/assets/videos/hero-v10-1080.mp4` (ordinateur), `hero-v10-720.mp4` (mobile,
-connexion lente, économiseur de données) et deux affiches `hero-v10-affiche-decolle*.webp`.
+connexion lente, économiseur de données) et la miniature `hero-v10-miniature.webp` (et `-960`).
 Les sources du film
 (textes, voix, réglages) sont dans `content/video-hero/v10/`. Pour publier un nouveau montage,
 changer le numéro dans les noms de fichiers (v11…) : le navigateur ne ressert pas l'ancien film en cache.
 
 Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
 
-- Tant que la vidéo n'a rien montré, une affiche est posée dessus, comme chez Ikovaline (une image du
-  film, peu d'éléments) : le fond blanc du film, « Et si ton idée décollait ? » (« décollait » dans le
-  dégradé violet, comme « décoller » dans le film), calée à gauche, et une courbe fine qui part sous le
-  texte et décolle en flèche vers le haut à droite. Tout tient dans le haut de l'image : sur ordinateur,
-  on ne voit que le haut de la vidéo à l'arrivée, et en descendant pour voir le reste on la lance
-  (« mets-toi à la place de l'utilisateur », Noé). Noé a choisi le blanc parmi quatre propositions
-  (violet ou blanc, « En 2026, un vrai pari. » avec les dés, ou cette phrase), puis la courbe parmi
-  quatre autres (courbe, avion en papier, texte seul, pastille), « en plus beau », texte à gauche.
-  Refusés avant : une courbe de graphique en bas à gauche avec un aplat (« pas belle »), un trait sous
-  « décollait » avec le texte centré. Refusés avant : l'image « 8 apps sur 10 » (« ça donne pas envie
-  de regarder »), une couverture avec sa photo et « Regarde la vidéo » (« pas ma tête »), le titre du hero
-  répété. Source de l'image : `affiche.html` (variante F) dans le dossier de rendu du film.
+- Tant que la vidéo n'a rien montré, une miniature est posée dessus, comme chez Ikovaline (une « diapo »,
+  peu d'éléments) : le fond blanc du film (celui de « En 2026, un vrai pari »), « Ton app va décoller. »
+  centré en haut (« décoller. » dans le dégradé violet, comme dans le film) et une courbe qui reste à plat
+  puis monte vers le haut à droite jusqu'à un point violet, avec un léger dégradé dessous. La phrase est
+  plus petite que le titre du hero, pour qu'il reste le plus gros de la page. Tout tient dans les deux
+  tiers du haut : sur ordinateur, on ne voit que le haut de la vidéo à l'arrivée, et en descendant on la
+  lance (« mets-toi à la place de l'utilisateur », Noé) ; sur téléphone, la barre du lecteur couvre le
+  dernier tiers. Choisie par Noé le 10/10/2026 (« l'image courbe 1 ») parmi trois : la courbe, des barres
+  qui montent, la carte « Revenus » du film. Sa demande : « un graphique qui monte, pour faire ressentir
+  ton app va décoller », sur ce fond blanc, sans les dés ni le texte. Refusés avant : une vraie image du
+  film (« Ils paient chaque mois. », le téléphone et trois abonnements, sur violet puis sur blanc : « trop
+  de design, trop d'éléments »), « Et si ton idée décollait ? » avec une courbe fine en flèche (« pas
+  beau »), l'image « 8 apps sur 10 » (« ça donne pas envie de regarder »), une couverture avec sa photo
+  et « Regarde la vidéo » (« pas ma tête »), le titre du hero répété. Source :
+  `content/video-hero/v10/src/miniature.cjs`.
 - Le film se charge en fond 0,7 s après l'affichage, mais ne démarre que quand on fait défiler la page
   jusqu'à lui (demande de Noé, octobre 2026) : au moins 24 px de défilement et la moitié de la vidéo à
   l'écran. Il joue alors seul, muet et en boucle, depuis le début. Pourquoi : au chargement, on lit le
@@ -144,8 +154,12 @@ Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
 - En plus d'Ikovaline : le premier geste pour la regarder (lecture, « Activer le son », clic sur la
   vidéo, plein écran) la lance avec le son, depuis le début, pour entendre le film en entier. Ensuite,
   le bouton coupe et remet le son sans revenir en arrière.
-- Une fois partie, muette, elle se met en pause sous 15 % à l'écran et dans un onglet masqué, et reprend
-  quand elle revient. Avec le son, elle continue.
+- Une fois partie, elle se met en pause sous 15 % à l'écran, même avec le son, et reprend là où elle
+  était quand elle revient. Si elle est sortie entièrement de l'écran, la miniature revient, et au retour
+  le film repart du début, sans le son, quand on en voit la moitié (demande de Noé du 10/10/2026 : « si
+  je reviens, ça revient au début »). Sans le son, on n'a pas une voix qui surgit en remontant la page ;
+  « Activer le son » le relance avec le son, depuis le début. Dans un onglet masqué : en pause si elle est
+  muette, elle continue avec le son.
 - Plein écran : le bloc entier sur ordinateur, Android et iPad (la barre s'efface quand la souris ne
   bouge plus) ; le lecteur natif sur iPhone.
 - Lecture automatique refusée (iPhone en mode économie d'énergie, Safari ou Firefox réglés pour bloquer,
@@ -197,6 +211,14 @@ d’ombre ni de déplacement au survol.
 
 Sur mobile, les cartes « Comment ça se passe ? » placent une illustration de 128 × 118 px
 à droite du début du texte pour rapprocher le numéro, le titre et la description.
+Les trois étapes (refaites à la demande de Noé le 10/10/2026) : 1 « On en parle » (au premier
+appel, on discute de l'idée et Noé donne des conseils concrets pour bien la lancer ; on repart avec
+un avis clair, « même si on ne travaille pas ensemble »), 2 « On cadre » (après l'appel : cahier des
+charges offert, première maquette, devis clair ; « ce que tu vas avoir, quand, et pour combien »),
+3 « On construit ensemble » (la maquette reprise sur mesure, le développement, la publication sur
+les stores ou sur le web, puis « je t'accompagne pour la faire évoluer », plus pro que « je reste
+dispo après »). Les trois textes ont la même longueur (6 lignes sur ordinateur) : le contenu des
+cartes est centré en hauteur, donc des textes inégaux décalent les pastilles « Étape ».
 La fin de page suit l’ordre : contact WhatsApp, FAQ, Instagram, audit express,
 pied de page. La FAQ s’intitule « Pour y voir plus clair », sur fond blanc avec
 un espacement supérieur réduit sur mobile. Sous les trois questions, « Une autre

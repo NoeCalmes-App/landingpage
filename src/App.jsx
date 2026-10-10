@@ -692,7 +692,7 @@ function App() {
                 <a
                   href={lienInterne('/rendez-vous')}
                   onClick={goBookCall}
-                  className="hidden sm:inline-block bg-[#131313] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors cursor-pointer whitespace-nowrap"
+                  className="btn-reflet hidden sm:inline-block bg-[#131313] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors cursor-pointer whitespace-nowrap"
                 >
                   J'ai une idée
                 </a>
@@ -728,10 +728,10 @@ function App() {
                   ))}
                   <a
                     href={lienInterne('/rendez-vous')}
-                    className="sm:hidden text-center bg-[#131313] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer"
+                    className="btn-reflet sm:hidden text-center bg-[#131313] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer"
                     onClick={(event) => { setMenuOpen(false); goBookCall(event) }}
                   >
-                    J'ai une idée d'application
+                    Discuter avec Noé
                   </a>
                 </div>
               </div>
@@ -800,7 +800,7 @@ function App() {
               onClick={goBookCall}
               className="btn-reflet group inline-flex items-center gap-2 min-[360px]:gap-2.5 whitespace-nowrap bg-brand text-surface font-semibold text-[0.95rem] min-[360px]:text-[1rem] sm:text-[1.06rem] md:text-[1.15rem] px-5 min-[360px]:px-8 py-3.5 sm:px-9 md:px-11 md:py-[1.05rem] rounded-full cursor-pointer shadow-[0_10px_28px_-8px_rgba(102,93,255,0.55)] hover:bg-[#5a50f5] transition-colors"
             >
-              J'ai une idée d'application
+              Discuter avec Noé
               <svg className="shrink-0 w-[18px] h-[18px] min-[360px]:w-[22px] min-[360px]:h-[22px] transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
@@ -978,7 +978,7 @@ function App() {
             <a
               href={lienInterne('/rendez-vous')}
               onClick={goBookCall}
-              className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
+              className="btn-reflet group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
                Discuter de mon projet
               <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1000,9 +1000,9 @@ function App() {
 
           <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-3.5 md:gap-7 max-w-230 mx-auto">
             {[
-              { num: '1', title: 'On cadre', desc: 'Tu me présentes ton idée. Je te fais un cahier des charges offert, une première maquette et un devis clair.', img: meetingSvg },
-              { num: '2', title: 'Je conçois et développe', desc: 'Je construis ton application pour qu\'elle convertisse, pas juste pour qu\'elle existe.', img: devSvg },
-              { num: '3', title: 'Tu lances', desc: 'Ton application est en ligne : sur l\'App Store et Google Play, sur le web, ou les deux, selon ce qu\'on a choisi ensemble. Je reste dispo après.', img: postSvg },
+              { num: '1', title: 'On en parle', desc: 'Au premier appel, on discute de ton idée et je te donne des conseils concrets pour bien la lancer. Tu repars avec un avis clair, même si on ne travaille pas ensemble.', img: meetingSvg },
+              { num: '2', title: 'On cadre', desc: 'Après l\'appel, je t\'envoie un cahier des charges offert, une première maquette et un devis clair. Tu sais ce que tu vas avoir, quand, et pour combien.', img: devSvg },
+              { num: '3', title: 'On construit ensemble', desc: 'Je reprends la maquette sur mesure, je développe ton application et je la publie sur les stores ou sur le web. Ensuite, je t\'accompagne pour la faire évoluer.', img: postSvg },
             ].map(({ num, title, desc, img }) => (
               <div key={num} className="process-card group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
                 <img src={img} alt={title} loading="lazy" width="280" height="160" className="process-illustration w-full h-32 md:h-40 object-contain mb-6" />
@@ -1022,24 +1022,27 @@ function App() {
       {/* ========== CONTACT WHATSAPP ========== */}
       <section className="pt-16 md:pt-22 pb-0 md:pb-0 px-5 bg-card" id="contact-section">
         <div className="max-w-275 mx-auto text-center">
-          <p className="reveal flex items-center justify-center gap-2 text-xs md:text-sm text-grey mb-3 min-h-[1.5rem]">
-            {spotsLoaded ? (
-              <>
-                <span className="relative flex h-2 w-2 shrink-0">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+          {/* Les disponibilités, dans une pastille au fond léger (même style que « Audit express · 2 min ») */}
+          <p className="reveal flex justify-center mb-4 min-h-[1.85rem]">
+            <span className="inline-flex items-center gap-2 rounded-full bg-brand/6 border border-brand/12 px-3.5 py-1.5 text-[0.72rem] md:text-[0.78rem] leading-none">
+              {spotsLoaded ? (
+                <>
+                  <span className="relative flex h-1.5 w-1.5 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
+                  </span>
+                  <strong className="text-text font-semibold animate-fadeIn">2 projets par mois · 1 place disponible en {new Date().toLocaleString('fr-FR', { month: 'long' })}</strong>
+                </>
+              ) : (
+                <span className="inline-flex gap-1.5 items-center text-grey/60">
+                  <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
+                  Vérification des disponibilités…
                 </span>
-                <strong className="text-text font-semibold animate-fadeIn">2 projets par mois · 1 place disponible en {new Date().toLocaleString('fr-FR', { month: 'long' })}</strong>
-              </>
-            ) : (
-              <span className="inline-flex gap-1 items-center text-grey/50 text-xs">
-                <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
-                Vérification des disponibilités…
-              </span>
-            )}
+              )}
+            </span>
           </p>
           <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-3 md:mb-4">
-            Parlons de <span className="text-brand">ton application</span>
+            Parlons de <span className="text-brand">ton projet</span>
           </h2>
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-2">
             Une idée, ou une application déjà en ligne&nbsp;? Écris-moi&nbsp;: je regarde ton projet et je te dis comment avancer.
@@ -1053,7 +1056,7 @@ function App() {
               className="btn-reflet group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
               <svg className="w-[18px] h-[18px] md:w-[20px] md:h-[20px] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.057 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.562-5.338 11.897-11.9 11.897a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.5 5.211l-.999 3.648 3.998-1.171z"/></svg>
-              <span>J'ai une idée d'application</span>
+              <span>Discuter avec Noé</span>
             </a>
             <div className="flex items-center gap-3 mt-8 mb-4 max-w-xs sm:max-w-md mx-auto px-2 text-left">
               <img src={mePhoto} alt="Noé Calmes" loading="lazy" width="40" height="40" className="w-10 h-10 rounded-full object-cover shadow-sm shrink-0" />
@@ -1098,7 +1101,7 @@ function App() {
               <p className="text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed mb-8">
                 Comment une application rapporte, combien coûte un vrai projet, pourquoi 90&nbsp;% des apps ne gagnent rien.
               </p>
-              <a href="https://www.instagram.com/noecalmes.app/" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer">
+              <a href="https://www.instagram.com/noecalmes.app/" target="_blank" rel="noopener noreferrer" className="btn-reflet group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer">
                 <svg className="w-[18px] h-[18px] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
                 <span>Voir mon Instagram</span>
               </a>
@@ -1147,7 +1150,7 @@ function App() {
 
               <button
                 onClick={() => { setPage('audit-app'); history.pushState(null, '', lienInterne('/audit-app')); window.scrollTo(0, 0) }}
-                className="group inline-flex items-center gap-2.5 bg-brand text-white font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
+                className="btn-reflet group inline-flex items-center gap-2.5 bg-brand text-white font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
               >
                 Lancer mon audit
                 <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

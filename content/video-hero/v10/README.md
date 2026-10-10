@@ -1,6 +1,6 @@
 # Vidéo hero v10
 
-Film de 26 secondes en motion design, sous le bouton « J'ai une idée d'application » du hero.
+Film de 26 secondes en motion design, sous le bouton « Discuter avec Noé » du hero.
 Voix off et bruitages, pas de musique. C'est la version en ligne sur le site.
 
 Différence avec la v9 : les mots soulignés ont un trait large, façon surligneur, qui passe derrière le bas des lettres (0,40 em de haut, collé au bas des lettres, à 90 % d'opacité, au lieu d'un trait fin de 0,095 em sous les mots). Et sur « Audit offert », les deux « gling » (cloches) sont remplacés par un petit choc sourd, sans note, quand « offert » se pose. La notification « Ta séance du jour t'attend » de la scène 5 est retirée, avec son bruitage. Le reste de l'image, la voix et les autres bruitages sont les mêmes.
@@ -8,7 +8,7 @@ Différence avec la v9 : les mots soulignés ont un trait large, façon surligne
 ## Fichiers
 
 - `hero-film-v10.mp4` : la vidéo finale en 1080p, avec la voix off et les bruitages.
-- Sur le site : `public/assets/videos/hero-v10-1080.mp4` (ordinateur), `hero-v10-720.mp4` (mobile), et les deux affiches `hero-v10-poster.jpg` et `hero-v10-poster-960.jpg`.
+- Sur le site : `public/assets/videos/hero-v10-1080.mp4` (ordinateur), `hero-v10-720.mp4` (mobile), et la miniature `hero-v10-miniature.webp` (1600 px) et `hero-v10-miniature-960.webp`, affichée tant que la vidéo n'a pas démarré : le fond blanc du film, « Ton app va décoller. » et une courbe qui monte (choisie par Noé le 10/10/2026). Source : `src/miniature.cjs` (l'image) puis `src/miniature-webp.py` (les deux WebP).
 - `son/` : la voix off seule, les bruitages seuls, le mix final et les scripts du son.
 - `src/` : la source de l'animation (`film-v10.html`, repères de la voix inclus), les repères (`cues-v10.json`) et les scripts de rendu. Pour l'ouvrir : mettre les polices `@fontsource/plus-jakarta-sans`, `@fontsource-variable/libre-baskerville` et `@fontsource/geist-mono` dans un `node_modules` à côté du fichier.
 

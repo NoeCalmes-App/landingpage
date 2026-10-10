@@ -13,7 +13,7 @@
   text-align: left;
 }
 @media (min-width: 768px) {
-  .hv-zone { --hv-w: min(1100px, calc(100vw - 72px)); margin-top: 3.75rem; }
+  .hv-zone { --hv-w: min(1100px, calc(100vw - 72px)); margin-top: 5rem; }
 }
 
 .hv {
@@ -21,7 +21,7 @@
   aspect-ratio: 16 / 9;
   border-radius: 14px;
   overflow: hidden;
-  background: #fffefc;
+  background: #f6f5ff;              /* le blanc de la miniature, le temps qu'elle arrive */
   outline: 1px solid rgba(102, 93, 255, 0.16);
   box-shadow: 0 24px 60px -18px rgba(66, 54, 220, 0.42), 0 6px 18px rgba(3, 52, 117, 0.08);
   isolation: isolate;
