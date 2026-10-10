@@ -124,13 +124,14 @@ Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
 
 - Tant que la vidéo n'a rien montré, une affiche est posée dessus, comme chez Ikovaline (une image du
   film, peu d'éléments) : le fond blanc du film, « Et si ton idée décollait ? » (« décollait » dans le
-  dégradé violet, comme « décoller » dans le film) et un trait qui souligne « décollait » puis décolle en
-  flèche vers le haut à droite. Tout tient dans le haut de l'image, centré : sur ordinateur, on ne voit
-  que le haut de la vidéo à l'arrivée, et en descendant pour voir le reste on la lance (« mets-toi à la
-  place de l'utilisateur », Noé). Noé a choisi le blanc parmi quatre propositions (violet ou blanc,
-  « En 2026, un vrai pari. » avec les dés, ou cette phrase), puis cette flèche parmi quatre autres
-  (courbe, avion en papier, texte seul, pastille) ; refusée avant : une courbe de graphique en bas à
-  gauche avec un aplat (« pas belle »). Refusés avant : l'image « 8 apps sur 10 » (« ça donne pas envie
+  dégradé violet, comme « décoller » dans le film), calée à gauche, et une courbe fine qui part sous le
+  texte et décolle en flèche vers le haut à droite. Tout tient dans le haut de l'image : sur ordinateur,
+  on ne voit que le haut de la vidéo à l'arrivée, et en descendant pour voir le reste on la lance
+  (« mets-toi à la place de l'utilisateur », Noé). Noé a choisi le blanc parmi quatre propositions
+  (violet ou blanc, « En 2026, un vrai pari. » avec les dés, ou cette phrase), puis la courbe parmi
+  quatre autres (courbe, avion en papier, texte seul, pastille), « en plus beau », texte à gauche.
+  Refusés avant : une courbe de graphique en bas à gauche avec un aplat (« pas belle »), un trait sous
+  « décollait » avec le texte centré. Refusés avant : l'image « 8 apps sur 10 » (« ça donne pas envie
   de regarder »), une couverture avec sa photo et « Regarde la vidéo » (« pas ma tête »), le titre du hero
   répété. Source de l'image : `affiche.html` (variante F) dans le dossier de rendu du film.
 - Le film se charge en fond 0,7 s après l'affichage, mais ne démarre que quand on fait défiler la page
