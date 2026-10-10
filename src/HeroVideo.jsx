@@ -1,13 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import './hero-video.css'
 
-// Vidéo du hero, sur le modèle du lecteur d'Ikovaline (ikovaline.com) : la vidéo démarre seule, muette et en
-// boucle, quand elle arrive à l'écran, avec une barre toujours visible en bas : lecture/pause, avancement
-// (on peut cliquer ou glisser dedans), son, plein écran. Un clic sur la vidéo la met en pause ou la relance.
+// Vidéo du hero, sur le modèle du lecteur d'Ikovaline (ikovaline.com) : la vidéo joue seule, muette et en
+// boucle, avec une barre toujours visible en bas : lecture/pause, avancement (on peut cliquer ou glisser
+// dedans), son, plein écran. Un clic sur la vidéo la met en pause ou la relance.
 //
 // Ce qu'on fait en plus d'eux :
-// - le premier « Activer le son » (ou un premier clic sur la vidéo, ou le plein écran) repart du début, pour
-//   entendre le film en entier. Ensuite, le bouton du son coupe et remet le son sans revenir en arrière ;
+// - elle attend que la personne fasse défiler la page jusqu'à elle (demande de Noé, octobre 2026) : au
+//   chargement, on lit encore le titre, et on raterait le début du film. En attendant, une affiche violette
+//   est à sa place : une image du film (« 8 apps sur 10 »). Le film se charge quand même en fond, pour
+//   partir sans attendre ;
+// - le premier geste pour la regarder (lecture, « Activer le son », clic sur la vidéo, plein écran) la lance
+//   avec le son, depuis le début. Ensuite, le bouton du son coupe et remet le son sans revenir en arrière ;
 // - si le navigateur refuse la lecture automatique (iPhone en économie d'énergie, Safari ou Firefox réglés
 //   pour bloquer, navigateur intégré d'une application), ou si la personne a demandé moins d'animations ou
 //   économise ses données : l'affiche reste, avec un gros bouton « Lancer la vidéo » ;
@@ -23,12 +27,15 @@ const SOURCES = {
   sd: '/assets/videos/hero-v10-720.mp4',
 }
 // L'affiche est une vraie image (et pas l'attribut `poster`) : le navigateur choisit la bonne taille et la
-// charge en priorité. Elle couvre la vidéo jusqu'à sa première image.
-const AFFICHE = { petite: '/assets/videos/hero-v10-poster-960.jpg', grande: '/assets/videos/hero-v10-poster.jpg' }
+// charge en priorité. Elle couvre la vidéo jusqu'à sa première image. C'est l'image 207 du film (6,9 s).
+const AFFICHE = { petite: '/assets/videos/hero-v10-affiche-violette-960.webp', grande: '/assets/videos/hero-v10-affiche-violette.webp' }
 const TAILLES_AFFICHE = '(min-width: 1172px) 1100px, (min-width: 768px) calc(100vw - 72px), calc(100vw - 24px)'
 const DUREE_PAR_DEFAUT = 26
-// Part de la vidéo qui doit être à l'écran pour qu'elle joue : sur un portable 1366×768, on n'en voit
-// qu'environ un tiers au chargement, et elle doit déjà bouger.
+// Premier départ : il faut avoir fait défiler la page (un vrai geste, pas un rebond) et voir au moins la
+// moitié de la vidéo.
+const DEFILEMENT_MIN = 24
+const SEUIL_DEPART = 0.5
+// Une fois partie, la vidéo muette se met en pause sous 15 % à l'écran, et reprend au-dessus.
 const SEUIL_VISIBLE = 0.15
 // La page s'affiche d'abord (texte, boutons, affiche), la vidéo ne se charge qu'ensuite, comme chez Ikovaline.
 const DELAI_DEMARRAGE = 700
@@ -95,6 +102,7 @@ export default function HeroVideo() {
   const [calme, setCalme] = useState(false)          // plein écran sans bouger : la barre s'efface
   const visible = useRef(false)
   const veutJouer = useRef(!sansLectureAuto())        // faux quand la personne a mis en pause elle-même
+  const dejaPartie = useRef(false)                    // la vidéo a déjà joué au moins une fois
   const sonDejaMis = useRef(false)
   const glisse = useRef(false)
   const minuterie = useRef(null)
@@ -109,7 +117,8 @@ export default function HeroVideo() {
     })
   }, [])
 
-  // préparation : attributs pour iPhone, source adaptée à l'écran, lecture quand la vidéo est à l'écran
+  // préparation : attributs pour iPhone, source adaptée à l'écran, chargement en fond, puis lecture quand on a
+  // fait défiler la page jusqu'à la vidéo
   useEffect(() => {
     const v = video.current
     if (!v) return
@@ -122,25 +131,48 @@ export default function HeroVideo() {
     v.src = SOURCES[qualite]
 
     let obs = null
-    // `isIntersecting` ne veut pas dire la même chose partout (seuil atteint pour Chrome, un pixel pour d'autres) :
-    // on décide sur la part réellement visible, avec deux seuils pour être prévenu à l'entrée comme à la sortie.
-    const observer = () => {
-      obs = new IntersectionObserver(([e]) => {
-        const vu = e.isIntersecting && e.intersectionRatio >= SEUIL_VISIBLE - 0.001
-        visible.current = vu
-        if (vu) { if (veutJouer.current && v.paused) jouer() }
-        else if (!v.paused && v.muted) v.pause()
-      }, { threshold: [0, SEUIL_VISIBLE] })
-      obs.observe(v)
+    let part = 0            // part de la vidéo à l'écran, de 0 à 1
+    let aDefile = false     // la personne a fait défiler la page
+
+    const decider = () => {
+      const vu = part >= SEUIL_VISIBLE - 0.001
+      visible.current = vu
+      if (!vu) { if (!v.paused && v.muted) v.pause(); return }
+      if (document.hidden || !v.paused || !veutJouer.current) return
+      // la première fois, seulement quand on est arrivé jusqu'à elle ; ensuite, dès qu'elle revient à l'écran
+      if (dejaPartie.current || (aDefile && part >= SEUIL_DEPART - 0.001)) jouer()
     }
-    const minuteur = setTimeout(observer, DELAI_DEMARRAGE)
+    const surDefilement = () => {
+      if (window.scrollY <= DEFILEMENT_MIN) return
+      aDefile = true
+      window.removeEventListener('scroll', surDefilement)
+      decider()
+    }
+    const preparer = () => {
+      // le film se charge en fond (sauf si la lecture auto est exclue) : il part sans attendre quand on arrive dessus
+      if (veutJouer.current && v.paused) { v.preload = 'auto'; if (v.readyState === 0) v.load() }
+      // `isIntersecting` ne veut pas dire la même chose partout (seuil atteint pour Chrome, un pixel pour d'autres) :
+      // on décide sur la part réellement visible, avec un seuil à l'entrée, un au départ et un à la sortie.
+      obs = new IntersectionObserver(([e]) => {
+        part = e.isIntersecting ? e.intersectionRatio : 0
+        decider()
+      }, { threshold: [0, SEUIL_VISIBLE, SEUIL_DEPART] })
+      obs.observe(v)
+      window.addEventListener('scroll', surDefilement, { passive: true })
+      surDefilement()   // page rouverte plus bas (retour en arrière) : on a déjà fait défiler
+    }
+    const minuteur = setTimeout(preparer, DELAI_DEMARRAGE)
 
     const auRetour = () => {
       if (document.hidden) { if (!v.paused && v.muted) v.pause() }
-      else if (visible.current && veutJouer.current && v.paused) jouer()
+      else decider()
     }
     document.addEventListener('visibilitychange', auRetour)
-    return () => { clearTimeout(minuteur); obs?.disconnect(); document.removeEventListener('visibilitychange', auRetour) }
+    return () => {
+      clearTimeout(minuteur); obs?.disconnect()
+      window.removeEventListener('scroll', surDefilement)
+      document.removeEventListener('visibilitychange', auRetour)
+    }
   }, [qualite, jouer])
 
   // barre d'avancement fluide, sans re-rendu React, et seulement pendant la lecture
@@ -207,7 +239,8 @@ export default function HeroVideo() {
     const v = video.current
     if (!v) return
     if (v.paused) {
-      if (bloquee) { regarderAvecSon(); return }
+      // lecture refusée, ou pas encore partie : appuyer sur lecture, c'est vouloir la regarder, avec le son
+      if (bloquee || !dejaPartie.current) { regarderAvecSon(); return }
       veutJouer.current = true
       jouer()
     } else { veutJouer.current = false; v.pause() }
@@ -280,7 +313,7 @@ export default function HeroVideo() {
   }
 
   const evts = {
-    onPlay: () => { setEnLecture(true); setBloquee(false) },
+    onPlay: () => { dejaPartie.current = true; setEnLecture(true); setBloquee(false) },
     onPlaying: () => setImage(true),
     onSeeked: () => setImage(true),
     onPause: () => setEnLecture(false),

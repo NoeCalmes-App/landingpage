@@ -105,27 +105,32 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
 Sous le bouton « J'ai une idée d'application » du hero, un film de 26 secondes en motion design
 (voix off et bruitages, pas de musique). Code : `src/HeroVideo.jsx` et `src/hero-video.css`.
 Fichiers : `public/assets/videos/hero-v10-1080.mp4` (ordinateur), `hero-v10-720.mp4` (mobile,
-connexion lente, économiseur de données) et deux affiches `hero-v10-poster*.jpg`. Les sources du film
+connexion lente, économiseur de données) et deux affiches violettes `hero-v10-affiche-violette*.webp`
+(l'image 207 du film, à 6,9 s : « 8 apps sur 10 … peinent à rapporter 1 000 € par mois »). Les sources du film
 (textes, voix, réglages) sont dans `content/video-hero/v10/`. Pour publier un nouveau montage,
 changer le numéro dans les noms de fichiers (v11…) : le navigateur ne ressert pas l'ancien film en cache.
 
 Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
 
-- La page s'affiche d'abord avec l'affiche (une vraie image, la bonne taille choisie par le navigateur),
-  la vidéo ne se charge que 0,7 s après. Elle joue alors seule, muette et en boucle, dès que 15 % est à
-  l'écran (sur un portable 1366×768, on n'en voit qu'une partie au chargement).
+- La page s'affiche d'abord avec l'affiche violette (une vraie image, la bonne taille choisie par le
+  navigateur). Le film se charge en fond 0,7 s après, mais ne démarre que quand on fait défiler la page
+  jusqu'à lui (demande de Noé, octobre 2026) : au moins 24 px de défilement et la moitié de la vidéo à
+  l'écran. Il joue alors seul, muet et en boucle, depuis le début. Pourquoi : au chargement, on lit le
+  titre ; s'il partait tout de suite, on raterait son début.
 - Une barre reste toujours visible en bas de la vidéo : lecture/pause, avancement (clic ou glisser),
   « Activer le son », plein écran. Un clic sur la vidéo la met en pause ou la relance. Clavier : espace,
   M, F, flèches. À la fin, elle reprend au début (boucle), comme chez Ikovaline.
-- En plus d'Ikovaline : le premier « Activer le son » (ou un premier clic sur la vidéo, ou le plein écran)
-  repart du début, pour entendre le film en entier. Ensuite, le bouton coupe et remet le son sans revenir
-  en arrière.
-- Muette, elle se met en pause hors de l'écran et dans un onglet masqué. Avec le son, elle continue.
+- En plus d'Ikovaline : le premier geste pour la regarder (lecture, « Activer le son », clic sur la
+  vidéo, plein écran) la lance avec le son, depuis le début, pour entendre le film en entier. Ensuite,
+  le bouton coupe et remet le son sans revenir en arrière.
+- Une fois partie, muette, elle se met en pause sous 15 % à l'écran et dans un onglet masqué, et reprend
+  quand elle revient. Avec le son, elle continue.
 - Plein écran : le bloc entier sur ordinateur, Android et iPad (la barre s'efface quand la souris ne
   bouge plus) ; le lecteur natif sur iPhone.
 - Lecture automatique refusée (iPhone en mode économie d'énergie, Safari ou Firefox réglés pour bloquer,
   navigateur intégré d'une application) ou non souhaitée (`prefers-reduced-motion`, économiseur de
-  données) : l'affiche reste, avec un gros bouton « Lancer la vidéo », qui la lance avec le son.
+  données, rien n'est chargé d'avance) : l'affiche reste, avec un gros bouton « Lancer la vidéo », qui la
+  lance avec le son.
 
 ## Galerie d’interfaces sur l’accueil
 
