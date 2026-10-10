@@ -179,7 +179,7 @@ function FaqAccordion() {
         <details
           key={q}
           open={openIndex === i}
-          className="group bg-card border border-card-border rounded-[15px] px-6 py-1"
+          className="group bg-surface border border-card-border rounded-[15px] px-6 py-1"
           onToggle={(e) => {
             if (e.target.open) setOpenIndex(i)
             else if (openIndex === i) setOpenIndex(null)
@@ -1091,37 +1091,11 @@ function App() {
         </div>
       </section>
 
-      {/* ========== FAQ ========== */}
-      <section className="py-14 md:py-28 px-5 bg-white" id="faq">
-        <div className="max-w-275 mx-auto">
-          <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
-            Questions fréquentes
-          </p>
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-6 md:mb-14">
-            Pour y voir <span className="text-brand">plus clair</span>
-          </h2>
-          <FaqAccordion />
-          <p className="reveal mt-6 text-center text-grey text-[0.9rem] leading-relaxed">
-            Une autre question ?{' '}
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackDirectWhatsAppLead('home_faq')}
-              className="inline-block font-semibold text-brand underline underline-offset-4 decoration-brand/40 hover:decoration-brand focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-4"
-            >
-              Écris-moi sur WhatsApp.
-            </a>
-          </p>
-        </div>
-      </section>
-
-      {/* ========== DERNIER APPEL : WHATSAPP, PUIS L'AUDIT ========== */}
-      {/* Refonte du 10/10/2026 : le contact et l'audit dans la même section, à la fin. L'audit passe en second choix
-          (« Pas encore prêt à écrire ? »), sous le bouton WhatsApp ; il garde l'id « audit » (lien « Audit » de la barre
-          du haut, route /audit). La section Instagram, qui faisait quitter la page juste avant la fin, est retirée :
-          l'icône reste dans le pied de page. */}
-      <section className="py-16 md:py-28 px-5 bg-card" id="contact-section">
+      {/* ========== PARLONS DE TON PROJET (WHATSAPP) ========== */}
+      {/* Refonte du 10/10/2026, placée avant la FAQ le 11/10/2026 à la demande de Noé : le bouton WhatsApp vient juste
+          après « Pour qui », et la FAQ sert ensuite à ceux qui hésitent encore. La section Instagram, qui faisait
+          quitter la page juste avant la fin, est retirée : l'icône reste dans le pied de page. */}
+      <section className="py-16 md:py-28 px-5 bg-white" id="contact-section">
         <div className="max-w-275 mx-auto text-center">
           {/* Les disponibilités, dans une pastille au fond léger (même style que « Audit express · 2 min ») */}
           {/* Le fond de la pastille n'apparaît qu'avec le texte des places : pendant la vérification, on ne voyait que le fond
@@ -1169,19 +1143,54 @@ function App() {
             </div>
           </div>
 
-          {/* L'audit, en simple lien (11/10/2026) : une grande carte avec un bouton noir attirait l'œil autant que le bouton
-              WhatsApp, et l'audit est plus long qu'un message ; Noé avait peur d'y perdre ceux qui allaient écrire. Le lien
-              reste pour ceux qui ne sont pas prêts. Id « audit » : la route /audit y mène toujours. */}
-          <p id="audit" className="reveal mt-10 md:mt-12 text-grey text-[0.88rem] md:text-[0.92rem] leading-relaxed">
-            Pas encore prêt à écrire&nbsp;?{' '}
+        </div>
+      </section>
+
+      {/* ========== FAQ ========== */}
+      <section className="py-14 md:py-28 px-5 bg-card" id="faq">
+        <div className="max-w-275 mx-auto">
+          <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
+            Questions fréquentes
+          </p>
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-6 md:mb-14">
+            Pour y voir <span className="text-brand">plus clair</span>
+          </h2>
+          <FaqAccordion />
+          <p className="reveal mt-6 text-center text-grey text-[0.9rem] leading-relaxed">
+            Une autre question ?{' '}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackDirectWhatsAppLead('home_faq')}
+              className="inline-block font-semibold text-brand underline underline-offset-4 decoration-brand/40 hover:decoration-brand focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-4"
+            >
+              Écris-moi sur WhatsApp.
+            </a>
+          </p>
+
+          {/* L'audit, après la FAQ (Noé, 11/10/2026) : pour ceux qui hésitent encore après les questions. En second choix,
+              avec un bouton au contour violet, jamais plein : il ne doit pas détourner ceux qui allaient écrire, l'audit
+              étant plus long qu'un message. Id « audit » : la route /audit y mène toujours. */}
+          <div id="audit" className="reveal max-w-150 mx-auto mt-12 md:mt-16 pt-10 md:pt-12 border-t border-card-border text-center">
+            <p className="font-jakarta text-text font-extrabold text-[1.15rem] md:text-[1.3rem] tracking-tight leading-tight mb-2">
+              Pas encore prêt à écrire&nbsp;?
+            </p>
+            <p className="text-grey text-[0.92rem] md:text-[0.98rem] leading-relaxed mb-5">
+              Teste ton idée&nbsp;: potentiel, budget et délai, en 2&nbsp;minutes.
+            </p>
             <a
               href={lienInterne('/audit-app')}
               onClick={(event) => { event.preventDefault(); goAuditApp() }}
-              className="inline-block font-semibold text-brand underline underline-offset-4 decoration-brand/40 hover:decoration-brand"
+              className="group inline-flex items-center gap-2 font-semibold text-brand text-[0.92rem] md:text-[0.95rem] border border-brand/35 rounded-full px-6 py-3 hover:bg-brand/5 transition-colors"
             >
-              Teste ton idée en 2&nbsp;minutes
+              Lancer mon audit
+              <svg className="transition-transform duration-300 group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
             </a>
-          </p>
+          </div>
         </div>
       </section>
 

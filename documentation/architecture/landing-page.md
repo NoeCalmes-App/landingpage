@@ -244,7 +244,13 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
    Écarte avant WhatsApp ceux que Noé ne prend pas. Retirés le 11/10/2026 : « Tu cherches un site
    vitrine » (Noé en fait quand il le faut) et « une seule personne s'occupe de tout » (« il veut un
    résultat, il s'en fout si un ou plusieurs », Noé). Remplace « Ce que je fais / Ce que je ne fais pas ».
-6. **FAQ « Pour y voir plus clair »** (`#faq`, sous « Questions fréquentes » : la cible ne connaît pas
+6. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités
+   (son fond n'apparaît qu'avec le texte des places ; pendant « Vérification des disponibilités… », pas de
+   fond, Noé 11/10/2026),
+   le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`) et « Tu bosses direct avec moi ».
+   Placée avant la FAQ le 11/10/2026 (Noé). Fond blanc.
+
+7. **FAQ « Pour y voir plus clair »** (`#faq`, sous « Questions fréquentes » : la cible ne connaît pas
    forcément « FAQ ») : les 4 premières questions de `FAQ_ITEMS`
    (`src/PagesSeo.jsx`), les vraies objections, en deux ou trois phrases chacune :
    - combien : un tarif fixe, « en général une dizaine de milliers d'euros, comprenant la stratégie, la
@@ -261,27 +267,22 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
    Retirées le 11/10/2026 par Noé : « Application mobile ou web : laquelle choisir ? », « À qui appartient
    l'application ? » (« c'est logique, il paye ») et « Est-ce que mon application va vraiment générer des
    revenus ? ». `NB_FAQ_ACCUEIL` vaut 4 dans `src/App.jsx` et dans `scripts/generate-routes.js` (balisage
-   FAQPage de l'accueil) : changer les deux ensemble. /faq garde la liste complète (10 questions). La FAQ
-   reste avant « Parlons de ton projet » (choix du 11/10/2026, Noé hésitait) : elle lève les dernières
-   objections juste avant le bouton ; après, la page finirait sur des questions au lieu du bouton. Sous les
-   questions, « Une autre question ? Écris-moi sur WhatsApp. » ouvre directement WhatsApp avec le suivi
-   `home_faq`.
-7. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités
-   (son fond n'apparaît qu'avec le texte des places ; pendant « Vérification des disponibilités… », pas de
-   fond, Noé 11/10/2026),
-   le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`), « Tu bosses direct avec moi », puis
-   l'audit en second choix (`#audit`, route /audit) : « Pas encore prêt à écrire ? Teste ton idée en 2
-   minutes », en simple lien (11/10/2026 : la grande carte avec son bouton noir
-   attirait l'œil autant que WhatsApp, et Noé avait peur d'y perdre ceux qui allaient écrire, l'audit étant plus
-   long qu'un message).
+   FAQPage de l'accueil) : changer les deux ensemble. /faq garde la liste complète (10 questions). La FAQ vient
+   après « Parlons de ton projet » depuis le 11/10/2026 (décision de Noé : le bouton WhatsApp d'abord, la FAQ
+   ensuite pour ceux qui hésitent encore). Sous les questions, « Une autre question ? Écris-moi sur
+   WhatsApp. » ouvre directement WhatsApp avec le suivi `home_faq`. Puis, tout en bas, l'audit en second
+   choix (`#audit`, route /audit) : « Pas encore prêt à écrire ? Teste ton idée : potentiel, budget et délai,
+   en 2 minutes. », avec un bouton au contour violet « Lancer mon audit », jamais plein. Noé ne veut pas le
+   pousser (« c'est un plus ») et avait peur d'y perdre ceux qui allaient écrire, l'audit étant plus long
+   qu'un message : il est donc après tout le reste, pour ceux qui ne sont toujours pas prêts.
 
 Retirés le 10/10/2026 : la barre de preuve, « Mon métier », « Avant de payer un euro, je t'offre », le
 grand tableau Agences, la section Instagram (elle faisait quitter la page juste avant la fin ; l'icône
 reste dans le pied de page) et l'ancienne section audit. Les illustrations `meetingdev.svg`,
 `devmobile.svg` et `post.svg` ne servent plus à l'accueil.
 
-Fonds, de haut en bas : le hero violet, blanc, gris clair, blanc, gris clair, blanc, gris clair, puis le
-pied de page violet.
+Fonds, de haut en bas : le hero violet, blanc, gris clair, blanc, gris clair, blanc (contact), gris clair
+(FAQ et audit), puis le pied de page violet.
 
 ### Le carrousel des écrans
 
