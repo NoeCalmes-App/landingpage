@@ -191,18 +191,21 @@ c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
    lieu d'être annoncée. Remplace la barre de preuve, « Une stratégie derrière chaque écran » (ses cinq
    pastilles) et « Mon métier ». Styles : `src/app-showcase.css`.
 3. **« Comment ça se passe ? »** (`#offre`, lien « Méthode ») : « Les deux premières étapes sont
-   offertes. » Étape 1 « On en parle » et étape 2 « On cadre » portent la pastille verte « Offert ».
-   L'étape 3 « On construit ensemble » donne le prix, comme une information (décision de Noé du
-   10/10/2026) : « Tarif fixe, en général de 5 000 à 12 000 €. Une première version en ligne en 45 jours en
-   moyenne. » Pas de « tu paies ici » ni de « tu ne paies qu'à la troisième » : on ne paie pas à la mise en
-   ligne, il y a un acompte au démarrage (Noé, 10/10/2026). Les textes des étapes sont ceux validés par Noé
-   le même jour. Les trois visuels ont la même forme, une carte blanche avec un titre et trois lignes à
-   icône : « Premier appel avec Noé » (ton idée, à qui elle s'adresse, comment bien la lancer), « Tu
-   reçois » (une première maquette, le cahier des charges, un devis clair) et « Ton application »
-   (maquette sur mesure, développement, mise en ligne, « En ligne »). Une première version mélangeait une
-   conversation, une vraie maquette et des illustrations : Noé l'a refusée (« design mélangé »).
-   `src/DeliverableVisual.jsx` ne sert plus. Absorbe « Avant de payer un euro, je t'offre ». Puis le
-   bouton. Styles : `.etape…` dans `src/App.css`.
+   offertes. » Étape 1 « On en parle » et étape 2 « On cadre » portent la pastille verte « Offert ». Les
+   textes des étapes sont ceux validés par Noé le 10/10/2026. Les visuels (refaits le 11/10/2026) : à
+   l'étape 1, la conversation (« Bonjour Noé, j'ai un projet d'application », le début du message
+   WhatsApp pré-rempli, et « Raconte-moi ton idée »), que Noé aimait ; à l'étape 2, les trois documents
+   en grandes illustrations avec leur nom (maquette, cahier des charges, devis) ; à l'étape 3,
+   l'application en ligne (téléphone, courbe qui monte, flèche qui décolle). Illustrations :
+   `src/DeliverableVisual.jsx` (types `mockup`, `brief`, `quote`, `launch`). Refusés par Noé : une vraie
+   capture d'écran mélangée aux dessins (« design mélangé ») et des cartes de petites lignes de texte
+   (« pas lisible du tout », « ça va jamais convertir »). Sous les étapes, une ligne d'information pour
+   tout le parcours (`.etape-tarif`) : « Tarif fixe, en général une dizaine de milliers d'euros pour une
+   application complète : stratégie, maquette, développement et mise en ligne. Une première version en
+   ligne en 30 jours en moyenne. » (Noé, 11/10/2026 : « une dizaine de milliers d'euros » plutôt que
+   « 5 000 à 12 000 € », et 30 jours plutôt que 45). Pas de « tu paies ici » : on ne paie pas à la mise en
+   ligne, il y a un acompte au démarrage. Absorbe « Avant de payer un euro, je t'offre ». Puis le bouton.
+   Styles : `.etape…` dans `src/App.css`.
 4. **« Pourquoi me faire confiance ? »** (`#confiance`, sous « Qui je suis » ; la route /avis y mène) : la
    photo de Noé, « Expert en applications mobiles & web », puis trois faits (il fait tout lui-même ; une
    dizaine d'idées par semaine ; ses propres applications, WakeUp Alarme et Plouff Habitudes, sont en
@@ -212,11 +215,17 @@ c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
 5. **« C'est pour toi ? »** (`#pour-qui`) : « Oui, si… » (une idée et un budget prévu, une seule personne
    pour tout, une application qui rapporte) et « Non, si… » (site vitrine, juste un développeur qui exécute,
    le prix le plus bas, quelqu'un pour faire sa publicité). Écarte avant WhatsApp ceux que Noé ne prend
-   pas. Remplace « Ce que je fais / Ce que je ne fais pas ».
+   pas. Remplace « Ce que je fais / Ce que je ne fais pas ». « Une application qui te rapporte des revenus
+   chaque mois » (Noé, 11/10/2026, à la place de « qui rapporte, pas juste une application qui existe »).
 6. **FAQ « Pour y voir plus clair »** (`#faq`) : les 7 premières questions de `FAQ_ITEMS`
-   (`src/PagesSeo.jsx`), réordonnées le 10/10/2026 pour mettre les vraies objections en tête : combien,
-   en combien de temps, « je n'y connais rien », est-ce que ça va rapporter, téléphone ou ordinateur, à
-   qui appartient l'application, et pour trouver des utilisateurs. `NB_FAQ_ACCUEIL` vaut 7 dans
+   (`src/PagesSeo.jsx`), réordonnées le 10/10/2026 pour mettre les vraies objections en tête : combien
+   (« une dizaine de milliers d'euros » pour une application complète), en combien de temps (30 jours pour
+   une première version), « je n'y connais rien » (« la plupart de mes clients »), est-ce que ça va
+   rapporter, application mobile ou web (Noé, 11/10/2026 : « téléphone ou ordinateur, ça veut rien
+   dire »), à qui appartient l'application (sur les stores comme sur le web), et pour trouver des
+   utilisateurs (« les utilisateurs qui arrivent deviennent des clients qui paient chaque mois »). La FAQ
+   reste avant « Parlons de ton projet » (choix du 11/10/2026, Noé hésitait) : elle lève les dernières
+   objections juste avant le bouton ; après, la page finirait sur des questions au lieu du bouton. `NB_FAQ_ACCUEIL` vaut 7 dans
    `src/App.jsx` et dans `scripts/generate-routes.js` (balisage FAQPage de l'accueil) : changer les deux
    ensemble. /faq garde la liste complète (13 questions). Sous les questions, « Une autre question ?
    Écris-moi sur WhatsApp. » ouvre directement WhatsApp avec le suivi `home_faq`.

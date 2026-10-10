@@ -27,31 +27,31 @@ export const FAQ_ITEMS = [
   // (NB_FAQ_ACCUEIL dans App.jsx, et le balisage FAQPage de la home dans scripts/generate-routes.js).
   {
     q: "Combien coûte une application ?",
-    a: "Tarif fixe, posé avant de commencer : en général de 5 000 € pour une première version à 12 000 € pour une application complète, selon ce qu'elle doit faire. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.",
+    a: "Tarif fixe, posé avant de commencer : en général une dizaine de milliers d'euros pour une application complète, de la stratégie à la mise en ligne, en passant par la maquette et le développement. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.",
   },
   {
     q: "Combien de temps faut-il pour avoir une application ?",
-    a: "Une première version en 45 jours en moyenne. Pour une application complète, le délai dépend du périmètre, on le cale ensemble.",
+    a: "Une première version en 30 jours en moyenne. Pour une application complète, le délai dépend du périmètre, on le cale ensemble.",
   },
   {
     q: "Je n'y connais rien en technique, c'est un problème ?",
-    a: "Non, c'est le cas de la plupart des gens qui m'écrivent. Une idée et à qui elle s'adresse, ça suffit pour commencer : pas besoin de cahier des charges, de maquette ni de vocabulaire technique. Si tu veux arriver avec une première lecture du potentiel, du budget et du délai, fais l'audit gratuit, il prend deux minutes.",
+    a: "Non, c'est le cas de la plupart de mes clients. Une idée et à qui elle s'adresse, ça suffit pour commencer : pas besoin de cahier des charges, de maquette ni de vocabulaire technique. Si tu veux arriver avec une première lecture du potentiel, du budget et du délai, fais l'audit gratuit, il prend deux minutes.",
   },
   {
     q: "Est-ce que mon application va vraiment générer des revenus ?",
     a: "Aucun sérieux ne peut te le garantir, et méfie-toi de qui le promet. Ce que je peux faire, c'est concevoir ton application pour qu'elle en ait la capacité : un modèle économique décidé avant la première ligne de code, un moment de valeur atteint vite, et une offre placée là où elle a du sens. C'est exactement ce qui sépare une application à zéro euro d'une application qui rapporte. Une application que j'ai conçue génère environ 13 000 € par mois.",
   },
   {
-    q: "Téléphone ou ordinateur : comment choisir ?",
-    a: "C'est moi qui tranche, avant le devis, et je t'explique pourquoi. Si tes utilisateurs sont des particuliers qui s'en servent partout, avec des notifications ou des photos, c'est le téléphone. Si ce sont des professionnels qui travaillent devant un écran, c'est souvent l'ordinateur, sans la commission des stores. Parfois les deux, dans cet ordre.",
+    q: "Application mobile ou web : laquelle choisir ?",
+    a: "Je te le dis avant le devis, et je t'explique pourquoi. Si tes utilisateurs sont des particuliers qui s'en servent partout, c'est souvent une application mobile. Si ce sont des professionnels qui travaillent devant un ordinateur, c'est souvent une application web. Parfois les deux.",
   },
   {
     q: "À qui appartient l'application ?",
-    a: "À toi. Une fois le projet réglé, l'application et son code source t'appartiennent. Sur les stores, elle est publiée sur ton propre compte, à ton nom.",
+    a: "À toi. Une fois le projet réglé, l'application et son code source t'appartiennent, qu'elle soit sur les stores ou sur le web. Sur les stores, elle est publiée sur ton propre compte, à ton nom.",
   },
   {
     q: "Et pour trouver des utilisateurs ?",
-    a: "Je ne fais pas ta publicité, et personne ne peut te promettre des utilisateurs par magie. Mon travail, c'est que ceux qui arrivent restent et paient. Au premier appel, on parle aussi de la façon de trouver les premiers.",
+    a: "Je ne fais pas ta publicité. Mon travail, c'est que les utilisateurs qui arrivent restent, et deviennent des clients qui paient chaque mois.",
   },
   {
     q: "Après la livraison de l'application ?",
@@ -71,7 +71,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Sur quelles plateformes tu développes ?",
-    a: "iOS et Android, avec une seule base de code. Ton application est publiée sur l'App Store et sur Google Play, et je m'occupe de la mise en ligne, des fiches et des allers-retours de validation avec les stores.",
+    a: "En application mobile : iOS et Android, avec une seule base de code, publiée sur l'App Store et sur Google Play ; je m'occupe de la mise en ligne, des fiches et des allers-retours de validation avec les stores. En application web : elle s'ouvre dans le navigateur, sur ordinateur comme sur téléphone, sans passer par un store.",
   },
   {
     q: "Tu travailles à distance ou sur place ?",

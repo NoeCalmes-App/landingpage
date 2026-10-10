@@ -20,6 +20,18 @@ export default function DeliverableVisual({ type }) {
           <circle cx="80" cy="31" r="16" fill="var(--color-text, #033475)" stroke="white" strokeWidth="1.5" />
           <path d="M85 24a8 8 0 1 0 0 14M72 29h10M72 33h9" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
         </>}
+        {type === 'launch' && <>
+          {/* L'application en ligne (étape 3 de l'accueil) : un téléphone, une courbe qui monte, la pastille qui décolle */}
+          <rect x="27" y="19" width="38" height="65" rx="9" fill="currentColor" opacity=".13" transform="rotate(-12 46 51)" />
+          <rect x="37" y="9" width="40" height="74" rx="10" fill="white" stroke="currentColor" strokeWidth="2" />
+          <rect x="49" y="14" width="16" height="4" rx="2" fill="currentColor" />
+          <rect x="43" y="25" width="28" height="26" rx="5" fill="currentColor" opacity=".1" />
+          <path d="m46 45 7-6 5 3 9-10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="67" cy="32" r="2.4" fill="currentColor" />
+          <path d="M44 59h25M44 65h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity=".3" />
+          <circle cx="80" cy="70" r="15" fill="var(--color-text, #033475)" stroke="white" strokeWidth="1.5" />
+          <path d="M80 77V63m-6 6 6-6 6 6" stroke="white" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
+        </>}
         {type === 'mockup' && <>
           <rect x="27" y="19" width="38" height="65" rx="9" fill="currentColor" opacity=".13" transform="rotate(-12 46 51)" />
           <rect x="39" y="9" width="40" height="74" rx="10" fill="white" stroke="currentColor" strokeWidth="2" />

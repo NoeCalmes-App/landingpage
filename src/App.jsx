@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import './App.css'
 import PhoneCarousel from './AppShowcase.jsx'
-import { Lightbulb, Users, Compass, Smartphone, FileText, Receipt, PenTool, Code2, Rocket, Check } from 'lucide-react'
+import DeliverableVisual from './DeliverableVisual.jsx'
 import HeroVideo from './HeroVideo.jsx'
 import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
 import MentionsLegales from './MentionsLegales.jsx'
@@ -114,7 +114,7 @@ const COMPARAISON_AGENCE = [
   ['À partir de 15 000 €', 'Tarif fixe, connu d’avance'],
   ['Rien à voir avant de payer', 'Ta maquette, offerte'],
   ['Un chef de projet entre vous', 'Moi, directement, 6 jours sur 7'],
-  ['3 à 6 mois de développement', 'Première version : 45 jours en moyenne'],
+  ['3 à 6 mois de développement', 'Première version : 30 jours en moyenne'],
   ['Projet livré, débrouille-toi', 'Je reste là après la mise en ligne'],
 ]
 
@@ -880,9 +880,10 @@ function App() {
       {/* ========== COMMENT ÇA SE PASSE (et ce qui est offert) ========== */}
       {/* Refonte du 10/10/2026 : « Avant de payer un euro, je t'offre » et les étapes ne font plus qu'un. La maquette,
           le cahier des charges et le devis apparaissaient trois fois sur la page ; ils sont l'étape 2, offerte. Le prix
-          est donné à l'étape 3, comme une information (décision de Noé du 10/10/2026), sans « tu paies ici » : on ne
-          paie pas à la mise en ligne, il y a un acompte au démarrage. Les trois visuels ont la même forme (une carte,
-          trois lignes) : Noé a refusé le mélange conversation, vraie maquette et illustrations. Les textes des étapes sont ceux
+          est donné à l'étape 3, comme une information, en « une dizaine de milliers d'euros » (Noé, 11/10/2026), sans « tu paies ici » : on ne
+          paie pas à la mise en ligne, il y a un acompte au démarrage. Visuels : la conversation (Noé l'aimait), puis des
+          illustrations nettes (maquette, cahier des charges, devis ; l'application en ligne). Ni vraie capture d'écran
+          mélangée aux dessins, ni petites cartes de texte (« pas lisible », Noé, 11/10/2026). Les textes des étapes sont ceux
           validés par Noé le même jour. Id « offre » : lien « Méthode » de la barre du haut. */}
       <section className="py-14 md:py-22 px-5 bg-card" id="offre">
         <div className="max-w-275 mx-auto">
@@ -896,11 +897,12 @@ function App() {
           <ol className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-250 mx-auto">
             <li className="etape">
               <div className="etape-visuel" aria-hidden="true">
-                <div className="etape-carte">
-                  <p className="etape-carte-titre"><img src={mePhoto} alt="" width="22" height="22" loading="lazy" />Premier appel avec Noé</p>
-                  <p className="etape-ligne"><span className="etape-icone"><Lightbulb size={13} /></span>Ton idée</p>
-                  <p className="etape-ligne"><span className="etape-icone"><Users size={13} /></span>À qui elle s'adresse</p>
-                  <p className="etape-ligne"><span className="etape-icone"><Compass size={13} /></span>Comment bien la lancer</p>
+                <div className="etape-appel">
+                  <span className="etape-bulle etape-bulle-toi">Bonjour Noé, j'ai un projet d'application</span>
+                  <span className="etape-noe">
+                    <img src={mePhoto} alt="" width="32" height="32" loading="lazy" />
+                    <span className="etape-bulle etape-bulle-noe">Raconte-moi ton idée</span>
+                  </span>
                 </div>
               </div>
               <p className="etape-pastilles"><span className="etape-num">Étape 1</span><span className="etape-offert">Offert</span></p>
@@ -911,11 +913,10 @@ function App() {
             </li>
             <li className="etape">
               <div className="etape-visuel" aria-hidden="true">
-                <div className="etape-carte">
-                  <p className="etape-carte-titre">Tu reçois</p>
-                  <p className="etape-ligne"><span className="etape-icone"><Smartphone size={13} /></span>Une première maquette<Check className="etape-ok" size={15} /></p>
-                  <p className="etape-ligne"><span className="etape-icone"><FileText size={13} /></span>Le cahier des charges<Check className="etape-ok" size={15} /></p>
-                  <p className="etape-ligne"><span className="etape-icone"><Receipt size={13} /></span>Un devis clair<Check className="etape-ok" size={15} /></p>
+                <div className="etape-livrables">
+                  <span className="etape-livrable"><DeliverableVisual type="mockup" />Maquette</span>
+                  <span className="etape-livrable"><DeliverableVisual type="brief" />Cahier des charges</span>
+                  <span className="etape-livrable"><DeliverableVisual type="quote" />Devis</span>
                 </div>
               </div>
               <p className="etape-pastilles"><span className="etape-num">Étape 2</span><span className="etape-offert">Offert</span></p>
@@ -926,11 +927,9 @@ function App() {
             </li>
             <li className="etape">
               <div className="etape-visuel" aria-hidden="true">
-                <div className="etape-carte">
-                  <p className="etape-carte-titre">Ton application</p>
-                  <p className="etape-ligne"><span className="etape-icone"><PenTool size={13} /></span>Maquette sur mesure<Check className="etape-ok" size={15} /></p>
-                  <p className="etape-ligne"><span className="etape-icone"><Code2 size={13} /></span>Développement<Check className="etape-ok" size={15} /></p>
-                  <p className="etape-ligne"><span className="etape-icone"><Rocket size={13} /></span>Mise en ligne<span className="etape-en-ligne"><i />En ligne</span></p>
+                <div className="etape-lancement">
+                  <DeliverableVisual type="launch" />
+                  <span>Ton application, en ligne</span>
                 </div>
               </div>
               <p className="etape-pastilles"><span className="etape-num">Étape 3</span></p>
@@ -938,13 +937,16 @@ function App() {
               <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">
                 Je reprends la maquette sur mesure, je développe ton application et je la publie sur les stores ou sur le web. Ensuite, je t'accompagne pour la faire évoluer.
               </p>
-              <p className="etape-prix">
-                <strong>Tarif fixe</strong>, en général de 5&nbsp;000 à 12&nbsp;000&nbsp;€. Une première version en ligne en 45&nbsp;jours en moyenne.
-              </p>
             </li>
           </ol>
 
-          <div className="reveal flex flex-col items-center mt-9 md:mt-12">
+          {/* Le prix et le délai, sous les trois étapes : une seule ligne d'information pour tout le parcours (dans
+              l'étape 3, il la rendait deux fois plus haute que les autres) */}
+          <p className="reveal etape-tarif">
+            <strong>Tarif fixe</strong>, en général une dizaine de milliers d'euros pour une application complète&nbsp;: stratégie, maquette, développement et mise en ligne. <strong>Une première version en ligne en 30&nbsp;jours</strong> en moyenne.
+          </p>
+
+          <div className="reveal flex flex-col items-center mt-8 md:mt-10">
             <a
               href={lienInterne('/rendez-vous')}
               onClick={goBookCall}
@@ -1054,7 +1056,7 @@ function App() {
                 </li>
                 <li className="flex items-start gap-3 text-text text-[0.95rem] font-medium leading-relaxed">
                   <svg className="shrink-0 mt-0.5 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                  Tu veux une application qui rapporte, pas juste une application qui existe.
+                  Tu veux une application qui te rapporte des revenus chaque mois.
                 </li>
               </ul>
             </div>
