@@ -155,11 +155,11 @@ function useScrollReveal(trigger) {
   return ref
 }
 
-// La home affiche les 5 premieres questions (les vraies objections, depuis la refonte du 10/10/2026), /faq
+// La home affiche les 4 premieres questions (les vraies objections, depuis la refonte du 10/10/2026), /faq
 // affiche la liste complete. Une seule source (FAQ_ITEMS dans PagesSeo.jsx) : les reponses ne peuvent plus
 // diverger entre les deux pages. Le balisage FAQPage de la home (scripts/generate-routes.js) prend le meme
 // nombre : changer les deux ensemble.
-const NB_FAQ_ACCUEIL = 5
+const NB_FAQ_ACCUEIL = 4
 const faqItems = FAQ_ITEMS.slice(0, NB_FAQ_ACCUEIL)
 
 const AVAILABILITY_CHECK_DELAY_MS = 2200

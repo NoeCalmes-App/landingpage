@@ -184,7 +184,8 @@ c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
 
 **90 % des visiteurs arrivent sur téléphone, depuis les pubs Instagram et Facebook** (Noé, 11/10/2026) :
 chaque texte se juge d'abord sur un écran de téléphone, en phrases courtes. Une réponse de FAQ tient en
-une ou deux phrases ; « c'est trop long » est le premier reproche à éviter.
+deux ou trois phrases qui expliquent : trop long, on ne lit pas (« c'est trop long ») ; trop court, on
+n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
 
 1. **Hero et vidéo** (voir plus haut).
 2. **« Ce que j'ai déjà construit »** (`#calories-proof`, lien « Preuves » de la barre du haut) : « Des
@@ -220,20 +221,27 @@ une ou deux phrases ; « c'est trop long » est le premier reproche à éviter.
    le prix le plus bas, quelqu'un pour faire sa publicité). Écarte avant WhatsApp ceux que Noé ne prend
    pas. Remplace « Ce que je fais / Ce que je ne fais pas ». « Une application qui te rapporte des revenus
    chaque mois » (Noé, 11/10/2026, à la place de « qui rapporte, pas juste une application qui existe »).
-6. **FAQ « Pour y voir plus clair »** (`#faq`) : les 5 premières questions de `FAQ_ITEMS`
-   (`src/PagesSeo.jsx`), les vraies objections : combien (« une dizaine de milliers d'euros », de la
-   stratégie à la mise en ligne), en combien de temps (30 jours pour une première version), « je n'y
-   connais rien » (« c'est le cas de la plupart de mes clients », « je suis là pour t'aiguiller et te
-   conseiller », « commencer ensemble »), est-ce que ça va rapporter (« personne ne peut le promettre »,
-   Calorie), et pour trouver des utilisateurs (« les utilisateurs qui arrivent deviennent des clients qui
-   paient chaque mois »). Chaque réponse tient en une ou deux phrases courtes (Noé, 11/10/2026 : « c'est
-   trop long »). Retirées le 11/10/2026 : « Application mobile ou web : laquelle choisir ? » et « À qui
-   appartient l'application ? » (« c'est logique, il paye », Noé). `NB_FAQ_ACCUEIL` vaut 5 dans
-   `src/App.jsx` et dans `scripts/generate-routes.js` (balisage FAQPage de l'accueil) : changer les deux
-   ensemble. /faq garde la liste complète (11 questions). La FAQ reste avant « Parlons de ton projet »
-   (choix du 11/10/2026, Noé hésitait) : elle lève les dernières objections juste avant le bouton ; après,
-   la page finirait sur des questions au lieu du bouton. Sous les questions, « Une autre question ?
-   Écris-moi sur WhatsApp. » ouvre directement WhatsApp avec le suivi `home_faq`.
+6. **FAQ « Pour y voir plus clair »** (`#faq`) : les 4 premières questions de `FAQ_ITEMS`
+   (`src/PagesSeo.jsx`), les vraies objections, en deux ou trois phrases chacune :
+   - combien : un tarif fixe, « en général une dizaine de milliers d'euros, comprenant la stratégie, la
+     maquette sur mesure, le développement et la mise en ligne » ;
+   - en combien de temps : une première version en 30 jours en moyenne ; pour une application complète,
+     « le délai est fixé dans le devis, selon les fonctionnalités prévues au cahier des charges » (Noé
+     refuse « on cale le délai ensemble », pas assez pro) ;
+   - « je n'y connais rien » : « c'est le cas de la plupart de mes clients », « je suis là pour
+     t'aiguiller et te conseiller », « une idée suffit pour commencer ensemble » ;
+   - pour trouver des utilisateurs : Noé ne fait pas la publicité, son travail est que les utilisateurs
+     qui arrivent deviennent des clients qui paient chaque mois, mais il conseille sur la façon la plus
+     pertinente de faire connaître l'application.
+
+   Retirées le 11/10/2026 par Noé : « Application mobile ou web : laquelle choisir ? », « À qui appartient
+   l'application ? » (« c'est logique, il paye ») et « Est-ce que mon application va vraiment générer des
+   revenus ? ». `NB_FAQ_ACCUEIL` vaut 4 dans `src/App.jsx` et dans `scripts/generate-routes.js` (balisage
+   FAQPage de l'accueil) : changer les deux ensemble. /faq garde la liste complète (10 questions). La FAQ
+   reste avant « Parlons de ton projet » (choix du 11/10/2026, Noé hésitait) : elle lève les dernières
+   objections juste avant le bouton ; après, la page finirait sur des questions au lieu du bouton. Sous les
+   questions, « Une autre question ? Écris-moi sur WhatsApp. » ouvre directement WhatsApp avec le suivi
+   `home_faq`.
 7. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités,
    le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`), « Tu bosses direct avec moi », puis l'audit en second choix
    dans une carte blanche (`#audit`, lien « Audit », route /audit) : « Pas encore prêt à écrire ? Teste ton

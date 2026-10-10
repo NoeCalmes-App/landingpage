@@ -23,30 +23,27 @@ const mePhoto = '/assets/images/profile/me.webp'
 // Les 3 premieres alimentent aussi l'accordeon de la home (App.jsx en prend
 // un slice), pour qu'il n'existe qu'une seule liste de questions.
 export const FAQ_ITEMS = [
-  // Ordre du 10/10/2026 : les 5 premieres sont les vraies objections, affichees sur l'accueil. Leurs reponses
-  // tiennent en une ou deux phrases courtes : 90 % des visiteurs arrivent sur telephone, depuis les pubs Instagram
-  // et Facebook (Noe, 11/10/2026). Retirees le 11/10/2026 : « Application mobile ou web » et « A qui appartient
-  // l'application ? » (« c'est logique, il paye », Noe).
-  // (NB_FAQ_ACCUEIL dans App.jsx, et le balisage FAQPage de la home dans scripts/generate-routes.js).
+  // Ordre du 10/10/2026 : les 4 premieres sont les vraies objections, affichees sur l'accueil (NB_FAQ_ACCUEIL
+  // dans App.jsx, et le balisage FAQPage de la home dans scripts/generate-routes.js). Leurs reponses tiennent
+  // en deux ou trois phrases qui expliquent : 90 % des visiteurs arrivent sur telephone, depuis les pubs
+  // Instagram et Facebook ; trop long, on ne lit pas, trop court, « on explique pas » (Noe, 11/10/2026).
+  // Retirees le 11/10/2026 : « Application mobile ou web », « A qui appartient l'application ? » (« c'est
+  // logique, il paye ») et « Est-ce que mon application va vraiment generer des revenus ? ».
   {
     q: "Combien coûte une application ?",
-    a: "Un tarif fixe, posé avant de commencer : en général une dizaine de milliers d'euros, de la stratégie à la mise en ligne. Et tu vois ta maquette avant de décider.",
+    a: "Un tarif fixe, posé avant de commencer : en général une dizaine de milliers d'euros, comprenant la stratégie, la maquette sur mesure, le développement et la mise en ligne. Pas de compteur qui tourne : tu sais exactement ce que tu paies, et tu vois ta maquette avant de décider.",
   },
   {
     q: "Combien de temps faut-il pour avoir une application ?",
-    a: "Une première version en 30 jours en moyenne. Pour une application complète, on cale le délai ensemble, selon ce qu'elle doit faire.",
+    a: "Une première version est en ligne en 30 jours en moyenne. Pour une application complète, le délai est fixé dans le devis, selon les fonctionnalités prévues au cahier des charges.",
   },
   {
     q: "Je n'y connais rien en technique, c'est un problème ?",
-    a: "Non, c'est le cas de la plupart de mes clients. Je suis là pour t'aiguiller et te conseiller : une idée suffit pour commencer ensemble.",
-  },
-  {
-    q: "Est-ce que mon application va vraiment générer des revenus ?",
-    a: "Personne ne peut le promettre. Mais je la conçois dès le départ pour qu'elle rapporte. Calorie, une application que j'ai conçue, fait 13 000 € par mois.",
+    a: "Non, c'est le cas de la plupart de mes clients. Je suis là pour t'aiguiller et te conseiller à chaque étape, de l'idée à la mise en ligne. Une idée suffit pour commencer ensemble : pas besoin de cahier des charges ni de vocabulaire technique.",
   },
   {
     q: "Et pour trouver des utilisateurs ?",
-    a: "Je ne fais pas ta publicité. Mon travail : que les utilisateurs qui arrivent deviennent des clients qui paient chaque mois.",
+    a: "Je ne fais pas ta publicité. Mon travail, c'est que les utilisateurs qui arrivent deviennent des clients qui paient chaque mois. En revanche, je peux te conseiller sur la façon la plus pertinente de faire connaître ton application.",
   },
   {
     q: "Après la livraison de l'application ?",
