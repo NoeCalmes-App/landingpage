@@ -672,7 +672,7 @@ function App() {
                     Noé Calmes
                   </span>
                   <span className="text-grey text-[0.68rem] md:text-[0.75rem] leading-none font-normal truncate">
-                    Expert en applications mobiles & web
+                    Expert en apps mobiles & SaaS
                   </span>
                 </span>
               </a>

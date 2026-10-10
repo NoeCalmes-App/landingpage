@@ -6,7 +6,7 @@
 
 ## Ce que je suis
 
-**Expert en applications mobiles & web.**
+**Expert en apps mobiles & SaaS.**
 
 Je ne suis pas un développeur à la mission. Je ne suis pas une agence. Je suis spécialisé dans les applications pensées pour générer des revenus, et ma spécialité n'est pas un support, c'est un résultat.
 
@@ -172,11 +172,11 @@ On peut lancer une première version (MVP) pour valider que les gens paient, ava
 
 ## Mon label externe
 
-**"Expert en application mobile"**
+**« Expert en apps mobiles & SaaS »** (depuis le 10/10/2026, avant « Expert en applications mobiles & web »)
 
-- Compris par tous — le plombier comme le fondateur de startup
 - "Expert" = au-dessus du dev lambda
-- "Application mobile" = tout le monde comprend
+- "Apps mobiles" = tout le monde comprend. "SaaS" plutôt que "web" : "web" fait penser à un site web, donc au prix d'un site
+- Règle complète : `documentation/context/vocabulaire-mobile-web.md`, règle 1
 - Ne dit pas "Flutter" (trop technique pour les non-tech — Flutter se prouve dans la qualité du code, pas dans le titre)
 
 ---

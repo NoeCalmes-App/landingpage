@@ -28,7 +28,7 @@ Ce document part du principe que tu n'as pas encore d'audience. Chaque post a do
 
 ## 1. Rappel express — qui parle et pour qui
 
-**Qui** : Noé Calmes, **expert en applications mobiles & web**. Ni dev à la mission, ni agence. Il prend un sujet mobile de la stratégie au lancement (cadrage → design → dev Flutter → publication → suivi).
+**Qui** : Noé Calmes, **expert en apps mobiles & SaaS**. Ni dev à la mission, ni agence. Il prend un sujet mobile de la stratégie au lancement (cadrage → design → dev Flutter → publication → suivi).
 
 **Angle cœur, le fil rouge de TOUT** :
 > « Je ne livre pas une app, je livre un actif qui génère des revenus. »
@@ -260,7 +260,7 @@ Chaque semaine, dans la conversation, préparer les posts **lundi → vendredi d
 
 | ✅ Utiliser | ❌ Éviter |
 |---|---|
-| Expert en applications mobiles & web | Expert Flutter / Dart, site web, site vitrine |
+| Expert en apps mobiles & SaaS (label depuis le 10/10/2026) | Expert Flutter / Dart, site web, site vitrine |
 | Application qui génère des revenus / actif mobile | Livrer du code / dépense technique |
 | Créer · reprendre · faire évoluer | Refonte / développer |
 | Stratégie au lancement | Accompagnement / coaching |
