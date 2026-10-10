@@ -102,7 +102,9 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
 - Espacement (demande de Noé du 10/10/2026 : plus d'air au-dessus du titre, la vidéo plus bas) : sur
   ordinateur, 88 px entre la barre du haut et le titre, puis 28 px jusqu'à la phrase, 40 px jusqu'au
   bouton et 60 px jusqu'à la vidéo (titre à 176 px du haut, vidéo à 524 px). Sur téléphone : 20, 32 et
-  40 px. Le hero reste centré en hauteur quand l'écran est plus haut que son contenu.
+  40 px. Le hero reste centré en hauteur quand l'écran est plus haut que son contenu. Sur un ordinateur
+  bas (hauteur 820 px ou moins : portables 1366×768, 1280×720), l'air est réduit (48, 20, 32, 40 px) pour
+  que le message de l'affiche de la vidéo se voie dès l'arrivée (`src/index.css`).
 - Fond (`.hero-bg` dans `src/index.css`) : une lueur violette en arc de cercle. Un grand cercle blanc
   centré en haut (blanc jusqu'à 34 % du rayon, fondu jusqu'à 70 %) laisse le violet monter haut sur les
   côtés, descendre doucement vers le milieu et remonter de l'autre côté ; il entoure la vidéo. Même
@@ -122,11 +124,13 @@ Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
 
 - Tant que la vidéo n'a rien montré, une affiche est posée dessus, comme chez Ikovaline (une image du
   film, peu d'éléments) : le fond blanc du film, « Et si ton idée décollait ? » (« décollait » dans le
-  dégradé violet, comme « décoller » dans le film) et la courbe « Revenus » du film qui monte jusqu'à une
-  flèche. Noé a choisi le blanc parmi quatre propositions (violet ou blanc, « En 2026, un vrai pari. »
-  avec les dés, ou cette phrase), a demandé un peu d'espace entre les deux lignes et une flèche qui
-  monte ; la phrase a été retenue parce qu'elle donne envie (positive) et que le film démarre sur ce
-  même blanc. Refusés avant : l'image « 8 apps sur 10 » (« ça donne pas envie
+  dégradé violet, comme « décoller » dans le film) et un trait qui souligne « décollait » puis décolle en
+  flèche vers le haut à droite. Tout tient dans le haut de l'image, centré : sur ordinateur, on ne voit
+  que le haut de la vidéo à l'arrivée, et en descendant pour voir le reste on la lance (« mets-toi à la
+  place de l'utilisateur », Noé). Noé a choisi le blanc parmi quatre propositions (violet ou blanc,
+  « En 2026, un vrai pari. » avec les dés, ou cette phrase), puis cette flèche parmi quatre autres
+  (courbe, avion en papier, texte seul, pastille) ; refusée avant : une courbe de graphique en bas à
+  gauche avec un aplat (« pas belle »). Refusés avant : l'image « 8 apps sur 10 » (« ça donne pas envie
   de regarder »), une couverture avec sa photo et « Regarde la vidéo » (« pas ma tête »), le titre du hero
   répété. Source de l'image : `affiche.html` (variante F) dans le dossier de rendu du film.
 - Le film se charge en fond 0,7 s après l'affichage, mais ne démarre que quand on fait défiler la page

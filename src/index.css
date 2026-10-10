@@ -157,6 +157,17 @@ section[id] {
   .btn-reflet::after { display: none; }
 }
 
+/* ===== HERO SUR UN ÉCRAN D'ORDINATEUR BAS ===== */
+/* Portables 1366×768, 1280×720 : un peu moins d'air au-dessus du titre et entre les éléments, pour que le
+   message de l'affiche de la vidéo se voie dès l'arrivée. Sur ces écrans, on ne voit que le haut de la
+   vidéo ; en descendant pour voir le reste, on la lance, et l'affiche disparaît. */
+@media (min-width: 1024px) and (max-height: 820px) {
+  .hero-bg { padding-top: 8.5rem; }
+  .hero-bg .hero-content > h1 { margin-bottom: 1.25rem; }
+  .hero-bg .hero-content > p { margin-bottom: 2rem; }
+  .hero-bg .hv-zone { margin-top: 2.5rem; }
+}
+
 /* ===== HERO BACKGROUND ===== */
 /* Lueur violette en arc de cercle : un grand cercle blanc centré en haut (derrière la barre, le titre et le
    bouton), le violet tout autour. Il monte haut sur les côtés, descend doucement vers le milieu, remonte de
