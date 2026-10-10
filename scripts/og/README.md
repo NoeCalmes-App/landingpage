@@ -1,18 +1,26 @@
 # Images de partage (aperçu des liens WhatsApp, iMessage, LinkedIn)
 
-Les trois images vivent dans `public/assets/images/meta/` et il n'y en a pas
-d'autre :
+Quatre images, toutes dans `public/assets/images/meta/`, et aucune autre :
 
 | Image | Où elle s'affiche | Source ici |
 |---|---|---|
-| `accueil-og.jpg` | `noecalmes.fr` et toutes les pages, sauf les deux lignes suivantes | `accueil-og.html` + `accueil-og-fond.png` |
-| `maquette-og.png` | `noecalmes.fr/maquette` et toutes les `/maquette/...` | `maquette-og.html` |
-| `audit-app-og.png` | `/audit-app` | `audit-app-og.html` (était dans `public/`, donc publié par erreur) |
+| `accueil-og.jpg` | `noecalmes.fr` et tous les liens, sauf les trois lignes suivantes | `accueil-og.html` + `accueil-og-fond.png` |
+| `maquette-og.png` | `/maquette` et toutes les `/maquette/...` | `maquette-og.html` |
+| `espace-client-og.png` | `/espace-client` | `espace-client-og.html` |
+| `audit-og.png` | `/audit-app` | `audit-og.html` |
 
-`accueil-og.jpg` est déclarée dans `index.html` (donc héritée par toutes les
-pages générées) et dans `public/legal/index.html`. `maquette-og.png` est posée
-par `scripts/generate-routes.js` (bloc « Client mockup routes »).
-`audit-app-og.png` par le même script et par `src/audit-app/AuditApp.jsx`.
+Qui les pose : `accueil-og.jpg` est dans `index.html` (donc héritée par toutes
+les pages générées) et `public/legal/index.html`. Les trois autres sont posées
+par `scripts/generate-routes.js` (fonction `poserApercuPartage`), et l'audit
+aussi par `src/audit-app/AuditApp.jsx`.
+
+Poids : chaque image doit rester sous 300 Ko, au-delà WhatsApp n'affiche pas
+toujours l'aperçu.
+
+⚠️ Les liens `/espace-client/{client}/{jeton}` et `/maquette-visuel/...` n'ont
+pas de page à eux sur GitHub Pages : ils répondent 404 aux robots de partage,
+puis `public/404.html` les rattrape en JavaScript pour le visiteur. Les robots
+n'exécutent pas ce JavaScript, donc ces liens-là n'ont pas d'aperçu dédié.
 
 Titre de Noé dans ces images et partout ailleurs : « Expert en applications
 mobiles & web ». Pas de « SaaS » dans un titre (décision du 10/10/2026) : le mot
@@ -24,12 +32,13 @@ En JPEG (environ 90 Ko) et pas en PNG : le grain du fond faisait monter le PNG
 à 700 Ko, et WhatsApp n'affiche pas toujours un aperçu au-delà d'environ
 300 Ko. Rendre `accueil-og.html` en PNG puis convertir en JPEG qualité 90.
 
-C'est l'image d'origine (ex `new-og-image.png`) **à l'identique** : même texte,
-même police, même mise en page. Décision de Noé du 10/10/2026 : on ne touche
-qu'aux bulles. `MVP · Flutter · IOS & Android · Produit` sont devenues
+C'est l'image d'origine (ex `new-og-image.png`) avec trois retouches seulement,
+décidées par Noé le 10/10/2026 : « votre idée » devient « ton idée » (refait
+avec les lettres mêmes de l'image d'origine, police identique), le contenu est
+centré (155 px de marge de chaque côté), et les bulles changent. `MVP · Flutter · IOS & Android · Produit` sont devenues
 `Stratégie · Design · Mobile & web · Mise en ligne` (Flutter et MVP sont
-interdits en public). `accueil-og-fond.png` est l'image d'origine bulles
-effacées ; `accueil-og.html` pose les bulles par-dessus, en Inter normal.
+interdits en public). `accueil-og-fond.png` est l'image d'origine retouchée,
+bulles effacées ; `accueil-og.html` pose les bulles par-dessus, en Inter normal.
 
 ## Image des maquettes
 

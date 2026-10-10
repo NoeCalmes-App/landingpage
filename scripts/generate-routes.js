@@ -1073,7 +1073,7 @@ const auditAppRoute = {
   path: '/audit-app',
   heading: 'Tester ton idée d\'application mobile',
   content: 'Réponds à quelques questions et obtiens une première lecture claire avant d\'investir dans le développement : potentiel, budget réaliste, délai, et si ton idée peut générer des revenus.',
-  ogImage: 'https://noecalmes.fr/assets/images/meta/audit-app-og.png',
+  ogImage: 'https://noecalmes.fr/assets/images/meta/audit-og.png',
   ogImageAlt: 'Audit gratuit pour tester si ton idée d\'application mobile peut générer des revenus.',
 }
 
@@ -1132,36 +1132,55 @@ const MAQUETTE_PARTAGE = {
   imageAlt: "L'idée prend forme : place à la maquette, par Noé Calmes",
 }
 
+// Pose un apercu de partage complet sur une page generee : titre, description,
+// image, adresse. Sert aux maquettes et a l'espace client. og:url ET canonique
+// pointent sur la page elle-meme : le robot de Facebook/WhatsApp suit og:url
+// comme adresse de reference, et lisait sinon l'image de l'accueil. Ces pages
+// sont noindex, la canonique n'a aucun effet SEO.
+function poserApercuPartage(html, path, apercu) {
+  const url = urlPublique(path)
+  const remplacements = [
+    [/<title>[^<]*<\/title>/, `<title>${apercu.title}</title>`],
+    [/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/, `<meta name="description" content="${apercu.description}" />`],
+    [/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${url}" />`],
+    [/<link\s+rel="alternate"\s+hreflang="fr-fr"\s+href="[^"]*"\s*\/?>/, `<link rel="alternate" hreflang="fr-fr" href="${url}" />`],
+    [/<link\s+rel="alternate"\s+hreflang="x-default"\s+href="[^"]*"\s*\/?>/, `<link rel="alternate" hreflang="x-default" href="${url}" />`],
+    [/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${url}" />`],
+    [/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${apercu.title}" />`],
+    [/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${apercu.description}" />`],
+    [/<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/, `<meta property="og:image" content="${apercu.image}" />`],
+    [/<meta\s+property="og:image:alt"\s+content="[^"]*"\s*\/?>/, `<meta property="og:image:alt" content="${apercu.imageAlt}" />`],
+    [/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${apercu.title}" />`],
+    [/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${apercu.description}" />`],
+    [/<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:image" content="${apercu.image}" />`],
+    [/<meta\s+name="twitter:image:alt"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:image:alt" content="${apercu.imageAlt}" />`],
+    [/"image":\s*"[^"]*"/, `"image": "${apercu.image}"`],
+  ]
+  for (const [motif, valeur] of remplacements) html = html.replace(motif, valeur)
+  return html
+}
+
 for (const path of mockupRoutes) {
   let html = retirerFaqPage(baseHtml)
-  const url = urlPublique(path)
   html = html.replace(
     /<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/,
     '<meta name="robots" content="noindex, nofollow" />'
   )
-  html = html.replace(/<title>[^<]*<\/title>/, `<title>${MAQUETTE_PARTAGE.title}</title>`)
-  html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/, `<meta name="description" content="${MAQUETTE_PARTAGE.description}" />`)
-  // og:url ET canonique sur la page elle-meme, pas sur l'accueil : le robot de
-  // Facebook/WhatsApp suit og:url comme adresse de reference et aurait lu
-  // l'image de l'accueil. La page est noindex, la canonique n'a pas d'effet SEO.
-  html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${url}" />`)
-  html = html.replace(/<link\s+rel="alternate"\s+hreflang="fr-fr"\s+href="[^"]*"\s*\/?>/, `<link rel="alternate" hreflang="fr-fr" href="${url}" />`)
-  html = html.replace(/<link\s+rel="alternate"\s+hreflang="x-default"\s+href="[^"]*"\s*\/?>/, `<link rel="alternate" hreflang="x-default" href="${url}" />`)
-  html = html.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${url}" />`)
-  html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${MAQUETTE_PARTAGE.title}" />`)
-  html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${MAQUETTE_PARTAGE.description}" />`)
-  html = html.replace(/<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/, `<meta property="og:image" content="${MAQUETTE_PARTAGE.image}" />`)
-  html = html.replace(/<meta\s+property="og:image:alt"\s+content="[^"]*"\s*\/?>/, `<meta property="og:image:alt" content="${MAQUETTE_PARTAGE.imageAlt}" />`)
-  html = html.replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${MAQUETTE_PARTAGE.title}" />`)
-  html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${MAQUETTE_PARTAGE.description}" />`)
-  html = html.replace(/<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:image" content="${MAQUETTE_PARTAGE.image}" />`)
-  html = html.replace(/<meta\s+name="twitter:image:alt"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:image:alt" content="${MAQUETTE_PARTAGE.imageAlt}" />`)
-  html = html.replace(/"image":\s*"[^"]*"/, `"image": "${MAQUETTE_PARTAGE.image}"`)
+  html = poserApercuPartage(html, path, MAQUETTE_PARTAGE)
   const routeDir = join(distDir, path)
   mkdirSync(routeDir, { recursive: true })
   writeFileSync(join(routeDir, 'index.html'), html)
   pagesGenerees.push(join(routeDir, 'index.html'))
   console.log(`✓ Generated ${path}/index.html (mockup noindex, aperçu maquette)`)
+}
+
+// L'espace client a son propre apercu (decision du 10/10/2026) : devis,
+// factures, echanges. Sans pronom, le client pouvant etre vouvoye.
+const ESPACE_CLIENT_PARTAGE = {
+  title: 'Espace client — Noé Calmes',
+  description: 'Devis, factures, suivi du projet et échanges avec Noé Calmes, au même endroit.',
+  image: 'https://noecalmes.fr/assets/images/meta/espace-client-og.png',
+  imageAlt: 'Espace client : devis, factures et échanges avec Noé Calmes',
 }
 
 // ─── Legacy routes — noindex (old URLs that may still be indexed by Google) ──
@@ -1186,6 +1205,7 @@ for (const path of noindexRoutes) {
     '<meta name="robots" content="noindex, nofollow" />'
   )
   html = html.replace(/<title>[^<]*<\/title>/, `<title>Noé Calmes</title>`)
+  if (path === '/espace-client') html = poserApercuPartage(html, path, ESPACE_CLIENT_PARTAGE)
 
   const routeDir = join(distDir, path)
   mkdirSync(routeDir, { recursive: true })

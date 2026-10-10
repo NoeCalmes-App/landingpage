@@ -1,0 +1,127 @@
+<!doctype html>
+<!--
+  SOURCE DE L'IMAGE DE PARTAGE DE L'ESPACE CLIENT
+  public/assets/images/meta/espace-client-og.png (1200 x 630)
+
+  Pour la regenerer : voir scripts/og/README.md.
+  Meme composition que maquette-og.html. Sans pronom (le client peut etre
+  vouvoye), sans portrait : devis, factures, suivi et echanges avec Noe.
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face { font-family: 'Jakarta'; font-weight: 800; src: url('../../public/assets/fonts/plus-jakarta/PlusJakartaSans-ExtraBold.ttf') format('truetype'); }
+  @font-face { font-family: 'Jakarta'; font-weight: 700; src: url('../../public/assets/fonts/plus-jakarta/PlusJakartaSans-Bold.ttf') format('truetype'); }
+  @font-face { font-family: 'Baskerville'; font-style: italic; font-weight: 400; src: url('LibreBaskerville-Italic.woff2') format('woff2'); }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    color: #033475;
+    background:
+      radial-gradient(ellipse 60% 70% at 86% 60%, rgba(102, 93, 255, 0.30) 0%, rgba(102, 93, 255, 0.10) 45%, rgba(102, 93, 255, 0) 72%),
+      radial-gradient(ellipse 70% 50% at 20% 115%, rgba(102, 93, 255, 0.16) 0%, rgba(102, 93, 255, 0) 70%),
+      linear-gradient(180deg, #fcfcfe 0%, #f6f5fc 100%);
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(102, 93, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(102, 93, 255, 0.07) 1px, transparent 1px);
+    background-size: 100px 100px;
+    background-position: 50px 15px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 90% at 40% 50%, #000 25%, transparent 100%);
+            mask-image: radial-gradient(ellipse 80% 90% at 40% 50%, #000 25%, transparent 100%);
+  }
+
+  /* ─── Texte ─── */
+  .copy {
+    position: absolute; left: 96px; top: 0; bottom: 0;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-bottom: 48px;
+  }
+  .line1 {
+    font-family: 'Baskerville', serif; font-style: italic; font-weight: 400;
+    font-size: 46px; line-height: 1; color: #4b4b4b;
+    margin-bottom: 20px; margin-left: 5px;
+  }
+  .line2 {
+    font-family: 'Jakarta', sans-serif; font-weight: 800;
+    font-size: 98px; line-height: 1.0; letter-spacing: -0.038em;
+    color: #033475;
+  }
+  .line2 .accent {
+    display: inline-block;
+    background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    padding: 0 10px 28px 0; margin: 0 -10px -28px 0;
+  }
+
+  /* ─── Espace client abstrait ─── */
+  .scene { position: absolute; right: 0; top: 0; width: 540px; height: 630px; }
+  .win {
+    position: absolute; right: 120px; top: 96px; width: 410px; height: 330px;
+    background: #ffffff; border-radius: 18px;
+    border: 1px solid rgba(3, 52, 117, 0.08);
+    box-shadow: 0 30px 70px -30px rgba(102, 93, 255, 0.45), 0 2px 10px rgba(3, 52, 117, 0.05);
+    overflow: hidden;
+  }
+  .win .bar { height: 34px; background: #f5f4fb; border-bottom: 1px solid rgba(3, 52, 117, 0.06); display: flex; align-items: center; gap: 7px; padding-left: 14px; }
+  .win .bar i { width: 9px; height: 9px; border-radius: 50%; background: #d9d6f5; display: block; }
+  .win .bar .url { margin-left: 12px; width: 170px; height: 14px; border-radius: 7px; background: #ebe9f8; }
+  .win .head { margin: 20px 22px 14px; height: 16px; width: 140px; border-radius: 8px; background: #c9c4ff; }
+  .doc { margin: 0 22px 12px; height: 54px; border-radius: 12px; background: #f7f6fc; border: 1px solid rgba(3, 52, 117, 0.05); display: flex; align-items: center; gap: 12px; padding: 0 14px; }
+  .doc .ico { width: 30px; height: 34px; border-radius: 7px; background: #e4e1ff; position: relative; flex: none; }
+  .doc .ico::after { content: ''; position: absolute; left: 7px; right: 7px; top: 10px; height: 3px; border-radius: 2px; background: #b9b3ff; box-shadow: 0 6px 0 #c9c4ff, 0 12px 0 #d6d2ff; }
+  .doc .l { flex: 1; }
+  .doc .l b { display: block; width: 110px; height: 10px; border-radius: 5px; background: #d2cfe6; margin-bottom: 8px; }
+  .doc .l s { display: block; width: 70px; height: 8px; border-radius: 4px; background: #e6e4f3; }
+  .doc .tag { width: 58px; height: 22px; border-radius: 11px; flex: none; }
+  .tag.ok { background: #dff5e8; }
+  .tag.ok::before { content: ''; display: block; margin: 7px auto 0; width: 30px; height: 8px; border-radius: 4px; background: #8fd6ac; }
+  .tag.wait { background: #ece9ff; }
+  .tag.wait::before { content: ''; display: block; margin: 7px auto 0; width: 30px; height: 8px; border-radius: 4px; background: #b3acff; }
+
+  .chat {
+    position: absolute; right: 60px; top: 276px; width: 300px; padding: 18px;
+    background: #ffffff; border-radius: 24px;
+    border: 1px solid rgba(3, 52, 117, 0.07);
+    box-shadow: 0 40px 80px -30px rgba(3, 52, 117, 0.35), 0 2px 10px rgba(3, 52, 117, 0.05);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .chat .who { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+  .chat .who i { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, #665dff, #9e94ff); display: block; }
+  .chat .who b { width: 90px; height: 10px; border-radius: 5px; background: #d2cfe6; display: block; }
+  .bub { height: 34px; border-radius: 17px; }
+  .bub.in { width: 190px; background: #f2f1f8; border-bottom-left-radius: 6px; }
+  .bub.out { width: 160px; align-self: flex-end; background: #665dff; border-bottom-right-radius: 6px; }
+  .bub.in.short { width: 130px; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+
+  <div class="scene">
+    <div class="win">
+      <div class="bar"><i></i><i></i><i></i><span class="url"></span></div>
+      <div class="head"></div>
+      <div class="doc"><span class="ico"></span><span class="l"><b></b><s></s></span><span class="tag ok"></span></div>
+      <div class="doc"><span class="ico"></span><span class="l"><b></b><s></s></span><span class="tag wait"></span></div>
+      <div class="doc"><span class="ico"></span><span class="l"><b></b><s></s></span><span class="tag ok"></span></div>
+    </div>
+    <div class="chat">
+      <div class="who"><i></i><b></b></div>
+      <div class="bub in"></div>
+      <div class="bub out"></div>
+      <div class="bub in short"></div>
+    </div>
+  </div>
+
+  <div class="copy">
+    <div class="line1">Devis, factures, échanges</div>
+    <div class="line2">Espace<br /><span class="accent">client</span></div>
+  </div>
+</body>
+</html>

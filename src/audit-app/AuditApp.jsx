@@ -72,7 +72,7 @@ export default function AuditApp({ onBack, onLegal }) {
       path: '/audit-app',
       title: "Tester ton idée d'application mobile en 2 minutes | Noé Calmes",
       description: "Teste ton idée d'application mobile avant d'investir : potentiel, budget, délai et si elle peut générer des revenus, en 2 minutes.",
-      ogImage: 'https://noecalmes.fr/assets/images/meta/audit-app-og.png',
+      ogImage: 'https://noecalmes.fr/assets/images/meta/audit-og.png',
     })
   }, [])
 
