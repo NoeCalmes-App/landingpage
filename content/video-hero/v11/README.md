@@ -38,7 +38,8 @@ Tout le reste (images après 4,7 s, voix, autres bruitages) est exactement celui
   scène 1 : les nouveaux bruitages sont posés au même niveau et avec la même baisse sous la voix que dans la v10
   (gain retrouvé dans le mix : +3,78 dB, -6,97 dB à pleine voix), et le « t » est adouci. Résultat :
   `son/mix-final-v11.wav` (pas versionné), -16 LUFS comme la v10.
-- `reel/` : le même film en vertical pour un Reel Instagram, avec les sous-titres. Voir `reel/README.md`.
+- `reel/` : le même film en vertical pour un Reel Instagram, sans sous-titres (les textes du film disent déjà
+  ce que dit la voix). Voir `reel/README.md`.
 
 ## Refaire le film
 

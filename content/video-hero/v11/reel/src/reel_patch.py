@@ -1,7 +1,8 @@
 # Le film du hero (1920x1080) recomposé en vertical (1080x1920) pour un Reel Instagram.
 # Même minutage que la voix et les bruitages : seules les positions, les tailles et le découpage des lignes changent.
-# Zone utile : y 250 à 1290 (en haut, l'en-tête d'Instagram ; en bas, les sous-titres puis la légende et les boutons).
-# usage : python3 reel_patch.py film-v11.html reel.html sous_titres.json
+# Zone utile : y 250 à 1290 (en haut, l'en-tête d'Instagram ; en bas, la place des sous-titres puis la légende et les boutons).
+# usage : python3 reel_patch.py film-v11.html reel.html [sous_titres.json]
+# Sans le troisième argument, pas de sous-titres : c'est la v3 (les textes du film disent déjà ce que dit la voix).
 import sys
 
 src, dst = sys.argv[1], sys.argv[2]
