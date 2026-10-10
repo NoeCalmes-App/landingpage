@@ -101,6 +101,9 @@ const META_HOME = {
   description: "Je ne fais pas que développer ton application mobile : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois.",
 }
 
+// Pastille « +20 applications déjà publiées » au-dessus du titre du hero : masquée pour l'instant
+const MONTRER_PASTILLE_HERO = false
+
 const NAV_LINKS = [
   { ancre: 'calories-proof', label: 'Preuves' },
   { ancre: 'offre', label: 'Méthode' },
@@ -744,8 +747,9 @@ function App() {
         <div className="hero-visual" aria-hidden="true" />
 
         <div className="hero-content anim-hero relative z-10 max-w-4xl mx-auto w-full">
-          {/* Pill — preuve apps réelles */}
-          <div className="flex justify-center mb-6 md:mb-7">
+          {/* Pill — preuve apps réelles. Masquée à la demande de Noé (octobre 2026), le code reste : passer
+              MONTRER_PASTILLE_HERO à true pour la remettre. */}
+          {MONTRER_PASTILLE_HERO && <div className="flex justify-center mb-6 md:mb-7">
             <div className="inline-flex items-center gap-2.5 sm:gap-3 rounded-full bg-white/70 backdrop-blur-sm border border-brand-pale pl-1.5 pr-3.5 sm:pl-2 sm:pr-4 py-1 sm:py-1.5 shadow-[0_2px_14px_rgba(102,93,255,0.13)]">
               <div className="flex items-center">
                 {[snapIcon, calorieIcon, purgeIcon, hushIcon].map((icon, i) => (
@@ -764,7 +768,7 @@ function App() {
                 <span className="text-brand font-bold">+20 applications</span><span className="sm:hidden"> publiées</span><span className="hidden sm:inline"> déjà publiées</span>
               </p>
             </div>
-          </div>
+          </div>}
 
           {/* Titre — même direction desktop/mobile, avec des retours adaptés aux petits écrans */}
           <h1 className="font-heading text-[1.72rem] min-[360px]:text-[1.78rem] min-[375px]:text-[1.86rem] min-[414px]:text-[2.02rem] min-[430px]:text-[2.12rem] min-[480px]:text-[2.28rem] sm:text-[2.4rem] md:text-[2.85rem] lg:text-[3.3rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-4 md:mb-6">
@@ -785,18 +789,22 @@ function App() {
           </h1>
 
           {/* Sous-titre */}
-          <p className="text-grey text-[0.92rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-xl mx-auto mb-7 md:mb-8">
-            Je conçois ton application mobile & web pour qu'elle rapporte vraiment. Pas juste des utilisateurs : des clients qui paient.
+          <p className="text-grey text-[0.95rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-[54rem] mx-auto mb-7 md:mb-8 text-balance">
+            Stratégie, design et développement&nbsp;: je&nbsp;m'occupe de tout, de l'idée à la mise en ligne.
           </p>
 
-          {/* Bouton principal : sans icône, plus grand sur ordinateur */}
+          {/* Bouton principal : la flèche du bouton « Discuter de mon projet », plus grand sur ordinateur */}
           <div className="flex justify-center">
             <a
               href={lienInterne('/rendez-vous')}
               onClick={goBookCall}
-              className="inline-flex items-center bg-brand text-surface font-semibold text-[1rem] sm:text-[1.06rem] md:text-[1.15rem] px-8 py-3.5 sm:px-9 md:px-11 md:py-[1.05rem] rounded-full cursor-pointer shadow-[0_10px_28px_-8px_rgba(102,93,255,0.55)] hover:bg-[#5a50f5] transition-colors"
+              className="group inline-flex items-center gap-2 min-[360px]:gap-2.5 whitespace-nowrap bg-brand text-surface font-semibold text-[0.95rem] min-[360px]:text-[1rem] sm:text-[1.06rem] md:text-[1.15rem] px-5 min-[360px]:px-8 py-3.5 sm:px-9 md:px-11 md:py-[1.05rem] rounded-full cursor-pointer shadow-[0_10px_28px_-8px_rgba(102,93,255,0.55)] hover:bg-[#5a50f5] transition-colors"
             >
               J'ai une idée d'application
+              <svg className="shrink-0 w-[18px] h-[18px] min-[360px]:w-[22px] min-[360px]:h-[22px] transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
             </a>
           </div>
 

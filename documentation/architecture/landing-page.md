@@ -81,18 +81,24 @@ Trois regles en decoulent, toutes appliquees au build :
 
 ## Hero
 
-Inspiré de celui d'Ikovaline (ikovaline.com) : la pastille « +20 applications déjà publiées », le titre,
-la phrase, un bouton, puis la vidéo.
+Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton, puis la vidéo.
 
+- Pastille « +20 applications déjà publiées » : masquée à la demande de Noé (octobre 2026), le code
+  reste. Pour la remettre au-dessus du titre, passer `MONTRER_PASTILLE_HERO` à `true` dans `src/App.jsx`.
 - Titre : « Je transforme ton idée en application qui génère des revenus » (« app » sur ordinateur pour
   tenir en deux lignes), un peu plus grand qu'avant (3,3 rem sur ordinateur). Noé a trouvé 4,15 rem
   « trop gros ». Sur téléphone, les tailles sont mesurées pour garder trois lignes jusqu'à 320 px.
-- Phrase sous le titre et pastille : remises comme avant, à la demande de Noé.
-- Bouton « J'ai une idée d'application », sans icône, plus grand sur ordinateur. Il mène à la section
-  contact, dont le bouton porte le même texte et ouvre WhatsApp. La barre du haut dit « J'ai une idée »
-  (plus court, comme Ikovaline), sur l'accueil, le blog et les quiz.
-- Fond : le violet monte jusqu'au bouton et entoure la vidéo dès le premier écran ; le haut reste blanc
-  derrière la barre et le titre (`.hero-bg` dans `src/index.css`).
+- Phrase sous le titre : « Stratégie, design et développement : je m'occupe de tout, de l'idée à la mise
+  en ligne. » Noé l'a préférée à l'ancienne (« Je conçois ton application mobile & web pour qu'elle
+  rapporte vraiment… »).
+- Bouton « J'ai une idée d'application », avec la flèche du bouton « Discuter de mon projet », plus grand
+  sur ordinateur et sur une seule ligne jusqu'à 320 px. Il mène à la section contact, dont le bouton
+  porte le même texte et ouvre WhatsApp. La barre du haut dit « J'ai une idée » (plus court, comme
+  Ikovaline), sur l'accueil, le blog et les quiz.
+- Fond (`.hero-bg` dans `src/index.css`) : une lueur violette en arc de cercle. Un grand cercle blanc
+  centré en haut (blanc jusqu'à 34 % du rayon, fondu jusqu'à 70 %) laisse le violet monter haut sur les
+  côtés, descendre doucement vers le milieu et remonter de l'autre côté ; il entoure la vidéo. Même
+  forme sur téléphone et tablette, sans la tache violette en haut à droite.
 
 ## Film du hero
 
