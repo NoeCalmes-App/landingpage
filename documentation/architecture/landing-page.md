@@ -100,9 +100,10 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
   quelqu'un (Noé, 10/10/2026), comme le lien du pied de page. Le bouton qui suit « Comment ça se passe ? »
   dit aussi « Discuter avec Noé » (11/10/2026 : la suite de l'étape « On en parle »). La barre du haut et le menu sur téléphone disent « J'ai une idée » (plus court,
   comme Ikovaline), sur l'accueil, le blog, les quiz et les pages /expertise, /creation-application-mobile
-  et /faq. Liens de la barre (`NAV_LINKS`, 11/10/2026) : « Réalisations », « Étapes », « Audit express »
-  (avant : « Preuves », « Méthode », « Audit »). Des mots que la cible comprend ; « Tester mon idée »,
-  essayé, collait trop au bouton « J'ai une idée » juste à côté. Les trois tiennent dès 1024 px.
+  et /faq. Liens de la barre (`NAV_LINKS`, 11/10/2026) : « Réalisations », « Étapes », « Qui je suis »
+  (avant : « Preuves », « Méthode », « Audit »), les petits titres des sections où ils mènent, mot pour mot.
+  Plus d'audit dans la barre : « c'est un plus », Noé ne veut pas le pousser ; il reste en bas de page, dans
+  le pied de page et sur la route /audit. Les trois tiennent dès 1024 px.
 - Au survol, tous les boutons de l'accueil ont le reflet de la fin du film (« Audit offert ») : un trait
   de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les traverse et passe sous le
   texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (« J'ai une idée d'application » en haut,
@@ -184,6 +185,11 @@ preuves, pas des promesses. Chaque section répond à une seule de ses questions
 pose (c'est vrai ? qu'est-ce que je risque ? c'est qui ? c'est pour moi ?), puis vient le bouton. Onze
 sections deviennent sept. Le texte des sections est écrit dans le JSX de `App` (pas dans des tableaux) :
 c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
+
+**Un petit titre au-dessus de chaque section** (violet, en capitales, 11/10/2026) : « Réalisations »,
+« Étapes », « Qui je suis », « Pour qui », « Questions fréquentes ». Noé trouvait bizarre qu'une section n'en ait
+pas ; les liens de la barre du haut reprennent les trois premiers. « Parlons de ton projet » a la pastille des
+places à la place.
 
 **Sur ordinateur, de l'air** (« c'est serré », Noé, 11/10/2026) : 112 px en haut et en bas de chaque
 section (`md:py-28`), 104 px pour « Ce que j'ai déjà construit », 32 px entre les cartes.

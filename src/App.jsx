@@ -105,14 +105,14 @@ const META_HOME = {
 // Pastille « +20 applications déjà publiées » au-dessus du titre du hero : masquée pour l'instant
 const MONTRER_PASTILLE_HERO = false
 
-// Barre du haut (11/10/2026) : des mots que la cible comprend, qui disent ce qu'on trouve en cliquant.
-// « Preuves » → « Réalisations », « Méthode » → « Étapes » (là où sont aussi le prix et le délai),
-// « Audit » → « Audit express » (le nom de la carte où il mène ; « Tester mon idée » collait trop au bouton « J'ai une
-// idée » juste à côté). Courts : les trois tiennent à côté du bouton dès 1024 px.
+// Barre du haut (11/10/2026) : les petits titres des trois sections qui comptent le plus, mot pour mot, pour qu'on
+// retrouve en arrivant le mot sur lequel on a cliqué : « Réalisations », « Étapes » (où sont aussi le prix et le délai),
+// « Qui je suis ». Plus d'« Audit » : c'est un plus, pas ce qu'on pousse (Noé) ; il reste en bas de page et dans le
+// pied de page, et la route /audit y mène toujours. Les trois tiennent à côté du bouton dès 1024 px.
 const NAV_LINKS = [
   { ancre: 'calories-proof', label: 'Réalisations' },
   { ancre: 'offre', label: 'Étapes' },
-  { ancre: 'audit', label: 'Audit express' },
+  { ancre: 'confiance', label: 'Qui je suis' },
 ]
 
 // « Pourquoi me faire confiance ? » : la comparaison avec une agence, resserrée (refonte du 10/10/2026).
@@ -846,6 +846,7 @@ function App() {
         <div className="app-proof-inner">
           <div className="app-proof-main">
             <div className="app-proof-copy">
+              <p className="reveal app-proof-kicker">Réalisations</p>
               <h2 id="app-proof-title" className="reveal">Ce que j'ai <span>déjà construit</span></h2>
               <p className="reveal app-proof-intro">Des applications publiées, utilisées, et qui rapportent.</p>
               <ul className="reveal-stagger app-proof-stats">
@@ -893,6 +894,9 @@ function App() {
           Le bouton dit « Discuter avec Noé », la suite de l'étape 1 « On en parle ». Id « offre » : lien « Étapes ». */}
       <section className="py-14 md:py-28 px-5 bg-card" id="offre">
         <div className="max-w-275 mx-auto">
+          <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
+            Étapes
+          </p>
           <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-8 md:mb-14">
             Comment <span className="text-brand">ça se passe ?</span>
           </h2>
