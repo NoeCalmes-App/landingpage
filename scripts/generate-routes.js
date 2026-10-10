@@ -1114,7 +1114,9 @@ function lireRoutesMaquettes() {
   if (routes.size < 16) {
     throw new Error(`Seulement ${routes.size} routes /maquette/ lues dans src/App.jsx : la lecture a probablement casse`)
   }
-  return [...routes].sort()
+  // L'adresse nue /maquette (sans nom de projet) a aussi sa page : partagee
+  // telle quelle, elle repondait 404 aux robots, donc sans apercu.
+  return ['/maquette', ...[...routes].sort()]
 }
 const mockupRoutes = lireRoutesMaquettes()
 
