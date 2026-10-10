@@ -1093,38 +1093,73 @@ declarerSitemap(auditAppRoute.path, { priority: '0.9', changefreq: 'monthly', la
 console.log(`✓ Generated ${auditAppRoute.path}/index.html`)
 
 // ─── Client mockup routes — noindex autonomous visual proposal pages ─────────
+//
+// LA LISTE VIENT DE src/App.jsx, PAS D'ICI. Chaque `'/maquette/xxx'` ecrit dans
+// le routeur, adresse canonique ou alias, devient un dossier dans dist.
+//
+// Avant le 10/10/2026, la liste etait recopiee a la main ici et oubliait les
+// alias (/maquette/convoipilote, /maquette/kingfit, /maquette/juridique...) :
+// ces adresses repondaient 404 sur GitHub Pages. Le visiteur voyait quand meme
+// la maquette grace au rattrapage JavaScript de public/404.html, mais WhatsApp,
+// iMessage et LinkedIn n'executent pas de JavaScript : ils recevaient une page
+// 404 vide, donc AUCUN apercu quand Noe envoyait le lien a un client.
+//
+// Seuls les alias en minuscules, chiffres et tirets sont retenus : un alias
+// accentue (`/maquette/pet-solidarité`) ne peut pas matcher dans App.jsx non
+// plus, puisque le navigateur encode l'adresse avant de la comparer.
+function lireRoutesMaquettes() {
+  const src = readFileSync(join(__dirname, '..', 'src', 'App.jsx'), 'utf-8')
+  const routes = new Set()
+  for (const m of src.matchAll(/'(\/maquette\/[a-z0-9-]+)'/g)) routes.add(m[1])
+  if (routes.size < 16) {
+    throw new Error(`Seulement ${routes.size} routes /maquette/ lues dans src/App.jsx : la lecture a probablement casse`)
+  }
+  return [...routes].sort()
+}
+const mockupRoutes = lireRoutesMaquettes()
 
-const mockupRoutes = [
-  '/maquette/smoothride',
-  '/maquette/aretha',
-  '/maquette/vietcollab',
-  '/maquette/kingfit-coach',
-  '/maquette/pac-assist',
-  '/maquette/cvc-assist',
-  '/maquette/blush',
-  '/maquette/moovye',
-  '/maquette/colocool',
-  '/maquette/bagsitter',
-  '/maquette/bailora',
-  '/maquette/pet-solidarite',
-  '/maquette/sonora',
-  '/maquette/guestride',
-  '/maquette/juridik',
-  '/maquette/immomatch',
-]
+// L'APERCU DE PARTAGE EST PROPRE AUX MAQUETTES (decision du 05/10/2026, section
+// « Tonalite » de documentation/context/positionnement.md) : image sans
+// portrait, texte sans pronom, « L'idée prend forme » / « Place à la maquette ».
+// Toutes les autres pages gardent l'image de l'accueil. L'image est generee
+// depuis scripts/og/maquette-og.html (voir le README du dossier).
+const MAQUETTE_PARTAGE = {
+  title: 'Maquettes visuelles — Noé Calmes',
+  description: "L'idée prend forme : un premier aperçu des écrans de l'application, conçu sur mesure par Noé Calmes.",
+  image: 'https://noecalmes.fr/assets/images/meta/maquette-og.png',
+  imageAlt: "L'idée prend forme : place à la maquette, par Noé Calmes",
+}
 
 for (const path of mockupRoutes) {
   let html = retirerFaqPage(baseHtml)
+  const url = urlPublique(path)
   html = html.replace(
     /<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/,
     '<meta name="robots" content="noindex, nofollow" />'
   )
-  html = html.replace(/<title>[^<]*<\/title>/, `<title>Maquettes visuelles — Noé Calmes</title>`)
+  html = html.replace(/<title>[^<]*<\/title>/, `<title>${MAQUETTE_PARTAGE.title}</title>`)
+  html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/, `<meta name="description" content="${MAQUETTE_PARTAGE.description}" />`)
+  // og:url ET canonique sur la page elle-meme, pas sur l'accueil : le robot de
+  // Facebook/WhatsApp suit og:url comme adresse de reference et aurait lu
+  // l'image de l'accueil. La page est noindex, la canonique n'a pas d'effet SEO.
+  html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${url}" />`)
+  html = html.replace(/<link\s+rel="alternate"\s+hreflang="fr-fr"\s+href="[^"]*"\s*\/?>/, `<link rel="alternate" hreflang="fr-fr" href="${url}" />`)
+  html = html.replace(/<link\s+rel="alternate"\s+hreflang="x-default"\s+href="[^"]*"\s*\/?>/, `<link rel="alternate" hreflang="x-default" href="${url}" />`)
+  html = html.replace(/<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${url}" />`)
+  html = html.replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/, `<meta property="og:title" content="${MAQUETTE_PARTAGE.title}" />`)
+  html = html.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/, `<meta property="og:description" content="${MAQUETTE_PARTAGE.description}" />`)
+  html = html.replace(/<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/, `<meta property="og:image" content="${MAQUETTE_PARTAGE.image}" />`)
+  html = html.replace(/<meta\s+property="og:image:alt"\s+content="[^"]*"\s*\/?>/, `<meta property="og:image:alt" content="${MAQUETTE_PARTAGE.imageAlt}" />`)
+  html = html.replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${MAQUETTE_PARTAGE.title}" />`)
+  html = html.replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${MAQUETTE_PARTAGE.description}" />`)
+  html = html.replace(/<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:image" content="${MAQUETTE_PARTAGE.image}" />`)
+  html = html.replace(/<meta\s+name="twitter:image:alt"\s+content="[^"]*"\s*\/?>/, `<meta name="twitter:image:alt" content="${MAQUETTE_PARTAGE.imageAlt}" />`)
+  html = html.replace(/"image":\s*"[^"]*"/, `"image": "${MAQUETTE_PARTAGE.image}"`)
   const routeDir = join(distDir, path)
   mkdirSync(routeDir, { recursive: true })
   writeFileSync(join(routeDir, 'index.html'), html)
   pagesGenerees.push(join(routeDir, 'index.html'))
-  console.log(`✓ Generated ${path}/index.html (mockup noindex)`)
+  console.log(`✓ Generated ${path}/index.html (mockup noindex, aperçu maquette)`)
 }
 
 // ─── Legacy routes — noindex (old URLs that may still be indexed by Google) ──

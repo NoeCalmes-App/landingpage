@@ -1,0 +1,130 @@
+<!doctype html>
+<!--
+  SOURCE DE L'IMAGE DE PARTAGE DES MAQUETTES
+  public/assets/images/meta/maquette-og.png (1200 x 630)
+
+  Pour la regenerer : voir scripts/og/README.md.
+  Texte impose par documentation/context/positionnement.md (section Tonalite,
+  « Aperçu partagé des maquettes ») : sans pronom, sans portrait.
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face { font-family: 'Jakarta'; font-weight: 800; src: url('../../public/assets/fonts/plus-jakarta/PlusJakartaSans-ExtraBold.ttf') format('truetype'); }
+  @font-face { font-family: 'Jakarta'; font-weight: 700; src: url('../../public/assets/fonts/plus-jakarta/PlusJakartaSans-Bold.ttf') format('truetype'); }
+  @font-face { font-family: 'Baskerville'; font-style: italic; font-weight: 400; src: url('LibreBaskerville-Italic.woff2') format('woff2'); }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    color: #033475;
+    background:
+      radial-gradient(ellipse 60% 70% at 86% 60%, rgba(102, 93, 255, 0.30) 0%, rgba(102, 93, 255, 0.10) 45%, rgba(102, 93, 255, 0) 72%),
+      radial-gradient(ellipse 70% 50% at 20% 115%, rgba(102, 93, 255, 0.16) 0%, rgba(102, 93, 255, 0) 70%),
+      linear-gradient(180deg, #fcfcfe 0%, #f6f5fc 100%);
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(102, 93, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(102, 93, 255, 0.07) 1px, transparent 1px);
+    background-size: 100px 100px;
+    background-position: 50px 15px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 90% at 40% 50%, #000 25%, transparent 100%);
+            mask-image: radial-gradient(ellipse 80% 90% at 40% 50%, #000 25%, transparent 100%);
+  }
+
+  /* ─── Texte ─── */
+  .copy {
+    position: absolute; left: 88px; top: 0; bottom: 0;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-bottom: 36px;
+  }
+  .line1 {
+    font-family: 'Baskerville', serif; font-style: italic; font-weight: 400;
+    font-size: 50px; line-height: 1; color: #4b4b4b;
+    margin-bottom: 22px; margin-left: 6px;
+  }
+  .line2 {
+    font-family: 'Jakarta', sans-serif; font-weight: 800;
+    font-size: 112px; line-height: 0.98; letter-spacing: -0.04em;
+    color: #033475;
+  }
+  .line2 .accent {
+    display: inline-block;
+    background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    padding: 0 10px 28px 0; margin: 0 -10px -28px 0;
+  }
+
+  /* ─── Maquette abstraite ─── */
+  .scene { position: absolute; right: 0; top: 0; width: 520px; height: 630px; }
+
+  .browser {
+    position: absolute; right: 118px; top: 88px; width: 400px; height: 300px;
+    background: #ffffff; border-radius: 18px;
+    border: 1px solid rgba(3, 52, 117, 0.08);
+    box-shadow: 0 30px 70px -30px rgba(102, 93, 255, 0.45), 0 2px 10px rgba(3, 52, 117, 0.05);
+    overflow: hidden;
+  }
+  .browser .bar { height: 34px; background: #f5f4fb; border-bottom: 1px solid rgba(3, 52, 117, 0.06); display: flex; align-items: center; gap: 7px; padding-left: 14px; }
+  .browser .bar i { width: 9px; height: 9px; border-radius: 50%; background: #d9d6f5; display: block; }
+  .browser .bar .url { margin-left: 12px; width: 190px; height: 14px; border-radius: 7px; background: #ebe9f8; }
+  .browser .body { padding: 20px 22px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .browser .hero { grid-column: 1 / -1; height: 70px; border-radius: 12px; background: linear-gradient(135deg, #f0eeff, #e4e1ff); position: relative; }
+  .browser .hero::before { content: ''; position: absolute; left: 18px; top: 18px; width: 150px; height: 14px; border-radius: 7px; background: #c9c4ff; }
+  .browser .hero::after { content: ''; position: absolute; left: 18px; top: 40px; width: 96px; height: 12px; border-radius: 6px; background: #ddd9ff; }
+  .browser .card { height: 92px; border-radius: 12px; background: #f7f6fc; border: 1px solid rgba(3, 52, 117, 0.05); position: relative; }
+  .browser .card::before { content: ''; position: absolute; left: 12px; top: 14px; width: 34px; height: 34px; border-radius: 10px; background: #e4e1ff; }
+  .browser .card::after { content: ''; position: absolute; left: 12px; right: 12px; top: 60px; height: 10px; border-radius: 5px; background: #e6e4f3; }
+
+  .phone {
+    position: absolute; right: 56px; top: 150px; width: 262px; height: 540px;
+    border-radius: 44px; background: #0f1222;
+    padding: 12px;
+    box-shadow: 0 40px 80px -30px rgba(3, 52, 117, 0.55), 0 0 0 1px rgba(255,255,255,0.08) inset;
+    transform: rotate(-7deg);
+  }
+  .phone .screen { width: 100%; height: 100%; border-radius: 34px; background: #ffffff; overflow: hidden; position: relative; }
+  .phone .notch { position: absolute; left: 50%; top: 12px; width: 84px; height: 26px; margin-left: -42px; border-radius: 14px; background: #0f1222; }
+  .phone .top { height: 150px; background: linear-gradient(135deg, #665dff, #8f88ff); border-radius: 0 0 28px 28px; position: relative; }
+  .phone .top::before { content: ''; position: absolute; left: 22px; top: 64px; width: 120px; height: 16px; border-radius: 8px; background: rgba(255,255,255,0.85); }
+  .phone .top::after { content: ''; position: absolute; left: 22px; top: 92px; width: 80px; height: 12px; border-radius: 6px; background: rgba(255,255,255,0.45); }
+  .phone .list { padding: 20px 20px 0; display: flex; flex-direction: column; gap: 14px; }
+  .phone .row { height: 58px; border-radius: 14px; background: #f5f4fb; border: 1px solid rgba(3, 52, 117, 0.05); position: relative; }
+  .phone .row::before { content: ''; position: absolute; left: 12px; top: 13px; width: 32px; height: 32px; border-radius: 10px; background: #e4e1ff; }
+  .phone .row::after { content: ''; position: absolute; left: 56px; top: 17px; width: 110px; height: 10px; border-radius: 5px; background: #dcd9ec; box-shadow: 0 16px 0 -2px #e9e7f3; }
+  .phone .cta { position: absolute; left: 20px; right: 20px; bottom: 26px; height: 50px; border-radius: 25px; background: #665dff; }
+  .phone .cta::after { content: ''; position: absolute; left: 50%; top: 19px; width: 90px; height: 12px; margin-left: -45px; border-radius: 6px; background: rgba(255,255,255,0.9); }
+
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+
+  <div class="scene">
+    <div class="browser">
+      <div class="bar"><i></i><i></i><i></i><span class="url"></span></div>
+      <div class="body">
+        <div class="hero"></div>
+        <div class="card"></div><div class="card"></div><div class="card"></div>
+      </div>
+    </div>
+    <div class="phone">
+      <div class="screen">
+        <div class="top"></div>
+        <div class="notch"></div>
+        <div class="list"><div class="row"></div><div class="row"></div><div class="row"></div></div>
+        <div class="cta"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="copy">
+    <div class="line1">L’idée prend forme</div>
+    <div class="line2">Place à la<br /><span class="accent">maquette</span></div>
+  </div>
+</body>
+</html>
