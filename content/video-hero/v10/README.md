@@ -10,6 +10,7 @@ Différence avec la v9 : les mots soulignés ont un trait large, façon surligne
 - `hero-film-v10.mp4` : la vidéo finale en 1080p, avec la voix off et les bruitages.
 - Sur le site : `public/assets/videos/hero-v10-1080.mp4` (ordinateur), `hero-v10-720.mp4` (mobile), et la miniature `hero-v10-miniature.webp` (1600 px) et `hero-v10-miniature-960.webp`, affichée tant que la vidéo n'a pas démarré : le fond blanc du film, « Ton app va décoller. » et une courbe qui monte (choisie par Noé le 10/10/2026). Source : `src/miniature.cjs` (l'image) puis `src/miniature-webp.py` (les deux WebP).
 - `son/` : la voix off seule, les bruitages seuls, le mix final et les scripts du son.
+- `reel/` : le même film refait en vertical pour un Reel Instagram (1080 × 1920), avec les sous-titres de la voix, sa couverture et sa légende. Voir `reel/README.md`.
 - `src/` : la source de l'animation (`film-v10.html`, repères de la voix inclus), les repères (`cues-v10.json`) et les scripts de rendu. Pour l'ouvrir : mettre les polices `@fontsource/plus-jakarta-sans`, `@fontsource-variable/libre-baskerville` et `@fontsource/geist-mono` dans un `node_modules` à côté du fichier.
 
 ## Le texte dit par la voix
