@@ -739,50 +739,13 @@ function App() {
 
       {/* ========== HERO (plein écran avec gradient) ========== */}
       <section
-        className="hero-bg relative min-h-screen flex items-center justify-center text-center px-3 sm:px-5 md:px-10 lg:px-16 pt-26 pb-14 md:pt-32 md:pb-20 overflow-hidden"
+        className="hero-bg relative min-h-screen flex items-center justify-center text-center px-3 sm:px-5 md:px-10 lg:px-16 pt-28 pb-14 md:pt-32 md:pb-20 overflow-hidden"
       >
         <div className="hero-visual" aria-hidden="true" />
 
-        <div className="hero-content anim-hero relative z-10 max-w-5xl mx-auto w-full">
-          {/* Titre — même direction desktop/mobile, avec des retours adaptés aux petits écrans */}
-          <h1 className="font-heading text-[1.72rem] min-[360px]:text-[1.95rem] min-[375px]:text-[2rem] min-[390px]:text-[2.06rem] min-[414px]:text-[2.15rem] min-[430px]:text-[2.25rem] min-[480px]:text-[2.5rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.7rem] xl:text-[4.15rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.12] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-4 md:mb-5">
-            <span className="sm:hidden text-text font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
-              Je <span className="inline-block mx-1 text-[#4b4b4b] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> ton<br />
-              idée en application qui<br />
-              <span className="inline-block whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent py-1 -my-1">
-                génère des revenus
-              </span>
-            </span>
-            <span className="hidden sm:inline text-text font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
-              Je <span className="inline-block mx-1.5 text-[#4b4b4b] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> ton idée en<br />
-              app qui{' '}
-              <span className="inline-block whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent py-1 -my-1">
-                génère des revenus
-              </span>
-            </span>
-          </h1>
-
-          {/* Sous-titre */}
-          <p className="text-grey text-[0.95rem] sm:text-[1.08rem] md:text-[1.2rem] leading-relaxed max-w-[56rem] mx-auto mb-6 md:mb-8 text-balance">
-            Stratégie, design et développement&nbsp;: je&nbsp;m'occupe de tout, de l'idée à la mise en ligne.
-          </p>
-
-          {/* Bouton principal : sans icône, plus grand sur ordinateur */}
-          <div className="flex justify-center">
-            <a
-              href={lienInterne('/rendez-vous')}
-              onClick={goBookCall}
-              className="inline-flex items-center bg-brand text-surface font-semibold text-[1rem] sm:text-[1.06rem] md:text-[1.15rem] px-8 py-3.5 sm:px-9 md:px-11 md:py-[1.05rem] rounded-full cursor-pointer shadow-[0_10px_28px_-8px_rgba(102,93,255,0.55)] hover:bg-[#5a50f5] transition-colors"
-            >
-              J'ai une idée d'application
-            </a>
-          </div>
-
-          {/* Film de présentation, lecteur sur le modèle d'Ikovaline : lecture auto muette, barre toujours visible */}
-          <HeroVideo />
-
-          {/* Preuve sous la vidéo (avant : au-dessus du titre ; descendue pour que la vidéo remonte) */}
-          <div className="flex justify-center mt-6 md:mt-8">
+        <div className="hero-content anim-hero relative z-10 max-w-4xl mx-auto w-full">
+          {/* Pill — preuve apps réelles */}
+          <div className="flex justify-center mb-6 md:mb-7">
             <div className="inline-flex items-center gap-2.5 sm:gap-3 rounded-full bg-white/70 backdrop-blur-sm border border-brand-pale pl-1.5 pr-3.5 sm:pl-2 sm:pr-4 py-1 sm:py-1.5 shadow-[0_2px_14px_rgba(102,93,255,0.13)]">
               <div className="flex items-center">
                 {[snapIcon, calorieIcon, purgeIcon, hushIcon].map((icon, i) => (
@@ -802,6 +765,43 @@ function App() {
               </p>
             </div>
           </div>
+
+          {/* Titre — même direction desktop/mobile, avec des retours adaptés aux petits écrans */}
+          <h1 className="font-heading text-[1.72rem] min-[360px]:text-[1.78rem] min-[375px]:text-[1.86rem] min-[414px]:text-[2.02rem] min-[430px]:text-[2.12rem] min-[480px]:text-[2.28rem] sm:text-[2.4rem] md:text-[2.85rem] lg:text-[3.3rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-4 md:mb-6">
+            <span className="sm:hidden text-text font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
+              Je <span className="inline-block mx-1 text-[#4b4b4b] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> ton<br />
+              idée en application qui<br />
+              <span className="inline-block whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent py-1 -my-1">
+                génère des revenus
+              </span>
+            </span>
+            <span className="hidden sm:inline text-text font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
+              Je <span className="inline-block mx-1.5 text-[#4b4b4b] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> ton idée en<br />
+              app qui{' '}
+              <span className="inline-block whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent py-1 -my-1">
+                génère des revenus
+              </span>
+            </span>
+          </h1>
+
+          {/* Sous-titre */}
+          <p className="text-grey text-[0.92rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-xl mx-auto mb-7 md:mb-8">
+            Je conçois ton application mobile & web pour qu'elle rapporte vraiment. Pas juste des utilisateurs : des clients qui paient.
+          </p>
+
+          {/* Bouton principal : sans icône, plus grand sur ordinateur */}
+          <div className="flex justify-center">
+            <a
+              href={lienInterne('/rendez-vous')}
+              onClick={goBookCall}
+              className="inline-flex items-center bg-brand text-surface font-semibold text-[1rem] sm:text-[1.06rem] md:text-[1.15rem] px-8 py-3.5 sm:px-9 md:px-11 md:py-[1.05rem] rounded-full cursor-pointer shadow-[0_10px_28px_-8px_rgba(102,93,255,0.55)] hover:bg-[#5a50f5] transition-colors"
+            >
+              J'ai une idée d'application
+            </a>
+          </div>
+
+          {/* Film de présentation, lecteur sur le modèle d'Ikovaline : lecture auto muette, barre toujours visible */}
+          <HeroVideo />
         </div>
       </section>
 

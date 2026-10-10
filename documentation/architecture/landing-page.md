@@ -81,19 +81,16 @@ Trois regles en decoulent, toutes appliquees au build :
 
 ## Hero
 
-Construit comme celui d'Ikovaline (ikovaline.com), à la demande de Noé : un grand titre, une ligne, un
-bouton, puis la vidéo, le plus haut possible.
+Inspiré de celui d'Ikovaline (ikovaline.com) : la pastille « +20 applications déjà publiées », le titre,
+la phrase, un bouton, puis la vidéo.
 
 - Titre : « Je transforme ton idée en application qui génère des revenus » (« app » sur ordinateur pour
-  tenir en deux lignes). Grand sur ordinateur (jusqu'à 4,15 rem) ; sur téléphone, les tailles sont
-  mesurées pour garder trois lignes sans débordement jusqu'à 320 px.
-- Ligne sous le titre : « Stratégie, design et développement : je m'occupe de tout, de l'idée à la mise
-  en ligne. » Elle ne répète pas la vidéo (qui dit déjà « pour qu'elle rapporte ») : elle dit ce que la
-  cible numéro un achète, un seul interlocuteur qui fait tout.
+  tenir en deux lignes), un peu plus grand qu'avant (3,3 rem sur ordinateur). Noé a trouvé 4,15 rem
+  « trop gros ». Sur téléphone, les tailles sont mesurées pour garder trois lignes jusqu'à 320 px.
+- Phrase sous le titre et pastille : remises comme avant, à la demande de Noé.
 - Bouton « J'ai une idée d'application », sans icône, plus grand sur ordinateur. Il mène à la section
   contact, dont le bouton porte le même texte et ouvre WhatsApp. La barre du haut dit « J'ai une idée »
   (plus court, comme Ikovaline), sur l'accueil, le blog et les quiz.
-- La pastille « +20 applications déjà publiées » est passée sous la vidéo, pour que la vidéo remonte.
 - Fond : le violet monte jusqu'au bouton et entoure la vidéo dès le premier écran ; le haut reste blanc
   derrière la barre et le titre (`.hero-bg` dans `src/index.css`).
 
@@ -110,7 +107,7 @@ Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
 
 - La page s'affiche d'abord avec l'affiche (une vraie image, la bonne taille choisie par le navigateur),
   la vidéo ne se charge que 0,7 s après. Elle joue alors seule, muette et en boucle, dès que 15 % est à
-  l'écran (sur un portable 1366×768, on en voit à peu près la moitié au chargement).
+  l'écran (sur un portable 1366×768, on n'en voit qu'une partie au chargement).
 - Une barre reste toujours visible en bas de la vidéo : lecture/pause, avancement (clic ou glisser),
   « Activer le son », plein écran. Un clic sur la vidéo la met en pause ou la relance. Clavier : espace,
   M, F, flèches. À la fin, elle reprend au début (boucle), comme chez Ikovaline.
