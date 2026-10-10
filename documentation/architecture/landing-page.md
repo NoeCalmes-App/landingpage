@@ -100,8 +100,11 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
   quelqu'un (Noé, 10/10/2026), comme le lien du pied de page. Le bouton qui suit « Comment ça se passe ? »
   dit aussi « Discuter avec Noé » (11/10/2026 : la suite de l'étape « On en parle »). La barre du haut et le menu sur téléphone disent « J'ai une idée » (plus court,
   comme Ikovaline), sur l'accueil, le blog, les quiz et les pages /expertise, /creation-application-mobile
-  et /faq. Liens de la barre (`NAV_LINKS`, 11/10/2026) : « Réalisations », « Étapes », « Qui je suis »
-  (avant : « Preuves », « Méthode », « Audit »), les petits titres des sections où ils mènent, mot pour mot.
+  et /faq. Liens de la barre (`NAV_LINKS`, 11/10/2026) : « Réalisations », « Étapes et tarif », « Qui je suis »
+  (avant : « Preuves », « Méthode », « Audit »), dans l'ordre de la page, les petits titres des sections où ils
+  mènent, mot pour mot. « Et tarif » : le prix est la première question de la cible, on doit voir d'un coup
+  d'œil où le trouver. Ces liens mènent dans la page : ils ne jouent pas sur le référencement (les liens
+  vers les pages SEO sont dans le pied de page et le pré-rendu).
   Plus d'audit dans la barre : « c'est un plus », Noé ne veut pas le pousser ; il reste en bas de page, dans
   le pied de page et sur la route /audit. Les trois tiennent dès 1024 px.
 - Au survol, tous les boutons de l'accueil ont le reflet de la fin du film (« Audit offert ») : un trait
@@ -187,7 +190,7 @@ sections deviennent sept. Le texte des sections est écrit dans le JSX de `App` 
 c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
 
 **Un petit titre au-dessus de chaque section** (violet, en capitales, 11/10/2026) : « Réalisations »,
-« Étapes », « Qui je suis », « Pour qui », « Questions fréquentes ». Noé trouvait bizarre qu'une section n'en ait
+« Étapes et tarif », « Qui je suis », « Pour qui », « Questions fréquentes ». Noé trouvait bizarre qu'une section n'en ait
 pas ; les liens de la barre du haut reprennent les trois premiers. « Parlons de ton projet » a la pastille des
 places à la place.
 
@@ -207,7 +210,7 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
    côté, le carrousel des écrans, chacun avec une légende qui dit à quoi il sert : la stratégie se voit au
    lieu d'être annoncée. Remplace la barre de preuve, « Une stratégie derrière chaque écran » (ses cinq
    pastilles) et « Mon métier ». Styles : `src/app-showcase.css`.
-3. **« Comment ça se passe ? »** (`#offre`, lien « Étapes ») : trois cartes, étapes 1 « On en parle » et
+3. **« Comment ça se passe ? »** (`#offre`, sous « Étapes et tarif », lien du même nom dans la barre) : trois cartes, étapes 1 « On en parle » et
    2 « On cadre » avec la pastille verte « Offert », étape 3 « Je construis » (« On construit ensemble »
    jusqu'au 11/10/2026 : « c'est un peu faux, l'objectif c'est que je m'occupe de tout », Noé). Son texte
    commence par « À partir de ta maquette, je crée le design final… » (« Je reprends la maquette sur mesure »

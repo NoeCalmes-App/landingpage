@@ -105,13 +105,13 @@ const META_HOME = {
 // Pastille « +20 applications déjà publiées » au-dessus du titre du hero : masquée pour l'instant
 const MONTRER_PASTILLE_HERO = false
 
-// Barre du haut (11/10/2026) : les petits titres des trois sections qui comptent le plus, mot pour mot, pour qu'on
-// retrouve en arrivant le mot sur lequel on a cliqué : « Réalisations », « Étapes » (où sont aussi le prix et le délai),
-// « Qui je suis ». Plus d'« Audit » : c'est un plus, pas ce qu'on pousse (Noé) ; il reste en bas de page et dans le
+// Barre du haut (11/10/2026) : les petits titres des trois sections qui comptent le plus, mot pour mot, dans l'ordre de
+// la page, pour qu'on retrouve en arrivant le mot sur lequel on a cliqué : « Réalisations », « Étapes et tarif » (le
+// prix est la première question de la cible : on doit voir d'un coup d'œil où il est), « Qui je suis ». Plus d'« Audit » : c'est un plus, pas ce qu'on pousse (Noé) ; il reste en bas de page et dans le
 // pied de page, et la route /audit y mène toujours. Les trois tiennent à côté du bouton dès 1024 px.
 const NAV_LINKS = [
   { ancre: 'calories-proof', label: 'Réalisations' },
-  { ancre: 'offre', label: 'Étapes' },
+  { ancre: 'offre', label: 'Étapes et tarif' },
   { ancre: 'confiance', label: 'Qui je suis' },
 ]
 
@@ -895,7 +895,7 @@ function App() {
       <section className="py-14 md:py-28 px-5 bg-card" id="offre">
         <div className="max-w-275 mx-auto">
           <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
-            Étapes
+            Étapes et tarif
           </p>
           <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-8 md:mb-14">
             Comment <span className="text-brand">ça se passe ?</span>
