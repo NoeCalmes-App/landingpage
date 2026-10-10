@@ -5,9 +5,9 @@ d'autre :
 
 | Image | Où elle s'affiche | Source ici |
 |---|---|---|
-| `accueil-og.png` | `noecalmes.fr` et toutes les pages, sauf les deux lignes suivantes | `accueil-og.html` |
+| `accueil-og.png` | `noecalmes.fr` et toutes les pages, sauf les deux lignes suivantes | `accueil-og.html` + `accueil-og-fond.png` |
 | `maquette-og.png` | `noecalmes.fr/maquette` et toutes les `/maquette/...` | `maquette-og.html` |
-| `audit-app-og.png` | `/audit-app` | pas de source, faite à la main |
+| `audit-app-og.png` | `/audit-app` | `audit-app-og.html` (était dans `public/`, donc publié par erreur) |
 
 `accueil-og.png` est déclarée dans `index.html` (donc héritée par toutes les
 pages générées) et dans `public/legal/index.html`. `maquette-og.png` est posée
@@ -17,6 +17,15 @@ par `scripts/generate-routes.js` (bloc « Client mockup routes »).
 Titre de Noé dans ces images et partout ailleurs : « Expert en applications
 mobiles & web ». Pas de « SaaS » dans un titre (décision du 10/10/2026) : le mot
 n'est compris que d'une partie de la cible, il s'écrit dans les phrases, expliqué.
+
+## Image par défaut
+
+C'est l'image d'origine (ex `new-og-image.png`) **à l'identique** : même texte,
+même police, même mise en page. Décision de Noé du 10/10/2026 : on ne touche
+qu'aux bulles. `MVP · Flutter · IOS & Android · Produit` sont devenues
+`Stratégie · Design · Mobile & web · Mise en ligne` (Flutter et MVP sont
+interdits en public). `accueil-og-fond.png` est l'image d'origine bulles
+effacées ; `accueil-og.html` pose les bulles par-dessus, en Inter normal.
 
 ## Image des maquettes
 
