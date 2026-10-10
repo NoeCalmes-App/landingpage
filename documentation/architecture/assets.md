@@ -53,6 +53,7 @@ public/assets/
 - Icônes marque/framework/UI : `public/assets/icons/...`
 - Fonts : `public/assets/fonts/...`
 - PDF publics : `public/assets/documents/...`
+- Vidéos (film du hero) : `public/assets/videos/...`, MP4 H.264 en « faststart » et une affiche JPEG par taille
 - CGV versionnées : `public/assets/documents/cgv/CGV-JJ-MM-AAAA.pdf`. Les fichiers peuvent aussi être exposés sous `public/cgv/` pour garder les liens courts `/cgv/{filename}`, mais le dossier `assets/documents/cgv` reste le chemin public de compatibilité.
 
 ## Fichiers statiques a surveiller
@@ -63,7 +64,7 @@ Ces fichiers peuvent referencer directement des assets :
 - `public/stories.html`
 - `public/slides-matchup.html`
 - `public/proposition-matchup.html`
-- `public/audit-app-og.html`
+- `scripts/og/` : sources des images de partage (voir `scripts/og/README.md`)
 - `public/legal/index.html`
 - `scripts/generate-routes.js`
 

@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Film hero v5</title>
+<style>
+@font-face { font-family: 'PJS'; font-weight: 500; src: url('node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'PJS'; font-weight: 600; src: url('node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'PJS'; font-weight: 700; src: url('node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'PJS'; font-weight: 800; src: url('node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2') format('woff2'); }
+@font-face { font-family: 'LBV'; font-style: italic; font-weight: 400 700; src: url('node_modules/@fontsource-variable/libre-baskerville/files/libre-baskerville-latin-wght-italic.woff2') format('woff2-variations'); }
+@font-face { font-family: 'GM'; font-weight: 500; src: url('node_modules/@fontsource/geist-mono/files/geist-mono-latin-500-normal.woff2') format('woff2'); }
+:root { --paper: #fffefc; --ink: #033475; --violet: #665dff; --grey: #4b4b4b; --muted: #5d6b86; --wash: #eceafe; --soft: #8a94ab; --hair: #eeedf8; }
+html, body { margin: 0; background: #000; }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--paper); color: var(--ink); font-family: 'PJS', sans-serif; font-weight: 800; }
+#stage * { box-sizing: border-box; }
+#cam { position: absolute; inset: 0; transform-origin: 960px 540px; }
+.grp { position: absolute; inset: 0; transform-origin: 960px 540px; }
+.t { position: absolute; white-space: nowrap; letter-spacing: -0.045em; line-height: 1.08; }
+.wm { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.16em 0.05em 0.24em; margin: -0.16em -0.05em -0.24em; }
+.wi { display: inline-block; transform-origin: 0% 100%; }
+.sp { display: inline-block; width: 0.25em; }
+.ser { font-family: 'LBV', serif; font-style: italic; font-weight: 700; color: var(--grey); letter-spacing: -0.01em; }
+.grad { background-image: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff); -webkit-background-clip: text; background-clip: text; color: transparent; background-repeat: no-repeat; }
+.gradl { background-image: linear-gradient(90deg, #a59fff, #ccd2ff); -webkit-background-clip: text; background-clip: text; color: transparent; background-repeat: no-repeat; }
+.white { color: #fffefc; }
+.ctr { left: 0; width: 1920px; text-align: center; }
+.blob { position: absolute; left: 0; top: 0; border-radius: 50%; }
+#bA { width: 1800px; height: 1150px; background: radial-gradient(closest-side, rgba(204, 210, 255, 0.55), rgba(236, 234, 254, 0)); }
+#bB { width: 1400px; height: 950px; background: radial-gradient(closest-side, rgba(236, 234, 254, 0.95), rgba(236, 234, 254, 0)); }
+.shine { position: absolute; top: -30%; left: 0; width: 90px; height: 160%; background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)); pointer-events: none; }
+
+/* S1 */
+#av1, #av8 { position: absolute; border-radius: 50%; overflow: hidden; }
+#av1 img, #av8 img { width: 100%; height: 100%; display: block; }
+#ring1 { position: absolute; left: 180px; top: 390px; width: 300px; height: 300px; overflow: visible; }
+
+/* S2–S3 interfaces */
+#ui3d { position: absolute; inset: 0; perspective: 2600px; perspective-origin: 1050px 240px; }
+#uiRow { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 1000px 740px; }
+.dev { position: absolute; }
+.sl { position: absolute; }
+.phone { width: 312px; height: 652px; border-radius: 52px; background: #0e1016; padding: 10px; box-shadow: 0 60px 110px rgba(3, 52, 117, 0.24), 0 12px 26px rgba(3, 52, 117, 0.16); }
+.phone .scr { position: relative; width: 100%; height: 100%; border-radius: 42px; background: #fffefc; overflow: hidden; color: var(--ink); }
+.island { position: absolute; left: 100px; top: 11px; width: 92px; height: 26px; border-radius: 13px; background: #0e1016; }
+.clock { position: absolute; left: 28px; top: 15px; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+.sbar { position: absolute; right: 24px; top: 18px; width: 46px; height: 12px; }
+.phead { position: absolute; left: 0; top: 0; width: 100%; height: 330px; background: radial-gradient(120% 90% at 50% 0%, #e9e7ff, rgba(236, 234, 254, 0) 72%); }
+#blob { position: absolute; left: 76px; top: 70px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #a59fff, #665dff 70%); display: flex; align-items: center; justify-content: center; box-shadow: 0 18px 40px rgba(102, 93, 255, 0.35); }
+#blob svg { width: 58px; height: 58px; }
+.pt { position: absolute; left: 0; width: 100%; top: 236px; text-align: center; font-size: 27px; font-weight: 800; letter-spacing: -0.03em; }
+.ps { position: absolute; left: 0; width: 100%; top: 276px; text-align: center; font-size: 14px; font-weight: 600; color: var(--soft); }
+.chk { position: absolute; left: 34px; display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 700; }
+.chk i { width: 22px; height: 22px; border-radius: 50%; background: #665dff; position: relative; }
+.chk i::after { content: ''; position: absolute; left: 7.5px; top: 4px; width: 5px; height: 10px; border: solid #fff; border-width: 0 3px 3px 0; transform: rotate(45deg); }
+.plan { position: absolute; top: 440px; width: 120px; height: 84px; border-radius: 16px; border: 2px solid #e6e5f5; background: #fff; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; }
+.plan span { font-size: 13px; font-weight: 600; color: var(--soft); } .plan b { font-size: 19px; font-weight: 800; letter-spacing: -0.02em; }
+.plan.sel { border: 2.5px solid #665dff; background: #f6f5ff; }
+.plan em { position: absolute; right: -8px; top: -12px; font-style: normal; font-size: 11px; font-weight: 800; color: #fff; background: #033475; padding: 3px 8px; border-radius: 999px; }
+#ctaW { position: absolute; left: 20px; top: 548px; width: 252px; height: 58px; }
+#cta { position: absolute; inset: 0; border-radius: 29px; background: linear-gradient(90deg, #6760ff, #7b73ef); color: #fff; font-size: 17px; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 26px rgba(102, 93, 255, 0.4); overflow: hidden; }
+#ctaRip { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.5); }
+#touch { position: absolute; left: 146px; top: 577px; width: 86px; height: 86px; margin: -43px 0 0 -43px; border-radius: 50%; background: rgba(255, 255, 255, 0.38); border: 4px solid #fff; box-shadow: 0 10px 28px rgba(3, 52, 117, 0.35), inset 0 0 0 10px rgba(255, 255, 255, 0.18); }
+/* habits phone */
+.hh { position: absolute; left: 24px; top: 58px; font-size: 25px; font-weight: 800; letter-spacing: -0.03em; }
+.hs { position: absolute; left: 24px; top: 93px; font-size: 13px; font-weight: 600; color: var(--soft); }
+.hcard { position: absolute; left: 20px; top: 126px; width: 252px; height: 168px; border-radius: 26px; background: linear-gradient(145deg, #8f88ff, #665dff); box-shadow: 0 16px 34px rgba(102, 93, 255, 0.35); color: #fff; }
+.hcard span { position: absolute; left: 20px; top: 20px; font-size: 14px; font-weight: 700; opacity: 0.85; }
+.hcard b { position: absolute; left: 20px; top: 44px; font-size: 46px; letter-spacing: -0.04em; }
+.hcard small { position: absolute; left: 20px; top: 112px; font-size: 13px; font-weight: 600; opacity: 0.8; }
+.hcard svg { position: absolute; left: 152px; top: 40px; width: 82px; height: 82px; }
+.hrow { position: absolute; left: 20px; width: 252px; height: 62px; border-radius: 18px; border: 1.5px solid var(--hair); background: #fff; }
+.hrow i { position: absolute; left: 13px; top: 13px; width: 36px; height: 36px; border-radius: 12px; background: #eceafe; }
+.hrow b { position: absolute; left: 62px; top: 12px; font-size: 15px; letter-spacing: -0.02em; }
+.hrow span { position: absolute; left: 62px; top: 34px; font-size: 12px; font-weight: 600; color: var(--soft); }
+.hrow em { position: absolute; right: 14px; top: 17px; width: 28px; height: 28px; border-radius: 50%; border: 2.5px solid #dcd9fb; }
+.hrow em.on { border: none; background: #665dff; }
+.hrow em.on::after { content: ''; position: absolute; left: 10px; top: 6px; width: 6px; height: 11px; border: solid #fff; border-width: 0 3px 3px 0; transform: rotate(45deg); }
+.htab { position: absolute; left: 0; top: 560px; width: 100%; height: 72px; border-top: 1px solid var(--hair); background: #fff; }
+.htab i { position: absolute; top: 18px; width: 24px; height: 24px; border-radius: 8px; background: #dcdff0; }
+/* browser */
+#browser { left: 230px; top: 440px; width: 1000px; height: 600px; border-radius: 22px; background: #fff; box-shadow: 0 60px 120px rgba(3, 52, 117, 0.18), 0 10px 30px rgba(3, 52, 117, 0.1); overflow: hidden; }
+.btool { position: absolute; left: 0; top: 0; width: 100%; height: 52px; background: #f7f7fb; border-bottom: 1px solid var(--hair); }
+.bdot { position: absolute; top: 20px; width: 12px; height: 12px; border-radius: 50%; background: #dfe2ee; }
+.burl { position: absolute; left: 330px; top: 13px; width: 340px; height: 26px; border-radius: 13px; background: #eceef5; overflow: hidden; }
+.burl span { position: absolute; left: 0; top: 0; width: 100%; line-height: 26px; text-align: center; font-size: 14px; font-weight: 600; color: var(--soft); letter-spacing: 0; }
+#bbody { position: absolute; left: 0; top: 52px; width: 1000px; height: 548px; overflow: hidden; }
+#site, #dash { position: absolute; inset: 0; }
+.bar { position: absolute; border-radius: 6px; background: #d9dcea; }
+.sbtn { border-radius: 18px; background: #665dff; color: #fff; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+#bside { position: absolute; left: 0; top: 0; width: 200px; height: 548px; background: #faf9ff; border-right: 1px solid var(--hair); }
+#bside .logo { position: absolute; left: 24px; top: 22px; width: 36px; height: 36px; border-radius: 11px; background: linear-gradient(140deg, #8f88ff, #665dff); }
+#bside .nav { position: absolute; left: 14px; width: 172px; height: 38px; border-radius: 10px; }
+#bside .nav i { position: absolute; left: 12px; top: 10px; width: 18px; height: 18px; border-radius: 5px; background: #dcd9fb; }
+#bside .nav b { position: absolute; left: 42px; top: 14px; height: 10px; border-radius: 5px; background: #d9dcea; }
+#bside .nav.act { background: #eceafe; } #bside .nav.act i { background: #665dff; } #bside .nav.act b { background: #8f88ff; }
+.dt { position: absolute; left: 232px; top: 22px; font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+.ds { position: absolute; left: 232px; top: 60px; font-size: 16px; font-weight: 600; color: var(--soft); }
+.kpi { position: absolute; top: 96px; width: 232px; height: 122px; border-radius: 18px; border: 1.5px solid var(--hair); background: #fff; }
+.kpi span { position: absolute; left: 18px; top: 16px; font-size: 15px; font-weight: 600; color: var(--soft); }
+.kpi b { position: absolute; left: 18px; top: 42px; font-size: 36px; font-weight: 800; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.kpi svg { position: absolute; left: 132px; top: 70px; width: 84px; height: 34px; overflow: visible; }
+#chartCard { position: absolute; left: 232px; top: 236px; width: 740px; height: 290px; border-radius: 18px; border: 1.5px solid var(--hair); background: #fff; }
+#chartCard > span { position: absolute; left: 20px; top: 16px; font-size: 16px; font-weight: 700; }
+#chartCard > em { position: absolute; right: 18px; top: 14px; font-style: normal; font-size: 13px; font-weight: 700; color: #665dff; background: #eceafe; padding: 4px 10px; border-radius: 999px; }
+#chartCard svg { position: absolute; left: 20px; top: 62px; width: 700px; height: 200px; overflow: visible; }
+/* chips */
+.chip { position: absolute; display: flex; align-items: center; gap: 18px; padding: 18px 34px 18px 22px; border-radius: 999px; background: #fffefc; box-shadow: 0 24px 60px rgba(3, 52, 117, 0.2), 0 4px 12px rgba(3, 52, 117, 0.1); white-space: nowrap; overflow: hidden; }
+.chip .ic { width: 60px; height: 60px; border-radius: 50%; background: #eceafe; display: flex; align-items: center; justify-content: center; }
+.chip svg { width: 34px; height: 34px; }
+.chip b { font-size: 50px; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.chip > span { font-size: 32px; font-weight: 600; color: var(--muted); letter-spacing: -0.01em; }
+
+/* S4 */
+#navyBg { position: absolute; left: -200px; top: -200px; width: 2320px; height: 1480px; background: radial-gradient(1300px 820px at 50% 42%, #0a4795 0%, #033475 52%, #02265a 100%); }
+#nGlow { position: absolute; left: 0; top: 0; width: 1500px; height: 900px; border-radius: 50%; background: radial-gradient(closest-side, rgba(102, 93, 255, 0.34), rgba(102, 93, 255, 0)); }
+.tile { position: absolute; top: 650px; width: 112px; height: 112px; border-radius: 30px; background: linear-gradient(140deg, #8f88ff, #665dff); overflow: hidden; }
+.tile svg { position: absolute; left: 28px; top: 28px; width: 56px; height: 56px; }
+.tile .dimL { position: absolute; inset: 0; background: #17407e; opacity: 0; }
+.src { position: absolute; font-family: 'GM', monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.02em; color: rgba(255, 254, 252, 0.55); white-space: nowrap; }
+
+/* S5–S6 */
+#donut { position: absolute; left: 1060px; top: 240px; width: 640px; height: 640px; overflow: visible; transform-origin: 320px 320px; }
+.lab { position: absolute; display: flex; align-items: center; gap: 12px; padding: 12px 24px 12px 14px; border-radius: 999px; background: #fffefc; border: 2px solid #e2dfff; font-size: 36px; font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; box-shadow: 0 14px 30px rgba(3, 52, 117, 0.1); }
+.lab i { width: 40px; height: 40px; border-radius: 50%; background: #665dff; display: inline-flex; align-items: center; justify-content: center; }
+.lab svg { width: 24px; height: 24px; }
+#center { position: absolute; left: 1180px; top: 470px; width: 400px; text-align: center; font-variant-numeric: tabular-nums; letter-spacing: -0.04em; transform-origin: 200px 90px; }
+
+/* S7 */
+#vfield { position: absolute; border-radius: 50%; background: var(--violet); }
+#shock { position: absolute; border-radius: 50%; border-style: solid; border-color: rgba(255, 255, 255, 0.8); }
+#G2wrap { position: absolute; left: 0; top: 520px; width: 1920px; height: 260px; perspective: 1400px; perspective-origin: 960px 120px; }
+#G2x { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 960px 120px; }
+#G2x .t { top: 0; font-size: 210px; }
+
+/* S8 */
+.pill { position: absolute; display: flex; align-items: center; gap: 14px; padding: 16px 30px; border-radius: 999px; background: var(--ink); color: #fffefc; font-size: 40px; letter-spacing: -0.02em; white-space: nowrap; transform-origin: 20% 50%; overflow: hidden; }
+.pill small { font-size: 30px; font-weight: 600; opacity: 0.75; letter-spacing: 0; }
+</style>
+</head>
+<body>
+<div id="stage"><div id="cam">
+
+  <div id="bg" class="grp"><div class="blob" id="bA"></div><div class="blob" id="bB"></div></div>
+
+  <!-- S1 · Moi, c'est Noé -->
+  <div id="g1" class="grp">
+    <svg id="ring1" viewBox="0 0 300 300"><defs><linearGradient id="rg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9e94ff"/><stop offset="1" stop-color="#665dff"/></linearGradient></defs><circle id="ring1c" cx="150" cy="150" r="131" fill="none" stroke="url(#rg1)" stroke-width="7" stroke-linecap="round" pathLength="1" transform="rotate(-90 150 150)"/></svg>
+    <div id="av1"><img src="assets/avatar.png" alt=""></div>
+    <div class="t" id="A1" data-w style="left: 470px; top: 445px; font-size: 156px">Moi, c’est <span class="grad">Noé.</span></div>
+  </div>
+
+  <!-- S2–S3 · applications mobiles, web, SaaS (interfaces dessinées) -->
+  <div id="g2" class="grp" style="transform-origin: 1380px 514px">
+    <div id="ui3d"><div id="uiRow">
+
+      <div class="dev" id="browser">
+        <div class="btool"><i class="bdot" style="left:22px"></i><i class="bdot" style="left:42px"></i><i class="bdot" style="left:62px"></i>
+          <div class="burl"><span id="url1">tonprojet.fr</span><span id="url2">app.tonprojet.fr</span></div></div>
+        <div id="bbody">
+          <div id="site">
+            <div class="sl" data-b="w" data-d="0" data-pop style="left:36px; top:20px; width:28px; height:28px; border-radius:9px; background:linear-gradient(140deg,#8f88ff,#665dff)"></div>
+            <div class="bar" data-b="w" data-d="0.02" style="left:74px; top:28px; width:84px; height:12px; background:#033475"></div>
+            <div class="bar" data-b="w" data-d="0.03" style="left:470px; top:29px; width:60px; height:10px"></div>
+            <div class="bar" data-b="w" data-d="0.04" style="left:560px; top:29px; width:72px; height:10px"></div>
+            <div class="bar" data-b="w" data-d="0.05" style="left:662px; top:29px; width:56px; height:10px"></div>
+            <div class="bar" data-b="w" data-d="0.06" style="left:748px; top:29px; width:64px; height:10px"></div>
+            <div class="sl sbtn" data-b="w" data-d="0.07" data-pop style="left:850px; top:16px; width:112px; height:36px">Essayer</div>
+            <div class="bar" data-b="w" data-d="0.09" style="left:60px; top:132px; width:420px; height:42px; border-radius:12px; background:#033475"></div>
+            <div class="bar" data-b="w" data-d="0.12" style="left:60px; top:188px; width:320px; height:42px; border-radius:12px; background:linear-gradient(90deg,#6760ff,#9e94ff)"></div>
+            <div class="bar" data-b="w" data-d="0.15" style="left:60px; top:256px; width:380px; height:12px"></div>
+            <div class="bar" data-b="w" data-d="0.17" style="left:60px; top:278px; width:300px; height:12px"></div>
+            <div class="sl sbtn" data-b="w" data-d="0.2" data-pop style="left:60px; top:322px; width:164px; height:50px; border-radius:25px">Commencer</div>
+            <div class="sl" data-b="w" data-d="0.22" data-pop style="left:238px; top:322px; width:140px; height:50px; border-radius:25px; border:2px solid #e2dfff"></div>
+            <div class="sl" data-b="w" data-d="0.1" data-pop style="left:540px; top:100px; width:400px; height:310px; border-radius:26px; background:linear-gradient(160deg,#e9e7ff,#f7f6ff)">
+              <div style="position:absolute; left:132px; top:34px; width:136px; height:250px; border-radius:24px; background:#0e1016; padding:6px">
+                <div style="width:100%; height:100%; border-radius:19px; background:linear-gradient(170deg,#9e94ff,#665dff); position:relative">
+                  <div style="position:absolute; left:16px; top:40px; width:70px; height:10px; border-radius:5px; background:rgba(255,255,255,0.9)"></div>
+                  <div style="position:absolute; left:16px; top:58px; width:50px; height:8px; border-radius:4px; background:rgba(255,255,255,0.6)"></div>
+                  <div style="position:absolute; left:16px; top:96px; width:92px; height:64px; border-radius:12px; background:rgba(255,255,255,0.22)"></div>
+                  <div style="position:absolute; left:16px; top:184px; width:92px; height:22px; border-radius:11px; background:#fff"></div>
+                </div>
+              </div>
+              <div style="position:absolute; left:236px; top:196px; width:142px; height:62px; border-radius:16px; background:#fff; box-shadow:0 14px 30px rgba(3,52,117,0.14)">
+                <div style="position:absolute; left:14px; top:17px; width:28px; height:28px; border-radius:50%; background:#665dff"></div>
+                <div style="position:absolute; left:52px; top:20px; width:72px; height:9px; border-radius:5px; background:#033475"></div>
+                <div style="position:absolute; left:52px; top:35px; width:48px; height:8px; border-radius:4px; background:#d9dcea"></div>
+              </div>
+            </div>
+            <div class="bar" data-b="w" data-d="0.24" style="left:60px; top:470px; width:120px; height:18px; border-radius:9px; background:#e7e8f1"></div>
+            <div class="bar" data-b="w" data-d="0.26" style="left:240px; top:470px; width:120px; height:18px; border-radius:9px; background:#e7e8f1"></div>
+            <div class="bar" data-b="w" data-d="0.28" style="left:420px; top:470px; width:120px; height:18px; border-radius:9px; background:#e7e8f1"></div>
+            <div class="bar" data-b="w" data-d="0.3" style="left:600px; top:470px; width:120px; height:18px; border-radius:9px; background:#e7e8f1"></div>
+            <div class="bar" data-b="w" data-d="0.32" style="left:780px; top:470px; width:120px; height:18px; border-radius:9px; background:#e7e8f1"></div>
+          </div>
+
+          <div id="dash">
+            <div id="bside">
+              <div class="logo"></div>
+              <div class="nav act" style="top:84px"><i></i><b style="width:92px"></b></div>
+              <div class="nav" style="top:130px"><i></i><b style="width:70px"></b></div>
+              <div class="nav" style="top:176px"><i></i><b style="width:104px"></b></div>
+              <div class="nav" style="top:222px"><i></i><b style="width:80px"></b></div>
+              <div class="nav" style="top:268px"><i></i><b style="width:64px"></b></div>
+            </div>
+            <div class="dt" data-b="d" data-d="0.08">Tableau de bord</div>
+            <div class="ds" data-b="d" data-d="0.1">Octobre</div>
+            <div class="sl" data-b="d" data-d="0.12" data-pop style="left:926px; top:22px; width:40px; height:40px; border-radius:50%; background:linear-gradient(140deg,#ccd2ff,#8f88ff)"></div>
+            <div class="kpi" data-b="d" data-d="0.14" data-pop style="left:232px"><span>Revenus</span><b id="kv0">+0&#160;%</b>
+              <svg viewBox="0 0 84 34"><polyline points="0,30 14,26 28,28 42,18 56,20 70,9 84,3" fill="none" stroke="#665dff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="kpi" data-b="d" data-d="0.18" data-pop style="left:486px"><span>Abonnés</span><b id="kv1">+0</b>
+              <svg viewBox="0 0 84 34"><polyline points="0,28 14,29 28,22 42,24 56,14 70,12 84,6" fill="none" stroke="#665dff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="kpi" data-b="d" data-d="0.22" data-pop style="left:740px"><span>Conversion</span><b id="kv2">0,0&#160;%</b>
+              <svg viewBox="0 0 84 34"><polyline points="0,26 14,24 28,25 42,17 56,18 70,10 84,8" fill="none" stroke="#665dff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div id="chartCard" data-b="d" data-d="0.26" data-pop><span>Revenus</span><em>12 mois</em>
+              <svg viewBox="0 0 700 200" preserveAspectRatio="none">
+                <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#665dff" stop-opacity="0.3"/><stop offset="1" stop-color="#665dff" stop-opacity="0"/></linearGradient></defs>
+                <line x1="0" y1="50" x2="700" y2="50" stroke="#eef0f6" stroke-width="2"/><line x1="0" y1="100" x2="700" y2="100" stroke="#eef0f6" stroke-width="2"/><line x1="0" y1="150" x2="700" y2="150" stroke="#eef0f6" stroke-width="2"/>
+                <path id="area" fill="url(#ag)"/>
+                <path id="line" fill="none" stroke="#665dff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" pathLength="1"/>
+                <circle id="dotGlow" r="22" fill="#665dff" opacity="0"/>
+                <circle id="dotEnd" r="9" fill="#665dff" stroke="#fff" stroke-width="4"/>
+              </svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dev phone" id="ph2" style="left:1560px; top:420px"><div class="scr">
+        <div class="clock">9:41</div><div class="island"></div>
+        <svg class="sbar" viewBox="0 0 46 12"><rect x="0" y="7" width="3" height="5" rx="1" fill="#033475"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#033475"/><rect x="10" y="2" width="3" height="10" rx="1" fill="#033475"/><rect x="22" y="1" width="21" height="10" rx="3" fill="none" stroke="#033475" stroke-width="1.5"/><rect x="24.5" y="3.5" width="14" height="5" rx="1.5" fill="#033475"/></svg>
+        <div class="hh" data-b="p2" data-d="0.02">Bonjour Léa</div>
+        <div class="hs" data-b="p2" data-d="0.04">Mardi 14 octobre</div>
+        <div class="hcard" data-b="p2" data-d="0.07" data-pop><span>Objectif du jour</span><b>72&#160;%</b><small>5 habitudes sur 7</small>
+          <svg viewBox="0 0 82 82"><circle cx="41" cy="41" r="32" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="10"/><circle cx="41" cy="41" r="32" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" pathLength="1" stroke-dasharray="0.72 1" transform="rotate(-90 41 41)"/></svg></div>
+        <div class="hrow" data-b="p2" data-d="0.12" style="top:314px"><i></i><b>Méditer</b><span>10 min</span><em class="on"></em></div>
+        <div class="hrow" data-b="p2" data-d="0.15" style="top:388px"><i></i><b>Lire</b><span>20 pages</span><em class="on"></em></div>
+        <div class="hrow" data-b="p2" data-d="0.18" style="top:462px"><i></i><b>Marcher</b><span>6 000 pas</span><em></em></div>
+        <div class="htab" data-b="p2" data-d="0.22"><i style="left:34px; background:#665dff"></i><i style="left:102px"></i><i style="left:168px"></i><i style="left:234px"></i></div>
+      </div></div>
+
+      <div class="dev phone" id="ph1" style="left:1170px; top:392px"><div class="scr" id="scr1">
+        <div class="phead"></div>
+        <div class="clock">9:41</div><div class="island"></div>
+        <svg class="sbar" viewBox="0 0 46 12"><rect x="0" y="7" width="3" height="5" rx="1" fill="#033475"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#033475"/><rect x="10" y="2" width="3" height="10" rx="1" fill="#033475"/><rect x="22" y="1" width="21" height="10" rx="3" fill="none" stroke="#033475" stroke-width="1.5"/><rect x="24.5" y="3.5" width="14" height="5" rx="1.5" fill="#033475"/></svg>
+        <div id="blob" data-b="p1" data-d="0.02" data-pop><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 5.6L20 11l-5.8 2.4L12 19l-2.2-5.6L4 11l5.8-2.4z"/></svg></div>
+        <div class="pt" data-b="p1" data-d="0.07">Passe en Premium</div>
+        <div class="ps" data-b="p1" data-d="0.1">7 jours offerts, sans engagement</div>
+        <div class="chk" data-b="p1" data-d="0.14" style="top:322px"><i></i>Accès illimité</div>
+        <div class="chk" data-b="p1" data-d="0.17" style="top:356px"><i></i>Sans publicité</div>
+        <div class="chk" data-b="p1" data-d="0.2" style="top:390px"><i></i>Synchronisé partout</div>
+        <div class="plan" data-b="p1" data-d="0.24" data-pop style="left:20px"><span>Mensuel</span><b>9,99&#160;€</b></div>
+        <div class="plan sel" data-b="p1" data-d="0.27" data-pop style="left:152px"><span>Annuel</span><b>59,99&#160;€</b><em>−50&#160;%</em></div>
+        <div id="ctaW" data-b="p1" data-d="0.32" data-pop><div id="cta">Commencer l’essai<i class="shine" id="ctaShine"></i></div></div>
+        <div id="ctaRip"></div>
+        <div id="touch"></div>
+      </div></div>
+
+    </div></div>
+
+    <div class="chip" id="k1" style="left: 1130px; top: 466px"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#665dff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></div><b id="k1n">13&#160;000&#160;€</b><span>par mois</span><i class="shine"></i></div>
+    <div class="chip" id="k2" style="left: 1250px; top: 626px"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#665dff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11"/><polyline points="7 10 12 15 17 10"/><path d="M4.5 16.5v2.5a1.5 1.5 0 0 0 1.5 1.5h12a1.5 1.5 0 0 0 1.5-1.5v-2.5"/></svg></div><b id="k2n">900&#160;000</b><span>téléchargements</span><i class="shine"></i></div>
+
+    <div class="t" id="B1" data-w style="left: 170px; top: 96px; font-size: 118px">Je <span class="ser">crée</span> des applications</div>
+    <div class="t" id="B2" data-w style="left: 170px; top: 232px; font-size: 118px"><span class="grad">mobiles</span></div>
+    <div class="t" id="B3" data-w style="left: 170px; top: 232px; font-size: 118px"><span class="grad">web</span></div>
+    <div class="t" id="B4" data-w style="left: 170px; top: 232px; font-size: 118px"><span class="grad">SaaS</span></div>
+    <div class="t" id="B5" data-w style="left: 170px; top: 232px; font-size: 118px">qui <span class="grad">génèrent des revenus.</span></div>
+  </div>
+
+  <!-- S4 · 8 sur 10 -->
+  <div id="g4" class="grp">
+    <div id="navyBg"></div>
+    <div id="nGlow"></div>
+    <div id="tiles"></div>
+    <div class="t ctr white" id="C1" style="top: 140px; font-size: 330px; letter-spacing: -0.05em"><span class="gradl">8</span> sur 10</div>
+    <div class="t ctr white" id="C2" data-w style="top: 512px; font-size: 60px; letter-spacing: -0.02em; font-weight: 700">des applications ne dépassent jamais 1&#160;000&#160;$ par mois.</div>
+    <div class="src" id="C3" style="left: 0; width: 1920px; text-align: center; top: 880px">Applications à abonnement · RevenueCat 2024</div>
+  </div>
+
+  <!-- S5–S6 · 20 % / 100 % -->
+  <div id="g5" class="grp" style="transform-origin: 1380px 560px">
+    <svg id="donut" viewBox="0 0 640 640">
+      <defs><linearGradient id="vg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9e94ff"/><stop offset="1" stop-color="#665dff"/></linearGradient></defs>
+      <circle id="dTrack" cx="320" cy="320" r="240" fill="none" stroke="#eceafe" stroke-width="76"/>
+      <circle id="dV" cx="320" cy="320" r="240" fill="none" stroke="url(#vg)" stroke-width="76" stroke-linecap="butt" transform="rotate(-90 320 320)"/>
+      <circle id="dN" cx="320" cy="320" r="240" fill="none" stroke="#033475" stroke-width="76" stroke-linecap="butt" transform="rotate(-90 320 320)"/>
+      <circle id="hGlow" r="34" fill="#ffffff" opacity="0"/>
+      <circle id="hDot" r="13" fill="#ffffff" opacity="0"/>
+    </svg>
+    <div id="center"><div id="cnum" style="font-size: 128px; line-height: 1">0&#160;%</div></div>
+    <div class="lab" id="L0"><i style="background: #033475"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg></i>code</div>
+    <div class="lab" id="L1"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18c6 0 4-12 10-12"/></svg></i>parcours</div>
+    <div class="lab" id="L2"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M12 9l1 2 2 .4-1.5 1.5.4 2.1L12 14l-1.9 1 .4-2.1L9 11.4l2-.4z"/></svg></i>premier écran</div>
+    <div class="lab" id="L3"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><line x1="2.5" y1="10" x2="21.5" y2="10"/></svg></i>paiement</div>
+    <div class="lab" id="L4"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><polyline points="20 4 20 8.5 15.5 8.5"/></svg></i>fidélité</div>
+    <div class="t" id="D1" data-w style="left: 170px; top: 400px; font-size: 104px">Un développeur</div>
+    <div class="t" id="D2" data-w style="left: 170px; top: 516px; font-size: 104px">la <span class="ser">code.</span></div>
+    <div class="t" id="E1" data-w style="left: 170px; top: 400px; font-size: 104px">Le reste la fait</div>
+    <div class="t" id="E2" data-w style="left: 170px; top: 516px; font-size: 104px"><span class="ser">rapporter.</span></div>
+  </div>
+
+  <!-- S7 · les 100 % -->
+  <div id="g7" class="grp">
+    <div id="vfield"></div>
+    <div id="shock"></div>
+    <div class="t ctr white" id="G1" style="top: 290px; font-size: 210px">Moi, je fais</div>
+    <div id="G2wrap"><div id="G2x"><div class="t ctr white" id="G2f">les 100&#160;%.</div></div></div>
+  </div>
+
+  <!-- S8 · Noé -->
+  <div id="g8" class="grp">
+    <div id="av8"><img id="av8i" src="assets/avatar.png" alt=""></div>
+    <div class="t" id="H1" data-w style="left: 840px; top: 330px; font-size: 128px">Noé Calmes</div>
+    <div class="t" id="H2" data-w style="left: 840px; top: 488px; font-size: 62px; letter-spacing: -0.025em"><span class="grad">Applications mobiles &amp; web</span></div>
+    <div class="pill" id="f1" style="left: 840px; top: 650px">900&#160;000 <small>téléchargements au total</small><i class="shine"></i></div>
+    <div class="pill" id="f2" style="left: 840px; top: 760px">13&#160;000&#160;€ <small>par mois pour l’une d’elles</small><i class="shine"></i></div>
+  </div>
+
+</div></div>
+
+<script>
+(function () {
+  // ---------------- easing ----------------
+  const C = (x) => (x < 0 ? 0 : x > 1 ? 1 : x);
+  const P = (t, a, d) => C((t - a) / d);
+  const L = (a, b, x) => a + (b - a) * x;
+  const eOut = (x) => (x >= 1 ? 1 : 1 - Math.pow(2, -10 * x));
+  const eIn = (x) => (x <= 0 ? 0 : Math.pow(2, 10 * x - 10));
+  const eIO = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : x < 0.5 ? Math.pow(2, 20 * x - 10) / 2 : (2 - Math.pow(2, -20 * x + 10)) / 2);
+  const cIO = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+  const qOut = (x) => 1 - Math.pow(1 - x, 4);
+  const sIO = (x) => x * x * (3 - 2 * x);
+  const backIn = (x, s = 1.6) => (s + 1) * x * x * x - s * x * x;
+  // damped spring, x in seconds since start: overshoots then settles
+  const spring = (x, k = 12, z = 0.5) => (x <= 0 ? 0 : 1 - Math.exp(-z * k * x) * Math.cos(k * Math.sqrt(1 - z * z) * x));
+  const bump = (t, a, d) => (t > a && t < a + d ? Math.sin(Math.PI * (t - a) / d) : 0);
+  const $ = (id) => document.getElementById(id);
+  const S = (el, k, v) => { el.style[k] = v; };
+  const show = (el, on) => S(el, 'display', on ? '' : 'none');
+  const nb = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  const f2 = (v) => v.toFixed(2);
+  function kf(t, keys) {
+    if (t <= keys[0][0]) return keys[0][1];
+    for (let i = 1; i < keys.length; i++) {
+      const [t1, v1, e] = keys[i]; const [t0, v0] = keys[i - 1];
+      if (t <= t1) return L(v0, v1, (e || sIO)((t - t0) / (t1 - t0)));
+    }
+    return keys[keys.length - 1][1];
+  }
+  const hex = (h) => [1, 3, 5].map((i) => parseInt(h.substr(i, 2), 16));
+  const mix = (a, b, x) => { const A = hex(a), B = hex(b); return `rgb(${A.map((v, i) => Math.round(L(v, B[i], x))).join(',')})`; };
+
+  // ---------------- words in masks ----------------
+  const W = {};
+  document.querySelectorAll('[data-w]').forEach((el) => {
+    const words = [];
+    const walk = (node, cls) => {
+      Array.from(node.childNodes).forEach((n) => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/( )/).forEach((p) => {
+            if (!p) return;
+            if (p === ' ') { const s = document.createElement('span'); s.className = 'sp'; frag.appendChild(s); return; }
+            const m = document.createElement('span'); m.className = 'wm';
+            const w = document.createElement('span'); w.className = 'wi' + (cls ? ' ' + cls : ''); w.textContent = p;
+            m.appendChild(w); frag.appendChild(m); words.push(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) {
+          const c = n.className; const kids = Array.from(n.childNodes);
+          const frag = document.createDocumentFragment(); kids.forEach((k) => frag.appendChild(k));
+          const holder = document.createElement('span'); holder.appendChild(frag);
+          walk(holder, c);
+          n.replaceWith(...Array.from(holder.childNodes));
+        }
+      });
+    };
+    walk(el, '');
+    W[el.id] = words;
+  });
+  function fixGradients() {
+    Object.values(W).forEach((ws) => {
+      const groups = {};
+      ws.forEach((w) => { if (w.classList.contains('grad') || w.classList.contains('gradl')) { const k = w.className; (groups[k] = groups[k] || []).push(w); } });
+      Object.values(groups).forEach((g) => {
+        const r0 = g[0].getBoundingClientRect().left, r1 = g[g.length - 1].getBoundingClientRect().right;
+        g.forEach((w) => { const off = w.getBoundingClientRect().left - r0; w.style.backgroundSize = (r1 - r0) + 'px 100%'; w.style.backgroundPosition = -off + 'px 0'; });
+      });
+    });
+  }
+  // word pop: fast rise (~0.14 s), small overshoot, settle. Exit: quick lift out of the mask.
+  function words(id, t, tin, tout, o = {}) {
+    const el = $(id), ws = W[id];
+    const st = o.st ?? 0.05, k = o.k ?? 14, z = o.z ?? 0.6, sto = o.sto ?? 0.02, dout = o.dout ?? 0.18, rot = o.rot ?? 4;
+    const on = t >= tin - 0.02 && (tout == null || t <= tout + sto * ws.length + dout + 0.02);
+    show(el, on); if (!on) return;
+    ws.forEach((w, i) => {
+      const s = spring(t - (tin + i * st), k, z);
+      const q = tout == null ? 0 : eIn(P(t, tout + i * sto, dout));
+      S(w, 'transform', `translate3d(0, ${f2((1 - s) * 112 - q * 120)}%, 0) rotate(${f2((1 - s) * rot)}deg)`);
+    });
+  }
+  function slam(id, t, tin, tout, o = {}) {
+    const el = $(id); const d = o.d ?? 0.3;
+    const on = t >= tin - 0.02 && t <= tout + 0.3;
+    show(el, on); if (!on) return;
+    const p = eOut(P(t, tin, d)), q = eIn(P(t, tout, 0.22));
+    const sc = L(o.from ?? 1.35, 1, p) * L(1, 0.92, q);
+    S(el, 'transform', `scale(${sc.toFixed(4)})`); S(el, 'transformOrigin', o.origin ?? '50% 50%');
+    S(el, 'opacity', (C(p * 2.5) * (1 - q)).toFixed(3));
+    const b = (1 - p) * (o.blur ?? 16) + q * 10;
+    S(el, 'filter', b > 0.3 ? `blur(${f2(b)}px)` : 'none');
+  }
+  // UI boot cascade: every [data-b] element pops in after its screen lands
+  const U = Array.from(document.querySelectorAll('[data-b]')).map((el) => ({ el, b: el.dataset.b, d: +el.dataset.d || 0, pop: el.hasAttribute('data-pop') }));
+  function boot(t, group, t0) {
+    U.forEach((u) => {
+      if (u.b !== group) return;
+      const x = t - (t0 + u.d);
+      const s = spring(x, 15, 0.55);
+      S(u.el, 'transform', u.pop ? `scale(${Math.max(0, s).toFixed(4)})` : `translate3d(0, ${f2((1 - s) * 22)}px, 0)`);
+      S(u.el, 'opacity', C(x / 0.07).toFixed(3));
+    });
+  }
+  function shineAt(el, t, a, w) { S(el, 'transform', `translateX(${f2(L(-140, w + 60, cIO(P(t, a, 0.55))))}px) skewX(-18deg)`); }
+
+  // ---------------- timeline (120 BPM grid) ----------------
+  const T = { s1: 0, s2: 1.5, s3: 4.0, s4: 6.0, s5: 8.5, s6: 10.0, s7: 12.0, s8: 13.5, end: 16.0 };
+  const cam = $('cam');
+  let camS = 1, camX = 0, camY = 0, camR = 0, TQ = 0;
+  const IMPACTS = [[6.0, 9], [11.99, 8], [12.4, 6]];
+  function shake(t) {
+    let x = 0, y = 0, r = 0;
+    IMPACTS.forEach(([a, A]) => { if (t < a) return; const u = t - a, e = A * Math.exp(-11 * u); x += e * Math.sin(2 * Math.PI * 9 * u); y += e * 0.7 * Math.cos(2 * Math.PI * 11 * u + 0.6); r += e * 0.03 * Math.sin(2 * Math.PI * 7 * u); });
+    return [x, y, r];
+  }
+  function inCam(el) { // element centre, in the coordinates of the (untransformed) scene
+    const r = el.getBoundingClientRect();
+    let x = r.left + r.width / 2 - 960 - camX, y = r.top + r.height / 2 - 540 - camY;
+    x /= camS; y /= camS;
+    const a = (-camR * Math.PI) / 180, c = Math.cos(a), s = Math.sin(a);
+    return [960 + x * c - y * s, 540 + x * s + y * c];
+  }
+
+  // ---------------- layout built once ----------------
+  const GLYPHS = [
+    '<path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>',
+    '<path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>',
+    '<path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/>',
+    '<rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 15h4"/>',
+    '<rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+    '<path d="M20 12a8 8 0 0 1-11.5 7.2L4 20.5l1.3-4.3A8 8 0 1 1 20 12z"/>',
+    '<rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8.5 7l1.5-2.5h4L15.5 7"/>',
+    '<path d="M5 4.5h11.5a2 2 0 0 1 2 2V20H7a2 2 0 0 1-2-2z"/><path d="M5 18a2 2 0 0 1 2-2h11.5"/>',
+    '<path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0c0 5.2-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
+    '<path d="M12 20s-7.5-4.6-9-9.3A4.8 4.8 0 0 1 12 7a4.8 4.8 0 0 1 9 3.7C19.5 15.4 12 20 12 20z"/>',
+  ];
+  const tiles = [];
+  const TX0 = (1920 - (10 * 112 + 9 * 28)) / 2;
+  for (let i = 0; i < 10; i++) {
+    const d = document.createElement('div'); d.className = 'tile'; d.style.left = (TX0 + i * 140) + 'px';
+    d.innerHTML = `<div class="dimL"></div><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">${GLYPHS[i]}</svg><i class="shine"></i>`;
+    $('tiles').appendChild(d); tiles.push(d);
+  }
+  const KEEP = [2, 7];
+  const DIM_ORDER = [5, 0, 8, 3, 9, 1, 6, 4];
+  const TILE_TILT = [-7, 6, 0, -5, 8, -6, 5, 0, -8, 6];
+
+  // chart data (heights out of 200)
+  const CH = [22, 34, 30, 52, 46, 70, 66, 96, 92, 124, 150];
+  function chartPath(grow, surge) {
+    const pts = CH.map((h, i) => { const w = Math.pow(i / 10, 2.2); const hh = Math.min(192, h * grow * (1 + 0.32 * surge * w)); return [i * 70, 200 - hh]; });
+    const d = 'M' + pts.map((p) => p[0] + ' ' + f2(p[1])).join(' L');
+    return [d, d + ' L700 200 L0 200 Z', pts[pts.length - 1]];
+  }
+
+  // donut
+  const DCX = 1380, DCY = 560, DR = 240, CIRC = 2 * Math.PI * DR;
+  const LABS = [[36, 0], [108, 1], [180, 2], [252, 3], [324, 4]];
+  function placeLab(el, ang, rad) {
+    const a = (ang * Math.PI) / 180; const x = DCX + rad * Math.sin(a), y = DCY - rad * Math.cos(a);
+    const w = el.offsetWidth, h = el.offsetHeight;
+    let lx = x - w / 2, ly = y - h / 2;
+    if (Math.sin(a) > 0.35) lx = x - 28; else if (Math.sin(a) < -0.35) lx = x - w + 28;
+    S(el, 'left', lx + 'px'); S(el, 'top', ly + 'px');
+    S(el, 'transformOrigin', `${x - lx}px ${y - ly}px`);
+  }
+  const STEPS = [10.25, 10.5, 10.75, 11.0];   // each step adds 20 %
+  const LAB_T = [9.12, 10.29, 10.54, 10.79, 11.04];
+
+  // ---------------- scenes ----------------
+  function sceneBg(t) {
+    S($('bA'), 'transform', `translate(${f2(380 + Math.sin(t * 0.42) * 170)}px, ${f2(120 + Math.cos(t * 0.36) * 90)}px)`);
+    S($('bB'), 'transform', `translate(${f2(-260 + Math.cos(t * 0.31) * 150)}px, ${f2(-220 + Math.sin(t * 0.39) * 80)}px)`);
+    const a = t < T.s2 ? 0.55 : t < T.s4 ? 1 : 0.6;
+    S($('bA'), 'opacity', a); S($('bB'), 'opacity', a);
+  }
+
+  function sceneS1(t) {
+    const g = $('g1'); const on = t < 1.62; show(g, on); if (!on) return;
+    const pan = eIO(P(t, 1.22, 0.38));
+    const push = 1 + 0.035 * sIO(P(t, 0, 1.4));
+    S(g, 'transform', `translateY(${f2(-1080 * pan)}px) scale(${push.toFixed(5)})`);
+    const s = Math.max(0, spring(t - 0.02, 11, 0.5));
+    const r = 118 * s;
+    const av = $('av1');
+    S(av, 'left', f2(330 - r) + 'px'); S(av, 'top', f2(540 - r) + 'px'); S(av, 'width', f2(2 * r) + 'px'); S(av, 'height', f2(2 * r) + 'px');
+    S(av.firstChild, 'transform', `scale(${f2(L(1.25, 1, eOut(P(t, 0.02, 0.7))))})`);
+    const rp = eOut(P(t, 0.14, 0.6));
+    S($('ring1c'), 'strokeDasharray', `${rp.toFixed(4)} 1`);
+    S($('ring1'), 'transform', `scale(${s.toFixed(4)}) rotate(${f2(t * 40)}deg)`);
+    S($('ring1'), 'opacity', rp > 0.001 ? 1 : 0);
+    words('A1', t, 0.12, null, { st: 0.075 });
+  }
+
+  function sceneS2(t) {
+    const g = $('g2'); const on = t >= 1.2 && t < T.s4; show(g, on); if (!on) return;
+    const pan = eIO(P(t, 1.22, 0.38));
+    const zt = eIn(P(t, 5.7, 0.3));
+    S(g, 'transform', `translateY(${f2(1080 * (1 - pan))}px) scale(${(1 + 1.6 * zt).toFixed(5)})`);
+
+    words('B1', t, 1.38, null, { st: 0.05 });
+    words('B2', t, 1.64, 2.4);
+    words('B3', t, 2.5, 3.06);
+    words('B4', t, 3.14, 3.92);
+    words('B5', t, 4.0, null, { st: 0.045 });
+
+    // camera on the row: phones first, then the browser, then the dashboard
+    const dx = kf(t, [[1.5, -250], [2.42, -215], [2.92, 0, eIO], [3.2, -6], [4.0, -36], [5.7, -80]]);
+    const sc = kf(t, [[1.5, 1], [3.12, 1], [3.55, 1.035, cIO], [4.0, 1.035], [4.5, 1.0, cIO]]);
+    const ry = L(-18, -9, sIO(P(t, 1.5, 4.2))), rx = L(7.5, 4, sIO(P(t, 1.5, 4.2)));
+    S($('uiRow'), 'transform', `translateX(${f2(dx)}px) rotateY(${f2(ry)}deg) rotateX(${f2(rx)}deg) scale(${sc.toFixed(4)})`);
+
+    const p1 = spring(t - 1.52, 10, 0.62), p2 = spring(t - 1.64, 10, 0.62);
+    S($('ph1'), 'transform', `translate3d(0, ${f2((1 - p1) * 780 + Math.sin(t * 1.5) * 5)}px, 60px) rotateZ(${f2((1 - p1) * -8)}deg)`);
+    S($('ph2'), 'transform', `translate3d(0, ${f2((1 - p2) * 780 + Math.sin(t * 1.3 + 1) * 5)}px, -240px) rotateZ(${f2((1 - p2) * 7)}deg)`);
+    S($('ph2'), 'filter', 'blur(2.2px)');
+    const bw = eOut(P(t, 2.42, 0.5));
+    show($('browser'), t > 2.4);
+    S($('browser'), 'transform', `translate3d(${f2((1 - bw) * -1750)}px, ${f2((1 - bw) * 60)}px, 0) rotateY(${f2((1 - bw) * 30)}deg)`);
+
+    boot(t, 'p1', 1.72); boot(t, 'p2', 1.84); boot(t, 'w', 2.56); boot(t, 'd', 3.12);
+
+    // website slides away, dashboard builds
+    const sw = eIn(P(t, 3.04, 0.2));
+    show($('site'), sw < 1); S($('site'), 'transform', `translateY(${f2(-60 * sw)}px)`); S($('site'), 'opacity', (1 - sw).toFixed(3));
+    show($('dash'), t >= 3.08);
+    S($('bside'), 'transform', `translateX(${f2((1 - eOut(P(t, 3.08, 0.45))) * -210)}px)`);
+    const uw = eIO(P(t, 3.06, 0.3));
+    S($('url1'), 'transform', `translateY(${f2(-26 * uw)}px)`); S($('url2'), 'transform', `translateY(${f2(26 * (1 - uw))}px)`);
+
+    // KPIs count up, the tap adds one subscriber
+    const kc = qOut(P(TQ, 3.3, 0.7));
+    const tap = 4.18;
+    $('kv0').textContent = '+' + Math.round(18 * kc) + ' %';
+    $('kv1').textContent = '+' + (Math.round(124 * kc) + (TQ > tap + 0.12 ? 1 : 0));
+    $('kv2').textContent = (4.8 * kc).toFixed(1).replace('.', ',') + ' %';
+    S($('kv1'), 'transform', `scale(${(1 + 0.18 * bump(t, tap + 0.1, 0.24)).toFixed(4)})`); S($('kv1'), 'transformOrigin', '0 60%');
+    S($('kv1'), 'color', t > tap + 0.1 && t < tap + 0.5 ? '#665dff' : '');
+
+    // chart draws, then jumps after the tap
+    const grow = cIO(P(t, 3.32, 0.62));
+    const surge = Math.max(0, spring(t - (tap + 0.06), 9, 0.5));
+    const [d, da, end] = chartPath(L(0.55, 1, grow), surge);
+    $('line').setAttribute('d', d); $('area').setAttribute('d', da);
+    S($('line'), 'strokeDasharray', `${grow.toFixed(4)} 1`);
+    S($('area'), 'opacity', grow.toFixed(3));
+    const de = $('dotEnd'), dg = $('dotGlow');
+    de.setAttribute('cx', end[0]); de.setAttribute('cy', f2(end[1])); dg.setAttribute('cx', end[0]); dg.setAttribute('cy', f2(end[1]));
+    const dp = Math.max(0, spring(t - 3.9, 14, 0.5));
+    de.setAttribute('r', f2(9 * dp)); de.style.opacity = dp > 0.01 ? 1 : 0;
+    const gl = bump(t, tap + 0.08, 0.5);
+    dg.setAttribute('r', f2(10 + 26 * P(t, tap + 0.08, 0.5))); dg.setAttribute('opacity', (0.35 * gl).toFixed(3));
+
+    // the finger taps "Commencer l'essai"
+    const tc = $('touch');
+    const tOn = t > 4.0 && t < 4.62; S(tc, 'opacity', tOn ? (C((t - 4.0) / 0.06) * (1 - C((t - 4.42) / 0.2))).toFixed(3) : 0);
+    const press = bump(t, tap - 0.04, 0.16);
+    S(tc, 'transform', `scale(${f2(L(1.5, 1, eOut(P(t, 4.0, 0.2))) * (1 - 0.22 * press))}) translate(${f2((1 - eOut(P(t, 4.0, 0.22))) * 40)}px, ${f2((1 - eOut(P(t, 4.0, 0.22))) * 60)}px)`);
+    S($('cta'), 'transform', `scale(${(1 - 0.06 * press).toFixed(4)})`);
+    const rip = P(t, tap, 0.45), rr = 30 + 230 * eOut(rip);
+    const cr = $('ctaRip'); S(cr, 'left', f2(146 - rr) + 'px'); S(cr, 'top', f2(577 - rr) + 'px'); S(cr, 'width', f2(2 * rr) + 'px'); S(cr, 'height', f2(2 * rr) + 'px');
+    S(cr, 'opacity', t > tap && rip < 1 ? (0.55 * (1 - rip)).toFixed(3) : 0);
+    shineAt($('ctaShine'), t, 2.3, 252);
+
+    // proof chips fly out of the screens
+    [['k1', 4.34, 13000, $('cta'), ' €'], ['k2', 4.56, 900000, $('ph2'), '']].forEach(([id, a, val, src, suf]) => {
+      const el = $(id); const onn = t > a - 0.02; show(el, onn); if (!onn) return;
+      const w = el.offsetWidth, h = el.offsetHeight;
+      const rest = [parseFloat(el.style.left) + w / 2, parseFloat(el.style.top) + h / 2];
+      const o = inCam(src);
+      const m = eOut(P(t, a, 0.55));
+      const tx = (o[0] - rest[0]) * (1 - m), ty = (o[1] - rest[1]) * (1 - m) + Math.sin((t + a) * 1.8) * 6;
+      const s = Math.max(0, spring(t - a, 11, 0.5)) * (1 + 0.06 * bump(t, a + 0.8, 0.22));
+      S(el, 'transform', `translate(${f2(tx)}px, ${f2(ty)}px) scale(${s.toFixed(4)})`);
+      S(el, 'opacity', C((t - a) / 0.06).toFixed(3));
+      $(id + 'n').textContent = nb(val * qOut(P(TQ, a + 0.05, 0.75))) + suf;
+      shineAt(el.querySelector('.shine'), t, a + 0.95, w);
+    });
+  }
+
+  function sceneS4(t) {
+    const g = $('g4'); const on = t >= T.s4 && t < 8.68; show(g, on); if (!on) return;
+    const pan = eIO(P(t, 8.3, 0.36));
+    const k = sIO(P(t, 6.0, 2.4));
+    S(g, 'transform', `translateY(${f2(-1080 * pan)}px) scale(${(1 + 0.045 * k).toFixed(5)}) rotate(${(-0.5 * k).toFixed(3)}deg)`);
+    S($('nGlow'), 'transform', `translate(${f2(210 + Math.sin(t * 0.7) * 160)}px, ${f2(-180 + Math.cos(t * 0.55) * 70)}px)`);
+    slam('C1', t, T.s4, 99, { d: 0.32, from: 1.5, blur: 18 });
+    words('C2', t, 6.3, null, { st: 0.028 });
+    S($('C3'), 'opacity', C(P(t, 7.1, 0.35)).toFixed(3));
+    tiles.forEach((d, i) => {
+      const s = Math.max(0, spring(t - (6.4 + i * 0.03), 12, 0.5));
+      const di = DIM_ORDER.indexOf(i);
+      const dm = di >= 0 ? eOut(P(t, 7.0 + di * 0.07, 0.4)) : 0;
+      const kp = KEEP.includes(i) ? Math.max(0, spring(t - 7.62, 10, 0.5)) : 0;
+      const y = 30 * dm - 26 * kp;
+      const rot = (1 - s) * 16 + TILE_TILT[i] * dm;
+      S(d, 'transform', `translateY(${f2(y)}px) rotate(${f2(rot)}deg) scale(${(s * (1 - 0.12 * dm) * (1 + 0.14 * kp)).toFixed(4)})`);
+      S(d.querySelector('.dimL'), 'opacity', (0.86 * dm).toFixed(3));
+      S(d.querySelector('svg'), 'opacity', (1 - 0.6 * dm).toFixed(3));
+      S(d, 'boxShadow', kp > 0 ? `0 0 ${f2(70 * C(kp))}px rgba(165,159,255,${(0.7 * C(kp)).toFixed(3)})` : 'none');
+      if (KEEP.includes(i)) shineAt(d.querySelector('.shine'), t, 7.8 + (i === 7 ? 0.08 : 0), 112); else S(d.querySelector('.shine'), 'transform', 'translateX(-200px)');
+    });
+  }
+
+  function sceneS5(t) {
+    const g = $('g5'); const on = t >= 8.28 && t < 12.1; show(g, on); if (!on) return;
+    const pan = eIO(P(t, 8.3, 0.36));
+    S(g, 'transform', `translateY(${f2(1080 * (1 - pan))}px) scale(${(1 + 0.05 * sIO(P(t, 8.6, 3.3))).toFixed(5)})`);
+    words('D1', t, 8.54, 9.74, { st: 0.06 });
+    words('D2', t, 8.66, 9.78, { st: 0.06 });
+    words('E1', t, 10.02, null, { st: 0.05 });
+    words('E2', t, 10.14, null);
+
+    const ring = Math.max(0, spring(t - 8.6, 9, 0.6));
+    const antic = backIn(P(t, 11.8, 0.18), 1.2);
+    const pulse = 0.035 * bump(t, 11.02, 0.3);
+    S($('donut'), 'transform', `scale(${(L(0.55, 1, ring) * (1 - 0.07 * antic) * (1 + pulse)).toFixed(4)}) rotate(${f2((1 - ring) * -50)}deg)`);
+    S($('donut'), 'opacity', C(ring * 3).toFixed(3));
+
+    const n = 0.2 * cIO(P(t, 8.84, 0.5));
+    let v = 0; STEPS.forEach((s0) => { v += 0.2 * qOut(P(t, s0, 0.3)); });
+    S($('dN'), 'strokeDasharray', `${f2(CIRC * n)} ${f2(CIRC)}`);
+    S($('dV'), 'strokeDasharray', `${f2(CIRC * (n + v))} ${f2(CIRC)}`);
+    // glowing head leads the sweep
+    const ang = 2 * Math.PI * (n + v) - Math.PI / 2;
+    const hx = 320 + DR * Math.cos(ang), hy = 320 + DR * Math.sin(ang);
+    const moving = (t > 8.84 && t < 9.4) || STEPS.some((s0) => t > s0 && t < s0 + 0.3);
+    const hv = moving ? 1 : 0;
+    ['hDot', 'hGlow'].forEach((id) => { const c = $(id); c.setAttribute('cx', f2(hx)); c.setAttribute('cy', f2(hy)); });
+    $('hDot').setAttribute('opacity', (0.95 * hv).toFixed(2)); $('hGlow').setAttribute('opacity', (0.35 * hv).toFixed(2));
+
+    let vq = 0; STEPS.forEach((s0) => { vq += 0.2 * qOut(P(TQ, s0, 0.3)); });
+    const pct = Math.round(100 * (0.2 * cIO(P(TQ, 8.84, 0.5)) + vq));
+    $('cnum').textContent = pct + ' %';
+    const cb = 0.09 * (bump(t, 9.3, 0.22) + STEPS.reduce((acc, s0) => acc + bump(t, s0 + 0.02, 0.22), 0));
+    S($('center'), 'transform', `scale(${(1 + cb).toFixed(4)})`);
+    S($('center'), 'opacity', C(P(t, 8.82, 0.12)).toFixed(3));
+    S($('center'), 'color', pct >= 100 ? '#665dff' : '#033475');
+    LABS.forEach(([angd, k]) => {
+      const el = $('L' + k); const a = LAB_T[k];
+      const s = Math.max(0, spring(t - a, 13, 0.5));
+      S(el, 'transform', `scale(${s.toFixed(4)})`); S(el, 'opacity', C((t - a) / 0.05).toFixed(3));
+    });
+  }
+
+  function sceneS7(t) {
+    const g = $('g7'); const on = t >= 11.96 && t < T.end; show(g, on); if (!on) return;
+    const vgeom = (tt) => {
+      let x = DCX, y = DCY, r = 0;
+      if (tt >= 11.98 && tt < 13.36) r = L((DR + 38) * 0.93, 2300, eOut(P(tt, 11.98, 0.55)));
+      else if (tt >= 13.36) {
+        const m = eIO(P(tt, 13.36, 0.52));
+        x = L(DCX, 560, m); y = L(DCY, 540, m); r = L(2300, 214, m);
+        r *= 1 - backIn(P(tt, T.end - 0.55, 0.42), 1.5);
+      }
+      return [x, y, r];
+    };
+    const [vx, vy, vr] = vgeom(t), [px, py, pr] = vgeom(t - 1 / 480);
+    const vf = $('vfield');
+    const speed = Math.hypot(vr - pr, vx - px, vy - py);
+    S(vf, 'filter', speed * 0.9 > 0.6 ? `blur(${Math.min(42, speed * 0.9).toFixed(1)}px)` : 'none');
+    show(vf, vr > 0.5);
+    S(vf, 'left', f2(vx - vr) + 'px'); S(vf, 'top', f2(vy - vr) + 'px'); S(vf, 'width', f2(2 * vr) + 'px'); S(vf, 'height', f2(2 * vr) + 'px');
+    const sk = P(t, 12.0, 0.55), shk = $('shock');
+    show(shk, t > 12.0 && sk < 1);
+    const sr = L(300, 1500, eOut(sk)), sw = L(18, 1, sk);
+    S(shk, 'left', f2(DCX - sr) + 'px'); S(shk, 'top', f2(DCY - sr) + 'px'); S(shk, 'width', f2(2 * sr) + 'px'); S(shk, 'height', f2(2 * sr) + 'px');
+    S(shk, 'borderWidth', f2(sw) + 'px'); S(shk, 'opacity', (0.8 * (1 - sk)).toFixed(3));
+
+    slam('G1', t, 12.22, 13.16, { d: 0.28, from: 1.3 });
+    const gx = $('G2x'); const gOn = t > 12.34 && t < 13.5; show($('G2wrap'), gOn);
+    if (gOn) {
+      const p = Math.max(0, spring(t - 12.36, 10, 0.55));
+      const q = eIn(P(t, 13.2, 0.24));
+      const rotX = L(78, 10, p) - 40 * q, rotY = Math.sin((t - 12.36) * 1.7) * 7 * C((t - 12.5) / 0.4);
+      S(gx, 'transform', `rotateX(${f2(rotX)}deg) rotateY(${f2(rotY)}deg) scale(${(L(1.35, 1, eOut(P(t, 12.36, 0.32))) * L(1, 0.9, q)).toFixed(4)})`);
+      S(gx, 'opacity', (C((t - 12.36) / 0.06) * (1 - q)).toFixed(3));
+    }
+  }
+
+  function sceneS8(t) {
+    const g = $('g8'); const on = t >= 13.58; show(g, on); if (!on) return;
+    const r = 200 * Math.max(0, spring(t - 13.62, 9, 0.55)) * (1 - backIn(P(t, T.end - 0.62, 0.4), 1.5));
+    const av = $('av8');
+    S(av, 'left', f2(560 - r) + 'px'); S(av, 'top', f2(540 - r) + 'px'); S(av, 'width', f2(2 * r) + 'px'); S(av, 'height', f2(2 * r) + 'px');
+    S($('av8i'), 'transform', `scale(${f2(L(1.2, 1, eOut(P(t, 13.62, 0.8))))})`);
+    words('H1', t, 13.82, T.end - 0.7, { st: 0.07 });
+    words('H2', t, 13.96, T.end - 0.66, { st: 0.05 });
+    [['f1', 14.2, T.end - 0.62, 14.85], ['f2', 14.34, T.end - 0.58, 14.95]].forEach(([id, a, o, sh]) => {
+      const el = $(id); const onn = t > a - 0.02 && t < o + 0.4; show(el, onn); if (!onn) return;
+      const s = Math.max(0, spring(t - a, 12, 0.5)), q = backIn(P(t, o, 0.3), 1.5);
+      S(el, 'transform', `translateY(${f2(Math.sin((t + a) * 1.7) * 4)}px) scale(${Math.max(0, s - q).toFixed(4)})`);
+      S(el, 'opacity', (C((t - a) / 0.05) * (1 - C((q - 0.6) / 0.4))).toFixed(3));
+      shineAt(el.querySelector('.shine'), t, sh, el.offsetWidth);
+    });
+  }
+
+  function render(t) {
+    TQ = Math.floor(t * 30 + 1e-4) / 30;
+    const sh = shake(t);
+    camS = 1.012 + 0.012 * Math.sin(t * 0.55);
+    camX = Math.sin(t * 0.37) * 6 + sh[0];
+    camY = Math.cos(t * 0.31) * 4 + sh[1];
+    camR = sh[2];
+    S(cam, 'transform', `translate(${f2(camX)}px, ${f2(camY)}px) scale(${camS.toFixed(5)}) rotate(${camR.toFixed(4)}deg)`);
+    sceneBg(t); sceneS1(t); sceneS2(t); sceneS4(t); sceneS5(t); sceneS7(t); sceneS8(t);
+  }
+
+  window.__ready = (async () => {
+    await document.fonts.ready;
+    await Promise.all(Array.from(document.images).map((im) => im.decode().catch(() => {})));
+    // extruded "les 100 %."
+    const face = $('G2f'); const N = 26;
+    for (let k = N; k >= 1; k--) {
+      const c = face.cloneNode(true); c.removeAttribute('id'); c.classList.remove('white');
+      c.style.color = mix('#5a51ee', '#2b2392', k / N);
+      c.style.transform = `translateZ(${f2(-k * 1.4)}px)`;
+      face.parentNode.insertBefore(c, face);
+    }
+    face.style.transform = 'translateZ(0.5px)';
+    fixGradients();
+    LABS.forEach(([ang, k]) => placeLab($('L' + k), ang, k === 0 ? DR + 92 : DR + 96));
+    render(0); return true;
+  })();
+  window.__seek = (t) => render(t);
+  window.__T = T;
+})();
+</script>
+</body>
+</html>

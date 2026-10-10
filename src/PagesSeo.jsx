@@ -84,7 +84,7 @@ function EnteteSeo({ onAccueil, onBookCall }) {
                   Noé Calmes
                 </span>
                 <span className="text-grey text-xs md:text-md leading-tight font-normal truncate">
-                  Expert en applications mobiles et web
+                  Expert en applications mobiles & web
                 </span>
               </span>
             </a>

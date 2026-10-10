@@ -79,6 +79,59 @@ Trois regles en decoulent, toutes appliquees au build :
 
 `index.html` sert de gabarit a toutes les pages generees. Attention : tout JSON-LD ajoute dans `index.html` se retrouve **sur chaque page generee**. C'est pour ca que `generate-routes.js` retire le bloc `FAQPage` partout sauf sur la home et `/faq`, ou il est regenere depuis `FAQ_ITEMS`. Une page qui declare une FAQ invisible enfreint les regles de Google.
 
+## Hero
+
+Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton, puis la vidéo.
+
+- Pastille « +20 applications déjà publiées » : masquée à la demande de Noé (octobre 2026), le code
+  reste. Pour la remettre au-dessus du titre, passer `MONTRER_PASTILLE_HERO` à `true` dans `src/App.jsx`.
+- Titre : « Je transforme ton idée en application qui génère des revenus » (« app » sur ordinateur pour
+  tenir en deux lignes), un peu plus grand qu'avant (3,3 rem sur ordinateur). Noé a trouvé 4,15 rem
+  « trop gros ». Sur téléphone, les tailles sont mesurées pour garder trois lignes jusqu'à 320 px.
+- Phrase sous le titre : « Stratégie, design et développement : je m'occupe de tout, de l'idée à la mise
+  en ligne. » Noé l'a préférée à l'ancienne (« Je conçois ton application mobile & web pour qu'elle
+  rapporte vraiment… »).
+- Bouton « J'ai une idée d'application », avec la flèche du bouton « Discuter de mon projet », plus grand
+  sur ordinateur et sur une seule ligne jusqu'à 320 px. Il mène à la section contact, dont le bouton
+  porte le même texte et ouvre WhatsApp. La barre du haut dit « J'ai une idée » (plus court, comme
+  Ikovaline), sur l'accueil, le blog et les quiz.
+- Fond (`.hero-bg` dans `src/index.css`) : une lueur violette en arc de cercle. Un grand cercle blanc
+  centré en haut (blanc jusqu'à 34 % du rayon, fondu jusqu'à 70 %) laisse le violet monter haut sur les
+  côtés, descendre doucement vers le milieu et remonter de l'autre côté ; il entoure la vidéo. Même
+  forme sur téléphone et tablette, sans la tache violette en haut à droite.
+
+## Film du hero
+
+Sous le bouton « J'ai une idée d'application » du hero, un film de 26 secondes en motion design
+(voix off et bruitages, pas de musique). Code : `src/HeroVideo.jsx` et `src/hero-video.css`.
+Fichiers : `public/assets/videos/hero-v10-1080.mp4` (ordinateur), `hero-v10-720.mp4` (mobile,
+connexion lente, économiseur de données) et deux affiches violettes `hero-v10-affiche-violette*.webp`
+(l'image 207 du film, à 6,9 s : « 8 apps sur 10 … peinent à rapporter 1 000 € par mois »). Les sources du film
+(textes, voix, réglages) sont dans `content/video-hero/v10/`. Pour publier un nouveau montage,
+changer le numéro dans les noms de fichiers (v11…) : le navigateur ne ressert pas l'ancien film en cache.
+
+Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
+
+- La page s'affiche d'abord avec l'affiche violette (une vraie image, la bonne taille choisie par le
+  navigateur). Le film se charge en fond 0,7 s après, mais ne démarre que quand on fait défiler la page
+  jusqu'à lui (demande de Noé, octobre 2026) : au moins 24 px de défilement et la moitié de la vidéo à
+  l'écran. Il joue alors seul, muet et en boucle, depuis le début. Pourquoi : au chargement, on lit le
+  titre ; s'il partait tout de suite, on raterait son début.
+- Une barre reste toujours visible en bas de la vidéo : lecture/pause, avancement (clic ou glisser),
+  « Activer le son », plein écran. Un clic sur la vidéo la met en pause ou la relance. Clavier : espace,
+  M, F, flèches. À la fin, elle reprend au début (boucle), comme chez Ikovaline.
+- En plus d'Ikovaline : le premier geste pour la regarder (lecture, « Activer le son », clic sur la
+  vidéo, plein écran) la lance avec le son, depuis le début, pour entendre le film en entier. Ensuite,
+  le bouton coupe et remet le son sans revenir en arrière.
+- Une fois partie, muette, elle se met en pause sous 15 % à l'écran et dans un onglet masqué, et reprend
+  quand elle revient. Avec le son, elle continue.
+- Plein écran : le bloc entier sur ordinateur, Android et iPad (la barre s'efface quand la souris ne
+  bouge plus) ; le lecteur natif sur iPhone.
+- Lecture automatique refusée (iPhone en mode économie d'énergie, Safari ou Firefox réglés pour bloquer,
+  navigateur intégré d'une application) ou non souhaitée (`prefers-reduced-motion`, économiseur de
+  données, rien n'est chargé d'avance) : l'affiche reste, avec un gros bouton « Lancer la vidéo », qui la
+  lance avec le son.
+
 ## Galerie d’interfaces sur l’accueil
 
 La section `#calories-proof` est portée par `src/AppShowcase.jsx` et

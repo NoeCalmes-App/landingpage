@@ -125,19 +125,15 @@ section[id] {
 .anim-hero > *:nth-child(7) { animation-delay: 0.85s; }
 
 /* ===== HERO BACKGROUND ===== */
+/* Lueur violette en arc de cercle : un grand cercle blanc centré en haut (derrière la barre, le titre et le
+   bouton), le violet tout autour. Il monte haut sur les côtés, descend doucement vers le milieu, remonte de
+   l'autre côté, et entoure la vidéo. Même forme qu'avant, avec le cercle blanc plus petit pour que le
+   violet monte plus haut (avant : blanc jusqu'à 72 % du rayon). */
 .hero-bg {
   background:
-    radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 66%, transparent),
-    linear-gradient(0deg, #f9f9f9, #b8b3ff 18%, #9a93ff 54%, white 97%);
+    radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 34%, rgba(255, 254, 252, 0) 70%),
+    linear-gradient(0deg, #f9f9f9, #c9c4ff 14%, #bab4ff 45%, #d9d5ff 78%, #f3f1ff 100%);
   isolation: isolate;
-}
-
-@media (min-width: 768px) {
-  .hero-bg {
-    background:
-      radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 72%, transparent),
-      linear-gradient(0deg, #f9f9f9, #cbc8ff 14%, #b6b1ff 45%, white 97%);
-  }
 }
 
 .hero-bg::before {
@@ -186,9 +182,9 @@ section[id] {
 }
 
 @media (max-width: 1024px) {
+  /* plus de tache violette en haut à droite sur téléphone et tablette : l'arc reste symétrique */
   .hero-bg::before {
-    background:
-      radial-gradient(circle at 82% 4%, rgba(154, 147, 255, 0.48) 0%, rgba(184, 179, 255, 0.34) 15%, rgba(184, 179, 255, 0) 30%);
+    background: none;
   }
 
   .hero-bg::after {

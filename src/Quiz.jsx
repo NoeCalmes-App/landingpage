@@ -361,11 +361,11 @@ function Entete({ onAccueil, onBookCall }) {
               <img src={mePhoto} alt="Noé Calmes" width="44" height="44" className="h-11 w-11 rounded-full object-cover shrink-0" />
               <span className="flex flex-col min-w-0">
                 <span className="text-text font-bold text-lg md:text-1xl leading-tight tracking-tight truncate" style={{ fontFamily: "'Poppins', sans-serif" }}>Noé Calmes</span>
-                <span className="text-grey text-xs md:text-md leading-tight font-normal truncate">Expert en applications mobiles et web</span>
+                <span className="text-grey text-xs md:text-md leading-tight font-normal truncate">Expert en applications mobiles & web</span>
               </span>
             </a>
-            <button onClick={onBookCall} className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer">
-              Discuter avec Noé
+            <button onClick={onBookCall} className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer whitespace-nowrap">
+              J'ai une idée
             </button>
           </div>
         </div>

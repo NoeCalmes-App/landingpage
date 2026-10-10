@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Film hero v12</title>
+<style>
+@font-face { font-family: 'PJS'; font-weight: 500; src: url('node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'PJS'; font-weight: 600; src: url('node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'PJS'; font-weight: 700; src: url('node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'PJS'; font-weight: 800; src: url('node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2') format('woff2'); }
+@font-face { font-family: 'LBV'; font-style: italic; font-weight: 400 700; src: url('node_modules/@fontsource-variable/libre-baskerville/files/libre-baskerville-latin-wght-italic.woff2') format('woff2-variations'); }
+@font-face { font-family: 'GM'; font-weight: 500; src: url('node_modules/@fontsource/geist-mono/files/geist-mono-latin-500-normal.woff2') format('woff2'); }
+:root { --paper: #fffefc; --ink: #033475; --violet: #665dff; --grey: #4b4b4b; --muted: #5d6b86; --wash: #eceafe; --soft: #8a94ab; --hair: #eeedf8; }
+html, body { margin: 0; background: #000; }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--paper); color: var(--ink); font-family: 'PJS', sans-serif; font-weight: 800; }
+#stage * { box-sizing: border-box; }
+#cam { position: absolute; inset: 0; transform-origin: 960px 540px; }
+.grp { position: absolute; inset: 0; transform-origin: 960px 540px; }
+.t { position: absolute; white-space: nowrap; letter-spacing: -0.045em; line-height: 1.08; }
+.wm { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.16em 0.05em 0.24em; margin: -0.16em -0.05em -0.24em; }
+.wi { display: inline-block; transform-origin: 0% 100%; }
+.sp { display: inline-block; width: 0.25em; }
+.ser { font-family: 'LBV', serif; font-style: italic; font-weight: 700; color: var(--grey); letter-spacing: -0.01em; }
+.grad { background-image: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff); -webkit-background-clip: text; background-clip: text; color: transparent; background-repeat: no-repeat; }
+.gradl { background-image: linear-gradient(90deg, #a59fff, #ccd2ff); -webkit-background-clip: text; background-clip: text; color: transparent; background-repeat: no-repeat; }
+.white { color: #fffefc; }
+.ul { position: absolute; background: #3428cc; border-radius: 0.06em; transform-origin: 0% 50%; transform: scaleX(0); }
+.app2 { position: absolute; width: 120px; height: 120px; border-radius: 32px; display: grid; place-items: center; transform-origin: 50% 50%; }
+.app2 svg { width: 62px; height: 62px; }
+#pot4 { position: absolute; left: 498px; top: 809px; width: 464px; height: 120px; border-radius: 28px; background: #fff; border: 2px solid #e4e2f6; box-shadow: 0 18px 40px rgba(3, 52, 117, 0.12), 0 3px 8px rgba(3, 52, 117, 0.05); transform-origin: 50% 0%; }
+#pot4 .plab { position: absolute; left: 28px; top: 17px; font-size: 33px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); }
+#pot4 .ptrack { position: absolute; left: 28px; right: 28px; top: 72px; height: 22px; border-radius: 11px; background: #eceafe; overflow: hidden; }
+#pot4 .pfill { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; border-radius: 11px; background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff); transform-origin: 0% 50%; transform: scaleX(0); }
+#pot4 .pshine { position: absolute; top: 0; bottom: 0; width: 70px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0)); }
+.ctr { left: 0; width: 1920px; text-align: center; }
+.blob { position: absolute; left: 0; top: 0; border-radius: 50%; }
+#bA { width: 1800px; height: 1150px; background: radial-gradient(closest-side, rgba(204, 210, 255, 0.5), rgba(236, 234, 254, 0)); }
+#bB { width: 1400px; height: 950px; background: radial-gradient(closest-side, rgba(236, 234, 254, 0.95), rgba(236, 234, 254, 0)); }
+.shine { position: absolute; top: -30%; left: 0; width: 90px; height: 160%; background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)); pointer-events: none; }
+.mono { font-family: 'GM', monospace; font-weight: 500; letter-spacing: 0.02em; }
+
+/* navy world (S2, S3) */
+#navyL { position: absolute; inset: 0; }
+#navyBg { position: absolute; left: -200px; top: -200px; width: 2320px; height: 1480px; background: radial-gradient(1300px 820px at 50% 42%, #7b73ff 0%, #665dff 52%, #5449e8 100%); }
+#nGlow { position: absolute; left: 0; top: 0; width: 1500px; height: 900px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0)); }
+#paperIris { position: absolute; border-radius: 50%; background: var(--paper); box-shadow: 0 0 0 10px rgba(102, 93, 255, 0.55); }
+
+/* S1–S2 cards / dots */
+.card { position: absolute; left: 0; top: 0; width: 130px; height: 130px; transform-style: preserve-3d; }
+.face { position: absolute; inset: 0; border-radius: 34px; backface-visibility: hidden; overflow: hidden; }
+.front { background: linear-gradient(140deg, #8f88ff, #665dff); box-shadow: 0 18px 40px rgba(102, 93, 255, 0.28); }
+.front svg { position: absolute; left: 33px; top: 33px; width: 64px; height: 64px; }
+.front .dim { position: absolute; inset: 0; background: #fffefc; opacity: 0; }
+.back { transform: rotateY(180deg); background: linear-gradient(140deg, #2c2c33, #141418); border: 3px solid rgba(255, 255, 255, 0.1); box-shadow: 0 18px 40px rgba(20, 20, 24, 0.28); color: #ffffff; font-size: 64px; display: flex; align-items: center; justify-content: center; }
+.dot { position: absolute; left: 0; top: 0; width: 78px; height: 78px; border-radius: 50%; }
+.src { position: absolute; font-family: 'GM', monospace; font-weight: 500; font-size: 22px; letter-spacing: 0.02em; color: rgba(255, 254, 252, 0.7); white-space: nowrap; }
+
+/* phones */
+.phone { position: absolute; width: 312px; height: 652px; border-radius: 52px; background: #0e1016; padding: 10px; box-shadow: 0 60px 110px rgba(3, 20, 60, 0.34), 0 12px 26px rgba(3, 20, 60, 0.2); }
+.scr { position: relative; width: 100%; height: 100%; border-radius: 42px; background: #fffefc; overflow: hidden; color: var(--ink); }
+.island { position: absolute; left: 100px; top: 11px; width: 92px; height: 26px; border-radius: 13px; background: #0e1016; z-index: 5; }
+.clock { position: absolute; left: 28px; top: 15px; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; z-index: 5; }
+.layer { position: absolute; inset: 0; }
+/* home screen */
+.home { background: linear-gradient(170deg, #2b2c33, #141519 60%, #202128); }
+.home .clock { color: #fff; }
+.hicon { position: absolute; width: 54px; height: 54px; border-radius: 15px; }
+.hlabel { position: absolute; width: 70px; text-align: center; font-size: 11px; font-weight: 600; color: rgba(255, 255, 255, 0.85); letter-spacing: 0; }
+/* bland, coded-only app */
+.bland { background: #f4f5f7; color: #222; font-family: Arial, Helvetica, sans-serif; font-weight: 400; }
+.bland .hdr { position: absolute; left: 0; top: 0; width: 100%; height: 96px; background: #2f6fed; }
+.bland .hdr b { position: absolute; left: 20px; top: 56px; font-size: 19px; color: #fff; font-weight: 700; letter-spacing: 0; }
+.bland .row { position: absolute; left: 16px; width: 260px; height: 54px; background: #fff; border: 1px solid #d8dbe0; }
+.bland .row i { position: absolute; left: 12px; top: 13px; width: 26px; height: 26px; background: #c9ced6; }
+.bland .row s { position: absolute; left: 50px; top: 15px; height: 9px; width: 150px; background: #c9ced6; text-decoration: none; }
+.bland .row u { position: absolute; left: 50px; top: 31px; height: 7px; width: 96px; background: #e0e3e8; text-decoration: none; }
+.bland .btn { position: absolute; left: 16px; top: 520px; width: 260px; height: 46px; background: #2f6fed; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; }
+/* designed app */
+.hh { position: absolute; left: 24px; top: 58px; font-size: 25px; font-weight: 800; letter-spacing: -0.03em; }
+.hs { position: absolute; left: 24px; top: 93px; font-size: 13px; font-weight: 600; color: var(--soft); }
+.hcard { position: absolute; left: 20px; top: 126px; width: 252px; height: 168px; border-radius: 26px; background: linear-gradient(145deg, #8f88ff, #665dff); box-shadow: 0 16px 34px rgba(102, 93, 255, 0.35); color: #fff; }
+.hcard span { position: absolute; left: 20px; top: 20px; font-size: 14px; font-weight: 700; opacity: 0.85; }
+.hcard b { position: absolute; left: 20px; top: 44px; font-size: 46px; letter-spacing: -0.04em; }
+.hcard small { position: absolute; left: 20px; top: 112px; font-size: 13px; font-weight: 600; opacity: 0.8; }
+.hcard svg { position: absolute; left: 152px; top: 40px; width: 82px; height: 82px; }
+.hrow { position: absolute; left: 20px; width: 252px; height: 62px; border-radius: 18px; border: 1.5px solid var(--hair); background: #fff; }
+.hrow i { position: absolute; left: 13px; top: 13px; width: 36px; height: 36px; border-radius: 12px; background: #eceafe; }
+.hrow b { position: absolute; left: 62px; top: 12px; font-size: 15px; letter-spacing: -0.02em; }
+.hrow span { position: absolute; left: 62px; top: 34px; font-size: 12px; font-weight: 600; color: var(--soft); }
+.hrow em { position: absolute; right: 14px; top: 17px; width: 28px; height: 28px; border-radius: 50%; border: 2.5px solid #dcd9fb; }
+.hrow em.on { border: none; background: #665dff; }
+.hrow em.on::after { content: ''; position: absolute; left: 10px; top: 6px; width: 6px; height: 11px; border: solid #fff; border-width: 0 3px 3px 0; transform: rotate(45deg); }
+.htab { position: absolute; left: 0; top: 560px; width: 100%; height: 72px; border-top: 1px solid var(--hair); background: #fff; }
+.htab i { position: absolute; top: 18px; width: 24px; height: 24px; border-radius: 8px; background: #dcdff0; }
+#sweep { position: absolute; left: -10px; width: calc(100% + 20px); height: 6px; border-radius: 3px; background: linear-gradient(90deg, #9e94ff, #665dff, #9e94ff); box-shadow: 0 0 28px 8px rgba(102, 93, 255, 0.55); z-index: 6; }
+.notif { position: absolute; left: 10px; top: 48px; width: 272px; height: 66px; border-radius: 18px; background: rgba(255, 255, 255, 0.97); box-shadow: 0 14px 30px rgba(3, 52, 117, 0.22); z-index: 7; display: flex; align-items: center; gap: 10px; padding: 0 12px; }
+.notif i { width: 38px; height: 38px; border-radius: 11px; background: linear-gradient(140deg, #8f88ff, #665dff); flex: 0 0 auto; }
+.notif b { display: block; font-size: 13px; letter-spacing: -0.01em; }
+.notif span { display: block; font-size: 11.5px; font-weight: 600; color: var(--soft); }
+#touch { position: absolute; width: 74px; height: 74px; margin: -37px 0 0 -37px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); border: 4px solid #fff; box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35); z-index: 9; }
+.pill2 { position: absolute; display: flex; align-items: center; gap: 12px; padding: 14px 26px 14px 16px; border-radius: 999px; white-space: nowrap; font-size: 30px; font-weight: 700; letter-spacing: -0.015em; }
+.pill2 i { width: 44px; height: 44px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+.pill2 svg { width: 24px; height: 24px; }
+
+/* S4 ideas */
+#av4, #av4b { position: absolute; border-radius: 50%; overflow: hidden; }
+#av4 img { width: 100%; height: 100%; display: block; }
+.idea { position: absolute; left: 0; top: 0; width: 380px; height: 136px; border-radius: 28px; background: #fff; border: 2px solid #e4e2f6; box-shadow: 0 18px 40px rgba(3, 52, 117, 0.13), 0 3px 8px rgba(3, 52, 117, 0.05); }
+.idea .bulb { position: absolute; left: 22px; top: 36px; width: 64px; height: 64px; border-radius: 20px; background: #f1f0ff; display: flex; align-items: center; justify-content: center; }
+.idea .bulb svg { width: 34px; height: 34px; }
+.idea b { position: absolute; left: 104px; top: 32px; width: 250px; font-size: 28px; line-height: 1.12; letter-spacing: -0.02em; white-space: normal; }
+.idea .badge { position: absolute; right: -16px; top: -16px; width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.idea .badge svg { width: 24px; height: 24px; }
+.idea .badge.ok { background: #665dff; box-shadow: 0 8px 20px rgba(102, 93, 255, 0.45); }
+.idea .badge.no { background: #c4c9d6; }
+
+/* S5 right column */
+.week { position: absolute; left: 1250px; top: 478px; }
+.week .lbl { font-size: 30px; font-weight: 700; color: var(--muted); letter-spacing: -0.01em; }
+.day { position: absolute; top: 58px; width: 66px; height: 66px; border-radius: 50%; border: 3px solid #dcd9fb; background: #fff; font-size: 24px; font-weight: 800; color: #9aa3b8; display: flex; align-items: center; justify-content: center; }
+.day.on { border-color: #665dff; background: #665dff; color: #fff; box-shadow: 0 10px 24px rgba(102, 93, 255, 0.35); }
+.pay { position: absolute; left: 1250px; width: 520px; height: 100px; border-radius: 26px; background: #fff; border: 2px solid #ecebf7; box-shadow: 0 18px 40px rgba(3, 52, 117, 0.1); }
+.pay i { position: absolute; left: 18px; top: 20px; width: 60px; height: 60px; border-radius: 16px; background: linear-gradient(140deg, #8f88ff, #665dff); display: flex; align-items: center; justify-content: center; color: #fff; font-style: normal; font-size: 26px; font-weight: 800; }
+.pay b { position: absolute; left: 94px; top: 20px; font-size: 24px; letter-spacing: -0.02em; }
+.pay span { position: absolute; left: 94px; top: 56px; font-size: 20px; font-weight: 600; color: var(--soft); }
+.pay em { position: absolute; right: 24px; top: 32px; font-style: normal; font-size: 30px; font-weight: 800; color: #665dff; letter-spacing: -0.02em; }
+
+/* S5 callout: the difference, said in two words */
+#tagBox { position: absolute; left: 1224px; top: 300px; height: 72px; }
+.tag { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 14px; height: 72px; padding: 0 30px 0 13px; border-radius: 999px; white-space: nowrap; font-size: 34px; font-weight: 800; letter-spacing: -0.02em; transform-origin: 0% 50%; backface-visibility: hidden; }
+.tag i { width: 46px; height: 46px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.tag svg { width: 24px; height: 24px; }
+#tagA { background: #f1f2f7; color: #8a94ab; border: 2px solid #e3e5ee; }
+#tagA i { background: #dfe2ea; }
+#tagB { background: #665dff; color: #fffefc; box-shadow: 0 16px 36px rgba(102, 93, 255, 0.35); }
+#tagB i { background: rgba(255, 255, 255, 0.2); }
+#tagLine { position: absolute; left: 1170px; top: 335px; width: 46px; height: 3px; border-radius: 2px; background: #cfd3de; transform-origin: 0% 50%; }
+
+/* S3 bar: what the failed apps got (code) and what they missed (design, strategy) */
+#bar3 { position: absolute; left: 172px; top: 452px; width: 960px; height: 170px; }
+#bar3 .bseg { position: absolute; top: 0; height: 78px; border-radius: 20px; transform-origin: 0 50%; }
+#bCode { left: 0; width: 186px; background: linear-gradient(90deg, #8f88ff, #665dff); box-shadow: 0 10px 26px rgba(102, 93, 255, 0.4); }
+#bRest { left: 200px; width: 744px; border: 3px dashed rgba(204, 210, 255, 0.5); background: rgba(255, 255, 255, 0.03); }
+.bin { position: absolute; top: 0; height: 78px; display: flex; align-items: center; font-size: 34px; font-weight: 700; letter-spacing: -0.015em; white-space: nowrap; }
+#bIn1 { left: 0; width: 186px; justify-content: center; color: #fffefc; }
+#bIn2 { left: 232px; color: #ccd2ff; }
+.blab { position: absolute; top: 96px; font-size: 44px; font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; }
+#bLab1 { left: 4px; color: #fffefc; }
+#bLab2 { left: 206px; color: #ccd2ff; }
+#bX { position: absolute; left: 914px; top: -16px; width: 60px; height: 60px; border-radius: 50%; background: #ccd2ff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25); }
+#bX svg { width: 26px; height: 26px; }
+/* S5 skills */
+.skill { background: #fff; color: var(--ink); border: 2px solid #ecebf7; box-shadow: 0 14px 30px rgba(3, 52, 117, 0.08); font-size: 38px; padding: 10px 28px 10px 12px; }
+.skill i { background: linear-gradient(140deg, #8f88ff, #665dff); }
+
+/* S4 proof and the revenue curve */
+#proof4 { position: absolute; left: 1226px; top: 150px; }
+#proof4 .plab { font-size: 26px; font-weight: 700; color: var(--muted); letter-spacing: -0.01em; margin-bottom: 6px; }
+#proof4 .pc { position: relative; margin-top: 8px; }
+#proof4 .pc b { font-size: 46px; }
+#proof4 .pc span { font-size: 26px; }
+#chart4 { position: absolute; left: 1086px; top: 548px; width: 560px; height: 300px; border-radius: 28px; background: #fff; border: 2px solid #e4e2f6; box-shadow: 0 24px 56px rgba(3, 52, 117, 0.12); padding: 18px 20px; }
+#chart4 .clab { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 6px; }
+
+/* S6 SaaS landing in a browser */
+.die { position: absolute; left: 0; top: 0; width: 150px; height: 150px; border-radius: 34px; background: linear-gradient(140deg, #8f88ff, #5449e8); box-shadow: inset 0 -9px 0 rgba(20, 10, 90, 0.16), inset 0 7px 0 rgba(255, 255, 255, 0.2), 0 10px 24px rgba(84, 73, 232, 0.22); }
+.die i { position: absolute; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 50%; background: #fffefc; box-shadow: inset 0 3px 0 rgba(20, 10, 90, 0.14); }
+.dsh { position: absolute; left: 0; top: 0; width: 150px; height: 34px; border-radius: 50%; background: radial-gradient(closest-side, rgba(40, 30, 140, 0.3), rgba(40, 30, 140, 0)); }
+#browser1 { position: absolute; left: 322px; top: 350px; width: 900px; height: 560px; border-radius: 22px; background: #fff; box-shadow: 0 60px 120px rgba(3, 52, 117, 0.18), 0 10px 30px rgba(3, 52, 117, 0.1); overflow: hidden; }
+#browser { position: absolute; left: 230px; top: 290px; width: 900px; height: 560px; border-radius: 22px; background: #fff; box-shadow: 0 60px 120px rgba(3, 52, 117, 0.18), 0 10px 30px rgba(3, 52, 117, 0.1); overflow: hidden; }
+.btool { position: absolute; left: 0; top: 0; width: 100%; height: 48px; background: #f7f7fb; border-bottom: 1px solid var(--hair); }
+.bdot { position: absolute; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: #dfe2ee; }
+.burl { position: absolute; left: 300px; top: 11px; width: 300px; height: 26px; border-radius: 13px; background: #eceef5; line-height: 26px; text-align: center; font-size: 14px; font-weight: 600; color: var(--soft); letter-spacing: 0; }
+.sl { position: absolute; }
+.bar { position: absolute; border-radius: 6px; background: #d9dcea; }
+.sbtn { border-radius: 18px; background: #665dff; color: #fff; font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; letter-spacing: 0; }
+.cap { position: absolute; font-size: 30px; font-weight: 700; color: var(--muted); letter-spacing: -0.01em; }
+.count { position: absolute; display: flex; align-items: baseline; gap: 14px; white-space: nowrap; }
+.count b { font-size: 60px; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; }
+.count span { font-size: 30px; font-weight: 600; color: var(--muted); letter-spacing: -0.01em; }
+.count i { width: 16px; height: 16px; border-radius: 50%; background: #2fd07f; box-shadow: 0 0 0 6px rgba(47, 208, 127, 0.18); align-self: center; }
+
+/* S7 */
+#vfield { position: absolute; border-radius: 50%; background: var(--violet); }
+#vglow { position: absolute; inset: -60px; background: radial-gradient(1100px 760px at 28% 18%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 70%), radial-gradient(1000px 760px at 86% 96%, rgba(38, 26, 170, 0.38), rgba(38, 26, 170, 0) 72%); }
+#glint { position: absolute; top: -200px; left: 0; width: 300px; height: 1480px; background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)); }
+</style>
+</head>
+<body>
+<div id="stage"><div id="cam">
+
+  <div id="bg" class="grp"><div class="blob" id="bA"></div><div class="blob" id="bB"></div></div>
+
+  <!-- navy world -->
+  <div id="navyL"><div id="navyBg"></div><div id="nGlow"></div></div>
+
+  <!-- S1 -->
+  <div id="g1" class="grp">
+    <div class="t ctr" id="A1" data-w style="top: 104px; font-size: 104px">Créer ton application</div>
+    <div class="t ctr" id="A1b" data-w style="top: 226px; font-size: 104px"><span class="grad">mobile</span> ou ton <span class="grad">SaaS</span></div>
+    <div id="browser1">
+      <div class="btool"><i class="bdot" style="left:22px"></i><i class="bdot" style="left:42px"></i><i class="bdot" style="left:62px"></i><div class="burl">tesrendezvous.fr</div></div>
+      <div style="position:absolute; left:0; top:48px; width:900px; height:512px">
+        <div class="sl" style="left:34px; top:22px; width:28px; height:28px; border-radius:9px; background:linear-gradient(140deg,#8f88ff,#665dff)"></div>
+        <div class="bar" style="left:72px; top:30px; width:80px; height:12px; background:#033475"></div>
+        <div class="bar" style="left:430px; top:31px; width:58px; height:10px"></div>
+        <div class="bar" style="left:512px; top:31px; width:70px; height:10px"></div>
+        <div class="bar" style="left:606px; top:31px; width:54px; height:10px"></div>
+        <div class="sl sbtn" style="left:744px; top:16px; width:122px; height:38px">Essai gratuit</div>
+        <div class="sl" style="left:48px; top:112px; width:440px; font-size:40px; line-height:1.08; letter-spacing:-0.035em; color:#033475">Gère tes rendez-vous <span style="color:#665dff">sans effort.</span></div>
+        <div class="bar" style="left:48px; top:226px; width:360px; height:11px"></div>
+        <div class="bar" style="left:48px; top:247px; width:290px; height:11px"></div>
+        <div class="sl sbtn" style="left:48px; top:288px; width:178px; height:52px; border-radius:26px; font-size:17px" id="saasCta1">Essai gratuit</div>
+        <div class="sl" style="left:242px; top:288px; width:150px; height:52px; border-radius:26px; border:2px solid #e2dfff; font-size:16px; font-weight:700; color:#033475; display:flex; align-items:center; justify-content:center; letter-spacing:0">Voir la démo</div>
+        <div class="sl" style="left:520px; top:96px; width:340px; height:262px; border-radius:20px; background:linear-gradient(160deg,#e9e7ff,#f7f6ff); overflow:hidden">
+          <div style="position:absolute; left:20px; top:20px; width:300px; height:222px; border-radius:14px; background:#fff; box-shadow:0 14px 30px rgba(3,52,117,0.12)">
+            <div style="position:absolute; left:0; top:0; width:62px; height:222px; background:#faf9ff; border-right:1px solid #eeedf8"></div>
+            <div style="position:absolute; left:14px; top:16px; width:30px; height:30px; border-radius:9px; background:#665dff"></div>
+            <div style="position:absolute; left:78px; top:18px; width:110px; height:11px; border-radius:6px; background:#033475"></div>
+            <div style="position:absolute; left:78px; top:44px; width:96px; height:56px; border-radius:10px; border:1.5px solid #eeedf8"></div>
+            <div style="position:absolute; left:184px; top:44px; width:96px; height:56px; border-radius:10px; border:1.5px solid #eeedf8"></div>
+            <svg style="position:absolute; left:78px; top:116px; width:202px; height:90px" viewBox="0 0 202 90"><polyline points="0,80 30,70 60,74 90,52 120,58 150,30 180,34 202,10" fill="none" stroke="#665dff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="bar" style="left:48px; top:430px; width:110px; height:16px; border-radius:8px; background:#e7e8f1"></div>
+        <div class="bar" style="left:208px; top:430px; width:110px; height:16px; border-radius:8px; background:#e7e8f1"></div>
+        <div class="bar" style="left:368px; top:430px; width:110px; height:16px; border-radius:8px; background:#e7e8f1"></div>
+        <div class="bar" style="left:528px; top:430px; width:110px; height:16px; border-radius:8px; background:#e7e8f1"></div>
+        <div class="bar" style="left:688px; top:430px; width:110px; height:16px; border-radius:8px; background:#e7e8f1"></div>
+      </div>
+    </div>
+    <div class="phone" id="ph1" style="left: 1233px; top: 321px"><div class="scr">
+    <div class="layer" id="designed1" style="background: #fffefc">
+      <div class="hh">Bonjour Léa</div>
+      <div class="hs">Mardi 14 octobre</div>
+      <div class="hcard"><span>Objectif du jour</span><b>72&#160;%</b><small>5 habitudes sur 7</small>
+        <svg viewBox="0 0 82 82"><circle cx="41" cy="41" r="32" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="10"/><circle cx="41" cy="41" r="32" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" pathLength="1" stroke-dasharray="0.72 1" transform="rotate(-90 41 41)"/></svg></div>
+      <div class="hrow" style="top:314px"><i></i><b>Méditer</b><span>10 min</span><em class="on"></em></div>
+      <div class="hrow" style="top:388px"><i></i><b>Lire</b><span>20 pages</span><em class="on"></em></div>
+      <div class="hrow" style="top:462px"><i></i><b>Marcher</b><span>6 000 pas</span><em></em></div>
+      <div class="htab"><i style="left:34px; background:#665dff"></i><i style="left:102px"></i><i style="left:168px"></i><i style="left:234px"></i></div>
+    </div>
+    <div class="clock" style="color: #033475">9:41</div><div class="island"></div>
+    </div></div>
+    <div class="dsh" id="dsh1"></div><div class="dsh" id="dsh2"></div><div class="die" id="die1"></div><div class="die" id="die2"></div>
+    <div class="t ctr" id="A2" data-w style="top: 214px; font-size: 120px">En 2026, un vrai <span class="ser">pari.</span></div>
+  </div>
+  <div id="gT" class="grp"></div>
+
+  <!-- S2 -->
+  <div id="g2" class="grp">
+    <div class="t white ctr" id="B1" style="top: 252px; font-size: 200px; letter-spacing: -0.055em">8 apps sur 10</div>
+    <div id="apps2"></div>
+    <div class="t white ctr" id="B2" data-w style="top: 726px; font-size: 64px; letter-spacing: -0.025em; font-weight: 700">peinent à rapporter <span class="hl">1&#160;000&#160;€ par mois</span>.</div>
+  </div>
+
+  <!-- S3 -->
+  <div id="g3" class="grp">
+    <div class="t white" id="C1" data-w style="left: 170px; top: 310px; font-size: 96px">Juste codées.</div>
+    <div id="bar3"><div class="bseg" id="bCode"></div><div class="bseg" id="bRest"></div><div class="bin" id="bIn1">Code</div><div class="bin" id="bIn2">Design et stratégie</div><div class="blab" id="bLab1">20 %</div><div class="blab" id="bLab2">80 %</div><div id="bX"><svg viewBox="0 0 24 24" fill="none" stroke="#033475" stroke-width="3.2" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></div></div>
+    <div class="t white" id="C2" data-w style="left: 170px; top: 432px; font-size: 84px">On les ouvre <span class="hl">une fois</span>…</div>
+    <div class="t white" id="C3" data-w style="left: 170px; top: 552px; font-size: 84px">puis <span class="hl">plus jamais</span>.</div>
+    <div class="phone" id="ph3" style="left: 1220px; top: 214px"><div class="scr">
+      <div class="layer home" id="home3"></div>
+      <div class="layer bland" id="bland3">
+        <div class="hdr"><b>Accueil</b></div>
+        <div class="row" style="top: 116px"><i></i><s></s><u></u></div>
+        <div class="row" style="top: 180px"><i></i><s style="width: 120px"></s><u></u></div>
+        <div class="row" style="top: 244px"><i></i><s style="width: 170px"></s><u style="width: 70px"></u></div>
+        <div class="row" style="top: 308px"><i></i><s style="width: 104px"></s><u></u></div>
+        <div class="btn">Valider</div>
+      </div>
+      <div class="clock" id="clock3">9:41</div><div class="island"></div>
+      <div id="touch"></div>
+    </div></div>
+    <div class="pill2" id="lastOpen" style="left: 1176px; top: 900px; background: rgba(255,255,255,0.16); color: #fffefc; border: 2px solid rgba(255,255,255,0.3)"><i style="background: rgba(255,255,255,0.22)"><svg viewBox="0 0 24 24" fill="none" stroke="#fffefc" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></i>Dernière ouverture : il y a 30 jours</div>
+  </div>
+
+  <div id="paperIris"></div>
+
+  <!-- S4 -->
+  <div id="g4" class="grp">
+    <svg id="ring4" width="300" height="300" viewBox="0 0 300 300" style="position:absolute; overflow: visible"><defs><linearGradient id="rg4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9e94ff"/><stop offset="1" stop-color="#665dff"/></linearGradient></defs><circle id="ring4c" cx="150" cy="150" r="131" fill="none" stroke="url(#rg4)" stroke-width="8" stroke-linecap="round" pathLength="1" transform="rotate(-90 150 150)"/></svg>
+    <div id="av4"><img id="av4i" src="assets/avatar.png" alt=""></div>
+    <div class="t" id="D1" data-w style="left: 500px; top: 196px; font-size: 140px"><span class="grad">Noé</span></div>
+    <div class="t" id="D2" data-w style="left: 506px; top: 372px; font-size: 56px; letter-spacing: -0.025em">voit passer <span class="grad">une dizaine</span> d’idées par semaine.</div>
+    <div class="t" id="D3" data-w style="left: 506px; top: 376px; font-size: 52px; letter-spacing: -0.025em">Il sait si la tienne a du <span class="ser">potentiel…</span></div>
+    <div class="t" id="D4" data-w style="left: 506px; top: 446px; font-size: 52px; letter-spacing: -0.025em">et comment la faire <span class="grad">décoller.</span></div>
+    <div id="proof4"><div class="plab">Ses applications</div><div class="count pc" id="pcS"><i></i><b id="pcSn">312&#160;200</b><span>utilisateurs</span></div><div class="count pc" id="pcM"><i></i><b id="pcMn">500&#160;000</b><span>téléchargements</span></div></div>
+    <div id="chart4"><div class="clab">Revenus</div><svg viewBox="0 0 520 220" width="520" height="220"><defs><linearGradient id="cg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#665dff" stop-opacity="0.28"/><stop offset="1" stop-color="#665dff" stop-opacity="0"/></linearGradient></defs><g stroke="#eeedf8" stroke-width="2"><line x1="20" y1="60" x2="500" y2="60"/><line x1="20" y1="120" x2="500" y2="120"/><line x1="20" y1="180" x2="500" y2="180"/></g><path id="cArea" d="M20 196 L80 188 L140 192 L200 170 L260 160 L320 128 L380 112 L440 70 L486 34 L486 210 L20 210 Z" fill="url(#cg4)"/><path id="cLine" d="M20 196 L80 188 L140 192 L200 170 L260 160 L320 128 L380 112 L440 70 L486 34" fill="none" stroke="#665dff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/><g id="cHead"><path d="M466 30 L494 26 L490 54" fill="none" stroke="#665dff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g></svg></div>
+    <div class="pill2" id="revChip" style="left: 1086px; top: 612px; background: linear-gradient(140deg, #8f88ff, #665dff); color: #fffefc; font-size: 36px; box-shadow: 0 16px 36px rgba(102,93,255,0.35)"><i style="background: rgba(255,255,255,0.22)"><svg viewBox="0 0 24 24" fill="none" stroke="#fffefc" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></i>Revenus chaque mois</div>
+    <div id="ideas"></div>
+    <div id="pot5w" style="position: absolute; left: 730px; top: 566px; width: 0; height: 0; z-index: 70"><div class="pill2" id="pot5" style="left: 0; top: 0; background: linear-gradient(140deg, #8f88ff, #665dff); color: #fffefc; font-size: 32px; font-weight: 800; box-shadow: 0 14px 30px rgba(102,93,255,0.38); transform-origin: 50% 100%"><i style="background: rgba(255,255,255,0.24)"><svg viewBox="0 0 24 24" fill="none" stroke="#fffefc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline id="potChk" points="5 12.5 10 17 19 7" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></svg></i>Potentiel</div></div>
+  </div>
+
+  <!-- S5 -->
+  <div id="g5" class="grp">
+    <div class="t" id="E0" data-w style="left: 160px; top: 404px; font-size: 104px"><span class="grad">Sa méthode</span></div>
+    <div class="t" id="E0b" data-w style="left: 164px; top: 534px; font-size: 64px; letter-spacing: -0.025em">Stratégie + écrans</div>
+    <div class="pill2" id="P1" style="display:none; left: 160px; top: 200px; background: #fff; border: 2px solid #ecebf7; box-shadow: 0 14px 30px rgba(3,52,117,0.08)"><i style="background: #eceafe"><svg viewBox="0 0 24 24" fill="none" stroke="#665dff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></i>Designer</div>
+    <div class="pill2" id="P2" style="display:none; left: 418px; top: 200px; background: #fff; border: 2px solid #ecebf7; box-shadow: 0 14px 30px rgba(3,52,117,0.08)"><i style="background: #eceafe"><svg viewBox="0 0 24 24" fill="none" stroke="#665dff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg></i>Développeur</div>
+    <div class="pill2 skill" id="K1" style="left: 164px; top: 496px"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fffefc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12.5 10 17 19 7"/></svg></i>Rappels utiles</div>
+    <div class="pill2 skill" id="K2" style="left: 164px; top: 588px"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fffefc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12.5 10 17 19 7"/></svg></i>Objectifs du jour</div>
+    <div class="pill2 skill" id="K3" style="left: 164px; top: 680px"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fffefc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12.5 10 17 19 7"/></svg></i>Abonnement</div>
+    <div class="t" id="E1a" data-w style="left: 164px; top: 436px; font-size: 52px; letter-spacing: -0.02em; color: #5d6b86">Ils reviennent</div>
+    <div class="t" id="E1" data-w style="left: 160px; top: 498px; font-size: 104px">chaque <span class="grad">jour.</span></div>
+    <div class="t" id="E2a" data-w style="left: 164px; top: 436px; font-size: 52px; letter-spacing: -0.02em; color: #5d6b86">Ils paient</div>
+    <div class="t" id="E2" data-w style="left: 160px; top: 498px; font-size: 104px">chaque <span class="grad">mois.</span></div>
+    <div class="week" id="week"><div class="lbl">Cette semaine</div></div>
+    <div id="pays"></div>
+    <div id="tagLine"></div>
+    <div id="tagBox"><div class="tag" id="tagA"><i><svg viewBox="0 0 24 24" fill="none" stroke="#8a94ab" stroke-width="3" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg></i>Juste codée</div><div class="tag" id="tagB"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fffefc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12.5 10 17 19 7"/></svg></i>Conçue par Noé</div></div>
+  </div>
+
+  <!-- S5–S6 shared phone (coded-only app redesigned) -->
+  <div class="phone" id="ph5" style="left: 849px; top: 214px"><div class="scr">
+    <div class="layer bland">
+      <div class="hdr"><b>Accueil</b></div>
+      <div class="row" style="top: 116px"><i></i><s></s><u></u></div>
+      <div class="row" style="top: 180px"><i></i><s style="width: 120px"></s><u></u></div>
+      <div class="row" style="top: 244px"><i></i><s style="width: 170px"></s><u style="width: 70px"></u></div>
+      <div class="row" style="top: 308px"><i></i><s style="width: 104px"></s><u></u></div>
+      <div class="btn">Valider</div>
+    </div>
+    <div class="layer" id="designed" style="background: #fffefc">
+      <div class="hh">Bonjour Léa</div>
+      <div class="hs">Mardi 14 octobre</div>
+      <div class="hcard"><span>Objectif du jour</span><b>72&#160;%</b><small>5 habitudes sur 7</small>
+        <svg viewBox="0 0 82 82"><circle cx="41" cy="41" r="32" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="10"/><circle cx="41" cy="41" r="32" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" pathLength="1" stroke-dasharray="0.72 1" transform="rotate(-90 41 41)"/></svg></div>
+      <div class="hrow" style="top:314px"><i></i><b>Méditer</b><span>10 min</span><em class="on"></em></div>
+      <div class="hrow" style="top:388px"><i></i><b>Lire</b><span>20 pages</span><em class="on"></em></div>
+      <div class="hrow" style="top:462px"><i></i><b>Marcher</b><span>6 000 pas</span><em></em></div>
+      <div class="htab"><i style="left:34px; background:#665dff"></i><i style="left:102px"></i><i style="left:168px"></i><i style="left:234px"></i></div>
+    </div>
+    <div id="sweep"></div>
+    <div class="notif" id="notif5"><i></i><div><b>Ta séance du jour t’attend</b><span>Garde ta série : 7 jours</span></div></div>
+    <div class="clock" style="color: #033475">9:41</div><div class="island"></div>
+  </div></div>
+
+  <!-- S6 -->
+  <div id="g6" class="grp">
+    <div class="t ctr" id="F1" data-w style="top: 92px; font-size: 92px">Mobile ou SaaS, il s’occupe de <span class="grad">tout.</span></div>
+    <div class="cap" id="capS" style="left: 230px; top: 236px">Son application web SaaS</div>
+    <div class="cap" id="capM" style="left: 1370px; top: 236px">Son application mobile</div>
+    <div id="browser">
+      <div class="btool"><i class="bdot" style="left:22px"></i><i class="bdot" style="left:42px"></i><i class="bdot" style="left:62px"></i><div class="burl">tesrendezvous.fr</div></div>
+      <div style="position:absolute; left:0; top:48px; width:900px; height:512px">
+        <div class="sl" style="left:34px; top:22px; width:28px; height:28px; border-radius:9px; background:linear-gradient(140deg,#8f88ff,#665dff)"></div>
+        <div class="bar" style="left:72px; top:30px; width:80px; height:12px; background:#033475"></div>
+        <div class="bar" style="left:430px; top:31px; width:58px; height:10px"></div>
+        <div class="bar" style="left:512px; top:31px; width:70px; height:10px"></div>
+        <div class="bar" style="left:606px; top:31px; width:54px; height:10px"></div>
+        <div class="sl sbtn" style="left:744px; top:16px; width:122px; height:38px">Essai gratuit</div>
+        <div class="sl" style="left:48px; top:112px; width:440px; font-size:40px; line-height:1.08; letter-spacing:-0.035em; color:#033475">Gère tes rendez-vous <span style="color:#665dff">sans effort.</span></div>
+        <div class="bar" style="left:48px; top:226px; width:360px; height:11px"></div>
+        <div class="bar" style="left:48px; top:247px; width:290px; height:11px"></div>
+        <div class="sl sbtn" style="left:48px; top:288px; width:178px; height:52px; border-radius:26px; font-size:17px" id="saasCta">Essai gratuit</div>
+        <div class="sl" style="left:242px; top:288px; width:150px; height:52px; border-radius:26px; border:2px solid #e2dfff; font-size:16px; font-weight:700; color:#033475; display:flex; align-items:center; justify-content:center; letter-spacing:0">Voir la démo</div>
+        <div class="sl" style="left:520px; top:96px; width:340px; height:262px; border-radius:20px; background:linear-gradient(160deg,#e9e7ff,#f7f6ff); overflow:hidden">
+          <div style="position:absolute; left:20px; top:20px; width:300px; height:222px; border-radius:14px; background:#fff; box-shadow:0 14px 30px rgba(3,52,117,0.12)">
+            <div style="position:absolute; left:0; top:0; width:62px; height:222px; background:#faf9ff; border-right:1px solid #eeedf8"></div>
+            <div style="position:absolute; left:14px; top:16px; width:30px; height:30px; border-radius:9px; background:#665dff"></div>
+            <div style="position:absolute; left:78px; top:18px; width:110px; height:11px; border-radius:6px; background:#033475"></div>
+            <div style="position:absolute; left:78px; top:44px; width:96px; height:56px; border-radius:10px; border:1.5px solid #eeedf8"></div>
+            <div style="position:absolute; left:184px; top:44px; width:96px; height:56px; border-radius:10px; border:1.5px solid #eeedf8"></div>
+            <svg style="position:absolute; left:78px; top:116px; width:202px; height:90px" viewBox="0 0 202 90"><polyline points="0,80 30,70 60,74 90,52 120,58 150,30 180,34 202,10" fill="none" stroke="#665dff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="bar" style="left:48px; top:430px; width:110px; height:16px; border-radius:8px; background:#e7e8f1"></div>
+        <div class="bar" style="left:208px; top:430px; width:110px; height:16px; border-radius:8px; background:#e7e8f1"></div>
+        <div class="bar" style="left:368px; top:430px; width:110px; height:16px; border-radius:8px; background:#e7e8f1"></div>
+        <div class="bar" style="left:528px; top:430px; width:110px; height:16px; border-radius:8px; background:#e7e8f1"></div>
+        <div class="bar" style="left:688px; top:430px; width:110px; height:16px; border-radius:8px; background:#e7e8f1"></div>
+      </div>
+    </div>
+    <div class="count" id="cntS" style="left: 230px; top: 888px"><i></i><b id="cntSn">312&#160;200</b><span>utilisateurs</span></div>
+    <div class="count" id="cntM" style="left: 1260px; top: 888px"><i></i><b id="cntMn">500&#160;000</b><span>téléchargements</span></div>
+  </div>
+
+  <!-- S7 -->
+  <div id="g7" class="grp">
+    <div id="vfield"></div>
+    <div id="vglow"></div>
+    <div class="t ctr white" id="G1" data-w style="top: 300px; font-size: 176px">Audit <span style="font-family:'LBV',serif; font-style:italic; font-weight:700; letter-spacing:-0.01em">offert</span></div>
+    <div class="t ctr white" id="G1b" data-w style="top: 528px; font-size: 76px; letter-spacing: -0.025em">personnalisé, au premier appel.</div>
+    <div id="glint"></div>
+    <div class="t ctr" id="G2" data-w style="top: 680px; font-size: 46px; letter-spacing: -0.02em; font-weight: 600; color: rgba(255,254,252,0.82)">Sans engagement.</div>
+  </div>
+
+  <div id="loopFade" class="grp" style="background: var(--paper)"></div>
+</div></div>
+
+<script>
+window.__CUES = {"c1": 0.09, "c1y": 1.75, "c1b": 2.65, "c2": 4.09, "c2b": 4.63, "c2c": 5.69, "c3": 7.55, "c3b": 7.85, "c3c": 8.59, "c4": 9.7, "c4q": 11.17, "c4b": 12.67, "c4d": 14.23, "c5": 15.7, "c5a": 16.15, "c5b": 16.99, "c5c": 17.51, "c5d": 19.47, "c3a": 7.55, "c7": 21.07, "c7b": 21.21, "c7c": 21.39, "end": 25.54, "c6": 20.87, "x1m": 2.35, "x2": 7.24, "p3": 7.5, "tap3": 8.0, "open3": 8.1, "close3": 8.7, "dim3": 8.98, "x3": 9.42, "x4": 15.42, "hl2": 6.34, "hl3a": 8.13, "hl3b": 8.85, "pot": 13.55};
+(function () {
+  // ---------------- easing ----------------
+  const C = (x) => (x < 0 ? 0 : x > 1 ? 1 : x);
+  const P = (t, a, d) => C((t - a) / d);
+  const L = (a, b, x) => a + (b - a) * x;
+  const eOut = (x) => (x >= 1 ? 1 : 1 - Math.pow(2, -10 * x));
+  const eIn = (x) => (x <= 0 ? 0 : Math.pow(2, 10 * x - 10));
+  const eIO = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : x < 0.5 ? Math.pow(2, 20 * x - 10) / 2 : (2 - Math.pow(2, -20 * x + 10)) / 2);
+  const cIO = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+  const qOut = (x) => 1 - Math.pow(1 - x, 4);
+  const sIO = (x) => x * x * (3 - 2 * x);
+  const backIn = (x, s = 1.6) => (s + 1) * x * x * x - s * x * x;
+  const spring = (x, k = 12, z = 0.5) => (x <= 0 ? 0 : 1 - Math.exp(-z * k * x) * Math.cos(k * Math.sqrt(1 - z * z) * x));
+  const bump = (t, a, d) => (t > a && t < a + d ? Math.sin(Math.PI * (t - a) / d) : 0);
+  const $ = (id) => document.getElementById(id);
+  const S = (el, k, v) => { el.style[k] = v; };
+  const show = (el, on) => S(el, 'display', on ? '' : 'none');
+  const nb = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  const f2 = (v) => v.toFixed(2);
+  const hash = (i) => { const s = Math.sin(i * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); };
+
+  // ---------------- cues (sentence and keyword starts from the voice-over) ----------------
+  const Q = Object.assign({
+    c1: 0.15, c1b: 1.15, c2: 2.55, c2b: 2.85, c2c: 3.6, c3: 5.3, c3a: 5.9, c3b: 6.7, c3c: 7.9,
+    c4: 9.35, c4b: 11.75, c5: 12.95, c5a: 13.9, c5b: 14.7, c5c: 15.95, c5d: 17.25, c6: 18.65, c7: 20.5, end: 22.8,
+  }, window.__CUES || {});
+  const T6 = Q;
+
+  // ---------------- words in masks ----------------
+  const W = {};
+  document.querySelectorAll('[data-w]').forEach((el) => {
+    const words = [];
+    const walk = (node, cls, idv) => {
+      Array.from(node.childNodes).forEach((n) => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/( )/).forEach((p) => {
+            if (!p) return;
+            if (p === ' ') { const s = document.createElement('span'); s.className = 'sp'; frag.appendChild(s); return; }
+            const m = document.createElement('span'); m.className = 'wm';
+            const w = document.createElement('span'); w.className = 'wi' + (cls ? ' ' + cls : ''); w.textContent = p;
+            if (idv) w.id = idv;
+            m.appendChild(w); frag.appendChild(m); words.push(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) {
+          const c = n.className; const idv2 = n.id; const st = n.getAttribute('style'); const kids = Array.from(n.childNodes);
+          const frag = document.createDocumentFragment(); kids.forEach((k) => frag.appendChild(k));
+          const holder = document.createElement('span'); holder.appendChild(frag);
+          const before = words.length;
+          walk(holder, c, idv2);
+          if (st) words.slice(before).forEach((w) => w.setAttribute('style', st));
+          n.replaceWith(...Array.from(holder.childNodes));
+        }
+      });
+    };
+    walk(el, '', '');
+    W[el.id] = words;
+  });
+  function fixGradients() {
+    Object.values(W).forEach((ws) => {
+      const groups = {};
+      ws.forEach((w) => { if (w.classList.contains('grad') || w.classList.contains('gradl')) { const k = w.className; (groups[k] = groups[k] || []).push(w); } });
+      Object.values(groups).forEach((g) => {
+        const r0 = g[0].getBoundingClientRect().left, r1 = g[g.length - 1].getBoundingClientRect().right;
+        g.forEach((w) => { const off = w.getBoundingClientRect().left - r0; w.style.backgroundSize = (r1 - r0) + 'px 100%'; w.style.backgroundPosition = -off + 'px 0'; });
+      });
+    });
+  }
+  const HL = {};
+  function buildHighlight(id) {               // an underline under the words that matter (class "hl")
+    const el = $(id), ws = W[id].filter((w) => w.classList.contains('hl'));
+    if (!ws.length) return;
+    const fs = parseFloat(getComputedStyle(el).fontSize);
+    const ms = ws.map((w) => w.parentElement);
+    const l = Math.min(...ms.map((m) => m.offsetLeft)) + 0.05 * fs, r = Math.max(...ms.map((m) => m.offsetLeft + m.offsetWidth)) - 0.05 * fs;
+    const top = ms[0].offsetTop + 0.16 * fs;
+    const u = document.createElement('div'); u.className = 'ul';
+    u.style.left = l + 'px'; u.style.top = (top + 1.12 * fs) + 'px'; u.style.width = (r - l) + 'px'; u.style.height = (0.095 * fs) + 'px';
+    el.appendChild(u);
+    HL[id] = { u, w: r - l };
+  }
+  function highlight(id, t, a, out) {         // drawn left to right as the words are said, wiped away as they leave
+    const H = HL[id]; if (!H) return;
+    const p = eOut(P(t, a, 0.45)), r = out == null ? 0 : Math.min(p, eIn(P(t, out, 0.16)));
+    S(H.u, 'transform', `translateX(${f2(H.w * r)}px) scaleX(${Math.max(0, p - r).toFixed(4)})`);
+  }
+  function words(id, t, tin, tout, o = {}) {
+    const el = $(id), ws = W[id];
+    const st = o.st ?? 0.05, k = o.k ?? 14, z = o.z ?? 0.6, sto = o.sto ?? 0.02, dout = o.dout ?? 0.18, rot = o.rot ?? 4;
+    const on = t >= tin - 0.02 && (tout == null || t <= tout + sto * ws.length + dout + 0.02);
+    show(el, on); if (!on) return;
+    ws.forEach((w, i) => {
+      const s = spring(t - (o.at ? o.at[Math.min(i, o.at.length - 1)] : tin + i * st), k, z);
+      const q = tout == null ? 0 : eIn(P(t, tout + i * sto, dout));
+      w.style.transform = `translate3d(0, ${f2((1 - s) * 135 - q * 135)}%, 0) rotate(${f2((1 - s) * rot)}deg)`;
+    });
+  }
+  function slam(id, t, tin, tout, o = {}) {
+    const el = $(id); const d = o.d ?? 0.3;
+    const on = t >= tin - 0.02 && t <= tout + 0.3;
+    show(el, on); if (!on) return;
+    const p = eOut(P(t, tin, d)), q = eIn(P(t, tout, 0.22));
+    const sc = L(o.from ?? 1.35, 1, p) * L(1, 0.92, q);
+    S(el, 'transform', `scale(${sc.toFixed(4)})`); S(el, 'transformOrigin', o.origin ?? '50% 50%');
+    S(el, 'opacity', (C(p * 2.5) * (1 - q)).toFixed(3));
+    const b = (1 - p) * (o.blur ?? 16) + q * 10;
+    S(el, 'filter', b > 0.3 ? `blur(${f2(b)}px)` : 'none');
+  }
+  function shineAt(el, t, a, w) { S(el, 'transform', `translateX(${f2(L(-140, w + 60, cIO(P(t, a, 0.55))))}px) skewX(-18deg)`); }
+  function pop(el, t, a, o = {}) { // spring scale in, optional backIn out
+    const s = Math.max(0, spring(t - a, o.k ?? 12, o.z ?? 0.5));
+    const q = o.out == null ? 0 : backIn(P(t, o.out, o.dout ?? 0.28), 1.5);
+    return Math.max(0, s - q);
+  }
+
+  // ---------------- build: cards / dots ----------------
+  const GLYPHS = [
+    '<path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>',
+    '<path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>',
+    '<path d="M6.5 7v10M17.5 7v10M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/>',
+    '<rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 15h4"/>',
+    '<rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+    '<path d="M20 12a8 8 0 0 1-11.5 7.2L4 20.5l1.3-4.3A8 8 0 1 1 20 12z"/>',
+    '<rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8.5 7l1.5-2.5h4L15.5 7"/>',
+    '<path d="M5 4.5h11.5a2 2 0 0 1 2 2V20H7a2 2 0 0 1-2-2z"/><path d="M5 18a2 2 0 0 1 2-2h11.5"/>',
+    '<path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0c0 5.2-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
+    '<path d="M12 20s-7.5-4.6-9-9.3A4.8 4.8 0 0 1 12 7a4.8 4.8 0 0 1 9 3.7C19.5 15.4 12 20 12 20z"/>',
+  ];
+  const cards = [];
+  for (let i = 0; i < 10; i++) {
+    const d = document.createElement('div'); d.className = 'card';
+    d.innerHTML = `<div class="face front"><div class="dim"></div><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">${GLYPHS[i]}</svg><i class="shine"></i></div><div class="face back">?</div>`;
+    $('gT').appendChild(d); cards.push(d);
+  }
+  const WIN = [3, 8];                 // the two that make it
+  const PERM1 = [4, 9, 0, 6, 1, 8, 2, 7, 3, 5], PERM2 = [7, 2, 5, 0, 9, 3, 8, 1, 6, 4];
+  const ROWX = (s) => 193 + s * 156, ROWY = 640;
+  const DOTX = (i) => 1186 + (i % 5) * 108, DOTY = (i) => 392 + Math.floor(i / 5) * 108;
+  // reveal order maps card -> dot index (the winners end up in the top row, positions 1 and 3)
+  const DOT_OF = [0, 2, 4, 1, 5, 6, 7, 8, 9, 3];
+
+  // ---------------- build: dice ----------------
+  const PIPS = [[38, 38], [112, 38], [38, 75], [75, 75], [112, 75], [38, 112], [112, 112]];   // TL TR ML C MR BL BR
+  const FACE = { 1: [3], 2: [0, 6], 3: [0, 3, 6], 4: [0, 1, 5, 6], 5: [0, 1, 3, 5, 6], 6: [0, 1, 2, 4, 5, 6] };
+  const dicePips = ['die1', 'die2'].map((id) => PIPS.map(([x, y]) => { const p = document.createElement('i'); p.style.left = x + 'px'; p.style.top = y + 'px'; $(id).appendChild(p); return p; }));
+  const setFace = (k, n) => dicePips[k].forEach((p, j) => { p.style.display = FACE[n].includes(j) ? '' : 'none'; });
+  // the throw (shared with the sound script): contacts with the table at these fractions of the throw
+  const DICE = [{ id: 'die1', sh: 'dsh1', d0: 0.0, dur: 0.95, x0: -300, x1: 772, a0: -40, spin: 752, fin: 5 },
+                { id: 'die2', sh: 'dsh2', d0: 0.07, dur: 0.98, x0: -470, x1: 1000, a0: 20, spin: -552, fin: 2 }];
+  const SEG = [0.32, 0.58, 0.78, 0.92], HGT = [0, 170, 70, 22], FLOOR = 592, DS = 1.25;
+  const dieY = (u) => { if (u < SEG[0]) { const v = u / SEG[0]; return FLOOR - 330 * (1 - v * v); }
+    for (let k = 1; k < 4; k++) if (u < SEG[k]) { const v = (u - SEG[k - 1]) / (SEG[k] - SEG[k - 1]); return FLOOR - HGT[k] * 4 * v * (1 - v); }
+    return FLOOR; };
+
+  // ---------------- build: home screen icons ----------------
+  const ICOLS = ['#5b8def', '#f2a33a', '#3fbf8f', '#e2566c', '#8e7cf6', '#41b3d3', '#f07f4f', '#7d8ba6', '#c56cf0', '#5ac46a', '#ef6fa6', '#4f6bed', '#d9a441', '#60c0b0', '#8a94ab', '#b56b55'];
+  const home = $('home3');
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) {
+    const k = r * 4 + c; const x = 22 + c * 66, y = 70 + r * 92;
+    const ic = document.createElement('div'); ic.className = 'hicon'; ic.style.left = x + 'px'; ic.style.top = y + 'px';
+    ic.style.background = k === 5 ? '#9aa3b8' : `linear-gradient(140deg, ${ICOLS[k]}, ${ICOLS[(k + 5) % 16]})`;
+    if (k === 5) { ic.id = 'appIcon'; ic.innerHTML = '<div style="position:absolute;left:15px;top:15px;width:24px;height:24px;border-radius:6px;border:3px solid #fff"></div>'; }
+    home.appendChild(ic);
+    const lb = document.createElement('div'); lb.className = 'hlabel'; lb.style.left = (x - 8) + 'px'; lb.style.top = (y + 58) + 'px';
+    lb.textContent = k === 5 ? 'MonApp' : ''; home.appendChild(lb);
+  }
+  const ICON5 = { x: 22 + 1 * 66 + 27, y: 70 + 1 * 92 + 27 };   // centre of the app icon inside the screen
+
+  // ---------------- build: idea cards ----------------
+  const IDEAS = ['Coach sportif en ligne', 'Réservation de coiffeur', 'Covoiturage local', 'Suivi de budget', 'Livraison de repas',
+    'Trouver un artisan', 'Cours de langues', 'Location de matériel', 'Gestion de chantier', 'Garde d’animaux',
+  ];
+  const GOOD = [1, 5, 8];
+  const BULB = '<svg viewBox="0 0 24 24" fill="none" stroke="#665dff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>';
+  const OK = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12.5 10 17 19 7"/></svg>';
+  const NO = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7l10 10M17 7L7 17"/></svg>';
+  const ideaEls = IDEAS.map((name, i) => {
+    const d = document.createElement('div'); d.className = 'idea';
+    d.innerHTML = `<div class="bulb">${BULB}</div><b>${name}</b><div class="badge ${GOOD.includes(i) ? 'ok' : 'no'}">${GOOD.includes(i) ? OK : NO}</div>`;
+    $('ideas').appendChild(d); return d;
+  });
+
+  { const d = document.createElement('div'); d.className = 'idea'; d.id = 'myIdea';
+    d.innerHTML = `<div class="bulb">${BULB}</div><b style="top: 46px; font-size: 34px">Ton idée</b>`; $('ideas').appendChild(d); }
+  // ---------------- build: week + payments ----------------
+  const DAYS = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+  const dayEls = DAYS.map((l, i) => { const d = document.createElement('div'); d.className = 'day'; d.style.left = (i * 76) + 'px'; d.textContent = l; $('week').appendChild(d); return d; });
+  const PAYS = [['Octobre', 370], ['Novembre', 490], ['Décembre', 610]];
+  const payEls = PAYS.map(([m, y]) => { const d = document.createElement('div'); d.className = 'pay'; d.style.top = y + 'px'; d.innerHTML = `<i>€</i><b>Abonnement renouvelé</b><span>${m}</span><em>+9,99&#160;€</em>`; $('pays').appendChild(d); return d; });
+
+  // ---------------- camera ----------------
+  const cam = $('cam');
+  let TQ = 0;
+  const IMPACTS = [];
+  function shake(t) {
+    let x = 0, y = 0;
+    IMPACTS.forEach(([a, A]) => { if (t < a) return; const u = t - a, e = A * Math.exp(-11 * u); x += e * Math.sin(2 * Math.PI * 9 * u); y += e * 0.7 * Math.cos(2 * Math.PI * 11 * u + 0.6); });
+    return [x, y];
+  }
+
+  // ---------------- scenes ----------------
+  function sceneBg(t) {
+    S($('bA'), 'transform', `translate(${f2(380 + Math.sin(t * 0.42) * 170)}px, ${f2(120 + Math.cos(t * 0.36) * 90)}px)`);
+    S($('bB'), 'transform', `translate(${f2(-260 + Math.cos(t * 0.31) * 150)}px, ${f2(-220 + Math.sin(t * 0.39) * 80)}px)`);
+  }
+
+  // navy world: rises at c2, an iris of light (Noé) wipes it at c4
+  function sceneNavy(t) {
+    const nv = $('navyL');
+    const up = eIO(P(t, Q.c2 - 0.12, 0.42));
+    const on = t > Q.c2 - 0.14 && t < Q.c4 + 0.9;
+    show(nv, on);
+    if (on) {
+      S(nv, 'clipPath', `inset(${f2((1 - up) * 100)}% 0 0 0)`);
+      S($('nGlow'), 'transform', `translate(${f2(300 + Math.sin(t * 0.7) * 180)}px, ${f2(-160 + Math.cos(t * 0.55) * 80)}px)`);
+    }
+    const ir = $('paperIris');
+    const io = eOut(P(t, Q.c4 + 0.12, 0.7));
+    const ion = t > Q.c4 + 0.1 && t < Q.c4 + 0.9;
+    show(ir, ion);
+    if (ion) {
+      const r = L(110, 2300, io); const cx = 330, cy = 336;
+      S(ir, 'left', f2(cx - r) + 'px'); S(ir, 'top', f2(cy - r) + 'px'); S(ir, 'width', f2(2 * r) + 'px'); S(ir, 'height', f2(2 * r) + 'px');
+      S(ir, 'boxShadow', `0 0 0 ${f2(L(10, 0, io))}px rgba(102,93,255,${f2(0.55 * (1 - io))})`);
+    }
+  }
+
+  function sceneS1(t) {
+    const g = $('g1'); const on = t < Q.c2 + 0.4; show(g, on); if (!on) return;
+    S(g, 'transform', `scale(${(1 + 0.03 * sIO(P(t, 0, Q.c2))).toFixed(5)})`);
+    const c1y = Q.c1y != null ? Q.c1y : Q.c1b - 0.5;
+    const hOut = Q.x1m;                                        // the project stays on screen until « …en 2026 »
+    words('A1', t, Q.c1, hOut, { st: 0.07 });
+    words('A1b', t, Q.c1 + 0.32, hOut + 0.03, { st: 0.08 });
+    words('A2', t, Q.c1b + 0.02, Q.c2 - 0.28, { st: 0.07 });
+    // the project: a SaaS in a browser and a mobile application; they shrink away when the bet starts
+    [['browser1', Q.c1 + 0.35, -1], ['ph1', Q.c1 + 0.5, 1]].forEach(([id, a, side]) => {
+      const el = $(id); const tin = qOut(P(t, a, 1.0)), tq = eIn(P(t, Q.x1m, 0.3));   // a calm rise, no whip from the sides
+      const vis = t > a - 0.02 && tq < 1; show(el, vis); if (!vis) return;
+      S(el, 'transformOrigin', '50% 50%');
+      S(el, 'transform', `translate(${f2(side * (1 - tin) * 50)}px, ${f2((1 - tin) * 110 + 150 * tq)}px) scale(${(0.82 * L(0.94, 1, tin) * L(1, 0.9, tq)).toFixed(4)})`);
+      S(el, 'opacity', (C(tin * 2) * (1 - tq)).toFixed(3));
+    });
+    // « un vrai pari »: two dice are thrown, bounce and settle
+    const tD = Q.c1b + 0.02;
+    DICE.forEach((D, k) => {
+      const el = $(D.id), sh = $(D.sh); const u = C((t - tD - D.d0) / D.dur), vis = t > tD + D.d0;
+      show(el, vis); show(sh, vis); if (!vis) return;
+      const x = L(D.x0, D.x1, 1 - Math.pow(1 - u, 2.2)), y = dieY(u);
+      const a = D.a0 + D.spin * (1 - Math.pow(1 - u, 2.6));
+      let sq = 0; SEG.forEach((g) => { sq = Math.max(sq, 1 - Math.abs(u - g) / 0.03); });
+      setFace(k, u >= 0.9 ? D.fin : 1 + ((Math.floor(Math.abs(a - D.a0) / 90) + 2 * k) % 6));
+      const dex = eIn(P(t, Q.c2 - 0.16, 0.28));                       // they drop away as the violet rises
+      S(el, 'transform', `translate(${f2(x)}px, ${f2(y + 150 * 0.06 * sq + 120 * dex)}px) rotate(${f2(a)}deg) scale(${f2(DS * (1 + 0.07 * sq))}, ${f2(DS * (1 - 0.09 * sq))})`);
+      S(el, 'opacity', f2(1 - dex));
+      const hgt = C((FLOOR - y) / 330);
+      S(sh, 'transform', `translate(${f2(x)}px, ${FLOOR + 160}px) scale(${f2(DS * (1 - 0.45 * hgt))})`); S(sh, 'opacity', f2((1 - 0.75 * hgt) * (1 - dex)));
+    });
+  }
+
+  // « 8 apps sur 10 »: ten apps in one even row; on « peinent » eight of them turn grey, two stay bright
+  const APP_WIN = [2, 7], APP_X = (i) => 960 - (10 * 120 + 9 * 40) / 2 + i * 160, APP_Y = 528;
+  const apps = [];
+  function buildApps() {
+    for (let i = 0; i < 10; i++) {
+      const d = document.createElement('div'); d.className = 'app2';
+      d.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">${GLYPHS[i]}</svg>`;
+      d.style.left = APP_X(i) + 'px'; d.style.top = APP_Y + 'px';
+      $('apps2').appendChild(d); apps.push(d);
+    }
+  }
+  function sceneApps(t) {
+    const tg = Q.c2c + 0.15;
+    apps.forEach((d, i) => {
+      const a = Q.c2 + 0.3 + i * 0.05, s = Math.max(0, spring(t - a, 12, 0.55));
+      const win = APP_WIN.includes(i), k = APP_WIN.includes(i) ? 0 : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].filter((j) => !APP_WIN.includes(j)).indexOf(i);
+      const g = win ? 0 : eOut(P(t, tg + k * 0.03, 0.35));
+      const glow = win ? eOut(P(t, tg + 0.1, 0.4)) : 0;
+      const e = C(backIn(P(t, Q.x2 + i * 0.012, 0.2), 1.4));
+      const sc = s * (1 - 0.1 * g) * (1 + 0.1 * bump(t, tg + 0.1, 0.4) * (win ? 1 : 0)) * (1 - e);
+      S(d, 'display', t > a - 0.01 && e < 1 ? '' : 'none');
+      S(d, 'transform', `translateY(${f2(8 * g)}px) scale(${sc.toFixed(4)})`);
+      S(d, 'background', `rgba(255, 254, 252, ${(1 - 0.8 * g).toFixed(3)})`);
+      S(d, 'boxShadow', glow > 0 ? `0 0 ${f2(56 * glow)}px rgba(255,255,255,${f2(0.55 * glow)}), 0 14px 30px rgba(20,10,120,0.25)` : `0 14px 30px rgba(20,10,120,${f2(0.25 * (1 - g))})`);
+      const sv = d.firstChild; const c1 = [102, 93, 255], c2 = [255, 254, 252];
+      S(sv, 'stroke', `rgb(${c1.map((v, j) => Math.round(v + (c2[j] - v) * g)).join(',')})`); S(sv, 'opacity', (1 - 0.35 * g).toFixed(3));
+    });
+  }
+
+  // cards: dealt, flipped, shuffled (the bet), revealed, then they become the dots of the statistic
+  // S2: ten dots pop in, two of them light up (the 2 out of 10 that make it)
+  function sceneCards(t) {
+    const g = $('gT'); show(g, false); return;
+    cards.forEach((d, i) => {
+      const di = DOT_OF[i], win = WIN.includes(i);
+      const pa = Q.c2 + 0.25 + di * 0.05, pin = Math.max(0, spring(t - pa, 12, 0.55));
+      const glow = win ? eOut(P(t, Q.c2b, 0.35)) : 0;
+      const exit = C(backIn(P(t, Q.x2 + di * 0.012, 0.2), 1.4));
+      S(d, 'transform', `translate(${f2(DOTX(di) - 26)}px, ${f2(DOTY(di) - 26)}px) rotateZ(0deg) rotateY(0deg) scale(${((78 / 130) * pin * (1 - exit) * (1 + 0.12 * bump(t, Q.c2b, 0.4) * (win ? 1 : 0))).toFixed(4)})`);
+      S(d, 'opacity', t > pa - 0.01 ? (1 - exit).toFixed(3) : '0');
+      const fr = d.firstChild;
+      S(fr, 'borderRadius', '65.00px');
+      S(fr.querySelector('.dim'), 'opacity', (win ? 1 : 0.34).toFixed(3));
+      S(fr.querySelector('svg'), 'opacity', '0.000');
+      S(fr, 'background', 'linear-gradient(140deg, rgba(143,136,255,0.00), rgba(102,93,255,0.00))');
+      S(fr, 'boxShadow', win && glow > 0 ? `0 0 ${f2(60 * glow)}px rgba(255,255,255,${f2(0.6 * glow)})` : 'none');
+      shineAt(fr.querySelector('.shine'), t, win ? Q.c2b + 0.2 : -9, 130);
+    });
+  }
+
+  function sceneS2(t) {
+    const g = $('g2'); const on = t > Q.c2 && t < Q.c3 + 0.5; show(g, on); if (!on) return;
+    slam('B1', t, Q.c2 + 0.1, Q.x2, { d: 0.32, from: 1.4, origin: '50% 50%' });
+    sceneApps(t);
+    words('B2', t, Q.c2c, Q.x2, { st: 0.05, sto: 0.015, dout: 0.16 });
+    highlight('B2', t, Q.hl2, Q.x2);
+  }
+
+  function sceneS3(t) {
+    const g = $('g3'); const on = t > Q.p3 - 0.05 && t < Q.c4 + 0.8; show(g, on); if (!on) return;
+    const out = Q.x3;
+    const bOut = -99;
+    show($('C1'), false);
+    words('C2', t, Q.c3 + 0.05, out, { st: 0.06, sto: 0.015, dout: 0.16 });
+    words('C3', t, Q.c3c + 0.1, out + 0.03, { st: 0.06, sto: 0.015, dout: 0.16 });
+    highlight('C2', t, Q.hl3a, out); highlight('C3', t, Q.hl3b, out + 0.03);
+    // the bar: code fills its 20 %, the 80 % of design and strategy stays empty and gets a cross
+    const tb = 1e9, bq = 1;
+    const bar = $('bar3'); show(bar, false);
+    if (false) {
+      S(bar, 'transform', `translateY(${f2(-40 * bq)}px)`); S(bar, 'opacity', (1 - bq).toFixed(3));
+      S($('bCode'), 'transform', `scaleX(${eOut(P(t, tb, 0.35)).toFixed(4)})`);
+      S($('bRest'), 'transform', `scaleX(${eOut(P(t, tb + 0.22, 0.45)).toFixed(4)})`);
+      S($('bRest'), 'opacity', C(P(t, tb + 0.2, 0.15)).toFixed(3));
+      [['bLab1', tb + 0.12], ['bIn1', tb + 0.22], ['bLab2', tb + 0.4], ['bIn2', tb + 0.5]].forEach(([id, a]) => { const u = eOut(P(t, a, 0.35)); S($(id), 'opacity', u.toFixed(3)); S($(id), 'transform', `translateY(${f2((1 - u) * 18)}px)`); });
+      const xs = Math.max(0, spring(t - (tb + 0.68), 13, 0.5)); S($('bX'), 'transform', `scale(${xs.toFixed(4)})`);
+    }
+    const ph = $('ph3');
+    const rise = Math.max(0, spring(t - Q.p3, 10, 0.62));
+    const fall = eIn(P(t, out, 0.3));
+    S(ph, 'transform', `translateY(${f2((1 - rise) * 900 + fall * 900)}px) rotate(${f2((1 - rise) * 8)}deg)`);
+    // tap the app, it opens, the user swipes it away, the icon goes dark
+    const tapT = Q.tap3, openT = Q.open3, closeT = Q.close3;
+    const op = cIO(P(t, openT, 0.34)), cl = cIO(P(t, closeT, 0.34));
+    const appOn = op > 0 && cl < 1;
+    const bl = $('bland3'); show(bl, appOn);
+    if (appOn) {
+      const s = op * (1 - cl);
+      const sc = L(54 / 292, 1, s);
+      S(bl, 'transformOrigin', `${ICON5.x}px ${ICON5.y}px`);
+      S(bl, 'transform', `scale(${sc.toFixed(4)}) translateY(${f2(-120 * cl)}px)`);
+      S(bl, 'borderRadius', f2(L(15 / sc, 42, s)) + 'px');
+      S(bl, 'opacity', C(s * 4).toFixed(3));
+    }
+    S($('clock3'), 'color', appOn && op > 0.5 && cl < 0.5 ? '#ffffff' : '#ffffff');
+    const tc = $('touch');
+    const tOn = (t > tapT - 0.18 && t < tapT + 0.2) || (t > closeT - 0.12 && t < closeT + 0.3);
+    S(tc, 'opacity', tOn ? 1 : 0);
+    if (t < closeT - 0.12) { S(tc, 'left', ICON5.x + 'px'); S(tc, 'top', ICON5.y + 'px'); S(tc, 'transform', `scale(${(1 - 0.2 * bump(t, tapT - 0.04, 0.16)).toFixed(3)})`); }
+    else { const u = eOut(P(t, closeT - 0.05, 0.3)); S(tc, 'left', '146px'); S(tc, 'top', f2(L(600, 420, u)) + 'px'); S(tc, 'transform', `scale(${f2(1 - 0.15 * u)})`); }
+    const dimT = Q.dim3;
+    const dk = eOut(P(t, dimT, 0.5));
+    const icon = $('appIcon');
+    S(icon, 'filter', `grayscale(1) brightness(${f2(L(1, 0.45, dk))})`);
+    S(icon, 'transform', `scale(${f2(1 - 0.08 * dk)})`);
+    const lo = $('lastOpen');
+    show(lo, false);
+  }
+
+  function sceneS4(t) {
+    const g = $('g4'); const on = t > Q.c4 - 0.05 && t < Q.c5 + 0.4; show(g, on); if (!on) return;
+    const out = Q.x4;
+    // avatar + ring (the light of the iris comes from here)
+    const s = pop(null, t, Q.c4 + 0.02, { k: 11, z: 0.5 });
+    const ex = eIn(P(t, out, 0.28));
+    const r = 110 * s * (1 - ex), cx = 330, cy = 336;
+    const av = $('av4');
+    S(av, 'left', f2(cx - r) + 'px'); S(av, 'top', f2(cy - r) + 'px'); S(av, 'width', f2(2 * r) + 'px'); S(av, 'height', f2(2 * r) + 'px');
+    S($('av4i'), 'transform', `scale(${f2(L(1.25, 1, eOut(P(t, Q.c4, 0.7))))})`);
+    const rg = $('ring4'); const rr = s * (1 - ex);
+    S(rg, 'left', (cx - 150) + 'px'); S(rg, 'top', (cy - 150) + 'px');
+    S(rg, 'transform', `scale(${f2(rr * 0.92)}) rotate(${f2(t * 40)}deg)`);
+    S($('ring4c'), 'strokeDasharray', `${eOut(P(t, Q.c4 + 0.15, 0.6)).toFixed(4)} 1`);
+    words('D1', t, Q.c4 + 0.05, out, { st: 0.06 });
+    words('D2', t, Q.c4 + 0.55, Q.c4b - 0.36, { st: 0.045, sto: 0.015, dout: 0.16 });
+    words('D3', t, Q.c4b, out, { st: 0.06, sto: 0.015, dout: 0.16 });
+    const c4d = Q.c4d != null ? Q.c4d : Q.c4b + 1.4;
+    words('D4', t, c4d, out + 0.02, { st: 0.06, sto: 0.015, dout: 0.16 });
+    // proof: his own applications, counting up next to his name
+    show($('proof4'), false);
+    // « décoller »: a revenue curve that climbs like a stock chart
+    const ch = $('chart4'), chs = pop(ch, t, c4d - 0.05, { out: out, z: 0.6 });
+    show(ch, chs > 0.001); S(ch, 'transform', `scale(${chs.toFixed(4)})`); S(ch, 'transformOrigin', '0% 50%'); S(ch, 'opacity', C(chs * 3).toFixed(3));
+    const cd = cIO(P(t, c4d + 0.15, 0.85));
+    S($('cLine'), 'strokeDasharray', `${cd.toFixed(4)} 1`); S($('cArea'), 'opacity', cd.toFixed(3));
+    S($('cHead'), 'opacity', C((cd - 0.92) * 12).toFixed(3));
+    // ideas pile up while the counter climbs to 15, then the three good ones are pulled out, sharp and checked
+    const t0 = Q.c4 + 0.35, nT = Q.c4b - 0.2, dt = (nT - t0) / IDEAS.length;
+    const PX = 1420, PY = 676;                                    // centre of the pile
+    const pickA = Q.c4b - 0.05, pickGap = 0.2, pickD = 0.42;
+    const ROW = [350, 770, 1190], ROWY = 618;                     // the three picked ideas line up here (card top-left)
+    const pileOut = eIO(P(t, Q.c4b - 0.05, 0.8));                 // the pile steps back and fades
+    // « Ton idée » comes out of the pile, sharp and lit, and starts earning
+    const my = $('myIdea'), ma = Q.c4b - 0.02, mk = cIO(P(t, ma, 0.55)), mex = eIn(P(t, out, 0.28));
+    show(my, t > ma - 0.02 && mex < 1);
+    if (t > ma - 0.02) {
+      const mx = L(PX - 190, 540, mk), my2 = L(PY - 68, 640, mk) - 60 * Math.sin(Math.PI * mk), msc = L(0.9, 1.22, mk);
+      S(my, 'zIndex', '60');
+      S(my, 'transform', `translate(${f2(mx)}px, ${f2(my2 + 240 * mex)}px) rotate(${f2(L(-6, 0, mk))}deg) scale(${msc.toFixed(4)})`);
+      S(my, 'opacity', (C(mk * 4) * (1 - mex)).toFixed(3));
+      S(my, 'boxShadow', `0 24px 56px rgba(102,93,255,${f2(0.38 * mk)})`); S(my, 'borderColor', mk > 0.4 ? '#b9b4ff' : '');
+    }
+    // « Il sait si la tienne a du potentiel… »: the bulb of « Ton idée » lights up and a « Potentiel » tag lands on top
+    const pa2 = Q.pot, pin2 = Math.max(0, spring(t - pa2, 13, 0.55)), pex = eIn(P(t, out, 0.28));
+    const pw = $('pot5w'), pt = $('pot5');
+    show(pw, t > pa2 - 0.02 && pex < 1);
+    S(pt, 'transform', `translate(-50%, ${f2((1 - Math.min(1, pin2)) * 18 + 240 * pex)}px) scale(${pin2.toFixed(4)})`);
+    S(pt, 'opacity', (C(pin2 * 3) * (1 - pex)).toFixed(3));
+    $('potChk').setAttribute('stroke-dashoffset', (1 - eOut(P(t, pa2 + 0.14, 0.35))).toFixed(3));
+    const bl = my.querySelector('.bulb'), lg = eOut(P(t, pa2 + 0.04, 0.4));
+    S(bl, 'background', `rgb(${[241, 240, 255].map((v, j) => Math.round(v + ([102, 93, 255][j] - v) * lg)).join(',')})`);
+    S(bl, 'boxShadow', lg > 0 ? `0 0 ${f2(26 * lg)}px rgba(102,93,255,${f2(0.55 * lg)})` : 'none');
+    S(bl.querySelector('svg'), 'stroke', `rgb(${[102, 93, 255].map((v, j) => Math.round(v + ([255, 254, 252][j] - v) * lg)).join(',')})`);
+    const rc = $('revChip'), rs = 0;
+    show(rc, false); S(rc, 'transform', `scale(${rs.toFixed(4)})`); S(rc, 'transformOrigin', '0% 50%');
+    const drift = Math.sin(t * 1.3) * 4;
+    ideaEls.forEach((d, i) => {
+      const land = t0 + (i + 1) * dt, fly = 0.32;
+      const vis = t > land - fly && t < out + 0.4;
+      show(d, vis); if (!vis) return;
+      const fIn = eOut(P(t, land - fly, fly));
+      const rz0 = (hash(i) - 0.5) * 14, ox = (hash(i + 7) - 0.5) * 40, oy = (hash(i + 13) - 0.5) * 30;
+      let x = L(2150 + 120 * hash(i + 3), PX - 190 + ox, fIn) + 320 * pileOut, y = L(1190 + 140 * hash(i + 5), PY - 68 + oy + drift, fIn) + 50 * pileOut;
+      let rz = L(rz0 + (i % 2 ? 40 : -32), rz0, fIn), sc = L(1.14, 1, fIn) * L(1, 0.9, pileOut);
+      const g = -1;
+      let op = L(1, 0, pileOut), glow = 0, bsc = 0, zi = i;
+      if (g >= 0) {
+        const pa = pickA + g * pickGap, pk = cIO(P(t, pa, pickD));
+        x = L(x, ROW[g], pk); y = L(y, ROWY, pk) - 54 * Math.sin(Math.PI * pk); rz = L(rz, 0, pk); sc = L(sc, 1.04, pk);
+        op = 1; glow = eOut(P(t, pa + pickD * 0.7, 0.3)); bsc = Math.max(0, spring(t - (pa + pickD * 0.75), 13, 0.5));
+        if (t > pa) zi = 40 + g;
+      }
+      const ex2 = eIn(P(t, out + i * 0.01, 0.28));
+      S(d, 'zIndex', String(zi));
+      S(d, 'transform', `translate(${f2(x)}px, ${f2(y + 240 * ex2)}px) rotate(${f2(rz)}deg) scale(${sc.toFixed(4)})`);
+      S(d, 'opacity', (op * (1 - ex2)).toFixed(3));
+      S(d, 'boxShadow', glow > 0 ? `0 22px 50px rgba(102,93,255,${f2(0.34 * glow)}), 0 3px 8px rgba(3,52,117,0.05)` : '');
+      S(d, 'borderColor', glow > 0.3 ? '#cfcaff' : '');
+      const bd = d.querySelector('.badge'); S(bd, 'transform', `scale(${(g >= 0 ? bsc : 0).toFixed(4)})`);
+    });
+    const nEl = $('ideaN'); if (nEl) nEl.textContent = String(Math.max(1, Math.min(15, Math.round(15 * C((TQ - t0) / (nT - t0))))));
+  }
+
+  function sceneS5(t) {
+    const g = $('g5'); const on = t > Q.c5 - 0.1 && t < Q.c7 + 0.4; show(g, on); if (!on) return;
+    const out = Q.c7 - 0.08;
+    words('E0', t, Q.c5 + 0.02, Q.c5c - 0.22, { st: 0.06, sto: 0.015, dout: 0.16 });
+    words('E0b', t, (Q.c5a != null ? Q.c5a : Q.c5 + 0.5) - 0.04, Q.c5c - 0.2, { st: 0.06, sto: 0.015, dout: 0.16 });
+    ['K1', 'K2', 'K3'].forEach((id) => show($(id), false));
+    [].forEach(([id, a], k) => {
+      const el = $(id); const s = pop(el, t, a, { out: Q.c5c - 0.25 });
+      S(el, 'transform', `scale(${s.toFixed(4)})`); S(el, 'transformOrigin', '0% 50%'); S(el, 'opacity', C(s * 3).toFixed(3));
+    });
+    // one idea at a time: « chaque jour » leaves upwards as « chaque mois » rises in its place
+    words('E1a', t, Q.c5c + 0.12, Q.c5d - 0.13, { st: 0.06, sto: 0.015, dout: 0.15 });
+    words('E1', t, Q.c5c + 0.27, Q.c5d - 0.11, { st: 0.06, sto: 0.015, dout: 0.15 });
+    words('E2a', t, Q.c5d + 0.06, out, { st: 0.06 });
+    words('E2', t, Q.c5d + 0.18, out, { st: 0.06 });
+    // week: they come back every day; then the payments: they pay every month
+    const wk = $('week'); const wOn = t > Q.c5c && t < Q.c5d + 0.4; show(wk, wOn);
+    if (wOn) {
+      const ws = pop(wk, t, Q.c5c + 0.12, { out: Q.c5d - 0.1 });
+      S(wk, 'transform', `scale(${ws.toFixed(4)})`); S(wk, 'transformOrigin', '0% 50%'); S(wk, 'opacity', C(ws * 3).toFixed(3));
+      dayEls.forEach((d, i) => {
+        const a = Q.c5c + 0.37 + i * 0.12; d.className = 'day' + (t > a ? ' on' : '');
+        S(d, 'transform', `scale(${(1 + 0.22 * bump(t, a, 0.22)).toFixed(4)})`);
+      });
+    }
+    payEls.forEach((d, i) => {
+      const a = Q.c5d + 0.28 + i * 0.22; const s2 = pop(d, t, a, { out: out, z: 0.62 });
+      show(d, s2 > 0.001);
+      S(d, 'transform', `translateY(${f2((1 - Math.min(1, s2)) * 30)}px) scale(${s2.toFixed(4)})`); S(d, 'transformOrigin', '0% 50%');
+    });
+    // callout: « Juste codée » flips to « Conçue par Noé » as the design sweeps the screen
+    const tIn = Math.max(Q.c5b + 0.05, Q.c5 + 0.5) + 0.4, tOut = Math.max(Q.c5c + 0.12, tIn + 0.9);
+    const box = $('tagBox'), ln = $('tagLine'); const tOn = false; show(box, false); show(ln, false);
+    if (tOn) {
+      const tq = C(backIn(P(t, tOut, 0.26), 1.5)), sc = Math.max(0, pop(null, t, tIn, { k: 12, z: 0.55 }) - tq);
+      S($('tagA'), 'opacity', '0');
+      S($('tagB'), 'opacity', '1'); S($('tagB'), 'transform', `scale(${sc.toFixed(4)})`);
+      S(ln, 'transform', `scaleX(${(eOut(P(t, tIn + 0.04, 0.3)) * (1 - tq)).toFixed(4)})`);
+      S(ln, 'background', '#b9b4ff');
+    }
+  }
+
+  // the phone: coded-only app (S5 start) redesigned by Noé, then reused in S6
+  function scenePhone5(t) {
+    const ph = $('ph5'); const on = t > Q.c5 && t < Q.c7 + 0.6; show(ph, on); if (!on) return;
+    const rise = Math.max(0, spring(t - (Q.c5 - 0.05), 10, 0.62));
+    const mv = 0;
+    const x = L(0, 1348 - 849, mv), y = L((1 - rise) * 900, 290 - 214, mv);
+    const sc = L(1, 0.86, mv);
+    const ex = eIn(P(t, Q.c7 - 0.05, 0.35));
+    S(ph, 'transform', `translate(${f2(x)}px, ${f2(y + ex * 120)}px) scale(${sc.toFixed(4)})`); S(ph, 'transformOrigin', '0 0');
+    S(ph, 'opacity', (1 - ex).toFixed(3));
+    // design sweep from top to bottom
+    const swT = Math.max(Q.c5b + 0.05, Q.c5 + 0.5);
+    const sw = cIO(P(t, swT, 0.75));
+    S($('designed'), 'clipPath', `inset(0 0 ${f2((1 - sw) * 100)}% 0)`);
+    const swp = $('sweep'); show(swp, sw > 0 && sw < 1);
+    S(swp, 'top', f2(sw * 632 - 3) + 'px');
+    // daily notification
+    const n = $('notif5'); const ns = pop(n, t, swT + 0.85, { out: Q.c7 - 0.08 });
+    show(n, ns > 0.001);
+    S(n, 'transform', `translateY(${f2((1 - Math.min(1, ns)) * -90)}px) scale(${Math.min(1.04, 0.9 + 0.1 * ns).toFixed(4)})`); S(n, 'opacity', C(ns * 2).toFixed(3));
+  }
+
+  function sceneS6(t) {
+    const g = $('g6'); show(g, false); return;
+    const out = Q.c7 - 0.05;
+    words('F1', t, Q.c6, out, { st: 0.05 });
+    const br = $('browser');
+    const bi = eOut(P(t, Q.c6 - 0.18, 0.6)), bo = eIn(P(t, out, 0.35));
+    S(br, 'transform', `translate(${f2((1 - bi) * -1300)}px, ${f2(bo * 120)}px) rotateY(${f2((1 - bi) * 25)}deg)`); S(br, 'opacity', (1 - bo).toFixed(3));
+    [['capS', Q.c6 + 0.15], ['capM', Q.c6 + 0.25]].forEach(([id, a]) => {
+      const el = $(id); S(el, 'opacity', (C(P(t, a, 0.25)) * (1 - C(P(t, out, 0.2)))).toFixed(3));
+      S(el, 'transform', `translateY(${f2((1 - eOut(P(t, a, 0.4))) * 20)}px)`);
+    });
+    // live counters: count up, then keep ticking
+    [['cntS', 'cntSn', Q.c6 + 0.3, 312200, 0.21], ['cntM', 'cntMn', Q.c6 + 0.42, 500000, 0.13]].forEach(([id, nid, a, val, every]) => {
+      const el = $(id); const s = pop(el, t, a, { out: out });
+      S(el, 'transform', `scale(${s.toFixed(4)})`); S(el, 'transformOrigin', '0% 50%'); S(el, 'opacity', C(s * 3).toFixed(3));
+      const cu = qOut(P(TQ, a, 0.9));
+      const live = TQ > a + 0.9 ? Math.floor((TQ - a - 0.9) / every) * (1 + Math.floor(hash(Math.floor((TQ - a) / every)) * 3)) : 0;
+      $(nid).textContent = nb(val * cu + live);
+    });
+  }
+
+  function sceneS7(t) {
+    const g = $('g7'); const on = t > Q.c7 - 0.15; show(g, on); if (!on) return;
+    const cta = { x: 849 + 156, y: 214 + 326 };
+    const vgeom = (tt) => { const p = eOut(P(tt, Q.c7 - 0.08, 0.6)); return [L(cta.x, 960, p), L(cta.y, 540, p), L(0, 2300, p)]; };
+    const [vx, vy, vr] = vgeom(t), [px, py, pr] = vgeom(t - 1 / 480);
+    const vf = $('vfield'); const speed = Math.hypot(vr - pr, vx - px, vy - py);
+    S(vf, 'filter', speed * 0.9 > 0.6 ? `blur(${Math.min(40, speed * 0.9).toFixed(1)}px)` : 'none');
+    S(vf, 'left', f2(vx - vr) + 'px'); S(vf, 'top', f2(vy - vr) + 'px'); S(vf, 'width', f2(2 * vr) + 'px'); S(vf, 'height', f2(2 * vr) + 'px');
+    const vg = C(P(t, Q.c7 + 0.25, 0.6));
+    S($('vglow'), 'opacity', vg.toFixed(3)); S($('vglow'), 'transform', `translate(${f2(Math.sin(t * 0.6) * 40)}px, ${f2(Math.cos(t * 0.5) * 26)}px)`);
+    S($('glint'), 'transform', `translateX(${f2(L(-500, 2300, sIO(P(t, Q.c7 + 1.0, 0.9))))}px) skewX(-18deg)`);
+    const c7c = Q.c7c != null ? Q.c7c : Q.c7 + 0.8;
+    words('G1', t, Q.c7 + 0.12, null, { at: [Q.c7 + 0.12, Q.c7 + 0.3] });
+    words('G1b', t, c7c - 0.02, null, { st: 0.05 });
+    words('G2', t, c7c + 1.25, null, { st: 0.05 });
+  }
+
+  function sceneLoop(t) {
+    const lf = $('loopFade'); const a = C(P(t, Q.end - 0.32, 0.3));
+    show(lf, a > 0); S(lf, 'opacity', a.toFixed(3));
+  }
+
+  function render(t) {
+    TQ = Math.floor(t * 30 + 1e-4) / 30;
+    const sh = shake(t);
+    S(cam, 'transform', `translate(${f2(Math.sin(t * 0.37) * 6 + sh[0])}px, ${f2(Math.cos(t * 0.31) * 4 + sh[1])}px) scale(${(1.012 + 0.012 * Math.sin(t * 0.55)).toFixed(5)})`);
+    sceneBg(t); sceneNavy(t); sceneS1(t); sceneCards(t); sceneS2(t); sceneS3(t); sceneS4(t); sceneS5(t); scenePhone5(t); sceneS6(t); sceneS7(t); sceneLoop(t);
+  }
+
+  window.__ready = (async () => {
+    await document.fonts.ready;
+    await Promise.all(Array.from(document.images).map((im) => im.decode().catch(() => {})));
+    fixGradients();
+    ['B2', 'C2', 'C3'].forEach(buildHighlight);
+    buildApps();
+    IMPACTS.push([Q.c2 + 0.1, 4], [Q.c7 - 0.05, 6]);
+    render(0); return true;
+  })();
+  window.__seek = (t) => render(t);
+  window.__Q = Q;
+})();
+</script>
+</body>
+</html>

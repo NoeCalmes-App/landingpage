@@ -2593,15 +2593,15 @@ function BlogArticlePage({ article, onBack, onBookCall, onAuditApp, onArticle, o
                     Noé Calmes
                   </span>
                   <span className="text-grey text-xs md:text-md leading-tight font-normal truncate">
-                    Expert en applications mobiles et web
+                    Expert en applications mobiles & web
                   </span>
                 </span>
               </a>
               <button
                 onClick={onBookCall}
-                className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
+                className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer whitespace-nowrap"
               >
-                Discuter avec Noé
+                J'ai une idée
               </button>
             </div>
           </div>
@@ -2832,15 +2832,15 @@ function BlogList({ onBack, onArticle, onBookCall, onAuditApp, onNaviguer }) {
                     Noé Calmes
                   </span>
                   <span className="text-grey text-xs md:text-md leading-tight font-normal truncate">
-                    Expert en applications mobiles et web
+                    Expert en applications mobiles & web
                   </span>
                 </span>
               </a>
               <button
                 onClick={onBookCall}
-                className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
+                className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer whitespace-nowrap"
               >
-                Discuter avec Noé
+                J'ai une idée
               </button>
             </div>
           </div>

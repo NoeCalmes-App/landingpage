@@ -260,7 +260,7 @@ Chaque semaine, dans la conversation, préparer les posts **lundi → vendredi d
 
 | ✅ Utiliser | ❌ Éviter |
 |---|---|
-| Expert en applications mobiles & web | Expert Flutter / Dart, site web, site vitrine |
+| Expert en applications mobiles & web (label, décision du 10/10/2026) | Expert Flutter / Dart, site web, site vitrine |
 | Application qui génère des revenus / actif mobile | Livrer du code / dépense technique |
 | Créer · reprendre · faire évoluer | Refonte / développer |
 | Stratégie au lancement | Accompagnement / coaching |

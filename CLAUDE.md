@@ -7,6 +7,7 @@ Lire `AGENTS.md` en premier. Ce fichier reste volontairement court pour ne pas c
 - Positionnement Noe : `documentation/context/positionnement.md`
 - **Mobile ou web : quel mot employer, et pourquoi · `documentation/context/vocabulaire-mobile-web.md`.** A lire AVANT d'ecrire un article, une page, un email ou un post. Noe ne vend plus seulement du mobile : remplacer mecaniquement « mobile » par « mobile et web » rend la moitie des phrases fausses. Le fichier donne le test du predicat, les deux listes fermees, et la regle qui protege le prix (« site » ne designe jamais une application web).
 - Landing page : `documentation/architecture/landing-page.md`
+- Section d'accueil « Tu n'as pas besoin d'un développeur » (brief du 2026-10-08, a coder) : `documentation/strategy/section-pas-un-developpeur.md`
 - Audit app : `documentation/architecture/audit-app.md`
 - Assets : `documentation/architecture/assets.md`
 - CGV (`public/cgv/`, versions datées, liens contractuels, publier une nouvelle version) : `documentation/architecture/cgv.md` — à lire AVANT de toucher un fichier CGV.
@@ -18,7 +19,7 @@ Lire `AGENTS.md` en premier. Ce fichier reste volontairement court pour ne pas c
 - Rediger un post / carrousel LinkedIn : `documentation/strategy/linkedin-posts.md`
 - Strategie commerciale : `documentation/strategy/strategie-commerciale.md`
 - Prospection leads Meta (relances WhatsApp) : `documentation/strategy/prospection-meta-leads.md`
-- Script d'appel : **il n'est plus ici.** Les deux `script-appel.html` (racine et `documentation/strategy/`) ont ete supprimes le 2026-09-08 : ils divergeaient, et le script vit desormais dans Nowork, page « Scripts », modifiable et propose automatiquement sur les fiches CRM sans devis. Source : `nowork/src/services/scripts.service.ts`.
+- Script d'appel : `documentation/strategy/script-appel.md` (v3 du 2026-10-08 : deux ouvertures RDV calé / sans RDV, découverte, verdict support, présentation par cible, objections, chiffres sourcés ; Partie II = les deux appels mot pour mot à l'oral, dialogues d'exemple, réflexes face aux sorties polies du téléphone). C'est la source de rédaction ; la page « Scripts » de Nowork (`nowork/src/services/scripts.service.ts`) doit en être la copie utilisée en appel. Les anciennes versions (`script-appel-prospect-application.md`, section 4 de `strategie-commerciale.md`, `script-appel-positionnement.html` à la racine) sont remplacées.
 - Supports stories/posts : `content/README.md`
 
 ## Regle

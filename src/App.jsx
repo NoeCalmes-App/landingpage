@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import './App.css'
 import AppShowcase from './AppShowcase.jsx'
+import HeroVideo from './HeroVideo.jsx'
 import DeliverableVisual from './DeliverableVisual.jsx'
 import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
 import MentionsLegales from './MentionsLegales.jsx'
@@ -75,7 +76,7 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
 const SECTION_ROUTES = {
   '/avis': {
     id: 'avis',
-    title: 'Avis clients — Noé Calmes, expert en applications mobiles',
+    title: 'Avis clients — Noé Calmes, expert en applications mobiles & web',
     description: 'Ce que disent les clients qui ont fait confiance à Noé Calmes pour créer, reprendre ou faire évoluer leur application mobile.',
   },
   '/audit': {
@@ -99,6 +100,9 @@ const META_HOME = {
   title: 'Application mobile & web qui génère des revenus | Noé Calmes',
   description: "Je ne fais pas que développer ton application mobile : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois.",
 }
+
+// Pastille « +20 applications déjà publiées » au-dessus du titre du hero : masquée pour l'instant
+const MONTRER_PASTILLE_HERO = false
 
 const NAV_LINKS = [
   { ancre: 'calories-proof', label: 'Preuves' },
@@ -688,9 +692,9 @@ function App() {
                 <a
                   href={lienInterne('/rendez-vous')}
                   onClick={goBookCall}
-                  className="hidden sm:inline-block bg-[#131313] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors cursor-pointer"
+                  className="hidden sm:inline-block bg-[#131313] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black transition-colors cursor-pointer whitespace-nowrap"
                 >
-                  Discuter avec Noé
+                  J'ai une idée
                 </a>
 
                 <button
@@ -724,10 +728,10 @@ function App() {
                   ))}
                   <a
                     href={lienInterne('/rendez-vous')}
-                    className="min-[480px]:hidden text-center bg-[#131313] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer"
+                    className="sm:hidden text-center bg-[#131313] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer"
                     onClick={(event) => { setMenuOpen(false); goBookCall(event) }}
                   >
-                    Discuter avec Noé
+                    J'ai une idée d'application
                   </a>
                 </div>
               </div>
@@ -738,13 +742,14 @@ function App() {
 
       {/* ========== HERO (plein écran avec gradient) ========== */}
       <section
-        className="hero-bg relative min-h-screen flex items-center justify-center text-center px-3 sm:px-5 md:px-10 lg:px-16 pt-28 pb-28 md:pt-40 md:pb-32 overflow-hidden"
+        className="hero-bg relative min-h-screen flex items-center justify-center text-center px-3 sm:px-5 md:px-10 lg:px-16 pt-28 pb-14 md:pt-32 md:pb-20 overflow-hidden"
       >
         <div className="hero-visual" aria-hidden="true" />
 
-        <div className="hero-content anim-hero relative z-10 max-w-3xl mx-auto w-full">
-          {/* Pill — preuve apps réelles */}
-          <div className="flex justify-center mb-7 md:mb-9">
+        <div className="hero-content anim-hero relative z-10 max-w-4xl mx-auto w-full">
+          {/* Pill — preuve apps réelles. Masquée à la demande de Noé (octobre 2026), le code reste : passer
+              MONTRER_PASTILLE_HERO à true pour la remettre. */}
+          {MONTRER_PASTILLE_HERO && <div className="flex justify-center mb-6 md:mb-7">
             <div className="inline-flex items-center gap-2.5 sm:gap-3 rounded-full bg-white/70 backdrop-blur-sm border border-brand-pale pl-1.5 pr-3.5 sm:pl-2 sm:pr-4 py-1 sm:py-1.5 shadow-[0_2px_14px_rgba(102,93,255,0.13)]">
               <div className="flex items-center">
                 {[snapIcon, calorieIcon, purgeIcon, hushIcon].map((icon, i) => (
@@ -763,10 +768,10 @@ function App() {
                 <span className="text-brand font-bold">+20 applications</span><span className="sm:hidden"> publiées</span><span className="hidden sm:inline"> déjà publiées</span>
               </p>
             </div>
-          </div>
+          </div>}
 
           {/* Titre — même direction desktop/mobile, avec des retours adaptés aux petits écrans */}
-          <h1 className="font-heading text-[1.72rem] min-[375px]:text-[1.8rem] min-[414px]:text-[1.95rem] min-[430px]:text-[2.05rem] min-[480px]:text-[2.2rem] sm:text-[2.34rem] md:text-[2.72rem] lg:text-[3.08rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-4 md:mb-8">
+          <h1 className="font-heading text-[1.72rem] min-[360px]:text-[1.78rem] min-[375px]:text-[1.86rem] min-[414px]:text-[2.02rem] min-[430px]:text-[2.12rem] min-[480px]:text-[2.28rem] sm:text-[2.4rem] md:text-[2.85rem] lg:text-[3.3rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-4 md:mb-6">
             <span className="sm:hidden text-text font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
               Je <span className="inline-block mx-1 text-[#4b4b4b] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> ton<br />
               idée en application qui<br />
@@ -784,57 +789,27 @@ function App() {
           </h1>
 
           {/* Sous-titre */}
-          <p className="text-grey text-[0.92rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-xl mx-auto mb-9 md:mb-11">
-            Je conçois ton application mobile & web pour qu'elle rapporte vraiment. Pas juste des utilisateurs : des clients qui paient.
+          <p className="text-grey text-[0.95rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-[54rem] mx-auto mb-7 md:mb-8 text-balance">
+            Stratégie, design et développement&nbsp;: je&nbsp;m'occupe de tout, de l'idée à la mise en ligne.
           </p>
 
-          {/* Flux idée → application → revenus */}
-          <div className="flex items-center justify-center gap-3 sm:gap-5 mb-9 md:mb-11 flex-wrap">
-            {[
-              { label: 'Ton idée', strong: false, icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18h6M10 22h4" /><path d="M12 2a7 7 0 00-4 12.7c.6.5 1 1.2 1 2h6c0-.8.4-1.5 1-2A7 7 0 0012 2z" /></svg> },
-              { label: 'Ton application', strong: false, icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="2" width="12" height="20" rx="3" /><path d="M11 18h2" /></svg> },
-              { label: 'Des revenus', strong: true, icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 17 9 11 13 15 21 7" /><polyline points="15 7 21 7 21 13" /></svg> },
-            ].map((node, i, arr) => (
-              <div key={node.label} className="flex items-center gap-3 sm:gap-5">
-                <div className="flex flex-col items-center gap-2">
-                  <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl border bg-white shadow-sm flex items-center justify-center ${node.strong ? 'border-brand/40 text-brand' : 'border-card-border text-text'}`}>
-                    {node.icon}
-                  </div>
-                  <span className={`text-[0.78rem] sm:text-[0.92rem] font-semibold ${node.strong ? 'text-brand' : 'text-text'}`}>{node.label}</span>
-                </div>
-                {i < arr.length - 1 && (
-                  <svg className="text-brand/40 shrink-0 mb-7" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* CTA mobile */}
-          <div className="flex justify-center mb-3 sm:hidden">
+          {/* Bouton principal : la flèche du bouton « Discuter de mon projet », plus grand sur ordinateur */}
+          <div className="flex justify-center">
             <a
               href={lienInterne('/rendez-vous')}
               onClick={goBookCall}
-              className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
+              className="group inline-flex items-center gap-2 min-[360px]:gap-2.5 whitespace-nowrap bg-brand text-surface font-semibold text-[0.95rem] min-[360px]:text-[1rem] sm:text-[1.06rem] md:text-[1.15rem] px-5 min-[360px]:px-8 py-3.5 sm:px-9 md:px-11 md:py-[1.05rem] rounded-full cursor-pointer shadow-[0_10px_28px_-8px_rgba(102,93,255,0.55)] hover:bg-[#5a50f5] transition-colors"
             >
-              <svg className="w-[18px] h-[18px] md:w-[20px] md:h-[20px] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.057 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.562-5.338 11.897-11.9 11.897a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.5 5.211l-.999 3.648 3.998-1.171z"/></svg>
-              <span>Écrire à Noé sur WhatsApp</span>
+              J'ai une idée d'application
+              <svg className="shrink-0 w-[18px] h-[18px] min-[360px]:w-[22px] min-[360px]:h-[22px] transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
             </a>
           </div>
 
-          {/* Microcopy mobile */}
-
-          {/* CTA desktop */}
-          <div className="hidden sm:flex justify-center mt-8 md:mt-10 mb-3 md:mb-5">
-            <a
-              href={lienInterne('/rendez-vous')}
-              onClick={goBookCall}
-              className="group inline-flex items-center gap-2 md:gap-3 bg-brand text-surface font-semibold text-[0.9rem] md:text-base px-7 py-3 md:px-9 md:py-4 rounded-full cursor-pointer"
-            >
-              <svg className="w-[18px] h-[18px] md:w-[20px] md:h-[20px] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.057 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.562-5.338 11.897-11.9 11.897a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.5 5.211l-.999 3.648 3.998-1.171z"/></svg>
-              <span>Écrire à Noé sur WhatsApp</span>
-            </a>
-          </div>
-
+          {/* Film de présentation, lecteur sur le modèle d'Ikovaline : lecture auto muette, barre toujours visible */}
+          <HeroVideo />
         </div>
       </section>
 
@@ -1083,7 +1058,7 @@ function App() {
               className="group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
               <svg className="w-[18px] h-[18px] md:w-[20px] md:h-[20px] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.057 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.562-5.338 11.897-11.9 11.897a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.5 5.211l-.999 3.648 3.998-1.171z"/></svg>
-              <span>Écrire à Noé sur WhatsApp</span>
+              <span>J'ai une idée d'application</span>
             </a>
             <div className="flex items-center gap-3 mt-8 mb-4 max-w-xs sm:max-w-md mx-auto px-2 text-left">
               <img src={mePhoto} alt="Noé Calmes" loading="lazy" width="40" height="40" className="w-10 h-10 rounded-full object-cover shadow-sm shrink-0" />

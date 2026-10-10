@@ -47,3 +47,9 @@ Claude outputs/
 # Cache Python du générateur de guides.
 __pycache__/
 *.pyc
+
+# Rendus de la video du hero : lourds (5 Mo piece) et regenerables depuis les
+# sources du meme dossier. La version en ligne vit dans public/assets/videos/.
+content/video-hero/**/*.mp4
+content/video-hero/**/*.wav
+FETCH_HEAD

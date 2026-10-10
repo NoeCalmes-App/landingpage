@@ -172,11 +172,13 @@ On peut lancer une première version (MVP) pour valider que les gens paient, ava
 
 ## Mon label externe
 
-**"Expert en application mobile"**
+**« Expert en applications mobiles & web »** (décision de Noé du 10/10/2026, après un essai d'une matinée avec « Expert en apps mobiles & SaaS »)
 
-- Compris par tous — le plombier comme le fondateur de startup
 - "Expert" = au-dessus du dev lambda
-- "Application mobile" = tout le monde comprend
+- "Applications mobiles & web" = compris par toute la cible. "SaaS" n'est compris que d'une partie (les profils start-up) : dans un titre lu en une seconde, un mot inconnu crée un doute au lieu d'impressionner. Et qui connaît "SaaS" comprend aussi "application web", l'inverse n'est pas vrai.
+- Le risque que "web" fasse penser à un site est porté par le mot "applications", jamais par "site" (règle 6 du vocabulaire). "SaaS" reste permis dans les phrases, expliqué (règle 6 bis).
+- Là où la place manque (barre du site sur téléphone) : "Applications mobiles & web" sous le nom.
+- Règle complète : `documentation/context/vocabulaire-mobile-web.md`, règle 1
 - Ne dit pas "Flutter" (trop technique pour les non-tech — Flutter se prouve dans la qualité du code, pas dans le titre)
 
 ---
@@ -316,20 +318,22 @@ Ce qui le définit ensuite, ce n'est pas son secteur, c'est son **cadre de déci
 
 ## Tonalité
 
-- **Tutoiement sur tout le parcours chaud** : landing page, `/audit-app` (questions, verdict IA), chatbot, Instagram, WhatsApp (prospection, relances, conversations) — canal peer-to-peer, cible petits entrepreneurs/créateurs solo
-- **Vouvoiement sur le froid et le contractuel** : emails, devis, contrats, CGV, LinkedIn (profil, posts, messages)
+- **Voix publique au tutoiement** : landing page, blog, `/audit-app` (questions, verdict IA), chatbot, posts Instagram et LinkedIn. Ton accessible, direct et professionnel.
+- **Premier échange individuel au vouvoiement**, sur WhatsApp, en message privé ou par email, sauf si le tutoiement est déjà établi. Le canal seul ne décide pas du registre.
+- **Documents transmissibles** (devis, cahiers des charges, contrats, CGV) : privilégier les formulations neutres, le nom du projet ou « le client » ; employer le vouvoiement lorsqu'une adresse directe est nécessaire. Le document peut circuler auprès d'associés, même si la conversation personnelle tutoie.
+- **Aperçu partagé des maquettes** : texte sans pronom, « L’idée prend forme » puis « Place à la maquette », avec la seule pastille « Sur mesure ». Sans portrait, adapté à une application comme à un site, réservé aux liens `/maquette/...`.
 - **Le blog est passé au tutoiement le 20/08/2026.** Cette ligne disait « blog »
   dans la colonne vouvoiement, alors que `documentation/strategy/seo/content-plan.md`
   imposait « tu » partout depuis août. Les deux se contredisaient, et les
   articles étaient devenus un mélange des deux registres. Arbitrage retenu : le
-  blog tutoie, comme la landing, l'audit et WhatsApp, parce que le lecteur SEO
+  blog tutoie, comme la landing et l'audit, parce que le lecteur SEO
   arrive sur les mêmes pages et suit le même parcours. Les 17 articles ont été
   harmonisés.
   Seule exception conservée : dans `choisir-expert-application-mobile`, les
   questions que le lecteur doit poser à un prestataire restent au vouvoiement,
   puisque c'est lui qui les pose à quelqu'un d'autre.
 - **Premier appel** : démarrer en vouvoiement, puis proposer tôt « est-ce qu'on peut se tutoyer ? » — ça crée la proximité tout en laissant le choix au prospect. Si la relation a commencé sur WhatsApp/Insta en tutoiement, on tutoie directement à l'appel.
-- **Règle transverse** : ne jamais changer de registre en cours de conversation. Un fil commencé en tutoiement (WhatsApp) reste en tutoiement, même si la suite passe par email.
+- **Après accord sur le tutoiement**, le conserver dans tous les échanges personnels, même par email. Ne pas revenir au vouvoiement en changeant de canal. « Je t’envoie ton devis » peut accompagner un document rédigé au vouvoiement ou sans pronom.
 - Ton direct, structuré, pro mais pas corporate
 - Cadre clair > promesses floues
 - Affirmations > questions dans les écrits formels (le sous-titre hero est une affirmation). Exception : hook par question accepté sur les bios/pubs/reels Insta où le format direct-response l'exige.

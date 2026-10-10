@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Film hero v4</title>
+<style>
+@font-face { font-family: 'PJS'; font-weight: 600; src: url('node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'PJS'; font-weight: 700; src: url('node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'PJS'; font-weight: 800; src: url('node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2') format('woff2'); }
+@font-face { font-family: 'LBV'; font-style: italic; font-weight: 400 700; src: url('node_modules/@fontsource-variable/libre-baskerville/files/libre-baskerville-latin-wght-italic.woff2') format('woff2-variations'); }
+@font-face { font-family: 'GM'; font-weight: 500; src: url('node_modules/@fontsource/geist-mono/files/geist-mono-latin-500-normal.woff2') format('woff2'); }
+:root { --paper: #fffefc; --ink: #033475; --violet: #665dff; --grey: #4b4b4b; --muted: #5d6b86; --wash: #eceafe; }
+html, body { margin: 0; background: #000; }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--paper); color: var(--ink); font-family: 'PJS', sans-serif; font-weight: 800; }
+#stage * { box-sizing: border-box; }
+.layer { position: absolute; inset: 0; }
+.cam { position: absolute; inset: 0; transform-origin: 960px 540px; }
+.t { position: absolute; white-space: nowrap; letter-spacing: -0.045em; line-height: 1.08; }
+.wm { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.06em 0.04em 0.2em; margin: -0.06em -0.04em -0.2em; }
+.wi { display: inline-block; will-change: transform; }
+.sp { display: inline-block; width: 0.25em; }
+.ser { font-family: 'LBV', serif; font-style: italic; font-weight: 700; color: var(--grey); letter-spacing: -0.01em; }
+.grad { background-image: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff); -webkit-background-clip: text; background-clip: text; color: transparent; background-repeat: no-repeat; }
+.gradl { background-image: linear-gradient(90deg, #a59fff, #ccd2ff); -webkit-background-clip: text; background-clip: text; color: transparent; background-repeat: no-repeat; }
+.white { color: #fffefc; }
+.ctr { left: 0; width: 1920px; text-align: center; }
+
+/* phones */
+#row3d { position: absolute; inset: 0; perspective: 2600px; perspective-origin: 1100px 200px; }
+#row { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 1100px 700px; }
+.phone { position: absolute; top: 410px; width: 300px; height: 650px; border-radius: 50px; background: #0e1016; padding: 9px; box-shadow: 0 50px 90px rgba(3, 52, 117, 0.22), 0 12px 24px rgba(3, 52, 117, 0.14); }
+.phone img { display: block; width: 100%; height: 100%; border-radius: 42px; object-fit: cover; }
+.chip { position: absolute; display: flex; align-items: center; gap: 18px; padding: 18px 34px 18px 22px; border-radius: 999px; background: #fffefc; box-shadow: 0 24px 60px rgba(3, 52, 117, 0.2), 0 4px 12px rgba(3, 52, 117, 0.1); white-space: nowrap; transform-origin: 30% 50%; }
+.chip .ic { width: 60px; height: 60px; border-radius: 50%; background: #eceafe; display: flex; align-items: center; justify-content: center; }
+.chip svg { width: 34px; height: 34px; }
+.chip b { font-size: 50px; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.chip span { font-size: 32px; font-weight: 600; color: var(--muted); letter-spacing: -0.01em; }
+
+/* stat */
+#navy { position: absolute; inset: 0; background: var(--ink); }
+.tile { position: absolute; width: 112px; height: 112px; border-radius: 30px; background: linear-gradient(140deg, #8f88ff, #665dff); transform-origin: 50% 50%; }
+.src { position: absolute; font-family: 'GM', monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.02em; color: rgba(255, 254, 252, 0.55); white-space: nowrap; }
+
+/* donut */
+#donut { position: absolute; overflow: visible; }
+.lab { position: absolute; display: flex; align-items: center; gap: 12px; padding: 12px 24px 12px 14px; border-radius: 999px; background: #fffefc; border: 2px solid #e2dfff; font-size: 36px; font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; box-shadow: 0 14px 30px rgba(3, 52, 117, 0.1); }
+.lab i { width: 40px; height: 40px; border-radius: 50%; background: #665dff; display: inline-flex; align-items: center; justify-content: center; }
+.lab svg { width: 24px; height: 24px; }
+#center { position: absolute; text-align: center; font-variant-numeric: tabular-nums; letter-spacing: -0.04em; }
+
+/* violet + final */
+#vfield { position: absolute; border-radius: 50%; background: var(--violet); }
+#avatar { position: absolute; border-radius: 50%; overflow: hidden; }
+#avatar img { width: 100%; height: 100%; display: block; }
+.pill { position: absolute; display: flex; align-items: center; gap: 14px; padding: 16px 30px; border-radius: 999px; background: var(--ink); color: #fffefc; font-size: 40px; letter-spacing: -0.02em; white-space: nowrap; transform-origin: 20% 50%; }
+.pill small { font-size: 30px; font-weight: 600; opacity: 0.75; letter-spacing: 0; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <!-- S4 navy field -->
+  <div id="navy"></div>
+
+  <div id="wash" style="position:absolute; left:500px; top:300px; width:1700px; height:900px; border-radius:50%; background: radial-gradient(closest-side, rgba(204,210,255,0.55), rgba(240,238,255,0) 100%);"></div>
+  <!-- S2–S3 phones -->
+  <div id="row3d"><div id="row">
+    <div class="phone"><img src="assets/plouff-habitudes.webp" alt=""></div>
+    <div class="phone"><img src="assets/sonora-decouvrir.webp" alt=""></div>
+    <div class="phone"><img src="assets/smoothride-premiers-pas.webp" alt=""></div>
+    <div class="phone"><img src="assets/wakeup-alarme.webp" alt=""></div>
+    <div class="phone"><img src="assets/bailora-accueil.webp" alt=""></div>
+    <div class="phone"><img src="assets/smoothride-navigation.webp" alt=""></div>
+    <div class="phone"><img src="assets/wakeup-personnalisation.webp" alt=""></div>
+  </div></div>
+  <div class="chip" id="k1" style="left: 1190px; top: 470px"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#665dff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></div><b id="k1n">13&#160;000&#160;€</b><span>par mois</span></div>
+  <div class="chip" id="k2" style="left: 1330px; top: 630px"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#665dff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.6"/><path d="M16 14.3c3.2-.2 5.5 2 5.5 5.7"/></svg></div><b id="k2n">300&#160;000</b><span>utilisateurs</span></div>
+
+  <!-- S5–S6 donut -->
+  <svg id="donut" viewBox="0 0 640 640" style="left: 1060px; top: 240px; width: 640px; height: 640px">
+    <defs><linearGradient id="vg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9e94ff"/><stop offset="1" stop-color="#665dff"/></linearGradient></defs>
+    <circle id="dTrack" cx="320" cy="320" r="240" fill="none" stroke="#eceafe" stroke-width="76"/>
+    <circle id="dV" cx="320" cy="320" r="240" fill="none" stroke="url(#vg)" stroke-width="76" stroke-linecap="butt" transform="rotate(-90 320 320)"/>
+    <circle id="dN" cx="320" cy="320" r="240" fill="none" stroke="#033475" stroke-width="76" stroke-linecap="butt" transform="rotate(-90 320 320)"/>
+  </svg>
+  <div id="center" style="left: 1180px; top: 470px; width: 400px"><div id="cnum" style="font-size: 128px; line-height: 1">20&#160;%</div></div>
+  <div class="lab" id="L0"><i style="background: #033475"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg></i>code</div>
+  <div class="lab" id="L1"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18c6 0 4-12 10-12"/></svg></i>parcours</div>
+  <div class="lab" id="L2"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M12 9l1 2 2 .4-1.5 1.5.4 2.1L12 14l-1.9 1 .4-2.1L9 11.4l2-.4z"/></svg></i>premier écran</div>
+  <div class="lab" id="L3"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><line x1="2.5" y1="10" x2="21.5" y2="10"/></svg></i>paiement</div>
+  <div class="lab" id="L4"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><polyline points="20 4 20 8.5 15.5 8.5"/></svg></i>fidélité</div>
+
+  <!-- violet field + final -->
+  <div id="vfield"></div>
+  <div id="avatar"><img src="assets/avatar.png" alt=""></div>
+  <div class="pill" id="f1" style="left: 840px; top: 650px">+20 <small>applications publiées</small></div>
+  <div class="pill" id="f2" style="left: 840px; top: 760px">13&#160;000&#160;€ <small>par mois pour l’une d’elles</small></div>
+
+  <!-- text -->
+  <div class="layer" id="txt">
+    <div class="t" id="A1" data-w style="left: 470px; top: 445px; font-size: 156px">Moi, c’est <span class="grad">Noé.</span></div>
+
+    <div class="t" id="B1" data-w style="left: 170px; top: 96px; font-size: 118px">Je <span class="ser">crée</span> des applications</div>
+    <div class="t" id="B2" data-w style="left: 170px; top: 232px; font-size: 118px"><span class="grad">mobiles</span></div>
+    <div class="t" id="B3" data-w style="left: 170px; top: 232px; font-size: 118px"><span class="grad">web</span></div>
+    <div class="t" id="B4" data-w style="left: 170px; top: 232px; font-size: 118px"><span class="grad">SaaS</span></div>
+    <div class="t" id="B5" data-w style="left: 170px; top: 232px; font-size: 118px">qui <span class="grad">génèrent des revenus.</span></div>
+
+    <div class="t ctr white" id="C1" style="top: 140px; font-size: 330px; letter-spacing: -0.05em"><span class="gradl">8</span> sur 10</div>
+    <div class="t ctr white" id="C2" data-w style="top: 512px; font-size: 60px; letter-spacing: -0.02em; font-weight: 700">des applications ne dépassent jamais 1&#160;000&#160;$ par mois.</div>
+    <div class="src" id="C3" style="left: 0; width: 1920px; text-align: center; top: 880px">Applications à abonnement · RevenueCat 2024</div>
+
+    <div class="t" id="D1" data-w style="left: 170px; top: 400px; font-size: 104px">Un développeur</div>
+    <div class="t" id="D2" data-w style="left: 170px; top: 516px; font-size: 104px">la <span class="ser">code.</span></div>
+    <div class="t" id="E1" data-w style="left: 170px; top: 400px; font-size: 104px">Le reste la fait</div>
+    <div class="t" id="E2" data-w style="left: 170px; top: 516px; font-size: 104px"><span class="ser">rapporter.</span></div>
+
+    <div class="t ctr white" id="G1" style="top: 290px; font-size: 210px">Moi, je fais</div>
+    <div class="t ctr white" id="G2" style="top: 520px; font-size: 210px">les 100&#160;%.</div>
+
+    <div class="t" id="H1" data-w style="left: 840px; top: 330px; font-size: 128px">Noé Calmes</div>
+    <div class="t" id="H2" data-w style="left: 840px; top: 488px; font-size: 62px; letter-spacing: -0.025em"><span class="grad">Applications mobiles &amp; web</span></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const C = (x) => (x < 0 ? 0 : x > 1 ? 1 : x);
+  const P = (t, a, d) => C((t - a) / d);
+  const L = (a, b, x) => a + (b - a) * x;
+  const eOut = (x) => (x >= 1 ? 1 : 1 - Math.pow(2, -10 * x));
+  const eIn = (x) => (x <= 0 ? 0 : Math.pow(2, 10 * x - 10));
+  const eIO = (x) => (x <= 0 ? 0 : x >= 1 ? 1 : x < 0.5 ? Math.pow(2, 20 * x - 10) / 2 : (2 - Math.pow(2, -20 * x + 10)) / 2);
+  const qOut = (x) => 1 - Math.pow(1 - x, 4);
+  const back = (x, s = 1.6) => { const c3 = s + 1; return 1 + c3 * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2); };
+  const backIn = (x, s = 1.6) => (s + 1) * x * x * x - s * x * x;
+  const spring = (x, k = 9, z = 0.45) => (x <= 0 ? 0 : 1 - Math.exp(-z * k * x) * Math.cos(k * Math.sqrt(1 - z * z) * x));
+  const $ = (id) => document.getElementById(id);
+  const S = (el, k, v) => { el.style[k] = v; };
+  const show = (el, on) => S(el, 'display', on ? '' : 'none');
+  const nb = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+  // ---------------- split into words (each word in its own mask) ----------------
+  const W = {};
+  document.querySelectorAll('[data-w]').forEach((el) => {
+    const words = [];
+    const walk = (node, cls) => {
+      Array.from(node.childNodes).forEach((n) => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/( )/).forEach((p) => {
+            if (!p) return;
+            if (p === ' ') { const s = document.createElement('span'); s.className = 'sp'; frag.appendChild(s); return; }
+            const m = document.createElement('span'); m.className = 'wm';
+            const w = document.createElement('span'); w.className = 'wi' + (cls ? ' ' + cls : ''); w.textContent = p;
+            m.appendChild(w); frag.appendChild(m); words.push(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) {
+          const c = n.className; const kids = Array.from(n.childNodes);
+          const frag = document.createDocumentFragment(); kids.forEach((k) => frag.appendChild(k));
+          const holder = document.createElement('span'); holder.appendChild(frag);
+          walk(holder, c);
+          n.replaceWith(...Array.from(holder.childNodes));
+        }
+      });
+    };
+    walk(el, '');
+    W[el.id] = words;
+  });
+
+  // gradient continuity across words of one phrase
+  function fixGradients() {
+    Object.values(W).forEach((ws) => {
+      const groups = {};
+      ws.forEach((w) => { if (w.classList.contains('grad') || w.classList.contains('gradl')) { const k = w.className; (groups[k] = groups[k] || []).push(w); } });
+      Object.values(groups).forEach((g) => {
+        const r0 = g[0].getBoundingClientRect().left, r1 = g[g.length - 1].getBoundingClientRect().right;
+        const total = r1 - r0;
+        g.forEach((w) => { const off = w.getBoundingClientRect().left - r0; w.style.backgroundSize = total + 'px 100%'; w.style.backgroundPosition = -off + 'px 0'; });
+      });
+    });
+  }
+
+  function words(id, t, tin, tout, o = {}) {
+    const el = $(id), ws = W[id];
+    const st = o.st ?? 0.055, din = o.din ?? 0.5, sto = o.sto ?? 0.025, dout = o.dout ?? 0.28;
+    const on = t >= tin - 0.02 && (tout == null || t <= tout + sto * ws.length + dout + 0.02);
+    show(el, on); if (!on) return;
+    ws.forEach((w, i) => {
+      const p = eOut(P(t, tin + i * st, din));
+      const q = tout == null ? 0 : eIn(P(t, tout + i * sto, dout));
+      S(w, 'transform', `translate3d(0, ${((1 - p) * 108 - q * 108).toFixed(2)}%, 0)`);
+    });
+  }
+  function slam(id, t, tin, tout, o = {}) {
+    const el = $(id); const d = o.d ?? 0.34;
+    const on = t >= tin - 0.02 && t <= tout + 0.3;
+    show(el, on); if (!on) return;
+    const p = eOut(P(t, tin, d)), q = eIn(P(t, tout, 0.24));
+    const sc = L(o.from ?? 1.28, 1, p) * L(1, 0.94, q);
+    S(el, 'transform', `scale(${sc.toFixed(4)})`); S(el, 'transformOrigin', o.origin ?? '50% 50%');
+    S(el, 'opacity', (C(p * 2.2) * (1 - q)).toFixed(3));
+    const b = (1 - p) * 18 + q * 12;
+    S(el, 'filter', b > 0.2 ? `blur(${b.toFixed(2)}px)` : 'none');
+  }
+
+  // ---------------- layout ----------------
+  const phones = Array.from(document.querySelectorAll('.phone'));
+  phones.forEach((p, i) => S(p, 'left', (720 + i * 345) + 'px'));
+  // tiles
+  const tiles = [];
+  const TX0 = (1920 - (10 * 112 + 9 * 28)) / 2;
+  for (let i = 0; i < 10; i++) { const d = document.createElement('div'); d.className = 'tile'; d.style.left = (TX0 + i * 140) + 'px'; d.style.top = '650px'; $('stage').insertBefore(d, $('row3d')); tiles.push(d); }
+  const KEEP = [2, 7];
+  const DIM_ORDER = [5, 0, 8, 3, 9, 1, 6, 4];
+  // donut geometry (stage coords)
+  const DCX = 1380, DCY = 560, DR = 240, CIRC = 2 * Math.PI * DR;
+  const labPos = [[36, 0], [108, 1], [168, 2], [232, 3], [318, 4]];
+  function placeLab(el, ang, rad) {
+    const a = (ang * Math.PI) / 180; const x = DCX + rad * Math.sin(a), y = DCY - rad * Math.cos(a);
+    const w = el.offsetWidth, h = el.offsetHeight;
+    let lx = x - w / 2, ly = y - h / 2;
+    if (Math.sin(a) > 0.35) lx = x - 28; else if (Math.sin(a) < -0.35) lx = x - w + 28;
+    S(el, 'left', lx + 'px'); S(el, 'top', ly + 'px');
+    S(el, 'transformOrigin', `${x - lx}px ${y - ly}px`);
+  }
+
+  // ---------------- timeline (120 BPM grid) ----------------
+  const T = { s1: 0, s2: 1.5, s3: 4.0, s4: 6.0, s5: 8.5, s6: 10.0, s7: 12.0, s8: 13.5, end: 16.0 };
+
+  let render = function (t) {
+    // ---- S1: Moi, c'est Noé ----
+    words('A1', t, 0.12, T.s2 - 0.26, { st: 0.07 });
+    const av = $('avatar');
+
+    // ---- S2/S3: applications + phones ----
+    words('B1', t, T.s2 + 0.02, T.s4 - 0.3, { st: 0.05 });
+    words('B2', t, T.s2 + 0.22, T.s2 + 0.98);
+    words('B3', t, T.s2 + 1.02, T.s2 + 1.62);
+    words('B4', t, T.s2 + 1.66, T.s3 - 0.08);
+    words('B5', t, T.s3 + 0.02, T.s4 - 0.3, { st: 0.06 });
+    const rowOn = t > T.s2 - 0.02 && t < T.s4;
+    show($('row3d'), rowOn);
+    if (rowOn) {
+      const drift = cubicDrift(t);
+      S($('row'), 'transform', `translateX(${drift.toFixed(2)}px) rotateY(-16deg) rotateX(5deg)`);
+      phones.forEach((p, i) => {
+        const a = T.s2 + 0.08 + i * 0.07;
+        const pin = eOut(P(t, a, 0.75));
+        const fl = Math.sin((t + i * 0.7) * 1.6) * 8;
+        S(p, 'transform', `translate3d(0, ${((1 - pin) * 820 + fl).toFixed(2)}px, ${(-i * 6).toFixed(1)}px)`);
+      });
+    }
+    [['k1', T.s3 + 0.38, 13000], ['k2', T.s3 + 0.62, 300000]].forEach(([id, a, val]) => {
+      const el = $(id); const on = t > a - 0.02 && t < T.s4;
+      show(el, on); if (!on) return;
+      const p = P(t, a, 0.6);
+      S(el, 'transform', `scale(${Math.max(0, spring(p * 1.6, 8, 0.5)).toFixed(4)}) translateY(${(Math.sin((t + a) * 1.8) * 6).toFixed(2)}px)`);
+      S(el, 'opacity', C(p * 4).toFixed(3));
+      const n = val * qOut(P(t, a + 0.05, 0.75));
+      $(id + 'n').textContent = nb(n) + (id === 'k1' ? ' €' : '');
+    });
+
+    // ---- S4: 8 sur 10 (hard cut to navy) ----
+    const s4on = t >= T.s4 && t < T.s5;
+    show($('navy'), s4on);
+    slam('C1', t, T.s4, T.s5 - 0.24, { d: 0.32, from: 1.35 });
+    words('C2', t, T.s4 + 0.32, T.s5 - 0.24, { st: 0.03, sto: 0.012, dout: 0.22 });
+    show($('C3'), s4on); S($('C3'), 'opacity', (C(P(t, T.s4 + 0.9, 0.3)) * (1 - C(P(t, T.s5 - 0.24, 0.2)))).toFixed(3));
+    tiles.forEach((d, i) => {
+      show(d, s4on); if (!s4on) return;
+      const pin = back(P(t, T.s4 + 0.42 + i * 0.028, 0.42), 1.8);
+      const di = DIM_ORDER.indexOf(i);
+      const dim = di >= 0 ? eOut(P(t, T.s4 + 1.0 + di * 0.075, 0.3)) : 0;
+      const keep = KEEP.includes(i) ? eOut(P(t, T.s4 + 1.7, 0.4)) : 0;
+      const out = eIn(P(t, T.s5 - 0.26 + i * 0.008, 0.22));
+      S(d, 'transform', `scale(${(Math.max(0, pin) * (1 - 0.18 * dim) * (1 + 0.1 * keep) * (1 - out)).toFixed(4)})`);
+      S(d, 'background', dim > 0 ? `linear-gradient(140deg, rgba(255,255,255,${(0.14 + (1 - dim) * 0.6).toFixed(3)}), rgba(255,255,255,${(0.08 + (1 - dim) * 0.5).toFixed(3)}))` : '');
+      S(d, 'boxShadow', keep > 0 ? `0 0 ${(60 * keep).toFixed(0)}px rgba(165,159,255,${(0.65 * keep).toFixed(3)})` : 'none');
+      if (dim >= 1) S(d, 'background', 'rgba(255,255,255,0.14)');
+    });
+
+    // ---- S5/S6: donut ----
+    const dOn = t >= T.s5 && t < T.s7 + 0.5;
+    ['donut', 'center', 'L0', 'L1', 'L2', 'L3', 'L4'].forEach((id) => show($(id), dOn));
+    if (dOn) {
+      const ring = eOut(P(t, T.s5 + 0.02, 0.5));
+      S($('donut'), 'transform', `scale(${L(0.7, 1, ring).toFixed(4)}) rotate(${((1 - ring) * -40).toFixed(2)}deg)`);
+      S($('donut'), 'opacity', C(ring * 2).toFixed(3));
+      const n = 0.2 * eIO(P(t, T.s5 + 0.35, 0.6));
+      const v = 0.8 * eIO(P(t, T.s6 + 0.25, 1.15));
+      S($('dN'), 'strokeDasharray', `${(CIRC * n).toFixed(2)} ${CIRC.toFixed(2)}`);
+      S($('dV'), 'strokeDasharray', `${(CIRC * (n + v)).toFixed(2)} ${CIRC.toFixed(2)}`);
+      const pct = Math.round(100 * (n + v));
+      $('cnum').textContent = pct + ' %';
+      S($('center'), 'opacity', C(P(t, T.s5 + 0.3, 0.2)).toFixed(3));
+      S($('center'), 'color', pct >= 100 ? '#665dff' : '#033475');
+      labPos.forEach(([ang, k]) => {
+        const el = $('L' + k);
+        const a = k === 0 ? T.s5 + 0.75 : T.s6 + 0.35 + (k - 1) * 0.26;
+        const p = P(t, a, 0.55);
+        S(el, 'transform', `scale(${Math.max(0, spring(p * 1.5, 9, 0.5)).toFixed(4)})`);
+        S(el, 'opacity', C(p * 4).toFixed(3));
+      });
+    }
+    words('D1', t, T.s5 + 0.05, T.s6 - 0.24, { st: 0.06 });
+    words('D2', t, T.s5 + 0.18, T.s6 - 0.2, { st: 0.06 });
+    words('E1', t, T.s6 + 0.04, T.s7 - 0.06, { st: 0.05 });
+    words('E2', t, T.s6 + 0.16, T.s7 - 0.04);
+
+    // ---- S7: violet takes the screen from the donut ----
+    const vf = $('vfield');
+    const vgeom = (tt) => {
+      let x = DCX, y = DCY, r = 0;
+      if (tt >= T.s7 - 0.05 && tt < T.s8) { r = L(DR + 38, 2300, eIO(P(tt, T.s7 - 0.05, 0.5))); }
+      else if (tt >= T.s8) {
+        const m = eIO(P(tt, T.s8, 0.55));
+        x = L(DCX, 560, m); y = L(DCY, 540, m); r = L(2300, 214, m);
+        r *= 1 - backIn(P(tt, T.end - 0.55, 0.42), 1.5);
+      }
+      return [x, y, r];
+    };
+    let [vx, vy, vr] = vgeom(t);
+    const [px, py, pr] = vgeom(t - 1 / 480);
+    const speed = Math.hypot(vr - pr, vx - px, vy - py);
+    const vblur = Math.min(42, speed * 0.9);
+    S(vf, 'filter', vblur > 0.6 ? `blur(${vblur.toFixed(1)}px)` : 'none');
+    show(vf, vr > 0.5);
+    S(vf, 'left', (vx - vr) + 'px'); S(vf, 'top', (vy - vr) + 'px'); S(vf, 'width', 2 * vr + 'px'); S(vf, 'height', 2 * vr + 'px');
+    slam('G1', t, T.s7 + 0.28, T.s8 - 0.22, { d: 0.3, from: 1.3 });
+    slam('G2', t, T.s7 + 0.42, T.s8 - 0.2, { d: 0.3, from: 1.3 });
+
+    // ---- S8: end card ----
+    const aOn = t >= T.s8 + 0.25;
+    show(av, aOn || (t < T.s2 && t > 0.02));
+    if (t < T.s2) {
+      // S1 avatar (left of the name)
+      const p = P(t, 0.06, 0.7), q = backIn(P(t, T.s2 - 0.3, 0.26), 1.4);
+      const r = 118 * Math.max(0, spring(p * 1.4, 8, 0.48)) * (1 - q);
+      S(av, 'left', (330 - r) + 'px'); S(av, 'top', (540 - r) + 'px'); S(av, 'width', 2 * r + 'px'); S(av, 'height', 2 * r + 'px');
+    } else if (aOn) {
+      const p = P(t, T.s8 + 0.25, 0.7), q = backIn(P(t, T.end - 0.62, 0.4), 1.5);
+      const r = 200 * Math.max(0, spring(p * 1.4, 8, 0.5)) * (1 - q);
+      S(av, 'left', (560 - r) + 'px'); S(av, 'top', (540 - r) + 'px'); S(av, 'width', 2 * r + 'px'); S(av, 'height', 2 * r + 'px');
+    }
+    words('H1', t, T.s8 + 0.45, T.end - 0.7, { st: 0.07 });
+    words('H2', t, T.s8 + 0.6, T.end - 0.66, { st: 0.05 });
+    [['f1', T.s8 + 0.85, T.end - 0.62], ['f2', T.s8 + 1.0, T.end - 0.58]].forEach(([id, a, o]) => {
+      const el = $(id); const on = t > a - 0.02 && t < o + 0.4; show(el, on); if (!on) return;
+      const p = P(t, a, 0.6), q = backIn(P(t, o, 0.3), 1.5);
+      S(el, 'transform', `scale(${Math.max(0, spring(p * 1.5, 9, 0.5) - q).toFixed(4)})`);
+      S(el, 'opacity', (C(p * 4) * (1 - C((q - 0.6) / 0.4))).toFixed(3));
+    });
+  };
+  function cubicDrift(t) { return L(260, -760, (t - T.s2) / (T.s4 - T.s2)); }
+
+  const cam = document.createElement('div'); cam.id = 'cam'; cam.style.cssText = 'position:absolute;inset:0;transform-origin:960px 540px';
+  Array.from($('stage').childNodes).forEach((n) => cam.appendChild(n)); $('stage').appendChild(cam);
+  const _render = render;
+  render = function (t) {
+    _render(t);
+    S(cam, 'transform', `scale(${(1.012 + 0.012 * Math.sin(t * 0.55)).toFixed(5)}) translate(${(Math.sin(t * 0.37) * 6).toFixed(2)}px, ${(Math.cos(t * 0.31) * 4).toFixed(2)}px)`);
+    const w = $('wash'); show(w, t > T.s2 - 0.1 && t < T.s4); S(w, 'opacity', C(P(t, T.s2, 0.5)).toFixed(3));
+  };
+  window.__ready = (async () => {
+    await document.fonts.ready;
+    await Promise.all(Array.from(document.images).map((im) => im.decode().catch(() => {})));
+    fixGradients();
+    labPos.forEach(([ang, k]) => placeLab($('L' + k), ang, k === 0 ? DR + 92 : DR + 96));
+    render(0); return true;
+  })();
+  window.__seek = (t) => render(t);
+  window.__T = T;
+})();
+</script>
+</body>
+</html>

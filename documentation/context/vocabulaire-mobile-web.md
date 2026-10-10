@@ -14,14 +14,21 @@ décrit n'existe que d'un côté, support obligatoire dans les URL et les titres
 
 ---
 
-## 1. Le label ne bouge plus
+## 1. Le label
 
 **« Expert en applications mobiles & web »**, partout où un label court est
 nécessaire : header du site, signature d'article, headline LinkedIn, fiche
-Google Business.
+Google Business, devis, profil Nowork, images de partage. Décision de Noé du
+10/10/2026, après un essai d'une matinée avec « Expert en apps mobiles & SaaS ».
+
+Pourquoi pas « SaaS » dans le label : le mot n'est compris que d'une partie de
+la cible. Un titre se lit en une seconde, sans explication possible, et un mot
+inconnu y crée un doute. Qui connaît « SaaS » comprend « application web » ;
+l'inverse n'est pas vrai. « SaaS » reste permis dans le corps, expliqué
+(règle 6 bis), comme dans la vidéo du hero.
 
 On ne l'allonge pas. L'arbitrage se dit dans la ligne qui suit, jamais dans le
-label.
+label. Forme courte quand la place manque : « Applications mobiles & web ».
 
 ## 2. Le défaut, c'est « une application »
 
@@ -84,7 +91,8 @@ glisser vers un métier à 1 500 €.
 Décision de Noé du 05/10/2026. Le mot aide certains prospects à comprendre qu'une
 application web est un produit et pas une vitrine. On l'écrit donc, mais **jamais
 seul** : toujours sous la forme « une application web, ce qu'on appelle aussi un
-SaaS », et au plus une fois par page.
+SaaS », et au plus une fois par page. Seule exception : le label (règle 1),
+qui le porte seul faute de place, depuis le 10/10/2026.
 
 **La façon la plus efficace de le faire comprendre reste l'exemple**, pas le
 vocabulaire : leboncoin.fr, airbnb.com, un logiciel de facturation en ligne. On
