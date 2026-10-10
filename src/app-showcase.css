@@ -1,5 +1,5 @@
 /* Section « Ce que j'ai déjà construit » de l'accueil (refonte du 10/10/2026) : les chiffres et les écrans légendés. */
-.app-proof { padding: 72px 24px 76px; overflow: clip; background: linear-gradient(180deg, #fffefc, #faf9ff 70%, #fffefc); }
+.app-proof { padding: 104px 24px 108px; overflow: clip; background: linear-gradient(180deg, #fffefc, #faf9ff 70%, #fffefc); }
 .app-proof-inner { max-width: 1100px; margin: 0 auto; }
 .app-proof-main { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
 .app-proof-main > .app-gallery { order: -1; }

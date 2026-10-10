@@ -92,14 +92,17 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
   en ligne. » Noé l'a préférée à l'ancienne (« Je conçois ton application mobile & web pour qu'elle
   rapporte vraiment… »).
 - Bouton « J'ai une idée d'application » (refonte du 10/10/2026 : c'est le visiteur qui parle, il se
-  reconnaît ; « Discuter avec Noé » n'a tenu que la journée du 10/10). Dessous, en petit, la photo de Noé et
-  « C'est moi qui réponds, sur WhatsApp · gratuit », qui garde le côté humain. Plus grand sur ordinateur et
+  reconnaît ; « Discuter avec Noé » n'a tenu que la journée du 10/10). Pas de ligne dessous : « C'est moi
+  qui réponds, sur WhatsApp · gratuit », essayée le 10/10, répétait la barre du haut (photo de Noé) et
+  « gratuit » était de trop (Noé, 11/10/2026). Plus grand sur ordinateur et
   sur une seule ligne jusqu'à 320 px. Il mène à la section contact, « Parlons de ton projet », dont le
   bouton, qui ouvre WhatsApp, dit « Discuter avec Noé » : à cet endroit, le visiteur s'attend à parler à
   quelqu'un (Noé, 10/10/2026), comme le lien du pied de page. Le bouton qui suit « Comment ça se passe ? »
   dit « J'ai une idée d'application », comme celui du haut. La barre du haut et le menu sur téléphone disent « J'ai une idée » (plus court,
   comme Ikovaline), sur l'accueil, le blog, les quiz et les pages /expertise, /creation-application-mobile
-  et /faq.
+  et /faq. Liens de la barre (`NAV_LINKS`, 11/10/2026) : « Réalisations », « Étapes », « Audit express »
+  (avant : « Preuves », « Méthode », « Audit »). Des mots que la cible comprend ; « Tester mon idée »,
+  essayé, collait trop au bouton « J'ai une idée » juste à côté. Les trois tiennent dès 1024 px.
 - Au survol, tous les boutons de l'accueil ont le reflet de la fin du film (« Audit offert ») : un trait
   de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les traverse et passe sous le
   texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (« J'ai une idée d'application » en haut
@@ -182,6 +185,9 @@ pose (c'est vrai ? qu'est-ce que je risque ? c'est qui ? c'est pour moi ?), puis
 sections deviennent sept. Le texte des sections est écrit dans le JSX de `App` (pas dans des tableaux) :
 c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
 
+**Sur ordinateur, de l'air** (« c'est serré », Noé, 11/10/2026) : 112 px en haut et en bas de chaque
+section (`md:py-28`), 104 px pour « Ce que j'ai déjà construit », 32 px entre les cartes.
+
 **90 % des visiteurs arrivent sur téléphone, depuis les pubs Instagram et Facebook** (Noé, 11/10/2026) :
 chaque texte se juge d'abord sur un écran de téléphone, en phrases courtes. Une réponse de FAQ tient en
 deux ou trois phrases qui expliquent : trop long, on ne lit pas (« c'est trop long ») ; trop court, on
@@ -216,12 +222,16 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
    ligne). À côté, la comparaison avec une agence en cinq lignes (`COMPARAISON_AGENCE` dans
    `src/App.jsx`). Les avis clients iront dans `AVIS_CLIENTS` : vide tant que Noé n'en a pas (rien n'est
    affiché), n'y mettre que des avis réels, avec l'accord de la personne.
-5. **« C'est pour toi ? »** (`#pour-qui`) : « Oui, si… » (une idée et un budget prévu, une seule personne
-   pour tout, une application qui rapporte) et « Non, si… » (site vitrine, juste un développeur qui exécute,
-   le prix le plus bas, quelqu'un pour faire sa publicité). Écarte avant WhatsApp ceux que Noé ne prend
-   pas. Remplace « Ce que je fais / Ce que je ne fais pas ». « Une application qui te rapporte des revenus
-   chaque mois » (Noé, 11/10/2026, à la place de « qui rapporte, pas juste une application qui existe »).
-6. **FAQ « Pour y voir plus clair »** (`#faq`) : les 4 premières questions de `FAQ_ITEMS`
+5. **« On est faits pour travailler ensemble ? »** (`#pour-qui`, sous « Pour qui » ; « C'est pour toi ? »
+   jusqu'au 11/10/2026, trop simple pour Noé) : « Oui, si… » (une idée et un budget prévu ; une
+   application qui te rapporte des revenus chaque mois ; un résultat, sans avoir à t'occuper de la
+   technique) et « Non, si… » (juste un développeur qui exécute tes consignes ; le prix le plus bas ;
+   l'application vue comme une dépense, pas comme un investissement ; quelqu'un pour faire ta publicité).
+   Écarte avant WhatsApp ceux que Noé ne prend pas. Retirés le 11/10/2026 : « Tu cherches un site
+   vitrine » (Noé en fait quand il le faut) et « une seule personne s'occupe de tout » (« il veut un
+   résultat, il s'en fout si un ou plusieurs », Noé). Remplace « Ce que je fais / Ce que je ne fais pas ».
+6. **FAQ « Pour y voir plus clair »** (`#faq`, sous « Questions fréquentes » : la cible ne connaît pas
+   forcément « FAQ ») : les 4 premières questions de `FAQ_ITEMS`
    (`src/PagesSeo.jsx`), les vraies objections, en deux ou trois phrases chacune :
    - combien : un tarif fixe, « en général une dizaine de milliers d'euros, comprenant la stratégie, la
      maquette sur mesure, le développement et la mise en ligne » ;
@@ -243,7 +253,8 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
    questions, « Une autre question ? Écris-moi sur WhatsApp. » ouvre directement WhatsApp avec le suivi
    `home_faq`.
 7. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités,
-   le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`), « Tu bosses direct avec moi », puis l'audit en second choix
+   le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`), « Tu bosses direct avec moi », puis, 64 px
+   plus bas sur téléphone et 80 sur ordinateur (Noé, 11/10/2026), l'audit en second choix
    dans une carte blanche (`#audit`, lien « Audit », route /audit) : « Pas encore prêt à écrire ? Teste ton
    idée : potentiel, budget et délai, en 2 minutes, sans appel. », bouton noir « Lancer mon audit ».
 
