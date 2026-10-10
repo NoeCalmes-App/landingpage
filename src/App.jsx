@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import './App.css'
 import PhoneCarousel from './AppShowcase.jsx'
-import DeliverableVisual from './DeliverableVisual.jsx'
 import HeroVideo from './HeroVideo.jsx'
 import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
 import MentionsLegales from './MentionsLegales.jsx'
@@ -51,6 +50,9 @@ const VietCollabMockups = lazy(() => import('./VietCollabMockups.jsx'))
 const AuditApp = lazy(() => import('./audit-app/AuditApp.jsx'))
 const Projets = lazy(() => import('./Projets.jsx'))
 
+const meetingSvg = '/assets/images/illustrations/meetingdev.svg'
+const devSvg = '/assets/images/illustrations/devmobile.svg'
+const postSvg = '/assets/images/illustrations/post.svg'
 const mePhoto = '/assets/images/profile/me.webp'
 const calorieIcon = '/assets/images/apps/calorie.webp'
 const hushIcon = '/assets/images/apps/hushapp.webp'
@@ -878,66 +880,60 @@ function App() {
         </div>
       </section>
 
-      {/* ========== COMMENT ÇA SE PASSE (et ce qui est offert) ========== */}
+      {/* ========== COMMENT ÇA SE PASSE ========== */}
       {/* Refonte du 10/10/2026 : « Avant de payer un euro, je t'offre » et les étapes ne font plus qu'un. La maquette,
-          le cahier des charges et le devis apparaissaient trois fois sur la page ; ils sont l'étape 2, offerte. Le prix
-          est donné à l'étape 3, comme une information, en « une dizaine de milliers d'euros » (Noé, 11/10/2026), sans « tu paies ici » : on ne
-          paie pas à la mise en ligne, il y a un acompte au démarrage. Visuels : la conversation (Noé l'aimait), puis des
-          illustrations nettes (maquette, cahier des charges, devis ; l'application en ligne). Ni vraie capture d'écran
-          mélangée aux dessins, ni petites cartes de texte (« pas lisible », Noé, 11/10/2026). Les textes des étapes sont ceux
-          validés par Noé le même jour. Id « offre » : lien « Méthode » de la barre du haut. */}
+          le cahier des charges et le devis apparaissaient trois fois sur la page ; ils sont l'étape 2, offerte (pastille
+          verte « Offert » aux étapes 1 et 2, sans phrase qui le redise au-dessus). Les illustrations sont celles que Noé
+          avait choisies (meetingdev, devmobile, post) : il les a redemandées le 11/10/2026 après deux essais refusés
+          (une conversation, une vraie maquette et des dessins mélangés, puis des cartes de petites lignes de texte, « pas
+          lisible »). Sur téléphone, l'illustration se met à droite du début du texte, pour ne pas prendre toute la place
+          (`.process-…` dans src/App.css). Les textes des étapes sont ceux validés par Noé le 10/10/2026. Sous les étapes,
+          le prix en une ligne : il trie les budgets avant WhatsApp (la réponse de la FAQ est repliée, celle-ci se voit).
+          Le bouton dit « Discuter avec Noé », la suite de l'étape 1 « On en parle ». Id « offre » : lien « Étapes ». */}
       <section className="py-14 md:py-28 px-5 bg-card" id="offre">
         <div className="max-w-275 mx-auto">
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-3">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-8 md:mb-14">
             Comment <span className="text-brand">ça se passe ?</span>
           </h2>
-          <p className="reveal text-center text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-8 md:mb-14">
-            Les deux premières étapes sont offertes.
-          </p>
 
-          <ol className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 max-w-262 mx-auto">
-            <li className="etape">
-              <div className="etape-visuel" aria-hidden="true">
-                <div className="etape-appel">
-                  <span className="etape-bulle etape-bulle-toi">Bonjour Noé, j'ai un projet d'application</span>
-                  <span className="etape-noe">
-                    <img src={mePhoto} alt="" width="32" height="32" loading="lazy" />
-                    <span className="etape-bulle etape-bulle-noe">Raconte-moi ton idée</span>
-                  </span>
-                </div>
+          <ol className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-3.5 md:gap-8 max-w-262 mx-auto">
+            <li className="process-card group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
+              <img src={meetingSvg} alt="" loading="lazy" width="280" height="160" className="process-illustration w-full h-32 md:h-40 object-contain mb-6" />
+              <div className="process-copy flex flex-col justify-center flex-1">
+                <span className="process-pastilles flex items-center gap-2 mb-3">
+                  <span className="text-brand text-[0.8rem] font-semibold bg-brand/10 px-3 py-1 rounded-full transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">Étape 1</span>
+                  <span className="process-offert text-[#15803d] text-[0.8rem] font-bold bg-[#e7f7ed] px-3 py-1 rounded-full transition-colors duration-300 group-hover:bg-white">Offert</span>
+                </span>
+                <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2.5 transition-colors duration-300 group-hover:text-white">On en parle</h3>
+                <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed transition-colors duration-300 group-hover:text-white/80">
+                  Au premier appel, on discute de ton idée et je te donne des conseils concrets pour bien la lancer. Tu repars avec un avis clair, même si on ne travaille pas ensemble.
+                </p>
               </div>
-              <p className="etape-pastilles"><span className="etape-num">Étape 1</span><span className="etape-offert">Offert</span></p>
-              <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2">On en parle</h3>
-              <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">
-                Au premier appel, on discute de ton idée et je te donne des conseils concrets pour bien la lancer. Tu repars avec un avis clair, même si on ne travaille pas ensemble.
-              </p>
             </li>
-            <li className="etape">
-              <div className="etape-visuel" aria-hidden="true">
-                <div className="etape-livrables">
-                  <span className="etape-livrable"><DeliverableVisual type="mockup" />Maquette</span>
-                  <span className="etape-livrable"><DeliverableVisual type="brief" />Cahier des charges</span>
-                  <span className="etape-livrable"><DeliverableVisual type="quote" />Devis</span>
-                </div>
+            <li className="process-card group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
+              <img src={devSvg} alt="" loading="lazy" width="280" height="160" className="process-illustration w-full h-32 md:h-40 object-contain mb-6" />
+              <div className="process-copy flex flex-col justify-center flex-1">
+                <span className="process-pastilles flex items-center gap-2 mb-3">
+                  <span className="text-brand text-[0.8rem] font-semibold bg-brand/10 px-3 py-1 rounded-full transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">Étape 2</span>
+                  <span className="process-offert text-[#15803d] text-[0.8rem] font-bold bg-[#e7f7ed] px-3 py-1 rounded-full transition-colors duration-300 group-hover:bg-white">Offert</span>
+                </span>
+                <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2.5 transition-colors duration-300 group-hover:text-white">On cadre</h3>
+                <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed transition-colors duration-300 group-hover:text-white/80">
+                  Après l'appel, je t'envoie un cahier des charges offert, une première maquette et un devis clair. Tu sais ce que tu vas avoir, quand, et pour combien.
+                </p>
               </div>
-              <p className="etape-pastilles"><span className="etape-num">Étape 2</span><span className="etape-offert">Offert</span></p>
-              <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2">On cadre</h3>
-              <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">
-                Après l'appel, je t'envoie un cahier des charges offert, une première maquette et un devis clair. Tu sais ce que tu vas avoir, quand, et pour combien.
-              </p>
             </li>
-            <li className="etape">
-              <div className="etape-visuel" aria-hidden="true">
-                <div className="etape-lancement">
-                  <DeliverableVisual type="launch" />
-                  <span>Ton application, en ligne</span>
-                </div>
+            <li className="process-card group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
+              <img src={postSvg} alt="" loading="lazy" width="280" height="160" className="process-illustration w-full h-32 md:h-40 object-contain mb-6" />
+              <div className="process-copy flex flex-col justify-center flex-1">
+                <span className="process-pastilles flex items-center gap-2 mb-3">
+                  <span className="text-brand text-[0.8rem] font-semibold bg-brand/10 px-3 py-1 rounded-full transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">Étape 3</span>
+                </span>
+                <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2.5 transition-colors duration-300 group-hover:text-white">On construit ensemble</h3>
+                <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed transition-colors duration-300 group-hover:text-white/80">
+                  Je reprends la maquette sur mesure, je développe ton application et je la publie sur les stores ou sur le web. Ensuite, je t'accompagne pour la faire évoluer.
+                </p>
               </div>
-              <p className="etape-pastilles"><span className="etape-num">Étape 3</span></p>
-              <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2">On construit ensemble</h3>
-              <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">
-                Je reprends la maquette sur mesure, je développe ton application et je la publie sur les stores ou sur le web. Ensuite, je t'accompagne pour la faire évoluer.
-              </p>
             </li>
           </ol>
 
@@ -953,7 +949,7 @@ function App() {
               onClick={goBookCall}
               className="btn-reflet group inline-flex items-center gap-2 min-[360px]:gap-2.5 whitespace-nowrap bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-5 min-[360px]:px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
-              J'ai une idée d'application
+              Discuter avec Noé
               <svg className="shrink-0 w-[18px] h-[18px] min-[360px]:w-[22px] min-[360px]:h-[22px] transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
@@ -1123,8 +1119,10 @@ function App() {
       <section className="py-16 md:py-28 px-5 bg-card" id="contact-section">
         <div className="max-w-275 mx-auto text-center">
           {/* Les disponibilités, dans une pastille au fond léger (même style que « Audit express · 2 min ») */}
+          {/* Le fond de la pastille n'apparaît qu'avec le texte des places : pendant la vérification, on ne voyait que le fond
+              (Noé, 11/10/2026) */}
           <p className="reveal flex justify-center mb-4 min-h-[1.85rem]">
-            <span className="inline-flex items-center gap-2 rounded-full bg-brand/6 border border-brand/12 px-3.5 py-1.5 text-[0.72rem] md:text-[0.78rem] leading-none">
+            <span className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.72rem] md:text-[0.78rem] leading-none transition-colors duration-300 ${spotsLoaded ? 'bg-brand/6 border-brand/12' : 'bg-transparent border-transparent'}`}>
               {spotsLoaded ? (
                 <>
                   <span className="relative flex h-1.5 w-1.5 shrink-0">

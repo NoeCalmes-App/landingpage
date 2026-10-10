@@ -1,48 +1,24 @@
-/* ===== Accueil, refonte du 10/10/2026 : les étapes de « Comment ça se passe ? » ===== */
-/* Les visuels (11/10/2026) : la conversation à l'étape 1, que Noé aimait, puis des illustrations nettes et grandes,
-   avec leur nom (maquette, cahier des charges, devis ; l'application en ligne). Refusés : une vraie capture d'écran
-   mélangée aux dessins (« design mélangé ») et des cartes de petites lignes de texte (« pas lisible du tout »).
-   La pastille verte « Offert » dit ce qui ne se paie pas ; pas de « tu paies ici » (acompte au démarrage). */
-.etape { display: flex; flex-direction: column; text-align: left; background: #fff; border: 1px solid #ebe8f5; border-radius: 20px; padding: 16px 16px 22px; }
-.etape > h3, .etape > p { padding: 0 6px; }
-.etape-visuel { height: 168px; border-radius: 14px; background: linear-gradient(160deg, #f7f6ff, #efedff); display: grid; place-items: center; margin-bottom: 16px; padding: 0 14px; }
-.etape-pastilles { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-.etape-num, .etape-offert { font-size: 12.5px; line-height: 1; padding: 6px 12px; border-radius: 999px; }
-.etape-num { font-weight: 600; color: #665dff; background: rgba(102, 93, 255, .1); }
-.etape-offert { font-weight: 700; color: #15803d; background: #e7f7ed; }
+/* ===== Accueil : « Comment ça se passe ? » ===== */
+/* Les illustrations d'origine (meetingdev, devmobile, post), redemandées par Noé le 11/10/2026 : « plus design, plus
+   compréhensible » que les deux essais du 10-11/10 (une conversation avec des dessins, puis des cartes de texte). Sur
+   téléphone, l'illustration se met à droite du début du texte (128 × 118 px) pour rapprocher la pastille, le titre et
+   la description, au lieu de prendre toute la largeur au-dessus. La pastille verte « Offert » marque les étapes 1 et 2. */
+@media (max-width: 767px) {
+  .process-card { display: flow-root; padding: 20px; }
+  .process-illustration { float: right; width: 128px; height: 118px; margin: -2px -3px 6px 12px; }
+  .process-copy { display: block; }
+  .process-copy > .process-pastilles { display: inline-flex; margin-bottom: 8px; }
+  .process-copy h3 { margin-bottom: 7px; }
+}
+
+/* Le prix et le délai, en une ligne sous les étapes */
 .etape-tarif { max-width: 660px; margin: 22px auto 0; padding: 14px 20px; border-radius: 16px; background: #fff; border: 1px solid #ebe8f5; text-align: center; font-size: 15px; line-height: 1.6; color: #033475; }
 .etape-tarif strong { color: #665dff; font-weight: 700; }
 @media (max-width: 767px) { .etape-tarif { margin-top: 16px; padding: 13px 16px; font-size: 14px; } }
 
-/* Les illustrations (src/DeliverableVisual.jsx), en violet de marque, détails bleu foncé */
-.deliverable-visual { flex-shrink: 0; color: var(--color-brand); }
-.deliverable-visual svg { display: block; width: 100%; height: 100%; }
-
-/* Étape 1 : la conversation (le début du message WhatsApp pré-rempli, puis la réponse de Noé) */
-.etape-appel { width: 100%; max-width: 272px; display: flex; flex-direction: column; gap: 10px; }
-.etape-bulle { font-size: 14px; line-height: 1.35; padding: 9px 14px; border-radius: 16px; }
-.etape-bulle-toi { align-self: flex-end; max-width: 92%; background: #665dff; color: #fff; font-weight: 500; border-bottom-right-radius: 5px; box-shadow: 0 10px 18px -12px rgba(102, 93, 255, .9); }
-.etape-noe { display: flex; align-items: flex-end; gap: 8px; }
-.etape-noe img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-.etape-bulle-noe { background: #fff; color: #033475; font-weight: 600; border: 1px solid #e6e3f3; border-bottom-left-radius: 5px; }
-
-/* Étape 2 : les trois documents, en grand, avec leur nom */
-.etape-livrables { display: flex; align-items: flex-start; justify-content: center; gap: 10px; }
-.etape-livrable { width: 84px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; font-size: 13px; font-weight: 700; line-height: 1.25; color: #033475; }
-.etape-livrable .deliverable-visual { width: 84px; height: 72px; }
-
-/* Étape 3 : l'application en ligne */
-.etape-lancement { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: #033475; }
-.etape-lancement .deliverable-visual { width: 124px; height: 106px; }
-
-@media (max-width: 767px) {
-  .etape { padding: 14px 14px 20px; }
-  .etape-visuel { height: 156px; margin-bottom: 14px; }
-}
-@media (max-width: 380px) {
-  .etape-bulle { font-size: 13px; padding: 8px 12px; }
-  .etape-livrables { gap: 6px; }
-  .etape-livrable { width: 74px; font-size: 12px; }
-  .etape-livrable .deliverable-visual { width: 72px; height: 62px; }
-  .etape-lancement .deliverable-visual { width: 112px; height: 96px; }
+/* Très petits téléphones (moins de 350 px) : l'illustration rétrécit pour laisser « Étape · Offert » à sa gauche */
+@media (max-width: 350px) {
+  .process-illustration { width: 100px; height: 92px; margin-left: 8px; }
+  .process-pastilles { gap: 6px; }
+  .process-pastilles > span { padding-left: 9px; padding-right: 9px; font-size: 0.74rem; }
 }

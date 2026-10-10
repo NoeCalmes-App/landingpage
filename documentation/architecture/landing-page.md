@@ -98,15 +98,15 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
   sur une seule ligne jusqu'à 320 px. Il mène à la section contact, « Parlons de ton projet », dont le
   bouton, qui ouvre WhatsApp, dit « Discuter avec Noé » : à cet endroit, le visiteur s'attend à parler à
   quelqu'un (Noé, 10/10/2026), comme le lien du pied de page. Le bouton qui suit « Comment ça se passe ? »
-  dit « J'ai une idée d'application », comme celui du haut. La barre du haut et le menu sur téléphone disent « J'ai une idée » (plus court,
+  dit aussi « Discuter avec Noé » (11/10/2026 : la suite de l'étape « On en parle »). La barre du haut et le menu sur téléphone disent « J'ai une idée » (plus court,
   comme Ikovaline), sur l'accueil, le blog, les quiz et les pages /expertise, /creation-application-mobile
   et /faq. Liens de la barre (`NAV_LINKS`, 11/10/2026) : « Réalisations », « Étapes », « Audit express »
   (avant : « Preuves », « Méthode », « Audit »). Des mots que la cible comprend ; « Tester mon idée »,
   essayé, collait trop au bouton « J'ai une idée » juste à côté. Les trois tiennent dès 1024 px.
 - Au survol, tous les boutons de l'accueil ont le reflet de la fin du film (« Audit offert ») : un trait
   de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les traverse et passe sous le
-  texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (« J'ai une idée d'application » en haut
-  et après les étapes, « Discuter avec Noé » dans la section contact) et les boutons noirs (« J'ai une idée » en haut, le bouton du menu sur téléphone,
+  texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (« J'ai une idée d'application » en haut,
+  « Discuter avec Noé » après les étapes et dans la section contact) et les boutons noirs (« J'ai une idée » en haut, le bouton du menu sur téléphone,
   « Lancer mon audit »), où le même trait blanc se voit comme un reflet gris clair (demande de Noé du
   10/10/2026 : « tous les autres boutons », « travailler en noir »). Seulement à la souris, et pas quand
   moins d'animations sont demandées.
@@ -201,21 +201,22 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
    côté, le carrousel des écrans, chacun avec une légende qui dit à quoi il sert : la stratégie se voit au
    lieu d'être annoncée. Remplace la barre de preuve, « Une stratégie derrière chaque écran » (ses cinq
    pastilles) et « Mon métier ». Styles : `src/app-showcase.css`.
-3. **« Comment ça se passe ? »** (`#offre`, lien « Méthode ») : « Les deux premières étapes sont
-   offertes. » Étape 1 « On en parle » et étape 2 « On cadre » portent la pastille verte « Offert ». Les
-   textes des étapes sont ceux validés par Noé le 10/10/2026. Les visuels (refaits le 11/10/2026) : à
-   l'étape 1, la conversation (« Bonjour Noé, j'ai un projet d'application », le début du message
-   WhatsApp pré-rempli, et « Raconte-moi ton idée »), que Noé aimait ; à l'étape 2, les trois documents
-   en grandes illustrations avec leur nom (maquette, cahier des charges, devis) ; à l'étape 3,
-   l'application en ligne (téléphone, courbe qui monte, flèche qui décolle). Illustrations :
-   `src/DeliverableVisual.jsx` (types `mockup`, `brief`, `quote`, `launch`). Refusés par Noé : une vraie
-   capture d'écran mélangée aux dessins (« design mélangé ») et des cartes de petites lignes de texte
-   (« pas lisible du tout », « ça va jamais convertir »). Sous les étapes, une ligne d'information pour
-   tout le parcours (`.etape-tarif`) : « Tarif fixe, en général une dizaine de milliers d'euros : stratégie,
-   maquette, développement et mise en ligne. Première version en 30 jours en moyenne. » (Noé, 11/10/2026 : « une dizaine de milliers d'euros » plutôt que
-   « 5 000 à 12 000 € », et 30 jours plutôt que 45). Pas de « tu paies ici » : on ne paie pas à la mise en
-   ligne, il y a un acompte au démarrage. Absorbe « Avant de payer un euro, je t'offre ». Puis le bouton.
-   Styles : `.etape…` dans `src/App.css`.
+3. **« Comment ça se passe ? »** (`#offre`, lien « Étapes ») : trois cartes, étapes 1 « On en parle » et
+   2 « On cadre » avec la pastille verte « Offert », étape 3 « On construit ensemble ». Pas de phrase
+   au-dessus qui redise « offert » (retirée le 11/10/2026, Noé : « est-ce qu'on le met deux fois ? »). Les
+   textes des étapes sont ceux validés par Noé le 10/10/2026. Les illustrations sont celles que Noé avait
+   choisies (`meetingdev.svg`, `devmobile.svg`, `post.svg` dans `public/assets/images/illustrations/`) : il
+   les a redemandées le 11/10/2026 (« plus design, plus compréhensible ») après deux essais refusés, une
+   conversation avec de vraies maquettes et des dessins mélangés, puis des cartes de petites lignes de texte
+   (« pas lisible du tout »). Sur téléphone, l'illustration (128 × 118 px, 100 × 92 sous 350 px) se met à
+   droite du début du texte au lieu de prendre toute la largeur au-dessus (`.process-…` dans `src/App.css`).
+   Au survol sur ordinateur, la carte passe en violet. Sous les étapes, le prix en une ligne
+   (`.etape-tarif`) : « Tarif fixe, en général une dizaine de milliers d'euros : stratégie, maquette,
+   développement et mise en ligne. Première version en 30 jours en moyenne. » Il est aussi dans la FAQ, mais
+   la FAQ est repliée : cette ligne-ci se voit, et trie les budgets avant WhatsApp (question de Noé du
+   11/10/2026, gardée pour ça). Pas de « tu paies ici » : on ne paie pas à la mise en ligne, il y a un
+   acompte au démarrage. Puis le bouton « Discuter avec Noé » (11/10/2026, la suite de « On en parle » ; il
+   mène à « Parlons de ton projet », comme celui du haut). Absorbe « Avant de payer un euro, je t'offre ».
 4. **« Pourquoi me faire confiance ? »** (`#confiance`, sous « Qui je suis » ; la route /avis y mène) : la
    photo de Noé, « Expert en applications mobiles & web », puis trois faits (il fait tout lui-même ; une
    dizaine d'idées par semaine ; ses propres applications, WakeUp Alarme et Plouff Habitudes, sont en
@@ -252,7 +253,9 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
    objections juste avant le bouton ; après, la page finirait sur des questions au lieu du bouton. Sous les
    questions, « Une autre question ? Écris-moi sur WhatsApp. » ouvre directement WhatsApp avec le suivi
    `home_faq`.
-7. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités,
+7. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités
+   (son fond n'apparaît qu'avec le texte des places ; pendant « Vérification des disponibilités… », pas de
+   fond, Noé 11/10/2026),
    le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`), « Tu bosses direct avec moi », puis, 64 px
    plus bas sur téléphone et 80 sur ordinateur (Noé, 11/10/2026), l'audit en second choix
    dans une carte blanche (`#audit`, lien « Audit », route /audit) : « Pas encore prêt à écrire ? Teste ton
