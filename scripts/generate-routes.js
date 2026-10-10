@@ -943,7 +943,7 @@ for (const route of blogRoutes) {
       "datePublished": meta?.date,
       "dateModified": meta?.date,
       "inLanguage": "fr-FR",
-      "image": "https://noecalmes.fr/assets/images/meta/accueil-og.png",
+      "image": "https://noecalmes.fr/assets/images/meta/accueil-og.jpg",
     }, null, 6)
     html = html.replace('</head>', `    <script type="application/ld+json">\n    ${articleJson}\n    </script>\n  </head>`)
 

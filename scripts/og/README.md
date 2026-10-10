@@ -5,11 +5,11 @@ d'autre :
 
 | Image | Où elle s'affiche | Source ici |
 |---|---|---|
-| `accueil-og.png` | `noecalmes.fr` et toutes les pages, sauf les deux lignes suivantes | `accueil-og.html` + `accueil-og-fond.png` |
+| `accueil-og.jpg` | `noecalmes.fr` et toutes les pages, sauf les deux lignes suivantes | `accueil-og.html` + `accueil-og-fond.png` |
 | `maquette-og.png` | `noecalmes.fr/maquette` et toutes les `/maquette/...` | `maquette-og.html` |
 | `audit-app-og.png` | `/audit-app` | `audit-app-og.html` (était dans `public/`, donc publié par erreur) |
 
-`accueil-og.png` est déclarée dans `index.html` (donc héritée par toutes les
+`accueil-og.jpg` est déclarée dans `index.html` (donc héritée par toutes les
 pages générées) et dans `public/legal/index.html`. `maquette-og.png` est posée
 par `scripts/generate-routes.js` (bloc « Client mockup routes »).
 `audit-app-og.png` par le même script et par `src/audit-app/AuditApp.jsx`.
@@ -19,6 +19,10 @@ mobiles & web ». Pas de « SaaS » dans un titre (décision du 10/10/2026) : le
 n'est compris que d'une partie de la cible, il s'écrit dans les phrases, expliqué.
 
 ## Image par défaut
+
+En JPEG (environ 90 Ko) et pas en PNG : le grain du fond faisait monter le PNG
+à 700 Ko, et WhatsApp n'affiche pas toujours un aperçu au-delà d'environ
+300 Ko. Rendre `accueil-og.html` en PNG puis convertir en JPEG qualité 90.
 
 C'est l'image d'origine (ex `new-og-image.png`) **à l'identique** : même texte,
 même police, même mise en page. Décision de Noé du 10/10/2026 : on ne touche
@@ -44,7 +48,7 @@ npx --yes playwright@1.47.0 install chromium   # une seule fois
 npx --yes playwright@1.47.0 screenshot --viewport-size="1200,630" \
   "file://$PWD/scripts/og/maquette-og.html" public/assets/images/meta/maquette-og.png
 npx --yes playwright@1.47.0 screenshot --viewport-size="1200,630" \
-  "file://$PWD/scripts/og/accueil-og.html" public/assets/images/meta/accueil-og.png
+  "file://$PWD/scripts/og/accueil-og.html" public/assets/images/meta/accueil-og.jpg
 ```
 
 Ou à la main : ouvrir `maquette-og.html` dans Chrome, outils de développement,
