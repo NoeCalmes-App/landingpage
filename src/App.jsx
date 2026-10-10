@@ -742,7 +742,7 @@ function App() {
 
       {/* ========== HERO (plein écran avec gradient) ========== */}
       <section
-        className="hero-bg relative min-h-screen flex items-center justify-center text-center px-3 sm:px-5 md:px-10 lg:px-16 pt-28 pb-14 md:pt-32 md:pb-20 overflow-hidden"
+        className="hero-bg relative min-h-screen flex items-center justify-center text-center px-3 sm:px-5 md:px-10 lg:px-16 pt-36 pb-16 sm:pt-40 md:pt-44 md:pb-24 overflow-hidden"
       >
         <div className="hero-visual" aria-hidden="true" />
 
@@ -771,7 +771,7 @@ function App() {
           </div>}
 
           {/* Titre — même direction desktop/mobile, avec des retours adaptés aux petits écrans */}
-          <h1 className="font-heading text-[1.72rem] min-[360px]:text-[1.78rem] min-[375px]:text-[1.86rem] min-[414px]:text-[2.02rem] min-[430px]:text-[2.12rem] min-[480px]:text-[2.28rem] sm:text-[2.4rem] md:text-[2.85rem] lg:text-[3.3rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-4 md:mb-6">
+          <h1 className="font-heading text-[1.72rem] min-[360px]:text-[1.78rem] min-[375px]:text-[1.86rem] min-[414px]:text-[2.02rem] min-[430px]:text-[2.12rem] min-[480px]:text-[2.28rem] sm:text-[2.4rem] md:text-[2.85rem] lg:text-[3.3rem] font-extrabold text-text tracking-tight leading-[1.15] sm:leading-[1.16] text-balance sm:text-pretty w-full max-w-none sm:w-auto sm:max-w-none mx-auto mb-5 md:mb-7">
             <span className="sm:hidden text-text font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
               Je <span className="inline-block mx-1 text-[#4b4b4b] italic font-bold tracking-normal" style={{ fontFamily: "'Libre Baskerville', serif" }}>transforme</span> ton<br />
               idée en application qui<br />
@@ -789,7 +789,7 @@ function App() {
           </h1>
 
           {/* Sous-titre */}
-          <p className="text-grey text-[0.95rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-[54rem] mx-auto mb-7 md:mb-8 text-balance">
+          <p className="text-grey text-[0.95rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed max-w-[54rem] mx-auto mb-8 md:mb-10 text-balance">
             Stratégie, design et développement&nbsp;: je&nbsp;m'occupe de tout, de l'idée à la mise en ligne.
           </p>
 

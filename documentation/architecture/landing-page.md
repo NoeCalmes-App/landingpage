@@ -99,6 +99,10 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
   offert ») : un trait de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les
   traverse et passe sous le texte (`.btn-reflet` dans `src/index.css`). Seulement à la souris, et pas
   quand moins d'animations sont demandées.
+- Espacement (demande de Noé du 10/10/2026 : plus d'air au-dessus du titre, la vidéo plus bas) : sur
+  ordinateur, 88 px entre la barre du haut et le titre, puis 28 px jusqu'à la phrase, 40 px jusqu'au
+  bouton et 60 px jusqu'à la vidéo (titre à 176 px du haut, vidéo à 524 px). Sur téléphone : 20, 32 et
+  40 px. Le hero reste centré en hauteur quand l'écran est plus haut que son contenu.
 - Fond (`.hero-bg` dans `src/index.css`) : une lueur violette en arc de cercle. Un grand cercle blanc
   centré en haut (blanc jusqu'à 34 % du rayon, fondu jusqu'à 70 %) laisse le violet monter haut sur les
   côtés, descendre doucement vers le milieu et remonter de l'autre côté ; il entoure la vidéo. Même
@@ -109,18 +113,22 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
 Sous le bouton « J'ai une idée d'application » du hero, un film de 26 secondes en motion design
 (voix off et bruitages, pas de musique). Code : `src/HeroVideo.jsx` et `src/hero-video.css`.
 Fichiers : `public/assets/videos/hero-v10-1080.mp4` (ordinateur), `hero-v10-720.mp4` (mobile,
-connexion lente, économiseur de données) et la photo de la couverture,
-`public/assets/images/profile/noe-portrait.webp`. Les sources du film
+connexion lente, économiseur de données) et deux affiches `hero-v10-affiche-decolle*.webp`.
+Les sources du film
 (textes, voix, réglages) sont dans `content/video-hero/v10/`. Pour publier un nouveau montage,
 changer le numéro dans les noms de fichiers (v11…) : le navigateur ne ressert pas l'ancien film en cache.
 
 Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
 
-- Tant que la vidéo n'a rien montré, une couverture violette est posée dessus : la photo de Noé,
-  « Ton idée a du potentiel ? » et un bouton « Regarde la vidéo · 0:26 ». Elle est en HTML, pas en image :
-  le texte reste net à toutes les tailles et, sur téléphone, le bouton se réduit à son rond. Toute la
-  couverture lance la vidéo avec le son. Noé ne voulait ni l'image « 8 apps sur 10 » du film (« ça donne
-  pas envie de regarder ») ni le titre du hero répété.
+- Tant que la vidéo n'a rien montré, une affiche est posée dessus, comme chez Ikovaline (une image du
+  film, peu d'éléments) : le fond blanc du film, « Et si ton idée décollait ? » (« décollait » dans le
+  dégradé violet, comme « décoller » dans le film) et la courbe « Revenus » du film qui monte jusqu'à une
+  flèche. Noé a choisi le blanc parmi quatre propositions (violet ou blanc, « En 2026, un vrai pari. »
+  avec les dés, ou cette phrase), a demandé un peu d'espace entre les deux lignes et une flèche qui
+  monte ; la phrase a été retenue parce qu'elle donne envie (positive) et que le film démarre sur ce
+  même blanc. Refusés avant : l'image « 8 apps sur 10 » (« ça donne pas envie
+  de regarder »), une couverture avec sa photo et « Regarde la vidéo » (« pas ma tête »), le titre du hero
+  répété. Source de l'image : `affiche.html` (variante F) dans le dossier de rendu du film.
 - Le film se charge en fond 0,7 s après l'affichage, mais ne démarre que quand on fait défiler la page
   jusqu'à lui (demande de Noé, octobre 2026) : au moins 24 px de défilement et la moitié de la vidéo à
   l'écran. Il joue alors seul, muet et en boucle, depuis le début. Pourquoi : au chargement, on lit le
@@ -137,7 +145,8 @@ Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
   bouge plus) ; le lecteur natif sur iPhone.
 - Lecture automatique refusée (iPhone en mode économie d'énergie, Safari ou Firefox réglés pour bloquer,
   navigateur intégré d'une application) ou non souhaitée (`prefers-reduced-motion`, économiseur de
-  données, rien n'est chargé d'avance) : la couverture reste, et son bouton lance la vidéo avec le son.
+  données, rien n'est chargé d'avance) : l'affiche reste, avec un gros bouton « Lancer la vidéo », qui la
+  lance avec le son.
 
 ## Galerie d’interfaces sur l’accueil
 
