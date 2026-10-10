@@ -95,14 +95,15 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
   reconnaît ; « Discuter avec Noé » n'a tenu que la journée du 10/10). Dessous, en petit, la photo de Noé et
   « C'est moi qui réponds, sur WhatsApp · gratuit », qui garde le côté humain. Plus grand sur ordinateur et
   sur une seule ligne jusqu'à 320 px. Il mène à la section contact, « Parlons de ton projet », dont le
-  bouton porte le même texte et ouvre WhatsApp. Même texte sur le bouton qui suit « Comment ça se passe ? »
-  et dans le pied de page. La barre du haut et le menu sur téléphone disent « J'ai une idée » (plus court,
+  bouton, qui ouvre WhatsApp, dit « Discuter avec Noé » : à cet endroit, le visiteur s'attend à parler à
+  quelqu'un (Noé, 10/10/2026), comme le lien du pied de page. Le bouton qui suit « Comment ça se passe ? »
+  dit « J'ai une idée d'application », comme celui du haut. La barre du haut et le menu sur téléphone disent « J'ai une idée » (plus court,
   comme Ikovaline), sur l'accueil, le blog, les quiz et les pages /expertise, /creation-application-mobile
   et /faq.
 - Au survol, tous les boutons de l'accueil ont le reflet de la fin du film (« Audit offert ») : un trait
   de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les traverse et passe sous le
-  texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (les trois « J'ai une idée
-  d'application ») et les boutons noirs (« J'ai une idée » en haut, le bouton du menu sur téléphone,
+  texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (« J'ai une idée d'application » en haut
+  et après les étapes, « Discuter avec Noé » dans la section contact) et les boutons noirs (« J'ai une idée » en haut, le bouton du menu sur téléphone,
   « Lancer mon audit »), où le même trait blanc se voit comme un reflet gris clair (demande de Noé du
   10/10/2026 : « tous les autres boutons », « travailler en noir »). Seulement à la souris, et pas quand
   moins d'animations sont demandées.
@@ -184,21 +185,24 @@ c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
 1. **Hero et vidéo** (voir plus haut).
 2. **« Ce que j'ai déjà construit »** (`#calories-proof`, lien « Preuves » de la barre du haut) : « Des
    applications publiées, utilisées, et qui rapportent. », puis quatre chiffres fournis par Noé, en 2 × 2 :
-   13 000 € par mois pour Calorie (sur un marché déjà saturé), 300 000 utilisateurs pour Hush (dès la
-   première version), +900 000 téléchargements (toutes ses applications), +20 applications publiées. À
+   13 000 € par mois pour Calorie (sur un marché déjà saturé), +300 000 utilisateurs pour Hush App (avec
+   sa première version), +900 000 téléchargements (toutes ses applications), +20 applications publiées. À
    côté, le carrousel des écrans, chacun avec une légende qui dit à quoi il sert : la stratégie se voit au
    lieu d'être annoncée. Remplace la barre de preuve, « Une stratégie derrière chaque écran » (ses cinq
    pastilles) et « Mon métier ». Styles : `src/app-showcase.css`.
-3. **« Comment ça se passe ? »** (`#offre`, lien « Méthode ») : « Les deux premières étapes sont offertes.
-   Tu ne paies qu'à la troisième. » Étape 1 « On en parle » et étape 2 « On cadre » portent la pastille
-   verte « Offert », l'étape 3 « On construit ensemble » la pastille violette « Tu paies ici » et le prix,
-   comme une information (décision de Noé du 10/10/2026) : « Tarif fixe, en général de 5 000 à 12 000 €.
-   Une première version en ligne en 45 jours en moyenne. » Les textes des étapes sont ceux validés par Noé
-   le même jour. Chaque étape montre ce qui se passe vraiment, à la place des illustrations décoratives :
-   la conversation (« Bonjour Noé, j'ai un projet d'application », le début du message WhatsApp
-   pré-rempli, et « Raconte-moi ton idée »), les trois documents (une vraie maquette, Bailora, le cahier
-   des charges et le devis de `src/DeliverableVisual.jsx`), l'application en ligne (Plouff Habitudes).
-   Absorbe « Avant de payer un euro, je t'offre ». Puis le bouton. Styles : `.etape…` dans `src/App.css`.
+3. **« Comment ça se passe ? »** (`#offre`, lien « Méthode ») : « Les deux premières étapes sont
+   offertes. » Étape 1 « On en parle » et étape 2 « On cadre » portent la pastille verte « Offert ».
+   L'étape 3 « On construit ensemble » donne le prix, comme une information (décision de Noé du
+   10/10/2026) : « Tarif fixe, en général de 5 000 à 12 000 €. Une première version en ligne en 45 jours en
+   moyenne. » Pas de « tu paies ici » ni de « tu ne paies qu'à la troisième » : on ne paie pas à la mise en
+   ligne, il y a un acompte au démarrage (Noé, 10/10/2026). Les textes des étapes sont ceux validés par Noé
+   le même jour. Les trois visuels ont la même forme, une carte blanche avec un titre et trois lignes à
+   icône : « Premier appel avec Noé » (ton idée, à qui elle s'adresse, comment bien la lancer), « Tu
+   reçois » (une première maquette, le cahier des charges, un devis clair) et « Ton application »
+   (maquette sur mesure, développement, mise en ligne, « En ligne »). Une première version mélangeait une
+   conversation, une vraie maquette et des illustrations : Noé l'a refusée (« design mélangé »).
+   `src/DeliverableVisual.jsx` ne sert plus. Absorbe « Avant de payer un euro, je t'offre ». Puis le
+   bouton. Styles : `.etape…` dans `src/App.css`.
 4. **« Pourquoi me faire confiance ? »** (`#confiance`, sous « Qui je suis » ; la route /avis y mène) : la
    photo de Noé, « Expert en applications mobiles & web », puis trois faits (il fait tout lui-même ; une
    dizaine d'idées par semaine ; ses propres applications, WakeUp Alarme et Plouff Habitudes, sont en
@@ -217,7 +221,7 @@ c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
    ensemble. /faq garde la liste complète (13 questions). Sous les questions, « Une autre question ?
    Écris-moi sur WhatsApp. » ouvre directement WhatsApp avec le suivi `home_faq`.
 7. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités,
-   le bouton WhatsApp (suivi `home_contact`), « Tu bosses direct avec moi », puis l'audit en second choix
+   le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`), « Tu bosses direct avec moi », puis l'audit en second choix
    dans une carte blanche (`#audit`, lien « Audit », route /audit) : « Pas encore prêt à écrire ? Teste ton
    idée : potentiel, budget et délai, en 2 minutes, sans appel. », bouton noir « Lancer mon audit ».
 
@@ -236,7 +240,8 @@ Sept captures fournies par Noé, converties en WebP de 660 px sous
 et la barre d'état : le cadre CSS ajoute seulement la coque et les boutons. La liste `SCREENS`
 (`src/AppShowcase.jsx`) définit l'ordre, le type (maquette ou application, affiché à côté du nom : une
 maquette n'est jamais présentée comme une application publiée) et la légende de chaque écran, qui dit à
-quoi il sert (rédigées le 10/10/2026, à faire relire par Noé). La légende change avec l'écran du milieu.
+quoi il sert (rédigées le 10/10/2026, à faire relire par Noé). Sonora est une application (plus une
+maquette) depuis le 10/10/2026. La légende change avec l'écran du milieu.
 
 Trois téléphones visibles, défilement toutes les 5,5 secondes (3,5 avant les légendes : le temps de les
 lire), glissement, flèches et clavier. La première capture reste affichée jusqu'à ce qu'au moins la

@@ -15,7 +15,7 @@ const SCREENS = [
     role: 'Les dos-d’âne annoncés pendant le trajet : la raison de rouvrir l’application.' },
   { file: 'plouff-habitudes', name: 'Plouff Habitudes', kind: 'Application', alt: 'Suivi quotidien des habitudes avec une mascotte et les objectifs du jour',
     role: 'Une mascotte et les objectifs du jour : l’habitude qui fait revenir chaque matin.' },
-  { file: 'sonora-decouvrir', name: 'Sonora', kind: 'Maquette', alt: 'Découverte musicale, playlists et lecteur audio',
+  { file: 'sonora-decouvrir', name: 'Sonora', kind: 'Application', alt: 'Découverte musicale, playlists et lecteur audio',
     role: 'Des playlists prêtes dès l’arrivée : jamais d’écran vide pour un nouveau venu.' },
   { file: 'wakeup-alarme', name: 'WakeUp Alarme', kind: 'Application', alt: 'Accueil du réveil à missions avec une alarme activée',
     role: 'Une mission pour couper le réveil : on ouvre l’application chaque matin.' },

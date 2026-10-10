@@ -123,7 +123,7 @@ export default function Footer({ allerVers, onLegal }) {
             {label}
           </a>
         ))}
-        <a href={lienInterne('/rendez-vous')} onClick={(e) => { e.preventDefault(); allerAuContact() }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">J'ai une idée d'application</a>
+        <a href={lienInterne('/rendez-vous')} onClick={(e) => { e.preventDefault(); allerAuContact() }} className="text-white text-sm font-semibold hover:text-white/60 transition-colors">Discuter avec Noé</a>
       </div>
 
       {/* Nous contacter + socials */}

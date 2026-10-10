@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import './App.css'
 import PhoneCarousel from './AppShowcase.jsx'
+import { Lightbulb, Users, Compass, Smartphone, FileText, Receipt, PenTool, Code2, Rocket, Check } from 'lucide-react'
 import HeroVideo from './HeroVideo.jsx'
-import DeliverableVisual from './DeliverableVisual.jsx'
 import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
 import MentionsLegales from './MentionsLegales.jsx'
 import CGV from './CGV.jsx'
@@ -111,10 +111,10 @@ const NAV_LINKS = [
 
 // « Pourquoi me faire confiance ? » : la comparaison avec une agence, resserrée (refonte du 10/10/2026).
 const COMPARAISON_AGENCE = [
-  ['À partir de 15 000 €', 'Tarif fixe, connu avant de commencer'],
-  ['Rien à voir avant de payer', 'Ta maquette, offerte avant de payer'],
+  ['À partir de 15 000 €', 'Tarif fixe, connu d’avance'],
+  ['Rien à voir avant de payer', 'Ta maquette, offerte'],
   ['Un chef de projet entre vous', 'Moi, directement, 6 jours sur 7'],
-  ['3 à 6 mois de développement', '45 jours en moyenne pour une première version'],
+  ['3 à 6 mois de développement', 'Première version : 45 jours en moyenne'],
   ['Projet livré, débrouille-toi', 'Je reste là après la mise en ligne'],
 ]
 
@@ -853,8 +853,8 @@ function App() {
                 </li>
                 <li>
                   <span className="app-proof-stat-icone"><img src={hushIcon} alt="" width="36" height="36" loading="lazy" /></span>
-                  <strong>300&nbsp;000</strong>
-                  <span>utilisateurs pour <b>Hush</b>, dès la première version</span>
+                  <strong>+300&nbsp;000</strong>
+                  <span>utilisateurs pour <b>Hush App</b>, avec sa première version</span>
                 </li>
                 <li>
                   <span className="app-proof-stat-icone">
@@ -880,7 +880,9 @@ function App() {
       {/* ========== COMMENT ÇA SE PASSE (et ce qui est offert) ========== */}
       {/* Refonte du 10/10/2026 : « Avant de payer un euro, je t'offre » et les étapes ne font plus qu'un. La maquette,
           le cahier des charges et le devis apparaissaient trois fois sur la page ; ils sont l'étape 2, offerte. Le prix
-          est donné à l'étape 3, comme une information (décision de Noé du 10/10/2026). Les textes des étapes sont ceux
+          est donné à l'étape 3, comme une information (décision de Noé du 10/10/2026), sans « tu paies ici » : on ne
+          paie pas à la mise en ligne, il y a un acompte au démarrage. Les trois visuels ont la même forme (une carte,
+          trois lignes) : Noé a refusé le mélange conversation, vraie maquette et illustrations. Les textes des étapes sont ceux
           validés par Noé le même jour. Id « offre » : lien « Méthode » de la barre du haut. */}
       <section className="py-14 md:py-22 px-5 bg-card" id="offre">
         <div className="max-w-275 mx-auto">
@@ -888,18 +890,17 @@ function App() {
             Comment <span className="text-brand">ça se passe ?</span>
           </h2>
           <p className="reveal text-center text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-8 md:mb-12">
-            Les deux premières étapes sont offertes. Tu ne paies qu'à la troisième.
+            Les deux premières étapes sont offertes.
           </p>
 
           <ol className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-250 mx-auto">
             <li className="etape">
               <div className="etape-visuel" aria-hidden="true">
-                <div className="etape-appel">
-                  <span className="etape-bulle etape-bulle-toi">Bonjour Noé, j'ai un projet d'application</span>
-                  <span className="etape-noe">
-                    <img src={mePhoto} alt="" width="30" height="30" loading="lazy" />
-                    <span className="etape-bulle etape-bulle-noe">Raconte-moi ton idée</span>
-                  </span>
+                <div className="etape-carte">
+                  <p className="etape-carte-titre"><img src={mePhoto} alt="" width="22" height="22" loading="lazy" />Premier appel avec Noé</p>
+                  <p className="etape-ligne"><span className="etape-icone"><Lightbulb size={13} /></span>Ton idée</p>
+                  <p className="etape-ligne"><span className="etape-icone"><Users size={13} /></span>À qui elle s'adresse</p>
+                  <p className="etape-ligne"><span className="etape-icone"><Compass size={13} /></span>Comment bien la lancer</p>
                 </div>
               </div>
               <p className="etape-pastilles"><span className="etape-num">Étape 1</span><span className="etape-offert">Offert</span></p>
@@ -910,13 +911,11 @@ function App() {
             </li>
             <li className="etape">
               <div className="etape-visuel" aria-hidden="true">
-                <div className="etape-livrables">
-                  <span className="etape-livrable">
-                    <span className="etape-mini-tel"><img src="/assets/images/apps/captures/bailora-accueil.webp" alt="" width="660" height="1431" loading="lazy" /></span>
-                    Maquette
-                  </span>
-                  <span className="etape-livrable"><DeliverableVisual type="brief" />Cahier des charges</span>
-                  <span className="etape-livrable"><DeliverableVisual type="quote" />Devis</span>
+                <div className="etape-carte">
+                  <p className="etape-carte-titre">Tu reçois</p>
+                  <p className="etape-ligne"><span className="etape-icone"><Smartphone size={13} /></span>Une première maquette<Check className="etape-ok" size={15} /></p>
+                  <p className="etape-ligne"><span className="etape-icone"><FileText size={13} /></span>Le cahier des charges<Check className="etape-ok" size={15} /></p>
+                  <p className="etape-ligne"><span className="etape-icone"><Receipt size={13} /></span>Un devis clair<Check className="etape-ok" size={15} /></p>
                 </div>
               </div>
               <p className="etape-pastilles"><span className="etape-num">Étape 2</span><span className="etape-offert">Offert</span></p>
@@ -925,14 +924,16 @@ function App() {
                 Après l'appel, je t'envoie un cahier des charges offert, une première maquette et un devis clair. Tu sais ce que tu vas avoir, quand, et pour combien.
               </p>
             </li>
-            <li className="etape etape-payante">
+            <li className="etape">
               <div className="etape-visuel" aria-hidden="true">
-                <div className="etape-lancement">
-                  <span className="etape-mini-tel etape-mini-tel-grand"><img src="/assets/images/apps/captures/plouff-habitudes.webp" alt="" width="660" height="1431" loading="lazy" /></span>
-                  <span className="etape-en-ligne"><i />En ligne</span>
+                <div className="etape-carte">
+                  <p className="etape-carte-titre">Ton application</p>
+                  <p className="etape-ligne"><span className="etape-icone"><PenTool size={13} /></span>Maquette sur mesure<Check className="etape-ok" size={15} /></p>
+                  <p className="etape-ligne"><span className="etape-icone"><Code2 size={13} /></span>Développement<Check className="etape-ok" size={15} /></p>
+                  <p className="etape-ligne"><span className="etape-icone"><Rocket size={13} /></span>Mise en ligne<span className="etape-en-ligne"><i />En ligne</span></p>
                 </div>
               </div>
-              <p className="etape-pastilles"><span className="etape-num">Étape 3</span><span className="etape-paie">Tu paies ici</span></p>
+              <p className="etape-pastilles"><span className="etape-num">Étape 3</span></p>
               <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2">On construit ensemble</h3>
               <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">
                 Je reprends la maquette sur mesure, je développe ton application et je la publie sur les stores ou sur le web. Ensuite, je t'accompagne pour la faire évoluer.
@@ -947,10 +948,10 @@ function App() {
             <a
               href={lienInterne('/rendez-vous')}
               onClick={goBookCall}
-              className="btn-reflet group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
+              className="btn-reflet group inline-flex items-center gap-2 min-[360px]:gap-2.5 whitespace-nowrap bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-5 min-[360px]:px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
               J'ai une idée d'application
-              <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <svg className="shrink-0 w-[18px] h-[18px] min-[360px]:w-[22px] min-[360px]:h-[22px] transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
@@ -1142,10 +1143,10 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackDirectWhatsAppLead('home_contact')}
-              className="btn-reflet group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
+              className="btn-reflet group inline-flex items-center gap-2 min-[360px]:gap-2.5 whitespace-nowrap bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-5 min-[360px]:px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
               <svg className="w-[18px] h-[18px] md:w-[20px] md:h-[20px] shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.057 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.562-5.338 11.897-11.9 11.897a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.5 5.211l-.999 3.648 3.998-1.171z"/></svg>
-              <span>J'ai une idée d'application</span>
+              <span>Discuter avec Noé</span>
             </a>
             <div className="flex items-center gap-3 mt-6 max-w-xs sm:max-w-md mx-auto px-2 text-left">
               <img src={mePhoto} alt="Noé Calmes" loading="lazy" width="40" height="40" className="w-10 h-10 rounded-full object-cover shadow-sm shrink-0" />

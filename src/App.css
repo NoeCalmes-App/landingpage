@@ -1,44 +1,27 @@
-/* Petites illustrations des livrables (maquette, cahier des charges, devis), à l'étape 2 de « Comment ça se passe ? » */
-.deliverable-visual { width: 80px; height: 70px; flex-shrink: 0; color: var(--color-brand); }
-.deliverable-visual svg { width: 100%; height: 100%; }
-
 /* ===== Accueil, refonte du 10/10/2026 : les étapes de « Comment ça se passe ? » ===== */
-/* Chaque étape montre ce qui se passe vraiment (la conversation, les trois documents, l'application en ligne) à la
-   place des illustrations décoratives. Les pastilles disent ce qui est offert et où l'on paie. */
+/* Les trois visuels ont la même forme : une carte blanche, un titre, trois lignes avec une icône (refait le 10/10/2026 :
+   Noé a refusé le mélange conversation, vraie maquette et illustrations, « design mélangé »). La pastille verte
+   « Offert » dit ce qui ne se paie pas ; il n'y a pas de « tu paies ici » (acompte au démarrage, pas à la mise en ligne). */
 .etape { display: flex; flex-direction: column; text-align: left; background: #fff; border: 1px solid #ebe8f5; border-radius: 20px; padding: 16px 16px 22px; }
 .etape > h3, .etape > p { padding: 0 6px; }
-.etape-payante { border-color: rgba(102, 93, 255, .45); box-shadow: 0 18px 40px -30px rgba(102, 93, 255, .6); }
-.etape-visuel { height: 150px; border-radius: 14px; background: linear-gradient(160deg, #f7f6ff, #f1efff); display: grid; place-items: center; margin-bottom: 16px; overflow: hidden; }
+.etape-visuel { height: 156px; border-radius: 14px; background: linear-gradient(160deg, #f7f6ff, #efedff); display: grid; place-items: center; margin-bottom: 16px; padding: 0 14px; }
 .etape-pastilles { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-.etape-num, .etape-offert, .etape-paie { font-size: 12.5px; line-height: 1; padding: 6px 12px; border-radius: 999px; }
+.etape-num, .etape-offert { font-size: 12.5px; line-height: 1; padding: 6px 12px; border-radius: 999px; }
 .etape-num { font-weight: 600; color: #665dff; background: rgba(102, 93, 255, .1); }
 .etape-offert { font-weight: 700; color: #15803d; background: #e7f7ed; }
-.etape-paie { font-weight: 700; color: #fff; background: #665dff; }
 .etape-prix { margin-top: 14px; padding-top: 14px !important; border-top: 1px solid #ece9f6; font-size: 14px; line-height: 1.55; color: #033475; }
 .etape-prix strong { color: #665dff; }
 
-/* Étape 1 : la conversation */
-.etape-appel { width: 100%; max-width: 260px; display: flex; flex-direction: column; gap: 9px; padding: 0 16px; }
-.etape-bulle { font-size: 12.5px; line-height: 1.35; padding: 8px 12px; border-radius: 15px; }
-.etape-bulle-toi { align-self: flex-end; max-width: 88%; background: #665dff; color: #fff; border-bottom-right-radius: 5px; box-shadow: 0 8px 16px -12px rgba(102, 93, 255, .9); }
-.etape-noe { display: flex; align-items: flex-end; gap: 8px; }
-.etape-noe img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-.etape-bulle-noe { background: #fff; color: #033475; font-weight: 600; border: 1px solid #e6e3f3; border-bottom-left-radius: 5px; }
-
-/* Étape 2 : la maquette, le cahier des charges et le devis */
-.etape-livrables { display: flex; align-items: flex-end; justify-content: center; gap: 12px; }
-.etape-livrable { display: flex; flex-direction: column; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 600; color: #4b5565; }
-.etape-livrable .deliverable-visual { width: 68px; height: 58px; }
-.etape-mini-tel { display: block; width: 50px; padding: 3px; border-radius: 11px; background: #141519; box-shadow: 0 10px 18px -10px rgba(37, 33, 58, .7); }
-.etape-mini-tel img { display: block; width: 100%; height: auto; aspect-ratio: 1179 / 2556; object-fit: cover; border-radius: 8px; }
-
-/* Étape 3 : l'application en ligne */
-.etape-lancement { position: relative; display: flex; align-items: center; justify-content: center; }
-.etape-mini-tel-grand { width: 58px; }
-.etape-en-ligne { position: absolute; left: calc(100% + 10px); top: 28px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 11px; border-radius: 999px; background: #fff; border: 1px solid #e6e3f3; font-size: 12px; font-weight: 700; color: #033475; white-space: nowrap; box-shadow: 0 8px 18px -12px rgba(59, 47, 208, .55); }
-.etape-en-ligne i { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; }
+.etape-carte { width: 100%; max-width: 240px; display: flex; flex-direction: column; gap: 7px; padding: 11px 12px 12px; background: #fff; border: 1px solid #e9e6f6; border-radius: 14px; box-shadow: 0 14px 28px -22px rgba(59, 47, 208, .55); }
+.etape-carte-titre { display: flex; align-items: center; gap: 7px; margin-bottom: 2px; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 12.5px; font-weight: 800; color: #033475; }
+.etape-carte-titre img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
+.etape-ligne { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; line-height: 1.2; color: #33415c; }
+.etape-icone { width: 24px; height: 24px; flex-shrink: 0; display: grid; place-items: center; border-radius: 7px; background: #f1efff; color: #665dff; }
+.etape-ok { margin-left: auto; flex-shrink: 0; color: #22a35a; }
+.etape-en-ligne { margin-left: auto; display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; border-radius: 999px; background: #e7f7ed; color: #15803d; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.etape-en-ligne i { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; }
 
 @media (max-width: 767px) {
   .etape { padding: 14px 14px 20px; }
-  .etape-visuel { height: 124px; margin-bottom: 14px; }
+  .etape-visuel { height: 150px; margin-bottom: 14px; }
 }
