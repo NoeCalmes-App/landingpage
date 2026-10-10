@@ -23,35 +23,30 @@ const mePhoto = '/assets/images/profile/me.webp'
 // Les 3 premieres alimentent aussi l'accordeon de la home (App.jsx en prend
 // un slice), pour qu'il n'existe qu'une seule liste de questions.
 export const FAQ_ITEMS = [
-  // Ordre du 10/10/2026 : les 7 premieres sont les vraies objections, affichees sur l'accueil
+  // Ordre du 10/10/2026 : les 5 premieres sont les vraies objections, affichees sur l'accueil. Leurs reponses
+  // tiennent en une ou deux phrases courtes : 90 % des visiteurs arrivent sur telephone, depuis les pubs Instagram
+  // et Facebook (Noe, 11/10/2026). Retirees le 11/10/2026 : « Application mobile ou web » et « A qui appartient
+  // l'application ? » (« c'est logique, il paye », Noe).
   // (NB_FAQ_ACCUEIL dans App.jsx, et le balisage FAQPage de la home dans scripts/generate-routes.js).
   {
     q: "Combien coûte une application ?",
-    a: "Tarif fixe, posé avant de commencer : en général une dizaine de milliers d'euros pour une application complète, de la stratégie à la mise en ligne, en passant par la maquette et le développement. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.",
+    a: "Un tarif fixe, posé avant de commencer : en général une dizaine de milliers d'euros, de la stratégie à la mise en ligne. Et tu vois ta maquette avant de décider.",
   },
   {
     q: "Combien de temps faut-il pour avoir une application ?",
-    a: "Une première version en 30 jours en moyenne. Pour une application complète, le délai dépend du périmètre, on le cale ensemble.",
+    a: "Une première version en 30 jours en moyenne. Pour une application complète, on cale le délai ensemble, selon ce qu'elle doit faire.",
   },
   {
     q: "Je n'y connais rien en technique, c'est un problème ?",
-    a: "Non, c'est le cas de la plupart de mes clients. Une idée et à qui elle s'adresse, ça suffit pour commencer : pas besoin de cahier des charges, de maquette ni de vocabulaire technique. Si tu veux arriver avec une première lecture du potentiel, du budget et du délai, fais l'audit gratuit, il prend deux minutes.",
+    a: "Non, c'est le cas de la plupart de mes clients. Je suis là pour t'aiguiller et te conseiller : une idée suffit pour commencer ensemble.",
   },
   {
     q: "Est-ce que mon application va vraiment générer des revenus ?",
-    a: "Aucun sérieux ne peut te le garantir, et méfie-toi de qui le promet. Ce que je peux faire, c'est concevoir ton application pour qu'elle en ait la capacité : un modèle économique décidé avant la première ligne de code, un moment de valeur atteint vite, et une offre placée là où elle a du sens. C'est exactement ce qui sépare une application à zéro euro d'une application qui rapporte. Une application que j'ai conçue génère environ 13 000 € par mois.",
-  },
-  {
-    q: "Application mobile ou web : laquelle choisir ?",
-    a: "Je te le dis avant le devis, et je t'explique pourquoi. Si tes utilisateurs sont des particuliers qui s'en servent partout, c'est souvent une application mobile. Si ce sont des professionnels qui travaillent devant un ordinateur, c'est souvent une application web. Parfois les deux.",
-  },
-  {
-    q: "À qui appartient l'application ?",
-    a: "À toi. Une fois le projet réglé, l'application et son code source t'appartiennent, qu'elle soit sur les stores ou sur le web. Sur les stores, elle est publiée sur ton propre compte, à ton nom.",
+    a: "Personne ne peut le promettre. Mais je la conçois dès le départ pour qu'elle rapporte. Calorie, une application que j'ai conçue, fait 13 000 € par mois.",
   },
   {
     q: "Et pour trouver des utilisateurs ?",
-    a: "Je ne fais pas ta publicité. Mon travail, c'est que les utilisateurs qui arrivent restent, et deviennent des clients qui paient chaque mois.",
+    a: "Je ne fais pas ta publicité. Mon travail : que les utilisateurs qui arrivent deviennent des clients qui paient chaque mois.",
   },
   {
     q: "Après la livraison de l'application ?",

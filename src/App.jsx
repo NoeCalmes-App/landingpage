@@ -155,11 +155,11 @@ function useScrollReveal(trigger) {
   return ref
 }
 
-// La home affiche les 7 premieres questions (les vraies objections, depuis la refonte du 10/10/2026), /faq
+// La home affiche les 5 premieres questions (les vraies objections, depuis la refonte du 10/10/2026), /faq
 // affiche la liste complete. Une seule source (FAQ_ITEMS dans PagesSeo.jsx) : les reponses ne peuvent plus
 // diverger entre les deux pages. Le balisage FAQPage de la home (scripts/generate-routes.js) prend le meme
 // nombre : changer les deux ensemble.
-const NB_FAQ_ACCUEIL = 7
+const NB_FAQ_ACCUEIL = 5
 const faqItems = FAQ_ITEMS.slice(0, NB_FAQ_ACCUEIL)
 
 const AVAILABILITY_CHECK_DELAY_MS = 2200
@@ -943,7 +943,7 @@ function App() {
           {/* Le prix et le délai, sous les trois étapes : une seule ligne d'information pour tout le parcours (dans
               l'étape 3, il la rendait deux fois plus haute que les autres) */}
           <p className="reveal etape-tarif">
-            <strong>Tarif fixe</strong>, en général une dizaine de milliers d'euros pour une application complète&nbsp;: stratégie, maquette, développement et mise en ligne. <strong>Une première version en ligne en 30&nbsp;jours</strong> en moyenne.
+            <strong>Tarif fixe</strong>, en général une dizaine de milliers d'euros&nbsp;: stratégie, maquette, développement et mise en ligne. <strong>Première version en 30&nbsp;jours</strong> en moyenne.
           </p>
 
           <div className="reveal flex flex-col items-center mt-8 md:mt-10">
@@ -988,15 +988,15 @@ function App() {
               <ul className="space-y-4">
                 <li className="flex items-start gap-3 text-text text-[0.93rem] md:text-[0.95rem] leading-relaxed">
                   <svg className="shrink-0 mt-0.5 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                  <span><strong>Je fais tout moi-même&nbsp;:</strong> la stratégie, les écrans et le développement, de l'idée à la mise en ligne.</span>
+                  <span><strong>Je fais tout moi-même&nbsp;:</strong> la stratégie, les écrans et le développement.</span>
                 </li>
                 <li className="flex items-start gap-3 text-text text-[0.93rem] md:text-[0.95rem] leading-relaxed">
                   <svg className="shrink-0 mt-0.5 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                  <span><strong>Je vois passer une dizaine d'idées par semaine.</strong> Je sais vite ce qui peut marcher, et ce qui ne marchera pas.</span>
+                  <span><strong>Je vois passer une dizaine d'idées par semaine.</strong> Je sais vite ce qui peut marcher.</span>
                 </li>
                 <li className="flex items-start gap-3 text-text text-[0.93rem] md:text-[0.95rem] leading-relaxed">
                   <svg className="shrink-0 mt-0.5 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-                  <span><strong>Mes propres applications sont en ligne</strong>, WakeUp Alarme et Plouff Habitudes&nbsp;: je vis ce que vivent mes clients.</span>
+                  <span><strong>Mes propres applications sont en ligne&nbsp;:</strong> WakeUp Alarme et Plouff Habitudes.</span>
                 </li>
               </ul>
             </div>

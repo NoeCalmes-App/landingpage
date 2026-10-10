@@ -148,10 +148,6 @@ comprennent sans effort.
 « Mobile » et « web » restent corrects dans les titres SEO, les documents
 internes et le devis.
 
-Exception décidée par Noé le 11/10/2026 : la question de la FAQ qui porte sur le choix
-du support dit « Application mobile ou web : laquelle choisir ? ». « Téléphone ou
-ordinateur : comment choisir ? » ne lui parlait pas (« ça veut rien dire »).
-
 ---
 
 ## Le critère d'arbitrage (ce qui décide du support)

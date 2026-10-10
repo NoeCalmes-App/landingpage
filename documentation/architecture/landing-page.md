@@ -182,6 +182,10 @@ pose (c'est vrai ? qu'est-ce que je risque ? c'est qui ? c'est pour moi ?), puis
 sections deviennent sept. Le texte des sections est écrit dans le JSX de `App` (pas dans des tableaux) :
 c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
 
+**90 % des visiteurs arrivent sur téléphone, depuis les pubs Instagram et Facebook** (Noé, 11/10/2026) :
+chaque texte se juge d'abord sur un écran de téléphone, en phrases courtes. Une réponse de FAQ tient en
+une ou deux phrases ; « c'est trop long » est le premier reproche à éviter.
+
 1. **Hero et vidéo** (voir plus haut).
 2. **« Ce que j'ai déjà construit »** (`#calories-proof`, lien « Preuves » de la barre du haut) : « Des
    applications publiées, utilisées, et qui rapportent. », puis quatre chiffres fournis par Noé, en 2 × 2 :
@@ -200,9 +204,8 @@ c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
    `src/DeliverableVisual.jsx` (types `mockup`, `brief`, `quote`, `launch`). Refusés par Noé : une vraie
    capture d'écran mélangée aux dessins (« design mélangé ») et des cartes de petites lignes de texte
    (« pas lisible du tout », « ça va jamais convertir »). Sous les étapes, une ligne d'information pour
-   tout le parcours (`.etape-tarif`) : « Tarif fixe, en général une dizaine de milliers d'euros pour une
-   application complète : stratégie, maquette, développement et mise en ligne. Une première version en
-   ligne en 30 jours en moyenne. » (Noé, 11/10/2026 : « une dizaine de milliers d'euros » plutôt que
+   tout le parcours (`.etape-tarif`) : « Tarif fixe, en général une dizaine de milliers d'euros : stratégie,
+   maquette, développement et mise en ligne. Première version en 30 jours en moyenne. » (Noé, 11/10/2026 : « une dizaine de milliers d'euros » plutôt que
    « 5 000 à 12 000 € », et 30 jours plutôt que 45). Pas de « tu paies ici » : on ne paie pas à la mise en
    ligne, il y a un acompte au démarrage. Absorbe « Avant de payer un euro, je t'offre ». Puis le bouton.
    Styles : `.etape…` dans `src/App.css`.
@@ -217,17 +220,19 @@ c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
    le prix le plus bas, quelqu'un pour faire sa publicité). Écarte avant WhatsApp ceux que Noé ne prend
    pas. Remplace « Ce que je fais / Ce que je ne fais pas ». « Une application qui te rapporte des revenus
    chaque mois » (Noé, 11/10/2026, à la place de « qui rapporte, pas juste une application qui existe »).
-6. **FAQ « Pour y voir plus clair »** (`#faq`) : les 7 premières questions de `FAQ_ITEMS`
-   (`src/PagesSeo.jsx`), réordonnées le 10/10/2026 pour mettre les vraies objections en tête : combien
-   (« une dizaine de milliers d'euros » pour une application complète), en combien de temps (30 jours pour
-   une première version), « je n'y connais rien » (« la plupart de mes clients »), est-ce que ça va
-   rapporter, application mobile ou web (Noé, 11/10/2026 : « téléphone ou ordinateur, ça veut rien
-   dire »), à qui appartient l'application (sur les stores comme sur le web), et pour trouver des
-   utilisateurs (« les utilisateurs qui arrivent deviennent des clients qui paient chaque mois »). La FAQ
-   reste avant « Parlons de ton projet » (choix du 11/10/2026, Noé hésitait) : elle lève les dernières
-   objections juste avant le bouton ; après, la page finirait sur des questions au lieu du bouton. `NB_FAQ_ACCUEIL` vaut 7 dans
+6. **FAQ « Pour y voir plus clair »** (`#faq`) : les 5 premières questions de `FAQ_ITEMS`
+   (`src/PagesSeo.jsx`), les vraies objections : combien (« une dizaine de milliers d'euros », de la
+   stratégie à la mise en ligne), en combien de temps (30 jours pour une première version), « je n'y
+   connais rien » (« c'est le cas de la plupart de mes clients », « je suis là pour t'aiguiller et te
+   conseiller », « commencer ensemble »), est-ce que ça va rapporter (« personne ne peut le promettre »,
+   Calorie), et pour trouver des utilisateurs (« les utilisateurs qui arrivent deviennent des clients qui
+   paient chaque mois »). Chaque réponse tient en une ou deux phrases courtes (Noé, 11/10/2026 : « c'est
+   trop long »). Retirées le 11/10/2026 : « Application mobile ou web : laquelle choisir ? » et « À qui
+   appartient l'application ? » (« c'est logique, il paye », Noé). `NB_FAQ_ACCUEIL` vaut 5 dans
    `src/App.jsx` et dans `scripts/generate-routes.js` (balisage FAQPage de l'accueil) : changer les deux
-   ensemble. /faq garde la liste complète (13 questions). Sous les questions, « Une autre question ?
+   ensemble. /faq garde la liste complète (11 questions). La FAQ reste avant « Parlons de ton projet »
+   (choix du 11/10/2026, Noé hésitait) : elle lève les dernières objections juste avant le bouton ; après,
+   la page finirait sur des questions au lieu du bouton. Sous les questions, « Une autre question ?
    Écris-moi sur WhatsApp. » ouvre directement WhatsApp avec le suivi `home_faq`.
 7. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités,
    le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`), « Tu bosses direct avec moi », puis l'audit en second choix
