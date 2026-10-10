@@ -6,7 +6,7 @@ Quatre images, toutes dans `public/assets/images/meta/`, et aucune autre :
 |---|---|---|
 | `accueil-og.jpg` | `noecalmes.fr` et tous les liens, sauf les trois lignes suivantes | `accueil-og.html` + `accueil-og-fond.png` |
 | `maquette-og.png` | `/maquette` et toutes les `/maquette/...` | `maquette-og.html` |
-| `espace-client-og.png` | `/espace-client` | `espace-client-og.html` |
+| `espace-client-og.png` | `/espace-client` et tous les liens `/espace-client/...` (via `public/404.html`) | `espace-client-og.html` |
 | `audit-og.png` | `/audit-app` | `audit-og.html` |
 
 Qui les pose : `accueil-og.jpg` est dans `index.html` (donc héritée par toutes
@@ -17,10 +17,14 @@ aussi par `src/audit-app/AuditApp.jsx`.
 Poids : chaque image doit rester sous 300 Ko, au-delà WhatsApp n'affiche pas
 toujours l'aperçu.
 
-⚠️ Les liens `/espace-client/{client}/{jeton}` et `/maquette-visuel/...` n'ont
-pas de page à eux sur GitHub Pages : ils répondent 404 aux robots de partage,
-puis `public/404.html` les rattrape en JavaScript pour le visiteur. Les robots
-n'exécutent pas ce JavaScript, donc ces liens-là n'ont pas d'aperçu dédié.
+⚠️ Les liens `/espace-client/{client}/{jeton}` n'ont pas de page à eux sur
+GitHub Pages (un jeton par client) : le serveur leur sert `public/404.html`.
+Ce fichier porte donc les balises de l'espace client, et WhatsApp / iMessage,
+qui lisent le HTML sans exécuter le script de rattrapage, affichent cette
+image. Effet de bord assumé : toute adresse inconnue, `/maquette-visuel/...`
+compris, a le même aperçu. Facebook et LinkedIn, eux, refusent un aperçu sur
+une réponse 404 : pour ceux-là, seule une forme de lien en `#`
+(`/espace-client/#client/jeton`) servirait une vraie page.
 
 Titre de Noé dans ces images et partout ailleurs : « Expert en applications
 mobiles & web ». Pas de « SaaS » dans un titre (décision du 10/10/2026) : le mot

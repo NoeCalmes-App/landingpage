@@ -2,6 +2,33 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <!--
+    APERCU DE PARTAGE DES LIENS SANS PAGE A EUX (decision de Noe du 10/10/2026).
+    GitHub Pages sert ce fichier, en 404, pour toute adresse qui n'a pas de
+    dossier dans dist : avant tout /espace-client/{client}/{jeton}, qui ne peut
+    pas en avoir (un jeton par client). Le script plus bas rattrape le visiteur,
+    mais WhatsApp et iMessage lisent le HTML SANS executer le script : ce sont
+    ces balises qu'ils affichent. Elles sont donc celles de l'espace client,
+    le lien de ce type le plus partage. Ce fichier etant le meme pour toutes les
+    adresses inconnues, /maquette-visuel/... recoit le meme apercu.
+    Image : scripts/og/README.md.
+  -->
+  <title>Espace client — Noé Calmes</title>
+  <meta name="description" content="Devis, factures, suivi du projet et échanges avec Noé Calmes, au même endroit." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Noé Calmes" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Espace client — Noé Calmes" />
+  <meta property="og:description" content="Devis, factures, suivi du projet et échanges avec Noé Calmes, au même endroit." />
+  <meta property="og:image" content="https://noecalmes.fr/assets/images/meta/espace-client-og.png" />
+  <meta property="og:image:alt" content="Espace client : devis, factures et échanges avec Noé Calmes" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Espace client — Noé Calmes" />
+  <meta name="twitter:description" content="Devis, factures, suivi du projet et échanges avec Noé Calmes, au même endroit." />
+  <meta name="twitter:image" content="https://noecalmes.fr/assets/images/meta/espace-client-og.png" />
   <script>
     var path = window.location.pathname;
     var NOWORK_BASE = '/nowork';
