@@ -203,7 +203,10 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
    pastilles) et « Mon métier ». Styles : `src/app-showcase.css`.
 3. **« Comment ça se passe ? »** (`#offre`, lien « Étapes ») : trois cartes, étapes 1 « On en parle » et
    2 « On cadre » avec la pastille verte « Offert », étape 3 « Je construis » (« On construit ensemble »
-   jusqu'au 11/10/2026 : « c'est un peu faux, l'objectif c'est que je m'occupe de tout », Noé). Pas de phrase
+   jusqu'au 11/10/2026 : « c'est un peu faux, l'objectif c'est que je m'occupe de tout », Noé). Son texte
+   commence par « À partir de ta maquette, je crée le design final… » (« Je reprends la maquette sur mesure »
+   ne voulait rien dire pour Noé, 11/10/2026) et finit par « Après la mise en ligne, je reste disponible pour la
+   faire évoluer. » (Noé, 11/10/2026, à la place de « Ensuite, je t'accompagne pour la faire évoluer »). Pas de phrase
    au-dessus qui redise « offert » (retirée le 11/10/2026, Noé : « est-ce qu'on le met deux fois ? »). Les
    textes des étapes sont ceux validés par Noé le 10/10/2026. Les illustrations sont celles que Noé avait
    choisies (`meetingdev.svg`, `devmobile.svg`, `post.svg` dans `public/assets/images/illustrations/`) : il

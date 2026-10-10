@@ -932,7 +932,7 @@ function App() {
                 </span>
                 <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2.5 transition-colors duration-300 group-hover:text-white">Je construis</h3>
                 <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed transition-colors duration-300 group-hover:text-white/80">
-                  Je reprends la maquette sur mesure, je développe ton application et je la publie sur les stores ou sur le web. Ensuite, je t'accompagne pour la faire évoluer.
+                  À partir de ta maquette, je crée le design final, je développe ton application et je la publie sur les stores ou sur le web. Après la mise en ligne, je reste disponible pour la faire évoluer.
                 </p>
               </div>
             </li>
