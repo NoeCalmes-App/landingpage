@@ -2,6 +2,28 @@ import { useEffect, useMemo, useState } from 'react'
 
 const NOWORK_BASE_PATH = '/nowork'
 
+// LES LIENS EN « # » (decision de Noe du 10/10/2026).
+//
+// `noecalmes.fr/espace-client/#client/jeton` vaut `/espace-client/client/jeton`.
+// Pourquoi : la forme avec chemin n'a pas de page a elle sur GitHub Pages (un
+// jeton par client), le serveur repond 404, et WhatsApp n'affiche alors AUCUN
+// apercu. Ce qui suit le « # » n'est jamais envoye au serveur : il sert la
+// vraie page /espace-client/, en 200, avec son image de partage. On replie ici
+// le « # » dans le chemin, et l'iframe Nowork recoit l'adresse habituelle.
+// Les anciens liens avec chemin continuent de marcher par public/404.html.
+const HASH_CHEMIN = /^#\/?([A-Za-z0-9._~%-]+(?:\/[A-Za-z0-9._~%-]+)*)\/?$/
+
+function cheminDepuisHash(pathname, publicBasePath) {
+  const nu = (pathname || '').replace(/\/+$/, '')
+  if (nu !== publicBasePath) return null
+  const m = (window.location.hash || '').match(HASH_CHEMIN)
+  return m ? `${publicBasePath}/${m[1]}` : null
+}
+
+function cheminEffectif(publicBasePath) {
+  return cheminDepuisHash(window.location.pathname, publicBasePath) || window.location.pathname
+}
+
 function normalizePublicPath(pathname, publicBasePath) {
   const cleanPath = (pathname || publicBasePath).replace(/\/+$/, '') || publicBasePath
   return cleanPath === publicBasePath || cleanPath.startsWith(`${publicBasePath}/`)
@@ -15,8 +37,11 @@ function segmentCount(pathname, publicBasePath) {
 }
 
 function buildNoworkSrc(publicBasePath) {
-  const path = normalizePublicPath(window.location.pathname, publicBasePath)
-  return `${NOWORK_BASE_PATH}${path}${window.location.search}${window.location.hash}`
+  const depuisHash = cheminDepuisHash(window.location.pathname, publicBasePath)
+  const path = normalizePublicPath(depuisHash || window.location.pathname, publicBasePath)
+  // Le « # » replie dans le chemin n'est pas repasse a Nowork une seconde fois.
+  const hash = depuisHash ? '' : window.location.hash
+  return `${NOWORK_BASE_PATH}${path}${window.location.search}${hash}`
 }
 
 export default function AppRouteBridge({
@@ -30,7 +55,7 @@ export default function AppRouteBridge({
 }) {
   const [loaded, setLoaded] = useState(false)
   const iframeSrc = useMemo(() => buildNoworkSrc(publicBasePath), [publicBasePath])
-  const routeIsComplete = segmentCount(window.location.pathname, publicBasePath) >= minSegments
+  const routeIsComplete = segmentCount(cheminEffectif(publicBasePath), publicBasePath) >= minSegments
 
   // Exception assumee a la regle de la barre finale (src/seo.js) : ces routes
   // (/espace-client, /maquette-visuel) sont passees en `noindex, nofollow`

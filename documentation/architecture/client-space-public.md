@@ -23,6 +23,16 @@ Client
 
 Le bridge est implemente dans `src/ClientSpaceBridge.jsx`, via le composant generique `src/AppRouteBridge.jsx`.
 
+## Liens en « # » (10/10/2026)
+
+Nowork envoie desormais `noecalmes.fr/espace-client/#{slug}/{jeton}`. Le
+serveur sert la vraie page `/espace-client/` (200, image de partage de
+l'espace client : WhatsApp affiche l'apercu), et `src/AppRouteBridge.jsx`
+replie le « # » dans le chemin avant de charger l'iframe Nowork
+(`/nowork/espace-client/{slug}/{jeton}`). La forme avec chemin, celle des liens
+deja envoyes, reste servie par `public/404.html` : elle marche, sans apercu
+sur WhatsApp. Le meme pont accepte `/maquette-visuel/#{client}/{devis}`.
+
 ## Source de verite
 
 Les donnees d'espace client restent dans le projet Firebase historique `devis-app-8e216`, sous `users/default-user/clientSpaces`.
