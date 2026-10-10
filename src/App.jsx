@@ -903,9 +903,6 @@ function App() {
               </div>
             </div>
           </div>
-          <p className="reveal text-center text-text font-semibold text-[1rem] md:text-[1.1rem] mt-7 mb-3">
-            Comme une agence, en mieux. Sans l'intermédiaire, sans les délais.
-          </p>
         </div>
       </section>
 

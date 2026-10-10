@@ -26,8 +26,8 @@ import './hero-video.css'
 // main, parce que React ne pose pas l'attribut `muted`.
 
 const SOURCES = {
-  hd: '/assets/videos/hero-v10-1080.mp4',
-  sd: '/assets/videos/hero-v10-720.mp4',
+  hd: '/assets/videos/hero-v11-1080.mp4',
+  sd: '/assets/videos/hero-v11-720.mp4',
 }
 // L'affiche est une vraie image (et pas l'attribut `poster`) : le navigateur choisit la bonne taille et la
 // charge en priorité. Elle couvre la vidéo jusqu'à sa première image. C'est la miniature de la vidéo, dessinée

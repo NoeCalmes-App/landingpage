@@ -1,7 +1,7 @@
 # Le film du hero (1920x1080) recomposé en vertical (1080x1920) pour un Reel Instagram.
 # Même minutage que la voix et les bruitages : seules les positions, les tailles et le découpage des lignes changent.
 # Zone utile : y 250 à 1290 (en haut, l'en-tête d'Instagram ; en bas, les sous-titres puis la légende et les boutons).
-# usage : python3 reel_patch.py film33_render.html reel.html
+# usage : python3 reel_patch.py film-v11.html reel.html sous_titres.json
 import sys
 
 src, dst = sys.argv[1], sys.argv[2]
@@ -45,9 +45,10 @@ R('<div class="phone" id="ph1" style="left: 1233px; top: 321px">', '<div class="
 R('<div class="t ctr" id="A2" data-w style="top: 214px; font-size: 120px">En 2026, un vrai <span class="ser">pari.</span></div>',
   '<div class="t ctr" id="A2" data-w style="top: 330px; font-size: 150px">En 2026,</div>\n'
   '    <div class="t ctr" id="A2b" data-w style="top: 500px; font-size: 150px">un vrai <span class="ser">pari.</span></div>')
-R("    words('A2', t, Q.c1b + 0.02, Q.c2 - 0.28, { st: 0.07 });",
+# film v11 : « En 2026, » quand la voix le dit, « un vrai pari. » quand elle le dit (deux lignes ici)
+R("    words('A2', t, Q.c1b + 0.02, Q.c2 - 0.28, { at: [Q.c1b + 0.02, Q.c1b + 0.09, Q.c1p + 0.02, Q.c1p + 0.09, Q.c1p + 0.16] });",
   "    words('A2', t, Q.c1b + 0.02, Q.c2 - 0.28, { st: 0.07 });\n"
-  "    words('A2b', t, Q.c1b + 0.16, Q.c2 - 0.25, { st: 0.07 });")
+  "    words('A2b', t, Q.c1p + 0.02, Q.c2 - 0.25, { st: 0.07 });")
 # les dés retombent sous la phrase, côte à côte au milieu
 R("const DICE = [{ id: 'die1', sh: 'dsh1', d0: 0.0, dur: 0.95, x0: -300, x1: 772, a0: -40, spin: 752, fin: 5 },",
   "const DICE = [{ id: 'die1', sh: 'dsh1', d0: 0.0, dur: 0.95, x0: -300, x1: 330, a0: -40, spin: 752, fin: 5 },")
@@ -77,11 +78,16 @@ R('<div class="t white" id="C2" data-w style="left: 170px; top: 432px; font-size
   '<div class="t white ctr" id="C2a" data-w style="top: 262px; font-size: 92px">On les ouvre</div>\n'
   '    <div class="t white ctr" id="C2" data-w style="top: 362px; font-size: 92px"><span class="hl">une fois</span>…</div>')
 R('<div class="t white" id="C3" data-w style="left: 170px; top: 552px; font-size: 84px">puis <span class="hl">plus jamais</span>.</div>',
-  '<div class="t white ctr" id="C3" data-w style="top: 462px; font-size: 92px">puis <span class="hl">plus jamais</span>.</div>')
+  '<div class="t white ctr" id="C3" data-w style="top: 312px; font-size: 92px">puis <span class="hl">plus jamais</span>.</div>')
 R('<div class="phone" id="ph3" style="left: 1220px; top: 214px">', '<div class="phone" id="ph3" style="left: 384px; top: 652px">')
 R("    words('C2', t, Q.c3 + 0.05, out, { st: 0.06, sto: 0.015, dout: 0.16 });",
-  "    words('C2a', t, Q.c3 + 0.05, out, { st: 0.06, sto: 0.015, dout: 0.16 });\n"
-  "    words('C2', t, Q.c3 + 0.23, out + 0.02, { st: 0.06, sto: 0.015, dout: 0.16 });")
+  "    words('C2a', t, Q.c3 + 0.05, Q.c3c - 0.06, { st: 0.06, sto: 0.015, dout: 0.16 });\n"
+  "    words('C2', t, Q.c3 + 0.23, Q.c3c - 0.04, { st: 0.06, sto: 0.015, dout: 0.16 });")
+# une phrase à la fois (demande de Noé) : la seconde arrive quand la première est sortie
+R("    words('C3', t, Q.c3c + 0.1, out + 0.03, { st: 0.06, sto: 0.015, dout: 0.16 });",
+  "    words('C3', t, Q.c3c + 0.16, out + 0.03, { st: 0.06, sto: 0.015, dout: 0.16 });")
+R("    highlight('C2', t, Q.hl3a, out); highlight('C3', t, Q.hl3b, out + 0.03);",
+  "    highlight('C2', t, Q.hl3a, Q.c3c - 0.04); highlight('C3', t, Q.hl3b, out + 0.03);")
 
 # ---------------- scène 4 : Noé, les idées, « Ton idée », le potentiel et la courbe ----------------
 R('<div class="t" id="D1" data-w style="left: 500px; top: 196px; font-size: 140px"><span class="grad">Noé</span></div>',
@@ -93,8 +99,8 @@ R('<div class="t" id="D3" data-w style="left: 506px; top: 376px; font-size: 52px
   '<div class="t ctr" id="D3" data-w style="top: 540px; font-size: 76px; letter-spacing: -0.025em">Il sait si la tienne</div>\n'
   '    <div class="t ctr" id="D3b" data-w style="top: 628px; font-size: 76px; letter-spacing: -0.025em">a du <span class="ser">potentiel…</span></div>')
 R('<div class="t" id="D4" data-w style="left: 506px; top: 446px; font-size: 52px; letter-spacing: -0.025em">et comment la faire <span class="grad">décoller.</span></div>',
-  '<div class="t ctr" id="D4" data-w style="top: 716px; font-size: 76px; letter-spacing: -0.025em">et comment la faire</div>\n'
-  '    <div class="t ctr" id="D4b" data-w style="top: 804px; font-size: 76px; letter-spacing: -0.025em"><span class="grad">décoller.</span></div>')
+  '<div class="t ctr" id="D4" data-w style="top: 540px; font-size: 76px; letter-spacing: -0.025em">et comment la faire</div>\n'
+  '    <div class="t ctr" id="D4b" data-w style="top: 628px; font-size: 76px; letter-spacing: -0.025em"><span class="grad">décoller.</span></div>')
 R('#chart4 { position: absolute; left: 1086px; top: 548px;', '#chart4 { position: absolute; left: 512px; top: 960px;')
 R('<div id="pot5w" style="position: absolute; left: 730px; top: 566px;', '<div id="pot5w" style="position: absolute; left: 292px; top: 948px;')
 # l'avatar et son anneau, à gauche de « Noé », le tout centré
@@ -105,11 +111,11 @@ R("    words('D2', t, Q.c4 + 0.55, Q.c4b - 0.36, { st: 0.045, sto: 0.015, dout: 
   "    words('D2', t, Q.c4 + 0.55, Q.c4b - 0.36, { st: 0.045, sto: 0.015, dout: 0.16 });\n"
   "    words('D2b', t, Q.c4 + 0.55 + 4 * 0.045, Q.c4b - 0.33, { st: 0.045, sto: 0.015, dout: 0.16 });")
 R("    words('D3', t, Q.c4b, out, { st: 0.06, sto: 0.015, dout: 0.16 });",
-  "    words('D3', t, Q.c4b, out, { st: 0.06, sto: 0.015, dout: 0.16 });\n"
-  "    words('D3b', t, Q.c4b + 5 * 0.06, out + 0.02, { st: 0.06, sto: 0.015, dout: 0.16 });")
+  "    words('D3', t, Q.c4b, Q.c4d - 0.05, { st: 0.06, sto: 0.015, dout: 0.16 });\n"
+  "    words('D3b', t, Q.c4b + 5 * 0.06, Q.c4d - 0.03, { st: 0.06, sto: 0.015, dout: 0.16 });")
 R("    words('D4', t, c4d, out + 0.02, { st: 0.06, sto: 0.015, dout: 0.16 });",
-  "    words('D4', t, c4d, out + 0.02, { st: 0.06, sto: 0.015, dout: 0.16 });\n"
-  "    words('D4b', t, c4d + 4 * 0.06, out + 0.04, { st: 0.06, sto: 0.015, dout: 0.16 });")
+  "    words('D4', t, c4d + 0.2, out + 0.02, { st: 0.06, sto: 0.015, dout: 0.16 });\n"
+  "    words('D4b', t, c4d + 0.2 + 4 * 0.06, out + 0.04, { st: 0.06, sto: 0.015, dout: 0.16 });")
 R("show(ch, chs > 0.001); S(ch, 'transform', `scale(${chs.toFixed(4)})`);", "show(ch, chs > 0.001); S(ch, 'transform', `scale(${(0.8 * chs).toFixed(4)})`);")
 # la pile d'idées : au milieu, sous le texte ; elles arrivent du bas à droite
 R("    const PX = 1420, PY = 676;                                    // centre of the pile",
@@ -142,15 +148,13 @@ R('.pay { position: absolute; left: 1250px; width: 520px;', '.pay { position: ab
 R("const PAYS = [['Octobre', 370], ['Novembre', 490], ['Décembre', 610]];", "const PAYS = [['Octobre', 640], ['Novembre', 760], ['Décembre', 880]];")
 
 # ---------------- scène 6 : « Audit offert » ----------------
-R('<div class="t ctr white" id="G1" data-w style="top: 300px; font-size: 176px">Audit <span style="font-family:\'LBV\',serif; font-style:italic; font-weight:700; letter-spacing:-0.01em">offert</span></div>',
-  '<div class="t ctr white" id="G1" data-w style="top: 320px; font-size: 210px">Audit</div>\n'
-  '    <div class="t ctr white" id="G1c" data-w style="top: 540px; font-size: 210px"><span style="font-family:\'LBV\',serif; font-style:italic; font-weight:700; letter-spacing:-0.01em">offert</span></div>')
+R('<div class="t ctr white" id="G1" data-w style="top: 300px; font-size: 176px">',
+  '<div class="t ctr white" id="G1" data-w style="top: 520px; font-size: 150px">')
 R('<div class="t ctr white" id="G1b" data-w style="top: 528px; font-size: 76px; letter-spacing: -0.025em">personnalisé, au premier appel.</div>',
-  '<div class="t ctr white" id="G1b" data-w style="top: 840px; font-size: 84px; letter-spacing: -0.025em">personnalisé,</div>\n'
-  '    <div class="t ctr white" id="G1d" data-w style="top: 936px; font-size: 84px; letter-spacing: -0.025em">au premier appel.</div>')
-R('<div class="t ctr" id="G2" data-w style="top: 680px; font-size: 46px;', '<div class="t ctr" id="G2" data-w style="top: 1084px; font-size: 52px;')
-R("    words('G1', t, Q.c7 + 0.12, null, { at: [Q.c7 + 0.12, Q.c7 + 0.3] });\n    words('G1b', t, c7c - 0.02, null, { st: 0.05 });",
-  "    words('G1', t, Q.c7 + 0.12, null);\n    words('G1c', t, Q.c7 + 0.3, null);\n"
+  '<div class="t ctr white" id="G1b" data-w style="top: 742px; font-size: 76px; letter-spacing: -0.025em">personnalisé,</div>\n'
+  '    <div class="t ctr white" id="G1d" data-w style="top: 828px; font-size: 76px; letter-spacing: -0.025em">au premier appel.</div>')
+R('<div class="t ctr" id="G2" data-w style="top: 680px; font-size: 46px;', '<div class="t ctr" id="G2" data-w style="top: 968px; font-size: 50px;')
+R("    words('G1b', t, c7c - 0.02, null, { st: 0.05 });",
   "    words('G1b', t, c7c - 0.02, null, { st: 0.05 });\n    words('G1d', t, c7c + 0.03, null, { st: 0.05 });")
 # le violet de la fin naît du téléphone de la scène 5 (son centre), puis remplit l'écran
 R('    const cta = { x: 849 + 156, y: 214 + 326 };', '    const cta = { x: 76 + 134, y: 560 + 280 };')

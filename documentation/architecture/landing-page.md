@@ -121,11 +121,12 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
 
 Sous le bouton « Discuter avec Noé » du hero, un film de 26 secondes en motion design
 (voix off et bruitages, pas de musique). Code : `src/HeroVideo.jsx` et `src/hero-video.css`.
-Fichiers : `public/assets/videos/hero-v10-1080.mp4` (ordinateur), `hero-v10-720.mp4` (mobile,
+Fichiers : `public/assets/videos/hero-v11-1080.mp4` (ordinateur), `hero-v11-720.mp4` (mobile,
 connexion lente, économiseur de données) et la miniature `hero-v10-miniature.webp` (et `-960`).
 Les sources du film
-(textes, voix, réglages) sont dans `content/video-hero/v10/`. Pour publier un nouveau montage,
-changer le numéro dans les noms de fichiers (v11…) : le navigateur ne ressert pas l'ancien film en cache.
+(textes, voix, réglages) sont dans `content/video-hero/v11/` (la v11 recale le début sur la voix : « En 2026, »
+quand la voix le dit, puis « un vrai pari. » et les dés ; base et voix dans `v10/`). Pour publier un nouveau montage,
+changer le numéro dans les noms de fichiers (v12…) : le navigateur ne ressert pas l'ancien film en cache.
 
 Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
 
