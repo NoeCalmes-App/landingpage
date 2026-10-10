@@ -887,7 +887,8 @@ function App() {
           avait choisies (meetingdev, devmobile, post) : il les a redemandées le 11/10/2026 après deux essais refusés
           (une conversation, une vraie maquette et des dessins mélangés, puis des cartes de petites lignes de texte, « pas
           lisible »). Sur téléphone, l'illustration se met à droite du début du texte, pour ne pas prendre toute la place
-          (`.process-…` dans src/App.css). Les textes des étapes sont ceux validés par Noé le 10/10/2026. Sous les étapes,
+          (`.process-…` dans src/App.css). Les textes des étapes sont ceux validés par Noé le 10/10/2026 ; le titre de l'étape 3 est « Je
+          construis » depuis le 11/10/2026 (« c'est moi qui m'occupe de tout », Noé ; avant : « On construit ensemble »). Sous les étapes,
           le prix en une ligne : il trie les budgets avant WhatsApp (la réponse de la FAQ est repliée, celle-ci se voit).
           Le bouton dit « Discuter avec Noé », la suite de l'étape 1 « On en parle ». Id « offre » : lien « Étapes ». */}
       <section className="py-14 md:py-28 px-5 bg-card" id="offre">
@@ -899,7 +900,7 @@ function App() {
           <ol className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-3.5 md:gap-8 max-w-262 mx-auto">
             <li className="process-card group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
               <img src={meetingSvg} alt="" loading="lazy" width="280" height="160" className="process-illustration w-full h-32 md:h-40 object-contain mb-6" />
-              <div className="process-copy flex flex-col justify-center flex-1">
+              <div className="process-copy flex flex-col justify-start flex-1">
                 <span className="process-pastilles flex items-center gap-2 mb-3">
                   <span className="text-brand text-[0.8rem] font-semibold bg-brand/10 px-3 py-1 rounded-full transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">Étape 1</span>
                   <span className="process-offert text-[#15803d] text-[0.8rem] font-bold bg-[#e7f7ed] px-3 py-1 rounded-full transition-colors duration-300 group-hover:bg-white">Offert</span>
@@ -912,7 +913,7 @@ function App() {
             </li>
             <li className="process-card group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
               <img src={devSvg} alt="" loading="lazy" width="280" height="160" className="process-illustration w-full h-32 md:h-40 object-contain mb-6" />
-              <div className="process-copy flex flex-col justify-center flex-1">
+              <div className="process-copy flex flex-col justify-start flex-1">
                 <span className="process-pastilles flex items-center gap-2 mb-3">
                   <span className="text-brand text-[0.8rem] font-semibold bg-brand/10 px-3 py-1 rounded-full transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">Étape 2</span>
                   <span className="process-offert text-[#15803d] text-[0.8rem] font-bold bg-[#e7f7ed] px-3 py-1 rounded-full transition-colors duration-300 group-hover:bg-white">Offert</span>
@@ -925,11 +926,11 @@ function App() {
             </li>
             <li className="process-card group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
               <img src={postSvg} alt="" loading="lazy" width="280" height="160" className="process-illustration w-full h-32 md:h-40 object-contain mb-6" />
-              <div className="process-copy flex flex-col justify-center flex-1">
+              <div className="process-copy flex flex-col justify-start flex-1">
                 <span className="process-pastilles flex items-center gap-2 mb-3">
                   <span className="text-brand text-[0.8rem] font-semibold bg-brand/10 px-3 py-1 rounded-full transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">Étape 3</span>
                 </span>
-                <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2.5 transition-colors duration-300 group-hover:text-white">On construit ensemble</h3>
+                <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2.5 transition-colors duration-300 group-hover:text-white">Je construis</h3>
                 <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed transition-colors duration-300 group-hover:text-white/80">
                   Je reprends la maquette sur mesure, je développe ton application et je la publie sur les stores ou sur le web. Ensuite, je t'accompagne pour la faire évoluer.
                 </p>
