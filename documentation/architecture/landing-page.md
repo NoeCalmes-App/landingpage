@@ -196,7 +196,7 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
 1. **Hero et vidéo** (voir plus haut).
 2. **« Ce que j'ai déjà construit »** (`#calories-proof`, lien « Preuves » de la barre du haut) : « Des
    applications publiées, utilisées, et qui rapportent. », puis quatre chiffres fournis par Noé, en 2 × 2 :
-   13 000 € par mois pour Calorie (sur un marché déjà saturé), +300 000 utilisateurs pour Hush App (avec
+   +13 000 € par mois pour Calorie (sur un marché déjà saturé ; le « + » demandé par Noé le 11/10/2026), +300 000 utilisateurs pour Hush App (avec
    sa première version), +900 000 téléchargements (toutes ses applications), +20 applications publiées. À
    côté, le carrousel des écrans, chacun avec une légende qui dit à quoi il sert : la stratégie se voit au
    lieu d'être annoncée. Remplace la barre de preuve, « Une stratégie derrière chaque écran » (ses cinq
@@ -205,8 +205,8 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
    2 « On cadre » avec la pastille verte « Offert », étape 3 « Je construis » (« On construit ensemble »
    jusqu'au 11/10/2026 : « c'est un peu faux, l'objectif c'est que je m'occupe de tout », Noé). Son texte
    commence par « À partir de ta maquette, je crée le design final… » (« Je reprends la maquette sur mesure »
-   ne voulait rien dire pour Noé, 11/10/2026) et finit par « Après la mise en ligne, je reste disponible pour la
-   faire évoluer. » (Noé, 11/10/2026, à la place de « Ensuite, je t'accompagne pour la faire évoluer »). Pas de phrase
+   ne voulait rien dire pour Noé, 11/10/2026) et finit par « Je reste disponible après la mise en ligne. » (Noé,
+   11/10/2026, à la place de « Ensuite, je t'accompagne pour la faire évoluer »). Pas de phrase
    au-dessus qui redise « offert » (retirée le 11/10/2026, Noé : « est-ce qu'on le met deux fois ? »). Les
    textes des étapes sont ceux validés par Noé le 10/10/2026. Les illustrations sont celles que Noé avait
    choisies (`meetingdev.svg`, `devmobile.svg`, `post.svg` dans `public/assets/images/illustrations/`) : il
@@ -278,10 +278,9 @@ pied de page violet.
 Sept captures fournies par Noé, converties en WebP de 660 px sous
 `public/assets/images/apps/captures/` (environ 375 Ko au total). Les captures contiennent déjà l'encoche
 et la barre d'état : le cadre CSS ajoute seulement la coque et les boutons. La liste `SCREENS`
-(`src/AppShowcase.jsx`) définit l'ordre, le type (maquette ou application, affiché à côté du nom : une
-maquette n'est jamais présentée comme une application publiée) et la légende de chaque écran, qui dit à
-quoi il sert (rédigées le 10/10/2026, à faire relire par Noé). Sonora est une application (plus une
-maquette) depuis le 10/10/2026. La légende change avec l'écran du milieu.
+(`src/AppShowcase.jsx`) définit l'ordre, le type (affiché à côté du nom : « Application » pour tous les
+écrans depuis le 11/10/2026, à la demande de Noé) et la légende de chaque écran, qui dit à
+quoi il sert (rédigées le 10/10/2026, à faire relire par Noé). La légende change avec l'écran du milieu.
 
 Trois téléphones visibles, défilement toutes les 5,5 secondes (3,5 avant les légendes : le temps de les
 lire), glissement, flèches et clavier. La première capture reste affichée jusqu'à ce qu'au moins la

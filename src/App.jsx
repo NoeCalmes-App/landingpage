@@ -851,7 +851,7 @@ function App() {
               <ul className="reveal-stagger app-proof-stats">
                 <li>
                   <span className="app-proof-stat-icone"><img src={calorieIcon} alt="" width="36" height="36" loading="lazy" /></span>
-                  <strong>13&nbsp;000&nbsp;€</strong>
+                  <strong>+13&nbsp;000&nbsp;€</strong>
                   <span>par mois pour <b>Calorie</b>, sur un marché déjà saturé</span>
                 </li>
                 <li>
@@ -932,7 +932,7 @@ function App() {
                 </span>
                 <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2.5 transition-colors duration-300 group-hover:text-white">Je construis</h3>
                 <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed transition-colors duration-300 group-hover:text-white/80">
-                  À partir de ta maquette, je crée le design final, je développe ton application et je la publie sur les stores ou sur le web. Après la mise en ligne, je reste disponible pour la faire évoluer.
+                  À partir de ta maquette, je crée le design final, je développe ton application et je la publie sur les stores ou sur le web. Je reste disponible après la mise en ligne.
                 </p>
               </div>
             </li>

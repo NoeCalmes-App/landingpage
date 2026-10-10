@@ -4,14 +4,14 @@ import './app-showcase.css'
 
 // Les écrans de la section « Ce que j'ai déjà construit » de l'accueil (refonte du 10/10/2026).
 // Chaque écran porte une légende qui dit à quoi il sert : c'est là que « une stratégie derrière chaque écran »
-// se voit, au lieu d'être annoncée (la vidéo du hero le dit déjà). `kind` reste affiché : une maquette n'est
-// pas présentée comme une application publiée.
+// se voit, au lieu d'être annoncée (la vidéo du hero le dit déjà). `kind` est affiché à côté du nom : tous les
+// écrans sont des « Application » depuis le 11/10/2026 (Noé, « partout Application »).
 const SCREENS = [
-  { file: 'smoothride-premiers-pas', name: 'SmoothRide', kind: 'Maquette', alt: 'Deux itinéraires comparés pour choisir le trajet le plus doux',
+  { file: 'smoothride-premiers-pas', name: 'SmoothRide', kind: 'Application', alt: 'Deux itinéraires comparés pour choisir le trajet le plus doux',
     role: 'Dès le premier écran, il voit ce qu’il gagne : le trajet le plus doux.' },
-  { file: 'bailora-accueil', name: 'Bailora', kind: 'Maquette', alt: 'Tableau de bord des loyers, paiements et actions à traiter',
+  { file: 'bailora-accueil', name: 'Bailora', kind: 'Application', alt: 'Tableau de bord des loyers, paiements et actions à traiter',
     role: 'Ce qui demande une action est en haut : il sait quoi faire en 3 secondes.' },
-  { file: 'smoothride-navigation', name: 'SmoothRide', kind: 'Maquette', alt: 'Navigation avec signalement des dos-d’âne sur le trajet',
+  { file: 'smoothride-navigation', name: 'SmoothRide', kind: 'Application', alt: 'Navigation avec signalement des dos-d’âne sur le trajet',
     role: 'Les dos-d’âne annoncés pendant le trajet : la raison de rouvrir l’application.' },
   { file: 'plouff-habitudes', name: 'Plouff Habitudes', kind: 'Application', alt: 'Suivi quotidien des habitudes avec une mascotte et les objectifs du jour',
     role: 'Une mascotte et les objectifs du jour : l’habitude qui fait revenir chaque matin.' },
