@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import './App.css'
-import AppShowcase from './AppShowcase.jsx'
+import PhoneCarousel from './AppShowcase.jsx'
 import HeroVideo from './HeroVideo.jsx'
 import DeliverableVisual from './DeliverableVisual.jsx'
 import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
@@ -51,9 +51,6 @@ const VietCollabMockups = lazy(() => import('./VietCollabMockups.jsx'))
 const AuditApp = lazy(() => import('./audit-app/AuditApp.jsx'))
 const Projets = lazy(() => import('./Projets.jsx'))
 
-const meetingSvg = '/assets/images/illustrations/meetingdev.svg'
-const devSvg = '/assets/images/illustrations/devmobile.svg'
-const postSvg = '/assets/images/illustrations/post.svg'
 const mePhoto = '/assets/images/profile/me.webp'
 const calorieIcon = '/assets/images/apps/calorie.webp'
 const hushIcon = '/assets/images/apps/hushapp.webp'
@@ -74,8 +71,10 @@ const WHATSAPP_PREFILL =
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_PREFILL)}`
 
 const SECTION_ROUTES = {
+  // Depuis la refonte du 10/10/2026, /avis mène à « Pourquoi me faire confiance ? », où iront les avis clients
+  // (la section Instagram qui portait l'id « avis » a été retirée).
   '/avis': {
-    id: 'avis',
+    id: 'confiance',
     title: 'Avis clients — Noé Calmes, expert en applications mobiles & web',
     description: 'Ce que disent les clients qui ont fait confiance à Noé Calmes pour créer, reprendre ou faire évoluer leur application mobile.',
   },
@@ -110,6 +109,20 @@ const NAV_LINKS = [
   { ancre: 'audit', label: 'Audit' },
 ]
 
+// « Pourquoi me faire confiance ? » : la comparaison avec une agence, resserrée (refonte du 10/10/2026).
+const COMPARAISON_AGENCE = [
+  ['À partir de 15 000 €', 'Tarif fixe, connu avant de commencer'],
+  ['Rien à voir avant de payer', 'Ta maquette, offerte avant de payer'],
+  ['Un chef de projet entre vous', 'Moi, directement, 6 jours sur 7'],
+  ['3 à 6 mois de développement', '45 jours en moyenne pour une première version'],
+  ['Projet livré, débrouille-toi', 'Je reste là après la mise en ligne'],
+]
+
+// Avis clients de « Pourquoi me faire confiance ? ». Vide tant que Noé n'en a pas envoyé : la section n'affiche
+// alors rien de plus. Forme d'un avis : { texte: '…', nom: 'Prénom N.', application: 'Nom de l'application' }.
+// N'ajouter que des avis réels, avec l'accord de la personne.
+const AVIS_CLIENTS = []
+
 // `trigger` permet de re-attacher l'observer quand la page change.
 // Indispensable car les elements .reveal de la home n'existent pas tant
 // qu'on est sur /audit-app, /blog, etc. Sans ce re-attachement ils
@@ -142,10 +155,12 @@ function useScrollReveal(trigger) {
   return ref
 }
 
-// La home garde ses 3 questions historiques, /faq affiche la liste complete.
-// Une seule source (FAQ_ITEMS dans PagesSeo.jsx) : les reponses ne peuvent
-// plus diverger entre les deux pages.
-const faqItems = FAQ_ITEMS.slice(0, 3)
+// La home affiche les 7 premieres questions (les vraies objections, depuis la refonte du 10/10/2026), /faq
+// affiche la liste complete. Une seule source (FAQ_ITEMS dans PagesSeo.jsx) : les reponses ne peuvent plus
+// diverger entre les deux pages. Le balisage FAQPage de la home (scripts/generate-routes.js) prend le meme
+// nombre : changer les deux ensemble.
+const NB_FAQ_ACCUEIL = 7
+const faqItems = FAQ_ITEMS.slice(0, NB_FAQ_ACCUEIL)
 
 const AVAILABILITY_CHECK_DELAY_MS = 2200
 
@@ -731,7 +746,7 @@ function App() {
                     className="btn-reflet sm:hidden text-center bg-[#131313] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer"
                     onClick={(event) => { setMenuOpen(false); goBookCall(event) }}
                   >
-                    Discuter avec Noé
+                    J'ai une idée
                   </a>
                 </div>
               </div>
@@ -793,19 +808,24 @@ function App() {
             Stratégie, design et développement&nbsp;: je&nbsp;m'occupe de tout, de l'idée à la mise en ligne.
           </p>
 
-          {/* Bouton principal : la flèche du bouton « Discuter de mon projet », plus grand sur ordinateur */}
-          <div className="flex justify-center">
+          {/* Bouton principal. « J'ai une idée d'application » : c'est le visiteur qui parle, il se reconnaît (refonte du
+              10/10/2026, à la place de « Discuter avec Noé »). La ligne dessous garde le côté humain de l'ancien texte. */}
+          <div className="flex flex-col items-center">
             <a
               href={lienInterne('/rendez-vous')}
               onClick={goBookCall}
               className="btn-reflet group inline-flex items-center gap-2 min-[360px]:gap-2.5 whitespace-nowrap bg-brand text-surface font-semibold text-[0.95rem] min-[360px]:text-[1rem] sm:text-[1.06rem] md:text-[1.15rem] px-5 min-[360px]:px-8 py-3.5 sm:px-9 md:px-11 md:py-[1.05rem] rounded-full cursor-pointer shadow-[0_10px_28px_-8px_rgba(102,93,255,0.55)] hover:bg-[#5a50f5] transition-colors"
             >
-              Discuter avec Noé
+              J'ai une idée d'application
               <svg className="shrink-0 w-[18px] h-[18px] min-[360px]:w-[22px] min-[360px]:h-[22px] transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </a>
+            <p className="mt-3.5 inline-flex items-center gap-2 text-grey text-[0.8rem] md:text-[0.86rem]">
+              <img src={mePhoto} alt="" width="22" height="22" className="w-[22px] h-[22px] rounded-full object-cover shrink-0" />
+              C'est moi qui réponds, sur WhatsApp · gratuit
+            </p>
           </div>
 
           {/* Film de présentation, lecteur sur le modèle d'Ikovaline : lecture auto muette, barre toujours visible */}
@@ -813,211 +833,283 @@ function App() {
         </div>
       </section>
 
-      {/* ========== BARRE DE PREUVE ========== */}
-      {/* Le chiffre en grand, ce qu'il compte en dessous, puis une précision : rien ne passe à la ligne au milieu
-          d'un chiffre. Trois colonnes séparées par un trait fin à partir de 640 px, les unes sous les autres avant. */}
-      <section className="py-12 md:py-14 px-5 bg-card">
-        <div className="max-w-245 mx-auto grid grid-cols-1 sm:grid-cols-3 gap-9 sm:gap-0 sm:divide-x sm:divide-brand/12 text-center">
-          {[
-            { chiffre: '+900k', quoi: 'téléchargements', precision: 'sur l’ensemble de mes applications', icone: <svg className="text-brand w-6 h-6 md:w-7 md:h-7" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" /></svg> },
-            { chiffre: '+300k', quoi: 'utilisateurs', precision: 'Hush App · 1re version', icone: <svg className="text-brand w-6 h-6 md:w-7 md:h-7" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19a5.5 5.5 0 0111 0" /><path d="M16 5.5a3 3 0 010 5.8M20.5 19a5.5 5.5 0 00-3-4.9" /></svg> },
-            { chiffre: '+20', quoi: 'applications', precision: 'publiées sur les stores et en ligne', icone: <svg className="text-brand w-6 h-6 md:w-7 md:h-7" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></svg> },
-          ].map(({ chiffre, quoi, precision, icone }) => (
-            <div key={quoi} className="flex flex-col items-center sm:px-4 md:px-6">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white border border-card-border shadow-sm flex items-center justify-center mb-4">
-                {icone}
-              </div>
-              <p className="font-jakarta font-extrabold text-[2rem] md:text-[2.4rem] tracking-tight leading-none whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent pb-1">{chiffre}</p>
-              <p className="font-jakarta text-text font-bold text-[1rem] md:text-[1.08rem] tracking-tight leading-snug mt-1.5">{quoi}</p>
-              <p className="text-grey text-[0.84rem] md:text-[0.9rem] leading-snug mt-1 max-w-[17rem] text-balance">{precision}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Applications, preuve Calorie et méthode produit */}
-      <AppShowcase />
-
-      {/* ========== CE QUE JE FAIS / PAS ========== */}
-      <section className="py-16 md:py-22 px-5 bg-card" id="metier">
-        <div className="max-w-230 mx-auto">
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-10 md:mb-12">
-            Mon métier&nbsp;: transformer tes utilisateurs <span className="text-brand">en clients</span>
-          </h2>
-          <div className="reveal grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-brand/5 border border-brand/25 rounded-[15px] p-7 md:p-8">
-              <p className="text-brand font-bold text-[1.05rem] mb-5">Ce que je fais</p>
-              <ul className="space-y-4">
-                {['Concevoir ton application pour qu\'elle transforme tes visiteurs en clients : premiers pas, essai, abonnement, fidélité.', 'Penser la monétisation avant la première ligne de code.'].map((t) => (
-                  <li key={t} className="flex items-start gap-3 text-text text-[0.95rem] font-medium leading-relaxed">
-                    <svg className="shrink-0 mt-0.5 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                    {t}
-                  </li>
-                ))}
+      {/* ========== CE QUE J'AI DÉJÀ CONSTRUIT ========== */}
+      {/* Refonte du 10/10/2026. Juste après la vidéo, la preuve de ce qu'elle promet : les chiffres (l'ancienne barre
+          de preuve) et les écrans, chacun légendé par son rôle (src/AppShowcase.jsx). Remplace la barre de preuve,
+          « Une stratégie derrière chaque écran » et « Mon métier », qui redisaient le titre et la vidéo. L'id reste
+          « calories-proof » : c'est le lien « Preuves » de la barre du haut. Le texte est écrit ici, en JSX : le
+          pré-rendu pour les robots (scripts/generate-routes.js) ne lit que le texte du JSX de App. */}
+      <section className="app-proof" id="calories-proof" aria-labelledby="app-proof-title">
+        <div className="app-proof-inner">
+          <div className="app-proof-main">
+            <div className="app-proof-copy">
+              <h2 id="app-proof-title" className="reveal">Ce que j'ai <span>déjà construit</span></h2>
+              <p className="reveal app-proof-intro">Des applications publiées, utilisées, et qui rapportent.</p>
+              <ul className="reveal-stagger app-proof-stats">
+                <li>
+                  <span className="app-proof-stat-icone"><img src={calorieIcon} alt="" width="36" height="36" loading="lazy" /></span>
+                  <strong>13&nbsp;000&nbsp;€</strong>
+                  <span>par mois pour <b>Calorie</b>, sur un marché déjà saturé</span>
+                </li>
+                <li>
+                  <span className="app-proof-stat-icone"><img src={hushIcon} alt="" width="36" height="36" loading="lazy" /></span>
+                  <strong>300&nbsp;000</strong>
+                  <span>utilisateurs pour <b>Hush</b>, dès la première version</span>
+                </li>
+                <li>
+                  <span className="app-proof-stat-icone">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" /></svg>
+                  </span>
+                  <strong>+900&nbsp;000</strong>
+                  <span>téléchargements, toutes mes applications</span>
+                </li>
+                <li>
+                  <span className="app-proof-stat-icone">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></svg>
+                  </span>
+                  <strong>+20</strong>
+                  <span>applications publiées, sur les stores et en ligne</span>
+                </li>
               </ul>
             </div>
-            <div className="bg-surface border border-card-border rounded-[15px] p-7 md:p-8">
-              <p className="text-grey font-bold text-[1.05rem] mb-5">Ce que je ne fais pas</p>
-              <ul className="space-y-4">
-                {['Ta communication ou ta publicité pour ramener du monde.', 'Te promettre des utilisateurs par magie.'].map((t) => (
-                  <li key={t} className="flex items-start gap-3 text-grey text-[0.95rem] font-medium leading-relaxed">
-                    <svg className="shrink-0 mt-0.5 text-red-text" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <PhoneCarousel />
           </div>
-          <p className="reveal text-center text-text font-semibold text-[1rem] md:text-[1.1rem] mt-7 mb-3">
-            Tu amènes les gens. Je les transforme en clients.
-          </p>
         </div>
       </section>
 
-      {/* ========== LIVRABLES OFFERTS ========== */}
-      <section className="py-12 md:pt-28 md:pb-22 px-5" id="offre-livrables">
+      {/* ========== COMMENT ÇA SE PASSE (et ce qui est offert) ========== */}
+      {/* Refonte du 10/10/2026 : « Avant de payer un euro, je t'offre » et les étapes ne font plus qu'un. La maquette,
+          le cahier des charges et le devis apparaissaient trois fois sur la page ; ils sont l'étape 2, offerte. Le prix
+          est donné à l'étape 3, comme une information (décision de Noé du 10/10/2026). Les textes des étapes sont ceux
+          validés par Noé le même jour. Id « offre » : lien « Méthode » de la barre du haut. */}
+      <section className="py-14 md:py-22 px-5 bg-card" id="offre">
         <div className="max-w-275 mx-auto">
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-7 md:mb-10">
-            Avant de payer un euro, <span className="text-brand">je t’offre</span>&nbsp;:
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-3">
+            Comment <span className="text-brand">ça se passe ?</span>
           </h2>
-          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-230 mx-auto">
-            <div className="deliverable-card bg-brand-wash border border-brand/20 rounded-[20px] p-5 md:p-8 text-left flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
-              <DeliverableVisual type="mockup" />
-              <div>
-                <h3 className="font-heading text-text text-[1.05rem] font-bold mb-1 md:mb-2">Une maquette offerte</h3>
-                <p className="text-grey text-[0.92rem] leading-relaxed">Tu vois ton application avant de décider.</p>
-              </div>
-            </div>
-            <div className="deliverable-card bg-surface border border-card-border rounded-[20px] p-5 md:p-8 text-left flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0">
-              <DeliverableVisual type="brief" />
-              <div>
-                <h3 className="font-heading text-text text-[1.05rem] font-bold mb-1 md:mb-2">Un cahier des charges</h3>
-                <p className="text-grey text-[0.92rem] leading-relaxed">Ton application cadrée noir sur blanc.</p>
-              </div>
-            </div>
-            <div className="deliverable-card deliverable-quote md:col-span-2 bg-surface border border-card-border rounded-[20px] p-5 md:px-8 text-left flex items-center gap-4">
-              <DeliverableVisual type="quote" />
-              <div>
-                <h3 className="font-heading text-text text-[1.05rem] font-bold mb-1">Un devis clair</h3>
-                <p className="text-grey text-[0.92rem] leading-relaxed">Tarif et délai fixes, définis d'avance.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== LA DIFFÉRENCE ========== */}
-      <section className="py-16 md:py-22 px-5 bg-card" id="difference">
-        <div className="max-w-275 mx-auto">
-          <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
-            La différence
+          <p className="reveal text-center text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-8 md:mb-12">
+            Les deux premières étapes sont offertes. Tu ne paies qu'à la troisième.
           </p>
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-8 md:mb-12">
-            Pourquoi me faire <span className="text-brand">confiance ?</span>
-          </h2>
-          <div className="reveal max-w-[1040px] mx-auto grid grid-cols-1 sm:grid-cols-2 rounded-2xl border border-card-border overflow-hidden mb-10 md:mb-14">
-            {/* Agences */}
-            <div className="p-8 md:p-10 bg-card">
-              <p className="text-text font-bold text-[1.1rem] mb-7">Agences</p>
-              <ul className="space-y-5">
-                {[
-                  'Projet livré, débrouille-toi',
-                  'Pas de maquette avant de payer',
-                  'À partir de 15 000 €',
-                  'Difficile à joindre',
-                  '3 à 6 mois de développement',
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-3.5 text-grey text-[0.95rem] font-semibold leading-relaxed">
-                    <svg className="shrink-0 text-red-text" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
 
-            {/* Noé */}
-            <div className="p-8 md:p-10 border-t sm:border-t-0 sm:border-l border-card-border">
-              <p className="text-brand font-bold text-[1.1rem] mb-7">Noé Calmes</p>
-              <ul className="space-y-5">
-                {[
-                  'Pensé pour transformer tes utilisateurs en clients',
-                  'Maquette offerte avant de payer',
-                  'Tarif fixe, à partir de 5 000 €',
-                  'Joignable à tout moment, 6j/7',
-                  'Première version en 45 jours en moyenne',
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-3.5 text-text text-[0.95rem] font-semibold leading-relaxed">
-                    <svg className="shrink-0 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    {item === 'Tarif fixe, à partir de 5 000 €' ? (
-                      <span>
-                        {item}.{' '}
-                        <a
-                          href={lienInterne('/rendez-vous')}
-                          onClick={goBookCall}
-                          className="inline-flex items-center gap-1 text-[0.9rem] text-[#2563eb] underline underline-offset-4 decoration-[#2563eb]/50 hover:text-brand hover:decoration-brand transition-colors"
-                        >
-                          Combien coûterait mon app&nbsp;?
-                        </a>
-                      </span>
-                    ) : item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <ol className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-250 mx-auto">
+            <li className="etape">
+              <div className="etape-visuel" aria-hidden="true">
+                <div className="etape-appel">
+                  <span className="etape-bulle etape-bulle-toi">Bonjour Noé, j'ai un projet d'application</span>
+                  <span className="etape-noe">
+                    <img src={mePhoto} alt="" width="30" height="30" loading="lazy" />
+                    <span className="etape-bulle etape-bulle-noe">Raconte-moi ton idée</span>
+                  </span>
+                </div>
+              </div>
+              <p className="etape-pastilles"><span className="etape-num">Étape 1</span><span className="etape-offert">Offert</span></p>
+              <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2">On en parle</h3>
+              <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">
+                Au premier appel, on discute de ton idée et je te donne des conseils concrets pour bien la lancer. Tu repars avec un avis clair, même si on ne travaille pas ensemble.
+              </p>
+            </li>
+            <li className="etape">
+              <div className="etape-visuel" aria-hidden="true">
+                <div className="etape-livrables">
+                  <span className="etape-livrable">
+                    <span className="etape-mini-tel"><img src="/assets/images/apps/captures/bailora-accueil.webp" alt="" width="660" height="1431" loading="lazy" /></span>
+                    Maquette
+                  </span>
+                  <span className="etape-livrable"><DeliverableVisual type="brief" />Cahier des charges</span>
+                  <span className="etape-livrable"><DeliverableVisual type="quote" />Devis</span>
+                </div>
+              </div>
+              <p className="etape-pastilles"><span className="etape-num">Étape 2</span><span className="etape-offert">Offert</span></p>
+              <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2">On cadre</h3>
+              <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">
+                Après l'appel, je t'envoie un cahier des charges offert, une première maquette et un devis clair. Tu sais ce que tu vas avoir, quand, et pour combien.
+              </p>
+            </li>
+            <li className="etape etape-payante">
+              <div className="etape-visuel" aria-hidden="true">
+                <div className="etape-lancement">
+                  <span className="etape-mini-tel etape-mini-tel-grand"><img src="/assets/images/apps/captures/plouff-habitudes.webp" alt="" width="660" height="1431" loading="lazy" /></span>
+                  <span className="etape-en-ligne"><i />En ligne</span>
+                </div>
+              </div>
+              <p className="etape-pastilles"><span className="etape-num">Étape 3</span><span className="etape-paie">Tu paies ici</span></p>
+              <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2">On construit ensemble</h3>
+              <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">
+                Je reprends la maquette sur mesure, je développe ton application et je la publie sur les stores ou sur le web. Ensuite, je t'accompagne pour la faire évoluer.
+              </p>
+              <p className="etape-prix">
+                <strong>Tarif fixe</strong>, en général de 5&nbsp;000 à 12&nbsp;000&nbsp;€. Une première version en ligne en 45&nbsp;jours en moyenne.
+              </p>
+            </li>
+          </ol>
 
-          <div className="reveal text-center mt-6 md:mt-4">
+          <div className="reveal flex flex-col items-center mt-9 md:mt-12">
             <a
               href={lienInterne('/rendez-vous')}
               onClick={goBookCall}
               className="btn-reflet group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
-               Discuter de mon projet
-              <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              J'ai une idée d'application
+              <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </a>
-            <p className="text-grey/60 text-[0.8rem] mt-3">Réponse directe · 100% gratuit</p>
+            <p className="text-grey/70 text-[0.8rem] mt-3">C'est moi qui réponds, sur WhatsApp · gratuit</p>
           </div>
         </div>
       </section>
 
-      {/* ========== PROCESS ========== */}
-      <section className="py-12 md:py-22 px-5" id="offre">
+      {/* ========== POURQUOI ME FAIRE CONFIANCE ========== */}
+      {/* Refonte du 10/10/2026 : la vraie réponse à la question, c'est Noé lui-même (photo, ce qu'il fait, ses propres
+          applications), puis la comparaison avec une agence, resserrée. Les avis clients iront dans AVIS_CLIENTS (vide
+          pour l'instant : rien n'est affiché). Id « confiance » : la route /avis y mène. */}
+      <section className="py-16 md:py-22 px-5" id="confiance">
         <div className="max-w-275 mx-auto">
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-6 md:mb-12">
-            Comment <span className="text-brand">ça se passe ?</span>
+          <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
+            Qui je suis
+          </p>
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-8 md:mb-12">
+            Pourquoi me faire <span className="text-brand">confiance ?</span>
           </h2>
 
-          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-3.5 md:gap-7 max-w-230 mx-auto">
-            {[
-              { num: '1', title: 'On en parle', desc: 'Au premier appel, on discute de ton idée et je te donne des conseils concrets pour bien la lancer. Tu repars avec un avis clair, même si on ne travaille pas ensemble.', img: meetingSvg },
-              { num: '2', title: 'On cadre', desc: 'Après l\'appel, je t\'envoie un cahier des charges offert, une première maquette et un devis clair. Tu sais ce que tu vas avoir, quand, et pour combien.', img: devSvg },
-              { num: '3', title: 'On construit ensemble', desc: 'Je reprends la maquette sur mesure, je développe ton application et je la publie sur les stores ou sur le web. Ensuite, je t\'accompagne pour la faire évoluer.', img: postSvg },
-            ].map(({ num, title, desc, img }) => (
-              <div key={num} className="process-card group bg-surface border border-card-border rounded-[15px] p-8 md:p-10 text-left flex flex-col transition-colors duration-300 hover:bg-brand hover:border-brand cursor-default">
-                <img src={img} alt={title} loading="lazy" width="280" height="160" className="process-illustration w-full h-32 md:h-40 object-contain mb-6" />
-                <div className="process-copy flex flex-col justify-center flex-1">
-                  <span className="self-start text-brand text-[0.8rem] font-semibold bg-brand/10 px-3 py-1 rounded-full mb-3 transition-colors duration-300 group-hover:bg-white/20 group-hover:text-white">
-                    Étape {num}
-                  </span>
-                  <h3 className="font-heading text-text text-[1.05rem] md:text-[1.1rem] font-bold mb-2.5 transition-colors duration-300 group-hover:text-white">{title}</h3>
-                  <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed transition-colors duration-300 group-hover:text-white/80">{desc}</p>
+          <div className="reveal grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-250 mx-auto">
+            <div className="rounded-[20px] bg-brand-wash border border-brand/20 p-6 md:p-8">
+              <div className="flex items-center gap-4 mb-6">
+                <img src={mePhoto} alt="Noé Calmes" width="80" height="80" loading="lazy" className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover shadow-sm shrink-0" />
+                <div>
+                  <p className="font-jakarta text-text font-extrabold text-[1.2rem] md:text-[1.3rem] tracking-tight leading-tight">Noé Calmes</p>
+                  <p className="text-grey text-[0.85rem] mt-0.5">Expert en applications mobiles &amp; web</p>
                 </div>
               </div>
-            ))}
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-text text-[0.93rem] md:text-[0.95rem] leading-relaxed">
+                  <svg className="shrink-0 mt-0.5 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                  <span><strong>Je fais tout moi-même&nbsp;:</strong> la stratégie, les écrans et le développement, de l'idée à la mise en ligne.</span>
+                </li>
+                <li className="flex items-start gap-3 text-text text-[0.93rem] md:text-[0.95rem] leading-relaxed">
+                  <svg className="shrink-0 mt-0.5 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                  <span><strong>Je vois passer une dizaine d'idées par semaine.</strong> Je sais vite ce qui peut marcher, et ce qui ne marchera pas.</span>
+                </li>
+                <li className="flex items-start gap-3 text-text text-[0.93rem] md:text-[0.95rem] leading-relaxed">
+                  <svg className="shrink-0 mt-0.5 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                  <span><strong>Mes propres applications sont en ligne</strong>, WakeUp Alarme et Plouff Habitudes&nbsp;: je vis ce que vivent mes clients.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="rounded-[20px] border border-card-border bg-surface overflow-hidden flex flex-col">
+              <div className="grid grid-cols-2 text-[0.85rem] md:text-[0.9rem] font-bold">
+                <p className="px-4 md:px-6 py-3.5 text-grey bg-card">Une agence</p>
+                <p className="px-4 md:px-6 py-3.5 text-brand bg-brand/6">Avec moi</p>
+              </div>
+              {COMPARAISON_AGENCE.map(([agence, moi]) => (
+                <div key={moi} className="grid grid-cols-2 border-t border-card-border flex-1">
+                  <p className="flex items-start gap-2 px-4 md:px-6 py-3.5 text-grey text-[0.82rem] md:text-[0.88rem] leading-snug">
+                    <svg className="shrink-0 mt-px text-red-text" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                    {agence}
+                  </p>
+                  <p className="flex items-start gap-2 px-4 md:px-6 py-3.5 text-text font-semibold text-[0.82rem] md:text-[0.88rem] leading-snug bg-brand/3">
+                    <svg className="shrink-0 mt-px text-brand" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                    {moi}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {AVIS_CLIENTS.length > 0 && (
+            <div className="reveal grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-250 mx-auto mt-4 md:mt-6">
+              {AVIS_CLIENTS.map(({ texte, nom, application }) => (
+                <figure key={nom} className="rounded-[20px] border border-card-border bg-surface p-6 text-left">
+                  <blockquote className="text-text text-[0.95rem] leading-relaxed">« {texte} »</blockquote>
+                  <figcaption className="mt-4 text-grey text-[0.85rem]"><strong className="text-text">{nom}</strong>, {application}</figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ========== C'EST POUR TOI ? ========== */}
+      {/* Refonte du 10/10/2026 : remplace « Ce que je fais / Ce que je ne fais pas ». Écarte avant WhatsApp ceux que Noé
+          ne prend pas (site vitrine, « juste un développeur », le prix le plus bas, la publicité). */}
+      <section className="py-14 md:py-20 px-5 bg-card" id="pour-qui">
+        <div className="max-w-230 mx-auto">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-8 md:mb-10">
+            C'est pour <span className="text-brand">toi ?</span>
+          </h2>
+          <div className="reveal grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <div className="bg-surface border border-brand/25 rounded-[18px] p-6 md:p-8">
+              <p className="text-brand font-bold text-[1.05rem] mb-5">Oui, si…</p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-text text-[0.95rem] font-medium leading-relaxed">
+                  <svg className="shrink-0 mt-0.5 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                  Tu as une idée d'application et un budget prévu pour la lancer.
+                </li>
+                <li className="flex items-start gap-3 text-text text-[0.95rem] font-medium leading-relaxed">
+                  <svg className="shrink-0 mt-0.5 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                  Tu veux qu'une seule personne s'occupe de tout, de l'idée à la mise en ligne.
+                </li>
+                <li className="flex items-start gap-3 text-text text-[0.95rem] font-medium leading-relaxed">
+                  <svg className="shrink-0 mt-0.5 text-brand" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                  Tu veux une application qui rapporte, pas juste une application qui existe.
+                </li>
+              </ul>
+            </div>
+            <div className="bg-surface border border-card-border rounded-[18px] p-6 md:p-8">
+              <p className="text-grey font-bold text-[1.05rem] mb-5">Non, si…</p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3 text-grey text-[0.95rem] font-medium leading-relaxed">
+                  <svg className="shrink-0 mt-0.5 text-red-text" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                  Tu cherches un site vitrine.
+                </li>
+                <li className="flex items-start gap-3 text-grey text-[0.95rem] font-medium leading-relaxed">
+                  <svg className="shrink-0 mt-0.5 text-red-text" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                  Tu veux juste un développeur qui exécute tes consignes.
+                </li>
+                <li className="flex items-start gap-3 text-grey text-[0.95rem] font-medium leading-relaxed">
+                  <svg className="shrink-0 mt-0.5 text-red-text" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                  Tu cherches le prix le plus bas.
+                </li>
+                <li className="flex items-start gap-3 text-grey text-[0.95rem] font-medium leading-relaxed">
+                  <svg className="shrink-0 mt-0.5 text-red-text" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                  Tu cherches quelqu'un pour faire ta publicité.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ========== CONTACT WHATSAPP ========== */}
-      <section className="pt-16 md:pt-22 pb-0 md:pb-0 px-5 bg-card" id="contact-section">
+      {/* ========== FAQ ========== */}
+      <section className="py-14 md:py-22 px-5 bg-white" id="faq">
+        <div className="max-w-275 mx-auto">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-6 md:mb-12">
+            Pour y voir <span className="text-brand">plus clair</span>
+          </h2>
+          <FaqAccordion />
+          <p className="reveal mt-6 text-center text-grey text-[0.9rem] leading-relaxed">
+            Une autre question ?{' '}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackDirectWhatsAppLead('home_faq')}
+              className="inline-block font-semibold text-brand underline underline-offset-4 decoration-brand/40 hover:decoration-brand focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-4"
+            >
+              Écris-moi sur WhatsApp.
+            </a>
+          </p>
+        </div>
+      </section>
+
+      {/* ========== DERNIER APPEL : WHATSAPP, PUIS L'AUDIT ========== */}
+      {/* Refonte du 10/10/2026 : le contact et l'audit dans la même section, à la fin. L'audit passe en second choix
+          (« Pas encore prêt à écrire ? »), sous le bouton WhatsApp ; il garde l'id « audit » (lien « Audit » de la barre
+          du haut, route /audit). La section Instagram, qui faisait quitter la page juste avant la fin, est retirée :
+          l'icône reste dans le pied de page. */}
+      <section className="py-16 md:py-22 px-5 bg-card" id="contact-section">
         <div className="max-w-275 mx-auto text-center">
           {/* Les disponibilités, dans une pastille au fond léger (même style que « Audit express · 2 min ») */}
           <p className="reveal flex justify-center mb-4 min-h-[1.85rem]">
@@ -1044,7 +1136,7 @@ function App() {
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-2">
             Une idée, ou une application déjà en ligne&nbsp;? Écris-moi&nbsp;: je regarde ton projet et je te dis comment avancer.
           </p>
-          <div className="reveal flex flex-col items-center gap-3 mt-4 pb-16 md:pb-20">
+          <div className="reveal flex flex-col items-center gap-3 mt-4">
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -1052,113 +1144,45 @@ function App() {
               onClick={() => trackDirectWhatsAppLead('home_contact')}
               className="btn-reflet group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
             >
-              <svg className="w-[18px] h-[18px] md:w-[20px] md:h-[20px] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.057 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.562-5.338 11.897-11.9 11.897a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.5 5.211l-.999 3.648 3.998-1.171z"/></svg>
-              <span>Discuter avec Noé</span>
+              <svg className="w-[18px] h-[18px] md:w-[20px] md:h-[20px] shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.057 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.562-5.338 11.897-11.9 11.897a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.5 5.211l-.999 3.648 3.998-1.171z"/></svg>
+              <span>J'ai une idée d'application</span>
             </a>
-            <div className="flex items-center gap-3 mt-8 mb-4 max-w-xs sm:max-w-md mx-auto px-2 text-left">
+            <div className="flex items-center gap-3 mt-6 max-w-xs sm:max-w-md mx-auto px-2 text-left">
               <img src={mePhoto} alt="Noé Calmes" loading="lazy" width="40" height="40" className="w-10 h-10 rounded-full object-cover shadow-sm shrink-0" />
               <span className="text-grey text-xs md:text-sm">
                 <strong className="text-text">Tu bosses direct avec moi.</strong> C&apos;est moi qui réponds, pas un bot, pas un commercial.
               </span>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ========== FAQ ========== */}
-      <section className="pt-8 pb-12 md:py-22 px-5 bg-white" id="faq">
-        <div className="max-w-275 mx-auto">
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-6 md:mb-12">
-            Pour y voir <span className="text-brand">plus clair</span>
-          </h2>
-          <FaqAccordion />
-          <p className="reveal mt-6 text-center text-grey text-[0.9rem] leading-relaxed">
-            Une autre question ?{' '}
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackDirectWhatsAppLead('home_faq')}
-              className="inline-block font-semibold text-brand underline underline-offset-4 decoration-brand/40 hover:decoration-brand focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-4"
-            >
-              Écris-moi sur WhatsApp.
-            </a>
-          </p>
-        </div>
-      </section>
-
-      {/* ========== INSTA (remplace les anciens témoignages en attendant un vrai client) ========== */}
-      <section className="py-16 md:py-22 px-5 bg-card" id="avis">
-        <div className="max-w-275 mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_400px] gap-8 md:gap-14 items-center">
-            <div className="reveal text-center md:text-left">
-              <h2 className="font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-4">
-                Je décortique tout ça <span className="text-brand">sur mon Insta</span>
-              </h2>
-              <p className="text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed mb-8">
-                Comment une application rapporte, combien coûte un vrai projet, pourquoi 90&nbsp;% des apps ne gagnent rien.
-              </p>
-              <a href="https://www.instagram.com/noecalmes.app/" target="_blank" rel="noopener noreferrer" className="btn-reflet group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer">
-                <svg className="w-[18px] h-[18px] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-                <span>Voir mon Instagram</span>
-              </a>
-            </div>
-            <div className="reveal flex justify-center md:justify-end">
-              <div className="w-full max-w-[400px] overflow-hidden rounded-2xl border border-card-border bg-white" style={{ aspectRatio: '1 / 1.16' }}>
-                <iframe
-                  src="https://www.instagram.com/p/DZS67wXiPRM/embed"
-                  title="Post Instagram de Noé Calmes"
-                  className="w-full h-full block"
-                  scrolling="no"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== AUDIT GRATUIT ========== */}
-      <section className="pt-2 pb-12 md:pt-2 md:pb-14 px-4 md:px-6 bg-card" id="audit">
-        <div className="max-w-210 mx-auto">
-          <div className="reveal relative overflow-hidden rounded-[28px] md:rounded-[34px] border border-brand/10 bg-white px-5 py-11 md:px-10 md:py-12 text-center shadow-[0_20px_55px_-44px_rgba(102,93,255,0.55)]">
-            <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-[#665dff] opacity-[0.12] blur-[58px]" />
-
+          <div id="audit" className="reveal relative overflow-hidden mt-12 md:mt-14 max-w-150 mx-auto rounded-[24px] md:rounded-[28px] border border-brand/10 bg-white px-5 py-8 md:px-10 md:py-9 shadow-[0_20px_55px_-44px_rgba(102,93,255,0.55)]">
+            <div className="pointer-events-none absolute -top-24 -right-24 w-60 h-60 rounded-full bg-[#665dff] opacity-[0.1] blur-[58px]" />
             <div className="relative">
-              {/* Badge glassmorphism */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand/6 border border-brand/12 mb-7 md:mb-8">
+              <p className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand/6 border border-brand/12 mb-4">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-60" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
                 </span>
-                <span className="font-jakarta text-text text-[0.72rem] font-extrabold tracking-widest uppercase">
-                  Audit express · 2 min
-                </span>
-              </div>
-
-              <h2 className="font-jakarta text-text text-[1.95rem] sm:text-[2.35rem] md:text-[2.85rem] font-extrabold tracking-tight leading-[1.08] max-w-140 mx-auto mb-5 md:mb-6">
-                Les 3 réponses{' '}
-                <span className="text-brand">avant d'investir 1&nbsp;€</span>
-              </h2>
-
-              <p className="text-grey text-[0.95rem] md:text-[1.05rem] max-w-115 mx-auto mb-9 md:mb-11 leading-relaxed">
-                Potentiel, budget, délai. En 2 minutes, sans appel.
+                <span className="font-jakarta text-text text-[0.7rem] font-extrabold tracking-widest uppercase">Audit express · 2 min</span>
               </p>
-
+              <p className="font-jakarta text-text font-extrabold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-tight mb-2">
+                Pas encore prêt à écrire&nbsp;?
+              </p>
+              <p className="text-grey text-[0.92rem] md:text-[0.98rem] leading-relaxed max-w-110 mx-auto mb-6">
+                Teste ton idée&nbsp;: potentiel, budget et délai, en 2 minutes, sans appel.
+              </p>
               <button
-                onClick={() => { setPage('audit-app'); history.pushState(null, '', lienInterne('/audit-app')); window.scrollTo(0, 0) }}
-                className="btn-reflet group inline-flex items-center gap-2.5 bg-brand text-white font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer"
+                type="button"
+                onClick={goAuditApp}
+                className="btn-reflet group inline-flex items-center gap-2.5 bg-[#131313] text-white font-semibold text-[0.92rem] md:text-[0.95rem] px-7 py-3 md:px-8 md:py-3.5 rounded-full cursor-pointer"
               >
                 Lancer mon audit
-                <svg className="transition-transform duration-300 group-hover:translate-x-1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg className="transition-transform duration-300 group-hover:translate-x-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </button>
-
-              <p className="text-grey/60 text-[0.78rem] mt-4">
-                Gratuit · résultat immédiat
-              </p>
+              <p className="text-grey/60 text-[0.78rem] mt-3">Gratuit · résultat immédiat</p>
             </div>
           </div>
         </div>

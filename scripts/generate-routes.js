@@ -1217,11 +1217,12 @@ for (const path of noindexRoutes) {
 
 // ─── Home page — pre-render hero for Lighthouse FCP ──────────────────────────
 
-// Le FAQPage de la home est reecrit depuis FAQ_ITEMS : la home affiche les 3
-// premieres questions (App.jsx fait `FAQ_ITEMS.slice(0, 3)`), le balisage doit
+// Le FAQPage de la home est reecrit depuis FAQ_ITEMS : la home affiche les NB_FAQ_ACCUEIL
+// premieres questions (App.jsx fait `FAQ_ITEMS.slice(0, NB_FAQ_ACCUEIL)`, 7 depuis le 10/10/2026), le balisage doit
 // dire exactement la meme chose. Avant, index.html portait 3 questions
 // reformulees a la main qui ne correspondaient plus au texte visible.
-const homeFaqJson = baliseFaq(faqItems.slice(0, 3))
+const NB_FAQ_ACCUEIL = 7 // meme nombre que dans src/App.jsx
+const homeFaqJson = baliseFaq(faqItems.slice(0, NB_FAQ_ACCUEIL))
 const baseHome = retirerFaqPage(baseHtml).replace(
   '</head>',
   `    <script type="application/ld+json">\n    ${homeFaqJson}\n    </script>\n  </head>`

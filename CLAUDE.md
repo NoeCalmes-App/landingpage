@@ -7,7 +7,7 @@ Lire `AGENTS.md` en premier. Ce fichier reste volontairement court pour ne pas c
 - Positionnement Noe : `documentation/context/positionnement.md`
 - **Mobile ou web : quel mot employer, et pourquoi · `documentation/context/vocabulaire-mobile-web.md`.** A lire AVANT d'ecrire un article, une page, un email ou un post. Noe ne vend plus seulement du mobile : remplacer mecaniquement « mobile » par « mobile et web » rend la moitie des phrases fausses. Le fichier donne le test du predicat, les deux listes fermees, et la regle qui protege le prix (« site » ne designe jamais une application web).
 - Landing page : `documentation/architecture/landing-page.md`
-- Section d'accueil « Tu n'as pas besoin d'un développeur » (brief du 2026-10-08, a coder) : `documentation/strategy/section-pas-un-developpeur.md`
+- Section d'accueil « Tu n'as pas besoin d'un développeur » (brief du 2026-10-08, non code ; l'ordre de page qu'il prevoyait est remplace par la refonte de l'accueil du 2026-10-10, voir `documentation/architecture/landing-page.md`) : `documentation/strategy/section-pas-un-developpeur.md`
 - Audit app : `documentation/architecture/audit-app.md`
 - Assets : `documentation/architecture/assets.md`
 - CGV (`public/cgv/`, versions datées, liens contractuels, publier une nouvelle version) : `documentation/architecture/cgv.md` — à lire AVANT de toucher un fichier CGV.

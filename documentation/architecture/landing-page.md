@@ -91,20 +91,21 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
 - Phrase sous le titre : « Stratégie, design et développement : je m'occupe de tout, de l'idée à la mise
   en ligne. » Noé l'a préférée à l'ancienne (« Je conçois ton application mobile & web pour qu'elle
   rapporte vraiment… »).
-- Bouton « Discuter avec Noé » (avant le 10/10/2026 : « J'ai une idée d'application », changé à la
-  demande de Noé), avec la flèche du bouton « Discuter de mon projet », plus grand sur ordinateur et sur
-  une seule ligne jusqu'à 320 px. Il mène à la section contact, « Parlons de ton projet » (avant : « …de
-  ton application »), dont le bouton porte le même texte et ouvre WhatsApp, comme celui du menu sur
-  téléphone. Au-dessus de ce titre, « 2 projets par mois · 1 place disponible en <mois> » est dans une
-  pastille au fond violet léger, en plus petit (même style que « Audit express · 2 min »). La barre du
-  haut dit « J'ai une idée » (plus court, comme Ikovaline), sur l'accueil, le blog et les quiz.
+- Bouton « J'ai une idée d'application » (refonte du 10/10/2026 : c'est le visiteur qui parle, il se
+  reconnaît ; « Discuter avec Noé » n'a tenu que la journée du 10/10). Dessous, en petit, la photo de Noé et
+  « C'est moi qui réponds, sur WhatsApp · gratuit », qui garde le côté humain. Plus grand sur ordinateur et
+  sur une seule ligne jusqu'à 320 px. Il mène à la section contact, « Parlons de ton projet », dont le
+  bouton porte le même texte et ouvre WhatsApp. Même texte sur le bouton qui suit « Comment ça se passe ? »
+  et dans le pied de page. La barre du haut et le menu sur téléphone disent « J'ai une idée » (plus court,
+  comme Ikovaline), sur l'accueil, le blog, les quiz et les pages /expertise, /creation-application-mobile
+  et /faq.
 - Au survol, tous les boutons de l'accueil ont le reflet de la fin du film (« Audit offert ») : un trait
   de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les traverse et passe sous le
-  texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (« Discuter avec Noé », « Discuter de
-  mon projet », « Voir mon Instagram », « Lancer mon audit ») et les boutons noirs (« J'ai une idée » en
-  haut, le bouton du menu sur téléphone), où le même trait blanc se voit comme un reflet gris clair
-  (demande de Noé du 10/10/2026 : « tous les autres boutons », « travailler en noir »). Seulement à la
-  souris, et pas quand moins d'animations sont demandées.
+  texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (les trois « J'ai une idée
+  d'application ») et les boutons noirs (« J'ai une idée » en haut, le bouton du menu sur téléphone,
+  « Lancer mon audit »), où le même trait blanc se voit comme un reflet gris clair (demande de Noé du
+  10/10/2026 : « tous les autres boutons », « travailler en noir »). Seulement à la souris, et pas quand
+  moins d'animations sont demandées.
 - Espacement (demande de Noé du 10/10/2026 : plus d'air au-dessus du titre, la vidéo plus bas) : sur
   ordinateur, 88 px entre la barre du haut et le titre, puis 28 px jusqu'à la phrase, 40 px jusqu'au
   bouton et 80 px jusqu'à la vidéo (titre à 176 px du haut, vidéo à 544 px sur l'écran de Noé, 1710 ×
@@ -119,7 +120,7 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
 
 ## Film du hero
 
-Sous le bouton « Discuter avec Noé » du hero, un film de 26 secondes en motion design
+Sous le bouton « J'ai une idée d'application » du hero, un film de 26 secondes en motion design
 (voix off et bruitages, pas de musique). Code : `src/HeroVideo.jsx` et `src/hero-video.css`.
 Fichiers : `public/assets/videos/hero-v11-1080.mp4` (ordinateur), `hero-v11-720.mp4` (mobile,
 connexion lente, économiseur de données) et la miniature `hero-v10-miniature.webp` (et `-960`).
@@ -168,64 +169,84 @@ Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
   données, rien n'est chargé d'avance) : l'affiche reste, avec un gros bouton « Lancer la vidéo », qui la
   lance avec le son.
 
-## Galerie d’interfaces sur l’accueil
+## L'accueil, section par section (refonte du 10/10/2026)
 
-La section `#calories-proof` est portée par `src/AppShowcase.jsx` et
-`src/app-showcase.css`. Elle présente la stratégie produit en une phrase et
-cinq pastilles : premiers écrans, essai gratuit, habitude, abonnement/commission,
-revenus récurrents. Calorie (13 000 €/mois) reste un exemple secondaire de marché
-concurrentiel. La barre de preuve affiche +900k téléchargements cumulés,
-+300k utilisateurs pour Hush et +20 applications, chiffres fournis par Noé.
-Mise en page (refaite le 10/10/2026, Noé la trouvait pas centrée et coupée) : le chiffre en grand
-dans le dégradé violet, ce qu'il compte dessous, puis une précision en gris. Rien ne passe à la
-ligne au milieu d'un chiffre ; trois colonnes séparées par un trait fin à partir de 640 px, les unes
-sous les autres avant.
+Question de Noé : « il a vu la vidéo ; s'il fait défiler, on lui montre quoi ? » La page d'avant répétait la
+vidéo (« Une stratégie derrière chaque écran », « Mon métier : transformer tes utilisateurs en clients »,
+« Tu amènes les gens, je les transforme en clients »), montrait trois fois la maquette, le cahier des
+charges et le devis, posait « Pourquoi me faire confiance ? » sur un simple tableau contre les agences,
+et envoyait vers Instagram juste avant la fin. Principe retenu : après la vidéo, le visiteur cherche des
+preuves, pas des promesses. Chaque section répond à une seule de ses questions, dans l'ordre où il se les
+pose (c'est vrai ? qu'est-ce que je risque ? c'est qui ? c'est pour moi ?), puis vient le bouton. Onze
+sections deviennent sept. Le texte des sections est écrit dans le JSX de `App` (pas dans des tableaux) :
+c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
 
-Le carrousel utilise sept captures fournies par Noé, converties en WebP de
-660 px sous `public/assets/images/apps/captures/` (environ 375 Ko au total).
-Les fichiers originaux restent inchangés. Les captures contiennent déjà
-l’encoche et la barre d’état : le cadre CSS ajoute seulement la coque et les
-boutons. La liste `SCREENS` définit l’ordre et les descriptions accessibles
-(application/maquette) ; aucune légende visible ne surcharge les écrans.
+1. **Hero et vidéo** (voir plus haut).
+2. **« Ce que j'ai déjà construit »** (`#calories-proof`, lien « Preuves » de la barre du haut) : « Des
+   applications publiées, utilisées, et qui rapportent. », puis quatre chiffres fournis par Noé, en 2 × 2 :
+   13 000 € par mois pour Calorie (sur un marché déjà saturé), 300 000 utilisateurs pour Hush (dès la
+   première version), +900 000 téléchargements (toutes ses applications), +20 applications publiées. À
+   côté, le carrousel des écrans, chacun avec une légende qui dit à quoi il sert : la stratégie se voit au
+   lieu d'être annoncée. Remplace la barre de preuve, « Une stratégie derrière chaque écran » (ses cinq
+   pastilles) et « Mon métier ». Styles : `src/app-showcase.css`.
+3. **« Comment ça se passe ? »** (`#offre`, lien « Méthode ») : « Les deux premières étapes sont offertes.
+   Tu ne paies qu'à la troisième. » Étape 1 « On en parle » et étape 2 « On cadre » portent la pastille
+   verte « Offert », l'étape 3 « On construit ensemble » la pastille violette « Tu paies ici » et le prix,
+   comme une information (décision de Noé du 10/10/2026) : « Tarif fixe, en général de 5 000 à 12 000 €.
+   Une première version en ligne en 45 jours en moyenne. » Les textes des étapes sont ceux validés par Noé
+   le même jour. Chaque étape montre ce qui se passe vraiment, à la place des illustrations décoratives :
+   la conversation (« Bonjour Noé, j'ai un projet d'application », le début du message WhatsApp
+   pré-rempli, et « Raconte-moi ton idée »), les trois documents (une vraie maquette, Bailora, le cahier
+   des charges et le devis de `src/DeliverableVisual.jsx`), l'application en ligne (Plouff Habitudes).
+   Absorbe « Avant de payer un euro, je t'offre ». Puis le bouton. Styles : `.etape…` dans `src/App.css`.
+4. **« Pourquoi me faire confiance ? »** (`#confiance`, sous « Qui je suis » ; la route /avis y mène) : la
+   photo de Noé, « Expert en applications mobiles & web », puis trois faits (il fait tout lui-même ; une
+   dizaine d'idées par semaine ; ses propres applications, WakeUp Alarme et Plouff Habitudes, sont en
+   ligne). À côté, la comparaison avec une agence en cinq lignes (`COMPARAISON_AGENCE` dans
+   `src/App.jsx`). Les avis clients iront dans `AVIS_CLIENTS` : vide tant que Noé n'en a pas (rien n'est
+   affiché), n'y mettre que des avis réels, avec l'accord de la personne.
+5. **« C'est pour toi ? »** (`#pour-qui`) : « Oui, si… » (une idée et un budget prévu, une seule personne
+   pour tout, une application qui rapporte) et « Non, si… » (site vitrine, juste un développeur qui exécute,
+   le prix le plus bas, quelqu'un pour faire sa publicité). Écarte avant WhatsApp ceux que Noé ne prend
+   pas. Remplace « Ce que je fais / Ce que je ne fais pas ».
+6. **FAQ « Pour y voir plus clair »** (`#faq`) : les 7 premières questions de `FAQ_ITEMS`
+   (`src/PagesSeo.jsx`), réordonnées le 10/10/2026 pour mettre les vraies objections en tête : combien,
+   en combien de temps, « je n'y connais rien », est-ce que ça va rapporter, téléphone ou ordinateur, à
+   qui appartient l'application, et pour trouver des utilisateurs. `NB_FAQ_ACCUEIL` vaut 7 dans
+   `src/App.jsx` et dans `scripts/generate-routes.js` (balisage FAQPage de l'accueil) : changer les deux
+   ensemble. /faq garde la liste complète (13 questions). Sous les questions, « Une autre question ?
+   Écris-moi sur WhatsApp. » ouvre directement WhatsApp avec le suivi `home_faq`.
+7. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités,
+   le bouton WhatsApp (suivi `home_contact`), « Tu bosses direct avec moi », puis l'audit en second choix
+   dans une carte blanche (`#audit`, lien « Audit », route /audit) : « Pas encore prêt à écrire ? Teste ton
+   idée : potentiel, budget et délai, en 2 minutes, sans appel. », bouton noir « Lancer mon audit ».
 
-Trois téléphones visibles, défilement toutes les 3,5 secondes, glissement,
-flèches et clavier. La première capture reste affichée jusqu’à ce qu’au moins
-la moitié de la galerie entre dans l’écran ; le défilement démarre alors et se
-suspend dès que la galerie repasse sous ce seuil. Un clic sur une flèche ou un glissement suspend le défilement
-30 secondes avant reprise automatique. Aucun bouton pause n’est affiché.
-L’animation se suspend tant que le focus clavier est dans le carrousel, hors écran,
-pendant un glissement et dans un onglet masqué. `prefers-reduced-motion`
-désactive l’automatisme et les transitions. Les illustrations vectorielles des
-livrables sont dans `src/DeliverableVisual.jsx` et `src/App.css` : format compact
-(80 px sur ordinateur, 64 px sur mobile), illustrations en violet de marque ;
-seuls les fonds des pastilles coche/euro et le curseur utilisent le bleu foncé
-du texte (`--color-text`), avec détails blancs.
+Retirés le 10/10/2026 : la barre de preuve, « Mon métier », « Avant de payer un euro, je t'offre », le
+grand tableau Agences, la section Instagram (elle faisait quitter la page juste avant la fin ; l'icône
+reste dans le pied de page) et l'ancienne section audit. Les illustrations `meetingdev.svg`,
+`devmobile.svg` et `post.svg` ne servent plus à l'accueil.
+
+Fonds, de haut en bas : le hero violet, blanc, gris clair, blanc, gris clair, blanc, gris clair, puis le
+pied de page violet.
+
+### Le carrousel des écrans
+
+Sept captures fournies par Noé, converties en WebP de 660 px sous
+`public/assets/images/apps/captures/` (environ 375 Ko au total). Les captures contiennent déjà l'encoche
+et la barre d'état : le cadre CSS ajoute seulement la coque et les boutons. La liste `SCREENS`
+(`src/AppShowcase.jsx`) définit l'ordre, le type (maquette ou application, affiché à côté du nom : une
+maquette n'est jamais présentée comme une application publiée) et la légende de chaque écran, qui dit à
+quoi il sert (rédigées le 10/10/2026, à faire relire par Noé). La légende change avec l'écran du milieu.
+
+Trois téléphones visibles, défilement toutes les 5,5 secondes (3,5 avant les légendes : le temps de les
+lire), glissement, flèches et clavier. La première capture reste affichée jusqu'à ce qu'au moins la
+moitié de la galerie entre dans l'écran ; le défilement démarre alors et se suspend dès que la galerie
+repasse sous ce seuil. Un clic sur une flèche ou un glissement suspend le défilement 30 secondes avant
+reprise automatique. Aucun bouton pause n'est affiché. L'animation se suspend tant que le focus clavier
+est dans le carrousel, hors écran, pendant un glissement et dans un onglet masqué. `prefers-reduced-motion`
+désactive l'automatisme et les transitions.
 Références de conception : [Embla, exemples](https://www.embla-carousel.com/docs/v8/examples/predefined),
 [Swiper, coverflow](https://swiperjs.com/demos), [W3C, carrousels accessibles](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).
-
-## Livrables et fin de page d’accueil
-
-La section « Avant de payer un euro, je t’offre : » présente d’abord la maquette offerte sur fond violet
-pâle, puis le cahier des charges. Sur ordinateur, ces deux cartes sont côte à
-côte ; le devis forme une ligne compacte en dessous. Les cartes n’ont pas
-d’ombre ni de déplacement au survol.
-
-Sur mobile, les cartes « Comment ça se passe ? » placent une illustration de 128 × 118 px
-à droite du début du texte pour rapprocher le numéro, le titre et la description.
-Les trois étapes (refaites à la demande de Noé le 10/10/2026) : 1 « On en parle » (au premier
-appel, on discute de l'idée et Noé donne des conseils concrets pour bien la lancer ; on repart avec
-un avis clair, « même si on ne travaille pas ensemble »), 2 « On cadre » (après l'appel : cahier des
-charges offert, première maquette, devis clair ; « ce que tu vas avoir, quand, et pour combien »),
-3 « On construit ensemble » (la maquette reprise sur mesure, le développement, la publication sur
-les stores ou sur le web, puis « je t'accompagne pour la faire évoluer », plus pro que « je reste
-dispo après »). Les trois textes ont la même longueur (6 lignes sur ordinateur) : le contenu des
-cartes est centré en hauteur, donc des textes inégaux décalent les pastilles « Étape ».
-La fin de page suit l’ordre : contact WhatsApp, FAQ, Instagram, audit express,
-pied de page. La FAQ s’intitule « Pour y voir plus clair », sur fond blanc avec
-un espacement supérieur réduit sur mobile. Sous les trois questions, « Une autre
-question ? Écris-moi sur WhatsApp. » ouvre directement WhatsApp avec le suivi
-`home_faq`. Instagram et l’audit partagent un
-fond gris clair.
 
 ## Maquettes
 

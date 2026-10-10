@@ -1,5 +1,7 @@
 # Brief — vidéo hero + section « Une idée + un développeur, ça ne suffit pas » (accueil)
 
+> **10/10/2026 : l'ordre de l'accueil prévu ici est remplacé par la refonte du 10/10** (sept sections, voir `documentation/architecture/landing-page.md`, « L'accueil, section par section »). La vidéo du hero a été faite autrement (film v11, `content/video-hero/v11/`). La section « Une idée + un développeur, ça ne suffit pas » n'est pas codée.
+
 > Décision du 2026-10-08 (v2, après retour de Noé : moins de texte, vidéo motion design dans le hero, pas de face cam). Maquette : canvas Design « Section « Pas un développeur » — plan et maquette » (plan avant/après, téléphone, ordinateur).
 > Positionnement : `documentation/context/positionnement.md`. Mots : `documentation/context/vocabulaire-mobile-web.md`. Règles SEO/perf : `documentation/architecture/landing-page.md`.
 

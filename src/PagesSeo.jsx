@@ -23,21 +23,39 @@ const mePhoto = '/assets/images/profile/me.webp'
 // Les 3 premieres alimentent aussi l'accordeon de la home (App.jsx en prend
 // un slice), pour qu'il n'existe qu'une seule liste de questions.
 export const FAQ_ITEMS = [
+  // Ordre du 10/10/2026 : les 7 premieres sont les vraies objections, affichees sur l'accueil
+  // (NB_FAQ_ACCUEIL dans App.jsx, et le balisage FAQPage de la home dans scripts/generate-routes.js).
   {
-    q: 'Comment fonctionne la tarification ?',
-    a: "Tarif fixe, défini avant de commencer : en général une dizaine de milliers d'euros pour une application mobile ou web, selon la complexité. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.",
+    q: "Combien coûte une application ?",
+    a: "Tarif fixe, posé avant de commencer : en général de 5 000 € pour une première version à 12 000 € pour une application complète, selon ce qu'elle doit faire. Pas de compteur qui tourne, tu sais exactement ce que tu paies. Et tu vois une maquette de ton application avant de décider quoi que ce soit.",
   },
   {
-    q: 'Combien de temps faut-il pour avoir une application ?',
+    q: "Combien de temps faut-il pour avoir une application ?",
     a: "Une première version en 45 jours en moyenne. Pour une application complète, le délai dépend du périmètre, on le cale ensemble.",
   },
   {
-    q: "Après la livraison de l'application ?",
-    a: "Je disparais pas après la mise en ligne : corrections, mises à jour, évolutions, accompagnement, je reste dispo. On définit ensemble ce qui est nécessaire selon comment ton app évolue.",
+    q: "Je n'y connais rien en technique, c'est un problème ?",
+    a: "Non, c'est le cas de la plupart des gens qui m'écrivent. Une idée et à qui elle s'adresse, ça suffit pour commencer : pas besoin de cahier des charges, de maquette ni de vocabulaire technique. Si tu veux arriver avec une première lecture du potentiel, du budget et du délai, fais l'audit gratuit, il prend deux minutes.",
   },
   {
     q: "Est-ce que mon application va vraiment générer des revenus ?",
     a: "Aucun sérieux ne peut te le garantir, et méfie-toi de qui le promet. Ce que je peux faire, c'est concevoir ton application pour qu'elle en ait la capacité : un modèle économique décidé avant la première ligne de code, un moment de valeur atteint vite, et une offre placée là où elle a du sens. C'est exactement ce qui sépare une application à zéro euro d'une application qui rapporte. Une application que j'ai conçue génère environ 13 000 € par mois.",
+  },
+  {
+    q: "Téléphone ou ordinateur : comment choisir ?",
+    a: "C'est moi qui tranche, avant le devis, et je t'explique pourquoi. Si tes utilisateurs sont des particuliers qui s'en servent partout, avec des notifications ou des photos, c'est le téléphone. Si ce sont des professionnels qui travaillent devant un écran, c'est souvent l'ordinateur, sans la commission des stores. Parfois les deux, dans cet ordre.",
+  },
+  {
+    q: "À qui appartient l'application ?",
+    a: "À toi. Une fois le projet réglé, l'application et son code source t'appartiennent. Sur les stores, elle est publiée sur ton propre compte, à ton nom.",
+  },
+  {
+    q: "Et pour trouver des utilisateurs ?",
+    a: "Je ne fais pas ta publicité, et personne ne peut te promettre des utilisateurs par magie. Mon travail, c'est que ceux qui arrivent restent et paient. Au premier appel, on parle aussi de la façon de trouver les premiers.",
+  },
+  {
+    q: "Après la livraison de l'application ?",
+    a: "Je disparais pas après la mise en ligne : corrections, mises à jour, évolutions, accompagnement, je reste dispo. On définit ensemble ce qui est nécessaire selon comment ton app évolue.",
   },
   {
     q: "Quelle différence avec une agence ?",
@@ -54,10 +72,6 @@ export const FAQ_ITEMS = [
   {
     q: "Sur quelles plateformes tu développes ?",
     a: "iOS et Android, avec une seule base de code. Ton application est publiée sur l'App Store et sur Google Play, et je m'occupe de la mise en ligne, des fiches et des allers-retours de validation avec les stores.",
-  },
-  {
-    q: "Il me faut quoi avant de te contacter ?",
-    a: "Une idée et à qui elle s'adresse, ça suffit pour commencer. Tu n'as besoin ni de cahier des charges, ni de maquette, ni de vocabulaire technique. Si tu veux arriver avec une première lecture du potentiel, du budget et du délai, fais l'audit gratuit, il prend deux minutes.",
   },
   {
     q: "Tu travailles à distance ou sur place ?",
@@ -92,7 +106,7 @@ function EnteteSeo({ onAccueil, onBookCall }) {
               onClick={onBookCall}
               className="hidden sm:inline-block bg-[#131313] text-white text-md font-medium px-8 py-3 rounded-full hover:bg-black transition-colors cursor-pointer"
             >
-              Discuter avec Noé
+              J'ai une idée
             </button>
           </div>
         </div>

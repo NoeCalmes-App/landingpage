@@ -1,19 +1,22 @@
-.app-proof { padding: 64px 24px; overflow: clip; background: linear-gradient(180deg, #fffefc, #faf9ff 70%, #fffefc); }
+/* Section « Ce que j'ai déjà construit » de l'accueil (refonte du 10/10/2026) : les chiffres et les écrans légendés. */
+.app-proof { padding: 72px 24px 76px; overflow: clip; background: linear-gradient(180deg, #fffefc, #faf9ff 70%, #fffefc); }
 .app-proof-inner { max-width: 1100px; margin: 0 auto; }
-.app-proof-main { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-.app-proof-copy h2 { font-family: 'Plus Jakarta Sans Local', sans-serif; font-size: clamp(30px, 3.1vw, 42px); font-weight: 800; letter-spacing: -.045em; line-height: 1.14; margin: 0 0 20px; }
+.app-proof-main { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.app-proof-main > .app-gallery { order: -1; }
+.app-proof-copy h2 { font-family: 'Plus Jakarta Sans Local', sans-serif; font-size: clamp(30px, 3.1vw, 42px); font-weight: 800; letter-spacing: -.045em; line-height: 1.14; color: #033475; margin: 0 0 14px; }
 .app-proof-copy h2 > span { color: #665dff; }
-.app-proof-intro { font-size: 14px; line-height: 1.8; color: #667185; max-width: 490px; }
-.app-proof-intro strong { color: #033475; font-weight: 600; }
-.app-proof-journey { display: flex; flex-wrap: wrap; gap: 10px 6px; padding: 0; margin: 26px 0 28px; list-style: none; }
-.app-proof-journey li { display: flex; align-items: center; gap: 6px; color: #a49eba; }
-.app-proof-chip { display: inline-flex; align-items: center; gap: 7px; padding: 10px 15px; border: 1px solid #e4e0f0; border-radius: 999px; background: #fff; color: #033475; font-size: 13px; font-weight: 600; }
-.app-proof-chip-result { background: #665dff; border-color: #665dff; color: white; }
-.app-proof-example { display: flex; gap: 12px; align-items: center; padding-top: 22px; border-top: 1px solid #e4e0ee; }
-.app-proof-example img { width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0; }
-.app-proof-example p { font-size: 12px; line-height: 1.7; color: #667185; margin: 0; max-width: 370px; }
-.app-proof-example strong { display: block; color: #033475; font-weight: 700; }
-.app-proof-example b { font-weight: 600; color: #033475; }
+.app-proof-intro { font-size: 16px; line-height: 1.7; color: #667185; max-width: 490px; margin: 0; }
+
+/* Les chiffres : 2 × 2, l'icône de l'application quand le chiffre est le sien */
+.app-proof-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 0; margin: 28px 0 0; list-style: none; max-width: 520px; }
+.app-proof-stats li { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; padding: 18px 18px 17px; border-radius: 18px; background: #fff; border: 1px solid #ebe8f5; box-shadow: 0 14px 30px -26px rgba(59, 47, 208, .5); }
+.app-proof-stat-icone { width: 36px; height: 36px; border-radius: 10px; margin-bottom: 6px; display: grid; place-items: center; background: #f1efff; color: #665dff; flex-shrink: 0; }
+.app-proof-stat-icone img { width: 36px; height: 36px; border-radius: 10px; object-fit: cover; display: block; }
+.app-proof-stats strong { font-family: 'Plus Jakarta Sans Local', sans-serif; font-weight: 800; font-size: clamp(25px, 2.3vw, 31px); letter-spacing: -.035em; line-height: 1.08; white-space: nowrap; background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff); -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: 2px; }
+.app-proof-stats li > span:last-child { font-size: 13px; line-height: 1.45; color: #667185; }
+.app-proof-stats b { color: #033475; font-weight: 700; }
+
+/* La galerie de téléphones */
 .app-gallery { --phone-width: 218px; position: relative; min-width: 0; padding: 0; isolation: isolate; }
 .app-gallery-stage { position: relative; height: 485px; margin-top: 0; touch-action: pan-y; user-select: none; cursor: grab; }
 .app-gallery-stage:active { cursor: grabbing; }
@@ -32,31 +35,46 @@
 .app-phone-volume-up { top: 99px; height: 29px; }
 .app-phone-volume-down { top: 138px; height: 29px; }
 .app-phone-power { left: auto; right: -4px; top: 112px; height: 45px; }
-.app-gallery-controls { display: flex; align-items: center; justify-content: center; gap: 19px; margin-top: 15px; }
+
+/* La légende de l'écran au centre : à quoi il sert */
+.app-gallery-caption { display: flex; flex-direction: column; align-items: center; gap: 6px; max-width: 370px; min-height: 74px; margin: 16px auto 0; text-align: center; }
+.app-gallery-caption-name { display: inline-flex; align-items: center; gap: 8px; font-family: 'Plus Jakarta Sans Local', sans-serif; font-weight: 800; font-size: 14px; color: #033475; }
+.app-gallery-caption-name span { font-family: 'Plus Jakarta Sans Local', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: #f1efff; color: #665dff; }
+.app-gallery-caption-role { font-size: 14px; line-height: 1.55; color: #4b5565; animation: app-legende 450ms ease both; }
+@keyframes app-legende { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.app-gallery-controls { display: flex; align-items: center; justify-content: center; gap: 19px; margin-top: 12px; }
 .app-gallery-controls button { width: 40px; height: 40px; border-radius: 50%; background: #fff; color: #033475; border: 1px solid #e0deec; display: grid; place-items: center; cursor: pointer; transition: background 180ms; }
 .app-gallery-controls button:hover { background: #edeaff; }
 .app-gallery button:focus-visible { outline: 3px solid #665dff; outline-offset: 5px; }
 .app-gallery-dots { display: flex; gap: 5px; align-items: center; }
 .app-gallery-dots span { width: 5px; height: 5px; border-radius: 5px; background: #d2cedf; transition: width 350ms, background 350ms; }
 .app-gallery-dots .is-active { width: 20px; background: #665dff; }
+
 @media (max-width: 1000px) and (min-width: 761px) {
   .app-proof-main { gap: 32px; grid-template-columns: .9fr 1fr; }
   .app-gallery { --phone-width: 182px; }
   .app-gallery-stage { height: 415px; }
 }
 @media (max-width: 760px) {
-  .app-proof { padding: 44px 22px 48px; }
+  .app-proof { padding: 52px 18px 52px; }
   .app-proof-main { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .app-proof-main > .app-gallery { order: 0; }
+  .app-proof-copy { max-width: 520px; margin: 0 auto; text-align: center; }
+  .app-proof-copy h2 { font-size: clamp(28px, 7.6vw, 38px); }
+  .app-proof-intro { font-size: 15px; margin: 0 auto; }
+  .app-proof-stats { gap: 10px; margin: 24px auto 0; text-align: left; }
+  .app-proof-stats li { padding: 14px 13px 13px; border-radius: 16px; }
+  .app-proof-stat-icone, .app-proof-stat-icone img { width: 30px; height: 30px; border-radius: 9px; }
+  .app-proof-stats strong { font-size: clamp(21px, 6.2vw, 26px); }
+  .app-proof-stats li > span:last-child { font-size: 12px; }
   .app-gallery { --phone-width: clamp(158px, 49vw, 218px); max-width: 480px; width: 100%; margin: 0 auto; padding: 0; }
   .app-gallery-stage { height: clamp(350px, 112vw, 480px); margin-top: 0; }
   .app-phone-position[data-position='-1'] { transform: translate3d(-48%, 38px, 0) scale(.74) rotate(-6deg); }
   .app-phone-position[data-position='1'] { transform: translate3d(48%, 38px, 0) scale(.74) rotate(6deg); }
-  .app-gallery-controls { margin-top: 8px; }
-  .app-proof-copy { max-width: 520px; margin: 0 auto; }
-  .app-proof-copy h2 { font-size: clamp(31px, 8vw, 40px); }
-  .app-proof-intro { font-size: 14px; }
-  .app-proof-chip { padding: 9px 11px; font-size: 12px; }
+  .app-gallery-caption { padding: 0 6px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .app-phone-position, .app-gallery-dots span, .app-gallery-controls button { transition: none; }
+  .app-gallery-caption-role { animation: none; }
 }
