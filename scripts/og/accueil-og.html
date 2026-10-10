@@ -1,0 +1,58 @@
+<!doctype html>
+<!--
+  SOURCE DE L'IMAGE DE PARTAGE PAR DEFAUT (accueil, blog, toutes les pages
+  sauf /maquette/... et /audit-app) : public/assets/images/meta/accueil-og.png
+  1200 x 630. Reprend la composition de l'image d'origine (portrait a gauche,
+  titre a droite). Regeneration : voir scripts/og/README.md.
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face { font-family: 'Jakarta'; font-weight: 700; src: url('../../public/assets/fonts/plus-jakarta/PlusJakartaSans-Bold.ttf') format('truetype'); }
+  @font-face { font-family: 'Baskerville'; font-style: italic; font-weight: 400; src: url('LibreBaskerville-Italic.woff2') format('woff2'); }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(204, 196, 255, 0) 80%, rgba(204, 196, 255, 0.75) 100%),
+      #f4f3fa;
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(120, 110, 200, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(120, 110, 200, 0.08) 1px, transparent 1px);
+    background-size: 116px 116px; background-position: 62px 90px;
+  }
+  .portrait {
+    position: absolute; left: 218px; top: 152px; width: 328px; height: 328px;
+    border-radius: 50%;
+    background: url('portrait.png') center / cover no-repeat;
+  }
+  h1 {
+    position: absolute; left: 590px; top: 238px; width: 560px;
+    font-family: 'Jakarta', sans-serif; font-weight: 700;
+    font-size: 45px; line-height: 1.22; letter-spacing: -0.02em; color: #3c3c46;
+  }
+  h1 em { font-family: 'Baskerville', serif; font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: #4b4b4b; padding: 0 3px; }
+  h1 .accent { color: #6f63ff; }
+  .chips { position: absolute; left: 592px; top: 420px; display: flex; gap: 10px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 5px 13px 5px 10px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(60, 60, 70, 0.10);
+    font-family: 'Jakarta', sans-serif; font-weight: 700; font-size: 16px; color: #3c3c46;
+  }
+  .chip svg { width: 13px; height: 13px; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="portrait"></div>
+  <h1>Je <em>transforme</em> ton idée en<br />application qui <span class="accent">génère<br />des revenus</span></h1>
+  <div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#3c3c46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>Stratégie</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#3c3c46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>Design</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#3c3c46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>Mobile & web</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#3c3c46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>Mise en ligne</span></div>
+</body>
+</html>
