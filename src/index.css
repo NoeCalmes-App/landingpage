@@ -124,6 +124,50 @@ section[id] {
 .anim-hero > *:nth-child(6) { animation-delay: 0.75s; }
 .anim-hero > *:nth-child(7) { animation-delay: 0.85s; }
 
+/* ===== REFLET DES BOUTONS « J'AI UNE IDÉE D'APPLICATION » ===== */
+/* Au survol, le même trait de lumière qu'à la fin du film (« Audit offert, personnalisé ») : une bande blanche
+   penchée comme un « / » (de haut à droite vers bas à gauche) qui traverse le bouton de gauche à droite.
+   Elle passe sous le texte, qui reste net. Seulement avec une souris (pas de reflet coincé sur téléphone),
+   et pas pour les personnes qui ont demandé moins d'animations. */
+.btn-reflet {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-reflet::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  bottom: -40%;
+  left: 0;
+  width: 34%;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0));
+  transform: translateX(-170%) skewX(-18deg);
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-reflet:hover::after,
+  .btn-reflet:focus-visible::after {
+    transform: translateX(370%) skewX(-18deg);
+    transition: transform 0.85s cubic-bezier(0.45, 0, 0.25, 1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-reflet::after { display: none; }
+}
+
+/* ===== HERO SUR UN ÉCRAN D'ORDINATEUR BAS ===== */
+/* Portables 1366×768, 1280×720 : un peu moins d'air au-dessus du titre et entre les éléments, pour que le
+   message de l'affiche de la vidéo se voie dès l'arrivée. Sur ces écrans, on ne voit que le haut de la
+   vidéo ; en descendant pour voir le reste, on la lance, et l'affiche disparaît. */
+@media (min-width: 1024px) and (max-height: 820px) {
+  .hero-bg { padding-top: 8.5rem; }
+  .hero-bg .hero-content > h1 { margin-bottom: 1.25rem; }
+  .hero-bg .hero-content > p { margin-bottom: 2rem; }
+  .hero-bg .hv-zone { margin-top: 2.5rem; }
+}
+
 /* ===== HERO BACKGROUND ===== */
 /* Lueur violette en arc de cercle : un grand cercle blanc centré en haut (derrière la barre, le titre et le
    bouton), le violet tout autour. Il monte haut sur les côtés, descend doucement vers le milieu, remonte de

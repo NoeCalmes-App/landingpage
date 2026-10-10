@@ -1,6 +1,6 @@
 /* Vidéo du hero (src/HeroVideo.jsx), sur le modèle du lecteur d'Ikovaline : lecture auto muette en boucle
    (quand on a fait défiler la page jusqu'à elle), barre toujours visible en bas (lecture/pause, avancement,
-   son, plein écran). Avant, une affiche violette tirée du film.
+   son, plein écran). Avant, une affiche dans le style du film.
    Plus large que la colonne de texte du hero : centrée avec left + marge négative, sans transform,
    parce que l'animation d'entrée du hero (.anim-hero > *) anime déjà transform. */
 .hv-zone {
@@ -9,11 +9,11 @@
   left: 50%;
   width: var(--hv-w);
   margin-left: calc(var(--hv-w) / -2);
-  margin-top: 1.75rem;
+  margin-top: 2.5rem;
   text-align: left;
 }
 @media (min-width: 768px) {
-  .hv-zone { --hv-w: min(1100px, calc(100vw - 72px)); margin-top: 2.25rem; }
+  .hv-zone { --hv-w: min(1100px, calc(100vw - 72px)); margin-top: 5rem; }
 }
 
 .hv {
@@ -21,7 +21,7 @@
   aspect-ratio: 16 / 9;
   border-radius: 14px;
   overflow: hidden;
-  background: #5d53f3;
+  background: #f6f5ff;              /* le blanc de la miniature, le temps qu'elle arrive */
   outline: 1px solid rgba(102, 93, 255, 0.16);
   box-shadow: 0 24px 60px -18px rgba(66, 54, 220, 0.42), 0 6px 18px rgba(3, 52, 117, 0.08);
   isolation: isolate;
