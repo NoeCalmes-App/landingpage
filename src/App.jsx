@@ -814,29 +814,24 @@ function App() {
       </section>
 
       {/* ========== BARRE DE PREUVE ========== */}
-      <section className="py-10 md:py-12 px-5 bg-card">
-        <div className="max-w-275 mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center">
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-2xl bg-white border border-card-border shadow-sm flex items-center justify-center mb-4">
-              <svg className="text-brand" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" /></svg>
+      {/* Le chiffre en grand, ce qu'il compte en dessous, puis une précision : rien ne passe à la ligne au milieu
+          d'un chiffre. Trois colonnes séparées par un trait fin à partir de 640 px, les unes sous les autres avant. */}
+      <section className="py-12 md:py-14 px-5 bg-card">
+        <div className="max-w-245 mx-auto grid grid-cols-1 sm:grid-cols-3 gap-9 sm:gap-0 sm:divide-x sm:divide-brand/12 text-center">
+          {[
+            { chiffre: '+900k', quoi: 'téléchargements', precision: 'sur l’ensemble de mes applications', icone: <svg className="text-brand w-6 h-6 md:w-7 md:h-7" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" /></svg> },
+            { chiffre: '+300k', quoi: 'utilisateurs', precision: 'Hush App · 1re version', icone: <svg className="text-brand w-6 h-6 md:w-7 md:h-7" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19a5.5 5.5 0 0111 0" /><path d="M16 5.5a3 3 0 010 5.8M20.5 19a5.5 5.5 0 00-3-4.9" /></svg> },
+            { chiffre: '+20', quoi: 'applications', precision: 'publiées sur les stores et en ligne', icone: <svg className="text-brand w-6 h-6 md:w-7 md:h-7" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></svg> },
+          ].map(({ chiffre, quoi, precision, icone }) => (
+            <div key={quoi} className="flex flex-col items-center sm:px-4 md:px-6">
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white border border-card-border shadow-sm flex items-center justify-center mb-4">
+                {icone}
+              </div>
+              <p className="font-jakarta font-extrabold text-[2rem] md:text-[2.4rem] tracking-tight leading-none whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent pb-1">{chiffre}</p>
+              <p className="font-jakarta text-text font-bold text-[1rem] md:text-[1.08rem] tracking-tight leading-snug mt-1.5">{quoi}</p>
+              <p className="text-grey text-[0.84rem] md:text-[0.9rem] leading-snug mt-1 max-w-[17rem] text-balance">{precision}</p>
             </div>
-            <p className="font-jakarta text-text font-bold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-none">+900k téléchargements</p>
-            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">sur l’ensemble de mes applications</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-2xl bg-white border border-card-border shadow-sm flex items-center justify-center mb-4">
-              <svg className="text-brand" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19a5.5 5.5 0 0111 0" /><path d="M16 5.5a3 3 0 010 5.8M20.5 19a5.5 5.5 0 00-3-4.9" /></svg>
-            </div>
-            <p className="font-jakarta text-text font-bold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-none">+300k utilisateurs</p>
-            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">Hush App · 1ère version</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-2xl bg-white border border-card-border shadow-sm flex items-center justify-center mb-4">
-              <svg className="text-brand" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></svg>
-            </div>
-            <p className="font-jakarta text-text font-bold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-none">+20 applications</p>
-            <p className="text-grey text-[0.85rem] md:text-[0.92rem] font-medium mt-2">publiées sur les stores et en ligne</p>
-          </div>
+          ))}
         </div>
       </section>
 

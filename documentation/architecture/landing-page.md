@@ -156,6 +156,10 @@ cinq pastilles : premiers écrans, essai gratuit, habitude, abonnement/commissio
 revenus récurrents. Calorie (13 000 €/mois) reste un exemple secondaire de marché
 concurrentiel. La barre de preuve affiche +900k téléchargements cumulés,
 +300k utilisateurs pour Hush et +20 applications, chiffres fournis par Noé.
+Mise en page (refaite le 10/10/2026, Noé la trouvait pas centrée et coupée) : le chiffre en grand
+dans le dégradé violet, ce qu'il compte dessous, puis une précision en gris. Rien ne passe à la
+ligne au milieu d'un chiffre ; trois colonnes séparées par un trait fin à partir de 640 px, les unes
+sous les autres avant.
 
 Le carrousel utilise sept captures fournies par Noé, converties en WebP de
 660 px sous `public/assets/images/apps/captures/` (environ 375 Ko au total).
