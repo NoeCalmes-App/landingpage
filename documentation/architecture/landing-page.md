@@ -110,14 +110,14 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
 - Au survol, tous les boutons de l'accueil ont le reflet de la fin du film (« Audit offert ») : un trait
   de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les traverse et passe sous le
   texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (« J'ai une idée d'application » en haut,
-  « Discuter avec Noé » après les étapes et dans la section contact) et les boutons noirs (« J'ai une idée » en haut, le bouton du menu sur téléphone,
-  « Lancer mon audit »), où le même trait blanc se voit comme un reflet gris clair (demande de Noé du
+  « Discuter avec Noé » après les étapes et dans la section contact) et les boutons noirs (« J'ai une idée » en haut, le bouton du menu sur
+  téléphone), où le même trait blanc se voit comme un reflet gris clair (demande de Noé du
   10/10/2026 : « tous les autres boutons », « travailler en noir »). Seulement à la souris, et pas quand
   moins d'animations sont demandées.
-- Espacement (demande de Noé du 10/10/2026 : plus d'air au-dessus du titre, la vidéo plus bas) : sur
-  ordinateur, 88 px entre la barre du haut et le titre, puis 28 px jusqu'à la phrase, 40 px jusqu'au
-  bouton et 80 px jusqu'à la vidéo (titre à 176 px du haut, vidéo à 544 px sur l'écran de Noé, 1710 ×
-  951 : « la vidéo un peu plus bas », 10/10/2026). Sur téléphone : 20, 32 et 40 px. Le hero reste centré
+- Espacement (demandes de Noé du 10 et du 11/10/2026 : plus d'air au-dessus du titre, la vidéo plus bas) :
+  sur ordinateur (1024 px et plus), 112 px entre la barre du haut et le titre (titre à 200 px du haut,
+  `lg:pt-50` ; 176 px avant le 11/10), puis 28 px jusqu'à la phrase, 40 px jusqu'au bouton et 80 px jusqu'à
+  la vidéo (« la vidéo un peu plus bas », 10/10/2026). Sur téléphone : 20, 32 et 40 px. Le hero reste centré
   en hauteur quand l'écran est plus haut que son contenu. Sur un ordinateur bas (hauteur 820 px ou
   moins : portables 1366×768, 1280×720), l'air est réduit (48, 20, 32, 40 px) pour que la miniature de
   la vidéo se voie dès l'arrivée (`src/index.css`).
@@ -269,10 +269,11 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
 7. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités
    (son fond n'apparaît qu'avec le texte des places ; pendant « Vérification des disponibilités… », pas de
    fond, Noé 11/10/2026),
-   le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`), « Tu bosses direct avec moi », puis, 64 px
-   plus bas sur téléphone et 80 sur ordinateur (Noé, 11/10/2026), l'audit en second choix
-   dans une carte blanche (`#audit`, lien « Audit », route /audit) : « Pas encore prêt à écrire ? Teste ton
-   idée : potentiel, budget et délai, en 2 minutes, sans appel. », bouton noir « Lancer mon audit ».
+   le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`), « Tu bosses direct avec moi », puis
+   l'audit en second choix (`#audit`, route /audit) : « Pas encore prêt à écrire ? Teste ton idée en 2
+   minutes », en simple lien (11/10/2026 : la grande carte avec son bouton noir
+   attirait l'œil autant que WhatsApp, et Noé avait peur d'y perdre ceux qui allaient écrire, l'audit étant plus
+   long qu'un message).
 
 Retirés le 10/10/2026 : la barre de preuve, « Mon métier », « Avant de payer un euro, je t'offre », le
 grand tableau Agences, la section Instagram (elle faisait quitter la page juste avant la fin ; l'icône

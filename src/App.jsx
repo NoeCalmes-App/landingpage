@@ -763,7 +763,7 @@ function App() {
 
       {/* ========== HERO (plein écran avec gradient) ========== */}
       <section
-        className="hero-bg relative min-h-screen flex items-center justify-center text-center px-3 sm:px-5 md:px-10 lg:px-16 pt-36 pb-16 sm:pt-40 md:pt-44 md:pb-24 overflow-hidden"
+        className="hero-bg relative min-h-screen flex items-center justify-center text-center px-3 sm:px-5 md:px-10 lg:px-16 pt-36 pb-16 sm:pt-40 md:pt-44 lg:pt-50 md:pb-24 overflow-hidden"
       >
         <div className="hero-visual" aria-hidden="true" />
 
@@ -1169,36 +1169,19 @@ function App() {
             </div>
           </div>
 
-          <div id="audit" className="reveal relative overflow-hidden mt-16 md:mt-20 max-w-150 mx-auto rounded-[24px] md:rounded-[28px] border border-brand/10 bg-white px-5 py-8 md:px-10 md:py-9 shadow-[0_20px_55px_-44px_rgba(102,93,255,0.55)]">
-            <div className="pointer-events-none absolute -top-24 -right-24 w-60 h-60 rounded-full bg-[#665dff] opacity-[0.1] blur-[58px]" />
-            <div className="relative">
-              <p className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand/6 border border-brand/12 mb-4">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-60" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
-                </span>
-                <span className="font-jakarta text-text text-[0.7rem] font-extrabold tracking-widest uppercase">Audit express · 2 min</span>
-              </p>
-              <p className="font-jakarta text-text font-extrabold text-[1.3rem] md:text-[1.55rem] tracking-tight leading-tight mb-2">
-                Pas encore prêt à écrire&nbsp;?
-              </p>
-              <p className="text-grey text-[0.92rem] md:text-[0.98rem] leading-relaxed max-w-110 mx-auto mb-6">
-                Teste ton idée&nbsp;: potentiel, budget et délai, en 2 minutes, sans appel.
-              </p>
-              <button
-                type="button"
-                onClick={goAuditApp}
-                className="btn-reflet group inline-flex items-center gap-2.5 bg-[#131313] text-white font-semibold text-[0.92rem] md:text-[0.95rem] px-7 py-3 md:px-8 md:py-3.5 rounded-full cursor-pointer"
-              >
-                Lancer mon audit
-                <svg className="transition-transform duration-300 group-hover:translate-x-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </button>
-              <p className="text-grey/60 text-[0.78rem] mt-3">Gratuit · résultat immédiat</p>
-            </div>
-          </div>
+          {/* L'audit, en simple lien (11/10/2026) : une grande carte avec un bouton noir attirait l'œil autant que le bouton
+              WhatsApp, et l'audit est plus long qu'un message ; Noé avait peur d'y perdre ceux qui allaient écrire. Le lien
+              reste pour ceux qui ne sont pas prêts. Id « audit » : la route /audit y mène toujours. */}
+          <p id="audit" className="reveal mt-10 md:mt-12 text-grey text-[0.88rem] md:text-[0.92rem] leading-relaxed">
+            Pas encore prêt à écrire&nbsp;?{' '}
+            <a
+              href={lienInterne('/audit-app')}
+              onClick={(event) => { event.preventDefault(); goAuditApp() }}
+              className="inline-block font-semibold text-brand underline underline-offset-4 decoration-brand/40 hover:decoration-brand"
+            >
+              Teste ton idée en 2&nbsp;minutes
+            </a>
+          </p>
         </div>
       </section>
 
