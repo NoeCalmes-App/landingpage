@@ -95,6 +95,10 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
   sur ordinateur et sur une seule ligne jusqu'à 320 px. Il mène à la section contact, dont le bouton
   porte le même texte et ouvre WhatsApp. La barre du haut dit « J'ai une idée » (plus court, comme
   Ikovaline), sur l'accueil, le blog et les quiz.
+- Au survol, ces deux boutons « J'ai une idée d'application » ont le reflet de la fin du film (« Audit
+  offert ») : un trait de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les
+  traverse et passe sous le texte (`.btn-reflet` dans `src/index.css`). Seulement à la souris, et pas
+  quand moins d'animations sont demandées.
 - Fond (`.hero-bg` dans `src/index.css`) : une lueur violette en arc de cercle. Un grand cercle blanc
   centré en haut (blanc jusqu'à 34 % du rayon, fondu jusqu'à 70 %) laisse le violet monter haut sur les
   côtés, descendre doucement vers le milieu et remonter de l'autre côté ; il entoure la vidéo. Même
@@ -105,15 +109,19 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
 Sous le bouton « J'ai une idée d'application » du hero, un film de 26 secondes en motion design
 (voix off et bruitages, pas de musique). Code : `src/HeroVideo.jsx` et `src/hero-video.css`.
 Fichiers : `public/assets/videos/hero-v10-1080.mp4` (ordinateur), `hero-v10-720.mp4` (mobile,
-connexion lente, économiseur de données) et deux affiches violettes `hero-v10-affiche-violette*.webp`
-(l'image 207 du film, à 6,9 s : « 8 apps sur 10 … peinent à rapporter 1 000 € par mois »). Les sources du film
+connexion lente, économiseur de données) et la photo de la couverture,
+`public/assets/images/profile/noe-portrait.webp`. Les sources du film
 (textes, voix, réglages) sont dans `content/video-hero/v10/`. Pour publier un nouveau montage,
 changer le numéro dans les noms de fichiers (v11…) : le navigateur ne ressert pas l'ancien film en cache.
 
 Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
 
-- La page s'affiche d'abord avec l'affiche violette (une vraie image, la bonne taille choisie par le
-  navigateur). Le film se charge en fond 0,7 s après, mais ne démarre que quand on fait défiler la page
+- Tant que la vidéo n'a rien montré, une couverture violette est posée dessus : la photo de Noé,
+  « Ton idée a du potentiel ? » et un bouton « Regarde la vidéo · 0:26 ». Elle est en HTML, pas en image :
+  le texte reste net à toutes les tailles et, sur téléphone, le bouton se réduit à son rond. Toute la
+  couverture lance la vidéo avec le son. Noé ne voulait ni l'image « 8 apps sur 10 » du film (« ça donne
+  pas envie de regarder ») ni le titre du hero répété.
+- Le film se charge en fond 0,7 s après l'affichage, mais ne démarre que quand on fait défiler la page
   jusqu'à lui (demande de Noé, octobre 2026) : au moins 24 px de défilement et la moitié de la vidéo à
   l'écran. Il joue alors seul, muet et en boucle, depuis le début. Pourquoi : au chargement, on lit le
   titre ; s'il partait tout de suite, on raterait son début.
@@ -129,8 +137,7 @@ Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
   bouge plus) ; le lecteur natif sur iPhone.
 - Lecture automatique refusée (iPhone en mode économie d'énergie, Safari ou Firefox réglés pour bloquer,
   navigateur intégré d'une application) ou non souhaitée (`prefers-reduced-motion`, économiseur de
-  données, rien n'est chargé d'avance) : l'affiche reste, avec un gros bouton « Lancer la vidéo », qui la
-  lance avec le son.
+  données, rien n'est chargé d'avance) : la couverture reste, et son bouton lance la vidéo avec le son.
 
 ## Galerie d’interfaces sur l’accueil
 

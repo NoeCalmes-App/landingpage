@@ -32,16 +32,69 @@
 
 .hv-video { display: block; width: 100%; height: 100%; object-fit: cover; cursor: pointer; background: #efedff; }
 
-/* l'affiche couvre la vidéo jusqu'à sa première image, puis s'efface */
+/* ---------- couverture, tant que la vidéo n'a rien montré ----------
+   Fond violet, photo de Noé, « Ton idée a du potentiel ? » et un bouton lecture. Ses tailles suivent la
+   largeur du bloc (unités cqw), comme une image, avec une mise en page à part pour le téléphone. Elle
+   s'efface à la première image de la vidéo. */
+.hv { container-type: inline-size; }
 .hv-affiche {
   position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%;
-  object-fit: cover; pointer-events: none; transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease, visibility 0s linear 0s;
 }
-.hv--image .hv-affiche { opacity: 0; }
+.hv--image .hv-affiche { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.5s ease, visibility 0s linear 0.5s; }
+
+.hv .hv-couv {
+  display: flex; align-items: center; justify-content: center; gap: 5.5cqw;
+  padding: 0 6cqw 9cqw;   /* plus de place en bas : la barre de lecture est posée là */
+  border: 0; margin: 0; cursor: pointer; text-align: left; color: #fffefc;
+  background:
+    radial-gradient(55cqw 40cqw at 18% 12%, rgba(167, 160, 255, 0.55), rgba(167, 160, 255, 0) 70%),
+    radial-gradient(60cqw 45cqw at 100% 100%, rgba(52, 40, 204, 0.5), rgba(52, 40, 204, 0) 70%),
+    linear-gradient(135deg, #7b72ff 0%, #665dff 50%, #564cf0 100%);
+}
+.hv-couv-portrait {
+  flex: none; display: block; width: 27cqw; aspect-ratio: 1; border-radius: 50%;
+  padding: 0.6cqw; background: #fffefc;
+  box-shadow: 0 0 0 1.5cqw rgba(255, 255, 255, 0.14), 0 2.6cqw 6cqw -1.6cqw rgba(24, 14, 110, 0.6);
+}
+.hv-couv-portrait img { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.hv-couv-texte { display: flex; flex-direction: column; align-items: flex-start; gap: 3.2cqw; min-width: 0; flex: 0 1 auto; }
+.hv-couv-titre {
+  display: block; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+  font-size: 6.2cqw; line-height: 1.1; letter-spacing: -0.03em; color: #fffefc; white-space: nowrap;
+}
+/* « potentiel » : l'italique du hero, avec le surligneur du film (violet foncé, collé au bas des lettres) */
+.hv-couv-titre em {
+  font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; letter-spacing: -0.01em;
+  padding: 0 0.05em;
+  background: linear-gradient(rgba(52, 40, 204, 0.9), rgba(52, 40, 204, 0.9)) no-repeat 0 88% / 100% 0.4em;
+}
+.hv-couv-lire {
+  display: inline-flex; align-items: center; gap: 1.3cqw; padding: 0.8cqw 2.4cqw 0.8cqw 0.8cqw;
+  border-radius: 999px; background: #fffefc; color: #1d1a5c;
+  font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1.9cqw; line-height: 1;
+  box-shadow: 0 1.4cqw 3.6cqw -1.2cqw rgba(24, 14, 110, 0.55);
+  transition: transform 0.2s ease;
+}
+.hv-couv-rond { display: grid; place-items: center; width: 4.4cqw; height: 4.4cqw; border-radius: 50%; background: #665dff; color: #fffefc; }
+.hv-couv-rond svg { width: 46%; height: 46%; margin-left: 8%; }
+.hv-couv-lire-txt i { font-style: normal; font-weight: 600; color: #6b6f8f; }
+.hv-couv:hover .hv-couv-lire { transform: scale(1.04); }
+.hv .hv-couv:focus-visible { outline: 2px solid #fffefc; outline-offset: -6px; }
+
+/* téléphone : texte un peu plus grand par rapport au bloc, le bouton réduit à son rond blanc */
+@container (max-width: 560px) {
+  .hv .hv-couv { gap: 5cqw; padding: 0 5cqw 15cqw; }
+  .hv-couv-portrait { width: 30cqw; }
+  .hv-couv-titre { font-size: 7.4cqw; }
+  .hv-couv-texte { gap: 3cqw; }
+  .hv-couv-lire { padding: 0; background: none; box-shadow: none; }
+  .hv-couv-rond { width: 10cqw; height: 10cqw; background: #fffefc; color: #665dff; box-shadow: 0 1.6cqw 4cqw -1.2cqw rgba(24, 14, 110, 0.6); }
+  .hv-couv-lire-txt { display: none; }
+}
 
 .hv--plein { border-radius: 0; outline: 0; background: #000; }
 .hv--plein .hv-video { object-fit: contain; background: #000; }
-.hv--plein .hv-affiche { object-fit: contain; }
 
 .hv button { font: inherit; -webkit-tap-highlight-color: transparent; }
 .hv button:focus-visible, .hv [role="slider"]:focus-visible { outline: 2px solid #fffefc; outline-offset: 2px; }
