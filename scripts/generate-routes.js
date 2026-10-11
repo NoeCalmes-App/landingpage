@@ -271,13 +271,19 @@ const echapper = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/
 // Le premier paragraphe extrait est le <h1> de la page : il est retire ici,
 // car le pre-rendu pose deja son propre <h1> a partir de `heading`. Sans ca,
 // tout agent sans JavaScript verrait deux titres de niveau 1.
-function corpsDepuisComposant(fichier, nom) {
+// `avecTitre` : pour un morceau de page sans <h1> (un composant inclus dans une page), garder le premier paragraphe.
+function corpsDepuisComposant(fichier, nom, { avecTitre = false } = {}) {
   const src = readFileSync(join(__dirname, '..', 'src', fichier), 'utf-8')
-  return texteDuComposant(src, nom).slice(1).map((p) => `<p>${echapper(p)}</p>`).join('')
+  const paras = texteDuComposant(src, nom)
+  if (!paras.length) throw new Error(`Aucun texte lu dans le composant ${nom} de src/${fichier} : la lecture a probablement casse`)
+  return (avecTitre ? paras : paras.slice(1)).map((p) => `<p>${echapper(p)}</p>`).join('')
 }
 
-// L'accueil : son corps vit dans le composant App de src/App.jsx.
+// L'accueil : son corps vit dans le composant App de src/App.jsx, plus les avis clients, qui vivent dans
+// src/AvisClients.jsx depuis le 11/10/2026 (partagés avec /projets). Ils sont ajoutés à la fin du texte : le
+// lecteur ne voit pas le contenu d'une balise <AvisClients />.
 const corpsSeoAccueil = corpsDepuisComposant('App.jsx', 'App')
+  + corpsDepuisComposant('AvisClients.jsx', 'AvisClients', { avecTitre: true })
 
 const corpsSeoPages = {
   '/expertise': corpsDepuisComposant('PagesSeo.jsx', 'PageExpertise'),

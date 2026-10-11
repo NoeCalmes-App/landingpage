@@ -23,7 +23,7 @@ Routes gerees dans `src/App.jsx` :
 - `/creation-application-mobile` — page SEO autonome : la methode en 5 etapes (`src/PagesSeo.jsx`)
 - `/faq` — page SEO autonome + donnees structurees FAQPage (`src/PagesSeo.jsx`)
 - `/quiz` et `/quiz/{slug}` — pages quizz SEO (`src/Quiz.jsx`)
-- `/projets` — realisations (`src/Projets.jsx`)
+- `/projets` — realisations (`src/Projets.jsx`) ; ses avis clients sont les cartes de l'accueil (`src/AvisClients.jsx`, depuis le 11/10/2026)
 - `/audit-app` — audit gratuit d'idee d'application
 - `/rendez-vous` — section contact WhatsApp de la home (`#contact`)
 - `/avis` — les avis clients de la home, sous le bouton du contact (`#avis-clients`)
@@ -268,27 +268,37 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    fond, Noé 11/10/2026),
    le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`) et « Tu bosses direct avec moi ».
    Placée avant la FAQ le 11/10/2026 (Noé). Fond gris depuis le 11/10/2026 (les fonds alternent).
-   **Puis, sous le bouton, les avis clients** : « Pourquoi me faire confiance ? » (`#avis-clients`, sous « Avis
+   **Puis, sous le bouton, les avis clients** : « Ce qu'en disent mes clients » (`#avis-clients`, sous « Avis
    clients », lien du même nom dans la barre ; la route /avis y mène ; `scroll-mt-24` pour que la barre ne le
    cache pas), séparé du bouton par un filet. Descendus ici le 11/10/2026 (Noé : « les avis, je les verrais en
    bas ») : tous les boutons de la page (« J'ai une idée », « Discuter avec Noé ») mènent à cette section, donc
    celui qui hésite au moment d'écrire trouve les clients juste dessous, avant la FAQ. On ne met pas les avis
    sous la FAQ : la FAQ répond aux questions, les avis rassurent au moment de cliquer.
-   Les avis répondent à « Pourquoi me faire confiance ? » depuis le 11/10/2026 (Noé : « il veut de la preuve
-   sociale »). Trois messages WhatsApp réels (confirmé par Noé), les mêmes que sur /projets et dans le surligné « Témoignages »
-   de son Instagram (il n'y en a pas d'autres pour l'instant), recadrés sur la conversation dans
-   `public/assets/images/avis/`, le nom des clients masqué comme sur Instagram. Chaque carte a un titre écrit dans
-   le JSX (lu par les robots) : « D'une simple idée à une application qui tourne », « Une application qui existait,
-   mais qui ne rapportait pas », « Livré dans les délais, 100 % satisfait ». Le deuxième répond à « pourquoi moi et
-   pas une agence » et prouve les écrans qui font payer, sans redire la vidéo. Dessous : « Messages de clients,
-   reçus sur WhatsApp. » Sur téléphone, une rangée qu'on fait glisser ; sur ordinateur, trois colonnes
-   (`.avis-…` dans `src/App.css`). Ajouter un avis : n'y mettre que des messages réels, avec l'accord de la
-   personne, son nom masqué.
+   Des avis depuis le 11/10/2026 (Noé : « il veut de la preuve sociale »). Le titre était « Pourquoi me faire
+   confiance ? » jusqu'au 11/10/2026 à 14 h (Noé : « le titre est bon ? ») : une question fait douter avant de
+   rassurer et annonce un argument, alors qu'on montre des messages ; « Ce qu'en disent mes clients » dit ce
+   qu'on voit, et c'est le titre de /projets. Trois messages WhatsApp réels (confirmé par Noé), ceux du surligné
+   « Témoignages » de son Instagram (il n'y en a pas d'autres pour l'instant), recadrés sur la conversation dans
+   `public/assets/images/avis/`, le nom des clients masqué. **Une seule source : `src/AvisClients.jsx`**, affiché
+   par l'accueil et par /projets (Noé, 11/10/2026 : « mettre les avis de /projets avec le même visuel ») ; ses
+   styles sont dans `src/avis-clients.css`. Chaque carte a un titre écrit dans le JSX du composant, que
+   `scripts/generate-routes.js` ajoute au texte servi aux robots de l'accueil : « D'une simple idée à une
+   application qui tourne », « Une application qui existait, mais qui ne rapportait pas », « Livré dans les
+   délais, 100 % satisfait ». Le deuxième répond à « pourquoi moi et pas une agence » et prouve les écrans qui
+   font payer, sans redire la vidéo. Dessous : « Messages reçus sur WhatsApp, noms masqués. » Sur téléphone, une
+   rangée qu'on fait glisser ; sur ordinateur, trois colonnes. Ajouter un avis : n'y mettre que des messages
+   réels, avec l'accord de la personne, son nom masqué.
    Essais retirés le même jour : la carte avec la photo de Noé (sa tête deux fois avec la barre du haut), « Je
    connais ce milieu, j'ai lancé mes propres applications » (« et alors ? », Noé), le tableau « Une agence / Avec
    moi » (deux tableaux croix/coche à la suite avec « Pour qui », et « un chef de projet entre vous » : « il s'en
-   fout, il veut un résultat »). Ses applications à lui ne sont nommées nulle part comme telles : le titre du
-   carrousel « Ce que j'ai déjà construit » est vrai pour toutes ; ne jamais écrire qu'elles sont à des clients.
+   fout, il veut un résultat »). **Le tableau ne revient pas sous les avis** (question de Noé, 11/10/2026 à
+   14 h : « ça me paraissait bien, voir si on ne dit pas pareil ») : ses trois lignes disaient pareil, le
+   chiffre d'une agence est déjà sous le tarif et sous le délai des étapes, « Moi, directement » est « Tu bosses
+   direct avec moi » juste au-dessus des avis, et le deuxième avis raconte l'agence par la bouche d'un client, ce
+   qui convainc mieux qu'un tableau fait par Noé. S'il revenait un jour, ce serait à la place des deux lignes
+   grises « En agence : … » des étapes, jamais en plus. Ses applications à lui ne sont nommées nulle part comme
+   telles : le titre du carrousel « Ce que j'ai déjà construit » est vrai pour toutes ; ne jamais écrire qu'elles
+   sont à des clients.
 
 6. **FAQ « Pour y voir plus clair »** (`#faq`, sous « Questions fréquentes » : la cible ne connaît pas
    forcément « FAQ ») : les 4 premières questions de `FAQ_ITEMS`
@@ -317,26 +327,29 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    FAQPage de l'accueil) : changer les deux ensemble. /faq garde la liste complète (10 questions). La FAQ vient
    après « Parlons de ton projet » depuis le 11/10/2026 (décision de Noé : le bouton WhatsApp d'abord, la FAQ
    ensuite pour ceux qui hésitent encore). Sous les questions, « Une autre question ? Écris-moi sur
-   WhatsApp. » ouvre directement WhatsApp avec le suivi `home_faq`. Puis, tout en bas, l'audit en second
-   choix (`#audit`, route /audit) : « Pas encore prêt à écrire ? Teste ton idée : potentiel, budget et délai,
-   en 2 minutes. », avec un bouton au contour violet « Lancer mon audit », jamais plein. Noé ne veut pas le
-   pousser (« c'est un plus ») et avait peur d'y perdre ceux qui allaient écrire, l'audit étant plus long
-   qu'un message : il est donc après tout le reste, pour ceux qui ne sont toujours pas prêts.
+   WhatsApp. » ouvre directement WhatsApp avec le suivi `home_faq`.
 7. **« Je décortique tout ça sur mon Insta »** (`#instagram`, sous « Instagram ») : la section d'avant la
-   refonte, remise tout en bas le 11/10/2026 à la demande de Noé (« à la fin, remets la section Insta »), même
+   refonte, remise en bas le 11/10/2026 à la demande de Noé (« à la fin, remets la section Insta »), même
    texte et même post intégré (`instagram.com/p/DZS67wXiPRM/embed`), bouton « Voir mon Instagram ». Retirée
    le 10/10 parce qu'elle faisait quitter la page avant le bouton WhatsApp ; elle vient maintenant après le
-   bouton, les avis, la FAQ et l'audit : celui qui arrive au bout sans avoir écrit peut suivre Noé. Son id
-   était `avis` (la route /avis y menait) : `#avis` mène désormais aux avis clients.
+   bouton, les avis et la FAQ : celui qui arrive au bout sans avoir écrit peut suivre Noé. Son id était
+   `avis` (la route /avis y menait) : `#avis` mène désormais aux avis clients.
+8. **L'audit, en dernier** (`#audit`, route /audit) : « Pas encore prêt à écrire ? Teste ton idée : potentiel,
+   budget et délai, en 2 minutes. », avec un bouton au contour violet « Lancer mon audit », jamais plein, et
+   sans petit titre (un rappel, pas une section de plus). Sous Instagram depuis le 11/10/2026 (Noé ; il était
+   sous la FAQ) : la dernière chose avant le pied de page garde le visiteur sur le site au lieu de l'envoyer
+   sur Instagram. Noé ne veut pas le pousser (« c'est un plus ») et avait peur d'y perdre ceux qui allaient
+   écrire, l'audit étant plus long qu'un message : il est donc après tout le reste, pour ceux qui ne sont
+   toujours pas prêts.
 
 Retirés le 10/10/2026 : la barre de preuve, « Mon métier », « Avant de payer un euro, je t'offre », le
 grand tableau Agences et l'ancienne section audit. La section Instagram, retirée aussi, est revenue le
-11/10/2026 tout en bas (point 7). Les illustrations `meetingdev.svg`, `devmobile.svg` et `post.svg`,
+11/10/2026 en bas (point 7). Les illustrations `meetingdev.svg`, `devmobile.svg` et `post.svg`,
 retirées le 10/10, sont revenues dans les étapes le 11/10 (point 3).
 
 Fonds, de haut en bas (11/10/2026) : le hero violet, blanc (réalisations), gris clair (étapes et tarif), blanc
-(pour qui), gris clair (contact et avis), blanc (FAQ et audit), gris clair (Instagram), puis le pied de page
-violet.
+(pour qui), gris clair (contact et avis), blanc (FAQ), gris clair (Instagram), blanc (audit), puis le pied de
+page violet.
 
 ### Le carrousel des écrans
 

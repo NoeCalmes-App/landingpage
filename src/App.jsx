@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { BadgeEuro, Timer } from 'lucide-react'
 import './App.css'
 import PhoneCarousel from './AppShowcase.jsx'
+import { AvisClients } from './AvisClients.jsx'
 import HeroVideo from './HeroVideo.jsx'
 import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
 import MentionsLegales from './MentionsLegales.jsx'
@@ -1065,19 +1066,19 @@ function App() {
 
       {/* ========== PARLONS DE TON PROJET (WHATSAPP) ========== */}
       {/* Refonte du 10/10/2026, placée avant la FAQ le 11/10/2026 à la demande de Noé : le bouton WhatsApp vient juste
-          après « Pour qui », et la FAQ sert ensuite à ceux qui hésitent encore. La section Instagram, qui faisait
-          quitter la page juste avant la fin, est retirée : l'icône reste dans le pied de page. Fond gris depuis le
-          11/10/2026 (les fonds alternent : étapes grises, « Pour qui » blanc, ici gris, FAQ blanche).
+          après « Pour qui », et la FAQ sert ensuite à ceux qui hésitent encore. Fond gris depuis le 11/10/2026 (les
+          fonds alternent : étapes grises, « Pour qui » blanc, ici gris, FAQ blanche).
           LES AVIS CLIENTS SONT ICI, sous le bouton (Noé, 11/10/2026) : tous les boutons de la page (« J'ai une idée »,
           « Discuter avec Noé ») mènent à cette section ; celui qui hésite au moment d'écrire trouve juste dessous ce que
-          disent les clients, avant la FAQ. Trois messages WhatsApp réels (Noé), les mêmes que sur /projets et dans le
-          surligné « Témoignages » de son Instagram (il n'y en a pas d'autres pour l'instant), recadrés sur la
-          conversation (public/assets/images/avis/), le nom des clients masqué comme sur Instagram. Ordre : l'idée
-          devenue application (le visiteur s'y reconnaît), l'application d'agence qui ne rapportait pas (« pourquoi moi
-          et pas une agence », et la preuve des écrans qui font payer, sans redire la vidéo), puis les délais tenus. Le
-          titre de chaque carte est écrit ici, en JSX : c'est ce que lisent les robots. Id « avis-clients » sur le bloc des
-          avis (« confiance » jusqu'au 11/10/2026, toujours accepté) : le lien « Avis clients » de la barre et la route /avis y mènent (`scroll-mt-24` : la barre du haut ne
-          le cache pas). Styles : `.avis-…` dans src/App.css. */}
+          disent les clients, avant la FAQ. Les cartes viennent de src/AvisClients.jsx, partagé avec /projets (ce qu'il
+          y a dedans, l'ordre et la règle des messages réels : voir ce fichier). Titre « Ce qu'en disent mes clients »,
+          le même que sur /projets : c'était « Pourquoi me faire confiance ? » jusqu'au 11/10/2026, une question qui fait
+          douter avant de rassurer et qui annonce un argument, alors qu'on montre des messages. Pas de tableau « Une
+          agence / Avec moi » dessous : ses trois lignes redisaient le tarif et le délai (le chiffre d'une agence est
+          sous chacun, dans les étapes) et « Tu bosses direct avec moi » (ci-dessous), et le deuxième avis raconte déjà
+          l'agence, par la bouche d'un client. Id « avis-clients » sur le bloc des avis (« confiance » jusqu'au
+          11/10/2026, toujours accepté) : le lien « Avis clients » de la barre et la route /avis y mènent
+          (`scroll-mt-24` : la barre du haut ne le cache pas). */}
       <section className="py-16 md:py-28 px-5 bg-card" id="contact">
         <div className="max-w-275 mx-auto text-center">
           {/* Les disponibilités, dans une pastille au fond léger (même style que « Audit express · 2 min ») */}
@@ -1131,26 +1132,11 @@ function App() {
               Avis clients
             </p>
             <h3 className="reveal font-jakarta text-text text-xl md:text-[1.6rem] font-extrabold tracking-tight text-center mb-6 md:mb-10">
-              Pourquoi me faire <span className="text-brand">confiance ?</span>
+              Ce qu'en disent <span className="text-brand">mes clients</span>
             </h3>
-            <ul className="reveal avis-liste text-left" aria-label="Messages de clients">
-              <li className="avis-carte">
-                <p className="avis-titre">D'une simple idée à une application qui tourne</p>
-                <img className="avis-capture" src="/assets/images/avis/avis-idee.webp" width="511" height="434" loading="lazy" decoding="async"
-                  alt="Message WhatsApp d'un client : au départ, il n'avait qu'une idée en tête, rien de concret. Il remercie Noé d'avoir cadré le projet du début à la fin, en expliquant honnêtement les coûts et les délais." />
-              </li>
-              <li className="avis-carte">
-                <p className="avis-titre">Une application qui existait, mais qui ne rapportait pas</p>
-                <img className="avis-capture" src="/assets/images/avis/avis-agence.webp" width="502" height="610" loading="lazy" decoding="async"
-                  alt="Message WhatsApp d'un client : son application, développée par une agence, attirait des utilisateurs, mais peu prenaient un abonnement. Noé a identifié le problème et refait le paywall et l'onboarding : quelques semaines plus tard, l'application génère des revenus." />
-              </li>
-              <li className="avis-carte">
-                <p className="avis-titre">Livré dans les délais, 100&nbsp;% satisfait</p>
-                <img className="avis-capture" src="/assets/images/avis/avis-delais.webp" width="375" height="112" loading="lazy" decoding="async"
-                  alt="Message WhatsApp d'un client : l'application a été créée dans les délais annoncés, il est 100 % satisfait du résultat et recommandera Noé autour de lui." />
-              </li>
-            </ul>
-            <p className="reveal avis-note">Messages de clients, reçus sur WhatsApp.</p>
+            <div className="reveal">
+              <AvisClients />
+            </div>
           </div>
         </div>
       </section>
@@ -1177,39 +1163,16 @@ function App() {
               Écris-moi sur WhatsApp.
             </a>
           </p>
-
-          {/* L'audit, après la FAQ (Noé, 11/10/2026) : pour ceux qui hésitent encore après les questions. En second choix,
-              avec un bouton au contour violet, jamais plein : il ne doit pas détourner ceux qui allaient écrire, l'audit
-              étant plus long qu'un message. Id « audit » : la route /audit y mène toujours. */}
-          <div id="audit" className="reveal max-w-150 mx-auto mt-12 md:mt-16 pt-10 md:pt-12 border-t border-card-border text-center">
-            <p className="font-jakarta text-text font-extrabold text-[1.15rem] md:text-[1.3rem] tracking-tight leading-tight mb-2">
-              Pas encore prêt à écrire&nbsp;?
-            </p>
-            <p className="text-grey text-[0.92rem] md:text-[0.98rem] leading-relaxed mb-5">
-              Teste ton idée&nbsp;: potentiel, budget et délai, en 2&nbsp;minutes.
-            </p>
-            <a
-              href={lienInterne('/audit-app')}
-              onClick={(event) => { event.preventDefault(); goAuditApp() }}
-              className="group inline-flex items-center gap-2 font-semibold text-brand text-[0.92rem] md:text-[0.95rem] border border-brand/35 rounded-full px-6 py-3 hover:bg-brand/5 transition-colors"
-            >
-              Lancer mon audit
-              <svg className="transition-transform duration-300 group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </a>
-          </div>
         </div>
       </section>
 
       {/* ========== INSTAGRAM ========== */}
-      {/* La section d'avant la refonte, remise tout en bas le 11/10/2026 à la demande de Noé (« à la fin, remets la section
+      {/* La section d'avant la refonte, remise en bas le 11/10/2026 à la demande de Noé (« à la fin, remets la section
           Insta ») : retirée le 10/10 parce qu'elle faisait quitter la page avant la fin, elle vient maintenant après le
-          bouton WhatsApp, les avis, la FAQ et l'audit. Celui qui arrive ici sans avoir écrit peut suivre Noé. Même texte,
-          même post intégré qu'avant ; un petit titre « Instagram » comme toutes les sections ; id « instagram » (c'était
-          « avis » : l'ancre #avis mène désormais aux avis clients, voir ANCIENNES_ANCRES). Fond gris : la FAQ au-dessus
-          est blanche, le pied de page violet. */}
+          bouton WhatsApp, les avis et la FAQ. Celui qui arrive ici sans avoir écrit peut suivre Noé ; l'audit vient juste
+          après, en dernier. Même texte, même post intégré qu'avant ; un petit titre « Instagram » comme toutes les
+          sections ; id « instagram » (c'était « avis » : l'ancre #avis mène désormais aux avis clients, voir
+          ANCIENNES_ANCRES). Fond gris : la FAQ au-dessus et l'audit au-dessous sont blancs. */}
       <section className="py-16 md:py-24 px-5 bg-card" id="instagram">
         <div className="max-w-275 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_400px] gap-8 md:gap-14 items-center">
@@ -1240,6 +1203,35 @@ function App() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ========== AUDIT ========== */}
+      {/* L'audit, en dernier, sous Instagram (Noé, 11/10/2026 ; il était sous la FAQ) : la dernière chose avant le pied de
+          page garde le visiteur sur le site au lieu de l'envoyer sur Instagram, pour ceux qui ne sont toujours pas prêts
+          à écrire. En second choix, avec un bouton au contour violet, jamais plein : il ne doit pas détourner ceux qui
+          allaient écrire, l'audit étant plus long qu'un message. Pas de petit titre : c'est un rappel, pas une section
+          de plus. Fond blanc entre Instagram (gris) et le pied de page (violet). Id « audit » : la route /audit y mène
+          toujours. */}
+      <section className="py-14 md:py-20 px-5" id="audit">
+        <div className="reveal max-w-150 mx-auto text-center">
+          <p className="font-jakarta text-text font-extrabold text-[1.15rem] md:text-[1.3rem] tracking-tight leading-tight mb-2">
+            Pas encore prêt à écrire&nbsp;?
+          </p>
+          <p className="text-grey text-[0.92rem] md:text-[0.98rem] leading-relaxed mb-5">
+            Teste ton idée&nbsp;: potentiel, budget et délai, en 2&nbsp;minutes.
+          </p>
+          <a
+            href={lienInterne('/audit-app')}
+            onClick={(event) => { event.preventDefault(); goAuditApp() }}
+            className="group inline-flex items-center gap-2 font-semibold text-brand text-[0.92rem] md:text-[0.95rem] border border-brand/35 rounded-full px-6 py-3 hover:bg-brand/5 transition-colors"
+          >
+            Lancer mon audit
+            <svg className="transition-transform duration-300 group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
         </div>
       </section>
 

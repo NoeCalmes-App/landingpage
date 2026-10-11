@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { appliquerMeta, retirerPrerender } from './seo.js'
+import { AvisClients } from './AvisClients.jsx'
 
 /*
  * Page /projets — portfolio envoyé après un échange (l'audience a déjà le WhatsApp).
@@ -32,24 +33,6 @@ const ICON = {
   plouff: '/assets/images/app-icons/plouffhabitudes.webp',
   purge: '/assets/images/apps/purge.webp',
 }
-
-const TESTIMONIALS = [
-  {
-    src: '/assets/images/projets/temoignage-idee.webp',
-    alt: 'Témoignage client WhatsApp : d\'une simple idée à une application qui tourne',
-    rotate: 'lg:-rotate-2',
-  },
-  {
-    src: '/assets/images/projets/temoignage-refonte.webp',
-    alt: 'Témoignage client WhatsApp : une application qui existait mais ne rapportait pas, remise sur pied',
-    rotate: '',
-  },
-  {
-    src: '/assets/images/projets/temoignage-delais.webp',
-    alt: 'Témoignage client WhatsApp : livré dans les délais, 100 % satisfait',
-    rotate: 'lg:rotate-2',
-  },
-]
 
 const FEATURED = {
   icon: ICON.calorie,
@@ -371,20 +354,14 @@ export default function Projets({ onBack }) {
           </div>
         </div>
 
-        {/* TÉMOIGNAGES — captures réelles, format story */}
-        <div className="relative mt-16 lg:mt-24">
-          <SectionHead eyebrow="Retours clients" title="Ce qu'en disent mes clients" />
-          <div className="mt-2 flex flex-col lg:flex-row items-center lg:items-start justify-center gap-6 lg:gap-6">
-            {TESTIMONIALS.map((t) => (
-              <img
-                key={t.src}
-                src={t.src}
-                alt={t.alt}
-                loading="lazy"
-                className={`w-full max-w-[330px] lg:max-w-[300px] rounded-[18px] border border-card-border shadow-[0_10px_36px_rgba(102,93,255,0.14)] transition-transform duration-300 hover:-translate-y-1 hover:rotate-0 ${t.rotate}`}
-              />
-            ))}
-          </div>
+        {/* AVIS CLIENTS — les mêmes cartes que sur l'accueil (src/AvisClients.jsx, 11/10/2026, demande de Noé) : un titre,
+            puis la conversation recadrée, le nom des clients masqué. Elles remplacent les trois captures entières, en
+            format story et penchées, dont l'une montrait le nom d'un client. Petit titre « Avis clients », comme le lien
+            de la barre de l'accueil (« Retours clients » jusqu'au 11/10/2026). La marge de côté de la page passe à 24 px
+            à partir de 640 px : la rangée des cartes, sur téléphone, s'étire d'autant (`--avis-gouttiere`). */}
+        <div className="relative mt-16 lg:mt-24 [--avis-gouttiere:20px] sm:[--avis-gouttiere:24px]">
+          <SectionHead eyebrow="Avis clients" title="Ce qu'en disent mes clients" />
+          <AvisClients />
         </div>
 
         {/* SPÉCIALITÉ + INSTAGRAM — deux colonnes sur desktop */}
