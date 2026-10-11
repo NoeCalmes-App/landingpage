@@ -246,11 +246,16 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    droite du début du texte au lieu de prendre toute la largeur au-dessus (`.process-…` dans `src/App.css`).
    Au survol sur ordinateur, la carte passe en violet. Sous les étapes, le tarif et le délai
    (`.etape-tarif`), deux repères avec chacun son icône dans un carré violet pâle (Noé, 11/10/2026 : en une seule
-   ligne de texte, « c'était fade ») : « À partir de 5 000 € », puis « Le prix dépend de ton application, et il
-   est fixé avant de commencer : stratégie, design, développement et mise en ligne » ; « 45 jours en moyenne »,
-   puis « Pour une application mobile ou web (SaaS) ». « Le prix dépend de ton application » remplace « Tarif
-   fixe » : à côté de « à partir de 5 000 € », « tarif fixe » se lisait « toutes les applications à 5 000 € »
-   pour une cible qui n'y connaît rien (Noé, 11/10/2026). « Design » et pas « maquette » : la maquette est
+   ligne de texte, « c'était fade ») : « À partir de 5 000 € », puis « Le prix dépend de ton application. Tu le
+   connais avant de commencer, sans surprise : stratégie, design, développement et mise en ligne compris » ;
+   « 45 jours en moyenne », puis « Pour une application mobile ou web (SaaS) ». « Le prix dépend de ton
+   application » remplace « Tarif fixe » : à côté de « à partir de 5 000 € », « tarif fixe » se lisait « toutes
+   les applications à 5 000 € » pour une cible qui n'y connaît rien (Noé, 11/10/2026). Pour dire que le prix ne
+   grimpe pas en route, « Tu le connais avant de commencer, sans surprise » (question de Noé le même soir :
+   « pas de compteur qui tourne », « prix fixe » ?) : « prix fixe » refait le piège du « tarif fixe », et
+   « compteur qui tourne » parle à qui a déjà payé une agence au temps passé, pas à la cible (la FAQ le garde,
+   pour qui va plus loin). « Compris » en fin de liste : sans lui, la liste se lisait comme ce qui est « fixé »,
+   pas comme ce que le prix contient. « Design » et pas « maquette » : la maquette est
    offerte avant de payer, elle n'est pas dans le prix. « (SaaS) » derrière « web » : la seule occurrence de la
    page, jamais seule (`documentation/context/vocabulaire-mobile-web.md`, règle 6 bis).
    **Le prix dit « à partir de 5 000 € », comme la pub et le formulaire Meta** (Noé, 11/10/2026

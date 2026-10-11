@@ -988,14 +988,18 @@ function App() {
               (« Voir la vidéo »), juste avant le premier message de Noé : un autre chiffre que celui de la pub se lit comme un
               prix qui monte. L'ordre de grandeur réel (8 000 à 12 000 € pour un projet complet) se donne à l'appel.
               « Le prix dépend de ton application » et pas « Tarif fixe » : à côté de « à partir de 5 000 € », « tarif fixe »
-              se lisait « toutes les applications à 5 000 € » (Noé). « Design » et pas « maquette » : la maquette est OFFERTE
+              se lisait « toutes les applications à 5 000 € » (Noé). Pour dire qu'il ne grimpe pas en route : « Tu le connais
+              avant de commencer, sans surprise », pas « prix fixe » (même piège que « tarif fixe ») ni « pas de compteur
+              qui tourne » (parle à qui a déjà payé une agence au temps passé, pas à la cible ; la FAQ le garde, plus bas).
+              « Compris » : sans lui, la liste se lisait comme ce qui est « fixé », pas comme ce que le prix contient
+              (question de Noé, 11/10/2026 au soir). « Design » et pas « maquette » : la maquette est OFFERTE
               avant de payer (formulaire Meta), elle n'est pas dans le prix. « Mobile ou web (SaaS) » : « SaaS » une fois
               sur la page, jamais seul (documentation/context/vocabulaire-mobile-web.md, règle 6 bis). */}
           <ul className="reveal etape-tarif">
             <li>
               <span className="etape-tarif-icone" aria-hidden="true"><BadgeEuro size={20} strokeWidth={2} /></span>
               <span className="etape-tarif-texte">
-                <strong>À partir de 5&nbsp;000&nbsp;€</strong> Le prix dépend de ton application, et il est fixé avant de commencer&nbsp;: stratégie, design, développement et mise en ligne.
+                <strong>À partir de 5&nbsp;000&nbsp;€</strong> Le prix dépend de ton application. Tu le connais avant de commencer, sans surprise&nbsp;: stratégie, design, développement et mise en ligne&nbsp;compris.
                 <span className="etape-tarif-agence">En agence&nbsp;: à partir de 20&nbsp;000&nbsp;€</span>
               </span>
             </li>
