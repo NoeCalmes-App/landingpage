@@ -315,7 +315,16 @@ Huit captures fournies par Noé, converties en WebP de 660 px sous
 `public/assets/images/apps/captures/` (environ 412 Ko au total). La huitième, le premier écran de Bailora
 (« Vos SCI, enfin simples », `bailora-bienvenue.webp`), est arrivée le 11/10/2026, juste avant son tableau de
 bord ; sa légende : « Une porte pour le propriétaire, une autre pour le locataire : personne ne se perd. »
-Noé prévoit un deuxième écran de Plouff Habitudes. Les captures contiennent déjà l'encoche
+Noé prévoit un deuxième écran de Plouff Habitudes et un de Sonora.
+
+**L'ordre** (Noé, 11/10/2026 : « montrer 3 écrans différents ») : les trois téléphones visibles montrent
+toujours trois applications différentes, jamais deux écrans de la même côte à côte. Deux tours, dans le même
+ordre d'applications (SmoothRide, Bailora, Plouff Habitudes, Sonora, WakeUp Alarme) : d'abord un écran de
+chacune, le plus parlant, puis le deuxième écran de chacune. Deux écrans par application au plus : au-delà,
+personne ne les voit (dix écrans font déjà 55 secondes). Les deux applications de Noé ne se suivent jamais
+(Sonora est entre elles). Les deuxièmes écrans de Plouff Habitudes et de Sonora iront dans le deuxième tour, à
+leur place (après celui de Bailora). En développement, la console avertit si trois écrans qui se suivent ne
+viennent pas de trois applications différentes. Les captures contiennent déjà l'encoche
 et la barre d'état : le cadre CSS ajoute seulement la coque et les boutons. La liste `SCREENS`
 (`src/AppShowcase.jsx`) définit l'ordre, le type (affiché à côté du nom : « Application » pour tous les
 écrans depuis le 11/10/2026, à la demande de Noé) et la légende de chaque écran, qui dit à
