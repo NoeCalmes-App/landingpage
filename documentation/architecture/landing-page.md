@@ -25,7 +25,9 @@ Routes gerees dans `src/App.jsx` :
 - `/quiz` et `/quiz/{slug}` — pages quizz SEO (`src/Quiz.jsx`)
 - `/projets` — realisations (`src/Projets.jsx`)
 - `/audit-app` — audit gratuit d'idee d'application
-- `/rendez-vous` — section contact WhatsApp de la home (`#contact-section`)
+- `/rendez-vous` — section contact WhatsApp de la home (`#contact`)
+- `/avis` — les avis clients de la home, sous le bouton du contact (`#avis-clients`)
+- **Ancres de l'accueil** (11/10/2026) : chaque id est le libellé de sa section, en minuscules et sans accents : `#realisations`, `#etapes-et-tarif`, `#pour-qui`, `#contact`, `#avis-clients`, `#faq`, `#audit`, `#instagram`. Lisibles dans l'adresse, et dans les liens « Aller à » que Google affiche parfois sous un résultat. Les anciens noms (`#calories-proof`, `#offre`, `#confiance`, `#contact-section`, et `#avis`, qui était l'id de la section Instagram et mène maintenant aux avis comme la route /avis), déjà partagés, mènent toujours au bon endroit : `ANCIENNES_ANCRES` dans `src/App.jsx`, lu par l'effet « ancre à l'arrivée », qui fait aussi défiler jusqu'à la section quand on arrive par une adresse en « # » (le navigateur ne le fait pas seul, la page étant construite après son arrivée). Une nouvelle section prend un id de ce genre ; si un id change, l'ancien va dans `ANCIENNES_ANCRES`.
 - `/documents` — sommaire des familles de documents (`src/DocumentsIndex.jsx`). Adresse generique et stable : elle NE redirige PAS vers l'application mobile, pour rester juste le jour ou une deuxieme famille arrive. Alias reecrits en canonique : `/document`, `/docs`, `/doc`.
 - `/documents/app-mobile` — les acces a creer avant developpement (`src/Documents.jsx`), et ses guides `/documents/app-mobile/{nom-de-domaine,new-membre,google-play-console,apple-developer,flutter-firebase}`. **`nom-de-domaine` ouvre la liste**, et pas par gout de l'ordre : le compte Apple Developer reclame un site au nom de la societe et une adresse e-mail a ce domaine, donc un client qui commence par Apple se fait arreter au milieu du formulaire le plus long. Son PDF se regenere (`python3 scripts/guides/generer-guide.py`, texte et captures dans `scripts/guides/`) ; les trois guides plus anciens, composes a la main, n'ont pas de source. Alias : `/documents/appmobile`, `/mobile`. Les anciennes adresses des guides (`/new-membre`, `/google-play-console`, `/apple-developer`, `/documents/flutter-firebase`) ouvrent le bon guide puis se reecrivent en canonique : ces liens sont colles dans des devis deja envoyes.
 - Toutes ces adresses sont definies dans `src/routesDocuments.js`, jamais ecrites a la main ailleurs.
@@ -111,7 +113,7 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
 - Au survol, tous les boutons de l'accueil ont le reflet de la fin du film (« Audit offert ») : un trait
   de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les traverse et passe sous le
   texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (« J'ai une idée d'application » en haut,
-  « Discuter avec Noé » après les étapes et dans la section contact) et les boutons noirs (« J'ai une idée » en haut, le bouton du menu sur
+  « Discuter avec Noé » après les étapes et dans la section contact, « Voir mon Instagram » tout en bas) et les boutons noirs (« J'ai une idée » en haut, le bouton du menu sur
   téléphone), où le même trait blanc se voit comme un reflet gris clair (demande de Noé du
   10/10/2026 : « tous les autres boutons », « travailler en noir »). Seulement à la souris, et pas quand
   moins d'animations sont demandées.
@@ -191,7 +193,7 @@ sections deviennent sept. Le texte des sections est écrit dans le JSX de `App` 
 c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
 
 **Un petit titre au-dessus de chaque section** (violet, en capitales, 11/10/2026) : « Réalisations »,
-« Étapes et tarif », « Avis clients » (« Qui je suis » jusqu'au 11/10/2026), « Pour qui », « Questions fréquentes ». Noé trouvait bizarre qu'une section n'en ait
+« Étapes et tarif », « Avis clients » (« Qui je suis » jusqu'au 11/10/2026), « Pour qui », « Questions fréquentes », « Instagram ». Noé trouvait bizarre qu'une section n'en ait
 pas ; les liens de la barre du haut reprennent les trois premiers. « Parlons de ton projet » a la pastille des
 places à la place.
 
@@ -212,14 +214,14 @@ reprendre le prix et le délai pour ceux qui y vont directement. (La comparaison
 tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous le tarif et le délai des étapes.)
 
 1. **Hero et vidéo** (voir plus haut).
-2. **« Ce que j'ai déjà construit »** (`#calories-proof`, lien « Preuves » de la barre du haut) : « Des
+2. **« Ce que j'ai déjà construit »** (`#realisations`, lien « Réalisations » de la barre du haut) : « Des
    applications publiées, utilisées, et qui rapportent. », puis quatre chiffres fournis par Noé, en 2 × 2 :
    +13 000 € par mois pour Calorie (sur un marché déjà saturé ; le « + » demandé par Noé le 11/10/2026), +300 000 utilisateurs pour Hush App (avec
    sa première version), +900 000 téléchargements (toutes ses applications), +20 applications publiées. À
    côté, le carrousel des écrans, chacun avec une légende qui dit à quoi il sert : la stratégie se voit au
    lieu d'être annoncée. Remplace la barre de preuve, « Une stratégie derrière chaque écran » (ses cinq
    pastilles) et « Mon métier ». Styles : `src/app-showcase.css`.
-3. **« Comment ça se passe ? »** (`#offre`, sous « Étapes et tarif », lien du même nom dans la barre) : trois cartes, étapes 1 « On en parle » et
+3. **« Comment ça se passe ? »** (`#etapes-et-tarif`, sous « Étapes et tarif », lien du même nom dans la barre) : trois cartes, étapes 1 « On en parle » et
    2 « On cadre » avec la pastille verte « Offert », étape 3 « Je construis » (« On construit ensemble »
    jusqu'au 11/10/2026 : « c'est un peu faux, l'objectif c'est que je m'occupe de tout », Noé). Son texte
    commence par « À partir de ta maquette, je crée le design final… » (« Je reprends la maquette sur mesure »
@@ -261,12 +263,12 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    publicité » (la FAQ y répond, avec la nuance de Noé : il conseille sur la façon de faire connaître
    l'application). Remplace « Ce que je fais / Ce que je ne fais pas ». Suit directement les étapes depuis que les
    avis sont descendus (11/10/2026) : fond blanc, et 80 px au-dessus sur ordinateur.
-5. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités
+5. **« Parlons de ton projet »** (`#contact`, route /rendez-vous) : la pastille des disponibilités
    (son fond n'apparaît qu'avec le texte des places ; pendant « Vérification des disponibilités… », pas de
    fond, Noé 11/10/2026),
    le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`) et « Tu bosses direct avec moi ».
    Placée avant la FAQ le 11/10/2026 (Noé). Fond gris depuis le 11/10/2026 (les fonds alternent).
-   **Puis, sous le bouton, les avis clients** : « Pourquoi me faire confiance ? » (`#confiance`, sous « Avis
+   **Puis, sous le bouton, les avis clients** : « Pourquoi me faire confiance ? » (`#avis-clients`, sous « Avis
    clients », lien du même nom dans la barre ; la route /avis y mène ; `scroll-mt-24` pour que la barre ne le
    cache pas), séparé du bouton par un filet. Descendus ici le 11/10/2026 (Noé : « les avis, je les verrais en
    bas ») : tous les boutons de la page (« J'ai une idée », « Discuter avec Noé ») mènent à cette section, donc
@@ -320,14 +322,21 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    en 2 minutes. », avec un bouton au contour violet « Lancer mon audit », jamais plein. Noé ne veut pas le
    pousser (« c'est un plus ») et avait peur d'y perdre ceux qui allaient écrire, l'audit étant plus long
    qu'un message : il est donc après tout le reste, pour ceux qui ne sont toujours pas prêts.
+7. **« Je décortique tout ça sur mon Insta »** (`#instagram`, sous « Instagram ») : la section d'avant la
+   refonte, remise tout en bas le 11/10/2026 à la demande de Noé (« à la fin, remets la section Insta »), même
+   texte et même post intégré (`instagram.com/p/DZS67wXiPRM/embed`), bouton « Voir mon Instagram ». Retirée
+   le 10/10 parce qu'elle faisait quitter la page avant le bouton WhatsApp ; elle vient maintenant après le
+   bouton, les avis, la FAQ et l'audit : celui qui arrive au bout sans avoir écrit peut suivre Noé. Son id
+   était `avis` (la route /avis y menait) : `#avis` mène désormais aux avis clients.
 
 Retirés le 10/10/2026 : la barre de preuve, « Mon métier », « Avant de payer un euro, je t'offre », le
-grand tableau Agences, la section Instagram (elle faisait quitter la page juste avant la fin ; l'icône
-reste dans le pied de page) et l'ancienne section audit. Les illustrations `meetingdev.svg`,
-`devmobile.svg` et `post.svg` ne servent plus à l'accueil.
+grand tableau Agences et l'ancienne section audit. La section Instagram, retirée aussi, est revenue le
+11/10/2026 tout en bas (point 7). Les illustrations `meetingdev.svg`, `devmobile.svg` et `post.svg`,
+retirées le 10/10, sont revenues dans les étapes le 11/10 (point 3).
 
 Fonds, de haut en bas (11/10/2026) : le hero violet, blanc (réalisations), gris clair (étapes et tarif), blanc
-(pour qui), gris clair (contact et avis), blanc (FAQ et audit), puis le pied de page violet.
+(pour qui), gris clair (contact et avis), blanc (FAQ et audit), gris clair (Instagram), puis le pied de page
+violet.
 
 ### Le carrousel des écrans
 

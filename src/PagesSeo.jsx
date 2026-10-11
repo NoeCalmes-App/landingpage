@@ -11,7 +11,7 @@
 //
 // Elles ont maintenant un contenu unique, un seul <h1>, un maillage sortant et
 // leurs propres donnees structurees. La navigation de la home continue de
-// faire defiler vers ses sections, mais via une ancre (`/#offre`) et non plus
+// faire defiler vers ses sections, mais via une ancre (`/#etapes-et-tarif`) et non plus
 // en poussant ces URLs : le visuel de la landing est inchange.
 
 import { useEffect } from 'react'

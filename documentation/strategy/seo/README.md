@@ -139,7 +139,7 @@ ligne :
 - `/expertise`, `/creation-application-mobile` et `/faq` sont devenues de
   vraies pages, contenu unique (`src/PagesSeo.jsx`), avec `FAQPage` propre sur
   `/faq`. La navbar de la home fait défiler vers ses sections via une ancre
-  (`/#offre`), elle ne pousse plus ces URLs. **Le visuel de la landing est
+  (`/#etapes-et-tarif` depuis le 11/10/2026, `/#offre` avant), elle ne pousse plus ces URLs. **Le visuel de la landing est
   inchangé** ; seul le pied de page gagne des liens et devient le plan du site.
 - Pages quizz (`src/Quiz.jsx`) : `/quiz/` plus 3 tests sur des requêtes
   d'acheteur, chacun avec 300+ mots de contenu indexable indépendants du quizz.
@@ -306,6 +306,35 @@ mélangeaient donc les deux registres, ce qui se voyait à la lecture.
 La contradiction de documentation qui avait produit ce mélange est tranchée :
 `documentation/context/positionnement.md` classait le blog en vouvoiement,
 `content-plan.md` imposait « tu » partout. Le blog tutoie.
+
+## Index Google au 11/10/2026, et la refonte de l'accueil
+
+Constaté par une recherche `site:noecalmes.fr` (Noé demandait quoi retirer et
+quoi ajouter dans Search Console après le renommage des ancres) :
+
+- **33 résultats, tous des pages canoniques propres** : aucune adresse
+  morte, aucun doublon, **rien à faire retirer**.
+- **Les ancres ne sont pas des pages.** Google indexe l'adresse sans ce qui
+  suit le « # » : renommer `#confiance` en `#avis-clients` ne crée ni ne
+  supprime rien dans l'index. Les anciens noms restent valables pour les liens
+  déjà partagés (`ANCIENNES_ANCRES`, voir `documentation/architecture/landing-page.md`).
+- **Trois articles du sitemap n'apparaissent pas** :
+  `/blog/combien-coute-application-mobile/`,
+  `/blog/combien-rapporte-application-mobile/`,
+  `/blog/creation-application-mobile-toulouse/`. À confirmer avec
+  « Inspection de l'URL » (la recherche `site:` est approximative).
+- **L'extrait Google de `/blog/combien-de-temps-creer-application-mobile/`
+  dit encore « 4 à 6 semaines »** : la page dit « 45 jours en moyenne »
+  depuis la refonte, Google ne l'a pas encore relue.
+
+**À faire dans Search Console une fois la refonte en ligne** (pas avant :
+Google relirait l'ancienne version). « Inspection de l'URL », puis « Demander
+l'indexation », dans cet ordre (le quota est d'une dizaine par jour) :
+l'accueil, `/blog/combien-de-temps-creer-application-mobile/`, `/faq/`,
+`/creation-application-mobile/`, les trois articles absents ci-dessus, puis
+`/blog/mvp-application-mobile/`. Les autres articles touchés par les 45 jours
+(salle de sport, coach formateur, guide) seront relus d'eux-mêmes. Puis
+renvoyer le sitemap (36 URLs).
 
 ## Ce qui reste à faire (par priorité)
 

@@ -201,7 +201,7 @@ export default function ChatbotWidget({ onBookCall, contactMode = 'chatbot', wha
   //      donner un flash blanc en prod)
   const handleCalendlyClick = useCallback(() => {
     setOpen(false)
-    const el = document.getElementById('contact-section')
+    const el = document.getElementById('contact')
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       history.pushState(null, '', '/rendez-vous')

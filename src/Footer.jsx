@@ -57,7 +57,7 @@ export default function Footer({ allerVers, onLegal }) {
    * quand la section n'est pas là.
    */
   const allerAuContact = () => {
-    const section = document.getElementById('contact-section')
+    const section = document.getElementById('contact')
     if (section) {
       section.scrollIntoView({ behavior: 'smooth', block: 'start' })
       history.pushState(null, '', lienInterne('/rendez-vous'))
@@ -71,7 +71,7 @@ export default function Footer({ allerVers, onLegal }) {
     allerVers('/rendez-vous')
     let essais = 0
     const descendre = () => {
-      const cible = document.getElementById('contact-section')
+      const cible = document.getElementById('contact')
       if (cible) return cible.scrollIntoView({ behavior: 'smooth', block: 'start' })
       if (++essais < 10) requestAnimationFrame(descendre)
     }

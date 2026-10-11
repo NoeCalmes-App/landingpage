@@ -74,12 +74,11 @@ const WHATSAPP_PREFILL =
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_PREFILL)}`
 
 const SECTION_ROUTES = {
-  // Depuis la refonte du 10/10/2026, /avis mène à « Pourquoi me faire confiance ? », où iront les avis clients
-  // (la section Instagram qui portait l'id « avis » a été retirée).
+  // /avis mène aux avis clients, sous le bouton de « Parlons de ton projet » (11/10/2026).
   '/avis': {
-    id: 'confiance',
+    id: 'avis-clients',
     title: 'Avis clients — Noé Calmes, expert en applications mobiles & web',
-    description: 'Ce que disent les clients qui ont fait confiance à Noé Calmes pour créer, reprendre ou faire évoluer leur application mobile.',
+    description: 'Ce que disent les clients qui ont fait confiance à Noé Calmes pour créer, reprendre ou faire évoluer leur application mobile ou web.',
   },
   '/audit': {
     id: 'audit',
@@ -87,7 +86,7 @@ const SECTION_ROUTES = {
     description: 'Fais auditer ton application mobile : analyse rapide et recommandations concrètes pour repartir sur de bonnes bases.',
   },
   '/rendez-vous': {
-    id: 'contact-section',
+    id: 'contact',
     title: 'Écrire à Noé sur WhatsApp — Application mobile | Noé Calmes',
     description: 'Un projet d\'application mobile ? Écris directement à Noé sur WhatsApp : c\'est lui qui répond, on voit en 2 messages si ton projet tient la route. Sans engagement.',
   },
@@ -113,11 +112,23 @@ const MONTRER_PASTILLE_HERO = false
 // pousse (Noé) ; il reste en bas de page et dans le pied de page, et la route /audit y mène toujours. Les trois tiennent à
 // côté du bouton dès 1024 px.
 const NAV_LINKS = [
-  { ancre: 'calories-proof', label: 'Réalisations' },
-  { ancre: 'offre', label: 'Étapes et tarif' },
-  { ancre: 'confiance', label: 'Avis clients' },
+  { ancre: 'realisations', label: 'Réalisations' },
+  { ancre: 'etapes-et-tarif', label: 'Étapes et tarif' },
+  { ancre: 'avis-clients', label: 'Avis clients' },
 ]
 
+// LES ANCRES DE L'ACCUEIL (11/10/2026) : chaque id est le libellé de sa section, en minuscules et sans accents
+// (#realisations, #etapes-et-tarif, #avis-clients, #contact, #pour-qui, #faq, #audit, #instagram), lisible dans
+// l'adresse et dans les liens « Aller à » que Google affiche parfois sous un résultat. Les anciens noms, déjà partagés
+// ou publiés, mènent toujours au bon endroit : l'effet « ancre à l'arrivée » de App les traduit. « avis » était l'id
+// de la section Instagram (la route /avis y menait) : il mène maintenant aux vrais avis, comme /avis.
+const ANCIENNES_ANCRES = {
+  'calories-proof': 'realisations',
+  offre: 'etapes-et-tarif',
+  confiance: 'avis-clients',
+  'contact-section': 'contact',
+  avis: 'avis-clients',
+}
 
 // `trigger` permet de re-attacher l'observer quand la page change.
 // Indispensable car les elements .reveal de la home n'existent pas tant
@@ -365,13 +376,33 @@ function App() {
     }
   }, [])
 
+  // Ancre à l'arrivée (11/10/2026) : une adresse comme noecalmes.fr/#avis-clients ouvre l'accueil sur la bonne
+  // section. Le navigateur ne le fait pas seul : la section n'existe pas encore quand il lit l'adresse. Les anciens
+  // noms (ANCIENNES_ANCRES) sont traduits, et l'adresse affichée prend le nouveau. Un « # » suivi d'un chemin
+  // (« #/… », espace client) n'est pas une ancre : on n'y touche pas.
+  useEffect(() => {
+    if (page !== 'home') return
+    let brut = ''
+    try { brut = decodeURIComponent((window.location.hash || '').slice(1)) } catch { return }
+    if (!brut || brut.includes('/')) return
+    const id = ANCIENNES_ANCRES[brut] || brut
+    if (id !== brut) history.replaceState(null, '', `${window.location.pathname}${window.location.search}#${id}`)
+    let essais = 0
+    const aller = () => {
+      const el = document.getElementById(id)
+      if (el) return el.scrollIntoView({ block: 'start' })
+      if (++essais < 10) setTimeout(aller, 150)
+    }
+    requestAnimationFrame(aller)
+  }, [page])
+
   useEffect(() => {
     // Déclenche l'indicateur de disponibilités de la section contact :
     //   - immédiatement si on arrive sur /rendez-vous (la section est forcément vue)
     //   - sinon quand la section approche du viewport (rootMargin 600px)
     // Re-run quand `page` change : si l'utilisateur bascule sur la home depuis
     // une autre page, on a besoin de remonter l'observer car la section
-    // #contact-section n'existait pas au mount initial.
+    // #contact n'existait pas au mount initial.
     if (page !== 'home') return
 
     if (window.location.pathname.replace(/\/$/, '') === '/rendez-vous') {
@@ -379,7 +410,7 @@ function App() {
       return
     }
 
-    const target = document.getElementById('contact-section')
+    const target = document.getElementById('contact')
     if (!target) return
 
     const observer = new IntersectionObserver(
@@ -709,7 +740,10 @@ function App() {
                 </a>
 
                 <button
+                  type="button"
                   onClick={() => setMenuOpen(!menuOpen)}
+                  aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+                  aria-expanded={menuOpen}
                   className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1 cursor-pointer focus:outline-none"
                 >
                   <span className={`block h-[3px] w-6 rounded-full bg-text transition-all duration-300 origin-center ${menuOpen ? 'translate-y-[7px] rotate-45' : ''}`} />
@@ -830,9 +864,10 @@ function App() {
       {/* Refonte du 10/10/2026. Juste après la vidéo, la preuve de ce qu'elle promet : les chiffres (l'ancienne barre
           de preuve) et les écrans, chacun légendé par son rôle (src/AppShowcase.jsx). Remplace la barre de preuve,
           « Une stratégie derrière chaque écran » et « Mon métier », qui redisaient le titre et la vidéo. L'id reste
-          « calories-proof » : c'est le lien « Preuves » de la barre du haut. Le texte est écrit ici, en JSX : le
+          « realisations » (« calories-proof » jusqu'au 11/10/2026, toujours accepté) : c'est le lien « Réalisations » de la
+          barre du haut. Le texte est écrit ici, en JSX : le
           pré-rendu pour les robots (scripts/generate-routes.js) ne lit que le texte du JSX de App. */}
-      <section className="app-proof" id="calories-proof" aria-labelledby="app-proof-title">
+      <section className="app-proof" id="realisations" aria-labelledby="app-proof-title">
         <div className="app-proof-inner">
           <div className="app-proof-main">
             <div className="app-proof-copy">
@@ -885,8 +920,8 @@ function App() {
           repliée, ceux-ci se voient).
           Le bouton dit « Discuter avec Noé », la suite de l'étape 1 « On en parle ». Sur ordinateur, moins d'air sous le
           bouton (80 px au lieu de 112, et 80 en haut de la section suivante) : il y avait 224 px vides sous lui (Noé,
-          11/10/2026). Id « offre » : lien « Étapes ». */}
-      <section className="pt-14 pb-14 md:pt-28 md:pb-20 px-5 bg-card" id="offre">
+          11/10/2026). Id « etapes-et-tarif » (« offre » jusqu'au 11/10/2026, toujours accepté) : lien « Étapes et tarif ». */}
+      <section className="pt-14 pb-14 md:pt-28 md:pb-20 px-5 bg-card" id="etapes-et-tarif">
         <div className="max-w-275 mx-auto">
           <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
             Étapes et tarif
@@ -1040,10 +1075,10 @@ function App() {
           conversation (public/assets/images/avis/), le nom des clients masqué comme sur Instagram. Ordre : l'idée
           devenue application (le visiteur s'y reconnaît), l'application d'agence qui ne rapportait pas (« pourquoi moi
           et pas une agence », et la preuve des écrans qui font payer, sans redire la vidéo), puis les délais tenus. Le
-          titre de chaque carte est écrit ici, en JSX : c'est ce que lisent les robots. Id « confiance » sur le bloc des
-          avis : le lien « Avis clients » de la barre et la route /avis y mènent (`scroll-mt-24` : la barre du haut ne
+          titre de chaque carte est écrit ici, en JSX : c'est ce que lisent les robots. Id « avis-clients » sur le bloc des
+          avis (« confiance » jusqu'au 11/10/2026, toujours accepté) : le lien « Avis clients » de la barre et la route /avis y mènent (`scroll-mt-24` : la barre du haut ne
           le cache pas). Styles : `.avis-…` dans src/App.css. */}
-      <section className="py-16 md:py-28 px-5 bg-card" id="contact-section">
+      <section className="py-16 md:py-28 px-5 bg-card" id="contact">
         <div className="max-w-275 mx-auto text-center">
           {/* Les disponibilités, dans une pastille au fond léger (même style que « Audit express · 2 min ») */}
           {/* Le fond de la pastille n'apparaît qu'avec le texte des places : pendant la vérification, on ne voyait que le fond
@@ -1091,7 +1126,7 @@ function App() {
             </div>
           </div>
 
-          <div id="confiance" className="mt-12 md:mt-16 pt-10 md:pt-14 border-t border-card-border scroll-mt-24">
+          <div id="avis-clients" className="mt-12 md:mt-16 pt-10 md:pt-14 border-t border-card-border scroll-mt-24">
             <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
               Avis clients
             </p>
@@ -1164,6 +1199,46 @@ function App() {
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== INSTAGRAM ========== */}
+      {/* La section d'avant la refonte, remise tout en bas le 11/10/2026 à la demande de Noé (« à la fin, remets la section
+          Insta ») : retirée le 10/10 parce qu'elle faisait quitter la page avant la fin, elle vient maintenant après le
+          bouton WhatsApp, les avis, la FAQ et l'audit. Celui qui arrive ici sans avoir écrit peut suivre Noé. Même texte,
+          même post intégré qu'avant ; un petit titre « Instagram » comme toutes les sections ; id « instagram » (c'était
+          « avis » : l'ancre #avis mène désormais aux avis clients, voir ANCIENNES_ANCRES). Fond gris : la FAQ au-dessus
+          est blanche, le pied de page violet. */}
+      <section className="py-16 md:py-24 px-5 bg-card" id="instagram">
+        <div className="max-w-275 mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_400px] gap-8 md:gap-14 items-center">
+            <div className="reveal text-center md:text-left">
+              <p className="text-brand font-semibold text-[0.78rem] tracking-widest uppercase mb-3">
+                Instagram
+              </p>
+              <h2 className="font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-4">
+                Je décortique tout ça <span className="text-brand">sur mon Insta</span>
+              </h2>
+              <p className="text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed mb-8">
+                Comment une application rapporte, combien coûte un vrai projet, pourquoi 90&nbsp;% des apps ne gagnent rien.
+              </p>
+              <a href="https://www.instagram.com/noecalmes.app/" target="_blank" rel="noopener noreferrer" className="btn-reflet group inline-flex items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer">
+                <svg className="w-[18px] h-[18px] shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                <span>Voir mon Instagram</span>
+              </a>
+            </div>
+            <div className="reveal flex justify-center md:justify-end">
+              <div className="w-full max-w-[400px] overflow-hidden rounded-2xl border border-card-border bg-white" style={{ aspectRatio: '1 / 1.16' }}>
+                <iframe
+                  src="https://www.instagram.com/p/DZS67wXiPRM/embed"
+                  title="Post Instagram de Noé Calmes"
+                  className="w-full h-full block"
+                  scrolling="no"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
