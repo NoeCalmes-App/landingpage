@@ -288,11 +288,16 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    légèrement penchés sur ordinateur. Le nom du client est recouvert d'une barre noire sur deux d'entre eux (il
    était lisible sur /projets jusqu'au 11/10/2026 ; le troisième, Noé l'avait déjà effacé). Sur le premier, la
    phrase du bas de la story, « Merci pour vos retours ! », est effacée (Noé, 11/10/2026 : elle parlait aux
-   clients, pas au visiteur ; le quadrillage est recopié d'un carreau plus haut). Le titre de chaque
+   clients, pas au visiteur). Puis la première et la troisième image ont été raccourcies (Noé : « l'image n'est
+   pas si longue ») : le bas vide est coupé, il reste sous la conversation la marge du haut. Trois hauteurs, donc,
+   la plus haute au milieu : sur ordinateur, les cartes sont centrées en hauteur. Le titre de chaque
    carte est dans l'image, le texte `alt` le reprend : « D'une simple idée à une app qui tourne », « Une app qui
    existait, mais qui ne rapportait pas », « Livré dans les délais, 100 % satisfait ». Le deuxième répond à
-   « pourquoi moi et pas une agence » et prouve les écrans qui font payer, sans redire la vidéo. Dessous : « Messages
-   reçus sur WhatsApp, noms masqués. » (texte lu par `scripts/generate-routes.js` pour les robots de l'accueil).
+   « pourquoi moi et pas une agence » et prouve les écrans qui font payer, sans redire la vidéo. Dessous, une note
+   courte : « Noms masqués par discrétion. » (« Messages reçus sur WhatsApp, noms masqués. » jusqu'au 11/10/2026 au
+   soir, Noé : « raccourcis le texte ») ; elle explique les barres noires et rassure celui qui a peur qu'on dévoile
+   son idée. Le contenu des avis est dans le texte `alt` de chaque image, que `scripts/generate-routes.js` sert aux
+   robots de l'accueil.
    Essai refusé le même jour : des cartes recadrées sur la conversation, avec le titre écrit en texte, en rangée
    qu'on fait glisser sur téléphone (« c'est plus propre » dans /projets). Ajouter un avis : n'y mettre que des
    messages réels, avec l'accord de la personne, son nom masqué.

@@ -271,19 +271,26 @@ const echapper = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/
 // Le premier paragraphe extrait est le <h1> de la page : il est retire ici,
 // car le pre-rendu pose deja son propre <h1> a partir de `heading`. Sans ca,
 // tout agent sans JavaScript verrait deux titres de niveau 1.
-// `avecTitre` : pour un morceau de page sans <h1> (un composant inclus dans une page), garder le premier paragraphe.
-function corpsDepuisComposant(fichier, nom, { avecTitre = false } = {}) {
+function corpsDepuisComposant(fichier, nom) {
   const src = readFileSync(join(__dirname, '..', 'src', fichier), 'utf-8')
   const paras = texteDuComposant(src, nom)
   if (!paras.length) throw new Error(`Aucun texte lu dans le composant ${nom} de src/${fichier} : la lecture a probablement casse`)
-  return (avecTitre ? paras : paras.slice(1)).map((p) => `<p>${echapper(p)}</p>`).join('')
+  return paras.slice(1).map((p) => `<p>${echapper(p)}</p>`).join('')
+}
+
+// Les avis clients sont des images (les visuels de Noé) : leur contenu est dans le texte `alt` de chacune, que ce
+// lecteur sert aux robots, un paragraphe par avis. Un `alt` par image, entre guillemets doubles.
+function altDesImages(fichier) {
+  const src = readFileSync(join(__dirname, '..', 'src', fichier), 'utf-8')
+  const alts = [...src.matchAll(/\balt="([^"]{20,})"/g)].map((m) => decoderEntites(m[1]))
+  if (!alts.length) throw new Error(`Aucun texte alt lu dans src/${fichier} : la lecture a probablement casse`)
+  return alts.map((a) => `<p>${echapper(a)}</p>`).join('')
 }
 
 // L'accueil : son corps vit dans le composant App de src/App.jsx, plus les avis clients, qui vivent dans
 // src/AvisClients.jsx depuis le 11/10/2026 (partagés avec /projets). Ils sont ajoutés à la fin du texte : le
 // lecteur ne voit pas le contenu d'une balise <AvisClients />.
-const corpsSeoAccueil = corpsDepuisComposant('App.jsx', 'App')
-  + corpsDepuisComposant('AvisClients.jsx', 'AvisClients', { avecTitre: true })
+const corpsSeoAccueil = corpsDepuisComposant('App.jsx', 'App') + altDesImages('AvisClients.jsx')
 
 const corpsSeoPages = {
   '/expertise': corpsDepuisComposant('PagesSeo.jsx', 'PageExpertise'),
