@@ -327,14 +327,17 @@ quoi ajouter dans Search Console après le renommage des ancres) :
   dit encore « 4 à 6 semaines »** : la page dit « 45 jours en moyenne »
   depuis la refonte, Google ne l'a pas encore relue.
 
-**À faire dans Search Console une fois la refonte en ligne** (pas avant :
-Google relirait l'ancienne version). « Inspection de l'URL », puis « Demander
-l'indexation », dans cet ordre (le quota est d'une dizaine par jour) :
-l'accueil, `/blog/combien-de-temps-creer-application-mobile/`, `/faq/`,
-`/creation-application-mobile/`, les trois articles absents ci-dessus, puis
-`/blog/mvp-application-mobile/`. Les autres articles touchés par les 45 jours
-(salle de sport, coach formateur, guide) seront relus d'eux-mêmes. Puis
-renvoyer le sitemap (36 URLs).
+**La refonte est en ligne depuis le 11/10/2026 au soir** (branche
+`claude/refonte-accueil` versée dans `main`). **À faire dans Search Console**
+(pas avant la mise en ligne : Google aurait relu l'ancienne version).
+« Inspection de l'URL », puis « Demander l'indexation », dans cet ordre (le
+quota est d'une dizaine par jour) : l'accueil,
+`/blog/combien-de-temps-creer-application-mobile/`, `/faq/`,
+`/creation-application-mobile/`, les trois articles absents ci-dessus,
+`/blog/mvp-application-mobile/`, puis `/expertise/` (le chiffre d'une agence
+y est passé à 20 000 €) et `/projets/` (les avis, noms masqués). Les autres
+articles touchés par les 45 jours (salle de sport, coach formateur, guide)
+seront relus d'eux-mêmes. Puis renvoyer le sitemap (36 URLs).
 
 ## Ce qui reste à faire (par priorité)
 
