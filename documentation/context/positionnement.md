@@ -215,6 +215,8 @@ Note pour toute carte de comparaison publique : ne pas faire du prix d'appel `5 
 - Noé : `Tarif fixe, sans surprise`
 - Lien secondaire bleu/souligné : `Combien coûterait mon app ?` -> `/rendez-vous` (section WhatsApp ; vers `/audit-app` jusqu'au 02/10/2026)
 
+**Depuis le 11/10/2026 au soir, le tarif de l'accueil et sa FAQ disent « À partir de 5 000 € »**, comme la pub et le formulaire Meta (avant : « en général une dizaine de milliers d'euros »). Le chiffre reste un repère sous les étapes, pas l'accroche du haut de page, qui reste les revenus. Raison : les leads du formulaire arrivent sur l'accueil par le bouton « Voir la vidéo » de l'écran de fin, juste avant le premier message de Noé, et un autre chiffre que celui de la pub y passait pour un prix qui monte. L'ordre de grandeur réel (8 000 à 12 000 € pour un projet complet) se donne à l'appel. Détail : `documentation/architecture/landing-page.md`, section 3.
+
 Pourquoi : la valeur reste l'application pensee pour generer des revenus. Le seuil `5 000 €` sert de filtre secondaire dans les publicites d'acquisition et dans l'audit, pas d'accroche principale sur la landing. Le lien vers l'audit transforme la curiosite prix en lead qualifie : le visiteur repond aux questions, obtient potentiel/budget/delai, puis arrive naturellement sur WhatsApp.
 
 ---

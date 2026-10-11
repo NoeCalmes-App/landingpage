@@ -246,9 +246,15 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    droite du début du texte au lieu de prendre toute la largeur au-dessus (`.process-…` dans `src/App.css`).
    Au survol sur ordinateur, la carte passe en violet. Sous les étapes, le tarif et le délai
    (`.etape-tarif`), deux repères avec chacun son icône dans un carré violet pâle (Noé, 11/10/2026 : en une seule
-   ligne de texte, « c'était fade ») : « Tarif fixe », puis « En général une dizaine de milliers d'euros :
+   ligne de texte, « c'était fade ») : « À partir de 5 000 € », puis « Tarif fixe, posé avant de commencer :
    stratégie, maquette, développement et mise en ligne » ; « 45 jours en moyenne », puis « Pour une application
-   mobile ou web ».
+   mobile ou web ». **Le prix dit « à partir de 5 000 € », comme la pub et le formulaire Meta** (Noé, 11/10/2026
+   au soir ; avant : « en général une dizaine de milliers d'euros », ici et dans la FAQ). Depuis le formulaire du
+   11 octobre, les leads arrivent sur cette page par le bouton « Voir la vidéo » de l'écran de fin, juste avant le
+   premier message de Noé : un autre chiffre que celui de la pub se lit comme un prix qui monte, et un lead déjà
+   gagné ne répond plus. L'ordre de grandeur réel (8 000 à 12 000 € pour un projet complet) se donne à l'appel ;
+   le tri des petits budgets est fait par la question budget du formulaire. Les articles du blog gardent leurs
+   fourchettes par périmètre : c'est du contenu pour qui cherche un prix, pas la page des leads.
    Côte à côte sur ordinateur, l'un sous l'autre sur téléphone. **45 jours partout, jamais « première version »**
    (Noé, 11/10/2026 ; la page avait dit 30 jours du 10 au 11/10). « Mobile ou web » et pas « SaaS », que Noé
    proposait : « SaaS » ne s'écrit jamais seul (`documentation/context/vocabulaire-mobile-web.md`, règle 6 bis).
@@ -325,8 +331,10 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
 6. **FAQ « Pour y voir plus clair »** (`#faq`, sous « Questions fréquentes » : la cible ne connaît pas
    forcément « FAQ ») : les 4 premières questions de `FAQ_ITEMS`
    (`src/PagesSeo.jsx`), les vraies objections, en deux ou trois phrases chacune :
-   - combien : un tarif fixe, « en général une dizaine de milliers d'euros, comprenant la stratégie, la
-     maquette sur mesure, le développement et la mise en ligne » ;
+   - combien : « À partir de 5 000 €, avec un tarif fixe posé avant de commencer : stratégie, maquette sur
+     mesure, développement et mise en ligne compris. Le prix exact dépend des fonctionnalités de ton
+     application, et tu le connais avant de payer quoi que ce soit. » (11/10/2026 au soir ; avant : « en
+     général une dizaine de milliers d'euros », raison au point 3 sur le tarif) ;
    - en combien de temps : « En moyenne, 45 jours pour une application mobile ou web, du cadrage à la mise en
      ligne. Le délai exact est fixé dans le devis, selon les fonctionnalités prévues au cahier des charges. »
      (45 jours et pas « première version » depuis le 11/10/2026 ; Noé refuse « on cale le délai ensemble », pas

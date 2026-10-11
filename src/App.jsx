@@ -982,12 +982,16 @@ function App() {
               20 000 € » depuis le 11/10/2026, 15 000 avant ; « 3 à 6 mois ») : le contraste se lit au moment où on lit le prix, à la place du tableau « Une agence /
               Avec moi » de « Pourquoi me faire confiance ? », retiré le 11/10/2026 (deux tableaux croix/coche à la suite, et
               « un chef de projet entre vous », Noé : « il s'en fout, il veut un résultat »). Mise en page : `.etape-tarif` dans
-              src/App.css. */}
+              src/App.css.
+              LE PRIX DIT « À PARTIR DE 5 000 € », COMME LA PUB ET LE FORMULAIRE META (Noé, 11/10/2026 au soir ; avant :
+              « en général une dizaine de milliers d'euros »). Les leads arrivent ici depuis l'écran de fin du formulaire
+              (« Voir la vidéo »), juste avant le premier message de Noé : un autre chiffre que celui de la pub se lit comme un
+              prix qui monte. L'ordre de grandeur réel (8 000 à 12 000 € pour un projet complet) se donne à l'appel. */}
           <ul className="reveal etape-tarif">
             <li>
               <span className="etape-tarif-icone" aria-hidden="true"><BadgeEuro size={20} strokeWidth={2} /></span>
               <span className="etape-tarif-texte">
-                <strong>Tarif fixe</strong> En général une dizaine de milliers d'euros&nbsp;: stratégie, maquette, développement et mise en ligne.
+                <strong>À partir de 5&nbsp;000&nbsp;€</strong> Tarif fixe, posé avant de commencer&nbsp;: stratégie, maquette, développement et mise en ligne.
                 <span className="etape-tarif-agence">En agence&nbsp;: à partir de 20&nbsp;000&nbsp;€</span>
               </span>
             </li>

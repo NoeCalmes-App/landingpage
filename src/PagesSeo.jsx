@@ -30,9 +30,11 @@ export const FAQ_ITEMS = [
   // Retirees le 11/10/2026 : « Application mobile ou web », « A qui appartient l'application ? » (« c'est
   // logique, il paye ») et « Est-ce que mon application va vraiment generer des revenus ? ».
   // Delai : « 45 jours en moyenne », sans « premiere version » (Noe, 11/10/2026 : 45 jours partout).
+  // Prix : « A partir de 5 000 € », comme la pub et le formulaire Meta (Noe, 11/10/2026 au soir ; avant : « en general
+  // une dizaine de milliers d'euros »). Raison dans App.jsx, au-dessus du bloc `.etape-tarif`.
   {
     q: "Combien coûte une application ?",
-    a: "Un tarif fixe, posé avant de commencer : en général une dizaine de milliers d'euros, comprenant la stratégie, la maquette sur mesure, le développement et la mise en ligne. Pas de compteur qui tourne : tu sais exactement ce que tu paies, et tu vois ta maquette avant de décider.",
+    a: "À partir de 5 000 €, avec un tarif fixe posé avant de commencer : stratégie, maquette sur mesure, développement et mise en ligne compris. Le prix exact dépend des fonctionnalités de ton application, et tu le connais avant de payer quoi que ce soit. Pas de compteur qui tourne : tu vois ta maquette avant de décider.",
   },
   {
     q: "Combien de temps faut-il pour avoir une application ?",
