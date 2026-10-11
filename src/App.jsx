@@ -977,8 +977,8 @@ function App() {
 
           {/* Le prix et le délai, sous les trois étapes : deux repères avec leur icône (Noé, 11/10/2026 : une seule ligne
               de texte « faisait fade »). Le délai est « 45 jours en moyenne », sans « première version » (Noé, 11/10/2026 :
-              45 jours partout, FAQ comprise). « Mobile ou web » et pas « SaaS » : « SaaS » ne s'écrit jamais seul
-              (documentation/context/vocabulaire-mobile-web.md, règle 6 bis). Sous chaque repère, le chiffre d'une agence (« à partir de
+              45 jours partout, FAQ comprise). « SaaS » ne s'écrit jamais seul (voir plus bas, « mobile ou web (SaaS) »).
+              Sous chaque repère, le chiffre d'une agence (« à partir de
               20 000 € » depuis le 11/10/2026, 15 000 avant ; « 3 à 6 mois ») : le contraste se lit au moment où on lit le prix, à la place du tableau « Une agence /
               Avec moi » de « Pourquoi me faire confiance ? », retiré le 11/10/2026 (deux tableaux croix/coche à la suite, et
               « un chef de projet entre vous », Noé : « il s'en fout, il veut un résultat »). Mise en page : `.etape-tarif` dans
@@ -986,19 +986,23 @@ function App() {
               LE PRIX DIT « À PARTIR DE 5 000 € », COMME LA PUB ET LE FORMULAIRE META (Noé, 11/10/2026 au soir ; avant :
               « en général une dizaine de milliers d'euros »). Les leads arrivent ici depuis l'écran de fin du formulaire
               (« Voir la vidéo »), juste avant le premier message de Noé : un autre chiffre que celui de la pub se lit comme un
-              prix qui monte. L'ordre de grandeur réel (8 000 à 12 000 € pour un projet complet) se donne à l'appel. */}
+              prix qui monte. L'ordre de grandeur réel (8 000 à 12 000 € pour un projet complet) se donne à l'appel.
+              « Le prix dépend de ton application » et pas « Tarif fixe » : à côté de « à partir de 5 000 € », « tarif fixe »
+              se lisait « toutes les applications à 5 000 € » (Noé). « Design » et pas « maquette » : la maquette est OFFERTE
+              avant de payer (formulaire Meta), elle n'est pas dans le prix. « Mobile ou web (SaaS) » : « SaaS » une fois
+              sur la page, jamais seul (documentation/context/vocabulaire-mobile-web.md, règle 6 bis). */}
           <ul className="reveal etape-tarif">
             <li>
               <span className="etape-tarif-icone" aria-hidden="true"><BadgeEuro size={20} strokeWidth={2} /></span>
               <span className="etape-tarif-texte">
-                <strong>À partir de 5&nbsp;000&nbsp;€</strong> Tarif fixe, posé avant de commencer&nbsp;: stratégie, maquette, développement et mise en ligne.
+                <strong>À partir de 5&nbsp;000&nbsp;€</strong> Le prix dépend de ton application, et il est fixé avant de commencer&nbsp;: stratégie, design, développement et mise en ligne.
                 <span className="etape-tarif-agence">En agence&nbsp;: à partir de 20&nbsp;000&nbsp;€</span>
               </span>
             </li>
             <li>
               <span className="etape-tarif-icone" aria-hidden="true"><Timer size={20} strokeWidth={2} /></span>
               <span className="etape-tarif-texte">
-                <strong>45&nbsp;jours en moyenne</strong> Pour une application mobile ou web.
+                <strong>45&nbsp;jours en moyenne</strong> Pour une application mobile ou web&nbsp;(SaaS).
                 <span className="etape-tarif-agence">En agence&nbsp;: 3 à 6&nbsp;mois</span>
               </span>
             </li>

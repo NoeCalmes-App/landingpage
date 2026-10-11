@@ -94,6 +94,11 @@ seul** : toujours sous la forme « une application web, ce qu'on appelle aussi u
 SaaS », et au plus une fois par page. Seule exception : le label (règle 1),
 qui le porte seul faute de place, depuis le 10/10/2026.
 
+Forme courte admise dans un repère où la phrase longue ne tient pas : « une
+application mobile ou web (SaaS) », le mot entre parenthèses derrière « web ».
+C'est l'occurrence unique de l'accueil, sous les étapes (« 45 jours en moyenne »,
+11/10/2026).
+
 **La façon la plus efficace de le faire comprendre reste l'exemple**, pas le
 vocabulaire : leboncoin.fr, airbnb.com, un logiciel de facturation en ligne. On
 s'y connecte, on y gère un compte, on y encaisse. Personne ne confond ça avec un

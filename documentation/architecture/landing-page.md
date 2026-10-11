@@ -246,9 +246,14 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    droite du début du texte au lieu de prendre toute la largeur au-dessus (`.process-…` dans `src/App.css`).
    Au survol sur ordinateur, la carte passe en violet. Sous les étapes, le tarif et le délai
    (`.etape-tarif`), deux repères avec chacun son icône dans un carré violet pâle (Noé, 11/10/2026 : en une seule
-   ligne de texte, « c'était fade ») : « À partir de 5 000 € », puis « Tarif fixe, posé avant de commencer :
-   stratégie, maquette, développement et mise en ligne » ; « 45 jours en moyenne », puis « Pour une application
-   mobile ou web ». **Le prix dit « à partir de 5 000 € », comme la pub et le formulaire Meta** (Noé, 11/10/2026
+   ligne de texte, « c'était fade ») : « À partir de 5 000 € », puis « Le prix dépend de ton application, et il
+   est fixé avant de commencer : stratégie, design, développement et mise en ligne » ; « 45 jours en moyenne »,
+   puis « Pour une application mobile ou web (SaaS) ». « Le prix dépend de ton application » remplace « Tarif
+   fixe » : à côté de « à partir de 5 000 € », « tarif fixe » se lisait « toutes les applications à 5 000 € »
+   pour une cible qui n'y connaît rien (Noé, 11/10/2026). « Design » et pas « maquette » : la maquette est
+   offerte avant de payer, elle n'est pas dans le prix. « (SaaS) » derrière « web » : la seule occurrence de la
+   page, jamais seule (`documentation/context/vocabulaire-mobile-web.md`, règle 6 bis).
+   **Le prix dit « à partir de 5 000 € », comme la pub et le formulaire Meta** (Noé, 11/10/2026
    au soir ; avant : « en général une dizaine de milliers d'euros », ici et dans la FAQ). Depuis le formulaire du
    11 octobre, les leads arrivent sur cette page par le bouton « Voir la vidéo » de l'écran de fin, juste avant le
    premier message de Noé : un autre chiffre que celui de la pub se lit comme un prix qui monte, et un lead déjà
@@ -256,8 +261,9 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    le tri des petits budgets est fait par la question budget du formulaire. Les articles du blog gardent leurs
    fourchettes par périmètre : c'est du contenu pour qui cherche un prix, pas la page des leads.
    Côte à côte sur ordinateur, l'un sous l'autre sur téléphone. **45 jours partout, jamais « première version »**
-   (Noé, 11/10/2026 ; la page avait dit 30 jours du 10 au 11/10). « Mobile ou web » et pas « SaaS », que Noé
-   proposait : « SaaS » ne s'écrit jamais seul (`documentation/context/vocabulaire-mobile-web.md`, règle 6 bis).
+   (Noé, 11/10/2026 ; la page avait dit 30 jours du 10 au 11/10). « SaaS » seul, que Noé proposait, a été écarté :
+   il ne s'écrit jamais seul (`documentation/context/vocabulaire-mobile-web.md`, règle 6 bis) ; depuis le 11/10/2026
+   au soir il suit « web », entre parenthèses.
    Sous chacun, en gris, le chiffre d'une agence : « En agence : à partir de 20 000 € » (15 000 jusqu'au 11/10/2026, Noé : « 20 000 partout ») et « En agence : 3 à 6
    mois » (11/10/2026, à la place du tableau « Une agence / Avec moi » : le contraste se lit au moment où on lit le
    prix). Le tarif et le délai sont aussi dans la FAQ, mais la FAQ est repliée : ceux-ci se voient, et trient les
@@ -331,9 +337,9 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
 6. **FAQ « Pour y voir plus clair »** (`#faq`, sous « Questions fréquentes » : la cible ne connaît pas
    forcément « FAQ ») : les 4 premières questions de `FAQ_ITEMS`
    (`src/PagesSeo.jsx`), les vraies objections, en deux ou trois phrases chacune :
-   - combien : « À partir de 5 000 €, avec un tarif fixe posé avant de commencer : stratégie, maquette sur
-     mesure, développement et mise en ligne compris. Le prix exact dépend des fonctionnalités de ton
-     application, et tu le connais avant de payer quoi que ce soit. » (11/10/2026 au soir ; avant : « en
+   - combien : « À partir de 5 000 €. Le prix dépend de ton application et il est fixé avant de commencer :
+     stratégie, design, développement et mise en ligne compris, sans compteur qui tourne. Tu le connais avant
+     de payer quoi que ce soit, et tu vois ta maquette avant de décider. » (11/10/2026 au soir ; avant : « en
      général une dizaine de milliers d'euros », raison au point 3 sur le tarif) ;
    - en combien de temps : « En moyenne, 45 jours pour une application mobile ou web, du cadrage à la mise en
      ligne. Le délai exact est fixé dans le devis, selon les fonctionnalités prévues au cahier des charges. »

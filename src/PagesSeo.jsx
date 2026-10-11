@@ -34,7 +34,7 @@ export const FAQ_ITEMS = [
   // une dizaine de milliers d'euros »). Raison dans App.jsx, au-dessus du bloc `.etape-tarif`.
   {
     q: "Combien coûte une application ?",
-    a: "À partir de 5 000 €, avec un tarif fixe posé avant de commencer : stratégie, maquette sur mesure, développement et mise en ligne compris. Le prix exact dépend des fonctionnalités de ton application, et tu le connais avant de payer quoi que ce soit. Pas de compteur qui tourne : tu vois ta maquette avant de décider.",
+    a: "À partir de 5 000 €. Le prix dépend de ton application et il est fixé avant de commencer : stratégie, design, développement et mise en ligne compris, sans compteur qui tourne. Tu le connais avant de payer quoi que ce soit, et tu vois ta maquette avant de décider.",
   },
   {
     q: "Combien de temps faut-il pour avoir une application ?",
