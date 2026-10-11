@@ -18,20 +18,21 @@
 
 /* ===== Accueil : « Pourquoi me faire confiance ? » (11/10/2026) ===== */
 /* Une seule carte : la photo, « Je lance aussi mes propres applications » (sans point : dans cette police, il se
-   détache du mot, et aucun titre de la page n'en a), le texte, puis les deux applications à Noé. Sur téléphone, la
-   phrase se met à droite de la photo, le texte et les applications passent dessous sur toute la largeur ; à partir
-   de 768 px, la photo reste seule à gauche et tout le reste s'aligne à sa droite. */
-.confiance-carte { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: 'photo titre' 'texte texte' 'apps apps'; column-gap: 16px; align-items: center; }
+   détache du mot, et aucun titre de la page n'en a), puis une phrase. Sur téléphone, la phrase en gras se met à
+   droite de la photo et l'autre passe dessous sur toute la largeur (`.confiance-mots` s'efface, ses deux phrases se
+   rangent dans la grille) ; à partir de 768 px, les deux phrases forment un bloc centré en hauteur à droite de la
+   photo. */
+.confiance-carte { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: 'photo titre' 'texte texte'; column-gap: 16px; align-items: center; }
+.confiance-mots { display: contents; }
 .confiance-photo { grid-area: photo; width: 64px; height: 64px; }
 .confiance-titre { grid-area: titre; font-size: 1.15rem; line-height: 1.3; }
 .confiance-texte { grid-area: texte; margin-top: 16px; font-size: 0.95rem; }
-.confiance-apps { grid-area: apps; display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
 @media (min-width: 768px) {
-  .confiance-carte { grid-template-areas: 'photo titre' 'photo texte' 'photo apps'; grid-template-rows: auto auto 1fr; column-gap: 32px; align-items: start; }
+  .confiance-carte { grid-template-areas: 'photo mots'; column-gap: 32px; }
+  .confiance-mots { display: block; grid-area: mots; }
   .confiance-photo { width: 96px; height: 96px; }
-  .confiance-titre { font-size: 1.45rem; margin-top: 2px; }
-  .confiance-texte { margin-top: 10px; font-size: 1.02rem; }
-  .confiance-apps { margin-top: 20px; }
+  .confiance-titre { font-size: 1.45rem; }
+  .confiance-texte { margin-top: 8px; font-size: 1.02rem; }
 }
 
 /* Très petits téléphones (moins de 350 px) : l'illustration rétrécit pour laisser « Étape · Offert » à sa gauche */

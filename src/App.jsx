@@ -58,9 +58,6 @@ const calorieIcon = '/assets/images/apps/calorie.webp'
 const hushIcon = '/assets/images/apps/hushapp.webp'
 const purgeIcon = '/assets/images/apps/purge.webp'
 const snapIcon = '/assets/images/apps/snapmaster.webp'
-// Les deux applications à Noé, dans « Pourquoi me faire confiance ? »
-const wakeupIcon = '/assets/images/app-icons/wackupalarme.webp'
-const plouffIcon = '/assets/images/app-icons/plouffhabitudes.webp'
 
 // Canal de contact unique : WhatsApp (message pré-rempli pour amorcer la qualif).
 // Les CTA de la landing passent d'abord par /rendez-vous. Seuls le bouton de
@@ -961,15 +958,18 @@ function App() {
 
       {/* ========== POURQUOI ME FAIRE CONFIANCE ========== */}
       {/* Refonte du 10/10/2026, resserrée le 11/10/2026 avec Noé (« relis tout, si c'est un doublon, pas le mettre ») :
-          la section ne garde que ce que la page ne dit nulle part ailleurs, Noé lance aussi ses propres applications.
-          Elles sont nommées, avec leur icône : le carrousel les montre sans dire qu'elles sont à lui, et un nom se
-          vérifie. Retirés : le nom et « Expert en applications mobiles & web » (la barre du haut les affiche déjà),
-          « Je fais tout moi-même » (le sous-titre du hero le dit, et Noé craignait qu'on lise « pas spécialisé, pas
-          expert »), « une dizaine d'idées par semaine » (mot pour mot dans la vidéo) et le tableau contre les agences
-          (la maquette offerte, les 30 jours et « je reste après la mise en ligne » sont dans les étapes, le tarif fixe
-          sous les étapes, « directement » dans « Parlons de ton projet »). Les avis clients iront dans AVIS_CLIENTS
-          (vide pour l'instant : rien n'est affiché). Id « confiance » : la route /avis y mène. Placement de la photo,
-          de la phrase et des applications : `.confiance-…` dans src/App.css. */}
+          la section ne garde que ce que la page ne dit nulle part ailleurs, Noé lance aussi ses propres applications,
+          et une phrase. Ses applications ne sont PAS nommées ici (Noé, 11/10/2026) : WakeUp Alarme et Plouff Habitudes
+          sont dans le carrousel « Ce que j'ai déjà construit », et les nommer ici ferait relire tout le carrousel comme
+          « ses applications à lui, pas celles de ses clients ». Le titre du carrousel est vrai pour toutes ; ne jamais
+          écrire nulle part qu'elles sont à des clients. Retirés aussi : le nom et « Expert en applications mobiles &
+          web » (la barre du haut les affiche déjà), « Je fais tout moi-même » (le sous-titre du hero le dit, et Noé
+          craignait qu'on lise « pas spécialisé, pas expert »), « une dizaine d'idées par semaine » (mot pour mot dans
+          la vidéo), « Je sais ce que c'est d'investir dans une application… » (trop de texte) et le tableau contre les
+          agences (la maquette offerte, les 30 jours et « je reste après la mise en ligne » sont dans les étapes, le
+          tarif fixe sous les étapes, « directement » dans « Parlons de ton projet »). Les avis clients iront dans
+          AVIS_CLIENTS (vide pour l'instant : rien n'est affiché). Id « confiance » : la route /avis y mène. Placement
+          de la photo et des deux phrases : `.confiance-…` dans src/App.css. */}
       <section className="py-16 md:py-28 px-5" id="confiance">
         <div className="max-w-275 mx-auto">
           <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
@@ -981,22 +981,14 @@ function App() {
 
           <div className="reveal confiance-carte max-w-190 mx-auto rounded-[20px] bg-brand-wash border border-brand/20 p-6 md:p-10">
             <img src={mePhoto} alt="Noé Calmes" width="96" height="96" loading="lazy" className="confiance-photo rounded-full object-cover shadow-sm" />
-            <p className="confiance-titre font-jakarta text-text font-extrabold tracking-tight">
-              Je lance aussi mes propres applications
-            </p>
-            <p className="confiance-texte text-grey leading-relaxed">
-              Je sais ce que c'est d'investir dans une application et d'attendre qu'elle rapporte. Je travaille sur la tienne comme si c'était la mienne.
-            </p>
-            <ul className="confiance-apps" aria-label="Mes applications">
-              <li className="inline-flex items-center gap-2 rounded-full bg-surface border border-card-border py-1 pl-1 pr-3.5 text-text text-[0.84rem] font-semibold">
-                <img src={wakeupIcon} alt="" width="28" height="28" loading="lazy" className="w-7 h-7 rounded-[8px] object-cover" />
-                WakeUp Alarme
-              </li>
-              <li className="inline-flex items-center gap-2 rounded-full bg-surface border border-card-border py-1 pl-1 pr-3.5 text-text text-[0.84rem] font-semibold">
-                <img src={plouffIcon} alt="" width="28" height="28" loading="lazy" className="w-7 h-7 rounded-[8px] object-cover" />
-                Plouff Habitudes
-              </li>
-            </ul>
+            <div className="confiance-mots">
+              <p className="confiance-titre font-jakarta text-text font-extrabold tracking-tight">
+                Je lance aussi mes propres applications
+              </p>
+              <p className="confiance-texte text-grey leading-relaxed">
+                Je travaille sur la tienne comme si c'était la mienne.
+              </p>
+            </div>
           </div>
 
           {AVIS_CLIENTS.length > 0 && (

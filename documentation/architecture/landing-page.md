@@ -239,16 +239,19 @@ reprendre le prix et le délai pour ceux qui y vont directement.
    acompte au démarrage. Puis le bouton « Discuter avec Noé » (11/10/2026, la suite de « On en parle » ; il
    mène à « Parlons de ton projet », comme celui du haut). Absorbe « Avant de payer un euro, je t'offre ».
 4. **« Pourquoi me faire confiance ? »** (`#confiance`, sous « Qui je suis » ; la route /avis y mène) : une
-   seule carte, resserrée le 11/10/2026 avec Noé. La photo, puis l'argument que rien d'autre ne porte sur la page,
-   « Je lance aussi mes propres applications » : « Je sais ce que c'est d'investir dans une application et
-   d'attendre qu'elle rapporte. Je travaille sur la tienne comme si c'était la mienne. » Dessous, WakeUp Alarme et
-   Plouff Habitudes avec leur icône (`public/assets/images/app-icons/`) : le carrousel les montre sans dire qu'elles
-   sont à Noé, et un nom se vérifie. Pas de chiffre pour WakeUp Alarme (peu de téléchargements, voir
-   `src/Projets.jsx`). Sur téléphone, la phrase est à droite de la photo ; à partir de 768 px, la photo est seule à
-   gauche (`.confiance-…` dans `src/App.css`). Pas de point à la fin de la phrase en gras : dans cette police, il se
-   détache du mot.
-   Retirés le 11/10/2026 parce que la page les dit ailleurs : le nom et « Expert en applications mobiles & web »
-   (la barre du haut), « Je fais tout moi-même » (le sous-titre du hero ; et pour Noé, ça peut se lire « pas
+   seule carte, resserrée le 11/10/2026 avec Noé. La photo, l'argument que rien d'autre ne porte sur la page,
+   « Je lance aussi mes propres applications », et une phrase : « Je travaille sur la tienne comme si c'était la
+   mienne. » Sur téléphone, la phrase en gras est à droite de la photo et l'autre dessous ; à partir de 768 px,
+   les deux forment un bloc à droite de la photo (`.confiance-…` dans `src/App.css`). Pas de point à la fin de la
+   phrase en gras : dans cette police, il se détache du mot.
+   **Les applications de Noé ne sont pas nommées ici** (décision de Noé, 11/10/2026) : WakeUp Alarme et Plouff
+   Habitudes sont dans le carrousel « Ce que j'ai déjà construit », et les nommer ici ferait relire tout le
+   carrousel comme « ses applications à lui, pas celles de ses clients ». Le titre du carrousel est vrai pour
+   toutes ; ne jamais écrire nulle part qu'elles sont à des clients. Un essai d'une heure les montrait avec leur
+   icône, retiré pour cette raison et parce qu'il y avait trop de texte (« Je sais ce que c'est d'investir dans
+   une application et d'attendre qu'elle rapporte » est parti avec).
+   Retirés aussi le 11/10/2026, parce que la page les dit ailleurs : le nom et « Expert en applications mobiles &
+   web » (la barre du haut), « Je fais tout moi-même » (le sous-titre du hero ; et pour Noé, ça peut se lire « pas
    spécialisé, pas expert »), « une dizaine d'idées par semaine » (mot pour mot dans la vidéo) et la comparaison
    avec une agence (`COMPARAISON_AGENCE`, supprimée) : la maquette offerte, les 30 jours et « je reste après la
    mise en ligne » sont dans les étapes, le tarif fixe sous les étapes, « directement » dans « Parlons de ton
@@ -308,12 +311,19 @@ Fonds, de haut en bas : le hero violet, blanc, gris clair, blanc, gris clair, bl
 
 ### Le carrousel des écrans
 
-Sept captures fournies par Noé, converties en WebP de 660 px sous
-`public/assets/images/apps/captures/` (environ 375 Ko au total). Les captures contiennent déjà l'encoche
+Huit captures fournies par Noé, converties en WebP de 660 px sous
+`public/assets/images/apps/captures/` (environ 412 Ko au total). La huitième, le premier écran de Bailora
+(« Vos SCI, enfin simples », `bailora-bienvenue.webp`), est arrivée le 11/10/2026, juste avant son tableau de
+bord ; sa légende : « Une porte pour le propriétaire, une autre pour le locataire : personne ne se perd. »
+Noé prévoit un deuxième écran de Plouff Habitudes. Les captures contiennent déjà l'encoche
 et la barre d'état : le cadre CSS ajoute seulement la coque et les boutons. La liste `SCREENS`
 (`src/AppShowcase.jsx`) définit l'ordre, le type (affiché à côté du nom : « Application » pour tous les
 écrans depuis le 11/10/2026, à la demande de Noé) et la légende de chaque écran, qui dit à
 quoi il sert (rédigées le 10/10/2026, à faire relire par Noé). La légende change avec l'écran du milieu.
+
+Le nombre d'écrans est libre : seuls les positions -1, 0 et 1 se voient, les autres sont rangés cachés à -2
+ou 2 (`position` dans `src/AppShowcase.jsx`). Avant le 11/10/2026, à 8 écrans, celui d'en face (position 4)
+n'avait pas de style et s'affichait par-dessus le téléphone du milieu.
 
 Trois téléphones visibles, défilement toutes les 5,5 secondes (3,5 avant les légendes : le temps de les
 lire), glissement, flèches et clavier. La première capture reste affichée jusqu'à ce qu'au moins la

@@ -26,8 +26,8 @@
 .app-phone-position[data-position='0'] { transform: translate3d(0, 0, 0); z-index: 3; opacity: 1; }
 .app-phone-position[data-position='-1'] { transform: translate3d(-57%, 43px, 0) scale(.8) rotate(-7deg); z-index: 2; opacity: .82; filter: saturate(.8); }
 .app-phone-position[data-position='1'] { transform: translate3d(57%, 43px, 0) scale(.8) rotate(7deg); z-index: 2; opacity: .82; filter: saturate(.8); }
-.app-phone-position[data-position='-2'], .app-phone-position[data-position='-3'] { transform: translate3d(-68%, 60px, 0) scale(.65) rotate(-10deg); z-index: 0; opacity: 0; }
-.app-phone-position[data-position='2'], .app-phone-position[data-position='3'] { transform: translate3d(68%, 60px, 0) scale(.65) rotate(10deg); z-index: 0; opacity: 0; }
+.app-phone-position[data-position='-2'] { transform: translate3d(-68%, 60px, 0) scale(.65) rotate(-10deg); z-index: 0; opacity: 0; }
+.app-phone-position[data-position='2'] { transform: translate3d(68%, 60px, 0) scale(.65) rotate(10deg); z-index: 0; opacity: 0; }
 .app-phone { position: relative; padding: 6px; border-radius: 37px; background: #141519; border: 2px solid #85858c; box-shadow: inset 0 0 0 1px #d2d1d6, inset 0 0 0 3px #313236, 0 25px 35px -18px #25213a70, 0 5px 10px #27243c20; }
 .app-phone-screen { overflow: hidden; border-radius: 29px; background: #fff; isolation: isolate; }
 .app-phone-screen img { display: block; width: 100%; height: auto; aspect-ratio: 1179 / 2556; object-fit: cover; }

@@ -5,10 +5,14 @@ import './app-showcase.css'
 // Les écrans de la section « Ce que j'ai déjà construit » de l'accueil (refonte du 10/10/2026).
 // Chaque écran porte une légende qui dit à quoi il sert : c'est là que « une stratégie derrière chaque écran »
 // se voit, au lieu d'être annoncée (la vidéo du hero le dit déjà). `kind` est affiché à côté du nom : tous les
-// écrans sont des « Application » depuis le 11/10/2026 (Noé, « partout Application »).
+// écrans sont des « Application » depuis le 11/10/2026 (Noé, « partout Application »). Le premier écran de Bailora
+// (« Vos SCI, enfin simples ») est arrivé le 11/10/2026, juste avant son tableau de bord. Le nombre d'écrans est libre :
+// au-delà des trois téléphones visibles, tous attendent cachés à gauche ou à droite (voir `position` plus bas).
 const SCREENS = [
   { file: 'smoothride-premiers-pas', name: 'SmoothRide', kind: 'Application', alt: 'Deux itinéraires comparés pour choisir le trajet le plus doux',
     role: 'Dès le premier écran, il voit ce qu’il gagne : le trajet le plus doux.' },
+  { file: 'bailora-bienvenue', name: 'Bailora', kind: 'Application', alt: 'Premier écran de Bailora : « Vos SCI, enfin simples », avec un accès à part pour le locataire',
+    role: 'Une porte pour le propriétaire, une autre pour le locataire : personne ne se perd.' },
   { file: 'bailora-accueil', name: 'Bailora', kind: 'Application', alt: 'Tableau de bord des loyers, paiements et actions à traiter',
     role: 'Ce qui demande une action est en haut : il sait quoi faire en 3 secondes.' },
   { file: 'smoothride-navigation', name: 'SmoothRide', kind: 'Application', alt: 'Navigation avec signalement des dos-d’âne sur le trajet',
@@ -102,8 +106,11 @@ export default function PhoneCarousel() {
         <div className="app-gallery-halo" aria-hidden="true" />
         {SCREENS.map((screen, index) => {
           const offset = (index - active + SCREENS.length + 3) % SCREENS.length - 3
+          // Seuls -1, 0 et 1 se voient. Les autres sont rangés à -2 ou 2, cachés : sans ça, à partir de 8 écrans, celui
+          // à l'opposé (4) n'avait pas de style et s'affichait par-dessus le téléphone du milieu.
+          const position = Math.max(-2, Math.min(2, offset))
           return (
-            <div key={screen.file} className="app-phone-position" data-position={offset}
+            <div key={screen.file} className="app-phone-position" data-position={position}
               role="group" aria-roledescription="diapositive" aria-label={`${index + 1} sur ${SCREENS.length} : ${screen.name}, ${screen.kind}. ${screen.role}`} aria-hidden={offset !== 0}>
               <div className="app-phone">
                 <i className="app-phone-button app-phone-action" aria-hidden="true" />
