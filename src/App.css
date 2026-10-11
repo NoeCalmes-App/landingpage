@@ -20,6 +20,7 @@
 .etape-tarif-icone { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; flex-shrink: 0; background: #f1efff; color: #665dff; }
 .etape-tarif-texte { font-size: 14px; line-height: 1.55; color: #667185; }
 .etape-tarif-texte strong { display: block; margin-bottom: 2px; font-family: 'Plus Jakarta Sans Local', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: -.01em; color: #033475; }
+.etape-tarif-agence { display: block; width: fit-content; margin-top: 8px; padding: 3px 10px; border-radius: 999px; background: #f6f6f8; font-size: 12.5px; line-height: 1.5; color: #8a94a6; }
 @media (min-width: 768px) {
   .etape-tarif { grid-template-columns: 1.45fr 1fr; padding: 8px 26px; margin-top: 28px; }
   .etape-tarif li { padding: 18px 0; }
@@ -27,20 +28,21 @@
   .etape-tarif-texte { font-size: 14.5px; }
 }
 
-/* ===== Accueil : « Pourquoi me faire confiance ? » (11/10/2026) ===== */
-/* La carte de gauche : la photo, « Je connais ce milieu » (sans point : dans cette police, il se détache du mot, et
-   aucun titre de la page n'en a) et « J'ai lancé mes propres applications. ». Sur téléphone, les deux phrases sont à
-   droite de la photo ; à partir de 768 px, à côté de la comparaison, tout se centre sous la photo. */
-.confiance-carte { display: flex; align-items: center; gap: 16px; }
-.confiance-photo { width: 64px; height: 64px; flex-shrink: 0; }
-.confiance-mots { min-width: 0; }
-.confiance-titre { font-size: 1.15rem; line-height: 1.3; }
-.confiance-texte { margin-top: 4px; font-size: 0.95rem; }
+/* ===== Accueil : « Pourquoi me faire confiance ? », les avis clients (11/10/2026) ===== */
+/* Trois cartes : un titre, puis la conversation WhatsApp recadrée. Sur téléphone, une rangée qu'on fait glisser : la carte
+   suivante dépasse à droite pour montrer qu'il y en a d'autres, et la page ne défile jamais de côté (la rangée va
+   seulement jusqu'aux bords de l'écran). À partir de 768 px, trois colonnes. */
+.avis-liste { display: flex; align-items: flex-start; gap: 12px; margin: 0 -20px; padding: 4px 20px 18px; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; scrollbar-width: none; }
+.avis-liste::-webkit-scrollbar { display: none; }
+.avis-carte { flex: 0 0 82%; max-width: 340px; scroll-snap-align: start; display: flex; flex-direction: column; gap: 12px; padding: 16px; border-radius: 20px; background: #fff; border: 1px solid #ebe8f5; box-shadow: 0 14px 30px -26px rgba(59, 47, 208, .5); }
+.avis-titre { font-family: 'Plus Jakarta Sans Local', sans-serif; font-size: 16px; font-weight: 800; line-height: 1.35; letter-spacing: -.01em; color: #033475; }
+.avis-capture { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid #ebe8f5; }
+.avis-note { margin-top: 6px; text-align: center; font-size: 13px; color: #8a94a6; }
 @media (min-width: 768px) {
-  .confiance-carte { flex-direction: column; justify-content: center; gap: 18px; text-align: center; }
-  .confiance-photo { width: 96px; height: 96px; }
-  .confiance-titre { font-size: 1.45rem; }
-  .confiance-texte { margin-top: 6px; font-size: 1.02rem; }
+  .avis-liste { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; max-width: 1048px; margin: 0 auto; padding: 0; overflow: visible; }
+  .avis-carte { max-width: none; padding: 20px; }
+  .avis-titre { font-size: 17px; }
+  .avis-note { margin-top: 22px; }
 }
 
 /* Très petits téléphones (moins de 350 px) : l'illustration rétrécit pour laisser « Étape · Offert » à sa gauche */

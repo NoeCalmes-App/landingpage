@@ -207,7 +207,7 @@ On peut lancer une première version (MVP) pour valider que les gens paient, ava
 | Code livré — bonne chance pour le lancement | Application pensée pour générer des revenus |
 | Pas de réponse avant 48h minimum | Spécialisé application mobile |
 
-Sur l'accueil (11/10/2026), la comparaison tient en trois lignes : « À partir de 15 000 € / Tarif fixe, connu d'avance », « 3 à 6 mois de développement / 45 jours en moyenne », « Un chef de projet entre vous / Moi, directement, 6 jours sur 7 ». La maquette offerte et l'après-mise en ligne n'y sont plus : les étapes les disent. Voir `documentation/architecture/landing-page.md`, section 4 de l'accueil.
+Sur l'accueil, depuis le 11/10/2026, il n'y a plus de tableau : le chiffre d'une agence est écrit sous le tarif et le délai des étapes (« En agence : à partir de 15 000 € », « En agence : 3 à 6 mois »). « Un chef de projet entre vous » a été retiré : le client veut un résultat, peu lui importe l'organisation (Noé). « Pourquoi me faire confiance ? » montre les avis clients. Voir `documentation/architecture/landing-page.md`, sections 3 et 4 de l'accueil.
 
 Note pour toute carte de comparaison publique : ne pas faire du prix d'appel `5 000 €` la promesse principale. Le contraste doit rester :
 

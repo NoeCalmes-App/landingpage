@@ -191,7 +191,7 @@ sections deviennent sept. Le texte des sections est écrit dans le JSX de `App` 
 c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
 
 **Un petit titre au-dessus de chaque section** (violet, en capitales, 11/10/2026) : « Réalisations »,
-« Étapes et tarif », « Qui je suis », « Pour qui », « Questions fréquentes ». Noé trouvait bizarre qu'une section n'en ait
+« Étapes et tarif », « Avis clients » (« Qui je suis » jusqu'au 11/10/2026), « Pour qui », « Questions fréquentes ». Noé trouvait bizarre qu'une section n'en ait
 pas ; les liens de la barre du haut reprennent les trois premiers. « Parlons de ton projet » a la pastille des
 places à la place.
 
@@ -208,9 +208,8 @@ répétitif, pas le mettre »). La barre du haut et la vidéo comptent : la barr
 Expert en applications mobiles & web », et la vidéo, lancée sans le son, écrit à l'écran ce que dit la voix (« une
 dizaine d'idées par semaine », « ils reviennent chaque jour, ils paient chaque mois »). Avant d'ajouter une phrase,
 chercher si la page la dit déjà, même avec d'autres mots. Deux exceptions admises : la FAQ, repliée, qui peut
-reprendre le prix et le délai pour ceux qui y vont directement ; et la comparaison avec une agence de « Pourquoi
-me faire confiance ? », dont la colonne « Avec moi » redit le tarif, le délai et le contact direct : c'est le
-chiffre de l'agence à côté de celui de Noé qui compte (Noé l'a redemandée le 11/10/2026).
+reprendre le prix et le délai pour ceux qui y vont directement. (La comparaison avec une agence, qui redisait le
+tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous le tarif et le délai des étapes.)
 
 1. **Hero et vidéo** (voir plus haut).
 2. **« Ce que j'ai déjà construit »** (`#calories-proof`, lien « Preuves » de la barre du haut) : « Des
@@ -242,29 +241,30 @@ chiffre de l'agence à côté de celui de Noé qui compte (Noé l'a redemandée 
    Côte à côte sur ordinateur, l'un sous l'autre sur téléphone. **45 jours partout, jamais « première version »**
    (Noé, 11/10/2026 ; la page avait dit 30 jours du 10 au 11/10). « Mobile ou web » et pas « SaaS », que Noé
    proposait : « SaaS » ne s'écrit jamais seul (`documentation/context/vocabulaire-mobile-web.md`, règle 6 bis).
-   Le tarif et le délai sont aussi dans la FAQ, mais la FAQ est repliée : ceux-ci se voient, et trient les
-   budgets avant WhatsApp (question de Noé du 11/10/2026, gardés pour ça). Pas de « tu paies ici » : on ne paie pas à la mise en ligne, il y a un
+   Sous chacun, en gris, le chiffre d'une agence : « En agence : à partir de 15 000 € » et « En agence : 3 à 6
+   mois » (11/10/2026, à la place du tableau « Une agence / Avec moi » : le contraste se lit au moment où on lit le
+   prix). Le tarif et le délai sont aussi dans la FAQ, mais la FAQ est repliée : ceux-ci se voient, et trient les
+   budgets avant WhatsApp (question de Noé du 11/10/2026, gardés pour ça). Sur ordinateur, 40 px au-dessus du bouton
+   « Discuter avec Noé » et 80 px sous lui (au lieu de 48 et 112) : il flottait au milieu de 224 px vides avant
+   « Avis clients » (Noé, 11/10/2026). Pas de « tu paies ici » : on ne paie pas à la mise en ligne, il y a un
    acompte au démarrage. Puis le bouton « Discuter avec Noé » (11/10/2026, la suite de « On en parle » ; il
    mène à « Parlons de ton projet », comme celui du haut). Absorbe « Avant de payer un euro, je t'offre ».
-4. **« Pourquoi me faire confiance ? »** (`#confiance`, sous « Qui je suis » ; la route /avis y mène) : à
-   gauche, une carte avec la photo, « Je connais ce milieu » et « J'ai lancé mes propres applications. » (les mots
-   de Noé, 11/10/2026 ; « Je travaille sur la tienne comme si c'était la mienne », essayé une heure, lui semblait
-   bizarre). Sur téléphone, les deux phrases sont à droite de la photo ; sur ordinateur, tout se centre sous la
-   photo (`.confiance-…` dans `src/App.css`). Pas de point à la fin de la phrase en gras : dans cette police, il se
-   détache du mot. À droite, la comparaison avec une agence (`COMPARAISON_AGENCE`), remise le 11/10/2026 à la
-   demande de Noé (« agence vs moi, tu l'as enlevé ? ») sur trois lignes : « À partir de 15 000 € / Tarif fixe,
-   connu d'avance », « 3 à 6 mois de développement / 45 jours en moyenne », « Un chef de projet entre vous / Moi,
-   directement, 6 jours sur 7 ». La maquette offerte et « je reste là après la mise en ligne » n'y sont plus : les
-   étapes les disent (Noé).
-   **Les applications de Noé ne sont pas nommées ici** (décision de Noé, 11/10/2026) : WakeUp Alarme et Plouff
-   Habitudes sont dans le carrousel « Ce que j'ai déjà construit », et les nommer ici ferait relire tout le
-   carrousel comme « ses applications à lui, pas celles de ses clients ». Le titre du carrousel est vrai pour
-   toutes ; ne jamais écrire nulle part qu'elles sont à des clients.
-   Retirés le 11/10/2026 parce que la page les dit ailleurs : le nom et « Expert en applications mobiles & web »
-   (la barre du haut), « Je fais tout moi-même » (le sous-titre du hero ; et pour Noé, ça peut se lire « pas
-   spécialisé, pas expert ») et « une dizaine d'idées par semaine » (mot pour mot dans la vidéo). Les avis
-   clients iront dans `AVIS_CLIENTS` : vide tant que Noé n'en a pas (rien n'est affiché), n'y mettre que des avis
-   réels, avec l'accord de la personne.
+4. **« Pourquoi me faire confiance ? »** (`#confiance`, sous « Avis clients », lien du même nom dans la barre ; la
+   route /avis y mène) : **les avis des clients** depuis le 11/10/2026 (Noé : « il veut de la preuve sociale »).
+   Trois messages WhatsApp réels (confirmé par Noé), les mêmes que sur /projets et dans le surligné « Témoignages »
+   de son Instagram (il n'y en a pas d'autres pour l'instant), recadrés sur la conversation dans
+   `public/assets/images/avis/`, le nom des clients masqué comme sur Instagram. Chaque carte a un titre écrit dans
+   le JSX (lu par les robots) : « D'une simple idée à une application qui tourne », « Une application qui existait,
+   mais qui ne rapportait pas », « Livré dans les délais, 100 % satisfait ». Le deuxième répond à « pourquoi moi et
+   pas une agence » et prouve les écrans qui font payer, sans redire la vidéo. Dessous : « Messages de clients,
+   reçus sur WhatsApp. » Sur téléphone, une rangée qu'on fait glisser ; sur ordinateur, trois colonnes
+   (`.avis-…` dans `src/App.css`). Ajouter un avis : n'y mettre que des messages réels, avec l'accord de la
+   personne, son nom masqué.
+   Essais retirés le même jour : la carte avec la photo de Noé (sa tête deux fois avec la barre du haut), « Je
+   connais ce milieu, j'ai lancé mes propres applications » (« et alors ? », Noé), le tableau « Une agence / Avec
+   moi » (deux tableaux croix/coche à la suite avec « Pour qui », et « un chef de projet entre vous » : « il s'en
+   fout, il veut un résultat »). Ses applications à lui ne sont nommées nulle part comme telles : le titre du
+   carrousel « Ce que j'ai déjà construit » est vrai pour toutes ; ne jamais écrire qu'elles sont à des clients.
 5. **« On est faits pour travailler ensemble ? »** (`#pour-qui`, sous « Pour qui » ; « C'est pour toi ? »
    jusqu'au 11/10/2026, trop simple pour Noé) : deux « oui » et deux « non » qui se répondent, le budget et le rôle.
    « Oui, si… » : une idée d'application et un budget prévu pour la lancer ; un résultat, sans avoir à t'occuper
@@ -332,7 +332,8 @@ pour le locataire : personne ne se perd. ») et l'écran d'abonnement de Plouff 
 choisi parmi six captures de son bureau : c'est l'écran qui fait payer, celui qui prouve « une application conçue
 pour rapporter » ; légende « L'offre annuelle mise en avant, 7 jours d'essai : le curieux devient abonné. »). Il
 affiche « Salut Noe » et « Soutenir un développeur français indé » : à refaire avec un autre prénom si Noé veut
-qu'on devine moins que Plouff Habitudes est à lui. Noé prévoit un deuxième écran de Sonora.
+qu'on devine moins que Plouff Habitudes est à lui. Prix en euros depuis la capture du 11/10/2026 (la première
+était en dollars). Noé prévoit un deuxième écran de Sonora.
 
 **L'ordre** (Noé, 11/10/2026 : « montrer 3 écrans différents ») : les trois téléphones visibles montrent
 toujours trois applications différentes, jamais deux écrans de la même côte à côte. Deux tours, dans le même
