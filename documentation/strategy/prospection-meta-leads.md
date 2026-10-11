@@ -14,7 +14,7 @@
 
 
 > Source de vérité pour la relance des leads issus des formulaires Meta.
-> Contexte : le lead a rempli un formulaire pré-rempli (nom, prénom, email, téléphone) et coché son stade (prêt / bientôt / réflexion / juste une idée). **Il n'a PAS écrit son idée.**
+> Contexte : le lead a rempli un formulaire pré-rempli (nom, prénom, email, téléphone) et coché son stade (prêt / bientôt / réflexion / juste une idée) et son budget. **Depuis le formulaire du 11 octobre 2026, il a pu écrire son idée** (question facultative) : regarder la pastille 💡 de sa fiche Nowork avant d'écrire. Rouge = case laissée vide, il ne l'a pas donnée.
 > Positionnement : `documentation/context/positionnement.md`. Tunnel : `documentation/strategy/tunnel.md`.
 >
 > **Version à copier-coller : Nowork, page `/scripts/setting`** (pastille « Script WhatsApp » sur la fiche d'un lead). Les textes y vivent et s'y modifient ; ce document garde le pourquoi des règles. Changer une règle ici, c'est changer les textes là-bas dans le même geste.
@@ -44,11 +44,17 @@ Verdict à jour, interrogé chez Meta en vrai : `npm run verifier-pubs` dans
 
 ## Le formulaire Meta (référence exacte)
 
-- Intro : « Ton projet d'application — Je transforme ton idée en application qui génère des revenus. À partir de 5 000 € · Ton idée reste confidentielle (NDA). »
+**« Formulaire officiel 11 octobre »** (préparé le 11/10/2026, Volume élevé, onglet `Octobre` de la Sheet `Prospect`) :
+
+- Intro : « Ton projet d'application » / « Je conçois ton application pour qu'elle génère des revenus. À partir de 5 000 €. Cahier des charges, maquette et devis offerts avant de payer. Ton idée reste entre nous. »
 - Q1 « Où en es-tu avec ton projet d'application ? » : J'ai juste une idée / J'y réfléchis sérieusement / Je veux démarrer bientôt / Je suis prêt (budget / financement en place)
-- Q2 « Quel budget as-tu prévu pour ton application ? » : Moins de 5 000 € / 5 000-10 000 € / 10 000-20 000 € / Plus de 20 000 €
+- Q2 « Quel budget as-tu prévu pour ton application ? » : Moins de 5 000 € / 5 000 € – 10 000 € / 10 000 € – 20 000 € / Plus de 20 000 €
+- Q3, **facultative**, réponse courte : « Ton idée en quelques mots ? (ex : une app de réservation pour mon salon) ». Nom de champ `idee` (Paramètres > Noms des champs). Facultative parce qu'une case de texte obligatoire est l'endroit où l'on abandonne un formulaire ; ceux qui la remplissent sont les plus motivés. L'exemple montre qu'une demi-phrase suffit, avec le quoi et le pour qui.
 - Coordonnées pré-remplies par Meta en un clic : nom complet, e-mail, téléphone.
-- Écran de fin : « Je te recontacte dans la journée. Tu veux aller plus vite ? Écris-moi sur WhatsApp… » + bouton vers `noecalmes.fr/whatsapp`.
+- Écran de fin : « Je te contacte personnellement sous 24 h. » / « En attendant, regarde en 26 secondes comment je transforme une idée en application qui rapporte. » / bouton « Voir la vidéo » vers `noecalmes.fr/?utm_source=meta&utm_medium=formulaire` (le film du hero). La personne vient de laisser son numéro : la vidéo installe la confiance avant le premier message, et le bouton WhatsApp du site reste là pour les plus pressés.
+- Diffusion flexible en « Manuel » : Meta ne peut ni sauter l'intro, ni masquer la question facultative, ni supprimer l'écran de fin.
+
+Remplace « Formulaire Projet application aout » (onglet `Aout`), qui posait « Qui utilisera ton application ? » à la place de l'idée. Avant lui, en juillet : deux questions, écran de fin vers WhatsApp.
 
 Les leads tombent en temps réel dans la Google Sheet Meta (connexion native).
 
@@ -108,7 +114,18 @@ Tu t'étais renseigné il y a quelque temps pour créer une application.
 C'est quoi ton idée, en deux phrases : c'est quoi, et pour qui ?
 ```
 
-Règle d'ancrage : toujours ouvrir sur le fait le plus précis et vrai qu'on a (formulaire rempli, stade coché, simple renseignement). Jamais « j'ai vu que tu étais intéressé » : effet surveillance.
+**Il a écrit son idée dans le formulaire** (formulaire du 11 octobre 2026, pastille 💡) : on ne la lui redemande jamais, on propose l'appel. Pour lui, **pas de message automatique** (le template demande l'idée) : la carte CRM affiche « Premier message » avec ce texte (modèle Nowork « Premier contact — idée reçue »), son idée affichée au-dessus pour l'avoir sous les yeux. Ajuster les deux créneaux avant d'envoyer.
+
+```
+Bonjour {prénom}, ici Noé Calmes (noecalmes.fr).
+J'ai lu ton idée, ça se tient.
+On s'appelle 15 minutes : tu m'en dis un peu plus, je te dis concrètement comment je la lancerais, et on parle budget et délai de vive voix.
+Plutôt demain 12h30 ou jeudi 18h ?
+```
+
+« J'ai lu ton idée » n'est vrai que si on l'a lue : c'est pour ça que ce message part à la main, jamais en automatique. Une idée qui ne tient pas (site vitrine, hors cible) se traite avec les cas de « Réponses aux situations courantes », pas avec ce texte.
+
+Règle d'ancrage : toujours ouvrir sur le fait le plus précis et vrai qu'on a (idée écrite, formulaire rempli, stade coché, simple renseignement). Jamais « j'ai vu que tu étais intéressé » : effet surveillance.
 
 Notes : le domaine entre parenthèses = vérification d'identité passive (il peut voir qui je suis sans répondre), pas un CTA. « En deux phrases : c'est quoi, et pour qui » borne la question : il sait exactement quoi répondre, et il ne livre rien de secret. Pas de « quand es-tu disponible ? » ici : c'est une question ouverte sur un engagement, posée à quelqu'un qui n'a pas encore de raison de donner son temps ; l'appel se propose après l'idée et le stade, avec deux créneaux.
 
@@ -120,7 +137,12 @@ Dis-moi en une phrase ce que tu veux créer, je te dis comment je le lancerais.
 Mes projets : noecalmes.fr/projets
 ```
 
-Pas de proposition d'appel tant que la personne n'a jamais répondu : la séquence monte seule en pression (message → message → voix à J+5). L'appel se propose par écrit uniquement à un lead qui a déjà répondu.
+Pas de proposition d'appel tant que la personne n'a jamais répondu : la séquence monte seule en pression (message → message → voix à J+5). L'appel se propose par écrit uniquement à un lead qui a déjà répondu. **Exception : le lead qui a écrit son idée dans le formulaire** a déjà répondu à sa façon ; son premier message proposait l'appel, sa relance J+2 aussi :
+
+```
+{prénom}, je reviens vers toi pour ton idée d'application : je vois bien comment la lancer, et 15 minutes suffisent pour te l'expliquer.
+Plutôt demain 12h30 ou jeudi 18h ?
+```
 
 Une relance assume d'être une relance : on référence le silence (factuel, sans reproche), on ne se représente pas (il sait qui écrit, c'est le même fil), pas de « Bonjour » répété, et jamais « c'est toujours d'actualité ? ». « Je te dis ce que j'en pense » = raison de répondre (avis d'expert contre une phrase).
 
