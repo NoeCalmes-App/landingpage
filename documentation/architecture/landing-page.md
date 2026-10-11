@@ -202,6 +202,13 @@ chaque texte se juge d'abord sur un écran de téléphone, en phrases courtes. U
 deux ou trois phrases qui expliquent : trop long, on ne lit pas (« c'est trop long ») ; trop court, on
 n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
 
+**Une chose n'est dite qu'une fois sur la page** (Noé, 11/10/2026 : « relis tout, si c'est un doublon, si c'est
+répétitif, pas le mettre »). La barre du haut et la vidéo comptent : la barre affiche en permanence « Noé Calmes,
+Expert en applications mobiles & web », et la vidéo, lancée sans le son, écrit à l'écran ce que dit la voix (« une
+dizaine d'idées par semaine », « ils reviennent chaque jour, ils paient chaque mois »). Avant d'ajouter une phrase,
+chercher si la page la dit déjà, même avec d'autres mots. Seule exception admise : la FAQ, repliée, qui peut
+reprendre le prix et le délai pour ceux qui y vont directement.
+
 1. **Hero et vidéo** (voir plus haut).
 2. **« Ce que j'ai déjà construit »** (`#calories-proof`, lien « Preuves » de la barre du haut) : « Des
    applications publiées, utilisées, et qui rapportent. », puis quatre chiffres fournis par Noé, en 2 × 2 :
@@ -217,7 +224,8 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
    ne voulait rien dire pour Noé, 11/10/2026) et finit par « Je reste disponible après la mise en ligne. » (Noé,
    11/10/2026, à la place de « Ensuite, je t'accompagne pour la faire évoluer »). Pas de phrase
    au-dessus qui redise « offert » (retirée le 11/10/2026, Noé : « est-ce qu'on le met deux fois ? »). Les
-   textes des étapes sont ceux validés par Noé le 10/10/2026. Les illustrations sont celles que Noé avait
+   textes des étapes sont ceux validés par Noé le 10/10/2026, sans le « offert » de l'étape 2 (« je t'envoie un
+   cahier des charges, une première maquette et un devis clair ») : la pastille le dit déjà (11/10/2026). Les illustrations sont celles que Noé avait
    choisies (`meetingdev.svg`, `devmobile.svg`, `post.svg` dans `public/assets/images/illustrations/`) : il
    les a redemandées le 11/10/2026 (« plus design, plus compréhensible ») après deux essais refusés, une
    conversation avec de vraies maquettes et des dessins mélangés, puis des cartes de petites lignes de texte
@@ -230,20 +238,34 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
    11/10/2026, gardée pour ça). Pas de « tu paies ici » : on ne paie pas à la mise en ligne, il y a un
    acompte au démarrage. Puis le bouton « Discuter avec Noé » (11/10/2026, la suite de « On en parle » ; il
    mène à « Parlons de ton projet », comme celui du haut). Absorbe « Avant de payer un euro, je t'offre ».
-4. **« Pourquoi me faire confiance ? »** (`#confiance`, sous « Qui je suis » ; la route /avis y mène) : la
-   photo de Noé, « Expert en applications mobiles & web », puis trois faits (il fait tout lui-même ; une
-   dizaine d'idées par semaine ; ses propres applications, WakeUp Alarme et Plouff Habitudes, sont en
-   ligne). À côté, la comparaison avec une agence en cinq lignes (`COMPARAISON_AGENCE` dans
-   `src/App.jsx`). Les avis clients iront dans `AVIS_CLIENTS` : vide tant que Noé n'en a pas (rien n'est
-   affiché), n'y mettre que des avis réels, avec l'accord de la personne.
+4. **« Pourquoi me faire confiance ? »** (`#confiance`, sous « Qui je suis » ; la route /avis y mène) : une
+   seule carte, resserrée le 11/10/2026 avec Noé. La photo, puis l'argument que rien d'autre ne porte sur la page,
+   « Je lance aussi mes propres applications » : « Je sais ce que c'est d'investir dans une application et
+   d'attendre qu'elle rapporte. Je travaille sur la tienne comme si c'était la mienne. » Dessous, WakeUp Alarme et
+   Plouff Habitudes avec leur icône (`public/assets/images/app-icons/`) : le carrousel les montre sans dire qu'elles
+   sont à Noé, et un nom se vérifie. Pas de chiffre pour WakeUp Alarme (peu de téléchargements, voir
+   `src/Projets.jsx`). Sur téléphone, la phrase est à droite de la photo ; à partir de 768 px, la photo est seule à
+   gauche (`.confiance-…` dans `src/App.css`). Pas de point à la fin de la phrase en gras : dans cette police, il se
+   détache du mot.
+   Retirés le 11/10/2026 parce que la page les dit ailleurs : le nom et « Expert en applications mobiles & web »
+   (la barre du haut), « Je fais tout moi-même » (le sous-titre du hero ; et pour Noé, ça peut se lire « pas
+   spécialisé, pas expert »), « une dizaine d'idées par semaine » (mot pour mot dans la vidéo) et la comparaison
+   avec une agence (`COMPARAISON_AGENCE`, supprimée) : la maquette offerte, les 30 jours et « je reste après la
+   mise en ligne » sont dans les étapes, le tarif fixe sous les étapes, « directement » dans « Parlons de ton
+   projet ». La comparaison reste dans la FAQ complète (/faq, « Quelle différence avec une agence ? »). Les avis
+   clients iront dans `AVIS_CLIENTS` : vide tant que Noé n'en a pas (rien n'est affiché), n'y mettre que des avis
+   réels, avec l'accord de la personne.
 5. **« On est faits pour travailler ensemble ? »** (`#pour-qui`, sous « Pour qui » ; « C'est pour toi ? »
-   jusqu'au 11/10/2026, trop simple pour Noé) : « Oui, si… » (une idée et un budget prévu ; une
-   application qui te rapporte des revenus chaque mois ; un résultat, sans avoir à t'occuper de la
-   technique) et « Non, si… » (juste un développeur qui exécute tes consignes ; le prix le plus bas ;
-   l'application vue comme une dépense, pas comme un investissement ; quelqu'un pour faire ta publicité).
-   Écarte avant WhatsApp ceux que Noé ne prend pas. Retirés le 11/10/2026 : « Tu cherches un site
-   vitrine » (Noé en fait quand il le faut) et « une seule personne s'occupe de tout » (« il veut un
-   résultat, il s'en fout si un ou plusieurs », Noé). Remplace « Ce que je fais / Ce que je ne fais pas ».
+   jusqu'au 11/10/2026, trop simple pour Noé) : deux « oui » et deux « non » qui se répondent, le budget et le rôle.
+   « Oui, si… » : une idée d'application et un budget prévu pour la lancer ; un résultat, sans avoir à t'occuper
+   de la technique. « Non, si… » : juste un développeur qui exécute tes consignes ; le prix le plus bas. Écarte
+   avant WhatsApp ceux que Noé ne prend pas. Retirés le 11/10/2026 : « Tu cherches un site vitrine » (Noé en fait
+   quand il le faut), « une seule personne s'occupe de tout » (« il veut un résultat, il s'en fout si un ou
+   plusieurs », Noé), « une application qui te rapporte des revenus chaque mois » (la promesse du hero et de la
+   vidéo, redite), « tu vois ton application comme une dépense, pas comme un investissement » (« ça va pas les
+   faire fuir ? », Noé : ça fait la leçon, et ça redit « le prix le plus bas ») et « quelqu'un pour faire ta
+   publicité » (la FAQ y répond, avec la nuance de Noé : il conseille sur la façon de faire connaître
+   l'application). Remplace « Ce que je fais / Ce que je ne fais pas ».
 6. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités
    (son fond n'apparaît qu'avec le texte des places ; pendant « Vérification des disponibilités… », pas de
    fond, Noé 11/10/2026),
