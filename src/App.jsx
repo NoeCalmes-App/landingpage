@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
+import { BadgeEuro, Timer } from 'lucide-react'
 import './App.css'
 import PhoneCarousel from './AppShowcase.jsx'
 import HeroVideo from './HeroVideo.jsx'
@@ -113,6 +114,16 @@ const NAV_LINKS = [
   { ancre: 'calories-proof', label: 'Réalisations' },
   { ancre: 'offre', label: 'Étapes et tarif' },
   { ancre: 'confiance', label: 'Qui je suis' },
+]
+
+// « Pourquoi me faire confiance ? » : la comparaison avec une agence, remise le 11/10/2026 à la demande de Noé (« agence
+// vs moi, tu l'as enlevé ? »), sur trois lignes. Elle redit le tarif, le délai et le contact direct, et c'est voulu : le
+// chiffre de l'agence à côté de celui de Noé. La maquette offerte et « je reste là après la mise en ligne » n'y sont
+// plus : les étapes les disent (Noé, 11/10/2026).
+const COMPARAISON_AGENCE = [
+  ['À partir de 15\u00a0000\u00a0€', 'Tarif fixe, connu d’avance'],
+  ['3 à 6 mois de développement', '45\u00a0jours en moyenne'],
+  ['Un chef de projet entre vous', 'Moi, directement, 6\u00a0jours sur\u00a07'],
 ]
 
 // Avis clients de « Pourquoi me faire confiance ? ». Vide tant que Noé n'en a pas envoyé : la section n'affiche
@@ -882,7 +893,8 @@ function App() {
           (`.process-…` dans src/App.css). Les textes des étapes sont ceux validés par Noé le 10/10/2026, sans le « offert » de l'étape 2 (la pastille le dit
           déjà, 11/10/2026) ; le titre de l'étape 3 est « Je
           construis » depuis le 11/10/2026 (« c'est moi qui m'occupe de tout », Noé ; avant : « On construit ensemble »). Sous les étapes,
-          le prix en une ligne : il trie les budgets avant WhatsApp (la réponse de la FAQ est repliée, celle-ci se voit).
+          le tarif et le délai, chacun avec son icône : ils trient les budgets avant WhatsApp (la réponse de la FAQ est
+          repliée, ceux-ci se voient).
           Le bouton dit « Discuter avec Noé », la suite de l'étape 1 « On en parle ». Id « offre » : lien « Étapes ». */}
       <section className="py-14 md:py-28 px-5 bg-card" id="offre">
         <div className="max-w-275 mx-auto">
@@ -934,11 +946,24 @@ function App() {
             </li>
           </ol>
 
-          {/* Le prix et le délai, sous les trois étapes : une seule ligne d'information pour tout le parcours (dans
-              l'étape 3, il la rendait deux fois plus haute que les autres) */}
-          <p className="reveal etape-tarif">
-            <strong>Tarif fixe</strong>, en général une dizaine de milliers d'euros&nbsp;: stratégie, maquette, développement et mise en ligne. <strong>Première version en 30&nbsp;jours</strong> en moyenne.
-          </p>
+          {/* Le prix et le délai, sous les trois étapes : deux repères avec leur icône (Noé, 11/10/2026 : une seule ligne
+              de texte « faisait fade »). Le délai est « 45 jours en moyenne », sans « première version » (Noé, 11/10/2026 :
+              45 jours partout, FAQ comprise). « Mobile ou web » et pas « SaaS » : « SaaS » ne s'écrit jamais seul
+              (documentation/context/vocabulaire-mobile-web.md, règle 6 bis). Mise en page : `.etape-tarif` dans src/App.css. */}
+          <ul className="reveal etape-tarif">
+            <li>
+              <span className="etape-tarif-icone" aria-hidden="true"><BadgeEuro size={20} strokeWidth={2} /></span>
+              <span className="etape-tarif-texte">
+                <strong>Tarif fixe</strong> En général une dizaine de milliers d'euros&nbsp;: stratégie, maquette, développement et mise en ligne.
+              </span>
+            </li>
+            <li>
+              <span className="etape-tarif-icone" aria-hidden="true"><Timer size={20} strokeWidth={2} /></span>
+              <span className="etape-tarif-texte">
+                <strong>45&nbsp;jours en moyenne</strong> Pour une application mobile ou web.
+              </span>
+            </li>
+          </ul>
 
           <div className="reveal flex flex-col items-center mt-8 md:mt-12">
             <a
@@ -957,19 +982,17 @@ function App() {
       </section>
 
       {/* ========== POURQUOI ME FAIRE CONFIANCE ========== */}
-      {/* Refonte du 10/10/2026, resserrée le 11/10/2026 avec Noé (« relis tout, si c'est un doublon, pas le mettre ») :
-          la section ne garde que ce que la page ne dit nulle part ailleurs, Noé lance aussi ses propres applications,
-          et une phrase. Ses applications ne sont PAS nommées ici (Noé, 11/10/2026) : WakeUp Alarme et Plouff Habitudes
+      {/* Refonte du 10/10/2026, revue le 11/10/2026 avec Noé. À gauche, la carte : la photo, « Je connais ce milieu » et
+          « J'ai lancé mes propres applications. » (les mots de Noé ; « Je travaille sur la tienne comme si c'était la
+          mienne » lui semblait bizarre). Ses applications ne sont PAS nommées ici : WakeUp Alarme et Plouff Habitudes
           sont dans le carrousel « Ce que j'ai déjà construit », et les nommer ici ferait relire tout le carrousel comme
           « ses applications à lui, pas celles de ses clients ». Le titre du carrousel est vrai pour toutes ; ne jamais
-          écrire nulle part qu'elles sont à des clients. Retirés aussi : le nom et « Expert en applications mobiles &
-          web » (la barre du haut les affiche déjà), « Je fais tout moi-même » (le sous-titre du hero le dit, et Noé
-          craignait qu'on lise « pas spécialisé, pas expert »), « une dizaine d'idées par semaine » (mot pour mot dans
-          la vidéo), « Je sais ce que c'est d'investir dans une application… » (trop de texte) et le tableau contre les
-          agences (la maquette offerte, les 30 jours et « je reste après la mise en ligne » sont dans les étapes, le
-          tarif fixe sous les étapes, « directement » dans « Parlons de ton projet »). Les avis clients iront dans
-          AVIS_CLIENTS (vide pour l'instant : rien n'est affiché). Id « confiance » : la route /avis y mène. Placement
-          de la photo et des deux phrases : `.confiance-…` dans src/App.css. */}
+          écrire nulle part qu'elles sont à des clients. À droite, la comparaison avec une agence, sur trois lignes
+          (COMPARAISON_AGENCE). Retirés : le nom et « Expert en applications mobiles & web » (la barre du haut les
+          affiche déjà), « Je fais tout moi-même » (le sous-titre du hero le dit, et Noé craignait qu'on lise « pas
+          spécialisé, pas expert ») et « une dizaine d'idées par semaine » (mot pour mot dans la vidéo). Les avis clients
+          iront dans AVIS_CLIENTS (vide pour l'instant : rien n'est affiché). Id « confiance » : la route /avis y mène.
+          Placement de la photo et des deux phrases : `.confiance-…` dans src/App.css. */}
       <section className="py-16 md:py-28 px-5" id="confiance">
         <div className="max-w-275 mx-auto">
           <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
@@ -979,15 +1002,36 @@ function App() {
             Pourquoi me faire <span className="text-brand">confiance ?</span>
           </h2>
 
-          <div className="reveal confiance-carte max-w-190 mx-auto rounded-[20px] bg-brand-wash border border-brand/20 p-6 md:p-10">
-            <img src={mePhoto} alt="Noé Calmes" width="96" height="96" loading="lazy" className="confiance-photo rounded-full object-cover shadow-sm" />
-            <div className="confiance-mots">
-              <p className="confiance-titre font-jakarta text-text font-extrabold tracking-tight">
-                Je lance aussi mes propres applications
-              </p>
-              <p className="confiance-texte text-grey leading-relaxed">
-                Je travaille sur la tienne comme si c'était la mienne.
-              </p>
+          <div className="reveal grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-262 mx-auto">
+            <div className="confiance-carte rounded-[20px] bg-brand-wash border border-brand/20 p-6 md:p-8">
+              <img src={mePhoto} alt="Noé Calmes" width="96" height="96" loading="lazy" className="confiance-photo rounded-full object-cover shadow-sm" />
+              <div className="confiance-mots">
+                <p className="confiance-titre font-jakarta text-text font-extrabold tracking-tight">
+                  Je connais ce milieu
+                </p>
+                <p className="confiance-texte text-grey leading-relaxed">
+                  J'ai lancé mes propres applications.
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-[20px] border border-card-border bg-surface overflow-hidden flex flex-col">
+              <div className="grid grid-cols-2 text-[0.85rem] md:text-[0.9rem] font-bold">
+                <p className="px-4 md:px-6 py-3.5 text-grey bg-card">Une agence</p>
+                <p className="px-4 md:px-6 py-3.5 text-brand bg-brand/6">Avec moi</p>
+              </div>
+              {COMPARAISON_AGENCE.map(([agence, moi]) => (
+                <div key={moi} className="grid grid-cols-2 border-t border-card-border flex-1">
+                  <p className="flex items-center gap-2 px-4 md:px-6 py-3.5 text-grey text-[0.82rem] md:text-[0.88rem] leading-snug">
+                    <svg className="shrink-0 text-red-text" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                    {agence}
+                  </p>
+                  <p className="flex items-center gap-2 px-4 md:px-6 py-3.5 text-text font-semibold text-[0.82rem] md:text-[0.88rem] leading-snug bg-brand/3">
+                    <svg className="shrink-0 text-brand" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                    {moi}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 

@@ -181,7 +181,7 @@ pose le tarif fixe et le délai. Google pondère davantage le début de la
 description.
 
 ```
-Expert en applications mobiles et web à Toulouse, je conçois des applications pensées pour générer des revenus, pas juste pour exister. Je commence par trancher le support : une plateforme utilisée par des professionnels se fait en web, une application grand public sur mobile. Au-delà du code, je travaille la stratégie, le modèle économique et la conversion des utilisateurs en clients, de l'idée au lancement. Une application que j'ai conçue génère 13 000 € par mois, et j'ai publié plus de 20 applications. J'accompagne les entrepreneurs qui ont un projet mais pas les compétences techniques, à Toulouse, en Haute-Garonne, en Occitanie et à distance partout en France. Tarif fixe, première version en 4 à 6 semaines.
+Expert en applications mobiles et web à Toulouse, je conçois des applications pensées pour générer des revenus, pas juste pour exister. Je commence par trancher le support : une plateforme utilisée par des professionnels se fait en web, une application grand public sur mobile. Au-delà du code, je travaille la stratégie, le modèle économique et la conversion des utilisateurs en clients, de l'idée au lancement. Une application que j'ai conçue génère 13 000 € par mois, et j'ai publié plus de 20 applications. J'accompagne les entrepreneurs qui ont un projet mais pas les compétences techniques, à Toulouse, en Haute-Garonne, en Occitanie et à distance partout en France. Tarif fixe, 45 jours en moyenne pour une application.
 ```
 
 ---
@@ -193,6 +193,10 @@ le lien indiqué. Une par semaine.
 
 Un rappel utile : seuls les premiers mots apparaissent dans l'aperçu, le reste
 demande un clic. Chaque publication commence donc par sa promesse.
+
+> **Délai, 11/10/2026** : partout, « 45 jours en moyenne pour une application », jamais « première version »
+> (décision de Noé). La description et les publications 2 et 3 ci-dessous ont été mises à jour ; si elles
+> sont déjà en ligne sur Google, les modifier aussi là-bas.
 
 ### Publication 1 — Le calcul de rentabilité
 
@@ -217,7 +221,7 @@ Bouton : **En savoir plus** vers
 ```
 Combien de temps pour créer une application mobile ?
 
-4 à 6 semaines de développement pour une première version au périmètre clair. Mais ce délai ne mesure que le code.
+45 jours en moyenne pour une application au périmètre clair, du cadrage à la mise en ligne, dont 4 à 6 semaines de développement. Mais ce délai mesure la livraison, pas ton premier euro.
 
 Entre le code livré et ton premier euro encaissé, il y a une chaîne administrative qui prend son propre temps : comptes développeur vérifiés, statut de vendeur, contrat, validation des stores. Lancée en parallèle du développement elle ne coûte rien, lancée après elle ajoute deux à trois semaines.
 
@@ -234,7 +238,7 @@ Prix d'une application mobile : les fourchettes réelles
 
 Le prix ne dépend presque pas de la technologie. Il dépend du périmètre.
 
-Compte 5 000 à 8 000 € pour une première version resserrée livrée en 4 à 6 semaines, 8 000 à 12 000 € pour une application complète à un seul profil d'utilisateur.
+Compte 5 000 à 8 000 € pour une application au périmètre resserré, 8 000 à 12 000 € pour une application complète à un seul profil d'utilisateur. Côté délai, 45 jours en moyenne.
 
 Pourquoi deux devis sur le même projet vont du simple au triple ? Parce qu'ils ne chiffrent pas le même travail. Le test qui règle la question : demande à chacun de lister ce qui n'est PAS inclus.
 ```

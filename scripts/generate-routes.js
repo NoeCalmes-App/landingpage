@@ -174,6 +174,16 @@ function lireFaq() {
 
 const BALISES_BLOC = new Set(['p', 'h1', 'h2', 'h3', 'h4', 'li', 'div', 'section', 'article', 'header', 'footer', 'ul', 'ol', 'br', 'td', 'th', 'tr', 'blockquote', 'aside', 'nav', 'button'])
 
+// Les entites ecrites dans le JSX (&nbsp;, &apos;, &amp;...) arrivent telles quelles dans le texte extrait. Sans
+// ce decodage, `echapper` les echappait une seconde fois et les robots lisaient « d'euros&nbsp;: » en toutes lettres
+// (12 fois sur l'accueil, vu le 11/10/2026). &amp; en dernier, pour ne pas decoder deux fois.
+const ENTITES = { nbsp: '\u00a0', apos: "'", quot: '"', lt: '<', gt: '>', rsquo: '’', lsquo: '‘', laquo: '«', raquo: '»', hellip: '…', ndash: '–', mdash: '—', eacute: 'é', egrave: 'è', agrave: 'à', ccedil: 'ç' }
+const decoderEntites = (t) => t
+  .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+  .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+  .replace(/&([a-z]+);/gi, (tout, nom) => (nom !== 'amp' && ENTITES[nom] !== undefined ? ENTITES[nom] : tout))
+  .replace(/&amp;/g, '&')
+
 // Ne garde que le texte situe ENTRE deux balises. Les accolades du corps de
 // fonction ne peuvent donc pas etre confondues avec des expressions JSX : un
 // fragment qui en contient encore apres nettoyage est ecarte.
@@ -216,7 +226,7 @@ function texteDuComposant(source, nom) {
   const ressembleADuCode = (p) => /\breturn\b|=>|===|!==|\bif\s*\(|\bconst\b|\blet\b|&&|\|\||\)\s*$|^\s*\)/.test(p)
 
   const pousser = () => {
-    const p = courant.replace(/\s+/g, ' ').trim()
+    const p = decoderEntites(courant.replace(/\s+/g, ' ').trim())
     if (p.split(' ').length >= 5 && /[a-zàéèêîôûç]/i.test(p) && !ressembleADuCode(p)) paras.push(p)
     courant = ''
   }
@@ -590,12 +600,12 @@ const sectionRoutes = [
   {
     path: '/creation-application-mobile',
     heading: 'Ma méthode pour créer une application mobile qui rapporte',
-    content: 'Cinq étapes : cadrage du besoin et du modèle économique, conception du parcours qui mène à la valeur puis à l\'achat, développement sur une base propre iOS et Android, lancement sur l\'App Store et Google Play, puis suivi après la mise en ligne. Première version en 4 à 6 semaines, tarif fixe défini avant de commencer.',
+    content: 'Cinq étapes : cadrage du besoin et du modèle économique, conception du parcours qui mène à la valeur puis à l\'achat, développement sur une base propre iOS et Android, lancement sur l\'App Store et Google Play, puis suivi après la mise en ligne. 45 jours en moyenne pour une application mobile ou web, tarif fixe défini avant de commencer.',
   },
   {
     path: '/faq',
     heading: 'FAQ, créer une application mobile',
-    content: 'Budget et tarification, délai d\'une première version, capacité réelle d\'une application à générer des revenus, différence avec une agence, limites de l\'intelligence artificielle, reprise d\'une application existante, publication sur les stores et suivi après la mise en ligne.',
+    content: 'Budget et tarification, délai moyen, capacité réelle d\'une application à générer des revenus, différence avec une agence, limites de l\'intelligence artificielle, reprise d\'une application existante, publication sur les stores et suivi après la mise en ligne.',
   },
   {
     path: '/projets',
@@ -700,7 +710,7 @@ const blogRoutes = [
   {
     path: '/blog/combien-de-temps-creer-application-mobile',
     heading: 'Combien de temps faut-il pour créer une application mobile ?',
-    content: "Quatre à six semaines de développement pour une première version au périmètre clair, environ 45 jours porte à porte, six à neuf mois pour une application complète. Mais ce délai ne mesure que le code : entre le code livré et le premier euro encaissé il y a une chaîne administrative, comptes développeur vérifiés, statut de vendeur, contrat et coordonnées bancaires, validation des stores, qui se prépare en parallèle du développement plutôt qu'après. Les quatre facteurs qui allongent réellement sont le nombre de types d'utilisateurs, le temps réel, les intégrations avec l'existant et le paiement. La première cause de retard n'est pas technique : c'est le délai de réponse du client, une semaine d'attente valant un sixième du planning.",
+    content: "45 jours en moyenne pour une application au périmètre clair, du cadrage à la mise en ligne, dont quatre à six semaines de développement ; une plateforme plus lourde demande plus, son délai est fixé dans le devis. Mais ce délai mesure la livraison, pas le premier euro : entre l'application livrée et le premier euro encaissé il y a une chaîne administrative, comptes développeur vérifiés, statut de vendeur, contrat et coordonnées bancaires, validation des stores, qui se prépare en parallèle du développement plutôt qu'après. Les quatre facteurs qui allongent réellement sont le nombre de types d'utilisateurs, le temps réel, les intégrations avec l'existant et le paiement. La première cause de retard n'est pas technique : c'est le délai de réponse du client, une semaine d'attente valant un sixième du planning.",
   },
   {
     path: '/blog/application-avec-ia-rentable',
@@ -777,7 +787,7 @@ const blogRoutes = [
   {
     path: '/blog/creation-application-mobile-toulouse',
     heading: "Création d'application mobile à Toulouse",
-    content: "Conception et developpement d'applications iOS et Android a Toulouse, en Haute-Garonne et en Occitanie, et a distance partout en France. Un seul interlocuteur, joignable directement, tarif fixe pose avant de commencer, premiere version en 4 a 6 semaines. Le prix depend du perimetre et non de la ville : 5 000 a 8 000 euros pour une premiere version resserree, 8 000 a 12 000 euros pour une application complete a un profil. Les profils toulousains les plus frequents sont les independants du sport et du bien-etre, les formateurs et organismes, le commerce de proximite qui fidelise, et les porteurs de projet issus de l'ecosysteme local. La proximite geographique change surtout le demarrage d'un projet flou, elle ne change ni le prix, ni le delai, ni la qualite. Trois interventions possibles : creer de zero, reprendre une application instable, faire evoluer une application en ligne.",
+    content: "Conception et developpement d'applications iOS et Android a Toulouse, en Haute-Garonne et en Occitanie, et a distance partout en France. Un seul interlocuteur, joignable directement, tarif fixe pose avant de commencer, 45 jours en moyenne pour une application. Le prix depend du perimetre et non de la ville : 5 000 a 8 000 euros pour une application au perimetre resserre, 8 000 a 12 000 euros pour une application complete a un profil. Les profils toulousains les plus frequents sont les independants du sport et du bien-etre, les formateurs et organismes, le commerce de proximite qui fidelise, et les porteurs de projet issus de l'ecosysteme local. La proximite geographique change surtout le demarrage d'un projet flou, elle ne change ni le prix, ni le delai, ni la qualite. Trois interventions possibles : creer de zero, reprendre une application instable, faire evoluer une application en ligne.",
   },
   {
     path: '/blog/application-mobile-meilleur-investissement',
@@ -787,7 +797,7 @@ const blogRoutes = [
   {
     path: '/blog/combien-coute-application-mobile',
     heading: "Prix d'une application mobile : les fourchettes réelles",
-    content: "Le prix ne depend presque pas de la technologie, il depend du perimetre. Compte 5 000 a 8 000 euros pour une premiere version resserree livree en 4 a 6 semaines, 8 000 a 12 000 euros pour une application complete a un seul profil d'utilisateur, en general une dizaine de milliers d'euros des qu'il y a deux profils ou du temps reel, 50 000 euros et plus en agence ou ESN. Deux devis sur un meme projet vont du simple au triple parce qu'ils ne chiffrent pas le meme travail : ce qui disparait d'un devis bas est d'abord les tests sur appareils reels, la preparation des fiches store et la gestion des cas d'erreur. Les cinq facteurs qui font monter le prix sont le nombre de types d'utilisateurs, le temps reel, les integrations avec l'existant, le paiement et le niveau de finition. Trois postes echappent au devis : le cout d'acquisition, les 70 pour cent qui restent apres TVA et commission des stores, et le delai avant la mise en vente.",
+    content: "Le prix ne depend presque pas de la technologie, il depend du perimetre. Compte 5 000 a 8 000 euros pour une application au perimetre resserre, 8 000 a 12 000 euros pour une application complete a un seul profil d'utilisateur, en general une dizaine de milliers d'euros des qu'il y a deux profils ou du temps reel, 50 000 euros et plus en agence ou ESN. Deux devis sur un meme projet vont du simple au triple parce qu'ils ne chiffrent pas le meme travail : ce qui disparait d'un devis bas est d'abord les tests sur appareils reels, la preparation des fiches store et la gestion des cas d'erreur. Les cinq facteurs qui font monter le prix sont le nombre de types d'utilisateurs, le temps reel, les integrations avec l'existant, le paiement et le niveau de finition. Trois postes echappent au devis : le cout d'acquisition, les 70 pour cent qui restent apres TVA et commission des stores, et le delai avant la mise en vente.",
   },
   {
     path: '/blog/creer-application-sans-savoir-coder',
@@ -812,7 +822,7 @@ const blogRoutes = [
   {
     path: '/blog/mvp-application-mobile',
     heading: "MVP d'application mobile : lancer ton idée en 45 jours",
-    content: "MVP signifie Minimum Viable Product, produit minimum viable, aussi appele premiere version ou format MVP. Le mot qui compte dans le sigle est viable, pas minimum : une application qui fait peu mais bien en est un, une application qui fait beaucoup mais mal n'en est pas un. Compte 5 000 a 8 000 euros et 45 jours, soit 4 a 6 semaines de developpement plus le cadrage, contre 6 a 9 mois pour une application complete. Ce qu'on garde : le parcours principal de bout en bout, un seul type d'utilisateur, le paiement, un design soigne sur ces ecrans. Ce qu'on coupe : les profils multiples, l'administration, le hors ligne, la personnalisation. Un MVP a 6 000 euros se rembourse avec environ 70 abonnes sur un an a 9,99 euros par mois. Le choix entre MVP mobile et MVP web ne se fait pas sur le prix mais sur l'usage.",
+    content: "MVP signifie Minimum Viable Product, produit minimum viable, aussi appele premiere version ou format MVP. Le mot qui compte dans le sigle est viable, pas minimum : une application qui fait peu mais bien en est un, une application qui fait beaucoup mais mal n'en est pas un. Compte 5 000 a 8 000 euros et 45 jours, soit 4 a 6 semaines de developpement plus le cadrage. Ce qu'on garde : le parcours principal de bout en bout, un seul type d'utilisateur, le paiement, un design soigne sur ces ecrans. Ce qu'on coupe : les profils multiples, l'administration, le hors ligne, la personnalisation. Un MVP a 6 000 euros se rembourse avec environ 70 abonnes sur un an a 9,99 euros par mois. Le choix entre MVP mobile et MVP web ne se fait pas sur le prix mais sur l'usage.",
   },
   {
     path: '/blog/choisir-expert-application-mobile',
@@ -1327,8 +1337,8 @@ const llms = `# Noé Calmes, expert en application mobile
 Basé près de Toulouse, j'interviens à distance partout en France sur trois
 situations : créer une application à partir d'une idée, reprendre une
 application existante instable ou abandonnée, faire évoluer une application déjà
-en ligne. Budget habituel de 5 000 à 30 000 €, première version en 4 à 6
-semaines.
+en ligne. Budget habituel de 5 000 à 30 000 €, 45 jours en moyenne pour une
+application mobile ou web.
 
 ## Pages principales
 

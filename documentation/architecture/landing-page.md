@@ -52,6 +52,7 @@ Deux consequences pratiques :
 
 - Le **sitemap est genere**, plus maintenu a la main. `public/sitemap.xml` a ete supprime. Une nouvelle page indexable entre au sitemap parce qu'elle appelle `declarerSitemap()`, pas parce qu'on a pense a editer un fichier.
 - Le **bloc pre-rendu** (`[data-seo-prerender]`) est retire du DOM des que React est monte (`retirerPrerender()`), pour ne pas laisser un second `<h1>` et un pave de texte cache dans la page rendue.
+- Les **entites du JSX** (`&nbsp;`, `&apos;`, `&amp;`...) sont decodees avant d'ecrire le texte des robots (`decoderEntites` dans `scripts/generate-routes.js`, 11/10/2026). Avant, elles etaient echappees une seconde fois et les robots lisaient « d'euros&nbsp;: » en toutes lettres, douze fois sur l'accueil. Un paragraphe de moins de cinq mots n'entre pas dans ce texte (« Je connais ce milieu », par exemple) : c'est voulu, la phrase suivante porte le sens.
 
 ### Visibilite dans les moteurs de reponse (GEO)
 
@@ -206,8 +207,10 @@ n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
 répétitif, pas le mettre »). La barre du haut et la vidéo comptent : la barre affiche en permanence « Noé Calmes,
 Expert en applications mobiles & web », et la vidéo, lancée sans le son, écrit à l'écran ce que dit la voix (« une
 dizaine d'idées par semaine », « ils reviennent chaque jour, ils paient chaque mois »). Avant d'ajouter une phrase,
-chercher si la page la dit déjà, même avec d'autres mots. Seule exception admise : la FAQ, repliée, qui peut
-reprendre le prix et le délai pour ceux qui y vont directement.
+chercher si la page la dit déjà, même avec d'autres mots. Deux exceptions admises : la FAQ, repliée, qui peut
+reprendre le prix et le délai pour ceux qui y vont directement ; et la comparaison avec une agence de « Pourquoi
+me faire confiance ? », dont la colonne « Avec moi » redit le tarif, le délai et le contact direct : c'est le
+chiffre de l'agence à côté de celui de Noé qui compte (Noé l'a redemandée le 11/10/2026).
 
 1. **Hero et vidéo** (voir plus haut).
 2. **« Ce que j'ai déjà construit »** (`#calories-proof`, lien « Preuves » de la barre du haut) : « Des
@@ -231,31 +234,35 @@ reprendre le prix et le délai pour ceux qui y vont directement.
    conversation avec de vraies maquettes et des dessins mélangés, puis des cartes de petites lignes de texte
    (« pas lisible du tout »). Sur téléphone, l'illustration (128 × 118 px, 100 × 92 sous 350 px) se met à
    droite du début du texte au lieu de prendre toute la largeur au-dessus (`.process-…` dans `src/App.css`).
-   Au survol sur ordinateur, la carte passe en violet. Sous les étapes, le prix en une ligne
-   (`.etape-tarif`) : « Tarif fixe, en général une dizaine de milliers d'euros : stratégie, maquette,
-   développement et mise en ligne. Première version en 30 jours en moyenne. » Il est aussi dans la FAQ, mais
-   la FAQ est repliée : cette ligne-ci se voit, et trie les budgets avant WhatsApp (question de Noé du
-   11/10/2026, gardée pour ça). Pas de « tu paies ici » : on ne paie pas à la mise en ligne, il y a un
+   Au survol sur ordinateur, la carte passe en violet. Sous les étapes, le tarif et le délai
+   (`.etape-tarif`), deux repères avec chacun son icône dans un carré violet pâle (Noé, 11/10/2026 : en une seule
+   ligne de texte, « c'était fade ») : « Tarif fixe », puis « En général une dizaine de milliers d'euros :
+   stratégie, maquette, développement et mise en ligne » ; « 45 jours en moyenne », puis « Pour une application
+   mobile ou web ».
+   Côte à côte sur ordinateur, l'un sous l'autre sur téléphone. **45 jours partout, jamais « première version »**
+   (Noé, 11/10/2026 ; la page avait dit 30 jours du 10 au 11/10). « Mobile ou web » et pas « SaaS », que Noé
+   proposait : « SaaS » ne s'écrit jamais seul (`documentation/context/vocabulaire-mobile-web.md`, règle 6 bis).
+   Le tarif et le délai sont aussi dans la FAQ, mais la FAQ est repliée : ceux-ci se voient, et trient les
+   budgets avant WhatsApp (question de Noé du 11/10/2026, gardés pour ça). Pas de « tu paies ici » : on ne paie pas à la mise en ligne, il y a un
    acompte au démarrage. Puis le bouton « Discuter avec Noé » (11/10/2026, la suite de « On en parle » ; il
    mène à « Parlons de ton projet », comme celui du haut). Absorbe « Avant de payer un euro, je t'offre ».
-4. **« Pourquoi me faire confiance ? »** (`#confiance`, sous « Qui je suis » ; la route /avis y mène) : une
-   seule carte, resserrée le 11/10/2026 avec Noé. La photo, l'argument que rien d'autre ne porte sur la page,
-   « Je lance aussi mes propres applications », et une phrase : « Je travaille sur la tienne comme si c'était la
-   mienne. » Sur téléphone, la phrase en gras est à droite de la photo et l'autre dessous ; à partir de 768 px,
-   les deux forment un bloc à droite de la photo (`.confiance-…` dans `src/App.css`). Pas de point à la fin de la
-   phrase en gras : dans cette police, il se détache du mot.
+4. **« Pourquoi me faire confiance ? »** (`#confiance`, sous « Qui je suis » ; la route /avis y mène) : à
+   gauche, une carte avec la photo, « Je connais ce milieu » et « J'ai lancé mes propres applications. » (les mots
+   de Noé, 11/10/2026 ; « Je travaille sur la tienne comme si c'était la mienne », essayé une heure, lui semblait
+   bizarre). Sur téléphone, les deux phrases sont à droite de la photo ; sur ordinateur, tout se centre sous la
+   photo (`.confiance-…` dans `src/App.css`). Pas de point à la fin de la phrase en gras : dans cette police, il se
+   détache du mot. À droite, la comparaison avec une agence (`COMPARAISON_AGENCE`), remise le 11/10/2026 à la
+   demande de Noé (« agence vs moi, tu l'as enlevé ? ») sur trois lignes : « À partir de 15 000 € / Tarif fixe,
+   connu d'avance », « 3 à 6 mois de développement / 45 jours en moyenne », « Un chef de projet entre vous / Moi,
+   directement, 6 jours sur 7 ». La maquette offerte et « je reste là après la mise en ligne » n'y sont plus : les
+   étapes les disent (Noé).
    **Les applications de Noé ne sont pas nommées ici** (décision de Noé, 11/10/2026) : WakeUp Alarme et Plouff
    Habitudes sont dans le carrousel « Ce que j'ai déjà construit », et les nommer ici ferait relire tout le
    carrousel comme « ses applications à lui, pas celles de ses clients ». Le titre du carrousel est vrai pour
-   toutes ; ne jamais écrire nulle part qu'elles sont à des clients. Un essai d'une heure les montrait avec leur
-   icône, retiré pour cette raison et parce qu'il y avait trop de texte (« Je sais ce que c'est d'investir dans
-   une application et d'attendre qu'elle rapporte » est parti avec).
-   Retirés aussi le 11/10/2026, parce que la page les dit ailleurs : le nom et « Expert en applications mobiles &
-   web » (la barre du haut), « Je fais tout moi-même » (le sous-titre du hero ; et pour Noé, ça peut se lire « pas
-   spécialisé, pas expert »), « une dizaine d'idées par semaine » (mot pour mot dans la vidéo) et la comparaison
-   avec une agence (`COMPARAISON_AGENCE`, supprimée) : la maquette offerte, les 30 jours et « je reste après la
-   mise en ligne » sont dans les étapes, le tarif fixe sous les étapes, « directement » dans « Parlons de ton
-   projet ». La comparaison reste dans la FAQ complète (/faq, « Quelle différence avec une agence ? »). Les avis
+   toutes ; ne jamais écrire nulle part qu'elles sont à des clients.
+   Retirés le 11/10/2026 parce que la page les dit ailleurs : le nom et « Expert en applications mobiles & web »
+   (la barre du haut), « Je fais tout moi-même » (le sous-titre du hero ; et pour Noé, ça peut se lire « pas
+   spécialisé, pas expert ») et « une dizaine d'idées par semaine » (mot pour mot dans la vidéo). Les avis
    clients iront dans `AVIS_CLIENTS` : vide tant que Noé n'en a pas (rien n'est affiché), n'y mettre que des avis
    réels, avec l'accord de la personne.
 5. **« On est faits pour travailler ensemble ? »** (`#pour-qui`, sous « Pour qui » ; « C'est pour toi ? »
@@ -280,9 +287,16 @@ reprendre le prix et le délai pour ceux qui y vont directement.
    (`src/PagesSeo.jsx`), les vraies objections, en deux ou trois phrases chacune :
    - combien : un tarif fixe, « en général une dizaine de milliers d'euros, comprenant la stratégie, la
      maquette sur mesure, le développement et la mise en ligne » ;
-   - en combien de temps : une première version en 30 jours en moyenne ; pour une application complète,
-     « le délai est fixé dans le devis, selon les fonctionnalités prévues au cahier des charges » (Noé
-     refuse « on cale le délai ensemble », pas assez pro) ;
+   - en combien de temps : « En moyenne, 45 jours pour une application mobile ou web, du cadrage à la mise en
+     ligne. Le délai exact est fixé dans le devis, selon les fonctionnalités prévues au cahier des charges. »
+     (45 jours et pas « première version » depuis le 11/10/2026 ; Noé refuse « on cale le délai ensemble », pas
+     assez pro). La page « Ma méthode » et le texte des robots (`/creation-application-mobile`, `/faq`,
+     `llms.txt`), le quiz, les boutons de l'audit et les articles du blog disent la même chose (11/10/2026,
+     « vérifie partout », Noé) : « 4 à 6 semaines » n'y reste que comme le temps de développement à l'intérieur
+     des 45 jours, les tableaux de prix n'ont plus de colonne délai, et « 6 à 9 mois pour une application
+     complète » est devenu « une plateforme plus lourde se compte en mois, son délai est fixé dans le devis ».
+     L'audit, lui, estime un délai par projet (de 5 à 9 semaines selon la complexité, dans
+     `src/audit-app/backend/prompts.ts`) : pas touché, il demande un redéploiement ;
    - « je n'y connais rien » : « c'est le cas de la plupart de mes clients », « je suis là pour
      t'aiguiller et te conseiller », « une idée suffit pour commencer ensemble » ;
    - pour trouver des utilisateurs : Noé ne fait pas la publicité, son travail est que les utilisateurs

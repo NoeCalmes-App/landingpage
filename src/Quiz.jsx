@@ -293,7 +293,7 @@ export const QUIZZES = [
       {
         min: 7,
         titre: "Plutôt 8 000 à 15 000 €",
-        texte: "Comptes utilisateurs, données synchronisées, un abonnement : c'est le périmètre le plus courant chez mes clients, et celui où le rapport entre l'investissement et le revenu potentiel est le plus intéressant. Une première version en 4 à 6 semaines est réaliste.",
+        texte: "Comptes utilisateurs, données synchronisées, un abonnement : c'est le périmètre le plus courant chez mes clients, et celui où le rapport entre l'investissement et le revenu potentiel est le plus intéressant. Compte 45 jours en moyenne pour la mettre en ligne.",
       },
       {
         min: 0,

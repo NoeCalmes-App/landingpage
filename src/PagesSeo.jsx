@@ -29,13 +29,14 @@ export const FAQ_ITEMS = [
   // Instagram et Facebook ; trop long, on ne lit pas, trop court, « on explique pas » (Noe, 11/10/2026).
   // Retirees le 11/10/2026 : « Application mobile ou web », « A qui appartient l'application ? » (« c'est
   // logique, il paye ») et « Est-ce que mon application va vraiment generer des revenus ? ».
+  // Delai : « 45 jours en moyenne », sans « premiere version » (Noe, 11/10/2026 : 45 jours partout).
   {
     q: "Combien coûte une application ?",
     a: "Un tarif fixe, posé avant de commencer : en général une dizaine de milliers d'euros, comprenant la stratégie, la maquette sur mesure, le développement et la mise en ligne. Pas de compteur qui tourne : tu sais exactement ce que tu paies, et tu vois ta maquette avant de décider.",
   },
   {
     q: "Combien de temps faut-il pour avoir une application ?",
-    a: "Une première version est en ligne en 30 jours en moyenne. Pour une application complète, le délai est fixé dans le devis, selon les fonctionnalités prévues au cahier des charges.",
+    a: "En moyenne, 45 jours pour une application mobile ou web, du cadrage à la mise en ligne. Le délai exact est fixé dans le devis, selon les fonctionnalités prévues au cahier des charges.",
   },
   {
     q: "Je n'y connais rien en technique, c'est un problème ?",
@@ -268,7 +269,7 @@ export function PageExpertise({ onAccueil, onBookCall, onAuditApp, onNaviguer })
           onAuditApp={onAuditApp}
           onBookCall={onBookCall}
           titre="Ton idée peut-elle générer des revenus ?"
-          texte="Audit gratuit en 2 minutes : potentiel, budget à prévoir et délai réaliste pour une première version."
+          texte="Audit gratuit en 2 minutes : potentiel, budget à prévoir et délai réaliste pour ton application."
         />
 
         <ResumerAvecIA chemin="/expertise" titre="Concevoir une application mobile qui génère des revenus" />
@@ -350,7 +351,7 @@ export function PageMethode({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
         <div className="mt-12">
           <Corps>
             <h2>Combien de temps, et pour quel budget</h2>
-            <p>Une première version prend en général 4 à 6 semaines. Quand le périmètre est clair et que le projet a une vraie urgence, un lancement en 45 jours est possible. Pour une application complète, le délai dépend de ce qu'on décide à l'étape de cadrage, et il est posé avant de commencer.</p>
+            <p>En moyenne, 45 jours pour une application mobile ou web, du cadrage à la mise en ligne. Le délai exact dépend des fonctionnalités retenues, et il est posé avant de commencer.</p>
             <p>Côté budget, le tarif est fixe et défini à l'avance : en général une dizaine de milliers d'euros en mobile selon la complexité. Pas de compteur qui tourne, pas de rallonge en cours de route. Le détail des fourchettes du marché est dans <a href={lienInterne('/blog/combien-coute-application-mobile')} onClick={(e) => { if (onNaviguer) { e.preventDefault(); onNaviguer('/blog/combien-coute-application-mobile') } }}>combien coûte une application mobile</a>.</p>
 
             <h2>Ce que tu dois avoir avant de me contacter</h2>
@@ -365,7 +366,7 @@ export function PageMethode({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
           onAuditApp={onAuditApp}
           onBookCall={onBookCall}
           titre="On cadre ton projet ?"
-          texte="Audit gratuit en 2 minutes : potentiel, budget à prévoir et délai réaliste pour une première version."
+          texte="Audit gratuit en 2 minutes : potentiel, budget à prévoir et délai réaliste pour ton application."
         />
 
         <ResumerAvecIA chemin="/creation-application-mobile" titre="Ma méthode pour créer une application mobile qui rapporte" />
@@ -430,7 +431,7 @@ export function PageFaq({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
           onAuditApp={onAuditApp}
           onBookCall={onBookCall}
           titre="Une question sur ton projet précis ?"
-          texte="Audit gratuit en 2 minutes : potentiel, budget à prévoir et délai réaliste pour une première version."
+          texte="Audit gratuit en 2 minutes : potentiel, budget à prévoir et délai réaliste pour ton application."
         />
 
         <ResumerAvecIA chemin="/faq" titre="FAQ, créer une application mobile qui rapporte" />

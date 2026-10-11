@@ -237,6 +237,12 @@ validation Apple, première source de retard imprévu.
 > Règle à garder : quand deux chiffres du site semblent se contredire, ne pas en
 > supprimer un. Expliquer ce que chacun mesure, dans une FAQ. Un site qui
 > explique ses propres écarts inspire plus confiance qu'un site lissé.
+>
+> **Depuis le 11/10/2026** (décision de Noé) : le chiffre annoncé partout est « 45 jours en moyenne pour
+> une application », du cadrage à la mise en ligne, jamais « première version ». « 4 à 6 semaines »
+> n'apparaît plus que comme le temps de développement à l'intérieur de ces 45 jours. Les tableaux de prix
+> n'ont plus de colonne délai, et « 6 à 9 mois pour une application complète » est devenu « une plateforme
+> plus lourde se compte en mois, son délai est fixé dans le devis ».
 
 ---
 

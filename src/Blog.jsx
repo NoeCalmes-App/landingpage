@@ -53,7 +53,7 @@ export const BLOG_ARTICLES = [
       { q: "J'ai déjà un logiciel de gestion, pourquoi une application en plus ?", a: "Parce qu'ils ne servent pas la même personne. Ton logiciel est fait pour toi : il gère les contrats, les paiements, les plannings, les accès. Une application est faite pour ton adhérent, et elle vit sur son téléphone. La plupart des logiciels de salle proposent bien un espace en ligne, mais il faut y aller, et personne n'y va. La différence tient en un mot : une application peut faire le premier pas, pas un site." },
       { q: "Mes adhérents vont-ils vraiment l'installer ?", a: "Une partie seulement, et c'est suffisant. Compte entre 30 et 50 % sur les premiers mois, en l'installant avec eux à l'accueil plutôt qu'en espérant qu'ils le fassent seuls. Et surtout, ceux qui l'installent sont précisément ceux qui viennent, donc ceux que tu veux garder. Celui qui ne l'installera jamais est déjà à moitié parti, l'application n'aurait rien changé pour lui." },
       { q: "Faut-il faire payer l'abonnement dans l'application ?", a: "Non, et c'est important. Ton abonnement est déjà prélevé par ton logiciel de gestion, directement sur le compte de l'adhérent. Le faire passer par l'application ferait entrer les commissions des stores dans l'équation et te coûterait une part de chaque mensualité, pour rien. L'application sert la fréquentation, pas l'encaissement. En revanche, vendre un service ponctuel dedans, un coaching, un stage, un produit, a du sens." },
-      { q: "Combien ça coûte et en combien de temps ?", a: "Une première version au périmètre clair se situe entre 5 000 et 8 000 €, livrée en quatre à six semaines. Une application complète avec deux profils distincts, adhérent et coach, monte vers 8 000 à 12 000 €. Le détail des fourchettes est dans le prix d'une application mobile." },
+      { q: "Combien ça coûte et en combien de temps ?", a: "Une application au périmètre clair se situe entre 5 000 et 8 000 €, et compte 45 jours en moyenne, du cadrage à la mise en ligne. Avec deux profils distincts, adhérent et coach, elle monte vers 8 000 à 12 000 €. Le détail des fourchettes est dans le prix d'une application mobile." },
       { q: "Et si je n'ai qu'un petit studio de 50 personnes ?", a: "Alors le calcul ne tient probablement pas encore, et je préfère te le dire. Avec 50 adhérents, retenir cinq personnes de plus par mois est irréaliste : il n'y en a pas assez qui partent. En dessous d'une centaine d'adhérents, le levier est ailleurs, dans la relation directe que tu as déjà avec chacun. Une application devient intéressante quand tu ne peux plus connaître tout le monde par son prénom." },
     ],
     content: `
@@ -273,18 +273,18 @@ export const BLOG_ARTICLES = [
     slug: 'combien-de-temps-creer-application-mobile',
     title: "Combien de temps faut-il pour créer une application mobile ?",
     metaTitle: "Créer une application mobile : combien de temps ? | Noé Calmes",
-    description: "4 à 6 semaines de développement. Mais ce n'est pas le délai avant ton premier euro : ce qui allonge vraiment, et ce qui se prépare en parallèle.",
+    description: "45 jours en moyenne. Mais ce n'est pas le délai avant ton premier euro : ce qui allonge vraiment, et ce qui se prépare en parallèle.",
     date: '2026-09-21',
     readTime: '8 min',
     finalCta: 'audit',
     categorie: "Créer",
     accroche: "La vraie question n'est pas quand le code est fini, c'est quand tu encaisses.",
     tldr: {
-      verdict: "4 à 6 semaines de développement pour une première version au périmètre clair. Mais ce délai ne compte que le code. Entre le code livré et ton premier euro encaissé, il y a une chaîne administrative qui prend son propre temps, et qui peut être préparée pendant le développement au lieu de s'ajouter après.",
+      verdict: "45 jours en moyenne pour une application au périmètre clair, du cadrage à la mise en ligne, dont 4 à 6 semaines de développement. Mais ce délai mesure la livraison, pas ton premier euro. Entre l'application livrée et ton premier euro encaissé, il y a une chaîne administrative qui prend son propre temps, et qui peut être préparée pendant le développement au lieu de s'ajouter après.",
       points: [
         { label: "Le sujet", valeur: "Le délai réel, développement et mise en vente comprises" },
         { label: "Pour qui", valeur: "Tu veux savoir quand ton application peut rapporter, pas quand le code finit" },
-        { label: "Le repère", valeur: "4 à 6 semaines de développement, environ 45 jours porte à porte" },
+        { label: "Le repère", valeur: "45 jours en moyenne, dont 4 à 6 semaines de développement" },
         { label: "À retenir", valeur: "La première cause de retard n'est pas technique, c'est le temps de réponse" },
       ],
     },
@@ -299,7 +299,7 @@ export const BLOG_ARTICLES = [
       "Tu penses que le délai dépend uniquement du développeur",
     ],
     faq: [
-      { q: "Pourquoi je lis 45 jours à certains endroits et 4 à 6 semaines à d'autres ?", a: "Parce que les deux mesurent des choses différentes, et autant le dire clairement. Quatre à six semaines, c'est le temps de développement effectif. Quarante-cinq jours, c'est la durée porte à porte du projet, cadrage et allers-retours compris, sur un périmètre de première version. Six semaines de développement font 42 jours : les deux chiffres décrivent le même projet, l'un compte le travail, l'autre compte le calendrier. Si un délai t'est annoncé, demande toujours lequel des deux il désigne." },
+      { q: "Pourquoi je lis 45 jours à certains endroits et 4 à 6 semaines à d'autres ?", a: "Parce que les deux mesurent des choses différentes, et autant le dire clairement. Quatre à six semaines, c'est le temps de développement effectif. Quarante-cinq jours, c'est la durée porte à porte du projet, cadrage et allers-retours compris, sur un périmètre clair. Six semaines de développement font 42 jours : les deux chiffres décrivent le même projet, l'un compte le travail, l'autre compte le calendrier. Si un délai t'est annoncé, demande toujours lequel des deux il désigne." },
       { q: "Combien de temps prend la validation sur les stores ?", a: "La validation elle-même est rapide, souvent moins de deux jours ouvrés. Le vrai risque n'est pas sa durée, c'est le refus : chaque refus renvoie en fin de file et relance le compteur. Les motifs classiques sont connus et évitables, une politique de confidentialité manquante, un compte de test qui ne fonctionne pas, des captures d'écran non conformes, ou une application jugée trop pauvre au regard de la règle 4.2 d'Apple. Une soumission préparée passe en général du premier coup." },
       { q: "Faire iOS et Android en même temps double-t-il le délai ?", a: "Non, pas avec une technologie multiplateforme comme Flutter : le code est écrit une fois et compilé pour les deux systèmes. Ce qui s'ajoute est réel mais limité, quelques jours de tests sur les deux familles d'appareils et deux publications à préparer au lieu d'une. Compte une marge, pas un doublement." },
       { q: "Peut-on aller plus vite que quatre semaines ?", a: "Oui, en réduisant le périmètre, jamais en compressant le travail. Une application à un seul type d'utilisateur, sans temps réel et sans paiement intégré, peut sortir plus vite. En revanche accélérer sans rien retirer produit une version fragile qu'il faut reprendre, et le temps regagné est perdu deux fois." },
@@ -310,13 +310,13 @@ export const BLOG_ARTICLES = [
 
       <h2>La réponse courte</h2>
       <div class="chiffre">
-        <span class="chiffre-valeur">4 à 6 semaines</span>
-        <span class="chiffre-texte">c'est le temps de développement d'une première version au périmètre clair. Porte à porte, cadrage et allers-retours compris, compte environ 45 jours. Une application complète, avec plusieurs profils d'utilisateurs et des fonctionnalités avancées, se compte en 6 à 9 mois.</span>
+        <span class="chiffre-valeur">45 jours</span>
+        <span class="chiffre-texte">en moyenne pour une application au périmètre clair, du cadrage à la mise en ligne, dont 4 à 6 semaines de développement. Une plateforme plus lourde, avec plusieurs profils d'utilisateurs et des fonctionnalités avancées, demande plus : son délai est fixé dans le devis.</span>
       </div>
       <p>Retiens la condition, elle fait tout le délai : <strong>au périmètre clair</strong>. Ce n'est pas une formule de prudence, c'est la variable principale. Un projet cadré en une semaine se développe en quatre. Un projet qui se redéfinit en cours de route n'a pas de délai, il a une direction.</p>
 
       <h2>Ce que ces semaines contiennent vraiment</h2>
-      <p>Le découpage type d'une première version, pour que tu saches ce qui se passe et quand tu es attendu.</p>
+      <p>Le découpage type d'un projet, pour que tu saches ce qui se passe et quand tu es attendu.</p>
       <div class="table-scroll">
         <table>
           <thead>
@@ -377,10 +377,10 @@ export const BLOG_ARTICLES = [
         <li><strong>Décider de ton prix.</strong> Il conditionne la façon dont le paiement est construit, et il vaut mieux le trancher avant qu'après. Le calcul est dans <a href="/blog/combien-de-clients-pour-rentabiliser-application/">combien de clients pour rentabiliser ton application</a>.</li>
       </ul>
 
-      <h2>Et une application complète ?</h2>
-      <p>Six à neuf mois, et c'est précisément pour ça qu'il ne faut pas commencer par là.</p>
-      <p>Neuf mois de développement, c'est neuf mois sans un seul retour d'utilisateur réel, sans un euro encaissé, et avec un budget entièrement engagé sur des hypothèses que personne n'a vérifiées. Le risque n'est pas de rater le délai, il est de livrer exactement ce qui était prévu et de découvrir que ce n'était pas ce qu'il fallait.</p>
-      <p>C'est tout l'intérêt de la première version resserrée, détaillé dans <a href="/blog/mvp-application-mobile/">le MVP d'application mobile</a> : tu apprends en six semaines ce que neuf mois ne t'auraient pas appris.</p>
+      <h2>Et une plateforme plus lourde ?</h2>
+      <p>Elle se compte en mois, et c'est précisément pour ça qu'il ne faut pas commencer par là.</p>
+      <p>Des mois de développement, ce sont des mois sans un seul retour d'utilisateur réel, sans un euro encaissé, et avec un budget entièrement engagé sur des hypothèses que personne n'a vérifiées. Le risque n'est pas de rater le délai, il est de livrer exactement ce qui était prévu et de découvrir que ce n'était pas ce qu'il fallait.</p>
+      <p>C'est tout l'intérêt d'un périmètre resserré, détaillé dans <a href="/blog/mvp-application-mobile/">le MVP d'application mobile</a> : tu apprends en 45 jours ce que des mois de développement ne t'auraient pas appris.</p>
 
       <h2>Par où commencer</h2>
       <p>Trois étapes, dans cet ordre, et aucune ne demande d'engager un budget.</p>
@@ -1099,7 +1099,7 @@ export const BLOG_ARTICLES = [
     faq: [
       { q: "Application ou plateforme de formation existante ?", a: "Si tu vends une formation qu'on suit une fois, une plateforme suffit et coûte bien moins cher. Si tu fais du suivi régulier, avec des rendez-vous, des rappels et de la progression, l'application prend tout son sens : c'est la fréquence qui décide." },
       { q: "Mes clients vont-ils vraiment l'installer ?", a: "Uniquement si l'application leur donne quelque chose qu'ils n'ont pas ailleurs : leur suivi, leur programme, leur historique. Une application qui ne fait que rediriger vers ton site ne sera pas installée, et surtout pas gardée." },
-      { q: "Combien de temps pour une première version ?", a: "4 à 6 semaines pour un périmètre resserré : compte client, contenu, suivi, paiement. Le reste s'ajoute ensuite, avec des revenus en face." },
+      { q: "Combien de temps pour avoir l'application ?", a: "45 jours en moyenne, du cadrage à la mise en ligne, pour un périmètre resserré : compte client, contenu, suivi, paiement. Le reste s'ajoute ensuite, avec des revenus en face." },
     ],
     content: `
       <p>Tu as des clients, une audience ou une offre qui tourne. Coaching, formation, accompagnement, studio, consulting. Et cette question revient : est-ce qu'une application mobile a du sens pour toi, ou est-ce que c'est un gadget coûteux.</p>
@@ -1732,7 +1732,7 @@ export const BLOG_ARTICLES = [
       points: [
         { label: "Zone", valeur: "Toulouse, Haute-Garonne, Occitanie, et à distance partout en France" },
         { label: "Budget", valeur: "Tarif fixe, en général une dizaine de milliers d'euros selon la complexité" },
-        { label: "Délai", valeur: "Première version en 4 à 6 semaines" },
+        { label: "Délai", valeur: "45 jours en moyenne pour une application" },
         { label: "Différence", valeur: "Une application conçue pour rapporter, pas seulement livrée" },
       ],
     },
@@ -1768,7 +1768,7 @@ export const BLOG_ARTICLES = [
       <p>Pour être clair sur mon périmètre : je conçois et développe une application qui transforme tes utilisateurs en clients. Je ne fais pas la publicité qui amène les utilisateurs. Toi tu amènes les gens, moi je les transforme en clients.</p>
 
       <h2>Ma méthode, de l'idée au lancement</h2>
-      <p>On commence par cadrer ton projet et ton modèle économique. Je te livre un cahier des charges clair, un devis transparent et une première maquette de ton application pour que tu visualises avant de décider quoi que ce soit. Ensuite je développe, avec des points réguliers, et je publie sur l'App Store et Google Play. Compte en général 4 à 6 semaines pour une première version.</p>
+      <p>On commence par cadrer ton projet et ton modèle économique. Je te livre un cahier des charges clair, un devis transparent et une première maquette de ton application pour que tu visualises avant de décider quoi que ce soit. Ensuite je développe, avec des points réguliers, et je publie sur l'App Store et Google Play. Compte 45 jours en moyenne, du cadrage à la mise en ligne.</p>
 
 
       <h2>Combien coûte une application à Toulouse</h2>
@@ -1776,15 +1776,16 @@ export const BLOG_ARTICLES = [
       <div class="table-scroll">
         <table>
           <thead>
-            <tr><th>Type de projet</th><th>Fourchette</th><th>Délai</th></tr>
+            <tr><th>Type de projet</th><th>Fourchette</th></tr>
           </thead>
           <tbody>
-            <tr><td>Première version resserrée</td><td>5 000 à 8 000 €</td><td>4 à 6 semaines</td></tr>
-            <tr><td>Application complète, un profil</td><td>8 000 à 12 000 €</td><td>2 à 3 mois</td></tr>
-            <tr><td>Reprise d'une application existante</td><td>variable</td><td>selon l'état du code</td></tr>
+            <tr><td>Application au périmètre resserré</td><td>5 000 à 8 000 €</td></tr>
+            <tr><td>Application complète, un profil</td><td>8 000 à 12 000 €</td></tr>
+            <tr><td>Reprise d'une application existante</td><td>variable, selon l'état du code</td></tr>
           </tbody>
         </table>
       </div>
+      <p>Côté délai, compte 45 jours en moyenne, du cadrage à la mise en ligne. Le délai exact est fixé dans le devis, selon les fonctionnalités retenues.</p>
       <p>Le détail de ce que couvre chaque fourchette est dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>.</p>
 
       <h2>Les projets toulousains où une application a du sens</h2>
@@ -1874,11 +1875,11 @@ export const BLOG_ARTICLES = [
     categorie: "Budget",
     accroche: "Les vraies fourchettes, et pourquoi deux devis pour la même app varient du simple au triple.",
     tldr: {
-      verdict: "Compte 5 000 à 8 000 € pour une première version sérieuse, 8 000 à 12 000 € pour une application complète à un seul profil d'utilisateur, et en général une dizaine de milliers d'euros dès qu'il y a deux profils ou du temps réel. Le prix ne dépend presque pas de la technologie : il dépend du périmètre, et c'est pour ça que deux devis sur un besoin flou peuvent aller du simple au triple.",
+      verdict: "Compte 5 000 à 8 000 € pour une application au périmètre resserré, 8 000 à 12 000 € pour une application complète à un seul profil d'utilisateur, et en général une dizaine de milliers d'euros dès qu'il y a deux profils ou du temps réel. Le prix ne dépend presque pas de la technologie : il dépend du périmètre, et c'est pour ça que deux devis sur un besoin flou peuvent aller du simple au triple.",
       points: [
         { label: "Le sujet", valeur: "Les fourchettes par type de projet, et ce qui les fait bouger" },
         { label: "Pour qui", valeur: "Tu construis un budget ou tu compares des devis très écartés" },
-        { label: "Le repère", valeur: "5 000 à 8 000 € pour une première version livrée en 4 à 6 semaines" },
+        { label: "Le repère", valeur: "5 000 à 8 000 € pour une application au périmètre resserré" },
         { label: "À retenir", valeur: "Un devis précis sur un besoin flou n'existe pas" },
       ],
     },
@@ -1909,17 +1910,18 @@ export const BLOG_ARTICLES = [
       <div class="table-scroll">
         <table>
           <thead>
-            <tr><th>Type de projet</th><th>Fourchette</th><th>Délai</th></tr>
+            <tr><th>Type de projet</th><th>Fourchette</th></tr>
           </thead>
           <tbody>
-            <tr><td>Première version resserrée</td><td><strong>5 000 à 8 000 €</strong></td><td>4 à 6 semaines</td></tr>
-            <tr><td>Application complète, un profil d'utilisateur</td><td><strong>8 000 à 12 000 €</strong></td><td>2 à 3 mois</td></tr>
-            <tr><td>Deux profils, ou temps réel</td><td><strong>une dizaine de milliers d'euros</strong></td><td>3 à 5 mois</td></tr>
-            <tr><td>Reprise d'une application existante</td><td>très variable</td><td>selon l'état du code</td></tr>
-            <tr><td>Agence ou ESN</td><td>50 000 à 300 000 €</td><td>6 à 12 mois</td></tr>
+            <tr><td>Application au périmètre resserré</td><td><strong>5 000 à 8 000 €</strong></td></tr>
+            <tr><td>Application complète, un profil d'utilisateur</td><td><strong>8 000 à 12 000 €</strong></td></tr>
+            <tr><td>Deux profils, ou temps réel</td><td><strong>une dizaine de milliers d'euros</strong></td></tr>
+            <tr><td>Reprise d'une application existante</td><td>très variable, selon l'état du code</td></tr>
+            <tr><td>Agence ou ESN</td><td>50 000 à 300 000 €</td></tr>
           </tbody>
         </table>
       </div>
+      <p>Côté délai, compte 45 jours en moyenne, du cadrage à la mise en ligne ; le délai exact est fixé dans le devis, selon les fonctionnalités retenues. Une agence ou une ESN compte plutôt six à douze mois.</p>
       <p>Si tu ne retiens qu'une ligne, retiens la première. C'est celle qui correspond à la très grande majorité des projets qui viennent me voir, et c'est celle qui permet de tester une idée sans engager un budget qu'on ne récupère pas.</p>
 
       <h2>Ce que couvre réellement chaque fourchette</h2>
@@ -2009,7 +2011,7 @@ export const BLOG_ARTICLES = [
       points: [
         { label: "Le sujet", valeur: "Le guide complet, de l'idée à la mise en ligne" },
         { label: "Pour qui", valeur: "Tu pars de zéro et tu veux comprendre le déroulé" },
-        { label: "Délai", valeur: "Première version en 4 à 6 semaines pour un périmètre clair" },
+        { label: "Délai", valeur: "45 jours en moyenne pour une application" },
         { label: "Erreur classique", valeur: "Développer trop de fonctionnalités pour la version 1" },
       ],
     },
@@ -2268,7 +2270,7 @@ export const BLOG_ARTICLES = [
     readTime: '9 min',
     finalCta: 'audit',
     categorie: "Budget",
-    accroche: "Une première version en 45 jours, sans la bâcler.",
+    accroche: "Ton application en 45 jours, sans la bâcler.",
     tldr: {
       verdict: "Un MVP n'est pas une application au rabais, c'est une application réduite au périmètre qui prouve le modèle. L'objectif n'est pas de sortir vite, il est de savoir si des gens paient avant d'engager le reste du budget. Compte 5 000 à 8 000 € et 45 jours quand le périmètre est clair.",
       points: [
@@ -2337,7 +2339,7 @@ export const BLOG_ARTICLES = [
       <h2>Pourquoi 45 jours est réaliste</h2>
       <div class="chiffre">
         <span class="chiffre-valeur">45 jours</span>
-        <span class="chiffre-texte">soit 4 à 6 semaines de développement plus le cadrage et les allers-retours. À comparer aux 6 à 9 mois d'une application complète. Le délai n'est pas tenu en allant plus vite, il est tenu en construisant moins.</span>
+        <span class="chiffre-texte">soit 4 à 6 semaines de développement plus le cadrage et les allers-retours. Le délai n'est pas tenu en allant plus vite, il est tenu en construisant moins.</span>
       </div>
       <p>Quatre conditions le rendent possible, et elles se préparent avant la première ligne de code.</p>
       <ul>
@@ -2661,7 +2663,7 @@ function BlogArticlePage({ article, onBack, onBookCall, onAuditApp, onArticle, o
               Tu penses que ton idée a du potentiel ?
             </h2>
             <p className="text-white/75 text-[0.93rem] mb-6 max-w-130 mx-auto leading-relaxed">
-              Audit gratuit en 2 minutes : potentiel de revenus, budget à prévoir et délai réaliste pour une première version.
+              Audit gratuit en 2 minutes : potentiel de revenus, budget à prévoir et délai réaliste pour ton application.
             </p>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
               <button
@@ -2918,7 +2920,7 @@ function BlogList({ onBack, onArticle, onBookCall, onAuditApp, onNaviguer }) {
           </h2>
           <p className="text-[#3f4d61] text-[0.93rem] leading-relaxed mb-6 max-w-130 mx-auto">
             2 minutes, sans inscription : potentiel de revenus, budget à prévoir et délai réaliste
-            pour une première version.
+            pour ton application.
           </p>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
             <button
