@@ -301,8 +301,16 @@ semaine.
 
 ---
 
-### 8. Freelance, agence ou expert indépendant
-**Statut** : à écrire · **Format** : comparaison · **Mot-clé** : freelance ou agence application mobile
+### 8. ~~Freelance, agence ou expert indépendant~~
+**Statut** : ❌ abandonné le 11/10/2026, déjà couvert · **Mot-clé** : freelance ou agence application mobile
+
+> **Ce que la phase 0 a tranché.** `choisir-expert-application-mobile` porte déjà un
+> H2 « Les 3 profils principaux » et une FAQ « Agence ou indépendant ? », avec 10
+> mentions d'agence, 7 de prestataire, 4 de freelance. Le brief l'anticipait
+> (« à ne faire que si l'angle est nettement plus comparatif »). Le seul apport
+> possible, un tableau de fourchettes par profil, est un enrichissement de
+> l'article existant, pas un article : à faire le jour où on rafraîchit
+> `choisir-expert`, pas en doublon.
 
 Attention : vérifier le recoupement avec `/blog/choisir-expert-application-mobile/`
 avant d'écrire. À ne faire que si l'angle est nettement plus comparatif, avec un
@@ -312,7 +320,23 @@ existant plutôt que d'en créer un second qui le cannibalise.
 ---
 
 ### 9. Application mobile pour ton entreprise : dans quels cas ça se justifie
-**Statut** : à écrire · **Format** : question fermée · **Mot-clé** : application mobile pour entreprise
+**Statut** : ✅ publié le 11/10/2026 · **Format** : question fermée · **Mot-clé** : application mobile pour entreprise
+
+**Le brief a été réaligné à l'écriture, et c'est à retenir pour les suivants.**
+Il disait « dans la majorité des cas un site suffit ». Depuis le repositionnement
+d'octobre (`vocabulaire-mobile-web.md`), « site » ne désigne jamais une
+application web, et la réponse honnête pour une entreprise est « souvent une
+application **web**, pas mobile ». L'article garde « mobile » dans le titre et
+le slug (c'est la requête), et le corps applique le test du prédicat : quatre
+cas justifient le mobile, sinon c'est une application web, et un site vitrine
+n'est ni l'un ni l'autre. Les briefs 10 et 11 (artisan, consultant) sont dans
+la même situation : les relire avec cette grille avant d'écrire, parce qu'un
+artisan sur chantier est un cas mobile net, et un consultant devant son écran un
+cas web net.
+
+**Maillage** : un lien sortant vers `combien-coute-application-mobile`, qui est
+« explorée, actuellement non indexée » au 11/10 (voir `README.md`), pour lui
+donner un entrant depuis une page neuve.
 
 Requête large mais acheteuse. Répondre franchement : dans la majorité des cas
 un site suffit. Détailler les quatre situations où l'application se justifie

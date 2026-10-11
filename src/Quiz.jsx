@@ -110,7 +110,7 @@ export const QUIZZES = [
     contenu: [
       {
         h2: "Les trois signaux qui justifient vraiment une application",
-        p: "Au-delà du score, trois signaux reviennent chez tous les projets qui finissent par rapporter. D'abord une activité qui existe déjà : des clients, une audience, un service vendu. Ensuite un usage qui se répète, parce qu'un revenu récurrent suppose une valeur qui se renouvelle. Enfin un usage réellement mobile, au quotidien ou en mobilité, sinon un site fait le travail pour bien moins cher.",
+        p: "Au-delà du score, trois signaux reviennent chez tous les projets qui finissent par rapporter. D'abord une activité qui existe déjà : des clients, une audience, un service vendu. Ensuite un usage qui se répète, parce qu'un revenu récurrent suppose une valeur qui se renouvelle. Enfin un usage réellement mobile, au quotidien ou en mobilité : sans lui, ton projet reste une application, mais une application web, qui s'ouvre dans un navigateur.",
       },
       {
         h2: "Les mauvaises raisons de vouloir une application",

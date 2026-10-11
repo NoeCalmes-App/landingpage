@@ -21,6 +21,114 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'application-mobile-pour-entreprise',
+    title: "Application mobile pour ton entreprise : dans quels cas ça se justifie",
+    metaTitle: "Application mobile pour entreprise : utile ou pas ? | Noé Calmes",
+    description: "On t'a dit « il te faut une appli » ? Souvent, ce n'est pas du mobile qu'il te faut. Les quatre cas où il se justifie vraiment, et quoi faire sinon.",
+    date: '2026-10-11',
+    readTime: '9 min',
+    finalCta: 'audit',
+    categorie: "Ton activité",
+    accroche: "La question n'est pas « application ou pas ». C'est « pour qui, et où ».",
+    tldr: {
+      verdict: "Dans la majorité des cas, une entreprise n'a pas besoin d'une application mobile : elle a besoin d'un outil, et un outil que des gens utilisent assis devant un écran est une application web. Le mobile se justifie dans quatre situations précises, et il suffit d'une seule. Le piège, c'est de confondre « pas besoin de mobile » avec « un site suffit » : ce ne sont pas les mêmes produits.",
+      points: [
+        { label: "Le sujet", valeur: "Quand une entreprise a vraiment besoin d'une application mobile, et quoi faire sinon" },
+        { label: "Pour qui", valeur: "Tu diriges une entreprise et quelqu'un t'a dit « il te faut une appli »" },
+        { label: "Le repère", valeur: "Quatre cas justifient le mobile. Sinon, c'est une application web, pas un site" },
+        { label: "À retenir", valeur: "Qui s'en sert, et où : c'est ça qui tranche, pas le budget" },
+      ],
+    },
+    pourQui: [
+      "Tu diriges une entreprise, une équipe ou un commerce, et tu te demandes si une application a sa place",
+      "Tes outils actuels (tableur, messagerie, logiciel vieillissant) te coûtent du temps tous les jours",
+      "On t'a parlé d'« appli » sans jamais te demander qui allait s'en servir",
+    ],
+    pasPourQui: [
+      "Tu veux surtout être trouvé par de nouveaux clients : c'est une fiche Google et des avis, pas une application",
+      "Tu pars d'une idée d'application à lancer sur les stores, sans entreprise derrière : ce n'est pas le même sujet, cet article parle d'une application au service d'une activité qui existe déjà",
+      "Tu cherches un site vitrine, ou ton seul critère est le prix : ce n'est pas mon métier",
+    ],
+    faq: [
+      { q: "Mon entreprise a déjà un site, est-ce que ça remplace une application ?", a: "Non, parce que ce ne sont pas les mêmes objets. Un site présente ton activité à des gens qui ne te connaissent pas encore. Une application fait travailler des gens qui te connaissent déjà : tes équipes, tes clients, tes partenaires. Ils s'y connectent, ils y ont un compte, ils y font des choses. Tu peux très bien avoir besoin des deux, mais l'un ne remplace jamais l'autre." },
+      { q: "Mes salariés ou mes clients doivent-ils installer quelque chose ?", a: "Ça dépend du support, et c'est un vrai critère. Une application web s'ouvre dans le navigateur : tu envoies une adresse et un identifiant, c'est tout, sur n'importe quel ordinateur ou téléphone. Une application mobile s'installe depuis l'App Store ou Google Play, ce qui est un avantage quand tu veux être sur l'écran d'accueil de tes clients, et une friction quand tu veux juste équiper une équipe." },
+      { q: "Une application pour mon équipe, ça peut être rentable ?", a: "Oui, mais le calcul n'est pas le même que pour une application grand public. Ici personne ne paie un abonnement : ce qui rapporte, c'est le temps que tu arrêtes de perdre, les erreurs que tu n'as plus, les clients que tu ne rates plus. Compte ce que te coûtent aujourd'hui les tâches que l'outil remplacerait, en heures par semaine, et multiplie par ce que vaut une heure chez toi. C'est souvent plus parlant qu'un chiffre d'affaires." },
+      { q: "Peut-on commencer en web et passer sur mobile ensuite ?", a: "Oui, et c'est souvent la bonne séquence. Ce qui coûte cher dans une application, ce n'est pas l'écran, c'est ce qu'il y a derrière : les comptes, les droits, les données, les paiements. Cette partie se réutilise d'un support à l'autre. Si tu commences par le web pour ton équipe et que tes clients réclament ensuite une application sur leur téléphone, tu ne repars pas de zéro." },
+      { q: "Et une fois en ligne, qu'est-ce que ça coûte chaque année ?", a: "Peu de choses, mais pas zéro. Si l'application est sur les stores : le compte développeur Apple à 99 $ par an, le compte Google Play à 25 $ une seule fois, et la maintenance liée aux mises à jour d'iOS et d'Android, parce qu'une application mobile laissée sans mise à jour finit par être retirée. Dans tous les cas : l'hébergement, qui suit l'usage réel et reste faible au départ, et un nom de domaine pour une application web. Ces frais sont petits rapportés à ce que l'outil te fait gagner, mais ils existent, et je te les donne avant le devis." },
+    ],
+    content: `
+      <p>Quand une entreprise m'appelle pour « une application mobile », dans la majorité des cas ce n'est pas d'une application mobile qu'elle a besoin. C'est d'un outil. Et la différence entre les deux décide de ton budget, de ton délai et de ce que tu auras vraiment entre les mains.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour rapporter. J'ai publié plus de 20 applications. Voici une réponse franche à la question, avec les quatre cas où le mobile se justifie, et ce qu'il faut faire sinon.</p>
+
+      <h2>La bonne question : qui va s'en servir, et où</h2>
+      <p>Personne ne te la pose, et c'est pourtant elle qui tranche. Pas ton budget, pas la mode, pas ce que fait ton concurrent.</p>
+      <p>Une application d'entreprise sert à trois types de personnes : tes équipes, tes clients professionnels, ou le grand public. Et chacune de ces personnes utilise l'outil quelque part : debout sur un chantier, assise devant un écran, dans la file d'attente d'un commerce.</p>
+      <p>Un outil que des gens utilisent assis devant un écran, plusieurs heures par jour, avec des comptes, des droits différents et des données à gérer, c'est une <strong>application web</strong>. Elle s'ouvre dans un navigateur, on s'y connecte, on y travaille. Un logiciel de facturation en ligne, un outil de planning d'équipe, l'espace professionnel des impôts : ce sont des applications web. Tu t'y connectes, tu y travailles, et tu n'as jamais eu à les installer.</p>
+      <div class="encadre cle">
+        <span class="encadre-titre">Ce n'est pas un site</span>
+        <p>Une application web n'est pas un site vitrine. Le site présente ton activité à des inconnus. L'application sert à des gens qui ont un compte chez toi : tes équipes, tes clients, tes partenaires. Confondre les deux coûte cher dans les deux sens : on finit soit avec une vitrine qui ne fait rien, soit avec une application mobile pour des gens qui ne la sortiront jamais de leur poche.</p>
+      </div>
+
+      <h2>Les quatre cas où le mobile se justifie</h2>
+      <p>Il suffit d'un seul. Et si aucun ne s'applique, ça ne veut pas dire que tu n'as pas besoin d'une application : ça veut dire qu'elle n'a pas besoin d'être sur un téléphone.</p>
+      <ol>
+        <li><strong>Tes utilisateurs sont debout, dehors, en déplacement.</strong> Un technicien en intervention, un livreur, un commercial en visite, un agent qui fait des rondes. Ils ont un téléphone dans la main et pas d'ordinateur. Là, le mobile n'est pas un confort, c'est le support qui suit leur journée.</li>
+        <li><strong>Tu as besoin d'aller les chercher.</strong> Si ton service vit du fait que les gens reviennent, et qu'ils n'y penseront pas seuls, il te faut la notification. C'est le cas d'une salle de sport avec ses adhérents, d'un service de réservation, d'un programme d'accompagnement. Une application web attend qu'on vienne la chercher. Une application mobile fait le premier pas.</li>
+        <li><strong>Il faut le téléphone lui-même.</strong> Prendre une photo sur un chantier, relever une position, scanner un code, travailler sans réseau dans une cave ou un entrepôt. Ces quatre choses demandent l'appareil, pas juste un écran.</li>
+        <li><strong>Tes clients sont le grand public, et tu veux être dans leur poche.</strong> Être sur l'App Store et Google Play, c'est une porte d'entrée ouverte en permanence et un paiement en deux taps. Le store prend sa commission, mais c'est lui qui t'amène du monde et qui encaisse sans que personne ait à saisir une carte. Pour du grand public, ce loyer vaut le coup.</li>
+      </ol>
+      <p>Regarde ton projet avec ces quatre questions. Si aucune ne s'applique, continue, la suite te concerne directement.</p>
+
+      <h2>Si aucun des quatre ne s'applique</h2>
+      <p>Alors ton entreprise a besoin d'une application web, et c'est une bonne nouvelle, pour trois raisons concrètes.</p>
+      <ul>
+        <li><strong>Elle se met en ligne le jour où tu veux.</strong> Pas de compte développeur à ouvrir, pas de validation d'Apple à attendre, pas de calendrier de mise à jour imposé par un store. À périmètre égal, c'est souvent deux à trois semaines de gagnées.</li>
+        <li><strong>Personne n'a rien à installer.</strong> Tu envoies une adresse et un identifiant. Ton équipe est équipée le matin même, ton client aussi.</li>
+        <li><strong>Aucun store ne prélève de commission.</strong> Sur un abonnement mobile, après la TVA et la commission du store, il te reste environ 70 %. Sur le même abonnement encaissé en web, après la TVA et les frais bancaires, environ 78 %. Si ton application fait payer quelqu'un, l'écart se voit tous les mois.</li>
+      </ul>
+      <p>Et le prix, dans tout ça ? Ce qui fait le montant d'une application, c'est son périmètre : le nombre d'écrans, les profils qui se connectent, les paiements, l'espace d'administration. C'est ce périmètre qu'on cadre ensemble avant le devis, et les ordres de grandeur sont un peu plus bas.</p>
+
+      <h2>Le cas où il faut les deux</h2>
+      <p>Il est fréquent dans les entreprises qui vendent au grand public, et il se reconnaît vite : tes clients sont sur leur téléphone, et toi tu as besoin d'un espace d'administration pour piloter, facturer, suivre.</p>
+      <p>La salle de sport en est un exemple net : les adhérents réservent et reçoivent leurs rappels sur mobile, le gérant gère les plannings et les abonnements depuis un écran. J'ai détaillé ce cas dans <a href="/blog/application-mobile-salle-de-sport/">l'application mobile pour salle de sport</a>.</p>
+      <p>Dans ce cas, on ne lance pas les deux d'un coup. On commence par le support qui porte la valeur immédiate, et on ajoute l'autre une fois que le premier tourne. Tu évites ainsi deux chantiers menés à moitié en même temps, et le premier support te dit ce que le second doit contenir.</p>
+      <div class="encadre astuce">
+        <span class="encadre-titre">Le signal qui ne trompe pas</span>
+        <p>Si en décrivant ton projet tu dis « mes clients » et « mon équipe » dans la même phrase, tu as probablement deux supports devant toi. <strong>La question devient : lequel en premier.</strong></p>
+      </div>
+
+      <h2>Ce que ça coûte, et en combien de temps</h2>
+      <p>Voici les ordres de grandeur, par périmètre.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Périmètre</th><th>Budget</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Application au périmètre clair : comptes, une fonction centrale, suivi</td><td>5 000 à 8 000 €</td></tr>
+            <tr><td>Application complète : paiements, espace d'administration, davantage d'écrans et de fonctions</td><td>8 000 à 12 000 €</td></tr>
+            <tr><td>Deux profils distincts, par exemple tes clients et ton équipe</td><td>Une dizaine de milliers d'euros</td></tr>
+            <tr><td>Plateforme plus lourde pour toute une organisation</td><td>Chiffrée après cadrage</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="chiffre">
+        <span class="chiffre-valeur">45 jours</span>
+        <span class="chiffre-texte">en moyenne pour une application, du cadrage à la mise en ligne. Une plateforme plus lourde se compte en mois, et son délai est fixé dans le devis.</span>
+      </div>
+      <p>Le détail de ce qui fait monter ou descendre un devis est dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>, et il vaut pour une application web.</p>
+
+      <h2>Par où commencer</h2>
+      <p>Trois étapes, aucune ne demande d'engager un budget.</p>
+      <ol>
+        <li><strong>Écris en deux lignes qui va s'en servir, et où.</strong> « Mes trois techniciens, sur les chantiers. » « Mes clients, chez eux, le soir. » « Mon assistante, au bureau. » Tout découle de ces deux lignes.</li>
+        <li><strong>Vérifie que tu as besoin d'une application tout court.</strong> Le <a href="/quiz/ai-je-besoin-application-mobile/">test en sept questions</a> le dit en deux minutes.</li>
+        <li><strong>Passe les quatre cas en revue.</strong> Un seul suffit pour le mobile. Aucun, et c'est une application web. Tes clients d'un côté et ton équipe de l'autre, et c'est une question d'ordre. Le test <a href="/quiz/application-ou-site-web/">application ou site web</a> tranche en six questions.</li>
+      </ol>
+      <p>Pour choisir à qui confier le projet une fois le support décidé, <a href="/blog/choisir-expert-application-mobile/">comment choisir son expert</a> donne les questions à poser. Et si tu veux que je tranche sur ton cas précis, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes, et le support est la première chose que je te dis.</p>
+    `,
+  },
+  {
     slug: 'application-mobile-salle-de-sport',
     title: "Application mobile pour salle de sport : ce qu'elle change vraiment",
     metaTitle: "Application mobile pour salle de sport | Noé Calmes",
@@ -2491,6 +2599,7 @@ export const BLOG_ARTICLES = [
 // orphelin. Ajouter un article implique donc de le citer ici au moins deux fois.
 
 export const ARTICLES_LIES = {
+  'application-mobile-pour-entreprise': ['choisir-expert-application-mobile', 'combien-coute-application-mobile', 'application-mobile-salle-de-sport'],
   'application-mobile-salle-de-sport': ['application-mobile-coach-formateur', 'application-par-abonnement', 'combien-de-clients-pour-rentabiliser-application'],
   'cahier-des-charges-application-mobile': ['creer-application-mobile-guide', 'combien-coute-application-mobile', 'choisir-expert-application-mobile'],
   'combien-de-temps-creer-application-mobile': ['mvp-application-mobile', 'cahier-des-charges-application-mobile', 'application-mobile-avec-claude'],
@@ -2503,19 +2612,19 @@ export const ARTICLES_LIES = {
   'combien-rapporte-application-mobile': ['combien-de-clients-pour-rentabiliser-application', 'combien-coute-application-mobile', 'application-mobile-meilleur-investissement'],
   'modele-economique-application-mobile': ['application-par-abonnement', 'rentabiliser-application-mobile', 'idee-application-business-rentable'],
   'application-par-abonnement': ['modele-economique-application-mobile', 'application-mobile-salle-de-sport', 'application-audience-revenus-recurrents'],
-  'idee-application-business-rentable': ['rentabiliser-application-mobile', 'application-mobile-meilleur-investissement', 'application-mobile-coach-formateur'],
+  'idee-application-business-rentable': ['application-mobile-pour-entreprise', 'application-mobile-meilleur-investissement', 'application-mobile-coach-formateur'],
   'pourquoi-applications-ne-rapportent-rien': ['rentabiliser-application-mobile', 'modele-economique-application-mobile', 'application-avec-ia-rentable'],
   'application-audience-revenus-recurrents': ['application-mobile-coach-formateur', 'application-par-abonnement', 'combien-de-clients-pour-rentabiliser-application'],
   'application-mobile-coach-formateur': ['application-audience-revenus-recurrents', 'modele-economique-application-mobile', 'application-mobile-salle-de-sport'],
   'creer-application-avec-ia': ['pourquoi-applications-ne-rapportent-rien', 'application-mobile-avec-claude', 'application-avec-ia-rentable'],
-  'application-mobile-meilleur-investissement': ['rentabiliser-application-mobile', 'application-avec-ia-rentable', 'creation-application-mobile-toulouse'],
+  'application-mobile-meilleur-investissement': ['application-mobile-pour-entreprise', 'application-avec-ia-rentable', 'creation-application-mobile-toulouse'],
 
   // Cluster creation / conduite de projet
   'creer-application-sans-savoir-coder': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'creer-application-mobile-guide'],
   'creer-application-mobile-guide': ['cahier-des-charges-application-mobile', 'creer-application-sans-savoir-coder', 'choisir-expert-application-mobile'],
   'combien-coute-application-mobile': ['combien-de-temps-creer-application-mobile', 'mvp-application-mobile', 'creation-application-mobile-toulouse'],
   'mvp-application-mobile': ['cahier-des-charges-application-mobile', 'idee-application-business-rentable', 'faire-evoluer-application-mobile'],
-  'choisir-expert-application-mobile': ['creer-application-mobile-guide', 'reprendre-application-mobile-existante', 'lovable-base44-application-mobile'],
+  'choisir-expert-application-mobile': ['creer-application-mobile-guide', 'reprendre-application-mobile-existante', 'application-mobile-pour-entreprise'],
   'reprendre-application-mobile-existante': ['faire-evoluer-application-mobile', 'choisir-expert-application-mobile', 'creer-application-avec-ia'],
   'faire-evoluer-application-mobile': ['reprendre-application-mobile-existante', 'choisir-expert-application-mobile', 'rentabiliser-application-mobile'],
 
