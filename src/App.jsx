@@ -884,8 +884,8 @@ function App() {
           le tarif et le délai, chacun avec son icône : ils trient les budgets avant WhatsApp (la réponse de la FAQ est
           repliée, ceux-ci se voient).
           Le bouton dit « Discuter avec Noé », la suite de l'étape 1 « On en parle ». Sur ordinateur, moins d'air sous le
-          bouton (80 px au lieu de 112, et 80 au-dessus des avis) : il y avait 224 px vides entre lui et « Avis clients »
-          (Noé, 11/10/2026). Id « offre » : lien « Étapes ». */}
+          bouton (80 px au lieu de 112, et 80 en haut de la section suivante) : il y avait 224 px vides sous lui (Noé,
+          11/10/2026). Id « offre » : lien « Étapes ». */}
       <section className="pt-14 pb-14 md:pt-28 md:pb-20 px-5 bg-card" id="offre">
         <div className="max-w-275 mx-auto">
           <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
@@ -977,46 +977,6 @@ function App() {
         </div>
       </section>
 
-      {/* ========== POURQUOI ME FAIRE CONFIANCE ? LES AVIS CLIENTS ========== */}
-      {/* Depuis le 11/10/2026, la réponse à « Pourquoi me faire confiance ? », ce sont les clients, pas Noé (Noé : « il veut de
-          la preuve sociale »). Trois messages WhatsApp réels (Noé, 11/10/2026), les mêmes que sur /projets, recadrés sur la
-          conversation (public/assets/images/avis/), le nom des clients masqué comme sur l'Instagram de Noé (le surligné
-          « Témoignages » : ce sont les trois mêmes, il n'y en a pas d'autres pour l'instant). Ordre : l'idée devenue application (le visiteur s'y reconnaît), l'application
-          d'agence qui ne rapportait pas (« pourquoi moi et pas une agence », et la preuve des écrans qui font payer, sans
-          redire la vidéo), puis les délais tenus. Le titre de chaque carte est écrit ici, en JSX : c'est ce que lisent les
-          robots. Juste après le bouton « Discuter avec Noé » des étapes : la preuve arrive au moment où le visiteur hésite.
-          Plus de photo de Noé ici (elle est déjà dans la barre du haut), plus de tableau contre les agences (son chiffre est
-          dans le tarif et le délai, au-dessus). Id « confiance » : la route /avis y mène. Styles : `.avis-…` dans src/App.css. */}
-      <section className="pt-16 pb-16 md:pt-20 md:pb-28 px-5" id="confiance">
-        <div className="max-w-275 mx-auto">
-          <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
-            Avis clients
-          </p>
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-8 md:mb-14">
-            Pourquoi me faire <span className="text-brand">confiance ?</span>
-          </h2>
-
-          <ul className="reveal avis-liste" aria-label="Messages de clients">
-            <li className="avis-carte">
-              <p className="avis-titre">D'une simple idée à une application qui tourne</p>
-              <img className="avis-capture" src="/assets/images/avis/avis-idee.webp" width="511" height="434" loading="lazy" decoding="async"
-                alt="Message WhatsApp d'un client : au départ, il n'avait qu'une idée en tête, rien de concret. Il remercie Noé d'avoir cadré le projet du début à la fin, en expliquant honnêtement les coûts et les délais." />
-            </li>
-            <li className="avis-carte">
-              <p className="avis-titre">Une application qui existait, mais qui ne rapportait pas</p>
-              <img className="avis-capture" src="/assets/images/avis/avis-agence.webp" width="502" height="610" loading="lazy" decoding="async"
-                alt="Message WhatsApp d'un client : son application, développée par une agence, attirait des utilisateurs, mais peu prenaient un abonnement. Noé a identifié le problème et refait le paywall et l'onboarding : quelques semaines plus tard, l'application génère des revenus." />
-            </li>
-            <li className="avis-carte">
-              <p className="avis-titre">Livré dans les délais, 100&nbsp;% satisfait</p>
-              <img className="avis-capture" src="/assets/images/avis/avis-delais.webp" width="375" height="112" loading="lazy" decoding="async"
-                alt="Message WhatsApp d'un client : l'application a été créée dans les délais annoncés, il est 100 % satisfait du résultat et recommandera Noé autour de lui." />
-            </li>
-          </ul>
-          <p className="reveal avis-note">Messages de clients, reçus sur WhatsApp.</p>
-        </div>
-      </section>
-
       {/* ========== ON EST FAITS POUR TRAVAILLER ENSEMBLE ? ========== */}
       {/* Refonte du 10/10/2026, titre et lignes revus le 11/10/2026 avec Noé : remplace « Ce que je fais / Ce que je ne
           fais pas ». Écarte avant WhatsApp ceux que Noé ne prend pas. Deux « oui » et deux « non » qui se répondent :
@@ -1027,8 +987,9 @@ function App() {
           vidéo, redite), « tu vois ton application comme une dépense, pas comme un investissement » (« ça va pas les
           faire fuir ? », Noé : ça fait la leçon, et ça redit « le prix le plus bas ») et « quelqu'un pour faire ta
           publicité » (la FAQ y répond, avec la nuance de Noé : il conseille sur la façon de faire connaître
-          l'application). */}
-      <section className="py-14 md:py-28 px-5 bg-card" id="pour-qui">
+          l'application). Fond blanc et 80 px au-dessus sur ordinateur depuis que les avis sont descendus sous
+          « Parlons de ton projet » : elle suit directement les étapes, sur fond gris (11/10/2026). */}
+      <section className="pt-14 pb-14 md:pt-20 md:pb-28 px-5" id="pour-qui">
         <div className="max-w-240 mx-auto">
           <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
             Pour qui
@@ -1070,8 +1031,19 @@ function App() {
       {/* ========== PARLONS DE TON PROJET (WHATSAPP) ========== */}
       {/* Refonte du 10/10/2026, placée avant la FAQ le 11/10/2026 à la demande de Noé : le bouton WhatsApp vient juste
           après « Pour qui », et la FAQ sert ensuite à ceux qui hésitent encore. La section Instagram, qui faisait
-          quitter la page juste avant la fin, est retirée : l'icône reste dans le pied de page. */}
-      <section className="py-16 md:py-28 px-5 bg-white" id="contact-section">
+          quitter la page juste avant la fin, est retirée : l'icône reste dans le pied de page. Fond gris depuis le
+          11/10/2026 (les fonds alternent : étapes grises, « Pour qui » blanc, ici gris, FAQ blanche).
+          LES AVIS CLIENTS SONT ICI, sous le bouton (Noé, 11/10/2026) : tous les boutons de la page (« J'ai une idée »,
+          « Discuter avec Noé ») mènent à cette section ; celui qui hésite au moment d'écrire trouve juste dessous ce que
+          disent les clients, avant la FAQ. Trois messages WhatsApp réels (Noé), les mêmes que sur /projets et dans le
+          surligné « Témoignages » de son Instagram (il n'y en a pas d'autres pour l'instant), recadrés sur la
+          conversation (public/assets/images/avis/), le nom des clients masqué comme sur Instagram. Ordre : l'idée
+          devenue application (le visiteur s'y reconnaît), l'application d'agence qui ne rapportait pas (« pourquoi moi
+          et pas une agence », et la preuve des écrans qui font payer, sans redire la vidéo), puis les délais tenus. Le
+          titre de chaque carte est écrit ici, en JSX : c'est ce que lisent les robots. Id « confiance » sur le bloc des
+          avis : le lien « Avis clients » de la barre et la route /avis y mènent (`scroll-mt-24` : la barre du haut ne
+          le cache pas). Styles : `.avis-…` dans src/App.css. */}
+      <section className="py-16 md:py-28 px-5 bg-card" id="contact-section">
         <div className="max-w-275 mx-auto text-center">
           {/* Les disponibilités, dans une pastille au fond léger (même style que « Audit express · 2 min ») */}
           {/* Le fond de la pastille n'apparaît qu'avec le texte des places : pendant la vérification, on ne voyait que le fond
@@ -1119,11 +1091,37 @@ function App() {
             </div>
           </div>
 
+          <div id="confiance" className="mt-12 md:mt-16 pt-10 md:pt-14 border-t border-card-border scroll-mt-24">
+            <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
+              Avis clients
+            </p>
+            <h3 className="reveal font-jakarta text-text text-xl md:text-[1.6rem] font-extrabold tracking-tight text-center mb-6 md:mb-10">
+              Pourquoi me faire <span className="text-brand">confiance ?</span>
+            </h3>
+            <ul className="reveal avis-liste text-left" aria-label="Messages de clients">
+              <li className="avis-carte">
+                <p className="avis-titre">D'une simple idée à une application qui tourne</p>
+                <img className="avis-capture" src="/assets/images/avis/avis-idee.webp" width="511" height="434" loading="lazy" decoding="async"
+                  alt="Message WhatsApp d'un client : au départ, il n'avait qu'une idée en tête, rien de concret. Il remercie Noé d'avoir cadré le projet du début à la fin, en expliquant honnêtement les coûts et les délais." />
+              </li>
+              <li className="avis-carte">
+                <p className="avis-titre">Une application qui existait, mais qui ne rapportait pas</p>
+                <img className="avis-capture" src="/assets/images/avis/avis-agence.webp" width="502" height="610" loading="lazy" decoding="async"
+                  alt="Message WhatsApp d'un client : son application, développée par une agence, attirait des utilisateurs, mais peu prenaient un abonnement. Noé a identifié le problème et refait le paywall et l'onboarding : quelques semaines plus tard, l'application génère des revenus." />
+              </li>
+              <li className="avis-carte">
+                <p className="avis-titre">Livré dans les délais, 100&nbsp;% satisfait</p>
+                <img className="avis-capture" src="/assets/images/avis/avis-delais.webp" width="375" height="112" loading="lazy" decoding="async"
+                  alt="Message WhatsApp d'un client : l'application a été créée dans les délais annoncés, il est 100 % satisfait du résultat et recommandera Noé autour de lui." />
+              </li>
+            </ul>
+            <p className="reveal avis-note">Messages de clients, reçus sur WhatsApp.</p>
+          </div>
         </div>
       </section>
 
       {/* ========== FAQ ========== */}
-      <section className="py-14 md:py-28 px-5 bg-card" id="faq">
+      <section className="py-14 md:py-28 px-5" id="faq">
         <div className="max-w-275 mx-auto">
           <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">
             Questions fréquentes

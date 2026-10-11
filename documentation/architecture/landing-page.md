@@ -249,9 +249,31 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    « Avis clients » (Noé, 11/10/2026). Pas de « tu paies ici » : on ne paie pas à la mise en ligne, il y a un
    acompte au démarrage. Puis le bouton « Discuter avec Noé » (11/10/2026, la suite de « On en parle » ; il
    mène à « Parlons de ton projet », comme celui du haut). Absorbe « Avant de payer un euro, je t'offre ».
-4. **« Pourquoi me faire confiance ? »** (`#confiance`, sous « Avis clients », lien du même nom dans la barre ; la
-   route /avis y mène) : **les avis des clients** depuis le 11/10/2026 (Noé : « il veut de la preuve sociale »).
-   Trois messages WhatsApp réels (confirmé par Noé), les mêmes que sur /projets et dans le surligné « Témoignages »
+4. **« On est faits pour travailler ensemble ? »** (`#pour-qui`, sous « Pour qui » ; « C'est pour toi ? »
+   jusqu'au 11/10/2026, trop simple pour Noé) : deux « oui » et deux « non » qui se répondent, le budget et le rôle.
+   « Oui, si… » : une idée d'application et un budget prévu pour la lancer ; un résultat, sans avoir à t'occuper
+   de la technique. « Non, si… » : juste un développeur qui exécute tes consignes ; le prix le plus bas. Écarte
+   avant WhatsApp ceux que Noé ne prend pas. Retirés le 11/10/2026 : « Tu cherches un site vitrine » (Noé en fait
+   quand il le faut), « une seule personne s'occupe de tout » (« il veut un résultat, il s'en fout si un ou
+   plusieurs », Noé), « une application qui te rapporte des revenus chaque mois » (la promesse du hero et de la
+   vidéo, redite), « tu vois ton application comme une dépense, pas comme un investissement » (« ça va pas les
+   faire fuir ? », Noé : ça fait la leçon, et ça redit « le prix le plus bas ») et « quelqu'un pour faire ta
+   publicité » (la FAQ y répond, avec la nuance de Noé : il conseille sur la façon de faire connaître
+   l'application). Remplace « Ce que je fais / Ce que je ne fais pas ». Suit directement les étapes depuis que les
+   avis sont descendus (11/10/2026) : fond blanc, et 80 px au-dessus sur ordinateur.
+5. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités
+   (son fond n'apparaît qu'avec le texte des places ; pendant « Vérification des disponibilités… », pas de
+   fond, Noé 11/10/2026),
+   le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`) et « Tu bosses direct avec moi ».
+   Placée avant la FAQ le 11/10/2026 (Noé). Fond gris depuis le 11/10/2026 (les fonds alternent).
+   **Puis, sous le bouton, les avis clients** : « Pourquoi me faire confiance ? » (`#confiance`, sous « Avis
+   clients », lien du même nom dans la barre ; la route /avis y mène ; `scroll-mt-24` pour que la barre ne le
+   cache pas), séparé du bouton par un filet. Descendus ici le 11/10/2026 (Noé : « les avis, je les verrais en
+   bas ») : tous les boutons de la page (« J'ai une idée », « Discuter avec Noé ») mènent à cette section, donc
+   celui qui hésite au moment d'écrire trouve les clients juste dessous, avant la FAQ. On ne met pas les avis
+   sous la FAQ : la FAQ répond aux questions, les avis rassurent au moment de cliquer.
+   Les avis répondent à « Pourquoi me faire confiance ? » depuis le 11/10/2026 (Noé : « il veut de la preuve
+   sociale »). Trois messages WhatsApp réels (confirmé par Noé), les mêmes que sur /projets et dans le surligné « Témoignages »
    de son Instagram (il n'y en a pas d'autres pour l'instant), recadrés sur la conversation dans
    `public/assets/images/avis/`, le nom des clients masqué comme sur Instagram. Chaque carte a un titre écrit dans
    le JSX (lu par les robots) : « D'une simple idée à une application qui tourne », « Une application qui existait,
@@ -265,24 +287,8 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    moi » (deux tableaux croix/coche à la suite avec « Pour qui », et « un chef de projet entre vous » : « il s'en
    fout, il veut un résultat »). Ses applications à lui ne sont nommées nulle part comme telles : le titre du
    carrousel « Ce que j'ai déjà construit » est vrai pour toutes ; ne jamais écrire qu'elles sont à des clients.
-5. **« On est faits pour travailler ensemble ? »** (`#pour-qui`, sous « Pour qui » ; « C'est pour toi ? »
-   jusqu'au 11/10/2026, trop simple pour Noé) : deux « oui » et deux « non » qui se répondent, le budget et le rôle.
-   « Oui, si… » : une idée d'application et un budget prévu pour la lancer ; un résultat, sans avoir à t'occuper
-   de la technique. « Non, si… » : juste un développeur qui exécute tes consignes ; le prix le plus bas. Écarte
-   avant WhatsApp ceux que Noé ne prend pas. Retirés le 11/10/2026 : « Tu cherches un site vitrine » (Noé en fait
-   quand il le faut), « une seule personne s'occupe de tout » (« il veut un résultat, il s'en fout si un ou
-   plusieurs », Noé), « une application qui te rapporte des revenus chaque mois » (la promesse du hero et de la
-   vidéo, redite), « tu vois ton application comme une dépense, pas comme un investissement » (« ça va pas les
-   faire fuir ? », Noé : ça fait la leçon, et ça redit « le prix le plus bas ») et « quelqu'un pour faire ta
-   publicité » (la FAQ y répond, avec la nuance de Noé : il conseille sur la façon de faire connaître
-   l'application). Remplace « Ce que je fais / Ce que je ne fais pas ».
-6. **« Parlons de ton projet »** (`#contact-section`, route /rendez-vous) : la pastille des disponibilités
-   (son fond n'apparaît qu'avec le texte des places ; pendant « Vérification des disponibilités… », pas de
-   fond, Noé 11/10/2026),
-   le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`) et « Tu bosses direct avec moi ».
-   Placée avant la FAQ le 11/10/2026 (Noé). Fond blanc.
 
-7. **FAQ « Pour y voir plus clair »** (`#faq`, sous « Questions fréquentes » : la cible ne connaît pas
+6. **FAQ « Pour y voir plus clair »** (`#faq`, sous « Questions fréquentes » : la cible ne connaît pas
    forcément « FAQ ») : les 4 premières questions de `FAQ_ITEMS`
    (`src/PagesSeo.jsx`), les vraies objections, en deux ou trois phrases chacune :
    - combien : un tarif fixe, « en général une dizaine de milliers d'euros, comprenant la stratégie, la
@@ -320,8 +326,8 @@ grand tableau Agences, la section Instagram (elle faisait quitter la page juste 
 reste dans le pied de page) et l'ancienne section audit. Les illustrations `meetingdev.svg`,
 `devmobile.svg` et `post.svg` ne servent plus à l'accueil.
 
-Fonds, de haut en bas : le hero violet, blanc, gris clair, blanc, gris clair, blanc (contact), gris clair
-(FAQ et audit), puis le pied de page violet.
+Fonds, de haut en bas (11/10/2026) : le hero violet, blanc (réalisations), gris clair (étapes et tarif), blanc
+(pour qui), gris clair (contact et avis), blanc (FAQ et audit), puis le pied de page violet.
 
 ### Le carrousel des écrans
 
