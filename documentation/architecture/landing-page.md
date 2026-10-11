@@ -161,8 +161,15 @@ Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
   `content/video-hero/v10/src/miniature.cjs`.
 - Le film se charge en fond 0,7 s après l'affichage, mais ne démarre que quand on fait défiler la page
   jusqu'à lui (demande de Noé, octobre 2026) : au moins 24 px de défilement et la moitié de la vidéo à
-  l'écran. Il joue alors seul, muet et en boucle, depuis le début. Pourquoi : au chargement, on lit le
+  l'écran. Il joue alors seul et en boucle, depuis le début. Pourquoi : au chargement, on lit le
   titre ; s'il partait tout de suite, on raterait son début.
+- **Ce premier départ essaie le son** (Noé, 11/10/2026 : « Ikovaline met le son direct ; force le son, et si
+  ça ne marche pas, affiche le son comme maintenant »). C'est le navigateur qui décide, pas le site : il
+  accepte quand la personne a déjà touché la page, ou sur un ordinateur où elle a souvent écouté des vidéos
+  du site (c'est pour ça qu'Ikovaline parle chez Noé) ; il refuse toujours sur iPhone et dans le navigateur
+  d'Instagram ou de Facebook, sans un geste. Donc la plupart des visiteurs des pubs voient encore la vidéo
+  partir muette, avec « Activer le son ». Refusé même muet : le gros bouton « Lancer la vidéo ». Code :
+  `demarrer` dans `src/HeroVideo.jsx`.
 - Une barre reste toujours visible en bas de la vidéo : lecture/pause, avancement (clic ou glisser),
   « Activer le son », plein écran. Un clic sur la vidéo la met en pause ou la relance. Clavier : espace,
   M, F, flèches. À la fin, elle reprend au début (boucle), comme chez Ikovaline.

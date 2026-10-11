@@ -1,9 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import './hero-video.css'
 
-// Vidéo du hero, sur le modèle du lecteur d'Ikovaline (ikovaline.com) : la vidéo joue seule, muette et en
-// boucle, avec une barre toujours visible en bas : lecture/pause, avancement (on peut cliquer ou glisser
-// dedans), son, plein écran. Un clic sur la vidéo la met en pause ou la relance.
+// Vidéo du hero, sur le modèle du lecteur d'Ikovaline (ikovaline.com) : la vidéo joue seule et en boucle, avec
+// une barre toujours visible en bas : lecture/pause, avancement (on peut cliquer ou glisser dedans), son, plein
+// écran. Un clic sur la vidéo la met en pause ou la relance.
+//
+// LE SON AU DÉPART (Noé, 11/10/2026 : « Ikovaline met le son direct ; force le son, et si ça ne marche pas,
+// affiche le son comme maintenant ») : le premier départ automatique essaie AVEC le son. C'est le navigateur qui
+// décide : il l'accepte quand la personne a déjà touché la page, ou sur un ordinateur où elle a souvent écouté des
+// vidéos de ce site (c'est pour ça qu'Ikovaline parle chez Noé) ; il le refuse toujours sur iPhone et dans le
+// navigateur d'Instagram ou de Facebook, sans un geste. Refusé : la vidéo part muette, avec « Activer le son »,
+// comme avant ; refusée même muette : le gros bouton « Lancer la vidéo ». Le retour après une sortie complète de
+// l'écran, lui, reste muet (pas une voix qui surgit en remontant la page).
 //
 // Ce qu'on fait en plus d'eux :
 // - elle attend que la personne fasse défiler la page jusqu'à elle (demande de Noé, octobre 2026) : au
@@ -124,6 +132,23 @@ export default function HeroVideo() {
     })
   }, [])
 
+  // Premier départ automatique : avec le son si le navigateur l'accepte, sinon muet (voir en haut du fichier).
+  // Le refus arrive avant toute lecture (pas d'événement « play »), on enchaîne donc sur l'essai muet sans rien
+  // montrer ; la barre lit l'état du son au moment où il change, elle ne clignote pas.
+  const demarrer = useCallback(() => {
+    const v = video.current
+    if (!v) return
+    v.muted = false
+    const p = v.play()
+    if (!p || !p.then) return   // très vieux navigateur : play() ne dit rien, on garde ce qu'il a fait
+    p.then(() => { if (!v.muted) { sonDejaMis.current = true; setMuette(false) } })
+      .catch((err) => {
+        if (!err || err.name !== 'NotAllowedError') return   // pause demandée pendant le chargement : rien à faire
+        v.muted = true
+        jouer()
+      })
+  }, [jouer])
+
   // préparation : attributs pour iPhone, source adaptée à l'écran, chargement en fond, puis lecture quand on a
   // fait défiler la page jusqu'à la vidéo
   useEffect(() => {
@@ -162,8 +187,10 @@ export default function HeroVideo() {
         v.muted = true
         sonDejaMis.current = false   // « Activer le son » la relance avec le son, depuis le début
       }
-      // la première fois, seulement quand on est arrivé jusqu'à elle ; ensuite, dès qu'elle revient à l'écran
-      if (dejaPartie.current || (aDefile && part >= SEUIL_DEPART - 0.001)) jouer()
+      // la première fois, seulement quand on est arrivé jusqu'à elle, et en essayant le son ; ensuite, dès qu'elle
+      // revient à l'écran, dans l'état où elle était
+      if (dejaPartie.current) jouer()
+      else if (aDefile && part >= SEUIL_DEPART - 0.001) demarrer()
     }
     const surDefilement = () => {
       if (window.scrollY <= DEFILEMENT_MIN) return
@@ -196,7 +223,7 @@ export default function HeroVideo() {
       window.removeEventListener('scroll', surDefilement)
       document.removeEventListener('visibilitychange', auRetour)
     }
-  }, [qualite, jouer])
+  }, [qualite, jouer, demarrer])
 
   // barre d'avancement fluide, sans re-rendu React, et seulement pendant la lecture
   useEffect(() => {
