@@ -80,7 +80,7 @@ La route `/rendez-vous` et la section de contact restent accessibles pour les an
 
 Règle pour la section comparaison "Agences vs Noé Calmes" :
 
-- Côté agences : garder l'ancrage prix élevé (`À partir de 15 000 €`) pour poser le contraste.
+- Côté agences : garder l'ancrage prix élevé (`À partir de 20 000 €`) pour poser le contraste.
 - Côté Noé : ne pas mettre le prix d'appel en frontal dans cette carte. Utiliser `Tarif fixe, sans surprise`.
 - Juste dessous, un lien bleu/souligné `Combien coûterait mon app ?` vers `/rendez-vous` (la section WhatsApp de l'accueil). Il pointait vers `/audit-app` jusqu'au 02/10/2026 : Noé préfère que la question du prix ouvre directement la conversation.
 

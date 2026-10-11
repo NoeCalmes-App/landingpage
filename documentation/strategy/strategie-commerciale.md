@@ -268,7 +268,7 @@ Réponds aux questions, puis :
 
 ### « C'est trop cher » (à 5 000 €)
 
-> *Je comprends que ça représente un budget. Pour comparaison, une agence classique facture entre 15 000 et 30 000 € pour le même travail. Mon tarif fixe couvre la conception, le développement complet iPhone et Android, et la publication. Et le tout en 45 jours, pas 6 mois. Si le budget est vraiment serré, on peut peut-être réduire le périmètre de fonctionnalités pour adapter — mais en dessous d'un certain seuil, je ne peux plus garantir la qualité.*
+> *Je comprends que ça représente un budget. Pour comparaison, une agence classique facture entre 20 000 et 30 000 € pour le même travail. Mon tarif fixe couvre la conception, le développement complet iPhone et Android, et la publication. Et le tout en 45 jours, pas 6 mois. Si le budget est vraiment serré, on peut peut-être réduire le périmètre de fonctionnalités pour adapter — mais en dessous d'un certain seuil, je ne peux plus garantir la qualité.*
 
 ### « Combien de temps ? »
 
@@ -309,7 +309,7 @@ Réponds aux questions, puis :
 
 ### « Pourquoi pas une agence ? »
 
-> *Trois raisons concrètes : (1) Une agence facture 15 000 à 30 000 €, je facture à partir de 5 000 €. (2) Avec une agence, vous parlez à un commercial qui transmet ensuite à un développeur ; avec moi, vous parlez directement au développeur, donc zéro perte d'information. (3) Une agence vous livre le code et disparaît ; moi je reste disponible 30 jours pour les bugs et je m'engage à vous accompagner si vous voulez continuer ensemble.*
+> *Trois raisons concrètes : (1) Une agence facture 20 000 à 30 000 €, je facture à partir de 5 000 €. (2) Avec une agence, vous parlez à un commercial qui transmet ensuite à un développeur ; avec moi, vous parlez directement au développeur, donc zéro perte d'information. (3) Une agence vous livre le code et disparaît ; moi je reste disponible 30 jours pour les bugs et je m'engage à vous accompagner si vous voulez continuer ensemble.*
 
 ---
 

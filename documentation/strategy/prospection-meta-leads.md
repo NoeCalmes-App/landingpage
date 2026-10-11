@@ -278,7 +278,7 @@ J'ai essayé de t'appeler à 18h comme prévu. On décale à demain 12h30 ou jeu
 **« C'est trop cher » :**
 
 ```
-Je comprends. Une agence facture 15 000 à 30 000 € pour le même travail, et moi c'est un tarif fixe, zéro surprise.
+Je comprends. Une agence facture 20 000 à 30 000 € pour le même travail, et moi c'est un tarif fixe, zéro surprise.
 Et on peut ajuster la première version à ton budget. Tu avais prévu quelle enveloppe ?
 ```
 

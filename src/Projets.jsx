@@ -354,12 +354,11 @@ export default function Projets({ onBack }) {
           </div>
         </div>
 
-        {/* AVIS CLIENTS — les mêmes cartes que sur l'accueil (src/AvisClients.jsx, 11/10/2026, demande de Noé) : un titre,
-            puis la conversation recadrée, le nom des clients masqué. Elles remplacent les trois captures entières, en
-            format story et penchées, dont l'une montrait le nom d'un client. Petit titre « Avis clients », comme le lien
-            de la barre de l'accueil (« Retours clients » jusqu'au 11/10/2026). La marge de côté de la page passe à 24 px
-            à partir de 640 px : la rangée des cartes, sur téléphone, s'étire d'autant (`--avis-gouttiere`). */}
-        <div className="relative mt-16 lg:mt-24 [--avis-gouttiere:20px] sm:[--avis-gouttiere:24px]">
+        {/* AVIS CLIENTS — captures réelles, format story. Les mêmes sur l'accueil, depuis le 11/10/2026 (Noé : « je veux la
+            même partie que dans projets, c'est plus propre ») : elles vivent dans src/AvisClients.jsx, avec le nom des
+            clients masqué. Petit titre « Avis clients », comme le lien de la barre de l'accueil (« Retours clients »
+            jusqu'au 11/10/2026). */}
+        <div className="relative mt-16 lg:mt-24">
           <SectionHead eyebrow="Avis clients" title="Ce qu'en disent mes clients" />
           <AvisClients />
         </div>

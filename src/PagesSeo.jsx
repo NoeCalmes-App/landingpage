@@ -254,7 +254,7 @@ export function PageExpertise({ onAccueil, onBookCall, onAuditApp, onNaviguer })
           </ul>
 
           <h2>Expert indépendant, agence ou intelligence artificielle</h2>
-          <p>Une agence te livre une application et passe au projet suivant. Tu parles à un chef de projet, rarement à la personne qui conçoit, et le budget démarre souvent au-dessus de 15 000 €. De mon côté il y a un seul interlocuteur, joignable directement 6j/7, et un tarif fixe posé avant de commencer.</p>
+          <p>Une agence te livre une application et passe au projet suivant. Tu parles à un chef de projet, rarement à la personne qui conçoit, et le budget démarre souvent au-dessus de 20 000 €. De mon côté il y a un seul interlocuteur, joignable directement 6j/7, et un tarif fixe posé avant de commencer.</p>
           <p>Quant à l'intelligence artificielle, je l'utilise moi-même. Elle génère du code très vite. Elle ne décide pas ce qui est payant, ni où placer l'offre, ni à quel prix, ni pourquoi quelqu'un reviendrait demain. Elle te permet surtout d'arriver plus vite à une application qui ne rapporte rien. C'est développé dans <a href={lienInterne('/blog/creer-application-avec-ia')} onClick={(e) => { if (onNaviguer) { e.preventDefault(); onNaviguer('/blog/creer-application-avec-ia') } }}>créer une application avec l'IA</a>.</p>
 
           <h2>Les trois situations dans lesquelles j'interviens</h2>

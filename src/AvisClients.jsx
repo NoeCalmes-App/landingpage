@@ -1,39 +1,44 @@
-import './avis-clients.css'
-
 // LES AVIS CLIENTS, source unique : l'accueil (sous « Parlons de ton projet ») et /projets les affichent tous les
-// deux (Noé, 11/10/2026 : « mettre les avis de /projets avec le même visuel »). Chaque page pose son propre titre
-// au-dessus ; ce composant donne les cartes et la note dessous.
+// deux, à l'identique (Noé, 11/10/2026 : « je veux la même partie que dans projets, c'est plus propre »). Chaque page
+// pose son propre titre au-dessus (« Ce qu'en disent mes clients ») ; ce composant donne les trois cartes et la note.
 //
-// Trois messages WhatsApp réels (confirmé par Noé), ceux du surligné « Témoignages » de son Instagram, recadrés sur
-// la conversation dans public/assets/images/avis/, le nom des clients masqué. N'ajouter que des messages réels,
-// avec l'accord de la personne, son nom masqué. Ordre : l'idée devenue application (le visiteur s'y reconnaît),
-// l'application d'agence qui ne rapportait pas (« pourquoi moi et pas une agence », dit par un client), puis les
-// délais tenus. Ton neutre (ni « tu » ni « vous ») : /projets l'exige.
+// Les cartes sont les visuels de /projets d'avant le 11/10/2026, faits par Noé pour le surligné « Témoignages » de son
+// Instagram : un titre en capitales avec des mots en violet, la conversation WhatsApp réelle, sur papier quadrillé.
+// Sur téléphone, l'une sous l'autre ; sur ordinateur (1024 px et plus), côte à côte, celles des bords légèrement
+// penchées, droites au survol. Un essai du 11/10/2026 (cartes recadrées sur la conversation, titre écrit en texte,
+// rangée qu'on fait glisser) a été refusé : « c'est plus propre » comme ici.
 //
-// Le titre de chaque carte est écrit ici, en JSX : scripts/generate-routes.js le lit pour le texte servi aux robots
-// sur l'accueil. Les cartes n'ont pas la classe `reveal` : seul l'accueil anime ses sections, la page qui l'affiche
-// l'enveloppe si elle veut l'animer. Styles et largeur des marges sur téléphone : src/avis-clients.css.
+// NOMS MASQUÉS : le 11/10/2026, le nom du client a été recouvert d'une barre noire sur temoignage-refonte.webp et
+// temoignage-delais.webp (il était lisible sur /projets) ; sur temoignage-idee.webp, Noé l'avait déjà effacé. Images
+// dans public/assets/images/avis/ (les anciennes adresses, sous projets/, n'existent plus). N'ajouter que des
+// messages réels, avec l'accord de la personne, son nom masqué. Ordre : l'idée devenue application (le visiteur s'y
+// reconnaît), l'application d'agence qui ne rapportait pas (« pourquoi moi et pas une agence », dit par un client),
+// puis les délais tenus. Ton neutre (ni « tu » ni « vous ») : /projets l'exige.
+//
+// Le titre de chaque carte est dans l'image : le texte `alt` le reprend, pour les lecteurs d'écran et pour Google. La
+// note du dessous est lue par scripts/generate-routes.js pour le texte servi aux robots de l'accueil. Pas de classe
+// `reveal` ici : seul l'accueil anime ses sections, il enveloppe le composant.
 export function AvisClients() {
   return (
     <>
-      <ul className="avis-liste text-left" aria-label="Messages de clients">
-        <li className="avis-carte">
-          <p className="avis-titre">D'une simple idée à une application qui tourne</p>
-          <img className="avis-capture" src="/assets/images/avis/avis-idee.webp" width="511" height="434" loading="lazy" decoding="async"
-            alt="Message WhatsApp d'un client : au départ, il n'avait qu'une idée en tête, rien de concret. Il remercie Noé d'avoir cadré le projet du début à la fin, en expliquant honnêtement les coûts et les délais." />
+      <ul className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-6" aria-label="Messages de clients">
+        <li className="w-full max-w-[330px] lg:max-w-[300px]">
+          <img src="/assets/images/avis/temoignage-idee.webp" width="640" height="901" loading="lazy" decoding="async"
+            className="block w-full h-auto rounded-[18px] border border-card-border shadow-[0_10px_36px_rgba(102,93,255,0.14)] transition-transform duration-300 hover:-translate-y-1 hover:rotate-0 lg:-rotate-2"
+            alt="D'une simple idée à une app qui tourne. Message WhatsApp d'un client : au départ, il n'avait qu'une idée en tête, rien de concret ; il remercie Noé d'avoir cadré le projet du début à la fin en expliquant honnêtement les coûts et les délais." />
         </li>
-        <li className="avis-carte">
-          <p className="avis-titre">Une application qui existait, mais qui ne rapportait pas</p>
-          <img className="avis-capture" src="/assets/images/avis/avis-agence.webp" width="502" height="610" loading="lazy" decoding="async"
-            alt="Message WhatsApp d'un client : son application, développée par une agence, attirait des utilisateurs, mais peu prenaient un abonnement. Noé a identifié le problème et refait le paywall et l'onboarding : quelques semaines plus tard, l'application génère des revenus." />
+        <li className="w-full max-w-[330px] lg:max-w-[300px]">
+          <img src="/assets/images/avis/temoignage-refonte.webp" width="640" height="901" loading="lazy" decoding="async"
+            className="block w-full h-auto rounded-[18px] border border-card-border shadow-[0_10px_36px_rgba(102,93,255,0.14)] transition-transform duration-300 hover:-translate-y-1 hover:rotate-0"
+            alt="Une app qui existait, mais qui ne rapportait pas. Message WhatsApp d'un client : son application, développée par une agence, attirait des utilisateurs mais peu prenaient un abonnement ; Noé a identifié le problème, refait le paywall et l'onboarding, et quelques semaines plus tard l'application génère des revenus." />
         </li>
-        <li className="avis-carte">
-          <p className="avis-titre">Livré dans les délais, 100&nbsp;% satisfait</p>
-          <img className="avis-capture" src="/assets/images/avis/avis-delais.webp" width="375" height="112" loading="lazy" decoding="async"
-            alt="Message WhatsApp d'un client : l'application a été créée dans les délais annoncés, il est 100 % satisfait du résultat et recommandera Noé autour de lui." />
+        <li className="w-full max-w-[330px] lg:max-w-[300px]">
+          <img src="/assets/images/avis/temoignage-delais.webp" width="640" height="901" loading="lazy" decoding="async"
+            className="block w-full h-auto rounded-[18px] border border-card-border shadow-[0_10px_36px_rgba(102,93,255,0.14)] transition-transform duration-300 hover:-translate-y-1 hover:rotate-0 lg:rotate-2"
+            alt="Livré dans les délais, 100 % satisfait. Message WhatsApp d'un client : l'application a été créée dans les délais annoncés, il est 100 % satisfait du résultat et recommandera Noé autour de lui." />
         </li>
       </ul>
-      <p className="avis-note">Messages reçus sur WhatsApp, noms masqués.</p>
+      <p className="mt-6 lg:mt-9 text-center text-grey text-[0.8rem]">Messages reçus sur WhatsApp, noms masqués.</p>
     </>
   )
 }

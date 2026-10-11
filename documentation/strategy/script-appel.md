@@ -213,7 +213,7 @@ C'est ton « outil gratuit ». Tu le nommes, pour qu'il sache qu'il vient de rec
 
 **Trop cher :**
 
-> Je comprends. Pour te situer, une agence facture 15 000 à 30 000 € pour le même travail. Moi c'est un tarif fixe et un seul interlocuteur. Mais je ne baisse pas mes prix et je ne découpe pas pour faire rentrer : je préfère que tu reviennes quand c'est le bon moment plutôt que de te livrer un truc bancal. Tu avais prévu quelle enveloppe ?
+> Je comprends. Pour te situer, une agence facture 20 000 à 30 000 € pour le même travail. Moi c'est un tarif fixe et un seul interlocuteur. Mais je ne baisse pas mes prix et je ne découpe pas pour faire rentrer : je préfère que tu reviennes quand c'est le bon moment plutôt que de te livrer un truc bancal. Tu avais prévu quelle enveloppe ?
 
 (Enveloppe sous 5 000 et financement en cours → Variante C. Sinon → sortie polie §7. Jamais de remise, jamais de phases « pour faire moins cher ».)
 
@@ -290,7 +290,7 @@ Il en a quatre, dans cet ordre : **combien je mets · quand c'est en ligne · co
 | « Huit essais sur dix démarrent le jour de l'installation » | 80 à 90 % des essais à J0 ; 82 % des démarrages d'essai le jour de l'installation | RevenueCat, *State of Subscription Apps 2025* |
 | « Quand le paiement est demandé d'entrée, ça convertit cinq fois plus » *(pas un conseil de mettre un mur partout : la preuve que le placement du paiement décide du résultat)* | 12,1 % d'installations payantes à J35 avec paywall obligatoire, contre 2,2 % en gratuit | RevenueCat 2025 |
 | « Les 5 % d'applications les mieux lancées gagnent 400 fois plus que le quart du bas » | top 5 % : 8 880 $ la première année ; 25 % du bas : 19 $ ou moins | RevenueCat 2025 |
-| « Une agence facture 15 000 à 30 000 € » | — | `positionnement.md` |
+| « Une agence facture 20 000 à 30 000 € » | — | `positionnement.md` |
 | « Plus de 20 applications publiées, plus de 900 000 téléchargements, une première version à 300 000 utilisateurs, une application qui génère 13 000 € par mois » | — | `positionnement.md`, proof points |
 | « Sur ordinateur tu gardes environ 78 % de ce que tu encaisses, contre environ 70 % après la commission du store » | — | `vocabulaire-mobile-web.md` |
 
@@ -317,7 +317,7 @@ Il en a quatre, dans cet ordre : **combien je mets · quand c'est en ligne · co
 - **Reformulation** (§3) : il entend son projet dit mieux qu'il ne l'a dit. C'est là que la confiance bascule.
 - **Donner avant de demander** (§3 et §5) : verdict support, première version, ordre de grandeur, visuel. Il reçoit, puis tu demandes son budget et son oui. La réciprocité fait le reste.
 - **Preuve dosée** : un chiffre dans le tronc commun, un dans la variante, le reste en réserve. Un chiffre qu'on sort au bon moment vaut dix chiffres en rafale.
-- **Ancrage** (§6) : « 15 000 à 30 000 € en agence » avant ta fourchette. Ta fourchette paraît juste, pas chère.
+- **Ancrage** (§6) : « 20 000 à 30 000 € en agence » avant ta fourchette. Ta fourchette paraît juste, pas chère.
 - **Posture haute** : pas de remise, pas de découpage, et le droit de dire « je ne suis pas le bon ». Celui qui peut refuser est celui qu'on veut.
 - **Alternative fermée** : deux créneaux, jamais « quand es-tu dispo ? ». Choisir entre deux est plus facile que choisir tout court.
 - **Préemption** (Variante M) : tu nommes l'objection avant lui. Une objection que tu lèves toi-même ne se retourne pas contre toi.

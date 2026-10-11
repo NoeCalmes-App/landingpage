@@ -23,7 +23,7 @@ Routes gerees dans `src/App.jsx` :
 - `/creation-application-mobile` — page SEO autonome : la methode en 5 etapes (`src/PagesSeo.jsx`)
 - `/faq` — page SEO autonome + donnees structurees FAQPage (`src/PagesSeo.jsx`)
 - `/quiz` et `/quiz/{slug}` — pages quizz SEO (`src/Quiz.jsx`)
-- `/projets` — realisations (`src/Projets.jsx`) ; ses avis clients sont les cartes de l'accueil (`src/AvisClients.jsx`, depuis le 11/10/2026)
+- `/projets` — realisations (`src/Projets.jsx`) ; ses avis clients sont aussi ceux de l'accueil (`src/AvisClients.jsx`, depuis le 11/10/2026)
 - `/audit-app` — audit gratuit d'idee d'application
 - `/rendez-vous` — section contact WhatsApp de la home (`#contact`)
 - `/avis` — les avis clients de la home, sous le bouton du contact (`#avis-clients`)
@@ -243,7 +243,7 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    Côte à côte sur ordinateur, l'un sous l'autre sur téléphone. **45 jours partout, jamais « première version »**
    (Noé, 11/10/2026 ; la page avait dit 30 jours du 10 au 11/10). « Mobile ou web » et pas « SaaS », que Noé
    proposait : « SaaS » ne s'écrit jamais seul (`documentation/context/vocabulaire-mobile-web.md`, règle 6 bis).
-   Sous chacun, en gris, le chiffre d'une agence : « En agence : à partir de 15 000 € » et « En agence : 3 à 6
+   Sous chacun, en gris, le chiffre d'une agence : « En agence : à partir de 20 000 € » (15 000 jusqu'au 11/10/2026, Noé : « 20 000 partout ») et « En agence : 3 à 6
    mois » (11/10/2026, à la place du tableau « Une agence / Avec moi » : le contraste se lit au moment où on lit le
    prix). Le tarif et le délai sont aussi dans la FAQ, mais la FAQ est repliée : ceux-ci se voient, et trient les
    budgets avant WhatsApp (question de Noé du 11/10/2026, gardés pour ça). Sur ordinateur, 40 px au-dessus du bouton
@@ -278,16 +278,20 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    confiance ? » jusqu'au 11/10/2026 à 14 h (Noé : « le titre est bon ? ») : une question fait douter avant de
    rassurer et annonce un argument, alors qu'on montre des messages ; « Ce qu'en disent mes clients » dit ce
    qu'on voit, et c'est le titre de /projets. Trois messages WhatsApp réels (confirmé par Noé), ceux du surligné
-   « Témoignages » de son Instagram (il n'y en a pas d'autres pour l'instant), recadrés sur la conversation dans
-   `public/assets/images/avis/`, le nom des clients masqué. **Une seule source : `src/AvisClients.jsx`**, affiché
-   par l'accueil et par /projets (Noé, 11/10/2026 : « mettre les avis de /projets avec le même visuel ») ; ses
-   styles sont dans `src/avis-clients.css`. Chaque carte a un titre écrit dans le JSX du composant, que
-   `scripts/generate-routes.js` ajoute au texte servi aux robots de l'accueil : « D'une simple idée à une
-   application qui tourne », « Une application qui existait, mais qui ne rapportait pas », « Livré dans les
-   délais, 100 % satisfait ». Le deuxième répond à « pourquoi moi et pas une agence » et prouve les écrans qui
-   font payer, sans redire la vidéo. Dessous : « Messages reçus sur WhatsApp, noms masqués. » Sur téléphone, une
-   rangée qu'on fait glisser ; sur ordinateur, trois colonnes. Ajouter un avis : n'y mettre que des messages
-   réels, avec l'accord de la personne, son nom masqué.
+   « Témoignages » de son Instagram (il n'y en a pas d'autres pour l'instant). **La même partie que sur
+   /projets, une seule source : `src/AvisClients.jsx`**, affiché par l'accueil et par /projets (Noé,
+   11/10/2026 : « je veux la même partie que dans projets, c'est plus propre ») : les visuels de Noé, format
+   story (titre en capitales avec des mots en violet, la conversation, papier quadrillé), dans
+   `public/assets/images/avis/temoignage-…webp` ; l'un sous l'autre sur téléphone, côte à côte et ceux des bords
+   légèrement penchés sur ordinateur. Le nom du client est recouvert d'une barre noire sur deux d'entre eux (il
+   était lisible sur /projets jusqu'au 11/10/2026 ; le troisième, Noé l'avait déjà effacé). Le titre de chaque
+   carte est dans l'image, le texte `alt` le reprend : « D'une simple idée à une app qui tourne », « Une app qui
+   existait, mais qui ne rapportait pas », « Livré dans les délais, 100 % satisfait ». Le deuxième répond à
+   « pourquoi moi et pas une agence » et prouve les écrans qui font payer, sans redire la vidéo. Dessous : « Messages
+   reçus sur WhatsApp, noms masqués. » (texte lu par `scripts/generate-routes.js` pour les robots de l'accueil).
+   Essai refusé le même jour : des cartes recadrées sur la conversation, avec le titre écrit en texte, en rangée
+   qu'on fait glisser sur téléphone (« c'est plus propre » dans /projets). Ajouter un avis : n'y mettre que des
+   messages réels, avec l'accord de la personne, son nom masqué.
    Essais retirés le même jour : la carte avec la photo de Noé (sa tête deux fois avec la barre du haut), « Je
    connais ce milieu, j'ai lancé mes propres applications » (« et alors ? », Noé), le tableau « Une agence / Avec
    moi » (deux tableaux croix/coche à la suite avec « Pour qui », et « un chef de projet entre vous » : « il s'en

@@ -976,7 +976,7 @@ function App() {
               de texte « faisait fade »). Le délai est « 45 jours en moyenne », sans « première version » (Noé, 11/10/2026 :
               45 jours partout, FAQ comprise). « Mobile ou web » et pas « SaaS » : « SaaS » ne s'écrit jamais seul
               (documentation/context/vocabulaire-mobile-web.md, règle 6 bis). Sous chaque repère, le chiffre d'une agence (« à partir de
-              15 000 € », « 3 à 6 mois ») : le contraste se lit au moment où on lit le prix, à la place du tableau « Une agence /
+              20 000 € » depuis le 11/10/2026, 15 000 avant ; « 3 à 6 mois ») : le contraste se lit au moment où on lit le prix, à la place du tableau « Une agence /
               Avec moi » de « Pourquoi me faire confiance ? », retiré le 11/10/2026 (deux tableaux croix/coche à la suite, et
               « un chef de projet entre vous », Noé : « il s'en fout, il veut un résultat »). Mise en page : `.etape-tarif` dans
               src/App.css. */}
@@ -985,7 +985,7 @@ function App() {
               <span className="etape-tarif-icone" aria-hidden="true"><BadgeEuro size={20} strokeWidth={2} /></span>
               <span className="etape-tarif-texte">
                 <strong>Tarif fixe</strong> En général une dizaine de milliers d'euros&nbsp;: stratégie, maquette, développement et mise en ligne.
-                <span className="etape-tarif-agence">En agence&nbsp;: à partir de 15&nbsp;000&nbsp;€</span>
+                <span className="etape-tarif-agence">En agence&nbsp;: à partir de 20&nbsp;000&nbsp;€</span>
               </span>
             </li>
             <li>

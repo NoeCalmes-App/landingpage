@@ -28,8 +28,8 @@
   .etape-tarif-texte { font-size: 14.5px; }
 }
 
-/* Les avis clients (cartes sous « Parlons de ton projet », aussi sur /projets) ont leur propre fichier depuis le
-   11/10/2026 : src/avis-clients.css, importé par src/AvisClients.jsx. */
+/* Les avis clients (sous « Parlons de ton projet », les mêmes que sur /projets) sont mis en page directement dans
+   src/AvisClients.jsx, comme ils l'étaient sur /projets : pas de styles ici. */
 
 /* Très petits téléphones (moins de 350 px) : l'illustration rétrécit pour laisser « Étape · Offert » à sa gauche */
 @media (max-width: 350px) {

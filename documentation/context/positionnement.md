@@ -201,17 +201,17 @@ On peut lancer une première version (MVP) pour valider que les gens paient, ava
 | Agences traditionnelles | Noé Calmes |
 |---|---|
 | Planning lourd et flou | Délai cadré selon l'objectif réel |
-| À partir de 15 000 € | Tarif fixe, sans surprise |
+| À partir de 20 000 € | Tarif fixe, sans surprise |
 | Processus complexe | Process simple et transparent |
 | Jamais disponible, difficile à joindre | Un seul expert, joignable 6j/7 |
 | Code livré — bonne chance pour le lancement | Application pensée pour générer des revenus |
 | Pas de réponse avant 48h minimum | Spécialisé application mobile |
 
-Sur l'accueil, depuis le 11/10/2026, il n'y a plus de tableau : le chiffre d'une agence est écrit sous le tarif et le délai des étapes (« En agence : à partir de 15 000 € », « En agence : 3 à 6 mois »). « Un chef de projet entre vous » a été retiré : le client veut un résultat, peu lui importe l'organisation (Noé). « Pourquoi me faire confiance ? » montre les avis clients. Voir `documentation/architecture/landing-page.md`, sections 3 et 4 de l'accueil.
+Sur l'accueil, depuis le 11/10/2026, il n'y a plus de tableau : le chiffre d'une agence est écrit sous le tarif et le délai des étapes (« En agence : à partir de 20 000 € », « En agence : 3 à 6 mois »). « Un chef de projet entre vous » a été retiré : le client veut un résultat, peu lui importe l'organisation (Noé). « Pourquoi me faire confiance ? » montre les avis clients. Voir `documentation/architecture/landing-page.md`, sections 3 et 4 de l'accueil.
 
 Note pour toute carte de comparaison publique : ne pas faire du prix d'appel `5 000 €` la promesse principale. Le contraste doit rester :
 
-- Agences : `À partir de 15 000 €`
+- Agences : `À partir de 20 000 €` (15 000 € jusqu'au 11/10/2026 : Noé a remonté le chiffre « partout »)
 - Noé : `Tarif fixe, sans surprise`
 - Lien secondaire bleu/souligné : `Combien coûterait mon app ?` -> `/rendez-vous` (section WhatsApp ; vers `/audit-app` jusqu'au 02/10/2026)
 

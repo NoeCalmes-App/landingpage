@@ -48,7 +48,7 @@ Règle d'écriture : **aucun bloc au-delà de 20 mots.** Les visuels portent l'a
 |---|---|---|
 | 1 | Grille 10 × 10, 3 points s'allument au scroll | **3 sur 100** applications dépassent 10 000 € par mois. Les 97 autres avaient une idée. Et un développeur. *(RevenueCat 2024)* |
 | 2 | Camembert, la part 80 % se remplit | **Le code, c'est 20 % du travail.** 20 % — le code · 80 % — ce qui fait payer, et revenir |
-| 3 | Trois cartes, une icône chacune (code · IA · bâtiment) | **Un développeur** exécute ton idée · **Une IA** l'exécute plus vite · **Une agence** l'exécute à 15 000 € |
+| 3 | Trois cartes, une icône chacune (code · IA · bâtiment) | **Un développeur** exécute ton idée · **Une IA** l'exécute plus vite · **Une agence** l'exécute à 20 000 € |
 | 4 | Photo de Noé (ronde), fond violet pâle | **Moi, c'est Noé.** Je suis développeur. Mais je conçois d'abord les 80 %. · **13 000 €** par mois, une application que j'ai conçue · **300 000** utilisateurs sur une première version · **Et surtout** : ils reviennent. C'est ça, mon métier. · Bouton « Raconte-moi ton idée » · Réponse dans la journée, 6j/7 · lien « Combien coûterait mon app ? » (`/rendez-vous`, inchangé) |
 
 Animations : IntersectionObserver, `prefers-reduced-motion` respecté. SVG inline, pas d'images. Jamais « UX », « onboarding », « paywall », « site ».
