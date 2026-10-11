@@ -339,6 +339,17 @@ y est passé à 20 000 €) et `/projets/` (les avis, noms masqués). Les autres
 articles touchés par les 45 jours (salle de sport, coach formateur, guide)
 seront relus d'eux-mêmes. Puis renvoyer le sitemap (36 URLs).
 
+**Fait le 11/10/2026 vers 19 h 30** (avec l'accord de Noé, depuis son Chrome) :
+les dix demandes d'indexation, dans l'ordre ci-dessus, toutes « Indexation
+demandée », et le sitemap renvoyé (« Sitemap envoyé », 36 pages découvertes,
+lu la dernière fois le 10/10). Constat de l'inspection : les trois articles
+absents sont « Explorée, actuellement non indexée » (Google les a lus, le
+13/08, le 27/09 et le 31/07, et a choisi de ne pas les garder) : ce n'est pas
+une panne technique mais un jugement de qualité ou de priorité. Si dans trois
+semaines ils ne sont toujours pas indexés, regarder s'ils doublonnent une
+autre page (« combien coûte » face à `/faq/` et au quiz budget, par exemple)
+et leur donner des liens entrants depuis les pages qui marchent.
+
 ## Ce qui reste à faire (par priorité)
 
 1. ~~Déployer le chantier du 20/08~~ **fait le 20/08/2026** (commit 810fc04).
