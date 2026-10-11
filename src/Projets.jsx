@@ -359,7 +359,7 @@ export default function Projets({ onBack }) {
             clients masqué. Petit titre « Avis clients », comme le lien de la barre de l'accueil (« Retours clients »
             jusqu'au 11/10/2026). */}
         <div className="relative mt-16 lg:mt-24">
-          <SectionHead eyebrow="Avis clients" title="Ce qu'en disent mes clients" />
+          <SectionHead eyebrow="Avis clients" title="Ce que disent mes clients" />
           <AvisClients />
         </div>
 

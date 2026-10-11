@@ -268,7 +268,7 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    fond, Noé 11/10/2026),
    le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`) et « Tu bosses direct avec moi ».
    Placée avant la FAQ le 11/10/2026 (Noé). Fond gris depuis le 11/10/2026 (les fonds alternent).
-   **Puis, sous le bouton, les avis clients** : « Ce qu'en disent mes clients » (`#avis-clients`, sous « Avis
+   **Puis, sous le bouton, les avis clients** : « Ce que disent mes clients » (`#avis-clients`, sous « Avis
    clients », lien du même nom dans la barre ; la route /avis y mène ; `scroll-mt-24` pour que la barre ne le
    cache pas), séparé du bouton par un filet. Descendus ici le 11/10/2026 (Noé : « les avis, je les verrais en
    bas ») : tous les boutons de la page (« J'ai une idée », « Discuter avec Noé ») mènent à cette section, donc
@@ -276,15 +276,19 @@ tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous 
    sous la FAQ : la FAQ répond aux questions, les avis rassurent au moment de cliquer.
    Des avis depuis le 11/10/2026 (Noé : « il veut de la preuve sociale »). Le titre était « Pourquoi me faire
    confiance ? » jusqu'au 11/10/2026 à 14 h (Noé : « le titre est bon ? ») : une question fait douter avant de
-   rassurer et annonce un argument, alors qu'on montre des messages ; « Ce qu'en disent mes clients » dit ce
-   qu'on voit, et c'est le titre de /projets. Trois messages WhatsApp réels (confirmé par Noé), ceux du surligné
+   rassurer et annonce un argument, alors qu'on montre des messages. Puis « Ce qu'en disent mes clients », le
+   titre de /projets, l'après-midi : « c'est pas français » (Noé, le soir). Depuis : « Ce que disent mes
+   clients », ses mots, sur les deux pages, sous le petit titre « Avis clients » (le lien de la barre). Trois
+   messages WhatsApp réels (confirmé par Noé), ceux du surligné
    « Témoignages » de son Instagram (il n'y en a pas d'autres pour l'instant). **La même partie que sur
    /projets, une seule source : `src/AvisClients.jsx`**, affiché par l'accueil et par /projets (Noé,
    11/10/2026 : « je veux la même partie que dans projets, c'est plus propre ») : les visuels de Noé, format
    story (titre en capitales avec des mots en violet, la conversation, papier quadrillé), dans
    `public/assets/images/avis/temoignage-…webp` ; l'un sous l'autre sur téléphone, côte à côte et ceux des bords
    légèrement penchés sur ordinateur. Le nom du client est recouvert d'une barre noire sur deux d'entre eux (il
-   était lisible sur /projets jusqu'au 11/10/2026 ; le troisième, Noé l'avait déjà effacé). Le titre de chaque
+   était lisible sur /projets jusqu'au 11/10/2026 ; le troisième, Noé l'avait déjà effacé). Sur le premier, la
+   phrase du bas de la story, « Merci pour vos retours ! », est effacée (Noé, 11/10/2026 : elle parlait aux
+   clients, pas au visiteur ; le quadrillage est recopié d'un carreau plus haut). Le titre de chaque
    carte est dans l'image, le texte `alt` le reprend : « D'une simple idée à une app qui tourne », « Une app qui
    existait, mais qui ne rapportait pas », « Livré dans les délais, 100 % satisfait ». Le deuxième répond à
    « pourquoi moi et pas une agence » et prouve les écrans qui font payer, sans redire la vidéo. Dessous : « Messages

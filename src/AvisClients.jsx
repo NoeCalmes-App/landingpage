@@ -1,12 +1,17 @@
 // LES AVIS CLIENTS, source unique : l'accueil (sous « Parlons de ton projet ») et /projets les affichent tous les
 // deux, à l'identique (Noé, 11/10/2026 : « je veux la même partie que dans projets, c'est plus propre »). Chaque page
-// pose son propre titre au-dessus (« Ce qu'en disent mes clients ») ; ce composant donne les trois cartes et la note.
+// pose son propre titre au-dessus (« Ce que disent mes clients », les mots de Noé ; « Ce qu'en disent… », essayé le
+// même jour, « c'est pas français ») ; ce composant donne les trois cartes et la note.
 //
 // Les cartes sont les visuels de /projets d'avant le 11/10/2026, faits par Noé pour le surligné « Témoignages » de son
 // Instagram : un titre en capitales avec des mots en violet, la conversation WhatsApp réelle, sur papier quadrillé.
 // Sur téléphone, l'une sous l'autre ; sur ordinateur (1024 px et plus), côte à côte, celles des bords légèrement
 // penchées, droites au survol. Un essai du 11/10/2026 (cartes recadrées sur la conversation, titre écrit en texte,
 // rangée qu'on fait glisser) a été refusé : « c'est plus propre » comme ici.
+//
+// Sur temoignage-idee.webp, la phrase du bas de la story, « Merci pour vos retours ! », est effacée (Noé, 11/10/2026 :
+// sur le site, elle s'adressait aux clients, pas au visiteur) : le quadrillage y est recopié de la bande juste
+// au-dessus, décalé d'un carreau (84 px), pour que les lignes tombent juste.
 //
 // NOMS MASQUÉS : le 11/10/2026, le nom du client a été recouvert d'une barre noire sur temoignage-refonte.webp et
 // temoignage-delais.webp (il était lisible sur /projets) ; sur temoignage-idee.webp, Noé l'avait déjà effacé. Images

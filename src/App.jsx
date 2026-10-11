@@ -1071,9 +1071,10 @@ function App() {
           LES AVIS CLIENTS SONT ICI, sous le bouton (Noé, 11/10/2026) : tous les boutons de la page (« J'ai une idée »,
           « Discuter avec Noé ») mènent à cette section ; celui qui hésite au moment d'écrire trouve juste dessous ce que
           disent les clients, avant la FAQ. Les cartes viennent de src/AvisClients.jsx, partagé avec /projets (ce qu'il
-          y a dedans, l'ordre et la règle des messages réels : voir ce fichier). Titre « Ce qu'en disent mes clients »,
-          le même que sur /projets : c'était « Pourquoi me faire confiance ? » jusqu'au 11/10/2026, une question qui fait
-          douter avant de rassurer et qui annonce un argument, alors qu'on montre des messages. Pas de tableau « Une
+          y a dedans, l'ordre et la règle des messages réels : voir ce fichier). Titre « Ce que disent mes clients », le
+          même que sur /projets (les mots de Noé, 11/10/2026 au soir : « Ce qu'en disent mes clients », essayé l'après-midi,
+          « c'est pas français »). Avant : « Pourquoi me faire confiance ? », une question qui fait douter avant de
+          rassurer et qui annonce un argument, alors qu'on montre des messages. Pas de tableau « Une
           agence / Avec moi » dessous : ses trois lignes redisaient le tarif et le délai (le chiffre d'une agence est
           sous chacun, dans les étapes) et « Tu bosses direct avec moi » (ci-dessous), et le deuxième avis raconte déjà
           l'agence, par la bouche d'un client. Id « avis-clients » sur le bloc des avis (« confiance » jusqu'au
@@ -1132,7 +1133,7 @@ function App() {
               Avis clients
             </p>
             <h3 className="reveal font-jakarta text-text text-xl md:text-[1.6rem] font-extrabold tracking-tight text-center mb-6 md:mb-10">
-              Ce qu'en disent <span className="text-brand">mes clients</span>
+              Ce que disent <span className="text-brand">mes clients</span>
             </h3>
             <div className="reveal">
               <AvisClients />
