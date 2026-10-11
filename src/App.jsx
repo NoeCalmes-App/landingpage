@@ -692,11 +692,14 @@ function App() {
   return (
     <div ref={scrollRef}>
       {/* ========== NAVBAR ========== */}
+      {/* Fond blanc à 92 % (#fffefceb) depuis le 11/10/2026 : à 24 %, le texte des sections passait au travers en
+          défilant (Noé : « la navbar transparente, pas ouf »). Même fond sur toutes les pages (blog, pages SEO, quiz,
+          projets, audit). */}
       <nav className="anim-nav fixed inset-x-0 top-2.5 md:top-[18px] z-50 flex justify-center px-4 md:px-6">
         <div className="w-full max-w-210">
           <div
             className={`backdrop-blur-[12px] border border-[#70707029] shadow-[0_1px_3px_#00000017] overflow-hidden rounded-[40px] transition-[background-color] duration-300 ease-in-out ${
-              menuOpen ? 'bg-[#ffffffee]' : 'bg-[#fffefc3d]'
+              menuOpen ? 'bg-[#ffffffee]' : 'bg-[#fffefceb]'
             }`}
           >
             {/* Bar */}

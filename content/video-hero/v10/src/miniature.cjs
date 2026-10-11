@@ -1,6 +1,7 @@
 // Miniature de la vidéo du hero (public/assets/videos/hero-v10-miniature.webp), choisie par Noé le 10/10/2026.
 // Le fond blanc du film, pris à l'image de « En 2026, un vrai pari » (t = 3,76 s) sans les dés ni le texte,
-// « Ton app va décoller. » centré en haut, et une courbe qui reste à plat puis monte jusqu'à un point violet.
+// « Ton application va décoller. » centré en haut (« Ton app va décoller. » jusqu'au 11/10/2026, Noé : « mets plutôt
+// ton application »), et une courbe qui reste à plat puis monte jusqu'à un point violet.
 // Tout tient dans les deux tiers du haut : sur ordinateur, le bas de l'écran coupe la vidéo à l'arrivée ; sur
 // téléphone, la barre du lecteur couvre le dernier tiers. La phrase reste plus petite que le titre du hero.
 //
@@ -42,7 +43,7 @@ const HTML = `
   <circle cx="1700" cy="262" r="42" fill="#665dff" fill-opacity="0.13"/>
   <circle cx="1700" cy="262" r="18.9" fill="#665dff" stroke="#fffefc" stroke-width="7.35" filter="url(#ombre)"/>
 </svg>
-<div class="tt">Ton app va <span class="grad">décoller.</span></div>`;
+<div class="tt">Ton application va <span class="grad">décoller.</span></div>`;
 
 (async () => {
   const out = process.argv[2] || 'miniature.png';

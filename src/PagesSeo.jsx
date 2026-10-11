@@ -78,7 +78,7 @@ function EnteteSeo({ onAccueil, onBookCall }) {
   return (
     <nav className="fixed inset-x-0 top-2.5 md:top-4.5 z-50 flex justify-center px-4 md:px-6">
       <div className="w-full max-w-230">
-        <div className="backdrop-blur-md border border-[#70707029] shadow-[0_1px_3px_#00000017] rounded-[40px] bg-[#fffefc3d]">
+        <div className="backdrop-blur-md border border-[#70707029] shadow-[0_1px_3px_#00000017] rounded-[40px] bg-[#fffefceb]">
           <div className="flex items-center justify-center min-[480px]:justify-between h-20 px-5 md:px-7">
             <a
               href="/"

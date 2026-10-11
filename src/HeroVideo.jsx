@@ -31,7 +31,8 @@ const SOURCES = {
 }
 // L'affiche est une vraie image (et pas l'attribut `poster`) : le navigateur choisit la bonne taille et la
 // charge en priorité. Elle couvre la vidéo jusqu'à sa première image. C'est la miniature de la vidéo, dessinée
-// sur le fond blanc du film (celui de « En 2026, un vrai pari ») : « Ton app va décoller. » et une courbe qui
+// sur le fond blanc du film (celui de « En 2026, un vrai pari ») : « Ton application va décoller. » (« Ton app » jusqu'au
+// 11/10/2026) et une courbe qui
 // monte jusqu'à un point violet. Peu d'éléments, et tout dans les deux tiers du haut : sur ordinateur, le bas de
 // l'écran coupe la vidéo à l'arrivée ; sur téléphone, la barre du lecteur couvre le dernier tiers.
 const AFFICHE = { petite: '/assets/videos/hero-v10-miniature-960.webp', grande: '/assets/videos/hero-v10-miniature.webp' }

@@ -103,13 +103,15 @@ Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton,
   quelqu'un (Noé, 10/10/2026), comme le lien du pied de page. Le bouton qui suit « Comment ça se passe ? »
   dit aussi « Discuter avec Noé » (11/10/2026 : la suite de l'étape « On en parle »). La barre du haut et le menu sur téléphone disent « J'ai une idée » (plus court,
   comme Ikovaline), sur l'accueil, le blog, les quiz et les pages /expertise, /creation-application-mobile
-  et /faq. Liens de la barre (`NAV_LINKS`, 11/10/2026) : « Réalisations », « Étapes et tarif », « Qui je suis »
-  (avant : « Preuves », « Méthode », « Audit »), dans l'ordre de la page, les petits titres des sections où ils
+  et /faq. Liens de la barre (`NAV_LINKS`, 11/10/2026) : « Réalisations », « Étapes et tarif », « Avis clients »
+  (« Qui je suis » le matin du 11/10 ; avant : « Preuves », « Méthode », « Audit »), dans l'ordre de la page, les petits titres des sections où ils
   mènent, mot pour mot. « Et tarif » : le prix est la première question de la cible, on doit voir d'un coup
   d'œil où le trouver. Ces liens mènent dans la page : ils ne jouent pas sur le référencement (les liens
   vers les pages SEO sont dans le pied de page et le pré-rendu).
   Plus d'audit dans la barre : « c'est un plus », Noé ne veut pas le pousser ; il reste en bas de page, dans
   le pied de page et sur la route /audit. Les trois tiennent dès 1024 px.
+- Le fond de la barre est blanc à 92 % (`#fffefceb`) depuis le 11/10/2026, sur toutes les pages : à 24 %, le
+  texte des sections passait au travers en défilant (Noé : « la navbar transparente, pas ouf »).
 - Au survol, tous les boutons de l'accueil ont le reflet de la fin du film (« Audit offert ») : un trait
   de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les traverse et passe sous le
   texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (« J'ai une idée d'application » en haut,
@@ -143,8 +145,8 @@ changer le numéro dans les noms de fichiers (v12…) : le navigateur ne ressert
 Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
 
 - Tant que la vidéo n'a rien montré, une miniature est posée dessus, comme chez Ikovaline (une « diapo »,
-  peu d'éléments) : le fond blanc du film (celui de « En 2026, un vrai pari »), « Ton app va décoller. »
-  centré en haut (« décoller. » dans le dégradé violet, comme dans le film) et une courbe qui reste à plat
+  peu d'éléments) : le fond blanc du film (celui de « En 2026, un vrai pari »), « Ton application va
+  décoller. » (« Ton app va décoller. » jusqu'au 11/10/2026, Noé : « mets plutôt ton application ») centré en haut (« décoller. » dans le dégradé violet, comme dans le film) et une courbe qui reste à plat
   puis monte vers le haut à droite jusqu'à un point violet, avec un léger dégradé dessous. La phrase est
   plus petite que le titre du hero, pour qu'il reste le plus gros de la page. Tout tient dans les deux
   tiers du haut : sur ordinateur, on ne voit que le haut de la vidéo à l'arrivée, et en descendant on la

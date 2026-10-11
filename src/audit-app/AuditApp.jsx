@@ -264,7 +264,7 @@ function AuditAppTopBar({ onBack }) {
   return (
     <header className="anim-nav fixed inset-x-0 top-2.5 md:top-[18px] z-50 flex justify-center px-4 md:px-6">
       <div className="w-full max-w-200">
-        <div className="backdrop-blur-[12px] border border-[#70707029] shadow-[0_1px_3px_#00000017] bg-[#fffefc99] rounded-[40px]">
+        <div className="backdrop-blur-[12px] border border-[#70707029] shadow-[0_1px_3px_#00000017] bg-[#fffefceb] rounded-[40px]">
           <div className="flex items-center justify-between h-[68px] md:h-[72px] pl-3 pr-2 md:pl-3.5 md:pr-3">
             {/* Brand : photo + nom + statut (clic = retour accueil) */}
             <button
