@@ -311,26 +311,27 @@ Fonds, de haut en bas : le hero violet, blanc, gris clair, blanc, gris clair, bl
 
 ### Le carrousel des écrans
 
-Huit captures fournies par Noé, converties en WebP de 660 px sous
-`public/assets/images/apps/captures/` (environ 412 Ko au total). La huitième, le premier écran de Bailora
-(« Vos SCI, enfin simples », `bailora-bienvenue.webp`), est arrivée le 11/10/2026, juste avant son tableau de
-bord ; sa légende : « Une porte pour le propriétaire, une autre pour le locataire : personne ne se perd. »
-Noé prévoit un deuxième écran de Plouff Habitudes et un de Sonora.
+Neuf captures fournies par Noé, converties en WebP de 660 px sous
+`public/assets/images/apps/captures/` (environ 459 Ko au total). Ajoutées le 11/10/2026 : le premier écran de
+Bailora (« Vos SCI, enfin simples », `bailora-bienvenue.webp`, légende « Une porte pour le propriétaire, une autre
+pour le locataire : personne ne se perd. ») et l'écran d'abonnement de Plouff Habitudes (`plouff-abonnement.webp`,
+choisi parmi six captures de son bureau : c'est l'écran qui fait payer, celui qui prouve « une application conçue
+pour rapporter » ; légende « L'offre annuelle mise en avant, 7 jours d'essai : le curieux devient abonné. »). Il
+affiche « Salut Noe » et « Soutenir un développeur français indé » : à refaire avec un autre prénom si Noé veut
+qu'on devine moins que Plouff Habitudes est à lui. Noé prévoit un deuxième écran de Sonora.
 
 **L'ordre** (Noé, 11/10/2026 : « montrer 3 écrans différents ») : les trois téléphones visibles montrent
 toujours trois applications différentes, jamais deux écrans de la même côte à côte. Deux tours, dans le même
-ordre d'applications (SmoothRide, Bailora, Plouff Habitudes, Sonora, WakeUp Alarme) : d'abord un écran de
-chacune, le plus parlant, puis le deuxième écran de chacune. Deux écrans par application au plus : au-delà,
-personne ne les voit (dix écrans font déjà 55 secondes). Les deux applications de Noé ne se suivent jamais
-(Sonora est entre elles). Les deuxièmes écrans de Plouff Habitudes et de Sonora iront dans le deuxième tour, à
-leur place (après celui de Bailora). En développement, la console avertit si trois écrans qui se suivent ne
-viennent pas de trois applications différentes. Les captures contiennent déjà l'encoche
-et la barre d'état : le cadre CSS ajoute seulement la coque et les boutons. La liste `SCREENS`
-(`src/AppShowcase.jsx`) définit l'ordre, le type (affiché à côté du nom : « Application » pour tous les
-écrans depuis le 11/10/2026, à la demande de Noé) et la légende de chaque écran, qui dit à
-quoi il sert (rédigées le 10/10/2026, à faire relire par Noé). La légende change avec l'écran du milieu.
+ordre d'applications (SmoothRide, Bailora, WakeUp Alarme, Sonora, Plouff Habitudes ; WakeUp avant Plouff à la
+demande de Noé) : d'abord un écran de chacune, le plus parlant, puis le deuxième écran de chacune. Deux écrans
+par application au plus : au-delà, personne ne les voit (dix écrans font déjà 55 secondes). Plouff Habitudes
+raconte à elle seule la promesse de la vidéo : l'écran du jour au premier tour (ils reviennent chaque jour),
+l'abonnement au second (ils paient chaque mois). Le deuxième écran de Sonora ira entre ceux de WakeUp Alarme et
+de Plouff Habitudes au second tour ; les deux applications de Noé ne se suivront alors plus nulle part. Deux
+légendes ne disent jamais la même chose. En développement, la console avertit si trois écrans qui se suivent ne
+viennent pas de trois applications différentes.
 
-Le nombre d'écrans est libre : seuls les positions -1, 0 et 1 se voient, les autres sont rangés cachés à -2
+Le nombre d'écrans est libre : seules les positions -1, 0 et 1 se voient, les autres sont rangées cachées à -2
 ou 2 (`position` dans `src/AppShowcase.jsx`). Avant le 11/10/2026, à 8 écrans, celui d'en face (position 4)
 n'avait pas de style et s'affichait par-dessus le téléphone du milieu.
 

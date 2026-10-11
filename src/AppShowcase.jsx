@@ -4,15 +4,18 @@ import './app-showcase.css'
 
 // Les écrans de la section « Ce que j'ai déjà construit » de l'accueil (refonte du 10/10/2026).
 // Chaque écran porte une légende qui dit à quoi il sert : c'est là que « une stratégie derrière chaque écran »
-// se voit, au lieu d'être annoncée (la vidéo du hero le dit déjà). `kind` est affiché à côté du nom : tous les
+// se voit, au lieu d'être annoncée (la vidéo du hero le dit déjà). Deux légendes ne disent pas la même chose
+// (celle de Plouff Habitudes disait « chaque matin », comme celle de WakeUp Alarme, jusqu'au 11/10/2026). `kind` est affiché à côté du nom : tous les
 // écrans sont des « Application » depuis le 11/10/2026 (Noé, « partout Application »).
 //
 // L'ORDRE (Noé, 11/10/2026) : les trois téléphones visibles montrent toujours trois applications différentes,
-// jamais deux écrans de la même côte à côte. D'où deux tours, dans le même ordre d'applications : d'abord un
-// écran de chacune (le plus parlant), puis le deuxième écran de chacune. Deux écrans par application au plus :
-// au-delà, personne ne les voit (un tour complet de dix écrans dure déjà 55 secondes). Les applications de Noé
-// (Plouff Habitudes, WakeUp Alarme) ne se suivent jamais : Sonora est entre les deux. Le deuxième écran de
-// Plouff Habitudes se range après celui de Bailora, le deuxième de Sonora juste après. Un avertissement en
+// jamais deux écrans de la même côte à côte. D'où deux tours, dans le même ordre d'applications (SmoothRide,
+// Bailora, WakeUp Alarme, Sonora, Plouff Habitudes ; WakeUp avant Plouff à la demande de Noé) : d'abord un écran
+// de chacune, le plus parlant, puis le deuxième écran de chacune. Deux écrans par application au plus : au-delà,
+// personne ne les voit (un tour complet de dix écrans dure déjà 55 secondes). Le deuxième écran de Sonora, à
+// venir, se range entre ceux de WakeUp Alarme et de Plouff Habitudes : les deux applications de Noé ne se suivront
+// alors plus nulle part. Plouff Habitudes raconte à elle seule la promesse de la vidéo : l'écran du jour (ils
+// reviennent chaque jour) au premier tour, l'abonnement (ils paient chaque mois) au second. Un avertissement en
 // développement (plus bas) signale trois écrans qui se suivent sans venir de trois applications différentes.
 // Le nombre d'écrans est libre : au-delà des trois téléphones visibles, tous attendent cachés à gauche ou à
 // droite (voir `position` plus bas).
@@ -22,19 +25,21 @@ const SCREENS = [
     role: 'Dès le premier écran, il voit ce qu’il gagne : le trajet le plus doux.' },
   { file: 'bailora-bienvenue', name: 'Bailora', kind: 'Application', alt: 'Premier écran de Bailora : « Vos SCI, enfin simples », avec un accès à part pour le locataire',
     role: 'Une porte pour le propriétaire, une autre pour le locataire : personne ne se perd.' },
-  { file: 'plouff-habitudes', name: 'Plouff Habitudes', kind: 'Application', alt: 'Suivi quotidien des habitudes avec une mascotte et les objectifs du jour',
-    role: 'Une mascotte et les objectifs du jour : l’habitude qui fait revenir chaque matin.' },
-  { file: 'sonora-decouvrir', name: 'Sonora', kind: 'Application', alt: 'Découverte musicale, playlists et lecteur audio',
-    role: 'Des playlists prêtes dès l’arrivée : jamais d’écran vide pour un nouveau venu.' },
   { file: 'wakeup-alarme', name: 'WakeUp Alarme', kind: 'Application', alt: 'Accueil du réveil à missions avec une alarme activée',
     role: 'Une mission pour couper le réveil : on ouvre l’application chaque matin.' },
-  // Deuxième tour : le deuxième écran de chacune, dans le même ordre
+  { file: 'sonora-decouvrir', name: 'Sonora', kind: 'Application', alt: 'Découverte musicale, playlists et lecteur audio',
+    role: 'Des playlists prêtes dès l’arrivée : jamais d’écran vide pour un nouveau venu.' },
+  { file: 'plouff-habitudes', name: 'Plouff Habitudes', kind: 'Application', alt: 'Suivi quotidien des habitudes avec une mascotte et les objectifs du jour',
+    role: 'Une mascotte et les objectifs du jour : l’habitude devient un rendez-vous.' },
+  // Deuxième tour : le deuxième écran de chacune, dans le même ordre (Sonora, à venir, avant Plouff Habitudes)
   { file: 'smoothride-navigation', name: 'SmoothRide', kind: 'Application', alt: 'Navigation avec signalement des dos-d’âne sur le trajet',
     role: 'Les dos-d’âne annoncés pendant le trajet : la raison de rouvrir l’application.' },
   { file: 'bailora-accueil', name: 'Bailora', kind: 'Application', alt: 'Tableau de bord des loyers, paiements et actions à traiter',
     role: 'Ce qui demande une action est en haut : il sait quoi faire en 3 secondes.' },
   { file: 'wakeup-personnalisation', name: 'WakeUp Alarme', kind: 'Application', alt: 'Choix du fond d’écran du réveil parmi plusieurs ambiances',
     role: 'Des ambiances à choisir : chacun fait son réveil à son goût, et le garde.' },
+  { file: 'plouff-abonnement', name: 'Plouff Habitudes', kind: 'Application', alt: 'Écran d’abonnement de Plouff Habitudes : trois formules, l’annuelle mise en avant, et 7 jours d’essai gratuit',
+    role: 'L’offre annuelle mise en avant, 7 jours d’essai : le curieux devient abonné.' },
 ]
 
 // Garde-fou, en développement seulement : trois écrans qui se suivent (en boucle) se voient en même temps.
