@@ -152,9 +152,11 @@ Mes projets : noecalmes.fr/projets
 Pas de proposition d'appel tant que la personne n'a jamais répondu : la séquence monte seule en pression (message → message → voix à J+5). L'appel se propose par écrit uniquement à un lead qui a déjà répondu. **Exception : le lead qui a écrit son idée dans le formulaire** a déjà répondu à sa façon ; son premier message proposait l'appel, sa relance J+2 aussi :
 
 ```
-{prénom}, je reviens vers toi pour ton idée d'application : je vois bien comment la lancer, et 15 minutes suffisent pour te l'expliquer.
+{prénom}, je reviens vers toi pour l'audit gratuit de ton idée d'application : une quinzaine de minutes par téléphone suffisent.
 Plutôt demain 12h30 ou jeudi 18h ?
 ```
+
+Elle reprend l'offre du premier message (l'audit gratuit, 12/10/2026), mais avec deux heures précises : le message automatique lui demandait quand il était disponible, la relance lui rend la réponse plus facile.
 
 Une relance assume d'être une relance : on référence le silence (factuel, sans reproche), on ne se représente pas (il sait qui écrit, c'est le même fil), pas de « Bonjour » répété, et jamais « c'est toujours d'actualité ? ». « Je te dis ce que j'en pense » = raison de répondre (avis d'expert contre une phrase).
 
