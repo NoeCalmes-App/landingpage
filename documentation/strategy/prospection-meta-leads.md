@@ -75,14 +75,14 @@ La touche 1 ne dépend plus de l'import manuel (délai 24-48h) : elle part **aut
 9. Chaque message tient sur un écran de téléphone sans scroller. Pas d'emoji en message 1.
 10. Heures d'envoi des touches 2-4 : 12h-13h30 ou 18h-20h en semaine. Pas le dimanche matin. (La touche 1 auto suit sa propre fenêtre : lun-sam 9h-21h, dimanche 10h-20h, la vitesse prime.)
 11. **Pas de NDA proposé par écrit.** Cette cible n'aime pas les mots « contrat » et « confidentialité » avant d'avoir parlé à quelqu'un. L'accord se propose à la fin de l'appel, avec le devis et la maquette, comme le prévoit le script d'appel ; plus tôt **seulement si le prospect hésite lui-même** à dévoiler son idée. La question « c'est quoi, et pour qui ? » ne demande rien de secret : personne ne se fait voler une idée en disant « une app de coaching sportif pour particuliers ».
-12. **Pas de présentation quand c'est lui qui écrit** : son téléphone affiche déjà « Noé Calmes ». Quand c'est nous qui écrivons en premier (formulaire), une présentation en trois mots, « ici Noé Calmes », jamais « c'est Noé ».
+12. **Pas de présentation quand c'est lui qui écrit** : son téléphone affiche déjà « Noé Calmes ». Quand c'est nous qui écrivons en premier (formulaire), une présentation en trois mots, « ici Noé Calmes », jamais « c'est Noé », ni « Noé de noecalmes.fr », qui fait employé d'une boîte : le nom complet rassure, il peut le chercher (12/10/2026).
 13. **Tu par écrit, puis son registre à lui** (12/10/2026). L'écran de fin du formulaire lui dit « Je te contacte personnellement sous 24 h » : le message qui suit tutoie, sinon la voix change entre la promesse et le message. Le sérieux vient du contenu (le nom, le site, une offre claire, une seule question), pas du pronom. Jamais « je me permets de te tutoyer » : le formulaire l'a déjà fait, la phrase attire l'attention dessus. S'il répond au vous, on passe au vous dès le message suivant et on propose « on peut se tutoyer ? » au début de l'appel ; s'il répond au tu, on le tutoie aussi à l'appel. Règle de fond : `documentation/context/positionnement.md`, « Tonalité ».
 
 ## La séquence
 
 | Touche | Quand | Canal | Levier |
 |---|---|---|---|
-| 1 | J0, 5 minutes après le formulaire (automatique) | WhatsApp | Question (l'idée), ou l'audit offert s'il a écrit son idée |
+| 1 | J0, 5 minutes après le formulaire (automatique) | WhatsApp | Question (l'idée), ou l'appel s'il a écrit son idée |
 | 2 | J+2 | WhatsApp | Preuve (lien projets) + même question, autre forme |
 | 3 | J+5 | Appel, puis WhatsApp si pas de réponse | La voix |
 | 4 | J+12 | WhatsApp | Clôture digne |
@@ -99,16 +99,16 @@ Tu as rempli mon formulaire pour ton projet d'application.
 C'est quoi ton idée, en deux phrases : c'est quoi, et pour qui ?
 ```
 
-**Il a écrit son idée, en au moins trois mots** (formulaire du 11 octobre 2026, pastille 💡) : on ne la lui redemande jamais, on lui propose l'audit offert. Message automatique :
+**Il a écrit son idée, en au moins trois mots** (formulaire du 11 octobre 2026, pastille 💡) : on ne la lui redemande jamais, on lui propose l'appel tout de suite. Message automatique :
 
 ```
 Bonjour {prénom}, ici Noé Calmes (noecalmes.fr).
 J'ai bien reçu ton idée d'application.
-Je te propose 15 minutes au téléphone. L'audit de ton idée est offert : mes conseils pour qu'elle fonctionne, et à la fin, combien ça te coûterait.
-Tu préfères en journée ou en soirée ?
+Je te propose qu'on s'appelle 15 minutes : je te dis franchement ce que j'en pense et combien ça te coûterait.
+Ça t'arrange plutôt en journée ou après 18h ?
 ```
 
-« Bien reçu », jamais « j'ai lu » : un message automatique n'a rien lu. Un mot seul (« coaching ») reçoit la question, pas ce texte : « j'ai bien reçu ton idée » y sonnerait faux, et « en deux phrases » lui demande de préciser (Noé, 12/10/2026). L'appel se vend par ce qu'il lui apporte, pas par « on parle budget et délai » : « L'audit de ton idée est offert », mot pour mot la fin du film du site que l'écran de fin du formulaire lui fait regarder ; ce qui suit les deux points dit ce qu'est l'audit, pour qui ne connaît pas le mot ; « pour qu'elle fonctionne » plutôt que « rentable », ça parle à tout le monde ; le coût à la fin (Noé, 12/10/2026). « Journée ou soirée » se répond en un mot ; dès qu'il répond, Noé donne deux heures précises (« Parfait. Demain 18h ou jeudi 18h30 ? »).
+« Bien reçu », jamais « j'ai lu » : un message automatique n'a rien lu. Un mot seul (« coaching ») reçoit la question, pas ce texte : « j'ai bien reçu ton idée » y sonnerait faux, et « en deux phrases » lui demande de préciser (Noé, 12/10/2026). L'appel se propose comme une personne le ferait : un avis franc et un prix. C'est l'audit, sans les mots de pub : « audit offert », « décoller », « potentiel » et la liste de promesses faisaient « message IA » (Noé, 12/10/2026), et un fondateur sérieux attend une vraie personne, courte. Quinze minutes, parce que la durée courte rassure. « Combien ça te coûterait » annonce que le prix se donne à l'appel, ce qui coupe le « c'est combien ? » par écrit. « Journée ou après 18h » se répond en un mot, sans ouvrir son agenda : pas « en soirée », qui sonne moins pro, ni « quand es-tu disponible ? », qui fait remettre à plus tard ; dès qu'il répond, Noé donne deux heures précises (« Parfait. Demain 18h ou jeudi 18h30 ? »), ce qui montre un vrai agenda.
 
 Variante stade « prêt / financement en place » :
 
@@ -131,7 +131,7 @@ C'est quoi ton idée, en deux phrases : c'est quoi, et pour qui ?
 ```
 Bonjour {prénom}, ici Noé Calmes (noecalmes.fr).
 J'ai lu ton idée, ça se tient.
-Je te propose 15 minutes au téléphone. L'audit de ton idée est offert : mes conseils pour qu'elle fonctionne, et à la fin, combien ça te coûterait.
+Je te propose qu'on s'appelle 15 minutes : je te dis franchement ce que j'en pense et combien ça te coûterait.
 Plutôt demain 12h30 ou jeudi 18h ?
 ```
 
@@ -257,10 +257,10 @@ Ok, ça se tient, je vois comment lancer un projet comme ça.
 Tu en es où : juste l'idée, tu y réfléchis sérieusement, ou tu veux démarrer bientôt ?
 ```
 
-**1 bis. Il a répondu** → l'appel, vendu par ce qu'il lui apporte : l'audit offert, des conseils pour qu'elle fonctionne, le coût. « À la fin, combien ça te coûterait » annonce que le prix se donne à l'appel, ce qui coupe le « c'est combien ? » par écrit. (Jusqu'au 12/10/2026 : « on parle budget et délai de vive voix », qui ne promettait rien ; Noé l'a écarté.)
+**1 bis. Il a répondu** → l'appel, proposé comme une personne le ferait : un avis franc et un prix. « Combien ça te coûterait » annonce que le prix se donne à l'appel, ce qui coupe le « c'est combien ? » par écrit. (Jusqu'au 12/10/2026 : « on parle budget et délai de vive voix », qui ne promettait rien ; Noé l'a écarté.)
 
 ```
-Parfait. Je te propose 15 minutes au téléphone. L'audit de ton idée est offert : mes conseils pour qu'elle fonctionne, et à la fin, combien ça te coûterait.
+Parfait. Je te propose qu'on s'appelle 15 minutes : je te dis franchement ce que j'en pense et combien ça te coûterait.
 Plutôt demain 12h30 ou jeudi 18h ?
 ```
 
