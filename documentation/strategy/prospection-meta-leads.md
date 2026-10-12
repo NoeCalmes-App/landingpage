@@ -60,11 +60,11 @@ Les leads tombent en temps réel dans la Google Sheet Meta (connexion native).
 
 ## Mise à jour 2026-07-19 — touche 1 automatisée
 
-La touche 1 ne dépend plus de l'import manuel (délai 24-48h) : elle part **automatiquement à T+10 min** après le formulaire, via Nowork (Sheet → Apps Script → Cloud Function → template WhatsApp Cloud API). Dédoublonnage automatique : lead déjà client ou qui a déjà écrit sur WhatsApp = pas d'envoi. Fenêtre d'envoi : lundi-samedi 9h-21h, sinon report au prochain créneau (dimanche → lundi 9h). Les touches 2-4 restent manuelles, pilotées par le CRM. Spec complète : `nowork/documentation/systems/lead-auto-import.md`.
+La touche 1 ne dépend plus de l'import manuel (délai 24-48h) : elle part **automatiquement à T+5 min** après le formulaire (T+10 jusqu'au 12/10/2026), via Nowork (Sheet → Apps Script → Cloud Function → template WhatsApp Cloud API). Dédoublonnage automatique : lead déjà client ou qui a déjà écrit sur WhatsApp = pas d'envoi. Fenêtre d'envoi : lundi-samedi 9h-21h, dimanche 10h-20h (fermé jusqu'au 12/10/2026), sinon report au prochain créneau. Les touches 2-4 restent manuelles, pilotées par le CRM. Spec complète : `nowork/documentation/systems/lead-auto-import.md`.
 
 ## Principes
 
-1. **Vitesse** : le message 1 part automatiquement à T+10 min après le lead (cf. mise à jour 2026-07-19). Le taux de réponse chute massivement après 24h (étude Lead Response Management : contacté < 5 min = ~21x plus de chances de qualifier qu'à 30 min). Les dix minutes sont un choix assumé : elles laissent au lead motivé le temps d'écrire en premier — l'écran de fin du formulaire l'y invite — auquel cas l'envoi automatique est annulé, la conversation est initiée par lui, et le template n'est pas facturé.
+1. **Vitesse** : le message 1 part automatiquement à T+5 min après le lead, **à chaque lead**, y compris celui qui a écrit son idée (12/10/2026). Le taux de réponse chute massivement après 24h (étude Lead Response Management : contacté < 5 min = ~21x plus de chances de qualifier qu'à 30 min). Jusqu'au 12/10/2026 le délai était de dix minutes, pour laisser au lead motivé le temps d'écrire en premier quand l'écran de fin du formulaire l'envoyait sur WhatsApp ; celui du 11 octobre l'envoie vers la vidéo. S'il écrit quand même avant, l'envoi automatique est annulé et le template n'est pas facturé. Le dimanche est ouvert (10h-20h) : le formulaire promet « sous 24 h ».
 2. **4 touches max sur 12 jours.** Au-delà, on brûle le lead.
 3. **Un seul levier par message** (question OU preuve OU voix OU clôture). Jamais d'empilement.
 4. **Une seule question par message**, la plus facile possible.
@@ -73,22 +73,25 @@ La touche 1 ne dépend plus de l'import manuel (délai 24-48h) : elle part **aut
 7. **Le visuel offert n'est jamais promis dans les relances.** Il se débloque en conversation, quand on a assez d'infos, comme récompense (« ton projet tient la route »).
 8. **Le visuel complet ne s'envoie jamais sur WhatsApp.** Teaser (1 capture) dans le chat, le reste se montre à l'appel. C'est l'aimant à rendez-vous.
 9. Chaque message tient sur un écran de téléphone sans scroller. Pas d'emoji en message 1.
-10. Heures d'envoi des touches 2-4 : 12h-13h30 ou 18h-20h en semaine. Pas le dimanche matin. (La touche 1 auto suit sa propre fenêtre : 9h-21h lun-sam, la vitesse prime.)
+10. Heures d'envoi des touches 2-4 : 12h-13h30 ou 18h-20h en semaine. Pas le dimanche matin. (La touche 1 auto suit sa propre fenêtre : lun-sam 9h-21h, dimanche 10h-20h, la vitesse prime.)
 11. **Pas de NDA proposé par écrit.** Cette cible n'aime pas les mots « contrat » et « confidentialité » avant d'avoir parlé à quelqu'un. L'accord se propose à la fin de l'appel, avec le devis et la maquette, comme le prévoit le script d'appel ; plus tôt **seulement si le prospect hésite lui-même** à dévoiler son idée. La question « c'est quoi, et pour qui ? » ne demande rien de secret : personne ne se fait voler une idée en disant « une app de coaching sportif pour particuliers ».
 12. **Pas de présentation quand c'est lui qui écrit** : son téléphone affiche déjà « Noé Calmes ». Quand c'est nous qui écrivons en premier (formulaire), une présentation en trois mots, « ici Noé Calmes », jamais « c'est Noé ».
+13. **Tu par écrit, puis son registre à lui** (12/10/2026). L'écran de fin du formulaire lui dit « Je te contacte personnellement sous 24 h » : le message qui suit tutoie, sinon la voix change entre la promesse et le message. Le sérieux vient du contenu (le nom, le site, une offre claire, une seule question), pas du pronom. Jamais « je me permets de te tutoyer » : le formulaire l'a déjà fait, la phrase attire l'attention dessus. S'il répond au vous, on passe au vous dès le message suivant et on propose « on peut se tutoyer ? » au début de l'appel ; s'il répond au tu, on le tutoie aussi à l'appel. Règle de fond : `documentation/context/positionnement.md`, « Tonalité ».
 
 ## La séquence
 
 | Touche | Quand | Canal | Levier |
 |---|---|---|---|
-| 1 | J0, dans l'heure | WhatsApp | Question (l'idée) |
+| 1 | J0, 5 minutes après le formulaire (automatique) | WhatsApp | Question (l'idée), ou l'audit offert s'il a écrit son idée |
 | 2 | J+2 | WhatsApp | Preuve (lien projets) + même question, autre forme |
 | 3 | J+5 | Appel, puis WhatsApp si pas de réponse | La voix |
 | 4 | J+12 | WhatsApp | Clôture digne |
 
-### Touche 1 — J0 (à la main depuis Nowork tant que l'API est coupée)
+### Touche 1 — J0 (automatique, 5 minutes après le formulaire)
 
-Le texte qui part est le modèle Nowork **« Premier contact »** (page Templates), que la fenêtre « Premier message » de la carte CRM reprend mot pour mot (texte du 7 octobre 2026) :
+**Depuis le 12 octobre 2026, la touche 1 part toute seule à chaque lead, cinq minutes après le formulaire, avec un des deux modèles Meta** (textes, règles et replis : `nowork/documentation/systems/lead-auto-import.md`, « Le message auto »). Si le lead écrit en premier, le message ne part pas : c'est une conversation classique, voir « Leads qui écrivent en premier ». Mise en service suivie dans `nowork/documentation/context/en-cours.md` (validation des deux modèles par Meta, déploiement des fonctions) ; d'ici là, le lead qui a écrit son idée reçoit le texte à la main plus bas (bouton « Premier message »).
+
+**Pas d'idée, un ou deux mots, ou une non-réponse** (« jsp », « test ») : la question, qui est aussi le modèle Nowork **« Premier contact »** (page Templates), repris mot pour mot par la fenêtre « Premier message » de la carte CRM quand l'envoi automatique n'a pas eu lieu :
 
 ```
 Bonjour {prénom}, ici Noé Calmes (noecalmes.fr).
@@ -96,7 +99,16 @@ Tu as rempli mon formulaire pour ton projet d'application.
 C'est quoi ton idée, en deux phrases : c'est quoi, et pour qui ?
 ```
 
-⚠️ Le template Meta `premier_contact_lead` (celui de l'envoi automatique à T+10 min) porte encore l'ancien texte, « c'est Noé, je conçois des applications mobiles… dans les grandes lignes ? ». Le jour où l'envoi automatique repart, soumettre un template au texte du modèle Nowork, sinon un lead contacté à la main et un lead contacté par l'API ne reçoivent pas la même chose (rappel dans `nowork/documentation/context/en-cours.md`). Si le lead écrit en premier, le message ne part pas : c'est une conversation classique, voir « Leads qui écrivent en premier ».
+**Il a écrit son idée, en au moins trois mots** (formulaire du 11 octobre 2026, pastille 💡) : on ne la lui redemande jamais, on lui propose l'audit offert. Message automatique :
+
+```
+Bonjour {prénom}, ici Noé Calmes (noecalmes.fr).
+J'ai bien reçu ton idée d'application.
+Je te propose 15 minutes au téléphone. L'audit de ton idée est offert : mes conseils pour qu'elle fonctionne, et à la fin, combien ça te coûterait.
+Tu préfères en journée ou en soirée ?
+```
+
+« Bien reçu », jamais « j'ai lu » : un message automatique n'a rien lu. Un mot seul (« coaching ») reçoit la question, pas ce texte : « j'ai bien reçu ton idée » y sonnerait faux, et « en deux phrases » lui demande de préciser (Noé, 12/10/2026). L'appel se vend par ce qu'il lui apporte, pas par « on parle budget et délai » : « L'audit de ton idée est offert », mot pour mot la fin du film du site que l'écran de fin du formulaire lui fait regarder ; ce qui suit les deux points dit ce qu'est l'audit, pour qui ne connaît pas le mot ; « pour qu'elle fonctionne » plutôt que « rentable », ça parle à tout le monde ; le coût à la fin (Noé, 12/10/2026). « Journée ou soirée » se répond en un mot ; dès qu'il répond, Noé donne deux heures précises (« Parfait. Demain 18h ou jeudi 18h30 ? »).
 
 Variante stade « prêt / financement en place » :
 
@@ -114,16 +126,16 @@ Tu t'étais renseigné il y a quelque temps pour créer une application.
 C'est quoi ton idée, en deux phrases : c'est quoi, et pour qui ?
 ```
 
-**Il a écrit son idée dans le formulaire** (formulaire du 11 octobre 2026, pastille 💡) : on ne la lui redemande jamais, on propose l'appel. Pour lui, **pas de message automatique** (le template demande l'idée) : la carte CRM affiche « Premier message » avec ce texte (modèle Nowork « Premier contact — idée reçue »), son idée affichée au-dessus pour l'avoir sous les yeux. Ajuster les deux créneaux avant d'envoyer.
+**Il a écrit son idée, mais le message automatique n'est pas parti** (lead de plus de 48 h, modèle « idée reçue » pas encore validé par Meta…) : la carte CRM affiche « Premier message » avec ce texte (modèle Nowork « Premier contact — idée reçue »), son idée affichée au-dessus pour l'avoir sous les yeux. Ajuster les deux créneaux avant d'envoyer.
 
 ```
 Bonjour {prénom}, ici Noé Calmes (noecalmes.fr).
 J'ai lu ton idée, ça se tient.
-On s'appelle 15 minutes : tu m'en dis un peu plus, je te dis concrètement comment je la lancerais, et on parle budget et délai de vive voix.
+Je te propose 15 minutes au téléphone. L'audit de ton idée est offert : mes conseils pour qu'elle fonctionne, et à la fin, combien ça te coûterait.
 Plutôt demain 12h30 ou jeudi 18h ?
 ```
 
-« J'ai lu ton idée » n'est vrai que si on l'a lue : c'est pour ça que ce message part à la main, jamais en automatique. Une idée qui ne tient pas (site vitrine, hors cible) se traite avec les cas de « Réponses aux situations courantes », pas avec ce texte.
+« J'ai lu ton idée » n'est vrai que si on l'a lue : c'est pour ça que ce texte-là part à la main, jamais en automatique (l'automatique dit « bien reçu »). Une idée qui ne tient pas (site vitrine, hors cible) se traite avec les cas de « Réponses aux situations courantes », pas avec ce texte.
 
 Règle d'ancrage : toujours ouvrir sur le fait le plus précis et vrai qu'on a (idée écrite, formulaire rempli, stade coché, simple renseignement). Jamais « j'ai vu que tu étais intéressé » : effet surveillance.
 
@@ -245,10 +257,10 @@ Ok, ça se tient, je vois comment lancer un projet comme ça.
 Tu en es où : juste l'idée, tu y réfléchis sérieusement, ou tu veux démarrer bientôt ?
 ```
 
-**1 bis. Il a répondu** → l'appel. « Budget et délai de vive voix » annonce que le prix se parle à l'appel, ce qui coupe le « c'est combien ? » :
+**1 bis. Il a répondu** → l'appel, vendu par ce qu'il lui apporte : l'audit offert, des conseils pour qu'elle fonctionne, le coût. « À la fin, combien ça te coûterait » annonce que le prix se donne à l'appel, ce qui coupe le « c'est combien ? » par écrit. (Jusqu'au 12/10/2026 : « on parle budget et délai de vive voix », qui ne promettait rien ; Noé l'a écarté.)
 
 ```
-Parfait. On s'appelle 15 minutes : tu m'expliques ton idée, je te dis concrètement comment je la lancerais, et on parle budget et délai de vive voix.
+Parfait. Je te propose 15 minutes au téléphone. L'audit de ton idée est offert : mes conseils pour qu'elle fonctionne, et à la fin, combien ça te coûterait.
 Plutôt demain 12h30 ou jeudi 18h ?
 ```
 
