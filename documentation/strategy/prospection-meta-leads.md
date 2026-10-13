@@ -246,11 +246,11 @@ Ensuite, le chemin est le même que pour un lead formulaire : la section suivant
 
 Objectif unique : l'appel de 15 minutes. Le funnel :
 
-il donne son idée → une question sur le stade → l'appel, deux créneaux → appel (cadrage + fourchette + accord de confidentialité en fin d'appel) → devis sous 48h.
+il donne son idée → une question sur le stade → l'appel, deux créneaux → appel 1 au téléphone, 15 minutes (l'audit gratuit, la fourchette) → appel 2 en visio, 30 minutes (maquette, cahier des charges et devis présentés, puis sa décision). Décision du 13/10/2026 : `nowork/documentation/guides/appels-prospects.md`.
 
 Deux questions avant l'appel, pas plus : c'est ce que la page `/rendez-vous` promet (« on voit en 2 messages si ton projet tient la route »), et c'est ce qui filtre les curieux sans parler d'argent. Pour un lead formulaire ou audit, dont on connaît déjà le stade, une seule question suffit : l'idée, puis l'appel.
 
-Le visuel offert n'est PAS une étape obligatoire : c'est le joker pour ceux qui hésitent à prendre l'appel.
+Le visuel offert n'est PAS une étape obligatoire : c'est le joker pour ceux qui hésitent à prendre l'appel. (Depuis le 13/10/2026, la première maquette se prépare après l'appel 1, pour tout projet qui tient, et se présente à l'appel 2.)
 
 **1. Il donne son idée** → valider, puis le stade (trois choix, il répond en deux mots) :
 

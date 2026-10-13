@@ -1,5 +1,7 @@
 # Script d'appel — v3 (2026-10-08)
 
+> **⚠️ À réécrire : décision du 13/10/2026, deux appels.** Appel 1 au téléphone, 15 minutes : l'audit gratuit, avec la présentation de Noé dès l'ouverture. Appel 2 en visio, 30 minutes : maquette, cahier des charges et devis présentés, puis la décision. Le détail, et la liste de ce qui change dans ce script : `nowork/documentation/guides/appels-prospects.md`. Ce qui suit reste la v3 tant qu'elle n'est pas réécrite.
+
 > Remplace `script-appel-prospect-application.md`, `script-appel-positionnement.html` (racine) et la section 4 de `strategie-commerciale.md`. La page « Scripts » de Nowork doit en être la copie : si tu modifies ici, recopie là-bas.
 >
 > **Deux parties.** Partie I = la trame, à avoir sous les yeux pendant l'appel (lis uniquement les encadrés). Partie II = les deux appels mot pour mot, à l'oral, à répéter à voix haute AVANT l'appel, jamais à lire pendant.
