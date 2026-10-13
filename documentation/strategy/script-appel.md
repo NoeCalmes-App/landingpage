@@ -6,7 +6,7 @@
 >
 > **Les deux scripts sont les textes de Noé du 13/10/2026** (après-midi) : le script 1 validé ligne par ligne, le script 2 et le paragraphe de la suite dictés par lui. Règle de travail depuis ce jour : **rien ne change dans Nowork sans que Noé ait validé le texte** ; les scripts se disent à l'oral, chaque mot compte.
 >
-> **La copie de travail est dans Nowork** : page « Script d'appel » (pastille « Script » sur la fiche du lead). La page demande d'abord quel script ouvrir, puis l'affiche en entier ; elle remplit toute seule le jour du formulaire (« mardi », « mardi de la semaine dernière », « il y a deux semaines »…) et les créneaux (jamais « demain » un samedi, jamais un dimanche), depuis la fiche et la date du jour. Si tu modifies ici, recopie là-bas : `nowork/src/services/scripts.service.ts`, `DEFAULT_SCRIPT_APPEL` ; les règles de date sont dans `nowork/src/lib/quandLeFormulaire.ts`.
+> **La copie de travail est dans Nowork** : page « Script d'appel » (pastille « Script » sur la fiche du lead), les deux scripts en haut à gauche, la messagerie à droite. **Elle ne contient que ce qui se dit** (Noé, 13/10 : ni « pourquoi », ni rappels, ni étape avant l'appel) : les raisons, les règles de l'oral et les conseils par cas restent ici ; elle remplit toute seule le jour du formulaire (« mardi », « mardi de la semaine dernière », « il y a deux semaines »…) et les créneaux (jamais « demain » un samedi, jamais un dimanche), depuis la fiche et la date du jour. Si tu modifies ici, recopie là-bas : `nowork/src/services/scripts.service.ts`, `DEFAULT_SCRIPT_APPEL` ; les règles de date sont dans `nowork/src/lib/quandLeFormulaire.ts`.
 >
 > Remplace la v3 du 08/10/2026 (historique git de ce fichier). Positionnement : `documentation/context/positionnement.md`. Les mots à employer : `documentation/context/vocabulaire-mobile-web.md`.
 
@@ -298,26 +298,15 @@ La fourchette, c'est celle de son projet. Huit à douze mille pour la plupart. P
 
 > Je comprends. Pour te situer : une agence, c'est à partir de vingt mille euros. Et trois à six mois. (pause) Moi, c'est un prix fixe, et une seule personne du début à la fin. (pause) Tu avais prévu combien ?
 
-- Cinq mille ou plus : « D'accord. Dans le devis, je te montre honnêtement ce qu'on lance avec ce budget. » Puis la visio.
-- Moins de cinq mille : « Je préfère être honnête : en dessous de cinq mille, personne te fera une appli sérieuse, publiée sur les stores. Teste d'abord ton idée avec des outils simples. Le jour où tu passes à l'étape d'après, appelle-moi. »
-
 Jamais de remise. Jamais de découpage pour faire rentrer le prix.
-
-**« J'avais pas de budget en tête »**
-
-> C'est normal, c'est mon rôle de cadrer. (pause) Une vraie appli, c'est plusieurs milliers d'euros. Si tu cherches le moins cher possible, je suis pas le bon. Si tu veux une appli qui rapporte, là, c'est mon métier.
 
 **« On m'a proposé moins cher »**
 
-> C'est possible, y a de tout. Regarde trois choses. Qui tu as au téléphone après la signature. Si le prix est fixé avant de commencer. Et ce qui se passe si ça ne livre pas.
+> C'est possible, il y a de tout. Pose-lui deux questions. Est-ce qu'il fait tout lui-même, ou est-ce qu'il délègue ? Et est-ce qu'il a déjà créé des applications à plusieurs millions de téléchargements ? (pause) Créer une appli, c'est bien. Faire en sorte qu'elle te rapporte, c'est mieux. Et ça, ça se décide avant le code.
 
 **« Je peux le faire avec l'IA »**
 
 > Oui, pour avoir des écrans. L'IA te donne du code. Elle te dit pas où mettre le paiement, ni pourquoi les gens reviennent. (pause) Moi aussi je l'utilise, pour aller plus vite. La différence, c'est tout ce qu'il y a avant le code.
-
-**« Ça va me rapporter combien ? »**
-
-> Personne peut te le promettre. Méfie-toi de ceux qui le font. (pause) Moi, je mets toutes les chances de ton côté : le bon support, le bon moment pour le paiement, une raison de revenir. Et ce sont tes premiers utilisateurs qui te répondront.
 
 ---
 
@@ -339,10 +328,6 @@ Quand la fourchette lui va. **Le paragraphe de Noé (13/10/2026).**
 
 ### S'il dit…
 
-**« Envoie-moi juste le devis »**
-
-> Je te l'envoie, oui. Mais la maquette, je veux te la montrer : c'est là que tu vois ton appli. Trente minutes. Plutôt jeudi onze heures, ou vendredi quatorze heures ?
-
 **« Je dois réfléchir »**
 
 > Bien sûr. La visio, c'est justement pour ça : tu vois tout, et tu réfléchis avec tout en main.
@@ -350,10 +335,6 @@ Quand la fourchette lui va. **Le paragraphe de Noé (13/10/2026).**
 **« Je dois en parler à mon associé »**
 
 > Invite-le à la visio. Il voit tout, il pose ses questions. Ça vous fait gagner une semaine.
-
-**Ce n'est pas ton client** (il cherche « juste un développeur », un site vitrine, ou son budget est hors de portée)
-
-> Je préfère être clair : sur ce projet-là, je suis pas la bonne personne. [La raison, en une phrase.] Le jour où tu passes à l'étape d'après, écris-moi.
 
 ---
 
