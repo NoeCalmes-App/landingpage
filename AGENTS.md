@@ -25,7 +25,7 @@ Lire seulement la doc utile au sujet demande.
 | Assets, images, icones, fonts, documents PDF | `documentation/architecture/assets.md` |
 | Espace client public `/espace-client/...` | `documentation/architecture/client-space-public.md` |
 | Strategie commerciale, call, objections | `documentation/strategy/strategie-commerciale.md` |
-| Script d'appel (ouverture, decouverte, presentation par cible, objections) | `documentation/strategy/script-appel.md` |
+| Script d'appel 1 (deux debuts RDV cale / sans RDV, audit en conseils, prix, fin sur la visio ; pourquoi et « s'il dit… ») | `documentation/strategy/script-appel.md` |
 | Instagram, LinkedIn, tunnel d'acquisition | `documentation/strategy/tunnel.md` |
 | Rediger un post / carrousel LinkedIn | `documentation/strategy/linkedin-posts.md` |
 | Stories, posts, briefs creatifs | `content/README.md` puis le fichier de brief concerne |

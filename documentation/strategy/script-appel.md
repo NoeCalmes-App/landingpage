@@ -1,631 +1,600 @@
-# Script d'appel — v3 (2026-10-08)
+# Script d'appel 1 — v4 (2026-10-13)
 
-> **⚠️ À réécrire : décision du 13/10/2026, deux appels.** Appel 1 au téléphone, 15 minutes : l'audit gratuit, avec la présentation de Noé dès l'ouverture. Appel 2 en visio, 30 minutes : maquette, cahier des charges et devis présentés, puis la décision. Le détail, et la liste de ce qui change dans ce script : `nowork/documentation/guides/appels-prospects.md`. Ce qui suit reste la v3 tant qu'elle n'est pas réécrite.
-
-> Remplace `script-appel-prospect-application.md`, `script-appel-positionnement.html` (racine) et la section 4 de `strategie-commerciale.md`. La page « Scripts » de Nowork doit en être la copie : si tu modifies ici, recopie là-bas.
+> **Le premier appel : au téléphone, 15 minutes, l'audit gratuit de son idée.** Décision de Noé du 13/10/2026 : deux appels avec chaque prospect. L'appel 1 (ce fichier) sert à inspirer confiance, et il finit sur la visio. L'appel 2 (visio, 30 minutes : maquette, cahier des charges et devis présentés, puis sa décision) aura son propre script, à écrire. Le pourquoi des deux appels : `nowork/documentation/guides/appels-prospects.md`.
 >
-> **Deux parties.** Partie I = la trame, à avoir sous les yeux pendant l'appel (lis uniquement les encadrés). Partie II = les deux appels mot pour mot, à l'oral, à répéter à voix haute AVANT l'appel, jamais à lire pendant.
-> Positionnement : `documentation/context/positionnement.md`. Mots à employer : `documentation/context/vocabulaire-mobile-web.md`.
+> **Deux portes, un seul appel.** Porte A : le rendez-vous est calé sur WhatsApp, il t'attend. Porte B : il n'a pas répondu sur WhatsApp, c'est toi qui appelles, il ne t'attend pas. Seul le début change. Dès qu'il raconte son idée, c'est le même appel.
+>
+> **La copie de travail est dans Nowork** : page « Script d'appel » (pastille « Script » sur la fiche du lead), avec deux boutons en haut, « Rendez-vous calé » et « Sans rendez-vous ». Si tu modifies ici, recopie là-bas : `nowork/src/services/scripts.service.ts`, `DEFAULT_SCRIPT_APPEL`.
+>
+> Remplace la v3 du 08/10/2026 (historique git de ce fichier). Positionnement : `documentation/context/positionnement.md`. Les mots à employer : `documentation/context/vocabulaire-mobile-web.md`.
 
----
+## Comment le lire
 
-# Partie I — La trame
+- **Ce texte se dit, il ne se lit pas.** Tu l'apprends à voix haute, debout. Pendant l'appel, tu regardes les titres, pas les phrases.
+- `(pause)` : tu t'arrêtes une seconde.
+- `[entre crochets]` : ce que tu fais, ou ses mots à lui que tu reprends.
+- **Pourquoi** : pour comprendre chaque choix. Ça ne se dit pas.
+- **S'il dit…** : les embranchements. Tu réponds, puis tu reviens au fil.
 
-## Les règles du jeu (à relire avant chaque appel)
+## Le but de l'appel
 
-1. **Tu consultes, tu ne vends pas.** L'appel sert à poser un diagnostic et à donner un verdict. Le devis vend après.
-2. **70 % d'écoute.** Une question à la fois. Tu laisses les silences, c'est lui qui les remplit.
-3. **Tu donnes avant de demander.** Le verdict téléphone/ordinateur et la première version, c'est ton audit gratuit. Tu le nommes.
-4. **La preuve sort une fois**, au moment du doute. Jamais en rafale au début.
-5. **Jamais de prix exact à l'oral**, jamais de remise, jamais de découpage pour faire rentrer.
-6. Au prospect on dit **« téléphone »** et **« ordinateur »**. Jamais « site ».
-7. **Tu ne compares jamais les prix des deux supports.** Ce qui fait le prix, c'est le périmètre.
-8. **Chaque appel finit sur une date.**
+Qu'il raccroche en se disant : « Lui, il sait de quoi il parle. Et il a été honnête avec moi. » Et qu'il ait dit oui à la visio, avec un jour et une heure.
 
-## Le minutage (15 min)
+Trois moments le décident :
+
+1. **Les trente premières secondes** : qui tu es, et comment va se passer l'appel.
+2. **Le résumé** : il entend son projet dit mieux qu'il ne l'a dit lui-même.
+3. **Tes conseils** : il repart avec quelque chose, même s'il ne signe jamais.
+
+Le prix arrive à la fin, dit franchement. Le cahier des charges, la maquette et le devis sont offerts : c'est l'avance que tu prends, l'étape « On cadre » de la page d'accueil.
+
+## Le minutage (15 minutes)
 
 | Étape | Durée |
 |---|---|
-| 1. Ouverture | 0:30 (A) · 1:00 (B) |
-| 2. Découverte | 6:00 |
-| 3. Reformulation + verdict support | 1:00 |
-| 4. Ta présentation (tronc + une variante) | 1:00 |
-| 5. L'offre gratuite | 0:30 |
-| 6. Budget | 1:00 |
-| 7. Prochain pas | 1:00 |
-| Marge, questions | 3:00 |
-
----
-
-## 0. Avant de composer (30 secondes)
-
-Fiche Nowork ouverte. Tu dois savoir :
-
-- **D'où il vient** : pub Meta (formulaire) · audit en ligne · WhatsApp direct · ancien prospect.
-- **Ce qu'il a coché** : stade, budget.
-- **Ce qu'il a écrit** : son idée en une phrase, s'il l'a donnée.
-- **On se tutoie déjà ?** (fil WhatsApp).
-
-Et tu choisis ta porte d'entrée :
-
-- **Porte A — l'appel est calé.** Il t'attend, il sait qui tu es. → §1A
-- **Porte B — pas de rendez-vous.** Lead Meta à J+5, audit sans suite, ancien prospect, lead qui a répondu une fois puis silence. Il ne t'attend pas. → §1B
-
----
-
-## 1A. Ouverture — rendez-vous calé (30 s)
-
-> Salut [Prénom], c'est Noé. On se parle comme prévu, t'as bien tes 15 minutes ?
->
-> Parfait. Je te propose simple : tu me racontes ton idée et où tu en es, je te pose quelques questions pour bien comprendre, et à la fin je te dis franchement si ça peut marcher, si ça doit vivre sur téléphone ou sur ordinateur, et combien prévoir. Ça te va ?
-
-(« Ça te va ? » = son premier oui. Le cadre est posé, c'est toi qui mènes, et tu n'as pas parlé d'argent avant la valeur.)
-
-Si vous vous vouvoyez encore :
-
-> Bonjour [Prénom], Noé Calmes. On se parle comme prévu. Avant de commencer : on peut se tutoyer ? On sera plus à l'aise.
-
----
-
-## 1B. Ouverture — sans rendez-vous (60 s max)
-
-Il ne t'attend pas et il ne sait pas qui tu es. Tu as dix secondes pour trois choses : **qui**, **pourquoi j'appelle**, **ce qu'il y gagne**. Puis une question.
-
-> Bonjour [Prénom], Noé Calmes. Je vous appelle parce que vous avez [laissé vos coordonnées sous une de mes publicités / fait mon audit en ligne / m'écrit sur WhatsApp] pour un projet d'application. Vous avez deux minutes ?
-
-(La raison de l'appel, ancrée sur le fait le plus précis et vrai qu'on a. Jamais « j'ai vu que vous étiez intéressé » : effet surveillance. Gong, sur 90 000 appels à froid analysés : annoncer « la raison de mon appel » dans les premières secondes double le taux de succès ; demander « je vous dérange ? » le fait chuter de 40 %. Donc on demande le temps, pas la permission de déranger.)
-
-**S'il a deux minutes :**
-
-> Super. En deux mots, pour que vous sachiez à qui vous parlez : je suis expert indépendant en applications mobiles et web, je fais ça depuis plus de 5 ans, à mon compte depuis 2 ans, et je m'occupe de tout, de l'idée jusqu'à la mise en ligne. Mon métier, ce n'est pas qu'une application existe, c'est qu'elle rapporte, ou qu'elle fasse vraiment gagner du temps.
->
-> Ce que je vous propose, c'est gratuit : vous me racontez votre idée, et je vous dis si elle tient, si elle doit vivre sur téléphone ou sur ordinateur, et combien prévoir. Ça vous va ? … Et on peut se tutoyer ?
-
-→ enchaîne §2.
-
-**S'il n'a pas le temps :**
-
-> Aucun souci. Je vous rappelle pour 15 minutes et je vous fais l'audit de votre idée, c'est offert : plutôt demain 12h30 ou jeudi 18h ?
->
-> Parfait. Je vous envoie un message là tout de suite pour confirmer, et je vous appelle sur ce numéro.
-
-(Deux créneaux fermés, sous 48 h, jamais « quand êtes-vous dispo ? ». Confirmation WhatsApp dans la minute. Rappel le matin même : « On se parle à 18h comme prévu. »)
-
-**S'il ne se souvient plus / « c'est pour quoi ? » :**
-
-> C'est votre projet d'application. Vous aviez [rempli le formulaire sous ma publicité / fait l'audit sur mon site] le [date]. J'appelle tous ceux qui l'ont fait pour leur dire, gratuitement, si leur idée peut marcher. C'est quoi l'idée, dans les grandes lignes ?
-
-**Messagerie** : le vocal validé le 06/10/2026 (Nowork, page Scripts, bouton « Messagerie »), puis le WhatsApp « je viens d'essayer de t'appeler… ». Détail : `prospection-meta-leads.md`, touche 3.
-
----
-
-## 2. Découverte (6 min) — il parle, tu notes
-
-Une question à la fois. Tu écoutes la réponse jusqu'au bout. Tu relances (« c'est-à-dire ? », « t'as un exemple ? »). Tu ne réponds à rien à ce stade, tu collectes.
-
-> Vas-y, raconte-moi ton idée avec tes mots. Ça ferait quoi, et c'est pour qui ?
-
-Puis, dans l'ordre :
-
-| # | La question | Ce qu'elle te donne |
-|---|---|---|
-| 1 | **Concrètement, quel problème ça résout pour eux ? Aujourd'hui ils font comment ?** | Le vrai besoin. « Ils n'ont pas vraiment ce problème » = signal rouge. |
-| 2 | **Et toi, ton objectif n°1 : que ça te rapporte de l'argent, que ça te fasse gagner du temps, ou que ça te ramène des clients ?** | La branche de ta présentation (§4). |
-| 3 | **Qui l'utilise, et où ? Des gens au travail, assis devant un écran ? Ou des particuliers, dehors, sur leur téléphone ?** | Le support. |
-| 4 | **Est-ce qu'elle a besoin d'envoyer des notifications, d'utiliser l'appareil photo, la position ?** | Le support, confirmé. Un « oui » fort = téléphone, point. |
-| 5 | **Si on ne gardait que trois fonctions au lancement, ce serait lesquelles ?** | Le périmètre de la première version → ta fourchette. |
-| 6 | **T'en es où ? Juste l'idée, des notes, une maquette, un début de développement ?** | « Une maquette » → Variante M tout de suite. « Une appli en ligne » → Variante R. |
-| 7 | **Qu'est-ce qui fait que tu t'en occupes maintenant ? Il y a une date, un événement ?** | L'urgence réelle. |
-| 8 | **Tu décides seul, ou il y a un associé à convaincre ?** | Le cycle. Associé / banque → Variante C. |
-| 9 | *(toujours en dernier)* **Et côté budget, t'as une enveloppe en tête ?** | Tu notes. **Tu ne réagis pas.** |
-
-Grille budget, dans ta tête seulement : « je ne sais pas » → à éduquer, c'est ton rôle · moins de 5 000 → cycle long ou financement · 5 000–8 000 → Première version · 8 000–12 000 → Première version ou Complète · 12 000 et plus → Complète · « 300 € » → sortie polie (§7).
-
----
-
-## 3. Reformulation + verdict support (1 min) — ton premier cadeau
-
-> Donc si je résume : tu veux [l'application] pour que [cible] puisse [action], et le vrai enjeu derrière, c'est [que ça te rapporte / que ça te fasse gagner du temps / que ça te ramène des clients]. C'est bien ça ?
-
-(« Oui, exactement. » À partir de là il te fait confiance et c'est toi qui mènes.)
-
-Puis tu tranches le support. C'est la première chose qu'il achète sans le savoir, et tu la lui offres :
-
-> Et vu ce que tu me décris, [ton application vit sur le téléphone / elle vit sur ordinateur / on commence par X, et Y vient après]. Je t'explique pourquoi en une phrase : …
-
-- **Téléphone** : « tes utilisateurs sont des particuliers, dehors, qui ne te connaissent pas. Il faut les attraper là où ils sont, sur le store, et [les notifications / la photo / la position], c'est le cœur de ton produit. »
-- **Ordinateur** : « ce sont des pros, assis, au travail, avec plusieurs profils. Personne ne cherche son outil de travail sur l'App Store. Et sur ordinateur il n'y a ni validation d'Apple ni commission du store : ça sort deux à trois semaines plus vite, et tu gardes environ 78 % de ce que tu encaisses au lieu d'environ 70 %. »
-- **Les deux** : « on commence par celui qui rapporte le plus vite, et l'autre vient après, avec les premiers revenus. »
-
-Jamais : « le web c'est moins cher », ni « c'est le même prix ». L'avantage de l'ordinateur se dit en délai et en commission, jamais en euros.
-
----
-
-## 4. Ta présentation (1 min max) — le moment où il comprend que tu sais
-
-**Seulement maintenant**, après avoir compris. Le tronc commun, puis **une** variante selon la cible. Pas deux.
-
-### Tronc commun (à tout le monde)
-
-> De mon côté : je conçois et je développe des applications mobiles et web. Ça fait plus de 5 ans que je fais ça, 2 ans à mon compte, et je suis autant designer des écrans que développeur. Donc t'as un seul interlocuteur, de l'idée jusqu'à la mise en ligne.
->
-> Ma spécialité, ce n'est pas de faire une application qui existe. C'est de faire une application qui marche. Et ce qui fait qu'une application marche, ça se joue dans les premiers écrans : en moyenne, une personne sur quatre qui installe une application ne l'ouvre qu'une seule fois. Elle arrive, elle ne voit pas tout de suite ce qu'elle y gagne, elle repart. Donc moi, avant de dessiner le moindre écran, je travaille le parcours : ce qu'on montre en premier, ce qu'on demande, à quel moment, et pourquoi la personne revient le lendemain. L'interface, c'est la partie visible. Ce qui fait qu'elle convertit, c'est ce qu'il y a derrière.
-
-(Un seul chiffre dans le tronc commun : Localytics, 25 % en 2015, 21 % en 2018 — « une sur quatre » est un arrondi honnête. Les autres chiffres sont dans les variantes ou en réserve §10, un à la fois.)
-
-(Si le projet s'y prête, une phrase en plus, pas davantage : « Et quand ça sert ton utilisateur, j'y intègre de l'IA. Mais seulement quand ça lui fait gagner quelque chose. »)
-
-### Variante A — il veut que ça rapporte (grand public, abonnement, paiement)
-
-> Dans ton cas, le point qui décide de tout, c'est l'écran qui demande de payer. La plupart des gens pensent qu'on le met à la fin, une fois que l'utilisateur a « bien compris ». C'est l'inverse : dans les applications à abonnement, huit essais sur dix démarrent le jour même de l'installation. Si ton écran de paiement arrive au bon moment, dans la première session, tu as un client. S'il arrive trop tard, la personne est déjà partie. C'est ça que je conçois pour toi : où on le met, quelle offre, à quel prix. C'est la différence entre une application qui fait 50 € par mois et une qui en fait 5 000.
-
-(RevenueCat 2025 : 80 à 90 % des essais démarrent le jour 0. Preuve si doute : « une application que j'ai conçue génère 13 000 € par mois, j'ai publié plus de 20 applications, plus de 900 000 téléchargements cumulés. »)
-
-### Variante B — il veut gagner du temps (pro dont l'outil ne tient plus : Excel, WhatsApp, no-code)
-
-> Dans ton cas, le risque numéro un n'est pas technique, c'est que ton équipe ne s'en serve pas. Un outil interne, s'il demande un clic de plus qu'Excel, les gens retournent sur Excel au bout de deux semaines. Donc je conçois d'abord ce que chacun voit en arrivant selon son rôle, et je fais en sorte que l'action la plus fréquente prenne moins de temps qu'aujourd'hui. Et compte ce que ça te coûte : [X] personnes, [Y] heures par semaine là-dessus. L'application se rembourse en quelques mois.
-
-(Support quasi toujours ordinateur. Si ça aide à le faire comprendre, une fois : « une application web, ce qu'on appelle aussi un SaaS ». Jamais « site ». L'avantage de l'ordinateur se dit en délai, pas en euros.)
-
-### Variante C — il doit convaincre quelqu'un (associé, banque, investisseur)
-
-> Dans ton cas, ce qu'il te faut d'abord, ce n'est pas une application, c'est un dossier que ton [associé / banquier] comprend en cinq minutes : à quoi ça ressemble, ce que fait la première version, combien, en combien de temps. Je fais ça : un cadrage avec les écrans clés en visuel, et le montant est déduit du développement si on avance ensemble.
-
-(Offre « Cadrage financement », 490 à 1 500 € déductibles. Uniquement ici. Jamais à un lead prêt à démarrer.)
-
-### Variante D — il a déjà des clients (coach, formateur, salle, consultant, créateur)
-
-> Dans ton cas, t'as déjà le plus dur : des gens qui te paient. L'application, c'est le moyen de les garder, de leur vendre un abonnement, et de ne plus dépendre d'Instagram pour leur parler. Là, ce qui compte, c'est la raison de revenir chaque semaine. C'est ça que je conçois en premier.
-
-### Variante M — il a déjà une maquette (à dire AVANT qu'il la brandisse)
-
-Dès qu'il dit « j'ai une maquette » à la question 6, tu réponds ça immédiatement. Tu ne laisses pas s'installer « donc il me faut juste un développeur » :
-
-> Très bien, c'est un bon point de départ, ça me dit exactement ce que t'as en tête. Mais je te préviens tout de suite, pour ne pas te faire perdre de temps : une maquette, c'est des écrans. Ce qui fait qu'une application convertit, c'est l'ordre des écrans, ce qu'on demande à l'utilisateur et à quel moment. La plupart des maquettes que je reçois sont jolies et perdent l'utilisateur au troisième écran. Envoie-la-moi maintenant sur WhatsApp, je la regarde pendant qu'on parle, et je te dis gratuitement ce qui tient et ce qui ne tient pas.
-
-(Tu viens de transformer « j'ai une maquette, il me faut un dev » en « il audite ma maquette ». C'est ton terrain. Si, après ça, il veut quand même « juste un dev » pour piloter lui-même : ce n'est pas ton client, §7.)
-
-### Variante R — il a déjà une application en ligne (reprendre / faire évoluer)
-
-> Ok. Avant de parler de ce que tu veux ajouter, dis-moi deux chiffres : combien de personnes l'installent par mois, et combien reviennent la semaine d'après. Si la deuxième réponse est « je ne sais pas », c'est par là qu'on commence. On ne rajoute pas des fonctions à une application dont on ne sait pas pourquoi les gens partent.
-
----
-
-## 5. L'offre gratuite — ce que tu lui donnes maintenant (30 s)
-
-C'est ton « outil gratuit ». Tu le nommes, pour qu'il sache qu'il vient de recevoir quelque chose :
-
-> Du coup, voilà ce que je te donne déjà, et c'est offert : [téléphone / ordinateur] parce que [raison] ; une première version avec [les trois fonctions], le reste vient après avec les premiers utilisateurs ; et un ordre de grandeur, que je te donne dans une seconde. Et si le projet tient, je te prépare un premier visuel de ton application, offert, pour que tu voies le truc avant de t'engager.
-
-(Réciprocité : il a reçu, il est plus enclin à donner — son budget, son oui pour le devis. Le visuel se **montre**, il ne s'envoie jamais en entier sur WhatsApp.)
-
----
-
-## 6. Le budget (1 min) — après la valeur, jamais avant
-
-> Pour te donner un ordre d'idée : une première version sérieuse, publiée, c'est entre 5 000 et 8 000 €. Une application complète, avec tout ce que tu m'as décrit, plutôt 8 000 à 12 000. Au-delà, c'est une plateforme dense et je te la chiffre après cadrage. Tarif fixe : tu sais ce que tu paies avant de commencer. C'est cohérent avec ce que t'avais en tête ?
-
-**Oui :**
-
-> Parfait, on peut avancer sérieusement. Je finis de cadrer avec toi les écrans prioritaires et je te prépare la suite.
-
-**Il ne sait pas :**
-
-> C'est normal, c'est justement mon rôle de cadrer. Je te le dis franchement : une vraie application pro, c'est plusieurs milliers d'euros. Si ton but c'est le moins cher possible, je ne suis pas le bon. Si c'est une application qui te rapporte, là je suis exactement la bonne personne.
-
-**Trop cher :**
-
-> Je comprends. Pour te situer, une agence facture 20 000 à 30 000 € pour le même travail. Moi c'est un tarif fixe et un seul interlocuteur. Mais je ne baisse pas mes prix et je ne découpe pas pour faire rentrer : je préfère que tu reviennes quand c'est le bon moment plutôt que de te livrer un truc bancal. Tu avais prévu quelle enveloppe ?
-
-(Enveloppe sous 5 000 et financement en cours → Variante C. Sinon → sortie polie §7. Jamais de remise, jamais de phases « pour faire moins cher ».)
-
----
-
-## 7. Le prochain pas (1 min) — l'appel finit sur une date
-
-**Projet clair, budget cohérent :**
-
-> C'est clair, j'ai ce qu'il me faut. Voilà la suite : je te prépare un cahier des charges, un devis précis et le premier visuel de ton application. Tu reçois tout [jeudi] au plus tard. Et si t'as des notes ou des exemples d'applications que t'aimes, envoie-les-moi après l'appel, même en vrac, ça m'aide à être précis.
->
-> Ensuite c'est simple : tu valides, premier versement de 30 % pour que je réserve mon temps, et je démarre. 30 % au départ, 40 % quand tu testes sur ton téléphone, 30 % avant la mise en ligne.
-
-**Projet flou :**
-
-> J'ai l'idée générale, mais pour te faire une vraie proposition il me manque [les écrans / les rôles / l'objectif exact]. Envoie-moi ce que t'as, je regarde, et on se refait 15 minutes [mardi 12h30 ou jeudi 18h] pour que je te montre le premier visuel.
-
-**Pas ton client** (budget fantaisiste, « juste un dev », site de présentation) :
-
-> Je préfère être direct : sur ce projet-là, je ne suis pas la bonne personne. [À ce budget, teste ton idée en no-code / Pour une page de présentation, quelqu'un d'autre te fera ça très bien, ce n'est pas mon métier.] Le jour où tu passes à l'étape d'après, écris-moi.
-
-**Il veut réfléchir :**
-
-> Bien sûr. Juste pour comprendre : ce qui te fait hésiter, c'est le budget, le moment, ou le projet qui n'est pas encore assez clair ?
->
-> Ok. Je te fais signe [date, J+14]. D'ici là, si une question te vient, tu m'écris, je réponds 6 jours sur 7.
-
-**Dans tous les cas, avant de raccrocher :**
-
-> Je t'envoie un message là, tout de suite, avec ce qu'on s'est dit et la date.
-
----
-
-## 8. Objections — les quatre questions qu'il se pose vraiment
-
-Il en a quatre, dans cet ordre : **combien je mets · quand c'est en ligne · combien ça rapporte · qu'est-ce que je risque.** Tout le reste, c'est une de ces quatre déguisée. Tu réponds à la vraie question.
-
-| Il dit | La vraie question | Tu réponds |
-|---|---|---|
-| « Ça coûte combien ? » *(avant que tu aies compris)* | Combien je mets | « Ça dépend du périmètre, et je te donne la fourchette dans cinq minutes, quand j'aurai compris le projet. Pour que je sois précis : ça ferait quoi, et pour qui ? » |
-| « Une application web, c'est moins cher ? » | Combien je mets | « Non, c'est une confusion fréquente. Ce qui fait le prix, c'est le périmètre : les écrans, les profils, les paiements, l'espace d'administration. Ce que l'ordinateur te fait gagner, c'est du délai, et la commission du store. » |
-| « C'est trop cher » | Combien je mets | §6. Ancrage agence, pas de remise. |
-| « Ça prend combien de temps ? » | Quand c'est en ligne | « Première version au périmètre clair : 45 jours à partir du démarrage. Application complète avec maquettes validées : 2 à 4 mois. Sur ordinateur, deux à trois semaines de moins, pas de validation Apple. » |
-| « Et ça va rapporter ? » | Combien ça rapporte | « Personne ne peut te le promettre, et méfie-toi de ceux qui le font. Ce que je peux faire, c'est mettre toutes les chances du bon côté : le bon support, le bon moment pour le paiement, une raison de revenir. Et on lance une première version pour que ce soient de vrais utilisateurs qui te répondent, pas moi. » |
-| « Je peux le faire avec une IA / Lovable / du no-code » | Combien ça rapporte | « Oui, pour avoir des écrans qui existent. L'IA te donne du code. Elle ne te dit pas où mettre le paiement ni pourquoi les gens reviennent. Moi aussi je l'utilise, pour aller plus vite. La différence, c'est tout ce qu'il y a avant le code. » |
-| « J'ai déjà une maquette, il me faut juste un développeur » | Combien ça rapporte *(sans le savoir)* | Variante M. S'il veut quand même piloter lui-même : pas ton client. |
-| « Vous travaillez seul, ce n'est pas risqué ? » | Qu'est-ce que je risque | « C'est voulu : un seul interlocuteur qui connaît ton projet du début à la fin. Et mes conditions prévoient le cas : si je ne peux pas finir, tout le travail réalisé t'est transmis et le reste est remboursé au prorata. Tu es propriétaire du code à 100 %. » |
-| « Je veux comparer avec d'autres devis » | Qu'est-ce que je risque | « Normal, fais-le. Regarde trois choses : qui tu as au téléphone après la signature, si c'est un prix fixe ou un compteur, et ce qui se passe si ça ne livre pas. » |
-| « Je ne veux pas dévoiler mon idée » | Qu'est-ce que je risque | « Bon signe. Pas besoin des détails : le domaine, et pour qui. Et je signe un accord de confidentialité avant que tu me dévoiles quoi que ce soit. » |
-| « Et après la mise en ligne ? » | Qu'est-ce que je risque | « 30 jours de corrections incluses. Ensuite, chaque évolution fait l'objet d'un devis, pas d'abonnement. Et je ne disparais pas : c'est après la mise en ligne qu'on voit ce qui convertit. » |
-
----
-
-## 9. Interdits
-
-- Pitcher avant d'avoir compris. Le tronc commun vient **après** la reformulation.
-- Donner un prix exact à l'oral. Baisser un prix. Découper pour faire rentrer.
-- Dire « site », « site web », « site vitrine » pour une application web. Dire « mobile » / « web » au prospect quand « téléphone » / « ordinateur » suffisent.
-- Comparer les prix des deux supports.
-- Parler Flutter, Firebase, TestFlight, MVP (dis « première version »), B2B, MRR.
-- Présenter les deux offres et lui laisser choisir. Tu choisis pour lui.
-- Finir sans date. « Je reviens vers toi » n'est pas une fin d'appel.
-- Dépasser 15 minutes sur un premier appel.
-- Te poser en développeur qui exécute. Tu es celui qui décide ce qu'il faut construire, et pourquoi.
-
----
-
-## 10. Les chiffres en réserve (sourcés, à sortir UN à la fois)
-
-| Ce que tu dis à l'oral | Le chiffre exact | Source |
-|---|---|---|
-| « Une personne sur quatre n'ouvre une application qu'une seule fois » | 25 % (2015), 21 % (2018) | Localytics, *21 % of users abandon an app after one use* |
-| « Le lendemain, trois utilisateurs sur quatre ne sont pas revenus. Au bout d'un mois, il en reste 3 sur 100 » | Rétention jour 1 souvent sous 20–25 % ; iOS jour 7 : 6,9 % ; jour 30 : 3,1 % | Pushwoosh Benchmarks 2025 |
-| « Huit essais sur dix démarrent le jour de l'installation » | 80 à 90 % des essais à J0 ; 82 % des démarrages d'essai le jour de l'installation | RevenueCat, *State of Subscription Apps 2025* |
-| « Quand le paiement est demandé d'entrée, ça convertit cinq fois plus » *(pas un conseil de mettre un mur partout : la preuve que le placement du paiement décide du résultat)* | 12,1 % d'installations payantes à J35 avec paywall obligatoire, contre 2,2 % en gratuit | RevenueCat 2025 |
-| « Les 5 % d'applications les mieux lancées gagnent 400 fois plus que le quart du bas » | top 5 % : 8 880 $ la première année ; 25 % du bas : 19 $ ou moins | RevenueCat 2025 |
-| « Une agence facture 20 000 à 30 000 € » | — | `positionnement.md` |
-| « Plus de 20 applications publiées, plus de 900 000 téléchargements, une première version à 300 000 utilisateurs, une application qui génère 13 000 € par mois » | — | `positionnement.md`, proof points |
-| « Sur ordinateur tu gardes environ 78 % de ce que tu encaisses, contre environ 70 % après la commission du store » | — | `vocabulaire-mobile-web.md` |
-
----
-
-## 11. Fiche par cible — qui tu as au bout du fil
-
-| Cible | Ce qu'il veut entendre | Support probable | Variante §4 | Preuve à sortir | Offre à viser |
-|---|---|---|---|---|---|
-| **1. Porteur d'idée qui délègue tout** (ICP n°1) | « Un seul gars fait tout, et ça rapporte » | Téléphone une fois sur deux : tu tranches | A | 13 000 €/mois, +20 applications | Première version, puis Complète |
-| **2. Pro dont l'outil ne tient plus** | « Mon équipe va vraiment s'en servir, et je gagne X heures » | Ordinateur | B | Délai (pas de store), 78 % | Première version (ordinateur) |
-| **3. En financement** | « J'ai de quoi convaincre » | Selon projet | C | Le visuel | Cadrage 490–1 500 €, déductible |
-| **4. Clientèle existante** | « Je garde mes clients, je vends un abonnement » | Téléphone | D | 300 000 utilisateurs (Hush) | Première version |
-| **Déjà une maquette** | « On me prend au sérieux » | Selon projet | M, avant tout | Audit de sa maquette, gratuit | Première version ou Complète |
-| **Déjà une application** | « Pourquoi ça ne marche pas » | L'existant | R | — | Reprendre / faire évoluer |
-
----
-
-## 12. Les techniques derrière le script (pour comprendre, pas pour réciter)
-
-- **Raison de l'appel en 10 secondes** (1B) : qui, pourquoi, ce qu'il y gagne. Un inconnu décide en 10 secondes s'il reste.
-- **Micro-engagement** (« ça te va ? ») : un premier oui facile rend les suivants plus faciles. Et l'accord sur le déroulé te donne le droit de mener.
-- **Diagnostic avant prescription** : un médecin qui prescrit avant d'ausculter n'inspire pas confiance. Toi non plus. D'où 70 % d'écoute et la présentation en §4, pas en §1.
-- **Reformulation** (§3) : il entend son projet dit mieux qu'il ne l'a dit. C'est là que la confiance bascule.
-- **Donner avant de demander** (§3 et §5) : verdict support, première version, ordre de grandeur, visuel. Il reçoit, puis tu demandes son budget et son oui. La réciprocité fait le reste.
-- **Preuve dosée** : un chiffre dans le tronc commun, un dans la variante, le reste en réserve. Un chiffre qu'on sort au bon moment vaut dix chiffres en rafale.
-- **Ancrage** (§6) : « 20 000 à 30 000 € en agence » avant ta fourchette. Ta fourchette paraît juste, pas chère.
-- **Posture haute** : pas de remise, pas de découpage, et le droit de dire « je ne suis pas le bon ». Celui qui peut refuser est celui qu'on veut.
-- **Alternative fermée** : deux créneaux, jamais « quand es-tu dispo ? ». Choisir entre deux est plus facile que choisir tout court.
-- **Préemption** (Variante M) : tu nommes l'objection avant lui. Une objection que tu lèves toi-même ne se retourne pas contre toi.
-- **Un seul chemin** : tu choisis l'offre pour lui, le devis n'en contient qu'une. Un client qui doit choisir ne choisit pas.
-- **Fin datée** : un prochain pas avec une date et un message envoyé dans la minute. Un appel sans date est un appel perdu.
-
----
-
-## 13. La phrase à retenir
-
-> Je ne fais pas une application qui existe. Je fais une application qui marche, et ça se décide dans les premiers écrans, avant la première ligne de code.
-
----
-
-# Partie II — À l'oral, mot pour mot
-
-Un script écrit se lit. Un script parlé se dit. La différence s'entend au téléphone en trois secondes : celui qui lit a une voix plate, des phrases trop longues, et il ne s'arrête pas quand l'autre respire. Donc ce qui suit ne se relit pas, **il se dit à voix haute, debout, trois fois avant chaque appel.** Pendant l'appel, tu regardes les titres de la Partie I, pas les phrases.
-
-Convention : `(pause)` = tu t'arrêtes une seconde. `[…]` = ce que tu fais, pas ce que tu dis. Ce qui est entre crochets dans une phrase = ses mots à lui, que tu reprends.
+| 1. Le début (porte A ou B) | 1 min |
+| 2. Il raconte | 7 min |
+| 3. L'audit : tes conseils | 3 min |
+| 4. Le prix | 1 min |
+| 5. La suite : la visio | 1 min |
+| 6. Ses questions | 2 min |
 
 ## Les règles de l'oral
 
-1. **Debout, et tu souris.** Ça s'entend. Un sourire change le timbre.
-2. **Dix pour cent plus lent** que ta vitesse naturelle. Au téléphone il n'y a pas de visage pour aider : la lenteur, c'est l'assurance. Celui qui parle vite vend quelque chose.
-3. **Phrases courtes.** Douze mots maximum. Une idée par phrase. Pas de « qui », pas de « dont », pas de « ce qui fait que ».
-4. **Le silence après une question.** Tu poses, tu te tais, tu comptes deux secondes dans ta tête. Si tu remplis le silence, tu as répondu à sa place.
-5. **Pas de « euh ».** Tu le remplaces par un silence. Un silence est posé. Un « euh » hésite.
-6. **Son prénom deux fois** : à l'ouverture, et au moment de la date. Pas plus, sinon ça fait commercial.
-7. **La voix descend** en fin de phrase quand tu affirmes (« Je m'occupe de tout. »). **Elle monte** quand tu demandes (« Ça te va ? »). Une affirmation qui monte sonne comme une question : tu perds l'autorité.
-8. **Ses mots, pas les tiens.** Il dit « mon appli », tu dis « ton appli ». Il dit « mes abonnés », tu dis « tes abonnés ». Reformuler avec ses mots, c'est ça qui fait « il m'a compris ».
-9. **Les chiffres se disent ronds** : « une personne sur quatre », « huit sur dix », « entre cinq et huit mille ». Jamais « vingt-et-un pour cent » au téléphone. Et « tu gardes huit euros sur dix au lieu de sept », pas « soixante-dix-huit pour cent ».
-10. **Tu contractes.** « T'as », « y a », « j'te », « c'est ». C'est comme ça qu'on parle. Au vouvoiement, tu contractes moins mais tu gardes les phrases courtes.
-11. **Tu notes trois mots par réponse**, pas des phrases. Sinon tu écris au lieu d'écouter, et ça s'entend aussi.
-12. **Tu ne commentes pas son idée** pendant la découverte. Pas « ah ouais c'est cool », pas « hmm ». Juste « ok », « et concrètement ? », « t'as un exemple ? ». Ton avis vient à la reformulation, pas avant.
+1. **Debout, et tu souris.** Ça s'entend : un sourire change le timbre de la voix.
+2. **Plus lent que d'habitude.** Au téléphone, il n'a pas ton visage. La lenteur, c'est l'assurance : celui qui parle vite a quelque chose à vendre.
+3. **Phrases courtes.** Une idée par phrase. Si tu manques de souffle, la phrase est trop longue.
+4. **Après une question, tu te tais.** Deux secondes, comptées dans ta tête. Si tu remplis le silence, tu as répondu à sa place.
+5. **Pas de « euh ».** Un silence à la place. Un silence est posé, un « euh » hésite.
+6. **La voix descend quand tu affirmes, elle monte quand tu demandes.** « Je m'occupe de tout. » descend. « Ça te va ? » monte. Une affirmation qui monte sonne comme un doute.
+7. **Son prénom deux fois** : au début, et au moment de la date. Davantage, ça fait vendeur.
+8. **Ses mots, pas les tiens.** Il dit « mes abonnés », tu dis « tes abonnés ». C'est ce qui lui fait penser « il m'a compris ».
+9. **Des chiffres ronds** : « une personne sur quatre », « huit sur dix », « entre huit et douze mille ».
+10. **Trois mots notés par réponse**, pas des phrases. Sinon tu écris au lieu d'écouter, et ça s'entend.
+11. **Tu ne commentes pas son idée pendant qu'il la raconte.** Pas de « ah, c'est cool ». Juste « d'accord », « et concrètement ? ». Ton avis vient à l'audit.
+12. **Au prospect, on dit « téléphone » et « ordinateur ».** Jamais « site ». Pas de jargon : ni MVP, ni Flutter, ni back-office.
 
-## Ce qui change entre les deux appels
+## Avant de composer (30 secondes)
 
-| | **A — il t'attend** | **B — il ne t'attend pas** |
+- **Sa fiche Nowork ouverte** : d'où il vient, son idée (pastille 💡), son stade, son budget, le fil WhatsApp.
+- **La porte** : rendez-vous calé (A) ou pas (B). C'est le bouton en haut de la page Script.
+- **Tu ou vous** : comme sur WhatsApp. Sans rendez-vous : vous, puis « on peut se tutoyer ? » une fois qu'il a dit oui.
+- **Deux créneaux de visio prêts**, à deux ou trois jours : le temps de préparer le cahier des charges, la maquette et le devis. Dans tes heures, jamais après 18h.
+- **Debout**, un verre d'eau, la page Script ouverte à côté de la fiche.
+
+**Pourquoi.** Citer son idée dans la première minute prouve que tu as lu son dossier. C'est la première preuve que tu es sérieux, avant même que tu aies dit ce que tu fais.
+
+---
+
+## Porte A — Rendez-vous calé : il t'attend
+
+Il a répondu au message automatique, ou à ton WhatsApp, avec une heure. Il sait que c'est l'audit gratuit, un quart d'heure, et le prix à la fin. Vous vous tutoyez déjà (sinon : « S'il dit… », plus bas).
+
+### Mot pour mot
+
+[Tu appelles à l'heure pile.]
+
+> Bonjour [Prénom], c'est Noé Calmes. (pause) Ça va ?
+
+[Il répond. Deux secondes d'échange, pas plus.]
+
+> Très bien, merci. Je t'appelle comme prévu, pour l'audit de ton idée.
+>
+> Avant de commencer, deux mots sur moi. Pour que tu saches à qui tu parles. (pause) Je crée des applis, sur téléphone et sur ordinateur. Je m'occupe de tout, de la stratégie jusqu'à la mise en ligne. J'en ai publié plus de vingt. Et je vois passer une dizaine d'idées par semaine. (pause) Mon métier, c'est pas juste qu'une appli existe. C'est qu'elle rapporte.
+>
+> (pause) On a un quart d'heure. Je te propose de faire comme ça. Tu me racontes ton idée. Je te pose quelques questions. Je te donne mes conseils. Et à la fin, je te dis combien ça te coûterait. (pause) Ça te va ?
+
+[Il dit oui.]
+
+> J'ai lu ton idée : [son idée, en quelques mots]. (pause) Raconte-moi, avec tes mots. Ça ferait quoi, et c'est pour qui ?
+
+S'il n'a pas écrit son idée : « Vas-y, je t'écoute. Ton idée, avec tes mots : ça ferait quoi, et c'est pour qui ? »
+
+→ « Il raconte ».
+
+### Pourquoi
+
+- **L'heure pile.** C'est la première preuve que tu es sérieux. À 17h03, tu as déjà perdu un peu.
+- **« Bonjour », même au tutoiement.** C'est la première fois qu'il entend ta voix. « Salut » se gagne ; « Bonjour » et son prénom, c'est chaleureux et pro à la fois.
+- **« Comme prévu, pour l'audit de ton idée. »** Tu lui rappelles qu'il a dit oui, et à quoi. L'appel est la suite de votre échange, pas une intrusion.
+- **La présentation tout de suite.** On ne confie pas son idée à quelqu'un qu'on ne connaît pas. Une fois qu'il sait qui tu es, tout ce que tu dis après pèse plus. Vingt secondes, pas plus : au-delà, c'est un pitch.
+- **Tu ne dis pas « je suis expert ».** Tu le prouves : « j'en ai publié plus de vingt » vaut plus que le mot. Et « une dizaine d'idées par semaine » dit que tu as du monde : tu n'attends pas après lui.
+- **« C'est qu'elle rapporte. »** La phrase qui te distingue. Les autres parlent de technique ; toi, de ce qu'il veut vraiment. Tu la dis lentement, la voix qui descend.
+- **Le déroulé, puis « Ça te va ? ».** Tu mènes l'appel, et il le sait. Son oui est le premier de l'appel, et un premier oui facile rend les suivants plus faciles.
+- **« Combien ça te coûterait », annoncé dès le début.** C'est la question qu'il a en tête. Tu dis quand tu y réponds : il écoute au lieu d'attendre le chiffre. Le conditionnel ne l'engage à rien.
+- **« J'ai lu ton idée. »** Tu as préparé son dossier, il le sent.
+
+### S'il dit…
+
+**« Et ça coûte combien ? »**, avant que tu aies compris :
+
+> Je te le donne, c'est prévu à la fin. (pause) Pour pas te sortir un chiffre au hasard, j'ai besoin de comprendre ton projet d'abord. Cinq minutes.
+
+*Pourquoi :* tu ne te dérobes pas, tu dis quand. Un chiffre donné avant de comprendre serait faux, et il le sentirait.
+
+**Il te vouvoie** (le fil WhatsApp est resté au vous) :
+
+> Bonjour [Prénom], Noé Calmes. Je vous appelle comme prévu, pour l'audit de votre idée. (pause) Avant de commencer : on peut se tutoyer ? Ce sera plus simple.
+
+Puis la présentation, au tu.
+
+**« J'ai que cinq minutes »** :
+
+> Pas de souci. On décale, pour faire ça bien. Plutôt demain midi et demi, ou jeudi dix-sept heures ?
+
+*Pourquoi :* un audit bâclé en cinq minutes ne sert ni à lui, ni à toi. Un vrai quart d'heure demain vaut mieux.
+
+**Il ne décroche pas** :
+
+- WhatsApp tout de suite : « Je t'ai appelé comme prévu, je réessaie dans 10 minutes. »
+- Tu rappelles dix minutes après.
+- Toujours rien : « On a dû se rater. Demain 12h30 ou jeudi 17h ? » Un seul report. Ensuite, les relances (page Script WhatsApp).
+
+Pas de reproche, jamais de « tu m'as oublié ? ».
+
+---
+
+## Porte B — Sans rendez-vous : il ne t'attend pas
+
+Il a rempli le formulaire, mais il n'a pas répondu sur WhatsApp. C'est toi qui appelles. Il ne t'attend pas, et il ne sait pas encore qui tu es. Vouvoiement au départ.
+
+### Mot pour mot
+
+[Il décroche. Souvent un « allô ? » méfiant.]
+
+> Bonjour, [Prénom] ?
+
+[Oui.]
+
+> Noé Calmes, bonjour. (pause) Je vous appelle pour votre projet d'application. Vous avez laissé vos coordonnées [mardi], sous une de mes publicités. (pause) Vous avez deux minutes ?
+
+[Oui. Ou « c'est pour quoi ? » : voir « S'il dit… ».]
+
+> Merci. Je fais court. (pause) Je crée des applis, sur téléphone et sur ordinateur. J'en ai publié plus de vingt. Et mon métier, c'est qu'elles rapportent. (pause) Je vous propose un audit gratuit de votre idée. Un quart d'heure. Vous me la racontez, je vous donne mes conseils, et à la fin, je vous dis combien ça vous coûterait. (pause) On le fait maintenant ? Ou je vous rappelle à un meilleur moment ?
+
+**Maintenant :**
+
+> Parfait. On peut se tutoyer ? Ce sera plus simple.
+>
+> [Oui.] Alors vas-y. Ton idée, avec tes mots : ça ferait quoi, et c'est pour qui ?
+
+S'il a écrit son idée dans le formulaire : « J'ai lu ton idée : [en quelques mots]. Raconte-moi, avec tes mots. »
+
+→ « Il raconte ». À partir d'ici, c'est le même appel qu'en porte A.
+
+**Plus tard :**
+
+> Bien sûr. Plutôt demain midi et demi, ou jeudi dix-sept heures ?
+>
+> [Il choisit.] Parfait. Je vous envoie un message tout de suite pour confirmer. Et je vous appelle à [l'heure], sur ce numéro. Bonne journée, [Prénom].
+
+[WhatsApp dans la minute, au vous : « Bonjour [Prénom], c'est Noé Calmes. Comme convenu, je vous appelle jeudi à 17h pour l'audit de votre idée. » Puis le message du matin, comme pour tout rendez-vous (page Script WhatsApp). Le jour J, c'est la porte A, au vous : « on peut se tutoyer ? ».]
+
+### Pourquoi
+
+- **« Bonjour, [Prénom] ? »** Tu vérifies que c'est la bonne personne, et son prénom capte son attention.
+- **« Noé Calmes, bonjour. »** Ton nom d'abord, posément : c'est comme ça qu'un pro s'annonce.
+- **La raison de l'appel tout de suite, avec le fait le plus précis et le plus vrai que tu as** : il a laissé ses coordonnées. Ce n'est pas du démarchage, c'est une réponse. Jamais « j'ai vu que vous étiez intéressé » : effet surveillance.
+- **« Vous avez deux minutes ? »**, jamais « je vous dérange ? ». Gong a analysé 90 000 appels : donner la raison de l'appel dans les premières secondes double les chances ; « je vous dérange ? » les fait chuter de 40 %. Tu demandes du temps, pas la permission de déranger. Et deux minutes, c'est petit : facile de dire oui.
+- **« Merci. Je fais court. »** Tu promets, et tu tiens. C'est la première preuve que ta parole vaut quelque chose.
+- **Trois phrases sur toi, pas plus.** Il ne t'a rien demandé : il lui faut une raison de rester, pas ton CV.
+- **« Un audit gratuit » : il sait ce qu'il reçoit.** Et le prix à la fin : tu réponds à sa question avant qu'il la pose.
+- **« Maintenant, ou à un meilleur moment ? »** Les deux réponses sont un oui. Il garde la main, et tu ne prends pas un quart d'heure qu'il n'a pas.
+- **Le tutoiement après son oui, pas avant.** Proposé à un inconnu dès le « allô », il ferait commercial.
+
+### S'il dit…
+
+**« C'est pour quoi ? » / « C'est qui ? »**
+
+> C'est pour votre projet d'application. Vous avez laissé vos coordonnées [mardi], sous une de mes publicités. (pause) J'appelle chaque personne qui le fait, pour lui offrir l'audit de son idée. (pause) C'était quoi, votre idée ?
+
+S'il raconte, il est dedans : « D'accord, je vois. » Puis la présentation (« Deux mots sur moi… ») et « On le fait maintenant ? ».
+
+**« Je suis en voiture » / « en réunion » / « pas le temps »**
+
+> Je vous laisse. (pause) Je vous rappelle plutôt demain midi et demi, ou jeudi dix-sept heures ?
+
+En voiture : « Je vous laisse conduire. » Jamais « rappelez-moi quand vous voulez » : il ne rappellera pas.
+
+**« Envoyez-moi plutôt un message »**
+
+> Je vous en envoie un, oui. (pause) Mais mes conseils, je les donne de vive voix. Un quart d'heure suffit. Plutôt demain midi et demi, ou jeudi dix-sept heures ?
+
+S'il insiste : « Pas de souci, je vous écris sur WhatsApp. » Et tu suis la page Script WhatsApp.
+
+**« C'est du démarchage ? » / « J'ai rien demandé »**
+
+> Non. Vous avez laissé vos coordonnées [mardi], sous une de mes publicités, pour un projet d'application. (pause) Je ne vends rien au téléphone. Je vous offre l'audit de votre idée. (pause) C'était quoi, l'idée ?
+
+S'il maintient que c'est une erreur : « Pas de souci. Bonne journée. » Tu ne t'excuses pas.
+
+**« C'est combien ? »**, dans les premières secondes :
+
+> Ça dépend de ce qu'on construit. Je vous donne la fourchette à la fin de l'audit. (pause) Ça ferait quoi, votre appli ?
+
+S'il insiste : « Ça démarre à cinq mille euros. Pour votre projet, je vous dis précisément à la fin. Ça ferait quoi ? » C'est le chiffre de la pub et du site, jamais un autre.
+
+**« J'ai abandonné » / « Je n'ai plus le projet »**
+
+> D'accord. Juste par curiosité : qu'est-ce qui a bloqué ? Le budget, le temps, ou l'idée elle-même ?
+
+- Le budget, pas encore là : « Ça se prépare. Le cahier des charges et le devis, c'est souvent ce qui convainc une banque, ou un associé. Je vous les prépare, c'est offert. On fait l'audit ? Un quart d'heure. »
+- L'idée : « Racontez-moi quand même. Souvent, c'est l'angle qui coince, pas l'idée. »
+- C'est fini : « Pas de souci. Si ça revient, vous avez mon numéro. Bonne journée. »
+
+**« J'ai déjà quelqu'un »**
+
+> Très bien. (pause) Une seule question, et je vous laisse. Il vous a dit si votre appli doit vivre sur téléphone, ou sur ordinateur ? Et pourquoi ? (pause) Si c'est flou, posez-lui la question. Et pour un deuxième avis, gratuit, vous avez mon numéro.
+
+*Pourquoi :* tu ne dénigres personne. Tu lui laisses une question qui montre ce que tu sais, et ta porte ouverte.
+
+**« Rappelez-moi plus tard »**, sans date :
+
+> Avec plaisir. Plutôt demain midi et demi, ou jeudi dix-sept heures ?
+
+Toujours une date. « Plus tard » sans date, c'est jamais.
+
+**Il est agacé, il parle vite** : tu ralentis encore, tu baisses la voix, tu dis son prénom.
+
+> [Prénom], je vous prends trente secondes, et je vous laisse.
+
+Puis la raison de l'appel, et une seule question.
+
+**Il ne décroche pas** : bouton « Messagerie » en haut de la page Script, le vocal. Puis le WhatsApp « je viens d'essayer de t'appeler » (page Script WhatsApp, J+5). Trois vocaux au maximum par lead.
+
+---
+
+## Il raconte (7 minutes)
+
+[Tu te tais. Il parle. Tu notes trois mots par idée. Tu le laisses aller au bout : il a fini quand il dit « voilà », ou quand il s'arrête.]
+
+Pour relancer, trois phrases, pas plus :
+
+> D'accord… et concrètement ?
+>
+> Tu as un exemple ?
+>
+> C'est-à-dire ?
+
+Puis tes questions, une à la fois, dans cet ordre. Tu sautes celles auxquelles il a déjà répondu.
+
+| # | Tu dis | Ce qu'elle te donne |
 |---|---|---|
-| Dans sa tête quand ça sonne | « J'espère qu'il va me prendre au sérieux. Combien ça va coûter ? » | « C'est qui ? Qu'est-ce qu'il veut ? Comment je raccroche ? » |
-| Ce que tu dois gagner d'abord | Sa confiance en ta compétence | Son attention, puis sa permission |
-| Ta présentation | Une ligne au début, seulement si c'est la première fois qu'on se parle de vive voix. Le vrai pitch vers la minute 8, après la reformulation. | Deux phrases dans les vingt premières secondes. Le vrai pitch seulement si l'appel continue. |
-| Ton énergie | Hôte. Calme, tu diriges, tu cadres. | Posé, voix basse, lent. Tu désamorces. Zéro énergie « commerciale ». |
-| Qui parle au début | Lui, dès la trentième seconde. | Toi, les vingt premières secondes. Puis lui. |
-| Objectif de l'appel | Cahier des charges, devis et visuel sous 48 h | **Un des deux** : l'appel complet maintenant, ou un rendez-vous calé sous 48 h. Tu tranches à deux minutes. |
-| La preuve | Dosée, complète si besoin | Une seule, courte, seulement s'il doute |
-| Le budget | Toujours posé | Posé si l'appel continue. Sinon tu as déjà le stade et le budget cochés sur le formulaire. |
-| Durée | Quinze minutes | Deux minutes. Ou quinze s'il a le temps et qu'il le dit. |
-| La fin | Une date de livraison | Une date de rappel, et un message dans la minute |
+| 1 | « Aujourd'hui, ces gens-là, ils font comment, sans ton appli ? » | Le vrai problème. « Ils se débrouillent très bien » : signal rouge. |
+| 2 | « Et toi, ton objectif numéro un : que ça te rapporte de l'argent, que ça te fasse gagner du temps, ou que ça t'amène des clients ? » | Le conseil qui comptera le plus. |
+| 3 | « Ils s'en serviraient où ? Dehors, sur leur téléphone ? Ou au travail, devant un ordinateur ? » | Le support. |
+| 4 | « Si on gardait que trois fonctions pour le lancement, ce serait lesquelles ? » | Ce qu'on lance, donc ton prix. |
+| 5 | « T'en es où, aujourd'hui ? Juste l'idée, des notes, une maquette ? » | Une maquette : tu la demandes tout de suite (ci-dessous). |
+| 6 | « Tu voudrais la lancer pour quand ? » | L'urgence réelle. |
+| 7 | « Tu décides seul, ou il y a quelqu'un d'autre dans le projet ? » | Qui inviter à la visio. |
+| 8 | *(toujours en dernier)* « Et côté budget, t'as une enveloppe en tête ? » S'il l'a cochée dans le formulaire : « Tu avais mis [sa tranche] dans le formulaire. C'est toujours ça ? » | Tu notes. **Tu ne réagis pas.** |
 
-La différence de fond : en A, **il a déjà dit oui** à quelque chose (l'appel). Tu capitalises sur ce oui : cadre, découverte, verdict. En B, **il n'a dit oui à rien**. Chaque phrase doit lui donner une raison de rester en ligne dix secondes de plus, jusqu'à ce qu'il dise un premier oui (« deux minutes, ok »). Avant ce oui, tu ne poses aucune question de découverte. Après ce oui, tu es en A.
+**Pourquoi.**
 
----
+- **Ces questions, c'est ton expertise qui parle.** Un amateur commence par les fonctionnalités. Toi, tu commences par ce que les gens font aujourd'hui, par ce qui doit rapporter, par l'endroit où ils s'en servent. Il sent que tu penses à son business, pas à ton code.
+- **Chaque réponse nourrit un morceau de la suite** : le problème et l'objectif font tes conseils, le support et les trois fonctions font ton prix, « qui décide » dit qui inviter à la visio.
+- **Le budget en dernier.** Après tout le reste, il a confiance, et sa réponse est plus juste. Tu ne réagis pas : ni « ah ouais », ni « hmm ». Ton prix ne dépend pas de son budget, il dépend de ce qu'on lance.
 
-## A — Il t'attend : mot pour mot
+### S'il dit…
 
-Tutoiement établi sur WhatsApp. Il s'appelle Julien dans l'exemple.
+**« J'ai une maquette »**
 
-**[Il décroche.]**
+> Super, ça va m'aider. Envoie-la-moi sur WhatsApp, là, pendant qu'on parle. Je te dis ce qui tient.
 
-> Salut Julien, c'est Noé. (pause) Ça va ?
+Tu la regardes pendant qu'il continue. Ton conseil sur l'ordre des écrans viendra à l'audit.
 
-[Tu laisses répondre. Deux ou trois secondes de vrai échange, pas plus. Tu ne meubles pas.]
+**« J'ai déjà une appli en ligne »**
 
-> Ouais, nickel. On se parle comme prévu, t'as bien tes quinze minutes ?
+> D'accord. Deux chiffres. Combien de personnes l'installent par mois ? Et combien reviennent la semaine d'après ?
 
-> Parfait. Alors je te propose un truc simple. (pause) Tu me racontes ton idée, et où t'en es. Je te pose quelques questions, pour bien comprendre. Et à la fin, je te dis franchement si ça peut marcher, si ça doit vivre sur téléphone ou sur ordinateur, et combien prévoir. (pause) Ça te va ?
+« Je sais pas » : « Alors c'est par là qu'on commence. On ajoute rien à une appli dont on sait pas pourquoi les gens partent. »
 
-[Il dit oui. S'il dit « ouais mais moi je voulais surtout savoir le prix » :]
+**Il a peur pour son idée**
 
-> Je te le donne, c'est dans le déroulé. Mais pour pas te sortir un chiffre au hasard, j'ai besoin de comprendre d'abord. Cinq minutes.
+> C'est bon signe. (pause) Pas besoin des détails. Juste le domaine, et pour qui. (pause) Et si on avance ensemble, je te signe un accord de confidentialité, avant que tu me montres quoi que ce soit.
 
-> Vas-y. Raconte-moi ton idée, avec tes mots. Ça ferait quoi, et c'est pour qui ?
+Seulement s'il le dit lui-même. Proposé d'office, l'accord installe une peur qu'il n'avait pas, et il raconte moins bien son projet.
 
-[Tu te tais. Il parle. Tu notes trois mots par idée. Tu relances uniquement avec : « ok… et concrètement ? » / « t'as un exemple ? » / « c'est-à-dire ? ». Tu sais qu'il a fini quand il dit « voilà » ou qu'il s'arrête.]
+**Il reste flou**
 
-> Ok. Et aujourd'hui, ces gens-là, ils font comment, sans ton appli ?
+> Pas de souci, c'est souvent comme ça que ça commence. (pause) C'est pour qui, en premier ?
 
-> Et toi, ton objectif numéro un avec ça : que ça te rapporte de l'argent, que ça te fasse gagner du temps, ou que ça t'amène des clients ?
+**Il parle depuis dix minutes**
 
-> Ces gens-là, ils s'en serviraient où ? Au boulot, assis devant un écran ? Ou dehors, sur leur téléphone ?
+> Je t'arrête une seconde, c'est très clair. (pause) Pour bien te conseiller, j'ai encore deux questions.
 
-> Est-ce qu'elle a besoin de leur envoyer des notifs, d'utiliser la photo, la position ?
-
-> Si on gardait que trois fonctions au lancement, ce serait lesquelles ?
-
-> Et t'en es où, là ? Juste l'idée, des notes, une maquette, un début de dev ?
-
-[« Une maquette » → Variante M, tout de suite, avant la question suivante.]
-
-> Qu'est-ce qui fait que tu t'en occupes maintenant ? Y a une date, un truc qui presse ?
-
-> Tu décides seul, ou y a un associé à convaincre ?
-
-> Et côté budget, t'as une enveloppe en tête ?
-
-[Tu notes. Pas de réaction. Pas « ah ok », pas « hmm ». Juste « ok ».]
-
-> Bon. Si je résume. (pause) Tu veux une appli pour que [ses mots] puissent [ses mots]. Et le vrai enjeu derrière, c'est [ses mots]. (pause) C'est bien ça ?
-
-[« Oui, exactement. » S'il corrige, tu reprends sa correction mot pour mot et tu redemandes « c'est bien ça ? ».]
-
-> Ok. Alors première chose, et je te la donne tout de suite : vu ce que tu me décris, ça vit sur [téléphone / ordinateur]. (pause) Je t'explique pourquoi en une phrase.
-
-[Téléphone :]
-> Tes utilisateurs, c'est des particuliers, dehors, qui te connaissent pas. Faut les attraper là où ils sont, sur le store. Et [les notifs / la photo / la position], c'est le cœur de ton produit.
-
-[Ordinateur :]
-> Tes utilisateurs, c'est des pros, assis, au boulot, avec plusieurs profils. Personne cherche son outil de travail sur l'App Store. Et sur ordinateur, y a pas de validation d'Apple, pas de commission. Ça sort deux à trois semaines plus vite, et tu gardes huit euros sur dix au lieu de sept.
-
-[Les deux :]
-> On commence par [celui qui rapporte le plus vite]. L'autre vient après, avec les premiers revenus.
-
-> De mon côté, pour que tu saches à qui tu parles. (pause) Je conçois et je développe des applis, sur téléphone et sur ordinateur. Ça fait plus de cinq ans que je fais ça, deux ans à mon compte. Et je suis autant designer des écrans que développeur. Donc t'as un seul interlocuteur, de l'idée jusqu'à la mise en ligne.
->
-> (pause) Ma spécialité, c'est pas de faire une appli qui existe. C'est de faire une appli qui marche. (pause) Et ça, ça se joue dans les premiers écrans. En moyenne, une personne sur quatre qui installe une appli, elle l'ouvre qu'une seule fois. Elle arrive, elle voit pas tout de suite ce qu'elle y gagne, elle repart. (pause) Donc moi, avant de dessiner le moindre écran, je travaille le parcours. Ce qu'on montre en premier. Ce qu'on demande, et à quel moment. Et pourquoi la personne revient le lendemain. (pause) L'interface, c'est la partie visible. Ce qui fait qu'elle marche, c'est ce qu'y a derrière.
-
-[Puis UNE variante, dite avec ses mots. Exemple, Variante A :]
-
-> Dans ton cas, le point qui décide de tout, c'est l'écran qui demande de payer. La plupart des gens le mettent à la fin, une fois que l'utilisateur a « bien compris ». C'est l'inverse. Dans les applis à abonnement, huit essais sur dix démarrent le jour même de l'installation. Si ton écran de paiement arrive au bon moment, t'as un client. S'il arrive trop tard, la personne est déjà partie. (pause) C'est ça que je conçois pour toi. Où on le met, quelle offre, à quel prix.
-
-> Du coup, voilà ce que je te donne déjà, et c'est offert. (pause) [Téléphone / ordinateur], parce que [raison]. Une première version avec [les trois fonctions], le reste vient après, avec les premiers utilisateurs. Et un ordre de grandeur, que je te donne là. (pause) Et si le projet tient, je te prépare un premier visuel de ton appli, offert, pour que tu voies le truc avant de t'engager.
-
-> Pour l'ordre d'idée. (pause) Une première version sérieuse, en ligne, c'est entre cinq et huit mille euros. Une appli complète, avec tout ce que tu m'as décrit, plutôt huit à douze. Au-delà, c'est une plateforme dense, et je te la chiffre après cadrage. Tarif fixe : tu sais ce que tu paies avant de commencer. (pause) C'est cohérent avec ce que t'avais en tête ?
-
-[Silence. Tu laisses venir. Réponses : Partie I, §6.]
-
-> Ok, c'est clair, j'ai ce qu'il me faut. (pause) Voilà la suite. Je te prépare un cahier des charges, un devis précis, et le premier visuel. Tu reçois tout jeudi au plus tard. (pause) Et si t'as des notes, des exemples d'applis que t'aimes bien, envoie-les-moi après, même en vrac. Ça m'aide à être précis.
->
-> Ensuite c'est simple. Tu valides, premier versement de trente pour cent pour que je réserve mon temps, et je démarre. Trente au départ, quarante quand tu testes sur ton téléphone, trente avant la mise en ligne.
->
-> T'as des questions ?
-
-[Tu réponds. Court. Une phrase par question.]
-
-> Parfait. Je t'envoie un message là, tout de suite, avec ce qu'on s'est dit et la date. À jeudi, Julien.
-
-**S'il ne décroche pas à l'heure prévue** : tu rappelles une fois, dix minutes plus tard. Entre les deux, WhatsApp : « Je t'ai appelé comme prévu, je réessaie dans dix minutes. » S'il ne décroche toujours pas : « On a dû se rater. Demain midi et demi, ou jeudi dix-huit heures ? » Deux créneaux, pas de « quand tu veux », pas de reproche.
-
-### Dialogue A — exemple complet
-
-Julien, formulaire Meta, stade « je veux démarrer bientôt », budget coché 5 000–10 000 €. Vous avez échangé trois messages sur WhatsApp, il a donné son idée en une phrase : « une appli de randos guidées avec les cartes hors connexion ».
-
-> **Noé** — Salut Julien, c'est Noé. Ça va ?
-> **Julien** — Ouais ça va, et toi ?
-> **Noé** — Nickel. On se parle comme prévu, t'as bien tes quinze minutes ?
-> **Julien** — Ouais, vas-y.
-> **Noé** — Parfait. Alors je te propose un truc simple. Tu me racontes ton idée, et où t'en es. Je te pose quelques questions. Et à la fin, je te dis franchement si ça peut marcher, si ça doit vivre sur téléphone ou sur ordinateur, et combien prévoir. Ça te va ?
-> **Julien** — Ça me va.
-> **Noé** — Vas-y. Raconte-moi ton idée avec tes mots. Ça ferait quoi, et c'est pour qui ?
-> **Julien** — Alors en fait moi je suis accompagnateur en montagne, et l'idée c'est une appli où les gens ont des randos guidées, avec la carte qui marche sans réseau, des points d'intérêt, des commentaires audio… Un peu comme une visite guidée mais pour la rando. Et ce serait pour les gens qui viennent en vacances dans le coin, qui connaissent pas.
-> **Noé** — Ok. Et aujourd'hui, ces gens-là, ils font comment ?
-> **Julien** — Ben ils prennent un topo-guide, ou ils regardent sur Internet, ou ils me paient une sortie à la journée.
-> **Noé** — Et toi, ton objectif numéro un avec ça : que ça te rapporte de l'argent, que ça te fasse gagner du temps, ou que ça t'amène des clients ?
-> **Julien** — Que ça me rapporte. L'idée c'est que je peux pas être partout, et là je vends mes randos sans y être.
-> **Noé** — Ok. Ils s'en serviraient où ? Dehors, sur le téléphone, j'imagine ?
-> **Julien** — Ouais, en marchant.
-> **Noé** — Et y a besoin de la position, de la carte hors réseau. Des notifs ?
-> **Julien** — La position oui, c'est le cœur. Les notifs, j'avais pas pensé.
-> **Noé** — Ok. Si on gardait que trois fonctions au lancement, ce serait lesquelles ?
-> **Julien** — La carte hors ligne avec le tracé, les points d'intérêt avec l'audio, et… le paiement, pour acheter une rando.
-> **Noé** — Et t'en es où ?
-> **Julien** — J'ai une maquette, en fait. Un pote m'a fait des écrans sur Figma.
-> **Noé** — Très bien, c'est un bon point de départ, ça me dit ce que t'as en tête. Mais je te préviens tout de suite, pour pas te faire perdre de temps : une maquette, c'est des écrans. Ce qui fait qu'une appli convertit, c'est l'ordre des écrans, ce qu'on demande à l'utilisateur et à quel moment. La plupart des maquettes que je reçois sont jolies et perdent l'utilisateur au troisième écran. Envoie-la-moi maintenant sur WhatsApp, je la regarde pendant qu'on parle, et je te dis ce qui tient et ce qui tient pas.
-> **Julien** — Ah ok. Ouais je t'envoie ça.
-> **Noé** — Qu'est-ce qui fait que tu t'en occupes maintenant ? Y a une date ?
-> **Julien** — J'aimerais être prêt pour l'été. Mai, juin.
-> **Noé** — Tu décides seul ?
-> **Julien** — Ouais.
-> **Noé** — Et côté budget, t'as une enveloppe en tête ?
-> **Julien** — J'avais mis de côté dans les sept, huit mille.
-> **Noé** — Ok. (pause) Bon. Si je résume. Tu veux une appli pour que les vacanciers du coin puissent faire tes randos guidées sans toi, avec la carte hors réseau et l'audio. Et le vrai enjeu, c'est de vendre tes randos sans y être. C'est bien ça ?
-> **Julien** — Exactement.
-> **Noé** — Alors première chose, je te la donne tout de suite : ça vit sur le téléphone, y a pas de débat. Tes utilisateurs sont dehors, ils te connaissent pas, faut les attraper sur le store, et la position c'est le cœur du produit. (pause) De mon côté, pour que tu saches à qui tu parles. Je conçois et je développe des applis, sur téléphone et sur ordinateur. Plus de cinq ans que je fais ça, deux ans à mon compte. Et je suis autant designer des écrans que développeur, donc t'as un seul interlocuteur de l'idée à la mise en ligne. Ma spécialité, c'est pas de faire une appli qui existe. C'est de faire une appli qui marche. Et ça se joue dans les premiers écrans : une personne sur quatre qui installe une appli l'ouvre qu'une seule fois. Elle arrive, elle voit pas ce qu'elle y gagne, elle repart. Donc avant de dessiner le moindre écran, je travaille le parcours. Ce qu'on montre en premier, ce qu'on demande, à quel moment, et pourquoi la personne revient. (pause) Et dans ton cas, le point qui décide de tout, c'est l'écran qui demande de payer. Ta maquette, je viens de la regarder : le paiement est au sixième écran, après la création de compte. Les gens sont partis avant. Dans les applis payantes, huit achats sur dix se font le jour de l'installation. Donc on montre une rando en entier, gratuite, direct. Et on propose d'acheter la deuxième au moment où il a envie de la faire. Pas avant, pas après.
-> **Julien** — Ah ouais, je l'avais pas vu comme ça.
-> **Noé** — C'est normal, c'est mon boulot, pas le tien. Du coup, voilà ce que je te donne déjà, et c'est offert : téléphone, parce que position et hors réseau. Une première version avec la carte hors ligne, les points d'intérêt audio, et l'achat à la rando. Le reste, les notifs, les avis, ça vient après, avec les premiers utilisateurs. Et je te prépare un premier visuel de ton appli, offert, avec le bon parcours, pour que tu voies la différence avec ta maquette.
-> **Julien** — Ok, top.
-> **Noé** — Pour l'ordre d'idée. Une première version sérieuse, en ligne, c'est entre cinq et huit mille euros. Vu ce que tu m'as décrit, avec la carte hors ligne, t'es plutôt dans le haut de cette fourchette. Tarif fixe, tu sais ce que tu paies avant de commencer. C'est cohérent avec ce que t'avais en tête ?
-> **Julien** — Ouais, ça rentre.
-> **Noé** — Parfait, on peut avancer sérieusement. Voilà la suite : je te prépare un cahier des charges, un devis précis, et le premier visuel. Tu reçois tout jeudi au plus tard. Ensuite c'est simple : tu valides, trente pour cent pour que je réserve mon temps, et je démarre. Trente au départ, quarante quand tu testes sur ton téléphone, trente avant la mise en ligne. Pour mai, on est large. T'as des questions ?
-> **Julien** — Et si je veux rajouter les notifs après ?
-> **Noé** — Nouveau devis, pas d'abonnement, et t'es propriétaire du code. Je t'envoie un message là, tout de suite, avec ce qu'on s'est dit et la date. À jeudi, Julien.
-
-Ce qu'il faut voir dans ce dialogue : Noé parle **une fois longtemps** (la présentation, environ une minute), et c'est après avoir posé neuf questions. La maquette est désamorcée **avant** que Julien dise « donc j'ai besoin d'un dev ». Le chiffre sort une fois. Le budget est annoncé après le cadeau. La fin a une date.
+*Pourquoi :* le quart d'heure, c'est ta promesse du début. La tenir, c'est une preuve de plus.
 
 ---
 
-## B — Il ne t'attend pas : mot pour mot
+## L'audit : tes conseils (3 minutes)
 
-Vouvoiement au départ. Elle s'appelle Sophie dans l'exemple.
+> Bon. Si je résume. (pause) Tu veux une appli pour que [ses mots] puissent [ses mots]. Et ce que t'en attends, c'est [ses mots]. (pause) C'est bien ça ?
 
-**[Elle décroche. Souvent un « allô ? » méfiant.]**
+[« Oui, exactement. » S'il corrige, tu reprends sa correction mot pour mot, et tu redemandes « C'est bien ça ? ».]
 
-> Bonjour, Sophie Durand ?
-
-[Oui.]
-
-> Noé Calmes, bonjour. (pause courte) Je vous appelle parce que vous avez laissé vos coordonnées sous une de mes publicités, pour un projet d'application. (pause) Vous avez deux minutes ?
-
-[Trois réponses possibles.]
-
-**« Oui » (ou « ça dépend, c'est pour quoi ? ») :**
-
-> En deux mots, pour que vous sachiez à qui vous parlez. (pause) Je suis expert indépendant en applications mobiles et web. Je fais ça depuis plus de cinq ans, à mon compte depuis deux ans. Et je m'occupe de tout, de l'idée jusqu'à la mise en ligne. (pause) Mon métier, c'est pas qu'une application existe. C'est qu'elle rapporte. Ou qu'elle fasse vraiment gagner du temps.
+> Alors voilà mes conseils. (pause) Un. Ton appli vit sur [le téléphone / l'ordinateur]. Parce que [la raison]. (pause) Deux. [Le conseil qui compte le plus pour son cas.] (pause) Trois. Pour le lancement, on garde [ses trois fonctions]. Le reste vient après, avec tes premiers utilisateurs.
 >
-> (pause) Et ce que je vous propose, c'est gratuit. Vous me racontez votre idée, et je vous dis si elle tient, si elle doit vivre sur téléphone ou sur ordinateur, et combien prévoir. (pause) Ça vous va ?
+> (pause) Et c'est là que je fais la différence. Le code, c'est vingt pour cent d'une appli qui marche. Le reste, c'est ce qu'on montre, ce qu'on demande, et à quel moment. C'est par là que je commence.
 
-[Oui.]
+Le « un » et le « deux » se choisissent dans « Les conseils, par cas », plus bas.
 
-> Super. Et on peut se tutoyer ? Ce sera plus simple.
+**S'il doute, ou s'il demande « t'as déjà fait ça ? »** :
 
-[Oui.]
+> Pour te situer : une appli que j'ai conçue fait plus de treize mille euros par mois. Et j'ai fait la première version d'une appli qui a dépassé trois cent mille utilisateurs.
 
-> Alors vas-y. C'est quoi l'idée, dans les grandes lignes ?
+**Pourquoi.**
 
-[Elle parle. Tu te tais. Puis deux questions maximum : le problème, l'objectif numéro un.]
+- **Le résumé avec ses mots.** C'est le moment où la confiance bascule : il entend son projet dit mieux qu'il ne l'a dit. Son « oui, exactement » vaut plus que tout ce que tu pourrais dire sur toi.
+- **« Un. Deux. Trois. »** Numérotés, tes conseils ont l'air de ce qu'ils sont : une méthode. Et trois, c'est ce qu'on retient.
+- **Des conseils, pas un avis.** « Je te dis ce que j'en pense » ne l'intéresse pas. Un conseil concret, il peut s'en servir, même s'il ne signe jamais avec toi. C'est ça, l'audit promis.
+- **Le troisième conseil prépare le prix.** Trois fonctions au lancement, c'est un périmètre clair : ta fourchette sera juste.
+- **« Le code, c'est vingt pour cent. »** En une phrase, il comprend pourquoi tu n'es pas un développeur de plus, et pourquoi ton prix n'est pas celui d'un développeur.
+- **La preuve, une seule fois, et seulement s'il doute.** En rafale au début, elle sonne comme de la frime. Au moment du doute, elle rassure.
 
-**Le point de décision, à deux minutes.** Elle t'a accordé deux minutes, pas quinze. Si tu enchaînes sans demander, elle se sent piégée. Donc tu lui fais choisir :
+---
 
-> Ok, je vois bien. (pause) Là j'ai deux options pour toi. Soit t'as un quart d'heure maintenant, et je te fais l'audit complet : support, première version, ordre de grandeur. Soit on cale ça demain ou jeudi, et je viens avec un premier visuel de ton appli. (pause) Tu préfères quoi ?
+## Le prix (1 minute)
 
-[Elle a le temps → tu enchaînes Partie I, §2 à §7, exactement comme en A. Quinze minutes, pas plus.]
-[Elle n'a pas le temps → :]
+> Pour ce que tu me décris, c'est entre [huit] et [douze] mille euros. (pause) Le prix est fixé avant de commencer. Pas de surprise. (pause) Ça comprend la stratégie, le design, le développement, et la mise en ligne. Et c'est en ligne en quarante-cinq jours, en moyenne. (pause) Ça rentre dans ce que t'avais prévu ?
 
-> Demain midi et demi, ou jeudi dix-huit heures ?
->
-> Parfait. Je t'envoie un message là, tout de suite, pour confirmer. Et je t'appelle sur ce numéro, jeudi, dix-huit heures. Bonne journée, Sophie.
+[Silence. Tu le laisses répondre.]
 
-**« Pas le temps » (dès l'ouverture) :**
+La fourchette, c'est celle de son projet. Huit à douze mille pour la plupart. Plus simple : cinq à huit. Plus dense : « à partir de douze, je te donne le chiffre exact dans le devis ».
 
-> Aucun souci. (pause) Je vous rappelle pour un quart d'heure, et je vous fais l'audit de votre idée, c'est offert. Plutôt demain midi et demi, ou jeudi dix-huit heures ?
->
-> Parfait. Je vous envoie un message là tout de suite pour confirmer. Et je vous appelle sur ce numéro. Bonne journée.
+**Pourquoi.**
 
-[WhatsApp dans la minute : « Sophie, c'est Noé Calmes, on vient de s'avoir au téléphone. Je t'appelle jeudi à 18h sur ce numéro pour l'audit de ton projet d'application. Si t'as des notes ou une maquette, envoie-les ici avant, je regarde. » Au vouvoiement si c'est resté au vouvoiement. Rappel le matin même : « On se parle à 18h comme prévu. »]
+- **Le prix vient après les conseils.** Il a reçu avant qu'on lui demande quoi que ce soit. Le même chiffre, dit à la deuxième minute, aurait fait peur.
+- **Une fourchette, pas un prix.** Le prix exact est dans le devis, une fois le cahier des charges écrit. Un chiffre précis au téléphone serait une promesse que tu ne peux pas encore tenir.
+- **« Fixé avant de commencer. Pas de surprise. »** C'est sa peur numéro un : que ça dérape. Tu y réponds avant qu'il la dise.
+- **Puis tu te tais.** Le premier qui parle après un prix se met à le défendre. Laisse-le réagir.
 
-**« C'est pour quoi ? » / elle ne se souvient plus :**
+### S'il dit…
 
-> C'est votre projet d'application. Vous aviez rempli le formulaire sous ma publicité, le [date]. (pause) J'appelle tous ceux qui l'ont fait, pour leur dire gratuitement si leur idée peut marcher. (pause) C'est quoi l'idée, dans les grandes lignes ?
+**« C'est cher »**
 
-**Messagerie :** le vocal validé le 06/10, puis le WhatsApp « je viens d'essayer de t'appeler ». Trois vocaux maximum par lead, au total.
+> Je comprends. Pour te situer : une agence, c'est à partir de vingt mille euros. Et trois à six mois. (pause) Moi, c'est un prix fixe, et une seule personne du début à la fin. (pause) Tu avais prévu combien ?
 
-### Quand ça part mal — les réflexes du téléphone
+- Cinq mille ou plus : « D'accord. Dans le devis, je te montre honnêtement ce qu'on lance avec ce budget. » Puis la visio.
+- Moins de cinq mille : « Je préfère être honnête : en dessous de cinq mille, personne te fera une appli sérieuse, publiée sur les stores. Teste d'abord ton idée avec des outils simples. Le jour où tu passes à l'étape d'après, appelle-moi. »
 
-Ce sont les sorties polies d'un inconnu qui ne veut pas être vendu. Tu les acceptes, et tu les remplaces par une date. Jamais tu ne te justifies.
+Jamais de remise. Jamais de découpage pour faire rentrer le prix.
 
-| Elle dit | Tu dis |
+**« J'avais pas de budget en tête »**
+
+> C'est normal, c'est mon rôle de cadrer. (pause) Une vraie appli, c'est plusieurs milliers d'euros. Si tu cherches le moins cher possible, je suis pas le bon. Si tu veux une appli qui rapporte, là, c'est mon métier.
+
+**« On m'a proposé moins cher »**
+
+> C'est possible, y a de tout. Regarde trois choses. Qui tu as au téléphone après la signature. Si le prix est fixé avant de commencer. Et ce qui se passe si ça ne livre pas.
+
+**« Je peux le faire avec l'IA »**
+
+> Oui, pour avoir des écrans. L'IA te donne du code. Elle te dit pas où mettre le paiement, ni pourquoi les gens reviennent. (pause) Moi aussi je l'utilise, pour aller plus vite. La différence, c'est tout ce qu'il y a avant le code.
+
+**« Ça va me rapporter combien ? »**
+
+> Personne peut te le promettre. Méfie-toi de ceux qui le font. (pause) Moi, je mets toutes les chances de ton côté : le bon support, le bon moment pour le paiement, une raison de revenir. Et ce sont tes premiers utilisateurs qui te répondront.
+
+---
+
+## La suite : la visio (1 minute)
+
+> C'est clair pour moi. Voilà la suite. (pause) Je te prépare trois choses : le cahier des charges, une première maquette de ton appli, et le devis. (pause) C'est offert. Et ça t'engage à rien. (pause) On se fait une visio de trente minutes, et je te montre tout. Plutôt jeudi onze heures, ou vendredi quatorze heures ?
+
+[Il choisit.]
+
+> Parfait. Je t'envoie le lien sur WhatsApp, tout de suite. Avec un accord de confidentialité : ton idée reste à toi. (pause) Et si t'as des notes, ou des applis que t'aimes bien, envoie-les-moi. Même en vrac, ça m'aide. (pause) T'as des questions ?
+
+[Tu réponds court. Une phrase par question.]
+
+> À jeudi, [Prénom].
+
+**Pourquoi.**
+
+- **« Voilà la suite. »** La visio n'est pas une question. Jamais « un deuxième appel, ça t'intéresse ? » : tu lui donnerais l'occasion de dire non à quelque chose qui le sert.
+- **« Trois choses », nommées une par une.** Il voit ce qu'il va recevoir. La maquette est la plus forte : il va voir son appli avant de payer quoi que ce soit.
+- **« C'est offert. Et ça t'engage à rien. »** Tu prends le risque, pas lui. C'est ce qui rend le oui facile, et c'est vrai.
+- **Deux créneaux précis.** Choisir entre deux, c'est facile. « Quand t'es dispo ? », c'est un devoir à la maison.
+- **L'accord de confidentialité arrive ici, pas au début.** Il a raconté son idée, il va t'envoyer ses notes : l'accord est un geste de pro. Proposé d'office dès l'ouverture, il installe une peur du vol d'idée qu'il n'avait pas, et il raconte moins bien.
+- **Son prénom à la fin.** La deuxième fois de l'appel, au moment de la date.
+
+### S'il dit…
+
+**« Envoie-moi juste le devis »**
+
+> Je te l'envoie, oui. Mais la maquette, je veux te la montrer : c'est là que tu vois ton appli. Trente minutes. Plutôt jeudi onze heures, ou vendredi quatorze heures ?
+
+**« Je dois réfléchir »**
+
+> Bien sûr. La visio, c'est justement pour ça : tu vois tout, et tu réfléchis avec tout en main.
+
+Puis les deux créneaux.
+
+**« Je dois en parler à mon associé »**
+
+> Invite-le à la visio. Il voit tout, il pose ses questions. Ça vous fait gagner une semaine.
+
+**« J'ai que mon téléphone »**
+
+> Pas de souci. On fait un appel vidéo WhatsApp, et je t'envoie le lien de la maquette. Tu la fais défiler pendant que je te montre.
+
+**Le projet est encore trop flou**
+
+> Il me manque [qui fait quoi / les écrans principaux / l'objectif]. Envoie-moi ce que t'as. On se refait dix minutes [demain midi et demi], et ensuite je te prépare tout.
+
+**Ce n'est pas ton client** (il cherche « juste un développeur », un site vitrine, ou son budget est hors de portée)
+
+> Je préfère être clair : sur ce projet-là, je suis pas la bonne personne. [La raison, en une phrase.] Le jour où tu passes à l'étape d'après, écris-moi.
+
+*Pourquoi :* celui qui peut dire non est celui qu'on croit quand il dit oui.
+
+---
+
+## Après l'appel (dans la minute)
+
+1. **Le WhatsApp de confirmation**, au tu ou au vous comme à l'appel :
+
+   > [Prénom], merci pour l'échange. Visio jeudi à 11h, voici le lien : [lien]. D'ici là, je te prépare le cahier des charges, la maquette et le devis. Si tu as des notes ou des exemples d'applis, envoie-les ici.
+
+2. **L'accord de confidentialité**, dans la foulée : fiche client > bouton NDA > onglet WhatsApp.
+3. **L'invitation d'agenda** avec le lien Google Meet, si tu as son e-mail.
+4. **Sa fiche Nowork** : la porte (A ou B), son idée avec ses mots, téléphone ou ordinateur, les trois fonctions, son budget, le créneau de la visio.
+5. **Tu prépares le cahier des charges, la maquette et le devis** (`nowork/documentation/guides/process-projets-client.md`).
+
+**Pourquoi.** Le message dans la minute, c'est la dernière preuve que tu fais ce que tu dis. Et le jour J, il a le lien sous la main.
+
+---
+
+## Les conseils, par cas
+
+Le « un » de l'audit, c'est le support. Le « deux », tu le choisis ici : celui qui compte le plus pour lui, dit avec ses mots à lui.
+
+| Son cas | Tu dis |
 |---|---|
-| « Envoyez-moi un mail / un message » | « Je vous en envoie un, oui. Mais un message vous dira pas si votre idée tient. Ça, c'est un quart d'heure de vive voix. Demain midi et demi, ou jeudi dix-huit heures ? » |
-| « Je suis en voiture / en réunion » | « Je vous laisse. Je vous rappelle à quelle heure, dix-huit heures ? » *(jamais « rappelez-moi quand vous voulez »)* |
-| « J'ai rien demandé / c'est du démarchage ? » | « Non. Vous avez rempli un formulaire sous une de mes publicités, le [date], pour un projet d'application. Je vends rien au téléphone, je vous dis si votre idée tient. C'était quoi, l'idée ? » *(Si elle maintient que c'était une erreur : « Pas de souci, bonne journée. » Tu ne t'excuses pas.)* |
-| « C'est combien ? » *(à la quinzième seconde)* | « Ça dépend de ce qu'on construit, et je vous donne la fourchette dans cinq minutes. Pour que je sois précis : ça ferait quoi, et pour qui ? » *(Si elle insiste : « Ordre d'idée, une première version démarre à cinq mille. Mais pour votre projet, je préfère comprendre avant de dire un chiffre. Ça ferait quoi ? »)* |
-| « J'ai abandonné / j'ai plus le projet » | « Ok. Juste par curiosité : c'est quoi qui a bloqué, le budget, le temps, ou l'idée elle-même ? » *(budget → Variante C ; idée → « racontez-moi quand même, des fois c'est l'angle qui cloche, pas l'idée » ; vraiment fini → « Pas de souci. Si ça revient, vous avez mon numéro. Bonne journée. »)* |
-| « J'ai déjà quelqu'un » | « Très bien. Je vous pose une seule question et je vous laisse : il vous a dit sur quel support ça doit vivre, et pourquoi ? (pause) Si c'est flou, posez-la-lui. Et pour un deuxième avis, gratuit, vous avez mon numéro. » |
-| « J'ai pas de budget » | « Ok. Pas de budget du tout, ou pas encore ? » *(pas encore → Variante C ; du tout → « Alors ce sera pour plus tard. Testez l'idée en no-code en attendant, et quand vous passez à l'étape d'après, écrivez-moi. »)* |
-| « Rappelez-moi plus tard » *(vague)* | « Avec plaisir. Plutôt mardi ou jeudi ? (pause) Midi et demi, ou dix-huit heures ? » *(une date, toujours)* |
-| Elle parle vite, agacée | Tu ralentis encore. Tu baisses la voix. Tu dis son prénom. « Sophie, je vous prends trente secondes et je vous laisse. » Puis la raison de l'appel, et une seule question. |
+| **Sur téléphone** (grand public, dehors) | « Tes utilisateurs sont dehors, et ils te connaissent pas encore. Il faut être là où ils cherchent : sur l'App Store et sur Google Play. Et [la position / la photo / les notifications], c'est le cœur de ton appli. » |
+| **Sur ordinateur** (pros, au travail) | « Tes utilisateurs sont au travail, devant un écran. Personne cherche son outil de travail sur l'App Store. Et sur ordinateur, pas de validation d'Apple, pas de commission : ça sort plus vite, et tu gardes huit euros sur dix au lieu de sept. » |
+| **Les deux** | « On commence par celui qui rapporte le plus vite. L'autre vient après, avec les premiers revenus. » |
+| **Il veut que ça rapporte** (abonnement, achat) | « Le moment où tu demandes de payer, c'est ce qui décide de tout. La plupart des gens le mettent à la fin. C'est l'inverse : dans les applis à abonnement, huit essais sur dix démarrent le jour même où on installe l'appli. Ton offre doit arriver dès le premier jour. » |
+| **Grand public, il faut qu'ils reviennent** | « Une personne sur quatre ouvre une appli une seule fois, et ne revient jamais. Avant de dessiner le moindre écran, je cherche pourquoi ton utilisateur reviendrait demain. » |
+| **Il ne sait pas comment elle gagnera de l'argent** | « Avant le premier écran, on décide comment elle gagne de l'argent : un abonnement, un achat, ou une commission. C'est ça qui dessine l'appli. » |
+| **Mise en relation** (deux types d'utilisateurs, « un Uber pour… ») | « Ton appli a besoin des deux côtés en même temps. Sinon, personne trouve personne. Donc on commence petit : une ville, un type de client. Quand ça tourne là, on élargit. » |
+| **Outil pour son équipe** (Excel, WhatsApp, papier) | « Le vrai risque, c'est pas la technique. C'est que ton équipe s'en serve pas. Si ça prend un clic de plus qu'Excel, ils retournent sur Excel. Donc on part de ce qu'ils font le plus souvent, et on le rend plus rapide qu'aujourd'hui. » |
+| **Il a déjà des clients** (coach, salle, formateur) | « T'as déjà le plus dur : des gens qui te paient. L'appli, c'est ce qui les garde, et ce qui te permet de leur vendre un abonnement. Sans dépendre d'Instagram pour leur parler. » |
+| **Il a une maquette** | « Ta maquette, c'est une bonne base. Mais ce qui fait qu'une appli marche, c'est l'ordre des écrans : ce qu'on montre en premier, ce qu'on demande, et à quel moment. [Ce que tu as vu dans la sienne.] » |
+| **Il doit convaincre** (banque, associé, investisseur) | « Ce qu'il te faut d'abord, c'est un dossier qu'ils comprennent en cinq minutes. Le cahier des charges, la maquette et le devis que je te prépare, c'est exactement ça. » |
 
-### Dialogue B — exemple complet
+Le « Cadrage financement » payant de la v3 ne se propose plus à l'appel 1 : le cahier des charges, la maquette et le devis offerts font ce travail.
 
-Sophie, gérante d'une société de nettoyage, douze salariés. Formulaire Meta il y a cinq jours, stade « j'y réfléchis sérieusement », budget coché 5 000–10 000 €. Pas de réponse aux deux WhatsApp. C'est la touche 3, l'appel.
+## Les quatre questions qu'il se pose vraiment
 
-> **Sophie** — Allô ?
-> **Noé** — Bonjour, Sophie Durand ?
-> **Sophie** — Oui ?
-> **Noé** — Noé Calmes, bonjour. Je vous appelle parce que vous avez laissé vos coordonnées sous une de mes publicités, pour un projet d'application. Vous avez deux minutes ?
-> **Sophie** — Euh… c'est pour quoi exactement ?
-> **Noé** — C'est votre projet d'application. Vous aviez rempli le formulaire sous ma publicité, jeudi dernier. J'appelle tous ceux qui l'ont fait, pour leur dire gratuitement si leur idée peut marcher. C'est quoi l'idée, dans les grandes lignes ?
-> **Sophie** — Ah oui, ok. Ben en fait c'est pour ma boîte, on fait du nettoyage, j'ai douze personnes sur le terrain, et je gère tout sur Excel et WhatsApp, les plannings, les heures, c'est l'enfer.
-> **Noé** — Ok. En deux mots, pour que vous sachiez à qui vous parlez. Je suis expert indépendant en applications mobiles et web, je fais ça depuis plus de cinq ans, à mon compte depuis deux ans, et je m'occupe de tout, de l'idée jusqu'à la mise en ligne. Mon métier, c'est pas qu'une application existe. C'est qu'elle rapporte, ou qu'elle fasse vraiment gagner du temps. Et ce que je vous propose, c'est gratuit : vous me racontez, et je vous dis si ça tient, si ça doit vivre sur téléphone ou sur ordinateur, et combien prévoir. Ça vous va ?
-> **Sophie** — Ok, oui.
-> **Noé** — Super. On peut se tutoyer ? Ce sera plus simple.
-> **Sophie** — Oui, pas de souci.
-> **Noé** — Alors concrètement, qu'est-ce qui te prend le plus de temps aujourd'hui, là-dedans ?
-> **Sophie** — Les heures. Chacun m'envoie ses heures par WhatsApp, je recopie dans Excel, et à la fin du mois je passe deux jours dessus. Et les plannings, dès qu'il y a un changement, je dois renvoyer à tout le monde.
-> **Noé** — Et ton objectif numéro un, c'est de gagner ce temps-là, ou y a autre chose derrière ?
-> **Sophie** — C'est le temps. Et les erreurs, parce que je me trompe, et après j'ai des salariés mécontents.
-> **Noé** — Ok, je vois bien. (pause) Là j'ai deux options pour toi. Soit t'as un quart d'heure maintenant, et je te fais l'audit complet : support, première version, ordre de grandeur. Soit on cale ça demain ou jeudi, et je viens avec un premier visuel de ton appli. Tu préfères quoi ?
-> **Sophie** — Là je suis chez un client, je peux pas. Mais ça m'intéresse.
-> **Noé** — Demain midi et demi, ou jeudi dix-huit heures ?
-> **Sophie** — Jeudi dix-huit heures.
-> **Noé** — Parfait. Je t'envoie un message là, tout de suite, pour confirmer. Et je t'appelle sur ce numéro, jeudi, dix-huit heures. Juste pour que je prépare : tes salariés, ils pointeraient sur leur téléphone, sur place ?
-> **Sophie** — Oui, ce serait le plus simple.
-> **Noé** — Ok. Je te dis jeudi pourquoi toi tu seras sur ordinateur et eux sur téléphone, et dans quel ordre on fait les deux. Bonne journée, Sophie.
+Ses objections en cachent toujours une de ces quatre : **combien je mets · quand c'est en ligne · combien ça rapporte · qu'est-ce que je risque.** Tu réponds à la vraie.
 
-Ce qu'il faut voir : Noé a parlé **deux fois dix secondes** avant qu'elle dise oui. La présentation complète n'est pas sortie, elle sortira jeudi. Il a posé trois questions, pas neuf. Il a fait choisir, et il a pris la date. La dernière question, c'est le teaser pour jeudi : elle sait déjà qu'il a vu un truc qu'elle n'avait pas vu (ordinateur pour elle, téléphone pour eux).
+| Il dit | Tu dis |
+|---|---|
+| « Une appli sur ordinateur, c'est moins cher ? » | « Non, c'est une confusion fréquente. Ce qui fait le prix, c'est ce qu'on construit : les écrans, les profils, les paiements. L'ordinateur te fait gagner du temps, et la commission des stores. » |
+| « Ça prend combien de temps ? » | « Quarante-cinq jours en moyenne. Le délai exact est écrit dans le devis. » |
+| « Vous travaillez seul, c'est pas risqué ? » | « C'est voulu : une seule personne connaît ton projet du début à la fin. Et mes conditions prévoient le cas : si je ne peux vraiment pas finir, tout le travail fait t'est remis, et ce qui n'est pas livré t'est remboursé. Une fois payée, l'appli est à toi, code compris. » |
+| « Je veux comparer avec d'autres devis » | « Normal, fais-le. Regarde trois choses : qui tu as au téléphone après la signature, si le prix est fixé avant, et ce qui se passe si ça ne livre pas. » |
+| « Et après la mise en ligne ? » | « Trente jours de corrections, compris. Ensuite, chaque évolution a son devis, pas d'abonnement. Et je disparais pas : c'est après la mise en ligne qu'on voit ce qui marche. » |
 
----
+(Conditions : CGV du 19/09/2026, articles 12 et 19. Garde-les à jour si les CGV changent.)
 
-## Les dix phrases à savoir par cœur
+## Les chiffres en réserve (sourcés, un à la fois)
+
+| Ce que tu dis à l'oral | Le chiffre exact | Source |
+|---|---|---|
+| « Une personne sur quatre ouvre une appli une seule fois » | 25 % (2015), 21 % (2018) | Localytics, *21 % of users abandon an app after one use* |
+| « Huit essais sur dix démarrent le jour où on installe l'appli » | 80 à 90 % des essais démarrent à J0 | RevenueCat, *State of Subscription Apps 2025* |
+| « Quand le paiement est demandé d'entrée, ça convertit cinq fois plus » *(la preuve que le moment du paiement décide, pas un conseil de mettre un mur partout)* | 12,1 % d'installations payantes à J35 avec paiement d'entrée, contre 2,2 % en gratuit | RevenueCat 2025 |
+| « Une agence, c'est à partir de vingt mille euros, et trois à six mois » | — | `positionnement.md`, page d'accueil |
+| « Plus de vingt applis publiées », « une dizaine d'idées par semaine » | +20 applications sur les stores, toute carrière confondue | `positionnement.md`, proof points ; profil de Noé |
+| « Une appli que j'ai conçue fait plus de treize mille euros par mois » | Calorie, +13 000 €/mois | `positionnement.md`, `landing-page.md` |
+| « La première version d'une appli qui a dépassé trois cent mille utilisateurs » | Hush, +300 000 utilisateurs, première version | `positionnement.md`, proof points |
+| « Sur ordinateur, tu gardes huit euros sur dix au lieu de sept » | environ 78 % encaissés contre environ 70 % après la commission d'un store | `vocabulaire-mobile-web.md` |
+
+## Interdits
+
+- Lire le script. Tu l'as répété, tu le dis.
+- Te dire « expert » : tu le prouves. Te présenter en développeur qui exécute : tu décides ce qu'il faut construire, et pourquoi.
+- « Je te dis ce que j'en pense » : il s'en fiche. Tu donnes des conseils.
+- Un prix exact au téléphone. Une remise. Un découpage pour faire rentrer le prix.
+- Promettre des revenus.
+- « Site », « site web » pour une application sur ordinateur. Le jargon : MVP, Flutter, back-office, SaaS sans l'expliquer.
+- « Première version » pour parler du délai : c'est « quarante-cinq jours en moyenne ».
+- « Visuel » : c'est une maquette.
+- « Un deuxième appel, ça t'intéresse ? » : la visio est la suite, pas une option.
+- « Quand es-tu dispo ? » : toujours deux créneaux.
+- Un créneau après 18h.
+- Dépasser quinze minutes.
+- Finir sans date.
+
+## Les phrases à savoir par cœur
 
 Celles-là, tu les dis les yeux fermés. Le reste, tu l'improvises autour.
 
-1. « Je vous appelle parce que vous avez [fait X], pour un projet d'application. Vous avez deux minutes ? »
-2. « Mon métier, c'est pas qu'une application existe. C'est qu'elle rapporte. »
-3. « Vous me racontez votre idée, et je vous dis si elle tient, si elle doit vivre sur téléphone ou sur ordinateur, et combien prévoir. »
-4. « Raconte-moi ton idée, avec tes mots. Ça ferait quoi, et c'est pour qui ? »
-5. « Si je résume : tu veux […] pour que […]. Et le vrai enjeu, c'est […]. C'est bien ça ? »
-6. « Une personne sur quatre qui installe une appli l'ouvre qu'une seule fois. »
-7. « L'interface, c'est la partie visible. Ce qui fait qu'elle marche, c'est ce qu'y a derrière. »
-8. « Une maquette, c'est des écrans. Ce qui fait qu'une appli convertit, c'est l'ordre des écrans, et ce qu'on demande, à quel moment. »
-9. « Entre cinq et huit mille pour une première version. Huit à douze pour une appli complète. Tarif fixe. C'est cohérent avec ce que t'avais en tête ? »
-10. « Demain midi et demi, ou jeudi dix-huit heures ? »
+1. « Bonjour [Prénom], c'est Noé Calmes. Je t'appelle comme prévu, pour l'audit de ton idée. »
+2. « Je crée des applis, sur téléphone et sur ordinateur. Je m'occupe de tout, de la stratégie jusqu'à la mise en ligne. J'en ai publié plus de vingt. »
+3. « Mon métier, c'est pas juste qu'une appli existe. C'est qu'elle rapporte. »
+4. « Tu me racontes ton idée. Je te pose quelques questions. Je te donne mes conseils. Et à la fin, je te dis combien ça te coûterait. Ça te va ? »
+5. « Je vous appelle pour votre projet d'application. Vous avez laissé vos coordonnées sous une de mes publicités. Vous avez deux minutes ? »
+6. « Si je résume : tu veux une appli pour que… Et ce que t'en attends, c'est… C'est bien ça ? »
+7. « Le code, c'est vingt pour cent d'une appli qui marche. »
+8. « Le prix est fixé avant de commencer. Pas de surprise. »
+9. « Je te prépare trois choses : le cahier des charges, une première maquette de ton appli, et le devis. C'est offert. Et ça t'engage à rien. »
+10. « Plutôt jeudi onze heures, ou vendredi quatorze heures ? »
 
-## Comment répéter
+## Comment l'apprendre
 
-- Avant chaque appel : les deux ouvertures (A et B) à voix haute, debout, trois fois. Pas en lisant : en disant.
-- Une fois par semaine : tu t'enregistres sur un appel (avec accord), ou tu te joues le Dialogue B tout seul avec le dictaphone. Tu réécoutes. Tu comptes les « euh », tu notes où tu as accéléré, tu notes si ta voix monte sur les affirmations.
-- Après chaque appel, trois lignes dans Nowork : la porte (A ou B), la variante dite (A/B/C/D/M/R), la fin (date ou pas). Au bout de dix appels, tu sais ce qui coince.
+- **Le premier jour** : lis tout une fois, à voix haute, pour entendre ce qui accroche. Ce qui accroche dans ta bouche, change-le (Nowork, bouton « Modifier ») : le script doit sonner comme toi.
+- **Avant chaque appel** : le début de ta porte (A ou B) et la phrase du prix, à voix haute, debout, trois fois.
+- **Les dix phrases par cœur** : une par jour, dite cinq fois.
+- **Une fois par semaine** : enregistre-toi au dictaphone en jouant un appel complet. Réécoute : les « euh », où tu accélères, si ta voix monte sur les affirmations.
+- **Après chaque appel**, trois mots sur sa fiche : la porte (A ou B), le conseil « deux » donné, la fin (visio calée ou pas). Au bout de dix appels, tu vois ce qui coince.
+
+---
+
+## Exemple A — Julien, rendez-vous calé
+
+Julien, formulaire Meta, stade « je veux démarrer bientôt », budget coché 5 000–10 000 €. Son idée, écrite dans le formulaire : « une appli de randos guidées avec les cartes hors connexion ». Il a répondu au message automatique : « Demain 17h ».
+
+> **Noé** — Bonjour Julien, c'est Noé Calmes. Ça va ?
+> **Julien** — Ouais, ça va, et toi ?
+> **Noé** — Très bien, merci. Je t'appelle comme prévu, pour l'audit de ton idée. Avant de commencer, deux mots sur moi, pour que tu saches à qui tu parles. Je crée des applis, sur téléphone et sur ordinateur. Je m'occupe de tout, de la stratégie jusqu'à la mise en ligne. J'en ai publié plus de vingt, et je vois passer une dizaine d'idées par semaine. Mon métier, c'est pas juste qu'une appli existe. C'est qu'elle rapporte. On a un quart d'heure. Je te propose de faire comme ça : tu me racontes ton idée, je te pose quelques questions, je te donne mes conseils, et à la fin, je te dis combien ça te coûterait. Ça te va ?
+> **Julien** — Parfait.
+> **Noé** — J'ai lu ton idée : des randos guidées, avec la carte hors connexion. Raconte-moi, avec tes mots. Ça ferait quoi, et c'est pour qui ?
+> **Julien** — Je suis accompagnateur en montagne. L'idée, c'est que les gens qui viennent en vacances dans le coin puissent faire mes randos sans moi : la carte qui marche sans réseau, des points d'intérêt, des commentaires audio. Comme une visite guidée, mais pour la rando.
+> **Noé** — D'accord. Et aujourd'hui, ils font comment, sans ton appli ?
+> **Julien** — Ils prennent un topo-guide, ou ils me paient une sortie à la journée.
+> **Noé** — Et toi, ton objectif numéro un : que ça te rapporte de l'argent, que ça te fasse gagner du temps, ou que ça t'amène des clients ?
+> **Julien** — Que ça me rapporte. Je peux pas être partout.
+> **Noé** — Si on gardait que trois fonctions pour le lancement, ce serait lesquelles ?
+> **Julien** — La carte hors connexion avec le tracé, les points d'intérêt avec l'audio, et le paiement pour acheter une rando.
+> **Noé** — T'en es où, aujourd'hui ?
+> **Julien** — J'ai une maquette. Un pote m'a fait des écrans.
+> **Noé** — Super, ça va m'aider. Envoie-la-moi sur WhatsApp, là, pendant qu'on parle.
+> **Julien** — Je t'envoie ça.
+> **Noé** — Tu voudrais la lancer pour quand ?
+> **Julien** — Pour l'été. Mai, juin.
+> **Noé** — Tu décides seul ?
+> **Julien** — Oui.
+> **Noé** — Tu avais mis entre cinq et dix mille dans le formulaire. C'est toujours ça ?
+> **Julien** — Oui, j'ai sept, huit mille de côté.
+> **Noé** — D'accord. Bon. Si je résume. Tu veux une appli pour que les vacanciers du coin puissent faire tes randos sans toi, avec la carte hors réseau et l'audio. Et ce que t'en attends, c'est de vendre tes randos sans y être. C'est bien ça ?
+> **Julien** — Exactement.
+> **Noé** — Alors voilà mes conseils. Un. Ton appli vit sur le téléphone. Tes utilisateurs sont dehors, ils te connaissent pas : il faut être là où ils cherchent, sur les stores. Et la position, c'est le cœur de ton appli. Deux. Le moment où tu demandes de payer. Dans ta maquette, le paiement arrive au sixième écran, après la création de compte : les gens sont partis avant. On fait l'inverse : une rando offerte, en entier, tout de suite. Et on propose la deuxième au moment où il a envie de la faire. Trois. Pour le lancement, on garde la carte hors connexion, les points d'intérêt avec l'audio, et l'achat à la rando. Le reste vient après, avec tes premiers utilisateurs. Et c'est là que je fais la différence. Le code, c'est vingt pour cent d'une appli qui marche. Le reste, c'est ce qu'on montre, ce qu'on demande, et à quel moment. C'est par là que je commence.
+> **Julien** — Le paiement, je l'avais pas vu comme ça.
+> **Noé** — Pour ce que tu me décris, c'est entre huit et dix mille euros. Le prix est fixé avant de commencer. Pas de surprise. Ça comprend la stratégie, le design, le développement, et la mise en ligne. Et c'est en ligne en quarante-cinq jours, en moyenne. Ça rentre dans ce que t'avais prévu ?
+> **Julien** — C'est un peu au-dessus, mais ça va.
+> **Noé** — C'est clair pour moi. Voilà la suite. Je te prépare trois choses : le cahier des charges, une première maquette de ton appli, avec le bon parcours, et le devis. C'est offert. Et ça t'engage à rien. On se fait une visio de trente minutes, et je te montre tout. Plutôt jeudi onze heures, ou vendredi quatorze heures ?
+> **Julien** — Vendredi.
+> **Noé** — Parfait. Je t'envoie le lien sur WhatsApp, tout de suite. Avec un accord de confidentialité : ton idée reste à toi. T'as des questions ?
+> **Julien** — Si je veux ajouter des choses après ?
+> **Noé** — Chaque ajout a son devis, pas d'abonnement. Et une fois payée, l'appli est à toi. À vendredi, Julien.
+
+Ce qu'il faut voir :
+
+- La présentation tient en vingt secondes, et elle arrive avant qu'il parle.
+- Noé ne parle longtemps qu'une fois : l'audit, après avoir écouté.
+- La maquette sert le conseil « deux » : c'est la preuve qu'il l'a regardée.
+- Le prix arrive après les conseils, et il ne bouge pas parce que Julien avait prévu moins.
+- La fin a une date.
+
+## Exemple B — Sophie, sans rendez-vous
+
+Sophie, gérante d'une société de nettoyage, douze salariés. Formulaire Meta mardi, pas d'idée écrite, pas de réponse aux WhatsApp. Jeudi, Noé appelle.
+
+> **Sophie** — Allô ?
+> **Noé** — Bonjour, Sophie ?
+> **Sophie** — Oui ?
+> **Noé** — Noé Calmes, bonjour. Je vous appelle pour votre projet d'application. Vous avez laissé vos coordonnées mardi, sous une de mes publicités. Vous avez deux minutes ?
+> **Sophie** — Euh… c'est pour quoi exactement ?
+> **Noé** — C'est pour votre projet d'application. J'appelle chaque personne qui laisse ses coordonnées, pour lui offrir l'audit de son idée. C'était quoi, votre idée ?
+> **Sophie** — Ah oui. C'est pour ma boîte, on fait du nettoyage. J'ai douze personnes sur le terrain, et je gère tout sur Excel et WhatsApp : les plannings, les heures. C'est l'enfer.
+> **Noé** — D'accord, je vois. Deux mots sur moi, pour que vous sachiez à qui vous parlez. Je crée des applis, sur téléphone et sur ordinateur. J'en ai publié plus de vingt. Et mon métier, c'est qu'elles rapportent, ou qu'elles fassent vraiment gagner du temps. Je vous propose un audit gratuit de votre idée. Un quart d'heure. Vous me la racontez, je vous donne mes conseils, et à la fin, je vous dis combien ça vous coûterait. On le fait maintenant ? Ou je vous rappelle à un meilleur moment ?
+> **Sophie** — Là, je suis chez un client.
+> **Noé** — Bien sûr. Plutôt demain midi et demi, ou lundi dix-sept heures ?
+> **Sophie** — Lundi dix-sept heures.
+> **Noé** — Parfait. Je vous envoie un message tout de suite pour confirmer. Et je vous appelle lundi à dix-sept heures, sur ce numéro. Bonne journée, Sophie.
+
+Ce qu'il faut voir : Noé a parlé deux fois dix secondes avant qu'elle raconte. Il ne lui a pas pris le quart d'heure qu'elle n'avait pas : il a pris la date. Il a repris ses mots (« gagner du temps ») dans sa présentation. Lundi, c'est la porte A, au vous, et « on peut se tutoyer ? » dès le début.

@@ -17,7 +17,7 @@ Document de référence interne. Sert de guide pour structurer la landing, le ch
 
 Le « 45 jours » se dit uniquement quand on parle d'un MVP au périmètre clair. Ce n'est pas l'argument de vente principal : l'argument, c'est l'app pensée pour rapporter, à un prix loin des agences.
 
-> **Mise à jour du 11/10/2026 (décision de Noé)** : le site dit désormais « 45 jours en moyenne pour une application », du cadrage à la mise en ligne, jamais « première version » (accueil, FAQ, méthode, blog). Le script d'appel (`script-appel.md`) dit encore « Première version au périmètre clair : 45 jours » : à aligner si Noé le confirme.
+> **Mise à jour du 11/10/2026 (décision de Noé)** : le site dit désormais « 45 jours en moyenne pour une application », du cadrage à la mise en ligne, jamais « première version » (accueil, FAQ, méthode, blog). Le script d'appel est aligné depuis sa v4 du 13/10/2026 (`script-appel.md`) : « c'est en ligne en quarante-cinq jours, en moyenne », et « première version » n'y sert plus à parler du délai.
 
 #### Pour qui
 
