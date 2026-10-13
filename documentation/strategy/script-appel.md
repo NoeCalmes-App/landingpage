@@ -4,7 +4,7 @@
 >
 > **Deux scripts, une seule suite.** Script 1, « Il ne me connaît pas » : il a rempli le formulaire, il n'a pas répondu sur WhatsApp, c'est Noé qui appelle. Script 2, « Rendez-vous » : il a répondu sur WhatsApp, l'heure est prise, il sait qui appelle. Seul le début change. Dès qu'il raconte son idée, c'est la même suite.
 >
-> **Le script 1 est validé par Noé, ligne par ligne, le 13/10/2026** (après-midi). **Le script 2 reste à retravailler avec lui** sur le même ton : son texte ci-dessous est celui d'avant validation. Règle de travail depuis ce jour : **rien ne change dans Nowork sans que Noé ait validé le texte** ; les scripts se disent à l'oral, chaque mot compte.
+> **Les deux scripts sont les textes de Noé du 13/10/2026** (après-midi) : le script 1 validé ligne par ligne, le script 2 et le paragraphe de la suite dictés par lui. Règle de travail depuis ce jour : **rien ne change dans Nowork sans que Noé ait validé le texte** ; les scripts se disent à l'oral, chaque mot compte.
 >
 > **La copie de travail est dans Nowork** : page « Script d'appel » (pastille « Script » sur la fiche du lead). La page demande d'abord quel script ouvrir, puis l'affiche en entier ; elle remplit toute seule le jour du formulaire (« mardi », « mardi de la semaine dernière », « il y a deux semaines »…) et les créneaux (jamais « demain » un samedi, jamais un dimanche), depuis la fiche et la date du jour. Si tu modifies ici, recopie là-bas : `nowork/src/services/scripts.service.ts`, `DEFAULT_SCRIPT_APPEL` ; les règles de date sont dans `nowork/src/lib/quandLeFormulaire.ts`.
 >
@@ -78,7 +78,7 @@ Il a rempli le formulaire, il n'a pas répondu sur WhatsApp. C'est toi qui appel
 
 > Bonjour Sofiane, Noé Calmes, expert en applications mobiles et web. (pause) Je vous appelle pour votre projet d'application : vous avez rempli mon formulaire mardi. (pause) Comment allez-vous ?
 
-S'il a écrit son idée dans le formulaire (pastille 💡), tu la cites : « …vous avez rempli mon formulaire mardi, pour une appli de livraison entre particuliers. »
+S'il a écrit son idée dans le formulaire (pastille 💡), tu la cites : « …vous avez rempli mon formulaire mardi, pour une appli de livraison entre particuliers. » Nowork l'écrit à ta place, depuis sa fiche.
 
 [Tu attends sa réponse. Un robot n'attend pas.]
 
@@ -88,7 +88,7 @@ S'il a écrit son idée dans le formulaire (pastille 💡), tu la cites : « …
 
 > Parfait. On peut se tutoyer, ça ne vous dérange pas ?
 >
-> Super. Je me présente en deux mots. (pause) Je suis développeur et designer d'applications. J'ai créé plusieurs applications, dont la première version de Hush, une application de chat anonyme : 300 000 utilisateurs sur cette première version. Aujourd'hui, plus de 2 millions d'utilisateurs. (pause) Mon métier, c'est de créer des applications qui vont te générer des revenus, grâce à diverses stratégies.
+> Super. Je me présente en deux mots. (pause) Je suis développeur et designer d'applications, depuis plus de six ans. J'ai créé plusieurs applications, dont la première version de Hush, une application de chat anonyme : 300 000 utilisateurs sur cette première version. Aujourd'hui, plus de 2 millions d'utilisateurs. (pause) Mon métier, c'est de créer des applications qui vont te générer des revenus, grâce à diverses stratégies.
 >
 > Je te propose que tu me racontes ton idée. Je te pose quelques questions, je te donne mes conseils, et à la fin, je te dis combien ça te coûterait. (pause) Ça te va ?
 >
@@ -141,71 +141,49 @@ S'il insiste : « Ça démarre à cinq mille euros. Pour votre projet, je vous d
 
 ## Script 2 — Rendez-vous pris sur WhatsApp
 
-Il a répondu au message automatique, ou à ton WhatsApp, avec une heure. Il sait que c'est l'audit gratuit, un quart d'heure, et le prix à la fin.
-
-> **À retravailler avec Noé** (13/10/2026) : ce qui suit est le texte d'avant validation. Dans Nowork, le début du script 2 a déjà pris le ton du script 1 : « Bonjour [Prénom], Noé Calmes. Je vous appelle comme prévu, pour l'audit de votre idée. Comment allez-vous ? », puis « On peut se tutoyer, ça ne vous dérange pas ? », la présentation avec Hush, le cadre, et « Ton appli, elle ferait quoi, et elle s'adresse à qui ? ».
+Il a répondu au message automatique, ou à ton WhatsApp, avec une heure. Il sait qui appelle, et que c'est l'audit gratuit. **Texte de Noé du 13/10/2026 (après-midi).**
 
 ### Mot pour mot
 
-[Tu appelles à l'heure pile.]
+[À l'heure pile. Il décroche, tu enchaînes.]
 
-> Bonjour [Prénom], c'est Noé Calmes. (pause) Ça va ?
+> Bonjour Sofiane, Noé Calmes. Je vous appelle comme prévu, pour l'audit de votre idée. (pause) Comment allez-vous ?
 
-[Il répond. Deux secondes d'échange, pas plus.]
+[Tu attends sa réponse.]
 
-> Très bien, merci. Je t'appelle comme prévu, pour l'audit de ton idée.
+> Très bien. L'audit, c'est simple : je regarde si votre idée a du potentiel pour rapporter, et comment la lancer. (pause) On peut se tutoyer, ça ne vous dérange pas ?
 >
-> Avant de commencer, deux mots sur moi. Pour que tu saches à qui tu parles. (pause) Je crée des applis, sur téléphone et sur ordinateur. Je m'occupe de tout, de la stratégie jusqu'à la mise en ligne. J'en ai publié plus de vingt. Et je vois passer une dizaine d'idées par semaine. (pause) Mon métier, c'est pas juste qu'une appli existe. C'est qu'elle rapporte.
+> Super. T'as bien une quinzaine de minutes devant toi ?
 >
-> (pause) On a un quart d'heure. Je te propose de faire comme ça. Tu me racontes ton idée. Je te pose quelques questions. Je te donne mes conseils. Et à la fin, je te dis combien ça te coûterait. (pause) Ça te va ?
+> Je me présente en deux mots. (pause) Je suis développeur et designer d'applications, depuis plus de six ans. J'ai créé plusieurs applications, dont la première version de Hush, une application de chat anonyme : 300 000 utilisateurs sur cette première version. Aujourd'hui, plus de 2 millions d'utilisateurs. (pause) Mon métier, c'est de créer des applications qui vont te générer des revenus, grâce à diverses stratégies.
+>
+> Je te propose que tu me racontes ton idée. Je te pose quelques questions, je te donne mes conseils, et à la fin, je te dis combien ça te coûterait. (pause) Ça te va ?
+>
+> J'ai lu ton idée : [son idée, que Nowork écrit depuis sa fiche]. (pause) Raconte-moi, avec tes mots. Ton appli, elle ferait quoi, et elle s'adresse à qui ?
 
-[Il dit oui.]
-
-> J'ai lu ton idée : [son idée, en quelques mots]. (pause) Raconte-moi, avec tes mots. Ça ferait quoi, et c'est pour qui ?
-
-S'il n'a pas écrit son idée : « Vas-y, je t'écoute. Ton idée, avec tes mots : ça ferait quoi, et c'est pour qui ? »
+S'il n'a pas écrit son idée : « Explique-moi ce que tu veux créer. Avec tes mots : ton appli, elle ferait quoi, et elle s'adresse à qui ? »
 
 → « Il raconte ».
 
 ### Pourquoi
 
-- **L'heure pile.** C'est la première preuve que tu es sérieux. À 17h03, tu as déjà perdu un peu.
-- **« Bonjour », même au tutoiement.** C'est la première fois qu'il entend ta voix. « Salut » se gagne ; « Bonjour » et son prénom, c'est chaleureux et pro à la fois.
-- **« Comme prévu, pour l'audit de ton idée. »** Tu lui rappelles qu'il a dit oui, et à quoi. L'appel est la suite de votre échange, pas une intrusion.
-- **La présentation tout de suite.** On ne confie pas son idée à quelqu'un qu'on ne connaît pas. Une fois qu'il sait qui tu es, tout ce que tu dis après pèse plus. Vingt secondes, pas plus : au-delà, c'est un pitch.
-- **Tu ne dis pas « je suis expert ».** Tu le prouves : « j'en ai publié plus de vingt » vaut plus que le mot. Et « une dizaine d'idées par semaine » dit que tu as du monde : tu n'attends pas après lui.
-- **« C'est qu'elle rapporte. »** La phrase qui te distingue. Les autres parlent de technique ; toi, de ce qu'il veut vraiment. Tu la dis lentement, la voix qui descend.
-- **Le déroulé, puis « Ça te va ? ».** Tu mènes l'appel, et il le sait. Son oui est le premier de l'appel, et un premier oui facile rend les suivants plus faciles.
-- **« Combien ça te coûterait », annoncé dès le début.** C'est la question qu'il a en tête. Tu dis quand tu y réponds : il écoute au lieu d'attendre le chiffre. Le conditionnel ne l'engage à rien.
-- **« J'ai lu ton idée. »** Tu as préparé son dossier, il le sent.
+- **Pas de titre dans la première phrase.** Il a lu ton nom sur WhatsApp et il a pris rendez-vous : il sait que tu es l'expert. « Comme prévu » lui rappelle qu'il a dit oui.
+- **L'audit défini en une phrase.** Tout le monde ne sait pas ce qu'est un audit ; « du potentiel pour rapporter, et comment la lancer », tout le monde comprend.
+- **La présentation reste**, courte : c'est la première fois qu'il entend ta voix.
 
 ### S'il dit…
 
-**« Et ça coûte combien ? »**, avant que tu aies compris :
+**Il demande le prix tout de suite :**
 
 > Je te le donne, c'est prévu à la fin. (pause) Pour pas te sortir un chiffre au hasard, j'ai besoin de comprendre ton projet d'abord. Cinq minutes.
 
-*Pourquoi :* tu ne te dérobes pas, tu dis quand. Un chiffre donné avant de comprendre serait faux, et il le sentirait.
+**Il n'a que cinq minutes :**
 
-**Il te vouvoie** (le fil WhatsApp est resté au vous) :
+> Pas de souci. On décale, pour faire ça bien. Quand es-tu disponible ? (pause) Plutôt demain midi et demi ? Ou jeudi dix-sept heures ?
 
-> Bonjour [Prénom], Noé Calmes. Je vous appelle comme prévu, pour l'audit de votre idée. (pause) Avant de commencer : on peut se tutoyer ? Ce sera plus simple.
+**Il ne veut pas dire son idée, ou demande un accord de confidentialité :** même réponse que le script 1.
 
-Puis la présentation, au tu.
-
-**« J'ai que cinq minutes »** :
-
-> Pas de souci. On décale, pour faire ça bien. Plutôt demain midi et demi, ou jeudi dix-sept heures ?
-
-*Pourquoi :* un audit bâclé en cinq minutes ne sert ni à lui, ni à toi. Un vrai quart d'heure demain vaut mieux.
-
-**Il ne décroche pas** :
-
-- WhatsApp tout de suite : « Je t'ai appelé comme prévu, je réessaie dans 10 minutes. »
-- Tu rappelles dix minutes après.
-- Toujours rien : « On a dû se rater. Demain 12h30 ou jeudi 17h ? » Un seul report. Ensuite, les relances (page Script WhatsApp).
-
-Pas de reproche, jamais de « tu m'as oublié ? ».
+**Il ne décroche pas :** page Script WhatsApp, « Il ne décroche pas à l'heure de l'appel ». Un seul report.
 
 ---
 
@@ -301,7 +279,7 @@ Le « un » et le « deux » se choisissent dans « Les conseils, par cas », pl
 
 ## Le prix (1 minute)
 
-> Pour ce que tu me décris, c'est entre [huit] et [douze] mille euros. (pause) Le prix est fixé avant de commencer. Pas de surprise. (pause) Ça comprend la stratégie, le design, le développement, et la mise en ligne. Et c'est en ligne en quarante-cinq jours, en moyenne. (pause) Ça rentre dans ce que t'avais prévu ?
+> Pour ce que tu me décris, c'est entre [huit] et [douze] mille euros. (pause) Le prix est fixé avant de commencer. Pas de surprise. (pause) Ça comprend la stratégie, le design, le développement, et la mise en ligne. Et c'est en ligne en quarante-cinq jours, en moyenne. (pause) Tu t'attendais à cette fourchette-là ?
 
 [Silence. Tu le laisses répondre.]
 
@@ -345,24 +323,19 @@ Jamais de remise. Jamais de découpage pour faire rentrer le prix.
 
 ## La suite : la visio (1 minute)
 
-> C'est clair pour moi. Voilà la suite. (pause) Je te prépare trois choses : le cahier des charges, une première maquette de ton appli, et le devis. (pause) C'est offert. Et ça t'engage à rien. (pause) On se fait une visio de trente minutes, et je te montre tout. Plutôt jeudi onze heures, ou vendredi quatorze heures ?
+Quand la fourchette lui va. **Le paragraphe de Noé (13/10/2026).**
+
+> Écoute, ton idée d'application, elle est intéressante. Je pense qu'elle a du potentiel. (pause) Ce que je te propose : je t'offre un cahier des charges, pour structurer tout le périmètre du projet, ce que je ferais sur ton application. Ensuite, un devis. Et je t'offre aussi une maquette visuelle, pour voir à quoi pourrait ressembler ton application. (pause) Tout ça, gratuitement. Ça te va ?
+>
+> Et je te propose une visio de trente minutes, pour te présenter tout ça. Plutôt jeudi onze heures, ou vendredi quatorze heures ?
 
 [Il choisit.]
 
-> Parfait. Je t'envoie le lien sur WhatsApp, tout de suite. Avec un accord de confidentialité : ton idée reste à toi. (pause) Et si t'as des notes, ou des applis que t'aimes bien, envoie-les-moi. Même en vrac, ça m'aide. (pause) T'as des questions ?
+> Parfait. Je t'envoie le lien sur WhatsApp, tout de suite, avec un accord de confidentialité : ton idée reste à toi. Et si t'as des notes, ou des applis que t'aimes bien, envoie-les-moi. (pause) T'as des questions ?
+>
+> À jeudi, Sofiane.
 
-[Tu réponds court. Une phrase par question.]
-
-> À jeudi, [Prénom].
-
-**Pourquoi.**
-
-- **« Voilà la suite. »** La visio n'est pas une question. Jamais « un deuxième appel, ça t'intéresse ? » : tu lui donnerais l'occasion de dire non à quelque chose qui le sert.
-- **« Trois choses », nommées une par une.** Il voit ce qu'il va recevoir. La maquette est la plus forte : il va voir son appli avant de payer quoi que ce soit.
-- **« C'est offert. Et ça t'engage à rien. »** Tu prends le risque, pas lui. C'est ce qui rend le oui facile, et c'est vrai.
-- **Deux créneaux précis.** Choisir entre deux, c'est facile. « Quand t'es dispo ? », c'est un devoir à la maison.
-- **L'accord de confidentialité arrive ici, pas au début.** Il a raconté son idée, il va t'envoyer ses notes : l'accord est un geste de pro. Proposé d'office dès l'ouverture, il installe une peur du vol d'idée qu'il n'avait pas, et il raconte moins bien.
-- **Son prénom à la fin.** La deuxième fois de l'appel, au moment de la date.
+**Pourquoi.** Il vient de dire oui à la fourchette : c'est le moment de donner, avant de demander. Les trois choses nommées une par une, et « gratuitement » : le risque est pour toi, pas pour lui. La visio est la suite, pas une question ouverte : deux créneaux, c'est facile de choisir. L'accord de confidentialité arrive ici, pas au début : proposé d'office dès l'ouverture, il installe une peur du vol d'idée qu'il n'avait pas.
 
 ### S'il dit…
 
@@ -374,25 +347,13 @@ Jamais de remise. Jamais de découpage pour faire rentrer le prix.
 
 > Bien sûr. La visio, c'est justement pour ça : tu vois tout, et tu réfléchis avec tout en main.
 
-Puis les deux créneaux.
-
 **« Je dois en parler à mon associé »**
 
 > Invite-le à la visio. Il voit tout, il pose ses questions. Ça vous fait gagner une semaine.
 
-**« J'ai que mon téléphone »**
-
-> Pas de souci. On fait un appel vidéo WhatsApp, et je t'envoie le lien de la maquette. Tu la fais défiler pendant que je te montre.
-
-**Le projet est encore trop flou**
-
-> Il me manque [qui fait quoi / les écrans principaux / l'objectif]. Envoie-moi ce que t'as. On se refait dix minutes [demain midi et demi], et ensuite je te prépare tout.
-
 **Ce n'est pas ton client** (il cherche « juste un développeur », un site vitrine, ou son budget est hors de portée)
 
 > Je préfère être clair : sur ce projet-là, je suis pas la bonne personne. [La raison, en une phrase.] Le jour où tu passes à l'étape d'après, écris-moi.
-
-*Pourquoi :* celui qui peut dire non est celui qu'on croit quand il dit oui.
 
 ---
 
@@ -499,7 +460,7 @@ Celles-là, tu les dis les yeux fermés. Le reste, tu l'improvises autour.
 
 ---
 
-## Exemple — Julien, script 2 (rendez-vous), texte d'avant validation
+## Exemple — Julien, script 2 (rendez-vous), dialogue d'avant la v5 (à relire avec le texte du script 2)
 
 Julien, formulaire Meta, stade « je veux démarrer bientôt », budget coché 5 000–10 000 €. Son idée, écrite dans le formulaire : « une appli de randos guidées avec les cartes hors connexion ». Il a répondu au message automatique : « Demain 17h ».
 
