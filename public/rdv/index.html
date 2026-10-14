@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f7f5ff">
+  <meta property="og:title" content="Rendez-vous avec Noé Calmes">
+  <meta property="og:description" content="Toutes les informations pour rejoindre la visio et ajouter le rendez-vous à l’agenda.">
+  <title>Rendez-vous · Noé Calmes</title>
+  <style>
+    :root { color-scheme: light; font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #211c35; background: #f7f5ff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 50% 0, #eee8ff 0, transparent 44%), #f7f5ff; }
+    .shell { width: min(100% - 32px, 560px); margin: 0 auto; padding: 36px 0 56px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; color: #211c35; font-size: 15px; font-weight: 700; letter-spacing: -.02em; }
+    .brand-mark { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 11px; background: #2b1748; color: white; font-size: 19px; box-shadow: 0 5px 15px #2b174829; }
+    main { margin-top: 50px; background: white; border: 1px solid #e8e3f3; border-radius: 24px; padding: clamp(24px, 6vw, 40px); box-shadow: 0 24px 60px #38265f12; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: #714bb5; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #9d70eb; box-shadow: 0 0 0 4px #f2eaff; }
+    h1 { margin: 16px 0 10px; font-size: clamp(30px, 7vw, 40px); line-height: 1.12; letter-spacing: -.055em; }
+    .intro { color: #716a80; line-height: 1.55; margin: 0; font-size: 15px; }
+    .slot { margin-top: 28px; display: flex; gap: 17px; align-items: center; padding: 19px 20px; border: 1px solid #ece8f5; border-radius: 16px; background: #faf9fd; }
+    .date-tile { width: 57px; min-width: 57px; height: 62px; display: grid; align-content: center; justify-items: center; border-radius: 11px; background: #eee5ff; color: #6033aa; }
+    .date-tile span { font-size: 10px; text-transform: uppercase; font-weight: 800; letter-spacing: .09em; }
+    .date-tile strong { font-size: 26px; line-height: 1; letter-spacing: -.04em; }
+    .slot-text { display: grid; gap: 3px; }
+    .slot-text strong { font-size: 16px; line-height: 1.3; }
+    .slot-text span { font-size: 13px; color: #716a80; }
+    .actions { display: grid; gap: 11px; margin-top: 26px; }
+    .button { min-height: 50px; display: flex; align-items: center; justify-content: center; gap: 9px; text-align: center; padding: 12px 18px; border-radius: 12px; font-size: 14px; font-weight: 700; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button:focus-visible { outline: 3px solid #a985ed; outline-offset: 3px; }
+    .primary { color: white; background: #281741; box-shadow: 0 9px 20px #28174127; }
+    .secondary { color: #56318d; background: #f1ebfc; }
+    .outline { color: #493a62; background: #fff; border: 1px solid #e6e1ef; }
+    .divider { border: 0; border-top: 1px solid #efebf5; margin: 26px 0 18px; }
+    .small { margin: 0; color: #827a91; font-size: 12px; line-height: 1.55; }
+    .hidden { display: none; }
+    .error { color: #8b2742; background: #fff3f5; border: 1px solid #ffd7df; border-radius: 12px; padding: 14px 16px; margin-top: 24px; line-height: 1.5; }
+    @media (prefers-reduced-motion: reduce) { .button { transition: none; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <a class="brand" href="https://noecalmes.fr/"><span class="brand-mark">N</span><span>Noé Calmes</span></a>
+    <main>
+      <div class="eyebrow">Invitation</div>
+      <h1 id="title">Rendez-vous</h1>
+      <p class="intro">Les informations pour retrouver le rendez-vous et l’ajouter à l’agenda.</p>
+      <p id="status" class="small" role="status" aria-live="polite" style="margin-top:24px">Chargement du rendez-vous…</p>
+      <div id="details" class="hidden">
+        <div class="slot">
+          <div class="date-tile"><span id="month"></span><strong id="day"></strong></div>
+          <div class="slot-text"><strong id="when"></strong><span id="time"></span></div>
+        </div>
+        <div class="actions">
+          <a id="meet" class="button primary hidden" target="_blank" rel="noopener noreferrer">↗ &nbsp; Rejoindre la visio</a>
+          <a id="google" class="button secondary" target="_blank" rel="noopener noreferrer">▦ &nbsp; Ajouter à Google Agenda</a>
+          <a id="ics" class="button outline">↓ &nbsp; Ajouter à Apple, Outlook ou autre agenda</a>
+        </div>
+        <hr class="divider">
+        <p class="small">L’ajout se confirme dans l’application d’agenda choisie. La visio est accessible avec le lien ci-dessus.</p>
+      </div>
+    </main>
+  </div>
+  <script>
+    (async () => {
+      const status = document.getElementById('status');
+      const token = location.hash.slice(1);
+      if (!/^[A-Za-z0-9_-]{20,64}$/.test(token)) {
+        status.className = 'error';
+        status.textContent = 'Ce lien d’invitation est incomplet.';
+        return;
+      }
+      try {
+        const url = new URL('https://europe-west1-devis-app-8e216.cloudfunctions.net/meetingInvite');
+        url.searchParams.set('token', token);
+        url.searchParams.set('format', 'json');
+        const response = await fetch(url, { cache: 'no-store', credentials: 'omit' });
+        if (!response.ok) throw new Error('unavailable');
+        const rdv = await response.json();
+        const debut = new Date(rdv.date);
+        if (Number.isNaN(debut.getTime())) throw new Error('invalid date');
+        const paris = { timeZone: 'Europe/Paris' };
+        document.getElementById('title').textContent = rdv.videoUrl ? 'Visio programmée' : 'Appel programmé';
+        document.getElementById('month').textContent = new Intl.DateTimeFormat('fr-FR', { ...paris, month: 'short' }).format(debut);
+        document.getElementById('day').textContent = new Intl.DateTimeFormat('fr-FR', { ...paris, day: 'numeric' }).format(debut);
+        document.getElementById('when').textContent = new Intl.DateTimeFormat('fr-FR', { ...paris, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(debut);
+        document.getElementById('time').textContent = new Intl.DateTimeFormat('fr-FR', { ...paris, hour: '2-digit', minute: '2-digit' }).format(debut).replace(':', 'h') + ' · heure de Paris · ' + rdv.durationMinutes + ' min';
+        document.getElementById('google').href = rdv.googleCalendarUrl;
+        document.getElementById('ics').href = rdv.icsUrl;
+        if (rdv.videoUrl) {
+          const meet = document.getElementById('meet');
+          meet.href = rdv.videoUrl;
+          meet.classList.remove('hidden');
+        }
+        status.classList.add('hidden');
+        document.getElementById('details').classList.remove('hidden');
+      } catch {
+        status.className = 'error';
+        status.textContent = 'Ce rendez-vous est introuvable ou le lien n’est plus disponible.';
+      }
+    })();
+  </script>
+</body>
+</html>
