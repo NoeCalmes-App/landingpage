@@ -345,7 +345,25 @@ vraiment. Renvoyer vers `/quiz/ai-je-besoin-application-mobile/`.
 ---
 
 ### 10. Application mobile pour artisan et commerçant
-**Statut** : à écrire · **Format** : sectoriel · **Mot-clé** : application mobile artisan
+**Statut** : ✅ publié le 19/10/2026 · **Format** : sectoriel · **Mot-clé** : application mobile artisan
+
+**L'angle trouvé en écrivant.** Le brief parlait de « fidélité, réservation,
+devis, suivi de chantier » comme d'une seule application. Il y en a deux, et ce
+n'est pas la même : l'outil de l'artisan (devis sur place, photos, suivi) et
+l'application pour ses clients (à installer, donc seulement s'ils reviennent).
+L'article les sépare, met l'outil d'abord, et réserve l'application client au
+commerce dont la clientèle repasse. Le suivi de chantier côté client se fait
+par un lien web, sans installation : c'est le cas « les deux » de la doctrine,
+dit sans comparer les prix.
+
+**Le brief disait « une fiche Google Business et un site suffisent ».** Réaligné
+sur `vocabulaire-mobile-web.md` : fiche Google, avis, photos. Le mot « site »
+n'apparaît que pour le site vitrine refusé.
+
+**Le calcul propre à l'artisan** : deux devis promis par semaine qui ne partent
+jamais, 1 500 € de panier moyen, un sur trois aurait signé, soit 1 000 € par
+semaine de chiffre, et le remboursement se calcule sur la marge, un tiers, jamais sur le chiffre (règle de la phase 1, rappelée par la relecture). C'est le levier que les sectoriels suivants peuvent reprendre : chercher
+le revenu qui s'échappe par habitude, pas la fonctionnalité qui impressionne.
 
 Secteur très peu travaillé en SEO. Fidélité, réservation, devis, suivi de
 chantier. Attention à rester honnête : pour beaucoup d'artisans une fiche

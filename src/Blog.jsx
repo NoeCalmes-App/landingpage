@@ -21,6 +21,126 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'application-mobile-artisan',
+    title: "Application mobile pour artisan et commerçant : ce qui vaut vraiment le coup",
+    metaTitle: "Application mobile pour artisan : utile ou pas ? | Noé Calmes",
+    description: "Artisan ou commerçant, tu te demandes si une application a sa place ? Il y en a deux, et ce n'est pas la même. Ce qui tient, et ce que je te déconseille.",
+    date: '2026-10-19',
+    readTime: '9 min',
+    finalCta: 'audit',
+    categorie: "Ton activité",
+    accroche: "Il y a deux applications possibles pour un artisan. La plupart n'ont besoin que d'une, et ce n'est pas celle qu'on leur propose.",
+    tldr: {
+      verdict: "Pour un artisan, téléphone ou ordinateur, la question est réglée d'avance : tu travailles debout, les mains prises, souvent sans réseau, donc ton outil est dans ta poche. Mais il y a deux applications possibles, et ce n'est pas la même. La première est ton outil à toi : le devis fait sur place, les photos qui ne se perdent plus, le suivi de chantier. La seconde est pour tes clients, et elle ne vaut le coup que s'ils reviennent. Si ton besoin est d'être trouvé, aucune des deux : une fiche Google et des avis font le travail.",
+      points: [
+        { label: "Le sujet", valeur: "Quelle application a sa place chez un artisan ou un commerçant, et laquelle n'en a pas" },
+        { label: "Pour qui", valeur: "Tu es artisan, tu diriges une petite entreprise du bâtiment ou un commerce, et tu perds tes soirées au bureau" },
+        { label: "Le repère", valeur: "Deux devis promis par semaine qui ne partent jamais, c'est le calcul à faire avant tout" },
+        { label: "À retenir", valeur: "L'outil pour toi d'abord. L'application pour tes clients seulement s'ils reviennent" },
+      ],
+    },
+    pourQui: [
+      "Tu es artisan ou tu diriges une petite entreprise du bâtiment, et tes devis se font le soir, quand tu en as le courage",
+      "Tu tiens un commerce dont les clients reviennent, et tu voudrais qu'ils reviennent plus souvent",
+      "Tu as déjà un logiciel de devis, mais il vit au bureau et toi tu es sur les chantiers",
+    ],
+    pasPourQui: [
+      "Ton problème est d'être trouvé par de nouveaux clients : c'est une fiche Google et des avis, pas une application",
+      "Tu fais surtout du dépannage ponctuel, des clients qu'on ne revoit pas : l'application pour eux ne servira à rien, l'outil pour toi peut-être",
+      "Tu cherches un site vitrine, ou ton seul critère est le prix : ce n'est pas mon métier",
+    ],
+    faq: [
+      { q: "J'ai déjà un logiciel de devis sur mon ordinateur, pourquoi une application ?", a: "Parce qu'il vit au bureau et que toi tu es sur le chantier. Le devis que tu fais le soir de mémoire, trois jours après la visite, c'est celui que tu oublies, que tu sous-estimes ou que le client a déjà signé ailleurs. Un outil sur ton téléphone fait le devis sur place, avec les photos et les mesures encore sous les yeux, avant que tu remontes dans le camion. Ton logiciel actuel peut rester pour la facturation : on connecte souvent les deux." },
+      { q: "Mes clients vont-ils installer une application pour un chantier de trois semaines ?", a: "Non, et il ne faut pas le leur demander. Pour un client qui te voit une fois, le suivi de chantier se fait par un lien qu'il ouvre dans son navigateur, sans rien installer : l'avancement, les photos du jour, la validation d'un choix. Toi tu es sur ton téléphone, lui devant son écran, et c'est la même application derrière. L'application à installer, elle, est pour les clients qui reviennent toute l'année, ce qui est le cas d'un commerce, rarement d'un artisan du bâtiment." },
+      { q: "Je travaille seul, sans salarié, c'est quand même pour moi ?", a: "C'est surtout là que ça compte. Un artisan seul fait le métier le jour et l'administratif le soir, et c'est le soir qui déborde. L'outil ne te remplace pas sur le chantier, il supprime la deuxième journée : le devis part de la camionnette, les photos sont rangées au bon endroit sans que tu y penses, le rendez-vous de la semaine prochaine est déjà confirmé. Compte combien d'heures tu passes au bureau par semaine, c'est ce chiffre que l'application attaque." },
+      { q: "J'ai deux salariés, ils vont vraiment s'en servir ?", a: "Oui, si tu leur demandes peu. Eux n'ont pas besoin du devis : ils ont besoin de voir le chantier du jour, de prendre les photos au bon endroit et de cocher ce qui est fait. Trois gestes, pas une formation. Chacun se connecte sur son propre téléphone, et tes prix restent chez toi : ils voient le planning, l'adresse et les photos, pas le devis ni la marge. Si au bout de deux semaines ils ne s'en servent pas, c'est l'outil qui leur demande trop, pas eux qui y mettent de la mauvaise volonté." },
+      { q: "Je fais surtout du dépannage, mes clients ne reviennent pas", a: "Alors oublie l'application pour tes clients, elle ne servira à personne. Reste la question de ton outil à toi : si tes interventions se chiffrent sur place et se paient tout de suite, un bon logiciel existant suffit sans doute. Si tu repars chaque fois avec un devis à faire plus tard et des photos à retrouver, c'est le cas de l'article." },
+      { q: "Et dans une cave sans réseau ? Et si je perds mon téléphone ?", a: "L'application mobile garde le devis et les photos sur le téléphone quand il n'y a pas de réseau, et les envoie toute seule dès qu'il revient : tu chiffres dans la chaufferie, le devis part quand tu remontes. Et rien ne vit seulement dans ton téléphone : tout est copié sur un serveur au fur et à mesure. Si tu le perds ou le casses, tu te connectes sur un autre et tu retrouves tout, devis, photos, chantiers." },
+      { q: "Combien de temps avant que ça me fasse gagner du temps ?", a: "Le premier devis fait sur place, le premier jour. Pour que ça devienne un réflexe, compte deux ou trois semaines, le temps que la saisie sur le téléphone remplace le carnet. Ce qui prend du temps, ce n'est pas l'outil, c'est de quitter l'habitude du soir. Et c'est pour ça que l'application doit être plus rapide que le carnet, sinon tu reviendras au carnet." },
+    ],
+    content: `
+      <p>Tu travailles debout, les mains prises, parfois dans une cave sans réseau : deux des <a href="/blog/application-mobile-pour-entreprise/">quatre cas qui justifient le mobile</a> rien qu'en descendant du camion. Ton outil est dans ta poche ou il n'existe pas. Et pourtant, la plupart des artisans qui m'appellent n'ont pas besoin de l'application qu'on leur a proposée.</p>
+      <p>Les deux sont vraies en même temps, parce qu'il y a <strong>deux applications possibles</strong>, et ce n'est pas la même. Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour rapporter, j'en ai publié plus de 20. Voici lesquelles tiennent pour un artisan ou un commerçant, et laquelle je te déconseille.</p>
+
+      <h2>Deux applications, pas une</h2>
+      <p>Quand on dit « une appli pour artisan », on mélange deux choses qui n'ont ni le même utilisateur, ni le même intérêt.</p>
+      <p><strong>La première est ton outil à toi.</strong> Celle que tu as dans la poche sur le chantier : le devis fait sur place, les photos rangées au bon dossier, le suivi de ce qui est fait et de ce qui reste. Son utilisateur, c'est toi et tes gars. Son intérêt se compte en heures de bureau en moins et en devis qui partent.</p>
+      <p><strong>La seconde est pour tes clients.</strong> Celle qu'ils installent sur leur téléphone pour réserver, suivre, être rappelés. Elle n'a de sens que si tes clients reviennent toute l'année, ce qui est le cas d'un commerce, d'un garage, d'un salon, et rarement d'un maçon : personne n'installe une application pour un chantier de trois semaines.</p>
+      <div class="encadre cle">
+        <span class="encadre-titre">L'ordre à respecter</span>
+        <p>L'outil pour toi d'abord, presque toujours. L'application pour tes clients ensuite, et seulement s'ils reviennent. Celui qui te propose l'inverse te vend ce qui se vend, pas ce qui te sert.</p>
+      </div>
+
+      <h2>Ce que tu perds chaque semaine, et que tu ne comptes pas</h2>
+      <p>Avant de parler d'application, fais ce calcul avec tes vrais chiffres. Il décide de tout.</p>
+      <p>Pense à la semaine dernière. Combien de visites où tu as dit « je vous envoie le devis » ? Et combien de ces devis sont partis dans les trois jours ? Chez beaucoup d'artisans, il y en a deux par semaine qui ne partent jamais, ou qui partent trop tard, quand le client a déjà signé ailleurs. Compte les tiens.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Ce que tu perds</th><th>Par semaine</th><th>Par an, sur 45 semaines</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Deux devis promis qui ne partent pas, 1 500 € en moyenne, un sur trois aurait signé</td><td>1 000 € de chiffre</td><td>45 000 € de chiffre</td></tr>
+            <tr><td>Le bureau du soir et du dimanche</td><td>4 heures</td><td>180 heures</td></tr>
+            <tr><td>Les photos de chantier qu'on ne retrouve pas quand le client conteste</td><td>une fois de temps en temps</td><td>un litige qu'on perd</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Mets tes propres chiffres à la place des miens. Si le total te paraît petit, tu n'as pas besoin de lire la suite, et je préfère te le dire. S'il te paraît gros, c'est exactement ce qu'une application attaque.</p>
+
+      <h2>Les trois usages qui tiennent, dans l'ordre</h2>
+      <p>Par ordre d'effet réel sur ton activité, pas par ordre de ce qui impressionne.</p>
+      <ol>
+        <li><strong>Le devis fait sur place, avant de remonter dans le camion.</strong> Les mesures, les photos, les postes habituels déjà pré-remplis, et le devis part par message avant que tu aies quitté la rue. C'est l'usage qui rapporte le plus, parce que le devis envoyé dans l'heure est celui qui signe.</li>
+        <li><strong>Le suivi de chantier que le client voit.</strong> L'avancement, les photos du jour, le choix à valider. Toi tu le remplis sur ton téléphone en trente secondes, lui l'ouvre dans son navigateur par un lien, sans rien installer. Ça supprime les appels « où en êtes-vous », et ça te protège quand il conteste : tout est daté, tout est en photo.</li>
+        <li><strong>Le rendez-vous et le rappel.</strong> La visite confirmée la veille automatiquement, le client qui ne t'attend plus et que tu n'attends plus. Petit en apparence, mais c'est une matinée perdue par mois qui disparaît.</li>
+      </ol>
+      <p>Ce qui ne tient pas, en revanche : la carte de fidélité numérique pour un artisan du bâtiment, le « programme de parrainage », la « communauté ». Ce sont des idées de commerce greffées sur un métier où le client revient tous les cinq ans, ou une fois par an pour l'entretien de sa chaudière. Dans les deux cas, un rappel par message fait le travail : personne n'installe une application pour ça.</p>
+
+      <h2>Le commerçant, c'est un autre cas</h2>
+      <p>Si tu tiens un commerce, la logique s'inverse : ton outil à toi existe déjà, c'est ta caisse et ton logiciel de gestion. Ce qui te manque, c'est le lien avec le client entre deux passages.</p>
+      <p>Là, l'application pour tes clients a du sens, à une condition : <strong>qu'ils reviennent</strong>. Le boulanger, le garage, le salon, le caviste ont une clientèle qui repasse chaque semaine ou chaque mois. Le magasin de passage dans une rue touristique, non. Pour le premier, une application qui réserve, qui rappelle, qui récompense le retour change le chiffre. Pour le second, elle ne sera jamais ouverte deux fois.</p>
+      <p>C'est la même mécanique que j'ai détaillée pour une <a href="/blog/application-mobile-salle-de-sport/">salle de sport</a> : l'application ne crée pas de clients, elle fait revenir ceux que tu as déjà, et c'est là que se joue le revenu.</p>
+
+      <h2>Le cas où je te dis non</h2>
+      <p>Il revient souvent, et autant être clair tout de suite.</p>
+      <p>Si ton problème est d'être trouvé par de nouveaux clients, une application ne sert à rien : personne ne télécharge l'application d'un plombier qu'il ne connaît pas. Pour ça, c'est une fiche Google à jour, des avis récents et des photos de tes chantiers, pour une fraction du prix. La différence avec un commerce, c'est que toi, tu n'as pas besoin de moi pour savoir dans quel cas tu es : ton carnet de commandes le dit.</p>
+      <div class="encadre attention">
+        <span class="encadre-titre">Le test en une question</span>
+        <p>Est-ce que ton carnet de commandes est plein ? Si non, ton sujet est d'être trouvé, pas d'être outillé. <strong>Une application ne remplit pas un carnet vide.</strong> Elle t'aide à tenir un carnet plein sans y passer tes soirées.</p>
+      </div>
+
+      <h2>Ce que ça coûte, et en combien de temps</h2>
+      <p>Les ordres de grandeur, par périmètre. Si le devis qu'on t'a fait est loin au-dessus, regarde d'abord s'il ne mélange pas les deux applications, la tienne et celle de tes clients : c'est la première chose à séparer avant de comparer quoi que ce soit.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Périmètre</th><th>Budget</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Ton outil : devis sur place, photos, suivi simple</td><td>5 000 à 8 000 €</td></tr>
+            <tr><td>Ton outil et le suivi que le client voit, avec validation et paiement d'acompte : deux profils, toi et lui</td><td>Une dizaine de milliers d'euros</td></tr>
+            <tr><td>L'application pour une clientèle qui revient, avec réservation et rappels</td><td>8 000 à 12 000 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="chiffre">
+        <span class="chiffre-valeur">45 jours</span>
+        <span class="chiffre-texte">en moyenne pour une application, du cadrage à la mise en ligne. Pour un artisan, le cadrage est court : le métier est clair, les gestes sont connus, et tu sais exactement ce qui te fait perdre du temps.</span>
+      </div>
+      <p>Reprends le tableau du début, et compte avec ta marge, pas avec ton chiffre : si deux devis par semaine qui partent vraiment représentent 1 000 € de chiffre et que tu en gardes un tiers, c'est un peu plus de 300 € de marge par semaine, et un outil à 6 000 € est remboursé en quatre à cinq mois. Si ton calcul donne moins, dis-le-moi, et je te dirai franchement si ça vaut le coup. Le détail de ce qui fait varier un devis est dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>.</p>
+
+      <h2>Par où commencer</h2>
+      <p>Trois étapes, aucune ne demande d'engager un budget.</p>
+      <ol>
+        <li><strong>Pendant une semaine, note ce que tu fais le soir au bureau.</strong> Devis, photos à trier, rendez-vous à confirmer, relances. C'est la liste de ce que l'application doit faire, dans l'ordre où ça revient.</li>
+        <li><strong>Compte les devis promis qui ne sont pas partis.</strong> Sur le dernier mois. C'est ton chiffre, celui qui dit si l'outil se rembourse.</li>
+        <li><strong>Vérifie que ton carnet est plein.</strong> S'il ne l'est pas, commence par ta fiche Google et tes avis, et reviens me voir après.</li>
+      </ol>
+      <p>Si ton activité ressemble plus à une petite entreprise avec une équipe au bureau et des gens sur le terrain, <a href="/blog/application-mobile-pour-entreprise/">l'application mobile pour entreprise</a> traite ce cas. Si tu es à Toulouse ou dans la région, on peut <a href="/blog/creation-application-mobile-toulouse/">se voir sur place</a>. Et si tu veux que je fasse le calcul sur tes chiffres réels, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes.</p>
+    `,
+  },
+  {
     slug: 'application-mobile-pour-entreprise',
     title: "Application mobile pour ton entreprise : dans quels cas ça se justifie",
     metaTitle: "Application mobile pour entreprise : utile ou pas ? | Noé Calmes",
@@ -2599,8 +2719,9 @@ export const BLOG_ARTICLES = [
 // orphelin. Ajouter un article implique donc de le citer ici au moins deux fois.
 
 export const ARTICLES_LIES = {
-  'application-mobile-pour-entreprise': ['choisir-expert-application-mobile', 'combien-coute-application-mobile', 'application-mobile-salle-de-sport'],
-  'application-mobile-salle-de-sport': ['application-mobile-coach-formateur', 'application-par-abonnement', 'combien-de-clients-pour-rentabiliser-application'],
+  'application-mobile-artisan': ['application-mobile-pour-entreprise', 'combien-coute-application-mobile', 'creation-application-mobile-toulouse'],
+  'application-mobile-pour-entreprise': ['application-mobile-artisan', 'combien-coute-application-mobile', 'application-mobile-salle-de-sport'],
+  'application-mobile-salle-de-sport': ['application-mobile-coach-formateur', 'application-par-abonnement', 'application-mobile-artisan'],
   'cahier-des-charges-application-mobile': ['creer-application-mobile-guide', 'combien-coute-application-mobile', 'choisir-expert-application-mobile'],
   'combien-de-temps-creer-application-mobile': ['mvp-application-mobile', 'cahier-des-charges-application-mobile', 'application-mobile-avec-claude'],
   'application-avec-ia-rentable': ['combien-de-clients-pour-rentabiliser-application', 'application-mobile-meilleur-investissement', 'creer-application-avec-ia'],
@@ -2629,7 +2750,7 @@ export const ARTICLES_LIES = {
   'faire-evoluer-application-mobile': ['reprendre-application-mobile-existante', 'choisir-expert-application-mobile', 'rentabiliser-application-mobile'],
 
   // Local
-  'creation-application-mobile-toulouse': ['combien-de-temps-creer-application-mobile', 'application-mobile-salle-de-sport', 'rentabiliser-application-mobile'],
+  'creation-application-mobile-toulouse': ['combien-de-temps-creer-application-mobile', 'application-mobile-salle-de-sport', 'application-mobile-artisan'],
 }
 
 // Articles lies d'un slug, resolus en objets complets et filtres des slugs
