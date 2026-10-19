@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 17mm 16mm 15mm; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: 'Lato', system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.55; color: #1c2430;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  /* ⚠️ UNE SEULE FOIS, EN HAUT À DROITE. C'était un bandeau courant, répété
+     sur chaque feuille par « position: fixed ». Répétée, une durée se lit
+     comme le temps de CHAQUE page : le lecteur croyait en avoir pour trente
+     minutes. Elle qualifie le document entier, elle s'affiche une fois. */
+  .bandeau {
+    text-align: right; font-size: 8pt; color: #8b93a1; letter-spacing: .01em;
+    margin-bottom: 1mm;
+  }
+  /* L'objectif ouvre le document : ce qu'on vient y faire, en une ligne, avant
+     toute explication. */
+  .objectif {
+    text-align: center; font-size: 10.5pt; color: #4a5464;
+    margin: -3mm 0 6mm;
+  }
+  .objectif a { color: #665dff; font-weight: 700; text-decoration: none; }
+  h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+    font-size: 22pt; line-height: 1.15; color: #033475;
+    text-align: center; margin: 1mm 0 5.5mm;
+  }
+  h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+    font-size: 13pt; color: #033475; margin: 5.5mm 0 1.8mm;
+    break-after: avoid;
+  }
+  h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
+    font-size: 11pt; color: #665dff; margin: 5mm 0 1.5mm;
+    break-after: avoid;
+  }
+  p { margin: 0 0 2.5mm; }
+  .intro { color: #4a5464; }
+  ol, ul { margin: 0 0 3mm; padding-left: 5.5mm; }
+  li { margin-bottom: 1.6mm; }
+  li::marker { color: #665dff; font-weight: 700; }
+  b { font-weight: 700; color: #0f1720; }
+  /* ⚠️ « white-space: nowrap », ET C'EST UNE CORRECTION DE BOGUE RÉEL.
+     Sans lui, « cn440614-ovh » se coupait en fin de ligne sur le trait
+     d'union, et le trait DISPARAISSAIT à l'extraction du texte : un client
+     qui copie collait « cn440614ovh », un identifiant qui n'existe pas. La
+     procédure entière échouait sans que personne comprenne pourquoi. */
+  .mono {
+    font-family: 'Liberation Mono', 'SFMono-Regular', Menlo, monospace;
+    font-size: 10pt; background: #f0eeff; color: #3b31c9;
+    padding: .4mm 1.4mm; border-radius: 1mm; font-weight: 700;
+    white-space: nowrap;
+  }
+  /* La mise en garde : discrète mais impossible à sauter. Barre à gauche
+     plutôt que fond plein, qui ferait un pavé au milieu d'une liste. */
+  .note {
+    border-left: 2.2pt solid #ffb020; background: #fff8ec;
+    padding: 2mm 3mm; margin: 0 0 3mm; font-size: 9.5pt; color: #6b4b12;
+    break-inside: avoid;
+  }
+  .encadre {
+    border: .8pt solid #ccd2ff; background: #f6f5ff;
+    border-radius: 2.5mm; padding: 3.5mm 4mm; margin: 4mm 0 2mm;
+    font-size: 9.8pt; color: #33405c; break-inside: avoid;
+  }
+  .encadre-titre {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
+    color: #033475; font-size: 10.2pt; margin-bottom: 1.5mm;
+  }
+  .capture {
+    display: block; margin: 1mm 0 3mm; border: .8pt solid #e3e6ee;
+    border-radius: 2mm; break-inside: avoid;
+  }
+  .bloc { break-inside: auto; }
+  .fin {
+    border-top: .8pt solid #e3e6ee; margin-top: 5mm; padding-top: 3.5mm;
+    break-inside: avoid;
+  }
+  .fin h2 { margin-top: 0; }
+  .attente {
+    background: #eef6ff; border-radius: 2.5mm; padding: 3.5mm 4mm;
+    font-size: 9.8pt; color: #12365f; margin-top: 1mm;
+  }
+</style></head>
+<body>
+  <div class="bandeau">Temps estimé : 15 min</div>
+  <h1>Compte Apple Developer</h1>
+  <p class="objectif">Souscrire l’abonnement Apple Developer, <a href="https://developer.apple.com/programs/">ici</a>.</p>
+
+  <section class="bloc">
+    <h2>Apple Developer, c’est quoi ?</h2>
+    <p>L’abonnement qui permet de publier ton application sur l’App Store. Tu le prends au nom de ton entreprise, puis tu m’ajoutes comme administrateur pour que je publie l’application.</p>
+  </section>
+
+  <section class="bloc">
+    <h2>Prérequis</h2>
+    <p>Un Apple Account avec l’authentification à deux facteurs, ton numéro D-U-N-S, une carte bancaire, et les informations de l’entreprise : raison sociale, adresse, téléphone, site web et adresse e-mail à ton nom de domaine. Pas besoin de Mac ni d’iPhone : tout se fait depuis un navigateur.</p>
+  </section>
+
+  <section class="bloc">
+    <h2>À retenir</h2>
+    <ul><li>Abonnement de <b>99 $ par an</b>, à renouveler. C’est Apple qui prélève, pas moi.</li><li>Une fois invité, je n’ai accès ni aux contrats ni au renouvellement : ils restent réservés au titulaire du compte, c’est-à-dire toi.</li><li><b>Important : le compte doit être de type Organisation</b>, jamais Individual. Sur un compte Individual je ne fais pas partie de l’équipe : je n’ai pas accès aux certificats, donc je ne peux ni créer ni publier l’application. Une micro-entreprise peut s’inscrire en Organisation, il suffit d’un numéro D-U-N-S.</li></ul>
+  </section>
+
+  <section class="bloc"><h2>1) Tu as déjà un compte Apple Developer ?</h2><p class="intro">Si tu n’en as jamais eu, passe directement à l’étape 2.</p><h3>Déjà en Organisation</h3><p>Rien à créer : connecte-toi sur <b>developer.apple.com</b>, vérifie que l’abonnement est actif (renouvelle-le s’il a expiré), puis passe à l’étape 4.</p><h3>En Individual (compte personnel) : le passer en Organisation</h3><ol><li>Aller sur <b>developer.apple.com</b> et se connecter.</li><li>En haut à gauche, ouvrir <b>Compte</b>, puis descendre jusqu’à <b>Détails de l’abonnement</b>.</li><li>Cliquer sur <b>Actualiser vos informations</b>, puis sur <b>Modifier les informations de l’organisation</b>.</li><li>Remplir le formulaire : raison sociale exacte (comme sur le Kbis), <b>numéro D-U-N-S</b> (étape 2), adresse du siège, téléphone et site web de l’entreprise. Tu dois être le gérant ou le fondateur : c’est toi qui engages l’entreprise.</li><li>Vérifier, puis envoyer la demande.</li></ol><p class="note">Apple vérifie l’entreprise et peut t’appeler ou te demander des documents (Kbis) : compte jusqu’à trois semaines. Ton abonnement continue pendant ce temps, il n’y a rien à repayer. Préviens-moi quand Apple confirme, puis passe à l’étape 4.</p></section>
+<section class="bloc"><h2>2) Avant de commencer</h2><ol><li>Créer un Apple Account, ou utiliser celui dont tu te sers déjà.</li><li>Activer l’<b>authentification à deux facteurs</b> sur appleid.apple.com, rubrique <b>Connexion et sécurité</b>. Un numéro de téléphone suffit. Apple la rend obligatoire.</li><li>Récupérer ton <b>numéro D-U-N-S</b>, gratuit et immédiat sur la <a href="https://www.dnb.com/de-de/upik-en.html">plateforme UPIK</a> (choisir France). S’il n’apparaît pas : <a href="https://developer.apple.com/enroll/duns-lookup/">outil D-U-N-S d’Apple</a>, demande gratuite en quelques jours.</li></ol></section>
+<section class="bloc"><h2>3) S’inscrire au programme</h2><ol><li>Aller sur <a href="https://developer.apple.com/programs/">developer.apple.com/programs</a>.</li><li>Si tu n’es pas connecté : cliquer sur <b>Account</b>, en haut à droite, et se connecter avec ton Apple Account.</li><li>Cliquer sur <b>Enroll</b> (en haut à droite), puis sur <b>Start Your Enrollment</b>.</li><li>Type d’entité : <b>Organisation</b> (Company / Organization), surtout pas Individual / Sole Proprietor.</li><li>Remplir le formulaire : d’abord tes informations personnelles, nom et prénom tels qu’à l’état civil (un pseudo ou le nom de la société retarde la validation), et ta fonction dans l’entreprise. Puis celles de l’entreprise : raison sociale exacte, numéro D-U-N-S, adresse du siège, téléphone et site web.</li><li>Confirmer que tu as l’autorité pour engager l’entreprise, accepter les conditions, puis régler les 99 $.</li></ol><div class="encadre"><p class="encadre-titre">Ensuite, Apple vérifie</p><p>Compte 2 à 14 jours ouvrés. Un conseiller peut t’appeler pour confirmer ton identité : c’est normal.</p></div></section>
+<section class="bloc"><h2>4) M’ajouter comme administrateur</h2><ol><li>Aller sur <a href="https://appstoreconnect.apple.com/access/users">App Store Connect</a>, rubrique <b>Utilisateurs et accès</b>, en haut à droite.</li><li>Cliquer sur le <b>+</b> pour ajouter un utilisateur, puis remplir comme sur la capture ci-dessous.</li><li>Cliquer sur <b>Suivant</b>, puis envoyer l’invitation.</li></ol><img class="capture" style="width:105mm" src="file:///Users/noecalmes/Dev/WEB/landing-page-doc/public/assets/images/guides/app-store-connect-nouvel-utilisateur.png"></section>
+<section class="bloc"><h2>5) Retirer mon accès (quand le projet est terminé)</h2><p class="intro">Au même endroit : ouvrir ma fiche dans <b>Utilisateurs et accès</b>, puis <b>Supprimer l’utilisateur</b>.</p></section>
+
+  <section class="fin">
+    <h2>Et ensuite ?</h2>
+    <ol><li>Envoie-moi un message quand l’invitation est partie, ou quand Apple a validé ton passage en Organisation.</li></ol>
+    <p class="attente">Je crée la fiche de l’application et ses certificats dès que j’ai accès.</p>
+  </section>
+</body></html>

@@ -41,6 +41,12 @@ function section(s) {
     if (sous.liste) html += liste(sous.liste)
     if (sous.note) html += `<p class="note">${sous.note}</p>`
   }
+  // Une capture d'écran, à la largeur du texte au plus (`captureLargeur` en
+  // millimètres pour la réduire). Le chemin part de la racine du site.
+  if (s.capture) {
+    const largeur = s.captureLargeur ? `width:${s.captureLargeur}mm` : 'max-width:100%'
+    html += `<img class="capture" style="${largeur}" src="file://${join(racine, s.capture)}">`
+  }
   if (s.encadre) {
     html += `<div class="encadre"><p class="encadre-titre">${s.encadre.titre}</p><p>${s.encadre.texte}</p></div>`
   }
@@ -123,6 +129,10 @@ function page(guide) {
   .encadre-titre {
     font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
     color: #033475; font-size: 10.2pt; margin-bottom: 1.5mm;
+  }
+  .capture {
+    display: block; margin: 1mm 0 3mm; border: .8pt solid #e3e6ee;
+    border-radius: 2mm; break-inside: avoid;
   }
   .bloc { break-inside: auto; }
   .fin {

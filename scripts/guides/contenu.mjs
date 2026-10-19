@@ -212,8 +212,103 @@ const googlePlay = {
   },
 }
 
+/**
+ * LE GUIDE APPLE DEVELOPER, refait ici le 19/10/2026 (c'était un PDF composé
+ * à la main, au vouvoiement). Ajout de Noé : le client qui a DÉJÀ un compte.
+ *
+ * ⚠️ DÉJÀ INSCRIT EN « INDIVIDUAL », IL NE RECRÉE RIEN : il passe son
+ * abonnement en Organisation depuis developer.apple.com (Compte, Détails de
+ * l'abonnement, Actualiser vos informations, Modifier les informations de
+ * l'organisation), avec son D-U-N-S. Apple vérifie, peut appeler et demander
+ * des documents ; compter jusqu'à trois semaines. Sur un compte Individual,
+ * Noé n'a pas accès aux certificats : l'organisation reste obligatoire.
+ */
+const appleDeveloper = {
+  fichier: 'Création compte Apple Développeur.pdf',
+  titre: 'Compte Apple Developer',
+  minutes: 15,
+  objectif: 'Souscrire l’abonnement Apple Developer',
+  lienObjectif: 'https://developer.apple.com/programs/',
+  quoiTitre: 'Apple Developer, c’est quoi ?',
+  quoi: 'L’abonnement qui permet de publier ton application sur l’App Store. Tu le prends au nom de ton entreprise, puis tu m’ajoutes comme administrateur pour que je publie l’application.',
+  prerequis: 'Un Apple Account avec l’authentification à deux facteurs, ton numéro D-U-N-S, une carte bancaire, et les informations de l’entreprise : raison sociale, adresse, téléphone, site web et adresse e-mail à ton nom de domaine. Pas besoin de Mac ni d’iPhone : tout se fait depuis un navigateur.',
+  retenir: [
+    'Abonnement de <b>99 $ par an</b>, à renouveler. C’est Apple qui prélève, pas moi.',
+    'Une fois invité, je n’ai accès ni aux contrats ni au renouvellement : ils restent réservés au titulaire du compte, c’est-à-dire toi.',
+    '<b>Important : le compte doit être de type Organisation</b>, jamais Individual. Sur un compte Individual je ne fais pas partie de l’équipe : je n’ai pas accès aux certificats, donc je ne peux ni créer ni publier l’application. Une micro-entreprise peut s’inscrire en Organisation, il suffit d’un numéro D-U-N-S.',
+  ],
+  sections: [
+    {
+      titre: '1) Tu as déjà un compte Apple Developer ?',
+      intro: 'Si tu n’en as jamais eu, passe directement à l’étape 2.',
+      sousSections: [
+        {
+          titre: 'Déjà en Organisation',
+          texte: 'Rien à créer : connecte-toi sur <b>developer.apple.com</b>, vérifie que l’abonnement est actif (renouvelle-le s’il a expiré), puis passe à l’étape 4.',
+        },
+        {
+          titre: 'En Individual (compte personnel) : le passer en Organisation',
+          liste: [
+            'Aller sur <b>developer.apple.com</b> et se connecter.',
+            'En haut à gauche, ouvrir <b>Compte</b>, puis descendre jusqu’à <b>Détails de l’abonnement</b>.',
+            'Cliquer sur <b>Actualiser vos informations</b>, puis sur <b>Modifier les informations de l’organisation</b>.',
+            'Remplir le formulaire : raison sociale exacte (comme sur le Kbis), <b>numéro D-U-N-S</b> (étape 2), adresse du siège, téléphone et site web de l’entreprise. Tu dois être le gérant ou le fondateur : c’est toi qui engages l’entreprise.',
+            'Vérifier, puis envoyer la demande.',
+          ],
+          note: 'Apple vérifie l’entreprise et peut t’appeler ou te demander des documents (Kbis) : compte jusqu’à trois semaines. Ton abonnement continue pendant ce temps, il n’y a rien à repayer. Préviens-moi quand Apple confirme, puis passe à l’étape 4.',
+        },
+      ],
+    },
+    {
+      titre: '2) Avant de commencer',
+      liste: [
+        'Créer un Apple Account, ou utiliser celui dont tu te sers déjà.',
+        'Activer l’<b>authentification à deux facteurs</b> sur appleid.apple.com, rubrique <b>Connexion et sécurité</b>. Un numéro de téléphone suffit. Apple la rend obligatoire.',
+        'Récupérer ton <b>numéro D-U-N-S</b>, gratuit et immédiat sur la <a href="https://www.dnb.com/de-de/upik-en.html">plateforme UPIK</a> (choisir France). S’il n’apparaît pas : <a href="https://developer.apple.com/enroll/duns-lookup/">outil D-U-N-S d’Apple</a>, demande gratuite en quelques jours.',
+      ],
+    },
+    {
+      titre: '3) S’inscrire au programme',
+      liste: [
+        'Aller sur <a href="https://developer.apple.com/programs/">developer.apple.com/programs</a>.',
+        'Si tu n’es pas connecté : cliquer sur <b>Account</b>, en haut à droite, et se connecter avec ton Apple Account.',
+        'Cliquer sur <b>Enroll</b> (en haut à droite), puis sur <b>Start Your Enrollment</b>.',
+        'Type d’entité : <b>Organisation</b> (Company / Organization), surtout pas Individual / Sole Proprietor.',
+        'Remplir le formulaire : d’abord tes informations personnelles, nom et prénom tels qu’à l’état civil (un pseudo ou le nom de la société retarde la validation), et ta fonction dans l’entreprise. Puis celles de l’entreprise : raison sociale exacte, numéro D-U-N-S, adresse du siège, téléphone et site web.',
+        'Confirmer que tu as l’autorité pour engager l’entreprise, accepter les conditions, puis régler les 99 $.',
+      ],
+      encadre: {
+        titre: 'Ensuite, Apple vérifie',
+        texte: 'Compte 2 à 14 jours ouvrés. Un conseiller peut t’appeler pour confirmer ton identité : c’est normal.',
+      },
+    },
+    {
+      titre: '4) M’ajouter comme administrateur',
+      liste: [
+        'Aller sur <a href="https://appstoreconnect.apple.com/access/users">App Store Connect</a>, rubrique <b>Utilisateurs et accès</b>, en haut à droite.',
+        'Cliquer sur le <b>+</b> pour ajouter un utilisateur, puis remplir comme sur la capture ci-dessous.',
+        'Cliquer sur <b>Suivant</b>, puis envoyer l’invitation.',
+      ],
+      capture: 'public/assets/images/guides/app-store-connect-nouvel-utilisateur.png',
+      captureLargeur: 105,
+    },
+    {
+      titre: '5) Retirer mon accès (quand le projet est terminé)',
+      intro: 'Au même endroit : ouvrir ma fiche dans <b>Utilisateurs et accès</b>, puis <b>Supprimer l’utilisateur</b>.',
+    },
+  ],
+  fin: {
+    titre: 'Et ensuite ?',
+    liste: [
+      'Envoie-moi un message quand l’invitation est partie, ou quand Apple a validé ton passage en Organisation.',
+    ],
+    attente: 'Je crée la fiche de l’application et ses certificats dès que j’ai accès.',
+  },
+}
+
 export const GUIDES = [
   googlePlay,
+  appleDeveloper,
   {
     fichier: 'Achat nom de domaine.pdf',
     titre: 'Nom de domaine + e-mail pro',
