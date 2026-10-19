@@ -117,7 +117,103 @@ const acces = (numero) => ({
   ],
 })
 
+/**
+ * LE GUIDE GOOGLE PLAY CONSOLE, refait ici le 19/10/2026 : c'était un PDF
+ * composé à la main, au vouvoiement. Deux ajouts de Noé :
+ *
+ * ⚠️ LE QUESTIONNAIRE « EXPÉRIENCE ». Google demande au titulaire ses années
+ * de développement et ses applications publiées. On répond pour LE CLIENT,
+ * avec la vérité : jamais l'expérience de Noé, jamais le lien de l'app d'un
+ * autre client. Débuter ne bloque pas le compte.
+ *
+ * ⚠️ L'E-MAIL DE CONTACT est public sur la fiche : l'adresse pro créée sur
+ * OVH (guide du nom de domaine) ou celle du compte Google, et dans les deux
+ * cas une boîte que le client lit, grâce à la redirection OVH.
+ */
+const googlePlay = {
+  fichier: 'Création Compte Google Play Console.pdf',
+  titre: 'Compte Google Play Console',
+  minutes: 15,
+  objectif: 'Créer ton compte éditeur Google Play',
+  lienObjectif: 'https://play.google.com/console/signup',
+  quoiTitre: 'Google Play Console, c’est quoi ?',
+  quoi: 'Le compte éditeur qui permet de publier ton application sur le Google Play Store, donc sur les téléphones Android. Tu le crées à ton nom, puis tu m’ajoutes comme administrateur pour que je publie l’application.',
+  prerequis: 'Ton compte Google (celui que tu m’as envoyé avec le nom de domaine), une carte bancaire, et les informations de ton entreprise.',
+  retenir: [
+    'Frais d’inscription de <b>25 $</b>, une seule fois. Pas d’abonnement.',
+    '<b>Important : le compte doit être de type Organisation</b> (entreprise), pas Personnel. Un compte personnel obligerait à faire tester l’application par 12 personnes pendant 14 jours avant de pouvoir la publier.',
+    'Une fois invité, je n’ai aucun accès à tes paramètres de paiement : ils restent réservés au propriétaire du compte, c’est-à-dire toi.',
+  ],
+  sections: [
+    {
+      titre: '1) Ton numéro D-U-N-S',
+      intro: 'Un identifiant gratuit à 9 chiffres attribué par Dun & Bradstreet. Google s’en sert pour vérifier que ton entreprise existe. La plupart des entreprises françaises en ont déjà un sans le savoir.',
+      liste: [
+        'Le chercher, gratuit et immédiat : <a href="https://www.dnb.com/de-de/upik-en.html">plateforme UPIK</a>. Choisir <b>France</b> dans la liste des pays, puis saisir le nom exact de ton entreprise.',
+        'S’il n’apparaît pas : <a href="https://developer.apple.com/enroll/duns-lookup/">outil D-U-N-S d’Apple</a> (compte Apple demandé, tu en auras besoin pour l’App Store de toute façon). La demande est gratuite et prend quelques jours.',
+      ],
+    },
+    {
+      titre: '2) Créer le compte',
+      liste: [
+        'Ouvrir <b>play.google.com/console/signup</b> et se connecter avec ton compte Google.',
+        'Type de compte : <b>Organisation</b>.',
+        '<b>Nom du développeur</b> : le nom qui sera visible par le public sur le Google Play Store.',
+        'Saisir le numéro D-U-N-S et les informations de l’entreprise (voir l’étape 4).',
+        'Répondre aux questions sur ton expérience (étape 3).',
+        'Créer le profil de paiement, puis régler les 25 $. Google demande ensuite des documents pour confirmer l’identité de l’entreprise.',
+      ],
+    },
+    {
+      titre: '3) Les questions sur ton expérience',
+      intro: 'Google demande ton expérience de développeur. <b>Réponds pour toi, avec la vérité</b> : une première application ne bloque pas le compte, et c’est moi qui développe.',
+      liste: [
+        '<b>Années d’expérience</b> : si c’est ta première application, la plus petite tranche proposée.',
+        '<b>Applications déjà publiées</b>, sur Google Play ou ailleurs : <b>Non</b> si c’est la première. Laisse les liens vides.',
+        '<b>Décrire ton expérience</b>, si la case existe : « Première application de la société. Le développement est confié à un développeur indépendant ; la société gère le contenu, le support et la relation avec les utilisateurs. »',
+        '<b>Applications prévues cette année</b> : 1. <b>But de l’application</b> : deux phrases, pour qui elle est faite et ce qu’elle permet.',
+        '<b>Revenus</b> : abonnement ou achats dans l’application si elle en a, sinon gratuite. <b>Publicité</b> : non, sauf si on l’a prévue ensemble. Un doute sur une question ? Envoie-moi une capture, je te dis quoi répondre.',
+      ],
+    },
+    {
+      titre: '4) Les coordonnées',
+      liste: [
+        '<b>Nom</b> et <b>adresse</b> : ceux de ton entreprise sur le Kbis, à l’identique.',
+        '<b>Site web</b> : ton nom de domaine (exemple : https://monapp.fr).',
+        '<b>E-mail de contact</b>, visible par le public sur la fiche : l’adresse pro créée sur OVH (exemple : monentreprise@monapp.fr), ou à défaut l’adresse de ton compte Google. Dans les deux cas, elle doit arriver dans la boîte que tu consultes : c’est le rôle de la <b>redirection</b> créée sur OVH.',
+        '<b>Téléphone</b> : le tien. Google le vérifie par SMS.',
+      ],
+    },
+    {
+      titre: '5) M’ajouter comme administrateur',
+      liste: [
+        'Dans la Google Play Console, ouvrir <b>Utilisateurs et autorisations</b> (menu de gauche).',
+        'À côté de <b>Gérer les utilisateurs</b>, cliquer sur les trois points, puis <b>Inviter de nouveaux utilisateurs</b>.',
+        'Saisir mon adresse : <b>noecalmes.pro@gmail.com</b>',
+        'Aller sur l’onglet <b>Autorisations du compte</b>, et non « Autorisations de l’application », sinon je ne pourrai pas créer de nouvelle application.',
+        'Cocher <b>Administrateur (toutes les autorisations)</b>, puis <b>Inviter l’utilisateur</b>.',
+      ],
+      encadre: {
+        titre: 'Préviens-moi une fois l’invitation envoyée',
+        texte: 'Elle expire après 30 jours. Mon accès est gratuit.',
+      },
+    },
+    {
+      titre: '6) Retirer mon accès (quand le projet est terminé)',
+      intro: 'Au même endroit : dans <b>Utilisateurs et autorisations</b>, cliquer sur la ligne à mon nom, puis <b>Supprimer l’utilisateur</b>.',
+    },
+  ],
+  fin: {
+    titre: 'Et ensuite ?',
+    liste: [
+      'Envoie-moi un message quand l’invitation est partie. Si Google demande des documents (Kbis, pièce d’identité), envoie-les-lui directement.',
+    ],
+    attente: 'La vérification de Google prend de quelques heures à quelques jours. Je prépare la fiche de l’application dès que j’ai accès.',
+  },
+}
+
 export const GUIDES = [
+  googlePlay,
   {
     fichier: 'Achat nom de domaine.pdf',
     titre: 'Nom de domaine + e-mail pro',

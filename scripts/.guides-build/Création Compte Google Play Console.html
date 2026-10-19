@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 17mm 16mm 15mm; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: 'Lato', system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.55; color: #1c2430;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  /* ⚠️ UNE SEULE FOIS, EN HAUT À DROITE. C'était un bandeau courant, répété
+     sur chaque feuille par « position: fixed ». Répétée, une durée se lit
+     comme le temps de CHAQUE page : le lecteur croyait en avoir pour trente
+     minutes. Elle qualifie le document entier, elle s'affiche une fois. */
+  .bandeau {
+    text-align: right; font-size: 8pt; color: #8b93a1; letter-spacing: .01em;
+    margin-bottom: 1mm;
+  }
+  /* L'objectif ouvre le document : ce qu'on vient y faire, en une ligne, avant
+     toute explication. */
+  .objectif {
+    text-align: center; font-size: 10.5pt; color: #4a5464;
+    margin: -3mm 0 6mm;
+  }
+  .objectif a { color: #665dff; font-weight: 700; text-decoration: none; }
+  h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+    font-size: 22pt; line-height: 1.15; color: #033475;
+    text-align: center; margin: 1mm 0 5.5mm;
+  }
+  h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
+    font-size: 13pt; color: #033475; margin: 5.5mm 0 1.8mm;
+    break-after: avoid;
+  }
+  h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
+    font-size: 11pt; color: #665dff; margin: 5mm 0 1.5mm;
+    break-after: avoid;
+  }
+  p { margin: 0 0 2.5mm; }
+  .intro { color: #4a5464; }
+  ol, ul { margin: 0 0 3mm; padding-left: 5.5mm; }
+  li { margin-bottom: 1.6mm; }
+  li::marker { color: #665dff; font-weight: 700; }
+  b { font-weight: 700; color: #0f1720; }
+  /* ⚠️ « white-space: nowrap », ET C'EST UNE CORRECTION DE BOGUE RÉEL.
+     Sans lui, « cn440614-ovh » se coupait en fin de ligne sur le trait
+     d'union, et le trait DISPARAISSAIT à l'extraction du texte : un client
+     qui copie collait « cn440614ovh », un identifiant qui n'existe pas. La
+     procédure entière échouait sans que personne comprenne pourquoi. */
+  .mono {
+    font-family: 'Liberation Mono', 'SFMono-Regular', Menlo, monospace;
+    font-size: 10pt; background: #f0eeff; color: #3b31c9;
+    padding: .4mm 1.4mm; border-radius: 1mm; font-weight: 700;
+    white-space: nowrap;
+  }
+  /* La mise en garde : discrète mais impossible à sauter. Barre à gauche
+     plutôt que fond plein, qui ferait un pavé au milieu d'une liste. */
+  .note {
+    border-left: 2.2pt solid #ffb020; background: #fff8ec;
+    padding: 2mm 3mm; margin: 0 0 3mm; font-size: 9.5pt; color: #6b4b12;
+    break-inside: avoid;
+  }
+  .encadre {
+    border: .8pt solid #ccd2ff; background: #f6f5ff;
+    border-radius: 2.5mm; padding: 3.5mm 4mm; margin: 4mm 0 2mm;
+    font-size: 9.8pt; color: #33405c; break-inside: avoid;
+  }
+  .encadre-titre {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;
+    color: #033475; font-size: 10.2pt; margin-bottom: 1.5mm;
+  }
+  .bloc { break-inside: auto; }
+  .fin {
+    border-top: .8pt solid #e3e6ee; margin-top: 5mm; padding-top: 3.5mm;
+    break-inside: avoid;
+  }
+  .fin h2 { margin-top: 0; }
+  .attente {
+    background: #eef6ff; border-radius: 2.5mm; padding: 3.5mm 4mm;
+    font-size: 9.8pt; color: #12365f; margin-top: 1mm;
+  }
+</style></head>
+<body>
+  <div class="bandeau">Temps estimé : 15 min</div>
+  <h1>Compte Google Play Console</h1>
+  <p class="objectif">Créer ton compte éditeur Google Play, <a href="https://play.google.com/console/signup">ici</a>.</p>
+
+  <section class="bloc">
+    <h2>Google Play Console, c’est quoi ?</h2>
+    <p>Le compte éditeur qui permet de publier ton application sur le Google Play Store, donc sur les téléphones Android. Tu le crées à ton nom, puis tu m’ajoutes comme administrateur pour que je publie l’application.</p>
+  </section>
+
+  <section class="bloc">
+    <h2>Prérequis</h2>
+    <p>Ton compte Google (celui que tu m’as envoyé avec le nom de domaine), une carte bancaire, et les informations de ton entreprise.</p>
+  </section>
+
+  <section class="bloc">
+    <h2>À retenir</h2>
+    <ul><li>Frais d’inscription de <b>25 $</b>, une seule fois. Pas d’abonnement.</li><li><b>Important : le compte doit être de type Organisation</b> (entreprise), pas Personnel. Un compte personnel obligerait à faire tester l’application par 12 personnes pendant 14 jours avant de pouvoir la publier.</li><li>Une fois invité, je n’ai aucun accès à tes paramètres de paiement : ils restent réservés au propriétaire du compte, c’est-à-dire toi.</li></ul>
+  </section>
+
+  <section class="bloc"><h2>1) Ton numéro D-U-N-S</h2><p class="intro">Un identifiant gratuit à 9 chiffres attribué par Dun & Bradstreet. Google s’en sert pour vérifier que ton entreprise existe. La plupart des entreprises françaises en ont déjà un sans le savoir.</p><ol><li>Le chercher, gratuit et immédiat : <a href="https://www.dnb.com/de-de/upik-en.html">plateforme UPIK</a>. Choisir <b>France</b> dans la liste des pays, puis saisir le nom exact de ton entreprise.</li><li>S’il n’apparaît pas : <a href="https://developer.apple.com/enroll/duns-lookup/">outil D-U-N-S d’Apple</a> (compte Apple demandé, tu en auras besoin pour l’App Store de toute façon). La demande est gratuite et prend quelques jours.</li></ol></section>
+<section class="bloc"><h2>2) Créer le compte</h2><ol><li>Ouvrir <b>play.google.com/console/signup</b> et se connecter avec ton compte Google.</li><li>Type de compte : <b>Organisation</b>.</li><li><b>Nom du développeur</b> : le nom qui sera visible par le public sur le Google Play Store.</li><li>Saisir le numéro D-U-N-S et les informations de l’entreprise (voir l’étape 4).</li><li>Répondre aux questions sur ton expérience (étape 3).</li><li>Créer le profil de paiement, puis régler les 25 $. Google demande ensuite des documents pour confirmer l’identité de l’entreprise.</li></ol></section>
+<section class="bloc"><h2>3) Les questions sur ton expérience</h2><p class="intro">Google demande ton expérience de développeur. <b>Réponds pour toi, avec la vérité</b> : une première application ne bloque pas le compte, et c’est moi qui développe.</p><ol><li><b>Années d’expérience</b> : si c’est ta première application, la plus petite tranche proposée.</li><li><b>Applications déjà publiées</b>, sur Google Play ou ailleurs : <b>Non</b> si c’est la première. Laisse les liens vides.</li><li><b>Décrire ton expérience</b>, si la case existe : « Première application de la société. Le développement est confié à un développeur indépendant ; la société gère le contenu, le support et la relation avec les utilisateurs. »</li><li><b>Applications prévues cette année</b> : 1. <b>But de l’application</b> : deux phrases, pour qui elle est faite et ce qu’elle permet.</li><li><b>Revenus</b> : abonnement ou achats dans l’application si elle en a, sinon gratuite. <b>Publicité</b> : non, sauf si on l’a prévue ensemble. Un doute sur une question ? Envoie-moi une capture, je te dis quoi répondre.</li></ol></section>
+<section class="bloc"><h2>4) Les coordonnées</h2><ol><li><b>Nom</b> et <b>adresse</b> : ceux de ton entreprise sur le Kbis, à l’identique.</li><li><b>Site web</b> : ton nom de domaine (exemple : https://monapp.fr).</li><li><b>E-mail de contact</b>, visible par le public sur la fiche : l’adresse pro créée sur OVH (exemple : monentreprise@monapp.fr), ou à défaut l’adresse de ton compte Google. Dans les deux cas, elle doit arriver dans la boîte que tu consultes : c’est le rôle de la <b>redirection</b> créée sur OVH.</li><li><b>Téléphone</b> : le tien. Google le vérifie par SMS.</li></ol></section>
+<section class="bloc"><h2>5) M’ajouter comme administrateur</h2><ol><li>Dans la Google Play Console, ouvrir <b>Utilisateurs et autorisations</b> (menu de gauche).</li><li>À côté de <b>Gérer les utilisateurs</b>, cliquer sur les trois points, puis <b>Inviter de nouveaux utilisateurs</b>.</li><li>Saisir mon adresse : <b>noecalmes.pro@gmail.com</b></li><li>Aller sur l’onglet <b>Autorisations du compte</b>, et non « Autorisations de l’application », sinon je ne pourrai pas créer de nouvelle application.</li><li>Cocher <b>Administrateur (toutes les autorisations)</b>, puis <b>Inviter l’utilisateur</b>.</li></ol><div class="encadre"><p class="encadre-titre">Préviens-moi une fois l’invitation envoyée</p><p>Elle expire après 30 jours. Mon accès est gratuit.</p></div></section>
+<section class="bloc"><h2>6) Retirer mon accès (quand le projet est terminé)</h2><p class="intro">Au même endroit : dans <b>Utilisateurs et autorisations</b>, cliquer sur la ligne à mon nom, puis <b>Supprimer l’utilisateur</b>.</p></section>
+
+  <section class="fin">
+    <h2>Et ensuite ?</h2>
+    <ol><li>Envoie-moi un message quand l’invitation est partie. Si Google demande des documents (Kbis, pièce d’identité), envoie-les-lui directement.</li></ol>
+    <p class="attente">La vérification de Google prend de quelques heures à quelques jours. Je prépare la fiche de l’application dès que j’ai accès.</p>
+  </section>
+</body></html>

@@ -138,10 +138,10 @@ function page(guide) {
 <body>
   <div class="bandeau">Temps estimé : ${guide.minutes} min</div>
   <h1>${guide.titre}</h1>
-  <p class="objectif">${guide.objectif}, <a href="https://www.ovhcloud.com/fr/domains/">ici</a>.</p>
+  <p class="objectif">${guide.objectif}, <a href="${guide.lienObjectif ?? 'https://www.ovhcloud.com/fr/domains/'}">ici</a>.</p>
 
   <section class="bloc">
-    <h2>Le nom de domaine, c’est quoi ?</h2>
+    <h2>${guide.quoiTitre ?? 'Le nom de domaine, c’est quoi ?'}</h2>
     <p>${guide.quoi}</p>
   </section>
 
@@ -171,7 +171,10 @@ if (!existsSync(CHROME)) {
 }
 mkdirSync(travail, { recursive: true })
 
-for (const guide of GUIDES) {
+// Un seul guide : `node scripts/generer-guides.mjs "Création Compte"`. Sans
+// argument, tous ; refaire un PDF qui n'a pas changé le réécrit pour rien.
+const filtre = process.argv[2]
+for (const guide of GUIDES.filter(g => !filtre || g.fichier.includes(filtre))) {
   const html = join(travail, guide.fichier.replace(/\.pdf$/, '.html'))
   const pdf = join(sortie, guide.fichier)
   writeFileSync(html, page(guide), 'utf8')
