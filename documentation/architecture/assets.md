@@ -65,6 +65,7 @@ Ces fichiers peuvent referencer directement des assets :
 - `public/slides-matchup.html`
 - `public/proposition-matchup.html`
 - `scripts/og/` : sources des images de partage (voir `scripts/og/README.md`)
+- `/projets/` et `/projet/` : aperçu dédié `public/assets/images/meta/projets-og.jpg`, source `scripts/og/projets-og.html` ; les autres pages conservent leur aperçu habituel.
 - `public/legal/index.html`
 - `scripts/generate-routes.js`
 

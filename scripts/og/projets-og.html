@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- Source de public/assets/images/meta/projets-og.jpg, 1200 × 630. -->
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Aperçu des réalisations de Noé Calmes</title>
+  <style>
+    @font-face { font-family: 'Jakarta'; font-weight: 800; src: url('../../public/assets/fonts/plus-jakarta/PlusJakartaSans-ExtraBold.ttf') format('truetype'); }
+    @font-face { font-family: 'Baskerville'; font-style: italic; font-weight: 400; src: url('LibreBaskerville-Italic.woff2') format('woff2'); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1200px; height: 630px; overflow: hidden; }
+    body {
+      position: relative;
+      color: #033475;
+      background:
+        radial-gradient(ellipse 60% 70% at 86% 60%, #665dff4d, #665dff1a 45%, transparent 72%),
+        radial-gradient(ellipse 70% 50% at 20% 115%, #665dff29, transparent 70%),
+        linear-gradient(180deg, #fcfcfe, #f6f5fc);
+    }
+    .grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(#665dff12 1px, transparent 1px), linear-gradient(90deg, #665dff12 1px, transparent 1px);
+      background-size: 100px 100px; background-position: 50px 15px;
+      mask-image: radial-gradient(ellipse 80% 90% at 40% 50%, #000 25%, transparent 100%);
+    }
+    .copy { position: absolute; z-index: 3; left: 96px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; padding-bottom: 48px; }
+    .intro { margin: 0 0 20px 5px; color: #4b4b4b; font: italic 400 46px/1 'Baskerville', serif; }
+    h1 { font: 800 98px/1 'Jakarta', sans-serif; letter-spacing: -3.7px; }
+    h1 span { display: inline-block; padding: 0 10px 28px 0; margin: 0 -10px -28px 0; background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .scene { position: absolute; top: 0; right: 0; width: 540px; height: 630px; }
+    .gallery { position: absolute; right: 76px; top: 96px; width: 398px; height: 328px; overflow: hidden; border: 1px solid #03347514; border-radius: 18px; background: #fff; box-shadow: 0 30px 70px -30px #665dff73; }
+    .bar { height: 34px; display: flex; align-items: center; gap: 7px; padding-left: 14px; background: #f5f4fb; border-bottom: 1px solid #0334750f; }
+    .bar i { display: block; width: 9px; height: 9px; border-radius: 50%; background: #d9d6f5; }
+    .bar span { width: 165px; height: 14px; margin-left: 12px; border-radius: 7px; background: #ebe9f8; }
+    .gallery-head { width: 145px; height: 16px; margin: 22px 22px 16px; border-radius: 8px; background: #c9c4ff; }
+    .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 22px; }
+    .tile { height: 91px; padding: 13px; border: 1px solid #0334750d; border-radius: 12px; background: #f8f7fd; }
+    .tile b { display: block; width: 29px; height: 29px; border-radius: 9px; background: #d6d0ff; }
+    .tile:nth-child(2) b { background: #e3dfff; }
+    .tile:nth-child(3) b { background: #bfb6ff; }
+    .tile s { display: block; width: 84px; height: 8px; margin-top: 12px; border-radius: 4px; background: #d8d4ec; }
+    .result { position: absolute; right: 52px; top: 298px; width: 278px; height: 192px; padding: 24px; border: 1px solid #03347512; border-radius: 22px; background: #fff; box-shadow: 0 40px 80px -30px #03347559; }
+    .result-head { width: 116px; height: 12px; border-radius: 6px; background: #c9c4ff; }
+    .chart { display: flex; align-items: flex-end; justify-content: space-between; height: 106px; margin-top: 18px; padding: 0 4px; border-bottom: 1px solid #eae7f6; }
+    .chart i { display: block; width: 34px; border-radius: 8px 8px 0 0; background: #665dff; }
+    .chart i:nth-child(1) { height: 28px; background: #e3dfff; }
+    .chart i:nth-child(2) { height: 48px; background: #c9c2ff; }
+    .chart i:nth-child(3) { height: 70px; background: #a89cff; }
+    .chart i:nth-child(4) { height: 100px; }
+  </style>
+</head>
+<body>
+  <div class="grid" aria-hidden="true"></div>
+  <div class="scene" aria-hidden="true">
+    <div class="gallery">
+      <div class="bar"><i></i><i></i><i></i><span></span></div>
+      <div class="gallery-head"></div>
+      <div class="tiles"><div class="tile"><b></b><s></s></div><div class="tile"><b></b><s></s></div><div class="tile"><b></b><s></s></div><div class="tile"><b></b><s></s></div></div>
+    </div>
+    <div class="result"><div class="result-head"></div><div class="chart"><i></i><i></i><i></i><i></i></div></div>
+  </div>
+  <div class="copy"><p class="intro">De l’idée au lancement</p><h1>Mes<br /><span>réalisations</span></h1></div>
+</body>
+</html>

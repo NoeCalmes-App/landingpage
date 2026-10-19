@@ -23,7 +23,7 @@ Routes gerees dans `src/App.jsx` :
 - `/creation-application-mobile` — page SEO autonome : la methode en 5 etapes (`src/PagesSeo.jsx`)
 - `/faq` — page SEO autonome + donnees structurees FAQPage (`src/PagesSeo.jsx`)
 - `/quiz` et `/quiz/{slug}` — pages quizz SEO (`src/Quiz.jsx`)
-- `/projets` — realisations (`src/Projets.jsx`) ; ses avis clients sont aussi ceux de l'accueil (`src/AvisClients.jsx`, depuis le 11/10/2026)
+- `/projets` — page de confiance principalement consultée sur téléphone après un premier appel (`src/Projets.jsx`, styles `src/projets.css`) : deux captures fixes (SmoothRide et WakeUp), cadres propres inclinés sur un halo violet, résultats contextualisés, avis clients, prise en charge et suivi, puis cadre du devis. Les chiffres ne sont pas répétés dans une barre séparée. Plouff Habitudes est présenté en 30 jours du design au lancement (Noé, 19/10/2026) ; ce cas précis ne modifie pas le délai moyen du site. Pas de prix d'appel sur cette page : le montant dépend du projet, le devis et le cahier des charges précisent livrables, calendrier et prix avant engagement. Pas de nouvelle promesse de maquette ici. La méthode détaille les décisions produit, la réalisation et la poursuite de la collaboration après les 30 jours de corrections incluses (`strategie-commerciale.md`). Le contact final reste discret (écrire ou rappeler), le prospect ayant déjà le numéro de Noé. Les avis restent partagés avec l'accueil (`src/AvisClients.jsx`).
 - `/audit-app` — audit gratuit d'idee d'application
 - `/rendez-vous` — section contact WhatsApp de la home (`#contact`)
 - `/rdv/` — page publique autonome des invitations de rendez-vous Nowork (`public/rdv/index.html`). Le jeton est dans le fragment `#` de l'URL courte partagée ; la page lit la fonction Firebase `meetingInvite`, puis propose le lien Meet, Google Agenda et un fichier `.ics`. Elle est exclue de l'indexation et ne doit pas être confondue avec `/rendez-vous`.
@@ -40,6 +40,8 @@ Routes gerees dans `src/App.jsx` :
 - `/maquette/kingfit-coach`
 - `/maquette/pac-assist`, `/maquette/cvc-assist`
 - `/contactnoe`, `/legal`, `/mentions`, `/privacy`, `/cgv`
+
+La page `/projets/` et son message WhatsApp utilisent un ton neutre (sans tutoiement ni vouvoiement). Le bloc « Budget & collaboration » est distingué par un fond violet clair et des icônes euro, devis et poignée de main. Il évoque une collaboration dans la durée : « Une réduction est proposée sur les devis suivants » (Noé, 19/10/2026), sans pourcentage affiché. Les deux icônes sont centrées verticalement sur la ligne de leur titre, indépendamment du paragraphe. Son image de partage dédiée, `projets-og.jpg`, est aussi servie pour l'alias `/projet/` et les ancres. Elle reprend le style abstrait des aperçus espace client et maquettes ; les autres routes conservent leur image habituelle. Les métadonnées de cette image sont déclarées dans `src/Projets.jsx`, lues au build, puis rétablies en navigation par `src/seo.js`.
 
 `scripts/generate-routes.js` genere des dossiers SEO dans `dist` pour les routes importantes apres le build, **et genere aussi `dist/sitemap.xml`**.
 

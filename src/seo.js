@@ -70,7 +70,7 @@ export function poserHreflang(path) {
 // Point d'entree unique pour la mise a jour des meta cote client.
 // Ecrit title, description, canonique, Open Graph, Twitter et hreflang, tous
 // alignes sur la MEME URL canonique (barre finale comprise).
-export function appliquerMeta({ path, title, description, ogImage }) {
+export function appliquerMeta({ path, title, description, ogImage, ogImageAlt }) {
   const url = urlPublique(path)
 
   if (title) document.title = title
@@ -91,10 +91,16 @@ export function appliquerMeta({ path, title, description, ogImage }) {
   meta('property', 'og:url', url)
   meta('name', 'twitter:title', title)
   meta('name', 'twitter:description', description)
-  if (ogImage) {
-    meta('property', 'og:image', ogImage)
-    meta('name', 'twitter:image', ogImage)
-  }
+  // Chaque navigation rétablit l'aperçu de sa page. Sans valeur par défaut,
+  // l'image des projets resterait dans les balises au retour vers l'accueil.
+  const image = ogImage || `${ORIGINE}/assets/images/meta/accueil-og.jpg`
+  const imageAlt = ogImageAlt || (ogImage
+    ? description || title
+    : "Noé Calmes, conception d'applications mobiles qui génèrent des revenus")
+  meta('property', 'og:image', image)
+  meta('name', 'twitter:image', image)
+  meta('property', 'og:image:alt', imageAlt)
+  meta('name', 'twitter:image:alt', imageAlt)
 
   const canonique = poserBalise('link[rel="canonical"]', () => {
     const l = document.createElement('link')

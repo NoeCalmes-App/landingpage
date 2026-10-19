@@ -129,12 +129,14 @@ const SOURCES_META = [
 ]
 
 function lireMetaPagesSeo() {
-  const motif = /appliquerMeta\(\{\s*path: '([^']+)',\s*title: "((?:[^"\\]|\\.)*)",\s*description: "((?:[^"\\]|\\.)*)",/g
+  const motif = /appliquerMeta\(\{\s*path: '([^']+)',\s*title: "((?:[^"\\]|\\.)*)",\s*description: "((?:[^"\\]|\\.)*)",(?:\s*ogImage: '([^']+)',)?(?:\s*ogImageAlt: "((?:[^"\\]|\\.)*)",)?/g
   const meta = {}
   for (const parties of SOURCES_META) {
     const src = readFileSync(join(__dirname, '..', ...parties), 'utf-8')
     for (const m of src.matchAll(motif)) {
       meta[m[1]] = { title: m[2].replace(/\\(["'])/g, '$1'), description: m[3].replace(/\\(["'])/g, '$1') }
+      if (m[4]) meta[m[1]].ogImage = m[4]
+      if (m[5]) meta[m[1]].ogImageAlt = m[5].replace(/\\(["'])/g, '$1')
     }
   }
   if (!Object.keys(meta).length) throw new Error('Aucune meta lue depuis les sources de PagesSeo')
@@ -622,18 +624,14 @@ const sectionRoutes = [
   },
   {
     path: '/projets',
-    title: 'Les applications que j\'ai conçues | Noé Calmes',
-    description: 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. Plus de 20 publiées sur iOS et Android.',
-    heading: 'Les applications que j\'ai conçues',
-    content: 'Applications mobiles conçues sur-mesure, de la stratégie au lancement : Calorie (13 000 € générés par mois), Hush (300 000 utilisateurs), Plouff Habitudes (lancée en 45 jours), Wake Up Alarme, Purge. +20 applications publiées sur iOS et Android.',
+    heading: 'Réalisations et façon de travailler de Noé Calmes',
+    content: 'Plus de 20 applications publiées. La première version de Hush conçue par Noé a réuni 300 000 utilisateurs et l’application dépasse aujourd’hui un million de téléchargements. Une application conçue par Noé génère environ 13 000 € par mois. Chaque projet est cadré avant le devis : stratégie, design, développement et mise en ligne.',
   },
   {
     path: '/projet',
     canonicalPath: '/projets',
-    title: 'Les applications que j\'ai conçues | Noé Calmes',
-    description: 'Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. Plus de 20 publiées sur iOS et Android.',
-    heading: 'Les applications que j\'ai conçues',
-    content: 'Applications mobiles conçues sur-mesure, de la stratégie au lancement : Calorie (13 000 € générés par mois), Hush (300 000 utilisateurs), Plouff Habitudes (lancée en 45 jours), Wake Up Alarme, Purge. +20 applications publiées sur iOS et Android.',
+    heading: 'Réalisations et façon de travailler de Noé Calmes',
+    content: 'Plus de 20 applications publiées. La première version de Hush conçue par Noé a réuni 300 000 utilisateurs et l’application dépasse aujourd’hui un million de téléchargements. Une application conçue par Noé génère environ 13 000 € par mois. Chaque projet est cadré avant le devis : stratégie, design, développement et mise en ligne.',
   },
 ]
 
@@ -647,11 +645,11 @@ const faqItems = lireFaq()
 const faqJson = baliseFaq(faqItems)
 
 for (const route of sectionRoutes) {
-  const meta = metaPagesSeo[route.path]
+  const meta = metaPagesSeo[route.canonicalPath || route.path]
 
   let html = patchHtml(baseHtml, {
     ...route,
-    ...(meta ? { title: meta.title, description: meta.description } : {}),
+    ...(meta || {}),
     corpsComplet: corpsSeoPages[route.canonicalPath || route.path] || '',
     breadcrumb: [
       { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://noecalmes.fr/" },
@@ -1267,7 +1265,7 @@ const navHome = ['/expertise', '/creation-application-mobile', '/projets', '/blo
 const libelles = {
   '/expertise': 'Concevoir une application qui rapporte',
   '/creation-application-mobile': 'Ma méthode',
-  '/projets': 'Les applications que j\'ai conçues',
+  '/projets': 'Réalisations et méthode',
   '/blog': 'Blog',
   '/audit-app': 'Tester ton idée',
   '/faq': 'FAQ',

@@ -1,18 +1,21 @@
 # Images de partage (aperçu des liens WhatsApp, iMessage, LinkedIn)
 
-Quatre images, toutes dans `public/assets/images/meta/`, et aucune autre :
+Cinq images, toutes dans `public/assets/images/meta/` :
 
 | Image | Où elle s'affiche | Source ici |
 |---|---|---|
-| `accueil-og.jpg` | `noecalmes.fr` et tous les liens, sauf les trois lignes suivantes | `accueil-og.html` + `accueil-og-fond.png` |
+| `accueil-og.jpg` | `noecalmes.fr` et les pages sans aperçu dédié | `accueil-og.html` + `accueil-og-fond.png` |
+| `projets-og.jpg` | `/projets/`, son alias `/projet/` et leurs ancres | `projets-og.html` |
 | `maquette-og.png` | `/maquette` et toutes les `/maquette/...` | `maquette-og.html` |
 | `espace-client-og.png` | `/espace-client` et les liens `/espace-client/#...` envoyés par Nowork | `espace-client-og.html` |
 | `audit-og.png` | `/audit-app` | `audit-og.html` |
 
 Qui les pose : `accueil-og.jpg` est dans `index.html` (donc héritée par toutes
-les pages générées) et `public/legal/index.html`. Les trois autres sont posées
-par `scripts/generate-routes.js` (fonction `poserApercuPartage`), et l'audit
-aussi par `src/audit-app/AuditApp.jsx`.
+les pages générées) et `public/legal/index.html`. Les aperçus dédiés sont posés
+par `scripts/generate-routes.js`. Les métadonnées des projets viennent de
+`src/Projets.jsx` (image et texte alternatif compris), celles de l'audit sont
+aussi posées par `src/audit-app/AuditApp.jsx`. En navigation dans le site,
+`src/seo.js` rétablit l'image d'accueil pour les pages sans aperçu dédié.
 
 Poids : chaque image doit rester sous 300 Ko, au-delà WhatsApp n'affiche pas
 toujours l'aperçu.
@@ -50,6 +53,16 @@ Texte imposé par `documentation/context/positionnement.md`, section Tonalité,
 maquette », sans pronom, sans portrait, adapté à une application comme à un
 site. Polices : Plus Jakarta Sans du dépôt, Libre Baskerville italique copiée
 ici (`LibreBaskerville-Italic.woff2`, licence OFL).
+
+## Image des réalisations
+
+`projets-og.jpg` reprend la même famille visuelle que les aperçus de l'espace
+client et des maquettes : fond clair quadrillé, titre bleu et violet,
+ligne en italique et illustration abstraite d'une galerie et de résultats.
+Texte neutre : « De l’idée au lancement » / « Mes réalisations ».
+Le rendu JPEG mesure 1200 × 630 et reste sous 300 Ko. Seules `/projets/` et
+`/projet/` l'utilisent ; leur canonique et `og:url` restent `/projets/`.
+Les ancres (`#realisations`, `#avis`, etc.) utilisent le même aperçu.
 
 ## Regénérer une image après une retouche du HTML
 

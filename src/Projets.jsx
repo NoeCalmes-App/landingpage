@@ -1,487 +1,124 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { ArrowDown, ArrowRight, ArrowUpRight, Euro, FileCheck2, Handshake, MessageCircle, Phone } from 'lucide-react'
 import { appliquerMeta, retirerPrerender } from './seo.js'
+import { trackDirectWhatsAppLead } from './metaTracking.js'
 import { AvisClients } from './AvisClients.jsx'
+import './projets.css'
 
-/*
- * Page /projets — portfolio envoyé après un échange (l'audience a déjà le WhatsApp).
- * Objectif : conversion par la preuve. En 5 secondes : « il est fort, il fait du
- * sur-mesure, il génère des revenus et des utilisateurs. »
- *
- * Ton NEUTRE (ni tu ni vous). Pas de tirets cadratins dans la copy (fait « IA »).
- * Pas de dates, pas de CTA contact, pas de label de catégorie (le chiffre parle seul).
- * Icône contextuelle : flèche ↑ = croissance, minuteur = vitesse,
- * cloche = fiabilité, écrans = multi-plateforme.
- *
- * Mise en page pensée mobile-first ET desktop (grille éditoriale large, showpiece Calorie).
- *
- * Données réelles :
- *   - Hush     : +1 million de téléchargements iOS + Android, 300 000 utilisateurs dès la
- *                1ʳᵉ version — messagerie anonyme (client) — carte vedette depuis le 19/10/2026
- *   - Calorie  : 13 000 €/mois (client) — IA intégrée. Passée en carte simple le 19/10/2026.
- *   - Plouff Habitudes : plouff-habitudes.com — suivi d'habitudes, conçue en 45 jours — CONFIRMÉ
- *   - Wake Up Alarme   : wakeupalarm.app — réveil à missions, sonne hors-ligne / verrouillé
- *     (peu de téléchargements : ne pas utiliser ce chiffre)
- *   - Purge : tri de photos, accessible web + mobile synchronisés — CONFIRMÉ par Noé
- *
- * ⚠️ À CONFIRMER : la liste « Projets clients confidentiels » (usages réels sans détail client).
- */
+// Cette page sert aussi de support après un premier appel.
+const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
+  "Bonjour Noé, j’ai une question après avoir consulté la page des réalisations."
+)}`
 
-const ME_PHOTO = '/assets/images/profile/me.webp'
-
-const ICON = {
-  calorie: '/assets/images/apps/calorie.webp',
-  hush: '/assets/images/apps/hushapp.webp',
-  plouff: '/assets/images/app-icons/plouffhabitudes.webp',
-  purge: '/assets/images/apps/purge.webp',
-}
-
-// LA VEDETTE PORTE LE VOLUME DEPUIS LE 19/10/2026, le revenu est passé juste en
-// dessous. Hush est le chiffre le plus large de la page ; Calorie garde ses
-// 13 000 €/mois dans la rangée des trois.
-//
-// PAS DE DATE SUR LA VEDETTE. La pastille « 2025 » est partie : l'en-tête de ce
-// fichier interdit les dates depuis le début, et un millésime fait vieillir une
-// preuve qui, elle, continue de courir. La pastille restante dit la plateforme.
-const FEATURED = {
-  icon: ICON.hush,
-  name: 'Hush',
-  tagline: 'Messagerie anonyme',
-  etiquette: 'iOS et Android',
-  pitch: 'Une messagerie anonyme, adoptée par son public dès la première version.',
-  highlight: '+1 million',
-  unit: 'téléchargements',
-  note: '300 000 utilisateurs dès la première version',
-  badge: 'trend',
-}
-
-const PROJECTS = [
-  {
-    icon: ICON.calorie,
-    name: 'Calorie',
-    tagline: 'Suivi nutrition par IA',
-    highlight: '13 000 €',
-    unit: '/ mois',
-    note: 'Sur la première version',
-    badge: 'euro',
-  },
-  {
-    icon: ICON.plouff,
-    name: 'Plouff Habitudes',
-    tagline: 'Suivi d\'habitudes',
-    highlight: '45 jours',
-    unit: '',
-    note: 'Du design au lancement',
-    badge: 'timer',
-  },
-  {
-    icon: ICON.purge,
-    name: 'Purge',
-    tagline: 'Tri & rangement de photos',
-    highlight: 'Mobile + web',
-    unit: '',
-    note: 'Sur téléphone et ordinateur',
-    badge: 'devices',
-  },
+const REALISATIONS = [
+  { name: 'Calorie', type: 'Suivi nutritionnel avec l’IA', icon: '/assets/images/apps/calorie.webp', metric: '13 000 €', unit: 'par mois environ', detail: "Une application que j’ai conçue pour un client, sur un marché déjà très concurrentiel." },
+  { name: 'Plouff Habitudes', type: "Suivi d'habitudes", icon: '/assets/images/app-icons/plouffhabitudes.webp', metric: '30 jours', unit: 'du design au lancement', detail: "Ma propre application : une routine quotidienne, une mascotte et une offre d’abonnement." },
+  { name: 'Purge', type: 'Tri de photos', icon: '/assets/images/apps/purge.webp', metric: 'Téléphone + ordinateur', unit: '', detail: 'Les photos restent synchronisées pour passer d’un appareil à l’autre.' },
 ]
 
-// « Projets clients confidentiels » — l'étendue, sans rien révéler (confidentialité).
-const OTHERS = [
-  'Le coaching en salle de sport',
-  'La gestion d\'entreprise & la logistique',
-  'Une application pour faciliter le quotidien des artisans',
-  'La finance personnelle',
-  'Une communauté de passionnés',
-  'La réservation de services',
+const METHODE = [
+  { number: '01', title: 'La stratégie fait partie du projet', text: "Je réfléchis au modèle de revenus, aux premiers écrans et au moment où proposer une offre payante. Je définis les fonctionnalités utiles avant de commencer le développement." },
+  { number: '02', title: 'Je prends en charge la réalisation', text: "Design, développement et mise en ligne : je m’occupe de la réalisation, avec des explications claires et des étapes à valider ensemble." },
+  { number: '03', title: 'Je reste présent après le lancement', text: "Les corrections de bugs sont incluses pendant 30 jours après la mise en ligne. Ensuite, je reste disponible pour accompagner les évolutions de l’application." },
 ]
 
-const Badge = ({ type }) => {
-  const paths = {
-    trend: (
-      <>
-        <line x1="7" y1="17" x2="17" y2="7" />
-        <polyline points="8 7 17 7 17 16" />
-      </>
-    ),
-    timer: (
-      <>
-        <line x1="10" y1="2" x2="14" y2="2" />
-        <circle cx="12" cy="14" r="7" />
-        <line x1="12" y1="14" x2="12" y2="10" />
-      </>
-    ),
-    euro: (
-      <>
-        <path d="M4 10h11" />
-        <path d="M4 14h9" />
-        <path d="M19 6a8 8 0 1 0 0 12" />
-      </>
-    ),
-    devices: (
-      <>
-        <rect x="2" y="4" width="13" height="9" rx="1.5" />
-        <path d="M6 17h4" />
-        <rect x="15" y="9" width="7" height="11" rx="1.5" />
-      </>
-    ),
-  }
-  return (
-    <span className="inline-flex items-center justify-center w-7 h-7 text-brand shrink-0">
-      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.45" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        {paths[type]}
-      </svg>
-    </span>
-  )
-}
-
-const MetricLine = ({ p }) => (
-  <div className="grid grid-cols-[1.75rem_minmax(0,1fr)] items-center gap-x-2.5">
-    <Badge type={p.badge} />
-    <p className="min-w-0 leading-tight">
-      <span className="font-heading text-text font-extrabold tracking-tight leading-none text-[1.4rem] sm:text-[1.5rem]">
-        {p.highlight}
-      </span>
-      {p.unit && <span className="text-text font-semibold text-[0.85rem]"> {p.unit}</span>}
-    </p>
+function SectionIntro({ label, title, children }) {
+  return <div className="projets-section-intro">
+    <p className="projets-eyebrow">{label}</p>
+    <h2>{title}</h2>
+    {children && <p>{children}</p>}
   </div>
-)
-
-const AppIdentity = ({ p, size = 'sm' }) => (
-  <div className="flex items-center gap-3.5">
-    <img
-      src={p.icon}
-      alt={p.name}
-      loading="lazy"
-      className={`${size === 'lg' ? 'w-14 h-14 sm:w-16 sm:h-16' : 'w-12 h-12 sm:w-14 sm:h-14'} rounded-[24%] object-cover shrink-0 border border-black/5 shadow-[0_2px_10px_rgba(3,52,117,0.08)]`}
-    />
-    <div className="min-w-0">
-      <p className={`font-heading text-text font-bold leading-tight ${size === 'lg' ? 'text-[1.15rem] sm:text-[1.3rem]' : 'text-[1.05rem]'}`}>{p.name}</p>
-      <p className="text-grey text-[0.78rem] font-medium mt-0.5">{p.tagline}</p>
-    </div>
-  </div>
-)
-
-const SectionHead = ({ eyebrow, title, sub }) => (
-  <div className="text-center mb-8 lg:mb-12">
-    {eyebrow && (
-      <span className="inline-block text-brand text-[0.7rem] font-semibold uppercase tracking-[0.16em] mb-3">
-        {eyebrow}
-      </span>
-    )}
-    <h2 className="font-heading text-text font-bold text-[1.4rem] sm:text-[1.7rem] lg:text-[1.9rem] tracking-tight leading-tight">
-      {title}
-    </h2>
-    {sub && <p className="text-grey text-[0.9rem] lg:text-[0.98rem] mt-3 max-w-[54ch] mx-auto">{sub}</p>}
-  </div>
-)
-
-// Carte vedette : le showpiece de la page (la preuve revenus, sans visuel).
-function FeaturedCard({ p }) {
-  return (
-    <div className="relative overflow-hidden bg-white border border-card-border rounded-[24px] shadow-[0_14px_60px_rgba(102,93,255,0.15)] p-7 sm:p-10 lg:p-12">
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none bg-[linear-gradient(120deg,rgba(102,93,255,0.10),rgba(102,93,255,0.02)_46%,rgba(255,255,255,0)_72%)]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute -top-28 -right-24 w-[420px] h-[420px] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(102,93,255,0.16),transparent_68%)]"
-      />
-      <div className="relative flex flex-col gap-9 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
-        {/* Texte */}
-        <div className="lg:max-w-[36rem]">
-          {/* UNE SEULE PASTILLE : LA PLATEFORME, PAS L'ANNÉE. « iOS et Android »
-              dit en même temps que c'est une application mobile (pas un site) et
-              où elle tourne — ce que l'ancienne pastille « IA intégrée » ne
-              disait pas pour Hush, qui n'en a pas. L'icône est un smartphone,
-              pas l'étoile IA de l'ancienne version. */}
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 text-brand bg-brand-wash text-[0.68rem] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full whitespace-nowrap">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <rect x="7" y="2" width="10" height="20" rx="2" />
-                <line x1="11" y1="18" x2="13" y2="18" />
-              </svg>
-              {p.etiquette}
-            </span>
-          </div>
-          <div className="mt-5">
-            <AppIdentity p={p} size="lg" />
-          </div>
-          <p className="mt-5 max-w-[38ch] text-text/80 text-[0.98rem] sm:text-[1.05rem] leading-relaxed">
-            {p.pitch}
-          </p>
-        </div>
-
-        {/* Chiffre — l'ancre visuelle */}
-        <div className="shrink-0">
-          <div className="flex items-end gap-2">
-            <span className="font-heading text-text font-extrabold text-[3rem] sm:text-[3.6rem] lg:text-[4rem] tracking-tight leading-none">
-              {p.highlight}
-            </span>
-            <span className="text-text font-semibold text-[1.1rem] mb-2">{p.unit}</span>
-          </div>
-          <p className="mt-3 text-grey text-[0.85rem]">{p.note}</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function ProjectCard({ p }) {
-  return (
-    <div className="group bg-white border border-card-border rounded-[18px] p-5 sm:p-6 flex flex-col shadow-[0_2px_16px_rgba(102,93,255,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_34px_rgba(102,93,255,0.14)]">
-      <div className="mb-6">
-        <AppIdentity p={p} />
-      </div>
-      <div className="mt-auto">
-        <MetricLine p={p} />
-      </div>
-      <p className="text-grey text-[0.75rem] mt-2 pl-[2.375rem]">{p.note}</p>
-    </div>
-  )
 }
 
 export default function Projets({ onBack }) {
-  // Meta lues par scripts/generate-routes.js depuis ce fichier : source unique,
-  // pour que le titre rendu soit exactement celui du HTML servi.
   useEffect(() => {
     appliquerMeta({
       path: '/projets',
-      title: "Les applications que j'ai conçues | Noé Calmes",
-      description: "Applications conçues 100% sur-mesure : +1 million de téléchargements, 13 000 € générés par mois. Plus de 20 publiées sur iOS et Android.",
+      title: "Réalisations et méthode | Noé Calmes",
+      description: "Les réalisations de Noé Calmes : applications publiées, résultats, méthode de travail et tarif défini avant le démarrage du projet.",
+      ogImage: 'https://noecalmes.fr/assets/images/meta/projets-og.jpg',
+      ogImageAlt: "Mes réalisations : des applications conçues de l’idée au lancement par Noé Calmes.",
     })
     retirerPrerender()
     window.scrollTo(0, 0)
   }, [])
 
-  const [zoom, setZoom] = useState(false)
+  return <div className="projets-page">
+    <header className="projets-nav-wrap">
+      <div className="projets-nav">
+        <button type="button" onClick={onBack} className="projets-brand" aria-label="Retour à l'accueil">
+          <img src="/assets/images/profile/me.webp" alt="" width="44" height="44" />
+          <span><strong>Noé Calmes</strong><small>Applications mobiles &amp; web</small></span>
+        </button>
+        <nav aria-label="Navigation de la page"><a href="#realisations">Réalisations</a><a href="#methode">Ma méthode</a></nav>
+        <a className="projets-nav-avis" href="#avis">Les avis <ArrowDown size={15} aria-hidden="true" /></a>
+      </div>
+    </header>
 
-  return (
-    <div className="min-h-screen bg-surface text-text">
-      {/* Navbar flottante — même langage que la landing et l'audit */}
-      <header className="fixed inset-x-0 top-2.5 md:top-[18px] z-50 flex justify-center px-4 md:px-6">
-        <div className="w-full max-w-210">
-          <div className="backdrop-blur-[12px] border border-[#70707029] shadow-[0_1px_3px_#00000017] bg-[#fffefceb] rounded-[40px]">
-            <div className="flex items-center h-[64px] md:h-[68px] pl-3 pr-4 md:pl-3.5">
-              <button
-                onClick={onBack}
-                className="flex items-center gap-3 cursor-pointer group min-w-0"
-                aria-label="Retour à l'accueil"
-              >
-                <img
-                  src={ME_PHOTO}
-                  alt="Noé Calmes"
-                  loading="eager"
-                  className="w-10 h-10 md:w-11 md:h-11 rounded-full object-cover shrink-0 border-2 border-white shadow-sm group-hover:scale-105 transition-transform"
-                />
-                <span className="flex flex-col items-start text-left min-w-0">
-                  <span className="font-jakarta text-text font-extrabold text-[1rem] md:text-[1.05rem] leading-tight tracking-tight truncate group-hover:text-brand transition-colors">
-                    Noé Calmes
-                  </span>
-                  <span className="text-grey text-[0.68rem] md:text-[0.75rem] leading-tight font-normal truncate">
-                    Expert en applications mobiles & web
-                  </span>
-                </span>
-              </button>
-            </div>
+    <main>
+      <section className="projets-hero projets-container" aria-labelledby="projets-title">
+        <div className="projets-hero-copy">
+          <p className="projets-eyebrow"><span className="projets-eyebrow-line" /> Expertise &amp; réalisations</p>
+          <h1 id="projets-title">Je crée chaque application <em>comme si c’était la mienne.</em></h1>
+          <p className="projets-hero-lead"><strong>Plus de 20 applications publiées.</strong> Stratégie, design, développement : je prends en charge chaque projet pour créer une application utile, pensée pour rapporter.</p>
+          <div className="projets-hero-actions">
+            <a href="#realisations" className="projets-discover">Voir les réalisations <ArrowDown size={17} aria-hidden="true" /></a>
           </div>
         </div>
-      </header>
+        <div className="projets-hero-visual" aria-label="Aperçus d'applications conçues par Noé Calmes">
+          <div className="projets-visual-orbit" aria-hidden="true" />
+          <figure className="projets-screen projets-screen-primary"><div className="projets-phone"><img src="/assets/images/apps/captures/smoothride-navigation.webp" alt="SmoothRide : navigation et signalement des dos-d’âne sur le trajet" width="660" height="1431" /></div><figcaption>SmoothRide</figcaption></figure>
+          <figure className="projets-screen projets-screen-secondary"><div className="projets-phone"><img src="/assets/images/apps/captures/wakeup-alarme.webp" alt="WakeUp Alarme : réveil à missions" width="660" height="1431" /></div><figcaption>WakeUp Alarme</figcaption></figure>
+        </div>
+      </section>
 
-      <main className="relative max-w-[1080px] mx-auto px-5 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-20">
-        {/* Wash violet discret, écho du hero landing */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-[440px] pointer-events-none bg-[radial-gradient(ellipse_at_top,rgba(102,93,255,0.12),rgba(255,254,252,0)_62%)]"
-        />
-
-        {/* HERO */}
-        <div className="relative text-center mb-10 lg:mb-14">
-          <div className="flex justify-center mb-5">
-            <div className="inline-flex items-center rounded-full bg-white/70 backdrop-blur-sm border border-brand-pale px-3.5 py-1.5 shadow-[0_2px_14px_rgba(102,93,255,0.13)]">
-              <p className="text-text text-[0.74rem] sm:text-[0.82rem] font-medium">
-                <span className="text-brand font-bold">+20 applications</span> publiées · iOS &amp; Android
-              </p>
-            </div>
+      <section id="realisations" className="projets-container projets-section projets-results">
+        <SectionIntro label="Réalisations" title="Des applications utilisées. Des résultats concrets." />
+        <article className="projets-feature">
+          <div className="projets-feature-copy">
+            <div className="projets-app-id"><img src="/assets/images/apps/hushapp.webp" alt="" width="56" height="56" /><span><strong>Hush</strong><small>Messagerie anonyme · iOS et Android</small></span></div>
+            <p className="projets-feature-metric">+1 million <span>de téléchargements au total</span></p>
+            <p className="projets-feature-text">J’ai conçu la première version de cette messagerie, qui a réuni 300 000 utilisateurs.</p>
           </div>
-          <h1 className="font-heading text-[1.95rem] sm:text-[2.4rem] lg:text-[3rem] font-extrabold text-text tracking-tight leading-[1.12] text-balance">
-            Les applications que{' '}
-            <span className="inline-block whitespace-nowrap bg-[linear-gradient(90deg,#6760ff,#7b73ef,#9e94ff)] bg-clip-text text-transparent py-1 -my-1">
-              j'ai conçues
-            </span>
-          </h1>
-          <p className="text-grey text-[0.95rem] sm:text-base lg:text-[1.05rem] mt-5 max-w-[46ch] sm:max-w-[60ch] mx-auto text-balance leading-relaxed">
-            Chaque application part d'une idée. Je la cadre, je la conçois 100&nbsp;% sur-mesure, de la stratégie au lancement.
-          </p>
-        </div>
+        </article>
+        <div className="projets-project-grid">{REALISATIONS.map((project) => <article className="projets-project-card" key={project.name}>
+          <div className="projets-app-id"><img src={project.icon} alt="" width="48" height="48" loading="lazy" /><span><strong>{project.name}</strong><small>{project.type}</small></span></div>
+          <div className="projets-project-result"><strong>{project.metric}</strong>{project.unit && <span>{project.unit}</span>}</div>
+          <p>{project.detail}</p>
+        </article>)}</div>
+      </section>
 
-        {/* SHOWPIECE — la preuve revenus d'abord */}
-        <div className="relative">
-          <FeaturedCard p={FEATURED} />
-        </div>
+      <section id="avis" className="projets-reviews projets-section"><div className="projets-container"><SectionIntro label="Avis clients" title="Ce que disent mes clients" /><AvisClients /></div></section>
 
-        {/* TROIS AUTRES APPS */}
-        <div className="relative mt-16 lg:mt-24">
-          <SectionHead
-            eyebrow="Réalisations"
-            title="Trois autres applications, trois preuves"
-            sub="Des utilisateurs, de la vitesse d'exécution, du multi-plateforme."
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
-            {PROJECTS.map((p) => (
-              <ProjectCard key={p.name} p={p} />
-            ))}
+      <section id="methode" className="projets-method"><div className="projets-container projets-section">
+        <SectionIntro label="Ma façon de travailler" title="Un projet pris en charge de bout en bout" />
+        <div className="projets-method-grid">{METHODE.map((item) => <article key={item.number} className="projets-method-card"><span>{item.number}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
+      </div></section>
+
+      <section className="projets-container projets-section projets-budget" aria-labelledby="projets-budget-title">
+        <div className="projets-budget-panel">
+          <div className="projets-budget-heading">
+            <span className="projets-budget-emblem" aria-hidden="true"><Euro size={30} strokeWidth={1.8} /></span>
+            <p className="projets-eyebrow">Budget &amp; collaboration</p>
+            <h2 id="projets-budget-title">Un prix défini avant de commencer.</h2>
           </div>
-        </div>
-
-        {/* PROJETS CONFIDENTIELS — l'étendue, sans détail sensible */}
-        <div className="relative mt-16 lg:mt-24 overflow-hidden bg-card border border-card-border rounded-[24px] p-7 sm:p-10 lg:p-14">
-          <div
-            aria-hidden="true"
-            className="absolute -bottom-24 -left-20 w-[360px] h-[360px] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(102,93,255,0.10),transparent_70%)]"
-          />
-          <div className="relative">
-            <SectionHead
-              title="Projets clients confidentiels"
-              sub="Des secteurs différents, présentés sans noms, sans écrans et sans détails sensibles."
-            />
-            <div className="max-w-[760px] mx-auto">
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
-                {OTHERS.map((o) => (
-                  <li key={o} className="flex items-center gap-3 text-text text-[0.92rem] font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0" />
-                    {o}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-grey text-[0.9rem] font-medium mt-5">Et d'autres encore…</p>
-              <div className="flex items-center gap-2.5 text-grey text-[0.8rem] mt-6">
-                <svg className="shrink-0" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <rect x="4" y="11" width="16" height="10" rx="2" />
-                  <path d="M8 11V7a4 4 0 0 1 8 0v4" />
-                </svg>
-                <span className="text-left leading-relaxed">
-                  Chaque projet reste confidentiel : les noms, les chiffres et les écrans restent côté client.
-                </span>
-              </div>
-            </div>
+          <div className="projets-budget-points">
+            <article className="projets-budget-point">
+              <FileCheck2 size={22} strokeWidth={1.7} aria-hidden="true" />
+              <div><h3>Un devis clair</h3><p>Le contenu du projet, le délai et le montant sont définis par écrit avant tout engagement.</p></div>
+            </article>
+            <article className="projets-budget-point">
+              <Handshake size={22} strokeWidth={1.7} aria-hidden="true" />
+              <div><h3>Travailler ensemble dans la durée</h3><p>Une réduction est proposée sur les devis suivants, pour accompagner les prochaines évolutions.</p></div>
+            </article>
           </div>
         </div>
+      </section>
 
-        {/* AVIS CLIENTS — captures réelles, format story. Les mêmes sur l'accueil, depuis le 11/10/2026 (Noé : « je veux la
-            même partie que dans projets, c'est plus propre ») : elles vivent dans src/AvisClients.jsx, avec le nom des
-            clients masqué. Petit titre « Avis clients », comme le lien de la barre de l'accueil (« Retours clients »
-            jusqu'au 11/10/2026). */}
-        <div className="relative mt-16 lg:mt-24">
-          <SectionHead eyebrow="Avis clients" title="Ce que disent mes clients" />
-          <AvisClients />
-        </div>
-
-        {/* SPÉCIALITÉ + INSTAGRAM — deux colonnes sur desktop */}
-        <div className="relative mt-16 lg:mt-24 grid gap-4 lg:grid-cols-2 lg:gap-6 items-stretch">
-          {/* Spécialité */}
-          <div className="relative overflow-hidden bg-white border border-card-border rounded-[24px] p-7 sm:p-9 flex flex-col justify-center shadow-[0_2px_16px_rgba(102,93,255,0.06)]">
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 pointer-events-none bg-[linear-gradient(115deg,rgba(102,93,255,0.07),rgba(255,255,255,0)_62%)]"
-            />
-            <span className="relative inline-block text-brand text-[0.7rem] font-semibold uppercase tracking-[0.16em] mb-3">
-              Ma spécialité
-            </span>
-            <h2 className="relative font-heading text-text font-bold text-[1.3rem] lg:text-[1.5rem] tracking-tight mb-3">
-              Les projets complexes
-            </h2>
-            <p className="relative text-grey text-[0.92rem] lg:text-[0.98rem] max-w-[46ch] leading-relaxed">
-              IA intégrée, automatisations, applications connectées entre mobile et web. Plus le projet est ambitieux, plus il m'intéresse.
-            </p>
-          </div>
-
-          {/* Instagram — post épinglé, miniature agrandissable */}
-          <div className="relative flex items-center gap-4 sm:gap-5 bg-white border border-card-border rounded-[24px] p-6 sm:p-8 shadow-[0_2px_16px_rgba(102,93,255,0.06)] transition-shadow hover:shadow-[0_10px_30px_rgba(102,93,255,0.13)]">
-            <button
-              type="button"
-              onClick={() => setZoom(true)}
-              className="group relative shrink-0 cursor-zoom-in rounded-[16px] border-0 bg-transparent p-0"
-              aria-label="Agrandir l'image du post Instagram"
-            >
-              <img
-                src="/assets/images/projets/ig-post-90.webp"
-                alt="Publication Instagram : pourquoi 90 % des applications ne rapportent rien"
-                loading="lazy"
-                className="w-28 h-28 sm:w-32 sm:h-32 rounded-[16px] object-cover shrink-0 border border-black/5 shadow-[0_4px_18px_rgba(3,52,117,0.14)] transition-transform duration-300 group-hover:scale-[1.03]"
-              />
-              <span className="absolute bottom-2 right-2 inline-flex items-center justify-center w-7 h-7 rounded-full bg-black/55 text-white backdrop-blur-sm">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <circle cx="11" cy="11" r="7" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                  <line x1="11" y1="8" x2="11" y2="14" />
-                  <line x1="8" y1="11" x2="14" y2="11" />
-                </svg>
-              </span>
-            </button>
-            <div className="min-w-0 flex-1">
-              <span className="inline-flex items-center gap-1.5 text-brand text-[0.7rem] font-semibold uppercase tracking-wide mb-2">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none" />
-                </svg>
-                Instagram
-              </span>
-              <a
-                href="https://www.instagram.com/noecalmes.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block font-heading text-text font-bold text-[1rem] leading-snug hover:text-brand transition-colors"
-              >
-                « Pourquoi 90&nbsp;% des applications ne rapportent rien »
-              </a>
-              <a
-                href="https://www.instagram.com/noecalmes.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 mt-2.5 text-grey text-[0.8rem] font-medium hover:text-brand transition-colors"
-              >
-                Voir sur @noecalmes.app
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="8 7 17 7 17 16" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Lightbox — zoom plein écran de l'image */}
-        {zoom && (
-          <div
-            onClick={() => setZoom(false)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 cursor-zoom-out"
-            role="dialog"
-            aria-modal="true"
-          >
-            <img
-              src="/assets/images/projets/ig-post-90.webp"
-              alt="Publication Instagram : pourquoi 90 % des applications ne rapportent rien"
-              className="max-h-[82vh] max-w-[88vw] sm:max-h-[74vh] sm:max-w-[560px] w-auto rounded-[16px] shadow-2xl"
-            />
-            <button
-              type="button"
-              onClick={() => setZoom(false)}
-              aria-label="Fermer"
-              className="absolute top-5 right-5 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/15 text-white hover:bg-white/25 transition-colors cursor-pointer"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-          </div>
-        )}
-
-        <p className="relative text-center text-grey text-[0.8rem] mt-16 lg:mt-20 font-medium">
-          Noé Calmes · Expert en application mobile · iOS &amp; Android
-        </p>
-      </main>
-    </div>
-  )
+      <section id="contact" className="projets-container projets-contact"><h2>Une question après l’échange ?</h2><p>Je réponds directement, par message ou par téléphone.</p>
+        <div className="projets-contact-links"><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackDirectWhatsAppLead('projets_contact')}><MessageCircle size={17} aria-hidden="true" /> M’écrire <ArrowUpRight size={15} aria-hidden="true" /></a><a href="tel:+33658308210"><Phone size={16} aria-hidden="true" /> M’appeler</a></div>
+      </section>
+    </main>
+    <footer className="projets-footer projets-container"><span>Noé Calmes · Expert en applications mobiles &amp; web</span><button type="button" onClick={onBack}>Retour à l'accueil <ArrowRight size={15} aria-hidden="true" /></button></footer>
+  </div>
 }
