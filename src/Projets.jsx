@@ -15,8 +15,9 @@ import { AvisClients } from './AvisClients.jsx'
  * Mise en page pensée mobile-first ET desktop (grille éditoriale large, showpiece Calorie).
  *
  * Données réelles :
- *   - Calorie  : 13 000 €/mois, 2 mois après le lancement (client) — carte vedette. IA intégrée.
- *   - Hush     : 300 000 utilisateurs sur la 1ʳᵉ version — messagerie anonyme (client) — CONFIRMÉ
+ *   - Hush     : +1 million de téléchargements iOS + Android, 300 000 utilisateurs dès la
+ *                1ʳᵉ version — messagerie anonyme (client) — carte vedette depuis le 19/10/2026
+ *   - Calorie  : 13 000 €/mois (client) — IA intégrée. Passée en carte simple le 19/10/2026.
  *   - Plouff Habitudes : plouff-habitudes.com — suivi d'habitudes, conçue en 45 jours — CONFIRMÉ
  *   - Wake Up Alarme   : wakeupalarm.app — réveil à missions, sonne hors-ligne / verrouillé
  *     (peu de téléchargements : ne pas utiliser ce chiffre)
@@ -34,25 +35,34 @@ const ICON = {
   purge: '/assets/images/apps/purge.webp',
 }
 
+// LA VEDETTE PORTE LE VOLUME DEPUIS LE 19/10/2026, le revenu est passé juste en
+// dessous. Hush est le chiffre le plus large de la page ; Calorie garde ses
+// 13 000 €/mois dans la rangée des trois.
+//
+// PAS DE DATE SUR LA VEDETTE. La pastille « 2025 » est partie : l'en-tête de ce
+// fichier interdit les dates depuis le début, et un millésime fait vieillir une
+// preuve qui, elle, continue de courir. La pastille restante dit la plateforme.
 const FEATURED = {
-  icon: ICON.calorie,
-  name: 'Calorie',
-  tagline: 'Suivi nutrition par IA',
-  highlight: '13 000 €',
-  unit: '/ mois',
-  note: 'Première version, 2 mois après le lancement',
-  badge: 'euro',
+  icon: ICON.hush,
+  name: 'Hush',
+  tagline: 'Messagerie anonyme',
+  etiquette: 'iOS et Android',
+  pitch: 'Une messagerie anonyme, adoptée par son public dès la première version.',
+  highlight: '+1 million',
+  unit: 'téléchargements',
+  note: '300 000 utilisateurs dès la première version',
+  badge: 'trend',
 }
 
 const PROJECTS = [
   {
-    icon: ICON.hush,
-    name: 'Hush',
-    tagline: 'Messagerie anonyme',
-    highlight: '300K',
-    unit: 'utilisateurs',
+    icon: ICON.calorie,
+    name: 'Calorie',
+    tagline: 'Suivi nutrition par IA',
+    highlight: '13 000 €',
+    unit: '/ mois',
     note: 'Sur la première version',
-    badge: 'trend',
+    badge: 'euro',
   },
   {
     icon: ICON.plouff,
@@ -179,22 +189,25 @@ function FeaturedCard({ p }) {
       <div className="relative flex flex-col gap-9 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
         {/* Texte */}
         <div className="lg:max-w-[36rem]">
+          {/* UNE SEULE PASTILLE : LA PLATEFORME, PAS L'ANNÉE. « iOS et Android »
+              dit en même temps que c'est une application mobile (pas un site) et
+              où elle tourne — ce que l'ancienne pastille « IA intégrée » ne
+              disait pas pour Hush, qui n'en a pas. L'icône est un smartphone,
+              pas l'étoile IA de l'ancienne version. */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-block text-brand bg-brand-wash text-[0.68rem] font-semibold uppercase tracking-[0.16em] px-3 py-1.5 rounded-full">
-              2025
-            </span>
             <span className="inline-flex items-center gap-1.5 text-brand bg-brand-wash text-[0.68rem] font-semibold uppercase tracking-[0.12em] px-3 py-1.5 rounded-full whitespace-nowrap">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2l1.7 5.5L19 9l-5.3 1.5L12 16l-1.7-5.5L5 9l5.3-1.5z" />
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="7" y="2" width="10" height="20" rx="2" />
+                <line x1="11" y1="18" x2="13" y2="18" />
               </svg>
-              IA intégrée
+              {p.etiquette}
             </span>
           </div>
           <div className="mt-5">
             <AppIdentity p={p} size="lg" />
           </div>
           <p className="mt-5 max-w-[38ch] text-text/80 text-[0.98rem] sm:text-[1.05rem] leading-relaxed">
-            Une idée banale, une petite application. Et pourtant, elle rapporte chaque mois.
+            {p.pitch}
           </p>
         </div>
 
@@ -234,7 +247,7 @@ export default function Projets({ onBack }) {
     appliquerMeta({
       path: '/projets',
       title: "Les applications que j'ai conçues | Noé Calmes",
-      description: "Applications conçues 100% sur-mesure : 13 000 € générés par mois, 300 000 utilisateurs, lancement en 45 jours. Plus de 20 publiées sur iOS et Android.",
+      description: "Applications conçues 100% sur-mesure : +1 million de téléchargements, 13 000 € générés par mois. Plus de 20 publiées sur iOS et Android.",
     })
     retirerPrerender()
     window.scrollTo(0, 0)

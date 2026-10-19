@@ -894,7 +894,7 @@ function App() {
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" /></svg>
                   </span>
                   <strong>+1,3&nbsp;million</strong>
-                  <span>de téléchargements, toutes mes applications</span>
+                  <span>de téléchargements sur toutes mes applications</span>
                 </li>
                 <li>
                   <span className="app-proof-stat-icone"><img src={calorieIcon} alt="" width="36" height="36" loading="lazy" /></span>

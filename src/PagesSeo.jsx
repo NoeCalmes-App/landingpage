@@ -152,7 +152,7 @@ function BlocAudit({ onAuditApp, onBookCall, titre, texte }) {
 const LIENS_MAILLAGE = [
   { href: '/expertise', titre: 'Concevoir une application qui rapporte', texte: "Ce que je fais qu'un développeur ne fait pas, et les preuves derrière." },
   { href: '/creation-application-mobile', titre: 'Ma méthode, étape par étape', texte: 'Du cadrage du modèle économique au lancement sur les stores.' },
-  { href: '/projets', titre: 'Les applications que j\'ai conçues', texte: '13 000 € par mois, 300 000 utilisateurs, +20 applications publiées.' },
+  { href: '/projets', titre: 'Les applications que j\'ai conçues', texte: '+1 million de téléchargements, 13 000 € par mois, +20 applications publiées.' },
   { href: '/faq', titre: 'Questions fréquentes', texte: 'Budget, délai, reprise, stores, ce qui se passe après la mise en ligne.' },
   { href: '/quiz', titre: 'Tester ton projet en 2 minutes', texte: 'Trois tests courts : besoin réel, application ou site web, budget à prévoir.' },
   { href: '/blog/rentabiliser-application-mobile', titre: 'Comment rentabiliser une application mobile', texte: 'Le guide de fond sur les modèles de revenus et la conversion.' },
@@ -250,7 +250,7 @@ export function PageExpertise({ onAccueil, onBookCall, onAuditApp, onNaviguer })
           <h2>Les preuves</h2>
           <ul>
             <li><strong>13 000 € par mois</strong> générés par une application que j'ai conçue.</li>
-            <li><strong>300 000 utilisateurs</strong> sur la première version de Hush.</li>
+            <li><strong>+1 million de téléchargements</strong> pour Hush, sur iOS et Android.</li>
             <li><strong>Plus de 20 applications</strong> publiées sur l'App Store et Google Play.</li>
             <li><strong>Mes propres applications</strong> en production, donc une vision de l'usage réel et pas seulement de la commande client.</li>
           </ul>
