@@ -878,30 +878,41 @@ function App() {
               <p className="reveal app-proof-kicker">Réalisations</p>
               <h2 id="app-proof-title" className="reveal">Ce que j'ai <span>déjà construit</span></h2>
               <p className="reveal app-proof-intro">Des applications publiées, utilisées, et qui rapportent.</p>
+              {/* TROIS CHIFFRES, LE PLUS GROS EN PREMIER ET SUR TOUTE LA LARGEUR.
+                  Hush est sorti de la liste le 19/10/2026. « 300 000 utilisateurs »
+                  posait une unité de plus à côté des euros et des téléchargements :
+                  trois grandeurs différentes à comparer en un coup d'œil, personne ne
+                  le fait. Le total de téléchargements couvre Hush sans le nommer, et
+                  passe de 900 000 à 1,3 million.
+                  À trois cartes dans une grille de deux colonnes, la dernière restait
+                  orpheline. La première prend donc les deux colonnes : c'est le chiffre
+                  qui porte le volume, il ouvre la série, et il y gagne la place dont il
+                  a besoin (en demi-carte, « +1,3 million » frôle le bord à 375 px). */}
               <ul className="reveal-stagger app-proof-stats">
+                <li>
+                  <span className="app-proof-stat-icone">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" /></svg>
+                  </span>
+                  <strong>+1,3&nbsp;million</strong>
+                  <span>de téléchargements, toutes mes applications</span>
+                </li>
                 <li>
                   <span className="app-proof-stat-icone"><img src={calorieIcon} alt="" width="36" height="36" loading="lazy" /></span>
                   <strong>+13&nbsp;000&nbsp;€</strong>
                   <span>par mois pour <b>Calorie</b>, sur un marché déjà saturé</span>
                 </li>
                 <li>
-                  <span className="app-proof-stat-icone"><img src={hushIcon} alt="" width="36" height="36" loading="lazy" /></span>
-                  <strong>+300&nbsp;000</strong>
-                  <span>utilisateurs pour <b>Hush App</b>, avec sa première version</span>
-                </li>
-                <li>
-                  <span className="app-proof-stat-icone">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" /></svg>
-                  </span>
-                  <strong>+900&nbsp;000</strong>
-                  <span>téléchargements, toutes mes applications</span>
-                </li>
-                <li>
                   <span className="app-proof-stat-icone">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></svg>
                   </span>
-                  <strong>+20</strong>
-                  <span>applications publiées, sur les stores et en ligne</span>
+                  {/* « APPS » ET PAS « APPLICATIONS », parce que ça ne rentre pas :
+                      « +20 applications » mesure 239 px pour 217 de place en demi-carte,
+                      et le chiffre a `white-space: nowrap`, donc il déborderait au lieu
+                      de passer à la ligne. « +20 apps » fait la largeur de « +13 000 € »,
+                      les deux cartes du bas s'équilibrent. Et le mot ne se répète plus
+                      dans la ligne du dessous, qui commence maintenant par « publiées ». */}
+                  <strong>+20&nbsp;apps</strong>
+                  <span>publiées sur les stores et en ligne</span>
                 </li>
               </ul>
             </div>

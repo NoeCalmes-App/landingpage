@@ -16,6 +16,11 @@
 .app-proof-stats strong { font-family: 'Plus Jakarta Sans Local', sans-serif; font-weight: 800; font-size: clamp(25px, 2.3vw, 31px); letter-spacing: -.035em; line-height: 1.08; white-space: nowrap; background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff); -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: 2px; }
 .app-proof-stats li > span:last-child { font-size: 13px; line-height: 1.45; color: #667185; }
 .app-proof-stats b { color: #033475; font-weight: 700; }
+/* LE CHIFFRE PHARE SUR LES DEUX COLONNES. Depuis le 19/10/2026 la liste compte
+   trois cartes, pas quatre : dans une grille de deux, la dernière restait seule
+   sur sa ligne. La première s'étale donc, ce qui remet la rangée d'aplomb et
+   donne sa place au libellé le plus large de la série. */
+.app-proof-stats li:first-child { grid-column: 1 / -1; }
 
 /* La galerie de téléphones */
 .app-gallery { --phone-width: 218px; position: relative; min-width: 0; padding: 0; isolation: isolate; }
