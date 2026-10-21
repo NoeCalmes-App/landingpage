@@ -78,7 +78,7 @@ Quand Noe demande de creer une maquette pour un nouveau projet, utiliser la page
 
 - Route publique de reference : `https://noecalmes.fr/maquette/aretha/`
 - Code local de reference : `src/ArethaMockups.jsx` et `src/aretha-mockups.css`
-- Structure attendue : page autonome sans navbar/footer landing, hero simple, galerie de maquettes, cartes de presentation, frames mobile propres, rendu premium et coherent.
+- Structure attendue : page autonome sans navbar/footer landing, hero simple, galerie de maquettes, cartes de presentation, frames mobile ou ordinateur propres selon le support (application mobile, application web ou les deux), rendu premium et coherent.
 - Pour un nouveau projet, reprendre la structure et le niveau de finition, mais jamais le contenu, les fonctionnalites, les couleurs ou la marque Aretha si le projet est different.
 - Les maquettes HTML vivent dans `landing-page` sur une route `/maquette/{slug}`. Le devis et le cahier des charges restent geres cote Nowork.
 

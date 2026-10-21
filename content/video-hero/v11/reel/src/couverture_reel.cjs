@@ -1,5 +1,5 @@
 // Couverture du Reel (1080x1920), dans le style de la miniature du site : le fond blanc du film,
-// « Ton app va décoller. » et une courbe qui monte jusqu'à un point violet.
+// « Ton application va décoller. » (comme la miniature du site depuis le 11/10/2026) et une courbe qui monte jusqu'à un point violet.
 // Tout tient dans le 3:4 du milieu (y 240 à 1680), ce que montre la grille du profil Instagram.
 // usage : node couverture_reel.cjs reel.html sortie.png
 const { chromium } = require('playwright');
@@ -8,7 +8,7 @@ const CSS = `
 #cam > :not(#bg) { display: none !important; }
 #subs { display: none !important; }
 #mini { position: absolute; inset: 0; z-index: 100; font-family: 'PJS', sans-serif; font-weight: 800; color: #033475; }
-#mini .tt { position: absolute; left: 0; width: 1080px; text-align: center; white-space: nowrap; font-size: 152px; letter-spacing: -0.045em; line-height: 1.04; }
+#mini .tt { position: absolute; left: 0; width: 1080px; text-align: center; white-space: nowrap; font-size: 132px; letter-spacing: -0.045em; line-height: 1.04; }
 #mini .grad { padding-right: 0.04em; }
 #mini svg { position: absolute; left: 0; top: 0; overflow: visible; }
 `;
@@ -37,8 +37,8 @@ const HTML = `
   <circle cx="930" cy="930" r="42" fill="#665dff" fill-opacity="0.13"/>
   <circle cx="930" cy="930" r="19" fill="#665dff" stroke="#fffefc" stroke-width="7.4" filter="url(#ombre)"/>
 </svg>
-<div class="tt" style="top: 470px">Ton app va</div>
-<div class="tt" style="top: 632px"><span class="grad">décoller.</span></div>`;
+<div class="tt" style="top: 486px">Ton application</div>
+<div class="tt" style="top: 627px">va <span class="grad">décoller.</span></div>`;
 
 (async () => {
   const [html, out] = process.argv.slice(2);

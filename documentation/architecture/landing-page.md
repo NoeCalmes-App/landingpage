@@ -455,7 +455,7 @@ Quand une nouvelle maquette client doit etre creee, prendre Aretha comme referen
 
 - Reference publique : `https://noecalmes.fr/maquette/aretha/`
 - Fichiers locaux : `src/ArethaMockups.jsx` et `src/aretha-mockups.css`
-- Attendu : page autonome, hero sobre, galerie de cartes, frames mobile propres, titre et sous-titre pour chaque ecran, finition visuelle coherente.
+- Attendu : page autonome, hero sobre, galerie de cartes, frames mobile ou ordinateur propres selon le support (application mobile, application web ou les deux), titre et sous-titre pour chaque ecran, finition visuelle coherente.
 - Adapter a chaque projet : parcours, ecrans, style, couleurs, illustrations, textes et niveau de detail doivent rester propres au client.
 - Si le client demande un lien dans le devis, coller l'URL `/maquette/{slug}` generee dans ce dossier, pas une galerie `/maquette-visuel/...` sauf si les images viennent de Nowork.
 
