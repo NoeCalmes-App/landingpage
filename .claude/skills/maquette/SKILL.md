@@ -211,9 +211,34 @@ code expire ou deja utilise quand l'application en envoie par e-mail
 Application mobile en plus : permission refusee, hors connexion. Les ecrans
 que les stores encadrent ne se copient ni sur une galerie ni sur une ancienne
 maquette : des qu'ils sont dessines, ils suivent leur section du guide V2. Ce
-sont l'ecran qui precede une permission du systeme, l'ecran d'abonnement et
-l'issue de l'achat, l'ecran Reglages, l'ecran de connexion iOS et l'icone
+sont l'ecran Reglages et ses interrupteurs d'autorisations, l'ecran
+d'abonnement et l'issue de l'achat, l'ecran de connexion iOS et l'icone
 Android (« Le logo », point 5).
+
+Application mobile nee de l'app modele (cas courant depuis le 19/10/2026) :
+AUCUN ecran ne precede une fenetre du systeme. Elle s'ouvre au toucher de
+l'interrupteur de la section « Autorisations » des Reglages, ou de la
+fonction qui en a besoin ; rien avant (ni explication, ni « Autoriser », ni
+« Plus tard »), rien apres un refus qu'un message « Reglages ». Un projet qui
+garde un tel ecran par exception : un seul bouton « Continuer », ni croix ni
+fleche de retour. Les choix qui changent des ecrans (mode d'entree du compte,
+Apple et Google, abonnements, notifications, autorisations et leur raison,
+questions d'inscription en pages, messages de connexion precis ou neutres,
+site des pages legales, identite de l'editeur d'apres le Kbis) se posent dans
+le brief, AVANT le premier ecran, et la fin de session rend le bloc JSON pour
+la fiche Nowork : guide V2, « Les choix du projet ».
+Les elements communs se dessinent une fois et se montrent sur la page :
+messages ephemeres (succes, avertissement, erreur, information, avec et sans
+action, dont « Reessayer » et « Reglages »), fenetre de confirmation normale
+et destructive, interrupteurs des autorisations, pages de questions
+(« Terminer » a la derniere, fleche vers la page precedente des la deuxieme),
+chargement, vide, erreur sous un champ, bandeau hors ligne en haut avec sa
+croix. Regles du modele : jamais d'erreur technique a l'ecran, pas de case des
+CGU (la ligne « En continuant, tu acceptes… »), ni « Se deconnecter » ni
+« Supprimer mon compte » sur les pages de questions, une fin de session est un
+message d'information et jamais une page fixe, ni « Licences » ni « Offres et
+nouveautes » dans les Reglages (sauf la categorie promotions), prenom et nom
+jamais obligatoires apres Apple.
 
 Application web en plus : session expiree, page introuvable (adresse inconnue
 ou element supprime), erreur de saisie sur un formulaire long, et paiement
@@ -370,9 +395,17 @@ Application mobile :
 - [ ] Barre d'onglets en bas, element actif marque.
 - [ ] La feuille de decision occupe la moitie de l'ecran au maximum.
 - [ ] Un formulaire montre clavier ouvert, champ actif visible.
-- [ ] Ecrans que les stores encadrent (permission, abonnement et issue de
-      l'achat, Reglages, connexion iOS, icone Android) conformes au guide V2,
-      quand ils sont dessines.
+- [ ] Ecrans que les stores encadrent (abonnement et issue de l'achat,
+      Reglages, connexion iOS, icone Android) conformes au guide V2, quand ils
+      sont dessines.
+- [ ] App nee de l'app modele : aucun ecran avant une autorisation ; interrupteurs
+      de la section « Autorisations » dessines dans leurs etats (eteint, allume,
+      refus definitif avec sa ligne d'action) ; message « Reglages » dessine.
+- [ ] App nee de l'app modele : choix du projet poses au brief et valides, page
+      « Choix du projet » sur le dossier de conception, bloc JSON rendu a Noe
+      dans le chat (jamais sur la page publiee : il porte le Kbis).
+- [ ] Elements communs montres une fois : messages, confirmations, pages de
+      questions, etats, bandeau hors ligne.
 
 Application web :
 
@@ -419,7 +452,9 @@ Projet mobile et web :
   stores) : dans `src/SmoothRideMockups.jsx`, la carte « Le logo », les hex, les
   px et les notes de la planche `Charte`, ses tokens nommes par couleur
   (`--jade`, `--rouge`), l'ecran Permission (« Autoriser », « Plus tard » et
-  fleche de retour, motif refuse par Apple le 15/10/2026), l'ecran Abonnement
+  fleche de retour, motif refuse par Apple le 15/10/2026 ; et, pour une app
+  nee de l'app modele, l'ecran Permission lui-meme : il n'existe plus,
+  19/10/2026), l'ecran Abonnement
   (prix en dur, « Restaurer un achat » sous le bouton, phrases rassurantes,
   aucun lien legal), l'ecran Compte (ni suppression du compte ni version) et la
   carte a l'attribution Mapbox reduite ou masquee (exception acceptee pour ce
