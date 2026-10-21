@@ -44,13 +44,22 @@ Verdict à jour, interrogé chez Meta en vrai : `npm run verifier-pubs` dans
 
 ## Le formulaire Meta (référence exacte)
 
+**« Formulaire officiel 21 octobre »** (créé le 21/10/2026, Volume élevé, onglet `Octobre21` de la Sheet `Prospect`, relié à Nowork le soir même ; les pubs se basculent une par une) reprend celui du 11 octobre, avec deux changements décidés le 21/10 :
+
+- **Budget en quatre tranches** : `5 000 € – 10 000` / `10 000 € – 15 000` / `15 000 € – 20 000` / `Plus de 20 000 €`. Plus de « Moins de 5 000 € » : l'intro dit déjà « À partir de 5 000 € » et la tranche du bas n'est plus qu'une porte de sortie pour des gens qui n'iraient pas plus loin. Les tranches du milieu séparent le client à 10-15 k€ de celui à 15-20 k€, qui n'appellent pas le même devis. Nowork garde les anciens libellés pour les leads des formulaires précédents.
+- **Coordonnées : « Prénom » et « Nom de famille »** au lieu du « nom complet », toujours pré-remplis par Meta (aucune saisie de plus pour la personne). Avant, Nowork prenait le premier mot du nom complet comme prénom, faux quand le profil écrit le nom d'abord (« Diallo Mamadou » donnait « Bonjour Diallo » dans le message WhatsApp). Le nom de famille sert au devis et à retrouver la personne.
+- Une personne qui abandonne le formulaire en route n'est **pas un lead** : Meta ne compte et ne facture que le formulaire envoyé. Un budget placé en deuxième question filtre donc sans rien coûter.
+- Mécanique côté Nowork : `nowork/documentation/systems/lead-auto-import.md`, section « Le formulaire du 21 octobre 2026 ».
+
+Ce qui suit décrit le formulaire du 11 octobre, dont le reste (intro, Q1, Q3 idée, écran de fin) est inchangé.
+
 **« Formulaire officiel 11 octobre »** (préparé le 11/10/2026, Volume élevé, onglet `Octobre` de la Sheet `Prospect`) :
 
 - Intro : « Ton projet d'application » / « Je conçois ton application pour qu'elle génère des revenus. À partir de 5 000 €. Cahier des charges, maquette et devis offerts avant de payer. Ton idée reste entre nous. »
 - Q1 « Où en es-tu avec ton projet d'application ? » : J'ai juste une idée / J'y réfléchis sérieusement / Je veux démarrer bientôt / Je suis prêt (budget / financement en place)
 - Q2 « Quel budget as-tu prévu pour ton application ? » : Moins de 5 000 € / 5 000 € – 10 000 € / 10 000 € – 20 000 € / Plus de 20 000 €
 - Q3, **facultative**, réponse courte : « Ton idée en quelques mots ? (ex : une app de réservation pour mon salon) ». Nom de champ `idee` (Paramètres > Noms des champs). Facultative parce qu'une case de texte obligatoire est l'endroit où l'on abandonne un formulaire ; ceux qui la remplissent sont les plus motivés. L'exemple montre qu'une demi-phrase suffit, avec le quoi et le pour qui.
-- Coordonnées pré-remplies par Meta en un clic : nom complet, e-mail, téléphone.
+- Coordonnées pré-remplies par Meta en un clic : nom complet (depuis le 21 octobre : prénom et nom de famille séparés), e-mail, téléphone.
 - Écran de fin : « Je te contacte personnellement sous 24 h. » / « En attendant, regarde en 26 secondes comment je transforme une idée en application qui rapporte. » / bouton « Voir la vidéo » vers `noecalmes.fr/?utm_source=meta&utm_medium=formulaire` (le film du hero). La personne vient de laisser son numéro : la vidéo installe la confiance avant le premier message, et le bouton WhatsApp du site reste là pour les plus pressés.
 - Diffusion flexible en « Manuel » : Meta ne peut ni sauter l'intro, ni masquer la question facultative, ni supprimer l'écran de fin.
 
