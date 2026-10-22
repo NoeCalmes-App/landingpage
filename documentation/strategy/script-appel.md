@@ -64,7 +64,7 @@ Le prix arrive à la fin, dit franchement. Le cahier des charges, la maquette et
 - **Le jour du formulaire et les créneaux** sont déjà remplis dans le texte, depuis sa fiche et la date du jour. Dans tes heures, jamais après 18h.
 - **Debout**, un verre d'eau, la page Script ouverte à côté de la fiche.
 
-**Pourquoi.** Citer son idée dans la première minute prouve que tu as lu son dossier. C'est la première preuve que tu es sérieux, avant même que tu aies dit ce que tu fais.
+**Pourquoi.** L'idée brute du formulaire peut être trop courte ou maladroite pour être lue à voix haute. Elle reste visible en haut du script ouvert depuis la fiche CRM, comme repère pendant l'appel.
 
 ---
 
@@ -76,9 +76,9 @@ Il a rempli le formulaire, il n'a pas répondu sur WhatsApp. C'est toi qui appel
 
 [Il décroche. Tu enchaînes sans attendre sa réponse au bonjour, calme, lent.]
 
-> Bonjour Sofiane, Noé Calmes, expert en applications mobiles et web. (pause) Je vous appelle pour votre projet d'application : vous avez rempli mon formulaire mardi. (pause) Comment allez-vous ?
+> Bonjour Sofiane, Noé Calmes, expert en applications mobiles et web. (pause) Je vous appelle pour votre projet d'application : vous avez laissé vos coordonnées mardi. (pause) Comment allez-vous ?
 
-S'il a écrit son idée dans le formulaire (pastille 💡), tu la cites : « …vous avez rempli mon formulaire mardi, pour une appli de livraison entre particuliers. » Nowork l'écrit à ta place, depuis sa fiche.
+Ce début est identique avec ou sans idée renseignée. Quand il en a écrit une, Nowork l'affiche sous « Son idée » en haut du script, sans l'ajouter à la phrase que tu lis.
 
 **Pour `[jour du formulaire]` :** si tu ouvres le script depuis une fiche Nowork, la date se remplit automatiquement. Sans fiche ou si la date manque, choisis la formulation qui correspond : « aujourd'hui », « hier », « mardi » (cette semaine), « mardi de la semaine dernière », « il y a quelques semaines » (deux à quatre semaines), « le mois dernier » (si c'est bien le mois civil précédent), puis « il y a un petit moment » au-delà d'environ deux mois. À partir de deux semaines, la date exacte apparaît entre parenthèses (`JJ/MM/AAAA`) : tu ne la dis que si le prospect te la demande. Ne prononce jamais le repère entre crochets.
 
@@ -100,7 +100,7 @@ S'il a écrit son idée dans le formulaire (pastille 💡), tu la cites : « …
 
 ### Pourquoi
 
-- **Les premiers mots décident de tout.** Beaucoup de gens ne répondent pas, ou prennent l'appel pour de la pub ou un robot. Son prénom, son projet et le jour où il a rempli le formulaire, dans la première phrase : un robot ne sait rien de tout ça. Son idée citée, c'est la preuve définitive.
+- **Les premiers mots décident de tout.** Beaucoup de gens ne répondent pas, ou prennent l'appel pour de la pub ou un robot. Son prénom, son projet et le jour où il a rempli le formulaire suffisent dans la première phrase. L'idée reste visible en haut pour la suite de l'échange.
 - **Tu n'attends pas sa réponse au bonjour.** « Bonjour Sofiane ? » et un silence, c'est l'ouverture d'un centre d'appels. Tu dis qui tu es et pourquoi tu appelles, puis seulement « Comment allez-vous ? ».
 - **« Rempli mon formulaire », ni « publicité » ni « pour être rappelé ».** « Publicité » lui fait penser « pub ». « Formulaire », c'est vrai et c'est concret. S'il demande lequel : « sous une de mes vidéos » (branche ci-dessous), et « vidéo » ne fait pas penser « pub ».
 - **« Vous avez… ? » et pas « Avez-vous ».** « Avez-vous » s'écrit, personne ne le dit au téléphone.
@@ -113,7 +113,7 @@ S'il a écrit son idée dans le formulaire (pastille 💡), tu la cites : « …
 
 **« C'est un robot ? » / « C'est de la pub ? »**
 
-> Non, c'est bien moi, Noé. Vous avez rempli mon formulaire mardi, pour [son idée]. Je rappelle chaque personne moi-même, pour lui offrir un audit de son idée : est-ce qu'elle a du potentiel, et ce qu'elle peut rapporter.
+> Non, c'est bien moi, Noé. Vous avez rempli mon formulaire mardi pour votre projet d'application. Je rappelle chaque personne moi-même, pour lui offrir un audit de son idée : est-ce qu'elle a du potentiel, et ce qu'elle peut rapporter.
 
 **« C'est pour quoi ? » / « Quel formulaire ? »**
 
@@ -494,7 +494,7 @@ Ce qu'il faut voir :
 Sophie, gérante d'une société de nettoyage, douze salariés. Formulaire Meta mardi, idée écrite : « une appli pour les plannings et les heures de mes salariés ». Pas de réponse aux WhatsApp. Jeudi, Noé appelle.
 
 > **Sophie** — Allô ?
-> **Noé** — Bonjour Sophie, Noé Calmes, expert en applications mobiles et web. Je vous appelle pour votre projet d'application : vous avez rempli mon formulaire mardi, pour une appli de plannings pour vos salariés. Comment allez-vous ?
+> **Noé** — Bonjour Sophie, Noé Calmes, expert en applications mobiles et web. Je vous appelle pour votre projet d'application : vous avez laissé vos coordonnées mardi. Comment allez-vous ?
 > **Sophie** — Euh… ça va. C'est un robot ?
 > **Noé** — Non, c'est bien moi, Noé. Vous avez rempli mon formulaire mardi, pour les plannings et les heures de vos salariés. Je rappelle chaque personne moi-même, pour lui offrir un audit de son idée : est-ce qu'elle a du potentiel, et ce qu'elle peut rapporter.
 > **Sophie** — Ah oui, d'accord.
@@ -504,4 +504,4 @@ Sophie, gérante d'une société de nettoyage, douze salariés. Formulaire Meta 
 > **Sophie** — Lundi dix-sept heures.
 > **Noé** — Je vous envoie un message tout de suite, pour confirmer. Bonne journée, Sophie.
 
-Ce qu'il faut voir : son prénom, son projet, le jour et son idée dans la première phrase, et le « robot » tombe en une réplique. Noé ne lui a pas pris le quart d'heure qu'elle n'avait pas : il a pris la date. Lundi, c'est le script 2.
+Ce qu'il faut voir : son prénom, son projet et le jour dans la première phrase. L'idée est visible en haut du script, sans lecture automatique. Noé ne lui a pas pris le quart d'heure qu'elle n'avait pas : il a pris la date. Lundi, c'est le script 2.
