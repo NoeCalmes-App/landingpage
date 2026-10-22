@@ -42,7 +42,9 @@
     }
 
     function redirectToNowork(appPath) {
-      sessionStorage.setItem('redirect', appPath);
+      // Conserver les paramètres du CRM : prénom, date du formulaire et idée
+      // sont passés dans l'URL du script d'appel.
+      sessionStorage.setItem('redirect', appPath + window.location.search + window.location.hash);
       window.location.replace(NOWORK_BASE + '/');
     }
 

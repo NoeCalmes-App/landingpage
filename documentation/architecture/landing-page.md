@@ -533,6 +533,7 @@ Le backend chatbot n'est pas dans ce repo : il appelle la Cloud Function du proj
 Cas sensible :
 
 - `/nowork/...` doit renvoyer vers l'application admin.
+- La redirection `/nowork/...` doit conserver la query string et le fragment : le bouton « Script » du CRM transmet le prénom, la date de création et l'idée du lead dans l'URL. Les perdre affiche les repères `[Prénom]` et `[jour du formulaire]` au lieu des valeurs.
 - `/app-devis/...` doit rester redirige vers `/nowork/...` pour compatibilite avec les anciens liens.
 - `/maquette-visuel/...` appartient a Nowork mais reste affiche sans `/nowork` via une facade landing page.
 - `/espace-client/...` est une route publique landing page, sans afficher `/nowork`.

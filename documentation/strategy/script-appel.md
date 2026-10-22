@@ -80,6 +80,8 @@ Il a rempli le formulaire, il n'a pas répondu sur WhatsApp. C'est toi qui appel
 
 S'il a écrit son idée dans le formulaire (pastille 💡), tu la cites : « …vous avez rempli mon formulaire mardi, pour une appli de livraison entre particuliers. » Nowork l'écrit à ta place, depuis sa fiche.
 
+**Pour `[jour du formulaire]` :** si tu ouvres le script depuis une fiche Nowork, la date se remplit automatiquement. Sans fiche ou si la date manque, choisis la formulation qui correspond : « aujourd'hui », « hier », « mardi » (cette semaine), « mardi de la semaine dernière », « il y a deux semaines », « il y a trois semaines », « il y a un mois », « il y a deux mois »… Ne prononce jamais le repère entre crochets.
+
 [Tu attends sa réponse. Un robot n'attend pas.]
 
 > Très bien. Écoutez, vous avez une quinzaine de minutes devant vous ? (pause) Je vous offre un audit gratuit de votre idée : je vous donne mes conseils, et à la fin, je vous dis combien ça vous coûterait.
