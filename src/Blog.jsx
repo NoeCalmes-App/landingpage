@@ -21,6 +21,94 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'ce-que-j-ai-appris-20-applications',
+    title: "Ce que j'ai appris en publiant plus de 20 applications",
+    metaTitle: "20 applications publiées : ce que j'ai appris | Noé Calmes",
+    description: "20 applications, 1,3 million de téléchargements, une à 13 000 € par mois, une à 300 000 utilisateurs et presque rien. Ce que j'en retiens pour ton projet.",
+    date: '2026-10-26',
+    readTime: '9 min',
+    finalCta: 'audit',
+    categorie: "Monétisation",
+    accroche: "Une à 300 000 utilisateurs, une à 13 000 € par mois. Ce qui les sépare.",
+    tldr: {
+      verdict: "Plus de 20 applications publiées, 1,3 million de téléchargements, une application qui a dépassé 300 000 utilisateurs sans presque rien rapporter, et une autre qui génère environ 13 000 € par mois sur un marché saturé. Ce qui décide du revenu n'est jamais l'idée ni le nombre de téléchargements, c'est le moment où l'application demande à être payée, et il se décide avant la première ligne de code.",
+      points: [
+        { label: "Le sujet", valeur: "Ce que les chiffres réels de mes applications m'ont appris, dans l'ordre où je l'ai appris" },
+        { label: "Pour qui", valeur: "Tu as une idée d'application et tu veux savoir ce qui sépare celles qui rapportent des autres" },
+        { label: "Le repère", valeur: "300 000 utilisateurs et presque pas de revenu, contre 13 000 € par mois sur un marché saturé" },
+        { label: "À retenir", valeur: "Le revenu se décide avant le code, pas après le lancement" },
+      ],
+    },
+    pourQui: [
+      "Tu as une idée d'application et tu te demandes ce qui fait qu'elle rapportera ou pas",
+      "Tu as déjà une application avec des utilisateurs, et pas le revenu qui devrait aller avec",
+      "Tu veux savoir à qui tu confies ton projet, et ce que cette personne a réellement vécu",
+    ],
+    pasPourQui: [
+      "Tu cherches une méthode en dix étapes : elle est dans les autres articles, celui-ci raconte d'où elle vient",
+      "Tu veux des chiffres sur ton secteur précis : ici ce sont les miens, ils valent comme exemples, pas comme prévisions",
+      "Ton seul critère est le prix : ce n'est pas mon métier",
+    ],
+    faq: [
+      { q: "Ces leçons valent-elles aussi pour une application web ?", a: "Oui, à un détail près : une application web ne se télécharge pas, elle s'ouvre dans un navigateur, donc le chiffre qui flatte n'est pas le téléchargement mais l'inscription. Le reste ne change pas. La question de savoir à quel écran, et après avoir obtenu quoi, ton utilisateur accepte de payer se pose exactement de la même façon, et elle se décide avant le développement." },
+      { q: "J'ai 8 000 € de côté, c'est assez pour une application ?", a: "Pour une application au périmètre resserré, oui : un seul type d'utilisateur, peu d'écrans, des comptes, éventuellement un paiement, c'est la fourchette que je pratique, 5 000 à 8 000 €. Dès qu'il y a deux profils, un espace d'administration ou du temps réel, on passe au-dessus. Ce qui fait le prix, c'est le périmètre, et c'est la première chose qu'on cadre ensemble." },
+      { q: "Combien de temps te faut-il pour sortir une application ?", a: "45 jours en moyenne, du cadrage à la mise en ligne, quand le périmètre est clair. Ce qui allonge un projet n'est presque jamais le code : c'est ce qui n'a pas été décidé avant, et c'est pour ça que je commence par là. Une plateforme plus lourde se compte en mois, et son délai est fixé dans le devis." },
+    ],
+    content: `
+      <p>Il y a deux sortes de chiffres dans mon parcours : ceux que je mets sur mon site, et ceux qui m'ont appris quelque chose. Ce ne sont pas toujours les mêmes.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour rapporter. J'ai publié plus de 20 applications mobiles, les miennes et celles de mes clients, et elles totalisent plus de 1,3 million de téléchargements. Voici ce que j'en ai retenu, dans l'ordre où je l'ai compris, avec les chiffres réels.</p>
+
+      <h2>1,3 million de téléchargements, et ce que ce chiffre ne dit pas</h2>
+      <p>C'est le genre de chiffre que je mets en avant sur mon site, parce qu'il impressionne et parce qu'il est vrai. Mais il ne dit presque rien de ce qui compte.</p>
+      <p>Un téléchargement, c'est quelqu'un qui a appuyé sur un bouton gratuit. Il n'a rien promis. Il ouvrira peut-être l'application une fois, peut-être jamais. C'est le chiffre qu'on regarde en premier, parce que c'est celui que les stores affichent et celui que tout le monde comprend.</p>
+      <p>Ce que j'ai fini par voir : <strong>le téléchargement est le chiffre qui flatte, pas celui qui renseigne</strong>. Ce qui dit si une application va rapporter, c'est ce que l'utilisateur fait le lendemain, et la semaine d'après. C'est la sixième des raisons que j'ai détaillées dans <a href="/blog/pourquoi-applications-ne-rapportent-rien/">pourquoi 90 % des applications ne rapportent rien</a>, et c'est la première que j'ai apprise.</p>
+
+      <h2>300 000 utilisateurs et presque pas de chiffre d'affaires</h2>
+      <p>J'ai conçu la première version de Hush, une messagerie, pour ses créateurs. Elle a dépassé 300 000 utilisateurs. Sur le papier, c'est le genre de succès qu'on raconte. Dans la réalité, elle ne rapportait presque rien, parce que personne, moi compris, n'avait décidé au départ à quel moment elle demanderait à être payée ni pour quoi. J'étais le concepteur : la question était à moi de la poser.</p>
+      <p>Ce que ça fait, concrètement : tu as énormément de monde, tu as des retours, tu as des avis, et tu n'as pas de revenu. Tu te dis que ça viendra avec le volume. Ça ne vient pas avec le volume. Un modèle de revenu ajouté après coup, sur une application que des centaines de milliers de personnes utilisent gratuitement, se heurte à une habitude déjà prise. La façon de le construire dans le bon ordre est dans <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>.</p>
+      <div class="encadre cle">
+        <span class="encadre-titre">La question de Hush, celle que je pose depuis à chaque projet</span>
+        <p>Je ne commence plus un projet sans savoir <strong>où et quand l'utilisateur sort sa carte</strong>. Pas en fin de cadrage, au début. Si la réponse n'existe pas, le projet n'est pas prêt, et je le dis.</p>
+      </div>
+      <p>C'est la leçon qui m'a le plus appris, et c'est aussi pour ça qu'elle vaut quelque chose : je l'ai vue de l'intérieur, sur une application que j'avais conçue, pas dans un livre.</p>
+
+      <h2>13 000 € par mois sur un marché saturé</h2>
+      <p>Calorie est une application mobile de suivi nutritionnel avec l'IA, que j'ai conçue pour un client. L'idée est banale et le marché était déjà pris : il en existe des dizaines, et celle-ci n'avait rien de neuf sur le papier.</p>
+      <p>Elle lui rapporte aujourd'hui environ 13 000 € par mois, par abonnement. Pas parce que l'idée était meilleure que les autres. Parce que tout, dans l'application, est construit autour du moment où l'utilisateur comprend ce qu'elle lui apporte, puis du moment où on lui propose de payer. Les premiers écrans l'amènent à la valeur vite. L'écran qui propose l'abonnement arrive quand il a déjà une raison de dire oui.</p>
+      <div class="chiffre">
+        <span class="chiffre-valeur">13 000 €</span>
+        <span class="chiffre-texte">par mois, par abonnement, sur un marché que tout le monde disait pris.</span>
+      </div>
+      <p>Ce que ça m'a appris : <strong>l'idée n'est presque jamais le sujet</strong>. Deux applications avec la même idée peuvent avoir des revenus sans aucun rapport, et la différence ne se voit pas sur la liste des fonctionnalités. Elle se voit dans le parcours. J'ai détaillé les ordres de grandeur dans <a href="/blog/combien-rapporte-application-mobile/">combien rapporte une application mobile</a>.</p>
+
+      <h2>Ce que mes propres applications, Wake Up Alarme et Plouff Habitudes, m'apprennent encore</h2>
+      <p>Wake Up Alarme et Plouff Habitudes sont mes applications. Je m'en sers, et c'est ce qui me donne la vision de l'usage réel, celle qui sert ensuite à mes clients.</p>
+      <p>Parce qu'en usage réel, on voit ce qu'aucune maquette ne montre : l'écran qu'on ouvre vraiment le matin, celui qu'on ne regarde jamais, le réglage qu'on cherche trois fois avant de le trouver, l'écran qu'on ferme sans le lire. Un concepteur qui n'a plus d'application à lui finit par concevoir de mémoire, avec les habitudes d'il y a trois ans.</p>
+      <p>Ce que j'en retiens : ce qu'un utilisateur dit qu'il fera et ce qu'il fait n'ont pas grand-chose à voir. On conçoit pour ce qu'il fait.</p>
+
+      <h2>Ce que l'arrivée de l'IA m'a appris sur mon propre métier</h2>
+      <p>Quand les outils qui génèrent une application à partir d'une phrase sont arrivés, j'ai eu la réaction de beaucoup de gens de mon métier : regarder ce qu'ils faisaient vraiment. J'utilise l'IA tous les jours pour écrire du code, et j'ai écrit ce que je pensais de ces générateurs dans <a href="/blog/lovable-base44-application-mobile/">Lovable, Base44 et les applications mobiles</a>.</p>
+      <p>Mais la vraie leçon n'était pas sur ces outils. Elle était sur moi : <strong>le code n'a jamais été ce qui coûte cher dans une application</strong>. Ce qui coûte cher, c'est tout ce qui a été décidé avant, et tout ce qui est mesuré après. Si une machine écrit le code en une heure, ça ne change rien à la question de Hush : où et quand l'utilisateur paie. Personne ne tape ça dans une phrase.</p>
+
+      <h2>La leçon la plus récente : savoir dire non, et sur quel support</h2>
+      <p>Le mobile est mon métier d'origine. Jusqu'à récemment, mon site ne parlait que de ça : quand on m'appelait pour « une application mobile », je faisais une application mobile, et je laissais passer le reste.</p>
+      <p>Aujourd'hui, une partie des projets qui m'arrivent n'ont pas besoin d'être sur un téléphone. Des professionnels qui travaillent assis devant un écran, plusieurs profils, un espace d'administration : c'est une application qui se sert sur ordinateur, une application web, et je le dis avant le devis. Et une partie des idées qui m'arrivent n'ont pas de réponse à la question de Hush : je le dis aussi, et le projet s'arrête là, avant d'avoir coûté quoi que ce soit.</p>
+      <p>C'est la chose que j'aurais le plus de mal à expliquer à celui que j'étais au début : <strong>le travail commence par ce qu'on refuse de construire</strong>.</p>
+
+      <h2>Ce que je ne fais pas : amener les utilisateurs</h2>
+      <p>Les 300 000 utilisateurs de Hush et les abonnés de Calorie, ce n'est pas moi qui les ai fait venir : c'est le travail de ceux qui portent ces applications. Je conçois le marketing dans l'application, ce qui transforme un utilisateur en client. Mon travail commence quand quelqu'un ouvre l'application, et il continue tant qu'il revient et qu'il paie. Avant, rien : la publicité, les réseaux, le référencement, ce n'est pas moi, et quelqu'un qui te promet les deux à la fois te promet trop.</p>
+
+      <h2>Par où commencer</h2>
+      <p>Si tu dois ne garder qu'une chose de ces vingt applications, garde la question de Hush, et pose-la avant tout le reste.</p>
+      <ol>
+        <li><strong>Écris où et quand ton utilisateur sort sa carte.</strong> Pas « il s'abonnera », mais à quel écran, après avoir obtenu quoi. Si tu ne sais pas l'écrire, tu n'as pas encore un projet, tu as une idée, et c'est très bien : c'est le moment de la travailler.</li>
+        <li><strong>Oublie le nombre de téléchargements, ou d'inscriptions, que tu imagines.</strong> Remplace-le par le nombre de personnes qui reviendraient la semaine suivante. C'est ce chiffre qui fait le revenu, et il est toujours plus petit.</li>
+        <li><strong>Demande à qui tu parles ce qu'il a vécu.</strong> Pas combien d'applications il a faites, mais ce qui a marché, ce qui a échoué, et ce qu'il en a changé. La réponse te dit tout.</li>
+      </ol>
+      <p>Si tu veux que je regarde ton idée avec exactement ce regard, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes, et la question de Hush y est posée noir sur blanc : tu sauras tout de suite si tu as déjà la réponse.</p>
+    `,
+  },
+  {
     slug: 'application-mobile-artisan',
     title: "Application mobile pour artisan et commerçant : ce qui vaut vraiment le coup",
     metaTitle: "Application mobile pour artisan : utile ou pas ? | Noé Calmes",
@@ -2719,6 +2807,7 @@ export const BLOG_ARTICLES = [
 // orphelin. Ajouter un article implique donc de le citer ici au moins deux fois.
 
 export const ARTICLES_LIES = {
+  'ce-que-j-ai-appris-20-applications': ['pourquoi-applications-ne-rapportent-rien', 'combien-rapporte-application-mobile', 'lovable-base44-application-mobile'],
   'application-mobile-artisan': ['application-mobile-pour-entreprise', 'combien-coute-application-mobile', 'creation-application-mobile-toulouse'],
   'application-mobile-pour-entreprise': ['application-mobile-artisan', 'combien-coute-application-mobile', 'application-mobile-salle-de-sport'],
   'application-mobile-salle-de-sport': ['application-mobile-coach-formateur', 'application-par-abonnement', 'application-mobile-artisan'],
@@ -2729,16 +2818,16 @@ export const ARTICLES_LIES = {
   'application-mobile-avec-claude': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'faire-evoluer-application-mobile'],
   'lovable-base44-application-mobile': ['creer-application-avec-ia', 'creer-application-sans-savoir-coder', 'application-mobile-avec-claude'],
   // Cluster monetisation, pilier : rentabiliser-application-mobile
-  'rentabiliser-application-mobile': ['modele-economique-application-mobile', 'combien-rapporte-application-mobile', 'pourquoi-applications-ne-rapportent-rien'],
+  'rentabiliser-application-mobile': ['ce-que-j-ai-appris-20-applications', 'combien-rapporte-application-mobile', 'pourquoi-applications-ne-rapportent-rien'],
   'combien-rapporte-application-mobile': ['combien-de-clients-pour-rentabiliser-application', 'combien-coute-application-mobile', 'application-mobile-meilleur-investissement'],
   'modele-economique-application-mobile': ['application-par-abonnement', 'rentabiliser-application-mobile', 'idee-application-business-rentable'],
   'application-par-abonnement': ['modele-economique-application-mobile', 'application-mobile-salle-de-sport', 'application-audience-revenus-recurrents'],
   'idee-application-business-rentable': ['application-mobile-pour-entreprise', 'application-mobile-meilleur-investissement', 'application-mobile-coach-formateur'],
-  'pourquoi-applications-ne-rapportent-rien': ['rentabiliser-application-mobile', 'modele-economique-application-mobile', 'application-avec-ia-rentable'],
+  'pourquoi-applications-ne-rapportent-rien': ['rentabiliser-application-mobile', 'modele-economique-application-mobile', 'ce-que-j-ai-appris-20-applications'],
   'application-audience-revenus-recurrents': ['application-mobile-coach-formateur', 'application-par-abonnement', 'combien-de-clients-pour-rentabiliser-application'],
   'application-mobile-coach-formateur': ['application-audience-revenus-recurrents', 'modele-economique-application-mobile', 'application-mobile-salle-de-sport'],
   'creer-application-avec-ia': ['pourquoi-applications-ne-rapportent-rien', 'application-mobile-avec-claude', 'application-avec-ia-rentable'],
-  'application-mobile-meilleur-investissement': ['application-mobile-pour-entreprise', 'application-avec-ia-rentable', 'creation-application-mobile-toulouse'],
+  'application-mobile-meilleur-investissement': ['application-mobile-pour-entreprise', 'application-avec-ia-rentable', 'ce-que-j-ai-appris-20-applications'],
 
   // Cluster creation / conduite de projet
   'creer-application-sans-savoir-coder': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'creer-application-mobile-guide'],

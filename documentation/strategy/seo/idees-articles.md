@@ -371,8 +371,24 @@ Google Business et un site suffisent. Le dire renforce la crédibilité.
 
 ---
 
-### 11. Application mobile pour consultant et indépendant
-**Statut** : à écrire · **Format** : sectoriel · **Mot-clé** : application mobile consultant
+### 11. ~~Application mobile pour consultant et indépendant~~
+**Statut** : ❌ abandonné le 26/10/2026, déjà couvert et hors cible · **Mot-clé** : application mobile consultant
+
+> **Ce que la phase 0 a tranché.** `application-mobile-coach-formateur` a le
+> consultant **dans son titre** (« coach, formateur ou consultant »), son TL;DR dit
+> déjà « vendre autre chose que ton temps » (« quand ton temps est devenu le
+> plafond de tes revenus »), et ses H2 couvrent les formats et la rentabilité.
+> Deuxième raison, plus forte : le brief disait « ICP direct », ce qui était vrai
+> avant le 05/10/2026. Depuis le repositionnement, coachs, formateurs et
+> consultants sont une « opportunité secondaire, très peu dans les faits »
+> (`positionnement.md`). On n'écrit pas un sectoriel pour une cible qu'on ne
+> construit plus.
+>
+> **À faire à la place, le jour où on rafraîchit `coach-formateur`** : il contient
+> « là où une plateforme web est consultée une fois puis oubliée », phrase
+> antérieure au repositionnement qui dévalorise le web. À reformuler selon
+> `vocabulaire-mobile-web.md`. L'espace client et les livrables d'un consultant
+> sont d'ailleurs un cas web net.
 
 Vendre autre chose que ton temps. Espace client, livrables, suivi, abonnement
 au conseil. ICP direct.
@@ -380,7 +396,29 @@ au conseil. ICP direct.
 ---
 
 ### 12. Ce que j'ai appris en publiant 20 applications
-**Statut** : à écrire · **Format** : retour d'expérience · **Mot-clé** : longue traîne, marque
+**Statut** : ✅ publié le 26/10/2026 · **Format** : retour d'expérience · **Mot-clé** : longue traîne, marque
+
+**Règle suivie, à garder pour tout retour d'expérience** : aucun fait qui ne soit
+déjà écrit ailleurs sur le site. Les cinq faits utilisés viennent de
+`positionnement.md` (Proof points) et d'articles publiés : plus de 20
+applications, plus de 1,3 million de téléchargements (le chiffre de l'accueil depuis le 19/10, `positionnement.md` mis à jour le 26/10), Hush à 300 000 utilisateurs sans
+modèle de revenu, Calorie à 13 000 € par mois sur un marché saturé, Wake Up
+Alarme et Plouff Habitudes comme applications personnelles. Hush et Calorie sont
+des applications **clients** dont Noé a conçu la première version, et l'article
+le dit : la relecture d'authenticité a attrapé une phrase qui en faisait « mon
+application », faute à ne jamais refaire. Aucune date, aucun
+nom d'application en échec, aucun montant d'échec n'a été inventé.
+
+**L'angle** : les leçons existaient déjà en principes (« pourquoi 90 % ne
+rapportent rien », la leçon IA de `lovable-base44`). Cet article raconte
+l'histoire qui les a produites, chronologiquement, et renvoie vers elles au lieu
+de les répéter. Fil conducteur : « la question de Hush », où et quand
+l'utilisateur sort sa carte.
+
+**Si Noé veut l'enrichir d'épisodes personnels** (une application qui a échoué,
+un projet refusé, un pivot vers le web avec le contexte), il les dicte et on les
+insère : c'est le seul article du blog qui gagne à être plus personnel, et le
+seul où je ne peux rien ajouter sans lui.
 
 Le format que personne ne peut copier. Ce qui a marché, ce qui a échoué, les
 chiffres réels. Peu de volume de recherche, mais fort taux de partage, bon
@@ -388,6 +426,15 @@ générateur de liens entrants, et c'est l'article qui construit l'autorité.
 À sortir quand la file manque d'énergie.
 
 ---
+
+## La file est vide depuis le 26/10/2026
+
+Les douze briefs sont traités : huit publiés, quatre abandonnés en phase 0 avec
+leur raison. La prochaine semaine applique la section « Quand la file sera
+vide » ci-dessous, et commence par le point 3 : repartir des requêtes réelles de
+Search Console (celles qui ont des impressions et peu de clics), puis le point 1
+(rafraîchir `coach-formateur` et `choisir-expert`, qui ont chacun une retouche
+notée dans leur brief abandonné).
 
 ## Idées à ne PAS écrire
 

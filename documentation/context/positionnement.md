@@ -186,7 +186,7 @@ On peut lancer une première version (MVP) pour valider que les gens paient, ava
 ## Proof points
 
 - **+20 applications publiées sur les stores** (toute carrière confondue)
-- **+900k téléchargements cumulés** sur l’ensemble des applications (chiffre fourni par Noé le 02/10/2026)
+- **+1,3 million de téléchargements cumulés** sur l'ensemble des applications (affiché sur l'accueil depuis le 19/10/2026, le total couvre Hush ; c'était +900k au 02/10/2026)
 - **+300k utilisateurs sur Hush**, première version (présentation confirmée par Noé le 02/10/2026)
 - **Capacité de lancer vite** quand le projet l'exige : MVP en 45 jours si le périmètre est clair
 - **Tarif fixe, zéro surprise**
