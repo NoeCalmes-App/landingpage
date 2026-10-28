@@ -13,7 +13,7 @@ const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
 const REALISATIONS = [
   { name: 'Calorie', type: 'Suivi nutritionnel avec l’IA', icon: '/assets/images/apps/calorie.webp', metric: '13 000 €', unit: 'par mois environ', detail: "Une application que j’ai conçue pour un client, sur un marché déjà très concurrentiel." },
   { name: 'Plouff Habitudes', type: "Suivi d'habitudes", icon: '/assets/images/app-icons/plouffhabitudes.webp', metric: '30 jours', unit: 'du design au lancement', detail: "Ma propre application : une routine quotidienne, une mascotte et une offre d’abonnement." },
-  { name: 'SmoothRide', type: 'Navigation GPS', icon: '/assets/images/apps/smoothride.svg', metric: 'Téléphone + CarPlay', unit: '', detail: 'Une navigation complète qui évite les ralentisseurs, et qui s’affiche aussi sur l’écran de la voiture avec CarPlay.' },
+  { name: 'SmoothRide', type: 'Navigation GPS', icon: '/assets/images/apps/smoothride.svg', metric: 'App mobile + CarPlay', unit: '', detail: 'Une navigation complète qui évite les ralentisseurs, et qui s’affiche aussi sur l’écran de la voiture avec CarPlay.' },
 ]
 
 const METHODE = [
