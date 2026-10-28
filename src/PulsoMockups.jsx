@@ -25,7 +25,6 @@ import {
   MapPin,
   Menu,
   Minus,
-  Music,
   PersonStanding,
   Phone,
   Plus,
@@ -86,9 +85,9 @@ const PHOTO = {
   tennis: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=400&q=80',
   yoga: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&q=80',
   boxing: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=400&q=80',
-  piano: 'https://images.unsplash.com/photo-1514119412350-e174d90d280e?w=400&q=80',
   pilates: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=80',
   run: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=900&q=80',
+  track: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&q=80',
   ropes: 'https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=900&q=80',
 }
 
@@ -97,7 +96,7 @@ const PHOTO = {
 const COACH = {
   marco: { name: 'Marco Valenti', job: 'Préparation physique', area: 'Larvotto', price: 80, face: FACE.marco, photo: PHOTO.fitness },
   hugo: { name: 'Hugo Marchetti', job: 'Tennis', area: 'Saint-Roman', price: 90, face: FACE.hugo, photo: PHOTO.tennis },
-  clara: { name: 'Clara Rossi', job: 'Piano', area: 'Monte-Carlo', price: 70, face: FACE.clara, photo: PHOTO.piano },
+  clara: { name: 'Clara Rossi', job: 'Pilates', area: 'Monte-Carlo', price: 70, face: FACE.clara, photo: PHOTO.pilates },
   karim: { name: 'Karim Benali', job: 'Boxe anglaise', area: 'La Condamine', price: 75, face: FACE.karim, photo: PHOTO.boxing },
 }
 
@@ -371,7 +370,7 @@ function OnboardingScreen() {
       <div className="pl-onb-copy">
         <span className="pl-kicker">Pulso</span>
         <h1 className="pl-display">Le bon coach,<br /><em>au bon moment.</em></h1>
-        <p className="pl-lead">Sport, tennis, yoga, musique… Choisissez votre coach à Monaco, réservez un créneau et payez en un geste.</p>
+        <p className="pl-lead">Fitness, tennis, yoga, boxe… Choisissez votre coach à Monaco, réservez un créneau et payez en un geste.</p>
       </div>
       <div className="pl-onb-bottom">
         <div className="pl-dots"><i className="pl-dot-on" /><i /><i /></div>
@@ -387,7 +386,7 @@ function HomeScreen() {
     ['Tennis', PHOTO.tennis],
     ['Yoga', PHOTO.yoga],
     ['Boxe', PHOTO.boxing],
-    ['Musique', PHOTO.piano],
+    ['Running', PHOTO.track],
     ['Pilates', PHOTO.pilates],
   ]
   return (
@@ -631,7 +630,7 @@ function BookingsScreen() {
         <div className="pl-card pl-booking">
           <div className="pl-booking-head">
             <Avatar src={COACH.clara.face} name="Clara" size="md" />
-            <div><strong>Clara Rossi</strong><small>Piano · à domicile</small></div>
+            <div><strong>Clara Rossi</strong><small>Pilates · à domicile</small></div>
             <Pill tone="warning"><Clock3 size={11} /> En attente</Pill>
           </div>
           <div className="pl-booking-when pl-num">
@@ -808,7 +807,7 @@ function BecomeCoachDesk() {
         <div>
           <span className="pl-kicker">Pour les meilleurs coachs</span>
           <h4>Vos séances réservées et payées, <em>sans commission.</em></h4>
-          <p>Sport, tennis, bien-être, musique : Pulso réunit les meilleurs coachs, à Monaco pour commencer. Vous fixez vos tarifs et vos créneaux, les clients réservent depuis l’application.</p>
+          <p>Fitness, tennis, yoga, boxe, running : Pulso réunit les meilleurs coachs, à Monaco pour commencer. Vous fixez vos tarifs et vos créneaux, les clients réservent depuis l’application.</p>
           <div className="pl-site-cta">
             <DeskButton goto="dashboard">Créer mon compte coach <ArrowRight size={15} /></DeskButton>
             <small>Un abonnement mensuel,<br /><b>100 % du prix de vos séances</b> pour vous.</small>
@@ -1233,7 +1232,7 @@ const MOBILE_FLOWS = [
     note: 'On découvre les coachs sans créer de compte. Les créneaux libres du jour se lisent d’un coup d’œil.',
     mockups: [
       { id: 'onboarding', title: 'Ouverture de l’application', subtitle: 'Premier des 3 écrans de présentation', screen: <OnboardingScreen />, lightBar: true, notes: ['Passable à tout moment'] },
-      { id: 'home', title: 'Accueil', subtitle: 'Libres aujourd’hui, puis le prochain événement', screen: <HomeScreen />, notes: ['Sport, tennis, yoga, musique…', 'Cliquable : Marco'] },
+      { id: 'home', title: 'Accueil', subtitle: 'Libres aujourd’hui, puis le prochain événement', screen: <HomeScreen />, notes: ['Fitness, tennis, yoga, boxe…', 'Cliquable : Marco'] },
       { id: 'coach', title: 'Fiche coach', subtitle: 'Son tarif, ses créneaux, ses lieux', screen: <CoachScreen />, lightBar: true, tall: true, scroll: true, notes: ['Le pouls : un pic = un créneau libre'] },
     ],
   },
