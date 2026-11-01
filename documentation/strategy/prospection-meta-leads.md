@@ -44,6 +44,14 @@ Verdict à jour, interrogé chez Meta en vrai : `npm run verifier-pubs` dans
 
 ## Le formulaire Meta (référence exacte)
 
+**« Formulaire novembre »** (publié le 01/11/2026, ID `2284600909062518`, **Niveau d'intention élevé**, onglet `Novembre` de la Sheet `Prospect`, relié à Nowork le soir même ; Noé bascule les pubs lui-même) reprend celui du 21 octobre, avec trois changements décidés le 01/11 après trois leads « troll » (première réponse partout, une lettre dans l'idée) :
+
+- **Intention élevée** : un écran de vérification des coordonnées avant l'envoi. **Pas de code SMS** (Noé : trop de vrais leads perdus, il qualifie lui-même).
+- **Question idée** : « Ton idée en une phrase ? (ex : une app de réservation pour mon salon) » (au lieu de « en quelques mots », qui autorisait une lettre). Obligatoire, nom de champ `idee` inchangé.
+- **Diffusion flexible en Manuel, intro et écran de fin verrouillés** : Meta ne peut plus sauter l'intro (le prix) ni supprimer l'écran de fin.
+
+Détail technique : `nowork/documentation/systems/lead-auto-import.md`, « Le formulaire de novembre 2026 ».
+
 **« Formulaire officiel 21 octobre »** (créé le 21/10/2026, Volume élevé, onglet `Octobre21` de la Sheet `Prospect`, relié à Nowork le soir même ; les pubs se basculent une par une) reprend celui du 11 octobre, avec deux changements décidés le 21/10 :
 
 - **Budget en quatre tranches** : `5 000 € – 10 000` / `10 000 € – 15 000` / `15 000 € – 20 000` / `Plus de 20 000 €`. Plus de « Moins de 5 000 € » : l'intro dit déjà « À partir de 5 000 € » et la tranche du bas n'est plus qu'une porte de sortie pour des gens qui n'iraient pas plus loin. Les tranches du milieu séparent le client à 10-15 k€ de celui à 15-20 k€, qui n'appellent pas le même devis. Nowork garde les anciens libellés pour les leads des formulaires précédents.
