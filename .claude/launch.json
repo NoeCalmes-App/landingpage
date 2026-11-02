@@ -4,8 +4,33 @@
     {
       "name": "landing-page",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "/Users/noecalmes/Dev/WEB/landing-page"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "/Users/noecalmes/Dev/WEB/landing-page"
+      ],
       "port": 5173
+    },
+    {
+      "name": "smoothride-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "preview",
+        "--prefix",
+        "/Users/noecalmes/Dev/Clients/Smoothride/smoothride-web",
+        "--",
+        "--port",
+        "5189",
+        "--strictPort"
+      ],
+      "port": 5189
+    },
+    {
+      "name": "smoothride-web-preview",
+      "url": "http://localhost:5188",
+      "port": 5188
     }
   ]
 }
