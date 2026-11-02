@@ -427,14 +427,85 @@ générateur de liens entrants, et c'est l'article qui construit l'autorité.
 
 ---
 
-## La file est vide depuis le 26/10/2026
+## Nouvelle file, construite le 02/11/2026 depuis Search Console
 
-Les douze briefs sont traités : huit publiés, quatre abandonnés en phase 0 avec
-leur raison. La prochaine semaine applique la section « Quand la file sera
-vide » ci-dessous, et commence par le point 3 : repartir des requêtes réelles de
-Search Console (celles qui ont des impressions et peu de clics), puis le point 1
-(rafraîchir `coach-formateur` et `choisir-expert`, qui ont chacun une retouche
-notée dans leur brief abandonné).
+**Les chiffres de départ** (3 mois au 30/10/2026, Search Console, recherche Web) :
+27 clics, 3 010 impressions, CTR 0,9 %, position moyenne 30. Ce n'est pas le
+nombre d'articles qui manque (28 en ligne), c'est le classement des pages qui
+existent déjà. La file part donc des pages, pas des idées.
+
+| Page | Impressions | Position | Clics | Lecture |
+|---|---|---|---|---|
+| `application-mobile-avec-claude` | 1 023 | 8,5 | 11 | La page la plus forte du site, de loin |
+| `combien-coute-application-mobile` | 599 | 68,9 | 0 | 20 % des impressions du site, enterrée |
+| `combien-de-temps-creer-application-mobile` | 268 | 9,7 | 0 | En première page, sans clic |
+| `creer-application-mobile-guide` | 244 | 77,2 | 0 | Requêtes « comment créer », enterrée |
+| `mvp-application-mobile` | 169 | 11,6 | 1 | Capte aussi « idée d'application » |
+| `application-mobile-pour-entreprise` | 129 | 46,2 | 0 | Publiée le 11/10, elle monte |
+
+### 1. ✅ Le guide « comment créer une application mobile », refondu le 02/11/2026
+244 impressions en position 77 sur « comment créer une application mobile »,
+« faire une application mobile », « conception application mobile ». Le texte
+datait d'avril, d'avant le repositionnement : Swift, Kotlin, « cross-platform »,
+seulement les stores. Réécrit en 1 200 mots selon la doctrine (l'arbitrage
+mobile ou web devient l'étape 1, le modèle de revenu l'étape 2), slug inchangé,
+date mise à jour. Il reçoit désormais un lien de l'article Claude, la page la
+plus forte du site, qui n'y renvoyait pas. **À mesurer le 30/11** : position du
+guide sur « comment créer une application mobile ».
+
+### 2. Le prix d'une application, en position 69
+`combien-coute-application-mobile` porte 599 impressions sur « prix application
+mobile » (176), « combien coûte une application mobile » (134), « coût d'une
+application mobile » (105), « prix d'une application mobile » (134 en deux
+graphies). C'est la plus grosse demande du site, et la page est 69ᵉ. Le 02/11,
+elle a reçu deux liens (article Claude, article délai). **Prochaine étape** :
+regarder les dix premiers résultats Google sur « prix application mobile » et
+comprendre ce qu'ils ont qu'elle n'a pas ; vérifier aussi qu'aucune page du site
+ne lui fait concurrence (`/faq/`, le quiz budget, `pour-entreprise`, `artisan`,
+qui parlent tous de prix). Enrichir plutôt que créer.
+
+### 3. Les pages déjà en première page qui n'ont aucun clic
+`combien-de-temps-creer-application-mobile` (268 impressions, position 9,7),
+`creer-application-sans-savoir-coder` (73, 9,1), `creation-application-mobile`
+(64, 10,7), `combien-rapporte-application-mobile` (55, 9,3). En dixième
+position, peu de clics est normal : le gain ne viendra pas du titre seul mais
+de la remontée vers le top 5. Leviers : liens depuis la page Claude et l'accueil,
+et une réponse plus nette en tête d'article à la question exacte tapée
+(« temps développement application mobile » est la première requête du délai).
+
+### 4. « Idée d'application mobile » : bien placé, sur la mauvaise page
+28 impressions en position 3 à 4, zéro clic : Google y montre l'article **MVP**,
+pas `idee-application-business-rentable`. Problème d'intention, pas de
+classement. À faire : donner à `idee-application-business-rentable` un titre
+qui dit « idée d'application » dans les mots du chercheur, et ajouter dans
+l'article MVP une phrase et un lien vers lui.
+
+### 5. Refonte d'application, aucune page ne répond
+« refonte application » (25), « refonte application mobile », « refonte d'une
+application », « refonte applicative » : une trentaine d'impressions en
+position 78 à 84. `faire-evoluer-application-mobile` a déjà un H2 « Évolution
+vs refonte », et `reprendre-application-mobile-existante` un « Reprendre ou
+reconstruire ? ». **Ne pas créer d'article** : enrichir `faire-evoluer` (titre
+qui contient « refonte », section développée), c'est un des trois cas d'usage
+de Noé et un client qui a déjà un budget.
+
+### 6. Un article sœur de la page Claude, à étudier en phase 0
+Les requêtes « avec Claude » font environ 70 impressions visibles en position
+10 (créer une application, un logiciel, Claude Code), et la page Claude en
+reçoit 1 023 au total. Un article sur « créer une application web ou un
+logiciel avec Claude » prolongerait le seul sujet où le site est fort, et colle
+au repositionnement web. **Risque principal** : cannibaliser la page qui
+marche. Phase 0 stricte avant d'écrire.
+
+### 7. Les deux retouches notées sur les briefs abandonnés
+`coach-formateur` : la phrase « une plateforme web est consultée une fois puis
+oubliée » dévalorise le web, à reformuler. `choisir-expert` : le tableau des
+fourchettes par profil (agence, freelance, indépendant) noté au brief 8.
+
+### À ne pas toucher pour l'instant
+`application-mobile-pour-entreprise` (107 impressions sur « application mobile
+entreprise », position 48, publiée le 11/10) et `application-mobile-artisan`
+(position 33) sont jeunes et montent. Les revoir fin novembre.
 
 ## Idées à ne PAS écrire
 

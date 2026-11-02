@@ -621,7 +621,7 @@ export const BLOG_ARTICLES = [
       { q: "Peut-on aller plus vite que quatre semaines ?", a: "Oui, en réduisant le périmètre, jamais en compressant le travail. Une application à un seul type d'utilisateur, sans temps réel et sans paiement intégré, peut sortir plus vite. En revanche accélérer sans rien retirer produit une version fragile qu'il faut reprendre, et le temps regagné est perdu deux fois." },
     ],
     content: `
-      <p>C'est la deuxième question qu'on me pose, juste après le prix. Et la réponse honnête tient en deux temps, parce que la question en cache une autre.</p>
+      <p>C'est la deuxième question qu'on me pose, juste après <a href="/blog/combien-coute-application-mobile/">le prix</a>. Et la réponse honnête tient en deux temps, parce que la question en cache une autre.</p>
       <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Voici les vrais délais, y compris ceux dont personne ne parle.</p>
 
       <h2>La réponse courte</h2>
@@ -1054,6 +1054,7 @@ export const BLOG_ARTICLES = [
         <li><strong>Règle la chaîne d'encaissement avant de construire l'écran d'abonnement.</strong> Contrat, informations fiscales, banque. Construire le paywall avant d'avoir le droit d'encaisser, c'est travailler dans le vide.</li>
         <li><strong>Prépare la soumission en dernier.</strong> Fiche, captures, politique de confidentialité, gestion des données. Là seulement.</li>
       </ol>
+      <p>Si tu repars de zéro sans coder toi-même, les étapes sont dans <a href="/blog/creer-application-mobile-guide/">comment créer une application mobile</a>, et les budgets dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>.</p>
       <p>Et si tu as déjà du code qui tourne et que tu veux savoir ce qui est récupérable : envoie-le moi. Je regarde et je te dis franchement ce qui tient, ce qui est à reprendre, et ce qui te sépare vraiment du premier euro encaissé.</p>
     `,
   },
@@ -2314,111 +2315,123 @@ export const BLOG_ARTICLES = [
   },
   {
     slug: 'creer-application-mobile-guide',
-    title: 'Comment créer une application mobile en 2026 : le guide complet',
-    metaTitle: "Créer une application mobile : le guide complet | Noé Calmes",
-    description: "De l'idée au lancement sur les stores : les étapes, les choix techniques et les erreurs qui coûtent cher quand tu crées ton application.",
-    date: '2026-04-29',
-    readTime: '8 min',
+    title: "Comment créer une application mobile : les étapes, dans le bon ordre",
+    metaTitle: "Comment créer une application mobile : les étapes | Noé Calmes",
+    description: "Tu as une idée et aucune compétence technique ? Les étapes pour créer une application qui rapporte, dans l'ordre, avec le prix et le délai réels.",
+    date: '2026-11-02',
+    readTime: '9 min',
     finalCta: 'audit',
     categorie: "Créer",
-    accroche: "Le déroulé complet, du cadrage au lancement sur les stores.",
+    accroche: "Le déroulé réel, dans l'ordre où les décisions se prennent.",
     tldr: {
-      verdict: "Créer une application se joue en cinq temps : cadrer le besoin et le modèle de revenus, concevoir le parcours, développer, publier sur les stores, puis ajuster avec les premiers chiffres. La majorité des échecs se décident à l'étape 1.",
+      verdict: "Créer une application commence par deux décisions que personne ne te demande : qui va s'en servir et où, ce qui décide si elle vit sur un téléphone ou sur un ordinateur, et comment elle rapportera. Le développement vient après, et c'est la partie la plus courte : 45 jours en moyenne du cadrage à la mise en ligne, pour 5 000 à 12 000 € selon le périmètre.",
       points: [
-        { label: "Le sujet", valeur: "Le guide complet, de l'idée à la mise en ligne" },
-        { label: "Pour qui", valeur: "Tu pars de zéro et tu veux comprendre le déroulé" },
-        { label: "Délai", valeur: "45 jours en moyenne pour une application" },
-        { label: "Erreur classique", valeur: "Développer trop de fonctionnalités pour la version 1" },
+        { label: "Le sujet", valeur: "Les étapes pour créer une application, de l'idée à la mise en ligne" },
+        { label: "Pour qui", valeur: "Tu as une idée, pas de compétence technique, et tu veux savoir comment ça se passe" },
+        { label: "Le repère", valeur: "45 jours en moyenne, 5 000 à 12 000 € selon le périmètre" },
+        { label: "À retenir", valeur: "Les échecs se décident avant le code, pas pendant" },
       ],
     },
     pourQui: [
-      "Tu n'as jamais fait développer d'application et tu veux savoir comment ça se passe",
-      "Tu veux anticiper les décisions plutôt que les subir",
-      "Tu cherches un déroulé honnête, y compris sur ce qui coince",
+      "Tu as une idée d'application et tu n'as jamais fait développer quoi que ce soit",
+      "Tu veux savoir ce qu'on attendra de toi, et à quel moment",
+      "Tu veux comprendre le déroulé avant de demander un devis",
     ],
     pasPourQui: [
-      "Tu veux uniquement un devis, sans passer par le cadrage",
-      "Tu as déjà des spécifications figées et tu cherches un exécutant",
-      "Tu veux tout livrer d'un coup plutôt qu'une première version",
+      "Tu veux apprendre à coder toi-même : ce guide parle de faire créer, pas de programmer",
+      "Tu as déjà un cahier des charges figé et tu cherches seulement quelqu'un pour l'exécuter",
+      "Ton seul critère est le prix : ce n'est pas mon métier",
     ],
     faq: [
-      { q: "Faut-il développer iOS et Android séparément ?", a: "Non, plus depuis longtemps. Une seule base de code couvre les deux plateformes avec un rendu natif. C'est ce qui permet de diviser le budget par rapport à deux développements distincts." },
-      { q: "Combien de temps prend la validation sur les stores ?", a: "En général quelques jours, mais un refus peut ajouter une à deux semaines. C'est la principale source de retard imprévu sur un projet mobile, et c'est pour ça que je m'en occupe plutôt que de te laisser découvrir les règles d'Apple." },
-      { q: "Qu'est-ce qu'on met dans la première version ?", a: "Le strict nécessaire pour que l'application apporte sa valeur et puisse encaisser. Tout le reste attend d'avoir des utilisateurs réels : c'est eux qui disent quoi construire ensuite, pas une liste écrite avant le lancement." },
+      { q: "Je n'y connais rien en technique, je peux quand même créer une application ?", a: "Oui, et c'est le cas de presque tous les gens qui m'appellent. On n'attend pas de toi que tu saches comment une application se construit, on attend que tu connaisses ton idée, ton marché et ce que tu veux en tirer. Sur tout le projet, tu as quelques décisions à prendre, et je te dis lesquelles et quand. Le reste, tu n'as pas à t'en occuper." },
+      { q: "Faut-il développer une version iPhone et une version Android ?", a: "Non. Une seule application couvre les deux, avec le même rendu sur chaque téléphone. C'est ce qui permet de ne pas payer deux fois le même travail. Et si ton projet relève d'une application web, la question ne se pose même pas : elle s'ouvre dans le navigateur de n'importe quel appareil." },
+      { q: "Combien de temps prend la validation d'Apple et de Google pour une application mobile ?", a: "En général quelques jours. Un refus peut ajouter une à deux semaines, et c'est la principale source de retard imprévu sur un projet mobile. C'est pour ça que je prépare la publication et que je gère les échanges avec les stores, plutôt que de te laisser découvrir leurs règles au dernier moment." },
+      { q: "À qui appartient l'application une fois créée ?", a: "À toi. Le code, les comptes et les données doivent être à ton nom, et c'est une question à poser avant de signer avec qui que ce soit. Si un jour tu veux confier la suite à quelqu'un d'autre, tu dois pouvoir le faire sans rien racheter." },
     ],
     content: `
-      <p>Tu as une idée d'application mobile. Tu veux la lancer. Mais tu ne sais pas par où commencer, ni comment éviter de perdre du temps et de l'argent sur des faux problèmes.</p>
-      <p>Ce guide t'explique les étapes concrètes pour créer une application mobile qui fonctionne, qui est utilisée, et qui peut générer des revenus.</p>
+      <p>Tu as une idée d'application. Tu ne sais pas coder, tu ne connais pas le métier, et tu ne sais pas par où commencer. C'est normal : presque tous les gens qui m'appellent sont exactement là.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour rapporter, et j'en ai publié plus de 20. Voici les étapes pour créer une application, dans l'ordre où les décisions se prennent vraiment. Tu verras que le développement arrive tard, et que c'est voulu.</p>
 
-      <h2>Étape 1 : Cadrer le besoin avant de penser au code</h2>
-      <p>C'est l'étape que la plupart des gens sautent. Et c'est souvent là que les projets partent dans le mauvais sens.</p>
-      <p>Avant d'écrire une seule ligne de code, pose-toi ces questions :</p>
+      <h2>Étape 1 : décider qui va s'en servir, et où</h2>
+      <p>C'est la question que personne ne te pose, et c'est elle qui décide de tout le reste, y compris du support.</p>
+      <p>Écris en une phrase qui utilisera ton application et dans quelle situation. « Des particuliers, le soir, sur leur canapé. » « Mes techniciens, sur les chantiers. » « Mes clients professionnels, au bureau. »</p>
       <ul>
-        <li>Quel problème concret résout ton application ?</li>
-        <li>Qui sont tes utilisateurs cibles ? Comment ils se comportent aujourd'hui ?</li>
-        <li>Qu'est-ce qui te différencie de ce qui existe déjà ?</li>
-        <li>Quelle est la version minimale pertinente à lancer ?</li>
+        <li><strong>Des gens debout, dehors, en déplacement, ou du grand public</strong> qu'on veut retrouver sur l'écran d'accueil de son téléphone : c'est une <strong>application mobile</strong>, sur l'App Store et Google Play.</li>
+        <li><strong>Des gens assis devant un écran</strong>, qui se connectent pour travailler, avec plusieurs profils : c'est une <strong>application web</strong>, qui s'ouvre dans un navigateur sans rien installer.</li>
+        <li><strong>Les deux</strong> : tes clients sur leur téléphone, toi sur un écran pour piloter. On commence alors par celui qui porte la valeur immédiate.</li>
       </ul>
-      <p>Un projet bien cadré avance vite. Un projet flou accumule les aller-retours, gonfle le budget et aboutit rarement à quelque chose d'utilisable.</p>
+      <p>Le détail de cet arbitrage est dans <a href="/blog/application-mobile-pour-entreprise/">les quatre cas où le mobile se justifie</a>.</p>
 
-      <h2>Étape 2 : Définir ton MVP</h2>
-      <p>Un MVP (Minimum Viable Product) est une première version concentrée sur l'essentiel. Pas toutes les fonctionnalités rêvées, juste ce qui permet de valider que ton idée fonctionne avec de vrais utilisateurs.</p>
-      <p>Les avantages d'un MVP :</p>
+      <h2>Étape 2 : décider comment elle rapportera, avant le code</h2>
+      <p>C'est l'étape qui sépare les applications qui rapportent des autres, et c'est celle qu'on reporte toujours à plus tard.</p>
+      <p>Écris où et quand ton utilisateur paiera, et après avoir obtenu quoi. Un abonnement, une commission, un achat, un temps que ton équipe arrête de perdre : peu importe, mais il faut que ce soit écrit avant de construire quoi que ce soit. J'ai vu une application dépasser 300 000 utilisateurs sans presque rien rapporter, parce que cette question avait été posée trop tard.</p>
+      <div class="encadre cle">
+        <span class="encadre-titre">Le test</span>
+        <p>Si tu ne sais pas encore écrire cette phrase, tu n'as pas un projet en retard, tu as une idée à travailler. C'est le bon moment pour le découvrir : rien n'a encore été dépensé.</p>
+      </div>
+      <p>Les façons de faire payer, et laquelle choisir, sont dans <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>.</p>
+
+      <h2>Étape 3 : garder le strict nécessaire</h2>
+      <p>Ta liste de fonctionnalités est trop longue. Celle de tout le monde l'est.</p>
+      <p>On ne construit pas tout d'un coup. On construit ce qui permet à l'application d'apporter sa valeur et d'encaisser, et rien d'autre. C'est ce qu'on appelle un MVP, un produit minimum viable : pas une version au rabais, la version qui teste ton idée sur de vrais utilisateurs avant que tu aies mis tout ton budget.</p>
+      <p>Le reste attend, et ce sont tes premiers utilisateurs qui te diront quoi ajouter. Ils se trompent rarement, ta liste d'avant le lancement souvent. Le sujet est développé dans <a href="/blog/mvp-application-mobile/">le MVP d'application mobile</a>.</p>
+
+      <h2>Étape 4 : écrire un cahier des charges court</h2>
+      <p>Pas un document de cinquante pages. Deux ou trois pages suffisent, à condition qu'elles disent les bonnes choses : qui utilise l'application, ce qu'il fait dedans, comment elle rapporte, et ce qu'elle ne fait pas.</p>
+      <p>C'est ce document qui permet d'avoir un devis juste, et de comparer deux devis entre eux. Ce qu'il faut y mettre, et ce qu'il ne faut surtout pas y mettre, est dans <a href="/blog/cahier-des-charges-application-mobile/">le cahier des charges d'application mobile</a>.</p>
+
+      <h2>Étape 5 : voir l'application avant qu'elle existe</h2>
+      <p>Avant de développer, on dessine les écrans. Tu vois ton application, tu cliques dedans, tu la montres à des gens autour de toi.</p>
+      <p>C'est le moment le moins cher pour changer d'avis. Déplacer un bouton sur une maquette prend dix minutes. Le déplacer dans une application développée prend une journée. Et c'est là qu'on règle l'essentiel : le chemin entre le moment où l'utilisateur ouvre l'application et le moment où il comprend ce qu'elle lui apporte.</p>
+
+      <h2>Étape 6 : développer, en voyant l'avancement</h2>
+      <p>Si tout a été décidé avant, cette étape va vite.</p>
+      <p>Tu ne dois pas attendre des semaines sans rien voir. Tu dois tester l'application sur ton téléphone ou ton ordinateur au fil du développement, et pouvoir dire « ça, non » quand il est encore temps. Si personne ne te montre rien avant la fin, c'est un signal à prendre au sérieux.</p>
+
+      <h2>Étape 7 : la mettre en ligne</h2>
+      <p>Ce n'est pas la même chose selon le support, et c'est une différence concrète pour ton calendrier.</p>
       <ul>
-        <li>Lancement rapide, environ 45 jours pour une application mobile bien définie</li>
-        <li>Budget maîtrisé, tu investis sur ce qui compte vraiment</li>
-        <li>Retours utilisateurs réels avant d'aller plus loin</li>
-        <li>Capacité à pivoter si nécessaire sans avoir tout construit</li>
+        <li><strong>Une application mobile</strong> passe par l'App Store et Google Play : comptes développeur, fiches, captures, et une validation d'Apple et de Google qui prend quelques jours, parfois plus en cas de refus.</li>
+        <li><strong>Une application web</strong> se met en ligne sur ton nom de domaine, le jour où tu veux, sans personne à qui demander la permission.</li>
       </ul>
-      <p>Une première version simple et utile vaut mieux qu'une application complète qui n'est jamais terminée.</p>
+      <p>Dans les deux cas, cette étape ne doit pas reposer sur toi. C'est la plus administrative du projet, et elle peut bloquer une mise en ligne si elle est mal préparée.</p>
 
-      <h2>Étape 3 : Choisir la bonne technologie</h2>
-      <p>En 2026, deux grandes approches dominent le développement d'applications mobiles :</p>
+      <h2>Combien ça coûte, et combien de temps ça prend</h2>
+      <p>Les deux questions qu'on me pose en premier. Ce qui fait le prix, c'est le périmètre.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Périmètre</th><th>Budget</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Application au périmètre clair : comptes, une fonction centrale, paiement</td><td>5 000 à 8 000 €</td></tr>
+            <tr><td>Application complète : davantage d'écrans, espace d'administration</td><td>8 000 à 12 000 €</td></tr>
+            <tr><td>Deux profils distincts, par exemple tes clients et ton équipe</td><td>Une dizaine de milliers d'euros</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="chiffre">
+        <span class="chiffre-valeur">45 jours</span>
+        <span class="chiffre-texte">en moyenne pour une application, du cadrage à la mise en ligne, dont quatre à six semaines de développement.</span>
+      </div>
+      <p>Ce qui fait varier un devis est détaillé dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>, et ce qui allonge un calendrier dans <a href="/blog/combien-de-temps-creer-application-mobile/">combien de temps pour créer une application mobile</a>.</p>
+
+      <h2>Les erreurs qui coûtent cher</h2>
       <ul>
-        <li><strong>Développement natif</strong> : une application dédiée iOS (Swift) et une dédiée Android (Kotlin). Performances maximales, mais deux fois plus de travail, de coût et de délai.</li>
-        <li><strong>Développement cross-platform</strong> : une seule codebase pour iOS et Android. Plus rapide, moins cher, et les performances sont excellentes pour la grande majorité des projets.</li>
-      </ul>
-      <p>Pour la majorité des projets, startup, PME ou porteur de projet, le cross-platform est le choix le plus pertinent. Il permet de couvrir iOS et Android d'un seul développement, avec des performances quasi-natives.</p>
-
-      <h2>Étape 4 : Design et expérience utilisateur</h2>
-      <p>Une application mobile qui génère des revenus, c'est avant tout une application que les gens utilisent. Et les gens n'utilisent que ce qui est simple et agréable.</p>
-      <p>Le design ne se résume pas à "faire beau". C'est penser les parcours utilisateurs, la navigation, les micro-interactions. C'est s'assurer que l'utilisateur comprend ce qu'il doit faire sans avoir besoin d'explications.</p>
-      <p>Un bon design dès le départ évite des refontes coûteuses après le lancement.</p>
-
-      <h2>Étape 5 : Développement structuré et transparent</h2>
-      <p>Le développement d'une application mobile doit être structuré et visible. Tu ne dois pas attendre des mois pour voir quelque chose, tu dois voir l'avancement régulièrement.</p>
-      <p>Ce que ça implique concrètement :</p>
-      <ul>
-        <li>Des échanges réguliers sur l'avancement, pas juste un livrable final</li>
-        <li>Des démos intermédiaires pour valider chaque étape</li>
-        <li>Des tests sur de vrais appareils iOS et Android</li>
-        <li>Un interlocuteur unique qui comprend à la fois le produit et la technique</li>
+        <li><strong>Commencer par le développement.</strong> Tout ce qui n'a pas été décidé aux étapes 1 à 4 se décide pendant le développement, au prix fort.</li>
+        <li><strong>Choisir le support par habitude.</strong> « Une appli » ne veut pas dire « une application mobile ». Si tes utilisateurs travaillent devant un écran, le mobile te fait payer des contraintes qui ne te servent à rien.</li>
+        <li><strong>Garder le modèle de revenu pour la fin.</strong> Ajouté après coup, il se heurte à des utilisateurs qui ont pris l'habitude de ne rien payer.</li>
+        <li><strong>Choisir sur le seul prix.</strong> Le devis le plus bas pour une application qui n'encaisse rien reste le plus cher, parce qu'il ne se rembourse jamais.</li>
       </ul>
 
-      <h2>Étape 6 : Mise en ligne sur les stores</h2>
-      <p>La publication sur l'App Store (Apple) et Google Play est une étape technique qui a ses propres règles. Elle nécessite :</p>
-      <ul>
-        <li>Un compte développeur Apple et/ou Google</li>
-        <li>Le respect des guidelines de chaque store (et elles changent régulièrement)</li>
-        <li>Des captures d'écran et descriptions optimisées</li>
-        <li>Des tests de validation avant la soumission</li>
-      </ul>
-      <p>Un expert expérimenté prend en charge cette étape pour toi, jusqu'à la publication effective. Ce n'est pas une formalité : c'est une étape qui peut bloquer un projet si elle est mal préparée.</p>
-
-      <h2>Étape 7 : Après le lancement</h2>
-      <p>Une application ne s'arrête pas à la mise en ligne. Elle a besoin d'évoluer, corrections, nouvelles fonctionnalités, optimisations techniques, mise à jour des stores.</p>
-      <p>C'est pourquoi il est important de travailler avec quelqu'un qui reste disponible après le lancement, et pas seulement jusqu'à la livraison.</p>
-
-      <h2>Les erreurs les plus fréquentes à éviter</h2>
-      <ul>
-        <li><strong>Vouloir tout dans la première version.</strong> Ça rallonge les délais, gonfle le budget et dilue ce qui compte vraiment.</li>
-        <li><strong>Négliger le cadrage.</strong> Commencer à développer sans avoir défini précisément le besoin, c'est la garantie de faire des aller-retours coûteux.</li>
-        <li><strong>Choisir un prestataire sur le seul critère du prix.</strong> Le développement le moins cher n'est presque jamais le moins cher sur la durée.</li>
-        <li><strong>Sous-estimer la phase de design.</strong> Une app mal pensée n'est pas utilisée, peu importe la qualité du code.</li>
-      </ul>
-
-      <h2>Prêt à lancer ton projet mobile ?</h2>
-      <p>Que tu partes de zéro, que tu aies un projet à reprendre ou une application à faire évoluer, on commence par en parler. L'audit gratuit prend 2 minutes et te donne une première lecture du potentiel, du budget et du délai. Pour le reste, écris-moi sur WhatsApp.</p>
+      <h2>Par où commencer</h2>
+      <p>Trois choses, et aucune ne demande d'engager un budget.</p>
+      <ol>
+        <li><strong>Écris la phrase de l'étape 1.</strong> Qui, et où. Elle te dit déjà si ton projet est mobile, web, ou les deux.</li>
+        <li><strong>Écris la phrase de l'étape 2.</strong> Où et quand ton utilisateur paie. Si elle ne vient pas, c'est là qu'il faut travailler.</li>
+        <li><strong>Fais le test.</strong> Le <a href="/quiz/application-ou-site-web/">test application ou site web</a> tranche le support en six questions.</li>
+      </ol>
+      <p>Et si tu préfères qu'on regarde ton idée ensemble, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes : je te dis sur quel support elle se construit, comment elle peut rapporter, et ce que ça coûterait.</p>
     `,
   },
   {
@@ -2812,10 +2825,10 @@ export const ARTICLES_LIES = {
   'application-mobile-pour-entreprise': ['application-mobile-artisan', 'combien-coute-application-mobile', 'application-mobile-salle-de-sport'],
   'application-mobile-salle-de-sport': ['application-mobile-coach-formateur', 'application-par-abonnement', 'application-mobile-artisan'],
   'cahier-des-charges-application-mobile': ['creer-application-mobile-guide', 'combien-coute-application-mobile', 'choisir-expert-application-mobile'],
-  'combien-de-temps-creer-application-mobile': ['mvp-application-mobile', 'cahier-des-charges-application-mobile', 'application-mobile-avec-claude'],
+  'combien-de-temps-creer-application-mobile': ['mvp-application-mobile', 'cahier-des-charges-application-mobile', 'combien-coute-application-mobile'],
   'application-avec-ia-rentable': ['combien-de-clients-pour-rentabiliser-application', 'application-mobile-meilleur-investissement', 'creer-application-avec-ia'],
   'combien-de-clients-pour-rentabiliser-application': ['combien-rapporte-application-mobile', 'combien-coute-application-mobile', 'rentabiliser-application-mobile'],
-  'application-mobile-avec-claude': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'faire-evoluer-application-mobile'],
+  'application-mobile-avec-claude': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'creer-application-mobile-guide'],
   'lovable-base44-application-mobile': ['creer-application-avec-ia', 'creer-application-sans-savoir-coder', 'application-mobile-avec-claude'],
   // Cluster monetisation, pilier : rentabiliser-application-mobile
   'rentabiliser-application-mobile': ['ce-que-j-ai-appris-20-applications', 'combien-rapporte-application-mobile', 'pourquoi-applications-ne-rapportent-rien'],

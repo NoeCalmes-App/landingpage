@@ -832,8 +832,8 @@ const blogRoutes = [
   },
   {
     path: '/blog/creer-application-mobile-guide',
-    heading: 'Comment créer une application mobile : le guide complet',
-    content: 'De l\'idée au lancement sur les stores : les étapes, les choix techniques et les erreurs qui coûtent cher quand tu crées ton application mobile.',
+    heading: "Comment créer une application mobile : les étapes, dans le bon ordre",
+    content: "Les étapes pour créer une application quand on n'a aucune compétence technique, dans l'ordre où les décisions se prennent. Un : décider qui va s'en servir et où, ce qui tranche entre une application mobile (des gens en déplacement, du grand public) et une application web (des gens assis devant un écran, plusieurs profils), ou les deux. Deux : décider comment elle rapportera avant le code, où et quand l'utilisateur paie. Trois : garder le strict nécessaire, le MVP. Quatre : un cahier des charges court. Cinq : voir les écrans en maquette avant de développer. Six : développer en voyant l'avancement. Sept : mettre en ligne, sur l'App Store et Google Play pour une application mobile, sur son nom de domaine pour une application web. Budget : 5 000 à 8 000 euros pour une application au périmètre clair, 8 000 à 12 000 euros pour une application complète, une dizaine de milliers d'euros pour deux profils distincts ; 45 jours en moyenne du cadrage à la mise en ligne.",
   },
   {
     path: '/blog/reprendre-application-mobile-existante',
