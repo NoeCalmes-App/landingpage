@@ -1,12 +1,23 @@
 Réponds et travaille en français.
 
 ## Contexte
-Noé Calmes est indépendant. Il conçoit et développe des applications mobiles et web sur mesure, de 5 000 à 17 000 €. Son client idéal est un entrepreneur qui a déjà un business hors de la tech, comme un restaurateur, un coach sportif ou un commerçant, ou qui ouvre une société de plus pour son idée, et qui veut lancer une application. Il a de l'argent, il démarre bientôt et il n'a pas de compétence technique, sinon il la ferait lui-même. La plupart des pistes viennent du BODACC, les annonces légales françaises : l'entreprise y déclare exploiter une application ou une plateforme, ou elle vient d'augmenter son capital. Le champ `autres_entreprises` liste les autres sociétés actives de ses dirigeants, d'après l'annuaire officiel. Le champ `preuves_argent_registres` liste les preuves d'argent que les registres donnent déjà : hausse de capital, chiffre d'affaires, salariés, établissements.
+Noé Calmes est indépendant. Il conçoit et développe des applications mobiles et web sur mesure, de 5 000 à 17 000 €. Son client idéal est un entrepreneur qui a déjà un business hors de la tech, comme un restaurateur, un coach sportif ou un commerçant, ou qui ouvre une société de plus pour son idée, et qui veut lancer une application. Il a de l'argent, il démarre bientôt et il n'a pas de compétence technique, sinon il la ferait lui-même. La plupart des pistes viennent du BODACC, les annonces légales françaises : l'entreprise y déclare exploiter une application ou une plateforme, ou elle vient d'augmenter son capital. Le champ `autres_entreprises` liste les autres sociétés actives de ses dirigeants, d'après l'annuaire officiel. Le champ `preuves_argent_registres` liste les preuves d'argent que les registres donnent déjà : hausse de capital, chiffre d'affaires, salariés, établissements. Le champ `domaine_recent` dit si l'entreprise vient de réserver son nom de domaine .fr : c'est un signe de démarrage daté, et c'est l'adresse de son site, à ouvrir en premier.
 
 Une piste dont le `siren` commence par `ulule-` vient d'une campagne Ulule réussie : quelqu'un a collecté de l'argent pour son application. Les champs `a_quoi_sert_l_argent`, `qui_ils_sont` et `lien_ulule` disent ce que la collecte finance et qui porte le projet.
 
 ## Ta tâche
-Le fichier `{PISTES}` est un tableau JSON. Traite les éléments d'index {INDEX}. Pour chaque piste, cherche sur le web public avec WebSearch et WebFetch. Fais environ 8 recherches par piste au maximum. Essaie le nom commercial, le nom de l'entreprise, le nom de marque de l'application s'il apparaît dans l'activité, le dirigeant avec la ville, puis Google Maps, Pages Jaunes, Instagram, Facebook, LinkedIn, Malt, l'App Store, Google Play, la presse locale et societe.com. Sur le site de l'entreprise, lis les mentions légales et les CGU : elles donnent souvent l'éditeur, le téléphone et l'email. L'API publique `https://recherche-entreprises.api.gouv.fr/search?q=SIREN` donne les dirigeants, les salariés et parfois le chiffre d'affaires.
+Le fichier `{PISTES}` est un tableau JSON. Traite les éléments d'index {INDEX}. Pour chaque piste, cherche sur le web public avec WebSearch et WebFetch, en deux passes. L'effort va aux pistes qui le méritent.
+
+**Passe 1, le tri, 4 recherches au plus.** Trois questions : le business existe-t-il ? L'application est-elle déjà faite, par qui ? Y a-t-il un développeur ou un CTO ? Essaie le nom commercial, le nom de l'entreprise, le nom de marque de l'application s'il apparaît dans l'activité, le dirigeant avec la ville. Si la réponse est « À écarter », écris la fiche tout de suite et passe à la suivante.
+
+**Passe 2, la fouille, 12 recherches au plus, pour les pistes qui restent.** Cherche dans cet ordre :
+- **Le site et ses pages cachées** : mentions légales, CGU, page « bientôt disponible », page « recrutement ». Elles donnent l'éditeur, le téléphone, l'email, le prestataire et la date de sortie.
+- **L'argent public** : « nom + prêt d'honneur », « nom + Initiative », « nom + Réseau Entreprendre », « nom + Bpifrance », « nom + incubateur », « nom + lauréat », « nom + concours ». Un prêt d'honneur fait 15 000 à 50 000 €.
+- **Les recrutements** : « nom + recrute », `site:welcometothejungle.com nom`, `site:indeed.fr nom`, `site:hellowork.com nom`, et la page Emplois de son LinkedIn. Une entreprise qui recrute un commercial ou un marketeur a de l'argent. Une entreprise qui recrute un développeur fera l'application en interne : à écarter.
+- **La presse locale et les salons** : « nom + ville », le nom du dirigeant avec la ville.
+- **Les avis et l'audience** : Google Maps, Pages Jaunes, Trustpilot, Instagram, Facebook.
+- **Les registres** : `https://recherche-entreprises.api.gouv.fr/search?q=SIREN` donne les dirigeants, les salariés et parfois le chiffre d'affaires ; societe.com donne les comptes.
+- **Le parcours du dirigeant** : LinkedIn, Malt, Viadeo.
 
 Pour une piste Ulule, commence par la page de la campagne. Trouve ensuite la personne ou l'entreprise derrière le projet : son site, ses mentions légales, l'annuaire des entreprises par nom. Regarde si l'application est sortie depuis, et qui la développe : la campagne dit souvent si l'argent paie un prestataire. Garde `ulule-…` tel quel dans le champ siren.
 
@@ -31,7 +42,7 @@ Réponds à ces questions :
      - une société immobilière ;
      - l'ancienneté seule ;
      - des abonnés.
-5. Quels signes que le projet démarre bientôt ? Il faut un signe daté de moins de six mois : une annonce de lancement, une page « bientôt disponible », une bêta, un salon, un recrutement, un post « je cherche un développeur », un CTO ou un associé recherché, une campagne de collecte, des travaux. L'annonce légale seule ne suffit pas.
+5. Quels signes que le projet démarre bientôt ? Il faut un signe daté de moins de six mois : une annonce de lancement, une page « bientôt disponible », une bêta, un salon, un recrutement, un post « je cherche un développeur », un CTO ou un associé recherché, une campagne de collecte, des travaux, un nom de domaine réservé (champ `domaine_recent`). L'annonce légale seule ne suffit pas.
 6. Quels contacts professionnels publics ? Le téléphone affiché par l'entreprise sur son site, sa fiche Google, Pages Jaunes ou sa fiche App Store, l'email affiché, le site, l'Instagram, le LinkedIn du dirigeant, la page Facebook. Dis si le téléphone est un mobile, en 06 ou 07, donc joignable sur WhatsApp, ou un fixe.
 7. Ton verdict :
    - « À contacter » : les cinq conditions sont réunies.

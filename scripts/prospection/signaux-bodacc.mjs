@@ -38,6 +38,12 @@
 //   node scripts/prospection/signaux-bodacc.mjs --jours 30
 //   node scripts/prospection/signaux-bodacc.mjs --depuis 2026-10-01
 //   --sans-app-store : ne pas vérifier si l'application existe déjà sur l'App Store
+//   --sans-afnic : ne pas chercher les noms de domaine .fr récents
+//
+// Domaine .fr : l'AFNIC publie chaque jour la liste des noms de domaine .fr
+// créés la veille, et garde environ trois mois en ligne. Une entreprise qui
+// vient de réserver « monappli.fr » prépare sa sortie : c'est un signe de
+// démarrage daté. Le script lit ces listes et cherche le nom de chaque piste.
 //
 // Sortie : prospects-signaux/signaux-du-AAAA-MM-JJ-au-AAAA-MM-JJ.csv (dossier ignoré par git :
 // le dépôt est public, aucun nom de prospect ne doit y entrer).
@@ -51,6 +57,8 @@ import { fileURLToPath } from 'node:url';
 const BODACC = 'https://bodacc-datadila.opendatasoft.com/api/explore/v2.1/catalog/datasets/annonces-commerciales/exports/json';
 const ANNUAIRE = 'https://recherche-entreprises.api.gouv.fr/search';
 const APP_STORE = 'https://itunes.apple.com/search';
+const AFNIC = 'https://www.afnic.fr/wp-media/ftp/domaineTLD_Afnic';
+const JOURS_AFNIC = 90;
 const RACINE = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const DOSSIER_SORTIE = join(RACINE, 'prospects-signaux');
 
@@ -65,6 +73,7 @@ const jours = Number(lireArg('--jours') ?? 7);
 const depuis = lireArg('--depuis') ?? new Date(aujourdhui.getTime() - jours * 86400000).toISOString().slice(0, 10);
 const sansAnnuaire = args.includes('--sans-annuaire');
 const sansAppStore = args.includes('--sans-app-store');
+const sansAfnic = args.includes('--sans-afnic');
 const MAX_APP_STORE = 60; // les meilleures pistes seulement : Apple limite le nombre d'appels
 
 // ---------- Filtres ----------
@@ -287,6 +296,44 @@ async function appDejaEnLigne(piste) {
   return app ? `Oui, sur l'App Store : ${app.trackName} (depuis ${(app.releaseDate ?? '').slice(0, 7)})` : '';
 }
 
+// Les domaines .fr créés ces trois derniers mois, d'après les listes quotidiennes
+// de l'AFNIC, gardées en mémoire locale (un fichier par jour).
+async function domainesRecents() {
+  const dossier = join(DOSSIER_SORTIE, '.cache-afnic');
+  mkdirSync(dossier, { recursive: true });
+  const parDomaine = new Map();
+  let absents = 0;
+  for (let i = 1; i <= JOURS_AFNIC && absents < 5; i++) {
+    const iso = new Date(aujourdhui.getTime() - i * 86400000).toISOString().slice(0, 10);
+    const fichier = join(dossier, `${iso}.txt`);
+    if (!existsSync(fichier)) {
+      const rep = await fetch(`${AFNIC}/${iso.replace(/-/g, '')}_CREA_fr.txt`).catch(() => null);
+      if (!rep?.ok) { absents++; continue; }
+      writeFileSync(fichier, await rep.text());
+    }
+    absents = 0;
+    for (const ligne of readFileSync(fichier, 'utf8').split('\n')) {
+      const domaine = ligne.trim().toLowerCase();
+      if (domaine && !domaine.startsWith('#') && !parDomaine.has(domaine)) parDomaine.set(domaine, iso);
+    }
+  }
+  return parDomaine;
+}
+
+// Le domaine .fr d'une piste, s'il vient d'être créé : « studiolumen.fr » ou « studio-lumen.fr ».
+function domaineRecent(piste, parDomaine) {
+  const candidats = new Set();
+  for (const nom of [piste.nomCommercial, piste.entreprise]) {
+    const colle = normaliser(nom);
+    if (colle.length >= 4) candidats.add(`${colle}.fr`);
+    const tirets = String(nom ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+      .replace(/\b(sasu|sas|sarl|eurl|sa|sci|ltd|inc)\b/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    if (tirets.length >= 4 && tirets.includes('-')) candidats.add(`${tirets}.fr`);
+  }
+  for (const c of candidats) if (parDomaine.has(c)) return `${c} créé le ${dateFr(parDomaine.get(c))}`;
+  return '';
+}
+
 // Range les autres entreprises du fondateur et les décrit en clair.
 function lireFondateur(autres) {
   const genre = (e) => (NAF_TECH.test(e.naf) ? 'tech'
@@ -383,6 +430,9 @@ function noter(piste) {
   if (a.length > 800) { score -= 2; raisons.push('objet social fourre-tout'); }
   else if (/^\s*(la soci[ée]t[ée] a pour objet\s*:?\s*)?prise de participations?/i.test(a)) { score -= 3; raisons.push('holding'); }
 
+  // Un nom de domaine réservé ces trois derniers mois : il prépare sa sortie.
+  if (piste.domaineRecent) { score += 1; raisons.push(`domaine ${piste.domaineRecent}`); }
+
   // De l'argent remis dans la société : la preuve la plus solide des registres.
   const h = piste.hausse;
   if (h && h.apres - h.avant >= 5000) {
@@ -433,7 +483,7 @@ const CSV_COLONNES = [
   ['score', 'Score'], ['pourquoi', 'Pourquoi'], ['signal', 'Signal'], ['date', 'Publié le'],
   ['entreprise', 'Entreprise'], ['nomCommercial', 'Nom commercial'], ['dirigeant', 'Dirigeant'],
   ['forme', 'Forme'], ['capital', 'Capital (€)'], ['hausseCapital', 'Hausse de capital'], ['preuvesArgent', 'Preuves d\'argent (registres)'],
-  ['existeDepuis', 'Existe depuis'],
+  ['existeDepuis', 'Existe depuis'], ['domaineRecent', 'Domaine .fr récent'],
   ['fondateurTexte', 'Autres entreprises du fondateur'], ['naf', 'Code activité'],
   ['ville', 'Ville'], ['departement', 'Département'], ['activite', 'Activité déclarée'],
   ['lienBodacc', 'Annonce BODACC'], ['lienAnnuaire', 'Fiche entreprise'], ['recherche', 'Recherche Google'],
@@ -563,6 +613,17 @@ async function main() {
     const avecAutres = pistes.filter((p) => p.fondateurTexte).length;
     const techs = pistes.filter((p) => p.fondateurTechnique).length;
     console.log(`${avecAutres} pistes dont le fondateur dirige d'autres entreprises, dont ${techs} avec une société informatique.`);
+  }
+
+  if (!sansAfnic) {
+    console.log('Lecture des domaines .fr créés ces trois derniers mois (AFNIC)…');
+    const parDomaine = await domainesRecents();
+    let trouves = 0;
+    for (const piste of pistes) {
+      piste.domaineRecent = domaineRecent(piste, parDomaine);
+      if (piste.domaineRecent) trouves++;
+    }
+    console.log(`${parDomaine.size} domaines lus, ${trouves} pistes ont réservé leur domaine .fr récemment.`);
   }
 
   for (const piste of pistes) {

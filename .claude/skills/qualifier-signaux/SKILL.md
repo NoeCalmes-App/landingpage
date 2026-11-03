@@ -20,12 +20,12 @@ Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. L
 ## Étapes
 
 1. **Sortir les signaux.** Lancer les deux commandes en arrière-plan, en même temps :
-   - `node scripts/prospection/signaux-bodacc.mjs` lit les 7 derniers jours : créations, ajouts d'activité et hausses de capital. Il relit l'historique BODACC de chaque piste pour trouver une hausse de capital depuis deux ans. Compter environ 4 minutes, car l'App Store limite le rythme.
+   - `node scripts/prospection/signaux-bodacc.mjs` lit les 7 derniers jours : créations, ajouts d'activité et hausses de capital. Il relit l'historique BODACC de chaque piste pour trouver une hausse de capital depuis deux ans, et cherche dans les listes de l'AFNIC si la piste vient de réserver son domaine .fr. Compter environ 5 minutes, car l'App Store limite le rythme.
    - `node scripts/prospection/campagnes-ulule.mjs` sort les campagnes Ulule réussies pour une application, sur 12 mois. Compter environ 2 minutes.
 2. **Choisir les pistes.** `node scripts/prospection/choisir-pistes.mjs` écrit `prospects-signaux/qualification-<jour>/pistes.json` :
    - 16 pistes BODACC au plus, les meilleures notes, sans les pistes déjà qualifiées, les fondateurs informaticiens et les applications déjà sur l'App Store ;
    - puis 4 campagnes Ulule au plus, jamais qualifiées, avec un identifiant `ulule-…` à la place du SIREN.
-3. **Fouiller le web, en parallèle.** Lancer un agent `general-purpose` par paquet de 4 pistes, tous dans un seul message, avec le modèle `sonnet` : 5 agents pour 20 pistes, d'index 0-3, 4-7, 8-11, 12-15 et 16-19. Le brief de chaque agent est `consigne-recherche.md`, à recopier en remplaçant `{PISTES}`, `{INDEX}` et `{SORTIE}` par le chemin de `pistes.json`, les index et `.../fiches-A.json`, puis `fiches-B.json`, et ainsi de suite.
+3. **Fouiller le web, en parallèle.** Lancer un agent `general-purpose` par paquet de 4 pistes, tous dans un seul message, avec le modèle `sonnet` : 5 agents pour 20 pistes, d'index 0-3, 4-7, 8-11, 12-15 et 16-19. Chaque agent travaille en deux passes : un tri en 4 recherches, puis 12 recherches de plus sur les pistes qui restent (argent public, recrutements, presse, avis). Le brief de chaque agent est `consigne-recherche.md`, à recopier en remplaçant `{PISTES}`, `{INDEX}` et `{SORTIE}` par le chemin de `pistes.json`, les index et `.../fiches-A.json`, puis `fiches-B.json`, et ainsi de suite.
 4. **Relire les « À contacter ».** Ouvrir le site cité et vérifier trois choses :
    - c'est bien la même entreprise ;
    - le numéro est publié par elle ;
@@ -43,14 +43,15 @@ Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. L
      - un seul onglet, fermé à la fin.
    - **Noter** dans le champ `reseaux` la source, la date et ce qui a été vu. Seulement le parcours professionnel, rien de personnel.
    - **Revoir le verdict** avec ces informations.
-6. **Regarder les pubs, dans le navigateur intégré.** Pour chaque piste « À contacter » ou « À creuser », ouvrir deux bibliothèques publiques. Elles se lisent sans connexion et ne comptent pas dans les 15 pages LinkedIn.
+6. **Regarder les pubs et les avis Google, dans le navigateur intégré.** Pour chaque piste « À contacter » ou « À creuser », ouvrir trois pages publiques. Elles se lisent sans connexion et ne comptent pas dans les 15 pages LinkedIn.
    - **Meta :** `https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=FR&q=%22NOM%22&search_type=keyword_exact_phrase`. La recherche remonte aussi d'autres annonceurs : ne compter que les pubs dont l'annonceur porte le nom de l'entreprise ou de sa marque. Noter le nombre de pubs, leurs dates, et si elles sont actives.
    - **Google :** `https://adstransparency.google.com/?region=FR&domain=SITE.fr`. Noter le nombre d'annonces et le nom de l'annonceur validé.
-   - **Noter le résultat** dans le champ `pubs` de la fiche, avec la date de la vérification, même s'il n'y a rien.
-   - **Revoir le verdict.** De la pub payée est une preuve d'argent forte : elle peut faire passer une piste « À creuser » en « À contacter ».
+   - **Google Maps**, pour un commerce, un restaurant, une salle ou un cabinet : `https://www.google.com/maps/search/NOM+VILLE`. À la première visite, une page de consentement s'affiche : cliquer « Tout refuser », le navigateur s'en souvient. Attendre que le panneau se charge, puis lire la note et le nombre d'avis dans les `aria-label` (« 5,0 étoiles », « 9 avis »), avec le téléphone et le site affichés. Au moins 50 avis sur un commerce de plus de trois ans : preuve d'argent forte.
+   - **Noter le résultat** dans le champ `pubs` de la fiche pour les pubs, et dans `signes_argent` pour les avis, avec la date de la vérification, même s'il n'y a rien.
+   - **Revoir le verdict.** De la pub payée ou beaucoup d'avis sont des preuves d'argent fortes : elles peuvent faire passer une piste « À creuser » en « À contacter ».
 7. **Rédiger les messages.** Remplir le champ `message` des fiches « À contacter », et des « À creuser » qui ont un contact et un projet clair.
    - Suivre la partie 7 de la marche à suivre : vouvoiement, moins de 100 mots, maquette offerte, sortie pour refuser.
-   - WhatsApp si un mobile est publié, sinon email.
+   - WhatsApp si un mobile est publié, sinon email, sinon LinkedIn, sinon Instagram en message privé au compte professionnel. Le message commence par le canal : « WhatsApp au … », « Email à … », « LinkedIn à … », « Instagram à … ».
    - Dire d'où vient l'information, par exemple « j'ai vu dans les annonces légales ».
    - Ne citer aucun fait que la fiche n'a pas sourcé.
 8. **Assembler.** `node scripts/prospection/fusionner-qualification.mjs prospects-signaux/qualification-<jour>`.
@@ -58,7 +59,7 @@ Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. L
    - `node scripts/importer-prospects-signaux.mjs` simule et liste ce qui serait créé ;
    - vérifier que chaque piste a son contact, son téléphone ou son email, et son canal ;
    - `node scripts/importer-prospects-signaux.mjs --apply` crée les fiches.
-   Chaque fiche arrive en « Nouveau », en tête de « À faire maintenant », avec la provenance « Prospection ». Dans son panneau, cinq pastilles se lisent au survol, comme celles d'un lead Meta : pourquoi lui, son projet, l'argent, le démarrage, comment je l'ai trouvé. Le descriptif reste vide pour Noé. Le message prêt et tout le dossier sont dans son bloc-notes. Une piste déjà dans Nowork, par son SIREN, son téléphone ou son email, est sautée sans rien toucher. Le script n'envoie rien à personne.
+   Une piste jointe seulement par LinkedIn ou Instagram entre aussi : le lien est dans la note, le message dans le bloc-notes. Chaque fiche arrive en « Nouveau », en tête de « À faire maintenant », avec la provenance « Prospection ». Dans son panneau, cinq pastilles se lisent au survol, comme celles d'un lead Meta : pourquoi lui, son projet, l'argent, le démarrage, comment je l'ai trouvé. Le descriptif reste vide pour Noé. Le message prêt et tout le dossier sont dans son bloc-notes. Une piste déjà dans Nowork, par son SIREN, son téléphone ou son email, est sautée sans rien toucher. Le script n'envoie rien à personne.
 10. **Livrer.**
    - Envoyer le CSV à Noé avec SendUserFile.
    - Dire que les « À contacter » sont dans Nowork.
@@ -96,3 +97,7 @@ Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. L
 - **La hausse de capital est la meilleure preuve des registres.** Elle est rare : sur une semaine, 3 pistes sont sorties par ce signal, et 6 avaient une hausse depuis deux ans. Exemple : une plateforme d'annonces passée de 30 000 € à 91 000 € de capital en février 2026.
 - **Ulule trouve des porteurs qui ont l'argent et le disent.** Sur 12 mois, 17 campagnes ont réussi pour une application. Une professeure de piano y détaille ce qu'elle va payer à un développeur.
 - **Bibliothèque Meta :** la recherche par mot-clé remonte des dizaines d'annonceurs sans rapport. Seul compte l'annonceur au nom de l'entreprise. Une piste avait 60 pubs Meta et 4 annonces Google : elle dépense en marketing.
+- **Sources testées le 03/11 et abandonnées :** la base des marques de l'INPI n'affiche aucun résultat dans le navigateur, même pour « doctolib » ; la recherche de phrases comme « notre application arrive » dans la bibliothèque Meta ne sort qu'une pub, en Tunisie. Les offres d'emploi se cherchent par WebSearch (`site:welcometothejungle.com`, `site:indeed.fr`), pas sur les sites eux-mêmes.
+- **Sources qui marchent :** les listes quotidiennes de l'AFNIC donnent le domaine .fr réservé par une piste (automatique) ; Google Maps donne la note, le nombre d'avis, le téléphone et le site d'un commerce, dans le navigateur intégré.
+- **Ulule, le 03/11 :** les 4 campagnes réussies qualifiées avaient toutes leur application déjà sortie. Il faut arriver pendant la campagne, ou juste après : le script ne garde plus que les campagnes en cours ou finies depuis moins de 60 jours.
+- **Résultat du 03/11, nouvelle méthode :** sur 20 pistes, 2 à contacter, 6 à creuser, 12 à écarter. Les réseaux lus dans le Chrome de Noé ont tranché 4 verdicts : un directeur général « CTO » (écarté), un commercial du bois avec 65 dépôts et son mobile publié (à contacter), un diagnostiqueur énergétique joignable sur LinkedIn (à contacter), deux banquiers sans signe de démarrage (à creuser).

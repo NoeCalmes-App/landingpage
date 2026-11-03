@@ -80,7 +80,7 @@ const pistes = lireCSV(readFileSync(join(DOSSIER, source), 'utf8'))
     siren: siren(p), score: p.Score, pourquoi: p.Pourquoi, signal: p.Signal, date: p['Publié le'], entreprise: p.Entreprise,
     nom_commercial: p['Nom commercial'], dirigeant: p.Dirigeant, forme: p.Forme, capital: p['Capital (€)'],
     hausse_capital: p['Hausse de capital'] ?? '', preuves_argent_registres: p['Preuves d\'argent (registres)'] ?? '',
-    existe_depuis: p['Existe depuis'], autres_entreprises: p['Autres entreprises du fondateur'],
+    existe_depuis: p['Existe depuis'], domaine_recent: p['Domaine .fr récent'] ?? '', autres_entreprises: p['Autres entreprises du fondateur'],
     ville: p.Ville, departement: p['Département'], activite: p['Activité déclarée'].slice(0, 900), lien_bodacc: p['Annonce BODACC'],
   }));
 

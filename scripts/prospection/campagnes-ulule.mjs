@@ -12,6 +12,11 @@
 // 12 mois, dont le nom ou le sous-titre parle bien d'une application, et qui ont
 // collecté au moins 3 000 € (objectif atteint, ou à moitié pour une campagne en cours).
 //
+// Leçon du 03/11/2026 : les quatre campagnes réussies qualifiées ce jour-là avaient
+// toutes leur application déjà sortie, souvent codée par le fondateur ou une
+// équipe. L'argent sert à construire : il faut arriver AVANT. Le script ne garde
+// donc que les campagnes en cours, ou terminées depuis moins de 60 jours.
+//
 // Une mémoire locale (.cache-ulule.json) retient les campagnes déjà sorties :
 // la colonne « Nouvelle ? » dit lesquelles apparaissent cette semaine.
 //
@@ -82,8 +87,11 @@ async function main() {
   const dejaVues = existsSync(fichierCache) ? JSON.parse(readFileSync(fichierCache, 'utf8')) : {};
 
   const lignes = [];
+  const limiteFin = new Date(aujourdhui.getTime() - 60 * 86400000).toISOString().slice(0, 10);
+  let tropVieilles = 0;
   for (const p of gardees) {
     const d = (await appel(`/projects/${p.id}`)) ?? {};
+    if (p.finished && String(d.date_end ?? '').slice(0, 10) < limiteFin) { tropVieilles++; continue; }
     const id = `ulule-${p.id}`;
     lignes.push({
       nouvelle: id in dejaVues ? '' : 'oui',
@@ -126,7 +134,7 @@ async function main() {
   ].join('\n'), 'utf8');
 
   const nouvelles = lignes.filter((l) => l.nouvelle).length;
-  console.log(`\n${lignes.length} campagnes écrites dans ${fichier}, dont ${nouvelles} nouvelles.`);
+  console.log(`\n${lignes.length} campagnes écrites dans ${fichier}, dont ${nouvelles} nouvelles (${tropVieilles} terminées depuis plus de 60 jours, écartées).`);
   for (const l of lignes.slice(0, 15)) {
     console.log(`  ${l.nouvelle ? 'NOUVELLE ' : '         '}${String(l.collecte).padStart(6)} € (${l.pourcent} %, ${l.etat}) · ${l.projet} · ${l.ville}`);
   }

@@ -39,12 +39,17 @@ Ordres de grandeur donnés par Noé le 02/11 : application web à partir de 5 00
 | **BODACC, hausse de capital** | Une entreprise d'application vient de remettre de l'argent dans sa société. Pour toutes les pistes, une hausse depuis deux ans est une preuve d'argent | Gratuit | Automatique, script |
 | **Ulule, campagnes réussies** | Un porteur a collecté de l'argent pour son application, et dit souvent ce que l'argent va payer | Gratuit | Automatique, script |
 | **Bibliothèques de pubs Meta et Google** | La piste paie déjà de la publicité : elle dépense pour grandir | Gratuit | À la main, pour les pistes retenues |
+| **AFNIC, domaines .fr créés** | La piste vient de réserver « monappli.fr » : elle prépare sa sortie, et c'est l'adresse de son site | Gratuit | Automatique, script |
+| **Google Maps** | La note et le nombre d'avis d'un commerce : au moins 50 avis sur plus de trois ans, le business tourne | Gratuit | Navigateur intégré, pour les pistes retenues |
+| **Argent public et recrutements** | Prêt d'honneur, Réseau Entreprendre, Bpifrance, incubateur, concours ; offres d'emploi commerciales | Gratuit | Recherche web, deuxième passe des agents |
 | Annonces « je cherche » | Codeur, Comeup, cofondateur.fr, posts LinkedIn « je cherche un développeur », groupes Facebook et Reddit d'entrepreneurs | Gratuit | À la main, 15 min par semaine |
 | Journal de Monaco | Rubrique des insertions légales : les sociétés monégasques qui se créent | Gratuit | À la main, pas encore automatisé |
 | Lauréats de prêts d'honneur et d'incubateurs | Initiative France, Réseau Entreprendre et les incubateurs publient leurs promotions | Gratuit | À la main |
 | Mauvais avis d'applications payantes | Trustpilot, stores : une application qui perd ses abonnés | Gratuit | À la main, pour « reprendre » ou « faire évoluer » |
 
 **Ce qui ne marche pas, vérifié le 03/11/2026.**
+- **La base des marques de l'INPI** n'affiche aucun résultat dans le navigateur, même pour « doctolib ».
+- **Chercher des phrases dans la bibliothèque Meta** (« notre application arrive », « bientôt sur l'App Store ») ne sort rien d'utile : une pub, en Tunisie.
 - **Reddit** refuse la lecture sans compte.
 - **Les groupes Facebook** demandent une connexion.
 - **Malt** bloque.
@@ -75,15 +80,17 @@ Par défaut, les 7 derniers jours. `--jours 30` ou `--depuis 2026-10-01` pour re
    - Une hausse depuis deux ans d'au moins 5 000 € rapporte 2 points, ou 3 si le capital a au moins doublé.
    - Une entreprise dont l'activité est une application et qui vient d'augmenter son capital devient une piste « Hausse de capital ». On écarte les sociétés civiles, les grands groupes au-delà d'un million, les holdings et les sociétés de programmation.
    - La colonne « Preuves d'argent (registres) » liste ce que les registres prouvent : hausse de capital, capital d'au moins 10 000 €, chiffre d'affaires d'au moins 100 000 €, salariés, établissements. « Le fondateur dirige une autre entreprise » n'y figure pas.
-8. **L'App Store.** Pour les 60 meilleures pistes, il cherche si une application existe déjà sous le nom de l'entreprise ou du dirigeant. Le résultat va dans la colonne « App déjà en ligne ? ».
-9. Il note chaque piste et explique la note en clair dans la colonne « Pourquoi ».
+8. **Le domaine .fr.** L'AFNIC publie chaque jour la liste des domaines .fr créés la veille et garde trois mois en ligne. Le script les lit, les garde en mémoire locale, et cherche le nom de chaque piste, collé ou avec des tirets. Résultat dans la colonne « Domaine .fr récent », avec la date. Premier passage le 03/11/2026 : 38 pistes sur 227, souvent un domaine réservé des semaines avant la société.
+9. **L'App Store.** Pour les 60 meilleures pistes, il cherche si une application existe déjà sous le nom de l'entreprise ou du dirigeant. Le résultat va dans la colonne « App déjà en ligne ? ».
+10. Il note chaque piste et explique la note en clair dans la colonne « Pourquoi ».
    - **Ce qui fait monter la note :**
      - une entreprise déjà en activité, avec un autre métier, qui ajoute une application : **la cible numéro un** ;
      - un projet précis, comme « mise en relation entre X et Y », plutôt qu'un objet social vague ;
      - un modèle de revenus déclaré : abonnement, commission, réservation ;
      - un secteur proche des clients de Noé ;
      - une société avec du capital ;
-     - une hausse de capital depuis deux ans.
+     - une hausse de capital depuis deux ans ;
+     - un domaine .fr réservé ces trois derniers mois.
    - **L'argent du fondateur** fait aussi monter la note :
      - il dirige déjà d'autres entreprises, encore plus si l'une a plus de trois ans ;
      - il a une holding ou du patrimoine immobilier ;
@@ -93,9 +100,9 @@ Par défaut, les 7 derniers jours. `--jours 30` ou `--depuis 2026-10-01` pour re
      - une micro-entreprise toute neuve ;
      - un fondateur qui dirige une société informatique, signalé dans la colonne « Fondateur technique ? » ;
      - une application déjà sur l'App Store.
-10. Il écrit `prospects-signaux/signaux-du-AAAA-MM-JJ-au-AAAA-MM-JJ.csv`, trié par note, avec des colonnes vides pour le suivi : contact, canal, message envoyé, relance, réponse, statut.
+11. Il écrit `prospects-signaux/signaux-du-AAAA-MM-JJ-au-AAAA-MM-JJ.csv`, trié par note, avec des colonnes vides pour le suivi : contact, canal, message envoyé, relance, réponse, statut.
 
-Durée : environ 4 minutes, car l'App Store limite le rythme des recherches. `--sans-app-store` va plus vite.
+Durée : environ 5 minutes, car l'App Store limite le rythme des recherches. `--sans-app-store` et `--sans-afnic` vont plus vite.
 
 **Les campagnes Ulule** ont leur propre script :
 
@@ -108,7 +115,7 @@ Il lit l'API publique d'Ulule, sans clé, et garde les campagnes de France lanc�
 - au moins 3 000 € collectés ;
 - l'objectif atteint, ou à moitié pour une campagne en cours.
 
-Il écrit `prospects-signaux/ulule-AAAA-MM-JJ.csv` avec ce que finance l'argent et qui porte le projet. La colonne « Nouvelle ? » marque les campagnes jamais vues. Environ 2 minutes. Premier passage le 03/11/2026 : 17 campagnes.
+Il écrit `prospects-signaux/ulule-AAAA-MM-JJ.csv` avec ce que finance l'argent et qui porte le projet. La colonne « Nouvelle ? » marque les campagnes jamais vues. Environ 2 minutes. Premier passage le 03/11/2026 : 17 campagnes, dont 4 qualifiées le jour même. **Toutes avaient leur application déjà sortie**, codée par le fondateur ou une équipe : l'argent collecté avait déjà servi. Depuis, le script ne garde que les campagnes en cours ou finies depuis moins de 60 jours, pour arriver avant que l'application soit faite.
 
 **Ouvrir dans Google Sheets** : Fichier, Importer, Importer, choisir le CSV, « Insérer de nouvelles feuilles ».
 
@@ -117,13 +124,14 @@ Il écrit `prospects-signaux/ulule-AAAA-MM-JJ.csv` avec ce que finance l'argent 
 **Côté Claude, environ 20 minutes.** Dans Claude Code, ouvert sur landing-page, Noé demande « lance la prospection du lundi ». La commande `qualifier-signaux` (`.claude/skills/qualifier-signaux/`) :
 1. lance les deux scripts, BODACC et Ulule ;
 2. choisit les pistes jamais qualifiées, avec `scripts/prospection/choisir-pistes.mjs` : les 16 meilleures notes du BODACC et 4 campagnes Ulule ;
-3. fouille le web pour chacune : l'application existe-t-elle, faite sans code ou par une équipe ? Le fondateur est-il technique ? Quelles preuves d'argent et quels signes de démarrage ? Quels contacts professionnels publics ?
+3. fouille le web pour chacune, en deux passes. Un tri en 4 recherches : le business existe-t-il, l'application est-elle déjà faite, y a-t-il un développeur ? Puis 12 recherches sur celles qui restent : argent public (prêt d'honneur, Réseau Entreprendre, Bpifrance, incubateur), recrutements, presse locale, avis, registres, parcours du dirigeant, contacts professionnels publics ;
 4. lit LinkedIn, Instagram et Facebook dans le Chrome de Noé, pour les pistes retenues. Lecture seule, 15 pages au plus, lentement, car LinkedIn interdit les robots et c'est le compte de Noé ;
-5. regarde les pubs de ces pistes dans les bibliothèques publiques de Meta et de Google ;
+5. regarde, dans le navigateur intégré, les pubs de ces pistes dans les bibliothèques publiques de Meta et de Google, et leur fiche Google Maps pour les commerces ;
 6. donne un verdict, « À contacter », « À creuser » ou « À écarter », avec une accroche, et rédige les messages ;
 7. fait entrer les « À contacter » dans Nowork, avec `nowork/scripts/importer-prospects-signaux.mjs`. Chaque piste devient une fiche « Nouveau », provenance « Prospection », en tête de « À faire maintenant ».
    - Cinq **pastilles**, lues au survol comme celles d'un lead Meta : pourquoi lui, son projet, l'argent, le démarrage, comment je l'ai trouvé. Le descriptif reste vide pour Noé.
    - Le **bloc-notes** donne le message prêt et tout le dossier.
+   - Une piste jointe seulement par LinkedIn ou Instagram entre aussi, le lien dans la note.
    - Une piste déjà dans Nowork, par son SIREN, son téléphone ou son email, est sautée.
    - Rien n'est envoyé à personne ;
 8. livre `prospects-signaux/qualifies-AAAA-MM-JJ.csv`, qui garde aussi les « À creuser » et les « À écarter ».
@@ -149,7 +157,7 @@ Il manque une condition : « À creuser ».
 
 **Côté Noé, environ 30 minutes.**
 1. **Ouvrir Nowork.** Les « À contacter » sont en tête de « À faire maintenant ». Dans chaque fiche, les pastilles disent pourquoi lui et comment il a été trouvé, et le bloc-notes donne le message prêt et le canal. Vérifier en un clic le site et le message.
-2. **Envoyer, un par un.** WhatsApp si un mobile professionnel est publié, sinon email, sinon LinkedIn. Jamais un envoi groupé.
+2. **Envoyer, un par un.** WhatsApp si un mobile professionnel est publié, sinon email, sinon LinkedIn, sinon Instagram en message privé au compte professionnel. Jamais un envoi groupé. La fiche Nowork porte le téléphone ou l'email ; pour LinkedIn ou Instagram, le lien est dans la note et le message dans le bloc-notes, à coller soi-même.
 3. **Survoler les « À creuser ».** Le plus souvent, on attend : le lieu n'est pas encore ouvert, ou le contact manque.
 4. **Relancer** une fois à J+4 et une fois à J+10, puis s'arrêter.
 5. **Suivre dans Nowork**, comme un lead du formulaire : qualification, appel 1 puis visio 2. Le bouton « Premier message » ne s'affiche pas sur ces fiches, parce que son texte parle du formulaire : copier le message du bloc-notes.
@@ -161,7 +169,7 @@ Il manque une condition : « À creuser ».
 | A-t-il de l'argent ? | Automatique : hausse de capital, capital, salariés, chiffre d'affaires publié, collecte Ulule. Recherche web : avis Google, levée de fonds, incubateur. À la main : pubs Meta et Google. Les autres entreprises du fondateur ne sont qu'un indice | Bonne pour une société, faible pour une micro-entreprise neuve |
 | Est-il technique ? | Une société informatique à son nom : automatique. Son LinkedIn et celui de ses associés, lus dans le Chrome de Noé | Très bonne |
 | L'application existe-t-elle ? | L'App Store au nom de l'entreprise : automatique. Site, Google Play, outil sans code : recherche web | Bonne |
-| Démarre-t-il bientôt ? | La date de l'annonce légale. Une bêta, un salon, une page « bientôt » : recherche web | Moyenne |
+| Démarre-t-il bientôt ? | La date de l'annonce légale et le domaine .fr réservé : automatique. Une bêta, un salon, une page « bientôt », un recrutement : recherche web | Bonne quand le domaine est là, moyenne sinon |
 | A-t-il une audience ? | Abonnés et derniers posts Instagram et Facebook, lus dans le Chrome de Noé | Bonne |
 | Comment le joindre ? | Mentions légales, fiche Google, fiche App Store, email affiché sur Facebook ou Instagram | Environ une piste sur deux |
 
@@ -173,6 +181,14 @@ Il manque une condition : « À creuser ».
 Une première version sans code est un bon signal : l'idée est testée, et il faudra la vraie version.
 
 Les réseaux, lus ensuite dans le Chrome de Noé, ont changé 6 verdicts sur 7. Ils ont révélé un cofondateur ancien développeur, une audience de 29 abonnés, un lancement annoncé et une halle gourmande en travaux avec son email. Bilan final : 4 pistes à contacter, 1 à creuser, 11 à écarter.
+
+**Deuxième essai, le 03/11/2026, avec la nouvelle méthode** (deux passes, règle des deux preuves fortes, domaines .fr, pubs, Google Maps). Sur 20 pistes, 16 du BODACC et 4 d'Ulule : 2 à contacter, 6 à creuser, 12 à écarter. Ce que la méthode a attrapé :
+- un directeur général qui se présente « Entrepreneur Tech & CTO » sur LinkedIn, derrière un restaurateur franchisé avec de vraies preuves d'argent : écarté ;
+- un commercial du bois qui a créé un réseau de 65 dépôts, dont le groupe publie 1,5 M€ de chiffre d'affaires et paie des pubs Meta et Google, qui vient de créer « Service Commercial IA », l'affiche déjà sur son LinkedIn et publie son mobile : à contacter par WhatsApp ;
+- un diagnostiqueur énergétique dont le bureau d'études fait 1,6 M€ avec 10 à 19 salariés, qui a réservé le domaine .fr de sa marque sept semaines avant de créer sa société de plateforme, joignable seulement sur LinkedIn : à contacter par LinkedIn ;
+- deux banquiers qui créent une société de plateforme avec 15 000 € de capital et un cabinet à 90 avis Google, sans aucun signe de démarrage : à creuser, à revoir dans un mois.
+
+La règle stricte donne moins de « À contacter », mais chacun a deux preuves d'argent, un signe daté et un contact vérifié. Les « À creuser » restent dans le tableau, avec ce qui leur manque, pour être revus quand un signe apparaît.
 
 ## 7. Le message
 
@@ -202,6 +218,10 @@ Principes :
 ### Message LinkedIn (300 caractères maximum)
 
 > Bonjour [Prénom], j'ai vu le lancement de [Nom du projet]. Je conçois des applications pensées pour rapporter et j'ai une idée sur [son modèle : la commission, l'abonnement…]. Je vous prépare la maquette de l'écran principal, offerte ? Noé
+
+### Message Instagram (court, au compte professionnel)
+
+> Bonjour, j'ai vu le lancement de [Nom du projet] dans les annonces légales. Je conçois des applications pensées pour rapporter. Je vous prépare la maquette de l'écran principal, offerte, pour voir votre application avant de vous lancer ? Noé, noecalmes.fr
 
 ### Relance (J+4)
 
