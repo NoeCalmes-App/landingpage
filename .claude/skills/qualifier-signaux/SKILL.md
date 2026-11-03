@@ -58,7 +58,7 @@ Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. L
    - `node scripts/importer-prospects-signaux.mjs` simule et liste ce qui serait créé ;
    - vérifier que chaque piste a son contact, son téléphone ou son email, et son canal ;
    - `node scripts/importer-prospects-signaux.mjs --apply` crée les fiches.
-   Chaque fiche arrive en « Nouveau », en tête de « À faire maintenant », avec la provenance « Prospection ». Son descriptif dit pourquoi la piste est intéressante, puis comment elle a été trouvée : l'annonce légale ou la campagne Ulule, sa date, où elle a été vérifiée. Le message prêt et tout le dossier sont dans son bloc-notes. Une piste déjà dans Nowork, par son SIREN, son téléphone ou son email, est sautée sans rien toucher. Le script n'envoie rien à personne.
+   Chaque fiche arrive en « Nouveau », en tête de « À faire maintenant », avec la provenance « Prospection ». Dans son panneau, cinq pastilles se lisent au survol, comme celles d'un lead Meta : pourquoi lui, son projet, l'argent, le démarrage, comment je l'ai trouvé. Le descriptif reste vide pour Noé. Le message prêt et tout le dossier sont dans son bloc-notes. Une piste déjà dans Nowork, par son SIREN, son téléphone ou son email, est sautée sans rien toucher. Le script n'envoie rien à personne.
 10. **Livrer.**
    - Envoyer le CSV à Noé avec SendUserFile.
    - Dire que les « À contacter » sont dans Nowork.

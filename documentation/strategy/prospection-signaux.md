@@ -122,7 +122,7 @@ Il écrit `prospects-signaux/ulule-AAAA-MM-JJ.csv` avec ce que finance l'argent 
 5. regarde les pubs de ces pistes dans les bibliothèques publiques de Meta et de Google ;
 6. donne un verdict, « À contacter », « À creuser » ou « À écarter », avec une accroche, et rédige les messages ;
 7. fait entrer les « À contacter » dans Nowork, avec `nowork/scripts/importer-prospects-signaux.mjs`. Chaque piste devient une fiche « Nouveau », provenance « Prospection », en tête de « À faire maintenant ».
-   - Le **descriptif** dit pourquoi la piste est intéressante, comment elle a été trouvée et où elle a été vérifiée.
+   - Cinq **pastilles**, lues au survol comme celles d'un lead Meta : pourquoi lui, son projet, l'argent, le démarrage, comment je l'ai trouvé. Le descriptif reste vide pour Noé.
    - Le **bloc-notes** donne le message prêt et tout le dossier.
    - Une piste déjà dans Nowork, par son SIREN, son téléphone ou son email, est sautée.
    - Rien n'est envoyé à personne ;
@@ -148,7 +148,7 @@ Il écrit `prospects-signaux/ulule-AAAA-MM-JJ.csv` avec ce que finance l'argent 
 Il manque une condition : « À creuser ».
 
 **Côté Noé, environ 30 minutes.**
-1. **Ouvrir Nowork.** Les « À contacter » sont en tête de « À faire maintenant ». Dans chaque fiche, le descriptif dit pourquoi et comment la piste a été trouvée, et le bloc-notes donne le message prêt et le canal. Vérifier en un clic le site et le message.
+1. **Ouvrir Nowork.** Les « À contacter » sont en tête de « À faire maintenant ». Dans chaque fiche, les pastilles disent pourquoi lui et comment il a été trouvé, et le bloc-notes donne le message prêt et le canal. Vérifier en un clic le site et le message.
 2. **Envoyer, un par un.** WhatsApp si un mobile professionnel est publié, sinon email, sinon LinkedIn. Jamais un envoi groupé.
 3. **Survoler les « À creuser ».** Le plus souvent, on attend : le lieu n'est pas encore ouvert, ou le contact manque.
 4. **Relancer** une fois à J+4 et une fois à J+10, puis s'arrêter.
