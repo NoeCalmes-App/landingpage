@@ -1,0 +1,98 @@
+---
+name: qualifier-signaux
+description: Prospection du lundi pour Noé. Sort les entrepreneurs qui viennent de déclarer une application ou d'augmenter leur capital au BODACC, et les campagnes Ulule réussies pour une application. Qualifie les meilleures pistes par recherche web et par les bibliothèques de pubs Meta et Google (preuves d'argent, fondateur technique, application déjà faite, contacts professionnels publics), rédige les premiers messages, les fait entrer dans Nowork et livre un tableau. À utiliser quand Noé demande « les signaux », « la prospection du lundi », « qualifie les pistes », « trouve-moi des prospects » ou « lance la prospection ».
+---
+
+# Qualifier les signaux
+
+Livrable : `prospects-signaux/qualifies-AAAA-MM-JJ.csv`, environ 20 pistes avec un verdict, les contacts professionnels publics, une accroche, et un message prêt pour chaque piste « À contacter ». Noé n'a plus qu'à envoyer.
+
+Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. Le lire avant de rédiger un message.
+
+## Règles absolues
+
+- **Ne jamais envoyer de message**, ni remplir un formulaire, ni créer un compte. Noé envoie lui-même.
+- **Rien de `prospects-signaux/` dans git.** Le dépôt est public.
+- **Coordonnées professionnelles publiées par l'entreprise elle-même**, seulement. Jamais l'adresse d'un entrepreneur individuel, jamais un email deviné, jamais un annuaire de particuliers ni une base fuitée.
+- **Aucun contournement** : pas de faux navigateur, pas de passage forcé d'une page anti-robot. Une page bloquée se note et on passe.
+- **Pas de tiret cadratin** dans les messages.
+
+## Étapes
+
+1. **Sortir les signaux.** Lancer les deux commandes en arrière-plan, en même temps :
+   - `node scripts/prospection/signaux-bodacc.mjs` lit les 7 derniers jours : créations, ajouts d'activité et hausses de capital. Il relit l'historique BODACC de chaque piste pour trouver une hausse de capital depuis deux ans. Compter environ 4 minutes, car l'App Store limite le rythme.
+   - `node scripts/prospection/campagnes-ulule.mjs` sort les campagnes Ulule réussies pour une application, sur 12 mois. Compter environ 2 minutes.
+2. **Choisir les pistes.** `node scripts/prospection/choisir-pistes.mjs` écrit `prospects-signaux/qualification-<jour>/pistes.json` :
+   - 16 pistes BODACC au plus, les meilleures notes, sans les pistes déjà qualifiées, les fondateurs informaticiens et les applications déjà sur l'App Store ;
+   - puis 4 campagnes Ulule au plus, jamais qualifiées, avec un identifiant `ulule-…` à la place du SIREN.
+3. **Fouiller le web, en parallèle.** Lancer un agent `general-purpose` par paquet de 4 pistes, tous dans un seul message, avec le modèle `sonnet` : 5 agents pour 20 pistes, d'index 0-3, 4-7, 8-11, 12-15 et 16-19. Le brief de chaque agent est `consigne-recherche.md`, à recopier en remplaçant `{PISTES}`, `{INDEX}` et `{SORTIE}` par le chemin de `pistes.json`, les index et `.../fiches-A.json`, puis `fiches-B.json`, et ainsi de suite.
+4. **Relire les « À contacter ».** Ouvrir le site cité et vérifier trois choses :
+   - c'est bien la même entreprise ;
+   - le numéro est publié par elle ;
+   - la règle est tenue : au moins deux preuves d'argent fortes dans `preuves_argent`, et un signe de démarrage de moins de six mois. « Le fondateur dirige une autre entreprise » n'est pas une preuve.
+
+   Au moindre doute, passer la piste en « À creuser ».
+5. **Lire les réseaux dans le Chrome de Noé**, pour chaque piste « À contacter » ou « À creuser ». Utiliser les outils Claude in Chrome, où Noé est connecté.
+   - **Quoi regarder :**
+     - le LinkedIn des fondateurs, pour savoir s'il y a un développeur ou un CTO ;
+     - l'Instagram et la page Facebook de l'entreprise : abonnés, derniers posts, annonce d'ouverture ou de sortie, email affiché.
+   - **Lecture seule.** Ne jamais suivre, aimer, commenter, se connecter à quelqu'un ni écrire. Déplier un « En voir plus » est permis.
+   - **Doucement.** LinkedIn interdit les robots, et c'est le compte de Noé qui est en jeu :
+     - 15 pages au plus par lundi ;
+     - 3 à 5 secondes entre deux pages ;
+     - un seul onglet, fermé à la fin.
+   - **Noter** dans le champ `reseaux` la source, la date et ce qui a été vu. Seulement le parcours professionnel, rien de personnel.
+   - **Revoir le verdict** avec ces informations.
+6. **Regarder les pubs, dans le navigateur intégré.** Pour chaque piste « À contacter » ou « À creuser », ouvrir deux bibliothèques publiques. Elles se lisent sans connexion et ne comptent pas dans les 15 pages LinkedIn.
+   - **Meta :** `https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=FR&q=%22NOM%22&search_type=keyword_exact_phrase`. La recherche remonte aussi d'autres annonceurs : ne compter que les pubs dont l'annonceur porte le nom de l'entreprise ou de sa marque. Noter le nombre de pubs, leurs dates, et si elles sont actives.
+   - **Google :** `https://adstransparency.google.com/?region=FR&domain=SITE.fr`. Noter le nombre d'annonces et le nom de l'annonceur validé.
+   - **Noter le résultat** dans le champ `pubs` de la fiche, avec la date de la vérification, même s'il n'y a rien.
+   - **Revoir le verdict.** De la pub payée est une preuve d'argent forte : elle peut faire passer une piste « À creuser » en « À contacter ».
+7. **Rédiger les messages.** Remplir le champ `message` des fiches « À contacter », et des « À creuser » qui ont un contact et un projet clair.
+   - Suivre la partie 7 de la marche à suivre : vouvoiement, moins de 100 mots, maquette offerte, sortie pour refuser.
+   - WhatsApp si un mobile est publié, sinon email.
+   - Dire d'où vient l'information, par exemple « j'ai vu dans les annonces légales ».
+   - Ne citer aucun fait que la fiche n'a pas sourcé.
+8. **Assembler.** `node scripts/prospection/fusionner-qualification.mjs prospects-signaux/qualification-<jour>`.
+9. **Faire entrer les « À contacter » dans Nowork.** Depuis le dossier `nowork` :
+   - `node scripts/importer-prospects-signaux.mjs` simule et liste ce qui serait créé ;
+   - vérifier que chaque piste a son contact, son téléphone ou son email, et son canal ;
+   - `node scripts/importer-prospects-signaux.mjs --apply` crée les fiches.
+   Chaque fiche arrive en « Nouveau », en tête de « À faire maintenant », avec la provenance « Prospection ». Son descriptif dit pourquoi la piste est intéressante, puis comment elle a été trouvée : l'annonce légale ou la campagne Ulule, sa date, où elle a été vérifiée. Le message prêt et tout le dossier sont dans son bloc-notes. Une piste déjà dans Nowork, par son SIREN, son téléphone ou son email, est sautée sans rien toucher. Le script n'envoie rien à personne.
+10. **Livrer.**
+   - Envoyer le CSV à Noé avec SendUserFile.
+   - Dire que les « À contacter » sont dans Nowork.
+   - Dire en trois lignes combien de pistes ont chaque verdict.
+   - Dire qui contacter en premier, et pourquoi.
+   - Dire ce qui reste à vérifier à la main.
+
+## Leçons du premier lancement (02/11/2026)
+
+- Sur les 16 meilleures pistes, le verdict a donné 1 « À contacter », 7 « À creuser » et 8 « À écarter ». La note du script trie, mais ne qualifie pas : la recherche web reste indispensable.
+- **Ce qui fait écarter :**
+  - un fondateur développeur, repéré sur Malt, Viadeo ou LinkedIn ;
+  - un CTO dans l'équipe ;
+  - une application déjà publiée ;
+  - une micro-entreprise de quelques semaines, sans aucune trace en ligne.
+- **Un signal précieux : une première version faite sans code**, sur Lovable, Base44 ou Bubble. L'idée est testée et le fondateur a besoin de la vraie version. L'angle est alors « reprendre et solidifier », pas « créer ».
+- **Les réseaux changent tout.** Lus dans le Chrome de Noé, ils ont changé 6 verdicts sur 7 :
+  - un cofondateur ancien développeur dans un grand groupe ;
+  - une audience de 29 abonnés seulement ;
+  - un fondateur de l'automobile qui annonce sa sortie prochaine ;
+  - une halle gourmande en travaux, avec son email public.
+
+  Bilan final : 4 à contacter, 1 à creuser, 11 à écarter.
+- **Les sources qui répondent :**
+  - le site de l'entreprise, surtout les mentions légales et les CGU ;
+  - l'API publique `recherche-entreprises.api.gouv.fr` ;
+  - l'App Store ;
+  - societe.com, lu avec WebFetch.
+
+  La recherche web trouve peu de chose sur les noms de personnes.
+
+## Leçons du 03/11/2026
+
+- **« A une autre entreprise » ne prouve pas l'argent.** Noé l'a dit, d'où la règle des deux preuves fortes.
+- **La hausse de capital est la meilleure preuve des registres.** Elle est rare : sur une semaine, 3 pistes sont sorties par ce signal, et 6 avaient une hausse depuis deux ans. Exemple : une plateforme d'annonces passée de 30 000 € à 91 000 € de capital en février 2026.
+- **Ulule trouve des porteurs qui ont l'argent et le disent.** Sur 12 mois, 17 campagnes ont réussi pour une application. Une professeure de piano y détaille ce qu'elle va payer à un développeur.
+- **Bibliothèque Meta :** la recherche par mot-clé remonte des dizaines d'annonceurs sans rapport. Seul compte l'annonceur au nom de l'entreprise. Une piste avait 60 pubs Meta et 4 annonces Google : elle dépense en marketing.

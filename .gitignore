@@ -53,3 +53,7 @@ __pycache__/
 content/video-hero/**/*.mp4
 content/video-hero/**/*.wav
 FETCH_HEAD
+
+# Listes de prospects sorties par scripts/prospection/ : des noms de
+# personnes reelles. Le depot est public : elles ne doivent jamais y entrer.
+prospects-signaux/
