@@ -54,6 +54,8 @@ Ordres de grandeur donnés par Noé le 02/11 : application web à partir de 5 00
 | Lauréats de prêts d'honneur et d'incubateurs | Initiative France, Réseau Entreprendre et les incubateurs publient leurs promotions | Gratuit | À la main |
 | Mauvais avis d'applications payantes | Trustpilot, stores : une application qui perd ses abonnés | Gratuit | À la main, pour « reprendre » ou « faire évoluer » |
 
+**Écartés par Noé le 04/11/2026** : les domaines .fr comme source de pistes (« s'il sait créer un nom de domaine, il ne fera pas appel à moi » ; ils restent un signe de démarrage pour les pistes du BODACC) et les posts LinkedIn « je cherche un développeur » (« concurrence de fou »).
+
 **Les pays voisins, vérifiés le 04/11/2026** (Noé : « des endroits où il y a de l'argent »). La Suisse et Monaco se lisent, voir le tableau. Le **Luxembourg** protège la recherche de son registre par un captcha : on ne contourne pas. La **Belgique** publie chaque constitution dans un PDF, sans recherche par mot : il faudrait télécharger un millier de PDF par semaine, plus tard si le reste manque de volume.
 
 **Ce qui ne marche pas, vérifié le 03/11/2026.**
@@ -79,8 +81,8 @@ node scripts/prospection/signaux-bodacc.mjs
 
 Par défaut, les 7 derniers jours. `--jours 30` ou `--depuis 2026-10-01` pour remonter plus loin.
 
-1. Il lit au BODACC toutes les créations et tous les changements d'activité qui parlent d'application, de plateforme ou de logiciel en ligne.
-2. Il écarte le bruit : livreurs Uber Eats, revendeurs Vinted, streamers, « application de résine ».
+1. Il lit au BODACC toutes les créations et tous les changements d'activité qui parlent d'application, d'app mobile ou web, de plateforme, de marketplace ou de logiciel en ligne. Essayé le 04/11/2026 et retiré : « mise en relation », « réservation en ligne », « service en ligne » seuls. Sur une semaine, 38 pistes de plus et aucune bonne : du conseil, des holdings. Les vrais projets disent « application » ou « plateforme ». « Marketplace » est gardé à la demande de Noé, pour celui qui en crée une ; ceux qui vendent sur une marketplace vont au bruit.
+2. Il écarte le bruit : livreurs Uber Eats, revendeurs Vinted, streamers, « application de résine », sociétés en liquidation.
 3. Il écarte les **concurrents** : développeurs, agences web, sociétés informatiques.
 4. Il interroge l'annuaire officiel des entreprises : dirigeants, date de création, métier actuel, salariés, établissements, chiffre d'affaires quand il est publié. Il garde une mémoire locale, donc le lancement de la semaine suivante est rapide.
 5. Il écarte les personnes qui ont **refusé la diffusion** de leurs données : on ne les prospecte pas.
@@ -138,7 +140,7 @@ Il écrit `prospects-signaux/ulule-AAAA-MM-JJ.csv` avec ce que finance l'argent 
 
 **Côté Claude, environ 20 minutes.** Dans Claude Code, ouvert sur landing-page, Noé demande « lance la prospection du lundi ». La commande `qualifier-signaux` (`.claude/skills/qualifier-signaux/`) :
 1. lance les deux scripts, BODACC et Ulule ;
-2. revoit le vivier des « À creuser » et requalifie celles qui ont bougé, puis choisit les pistes jamais qualifiées, avec `scripts/prospection/choisir-pistes.mjs` : les 16 meilleures notes du BODACC, 4 campagnes Ulule et 3 pistes de Suisse ou de Monaco ;
+2. revoit le vivier des « À creuser » et requalifie celles qui ont bougé, puis choisit les pistes jamais qualifiées, avec `scripts/prospection/choisir-pistes.mjs` : les 24 meilleures notes du BODACC (7 ou plus), 4 campagnes Ulule et 3 pistes de Suisse ou de Monaco ;
 3. fouille le web pour chacune, en deux passes. Un tri en 4 recherches : le business existe-t-il, l'application est-elle déjà faite, y a-t-il un développeur ? Puis 12 recherches sur celles qui restent : argent public (prêt d'honneur, Réseau Entreprendre, Bpifrance, incubateur), recrutements, presse locale, avis, registres, parcours du dirigeant, contacts professionnels publics ;
 4. lit LinkedIn, Instagram et Facebook dans le Chrome de Noé, pour les pistes retenues. Lecture seule, 15 pages au plus, lentement, car LinkedIn interdit les robots et c'est le compte de Noé ;
 5. regarde, dans le navigateur intégré, les pubs de ces pistes dans les bibliothèques publiques de Meta et de Google, et leur fiche Google Maps pour les commerces ;

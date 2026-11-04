@@ -12,7 +12,7 @@
 // « ch-CHE-… » et « mc-… ».
 //
 // Usage :
-//   node scripts/prospection/choisir-pistes.mjs            # 16 pistes BODACC note 8 ou plus, 4 Ulule
+//   node scripts/prospection/choisir-pistes.mjs            # 24 pistes BODACC note 7 ou plus, 4 Ulule, 3 étrangères
 //   node scripts/prospection/choisir-pistes.mjs --nombre 12 --note-min 9 --ulule 0 --etranger 0
 //
 // Sortie : prospects-signaux/qualification-AAAA-MM-JJ/pistes.json (dossier ignoré par git).
@@ -28,8 +28,8 @@ const lireArg = (nom, defaut) => {
   const i = args.indexOf(nom);
   return i >= 0 ? Number(args[i + 1]) : defaut;
 };
-const NOMBRE = lireArg('--nombre', 16);
-const NOTE_MIN = lireArg('--note-min', 8);
+const NOMBRE = lireArg('--nombre', 24);
+const NOTE_MIN = lireArg('--note-min', 7);
 const ULULE = lireArg('--ulule', 4);
 const ETRANGER = lireArg('--etranger', 3);
 

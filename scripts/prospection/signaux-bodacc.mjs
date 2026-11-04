@@ -78,10 +78,17 @@ const MAX_APP_STORE = 60; // les meilleures pistes seulement : Apple limite le n
 
 // ---------- Filtres ----------
 // Une vraie application, pas « application de résine » ni « application sur la peau ».
-const APP = /\b(applications?|appli)\s+(mobiles?|web|num[ée]riques?|smartphone|ios|android|en ligne|logicielle)|\b(applications?|appli)\s+(de|d'|dédiée|destinée|permettant|proposant)\s+[^.;]{0,40}(mise en relation|r[ée]servation|rencontres?|fid[ée]lit|suivi|gestion|coaching|sport|abonnement|commande|partage|apprentissage)|plate-?formes?\s+(num[ée]riques?|en ligne|web|internet|digitale|saas|logicielle|de mise en relation|de r[ée]servation|d'interm[ée]diation|sociale)|\bsaas\b|logiciels? (en ligne|par abonnement)|r[ée]seau social/i;
+// Essayé le 04/11/2026 puis retiré : « mise en relation », « réservation en
+// ligne » et « service en ligne » seuls. Sur une semaine, 38 pistes de plus,
+// aucune bonne : du conseil, des holdings. Les vrais projets disent
+// « application » ou « plateforme », et « plateforme de mise en relation » est
+// déjà attrapé. Gardés à la demande de Noé : « marketplace » (celui qui CRÉE
+// une marketplace ; ceux qui vendent SUR une marketplace vont au bruit), et le
+// mot court « app » : « app mobile », « web app », « app iOS ».
+const APP = /\bmarketplace\b|\bapps?\s+(mobiles?|web|ios|android|native)|\b(mobile|web)\s*-?\s*apps?\b|\b(applications?|appli)\s+(mobiles?|web|num[ée]riques?|smartphone|ios|android|en ligne|logicielle)|\b(applications?|appli)\s+(de|d'|dédiée|destinée|permettant|proposant)\s+[^.;]{0,40}(mise en relation|r[ée]servation|rencontres?|fid[ée]lit|suivi|gestion|coaching|sport|abonnement|commande|partage|apprentissage)|plate-?formes?\s+(num[ée]riques?|en ligne|web|internet|digitale|saas|logicielle|de mise en relation|de r[ée]servation|d'interm[ée]diation|sociale)|\bsaas\b|logiciels? (en ligne|par abonnement)|r[ée]seau social/i;
 
 // Bruit : livreurs, revendeurs sur plateformes tierces, streamers, BTP.
-const BRUIT = /uber|deliveroo|livreur|coursier|livraison (de repas|à vélo|a velo|de colis)|pour le compte de plateformes|(via|sur|par l'interm[ée]diaire de|au travers de) (la |une |les |des |de |diff[ée]rentes |plusieurs |diverses? )?plate-?formes?|plate-?formes? (num[ée]riques? )?d[ée]di[ée]es? à la livraison|vinted|shopify|printful|printify|amazon|etsy|dropshipping|drop shipping|streaming|live|tiktok|twitch|youtube|r[ée]sine|peinture|vtc|taxi|airbnb|abritel|booking\.com|(mandataire|agence|interm[ée]diaire)[^.;]{0,40}plate-?formes? de r[ée]servation/i;
+const BRUIT = /en liquidation|liquidation judiciaire|dissoute|(vente|ventes|commerce|achat|revente|distribution)[^.;]{0,40}\b(sur|via|par)\s+(les |des |une |la |diff[ée]rentes |plusieurs )?marketplaces?|marketplaces? (tierces|existantes|d'autrui|de tiers)|uber|deliveroo|livreur|coursier|livraison (de repas|à vélo|a velo|de colis)|pour le compte de plateformes|(via|sur|par l'interm[ée]diaire de|au travers de) (la |une |les |des |de |diff[ée]rentes |plusieurs |diverses? )?plate-?formes?|plate-?formes? (num[ée]riques? )?d[ée]di[ée]es? à la livraison|vinted|shopify|printful|printify|amazon|etsy|dropshipping|drop shipping|streaming|live|tiktok|twitch|youtube|r[ée]sine|peinture|vtc|taxi|airbnb|abritel|booking\.com|(mandataire|agence|interm[ée]diaire)[^.;]{0,40}plate-?formes? de r[ée]servation/i;
 
 // Métiers techniques : un développeur, une agence ou une société informatique
 // sait déjà faire son application, ce n'est pas un client.
@@ -529,7 +536,7 @@ const cellule = (v) => {
 // ---------- Programme ----------
 async function main() {
   console.log(`Annonces publiées depuis le ${depuis}…`);
-  const mots = ['application', 'plateforme', 'saas', 'logiciel'];
+  const mots = ['application', 'plateforme', 'saas', 'logiciel', 'app', 'marketplace'];
   const ou = (champ) => mots.map((m) => `search(${champ},'${m}')`).join(' OR ');
 
   const creations = await bodacc(

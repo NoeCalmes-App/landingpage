@@ -5,7 +5,7 @@ description: Prospection du lundi pour Noé. Sort les entrepreneurs qui viennent
 
 # Qualifier les signaux
 
-Livrable : `prospects-signaux/qualifies-AAAA-MM-JJ.csv`, environ 20 pistes avec un verdict, les contacts professionnels publics, une accroche, et un message prêt pour chaque piste « À contacter ». Noé n'a plus qu'à envoyer.
+Livrable : `prospects-signaux/qualifies-AAAA-MM-JJ.csv`, environ 30 pistes avec un verdict, les contacts professionnels publics, une accroche, et un message prêt pour chaque piste « À contacter ». Noé n'a plus qu'à envoyer.
 
 Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. Le lire avant de rédiger un message.
 
@@ -25,10 +25,10 @@ Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. L
    - `node scripts/prospection/signaux-etranger.mjs` lit la Feuille officielle suisse du commerce et le Journal de Monaco, sur 7 jours. Compter environ 2 minutes.
 2. **Revoir le vivier.** `node scripts/prospection/revoir-vivier.mjs` refait les vérifications gratuites sur toutes les « À creuser » des semaines passées : nouvelle annonce BODACC, domaine .fr réservé, salariés ou chiffre d'affaires apparus, application sortie. Il écrit `prospects-signaux/vivier-<jour>.csv` et `vivier.json` avec celles qui ont bougé. Pour chacune, lancer la passe 2 de la consigne avec un agent, en lui donnant l'ancienne fiche et ce qui a bougé, et écrire la nouvelle fiche dans le dossier du jour (`fiches-V.json`). Compter environ 4 secondes par piste.
 3. **Choisir les pistes.** `node scripts/prospection/choisir-pistes.mjs` écrit `prospects-signaux/qualification-<jour>/pistes.json` :
-   - 16 pistes BODACC au plus, les meilleures notes, sans les pistes déjà qualifiées, les fondateurs informaticiens et les applications déjà sur l'App Store ;
+   - 24 pistes BODACC au plus, note 7 ou plus, sans les pistes déjà qualifiées, les fondateurs informaticiens et les applications déjà sur l'App Store ;
    - puis 4 campagnes Ulule au plus, jamais qualifiées, avec un identifiant `ulule-…` à la place du SIREN ;
    - puis 3 pistes de Suisse ou de Monaco au plus, note 6 ou plus, identifiants `ch-…` et `mc-…`.
-4. **Fouiller le web, en parallèle.** Lancer un agent `general-purpose` par paquet de 4 pistes, tous dans un seul message, avec le modèle `sonnet` : 5 agents pour 20 pistes, d'index 0-3, 4-7, 8-11, 12-15 et 16-19. Chaque agent travaille en deux passes : un tri en 4 recherches, puis 12 recherches de plus sur les pistes qui restent (argent public, recrutements, presse, avis). Le brief de chaque agent est `consigne-recherche.md`, à recopier en remplaçant `{PISTES}`, `{INDEX}` et `{SORTIE}` par le chemin de `pistes.json`, les index et `.../fiches-A.json`, puis `fiches-B.json`, et ainsi de suite.
+4. **Fouiller le web, en parallèle.** Lancer un agent `general-purpose` par paquet de 4 pistes, tous dans un seul message, avec le modèle `sonnet` : 8 agents pour 31 pistes, d'index 0-3, 4-7, et ainsi de suite jusqu'à la fin de `pistes.json`. Chaque agent travaille en deux passes : un tri en 4 recherches, puis 12 recherches de plus sur les pistes qui restent (argent public, recrutements, presse, avis). Le brief de chaque agent est `consigne-recherche.md`, à recopier en remplaçant `{PISTES}`, `{INDEX}` et `{SORTIE}` par le chemin de `pistes.json`, les index et `.../fiches-A.json`, puis `fiches-B.json`, et ainsi de suite.
 5. **Relire les « À contacter ».** Ouvrir le site cité et vérifier trois choses :
    - c'est bien la même entreprise ;
    - le numéro est publié par elle ;
