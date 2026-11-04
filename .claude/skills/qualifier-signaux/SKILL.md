@@ -22,17 +22,20 @@ Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. L
 1. **Sortir les signaux.** Lancer les deux commandes en arrière-plan, en même temps :
    - `node scripts/prospection/signaux-bodacc.mjs` lit les 7 derniers jours : créations, ajouts d'activité et hausses de capital. Il relit l'historique BODACC de chaque piste pour trouver une hausse de capital depuis deux ans, et cherche dans les listes de l'AFNIC si la piste vient de réserver son domaine .fr. Compter environ 5 minutes, car l'App Store limite le rythme.
    - `node scripts/prospection/campagnes-ulule.mjs` sort les campagnes Ulule réussies pour une application, sur 12 mois. Compter environ 2 minutes.
-2. **Choisir les pistes.** `node scripts/prospection/choisir-pistes.mjs` écrit `prospects-signaux/qualification-<jour>/pistes.json` :
+   - `node scripts/prospection/signaux-etranger.mjs` lit la Feuille officielle suisse du commerce et le Journal de Monaco, sur 7 jours. Compter environ 2 minutes.
+2. **Revoir le vivier.** `node scripts/prospection/revoir-vivier.mjs` refait les vérifications gratuites sur toutes les « À creuser » des semaines passées : nouvelle annonce BODACC, domaine .fr réservé, salariés ou chiffre d'affaires apparus, application sortie. Il écrit `prospects-signaux/vivier-<jour>.csv` et `vivier.json` avec celles qui ont bougé. Pour chacune, lancer la passe 2 de la consigne avec un agent, en lui donnant l'ancienne fiche et ce qui a bougé, et écrire la nouvelle fiche dans le dossier du jour (`fiches-V.json`). Compter environ 4 secondes par piste.
+3. **Choisir les pistes.** `node scripts/prospection/choisir-pistes.mjs` écrit `prospects-signaux/qualification-<jour>/pistes.json` :
    - 16 pistes BODACC au plus, les meilleures notes, sans les pistes déjà qualifiées, les fondateurs informaticiens et les applications déjà sur l'App Store ;
-   - puis 4 campagnes Ulule au plus, jamais qualifiées, avec un identifiant `ulule-…` à la place du SIREN.
-3. **Fouiller le web, en parallèle.** Lancer un agent `general-purpose` par paquet de 4 pistes, tous dans un seul message, avec le modèle `sonnet` : 5 agents pour 20 pistes, d'index 0-3, 4-7, 8-11, 12-15 et 16-19. Chaque agent travaille en deux passes : un tri en 4 recherches, puis 12 recherches de plus sur les pistes qui restent (argent public, recrutements, presse, avis). Le brief de chaque agent est `consigne-recherche.md`, à recopier en remplaçant `{PISTES}`, `{INDEX}` et `{SORTIE}` par le chemin de `pistes.json`, les index et `.../fiches-A.json`, puis `fiches-B.json`, et ainsi de suite.
-4. **Relire les « À contacter ».** Ouvrir le site cité et vérifier trois choses :
+   - puis 4 campagnes Ulule au plus, jamais qualifiées, avec un identifiant `ulule-…` à la place du SIREN ;
+   - puis 3 pistes de Suisse ou de Monaco au plus, note 6 ou plus, identifiants `ch-…` et `mc-…`.
+4. **Fouiller le web, en parallèle.** Lancer un agent `general-purpose` par paquet de 4 pistes, tous dans un seul message, avec le modèle `sonnet` : 5 agents pour 20 pistes, d'index 0-3, 4-7, 8-11, 12-15 et 16-19. Chaque agent travaille en deux passes : un tri en 4 recherches, puis 12 recherches de plus sur les pistes qui restent (argent public, recrutements, presse, avis). Le brief de chaque agent est `consigne-recherche.md`, à recopier en remplaçant `{PISTES}`, `{INDEX}` et `{SORTIE}` par le chemin de `pistes.json`, les index et `.../fiches-A.json`, puis `fiches-B.json`, et ainsi de suite.
+5. **Relire les « À contacter ».** Ouvrir le site cité et vérifier trois choses :
    - c'est bien la même entreprise ;
    - le numéro est publié par elle ;
    - la règle est tenue : au moins deux preuves d'argent fortes dans `preuves_argent`, et un signe de démarrage de moins de six mois. « Le fondateur dirige une autre entreprise » n'est pas une preuve.
 
    Au moindre doute, passer la piste en « À creuser ».
-5. **Lire les réseaux dans le Chrome de Noé**, pour chaque piste « À contacter » ou « À creuser ». Utiliser les outils Claude in Chrome, où Noé est connecté.
+6. **Lire les réseaux dans le Chrome de Noé**, pour chaque piste « À contacter » ou « À creuser ». Utiliser les outils Claude in Chrome, où Noé est connecté.
    - **Quoi regarder :**
      - le LinkedIn des fondateurs, pour savoir s'il y a un développeur ou un CTO ;
      - l'Instagram et la page Facebook de l'entreprise : abonnés, derniers posts, annonce d'ouverture ou de sortie, email affiché.
@@ -43,29 +46,33 @@ Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. L
      - un seul onglet, fermé à la fin.
    - **Noter** dans le champ `reseaux` la source, la date et ce qui a été vu. Seulement le parcours professionnel, rien de personnel.
    - **Revoir le verdict** avec ces informations.
-6. **Regarder les pubs et les avis Google, dans le navigateur intégré.** Pour chaque piste « À contacter » ou « À creuser », ouvrir trois pages publiques. Elles se lisent sans connexion et ne comptent pas dans les 15 pages LinkedIn.
+7. **Regarder les pubs et les avis Google, dans le navigateur intégré.** Pour chaque piste « À contacter » ou « À creuser », ouvrir trois pages publiques. Elles se lisent sans connexion et ne comptent pas dans les 15 pages LinkedIn.
    - **Meta :** `https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=FR&q=%22NOM%22&search_type=keyword_exact_phrase`. La recherche remonte aussi d'autres annonceurs : ne compter que les pubs dont l'annonceur porte le nom de l'entreprise ou de sa marque. Noter le nombre de pubs, leurs dates, et si elles sont actives.
    - **Google :** `https://adstransparency.google.com/?region=FR&domain=SITE.fr`. Noter le nombre d'annonces et le nom de l'annonceur validé.
    - **Google Maps**, pour un commerce, un restaurant, une salle ou un cabinet : `https://www.google.com/maps/search/NOM+VILLE`. À la première visite, une page de consentement s'affiche : cliquer « Tout refuser », le navigateur s'en souvient. Attendre que le panneau se charge, puis lire la note et le nombre d'avis dans les `aria-label` (« 5,0 étoiles », « 9 avis »), avec le téléphone et le site affichés. Au moins 50 avis sur un commerce de plus de trois ans : preuve d'argent forte.
    - **Noter le résultat** dans le champ `pubs` de la fiche pour les pubs, et dans `signes_argent` pour les avis, avec la date de la vérification, même s'il n'y a rien.
    - **Revoir le verdict.** De la pub payée ou beaucoup d'avis sont des preuves d'argent fortes : elles peuvent faire passer une piste « À creuser » en « À contacter ».
-7. **Rédiger les messages.** Remplir le champ `message` des fiches « À contacter », et des « À creuser » qui ont un contact et un projet clair.
-   - Suivre la partie 7 de la marche à suivre : vouvoiement, moins de 100 mots, maquette offerte, sortie pour refuser.
+8. **Rédiger les messages.** Remplir le champ `message` des fiches « À contacter », et des « À creuser » qui ont un contact et un projet clair.
+   - Suivre la partie 7 de la marche à suivre : vouvoiement, moins de 100 mots, maquette offerte, sortie pour refuser. La maquette n'est jamais faite d'avance : on ne sait pas s'il veut du mobile ou du web. L'offre s'écrit « la maquette de l'écran principal de votre application, mobile ou web ».
    - WhatsApp si un mobile est publié, sinon email, sinon LinkedIn, sinon Instagram en message privé au compte professionnel. Le message commence par le canal : « WhatsApp au … », « Email à … », « LinkedIn à … », « Instagram à … ».
    - Dire d'où vient l'information, par exemple « j'ai vu dans les annonces légales ».
    - Ne citer aucun fait que la fiche n'a pas sourcé.
-8. **Assembler.** `node scripts/prospection/fusionner-qualification.mjs prospects-signaux/qualification-<jour>`.
-9. **Faire entrer les « À contacter » dans Nowork.** Depuis le dossier `nowork` :
+9. **Assembler.** `node scripts/prospection/fusionner-qualification.mjs prospects-signaux/qualification-<jour>`.
+10. **Faire entrer les « À contacter » dans Nowork.** Depuis le dossier `nowork` :
    - `node scripts/importer-prospects-signaux.mjs` simule et liste ce qui serait créé ;
    - vérifier que chaque piste a son contact, son téléphone ou son email, et son canal ;
    - `node scripts/importer-prospects-signaux.mjs --apply` crée les fiches.
-   Une piste jointe seulement par LinkedIn ou Instagram entre aussi : le lien est dans la note, le message dans le bloc-notes. Chaque fiche arrive en « Nouveau », en tête de « À faire maintenant », avec la provenance « Prospection ». Dans son panneau, cinq pastilles se lisent au survol, comme celles d'un lead Meta : pourquoi lui, son projet, l'argent, le démarrage, comment je l'ai trouvé. Le descriptif reste vide pour Noé. Le message prêt et tout le dossier sont dans son bloc-notes. Une piste déjà dans Nowork, par son SIREN, son téléphone ou son email, est sautée sans rien toucher. Le script n'envoie rien à personne.
-10. **Livrer.**
+   Une piste jointe seulement par LinkedIn ou Instagram entre aussi : le lien est dans la note, le message dans le bloc-notes. Chaque fiche arrive en « Nouveau », en tête de « À faire maintenant », avec la provenance « Prospection », en bleu clair partout. Dans son panneau, une seule bulle se lit au survol, comme celles d'un lead Meta : pourquoi lui, son projet, l'argent, le démarrage, comment je l'ai trouvé. Un clic copie tout le dossier et le message, pour les coller à une IA. Le descriptif reste vide pour Noé. Le message prêt et tout le dossier sont dans son bloc-notes. Une piste déjà dans Nowork, par son SIREN, son téléphone ou son email, est sautée sans rien toucher. Le script n'envoie rien à personne.
+11. **Livrer.**
    - Envoyer le CSV à Noé avec SendUserFile.
    - Dire que les « À contacter » sont dans Nowork.
    - Dire en trois lignes combien de pistes ont chaque verdict.
    - Dire qui contacter en premier, et pourquoi.
    - Dire ce qui reste à vérifier à la main.
+
+## Le jeudi
+
+Même commande, en plus court : `node scripts/prospection/signaux-bodacc.mjs --jours 4`, puis les étapes 3 à 11 sur les pistes nouvelles. Une annonce du mardi n'attend plus six jours.
 
 ## Leçons du premier lancement (02/11/2026)
 

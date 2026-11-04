@@ -221,6 +221,8 @@ function resumer(e) {
     depuis: (e.date_creation ?? '').slice(0, 4),
     active: e.etat_administratif === 'A',
     employeur: e.caractere_employeur === 'O' || (/^\d\d$/.test(effectif) && effectif !== '00'),
+    effectif,
+    creation: e.date_creation ?? '',
     ca: dernierCA(e.finances),
     sci: e.nature_juridique === SCI,
     etablissements: Number(e.nombre_etablissements_ouverts) || 0,
@@ -333,6 +335,20 @@ function domaineRecent(piste, parDomaine) {
   for (const c of candidats) if (parDomaine.has(c)) return `${c} créé le ${dateFr(parDomaine.get(c))}`;
   return '';
 }
+
+// Tranches d'effectif de l'INSEE, en clair.
+const EFFECTIFS = {
+  '00': '0', '01': '1 à 2', '02': '3 à 5', '03': '6 à 9', '11': '10 à 19', '12': '20 à 49', '21': '50 à 99',
+  '22': '100 à 199', '31': '200 à 249', '32': '250 à 499', '41': '500 à 999', '42': '1 000 à 1 999', '51': '2 000 à 4 999', '52': '5 000 à 9 999', '53': '10 000 et plus',
+};
+
+// L'âge des dirigeants, d'après le mois de naissance publié par l'annuaire.
+const agesDes = (dirigeants = []) => dirigeants
+  .filter((d) => !d.pm && /^\d{4}-\d{2}$/.test(d.naissance ?? ''))
+  .map((d) => {
+    const [an, mois] = d.naissance.split('-').map(Number);
+    return aujourdhui.getFullYear() - an - (aujourdhui.getMonth() + 1 < mois ? 1 : 0);
+  });
 
 // Range les autres entreprises du fondateur et les décrit en clair.
 function lireFondateur(autres) {
@@ -459,7 +475,22 @@ function noter(piste) {
     if (f.employeur) { score += 1; raisons.push('une de ses entreprises emploie des salariés'); }
     if (f.ca >= 100000) { score += 2; raisons.push(`une de ses entreprises publie ${f.ca.toLocaleString('fr-FR')} € de chiffre d'affaires`); }
     if (f.tech.length) { score -= 3; raisons.push('un des fondateurs dirige une entreprise informatique'); }
+    // Plusieurs millions ailleurs : il a le budget d'une agence et ira la voir (Noé, 04/11/2026).
+    if (f.ca >= 5000000) { score -= 2; raisons.push('une de ses entreprises fait plusieurs millions : budget d\'agence'); }
   }
+
+  // La taille de la société visée. Noé vend à des solopreneurs et à de petits
+  // entrepreneurs : dix salariés ou plus, ou plusieurs millions de chiffre
+  // d'affaires, c'est une entreprise qui passera par une agence. Les autres
+  // sociétés du fondateur peuvent être grosses, c'est même une preuve d'argent.
+  if (Number(piste.effectif) >= 11) { score -= 3; raisons.push(`déjà ${EFFECTIFS[piste.effectif]} salariés : trop grosse pour ton offre`); }
+  if (piste.ca?.ca >= 2000000) { score -= 2; raisons.push('plusieurs millions de chiffre d\'affaires : budget d\'agence'); }
+
+  // L'âge du dirigeant (Noé, 04/11/2026) : avant 30 ans, il fera souvent avec
+  // l'IA ou un ami ; entre 40 et 60, il a l'argent et pas la technique.
+  const ages = piste.ages ?? [];
+  if (ages.length && Math.max(...ages) < 30) { score -= 2; raisons.push(`dirigeant de ${Math.max(...ages)} ans : fera sans doute avec l'IA`); }
+  else if (ages.some((x) => x >= 38 && x <= 62)) { score += 1; raisons.push(`dirigeant de ${ages.find((x) => x >= 38 && x <= 62)} ans`); }
   return { score, pourquoi: raisons.join(' · ') };
 }
 
@@ -482,7 +513,7 @@ function preuvesArgent(piste) {
 const CSV_COLONNES = [
   ['score', 'Score'], ['pourquoi', 'Pourquoi'], ['signal', 'Signal'], ['date', 'Publié le'],
   ['entreprise', 'Entreprise'], ['nomCommercial', 'Nom commercial'], ['dirigeant', 'Dirigeant'],
-  ['forme', 'Forme'], ['capital', 'Capital (€)'], ['hausseCapital', 'Hausse de capital'], ['preuvesArgent', 'Preuves d\'argent (registres)'],
+  ['forme', 'Forme'], ['agesTexte', 'Âge du dirigeant'], ['effectifTexte', 'Salariés'], ['capital', 'Capital (€)'], ['hausseCapital', 'Hausse de capital'], ['preuvesArgent', 'Preuves d\'argent (registres)'],
   ['existeDepuis', 'Existe depuis'], ['domaineRecent', 'Domaine .fr récent'],
   ['fondateurTexte', 'Autres entreprises du fondateur'], ['naf', 'Code activité'],
   ['ville', 'Ville'], ['departement', 'Département'], ['activite', 'Activité déclarée'],
@@ -552,17 +583,19 @@ async function main() {
     const cache = existsSync(fichierCache) ? JSON.parse(readFileSync(fichierCache, 'utf8')) : {};
     let ecartees = 0;
     let techniques = 0;
+    let micros = 0;
+    const unAnAvant = new Date(aujourdhui.getTime() - 365 * 86400000).toISOString().slice(0, 10);
     let nouvelles = 0;
     const gardees = [];
     for (const piste of pistes) {
-      // Version 2 du cache : elle garde aussi les dirigeants, les salariés et le chiffre d'affaires.
-      if (!(piste.siren in cache) || (cache[piste.siren] && cache[piste.siren].v !== 2)) {
+      // Version 3 du cache : dirigeants, salariés (tranche), chiffre d'affaires, date de création.
+      if (!(piste.siren in cache) || (cache[piste.siren] && cache[piste.siren].v !== 3)) {
         const fiche = await annuaire(piste.siren);
         nouvelles++;
         if (nouvelles % 100 === 0) console.log(`  annuaire : ${nouvelles} fiches lues`);
         cache[piste.siren] = fiche
           ? {
-              v: 2,
+              v: 3,
               ...resumer(fiche),
               nonDiffusible: JSON.stringify(fiche).includes('[NON-DIFFUSIBLE]'),
               existeDepuis: (fiche.date_creation ?? '').slice(0, 4),
@@ -583,6 +616,8 @@ async function main() {
         if (piste.signal === 'Ajout d\'activité' && NAF_TECH.test(f.naf)) { techniques++; continue; }
         // Une société de programmation qui lève de l'argent a ses développeurs.
         if (piste.signal === 'Hausse de capital' && /^62/.test(f.naf)) { techniques++; continue; }
+        // Une micro-entreprise de moins d'un an : pas de budget, on ne la garde pas (Noé, 04/11/2026).
+        if (/individuel/i.test(piste.forme ?? '') && f.creation && f.creation >= unAnAvant) { micros++; continue; }
       }
       gardees.push(piste);
     }
@@ -590,6 +625,7 @@ async function main() {
     pistes = gardees;
     if (ecartees) console.log(`${ecartees} pistes écartées : la personne a refusé la diffusion de ses données.`);
     if (techniques) console.log(`${techniques} pistes écartées : entreprise déjà informatique.`);
+    if (micros) console.log(`${micros} pistes écartées : micro-entreprise de moins d'un an.`);
 
     // Profil du fondateur : ses autres entreprises, mises en mémoire elles aussi.
     const fichierFondateurs = join(DOSSIER_SORTIE, '.cache-fondateurs.json');
@@ -600,6 +636,10 @@ async function main() {
       const fiche = cache[piste.siren];
       if (!fiche) continue;
       piste.employeur = fiche.employeur;
+      piste.effectif = fiche.effectif;
+      piste.effectifTexte = EFFECTIFS[fiche.effectif] ?? '';
+      piste.ages = agesDes(fiche.dirigeants);
+      piste.agesTexte = piste.ages.join(', ');
       piste.ca = fiche.ca;
       piste.etablissements = fiche.etablissements;
       piste.personnes = fiche.dirigeants.filter((d) => !d.pm).map((d) => `${d.prenom} ${d.nom}`);

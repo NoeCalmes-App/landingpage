@@ -7,11 +7,13 @@
 //   - celles dont l'application est déjà sur l'App Store.
 // Ajoute ensuite les campagnes Ulule pas encore qualifiées
 // (scripts/prospection/campagnes-ulule.mjs), les nouvelles puis les plus grosses collectes.
-// Leur identifiant remplace le SIREN : « ulule-123456 ».
+// Leur identifiant remplace le SIREN : « ulule-123456 ». Puis les meilleures pistes
+// de Suisse et de Monaco (scripts/prospection/signaux-etranger.mjs), identifiants
+// « ch-CHE-… » et « mc-… ».
 //
 // Usage :
 //   node scripts/prospection/choisir-pistes.mjs            # 16 pistes BODACC note 8 ou plus, 4 Ulule
-//   node scripts/prospection/choisir-pistes.mjs --nombre 12 --note-min 9 --ulule 0
+//   node scripts/prospection/choisir-pistes.mjs --nombre 12 --note-min 9 --ulule 0 --etranger 0
 //
 // Sortie : prospects-signaux/qualification-AAAA-MM-JJ/pistes.json (dossier ignoré par git).
 
@@ -29,6 +31,7 @@ const lireArg = (nom, defaut) => {
 const NOMBRE = lireArg('--nombre', 16);
 const NOTE_MIN = lireArg('--note-min', 8);
 const ULULE = lireArg('--ulule', 4);
+const ETRANGER = lireArg('--etranger', 3);
 
 function lireCSV(texte) {
   const s = texte.replace(/^﻿/, '');
@@ -65,7 +68,7 @@ for (const d of readdirSync(DOSSIER).filter((d) => /^qualification-/.test(d) && 
   for (const f of readdirSync(join(DOSSIER, d)).filter((f) => /^fiches-.*\.json$/.test(f))) {
     for (const fiche of JSON.parse(readFileSync(join(DOSSIER, d, f), 'utf8'))) {
       const id = String(fiche.siren);
-      dejaVus.add(/^ulule-/.test(id) ? id : id.replace(/\D/g, ''));
+      dejaVus.add(/^(ulule|ch|mc)-/.test(id) ? id : id.replace(/\D/g, ''));
     }
   }
 }
@@ -78,7 +81,7 @@ const pistes = lireCSV(readFileSync(join(DOSSIER, source), 'utf8'))
   .slice(0, NOMBRE)
   .map((p) => ({
     siren: siren(p), score: p.Score, pourquoi: p.Pourquoi, signal: p.Signal, date: p['Publié le'], entreprise: p.Entreprise,
-    nom_commercial: p['Nom commercial'], dirigeant: p.Dirigeant, forme: p.Forme, capital: p['Capital (€)'],
+    nom_commercial: p['Nom commercial'], dirigeant: p.Dirigeant, forme: p.Forme, age_dirigeant: p['Âge du dirigeant'] ?? '', salaries: p['Salariés'] ?? '', capital: p['Capital (€)'],
     hausse_capital: p['Hausse de capital'] ?? '', preuves_argent_registres: p['Preuves d\'argent (registres)'] ?? '',
     existe_depuis: p['Existe depuis'], domaine_recent: p['Domaine .fr récent'] ?? '', autres_entreprises: p['Autres entreprises du fondateur'],
     ville: p.Ville, departement: p['Département'], activite: p['Activité déclarée'].slice(0, 900), lien_bodacc: p['Annonce BODACC'],
@@ -101,6 +104,22 @@ if (ULULE > 0 && listesUlule.length) {
     });
   }
   console.log(`${campagnes.length} campagnes Ulule ajoutées (${listesUlule.at(-1)}).`);
+}
+
+// Les pistes de Suisse et de Monaco de la dernière liste, jamais qualifiées, note 6 ou plus.
+const listesEtranger = readdirSync(DOSSIER).filter((f) => /^etranger-.*\.csv$/.test(f)).sort();
+if (ETRANGER > 0 && listesEtranger.length) {
+  const etranger = lireCSV(readFileSync(join(DOSSIER, listesEtranger.at(-1)), 'utf8'))
+    .filter((p) => Number(p.Score) >= 6 && !dejaVus.has(p.Identifiant))
+    .slice(0, ETRANGER);
+  for (const p of etranger) {
+    pistes.push({
+      siren: p.Identifiant, score: p.Score, pourquoi: p.Pourquoi, signal: `${p.Signal} (${p.Pays})`, date: p['Publié le'],
+      entreprise: p.Entreprise, nom_commercial: '', dirigeant: p.Dirigeants, forme: p.Forme, capital: p.Capital,
+      ville: p.Ville, pays: p.Pays, activite: p['Activité déclarée'].slice(0, 900), lien_annonce: p.Annonce,
+    });
+  }
+  console.log(`${etranger.length} pistes de Suisse ou de Monaco ajoutées (${listesEtranger.at(-1)}).`);
 }
 
 const jour = new Date().toISOString().slice(0, 10);

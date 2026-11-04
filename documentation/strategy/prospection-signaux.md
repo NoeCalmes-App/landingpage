@@ -1,7 +1,7 @@
 # Prospection par signaux : trouver les entrepreneurs qui lancent une application
 
 > Créé le 02/11/2026. Version gratuite de la méthode de Dimitri Cayrou (agence Prosper, ex-Leadmapp), que Noé ne prend pas.
-> Outils : `scripts/prospection/signaux-bodacc.mjs` et `scripts/prospection/campagnes-ulule.mjs`. Les listes sortent dans `prospects-signaux/`, ignoré par git : **le dépôt est public, aucun nom de prospect ne doit y entrer.**
+> Outils : `scripts/prospection/signaux-bodacc.mjs`, `scripts/prospection/campagnes-ulule.mjs`, `scripts/prospection/signaux-etranger.mjs` et `scripts/prospection/revoir-vivier.mjs`. Les listes sortent dans `prospects-signaux/`, ignoré par git : **le dépôt est public, aucun nom de prospect ne doit y entrer.**
 
 ---
 
@@ -28,6 +28,11 @@ Trois conditions, toutes nécessaires :
 2. **Démarrer bientôt** : il vient de créer ou de modifier sa société pour ce projet.
 3. **Pas de technique** : s'il sait coder, il la fera lui-même.
 
+Et trois repères donnés par Noé le 04/11/2026 :
+- **l'âge** : ses clients ont souvent 40 à 60 ans ; avant 30 ans, on fait avec l'IA ou un ami. Le script lit le mois de naissance du dirigeant dans l'annuaire : moins de 30 ans, deux points de moins ; 38 à 62 ans, un point de plus ;
+- **la taille** : il vend à des solopreneurs et à de petits patrons. La société visée doit avoir moins de 10 salariés et moins de 2 millions de chiffre d'affaires, sinon elle ira vers une agence. Les autres sociétés du fondateur peuvent être grosses, c'est même une preuve d'argent ; au-delà de 5 millions, c'est un budget d'agence ;
+- **les micro-entreprises** : une micro de moins d'un an n'a pas de budget, elle est écartée. Une micro installée, avec des avis et des pubs, reste une piste.
+
 Ordres de grandeur donnés par Noé le 02/11 : application web à partir de 5 000 à 7 000 €, application mobile autour de 8 000 à 10 000 € et plus, le plus gros projet à 17 000 €.
 
 ## 4. Les sources, de la meilleure à la moins bonne
@@ -42,10 +47,14 @@ Ordres de grandeur donnés par Noé le 02/11 : application web à partir de 5 00
 | **AFNIC, domaines .fr créés** | La piste vient de réserver « monappli.fr » : elle prépare sa sortie, et c'est l'adresse de son site | Gratuit | Automatique, script |
 | **Google Maps** | La note et le nombre d'avis d'un commerce : au moins 50 avis sur plus de trois ans, le business tourne | Gratuit | Navigateur intégré, pour les pistes retenues |
 | **Argent public et recrutements** | Prêt d'honneur, Réseau Entreprendre, Bpifrance, incubateur, concours ; offres d'emploi commerciales | Gratuit | Recherche web, deuxième passe des agents |
+| **Suisse, Feuille officielle du commerce** | API publique, recherche par mot dans le texte, but de la société, capital, dirigeants dans le texte. Environ 5 à 10 annonces par semaine en français, allemand et italien | Gratuit | Automatique, script |
+| **Monaco, Journal de Monaco** | Le numéro du vendredi : constitutions et modifications d'objet, l'objet en clair, pas les dirigeants. 0 à 1 par semaine | Gratuit | Automatique, script |
 | Annonces « je cherche » | Codeur, Comeup, cofondateur.fr, posts LinkedIn « je cherche un développeur », groupes Facebook et Reddit d'entrepreneurs | Gratuit | À la main, 15 min par semaine |
 | Journal de Monaco | Rubrique des insertions légales : les sociétés monégasques qui se créent | Gratuit | À la main, pas encore automatisé |
 | Lauréats de prêts d'honneur et d'incubateurs | Initiative France, Réseau Entreprendre et les incubateurs publient leurs promotions | Gratuit | À la main |
 | Mauvais avis d'applications payantes | Trustpilot, stores : une application qui perd ses abonnés | Gratuit | À la main, pour « reprendre » ou « faire évoluer » |
+
+**Les pays voisins, vérifiés le 04/11/2026** (Noé : « des endroits où il y a de l'argent »). La Suisse et Monaco se lisent, voir le tableau. Le **Luxembourg** protège la recherche de son registre par un captcha : on ne contourne pas. La **Belgique** publie chaque constitution dans un PDF, sans recherche par mot : il faudrait télécharger un millier de PDF par semaine, plus tard si le reste manque de volume.
 
 **Ce qui ne marche pas, vérifié le 03/11/2026.**
 - **La base des marques de l'INPI** n'affiche aucun résultat dans le navigateur, même pour « doctolib ».
@@ -104,6 +113,10 @@ Par défaut, les 7 derniers jours. `--jours 30` ou `--depuis 2026-10-01` pour re
 
 Durée : environ 5 minutes, car l'App Store limite le rythme des recherches. `--sans-app-store` et `--sans-afnic` vont plus vite.
 
+**Le vivier** : `node scripts/prospection/revoir-vivier.mjs` revoit chaque lundi toutes les « À creuser » des semaines passées. Beaucoup manquent d'un seul signe. Le script refait les vérifications gratuites (nouvelle annonce BODACC, domaine .fr réservé, salariés ou chiffre d'affaires apparus, application sortie) et écrit `vivier-AAAA-MM-JJ.csv` et `vivier.json` avec celles qui ont bougé. La commande du lundi les requalifie. Un tri unique devient un stock qui mûrit.
+
+**La Suisse et Monaco** : `node scripts/prospection/signaux-etranger.mjs` lit les 7 derniers jours des deux registres, garde les annonces dont l'objet parle d'application ou de plateforme en français, en allemand ou en italien, écarte les liquidations, les mutations qui ne changent pas le but et les sociétés qui vendent du code à d'autres, et écrit `etranger-AAAA-MM-JJ.csv`. Identifiants « ch-CHE-… » et « mc-… ». Premier passage le 04/11/2026 sur 14 jours : une trentaine de pistes, surtout suisses. Les comptes ne sont pas publiés en Suisse : les preuves d'argent viennent du capital, des autres mandats du dirigeant sur zefix.ch, du site et des avis.
+
 **Les campagnes Ulule** ont leur propre script :
 
 ```bash
@@ -121,15 +134,17 @@ Il écrit `prospects-signaux/ulule-AAAA-MM-JJ.csv` avec ce que finance l'argent 
 
 ## 6. La routine du lundi
 
+**Deux passages par semaine** : le lundi en entier, le jeudi en court (`--jours 4`), pour qu'une annonce du mardi n'attende pas six jours.
+
 **Côté Claude, environ 20 minutes.** Dans Claude Code, ouvert sur landing-page, Noé demande « lance la prospection du lundi ». La commande `qualifier-signaux` (`.claude/skills/qualifier-signaux/`) :
 1. lance les deux scripts, BODACC et Ulule ;
-2. choisit les pistes jamais qualifiées, avec `scripts/prospection/choisir-pistes.mjs` : les 16 meilleures notes du BODACC et 4 campagnes Ulule ;
+2. revoit le vivier des « À creuser » et requalifie celles qui ont bougé, puis choisit les pistes jamais qualifiées, avec `scripts/prospection/choisir-pistes.mjs` : les 16 meilleures notes du BODACC, 4 campagnes Ulule et 3 pistes de Suisse ou de Monaco ;
 3. fouille le web pour chacune, en deux passes. Un tri en 4 recherches : le business existe-t-il, l'application est-elle déjà faite, y a-t-il un développeur ? Puis 12 recherches sur celles qui restent : argent public (prêt d'honneur, Réseau Entreprendre, Bpifrance, incubateur), recrutements, presse locale, avis, registres, parcours du dirigeant, contacts professionnels publics ;
 4. lit LinkedIn, Instagram et Facebook dans le Chrome de Noé, pour les pistes retenues. Lecture seule, 15 pages au plus, lentement, car LinkedIn interdit les robots et c'est le compte de Noé ;
 5. regarde, dans le navigateur intégré, les pubs de ces pistes dans les bibliothèques publiques de Meta et de Google, et leur fiche Google Maps pour les commerces ;
 6. donne un verdict, « À contacter », « À creuser » ou « À écarter », avec une accroche, et rédige les messages ;
 7. fait entrer les « À contacter » dans Nowork, avec `nowork/scripts/importer-prospects-signaux.mjs`. Chaque piste devient une fiche « Nouveau », provenance « Prospection », en tête de « À faire maintenant ».
-   - Cinq **pastilles**, lues au survol comme celles d'un lead Meta : pourquoi lui, son projet, l'argent, le démarrage, comment je l'ai trouvé. Le descriptif reste vide pour Noé.
+   - Une **bulle**, lue au survol comme celles d'un lead Meta : pourquoi lui, son projet, l'argent, le démarrage, comment je l'ai trouvé. Un clic copie tout le dossier et le message, pour les coller à une IA. La fiche est en violet clair partout : carte, ligne, liste ; le bleu reste à la carte sélectionnée, le rouge au retard. Le descriptif reste vide pour Noé.
    - Le **bloc-notes** donne le message prêt et tout le dossier.
    - Une piste jointe seulement par LinkedIn ou Instagram entre aussi, le lien dans la note.
    - Une piste déjà dans Nowork, par son SIREN, son téléphone ou son email, est sautée.
@@ -156,7 +171,7 @@ Il écrit `prospects-signaux/ulule-AAAA-MM-JJ.csv` avec ce que finance l'argent 
 Il manque une condition : « À creuser ».
 
 **Côté Noé, environ 30 minutes.**
-1. **Ouvrir Nowork.** Les « À contacter » sont en tête de « À faire maintenant ». Dans chaque fiche, les pastilles disent pourquoi lui et comment il a été trouvé, et le bloc-notes donne le message prêt et le canal. Vérifier en un clic le site et le message.
+1. **Ouvrir Nowork.** Les « À contacter » sont en tête de « À faire maintenant », en violet clair. Dans chaque fiche, la bulle dit pourquoi lui et comment il a été trouvé, un clic la copie pour une IA, et le bloc-notes donne le message prêt et le canal. Vérifier en un clic le site et le message.
 2. **Envoyer, un par un.** WhatsApp si un mobile professionnel est publié, sinon email, sinon LinkedIn, sinon Instagram en message privé au compte professionnel. Jamais un envoi groupé. La fiche Nowork porte le téléphone ou l'email ; pour LinkedIn ou Instagram, le lien est dans la note et le message dans le bloc-notes, à coller soi-même.
 3. **Survoler les « À creuser ».** Le plus souvent, on attend : le lieu n'est pas encore ouvert, ou le contact manque.
 4. **Relancer** une fois à J+4 et une fois à J+10, puis s'arrêter.
@@ -195,7 +210,7 @@ La règle stricte donne moins de « À contacter », mais chacun a deux preuves 
 Principes :
 - **Vouvoiement** : premier échange individuel (voir `documentation/context/positionnement.md`, Tonalité).
 - **Parler de son projet à lui**, tel qu'il l'a déclaré, pas de Noé.
-- **Donner quelque chose d'utile tout de suite** : une remarque juste sur son modèle de revenus, et l'offre d'une maquette de l'écran principal. Pas de vidéo générique, pas de lien vers le site en premier.
+- **Donner quelque chose d'utile tout de suite** : une remarque juste sur son modèle de revenus, et l'offre d'une maquette de l'écran principal. Pas de vidéo générique, pas de lien vers le site en premier. La maquette n'est jamais faite d'avance : on ne sait pas s'il veut du mobile ou du web. On écrit « la maquette de l'écran principal de votre application, mobile ou web ».
 - **Court** : moins de 100 mots. **Pas de tiret cadratin.**
 - **Une sortie claire** : la CNIL l'impose et ça rassure.
 
