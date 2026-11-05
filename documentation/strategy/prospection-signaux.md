@@ -151,7 +151,7 @@ Il écrit `prospects-signaux/ulule-AAAA-MM-JJ.csv` avec ce que finance l'argent 
    - Une piste jointe seulement par LinkedIn ou Instagram entre aussi, le lien dans la note.
    - Une piste déjà dans Nowork, par son SIREN, son téléphone ou son email, est sautée.
    - Rien n'est envoyé à personne ;
-8. livre `prospects-signaux/qualifies-AAAA-MM-JJ.csv`, qui garde aussi les « À creuser » et les « À écarter ».
+8. livre `prospects-signaux/a-envoyer-AAAA-MM-JJ.md`, écrit par `scripts/prospection/recap-a-envoyer.mjs` : les messages à envoyer, et sous chacun, qui est la personne. C'est le document de Noé. Il livre aussi `qualifies-AAAA-MM-JJ.csv`, qui garde les « À creuser » et les « À écarter ».
 
 **La règle « À contacter », depuis le 03/11/2026.** Cinq conditions, toutes nécessaires :
 1. Au moins **deux preuves d'argent fortes**. Les preuves fortes :
@@ -209,40 +209,38 @@ La règle stricte donne moins de « À contacter », mais chacun a deux preuves 
 
 ## 7. Le message
 
-Principes :
-- **Vouvoiement** : premier échange individuel (voir `documentation/context/positionnement.md`, Tonalité).
-- **Parler de son projet à lui**, tel qu'il l'a déclaré, pas de Noé.
-- **Donner quelque chose d'utile tout de suite** : une remarque juste sur son modèle de revenus, et l'offre d'une maquette de l'écran principal. Pas de vidéo générique, pas de lien vers le site en premier. La maquette n'est jamais faite d'avance : on ne sait pas s'il veut du mobile ou du web. On écrit « la maquette de l'écran principal de votre application, mobile ou web ».
-- **Court** : moins de 100 mots. **Pas de tiret cadratin.**
-- **Une sortie claire** : la CNIL l'impose et ça rassure.
+Le modèle, fixé le 05/11/2026 après deux versions refusées par Noé (« trop long », « pourquoi tu mets tout ça ») : **quatre phrases, rien d'autre**. Qui j'écris, ce qu'il lance, la maquette offerte, la question. Pas d'« idée » sur son projet, pas de fait trouvé dans la recherche, pas de « j'ai vu dans les annonces légales » : tout ça rendait le message bizarre pour quelqu'un qui ne connaît pas Noé. Le dossier sert à Noé pour l'appel, pas au message.
 
-### Email
+### Le modèle, en trois messages (WhatsApp, LinkedIn, Instagram)
 
-> **Objet :** [Nom du projet] : une idée pour vos premiers clients
+Noé, le 05/11 : « c'est pas trop direct ? peut-être message 1, message 2 ». Sur une messagerie, on ouvre la conversation en une ligne, et l'offre vient quand la personne répond.
+
+> **Message 1 :** Bonjour [Prénom], moi c'est Noé, je crée des applications sur mesure. Vous lancez [Nom du projet] ?
 >
-> Bonjour [Prénom],
+> **Message 2**, quand il répond, ou à J+2 sans réponse : Je vous offre la maquette de l'écran principal, pour voir votre application avant de vous lancer. Ça vous intéresse ?
 >
-> J'ai vu que vous lanciez [Nom du projet], [ce qu'il a déclaré, en une phrase simple].
+> **Message 3**, s'il dit oui : Super. Un appel de 15 minutes pour que je comprenne votre projet, et je vous l'envoie dans la semaine. Quel créneau vous arrange ?
+
+### Par email, en un seul message
+
+> **Objet :** [Nom du projet], la maquette de votre application
 >
-> Je conçois des applications mobiles et web pensées pour rapporter. Un point sur votre projet : [remarque utile, voir la liste ci-dessous].
->
-> Si ça peut vous aider, je vous prépare gratuitement la maquette de l'écran principal de [Nom du projet], pour voir votre application avant de vous lancer. Ça vous intéresse ?
->
-> Noé Calmes · Expert en applications mobiles & web · noecalmes.fr
->
-> Si ce n'est pas le moment, dites-le-moi et je ne vous écrirai plus.
+> Bonjour [Prénom], moi c'est Noé, je crée des applications sur mesure. Vous lancez [Nom du projet] ? Je vous offre la maquette de l'écran principal, pour voir votre application avant de vous lancer. Ça vous intéresse ?
+> Si ce n'est pas le moment, dites-le-moi.
+> Noé Calmes, noecalmes.fr
 
-### Message LinkedIn (300 caractères maximum)
+Règles :
+- **vouvoiement**, « moi c'est Noé » comme dans ses pubs ;
+- **« je crée des applications sur mesure »**, sans « mobiles et web » (règle de `documentation/context/vocabulaire-mobile-web.md`) ;
+- **« Vous lancez [Nom du projet] ? »** : le nom de marque s'il existe, sinon « une application pour [Nom de l'entreprise] » ; « Vous ouvrez … ? » pour un lieu ;
+- quand le nom du projet ne dit pas ce qu'est l'application, trois mots entre virgules après « votre application » : « commande et paiement pour les stands » ;
+- **par email**, tout en un, avec la ligne de sortie « Si ce n'est pas le moment, dites-le-moi » (la CNIL demande une possibilité de refus) et la signature ;
+- **par WhatsApp et LinkedIn**, en trois messages, rien de plus : la personne répond « non » si elle veut ;
+- **pas de tiret cadratin**, 40 mots au plus.
 
-> Bonjour [Prénom], j'ai vu le lancement de [Nom du projet]. Je conçois des applications pensées pour rapporter et j'ai une idée sur [son modèle : la commission, l'abonnement…]. Je vous prépare la maquette de l'écran principal, offerte ? Noé
+### Relance
 
-### Message Instagram (court, au compte professionnel)
-
-> Bonjour, j'ai vu le lancement de [Nom du projet] dans les annonces légales. Je conçois des applications pensées pour rapporter. Je vous prépare la maquette de l'écran principal, offerte, pour voir votre application avant de vous lancer ? Noé, noecalmes.fr
-
-### Relance (J+4)
-
-> Bonjour [Prénom], je reviens vers vous pour la maquette de [Nom du projet]. Je peux vous l'envoyer cette semaine. Un simple oui suffit.
+Sur une messagerie, le message 2 à J+2 fait office de relance. Puis à J+6 : « Bonjour [Prénom], toujours partant pour la maquette de [Nom du projet] ? Un oui me suffit. » Par email, cette même phrase à J+4.
 
 ### Remarques utiles, selon le modèle déclaré
 

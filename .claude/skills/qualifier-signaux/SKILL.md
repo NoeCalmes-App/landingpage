@@ -53,18 +53,18 @@ Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. L
    - **Noter le résultat** dans le champ `pubs` de la fiche pour les pubs, et dans `signes_argent` pour les avis, avec la date de la vérification, même s'il n'y a rien.
    - **Revoir le verdict.** De la pub payée ou beaucoup d'avis sont des preuves d'argent fortes : elles peuvent faire passer une piste « À creuser » en « À contacter ».
 8. **Rédiger les messages.** Remplir le champ `message` des fiches « À contacter », et des « À creuser » qui ont un contact et un projet clair.
-   - Suivre la partie 7 de la marche à suivre : vouvoiement, moins de 100 mots, maquette offerte, sortie pour refuser. La maquette n'est jamais faite d'avance : on ne sait pas s'il veut du mobile ou du web. L'offre s'écrit « la maquette de l'écran principal de votre application, mobile ou web ».
+   - Recopier le modèle de la partie 7 de la marche à suivre, mot pour mot, en changeant seulement le prénom et le nom du projet. Sur WhatsApp, LinkedIn et Instagram, trois messages : « Message 1 : Bonjour [Prénom], moi c'est Noé, je crée des applications sur mesure. Vous lancez [Nom du projet] ? », puis « Message 2, quand il répond, ou à J+2 sans réponse : Je vous offre la maquette de l'écran principal, pour voir votre application avant de vous lancer. Ça vous intéresse ? », puis « Message 3, s'il dit oui : Super. Un appel de 15 minutes pour que je comprenne votre projet, et je vous l'envoie dans la semaine. Quel créneau vous arrange ? ». Par email, tout en un, avec un objet, la ligne « Si ce n'est pas le moment, dites-le-moi » et la signature. Aucune idée sur son projet, aucun fait de la recherche : Noé a refusé deux versions qui en avaient (« pourquoi tu mets tout ça ? », « c'est pas trop direct ? »).
    - WhatsApp si un mobile est publié, sinon email, sinon LinkedIn, sinon Instagram en message privé au compte professionnel. Le message commence par le canal : « WhatsApp au … », « Email à … », « LinkedIn à … », « Instagram à … ».
-   - Dire d'où vient l'information, par exemple « j'ai vu dans les annonces légales ».
-   - Ne citer aucun fait que la fiche n'a pas sourcé.
-9. **Assembler.** `node scripts/prospection/fusionner-qualification.mjs prospects-signaux/qualification-<jour>`.
+   - Ne pas dire d'où vient l'information : parler de son projet comme d'une évidence.
+   - Le dossier de la fiche sert à Noé pour l'appel, pas au message.
+9. **Assembler.** `node scripts/prospection/fusionner-qualification.mjs prospects-signaux/qualification-<jour>`, puis `node scripts/prospection/recap-a-envoyer.mjs prospects-signaux/qualification-<jour>`, qui écrit `prospects-signaux/a-envoyer-<jour>.md` : les messages à envoyer, et sous chacun, qui est la personne.
 10. **Faire entrer les « À contacter » dans Nowork.** Depuis le dossier `nowork` :
    - `node scripts/importer-prospects-signaux.mjs` simule et liste ce qui serait créé ;
    - vérifier que chaque piste a son contact, son téléphone ou son email, et son canal ;
    - `node scripts/importer-prospects-signaux.mjs --apply` crée les fiches.
    Une piste jointe seulement par LinkedIn ou Instagram entre aussi : le lien est dans la note, le message dans le bloc-notes. Chaque fiche arrive en « Nouveau », en tête de « À faire maintenant », avec la provenance « Prospection », en bleu clair partout. Dans son panneau, une seule bulle se lit au survol, comme celles d'un lead Meta : pourquoi lui, son projet, l'argent, le démarrage, comment je l'ai trouvé. Un clic copie tout le dossier et le message, pour les coller à une IA. Le descriptif reste vide pour Noé. Le message prêt et tout le dossier sont dans son bloc-notes. Une piste déjà dans Nowork, par son SIREN, son téléphone ou son email, est sautée sans rien toucher. Le script n'envoie rien à personne.
 11. **Livrer.**
-   - Envoyer le CSV à Noé avec SendUserFile.
+   - Envoyer `a-envoyer-<jour>.md` à Noé avec SendUserFile, puis le CSV. C'est le récapitulatif qu'il attend chaque lundi : il ne lit pas le reste.
    - Dire que les « À contacter » sont dans Nowork.
    - Dire en trois lignes combien de pistes ont chaque verdict.
    - Dire qui contacter en premier, et pourquoi.
