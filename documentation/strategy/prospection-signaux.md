@@ -213,13 +213,15 @@ Le modèle, fixé le 05/11/2026 après de nombreuses versions refusées par Noé
 
 ### Approcher quelqu'un qui ne te connaît pas
 
-Il ne t'a rien demandé. Le premier message dit qui tu es, pourquoi tu lui écris, et pose une question qui se répond en un mot. C'est tout.
+Il ne t'a rien demandé. Le premier message dit qui tu es, ce que tu crées, ce que tu as vu, et propose d'en parler. C'est tout.
 
-- **Court** : il tient sur l'écran sans dérouler, 35 mots au plus.
-- **Qui je suis** : « moi c'est Noé (noecalmes.fr), je crée des applications sur mesure ». Le prénom seul, le lien pour voir ton travail. Pas « qui génèrent des revenus » : on ne connaît pas son projet, c'est peut-être un outil interne.
+- **Court** : il tient sur l'écran sans dérouler, 40 mots au plus.
+- **Qui je suis** : « moi c'est Noé (noecalmes.fr) ». Le prénom seul, le lien pour voir ton travail.
+- **Ce que je crée, selon son projet** : « des SaaS qui génèrent des revenus » s'il déclare du logiciel ou de l'abonnement, « des applications qui génèrent des revenus » si son application se vend, « des applications sur mesure » si son projet ne vend rien, comme une halle ou un outil interne.
+- **La preuve** : « plus d'un million de téléchargements à ce jour ».
 - **Pourquoi je lui écris** : un fait précis sur lui, « J'ai vu que… ». C'est là que le message devient personnel.
-- **Une question facile, adaptée à lui** : « Vous avez déjà quelqu'un pour l'application mobile ? ». Elle ne vend rien et elle trie : s'il a déjà quelqu'un, on s'arrête là.
-- **Ce qu'on ne met pas** : d'offre, d'appel, de compliment, d'idée sur son application, de « votre numéro est sur… », ni le mot « prestataire » : Noé n'est pas un exécutant. Tout ça vient après une réponse, ou jamais.
+- **La fin** : « Ça vous dirait d'en parler ? ». Tu arrives d'égal à égal. Pas « vous avez déjà quelqu'un pour la partie technique ? » : ça fait prestataire.
+- **Ce qu'on ne met pas** : l'offre de maquette, la demande de 15 minutes, un compliment, une idée sur son application, « votre numéro est sur… », le mot « prestataire ». Tout ça vient après une réponse, ou jamais.
 - **Le profil compte autant que le texte** : vraie photo, « Noé Calmes · applications sur mesure », le site dans la description.
 - **Le bon moment** : en semaine, entre 9 h 30 et 11 h 30 ou entre 14 h et 16 h.
 - **Doucement** : quelques messages par jour, un par un. Trop d'inconnus d'un coup, et les signalements font bloquer le compte WhatsApp.
@@ -229,15 +231,13 @@ Il ne t'a rien demandé. Le premier message dit qui tu es, pourquoi tu lui écri
 
 ### Les messages, sur WhatsApp, LinkedIn et Instagram
 
-> **Message 1 :** Bonjour [Prénom], moi c'est Noé (noecalmes.fr), je crée des applications sur mesure. J'ai vu que [un fait sur lui]. [Une question facile] ?
+> **Message 1 :** Bonjour [Prénom], moi c'est Noé (noecalmes.fr), je crée [ce qui colle à son projet], plus d'un million de téléchargements à ce jour. J'ai vu que [un fait sur lui]. Ça vous dirait d'en parler ?
 >
 > **Si pas de WhatsApp, par SMS :** le même texte, sans le lien : venant d'un inconnu, un lien dans un SMS fait arnaque.
 >
 > **Relance à J+3 :** Bonjour [Prénom], je reviens vers vous pour [Nom du projet]. 15 minutes au téléphone, et je vous prépare la maquette de [son projet], gratuitement. Un oui ou un non me suffit.
 >
-> **Si ouvert :** Ça vous dirait qu'on s'appelle 15 minutes pour en discuter ? Je vous donne mon avis sur le projet, gratuitement.
->
-> **Si oui à l'appel :** Super ! Quand êtes-vous disponible ?
+> **Si oui :** Super ! 15 minutes au téléphone, je vous donne mon avis sur le projet, gratuitement. Quand êtes-vous disponible ?
 >
 > **Si déjà quelqu'un :** Parfait, bonne continuation avec le projet ! Si un jour vous avez besoin d'un autre avis, n'hésitez pas.
 >
@@ -253,7 +253,7 @@ Rien à J+10 : on arrête.
 
 > **Objet :** [Nom du projet], une question
 >
-> Bonjour [Prénom], moi c'est Noé, je crée des applications sur mesure. J'ai vu que [un fait sur lui]. [Une question facile] ?
+> Bonjour [Prénom], moi c'est Noé, je crée [ce qui colle à son projet], plus d'un million de téléchargements à ce jour. J'ai vu que [un fait sur lui]. Ça vous dirait d'en parler ?
 > Si ce n'est pas le moment, dites-le-moi.
 > Noé Calmes, noecalmes.fr
 

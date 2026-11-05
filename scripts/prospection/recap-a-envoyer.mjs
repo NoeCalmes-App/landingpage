@@ -44,7 +44,7 @@ const court = (t, max) => {
 const premierEnvoi = (f) => {
   const lignes = String(f.message ?? '').split('\n').map((l) => l.trim()).filter(Boolean);
   const [canal, objet] = (lignes.shift() ?? '').split(/\s*Objet :\s*/);
-  const corps = lignes.filter((l) => !/^(Relance|Si ouvert|Si oui|Si déjà|Si non|Si «|Si pas de WhatsApp)/.test(l)).map((l) => l.replace(/^Message 1 : /, ''));
+  const corps = lignes.filter((l) => !/^(Relance|Si oui|Si déjà|Si non|Si «|Si pas de WhatsApp)/.test(l)).map((l) => l.replace(/^Message 1 : /, ''));
   if (objet) corps.unshift(`**Objet :** ${objet.replace(/\.$/, '')}`);
   return { canal: canal.replace(/, en un seul message/, '').replace(/\.$/, ''), corps: corps.join('\n') };
 };

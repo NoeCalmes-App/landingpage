@@ -55,12 +55,13 @@ Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. L
 8. **Préparer les messages.** Lire d'abord « Approcher quelqu'un qui ne te connaît pas », partie 7 de la marche à suivre. Pour chaque fiche « À contacter », vérifier et compléter ces champs, propres à la personne :
    - `canal_ligne` : « WhatsApp au 06… » si un mobile est publié, sinon « Email à … », sinon « LinkedIn à … », sinon « Instagram à … » ;
    - `vu` : une phrase « J'ai vu que… » avec un fait précis sur elle ;
-   - `question` : une question qui se répond en un mot, adaptée à son projet, souvent « Vous avez déjà quelqu'un pour… ? » ;
+   - `je_cree` : selon son projet, « des SaaS qui génèrent des revenus » s'il déclare du logiciel ou de l'abonnement, « des applications qui génèrent des revenus » si son application se vend, « des applications sur mesure » si son projet ne vend rien ;
+   - `question` : seulement si la fin par défaut, « Ça vous dirait d'en parler ? », ne colle pas ;
    - `maquette` : ce que Noé propose de maquetter, « l'application Studio Lumen » serait un bon format, par défaut « votre projet » ;
    - `source_contact` : où le contact est publié, « votre site », « votre LinkedIn » ;
    - `projet` si le nom de marque diffère de `nom`, `qui_cest` en deux lignes pour Noé.
 
-   Puis `node scripts/prospection/ecrire-messages.mjs prospects-signaux/qualification-<jour>`. Le script écrit tout le reste, mot pour mot : le premier message, le SMS, la relance, les réponses. Ne jamais les réécrire à la main. Le premier message reste sous 35 mots : pas d'offre, pas d'appel, pas de compliment, pas de « votre numéro est sur », pas le mot « prestataire ». Noé a refusé toutes ces versions.
+   Puis `node scripts/prospection/ecrire-messages.mjs prospects-signaux/qualification-<jour>`. Le script écrit tout le reste, mot pour mot : le premier message, le SMS, la relance, les réponses. Ne jamais les réécrire à la main. Le premier message reste sous 40 mots : pas d'offre, pas d'appel, pas de compliment, pas de « votre numéro est sur », pas de « la partie technique », pas le mot « prestataire ». Noé a refusé toutes ces versions.
 9. **Assembler.** `node scripts/prospection/fusionner-qualification.mjs prospects-signaux/qualification-<jour>`, puis `node scripts/prospection/recap-a-envoyer.mjs prospects-signaux/qualification-<jour>`, qui écrit `prospects-signaux/a-envoyer-<jour>.md` : les messages à envoyer, et sous chacun, qui est la personne.
 10. **Faire entrer les « À contacter » dans Nowork.** Depuis le dossier `nowork` :
    - `node scripts/importer-prospects-signaux.mjs` simule et liste ce qui serait créé ;
