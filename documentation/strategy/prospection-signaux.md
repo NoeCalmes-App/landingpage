@@ -174,9 +174,9 @@ Il manque une condition : « À creuser ».
 
 **Côté Noé, environ 30 minutes.**
 1. **Ouvrir Nowork.** Les « À contacter » sont en tête de « À faire maintenant », en violet clair. Dans chaque fiche, la bulle dit pourquoi lui et comment il a été trouvé, un clic la copie pour une IA, et le bloc-notes donne le message prêt et le canal. Vérifier en un clic le site et le message.
-2. **Envoyer, un par un.** WhatsApp si un mobile professionnel est publié, sinon email, sinon LinkedIn, sinon Instagram en message privé au compte professionnel. Jamais un envoi groupé. La fiche Nowork porte le téléphone ou l'email ; pour LinkedIn ou Instagram, le lien est dans la note et le message dans le bloc-notes, à coller soi-même.
+2. **Envoyer, un par un.** WhatsApp si un mobile professionnel est publié, ou SMS sans le lien si le numéro n'a pas WhatsApp, sinon email, sinon LinkedIn, sinon Instagram en message privé au compte professionnel. Jamais un envoi groupé. La fiche Nowork porte le téléphone ou l'email ; pour LinkedIn ou Instagram, le lien est dans la note et le message dans le bloc-notes, à coller soi-même.
 3. **Survoler les « À creuser ».** Le plus souvent, on attend : le lieu n'est pas encore ouvert, ou le contact manque.
-4. **Relancer** une fois à J+4 et une fois à J+10, puis s'arrêter.
+4. **Relancer une seule fois**, à J+3 sur une messagerie, à J+4 par email. Rien à J+10 : on arrête.
 5. **Suivre dans Nowork**, comme un lead du formulaire : qualification, appel 1 puis visio 2. Le bouton « Premier message » ne s'affiche pas sur ces fiches, parce que son texte parle du formulaire : copier le message du bloc-notes.
 
 **Ce que la qualification sait, et d'où.**
@@ -201,7 +201,7 @@ Les réseaux, lus ensuite dans le Chrome de Noé, ont changé 6 verdicts sur 7. 
 
 **Deuxième essai, le 03/11/2026, avec la nouvelle méthode** (deux passes, règle des deux preuves fortes, domaines .fr, pubs, Google Maps). Sur 20 pistes, 16 du BODACC et 4 d'Ulule : 2 à contacter, 6 à creuser, 12 à écarter. Ce que la méthode a attrapé :
 - un directeur général qui se présente « Entrepreneur Tech & CTO » sur LinkedIn, derrière un restaurateur franchisé avec de vraies preuves d'argent : écarté ;
-- un commercial du bois qui a créé un réseau de 65 dépôts, dont le groupe publie 1,5 M€ de chiffre d'affaires et paie des pubs Meta et Google, qui vient de créer « Service Commercial IA », l'affiche déjà sur son LinkedIn et publie son mobile : à contacter par WhatsApp ;
+- un ancien commercial à la tête d'un réseau de dépôts, dont le groupe publie 1,5 M€ de chiffre d'affaires et paie des pubs Meta et Google, qui vient de créer une société d'application, l'affiche déjà sur son LinkedIn et publie son mobile : à contacter par WhatsApp ;
 - un diagnostiqueur énergétique dont le bureau d'études fait 1,6 M€ avec 10 à 19 salariés, qui a réservé le domaine .fr de sa marque sept semaines avant de créer sa société de plateforme, joignable seulement sur LinkedIn : à contacter par LinkedIn ;
 - deux banquiers qui créent une société de plateforme avec 15 000 € de capital et un cabinet à 90 avis Google, sans aucun signe de démarrage : à creuser, à revoir dans un mois.
 
@@ -209,38 +209,55 @@ La règle stricte donne moins de « À contacter », mais chacun a deux preuves 
 
 ## 7. Le message
 
-Le modèle, fixé le 05/11/2026 après deux versions refusées par Noé (« trop long », « pourquoi tu mets tout ça ») : **quatre phrases, rien d'autre**. Qui j'écris, ce qu'il lance, la maquette offerte, la question. Pas d'« idée » sur son projet, pas de fait trouvé dans la recherche, pas de « j'ai vu dans les annonces légales » : tout ça rendait le message bizarre pour quelqu'un qui ne connaît pas Noé. Le dossier sert à Noé pour l'appel, pas au message.
+Le modèle, fixé le 05/11/2026 après plusieurs versions refusées par Noé (« trop long », « pourquoi tu mets tout ça », « il ne me connaît pas, il ne répondra jamais »). `scripts/prospection/ecrire-messages.mjs` l'écrit à partir de la fiche : personne ne le réécrit à la main.
 
-### Le modèle, en trois messages (WhatsApp, LinkedIn, Instagram)
+### Approcher quelqu'un qui ne te connaît pas
 
-Noé, le 05/11 : « c'est pas trop direct ? peut-être message 1, message 2 ». Sur une messagerie, on ouvre la conversation en une ligne, et l'offre vient quand la personne répond.
+Sur WhatsApp, un inconnu se pose trois questions en deux secondes : qui c'est, comment il m'a eu, qu'est-ce qu'il me veut. Le premier message répond aux deux premières et ne demande rien.
 
-> **Message 1 :** Bonjour [Prénom], moi c'est Noé, je crée des applications sur mesure. Vous lancez [Nom du projet] ?
+- **Court** : il tient sur l'écran sans dérouler, 40 mots au plus.
+- **Qui je suis, tout de suite** : prénom, nom, métier, et le site, que la personne peut vérifier.
+- **Comment je l'ai eu, sans attendre la question** : « Votre numéro est sur votre site ». C'est vrai, et ça désamorce.
+- **Un compliment vrai, sur ce qu'elle a construit**, avec un fait qu'elle a publié elle-même. Jamais vague.
+- **Une seule question, qui se répond en trois mots**, sur son projet. Répondre doit lui coûter moins que de ne pas répondre.
+- **Pas d'offre dans le premier message.** La maquette vient à la relance ou après une réponse, là où elle a de la valeur.
+- **Pas d'idée sur son application, pas de « j'ai vu dans les annonces légales »** au premier message. Si on demande, on le dit franchement.
+- **Le profil compte autant que le texte** : vraie photo, « Noé Calmes · applications sur mesure », le site dans la description. C'est la première chose qu'un inconnu regarde.
+- **Le bon moment** : en semaine, entre 9 h 30 et 11 h 30 ou entre 14 h et 16 h.
+- **Doucement** : quelques messages par jour, un par un. Trop d'inconnus d'un coup, et les signalements font bloquer le compte WhatsApp.
+- **Le vocal, pour la relance** : 20 secondes de voix prouvent qu'un humain écrit. Avec une vraie voix, on ne ressemble plus à un robot.
+- **Répondre comme on tape sur son téléphone** : phrases courtes, un point d'exclamation, et toujours une question à la fin pour garder la conversation. La question « comment m'avez-vous eu ? » est le moment où la vente se joue : pas de ton administratif, et on dit vrai.
+- **Un non, c'est fini** : on remercie, on le note, on ne réécrit jamais.
+
+### Les messages, sur WhatsApp, LinkedIn et Instagram
+
+> **Message 1 :** Bonjour [Prénom], moi c'est Noé Calmes, je crée des applications (noecalmes.fr). Votre numéro est sur [où]. [Compliment]. [Question] ?
 >
-> **Message 2**, quand il répond, ou à J+2 sans réponse : Je vous offre la maquette de l'écran principal, pour voir votre application avant de vous lancer. Ça vous intéresse ?
+> **Si pas de WhatsApp, par SMS :** le même texte, sans le lien : venant d'un inconnu, un lien dans un SMS fait arnaque. Sur LinkedIn et Instagram, on saute la phrase sur le numéro.
 >
-> **Message 3**, s'il dit oui : Super. Un appel de 15 minutes pour que je comprenne votre projet, et je vous l'envoie dans la semaine. Quel créneau vous arrange ?
+> **Relance à J+3 :** Bonjour [Prénom], je peux vous faire gratuitement la maquette de votre application, pour la voir avant de vous lancer. Un oui ou un non me suffit.
+>
+> **Si réponse :** Merci ! Si ça peut vous aider, je vous offre la maquette de l'écran principal, pour voir votre application avant de vous lancer. Ça vous intéresse ?
+>
+> **Si oui :** Super. 15 minutes au téléphone pour que je comprenne le projet, et je vous l'envoie dans la semaine. Quand êtes-vous disponible ?
+>
+> **Si « qui êtes-vous ? » :** Noé ! Je crée des applications pour des entrepreneurs qui n'ont pas de développeur, plus d'un million de téléchargements à ce jour. Pas une agence, c'est moi que vous avez en direct. Vous pouvez voir sur noecalmes.fr. Et vous, vous en êtes où ?
+>
+> **Si « comment m'avez-vous trouvé ? » :** Il est sur [où] ! J'ai vu passer [Nom du projet] dans les annonces légales, et je me suis dit que ça valait un message. Vous en êtes où ?
+>
+> **Si non :** Pas de souci, merci d'avoir répondu. Bonne continuation avec [Nom du projet].
+
+Rien à J+10 : on arrête.
 
 ### Par email, en un seul message
 
-> **Objet :** [Nom du projet], la maquette de votre application
+> **Objet :** [Nom du projet], une question
 >
-> Bonjour [Prénom], moi c'est Noé, je crée des applications sur mesure. Vous lancez [Nom du projet] ? Je vous offre la maquette de l'écran principal, pour voir votre application avant de vous lancer. Ça vous intéresse ?
+> Bonjour [Prénom], moi c'est Noé Calmes, je crée des applications. [Compliment]. [Question] ? Si ça peut vous aider, je vous offre la maquette de l'écran principal.
 > Si ce n'est pas le moment, dites-le-moi.
 > Noé Calmes, noecalmes.fr
 
-Règles :
-- **vouvoiement**, « moi c'est Noé » comme dans ses pubs ;
-- **« je crée des applications sur mesure »**, sans « mobiles et web » (règle de `documentation/context/vocabulaire-mobile-web.md`) ;
-- **« Vous lancez [Nom du projet] ? »** : le nom de marque s'il existe, sinon « une application pour [Nom de l'entreprise] » ; « Vous ouvrez … ? » pour un lieu ;
-- quand le nom du projet ne dit pas ce qu'est l'application, trois mots entre virgules après « votre application » : « commande et paiement pour les stands » ;
-- **par email**, tout en un, avec la ligne de sortie « Si ce n'est pas le moment, dites-le-moi » (la CNIL demande une possibilité de refus) et la signature ;
-- **par WhatsApp et LinkedIn**, en trois messages, rien de plus : la personne répond « non » si elle veut ;
-- **pas de tiret cadratin**, 40 mots au plus.
-
-### Relance
-
-Sur une messagerie, le message 2 à J+2 fait office de relance. Puis à J+6 : « Bonjour [Prénom], toujours partant pour la maquette de [Nom du projet] ? Un oui me suffit. » Par email, cette même phrase à J+4.
+La ligne de sortie est là parce que la CNIL demande une possibilité de refus. Relance à J+4, avec le même texte que sur WhatsApp.
 
 ### Remarques utiles, selon le modèle déclaré
 
