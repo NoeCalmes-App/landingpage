@@ -44,7 +44,7 @@ const court = (t, max) => {
 const premierEnvoi = (f) => {
   const lignes = String(f.message ?? '').split('\n').map((l) => l.trim()).filter(Boolean);
   const [canal, objet] = (lignes.shift() ?? '').split(/\s*Objet :\s*/);
-  const corps = lignes.filter((l) => !/^(Relance|Si réponse|Si oui|Si non|Si «|Si pas de WhatsApp)/.test(l)).map((l) => l.replace(/^Message 1 : /, ''));
+  const corps = lignes.filter((l) => !/^(Relance|Si ouvert|Si oui|Si déjà|Si non|Si «|Si pas de WhatsApp)/.test(l)).map((l) => l.replace(/^Message 1 : /, ''));
   if (objet) corps.unshift(`**Objet :** ${objet.replace(/\.$/, '')}`);
   return { canal: canal.replace(/, en un seul message/, '').replace(/\.$/, ''), corps: corps.join('\n') };
 };
@@ -60,7 +60,7 @@ fiches.forEach((f, i) => {
   parties.push('', `## ${i + 1}. ${f.contact || f.nom || f.entreprise}, ${canal}${lien}`, corps, '', `*${f.qui_cest || court(f.raison, 220)}*`);
 });
 parties.push('', '## La suite, pour tout le monde', '**Si le numéro n\'a pas WhatsApp :** le même message par SMS, sans le lien. Il est prêt sur l\'icône message de la fiche.', '');
-for (const [titre, texte] of suite({ prenom: '[Prénom]', projet: '[Nom du projet]', ou: '[où]', provenance: 'dans les annonces légales' })) {
+for (const [titre, texte] of suite({ prenom: '[Prénom]', projet: '[Nom du projet]', ou: '[où]', provenance: 'dans les annonces légales', maquette: '[la maquette]' })) {
   parties.push(`**${titre} :** ${texte}`, '');
 }
 parties.push('Rien à J+10 : on arrête. Un non : on ne réécrit jamais.');

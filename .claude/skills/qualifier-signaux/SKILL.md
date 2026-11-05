@@ -52,14 +52,15 @@ Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. L
    - **Google Maps**, pour un commerce, un restaurant, une salle ou un cabinet : `https://www.google.com/maps/search/NOM+VILLE`. À la première visite, une page de consentement s'affiche : cliquer « Tout refuser », le navigateur s'en souvient. Attendre que le panneau se charge, puis lire la note et le nombre d'avis dans les `aria-label` (« 5,0 étoiles », « 9 avis »), avec le téléphone et le site affichés. Au moins 50 avis sur un commerce de plus de trois ans : preuve d'argent forte.
    - **Noter le résultat** dans le champ `pubs` de la fiche pour les pubs, et dans `signes_argent` pour les avis, avec la date de la vérification, même s'il n'y a rien.
    - **Revoir le verdict.** De la pub payée ou beaucoup d'avis sont des preuves d'argent fortes : elles peuvent faire passer une piste « À creuser » en « À contacter ».
-8. **Préparer les messages.** Lire d'abord « Approcher quelqu'un qui ne te connaît pas », partie 7 de la marche à suivre. Pour chaque fiche « À contacter », vérifier et compléter ces champs :
+8. **Préparer les messages.** Lire d'abord « Approcher quelqu'un qui ne te connaît pas », partie 7 de la marche à suivre. Pour chaque fiche « À contacter », vérifier et compléter ces champs, propres à la personne :
    - `canal_ligne` : « WhatsApp au 06… » si un mobile est publié, sinon « Email à … », sinon « LinkedIn à … », sinon « Instagram à … » ;
-   - `source_contact` : où le contact est publié, en mots simples, « votre site », « votre LinkedIn » ;
-   - `compliment` : une phrase courte et vraie sur ce qu'il a construit, avec un fait qu'il a publié lui-même ;
-   - `question` : une question qui se répond en trois mots, sur son projet ;
+   - `vu` : une phrase « J'ai vu que… » avec un fait précis sur elle ;
+   - `question` : une question qui se répond en un mot, adaptée à son projet, souvent « Vous avez déjà quelqu'un pour… ? » ;
+   - `maquette` : ce que Noé propose de maquetter, « l'application Studio Lumen » serait un bon format, par défaut « votre projet » ;
+   - `source_contact` : où le contact est publié, « votre site », « votre LinkedIn » ;
    - `projet` si le nom de marque diffère de `nom`, `qui_cest` en deux lignes pour Noé.
 
-   Puis `node scripts/prospection/ecrire-messages.mjs prospects-signaux/qualification-<jour>`. Le script écrit tout le reste, mot pour mot : le premier message, le SMS, la relance, les réponses. Ne jamais les réécrire à la main. Le premier message reste sous 40 mots, sans offre, sans idée sur son projet : Noé a refusé toutes les versions plus longues. Le reste du dossier sert à l'appel.
+   Puis `node scripts/prospection/ecrire-messages.mjs prospects-signaux/qualification-<jour>`. Le script écrit tout le reste, mot pour mot : le premier message, le SMS, la relance, les réponses. Ne jamais les réécrire à la main. Le premier message reste sous 35 mots : pas d'offre, pas d'appel, pas de compliment, pas de « votre numéro est sur », pas le mot « prestataire ». Noé a refusé toutes ces versions.
 9. **Assembler.** `node scripts/prospection/fusionner-qualification.mjs prospects-signaux/qualification-<jour>`, puis `node scripts/prospection/recap-a-envoyer.mjs prospects-signaux/qualification-<jour>`, qui écrit `prospects-signaux/a-envoyer-<jour>.md` : les messages à envoyer, et sous chacun, qui est la personne.
 10. **Faire entrer les « À contacter » dans Nowork.** Depuis le dossier `nowork` :
    - `node scripts/importer-prospects-signaux.mjs` simule et liste ce qui serait créé ;

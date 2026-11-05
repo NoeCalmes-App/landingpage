@@ -209,55 +209,55 @@ La règle stricte donne moins de « À contacter », mais chacun a deux preuves 
 
 ## 7. Le message
 
-Le modèle, fixé le 05/11/2026 après plusieurs versions refusées par Noé (« trop long », « pourquoi tu mets tout ça », « il ne me connaît pas, il ne répondra jamais »). `scripts/prospection/ecrire-messages.mjs` l'écrit à partir de la fiche : personne ne le réécrit à la main.
+Le modèle, fixé le 05/11/2026 après de nombreuses versions refusées par Noé (« trop long », « pourquoi tu mets tout ça », « il ne me connaît pas », « trop direct », « ça fait IA »). `scripts/prospection/ecrire-messages.mjs` l'écrit à partir de la fiche : personne ne le réécrit à la main.
 
 ### Approcher quelqu'un qui ne te connaît pas
 
-Sur WhatsApp, un inconnu se pose trois questions en deux secondes : qui c'est, comment il m'a eu, qu'est-ce qu'il me veut. Le premier message répond aux deux premières et ne demande rien.
+Il ne t'a rien demandé. Le premier message dit qui tu es, pourquoi tu lui écris, et pose une question qui se répond en un mot. C'est tout.
 
-- **Court** : il tient sur l'écran sans dérouler, 40 mots au plus.
-- **Qui je suis, tout de suite** : prénom, nom, métier, et le site, que la personne peut vérifier.
-- **Comment je l'ai eu, sans attendre la question** : « Votre numéro est sur votre site ». C'est vrai, et ça désamorce.
-- **Un compliment vrai, sur ce qu'elle a construit**, avec un fait qu'elle a publié elle-même. Jamais vague.
-- **Une seule question, qui se répond en trois mots**, sur son projet. Répondre doit lui coûter moins que de ne pas répondre.
-- **Pas d'offre dans le premier message.** La maquette vient à la relance ou après une réponse, là où elle a de la valeur.
-- **Pas d'idée sur son application, pas de « j'ai vu dans les annonces légales »** au premier message. Si on demande, on le dit franchement.
-- **Le profil compte autant que le texte** : vraie photo, « Noé Calmes · applications sur mesure », le site dans la description. C'est la première chose qu'un inconnu regarde.
+- **Court** : il tient sur l'écran sans dérouler, 35 mots au plus.
+- **Qui je suis** : « moi c'est Noé (noecalmes.fr), je crée des applications sur mesure ». Le prénom seul, le lien pour voir ton travail. Pas « qui génèrent des revenus » : on ne connaît pas son projet, c'est peut-être un outil interne.
+- **Pourquoi je lui écris** : un fait précis sur lui, « J'ai vu que… ». C'est là que le message devient personnel.
+- **Une question facile, adaptée à lui** : « Vous avez déjà quelqu'un pour l'application mobile ? ». Elle ne vend rien et elle trie : s'il a déjà quelqu'un, on s'arrête là.
+- **Ce qu'on ne met pas** : d'offre, d'appel, de compliment, d'idée sur son application, de « votre numéro est sur… », ni le mot « prestataire » : Noé n'est pas un exécutant. Tout ça vient après une réponse, ou jamais.
+- **Le profil compte autant que le texte** : vraie photo, « Noé Calmes · applications sur mesure », le site dans la description.
 - **Le bon moment** : en semaine, entre 9 h 30 et 11 h 30 ou entre 14 h et 16 h.
 - **Doucement** : quelques messages par jour, un par un. Trop d'inconnus d'un coup, et les signalements font bloquer le compte WhatsApp.
-- **Le vocal, pour la relance** : 20 secondes de voix prouvent qu'un humain écrit. Avec une vraie voix, on ne ressemble plus à un robot.
-- **Répondre comme on tape sur son téléphone** : phrases courtes, un point d'exclamation, et toujours une question à la fin pour garder la conversation. La question « comment m'avez-vous eu ? » est le moment où la vente se joue : pas de ton administratif, et on dit vrai.
+- **Le vocal, pour la relance** : 20 secondes de voix prouvent qu'un humain écrit.
+- **Répondre comme on tape sur son téléphone** : phrases courtes, un point d'exclamation, et une question à la fin pour garder la conversation. « Comment m'avez-vous eu ? » est le moment où la vente se joue : pas de ton administratif, et on dit vrai.
 - **Un non, c'est fini** : on remercie, on le note, on ne réécrit jamais.
 
 ### Les messages, sur WhatsApp, LinkedIn et Instagram
 
-> **Message 1 :** Bonjour [Prénom], moi c'est Noé Calmes, je crée des applications (noecalmes.fr). Votre numéro est sur [où]. [Compliment]. [Question] ?
+> **Message 1 :** Bonjour [Prénom], moi c'est Noé (noecalmes.fr), je crée des applications sur mesure. J'ai vu que [un fait sur lui]. [Une question facile] ?
 >
-> **Si pas de WhatsApp, par SMS :** le même texte, sans le lien : venant d'un inconnu, un lien dans un SMS fait arnaque. Sur LinkedIn et Instagram, on saute la phrase sur le numéro.
+> **Si pas de WhatsApp, par SMS :** le même texte, sans le lien : venant d'un inconnu, un lien dans un SMS fait arnaque.
 >
-> **Relance à J+3 :** Bonjour [Prénom], je peux vous faire gratuitement la maquette de votre application, pour la voir avant de vous lancer. Un oui ou un non me suffit.
+> **Relance à J+3 :** Bonjour [Prénom], je reviens vers vous pour [Nom du projet]. 15 minutes au téléphone, et je vous prépare la maquette de [son projet], gratuitement. Un oui ou un non me suffit.
 >
-> **Si réponse :** Merci ! Si ça peut vous aider, je vous offre la maquette de l'écran principal, pour voir votre application avant de vous lancer. Ça vous intéresse ?
+> **Si ouvert :** Ça vous dirait qu'on s'appelle 15 minutes pour en discuter ? Je vous donne mon avis sur le projet, gratuitement.
 >
-> **Si oui :** Super. 15 minutes au téléphone pour que je comprenne le projet, et je vous l'envoie dans la semaine. Quand êtes-vous disponible ?
+> **Si oui à l'appel :** Super ! Quand êtes-vous disponible ?
+>
+> **Si déjà quelqu'un :** Parfait, bonne continuation avec le projet ! Si un jour vous avez besoin d'un autre avis, n'hésitez pas.
 >
 > **Si « qui êtes-vous ? » :** Noé ! Je crée des applications pour des entrepreneurs qui n'ont pas de développeur, plus d'un million de téléchargements à ce jour. Pas une agence, c'est moi que vous avez en direct. Vous pouvez voir sur noecalmes.fr. Et vous, vous en êtes où ?
 >
 > **Si « comment m'avez-vous trouvé ? » :** Il est sur [où] ! J'ai vu passer [Nom du projet] dans les annonces légales, et je me suis dit que ça valait un message. Vous en êtes où ?
 >
-> **Si non :** Pas de souci, merci d'avoir répondu. Bonne continuation avec [Nom du projet].
+> **Si non merci :** Pas de souci, merci d'avoir répondu. Bonne continuation avec [Nom du projet].
 
 Rien à J+10 : on arrête.
 
-### Par email, en un seul message
+### Par email
 
 > **Objet :** [Nom du projet], une question
 >
-> Bonjour [Prénom], moi c'est Noé Calmes, je crée des applications. [Compliment]. [Question] ? Si ça peut vous aider, je vous offre la maquette de l'écran principal.
+> Bonjour [Prénom], moi c'est Noé, je crée des applications sur mesure. J'ai vu que [un fait sur lui]. [Une question facile] ?
 > Si ce n'est pas le moment, dites-le-moi.
 > Noé Calmes, noecalmes.fr
 
-La ligne de sortie est là parce que la CNIL demande une possibilité de refus. Relance à J+4, avec le même texte que sur WhatsApp.
+La ligne de sortie est là parce que la CNIL demande une possibilité de refus. Sur WhatsApp, elle n'est pas dans le message 1, pour rester court : c'est « Un oui ou un non me suffit » de la relance qui la remplace. Relance par email à J+4, avec le même texte.
 
 ### Remarques utiles, selon le modèle déclaré
 
