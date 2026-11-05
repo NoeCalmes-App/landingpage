@@ -13,7 +13,8 @@
 // applications sur mesure » si son projet ne se vend pas), `vu` (« J'ai vu que
 // vous lanciez X. »), `source_contact` (« votre site », « votre LinkedIn »).
 // En option : `question`, par défaut « Ça vous dirait d'en parler ? », `projet` s'il
-// diffère de `nom`, et `maquette` (« l'application X »), par défaut « votre projet ».
+// diffère de `nom`, `maquette` (« l'application X »), par défaut « votre projet », et
+// `objet` pour un email : court, à propos de lui, par défaut « Une question sur X ».
 //
 // Usage :
 //   node scripts/prospection/ecrire-messages.mjs prospects-signaux/qualification-2026-11-03
@@ -54,7 +55,7 @@ export function messageDe(f) {
   const lignes = suite({ prenom, projet, ou: f.source_contact, provenance: provenanceDe(f.siren), maquette: f.maquette || 'votre projet', email, reseau })
     .map(([titre, texte]) => `${titre} : ${texte.replace('Bonjour ,', 'Bonjour,')}`);
   if (email) {
-    return [`${canal}, en un seul message. Objet : ${projet}, une question.`,
+    return [`${canal}, en un seul message. Objet : ${f.objet || `Une question sur ${projet}`}.`,
       `${salut}, moi c'est Noé, ${preuve} ${f.vu} ${question}`,
       'Si ce n\'est pas le moment, dites-le-moi.', 'Noé Calmes, noecalmes.fr', ...lignes].join('\n');
   }

@@ -57,6 +57,7 @@ Contexte, cible et messages : `documentation/strategy/prospection-signaux.md`. L
    - `vu` : une phrase « J'ai vu que… » avec un fait précis sur elle ;
    - `je_cree` : selon son projet, « des SaaS qui génèrent des revenus » s'il déclare du logiciel ou de l'abonnement, « des applications qui génèrent des revenus » si son application se vend, « des applications sur mesure » si son projet ne vend rien ;
    - `question` : seulement si la fin par défaut, « Ça vous dirait d'en parler ? », ne colle pas ;
+   - `objet`, pour un email : court, à propos de lui, qui donne envie d'ouvrir sans vendre, par défaut « Une question sur [Nom du projet] » ;
    - `maquette` : ce que Noé propose de maquetter, « l'application Studio Lumen » serait un bon format, par défaut « votre projet » ;
    - `source_contact` : où le contact est publié, « votre site », « votre LinkedIn » ;
    - `projet` si le nom de marque diffère de `nom`, `qui_cest` en deux lignes pour Noé.

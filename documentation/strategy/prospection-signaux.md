@@ -251,7 +251,7 @@ Rien à J+10 : on arrête.
 
 ### Par email
 
-> **Objet :** [Nom du projet], une question
+> **Objet :** Une question sur [Nom du projet], ou mieux, ce qui parle de lui : court, sans vendre, comme un message entre deux personnes
 >
 > Bonjour [Prénom], moi c'est Noé, je crée [ce qui colle à son projet], plus d'un million de téléchargements à ce jour. J'ai vu que [un fait sur lui]. Ça vous dirait d'en parler ?
 > Si ce n'est pas le moment, dites-le-moi.
