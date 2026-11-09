@@ -107,6 +107,7 @@ Alarme (wakeupalarm.app), Plouff Habitudes (plouff-habitudes.com)
 | Date | Liste | Action | Résultat |
 |---|---|---|---|
 | 09/11/2026 | toutes | repérage, emails rédigés | en attente de Noé : comptes à créer (1, 2, 3, 6), emails à envoyer (4, 5) |
+| 09/11/2026 | jesuisnumerique (n°2) | compte, présentation, prestations, tarifs, zone remplis ; catégorie « créateur de site » retirée ; lien retour posé sur /projets (ligne « Référencé sur », constante ANNUAIRES de Projets.jsx) ; partenariat **Validé** | fiche publique : jesuisnumerique.fr/profil/35107. Le site refuse les textes avec une URL ou un nom de domaine, et au-delà d'environ 600 caractères, sans message d'erreur |
 
 Vérifier le 07/12 : taper les deux requêtes sur Google et Bing, noter dans
 quelles listes Noé apparaît, et relancer une fois, pas plus, les auteurs sans
