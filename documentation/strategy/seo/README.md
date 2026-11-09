@@ -59,6 +59,7 @@ MàJ : 20/08/2026
 - `/projets` : études de cas en JSX, désormais dans le corps pré-rendu (632 mots lus sans JavaScript, contre 172).
 - Lien « Prix » vers l'article prix dans le pied de page et la navigation pré-rendue.
 - Liens entrants : crédit en pied de page de wakeupalarm.app, plouff-habitudes.com et bailora-app.fr (voir `liens-entrants.md`).
+- Visibilité dans les IA : relevé de départ et méthode mensuelle dans `suivi-ia.md` (prochain relevé le 07/12/2026).
 - À mesurer le 07/12/2026 dans Search Console : position et impressions de l'article prix (69ᵉ, 599 impressions au 02/11) et de `/projets/`.
 
 ## État réel constaté dans Search Console — 8 août 2026
