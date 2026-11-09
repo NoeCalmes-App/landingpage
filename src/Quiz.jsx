@@ -620,3 +620,11 @@ export function PageQuizHub({ onAccueil, onBookCall, onNaviguer }) {
     </div>
   )
 }
+
+// Point d'entree charge a la demande par App.jsx (09/11/2026) : App ne connait
+// que le slug. Un slug inconnu ouvre le hub des tests.
+export function QuizRoute({ slug, onAccueil, onBookCall, onAuditApp, onNaviguer }) {
+  const quiz = quizParSlug(slug)
+  if (!quiz) return <PageQuizHub onAccueil={onAccueil} onBookCall={onBookCall} onNaviguer={onNaviguer} />
+  return <PageQuiz quiz={quiz} onAccueil={onAccueil} onBookCall={onBookCall} onAuditApp={onAuditApp} onNaviguer={onNaviguer} />
+}

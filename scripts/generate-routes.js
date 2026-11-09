@@ -166,9 +166,9 @@ function lireAnnuaires() {
 
 // Questions/reponses de la page /faq, pour le balisage FAQPage.
 function lireFaq() {
-  const src = readFileSync(join(__dirname, '..', 'src', 'PagesSeo.jsx'), 'utf-8')
+  const src = readFileSync(join(__dirname, '..', 'src', 'faqItems.js'), 'utf-8')
   const bloc = src.match(/export const FAQ_ITEMS = \[([\s\S]*?)\n\]/)
-  if (!bloc) throw new Error('FAQ_ITEMS introuvable dans src/PagesSeo.jsx')
+  if (!bloc) throw new Error('FAQ_ITEMS introuvable dans src/faqItems.js')
   const motif = /q: (?:"((?:[^"\\]|\\.)*)"|'((?:[^'\\]|\\.)*)'),\s*\n\s*a: (?:"((?:[^"\\]|\\.)*)"|'((?:[^'\\]|\\.)*)'),/g
   const items = []
   for (const m of bloc[1].matchAll(motif)) {

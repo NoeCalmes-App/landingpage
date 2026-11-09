@@ -3330,3 +3330,12 @@ function BlogList({ onBack, onArticle, onBookCall, onAuditApp, onNaviguer }) {
 }
 
 export { BlogList, BlogArticlePage }
+
+// Point d'entree charge a la demande par App.jsx (09/11/2026) : App ne connait
+// que le slug, c'est ici qu'on retrouve l'article. Un slug inconnu renvoie la
+// liste du blog plutot que l'accueil.
+export function BlogArticleRoute({ slug, onBack, onAccueil, ...props }) {
+  const article = BLOG_ARTICLES.find((a) => a.slug === slug)
+  if (!article) return <BlogList onBack={onAccueil} {...props} />
+  return <BlogArticlePage article={article} onBack={onBack} onAccueil={onAccueil} {...props} />
+}

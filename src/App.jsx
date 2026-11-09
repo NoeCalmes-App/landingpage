@@ -4,25 +4,16 @@ import './App.css'
 import PhoneCarousel from './AppShowcase.jsx'
 import { AvisClients } from './AvisClients.jsx'
 import HeroVideo from './HeroVideo.jsx'
-import PolitiqueConfidentialite from './PolitiqueConfidentialite.jsx'
-import MentionsLegales from './MentionsLegales.jsx'
-import CGV from './CGV.jsx'
-import Document from './Document.jsx'
 import Documents, { DOCUMENTS } from './Documents.jsx'
-import DocumentsIndex from './DocumentsIndex.jsx'
-import DocumentsWeb from './DocumentsWeb.jsx'
 import { ROUTE_DOCUMENTS, ROUTE_APP_MOBILE, ROUTE_APP_WEB, estRouteDocuments, estRouteAppMobile, estRouteAppWeb, trouverDocument } from './routesDocuments.js'
 import ContactNoe, { EmailModal } from './ContactNoe.jsx'
 import Footer from './Footer.jsx'
-import Legales from './Legales.jsx'
-import { BlogList, BlogArticlePage, BLOG_ARTICLES } from './Blog.jsx'
 import ClientSpaceBridge from './ClientSpaceBridge.jsx'
 import MaquetteVisualBridge from './MaquetteVisualBridge.jsx'
 import ChatbotWidget from './chatbot/Widget'
 import { trackDirectWhatsAppLead } from './metaTracking.js'
 import { lienInterne, appliquerMeta, retirerPrerender } from './seo.js'
-import { PageExpertise, PageMethode, PageFaq, PageAPropos, FAQ_ITEMS } from './PagesSeo.jsx'
-import { PageQuiz, PageQuizHub, quizParSlug } from './Quiz.jsx'
+import { FAQ_ITEMS } from './faqItems.js'
 
 // ─── Chargement differe des pages hors accueil (21/09/2026) ──────────────────
 //
@@ -33,6 +24,24 @@ import { PageQuiz, PageQuizHub, quizParSlug } from './Quiz.jsx'
 // React.lazy demande a Vite de produire un fichier par page et de ne l'envoyer
 // qu'au moment ou elle est demandee. Le rendu est inchange : ces pages sont
 // affichees par des retours anticipes, jamais par l'accueil.
+// Charges a la demande depuis le 09/11/2026 : le blog (28 articles), les quiz,
+// les pages SEO et les pages legales pesaient dans le fichier principal que
+// l'accueil telecharge. Chaque module arrive quand on ouvre sa page.
+const BlogList = lazy(() => import('./Blog.jsx').then((m) => ({ default: m.BlogList })))
+const BlogArticleRoute = lazy(() => import('./Blog.jsx').then((m) => ({ default: m.BlogArticleRoute })))
+const PageQuizHub = lazy(() => import('./Quiz.jsx').then((m) => ({ default: m.PageQuizHub })))
+const QuizRoute = lazy(() => import('./Quiz.jsx').then((m) => ({ default: m.QuizRoute })))
+const PageExpertise = lazy(() => import('./PagesSeo.jsx').then((m) => ({ default: m.PageExpertise })))
+const PageMethode = lazy(() => import('./PagesSeo.jsx').then((m) => ({ default: m.PageMethode })))
+const PageFaq = lazy(() => import('./PagesSeo.jsx').then((m) => ({ default: m.PageFaq })))
+const PageAPropos = lazy(() => import('./PagesSeo.jsx').then((m) => ({ default: m.PageAPropos })))
+const CGV = lazy(() => import('./CGV.jsx'))
+const PolitiqueConfidentialite = lazy(() => import('./PolitiqueConfidentialite.jsx'))
+const MentionsLegales = lazy(() => import('./MentionsLegales.jsx'))
+const Legales = lazy(() => import('./Legales.jsx'))
+const Document = lazy(() => import('./Document.jsx'))
+const DocumentsIndex = lazy(() => import('./DocumentsIndex.jsx'))
+const DocumentsWeb = lazy(() => import('./DocumentsWeb.jsx'))
 const SmoothRideMockups = lazy(() => import('./SmoothRideMockups.jsx'))
 const ArethaMockups = lazy(() => import('./ArethaMockups.jsx'))
 const PacAssistMockups = lazy(() => import('./PacAssistMockups.jsx'))
@@ -279,7 +288,7 @@ function App() {
     if (path === '/faq') return 'page-faq'
     if (path === '/a-propos') return 'page-a-propos'
     if (path === '/quiz') return 'quiz-hub'
-    if (path.startsWith('/quiz/') && quizParSlug(path.replace('/quiz/', ''))) return 'quiz'
+    if (path.startsWith('/quiz/')) return 'quiz'
     if (path === '/blog') return 'blog'
     if (path.startsWith('/blog/')) return 'blog-article'
     if (path.toLowerCase() === '/projets' || path.toLowerCase() === '/projet') return 'projets'
@@ -317,17 +326,16 @@ function App() {
     if (path in SECTION_ROUTES) return 'home'
     return 'home'
   })
-  const [currentQuiz, setCurrentQuiz] = useState(() => {
+  // Depuis le 09/11/2026, App ne garde que les slugs : les donnees des quiz et
+  // des articles vivent dans des modules charges a la demande (QuizRoute,
+  // BlogArticleRoute), qui retrouvent l'objet a partir du slug.
+  const [currentQuizSlug, setCurrentQuizSlug] = useState(() => {
     const path = (sessionStorage.getItem('redirect') || window.location.pathname).replace(/\/+$/, '')
-    return path.startsWith('/quiz/') ? quizParSlug(path.replace('/quiz/', '')) : null
+    return path.startsWith('/quiz/') ? path.replace('/quiz/', '') : null
   })
-  const [currentArticle, setCurrentArticle] = useState(() => {
+  const [currentSlug, setCurrentSlug] = useState(() => {
     const path = (sessionStorage.getItem('redirect') || window.location.pathname).replace(/\/$/, '')
-    if (path.startsWith('/blog/')) {
-      const slug = path.replace('/blog/', '')
-      return BLOG_ARTICLES.find((a) => a.slug === slug) || null
-    }
-    return null
+    return path.startsWith('/blog/') ? path.replace('/blog/', '') : null
   })
   // page en trigger : quand on bascule de audit-app/blog/etc. vers home,
   // l'observer doit etre re-attache aux nouveaux elements .reveal sinon
@@ -583,21 +591,10 @@ function App() {
     if (chemin === '/faq') return setPage('page-faq')
     if (chemin === '/a-propos') return setPage('page-a-propos')
     if (chemin === '/quiz') return setPage('quiz-hub')
-    if (chemin.startsWith('/quiz/')) {
-      const quiz = quizParSlug(chemin.replace('/quiz/', ''))
-      if (quiz) { setCurrentQuiz(quiz); setPage('quiz'); window.scrollTo(0, 0); return }
-    }
+    if (chemin.startsWith('/quiz/')) { setCurrentQuizSlug(chemin.replace('/quiz/', '')); setPage('quiz'); window.scrollTo(0, 0); return }
     if (chemin === '/projets') return setPage('projets')
     if (chemin === '/blog') return setPage('blog')
-    if (chemin.startsWith('/blog/')) {
-      const article = BLOG_ARTICLES.find((a) => a.slug === chemin.replace('/blog/', ''))
-      if (article) {
-        setCurrentArticle(article)
-        setPage('blog-article')
-        window.scrollTo(0, 0)
-        return
-      }
-    }
+    if (chemin.startsWith('/blog/')) { setCurrentSlug(chemin.replace('/blog/', '')); setPage('blog-article'); window.scrollTo(0, 0); return }
     if (chemin === '/audit-app') return setPage('audit-app')
     setPage('home')
   }
@@ -609,46 +606,50 @@ function App() {
     onNaviguer: allerVers,
   }
 
-  if (page === 'page-expertise') return <PageExpertise {...propsPageSeo} />
-  if (page === 'page-methode') return <PageMethode {...propsPageSeo} />
-  if (page === 'page-faq') return <PageFaq {...propsPageSeo} />
-  if (page === 'page-a-propos') return <PageAPropos {...propsPageSeo} />
-  if (page === 'quiz-hub') return <PageQuizHub onAccueil={goHome} onBookCall={goBookCall} onNaviguer={allerVers} />
-  if (page === 'quiz' && currentQuiz) return (
-    <PageQuiz quiz={currentQuiz} onAccueil={goHome} onBookCall={goBookCall} onAuditApp={goAuditApp} onNaviguer={allerVers} />
+  if (page === 'page-expertise') return <Suspense fallback={null}><PageExpertise {...propsPageSeo} /></Suspense>
+  if (page === 'page-methode') return <Suspense fallback={null}><PageMethode {...propsPageSeo} /></Suspense>
+  if (page === 'page-faq') return <Suspense fallback={null}><PageFaq {...propsPageSeo} /></Suspense>
+  if (page === 'page-a-propos') return <Suspense fallback={null}><PageAPropos {...propsPageSeo} /></Suspense>
+  if (page === 'quiz-hub') return <Suspense fallback={null}><PageQuizHub onAccueil={goHome} onBookCall={goBookCall} onNaviguer={allerVers} /></Suspense>
+  if (page === 'quiz' && currentQuizSlug) return (
+    <Suspense fallback={null}><QuizRoute slug={currentQuizSlug} onAccueil={goHome} onBookCall={goBookCall} onAuditApp={goAuditApp} onNaviguer={allerVers} /></Suspense>
   )
   if (page === 'blog') return (
     <>
+    <Suspense fallback={null}>
     <BlogList
       onBack={goHome}
       onBookCall={goBookCall}
       onAuditApp={goAuditApp}
       onNaviguer={allerVers}
       onArticle={(article) => {
-        setCurrentArticle(article)
+        setCurrentSlug(article.slug)
         setPage('blog-article')
         history.pushState(null, '', lienInterne(`/blog/${article.slug}`))
       }}
     />
+    </Suspense>
     <Footer allerVers={allerVers} onLegal={(p) => openLegal(p, '/blog')} />
     </>
   )
-  if (page === 'blog-article' && currentArticle) return (
+  if (page === 'blog-article' && currentSlug) return (
     <>
-    <BlogArticlePage
-      article={currentArticle}
+    <Suspense fallback={null}>
+    <BlogArticleRoute
+      slug={currentSlug}
       onBack={goBlog}
       onBookCall={goBookCall}
       onAuditApp={goAuditApp}
       onArticle={(article) => {
-        setCurrentArticle(article)
+        setCurrentSlug(article.slug)
         history.pushState(null, '', lienInterne(`/blog/${article.slug}`))
         window.scrollTo(0, 0)
       }}
       onAccueil={goHome}
       onNaviguer={allerVers}
     />
-    <Footer allerVers={allerVers} onLegal={(p) => openLegal(p, `/blog/${currentArticle.slug}`)} />
+    </Suspense>
+    <Footer allerVers={allerVers} onLegal={(p) => openLegal(p, `/blog/${currentSlug}`)} />
     </>
   )
   if (page === 'client-space') return <ClientSpaceBridge />
@@ -672,12 +673,12 @@ function App() {
   if (page === 'immomatch-mockups') return <Suspense fallback={null}><ImmoMatchMockups /></Suspense>
   if (page === 'projets') return <Suspense fallback={null}><Projets onBack={goHome} /></Suspense>
   if (page === 'contact') return <ContactNoe />
-  if (page === 'legal') return <Legales />
+  if (page === 'legal') return <Suspense fallback={null}><Legales /></Suspense>
   if (page === 'audit-app') return <Suspense fallback={null}><AuditApp onBack={goHome} onLegal={(p) => openLegal(p, '/audit-app')} /></Suspense>
-  if (page === 'privacy') return <PolitiqueConfidentialite onBack={goLegalBack} />
-  if (page === 'mentions') return <MentionsLegales onBack={goLegalBack} />
-  if (page === 'cgv') return <CGV onBack={goLegalBack} />
-  if (page === 'documents-index') return <DocumentsIndex onOuvrirFamille={goFamille} />
+  if (page === 'privacy') return <Suspense fallback={null}><PolitiqueConfidentialite onBack={goLegalBack} /></Suspense>
+  if (page === 'mentions') return <Suspense fallback={null}><MentionsLegales onBack={goLegalBack} /></Suspense>
+  if (page === 'cgv') return <Suspense fallback={null}><CGV onBack={goLegalBack} /></Suspense>
+  if (page === 'documents-index') return <Suspense fallback={null}><DocumentsIndex onOuvrirFamille={goFamille} /></Suspense>
   // Les deux familles ouvrent un document de la même façon : c'est la fiche
   // elle-même qui porte son adresse, et le retour la ramène chez elle.
   const ouvrirDocument = (doc) => {
@@ -687,12 +688,12 @@ function App() {
     window.scrollTo(0, 0)
   }
   if (page === 'documents') return <Documents onOpenDocument={ouvrirDocument} />
-  if (page === 'documents-web') return <DocumentsWeb onOpenDocument={ouvrirDocument} />
+  if (page === 'documents-web') return <Suspense fallback={null}><DocumentsWeb onOpenDocument={ouvrirDocument} /></Suspense>
   // ⚠️ LE RETOUR SUIT LA FAMILLE DU DOCUMENT. Sans ça, la flèche du guide
   // « Nom de domaine » du site web ramenait sur les accès d'un projet mobile —
   // une page de comptes Apple et Google devant quelqu'un qui n'en crée aucun.
   if (page === 'document-viewer' && currentDoc) {
-    return <Document doc={currentDoc} onBack={currentDoc.famille === 'app-web' ? goDocumentsWeb : goDocuments} />
+    return <Suspense fallback={null}><Document doc={currentDoc} onBack={currentDoc.famille === 'app-web' ? goDocumentsWeb : goDocuments} /></Suspense>
   }
 
   return (
