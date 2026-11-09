@@ -21,7 +21,7 @@ import MaquetteVisualBridge from './MaquetteVisualBridge.jsx'
 import ChatbotWidget from './chatbot/Widget'
 import { trackDirectWhatsAppLead } from './metaTracking.js'
 import { lienInterne, appliquerMeta, retirerPrerender } from './seo.js'
-import { PageExpertise, PageMethode, PageFaq, FAQ_ITEMS } from './PagesSeo.jsx'
+import { PageExpertise, PageMethode, PageFaq, PageAPropos, FAQ_ITEMS } from './PagesSeo.jsx'
 import { PageQuiz, PageQuizHub, quizParSlug } from './Quiz.jsx'
 
 // ─── Chargement differe des pages hors accueil (21/09/2026) ──────────────────
@@ -277,6 +277,7 @@ function App() {
     if (path === '/expertise') return 'page-expertise'
     if (path === '/creation-application-mobile' || path === '/etapes') return 'page-methode'
     if (path === '/faq') return 'page-faq'
+    if (path === '/a-propos') return 'page-a-propos'
     if (path === '/quiz') return 'quiz-hub'
     if (path.startsWith('/quiz/') && quizParSlug(path.replace('/quiz/', ''))) return 'quiz'
     if (path === '/blog') return 'blog'
@@ -472,7 +473,7 @@ function App() {
   // Le vrai titre est relu au moment du départ, pas mémorisé une fois pour
   // toutes : chaque page écrit le sien en navigation (appliquerMeta).
   useEffect(() => {
-    const pagesDeVente = ['home', 'blog', 'blog-article', 'audit-app', 'page-expertise', 'page-methode', 'page-faq', 'quiz-hub', 'quiz', 'projets']
+    const pagesDeVente = ['home', 'blog', 'blog-article', 'audit-app', 'page-expertise', 'page-methode', 'page-faq', 'page-a-propos', 'quiz-hub', 'quiz', 'projets']
     if (!pagesDeVente.includes(page)) return
 
     const MESSAGES = ['Maquette offerte pour ton app', 'Parlons de ton idée d’app']
@@ -580,6 +581,7 @@ function App() {
     if (chemin === '/expertise') return setPage('page-expertise')
     if (chemin === '/creation-application-mobile') return setPage('page-methode')
     if (chemin === '/faq') return setPage('page-faq')
+    if (chemin === '/a-propos') return setPage('page-a-propos')
     if (chemin === '/quiz') return setPage('quiz-hub')
     if (chemin.startsWith('/quiz/')) {
       const quiz = quizParSlug(chemin.replace('/quiz/', ''))
@@ -610,6 +612,7 @@ function App() {
   if (page === 'page-expertise') return <PageExpertise {...propsPageSeo} />
   if (page === 'page-methode') return <PageMethode {...propsPageSeo} />
   if (page === 'page-faq') return <PageFaq {...propsPageSeo} />
+  if (page === 'page-a-propos') return <PageAPropos {...propsPageSeo} />
   if (page === 'quiz-hub') return <PageQuizHub onAccueil={goHome} onBookCall={goBookCall} onNaviguer={allerVers} />
   if (page === 'quiz' && currentQuiz) return (
     <PageQuiz quiz={currentQuiz} onAccueil={goHome} onBookCall={goBookCall} onAuditApp={goAuditApp} onNaviguer={allerVers} />
@@ -1167,6 +1170,11 @@ function App() {
             <div className="reveal">
               <AvisClients />
             </div>
+            <p className="reveal text-center mt-8">
+              <a href={lienInterne('/a-propos')} onClick={(e) => { e.preventDefault(); allerVers('/a-propos') }} className="text-brand font-semibold text-[0.95rem] hover:underline">
+                Qui je suis : mon parcours et mes preuves &rarr;
+              </a>
+            </p>
           </div>
         </div>
       </section>

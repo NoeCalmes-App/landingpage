@@ -143,6 +143,16 @@ function lireMetaPagesSeo() {
   return meta
 }
 
+// Profils de la page /a-propos (PROFILS de src/PagesSeo.jsx).
+function lireProfils() {
+  const src = readFileSync(join(__dirname, '..', 'src', 'PagesSeo.jsx'), 'utf-8')
+  const bloc = src.match(/const PROFILS = \[([\s\S]*?)\n\]/)
+  if (!bloc) throw new Error('PROFILS introuvable dans src/PagesSeo.jsx')
+  const items = [...bloc[1].matchAll(/nom: '([^']+)',\s*url: '([^']+)'/g)].map((m) => ({ nom: m[1], url: m[2] }))
+  if (!items.length) throw new Error('Aucun profil lu dans PROFILS')
+  return items
+}
+
 // Annuaires de src/Projets.jsx (ANNUAIRES), pour la ligne « Référencé sur ».
 function lireAnnuaires() {
   const src = readFileSync(join(__dirname, '..', 'src', 'Projets.jsx'), 'utf-8')
@@ -317,6 +327,11 @@ const corpsSeoPages = {
   '/projets':
     corpsDepuisComposant('Projets.jsx', 'Projets')
     + `<p>Référencé sur ${lireAnnuaires().map((a) => `<a href="${a.url}">${echapper(a.nom)}</a>`).join(' · ')}</p>`,
+  // Les profils vivent dans le tableau PROFILS (hors corps JSX) : ajoutes ici
+  // pour que les robots sans JavaScript voient aussi les liens d'identite.
+  '/a-propos':
+    corpsDepuisComposant('PagesSeo.jsx', 'PageAPropos')
+    + `<ul>${lireProfils().map((p) => `<li><a href="${p.url}">${echapper(p.nom)}</a></li>`).join('')}</ul>`,
   '/faq':
     corpsDepuisComposant('PagesSeo.jsx', 'PageFaq')
     + lireFaq().map((f) => `<h2>${echapper(f.q)}</h2><p>${echapper(f.a)}</p>`).join(''),
@@ -646,6 +661,11 @@ const sectionRoutes = [
     path: '/faq',
     heading: 'FAQ, créer une application mobile',
     content: 'Budget et tarification, délai moyen, capacité réelle d\'une application à générer des revenus, différence avec une agence, limites de l\'intelligence artificielle, reprise d\'une application existante, publication sur les stores et suivi après la mise en ligne.',
+  },
+  {
+    path: '/a-propos',
+    heading: "Qui je suis, et pourquoi je conçois des applications qui rapportent",
+    content: "Noé Calmes, près de Toulouse. Bachelor de développeur web et mobile en trois ans, puis plus de 20 applications conçues et publiées, 1,3 million de téléchargements. La première version de Hush a dépassé 300 000 utilisateurs sans presque rien rapporter, Calorie rapporte environ 13 000 euros par mois avec environ 30 000 téléchargements et 3 pour cent de payants. Applications mobiles et web, ce qu'on appelle aussi un SaaS, de la stratégie à la mise en ligne, un seul interlocuteur, tarif fixe, 45 jours en moyenne, corrections incluses 30 jours après la sortie.",
   },
   {
     path: '/projets',
@@ -1246,7 +1266,8 @@ const ESPACE_CLIENT_PARTAGE = {
 
 // ─── Legacy routes — noindex (old URLs that may still be indexed by Google) ──
 
-const legacyRoutes = ['/a-propos', '/offre', '/contact', '/merci']
+// /a-propos en est sorti le 09/11/2026 : c'est redevenu une vraie page (PageAPropos).
+const legacyRoutes = ['/offre', '/contact', '/merci']
 // Les deux ecrans documents sont generes : `/documents` (le sommaire) et
 // `/documents/app-mobile` (les acces a creer). Les deux adresses circulent
 // dans des devis deja envoyes ; sans dossier a servir, elles passeraient par
@@ -1291,7 +1312,7 @@ const baseHome = retirerFaqPage(baseHtml).replace(
 
 // Liens du pre-rendu en forme canonique : sans la barre finale, chacun coute
 // une 301 a chaque passage de robot.
-const navHome = ['/expertise', '/creation-application-mobile', '/projets', '/blog/combien-coute-application-mobile', '/blog', '/audit-app', '/faq']
+const navHome = ['/expertise', '/creation-application-mobile', '/projets', '/blog/combien-coute-application-mobile', '/blog', '/audit-app', '/faq', '/a-propos']
 const libelles = {
   '/expertise': 'Concevoir une application qui rapporte',
   '/creation-application-mobile': 'Ma méthode',
@@ -1300,6 +1321,7 @@ const libelles = {
   '/blog': 'Blog',
   '/audit-app': 'Tester ton idée',
   '/faq': 'FAQ',
+  '/a-propos': 'Qui je suis',
 }
 const navHomeHtml = navHome.map((p) => `<a href="${urlPublique(p)}">${libelles[p]}</a>`).join(' · ')
 
@@ -1405,6 +1427,7 @@ application mobile ou web.
 - [Ma méthode](${urlPublique('/creation-application-mobile')}) : les 5 étapes, du cadrage au lancement sur les stores
 - [Les applications que j'ai conçues](${urlPublique('/projets')}) : réalisations et résultats
 - [FAQ](${urlPublique('/faq')}) : budget, délai, reprise, stores, suivi après mise en ligne
+- [Qui je suis](${urlPublique('/a-propos')}) : parcours, preuves, profils, façon de travailler
 - [Audit gratuit](${urlPublique('/audit-app')}) : évaluer le potentiel, le budget et le délai d'une idée en 2 minutes
 
 ## Tests d'orientation

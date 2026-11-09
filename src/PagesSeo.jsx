@@ -17,6 +17,7 @@
 import { useEffect } from 'react'
 import { lienInterne, appliquerMeta, retirerPrerender } from './seo.js'
 import { ResumerAvecIA, RetourEnHaut } from './BlogUI.jsx'
+import { AvisClients } from './AvisClients.jsx'
 
 const mePhoto = '/assets/images/profile/me.webp'
 
@@ -154,6 +155,7 @@ const LIENS_MAILLAGE = [
   { href: '/creation-application-mobile', titre: 'Ma méthode, étape par étape', texte: 'Du cadrage du modèle économique au lancement sur les stores.' },
   { href: '/projets', titre: 'Les applications que j\'ai conçues', texte: '+1 million de téléchargements, 13 000 € par mois, +20 applications publiées.' },
   { href: '/faq', titre: 'Questions fréquentes', texte: 'Budget, délai, reprise, stores, ce qui se passe après la mise en ligne.' },
+  { href: '/a-propos', titre: 'Qui je suis', texte: 'Mon parcours, mes preuves, et la façon dont je travaille avec toi.' },
   { href: '/quiz', titre: 'Tester ton projet en 2 minutes', texte: 'Trois tests courts : besoin réel, application ou site web, budget à prévoir.' },
   { href: '/blog/rentabiliser-application-mobile', titre: 'Comment rentabiliser une application mobile', texte: 'Le guide de fond sur les modèles de revenus et la conversion.' },
   { href: '/blog/combien-coute-application-mobile', titre: 'Combien coûte une application mobile', texte: 'Les fourchettes réelles et ce qui fait varier le budget.' },
@@ -198,6 +200,110 @@ function Corps({ children }) {
     <div className="prose-blog text-text text-[0.95rem] md:text-base leading-relaxed">
       {children}
     </div>
+  )
+}
+
+// ─── /a-propos ───────────────────────────────────────────────────────────────
+//
+// Page d'identite, ajoutee le 09/11/2026. Google et les moteurs de reponse
+// cherchent une page qui dit qui est la personne derriere le site, avec ses
+// preuves et ses profils : c'est elle qui relie l'entite « Noe Calmes » (fiche
+// Person, sameAs) a un parcours verifiable. Les liens de profils ci-dessous
+// doivent rester alignes sur le sameAs de index.html.
+
+const PROFILS = [
+  { nom: 'LinkedIn', url: 'https://www.linkedin.com/in/noecalmes' },
+  { nom: 'Malt', url: 'https://www.malt.fr/profile/noecalmes' },
+  { nom: 'Sortlist', url: 'https://www.sortlist.fr/agency/noe-calmes' },
+  { nom: 'Codeur.com', url: 'https://www.codeur.com/-noecu9om' },
+  { nom: 'GitHub', url: 'https://github.com/noecalms' },
+  { nom: 'Flutter Pro', url: 'https://flutterpro.dev/noecalmes' },
+  { nom: 'Instagram', url: 'https://www.instagram.com/noecalmes.app/' },
+]
+
+export function PageAPropos({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    retirerPrerender()
+    appliquerMeta({
+      path: '/a-propos',
+      title: "Qui je suis, applications mobiles et web | Noé Calmes",
+      description: "Mon parcours, mes preuves et ma façon de travailler : plus de 20 applications, 1,3 million de téléchargements, des applications mobiles et web.",
+    })
+  }, [])
+
+  return (
+    <Coquille>
+      <EnteteSeo onAccueil={onAccueil} onBookCall={onBookCall} />
+      <main className="max-w-160 mx-auto px-5 pt-32 md:pt-36 pb-20">
+        <FilAriane courant="Qui je suis" onAccueil={onAccueil} />
+
+        <div className="flex items-center gap-4 mb-6">
+          <img src={mePhoto} alt="Noé Calmes" width="72" height="72" className="w-18 h-18 rounded-full object-cover" />
+          <p className="text-grey text-[0.9rem] leading-snug m-0"><strong className="text-text">Noé Calmes</strong><br />Applications mobiles et web, près de Toulouse</p>
+        </div>
+
+        <h1 className="font-heading text-text text-[1.75rem] md:text-[2.25rem] font-bold tracking-tight leading-[1.2] mb-8">
+          Qui je suis, et pourquoi je conçois des applications qui rapportent
+        </h1>
+
+        <Corps>
+          <p>Je m'appelle Noé Calmes. J'aide les entrepreneurs sans compétence technique à transformer une idée en application qui rapporte, mobile ou web, ce qu'on appelle aussi un SaaS. Je m'occupe de tout, de la stratégie à la mise en ligne, et je suis le seul interlocuteur du projet.</p>
+
+          <h2>D'où je viens</h2>
+          <p>Je suis développeur de formation : un bachelor de développeur web et mobile, en trois ans. C'est là que j'ai appris à construire une application. Ce n'est pas là que j'ai appris à en faire une qui rapporte. Ça, je l'ai appris sur le terrain, application après application.</p>
+          <p>La leçon qui a tout changé s'appelle Hush. J'ai conçu la première version de cette messagerie pour ses créateurs, et elle a dépassé 300 000 utilisateurs. Mais elle ne rapportait presque rien, parce que personne, moi compris, n'avait décidé au départ à quel moment elle demanderait à être payée. Depuis, je ne commence plus un projet sans savoir où et quand l'utilisateur sort sa carte.</p>
+          <p>L'inverse est arrivé avec Calorie, une application de suivi nutritionnel conçue pour un client, sur un marché déjà saturé. Elle lui rapporte aujourd'hui environ 13 000 € par mois, par abonnement, avec environ 30 000 téléchargements et 3 % de payants. Ce qui a fait la différence n'était pas l'idée : c'était le parcours qui amène l'utilisateur jusqu'au paiement.</p>
+          <p>Et je teste ce que je conseille sur mes propres applications, avec mon propre argent : Wake Up Alarme, le réveil qu'on ne peut pas éteindre sans se lever, et Plouff Habitudes, sortie du design au lancement en 30 jours. Toutes les deux sont en ligne sur l'App Store et Google Play, sur abonnement.</p>
+
+          <h2>Ce que je fais qu'un développeur ne fait pas</h2>
+          <p>Un développeur code ce que tu lui demandes. Moi, je commence par ce qui décide du revenu : qui paie, pour quoi, et à quel moment. Je choisis avec toi le bon support, une application mobile pour le grand public qui l'ouvre chaque jour, une application web pour un outil professionnel. Puis je conçois le parcours, le design, et seulement ensuite le développement.</p>
+
+          <h2>Les preuves</h2>
+          <ul>
+            <li><strong>Plus de 20 applications</strong> conçues et publiées, les miennes et celles de mes clients.</li>
+            <li><strong>1,3 million de téléchargements</strong> cumulés.</li>
+            <li><strong>Environ 13 000 € par mois</strong> pour Calorie, une application que j'ai conçue.</li>
+            <li>Des applications récentes en ligne : SmoothRide, une navigation GPS qui évite les dos-d'âne avec CarPlay et Android Auto, et Bailora, la gestion locative sur téléphone.</li>
+          </ul>
+          <p>Le détail de chaque projet est dans <a href="/projets/">mes réalisations</a>, et les chiffres, avec ce qu'ils mesurent vraiment, dans <a href="/blog/ce-que-j-ai-appris-20-applications/">ce que j'ai appris en publiant plus de 20 applications</a>.</p>
+
+          <h2>Comment on travaille ensemble</h2>
+          <ul>
+            <li><strong>Un seul interlocuteur</strong> : moi, du premier appel à la mise en ligne.</li>
+            <li><strong>Un tarif fixe</strong>, défini par écrit avant de commencer. Ce qui fait le prix, c'est le périmètre.</li>
+            <li><strong>45 jours en moyenne</strong> du cadrage à la mise en ligne. Le délai exact est fixé dans le devis.</li>
+            <li><strong>Le suivi après la sortie</strong> : les corrections de bugs sont incluses pendant 30 jours après la mise en ligne. Ensuite, je reste disponible pour faire évoluer ton application.</li>
+          </ul>
+
+          <h2>Ce que je ne fais pas</h2>
+          <p>Je ne fais pas venir les utilisateurs à ta place. Je conçois une application capable de transformer ceux qui arrivent en clients qui paient, et je t'aide à préparer le lancement. Mais l'audience, que ce soit tes clients actuels, ta communauté ou ta publicité, reste ton travail. Je préfère le dire avant qu'après.</p>
+
+          <h2>Où me trouver</h2>
+          <p>Basé près de Toulouse, je travaille à distance partout en France. Tu peux aussi vérifier qui je suis sur ces profils :</p>
+          <ul>
+            {PROFILS.map((p) => <li key={p.url}><a href={p.url} target="_blank" rel="noopener">{p.nom}</a></li>)}
+          </ul>
+        </Corps>
+
+        <div className="mt-12">
+          <h2 className="font-heading text-text text-lg md:text-xl font-bold mb-5">Ce qu'en disent mes clients</h2>
+          <AvisClients />
+        </div>
+
+        <BlocAudit
+          onAuditApp={onAuditApp}
+          onBookCall={onBookCall}
+          titre="Tu as une idée d'application ?"
+          texte="Audit gratuit en 2 minutes : potentiel, budget à prévoir et délai réaliste pour ton application."
+        />
+
+        <ResumerAvecIA chemin="/a-propos" titre="Qui je suis, applications mobiles et web" />
+
+        <MaillageInterne exclure={['/a-propos']} onNaviguer={onNaviguer} />
+      </main>
+      <RetourEnHaut />
+    </Coquille>
   )
 }
 

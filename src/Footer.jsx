@@ -113,6 +113,7 @@ export default function Footer({ allerVers, onLegal }) {
           { href: '/blog/combien-coute-application-mobile', label: 'Prix' },
           { href: '/blog', label: 'Blog' },
           { href: '/faq', label: 'FAQ' },
+          { href: '/a-propos', label: 'À propos' },
           { href: '/audit-app', label: 'Audit gratuit' },
         ].map(({ href, label }) => (
           <a
