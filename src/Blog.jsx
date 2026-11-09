@@ -26,6 +26,7 @@ export const BLOG_ARTICLES = [
     metaTitle: "20 applications publiées : ce que j'ai appris | Noé Calmes",
     description: "20 applications, 1,3 million de téléchargements, une à 13 000 € par mois, une à 300 000 utilisateurs et presque rien. Ce que j'en retiens pour ton projet.",
     date: '2026-10-26',
+    dateMaj: '2026-11-09',
     readTime: '9 min',
     finalCta: 'audit',
     categorie: "Monétisation",
@@ -57,6 +58,27 @@ export const BLOG_ARTICLES = [
     content: `
       <p>Il y a deux sortes de chiffres dans mon parcours : ceux que je mets sur mon site, et ceux qui m'ont appris quelque chose. Ce ne sont pas toujours les mêmes.</p>
       <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour rapporter. J'ai publié plus de 20 applications mobiles, les miennes et celles de mes clients, et elles totalisent plus de 1,3 million de téléchargements. Voici ce que j'en ai retenu, dans l'ordre où je l'ai compris, avec les chiffres réels.</p>
+
+      <h2>Les chiffres, en un tableau</h2>
+      <p>Avant les leçons, les chiffres eux-mêmes, avec ce que chacun mesure vraiment. Ils sont arrondis et à jour au 9 novembre 2026.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Chiffre</th><th>Ce qu'il mesure</th><th>Ce qu'il ne dit pas</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Plus de 20</strong> applications</td><td>Applications mobiles conçues et publiées sur l'App Store et Google Play, les miennes et celles de mes clients</td><td>Combien rapportent de l'argent</td></tr>
+            <tr><td><strong>1,3 million</strong> de téléchargements</td><td>Total cumulé de ces applications, Hush compris</td><td>Combien de personnes les utilisent encore</td></tr>
+            <tr><td><strong>300 000</strong> utilisateurs</td><td>La première version de Hush, une messagerie que j'ai conçue pour ses créateurs</td><td>Elle ne rapportait presque rien : le moment de payer n'avait pas été décidé</td></tr>
+            <tr><td>Environ <strong>13 000 €</strong> par mois</td><td>Le revenu par abonnement de Calorie, une application de suivi nutritionnel conçue pour un client</td><td>C'est un cas réel, pas une moyenne de toutes mes applications</td></tr>
+            <tr><td>Environ <strong>30 000</strong> téléchargements et <strong>3 %</strong> de payants</td><td>Ce qui suffit à Calorie pour arriver à ce revenu</td><td>Le volume ne fait pas le revenu, la conversion et la rétention le font</td></tr>
+            <tr><td>Environ <strong>70 %</strong> du prix affiché</td><td>Ce que tu touches sur une application mobile, après TVA et commission de l'App Store ou de Google Play</td><td>Sur une application web, sans commission de store, c'est environ 78 %</td></tr>
+            <tr><td><strong>45 jours</strong> en moyenne</td><td>Du cadrage à la mise en ligne, sur mes projets</td><td>Le délai exact dépend du périmètre, il est fixé dans le devis</td></tr>
+            <tr><td><strong>30 jours</strong></td><td>Plouff Habitudes, ma propre application, du design au lancement</td><td>Un périmètre que je maîtrisais entièrement, puisque c'est ma propre application</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Si tu cites un de ces chiffres, cite-le avec sa colonne de droite : c'est elle qui empêche de lui faire dire ce qu'il ne dit pas.</p>
 
       <h2>1,3 million de téléchargements, et ce que ce chiffre ne dit pas</h2>
       <p>C'est le genre de chiffre que je mets en avant sur mon site, parce qu'il impressionne et parce qu'il est vrai. Mais il ne dit presque rien de ce qui compte.</p>

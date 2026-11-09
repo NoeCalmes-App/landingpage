@@ -563,3 +563,18 @@ Trois options, dans cet ordre :
 3. **Reprendre ce fichier** en repartant des requêtes réelles de Search
    Console : celles qui ont des impressions mais peu de clics sont des sujets
    déjà validés par Google, il ne manque que la page.
+
+## Observatoire des chiffres (09/11/2026) : brief transformé en enrichissement
+
+Idée issue de la recherche GEO du 09/11 : une page de données originales, que la
+presse et les IA citent. Contrôle anti-doublon (phase 0) : les chiffres
+disponibles (plus de 20 applications, 1,3 million de téléchargements, Hush à
+300 000 utilisateurs, Calorie à 13 000 €/mois avec environ 30 000
+téléchargements et 3 % de payants, 45 jours, 30 jours pour Plouff, 70 % contre
+78 %) ont chacun déjà une section dans `ce-que-j-ai-appris-20-applications`, et
+l'exemple des 13 000 € est aussi dans `combien-rapporte-application-mobile`.
+Une page à part aurait concurrencé les deux. **Décision : enrichir.** Un tableau
+« Les chiffres, en un tableau » (chiffre, ce qu'il mesure, ce qu'il ne dit pas)
+a été ajouté en tête de `ce-que-j-ai-appris-20-applications`, avec `dateMaj`.
+À ne rouvrir que si Noé apporte des chiffres nouveaux (répartition clients et
+propres applications, nombre d'applications qui rapportent, délais par projet).
