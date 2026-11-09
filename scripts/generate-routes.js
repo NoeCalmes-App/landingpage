@@ -1271,11 +1271,12 @@ const baseHome = retirerFaqPage(baseHtml).replace(
 
 // Liens du pre-rendu en forme canonique : sans la barre finale, chacun coute
 // une 301 a chaque passage de robot.
-const navHome = ['/expertise', '/creation-application-mobile', '/projets', '/blog', '/audit-app', '/faq']
+const navHome = ['/expertise', '/creation-application-mobile', '/projets', '/blog/combien-coute-application-mobile', '/blog', '/audit-app', '/faq']
 const libelles = {
   '/expertise': 'Concevoir une application qui rapporte',
   '/creation-application-mobile': 'Ma méthode',
   '/projets': 'Réalisations et méthode',
+  '/blog/combien-coute-application-mobile': "Prix d'une application",
   '/blog': 'Blog',
   '/audit-app': 'Tester ton idée',
   '/faq': 'FAQ',
