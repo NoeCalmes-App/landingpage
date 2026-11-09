@@ -26,7 +26,7 @@ export const BLOG_ARTICLES = [
     metaTitle: "Créer une application web avec Claude : et après ? | Noé Calmes",
     description: "Claude code une application web qui tourne chez toi. Ce qui manque pour qu'elle rapporte : mise en ligne, comptes, paiement, et le parcours qui fait payer.",
     date: '2026-11-09',
-    readTime: '8 min',
+    readTime: '9 min',
     finalCta: 'whatsapp',
     categorie: "Créer",
     accroche: "Le code tourne sur ton ordinateur. Le revenu, lui, n'est pas dans le code.",
