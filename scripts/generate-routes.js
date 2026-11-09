@@ -754,6 +754,11 @@ for (const route of legacySectionRoutes) {
 // `lireMetaArticles()` : ne pas les redefinir ici, ils seraient ignores.
 const blogRoutes = [
   {
+    path: '/blog/creer-application-web-avec-claude',
+    heading: "Créer une application web ou un logiciel avec Claude : ça tourne, et voilà pourquoi ça ne rapporte rien encore",
+    content: "Claude écrit le code d'une vraie application web, sans Mac, sans compte Apple ni validation d'un store. Mais ce qu'il rend est un projet qui tourne sur ton ordinateur, pas un produit en ligne qui encaisse. Entre les deux : l'hébergement, le nom de domaine et la base de données ; des comptes utilisateurs dont la sécurité et les données personnelles n'ont jamais été relues ; un prestataire de paiement qui vérifie ton identité avant que le premier euro arrive, environ 78 % du prix affiché gardés en web contre environ 70 % sur un store ; et la question qu'aucun code ne tranche, qui paie, quand, et pourquoi il revient. Une application à 300 000 utilisateurs sans revenu, une autre à 13 000 € par mois sur un marché saturé : la différence n'était pas dans le code.",
+  },
+  {
     path: '/blog/ce-que-j-ai-appris-20-applications',
     heading: "Ce que j'ai appris en publiant plus de 20 applications",
     content: "Plus de 20 applications publiées, plus de 1,3 million de téléchargements cumulés, et deux chiffres qui ne racontent pas la même histoire. La première version d'une application, que j'ai conçue pour ses créateurs, a dépassé 300 000 utilisateurs sans presque rien rapporter, parce que personne n'avait décidé au départ à quel moment elle demanderait à être payée. Calorie, que j'ai conçue pour un client, lui rapporte environ 13 000 euros par mois par abonnement sur un marché saturé, parce que tout le parcours est construit autour du moment où l'utilisateur comprend la valeur puis se voit proposer de payer. Ce que j'en ai retenu, dans l'ordre : le téléchargement est la métrique la plus flatteuse et la moins utile ; le revenu se décide avant la première ligne de code ; l'idée n'est presque jamais le sujet, le parcours l'est ; le code n'a jamais été ce qui coûte cher ; et le travail commence par ce qu'on refuse de construire, y compris une application mobile quand le projet relève d'une application web.",

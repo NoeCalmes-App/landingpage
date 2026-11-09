@@ -21,6 +21,106 @@ const mePhoto = '/assets/images/profile/me.webp'
 
 export const BLOG_ARTICLES = [
   {
+    slug: 'creer-application-web-avec-claude',
+    title: "Créer une application web ou un logiciel avec Claude : ça tourne, et voilà pourquoi ça ne rapporte rien encore",
+    metaTitle: "Créer une application web avec Claude : et après ? | Noé Calmes",
+    description: "Claude code une application web qui tourne chez toi. Ce qui manque pour qu'elle rapporte : mise en ligne, comptes, paiement, et le parcours qui fait payer.",
+    date: '2026-11-09',
+    readTime: '8 min',
+    finalCta: 'whatsapp',
+    categorie: "Créer",
+    accroche: "Le code tourne sur ton ordinateur. Le revenu, lui, n'est pas dans le code.",
+    tldr: {
+      verdict: "Oui, Claude écrit le code d'une vraie application web, et sans Mac ni store, c'est même plus direct qu'en mobile. Mais ce que tu as est un projet qui tourne sur ton ordinateur, pas un produit en ligne qui encaisse. Entre les deux : la mise en ligne, les comptes, le paiement, la sécurité, et une question qu'aucun code ne tranche, qui paie et quand.",
+      points: [
+        { label: "Le sujet", valeur: "Ce qui sépare un logiciel généré qui tourne d'une application web qui rapporte" },
+        { label: "Pour qui", valeur: "Tu as fait générer une application web ou un logiciel, ça marche chez toi, et rien ne se vend" },
+        { label: "Le blocage", valeur: "Pas le code : la mise en ligne, l'encaissement, et le parcours qui amène à payer" },
+        { label: "À retenir", valeur: "Décide qui paie et quand avant de générer un écran de plus" },
+      ],
+    },
+    pourQui: [
+      "Tu as fait générer une application web ou un logiciel avec Claude et quelque chose tourne sur ton ordinateur",
+      "Tu veux le mettre en ligne, faire payer des utilisateurs, et tu ne sais pas ce qui manque",
+      "Tu te demandes ce qui est récupérable avant de remettre du budget ou du temps",
+    ],
+    pasPourQui: [
+      "Tu cherches un tutoriel pas à pas pour tout déployer seul",
+      "Tu veux qu'on te dise que l'IA est nulle : je m'en sers tous les jours, ce n'est pas mon avis",
+      "Ton seul critère est le prix le plus bas : ce n'est pas mon métier",
+    ],
+    faq: [
+      { q: "Faut-il un Mac pour créer une application web avec Claude ?", a: "Non. C'est la grande différence avec une application mobile : une application web se construit et se met en ligne depuis n'importe quel ordinateur, et elle s'ouvre dans un navigateur sans rien installer. Il n'y a ni compte développeur Apple, ni validation d'un store, ni période de test avec un nombre limité de testeurs." },
+      { q: "Qu'est-ce que ça coûte chaque mois, une fois en ligne ?", a: "Pour commencer, l'hébergement, la base de données et le nom de domaine se comptent en dizaines d'euros par mois, et montent avec le nombre d'utilisateurs. S'ajoute la part du prestataire de paiement sur chaque vente, quelques pour cent. Ce qui coûte vraiment n'est pas là : c'est le temps de quelqu'un qui tient l'application, corrige, met à jour et répond quand ça casse." },
+      { q: "Peux-tu reprendre une application web codée avec Claude ?", a: "Souvent oui, mais je lis le code avant de promettre quoi que ce soit. Ce qui manque le plus souvent n'est pas une fonctionnalité, c'est la sécurité des accès, la gestion des données personnelles et une structure qui permette d'évoluer. Ce qui se récupère toujours, c'est ce que ce prototype t'a appris sur ton produit et sur tes utilisateurs." },
+    ],
+    content: `
+      <p>Commençons par la réponse, parce qu'elle est oui.</p>
+      <p>Claude écrit le code d'une vraie application web, ce qu'on appelle aussi un SaaS : des comptes, une base de données, des écrans qui se parlent, un tableau de bord. Si tu as passé un week-end dessus et que ça tourne sur ton ordinateur, tu n'as pas rêvé. Et contrairement au mobile, il n'y a ni Mac obligatoire, ni compte Apple, ni validation d'un store entre toi et la mise en ligne. J'ai écrit <a href="/blog/application-mobile-avec-claude/">ce qui coince quand on crée une application mobile avec Claude</a> : en web, la moitié de ces murs n'existe pas.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour générer des revenus. J'ai publié plus de 20 applications, elles cumulent 1,3 million de téléchargements, et j'utilise l'IA tous les jours pour écrire du code. Cet article n'est pas là pour te dire que tu t'es trompé d'outil. Il répond à la question qui arrive juste après le week-end : pourquoi ça marche chez toi, et pourquoi ça ne rapporte rien.</p>
+
+      <h2>Ce que tu as vraiment entre les mains</h2>
+      <p>Ce que Claude te rend, c'est un projet de développement qui tourne sur ton ordinateur. Dans la barre d'adresse, tu lis quelque chose comme « localhost ». Ça veut dire que l'application n'existe que sur ta machine : personne d'autre au monde ne peut l'ouvrir.</p>
+      <p>C'est déjà beaucoup. Tu as une interface, des écrans, une logique qui fonctionne, et surtout tu as appris sur ton produit des choses qu'aucun document n'aurait pu t'apprendre. Mais un projet qui tourne chez toi n'est pas un produit en ligne, et un produit en ligne n'est pas encore un produit qui encaisse. Entre les trois, il y a une chaîne d'étapes qui n'a presque rien à voir avec le code.</p>
+      <div class="encadre cle">
+        <span class="encadre-titre">La bonne nouvelle d'abord</span>
+        <p>Rien de ce que tu as construit n'est perdu. Le code est un point de départ réel, et le prototype t'a fait avancer plus vite que n'importe quel cahier des charges. Ce qui te bloque maintenant n'est pas dedans.</p>
+      </div>
+
+      <h2>La mise en ligne : hébergement, nom de domaine, base de données</h2>
+      <p>Pour que quelqu'un d'autre ouvre ton application, il faut qu'elle vive quelque part. Trois choses, au minimum :</p>
+      <ul>
+        <li><strong>Un hébergement</strong>, c'est-à-dire un serveur qui fait tourner ton code en permanence, pas seulement quand ton ordinateur est allumé.</li>
+        <li><strong>Un nom de domaine</strong>, l'adresse que tes utilisateurs taperont, avec le cadenas de la connexion sécurisée.</li>
+        <li><strong>Une base de données en ligne</strong>, avec des sauvegardes. Celle que Claude a créée sur ton ordinateur contient des données de test ; celle de tes clients contiendra leur vie.</li>
+      </ul>
+      <p>Claude sait t'expliquer chacune de ces étapes et écrire les fichiers qui vont avec. Mais c'est toi qui ouvres les comptes, qui donnes une carte bancaire, qui choisis où sont stockées les données, et qui reçois le message à trois heures du matin quand le serveur ne répond plus. Aucune de ces décisions n'est dans le code.</p>
+
+      <h2>Les comptes utilisateurs : là où le code généré se trompe le plus</h2>
+      <p>C'est le point que je vois le plus souvent quand on m'envoie une application générée. Elle a une page de connexion, des mots de passe, des profils. Elle marche. Et en la lisant, on trouve des accès que n'importe quel utilisateur connecté pourrait détourner, des clés secrètes écrites en clair, des données personnelles stockées sans que personne ait décidé qui y accède ni combien de temps on les garde.</p>
+      <p>Ce n'est pas un défaut de l'outil, c'est la nature de l'exercice : tu lui as demandé une application qui fonctionne, et elle fonctionne. Personne ne lui a demandé qu'elle résiste à quelqu'un de mal intentionné, ni qu'elle respecte la loi sur les données personnelles. Une application mobile a un store qui relit et refuse ; une application web n'a personne entre toi et le public. La liberté est totale, la responsabilité aussi.</p>
+      <div class="encadre attention">
+        <span class="encadre-titre">Le piège le plus cher</span>
+        <p>Mettre en ligne une application dont la sécurité n'a jamais été relue, puis y faire entrer de vrais clients. Une fuite de données se paie en confiance, en temps, et parfois en amende. C'est la seule partie de la chaîne où je te conseille de ne pas avancer seul.</p>
+      </div>
+
+      <h2>L'encaissement : le paiement par carte, et ce qu'il demande de toi</h2>
+      <p>En web, personne ne prend 30 % au passage : c'est l'avantage que tout le monde cite. Un prestataire de paiement par carte prend quelques pour cent, et après TVA il te reste environ 78 % du prix affiché, contre environ 70 % sur un store. À prix égal, il te faut donc moins de clients pour rembourser ton application.</p>
+      <p>Mais ouvrir ce robinet ne se code pas. Un prestataire de paiement vérifie ton identité ou celle de ta société, demande un statut qui te permet de vendre, des coordonnées bancaires, et t'impose de produire des factures et de collecter la TVA correctement. Tant que cette chaîne n'est pas complète, ton bouton « S'abonner » est un bouton qui ne fait rien. Claude peut écrire l'écran d'abonnement en dix minutes ; il ne peut pas signer le contrat qui permet à l'argent d'arriver.</p>
+      <div class="chiffre">
+        <span class="chiffre-valeur">0 €</span>
+        <span class="chiffre-texte">ce que rapporte une application web parfaitement fonctionnelle tant que l'encaissement n'est pas ouvert, et tant que personne n'a de raison de payer.</span>
+      </div>
+
+      <h2>Ce qu'aucun code ne décide : qui paie, quand, et pourquoi il revient</h2>
+      <p>Voilà le vrai sujet, et c'est celui que les tutoriels ne traitent jamais. Je n'ai encore jamais vu une application qui rapporte grâce à son code. Celles qui rapportent le font grâce à ce qui a été décidé avant la première ligne et mesuré après la mise en ligne : qui est l'utilisateur, ce qu'il comprend en trente secondes, à quel moment on lui propose de payer, et ce qui le fait revenir le lendemain.</p>
+      <p>J'ai conçu la première version d'une application qui a dépassé 300 000 utilisateurs et ne rapportait presque rien, parce que personne n'avait décidé où et quand l'utilisateur sortirait sa carte. J'en ai conçu une autre, sur un marché saturé, qui rapporte environ 13 000 € par mois par abonnement, parce que tout le parcours est construit autour de ce moment. Je raconte les deux dans <a href="/blog/ce-que-j-ai-appris-20-applications/">ce que j'ai appris en publiant plus de 20 applications</a>.</p>
+      <p>Si Claude écrit le code en une heure, ça ne change rien à cette question. Personne ne la tape dans une phrase. Et un produit généré sans cette réponse perd simplement de l'argent plus vite, parce que l'hébergement, lui, commence à se facturer le premier jour. La façon de construire ce parcours dans le bon ordre est dans <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application</a>, et j'ai détaillé pourquoi un code qui marche ne suffit pas dans <a href="/blog/creer-application-avec-ia/">créer une application avec l'IA</a>.</p>
+
+      <h2>Ce que Claude fait très bien, et que je te conseille de garder</h2>
+      <p>Il serait malhonnête de s'arrêter là. Claude est l'outil le plus rapide que j'aie vu pour passer d'une idée à quelque chose qui se touche. Trois usages où il est imbattable :</p>
+      <ul>
+        <li><strong>Comprendre ton produit</strong> : un écran qui tourne en dit plus qu'un document de trente pages, et il te fait découvrir ce que tu veux vraiment.</li>
+        <li><strong>Le montrer</strong> : à cinq clients potentiels, avant d'avoir dépensé un euro de développement. Leur réaction vaut toutes les études.</li>
+        <li><strong>Écrire le code</strong>, tout court : je m'en sers chaque jour sur les applications de mes clients, et il va vite.</li>
+      </ul>
+      <p>Ce qu'il ne fait pas, ce n'est pas du code non plus : c'est décider, pour ton marché et tes utilisateurs, ce qui sera payant, quand l'offre apparaît, et comment on s'en aperçoit. C'est le design du parcours et la stratégie de lancement, et c'est exactement là que se joue le revenu.</p>
+
+      <h2>Web ou mobile : la porte est plus facile en web, pas gratuite</h2>
+      <p>Si ton produit s'utilise assis devant un écran, au travail, avec plusieurs profils et un espace d'administration, tu as choisi le bon support : une application web sort deux à trois semaines plus vite qu'une application mobile à périmètre égal, sans validation d'Apple ni de Google, et elle garde environ 78 % de chaque vente.</p>
+      <p>Mais « plus facile » ne veut pas dire « sans travail ». Il faut quelqu'un qui tienne l'application une fois en ligne : les mises à jour de sécurité, la base qui grossit, le paiement qui change ses règles. Et il faut, avant tout ça, le périmètre et le parcours qui en font un produit. Les ordres de grandeur pour une application web conçue de bout en bout sont dans <a href="/blog/combien-coute-application-mobile/">combien coûte une application</a>, section application web.</p>
+
+      <h2>Par où commencer</h2>
+      <p>Dans cet ordre, parce qu'il est fait pour que tu ne construises pas dans le vide.</p>
+      <ol>
+        <li><strong>Écris en une phrase qui paie, combien et à quel moment.</strong> Si la phrase n'existe pas, ne génère pas un écran de plus : c'est la question qui décide de tout le reste.</li>
+        <li><strong>Lance la chaîne d'encaissement aujourd'hui.</strong> Prestataire de paiement, identité, statut, banque. C'est le seul délai que tu ne contrôles pas, alors fais-le courir pendant que tu travailles.</li>
+        <li><strong>Fais relire la sécurité avant d'ouvrir à de vrais clients.</strong> Accès, données personnelles, clés secrètes. Une heure de relecture coûte moins cher que la première fuite.</li>
+      </ol>
+      <p>Et si tu as déjà du code qui tourne et que tu veux savoir ce qui tient : envoie-le moi. Je le lis et je te dis franchement ce qui est récupérable, ce qui est à reprendre, et ce qui te sépare vraiment du premier euro encaissé.</p>
+    `,
+  },
+  {
     slug: 'ce-que-j-ai-appris-20-applications',
     title: "Ce que j'ai appris en publiant plus de 20 applications",
     metaTitle: "20 applications publiées : ce que j'ai appris | Noé Calmes",
@@ -1017,6 +1117,7 @@ export const BLOG_ARTICLES = [
       <p>D'abord, ça se passe désormais dans l'outil officiel d'Apple. En février 2026, Apple a annoncé l'arrivée du codage agentique dans Xcode, son environnement de développement. Son communiqué cite deux agents en exemple, celui d'Anthropic et celui d'OpenAI, les met exactement sur le même plan et n'en recommande aucun. C'est une intégration technique, pas une caution, et il faut le lire comme ça. Connecter des modèles Claude au chat de Xcode était d'ailleurs déjà possible avant : ce qui a changé, c'est le mode agent, capable d'avancer seul sur un objectif et de vérifier son travail.</p>
       <p>Ensuite, l'application de bureau de Claude Code sait maintenant piloter un simulateur d'iPhone. Elle compile ton application, l'installe, la lance, tape dans l'écran et relit le résultat pour vérifier ses propres modifications, pendant que tu regardes. Ce n'est pas de la démo, c'est utilisable.</p>
       <p>Donc non, tu n'es pas en train de bricoler dans ton coin avec un outil de seconde zone.</p>
+      <p>Et si ton produit n'a pas besoin des stores, parce qu'il s'utilise sur un ordinateur, le chemin est différent : je l'ai détaillé dans <a href="/blog/creer-application-web-avec-claude/">créer une application web ou un logiciel avec Claude</a>.</p>
       <div class="encadre astuce">
         <span class="encadre-titre">Deux détails qui coûtent du temps si on les ignore</span>
         <p>Ce pilotage du simulateur ne marche que sur un Mac, uniquement en local, et surtout uniquement sur des <strong>simulateurs</strong> : jamais sur un vrai iPhone. Et côté Anthropic, se connecter avec un compte Claude dans Xcode suppose une offre payante, une clé API facturée à l'usage étant l'autre voie possible.</p>
@@ -2872,6 +2973,7 @@ export const BLOG_ARTICLES = [
 // orphelin. Ajouter un article implique donc de le citer ici au moins deux fois.
 
 export const ARTICLES_LIES = {
+  'creer-application-web-avec-claude': ['application-mobile-avec-claude', 'creer-application-avec-ia', 'combien-coute-application-mobile'],
   'ce-que-j-ai-appris-20-applications': ['pourquoi-applications-ne-rapportent-rien', 'combien-rapporte-application-mobile', 'lovable-base44-application-mobile'],
   'application-mobile-artisan': ['application-mobile-pour-entreprise', 'combien-coute-application-mobile', 'creation-application-mobile-toulouse'],
   'application-mobile-pour-entreprise': ['application-mobile-artisan', 'combien-coute-application-mobile', 'application-mobile-salle-de-sport'],
@@ -2880,8 +2982,8 @@ export const ARTICLES_LIES = {
   'combien-de-temps-creer-application-mobile': ['mvp-application-mobile', 'cahier-des-charges-application-mobile', 'combien-coute-application-mobile'],
   'application-avec-ia-rentable': ['combien-de-clients-pour-rentabiliser-application', 'application-mobile-meilleur-investissement', 'creer-application-avec-ia'],
   'combien-de-clients-pour-rentabiliser-application': ['combien-rapporte-application-mobile', 'combien-coute-application-mobile', 'rentabiliser-application-mobile'],
-  'application-mobile-avec-claude': ['creer-application-avec-ia', 'lovable-base44-application-mobile', 'creer-application-mobile-guide'],
-  'lovable-base44-application-mobile': ['creer-application-avec-ia', 'creer-application-sans-savoir-coder', 'application-mobile-avec-claude'],
+  'application-mobile-avec-claude': ['creer-application-web-avec-claude', 'lovable-base44-application-mobile', 'creer-application-mobile-guide'],
+  'lovable-base44-application-mobile': ['creer-application-web-avec-claude', 'creer-application-sans-savoir-coder', 'application-mobile-avec-claude'],
   // Cluster monetisation, pilier : rentabiliser-application-mobile
   'rentabiliser-application-mobile': ['ce-que-j-ai-appris-20-applications', 'combien-rapporte-application-mobile', 'pourquoi-applications-ne-rapportent-rien'],
   'combien-rapporte-application-mobile': ['combien-de-clients-pour-rentabiliser-application', 'combien-coute-application-mobile', 'application-mobile-meilleur-investissement'],
@@ -2891,7 +2993,7 @@ export const ARTICLES_LIES = {
   'pourquoi-applications-ne-rapportent-rien': ['rentabiliser-application-mobile', 'modele-economique-application-mobile', 'ce-que-j-ai-appris-20-applications'],
   'application-audience-revenus-recurrents': ['application-mobile-coach-formateur', 'application-par-abonnement', 'combien-de-clients-pour-rentabiliser-application'],
   'application-mobile-coach-formateur': ['application-audience-revenus-recurrents', 'modele-economique-application-mobile', 'application-mobile-salle-de-sport'],
-  'creer-application-avec-ia': ['pourquoi-applications-ne-rapportent-rien', 'application-mobile-avec-claude', 'application-avec-ia-rentable'],
+  'creer-application-avec-ia': ['creer-application-web-avec-claude', 'application-mobile-avec-claude', 'application-avec-ia-rentable'],
   'application-mobile-meilleur-investissement': ['application-mobile-pour-entreprise', 'application-avec-ia-rentable', 'ce-que-j-ai-appris-20-applications'],
 
   // Cluster creation / conduite de projet
