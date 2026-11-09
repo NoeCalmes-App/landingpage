@@ -97,6 +97,15 @@ export const BLOG_ARTICLES = [
       <p>J'ai conçu la première version d'une application qui a dépassé 300 000 utilisateurs et ne rapportait presque rien, parce que personne n'avait décidé où et quand l'utilisateur sortirait sa carte. J'en ai conçu une autre, sur un marché saturé, qui rapporte environ 13 000 € par mois par abonnement, parce que tout le parcours est construit autour de ce moment. Je raconte les deux dans <a href="/blog/ce-que-j-ai-appris-20-applications/">ce que j'ai appris en publiant plus de 20 applications</a>.</p>
       <p>Si Claude écrit le code en une heure, ça ne change rien à cette question. Personne ne la tape dans une phrase. Et un produit généré sans cette réponse perd simplement de l'argent plus vite, parce que l'hébergement, lui, commence à se facturer le premier jour. La façon de construire ce parcours dans le bon ordre est dans <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application</a>, et j'ai détaillé pourquoi un code qui marche ne suffit pas dans <a href="/blog/creer-application-avec-ia/">créer une application avec l'IA</a>.</p>
 
+      <h2>La pire erreur : faire grossir le prototype quand ça commence à marcher</h2>
+      <p>C'est le scénario que je vois le plus souvent, et c'est le plus cher. Le prototype trouve ses premiers utilisateurs. Tu demandes à Claude une fonctionnalité de plus, puis une autre, puis un deuxième type de compte, puis un paiement. Chaque ajout marche. Et chaque ajout est posé sur du code que personne n'a lu, écrit sans structure parce que personne n'avait demandé de structure.</p>
+      <p>Au bout de quelques mois, tu as une application qui a des clients et que plus personne ne comprend, toi compris. Une modification d'une heure en prend dix, un correctif en casse un autre, et le jour où tu veux confier le code à un développeur, il te dit la seule chose qu'il peut dire honnêtement : il faut le refaire. Tu paies alors l'application deux fois, la seconde avec des clients qui attendent.</p>
+      <p>Et ça se voit au moment où tu voudrais en tirer quelque chose. Un acheteur ou un repreneur fait lire le code avant de signer, qu'il s'agisse d'une application web ou d'une application mobile. Un code illisible n'est pas un détail dans la négociation : c'est ce qui fait baisser le prix, ou partir l'acheteur. L'application que tu voulais revendre comme un actif se négocie comme une liste de clients.</p>
+      <div class="encadre astuce">
+        <span class="encadre-titre">La règle en une phrase</span>
+        <p>Le prototype sert à apprendre, pas à grandir. Le jour où de vrais clients paient, c'est le moment de reconstruire proprement ce qui a fait ses preuves, pas d'empiler dessus.</p>
+      </div>
+
       <h2>Ce que Claude fait très bien, et que je te conseille de garder</h2>
       <p>Il serait malhonnête de s'arrêter là. Claude est l'outil le plus rapide que j'aie vu pour passer d'une idée à quelque chose qui se touche. Trois usages où il est imbattable :</p>
       <ul>
