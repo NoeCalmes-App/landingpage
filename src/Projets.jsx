@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { ArrowDown, ArrowRight, ArrowUpRight, Euro, FileCheck2, Handshake, MessageCircle, Phone } from 'lucide-react'
+import { ArrowDown, ArrowRight, ArrowUpRight, Euro, FileCheck2, Handshake, MessageCircle, Phone, X } from 'lucide-react'
 import { appliquerMeta, retirerPrerender } from './seo.js'
 import { trackDirectWhatsAppLead } from './metaTracking.js'
 import { AvisClients } from './AvisClients.jsx'
@@ -35,6 +35,18 @@ function SectionIntro({ label, title, children }) {
     <h2>{title}</h2>
     {children && <p>{children}</p>}
   </div>
+}
+
+// Études de cas : chaque carte ouvre une fenêtre <dialog> native. Le texte
+// reste écrit dans le JSX du composant, donc dans le pré-rendu de /projets.
+function ouvrirCas(id) {
+  const modale = document.getElementById(id)
+  if (modale && !modale.open) modale.showModal()
+}
+
+// Un clic sur le fond (le <dialog> lui-même, hors de la boîte) ferme la fenêtre.
+function fermerSiFond(e) {
+  if (e.target === e.currentTarget) e.currentTarget.close()
 }
 
 export default function Projets({ onBack }) {
@@ -102,60 +114,108 @@ export default function Projets({ onBack }) {
         </div>
         <div className="projets-cases-grid">
           <article className="projets-case">
-            <img className="projets-case-visuel" src="/assets/images/projets/smoothride.webp" alt="SmoothRide : écran de choix du trajet, le plus rapide ou le plus doux, avec le nombre de dos-d’âne" width="960" height="540" loading="lazy" />
+            <button type="button" className="projets-case-ouvrir" onClick={() => ouvrirCas('cas-smoothride')} aria-haspopup="dialog">
+              <img className="projets-case-visuel" src="/assets/images/projets/smoothride.webp" alt="SmoothRide : écran de choix du trajet, le plus rapide ou le plus doux, avec le nombre de dos-d’âne" width="960" height="540" loading="lazy" />
+            </button>
             <div className="projets-case-corps">
               <div className="projets-app-id"><img src="/assets/images/apps/smoothride.svg" alt="" width="48" height="48" loading="lazy" /><span><h3>SmoothRide</h3><small>Navigation GPS · application client</small></span></div>
               <p className="projets-case-accroche">La navigation GPS qui évite les dos-d’âne, guidée à la voix, avec CarPlay et Android Auto.</p>
-              <p className="projets-case-resultat">En ligne sur l’App Store et Google Play</p>
-              <details className="projets-case-detail">
-                <summary>Lire l’étude de cas</summary>
-                <p><strong>Le besoin.</strong> Les GPS cherchent le trajet le plus rapide, jamais le plus doux. Pour un dos fragile, un véhicule chargé ou un professionnel qui roule toute la journée, les dos-d’âne ont un vrai coût.</p>
-                <p><strong>Ce que j’ai fait.</strong> Une navigation complète qui compare deux trajets et compte les ralentisseurs sur chacun, à partir de plus de 120 000 ralentisseurs référencés en France. Elle s’affiche sur l’écran de la voiture avec CarPlay et Android Auto, et un abonnement Pro lève la limite d’itinéraires.</p>
-              </details>
-              <a className="projets-case-lien" href="https://smoothride.fr/" target="_blank" rel="noopener">Voir l’application <ArrowUpRight size={15} aria-hidden="true" /></a>
+              <button type="button" className="projets-case-lire" onClick={() => ouvrirCas('cas-smoothride')} aria-haspopup="dialog">Lire l’étude de cas <ArrowRight size={15} aria-hidden="true" /></button>
             </div>
+            <dialog id="cas-smoothride" className="projets-cas-modale" aria-labelledby="cas-smoothride-titre" onClick={fermerSiFond}>
+              <div className="projets-cas-modale-boite">
+                <form method="dialog" className="projets-cas-fermer-form"><button className="projets-cas-fermer" aria-label="Fermer l’étude de cas"><X size={20} aria-hidden="true" /></button></form>
+                <img className="projets-cas-modale-visuel" src="/assets/images/projets/smoothride.webp" alt="" width="960" height="540" loading="lazy" />
+                <div className="projets-cas-modale-corps">
+                  <div className="projets-app-id"><img src="/assets/images/apps/smoothride.svg" alt="" width="48" height="48" loading="lazy" /><span><h4 id="cas-smoothride-titre">SmoothRide</h4><small>Navigation GPS · application client</small></span></div>
+                  <p className="projets-cas-modale-accroche">La navigation GPS qui évite les dos-d’âne, guidée à la voix, avec CarPlay et Android Auto.</p>
+                  <div className="projets-cas-etapes">
+                    <div><span>Le besoin</span><p>Les GPS cherchent le trajet le plus rapide, jamais le plus doux. Pour un dos fragile, un véhicule chargé ou un professionnel qui roule toute la journée, les dos-d’âne ont un vrai coût.</p></div>
+                    <div><span>Ce que j’ai fait</span><p>Une navigation complète qui compare deux trajets et compte les ralentisseurs sur chacun, à partir de plus de 120 000 ralentisseurs référencés en France. Elle s’affiche sur l’écran de la voiture avec CarPlay et Android Auto, et un abonnement Pro lève la limite d’itinéraires.</p></div>
+                    <div><span>Le résultat</span><p>En ligne sur l’App Store et Google Play.</p></div>
+                  </div>
+                  <a className="projets-cas-site" href="https://smoothride.fr/" target="_blank" rel="noopener">smoothride.fr <ArrowUpRight size={14} aria-hidden="true" /></a>
+                </div>
+              </div>
+            </dialog>
           </article>
           <article className="projets-case">
-            <img className="projets-case-visuel" src="/assets/images/projets/bailora.webp" alt="Bailora : tableau de bord avec les loyers du mois et les actions à traiter" width="960" height="540" loading="lazy" />
+            <button type="button" className="projets-case-ouvrir" onClick={() => ouvrirCas('cas-bailora')} aria-haspopup="dialog">
+              <img className="projets-case-visuel" src="/assets/images/projets/bailora.webp" alt="Bailora : tableau de bord avec les loyers du mois et les actions à traiter" width="960" height="540" loading="lazy" />
+            </button>
             <div className="projets-case-corps">
               <div className="projets-app-id"><img src="/assets/images/apps/bailora.webp" alt="" width="48" height="48" loading="lazy" /><span><h3>Bailora</h3><small>Gestion locative · application client</small></span></div>
               <p className="projets-case-accroche">La gestion locative sur téléphone : loyers, quittances, états des lieux et un assistant à qui l’on parle.</p>
-              <p className="projets-case-resultat">Application iOS et Android</p>
-              <details className="projets-case-detail">
-                <summary>Lire l’étude de cas</summary>
-                <p><strong>Le besoin.</strong> Les propriétaires, seuls ou en SCI familiale, suivent leurs loyers, leurs quittances et leurs états des lieux entre un tableur, des courriers et des photos dispersées.</p>
-                <p><strong>Ce que j’ai fait.</strong> Une application qui suit les loyers, prépare les quittances et les courriers, guide l’état des lieux pièce par pièce jusqu’à la signature, et range chaque document. Un assistant intelligent répond aux questions sur les biens, à l’écrit comme à la voix.</p>
-              </details>
-              <a className="projets-case-lien" href="https://bailora-app.fr/" target="_blank" rel="noopener">Voir l’application <ArrowUpRight size={15} aria-hidden="true" /></a>
+              <button type="button" className="projets-case-lire" onClick={() => ouvrirCas('cas-bailora')} aria-haspopup="dialog">Lire l’étude de cas <ArrowRight size={15} aria-hidden="true" /></button>
             </div>
+            <dialog id="cas-bailora" className="projets-cas-modale" aria-labelledby="cas-bailora-titre" onClick={fermerSiFond}>
+              <div className="projets-cas-modale-boite">
+                <form method="dialog" className="projets-cas-fermer-form"><button className="projets-cas-fermer" aria-label="Fermer l’étude de cas"><X size={20} aria-hidden="true" /></button></form>
+                <img className="projets-cas-modale-visuel" src="/assets/images/projets/bailora.webp" alt="" width="960" height="540" loading="lazy" />
+                <div className="projets-cas-modale-corps">
+                  <div className="projets-app-id"><img src="/assets/images/apps/bailora.webp" alt="" width="48" height="48" loading="lazy" /><span><h4 id="cas-bailora-titre">Bailora</h4><small>Gestion locative · application client</small></span></div>
+                  <p className="projets-cas-modale-accroche">La gestion locative sur téléphone : loyers, quittances, états des lieux et un assistant à qui l’on parle.</p>
+                  <div className="projets-cas-etapes">
+                    <div><span>Le besoin</span><p>Les propriétaires, seuls ou en SCI familiale, suivent leurs loyers, leurs quittances et leurs états des lieux entre un tableur, des courriers et des photos dispersées.</p></div>
+                    <div><span>Ce que j’ai fait</span><p>Une application qui suit les loyers, prépare les quittances et les courriers, guide l’état des lieux pièce par pièce jusqu’à la signature, et range chaque document. Un assistant intelligent répond aux questions sur les biens, à l’écrit comme à la voix.</p></div>
+                    <div><span>Le résultat</span><p>Une application iOS et Android, conçue de la stratégie à la mise en ligne.</p></div>
+                  </div>
+                  <a className="projets-cas-site" href="https://bailora-app.fr/" target="_blank" rel="noopener">bailora-app.fr <ArrowUpRight size={14} aria-hidden="true" /></a>
+                </div>
+              </div>
+            </dialog>
           </article>
           <article className="projets-case">
-            <img className="projets-case-visuel" src="/assets/images/projets/wakeup-alarme.webp" alt="Wake Up Alarme : mission de calcul à réussir pour couper l’alarme" width="960" height="540" loading="lazy" />
+            <button type="button" className="projets-case-ouvrir" onClick={() => ouvrirCas('cas-wakeup')} aria-haspopup="dialog">
+              <img className="projets-case-visuel" src="/assets/images/projets/wakeup-alarme.webp" alt="Wake Up Alarme : mission de calcul à réussir pour couper l’alarme" width="960" height="540" loading="lazy" />
+            </button>
             <div className="projets-case-corps">
               <div className="projets-app-id"><img src="/assets/images/app-icons/wackupalarme.webp" alt="" width="48" height="48" loading="lazy" /><span><h3>Wake Up Alarme</h3><small>Réveil · ma propre application</small></span></div>
               <p className="projets-case-accroche">Le réveil qu’on ne peut pas éteindre sans se lever : il faut réussir une mission pour le couper.</p>
-              <p className="projets-case-resultat">En ligne, sur abonnement</p>
-              <details className="projets-case-detail">
-                <summary>Lire l’étude de cas</summary>
-                <p><strong>Le besoin.</strong> On coupe l’alarme sans même ouvrir les yeux, et on se rendort.</p>
-                <p><strong>Ce que j’ai fait.</strong> Pour couper l’alarme, il faut réussir une mission : résoudre un calcul, scanner un QR code posé dans une autre pièce, secouer son téléphone ou faire quelques pas. Sa musique Spotify comme sonnerie, et un abonnement mensuel ou annuel avec une semaine d’essai gratuite.</p>
-              </details>
-              <a className="projets-case-lien" href="https://wakeupalarm.app/" target="_blank" rel="noopener">Voir l’application <ArrowUpRight size={15} aria-hidden="true" /></a>
+              <button type="button" className="projets-case-lire" onClick={() => ouvrirCas('cas-wakeup')} aria-haspopup="dialog">Lire l’étude de cas <ArrowRight size={15} aria-hidden="true" /></button>
             </div>
+            <dialog id="cas-wakeup" className="projets-cas-modale" aria-labelledby="cas-wakeup-titre" onClick={fermerSiFond}>
+              <div className="projets-cas-modale-boite">
+                <form method="dialog" className="projets-cas-fermer-form"><button className="projets-cas-fermer" aria-label="Fermer l’étude de cas"><X size={20} aria-hidden="true" /></button></form>
+                <img className="projets-cas-modale-visuel" src="/assets/images/projets/wakeup-alarme.webp" alt="" width="960" height="540" loading="lazy" />
+                <div className="projets-cas-modale-corps">
+                  <div className="projets-app-id"><img src="/assets/images/app-icons/wackupalarme.webp" alt="" width="48" height="48" loading="lazy" /><span><h4 id="cas-wakeup-titre">Wake Up Alarme</h4><small>Réveil · ma propre application</small></span></div>
+                  <p className="projets-cas-modale-accroche">Le réveil qu’on ne peut pas éteindre sans se lever : il faut réussir une mission pour le couper.</p>
+                  <div className="projets-cas-etapes">
+                    <div><span>Le besoin</span><p>On coupe l’alarme sans même ouvrir les yeux, et on se rendort.</p></div>
+                    <div><span>Ce que j’ai fait</span><p>Pour couper l’alarme, il faut réussir une mission : résoudre un calcul, scanner un QR code posé dans une autre pièce, secouer son téléphone ou faire quelques pas. Sa musique Spotify comme sonnerie, et un abonnement mensuel ou annuel avec une semaine d’essai gratuite.</p></div>
+                    <div><span>Le résultat</span><p>En ligne sur l’App Store et Google Play, sur abonnement.</p></div>
+                  </div>
+                  <a className="projets-cas-site" href="https://wakeupalarm.app/" target="_blank" rel="noopener">wakeupalarm.app <ArrowUpRight size={14} aria-hidden="true" /></a>
+                </div>
+              </div>
+            </dialog>
           </article>
           <article className="projets-case">
-            <img className="projets-case-visuel" src="/assets/images/projets/plouff-habitudes.webp" alt="Plouff Habitudes : écran du jour avec la loutre Plouf et les habitudes à cocher" width="960" height="540" loading="lazy" />
+            <button type="button" className="projets-case-ouvrir" onClick={() => ouvrirCas('cas-plouff')} aria-haspopup="dialog">
+              <img className="projets-case-visuel" src="/assets/images/projets/plouff-habitudes.webp" alt="Plouff Habitudes : écran du jour avec la loutre Plouf et les habitudes à cocher" width="960" height="540" loading="lazy" />
+            </button>
             <div className="projets-case-corps">
               <div className="projets-app-id"><img src="/assets/images/app-icons/plouffhabitudes.webp" alt="" width="48" height="48" loading="lazy" /><span><h3>Plouff Habitudes</h3><small>Habitudes et bien-être · ma propre application</small></span></div>
               <p className="projets-case-accroche">De bonnes habitudes sans pression, avec Plouf, une loutre qui évolue à mesure qu’on avance.</p>
-              <p className="projets-case-resultat">Du design au lancement en 30 jours</p>
-              <details className="projets-case-detail">
-                <summary>Lire l’étude de cas</summary>
-                <p><strong>Le besoin.</strong> Les applications d’habitudes misent sur la pression et les séries à ne pas casser : on rate un jour, on culpabilise, on abandonne.</p>
-                <p><strong>Ce que j’ai fait.</strong> Une application douce : on planifie ses habitudes à son rythme, avec des citations, un exercice de respiration guidé, un suivi de l’humeur et des statistiques. Une offre premium par abonnement, en ligne sur l’App Store et Google Play.</p>
-              </details>
-              <a className="projets-case-lien" href="https://plouff-habitudes.com/" target="_blank" rel="noopener">Voir l’application <ArrowUpRight size={15} aria-hidden="true" /></a>
+              <button type="button" className="projets-case-lire" onClick={() => ouvrirCas('cas-plouff')} aria-haspopup="dialog">Lire l’étude de cas <ArrowRight size={15} aria-hidden="true" /></button>
             </div>
+            <dialog id="cas-plouff" className="projets-cas-modale" aria-labelledby="cas-plouff-titre" onClick={fermerSiFond}>
+              <div className="projets-cas-modale-boite">
+                <form method="dialog" className="projets-cas-fermer-form"><button className="projets-cas-fermer" aria-label="Fermer l’étude de cas"><X size={20} aria-hidden="true" /></button></form>
+                <img className="projets-cas-modale-visuel" src="/assets/images/projets/plouff-habitudes.webp" alt="" width="960" height="540" loading="lazy" />
+                <div className="projets-cas-modale-corps">
+                  <div className="projets-app-id"><img src="/assets/images/app-icons/plouffhabitudes.webp" alt="" width="48" height="48" loading="lazy" /><span><h4 id="cas-plouff-titre">Plouff Habitudes</h4><small>Habitudes et bien-être · ma propre application</small></span></div>
+                  <p className="projets-cas-modale-accroche">De bonnes habitudes sans pression, avec Plouf, une loutre qui évolue à mesure qu’on avance.</p>
+                  <div className="projets-cas-etapes">
+                    <div><span>Le besoin</span><p>Les applications d’habitudes misent sur la pression et les séries à ne pas casser : on rate un jour, on culpabilise, on abandonne.</p></div>
+                    <div><span>Ce que j’ai fait</span><p>Une application douce : on planifie ses habitudes à son rythme, avec des citations, un exercice de respiration guidé, un suivi de l’humeur et des statistiques. Une offre premium par abonnement.</p></div>
+                    <div><span>Le résultat</span><p>Du design au lancement en 30 jours, en ligne sur l’App Store et Google Play.</p></div>
+                  </div>
+                  <a className="projets-cas-site" href="https://plouff-habitudes.com/" target="_blank" rel="noopener">plouff-habitudes.com <ArrowUpRight size={14} aria-hidden="true" /></a>
+                </div>
+              </div>
+            </dialog>
           </article>
         </div>
       </section>

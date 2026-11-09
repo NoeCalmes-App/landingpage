@@ -87,27 +87,43 @@
 .projets-project-card > p { margin: 16px 0 0; color: var(--p-muted); font-size: 14px; line-height: 1.65; }
 
 .projets-cases-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-.projets-case { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e8e6ef; border-radius: 18px; background: #fff; }
+.projets-case { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e8e6ef; border-radius: 18px; background: #fff; transition: box-shadow .2s, transform .2s; }
+.projets-case:hover { box-shadow: 0 14px 34px rgba(3, 52, 117, .09); transform: translateY(-2px); }
+.projets-case-ouvrir { display: block; padding: 0; border: 0; background: none; cursor: pointer; }
 .projets-case-visuel { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: #f4f3f8; }
 .projets-case-corps { display: flex; flex: 1; flex-direction: column; padding: 18px 18px 20px; }
 .projets-case h3 { margin: 0; color: var(--p-ink); font: 800 16px/1.3 'Plus Jakarta Sans Local', sans-serif; letter-spacing: -.02em; }
-.projets-case .projets-app-id img { width: 38px; height: 38px; border-radius: 10px; }
+.projets-case .projets-app-id img, .projets-cas-modale .projets-app-id img { width: 38px; height: 38px; border-radius: 10px; }
 .projets-case-accroche { margin: 14px 0 0; color: var(--p-ink); font-size: 14px; line-height: 1.55; }
-.projets-case-resultat { align-self: flex-start; margin: 12px 0 0; padding: 5px 10px; border-radius: 999px; background: #f0efff; color: var(--p-purple); font-size: 12px; font-weight: 700; }
-.projets-case-detail { margin-top: 14px; }
-.projets-case-detail summary { cursor: pointer; color: var(--p-muted); font-size: 13px; font-weight: 700; list-style: none; }
-.projets-case-detail summary::-webkit-details-marker { display: none; }
-.projets-case-detail summary::after { content: ' +'; }
-.projets-case-detail[open] summary::after { content: ' −'; }
-.projets-case-detail p { margin: 10px 0 0; color: var(--p-muted); font-size: 13px; line-height: 1.65; }
-.projets-case-detail p strong { color: var(--p-ink); }
-.projets-case-lien { display: inline-flex; align-items: center; gap: 5px; margin-top: auto; padding-top: 16px; color: var(--p-purple); font-size: 14px; font-weight: 700; text-decoration: none; }
-.projets-case-lien:hover { text-decoration: underline; }
+.projets-case-lire { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-top: auto; padding: 16px 0 0; border: 0; background: none; color: var(--p-purple); font-family: inherit; font-size: 14px; font-weight: 700; line-height: 1; cursor: pointer; }
+.projets-case-lire:hover { text-decoration: underline; }
+
+.projets-cas-modale { position: fixed; inset: 0; margin: auto; width: min(720px, calc(100vw - 32px)); height: fit-content; max-height: calc(100dvh - 48px); padding: 0; border: 0; border-radius: 24px; background: #fff; color: var(--p-ink); box-shadow: 0 30px 80px rgba(3, 20, 60, .28); overflow: auto; }
+.projets-cas-modale::backdrop { background: rgba(8, 14, 34, .55); backdrop-filter: blur(4px); }
+.projets-cas-modale[open] { animation: projets-cas-entree .22s ease-out; }
+@keyframes projets-cas-entree { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
+.projets-cas-modale-boite { position: relative; }
+.projets-cas-fermer-form { position: absolute; top: 14px; right: 14px; z-index: 1; margin: 0; }
+.projets-cas-fermer { display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 999px; background: rgba(255, 255, 255, .92); color: var(--p-ink); box-shadow: 0 4px 14px rgba(0, 0, 0, .15); cursor: pointer; }
+.projets-cas-modale-visuel { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.projets-cas-modale-corps { padding: 26px 30px 30px; }
+.projets-cas-modale h4 { margin: 0; font: 800 20px/1.25 'Plus Jakarta Sans Local', sans-serif; letter-spacing: -.02em; }
+.projets-cas-modale-accroche { margin: 16px 0 0; font-size: 16px; line-height: 1.55; }
+.projets-cas-etapes { display: grid; gap: 18px; margin-top: 24px; padding-top: 22px; border-top: 1px solid #ecebf2; }
+.projets-cas-etapes span { color: var(--p-purple); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.projets-cas-etapes p { margin: 6px 0 0; color: var(--p-muted); font-size: 15px; line-height: 1.7; }
+.projets-cas-site { display: inline-flex; align-items: center; gap: 5px; margin-top: 24px; color: var(--p-muted); font-size: 13px; font-weight: 600; text-decoration: none; }
+.projets-cas-site:hover { color: var(--p-ink); text-decoration: underline; }
 @media (max-width: 1100px) {
   .projets-cases-grid { display: flex; gap: 14px; margin: 0 -20px; padding: 0 20px 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
   .projets-cases-grid::-webkit-scrollbar { display: none; }
   .projets-case { flex: 0 0 min(320px, 82%); scroll-snap-align: start; }
 }
+@media (max-width: 640px) {
+  .projets-cas-modale { top: auto; bottom: 0; width: 100vw; max-width: 100vw; max-height: 92dvh; margin: 0; border-radius: 22px 22px 0 0; }
+  .projets-cas-modale-corps { padding: 22px 20px 28px; }
+}
+
 
 .projets-annuaires { margin: -8px auto 28px; color: #9aa3b2; font-size: 12px; }
 .projets-annuaires a { color: inherit; text-decoration: none; }

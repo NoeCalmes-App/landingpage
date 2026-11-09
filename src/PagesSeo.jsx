@@ -267,6 +267,13 @@ export function PageAPropos({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
             <li>Des applications récentes en ligne : SmoothRide, une navigation GPS qui évite les dos-d'âne avec CarPlay et Android Auto, et Bailora, la gestion locative sur téléphone.</li>
           </ul>
           <p>Le détail de chaque projet est dans <a href="/projets/">mes réalisations</a>, et les chiffres, avec ce qu'ils mesurent vraiment, dans <a href="/blog/ce-que-j-ai-appris-20-applications/">ce que j'ai appris en publiant plus de 20 applications</a>.</p>
+        </Corps>
+
+        <a href={lienInterne('/projets')} onClick={(e) => { e.preventDefault(); onNaviguer('/projets') }} className="mt-6 inline-flex items-center gap-2 bg-[#131313] text-white font-semibold text-[0.95rem] px-6 py-3 rounded-full hover:bg-black transition-colors">
+          Voir mes réalisations &rarr;
+        </a>
+
+        <Corps>
 
           <h2>Comment on travaille ensemble</h2>
           <ul>

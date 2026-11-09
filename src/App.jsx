@@ -1170,11 +1170,6 @@ function App() {
             <div className="reveal">
               <AvisClients />
             </div>
-            <p className="reveal text-center mt-8">
-              <a href={lienInterne('/a-propos')} onClick={(e) => { e.preventDefault(); allerVers('/a-propos') }} className="text-brand font-semibold text-[0.95rem] hover:underline">
-                Qui je suis : mon parcours et mes preuves &rarr;
-              </a>
-            </p>
           </div>
         </div>
       </section>
