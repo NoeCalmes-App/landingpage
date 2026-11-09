@@ -47,6 +47,19 @@ MàJ : 20/08/2026
 ## Ce qui tourne en automatique
 
 - **Tâche programmée `seo-blog-hebdo`** (chaque lundi ~9h) : rédige 1 brouillon d'article du cluster monétisation dans `drafts/`, met à jour `content-plan.md`, et donne l'URL + le rappel d'indexation. Ne publie rien : Noé relit et publie. Tourne en continu (génère de nouveaux sujets quand les 12 sont faits).
+- **IndexNow** (depuis le 09/11/2026) : à chaque push sur `main`, la dernière étape de `.github/workflows/deploy.yml` envoie les URL du sitemap à `api.indexnow.org` (Bing, Yandex, Seznam). La clé vit dans `public/02be746d7eb78efdbd07bde9284dfb03.txt` ; ne pas renommer ce fichier. Réponse attendue dans le journal : `IndexNow : HTTP 202` ou `200`.
+- **Bing Webmaster Tools** (depuis le 09/11/2026) : noecalmes.fr et wakeupalarm.app importés depuis Search Console avec le compte noecalmes.pro@gmail.com, sitemap envoyé, 39 URL soumises. Les rapports à suivre : « Performances de l'IA » (citations par Copilot et les assistants appuyés sur Bing) et « Liens retour ». SmoothRide et Bailora retirés à la demande de Noé.
+
+## Chantier du 09/11/2026 : contrôle technique et pages à renforcer
+
+- HTTPS forcé dans GitHub Pages (http://noecalmes.fr répondait 200 sans redirection).
+- `llms.txt` : intro réécrite sur le positionnement mobile et web, 1,3 million de téléchargements.
+- `sameAs` de la fiche Person : Malt, Flutter Pro, GitHub ; adresse avec Toulouse.
+- Article prix enrichi (exemples par projet, section application web, titre « en 2026 ») avec le nouveau champ optionnel `dateMaj` de `Blog.jsx` : affiché sous le titre, repris dans `dateModified` et le `lastmod`. Le mettre à chaque enrichissement de fond, jamais pour une virgule.
+- `/projets` : études de cas en JSX, désormais dans le corps pré-rendu (632 mots lus sans JavaScript, contre 172).
+- Lien « Prix » vers l'article prix dans le pied de page et la navigation pré-rendue.
+- Liens entrants : crédit en pied de page de wakeupalarm.app, plouff-habitudes.com et bailora-app.fr (voir `liens-entrants.md`).
+- À mesurer le 07/12/2026 dans Search Console : position et impressions de l'article prix (69ᵉ, 599 impressions au 02/11) et de `/projets/`.
 
 ## État réel constaté dans Search Console — 8 août 2026
 
