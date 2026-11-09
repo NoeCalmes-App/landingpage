@@ -83,3 +83,18 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           timeout: "1800000"
+
+      # IndexNow : previent Bing (et Yandex, Seznam...) des pages du site a
+      # chaque mise en ligne, pour une indexation en heures plutot qu'en jours.
+      # La cle est publique par design : le fichier public/02be746d7eb78efdbd07bde9284dfb03.txt prouve que le
+      # site en est proprietaire. Ne bloque jamais le deploiement.
+      - name: IndexNow
+        if: github.event_name == 'push'
+        continue-on-error: true
+        run: |
+          sleep 60
+          urls=$(curl -fsS https://noecalmes.fr/sitemap.xml | grep -o '<loc>[^<]*' | sed 's/<loc>//' | jq -R . | jq -sc .)
+          curl -fsS -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d "{\"host\":\"noecalmes.fr\",\"key\":\"02be746d7eb78efdbd07bde9284dfb03\",\"keyLocation\":\"https://noecalmes.fr/02be746d7eb78efdbd07bde9284dfb03.txt\",\"urlList\":$urls}" \
+            -w 'IndexNow : HTTP %{http_code}\n'
