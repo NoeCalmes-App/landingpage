@@ -1352,13 +1352,19 @@ for (const slug of slugsPublies) {
   groupes[cat].push(`- [${m.heading}](${urlPublique('/blog/' + slug)}) : ${m.description}`)
 }
 
-const llms = `# Noé Calmes, expert en application mobile
+const llms = `# Noé Calmes, applications mobiles et web qui rapportent
 
-> Je conçois des applications mobiles iOS et Android pensées pour générer des
-> revenus, de la stratégie au lancement. Pas une agence, pas un développeur à la
-> mission : un seul interlocuteur, tarif fixe défini avant de commencer.
-> Plus de 20 applications publiées sur l'App Store et Google Play. Une
-> application que j'ai conçue génère environ 13 000 € par mois.
+> J'aide les entrepreneurs sans compétence technique à transformer une idée en
+> application qui rapporte, mobile (iOS et Android) ou web, ce qu'on appelle
+> aussi un SaaS. Je m'occupe de tout, de la stratégie à la mise en ligne : le
+> modèle de revenus, le design, le développement et la publication. Pas une
+> agence, pas un développeur à la mission : un seul interlocuteur, tarif fixe
+> défini avant de commencer. Plus de 20 applications à mon actif, plus de
+> 1,3 million de téléchargements cumulés. Une application que j'ai conçue
+> génère environ 13 000 € par mois.
+
+Le support se choisit selon le projet : une application mobile pour le grand
+public, une application web pour une plateforme professionnelle.
 
 Basé près de Toulouse, j'interviens à distance partout en France sur trois
 situations : créer une application à partir d'une idée, reprendre une
