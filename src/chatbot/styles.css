@@ -6,6 +6,13 @@
   100% { box-shadow: 0 0 0 0 rgba(102, 93, 255, 0); }
 }
 
+/* Même pulsation, en vert WhatsApp, quand le bouton ouvre WhatsApp. */
+@keyframes chatbot-pulse-whatsapp {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70%  { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
 @keyframes chatbot-slide-up {
   from { opacity: 0; transform: translateY(16px) scale(0.96); }
   to   { opacity: 1; transform: translateY(0) scale(1); }

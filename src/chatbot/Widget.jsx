@@ -234,17 +234,18 @@ export default function ChatbotWidget({ onBookCall, contactMode = 'chatbot', wha
 
   return (
     <>
-      {/* Bouton flottant — icône WhatsApp en violet brand */}
+      {/* Bouton flottant : vert WhatsApp quand il ouvre WhatsApp (la couleur dit
+          ce que fait le bouton, demande de Noé du 09/11/2026), violet brand en mode chat IA. */}
       <button
         type="button"
         onClick={handleFloatingClick}
         aria-label={usesWhatsApp ? 'Discuter avec Noé sur WhatsApp' : open ? 'Fermer le chat' : 'Ouvrir le chat avec Noé'}
-        className="fixed bottom-2 right-6 md:bottom-6 z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-500 hover:scale-110 cursor-pointer flex items-center justify-center bg-brand"
+        className={`fixed bottom-2 right-6 md:bottom-6 z-50 w-14 h-14 rounded-full shadow-lg transition-all duration-500 hover:scale-110 cursor-pointer flex items-center justify-center ${usesWhatsApp ? "bg-[#25D366]" : "bg-brand"}`}
         style={{
           opacity: hasScrolled ? 1 : 0,
           transform: hasScrolled ? 'scale(1) translateY(0)' : 'scale(0.8) translateY(16px)',
           pointerEvents: hasScrolled ? 'auto' : 'none',
-          boxShadow: '0 8px 24px rgba(102, 93, 255, 0.35)',
+          boxShadow: usesWhatsApp ? '0 8px 24px rgba(37, 211, 102, 0.35)' : '0 8px 24px rgba(102, 93, 255, 0.35)',
         }}
       >
         {open ? (
@@ -263,8 +264,8 @@ export default function ChatbotWidget({ onBookCall, contactMode = 'chatbot', wha
             aria-hidden
             className="absolute inset-0 rounded-full"
             style={{
-              boxShadow: '0 0 0 0 rgba(102, 93, 255, 0.5)',
-              animation: 'chatbot-pulse 2.5s ease-out infinite',
+              boxShadow: usesWhatsApp ? '0 0 0 0 rgba(37, 211, 102, 0.5)' : '0 0 0 0 rgba(102, 93, 255, 0.5)',
+              animation: `${usesWhatsApp ? 'chatbot-pulse-whatsapp' : 'chatbot-pulse'} 2.5s ease-out infinite`,
             }}
           />
         )}
