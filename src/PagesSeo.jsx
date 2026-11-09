@@ -201,7 +201,7 @@ export function PageAPropos({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
 
           <h2>D'où je viens</h2>
           <p>Je suis développeur de formation : un bachelor de développeur web et mobile, en trois ans. C'est là que j'ai appris à construire une application. Ce n'est pas là que j'ai appris à en faire une qui rapporte. Ça, je l'ai appris sur le terrain, application après application.</p>
-          <p>La leçon qui a tout changé s'appelle Hush. J'ai conçu la première version de cette messagerie pour ses créateurs, et elle a dépassé 300 000 utilisateurs. Mais elle ne rapportait presque rien, parce que personne, moi compris, n'avait décidé au départ à quel moment elle demanderait à être payée. Depuis, je ne commence plus un projet sans savoir où et quand l'utilisateur sort sa carte.</p>
+          <p>La leçon qui a tout changé est une messagerie. J'en ai conçu la première version pour ses créateurs, et elle a dépassé 300 000 utilisateurs. Mais elle ne rapportait presque rien, parce que personne, moi compris, n'avait décidé au départ à quel moment elle demanderait à être payée. Depuis, je ne commence plus un projet sans savoir où et quand l'utilisateur sort sa carte.</p>
           <p>L'inverse est arrivé avec Calorie, une application de suivi nutritionnel conçue pour un client, sur un marché déjà saturé. Elle lui rapporte aujourd'hui environ 13 000 € par mois, par abonnement, avec environ 30 000 téléchargements et 3 % de payants. Ce qui a fait la différence n'était pas l'idée : c'était le parcours qui amène l'utilisateur jusqu'au paiement.</p>
           <p>Et je teste ce que je conseille sur mes propres applications, avec mon propre argent : Wake Up Alarme, le réveil qu'on ne peut pas éteindre sans se lever, et Plouff Habitudes, sortie du design au lancement en 30 jours. Toutes les deux sont en ligne sur l'App Store et Google Play, sur abonnement.</p>
 
@@ -312,7 +312,7 @@ export function PageExpertise({ onAccueil, onBookCall, onAuditApp, onNaviguer })
           <h2>Les preuves</h2>
           <ul>
             <li><strong>13 000 € par mois</strong> générés par une application que j'ai conçue.</li>
-            <li><strong>+1 million de téléchargements</strong> pour Hush, sur iOS et Android.</li>
+            <li><strong>+1 million de téléchargements</strong> pour cette messagerie, sur iOS et Android.</li>
             <li><strong>Plus de 20 applications</strong> publiées sur l'App Store et Google Play.</li>
             <li><strong>Mes propres applications</strong> en production, donc une vision de l'usage réel et pas seulement de la commande client.</li>
           </ul>
