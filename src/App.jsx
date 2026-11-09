@@ -67,7 +67,7 @@ const devSvg = '/assets/images/illustrations/devmobile.svg'
 const postSvg = '/assets/images/illustrations/post.svg'
 const mePhoto = '/assets/images/profile/me.webp'
 const calorieIcon = '/assets/images/apps/calorie.webp'
-const messagerieIcon = '/assets/images/apps/messagerie.webp'
+const hushIcon = '/assets/images/apps/hushapp.webp'
 const purgeIcon = '/assets/images/apps/purge.webp'
 const snapIcon = '/assets/images/apps/snapmaster.webp'
 
@@ -808,7 +808,7 @@ function App() {
           {MONTRER_PASTILLE_HERO && <div className="flex justify-center mb-6 md:mb-7">
             <div className="inline-flex items-center gap-2.5 sm:gap-3 rounded-full bg-white/70 backdrop-blur-sm border border-brand-pale pl-1.5 pr-3.5 sm:pl-2 sm:pr-4 py-1 sm:py-1.5 shadow-[0_2px_14px_rgba(102,93,255,0.13)]">
               <div className="flex items-center">
-                {[snapIcon, calorieIcon, purgeIcon, messagerieIcon].map((icon, i) => (
+                {[snapIcon, calorieIcon, purgeIcon, hushIcon].map((icon, i) => (
                   <img
                     key={i}
                     src={icon}
@@ -886,10 +886,10 @@ function App() {
               <h2 id="app-proof-title" className="reveal">Ce que j'ai <span>déjà construit</span></h2>
               <p className="reveal app-proof-intro">Des applications publiées, utilisées, et qui rapportent.</p>
               {/* TROIS CHIFFRES, LE PLUS GROS EN PREMIER ET SUR TOUTE LA LARGEUR.
-                  La messagerie est sortie de la liste le 19/10/2026. « 300 000 utilisateurs »
+                  Hush est sorti de la liste le 19/10/2026. « 300 000 utilisateurs »
                   posait une unité de plus à côté des euros et des téléchargements :
                   trois grandeurs différentes à comparer en un coup d'œil, personne ne
-                  le fait. Le total de téléchargements couvre la messagerie sans la nommer, et
+                  le fait. Le total de téléchargements couvre Hush sans le nommer, et
                   passe de 900 000 à 1,3 million.
                   À trois cartes dans une grille de deux colonnes, la dernière restait
                   orpheline. La première prend donc les deux colonnes : c'est le chiffre

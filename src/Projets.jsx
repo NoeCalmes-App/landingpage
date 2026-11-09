@@ -54,7 +54,7 @@ export default function Projets({ onBack }) {
     appliquerMeta({
       path: '/projets',
       title: "Réalisations : applications mobiles et web | Noé Calmes",
-      description: "SmoothRide, Bailora, Wake Up Alarme, Plouff Habitudes et une messagerie à plus d'un million de téléchargements : les applications conçues par Noé Calmes, le besoin de départ et le résultat.",
+      description: "SmoothRide, Bailora, Wake Up Alarme, Plouff Habitudes, Hush : les applications conçues par Noé Calmes, le besoin de départ et le résultat.",
       ogImage: 'https://noecalmes.fr/assets/images/meta/projets-og.jpg',
       ogImageAlt: "Mes réalisations : des applications conçues de l’idée au lancement par Noé Calmes.",
     })
@@ -95,7 +95,7 @@ export default function Projets({ onBack }) {
         <SectionIntro label="Réalisations" title="Des applications utilisées. Des résultats concrets." />
         <article className="projets-feature">
           <div className="projets-feature-copy">
-            <div className="projets-app-id"><img src="/assets/images/apps/messagerie.webp" alt="" width="56" height="56" /><span><strong>Une messagerie</strong><small>iOS et Android</small></span></div>
+            <div className="projets-app-id"><img src="/assets/images/apps/hushapp.webp" alt="" width="56" height="56" /><span><strong>Hush</strong><small>Messagerie anonyme · iOS et Android</small></span></div>
             <p className="projets-feature-metric">+1 million <span>de téléchargements au total</span></p>
             <p className="projets-feature-text">J’ai conçu la première version de cette messagerie, qui a réuni 300 000 utilisateurs.</p>
           </div>
