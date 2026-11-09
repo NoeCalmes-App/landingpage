@@ -22,14 +22,14 @@ const mePhoto = '/assets/images/profile/me.webp'
 export const BLOG_ARTICLES = [
   {
     slug: 'creer-application-web-avec-claude',
-    title: "Créer une application web avec Claude : le code marche, l'argent ne rentre pas",
-    metaTitle: "Créer une application web avec Claude : et après ? | Noé Calmes",
+    title: "Créer une application web avec Claude : la pire erreur, et pourquoi l'argent ne rentre pas",
+    metaTitle: "Application web avec Claude : la pire erreur | Noé Calmes",
     description: "Claude code une application web qui tourne chez toi. Ce qui manque pour qu'elle rapporte : mise en ligne, comptes, paiement, et le parcours qui fait payer.",
     date: '2026-11-09',
     readTime: '9 min',
     finalCta: 'whatsapp',
     categorie: "Créer",
-    accroche: "Le code tourne sur ton ordinateur. Le revenu, lui, n'est pas dans le code.",
+    accroche: "Le code marche, l'argent ne rentre pas. Et une erreur qui coûte tout.",
     tldr: {
       verdict: "Oui, Claude écrit le code d'une vraie application web, et sans Mac ni store, c'est même plus direct qu'en mobile. Mais ce que tu as est un projet qui tourne sur ton ordinateur, pas un produit en ligne qui encaisse. Entre les deux : la mise en ligne, les comptes, le paiement, la sécurité, et une question qu'aucun code ne tranche, qui paie et quand.",
       points: [
