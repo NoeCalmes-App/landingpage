@@ -94,6 +94,10 @@
 .projets-case a { color: var(--p-purple); font-weight: 700; text-decoration: none; }
 .projets-case a:hover { text-decoration: underline; }
 
+.projets-annuaires { margin: -8px auto 28px; color: #9aa3b2; font-size: 12px; }
+.projets-annuaires a { color: inherit; text-decoration: none; }
+.projets-annuaires a:hover { text-decoration: underline; }
+
 .projets-reviews { background: #f8f7fc; }
 .projets-method .projets-section { padding-bottom: 0; }
 .projets-method-grid { max-width: 780px; margin: auto; }

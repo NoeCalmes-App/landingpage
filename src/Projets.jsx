@@ -10,6 +10,13 @@ const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
   "Bonjour Noé, j’ai une question après avoir consulté la page des réalisations."
 )}`
 
+// Annuaires qui référencent Noé et demandent un lien retour. Une seule ligne,
+// discrète, au pied de cette page : jamais dans le pied de page global du site.
+// Lu aussi par scripts/generate-routes.js pour le pré-rendu de /projets.
+export const ANNUAIRES = [
+  { nom: 'jesuisnumerique.fr', url: 'https://www.jesuisnumerique.fr' },
+]
+
 const REALISATIONS = [
   { name: 'Calorie', type: 'Suivi nutritionnel avec l’IA', icon: '/assets/images/apps/calorie.webp', metric: '13 000 €', unit: 'par mois environ', detail: "Une application que j’ai conçue pour un client, sur un marché déjà très concurrentiel." },
   { name: 'Plouff Habitudes', type: "Suivi d'habitudes", icon: '/assets/images/app-icons/plouffhabitudes.webp', metric: '30 jours', unit: 'du design au lancement', detail: "Ma propre application : une routine quotidienne, une mascotte et une offre d’abonnement." },
@@ -152,5 +159,6 @@ export default function Projets({ onBack }) {
       </section>
     </main>
     <footer className="projets-footer projets-container"><span>Noé Calmes · Expert en applications mobiles &amp; web</span><button type="button" onClick={onBack}>Retour à l'accueil <ArrowRight size={15} aria-hidden="true" /></button></footer>
+    <p className="projets-annuaires projets-container">Référencé sur {ANNUAIRES.map((a, i) => <span key={a.url}>{i > 0 && ' · '}<a href={a.url} target="_blank" rel="noopener">{a.nom}</a></span>)}</p>
   </div>
 }

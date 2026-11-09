@@ -143,6 +143,17 @@ function lireMetaPagesSeo() {
   return meta
 }
 
+// Annuaires de src/Projets.jsx (ANNUAIRES), pour la ligne « Référencé sur ».
+function lireAnnuaires() {
+  const src = readFileSync(join(__dirname, '..', 'src', 'Projets.jsx'), 'utf-8')
+  const bloc = src.match(/export const ANNUAIRES = \[([\s\S]*?)\n\]/)
+  if (!bloc) throw new Error('ANNUAIRES introuvable dans src/Projets.jsx')
+  const items = []
+  for (const m of bloc[1].matchAll(/nom: '([^']+)',\s*url: '([^']+)'/g)) items.push({ nom: m[1], url: m[2] })
+  if (!items.length) throw new Error('Aucun annuaire lu dans ANNUAIRES')
+  return items
+}
+
 // Questions/reponses de la page /faq, pour le balisage FAQPage.
 function lireFaq() {
   const src = readFileSync(join(__dirname, '..', 'src', 'PagesSeo.jsx'), 'utf-8')
@@ -301,7 +312,11 @@ const corpsSeoPages = {
     + lireEtapes().map((e) => `<h2>${echapper(e.titre)}</h2><p>${echapper(e.texte)}</p>`).join(''),
   // /projets : les etudes de cas sont ecrites en JSX, donc derivees ici comme
   // les autres pages (les cartes du haut vivent dans un tableau JS, hors corps).
-  '/projets': corpsDepuisComposant('Projets.jsx', 'Projets'),
+  // Les liens « Référencé sur » sont lus depuis ANNUAIRES : le robot d'un
+  // annuaire qui demande un lien retour doit trouver l'URL dans le HTML servi.
+  '/projets':
+    corpsDepuisComposant('Projets.jsx', 'Projets')
+    + `<p>Référencé sur ${lireAnnuaires().map((a) => `<a href="${a.url}">${echapper(a.nom)}</a>`).join(' · ')}</p>`,
   '/faq':
     corpsDepuisComposant('PagesSeo.jsx', 'PageFaq')
     + lireFaq().map((f) => `<h2>${echapper(f.q)}</h2><p>${echapper(f.a)}</p>`).join(''),
