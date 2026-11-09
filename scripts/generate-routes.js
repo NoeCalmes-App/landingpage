@@ -324,7 +324,7 @@ function lireMetaArticles() {
   const corps = blog.split('export const ARTICLES_LIES')[0]
   const chaine = "(\"(?:[^\"\\\\]|\\\\.)*\"|'(?:[^'\\\\]|\\\\.)*')"
   const motif = new RegExp(
-    `slug: '([^']+)',\\s*\\n\\s*title: ${chaine},\\s*\\n\\s*metaTitle: ${chaine},\\s*\\n\\s*description: ${chaine},\\s*\\n\\s*date: '([^']+)',`,
+    `slug: '([^']+)',\\s*\\n\\s*title: ${chaine},\\s*\\n\\s*metaTitle: ${chaine},\\s*\\n\\s*description: ${chaine},\\s*\\n\\s*date: '([^']+)',(?:\\s*\\n\\s*dateMaj: '([^']+)',)?`,
     'g'
   )
   const litteral = (v) => v.slice(1, -1).replace(/\\(['"])/g, '$1')
@@ -336,6 +336,8 @@ function lireMetaArticles() {
       description: litteral(m[4]),
       heading: litteral(m[2]),
       date: m[5],
+      // Date de la derniere mise a jour de fond, si l'article a ete enrichi.
+      dateMaj: m[6],
     }
   }
   if (!Object.keys(meta).length) throw new Error('Aucun article lu depuis src/Blog.jsx')
@@ -823,7 +825,7 @@ const blogRoutes = [
   {
     path: '/blog/combien-coute-application-mobile',
     heading: "Prix d'une application mobile : les fourchettes réelles",
-    content: "Le prix ne depend presque pas de la technologie, il depend du perimetre. Compte 5 000 a 8 000 euros pour une application au perimetre resserre, 8 000 a 12 000 euros pour une application complete a un seul profil d'utilisateur, en general une dizaine de milliers d'euros des qu'il y a deux profils ou du temps reel, 50 000 euros et plus en agence ou ESN. Deux devis sur un meme projet vont du simple au triple parce qu'ils ne chiffrent pas le meme travail : ce qui disparait d'un devis bas est d'abord les tests sur appareils reels, la preparation des fiches store et la gestion des cas d'erreur. Les cinq facteurs qui font monter le prix sont le nombre de types d'utilisateurs, le temps reel, les integrations avec l'existant, le paiement et le niveau de finition. Trois postes echappent au devis : le cout d'acquisition, les 70 pour cent qui restent apres TVA et commission des stores, et le delai avant la mise en vente.",
+    content: "Le prix ne depend presque pas de la technologie, il depend du perimetre. Compte 5 000 a 8 000 euros pour une application au perimetre resserre, 8 000 a 12 000 euros pour une application complete a un seul profil d'utilisateur, en general une dizaine de milliers d'euros des qu'il y a deux profils ou du temps reel, 50 000 euros et plus en agence ou ESN. Deux devis sur un meme projet vont du simple au triple parce qu'ils ne chiffrent pas le meme travail : ce qui disparait d'un devis bas est d'abord les tests sur appareils reels, la preparation des fiches store et la gestion des cas d'erreur. Les cinq facteurs qui font monter le prix sont le nombre de types d'utilisateurs, le temps reel, les integrations avec l'existant, le paiement et le niveau de finition. Exemples : une application de reservation tombe en general entre 5 000 et 8 000 euros, une application de coaching par abonnement entre 8 000 et 12 000 euros, une mise en relation client et professionnel autour d'une dizaine de milliers d'euros. Pour une application web, ce qu'on appelle aussi un SaaS, le support ne fait pas le prix, le perimetre le fait ; le web change le delai et ce qu'on encaisse, environ 78 pour cent sans commission de store. Trois postes echappent au devis : le cout d'acquisition, les 70 pour cent qui restent apres TVA et commission des stores, et le delai avant la mise en vente.",
   },
   {
     path: '/blog/creer-application-sans-savoir-coder',
@@ -977,7 +979,7 @@ for (const route of blogRoutes) {
       "publisher": { "@id": "https://noecalmes.fr/#person" },
       "mainEntityOfPage": urlPublique(route.path),
       "datePublished": meta?.date,
-      "dateModified": meta?.date,
+      "dateModified": meta?.dateMaj || meta?.date,
       "inLanguage": "fr-FR",
       "image": "https://noecalmes.fr/assets/images/meta/accueil-og.jpg",
     }, null, 6)
@@ -1001,7 +1003,7 @@ for (const route of blogRoutes) {
     // Pour un article, la date de publication fait foi. Mettre la date du
     // build partout donnerait un sitemap ou tout a change le meme jour, signal
     // que Google considere comme peu fiable et finit par ignorer.
-    lastmod: route.path === '/blog' ? dateBuild : (meta?.date || dateBuild),
+    lastmod: route.path === '/blog' ? dateBuild : (meta?.dateMaj || meta?.date || dateBuild),
   })
   console.log(`✓ Generated ${route.path}/index.html`)
 }

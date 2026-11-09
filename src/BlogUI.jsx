@@ -80,7 +80,7 @@ export function FilAriane({ titre, onAccueil, onBlog }) {
 // Le nom de l'auteur est un signal E-E-A-T : Google veut savoir qui ecrit et
 // avec quelle legitimite. Il etait absent de la page.
 
-export function MetaArticle({ date, readTime }) {
+export function MetaArticle({ date, dateMaj, readTime }) {
   return (
     <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.83rem] text-grey mb-7">
       <span className="inline-flex items-center gap-1.5">
@@ -88,11 +88,19 @@ export function MetaArticle({ date, readTime }) {
         <time dateTime={date}>
           {new Date(date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
         </time>
+        {dateMaj && (
+          <span>
+            · mis à jour le{' '}
+            <time dateTime={dateMaj}>
+              {new Date(dateMaj).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+            </time>
+          </span>
+        )}
       </span>
       <span className="inline-flex items-center gap-1.5">
         <User className="w-[15px] h-[15px] shrink-0" aria-hidden="true" />
         <span className="text-text font-medium">Noé Calmes</span>
-        <span className="hidden sm:inline">· expert en application mobile</span>
+        <span className="hidden sm:inline">· applications mobiles et web</span>
       </span>
       <span className="inline-flex items-center gap-1.5">
         <Clock className="w-[15px] h-[15px] shrink-0" aria-hidden="true" />

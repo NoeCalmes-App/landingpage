@@ -2184,9 +2184,10 @@ export const BLOG_ARTICLES = [
   {
     slug: 'combien-coute-application-mobile',
     title: "Prix d'une application mobile : les fourchettes réelles",
-    metaTitle: "Prix d'une application mobile : combien prévoir ? | Noé Calmes",
+    metaTitle: "Prix d'une application mobile en 2026 | Noé Calmes",
     description: "Les fourchettes par type de projet, ce qui fait monter le prix, et pourquoi deux devis pour la même application vont du simple au triple.",
     date: '2026-09-21',
+    dateMaj: '2026-11-09',
     readTime: '11 min',
     finalCta: 'audit',
     categorie: "Budget",
@@ -2214,13 +2215,14 @@ export const BLOG_ARTICLES = [
       { q: "Pourquoi les devis varient autant d'un prestataire à l'autre ?", a: "Parce qu'ils ne décrivent pas la même chose. Un devis à 3 000 € et un devis à 15 000 € couvrent rarement le même périmètre, le même niveau de finition, les mêmes tests et le même suivi après la mise en ligne. Avant de comparer deux prix, mets les deux périmètres côte à côte, ligne par ligne. Dans la majorité des cas l'écart s'explique entièrement, et le moins cher se révèle être le plus incomplet." },
       { q: "Développer iOS et Android coûte-t-il deux fois plus cher ?", a: "Non, pas avec une technologie multiplateforme comme Flutter : le code est écrit une fois et compilé pour les deux systèmes. Ce qui s'ajoute est réel mais limité, quelques jours de tests sur les deux familles d'appareils et deux publications à préparer au lieu d'une. Compte une marge de l'ordre de 10 à 15 %, pas un doublement. Deux développements natifs séparés, eux, coûtent effectivement près du double." },
       { q: "Quels sont les coûts après la mise en ligne ?", a: "Le compte développeur Apple à 99 $ par an, le compte Google Play à 25 $ une seule fois, l'hébergement selon l'usage réel, et la maintenance liée aux mises à jour d'iOS et d'Android. Ces frais sont faibles rapportés au revenu potentiel, mais ils ne sont pas nuls : une application laissée sans mise à jour finit par être retirée des stores. Une exception importante, si ton application appelle un modèle d'IA, le coût devient variable et suit l'usage." },
-      { q: "Peut-on descendre sous 5 000 € ?", a: "Oui, en changeant de produit plutôt que de prix. Sous ce seuil, ce qui est réaliste est un outil no-code ou un périmètre tellement réduit qu'il tient en deux écrans. Attention à une confusion fréquente : une application web sérieuse, avec des comptes, plusieurs profils et un espace d'administration, coûte le même prix qu'une application mobile équivalente. Ce qui fait le montant, c'est le périmètre, pas le support. Ce sont des options honnêtes et parfois les bonnes. Ce qui n'est pas réaliste, c'est une application native publiée sur les deux stores, avec comptes et paiement, pour 2 500 €. Le devis existera, le résultat non." },
+      { q: "Peut-on descendre sous 5 000 € ?", a: "Oui, en changeant de produit plutôt que de prix. Sous ce seuil, ce qui est réaliste est un outil no-code ou un périmètre tellement réduit qu'il tient en deux écrans. Attention à une confusion fréquente : une application web sérieuse, avec des comptes, plusieurs profils et un espace d'administration, n'est pas un site vitrine et ne se chiffre pas comme lui. Ce qui fait le montant, c'est le périmètre, pas le support. Ce sont des options honnêtes et parfois les bonnes. Ce qui n'est pas réaliste, c'est une application native publiée sur les deux stores, avec comptes et paiement, pour 2 500 €. Le devis existera, le résultat non." },
+      { q: "Combien coûte une application web ?", a: "Ce qui fait le prix d'une application web, c'est son périmètre, exactement comme pour une application mobile : le nombre de profils d'utilisateurs, le temps réel, les intégrations, le paiement et la finition. Le support ne fait pas le prix. Une application web avec des comptes, des rôles et un espace d'administration est un vrai produit, pas un site vitrine. Ce que le web change, c'est le délai, car il n'y a pas de validation par Apple ni Google, et ce que tu encaisses, car il n'y a pas de commission de store." },
       { q: "Le tarif fixe est-il vraiment sans surprise ?", a: "Oui, à une condition : que le périmètre soit posé au cadrage. Le tarif est fixe pour ce qui a été défini. Si tu ajoutes une fonctionnalité en cours de route, elle est chiffrée à part et tu décides, elle ne se glisse pas discrètement dans la facture finale. C'est justement pour ça que le cadrage est facturé comme du travail : c'est lui qui rend le reste prévisible." },
       { q: "Faut-il tout payer d'avance ?", a: "Non. Le fonctionnement habituel est un paiement échelonné, adossé à des étapes livrées et vérifiables : le cadrage, les maquettes validées, la version testable, la mise en ligne. Tu paies en face de quelque chose que tu as vu. Un prestataire qui demande la totalité avant d'avoir montré quoi que ce soit est un signal d'alerte." },
     ],
     content: `
       <p>C'est la première question de tous les projets, et c'est une bonne question. Voici les fourchettes réelles, ce qu'elles couvrent, et surtout ce qui explique qu'un même projet reçoive un devis à 4 000 € et un autre à 18 000 €.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et une application que j'ai conçue génère environ 13 000 € par mois. Les chiffres qui suivent sont ceux que je pratique et que je vois pratiquer.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour générer des revenus. J'ai plus de 20 applications à mon actif, plus de 1,3 million de téléchargements cumulés, et une application que j'ai conçue génère environ 13 000 € par mois. Les chiffres qui suivent sont ceux que je pratique et que je vois pratiquer, mis à jour en novembre 2026.</p>
 
       <h2>La réponse courte, en un tableau</h2>
       <p>Le prix ne dépend presque pas de la technologie. Il dépend du périmètre, c'est-à-dire de ce que l'application fait et pour combien de types d'utilisateurs différents.</p>
@@ -2250,6 +2252,25 @@ export const BLOG_ARTICLES = [
         <li><strong>50 000 € et au-delà.</strong> Des équipes, des processus, plusieurs interlocuteurs. C'est pertinent pour des projets réellement complexes, et surdimensionné pour une première version.</li>
       </ul>
 
+      <h2>Des exemples concrets, projet par projet</h2>
+      <p>Les fourchettes parlent davantage avec des projets réels. Voici où tombent les demandes que je reçois le plus souvent. Regarde surtout la colonne du milieu : c'est elle qui explique le prix, bien plus que le secteur.</p>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Projet</th><th>Ce qui fait le prix</th><th>Fourchette</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Réservation pour un salon, un coach ou un studio</td><td>Un seul profil, un agenda, un acompte en ligne</td><td><strong>5 000 à 8 000 €</strong></td></tr>
+            <tr><td>Coaching ou contenu par abonnement</td><td>Un profil, du contenu structuré, un abonnement, des notifications</td><td><strong>8 000 à 12 000 €</strong></td></tr>
+            <tr><td>Habitudes ou bien-être grand public</td><td>Un profil, un parcours très soigné, un abonnement avec essai gratuit</td><td><strong>8 000 à 12 000 €</strong></td></tr>
+            <tr><td>Mise en relation de clients et de professionnels</td><td>Deux profils, une messagerie, souvent un paiement entre les deux</td><td><strong>une dizaine de milliers d'euros</strong></td></tr>
+            <tr><td>Outil métier : devis, suivi de chantier, gestion locative</td><td>Plusieurs rôles, des documents générés, parfois une intégration avec l'existant</td><td><strong>une dizaine de milliers d'euros</strong>, selon les intégrations</td></tr>
+            <tr><td>Navigation, cartographie, écran de la voiture</td><td>Cartes, calcul d'itinéraire, CarPlay et Android Auto</td><td>sur devis, après cadrage</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Deux projets du même secteur peuvent tomber dans deux lignes différentes. Une application pour une salle de sport qui affiche le planning est dans la première ligne. La même avec un espace coach qui gère ses élèves passe dans la quatrième, parce qu'elle a deux profils.</p>
+
       <h2>Pourquoi deux devis vont du simple au triple</h2>
       <p>C'est la question qui revient le plus, et la réponse est presque toujours la même.</p>
       <p>Ce n'est pas que l'un est cher et l'autre honnête. C'est qu'ils ne chiffrent pas le même travail. Sur un besoin décrit en trois phrases, chaque prestataire comble les trous avec ses propres hypothèses, et les hypothèses coûtent cher ou pas cher selon qui les fait.</p>
@@ -2278,6 +2299,15 @@ export const BLOG_ARTICLES = [
       <p>Un <strong>expert indépendant</strong> coûte en général 30 à 50 % de moins qu'une agence à périmètre égal. Pas de marge d'agence, pas de chef de projet intermédiaire, pas de transmission d'information entre trois personnes. Tu parles directement à celui qui construit.</p>
       <p>Une <strong>agence</strong> apporte une capacité que l'indépendant n'a pas : plusieurs personnes en parallèle, une continuité si quelqu'un part, des process. Ça se paie, et pour un projet à plusieurs équipes c'est justifié.</p>
       <p>L'<strong>offshore</strong> affiche des prix imbattables. Ce qu'il faut savoir avant de trancher : le décalage horaire sur les allers-retours, la barrière de langue sur un besoin qui se précise en discutant, et surtout la question de savoir qui reprendra le code dans un an. Le coût réel d'une application se mesure sur trois ans, pas sur le premier devis.</p>
+
+      <h2>Et une application web, ce qu'on appelle aussi un SaaS ?</h2>
+      <p>La question revient de plus en plus, et la réponse tient en une phrase : <strong>le support ne fait pas le prix, le périmètre le fait</strong>. Une application web se chiffre sur les mêmes critères qu'une application mobile : le nombre de profils, le temps réel, les intégrations, le paiement et la finition. Une plateforme avec des comptes, des rôles et un espace d'administration est un vrai produit, pas un site vitrine.</p>
+      <p>Ce que le web change se mesure ailleurs qu'en euros sur le devis :</p>
+      <ul>
+        <li><strong>Le délai.</strong> Pas de compte développeur à ouvrir, pas de validation par Apple ou Google : la mise en ligne se fait le jour voulu, souvent deux à trois semaines plus tôt à périmètre égal.</li>
+        <li><strong>Ce que tu encaisses.</strong> Sans commission de store, il te reste environ 78 % du prix affiché, contre environ 70 % sur l'App Store ou Google Play. Il faut donc moins de clients pour te rembourser.</li>
+      </ul>
+      <p>Le bon support dépend de l'usage, pas du budget : une application mobile pour le grand public qui l'ouvre chaque jour, une application web pour un outil professionnel qu'on utilise au bureau. Le <a href="/quiz/application-ou-site-web/">test application mobile ou web</a> t'aide à trancher en deux minutes.</p>
 
       <h2>Ce que le devis ne dit pas</h2>
       <p>Trois postes échappent presque toujours au chiffrage initial, et ce sont eux qui font les mauvaises surprises.</p>
@@ -2955,7 +2985,7 @@ function BlogArticlePage({ article, onBack, onBookCall, onAuditApp, onArticle, o
           {article.title}
         </h1>
 
-        <MetaArticle date={article.date} readTime={article.readTime} />
+        <MetaArticle date={article.date} dateMaj={article.dateMaj} readTime={article.readTime} />
 
         <EnBref tldr={article.tldr} />
 
