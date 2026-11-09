@@ -22,7 +22,7 @@ const mePhoto = '/assets/images/profile/me.webp'
 export const BLOG_ARTICLES = [
   {
     slug: 'creer-application-web-avec-claude',
-    title: "Créer une application web ou un logiciel avec Claude : ça tourne, et voilà pourquoi ça ne rapporte rien encore",
+    title: "Créer une application web avec Claude : le code marche, l'argent ne rentre pas",
     metaTitle: "Créer une application web avec Claude : et après ? | Noé Calmes",
     description: "Claude code une application web qui tourne chez toi. Ce qui manque pour qu'elle rapporte : mise en ligne, comptes, paiement, et le parcours qui fait payer.",
     date: '2026-11-09',

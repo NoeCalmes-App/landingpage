@@ -496,8 +496,8 @@ qui contient « refonte », section développée), c'est un des trois cas d'usag
 de Noé et un client qui a déjà un budget.
 
 ### 6. ✅ Article sœur de la page Claude, publié le 09/11/2026
-`creer-application-web-avec-claude` : « Créer une application web ou un logiciel
-avec Claude : ça tourne, et voilà pourquoi ça ne rapporte rien encore ». Phase 0 :
+`creer-application-web-avec-claude` : « Créer une application web avec Claude :
+le code marche, l'argent ne rentre pas ». Phase 0 :
 l'article mobile écarte explicitement le lecteur « outil web », et personne ne
 couvrait hébergement, comptes, paiement par carte et sécurité d'un logiciel
 généré. Angle de Noé : le code n'a jamais fait le revenu, c'est le design du

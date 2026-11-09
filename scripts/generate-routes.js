@@ -755,7 +755,7 @@ for (const route of legacySectionRoutes) {
 const blogRoutes = [
   {
     path: '/blog/creer-application-web-avec-claude',
-    heading: "Créer une application web ou un logiciel avec Claude : ça tourne, et voilà pourquoi ça ne rapporte rien encore",
+    heading: "Créer une application web avec Claude : le code marche, l'argent ne rentre pas",
     content: "Claude écrit le code d'une vraie application web, sans Mac, sans compte Apple ni validation d'un store. Mais ce qu'il rend est un projet qui tourne sur ton ordinateur, pas un produit en ligne qui encaisse. Entre les deux : l'hébergement, le nom de domaine et la base de données ; des comptes utilisateurs dont la sécurité et les données personnelles n'ont jamais été relues ; un prestataire de paiement qui vérifie ton identité avant que le premier euro arrive, environ 78 % du prix affiché gardés en web contre environ 70 % sur un store ; et la question qu'aucun code ne tranche, qui paie, quand, et pourquoi il revient. Une application à 300 000 utilisateurs sans revenu, une autre à 13 000 € par mois sur un marché saturé : la différence n'était pas dans le code.",
   },
   {
