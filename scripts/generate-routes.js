@@ -299,6 +299,9 @@ const corpsSeoPages = {
   '/creation-application-mobile':
     corpsDepuisComposant('PagesSeo.jsx', 'PageMethode')
     + lireEtapes().map((e) => `<h2>${echapper(e.titre)}</h2><p>${echapper(e.texte)}</p>`).join(''),
+  // /projets : les etudes de cas sont ecrites en JSX, donc derivees ici comme
+  // les autres pages (les cartes du haut vivent dans un tableau JS, hors corps).
+  '/projets': corpsDepuisComposant('Projets.jsx', 'Projets'),
   '/faq':
     corpsDepuisComposant('PagesSeo.jsx', 'PageFaq')
     + lireFaq().map((f) => `<h2>${echapper(f.q)}</h2><p>${echapper(f.a)}</p>`).join(''),
