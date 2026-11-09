@@ -670,13 +670,13 @@ const sectionRoutes = [
   {
     path: '/projets',
     heading: 'Réalisations et façon de travailler de Noé Calmes',
-    content: 'Plus de 20 applications publiées. La première version de Hush conçue par Noé a réuni 300 000 utilisateurs et l’application dépasse aujourd’hui un million de téléchargements. Une application conçue par Noé génère environ 13 000 € par mois. Chaque projet est cadré avant le devis : stratégie, design, développement et mise en ligne.',
+    content: 'Plus de 20 applications publiées. La première version d’une messagerie conçue par Noé a réuni 300 000 utilisateurs et l’application dépasse aujourd’hui un million de téléchargements. Une application conçue par Noé génère environ 13 000 € par mois. Chaque projet est cadré avant le devis : stratégie, design, développement et mise en ligne.',
   },
   {
     path: '/projet',
     canonicalPath: '/projets',
     heading: 'Réalisations et façon de travailler de Noé Calmes',
-    content: 'Plus de 20 applications publiées. La première version de Hush conçue par Noé a réuni 300 000 utilisateurs et l’application dépasse aujourd’hui un million de téléchargements. Une application conçue par Noé génère environ 13 000 € par mois. Chaque projet est cadré avant le devis : stratégie, design, développement et mise en ligne.',
+    content: 'Plus de 20 applications publiées. La première version d’une messagerie conçue par Noé a réuni 300 000 utilisateurs et l’application dépasse aujourd’hui un million de téléchargements. Une application conçue par Noé génère environ 13 000 € par mois. Chaque projet est cadré avant le devis : stratégie, design, développement et mise en ligne.',
   },
 ]
 
