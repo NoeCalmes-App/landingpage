@@ -453,6 +453,12 @@ date mise à jour. Il reçoit désormais un lien de l'article Claude, la page la
 plus forte du site, qui n'y renvoyait pas. **À mesurer le 30/11** : position du
 guide sur « comment créer une application mobile ».
 
+### 0. Les liens entrants, avant tout le reste (09/11/2026)
+Le rapport « Liens » de Search Console ne compte qu'**un seul lien externe**
+(smoothride.fr). C'est la cause principale du classement, et aucun article ne la
+corrige. La liste des sources et le suivi : `liens-entrants.md`. Tant que ce
+total ne monte pas, les chantiers ci-dessous auront un effet limité.
+
 ### 2. Le prix d'une application, en position 69
 `combien-coute-application-mobile` porte 599 impressions sur « prix application
 mobile » (176), « combien coûte une application mobile » (134), « coût d'une

@@ -1,5 +1,8 @@
 # Dossier SEO — Noé Calmes (manager)
 
+> **09/11/2026 : un seul lien externe vers le site** (smoothride.fr). C'est le premier frein au classement. Liste des sources et suivi mensuel : `liens-entrants.md`.
+
+
 > Tout le SEO au même endroit. Ce fichier est le tableau de bord : ce qui est fait, ce qui tourne en automatique, ce qui reste à faire. Les détails sont dans les fichiers du dossier.
 
 MàJ : 20/08/2026
