@@ -60,6 +60,8 @@ MàJ : 20/08/2026
 - Lien « Prix » vers l'article prix dans le pied de page et la navigation pré-rendue.
 - Liens entrants : crédit en pied de page de wakeupalarm.app, plouff-habitudes.com et bailora-app.fr (voir `liens-entrants.md`).
 - Visibilité dans les IA : relevé de départ et méthode mensuelle dans `suivi-ia.md` (prochain relevé le 07/12/2026).
+- Vitesse : blog, tests, pages SEO et pages légales chargés à la demande (`React.lazy`). Fichier principal 237 → 125 Ko compressés. PageSpeed à mesurer quand le quota de l'API sera revenu (le 10/11).
+- Tribune gratuite au Journal du Net (La Fabrique du Net est payante, 900 € HT) : texte prêt dans `tribune-jdn.md`, à publier par Noé depuis son compte auteur.
 - À mesurer le 07/12/2026 dans Search Console : position et impressions de l'article prix (69ᵉ, 599 impressions au 02/11) et de `/projets/`.
 
 ## État réel constaté dans Search Console — 8 août 2026

@@ -58,9 +58,10 @@ Questions 6, 7 et 8 : à poser au prochain relevé.
    ChatGPT.** Un profil Malt sans avis ne peut pas être recommandé avec un
    argument. C'est le levier le plus direct sur la question 2.
 3. **La Fabrique du Net est LA source citée sur le prix**, grâce à une page de
-   données (423 budgets). Deux suites : publier une tribune chez eux (Noé a le
-   compte, rubrique « Tribunes »), et viser à terme une page de données
-   originales sur noecalmes.fr, quand Noé aura des chiffres nouveaux à donner.
+   données (423 budgets). Leur rubrique « Tribunes » est payante (900 € HT, vu
+   le 09/11) : remplacée par une chronique gratuite au Journal du Net
+   (`tribune-jdn.md`). À terme, viser une page de données originales sur
+   noecalmes.fr, quand Noé aura des chiffres nouveaux à donner.
 4. **Le concurrent direct s'appelle Luc Gireaud** : même ville, même discours
    (rentabilité, nombre d'applications). Il est partout où Noé n'était pas :
    Google, jesuisnumerique, ChatGPT.
