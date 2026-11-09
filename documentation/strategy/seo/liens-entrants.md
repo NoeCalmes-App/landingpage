@@ -22,10 +22,10 @@ jamais. Dix liens propres battent cent liens de fermes.
 
 | Source | Action | Effort | État |
 |---|---|---|---|
-| **Sites clients livrés** | Le crédit « développé par Noé Calmes » en pied de page, vers noecalmes.fr (règle déjà en place, `feedback_credit_sites_clients`). Le faire sur **chaque** site client, pas seulement SmoothRide | 5 min par site, à la livraison | smoothride.fr ✅ (le seul vu par Google) |
-| **Ses propres applications** | Un lien vers noecalmes.fr sur wakeupalarm.app et plouff-habitudes.com (pied de page, « conçue par Noé Calmes »). Au 09/11, le HTML servi n'en contient aucun | 10 min | à faire |
+| **Sites clients livrés** | Le crédit « développé par Noé Calmes » en pied de page, vers noecalmes.fr (règle déjà en place, `feedback_credit_sites_clients`). Le faire sur **chaque** site client, pas seulement SmoothRide | 5 min par site, à la livraison | smoothride.fr ✅ ; bailora-app.fr ✅ le 09/11 |
+| **Ses propres applications** | Un lien vers noecalmes.fr sur wakeupalarm.app et plouff-habitudes.com (pied de page, « conçue par Noé Calmes »). Au 09/11, le HTML servi n'en contient aucun | 10 min | ✅ le 09/11 : « Application et site conçus par Noé Calmes » en pied de page des deux sites |
 | **Fiches App Store et Google Play de ses apps** | Champ « site du développeur » / URL marketing vers noecalmes.fr | 10 min | à vérifier |
-| **GitHub** | L'organisation NoeCalmes-App n'a pas de site renseigné (champ vide au 09/11). Le dépôt du site est public : le lien du profil est vu | 1 min | à faire |
+| **GitHub** | L'organisation NoeCalmes-App n'a pas de site renseigné (champ vide au 09/11). Le dépôt du site est public : le lien du profil est vu | 1 min | à faire par Noé (champ « Website » du profil noecalms et de l'organisation) |
 | **LinkedIn, Instagram, Malt** | Le champ « site web » de chaque profil vers noecalmes.fr | 5 min | à vérifier |
 | **Fiche Google Business** | Déjà en place. Le levier ici, ce sont les **avis** : chaque client livré, un avis demandé | continu | fiche ✅, avis : 0 au dernier relevé |
 
@@ -47,7 +47,7 @@ suivent.
 
 | Source | Pourquoi | Effort |
 |---|---|---|
-| **It's All Widgets** ([itsallwidgets.com](https://itsallwidgets.com/about)) | La vitrine des applications Flutter, environ 3 900 apps : chaque app soumise est liée à son créateur. Y mettre les apps publiées dont Noé peut parler | 15 min par app |
+| **It's All Widgets** ([itsallwidgets.com](https://itsallwidgets.com/about)) | La vitrine des applications Flutter, environ 3 900 apps : chaque app soumise est liée à son créateur. Y mettre les apps publiées dont Noé peut parler | 15 min par app · **fait le 09/11** : Wake Up Alarme, Plouff Habitudes, SmoothRide et Bailora soumises (description en anglais, lien noecalmes.fr) ; profil développeur et flutterpro.dev/noecalmes remplis (bio, site, LinkedIn, Instagram, disponible pour missions) |
 | **Malt, Codeur.com** | Profils de freelances, déjà référencés par Google sur « développeur application mobile » | Profil gratuit |
 | **Clutch, GoodFirms, Sortlist** | Annuaires d'agences qui acceptent les indépendants, bien classés sur les requêtes d'acheteurs. Conditions à vérifier pour un indépendant | Profil, parfois avis vérifiés demandés |
 | **Product Hunt** | Lancer Plouff Habitudes ou Wake Up Alarme : la fiche lie le créateur | Une journée de lancement |
@@ -69,6 +69,8 @@ liens en masse, les commentaires de blog avec lien. Google les repère et les
 ignore au mieux, pénalise au pire.
 
 ## Suivi
+
+Le 09/11, `sameAs` de la page d'accueil complété (Malt, Flutter Pro, GitHub) et ville ajoutée à l'adresse : les moteurs et les IA relient ainsi ces profils à noecalmes.fr.
 
 Relever chaque mois le total du rapport « Liens » de Search Console
 (Liens externes → Total) :
