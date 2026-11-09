@@ -1288,12 +1288,12 @@ const navHomeHtml = navHome.map((p) => `<a href="${urlPublique(p)}">${libelles[p
 // qui le suit est l'ajout du 21/09/2026 : il porte le corps COMPLET de la page,
 // seul moyen pour les moteurs de reponse de voir autre chose que le titre.
 const noscriptAccueil = corpsSeoAccueil
-  ? `<noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><h1>Je transforme ton idée en app qui génère des revenus.</h1>${corpsSeoAccueil}<nav aria-label="Pages du site">${navHomeHtml}</nav></div></noscript>`
+  ? `<noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><p><strong>Je transforme ton idée en app qui génère des revenus.</strong></p>${corpsSeoAccueil}<nav aria-label="Pages du site">${navHomeHtml}</nav></div></noscript>`
   : ''
 
 const homeHtml = baseHome.replace(
   '<div id="root"></div>',
-  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif;visibility:hidden" aria-hidden="true"><p style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem"><strong>Je transforme ton idée en app qui génère des revenus.</strong></p><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Je ne fais pas que développer ton application : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois. Plus de 20 applications publiées.</p><a href="${urlPublique('/audit-app')}" style="display:inline-block;background:#6760ff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Tester mon idée d'application</a><nav aria-label="Pages du site" style="margin-top:1.5rem;font-size:0.85rem">${navHomeHtml}</nav></div></div>` + noscriptAccueil
+  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif;visibility:hidden" aria-hidden="true"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">Je transforme ton idée en app qui génère des revenus.</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Je ne fais pas que développer ton application : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois. Plus de 20 applications publiées.</p><a href="${urlPublique('/audit-app')}" style="display:inline-block;background:#6760ff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Tester mon idée d'application</a><nav aria-label="Pages du site" style="margin-top:1.5rem;font-size:0.85rem">${navHomeHtml}</nav></div></div>` + noscriptAccueil
 )
 writeFileSync(join(distDir, 'index.html'), homeHtml)
 pagesGenerees.push(join(distDir, 'index.html'))
