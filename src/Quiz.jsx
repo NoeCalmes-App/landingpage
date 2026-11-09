@@ -463,11 +463,11 @@ function MoteurQuiz({ quiz, onAuditApp, onBookCall }) {
           <p className="text-grey text-[0.93rem] md:text-[0.97rem] leading-relaxed mb-7">{resultat.texte}</p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-            <button onClick={onAuditApp} className="inline-flex justify-center items-center bg-brand text-surface font-semibold text-[0.95rem] px-7 py-3.5 rounded-full cursor-pointer">
-              Approfondir avec l'audit gratuit
-            </button>
-            <button onClick={onBookCall} className="inline-flex justify-center items-center bg-[#ececf0] text-text font-semibold text-[0.95rem] px-7 py-3.5 rounded-full cursor-pointer">
+            <button onClick={onBookCall} className="inline-flex justify-center items-center bg-brand text-surface font-semibold text-[0.95rem] px-7 py-3.5 rounded-full cursor-pointer">
               En parler sur WhatsApp
+            </button>
+            <button onClick={onAuditApp} className="inline-flex justify-center items-center bg-[#ececf0] text-text font-semibold text-[0.95rem] px-7 py-3.5 rounded-full cursor-pointer">
+              Tester mon idée en 2 minutes
             </button>
           </div>
 
@@ -613,7 +613,7 @@ export function PageQuizHub({ onAccueil, onBookCall, onNaviguer }) {
 
         <div className="mt-14 prose-blog text-text text-[0.95rem] md:text-base leading-relaxed">
           <h2>Et après le test</h2>
-          <p>Un test donne une direction, pas un devis. Si le résultat te confirme que ton projet tient, l'étape suivante est l'<a href={lienInterne('/audit-app')} onClick={(e) => { e.preventDefault(); onNaviguer('/audit-app') }}>audit gratuit</a> : il prend deux minutes de plus, mais il porte sur ton idée précise et te donne le potentiel, le budget et le délai.</p>
+          <p>Un test donne une direction, pas un devis. Si le résultat te confirme que ton projet tient, l'étape suivante est le <a href={lienInterne('/audit-app')} onClick={(e) => { e.preventDefault(); onNaviguer('/audit-app') }}>test de ton idée</a> : il prend deux minutes de plus, mais il porte sur ton idée précise et te donne le potentiel, le budget et le délai.</p>
           <p>Si tu préfères lire avant de tester, commence par <a href={lienInterne('/blog/rentabiliser-application-mobile')} onClick={(e) => { e.preventDefault(); onNaviguer('/blog/rentabiliser-application-mobile') }}>comment rentabiliser une application mobile</a>, ou par <a href={lienInterne('/creation-application-mobile')} onClick={(e) => { e.preventDefault(); onNaviguer('/creation-application-mobile') }}>ma méthode</a> si tu veux savoir comment je travaille.</p>
         </div>
       </main>

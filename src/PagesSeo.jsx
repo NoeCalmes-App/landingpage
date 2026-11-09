@@ -130,16 +130,16 @@ function BlocAudit({ onAuditApp, onBookCall, titre, texte }) {
       <p className="text-grey text-[0.93rem] mb-5 max-w-130 mx-auto">{texte}</p>
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
         <button
-          onClick={onAuditApp}
+          onClick={onBookCall}
           className="inline-flex justify-center items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] px-7 py-3.5 rounded-full cursor-pointer"
         >
-          Faire l'audit gratuit
+          Écrire à Noé sur WhatsApp
         </button>
         <button
-          onClick={onBookCall}
+          onClick={onAuditApp}
           className="inline-flex justify-center items-center gap-2.5 bg-[#ececf0] text-text font-semibold text-[0.95rem] px-7 py-3.5 rounded-full cursor-pointer"
         >
-          Écrire à Noé sur WhatsApp
+          Tester mon idée en 2 minutes
         </button>
       </div>
     </div>
@@ -302,7 +302,7 @@ export function PageAPropos({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
           onAuditApp={onAuditApp}
           onBookCall={onBookCall}
           titre="Tu as une idée d'application ?"
-          texte="Audit gratuit en 2 minutes : potentiel, budget à prévoir et délai réaliste pour ton application."
+          texte="Écris-moi directement sur WhatsApp, ou teste ton idée en 2 minutes : potentiel, budget à prévoir et délai réaliste."
         />
 
         <ResumerAvecIA chemin="/a-propos" titre="Qui je suis, applications mobiles et web" />
@@ -384,7 +384,7 @@ export function PageExpertise({ onAccueil, onBookCall, onAuditApp, onNaviguer })
           onAuditApp={onAuditApp}
           onBookCall={onBookCall}
           titre="Ton idée peut-elle générer des revenus ?"
-          texte="Audit gratuit en 2 minutes : potentiel, budget à prévoir et délai réaliste pour ton application."
+          texte="Écris-moi directement sur WhatsApp, ou teste ton idée en 2 minutes : potentiel, budget à prévoir et délai réaliste."
         />
 
         <ResumerAvecIA chemin="/expertise" titre="Concevoir une application mobile qui génère des revenus" />
@@ -470,7 +470,7 @@ export function PageMethode({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
             <p>Côté budget, le tarif est fixe et défini à l'avance : en général une dizaine de milliers d'euros en mobile selon la complexité. Pas de compteur qui tourne, pas de rallonge en cours de route. Le détail des fourchettes du marché est dans <a href={lienInterne('/blog/combien-coute-application-mobile')} onClick={(e) => { if (onNaviguer) { e.preventDefault(); onNaviguer('/blog/combien-coute-application-mobile') } }}>combien coûte une application mobile</a>.</p>
 
             <h2>Ce que tu dois avoir avant de me contacter</h2>
-            <p>Une idée et une cible. C'est tout. Pas de cahier des charges, pas de maquette, pas de vocabulaire technique : traduire une idée en périmètre, c'est justement une partie de mon travail. Si tu veux arriver avec une première lecture du potentiel, du budget et du délai, l'audit gratuit prend deux minutes.</p>
+            <p>Une idée et une cible. C'est tout. Pas de cahier des charges, pas de maquette, pas de vocabulaire technique : traduire une idée en périmètre, c'est justement une partie de mon travail. Si tu veux arriver avec une première lecture du potentiel, du budget et du délai, teste ton idée en deux minutes avant notre échange.</p>
 
             <h2>Et si ton application existe déjà</h2>
             <p>La méthode s'adapte. Pour une application instable ou abandonnée, on commence par un audit technique avant tout développement, comme décrit dans <a href={lienInterne('/blog/reprendre-application-mobile-existante')} onClick={(e) => { if (onNaviguer) { e.preventDefault(); onNaviguer('/blog/reprendre-application-mobile-existante') } }}>reprendre une application mobile existante</a>. Pour une application en ligne qui doit grandir, l'enjeu est d'ajouter sans casser, c'est le sujet de <a href={lienInterne('/blog/faire-evoluer-application-mobile')} onClick={(e) => { if (onNaviguer) { e.preventDefault(); onNaviguer('/blog/faire-evoluer-application-mobile') } }}>faire évoluer une application mobile</a>.</p>
@@ -481,7 +481,7 @@ export function PageMethode({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
           onAuditApp={onAuditApp}
           onBookCall={onBookCall}
           titre="On cadre ton projet ?"
-          texte="Audit gratuit en 2 minutes : potentiel, budget à prévoir et délai réaliste pour ton application."
+          texte="Écris-moi directement sur WhatsApp, ou teste ton idée en 2 minutes : potentiel, budget à prévoir et délai réaliste."
         />
 
         <ResumerAvecIA chemin="/creation-application-mobile" titre="Ma méthode pour créer une application mobile qui rapporte" />
@@ -546,7 +546,7 @@ export function PageFaq({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
           onAuditApp={onAuditApp}
           onBookCall={onBookCall}
           titre="Une question sur ton projet précis ?"
-          texte="Audit gratuit en 2 minutes : potentiel, budget à prévoir et délai réaliste pour ton application."
+          texte="Écris-moi directement sur WhatsApp, ou teste ton idée en 2 minutes : potentiel, budget à prévoir et délai réaliste."
         />
 
         <ResumerAvecIA chemin="/faq" titre="FAQ, créer une application mobile qui rapporte" />

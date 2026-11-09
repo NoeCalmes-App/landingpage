@@ -81,7 +81,7 @@ export default function AuditAppHero({ onStart, onLegal }) {
           }}
           className="group inline-flex items-center justify-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer hover:bg-text transition-colors"
         >
-          Lancer mon audit gratuit
+          Tester mon idée
           <svg
             className="transition-transform duration-300 group-hover:translate-x-1"
             width="22"

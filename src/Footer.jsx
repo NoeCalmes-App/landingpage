@@ -114,7 +114,7 @@ export default function Footer({ allerVers, onLegal }) {
           { href: '/blog', label: 'Blog' },
           { href: '/faq', label: 'FAQ' },
           { href: '/a-propos', label: 'À propos' },
-          { href: '/audit-app', label: 'Audit gratuit' },
+          { href: '/audit-app', label: 'Teste ton idée' },
         ].map(({ href, label }) => (
           <a
             key={href}

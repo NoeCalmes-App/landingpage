@@ -84,8 +84,8 @@ const SECTION_ROUTES = {
   },
   '/audit': {
     id: 'audit',
-    title: 'Audit gratuit de ton application mobile | Noé Calmes',
-    description: 'Fais auditer ton application mobile : analyse rapide et recommandations concrètes pour repartir sur de bonnes bases.',
+    title: "Tester ton idée d'application en 2 minutes | Noé Calmes",
+    description: "Teste ton idée d'application en 2 minutes : potentiel, budget à prévoir et délai, gratuit et sans engagement.",
   },
   '/rendez-vous': {
     id: 'contact',

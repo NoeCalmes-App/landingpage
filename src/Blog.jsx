@@ -127,7 +127,7 @@ export const BLOG_ARTICLES = [
         <li><strong>Oublie le nombre de téléchargements, ou d'inscriptions, que tu imagines.</strong> Remplace-le par le nombre de personnes qui reviendraient la semaine suivante. C'est ce chiffre qui fait le revenu, et il est toujours plus petit.</li>
         <li><strong>Demande à qui tu parles ce qu'il a vécu.</strong> Pas combien d'applications il a faites, mais ce qui a marché, ce qui a échoué, et ce qu'il en a changé. La réponse te dit tout.</li>
       </ol>
-      <p>Si tu veux que je regarde ton idée avec exactement ce regard, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes, et la question de Hush y est posée noir sur blanc : tu sauras tout de suite si tu as déjà la réponse.</p>
+      <p>Si tu veux que je regarde ton idée avec exactement ce regard, le <a href="/audit-app/">test de ton idée</a> prend deux minutes, et la question de Hush y est posée noir sur blanc : tu sauras tout de suite si tu as déjà la réponse.</p>
     `,
   },
   {
@@ -247,7 +247,7 @@ export const BLOG_ARTICLES = [
         <li><strong>Compte les devis promis qui ne sont pas partis.</strong> Sur le dernier mois. C'est ton chiffre, celui qui dit si l'outil se rembourse.</li>
         <li><strong>Vérifie que ton carnet est plein.</strong> S'il ne l'est pas, commence par ta fiche Google et tes avis, et reviens me voir après.</li>
       </ol>
-      <p>Si ton activité ressemble plus à une petite entreprise avec une équipe au bureau et des gens sur le terrain, <a href="/blog/application-mobile-pour-entreprise/">l'application mobile pour entreprise</a> traite ce cas. Si tu es à Toulouse ou dans la région, on peut <a href="/blog/creation-application-mobile-toulouse/">se voir sur place</a>. Et si tu veux que je fasse le calcul sur tes chiffres réels, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes.</p>
+      <p>Si ton activité ressemble plus à une petite entreprise avec une équipe au bureau et des gens sur le terrain, <a href="/blog/application-mobile-pour-entreprise/">l'application mobile pour entreprise</a> traite ce cas. Si tu es à Toulouse ou dans la région, on peut <a href="/blog/creation-application-mobile-toulouse/">se voir sur place</a>. Et si tu veux que je fasse le calcul sur tes chiffres réels, le <a href="/audit-app/">test de ton idée</a> prend deux minutes.</p>
     `,
   },
   {
@@ -355,7 +355,7 @@ export const BLOG_ARTICLES = [
         <li><strong>Vérifie que tu as besoin d'une application tout court.</strong> Le <a href="/quiz/ai-je-besoin-application-mobile/">test en sept questions</a> le dit en deux minutes.</li>
         <li><strong>Passe les quatre cas en revue.</strong> Un seul suffit pour le mobile. Aucun, et c'est une application web. Tes clients d'un côté et ton équipe de l'autre, et c'est une question d'ordre. Le test <a href="/quiz/application-ou-site-web/">application ou site web</a> tranche en six questions.</li>
       </ol>
-      <p>Pour choisir à qui confier le projet une fois le support décidé, <a href="/blog/choisir-expert-application-mobile/">comment choisir son expert</a> donne les questions à poser. Et si tu veux que je tranche sur ton cas précis, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes, et le support est la première chose que je te dis.</p>
+      <p>Pour choisir à qui confier le projet une fois le support décidé, <a href="/blog/choisir-expert-application-mobile/">comment choisir son expert</a> donne les questions à poser. Et si tu veux que je tranche sur ton cas précis, le <a href="/audit-app/">test de ton idée</a> prend deux minutes, et le support est la première chose que je te dis.</p>
     `,
   },
   {
@@ -473,7 +473,7 @@ export const BLOG_ARTICLES = [
         <li><strong>Regarde combien d'entre eux avaient cessé de venir avant de résilier.</strong> C'est le chiffre qui dit si une application a quelque chose à faire chez toi.</li>
         <li><strong>Décide de ce que ta première version détecte.</strong> L'absence, avant tout le reste. La réservation peut venir ensuite.</li>
       </ol>
-      <p>Pour les ordres de grandeur de budget, regarde <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>. Si ton activité tient davantage du coaching individuel que de la salle, <a href="/blog/application-mobile-coach-formateur/">l'application pour coach et formateur</a> traite ce cas. Et si tu veux que je fasse ce calcul sur tes chiffres réels, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes.</p>
+      <p>Pour les ordres de grandeur de budget, regarde <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>. Si ton activité tient davantage du coaching individuel que de la salle, <a href="/blog/application-mobile-coach-formateur/">l'application pour coach et formateur</a> traite ce cas. Et si tu veux que je fasse ce calcul sur tes chiffres réels, le <a href="/audit-app/">test de ton idée</a> prend deux minutes.</p>
     `,
   },
   {
@@ -604,7 +604,7 @@ export const BLOG_ARTICLES = [
         <li><strong>Ajoute deux captures d'applications que tu aimes</strong> et une que tu n'aimes pas, avec une phrase pour chacune.</li>
         <li><strong>Envoie ça tel quel.</strong> Ne l'embellis pas, ne l'allonge pas. Un document brut mais honnête se chiffre mieux qu'un document soigné mais flou.</li>
       </ol>
-      <p>Pour savoir combien de temps prendra ensuite la réalisation, regarde <a href="/blog/combien-de-temps-creer-application-mobile/">combien de temps pour créer une application mobile</a>. Et si tu préfères que ces cinq questions te soient posées plutôt que de les écrire seul, l'<a href="/audit-app/">audit gratuit</a> les pose en deux minutes et te renvoie une première lecture du potentiel, du budget et du délai.</p>
+      <p>Pour savoir combien de temps prendra ensuite la réalisation, regarde <a href="/blog/combien-de-temps-creer-application-mobile/">combien de temps pour créer une application mobile</a>. Et si tu préfères que ces cinq questions te soient posées plutôt que de les écrire seul, le <a href="/audit-app/">test de ton idée</a> les pose en deux minutes et te renvoie une première lecture du potentiel, du budget et du délai.</p>
     `,
   },
   {
@@ -727,7 +727,7 @@ export const BLOG_ARTICLES = [
         <li><strong>Ouvre tes comptes développeur et rassemble tes contenus.</strong> Deux à trois semaines de gagnées sur le lancement, dès maintenant.</li>
         <li><strong>Remonte ton planning à l'envers depuis ta date cible.</strong> Compte le développement, puis la chaîne de mise en vente, puis une marge pour un refus de store. Si ça ne tient pas, retire du périmètre plutôt que des semaines.</li>
       </ol>
-      <p>Si tu veux un délai sur ton projet précis, avec ton périmètre et ta date, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes et te donne une fourchette réaliste plutôt qu'une promesse.</p>
+      <p>Si tu veux un délai sur ton projet précis, avec ton périmètre et ta date, le <a href="/audit-app/">test de ton idée</a> prend deux minutes et te donne une fourchette réaliste plutôt qu'une promesse.</p>
     `,
   },
   {
@@ -861,7 +861,7 @@ export const BLOG_ARTICLES = [
         <li><strong>Estime le nombre de requêtes par utilisateur et par mois.</strong> Compte le profil intensif, pas la moyenne. Multiplie par 2 centimes. Tu as ton coût variable, et tu sais s'il tient dans ton prix.</li>
         <li><strong>Fixe ton prix à partir de ce coût, pas l'inverse.</strong> Puis reprends la formule de <a href="/blog/combien-de-clients-pour-rentabiliser-application/">combien de clients pour rentabiliser ton application</a> avec le net réel, coût IA déduit.</li>
       </ol>
-      <p>Si tu veux que je fasse ce calcul sur ton projet, avec ta fonction d'IA, ton volume estimé et ton prix, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes et te donne le seuil réel avant d'engager quoi que ce soit.</p>
+      <p>Si tu veux que je fasse ce calcul sur ton projet, avec ta fonction d'IA, ton volume estimé et ton prix, le <a href="/audit-app/">test de ton idée</a> prend deux minutes et te donne le seuil réel avant d'engager quoi que ce soit.</p>
     `,
   },
   {
@@ -970,7 +970,7 @@ export const BLOG_ARTICLES = [
         <li><strong>Calcule ton nombre de clients avec 70 % du prix affiché.</strong> Pas avec le prix brut. Puis divise par ton audience réelle pour obtenir le taux à atteindre.</li>
         <li><strong>Si le taux te paraît haut, agis sur le prix ou le périmètre.</strong> Pas sur l'hypothèse d'audience.</li>
       </ol>
-      <p>Pour les ordres de grandeur de coût, regarde <a href="/blog/combien-coute-application-mobile/">combien coûte une application mobile</a>. Pour ce qu'une application peut rapporter au-delà du remboursement, <a href="/blog/combien-rapporte-application-mobile/">combien rapporte une application mobile</a>. Et si tu veux que je fasse ce calcul sur ton projet précis, avec ton prix et ton audience, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes.</p>
+      <p>Pour les ordres de grandeur de coût, regarde <a href="/blog/combien-coute-application-mobile/">combien coûte une application mobile</a>. Pour ce qu'une application peut rapporter au-delà du remboursement, <a href="/blog/combien-rapporte-application-mobile/">combien rapporte une application mobile</a>. Et si tu veux que je fasse ce calcul sur ton projet précis, avec ton prix et ton audience, le <a href="/audit-app/">test de ton idée</a> prend deux minutes.</p>
     `,
   },
   {
@@ -1403,7 +1403,7 @@ export const BLOG_ARTICLES = [
 
       <h2>Par où commencer</h2>
       <p>Avant de penser fonctionnalités, réponds à trois questions : quelle action ton audience répéterait chaque semaine, ce qu'elle paierait pour l'avoir, et combien de personnes tu peux toucher demain sans budget publicitaire.</p>
-      <p>Si tes trois réponses sont nettes, ton projet tient debout. Pour la vue d'ensemble, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>. Et si tu veux une lecture rapide du potentiel de revenus, du budget et du délai de ton projet, fais ton <a href="/audit-app/">audit gratuit</a> en deux minutes.</p>
+      <p>Si tes trois réponses sont nettes, ton projet tient debout. Pour la vue d'ensemble, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>. Et si tu veux une lecture rapide du potentiel de revenus, du budget et du délai de ton projet, <a href="/audit-app/">teste ton idée</a> en deux minutes.</p>
     `,
   },
   {
@@ -1501,7 +1501,7 @@ export const BLOG_ARTICLES = [
 
       <h2>Par où commencer</h2>
       <p>Réponds à trois questions avant toute chose : quelle action ton client ferait au moins une fois par semaine, ce qu'il paierait pour l'avoir, et combien de personnes tu peux toucher dès demain sans budget publicitaire.</p>
-      <p>Si tu as trois réponses claires, ton projet tient. Pour la vue d'ensemble, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>. Et si tu veux une lecture rapide du potentiel de revenus, du budget et du délai de ton projet, fais ton <a href="/audit-app/">audit gratuit</a> en deux minutes.</p>
+      <p>Si tu as trois réponses claires, ton projet tient. Pour la vue d'ensemble, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>. Et si tu veux une lecture rapide du potentiel de revenus, du budget et du délai de ton projet, <a href="/audit-app/">teste ton idée</a> en deux minutes.</p>
     `,
   },
   {
@@ -1587,7 +1587,7 @@ export const BLOG_ARTICLES = [
 
       <h2>Par où commencer</h2>
       <p>Si tu as déjà une application générée par l'IA, ne la jette pas. Reprends-la avec les bonnes questions : où est le moment de valeur, où est l'offre, pourquoi quelqu'un paierait.</p>
-      <p>Pour la vue d'ensemble du sujet, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>. Si tu veux une lecture rapide du potentiel, du budget et du délai de ton projet, fais ton <a href="/audit-app/">audit gratuit</a> en deux minutes.</p>
+      <p>Pour la vue d'ensemble du sujet, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>. Si tu veux une lecture rapide du potentiel, du budget et du délai de ton projet, <a href="/audit-app/">teste ton idée</a> en deux minutes.</p>
     `,
   },
   {
@@ -1688,7 +1688,7 @@ export const BLOG_ARTICLES = [
 
       <h2>Par où commencer</h2>
       <p>Reprends les six raisons une par une sur ton projet et note celles qui s'appliquent. Dans la plupart des cas, deux ou trois suffisent à expliquer pourquoi une application ne rapporte rien.</p>
-      <p>Pour la vue d'ensemble du sujet, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>. Si tu veux une lecture rapide du potentiel de revenus, du budget et du délai de ton projet, fais ton <a href="/audit-app/">audit gratuit</a> en deux minutes.</p>
+      <p>Pour la vue d'ensemble du sujet, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>. Si tu veux une lecture rapide du potentiel de revenus, du budget et du délai de ton projet, <a href="/audit-app/">teste ton idée</a> en deux minutes.</p>
     `,
   },
   {
@@ -1792,7 +1792,7 @@ export const BLOG_ARTICLES = [
 
       <h2>Par où commencer cette semaine</h2>
       <p>Écris ton problème en une phrase avec une personne dedans, parle à dix personnes de ta cible, décide de ce qui sera payant, puis construis un scénario prudent sur douze mois.</p>
-      <p>Pour la vue d'ensemble du sujet, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>. Si tu veux une première lecture du potentiel, du budget et du délai de ton idée, fais ton <a href="/audit-app/">audit gratuit</a> en deux minutes.</p>
+      <p>Pour la vue d'ensemble du sujet, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>. Si tu veux une première lecture du potentiel, du budget et du délai de ton idée, <a href="/audit-app/">teste ton idée</a> en deux minutes.</p>
     `,
   },
   {
@@ -1861,7 +1861,7 @@ export const BLOG_ARTICLES = [
       <p>Je conçois et développe l'application qui transforme tes utilisateurs en abonnés : le parcours, l'essai, l'écran d'abonnement, la logique de paiement et la rétention. Je ne fais pas la publicité qui amène les utilisateurs. Toi, tu amènes les personnes intéressées. Moi, je conçois le produit qui leur donne une raison de payer et de rester.</p>
 
       <h2>Par où commencer</h2>
-      <p>Avant de développer, vérifie que ta valeur est réellement récurrente, définis ce que l'utilisateur obtient gratuitement, pose un prix mensuel et annuel, puis construis un scénario prudent avec des abonnés actifs et un revenu net. Pour la vue d'ensemble, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a> et <a href="/blog/combien-rapporte-application-mobile/">combien rapporte une application mobile</a>. Si tu veux une première lecture du potentiel, du budget et du délai de ton idée, fais ton <a href="/audit-app/">audit gratuit</a> en deux minutes.</p>
+      <p>Avant de développer, vérifie que ta valeur est réellement récurrente, définis ce que l'utilisateur obtient gratuitement, pose un prix mensuel et annuel, puis construis un scénario prudent avec des abonnés actifs et un revenu net. Pour la vue d'ensemble, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a> et <a href="/blog/combien-rapporte-application-mobile/">combien rapporte une application mobile</a>. Si tu veux une première lecture du potentiel, du budget et du délai de ton idée, <a href="/audit-app/">teste ton idée</a> en deux minutes.</p>
     `,
   },
   {
@@ -1925,7 +1925,7 @@ export const BLOG_ARTICLES = [
       <p>Je conçois et développe l'application qui transforme tes utilisateurs en clients : le choix du modèle, l'onboarding, l'essai, l'abonnement, la rétention. Je ne fais pas la publicité qui amène les utilisateurs. Toi tu amènes les gens, je les transforme en clients qui paient.</p>
 
       <h2>Par où commencer</h2>
-      <p>Pose le modèle après avoir défini la valeur et le public, jamais avant. Pour la vue d'ensemble, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>, et pour les ordres de grandeur, <a href="/blog/combien-rapporte-application-mobile/">combien rapporte une application mobile</a>. Et si tu veux qu'on regarde le bon modèle pour ton idée précise, avec le potentiel, le budget et le délai, fais ton <a href="/audit-app/">audit gratuit</a> en deux minutes.</p>
+      <p>Pose le modèle après avoir défini la valeur et le public, jamais avant. Pour la vue d'ensemble, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>, et pour les ordres de grandeur, <a href="/blog/combien-rapporte-application-mobile/">combien rapporte une application mobile</a>. Et si tu veux qu'on regarde le bon modèle pour ton idée précise, avec le potentiel, le budget et le délai, <a href="/audit-app/">teste ton idée</a> en deux minutes.</p>
     `,
   },
   {
@@ -1988,7 +1988,7 @@ export const BLOG_ARTICLES = [
 
       <h2>Comment estimer ce que ton idée pourrait rapporter</h2>
       <p>Pars de ton public réel, pas d'un rêve de millions d'utilisateurs. Combien de personnes peux-tu réellement toucher avec ton audience ou ta clientèle actuelle ? Applique un taux de conversion prudent, quelques pour cent, un prix d'abonnement crédible pour ta valeur, et une rétention réaliste. Tu obtiens une fourchette bien plus utile qu'une moyenne de marché. Pour aller plus loin sur les modèles, lis <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>, et pour mettre l'investissement en face, <a href="/blog/combien-coute-application-mobile/">combien coûte une application mobile</a>.</p>
-      <p>Si tu veux une première lecture chiffrée sur ton idée précise, le potentiel, le budget et le délai, tu peux faire ton <a href="/audit-app/">audit gratuit</a> en deux minutes.</p>
+      <p>Si tu veux une première lecture chiffrée sur ton idée précise, le potentiel, le budget et le délai, tu peux <a href="/audit-app/">tester ton idée</a> en deux minutes.</p>
     `,
   },
   {
@@ -2053,7 +2053,7 @@ export const BLOG_ARTICLES = [
       <p>Trois reviennent tout le temps. Construire d'abord et penser à la monétisation après : à ce stade le parcours n'a pas été pensé pour convertir, et le rattraper coûte cher. Empiler les fonctionnalités au lieu de soigner le moment où l'utilisateur découvre la valeur. Et viser le volume de téléchargements plutôt que la rétention, alors que c'est la rétention qui paie. Une application qu'on n'ouvre plus ne rapporte rien, peu importe le modèle.</p>
 
       <h2>Par où commencer</h2>
-      <p>Avant de développer quoi que ce soit, il faut cadrer trois choses : le besoin réel, le public qui a déjà un comportement à transformer, et le modèle de revenus le plus adapté à cet usage. C'est ce cadrage qui sépare une application qui existe d'une application qui rapporte. Pour voir pourquoi tant d'applications passent à côté, lis aussi <a href="/blog/application-mobile-meilleur-investissement/">pourquoi une application bien pensée est un vrai actif</a>. Et si tu veux une première lecture sur le potentiel de ton idée, le budget à prévoir et le délai, tu peux faire ton <a href="/audit-app/">audit gratuit</a> en deux minutes.</p>
+      <p>Avant de développer quoi que ce soit, il faut cadrer trois choses : le besoin réel, le public qui a déjà un comportement à transformer, et le modèle de revenus le plus adapté à cet usage. C'est ce cadrage qui sépare une application qui existe d'une application qui rapporte. Pour voir pourquoi tant d'applications passent à côté, lis aussi <a href="/blog/application-mobile-meilleur-investissement/">pourquoi une application bien pensée est un vrai actif</a>. Et si tu veux une première lecture sur le potentiel de ton idée, le budget à prévoir et le délai, tu peux <a href="/audit-app/">tester ton idée</a> en deux minutes.</p>
     `,
   },
   {
@@ -2146,7 +2146,7 @@ export const BLOG_ARTICLES = [
       <p>Ce qu'elle ne change pas : le prix, le délai, et la qualité. Si quelqu'un te vend la proximité comme un argument technique, méfie-toi.</p>
 
       <h2>Teste ton idée avant d'investir</h2>
-      <p>Avant même qu'on échange, tu peux tester gratuitement ton idée d'application en 2 minutes : tu obtiens une première lecture sur son potentiel, le budget à prévoir et le délai. C'est par ici, fais ton <a href="/audit-app/">audit gratuit</a>. Et si tu veux creuser le budget, regarde aussi <a href="/blog/combien-coute-application-mobile/">combien coûte une application mobile</a>.</p>
+      <p>Avant même qu'on échange, tu peux tester gratuitement ton idée d'application en 2 minutes : tu obtiens une première lecture sur son potentiel, le budget à prévoir et le délai. C'est par ici, <a href="/audit-app/">teste ton idée</a>. Et si tu veux creuser le budget, regarde aussi <a href="/blog/combien-coute-application-mobile/">combien coûte une application mobile</a>.</p>
     `,
   },
   {
@@ -2362,7 +2362,7 @@ export const BLOG_ARTICLES = [
         <li><strong>Demande des devis sur ce périmètre précis.</strong> Les écarts vont se resserrer d'un coup, et ceux qui resteront s'expliqueront.</li>
         <li><strong>Vérifie que le nombre de clients nécessaires est atteignable</strong> avant de signer, pas après.</li>
       </ol>
-      <p>Si tu veux une fourchette sur ton projet précis, avec ton périmètre et tes contraintes, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes et te donne un ordre de grandeur plutôt qu'une promesse. Et si tu hésites entre une première version resserrée et une application complète, <a href="/blog/mvp-application-mobile/">le MVP d'application mobile</a> détaille l'arbitrage.</p>
+      <p>Si tu veux une fourchette sur ton projet précis, avec ton périmètre et tes contraintes, le <a href="/audit-app/">test de ton idée</a> prend deux minutes et te donne un ordre de grandeur plutôt qu'une promesse. Et si tu hésites entre une première version resserrée et une application complète, <a href="/blog/mvp-application-mobile/">le MVP d'application mobile</a> détaille l'arbitrage.</p>
     `,
   },
   {
@@ -2483,7 +2483,7 @@ export const BLOG_ARTICLES = [
         <li><strong>Écris la phrase de l'étape 2.</strong> Où et quand ton utilisateur paie. Si elle ne vient pas, c'est là qu'il faut travailler.</li>
         <li><strong>Fais le test.</strong> Le <a href="/quiz/application-ou-site-web/">test application ou site web</a> tranche le support en six questions.</li>
       </ol>
-      <p>Et si tu préfères qu'on regarde ton idée ensemble, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes : je te dis sur quel support elle se construit, comment elle peut rapporter, et ce que ça coûterait.</p>
+      <p>Et si tu préfères qu'on regarde ton idée ensemble, le <a href="/audit-app/">test de ton idée</a> prend deux minutes : je te dis sur quel support elle se construit, comment elle peut rapporter, et ce que ça coûterait.</p>
     `,
   },
   {
@@ -2761,7 +2761,7 @@ export const BLOG_ARTICLES = [
         <li><strong>Trie tes fonctionnalités</strong> avec la question du paragraphe plus haut. Garde la colonne de gauche.</li>
         <li><strong>Vérifie que le nombre de clients nécessaires est atteignable</strong> avec ton audience actuelle, avant de développer quoi que ce soit.</li>
       </ol>
-      <p>Si tu veux savoir si un MVP est la bonne approche pour ton projet et ce qu'il contiendrait, l'<a href="/audit-app/">audit gratuit</a> prend deux minutes.</p>
+      <p>Si tu veux savoir si un MVP est la bonne approche pour ton projet et ce qu'il contiendrait, le <a href="/audit-app/">test de ton idée</a> prend deux minutes.</p>
     `,
   },
   {
@@ -3047,20 +3047,20 @@ function BlogArticlePage({ article, onBack, onBookCall, onAuditApp, onArticle, o
               Tu penses que ton idée a du potentiel ?
             </h2>
             <p className="text-white/75 text-[0.93rem] mb-6 max-w-130 mx-auto leading-relaxed">
-              Audit gratuit en 2 minutes : potentiel de revenus, budget à prévoir et délai réaliste pour ton application.
+              Écris-moi directement sur WhatsApp, ou teste ton idée en 2 minutes : potentiel de revenus, budget à prévoir et délai réaliste.
             </p>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
               <button
-                onClick={onAuditApp}
+                onClick={onBookCall}
                 className="inline-flex justify-center items-center gap-2.5 bg-white text-brand font-semibold text-[0.95rem] px-7 py-3.5 rounded-full cursor-pointer hover:bg-white/90 transition-colors"
               >
-                Faire l&apos;audit gratuit
+                Écrire à Noé sur WhatsApp
               </button>
               <button
-                onClick={onBookCall}
+                onClick={onAuditApp}
                 className="inline-flex justify-center items-center gap-2.5 bg-white/12 text-white border border-white/25 font-semibold text-[0.95rem] px-7 py-3.5 rounded-full cursor-pointer hover:bg-white/20 transition-colors"
               >
-                Écrire à Noé sur WhatsApp
+                Tester mon idée en 2 minutes
               </button>
             </div>
           </div>
@@ -3311,7 +3311,7 @@ function BlogList({ onBack, onArticle, onBookCall, onAuditApp, onNaviguer }) {
               onClick={onAuditApp}
               className="inline-flex justify-center items-center bg-brand text-surface font-semibold text-[0.92rem] px-7 py-3.5 rounded-full cursor-pointer hover:opacity-90 transition-opacity"
             >
-              Faire l&apos;audit gratuit
+              Tester mon idée en 2 minutes
             </button>
             <a
               href={lienInterne('/quiz')}

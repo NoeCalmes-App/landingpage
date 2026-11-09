@@ -1155,7 +1155,7 @@ const auditAppRoute = {
   heading: 'Tester ton idée d\'application mobile',
   content: 'Réponds à quelques questions et obtiens une première lecture claire avant d\'investir dans le développement : potentiel, budget réaliste, délai, et si ton idée peut générer des revenus.',
   ogImage: 'https://noecalmes.fr/assets/images/meta/audit-og.png',
-  ogImageAlt: 'Audit gratuit pour tester si ton idée d\'application mobile peut générer des revenus.',
+  ogImageAlt: 'Teste gratuitement si ton idée d\'application mobile peut générer des revenus.',
 }
 
 const auditHtml = patchHtml(baseHtml, {
@@ -1428,7 +1428,7 @@ application mobile ou web.
 - [Les applications que j'ai conçues](${urlPublique('/projets')}) : réalisations et résultats
 - [FAQ](${urlPublique('/faq')}) : budget, délai, reprise, stores, suivi après mise en ligne
 - [Qui je suis](${urlPublique('/a-propos')}) : parcours, preuves, profils, façon de travailler
-- [Audit gratuit](${urlPublique('/audit-app')}) : évaluer le potentiel, le budget et le délai d'une idée en 2 minutes
+- [Teste ton idée](${urlPublique('/audit-app')}) : potentiel, budget et délai d'une idée d'application en 2 minutes
 
 ## Tests d'orientation
 
