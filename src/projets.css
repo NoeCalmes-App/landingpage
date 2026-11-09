@@ -112,8 +112,6 @@
 .projets-cas-etapes { display: grid; gap: 18px; margin-top: 24px; padding-top: 22px; border-top: 1px solid #ecebf2; }
 .projets-cas-etapes span { color: var(--p-purple); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .projets-cas-etapes p { margin: 6px 0 0; color: var(--p-muted); font-size: 15px; line-height: 1.7; }
-.projets-cas-site { display: inline-flex; align-items: center; gap: 5px; margin-top: 24px; color: var(--p-muted); font-size: 13px; font-weight: 600; text-decoration: none; }
-.projets-cas-site:hover { color: var(--p-ink); text-decoration: underline; }
 @media (max-width: 1100px) {
   .projets-cases-grid { display: flex; gap: 14px; margin: 0 -20px; padding: 0 20px 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
   .projets-cases-grid::-webkit-scrollbar { display: none; }

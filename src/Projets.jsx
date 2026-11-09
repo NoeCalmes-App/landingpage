@@ -134,7 +134,6 @@ export default function Projets({ onBack }) {
                     <div><span>Ce que j’ai fait</span><p>Une navigation complète qui compare deux trajets et compte les ralentisseurs sur chacun, à partir de plus de 120 000 ralentisseurs référencés en France. Elle s’affiche sur l’écran de la voiture avec CarPlay et Android Auto, et un abonnement Pro lève la limite d’itinéraires.</p></div>
                     <div><span>Le résultat</span><p>En ligne sur l’App Store et Google Play.</p></div>
                   </div>
-                  <a className="projets-cas-site" href="https://smoothride.fr/" target="_blank" rel="noopener">smoothride.fr <ArrowUpRight size={14} aria-hidden="true" /></a>
                 </div>
               </div>
             </dialog>
@@ -160,7 +159,6 @@ export default function Projets({ onBack }) {
                     <div><span>Ce que j’ai fait</span><p>Une application qui suit les loyers, prépare les quittances et les courriers, guide l’état des lieux pièce par pièce jusqu’à la signature, et range chaque document. Un assistant intelligent répond aux questions sur les biens, à l’écrit comme à la voix.</p></div>
                     <div><span>Le résultat</span><p>Une application iOS et Android, conçue de la stratégie à la mise en ligne.</p></div>
                   </div>
-                  <a className="projets-cas-site" href="https://bailora-app.fr/" target="_blank" rel="noopener">bailora-app.fr <ArrowUpRight size={14} aria-hidden="true" /></a>
                 </div>
               </div>
             </dialog>
@@ -186,7 +184,6 @@ export default function Projets({ onBack }) {
                     <div><span>Ce que j’ai fait</span><p>Pour couper l’alarme, il faut réussir une mission : résoudre un calcul, scanner un QR code posé dans une autre pièce, secouer son téléphone ou faire quelques pas. Sa musique Spotify comme sonnerie, et un abonnement mensuel ou annuel avec une semaine d’essai gratuite.</p></div>
                     <div><span>Le résultat</span><p>En ligne sur l’App Store et Google Play, sur abonnement.</p></div>
                   </div>
-                  <a className="projets-cas-site" href="https://wakeupalarm.app/" target="_blank" rel="noopener">wakeupalarm.app <ArrowUpRight size={14} aria-hidden="true" /></a>
                 </div>
               </div>
             </dialog>
@@ -212,7 +209,6 @@ export default function Projets({ onBack }) {
                     <div><span>Ce que j’ai fait</span><p>Une application douce : on planifie ses habitudes à son rythme, avec des citations, un exercice de respiration guidé, un suivi de l’humeur et des statistiques. Une offre premium par abonnement.</p></div>
                     <div><span>Le résultat</span><p>Du design au lancement en 30 jours, en ligne sur l’App Store et Google Play.</p></div>
                   </div>
-                  <a className="projets-cas-site" href="https://plouff-habitudes.com/" target="_blank" rel="noopener">plouff-habitudes.com <ArrowUpRight size={14} aria-hidden="true" /></a>
                 </div>
               </div>
             </dialog>
