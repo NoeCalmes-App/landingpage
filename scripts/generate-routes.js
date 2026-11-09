@@ -595,11 +595,16 @@ function patchHtml(html, {
   // lisent les robots des IA generatives, qui ne rendent pas le JavaScript.
   // Aucun texte n'y est masque, c'est l'usage prevu de la balise.
   //
-  // Div masquee : un resume seulement, sans <h1>, pour les analyseurs qui
-  // ignorent <noscript>. Elle est retiree du DOM des que React est monte
-  // (retirerPrerender), donc elle n'apparait jamais dans la page rendue.
-  const corpsNoscript = `<h1>${heading}</h1>${corpsComplet || `<p>${content}</p>`}${navLies}<a href="${backHref}">${backLink}</a>${siteNav}`
-  const corpsResume = `<p><strong>${heading}</strong></p><p>${content}</p>${navLies}<a href="${backHref}">${backLink}</a>${siteNav}`
+  // Div masquee : un resume, pour les analyseurs qui ignorent <noscript>.
+  // Elle est retiree du DOM des que React est monte (retirerPrerender), donc
+  // elle n'apparait jamais dans la page rendue.
+  //
+  // Le <h1> vit dans la div masquee depuis le 09/11/2026 : Bing ignore le
+  // <noscript> et signalait « Balise H1 manquante » sur toutes les pages.
+  // Le <noscript> garde le titre en paragraphe, pour qu'il n'y ait toujours
+  // qu'un seul <h1> dans le HTML servi.
+  const corpsNoscript = `<p><strong>${heading}</strong></p>${corpsComplet || `<p>${content}</p>`}${navLies}<a href="${backHref}">${backLink}</a>${siteNav}`
+  const corpsResume = `<h1>${heading}</h1><p>${content}</p>${navLies}<a href="${backHref}">${backLink}</a>${siteNav}`
   const seoContent = `<div id="root"></div><div data-seo-prerender style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden">${corpsResume}</div><noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif">${corpsNoscript}</div></noscript>`
   html = html.replace('<div id="root"></div>', seoContent)
 
