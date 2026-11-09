@@ -52,6 +52,11 @@ suivent.
 | **Clutch, GoodFirms, Sortlist** | Annuaires d'agences qui acceptent les indépendants, bien classés sur les requêtes d'acheteurs. Conditions à vérifier pour un indépendant | Profil, parfois avis vérifiés demandés |
 | **Product Hunt** | Lancer Plouff Habitudes ou Wake Up Alarme : la fiche lie le créateur | Une journée de lancement |
 
+## 3 bis. Les listes « meilleurs X à Toulouse »
+
+C'est ce que les moteurs de réponse citent en premier. Repérage, conditions
+d'entrée et emails prêts dans `listes-tiers.md` (09/11/2026).
+
 ## 4. Le contenu qui attire des liens tout seul
 
 - **Le retour d'expérience** (`ce-que-j-ai-appris-20-applications`) est le seul
