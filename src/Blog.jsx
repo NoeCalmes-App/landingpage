@@ -68,8 +68,8 @@ export const BLOG_ARTICLES = [
           </thead>
           <tbody>
             <tr><td><strong>Plus de 20</strong> applications</td><td>Applications mobiles conçues et publiées sur l'App Store et Google Play, les miennes et celles de mes clients</td><td>Combien rapportent de l'argent</td></tr>
-            <tr><td><strong>1,3 million</strong> de téléchargements</td><td>Total cumulé de ces applications, la messagerie comprise</td><td>Combien de personnes les utilisent encore</td></tr>
-            <tr><td><strong>300 000</strong> utilisateurs</td><td>La première version d'une messagerie que j'ai conçue pour ses créateurs</td><td>Elle ne rapportait presque rien : le moment de payer n'avait pas été décidé</td></tr>
+            <tr><td><strong>1,3 million</strong> de téléchargements</td><td>Total cumulé de ces applications, celle aux 300 000 utilisateurs comprise</td><td>Combien de personnes les utilisent encore</td></tr>
+            <tr><td><strong>300 000</strong> utilisateurs</td><td>La première version d'une application que j'ai conçue pour ses créateurs</td><td>Elle ne rapportait presque rien : le moment de payer n'avait pas été décidé</td></tr>
             <tr><td>Environ <strong>13 000 €</strong> par mois</td><td>Le revenu par abonnement de Calorie, une application de suivi nutritionnel conçue pour un client</td><td>C'est un cas réel, pas une moyenne de toutes mes applications</td></tr>
             <tr><td>Environ <strong>30 000</strong> téléchargements et <strong>3 %</strong> de payants</td><td>Ce qui suffit à Calorie pour arriver à ce revenu</td><td>Le volume ne fait pas le revenu, la conversion et la rétention le font</td></tr>
             <tr><td>Environ <strong>70 %</strong> du prix affiché</td><td>Ce que tu touches sur une application mobile, après TVA et commission de l'App Store ou de Google Play</td><td>Sur une application web, sans commission de store, c'est environ 78 %</td></tr>
@@ -86,10 +86,10 @@ export const BLOG_ARTICLES = [
       <p>Ce que j'ai fini par voir : <strong>le téléchargement est le chiffre qui flatte, pas celui qui renseigne</strong>. Ce qui dit si une application va rapporter, c'est ce que l'utilisateur fait le lendemain, et la semaine d'après. C'est la sixième des raisons que j'ai détaillées dans <a href="/blog/pourquoi-applications-ne-rapportent-rien/">pourquoi 90 % des applications ne rapportent rien</a>, et c'est la première que j'ai apprise.</p>
 
       <h2>300 000 utilisateurs et presque pas de chiffre d'affaires</h2>
-      <p>J'ai conçu la première version d'une messagerie pour ses créateurs. Elle a dépassé 300 000 utilisateurs. Sur le papier, c'est le genre de succès qu'on raconte. Dans la réalité, elle ne rapportait presque rien, parce que personne, moi compris, n'avait décidé au départ à quel moment elle demanderait à être payée ni pour quoi. J'étais le concepteur : la question était à moi de la poser.</p>
+      <p>J'ai conçu la première version d'une application pour ses créateurs. Elle a dépassé 300 000 utilisateurs. Sur le papier, c'est le genre de succès qu'on raconte. Dans la réalité, elle ne rapportait presque rien, parce que personne, moi compris, n'avait décidé au départ à quel moment elle demanderait à être payée ni pour quoi. J'étais le concepteur : la question était à moi de la poser.</p>
       <p>Ce que ça fait, concrètement : tu as énormément de monde, tu as des retours, tu as des avis, et tu n'as pas de revenu. Tu te dis que ça viendra avec le volume. Ça ne vient pas avec le volume. Un modèle de revenu ajouté après coup, sur une application que des centaines de milliers de personnes utilisent gratuitement, se heurte à une habitude déjà prise. La façon de le construire dans le bon ordre est dans <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application mobile</a>.</p>
       <div class="encadre cle">
-        <span class="encadre-titre">La question de la messagerie, celle que je pose depuis à chaque projet</span>
+        <span class="encadre-titre">La question des 300 000 utilisateurs, celle que je pose depuis à chaque projet</span>
         <p>Je ne commence plus un projet sans savoir <strong>où et quand l'utilisateur sort sa carte</strong>. Pas en fin de cadrage, au début. Si la réponse n'existe pas, le projet n'est pas prêt, et je le dis.</p>
       </div>
       <p>C'est la leçon qui m'a le plus appris, et c'est aussi pour ça qu'elle vaut quelque chose : je l'ai vue de l'intérieur, sur une application que j'avais conçue, pas dans un livre.</p>
@@ -110,24 +110,24 @@ export const BLOG_ARTICLES = [
 
       <h2>Ce que l'arrivée de l'IA m'a appris sur mon propre métier</h2>
       <p>Quand les outils qui génèrent une application à partir d'une phrase sont arrivés, j'ai eu la réaction de beaucoup de gens de mon métier : regarder ce qu'ils faisaient vraiment. J'utilise l'IA tous les jours pour écrire du code, et j'ai écrit ce que je pensais de ces générateurs dans <a href="/blog/lovable-base44-application-mobile/">Lovable, Base44 et les applications mobiles</a>.</p>
-      <p>Mais la vraie leçon n'était pas sur ces outils. Elle était sur moi : <strong>le code n'a jamais été ce qui coûte cher dans une application</strong>. Ce qui coûte cher, c'est tout ce qui a été décidé avant, et tout ce qui est mesuré après. Si une machine écrit le code en une heure, ça ne change rien à la question de la messagerie : où et quand l'utilisateur paie. Personne ne tape ça dans une phrase.</p>
+      <p>Mais la vraie leçon n'était pas sur ces outils. Elle était sur moi : <strong>le code n'a jamais été ce qui coûte cher dans une application</strong>. Ce qui coûte cher, c'est tout ce qui a été décidé avant, et tout ce qui est mesuré après. Si une machine écrit le code en une heure, ça ne change rien à la question des 300 000 utilisateurs : où et quand l'utilisateur paie. Personne ne tape ça dans une phrase.</p>
 
       <h2>La leçon la plus récente : savoir dire non, et sur quel support</h2>
       <p>Le mobile est mon métier d'origine. Jusqu'à récemment, mon site ne parlait que de ça : quand on m'appelait pour « une application mobile », je faisais une application mobile, et je laissais passer le reste.</p>
-      <p>Aujourd'hui, une partie des projets qui m'arrivent n'ont pas besoin d'être sur un téléphone. Des professionnels qui travaillent assis devant un écran, plusieurs profils, un espace d'administration : c'est une application qui se sert sur ordinateur, une application web, et je le dis avant le devis. Et une partie des idées qui m'arrivent n'ont pas de réponse à la question de la messagerie : je le dis aussi, et le projet s'arrête là, avant d'avoir coûté quoi que ce soit.</p>
+      <p>Aujourd'hui, une partie des projets qui m'arrivent n'ont pas besoin d'être sur un téléphone. Des professionnels qui travaillent assis devant un écran, plusieurs profils, un espace d'administration : c'est une application qui se sert sur ordinateur, une application web, et je le dis avant le devis. Et une partie des idées qui m'arrivent n'ont pas de réponse à la question des 300 000 utilisateurs : je le dis aussi, et le projet s'arrête là, avant d'avoir coûté quoi que ce soit.</p>
       <p>C'est la chose que j'aurais le plus de mal à expliquer à celui que j'étais au début : <strong>le travail commence par ce qu'on refuse de construire</strong>.</p>
 
       <h2>Ce que je ne fais pas : amener les utilisateurs</h2>
-      <p>Les 300 000 utilisateurs de la messagerie et les abonnés de Calorie, ce n'est pas moi qui les ai fait venir : c'est le travail de ceux qui portent ces applications. Je conçois le marketing dans l'application, ce qui transforme un utilisateur en client. Mon travail commence quand quelqu'un ouvre l'application, et il continue tant qu'il revient et qu'il paie. Avant, rien : la publicité, les réseaux, le référencement, ce n'est pas moi, et quelqu'un qui te promet les deux à la fois te promet trop.</p>
+      <p>Les 300 000 utilisateurs de cette application et les abonnés de Calorie, ce n'est pas moi qui les ai fait venir : c'est le travail de ceux qui portent ces applications. Je conçois le marketing dans l'application, ce qui transforme un utilisateur en client. Mon travail commence quand quelqu'un ouvre l'application, et il continue tant qu'il revient et qu'il paie. Avant, rien : la publicité, les réseaux, le référencement, ce n'est pas moi, et quelqu'un qui te promet les deux à la fois te promet trop.</p>
 
       <h2>Par où commencer</h2>
-      <p>Si tu dois ne garder qu'une chose de ces vingt applications, garde la question de la messagerie, et pose-la avant tout le reste.</p>
+      <p>Si tu dois ne garder qu'une chose de ces vingt applications, garde la question des 300 000 utilisateurs, et pose-la avant tout le reste.</p>
       <ol>
         <li><strong>Écris où et quand ton utilisateur sort sa carte.</strong> Pas « il s'abonnera », mais à quel écran, après avoir obtenu quoi. Si tu ne sais pas l'écrire, tu n'as pas encore un projet, tu as une idée, et c'est très bien : c'est le moment de la travailler.</li>
         <li><strong>Oublie le nombre de téléchargements, ou d'inscriptions, que tu imagines.</strong> Remplace-le par le nombre de personnes qui reviendraient la semaine suivante. C'est ce chiffre qui fait le revenu, et il est toujours plus petit.</li>
         <li><strong>Demande à qui tu parles ce qu'il a vécu.</strong> Pas combien d'applications il a faites, mais ce qui a marché, ce qui a échoué, et ce qu'il en a changé. La réponse te dit tout.</li>
       </ol>
-      <p>Si tu veux que je regarde ton idée avec exactement ce regard, le <a href="/audit-app/">test de ton idée</a> prend deux minutes, et la question de la messagerie y est posée noir sur blanc : tu sauras tout de suite si tu as déjà la réponse.</p>
+      <p>Si tu veux que je regarde ton idée avec exactement ce regard, le <a href="/audit-app/">test de ton idée</a> prend deux minutes, et la question des 300 000 utilisateurs y est posée noir sur blanc : tu sauras tout de suite si tu as déjà la réponse.</p>
     `,
   },
   {
@@ -1393,7 +1393,7 @@ export const BLOG_ARTICLES = [
       <p>Sur une audience de 10 000 personnes, 96 abonnés représentent environ 1 % de conversion. C'est un objectif discutable et vérifiable, pas un pari. Refais ce calcul avec tes propres chiffres avant de parler technique.</p>
 
       <h2>L'erreur classique : confondre volume et revenus</h2>
-      <p>Beaucoup d'audience ne veut pas dire beaucoup de revenus. J'ai vu ce scénario de très près : la première version d'une messagerie que j'ai conçue a dépassé 300 000 utilisateurs sans modèle de revenu pensé dès le départ. Énormément de monde, presque pas de chiffre d'affaires.</p>
+      <p>Beaucoup d'audience ne veut pas dire beaucoup de revenus. J'ai vu ce scénario de très près : la première version d'une application que j'ai conçue a dépassé 300 000 utilisateurs sans modèle de revenu pensé dès le départ. Énormément de monde, presque pas de chiffre d'affaires.</p>
       <p>La leçon tient en une phrase. Le moment où tu demandes de payer, ce que tu offres avant, et ce que tu réserves derrière l'abonnement se décident pendant la conception, pas six mois après le lancement.</p>
       <p>C'est développé en détail dans <a href="/blog/pourquoi-applications-ne-rapportent-rien/">pourquoi la plupart des applications ne rapportent rien</a>.</p>
 
@@ -1493,7 +1493,7 @@ export const BLOG_ARTICLES = [
       <h2>L'erreur qui coûte le plus cher</h2>
       <p>Elle est presque toujours la même : faire une application vitrine. Une belle interface qui affiche tes offres, un bouton de contact, et rien qui donne une raison de revenir la semaine suivante.</p>
       <p>Ce type d'application est téléchargé, ouvert deux fois, puis oublié. Ton client n'a rien à y faire au quotidien.</p>
-      <p>Une application qui rapporte est construite autour d'une action répétée : enregistrer, suivre, réserver, progresser. C'est cette action qui crée l'habitude, et l'habitude qui rend l'abonnement défendable. J'ai vu l'autre scénario de très près : la première version d'une messagerie que j'ai conçue a dépassé 300 000 utilisateurs sans modèle de revenu pensé dès le départ. Beaucoup de monde, peu de revenus.</p>
+      <p>Une application qui rapporte est construite autour d'une action répétée : enregistrer, suivre, réserver, progresser. C'est cette action qui crée l'habitude, et l'habitude qui rend l'abonnement défendable. J'ai vu l'autre scénario de très près : la première version d'une application que j'ai conçue a dépassé 300 000 utilisateurs sans modèle de revenu pensé dès le départ. Beaucoup de monde, peu de revenus.</p>
 
       <h2>Ce que je fais, et ce que je ne fais pas</h2>
       <p>Je conçois et développe l'application qui transforme tes utilisateurs en clients : le parcours, le moment de valeur, l'écran d'offre, la logique d'abonnement et la rétention. Je ne fais pas la publicité qui amène les utilisateurs sur ton application. Tu amènes tes clients et ton audience, je conçois le produit qui leur donne une raison de payer, puis de rester.</p>
@@ -1626,7 +1626,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>La très grande majorité des applications publiées sur les stores ne génère presque aucun revenu. Ce n'est pas une question de chance, ni de qualité du code, ni de nombre de téléchargements. C'est presque toujours la même cause : l'application a été conçue comme un outil, pas comme un produit qui vend. La bonne nouvelle : les raisons sont identifiables une par une, et elles se corrigent.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Une application que j'ai conçue génère environ <strong>13 000 € par mois</strong> avec une idée banale et un volume de téléchargements modeste. J'ai aussi vu l'inverse de très près : la première version d'une messagerie que j'ai conçue a dépassé 300 000 utilisateurs sans modèle de revenu construit dès le départ.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Une application que j'ai conçue génère environ <strong>13 000 € par mois</strong> avec une idée banale et un volume de téléchargements modeste. J'ai aussi vu l'inverse de très près : la première version d'une application que j'ai conçue a dépassé 300 000 utilisateurs sans modèle de revenu construit dès le départ.</p>
       <p>Beaucoup d'utilisateurs et peu de revenus : le scénario le plus fréquent, et le plus évitable.</p>
 
       <h2>Raison 1 : le modèle de revenu a été décidé à la fin</h2>
@@ -1727,7 +1727,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>Une idée d'application ne vaut rien tant qu'elle n'a pas rencontré une personne prête à payer pour ce qu'elle résout. C'est la partie que la plupart des porteurs de projet sautent : ils passent de l'idée au développement, puis découvrent après la mise en ligne que personne ne sort sa carte bancaire. La méthode qui suit remet les étapes dans l'ordre, de l'idée au premier euro récurrent, pour que ton application soit rentable et pas seulement fonctionnelle.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>. J'ai aussi vu de près l'autre face : la première version d'une messagerie que j'ai conçue a atteint 300 000 utilisateurs sans modèle de revenu construit dès le départ. Une idée peut donc très bien marcher et ne rien rapporter. C'est exactement le problème que cet article traite.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>. J'ai aussi vu de près l'autre face : la première version d'une application que j'ai conçue a atteint 300 000 utilisateurs sans modèle de revenu construit dès le départ. Une idée peut donc très bien marcher et ne rien rapporter. C'est exactement le problème que cet article traite.</p>
 
       <h2>Étape 1 : transformer l'idée en problème payant</h2>
       <p>Une idée se formule en général comme une fonctionnalité : « une application pour suivre ses entraînements ». Un business se formule comme un problème et une personne : « les coachs indépendants perdent du temps à envoyer des programmes par message et n'ont aucun moyen de faire payer ce suivi ». La deuxième formulation contient déjà un client, une douleur et une raison de payer.</p>
