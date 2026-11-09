@@ -102,28 +102,60 @@ export default function Projets({ onBack }) {
         </div>
         <div className="projets-cases-grid">
           <article className="projets-case">
-            <div className="projets-app-id"><img src="/assets/images/apps/smoothride.svg" alt="" width="48" height="48" loading="lazy" /><span><h3>SmoothRide</h3><small>Navigation GPS · application client</small></span></div>
-            <p><strong>Le besoin.</strong> Les GPS cherchent le trajet le plus rapide, jamais le plus doux. Pour un dos fragile, un véhicule chargé ou un professionnel qui roule toute la journée, les dos-d’âne ont un vrai coût.</p>
-            <p><strong>Ce que j’ai fait.</strong> Une navigation complète, guidée à la voix, qui compare deux trajets et compte les ralentisseurs sur chacun, à partir de plus de 120 000 ralentisseurs référencés en France. Elle s’affiche sur l’écran de la voiture avec CarPlay et Android Auto, et un abonnement Pro lève la limite d’itinéraires.</p>
-            <p><strong>Le résultat.</strong> En ligne sur l’App Store et Google Play. <a href="https://smoothride.fr/" target="_blank" rel="noopener">smoothride.fr</a></p>
+            <img className="projets-case-visuel" src="/assets/images/projets/smoothride.webp" alt="SmoothRide : écran de choix du trajet, le plus rapide ou le plus doux, avec le nombre de dos-d’âne" width="960" height="540" loading="lazy" />
+            <div className="projets-case-corps">
+              <div className="projets-app-id"><img src="/assets/images/apps/smoothride.svg" alt="" width="48" height="48" loading="lazy" /><span><h3>SmoothRide</h3><small>Navigation GPS · application client</small></span></div>
+              <p className="projets-case-accroche">La navigation GPS qui évite les dos-d’âne, guidée à la voix, avec CarPlay et Android Auto.</p>
+              <p className="projets-case-resultat">En ligne sur l’App Store et Google Play</p>
+              <details className="projets-case-detail">
+                <summary>Lire l’étude de cas</summary>
+                <p><strong>Le besoin.</strong> Les GPS cherchent le trajet le plus rapide, jamais le plus doux. Pour un dos fragile, un véhicule chargé ou un professionnel qui roule toute la journée, les dos-d’âne ont un vrai coût.</p>
+                <p><strong>Ce que j’ai fait.</strong> Une navigation complète qui compare deux trajets et compte les ralentisseurs sur chacun, à partir de plus de 120 000 ralentisseurs référencés en France. Elle s’affiche sur l’écran de la voiture avec CarPlay et Android Auto, et un abonnement Pro lève la limite d’itinéraires.</p>
+              </details>
+              <a className="projets-case-lien" href="https://smoothride.fr/" target="_blank" rel="noopener">Voir l’application <ArrowUpRight size={15} aria-hidden="true" /></a>
+            </div>
           </article>
           <article className="projets-case">
-            <div className="projets-app-id"><img src="/assets/images/apps/bailora.webp" alt="" width="48" height="48" loading="lazy" /><span><h3>Bailora</h3><small>Gestion locative · application client</small></span></div>
-            <p><strong>Le besoin.</strong> Les propriétaires, seuls ou en SCI familiale, suivent leurs loyers, leurs quittances et leurs états des lieux entre un tableur, des courriers et des photos dispersées.</p>
-            <p><strong>Ce que j’ai fait.</strong> Une application qui suit les loyers, prépare les quittances et les courriers, guide l’état des lieux pièce par pièce jusqu’à la signature, et range chaque document. Un assistant intelligent répond aux questions sur les biens, à l’écrit comme à la voix.</p>
-            <p><strong>Le résultat.</strong> Une application iOS et Android, conçue de la stratégie à la mise en ligne. <a href="https://bailora-app.fr/" target="_blank" rel="noopener">bailora-app.fr</a></p>
+            <img className="projets-case-visuel" src="/assets/images/projets/bailora.webp" alt="Bailora : tableau de bord avec les loyers du mois et les actions à traiter" width="960" height="540" loading="lazy" />
+            <div className="projets-case-corps">
+              <div className="projets-app-id"><img src="/assets/images/apps/bailora.webp" alt="" width="48" height="48" loading="lazy" /><span><h3>Bailora</h3><small>Gestion locative · application client</small></span></div>
+              <p className="projets-case-accroche">La gestion locative sur téléphone : loyers, quittances, états des lieux et un assistant à qui l’on parle.</p>
+              <p className="projets-case-resultat">Application iOS et Android</p>
+              <details className="projets-case-detail">
+                <summary>Lire l’étude de cas</summary>
+                <p><strong>Le besoin.</strong> Les propriétaires, seuls ou en SCI familiale, suivent leurs loyers, leurs quittances et leurs états des lieux entre un tableur, des courriers et des photos dispersées.</p>
+                <p><strong>Ce que j’ai fait.</strong> Une application qui suit les loyers, prépare les quittances et les courriers, guide l’état des lieux pièce par pièce jusqu’à la signature, et range chaque document. Un assistant intelligent répond aux questions sur les biens, à l’écrit comme à la voix.</p>
+              </details>
+              <a className="projets-case-lien" href="https://bailora-app.fr/" target="_blank" rel="noopener">Voir l’application <ArrowUpRight size={15} aria-hidden="true" /></a>
+            </div>
           </article>
           <article className="projets-case">
-            <div className="projets-app-id"><img src="/assets/images/app-icons/wackupalarme.webp" alt="" width="48" height="48" loading="lazy" /><span><h3>Wake Up Alarme</h3><small>Réveil · ma propre application</small></span></div>
-            <p><strong>Le besoin.</strong> On coupe l’alarme sans même ouvrir les yeux, et on se rendort.</p>
-            <p><strong>Ce que j’ai fait.</strong> Un réveil qu’on ne peut pas éteindre sans se lever : pour couper l’alarme, il faut réussir une mission, résoudre un calcul, scanner un QR code posé dans une autre pièce, secouer son téléphone ou faire quelques pas. Sa musique Spotify comme sonnerie, et un abonnement mensuel ou annuel avec une semaine d’essai gratuite.</p>
-            <p><strong>Le résultat.</strong> En ligne sur l’App Store et Google Play. <a href="https://wakeupalarm.app/" target="_blank" rel="noopener">wakeupalarm.app</a></p>
+            <img className="projets-case-visuel" src="/assets/images/projets/wakeup-alarme.webp" alt="Wake Up Alarme : mission de calcul à réussir pour couper l’alarme" width="960" height="540" loading="lazy" />
+            <div className="projets-case-corps">
+              <div className="projets-app-id"><img src="/assets/images/app-icons/wackupalarme.webp" alt="" width="48" height="48" loading="lazy" /><span><h3>Wake Up Alarme</h3><small>Réveil · ma propre application</small></span></div>
+              <p className="projets-case-accroche">Le réveil qu’on ne peut pas éteindre sans se lever : il faut réussir une mission pour le couper.</p>
+              <p className="projets-case-resultat">En ligne, sur abonnement</p>
+              <details className="projets-case-detail">
+                <summary>Lire l’étude de cas</summary>
+                <p><strong>Le besoin.</strong> On coupe l’alarme sans même ouvrir les yeux, et on se rendort.</p>
+                <p><strong>Ce que j’ai fait.</strong> Pour couper l’alarme, il faut réussir une mission : résoudre un calcul, scanner un QR code posé dans une autre pièce, secouer son téléphone ou faire quelques pas. Sa musique Spotify comme sonnerie, et un abonnement mensuel ou annuel avec une semaine d’essai gratuite.</p>
+              </details>
+              <a className="projets-case-lien" href="https://wakeupalarm.app/" target="_blank" rel="noopener">Voir l’application <ArrowUpRight size={15} aria-hidden="true" /></a>
+            </div>
           </article>
           <article className="projets-case">
-            <div className="projets-app-id"><img src="/assets/images/app-icons/plouffhabitudes.webp" alt="" width="48" height="48" loading="lazy" /><span><h3>Plouff Habitudes</h3><small>Habitudes et bien-être · ma propre application</small></span></div>
-            <p><strong>Le besoin.</strong> Les applications d’habitudes misent sur la pression et les séries à ne pas casser : on rate un jour, on culpabilise, on abandonne.</p>
-            <p><strong>Ce que j’ai fait.</strong> Une application douce, avec Plouf, une loutre qui évolue à mesure qu’on avance. On planifie ses habitudes à son rythme, avec des citations, un exercice de respiration guidé, un suivi de l’humeur et des statistiques. Une offre premium par abonnement.</p>
-            <p><strong>Le résultat.</strong> Du design au lancement en 30 jours, en ligne sur l’App Store et Google Play. <a href="https://plouff-habitudes.com/" target="_blank" rel="noopener">plouff-habitudes.com</a></p>
+            <img className="projets-case-visuel" src="/assets/images/projets/plouff-habitudes.webp" alt="Plouff Habitudes : écran du jour avec la loutre Plouf et les habitudes à cocher" width="960" height="540" loading="lazy" />
+            <div className="projets-case-corps">
+              <div className="projets-app-id"><img src="/assets/images/app-icons/plouffhabitudes.webp" alt="" width="48" height="48" loading="lazy" /><span><h3>Plouff Habitudes</h3><small>Habitudes et bien-être · ma propre application</small></span></div>
+              <p className="projets-case-accroche">De bonnes habitudes sans pression, avec Plouf, une loutre qui évolue à mesure qu’on avance.</p>
+              <p className="projets-case-resultat">Du design au lancement en 30 jours</p>
+              <details className="projets-case-detail">
+                <summary>Lire l’étude de cas</summary>
+                <p><strong>Le besoin.</strong> Les applications d’habitudes misent sur la pression et les séries à ne pas casser : on rate un jour, on culpabilise, on abandonne.</p>
+                <p><strong>Ce que j’ai fait.</strong> Une application douce : on planifie ses habitudes à son rythme, avec des citations, un exercice de respiration guidé, un suivi de l’humeur et des statistiques. Une offre premium par abonnement, en ligne sur l’App Store et Google Play.</p>
+              </details>
+              <a className="projets-case-lien" href="https://plouff-habitudes.com/" target="_blank" rel="noopener">Voir l’application <ArrowUpRight size={15} aria-hidden="true" /></a>
+            </div>
           </article>
         </div>
       </section>
