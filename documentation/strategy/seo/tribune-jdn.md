@@ -8,7 +8,17 @@
 > C'est un domaine très lu par les IA et par Google : un lien depuis une page du
 > JDN vaut plus que tous les annuaires réunis.
 
-## Ce que Noé fait (10 minutes)
+## État
+
+- **09/11/2026** : compte auteur créé par Noé (profil public `/account/noe-calmes-243620`,
+  poste « Indépendant », biographie et lien noecalmes.fr renseignés). Chronique
+  n° 1557786 soumise, **en attente de validation** par la rédaction. Rubrique
+  Start-up. Le JDN exige l'exclusivité : ne pas republier ce texte ailleurs.
+- À faire quand elle est publiée : noter l'URL dans `liens-entrants.md`, vérifier
+  que le lien du profil auteur pointe bien vers noecalmes.fr, et la citer dans
+  « Vu dans » de la page À propos si Noé le souhaite.
+
+## Ce que Noé a fait (10 minutes, pour mémoire)
 
 1. Créer le compte auteur : https://www.journaldunet.com/account/signup
    (email pro, nom « Noé Calmes », fonction « Concepteur d'applications mobiles et
