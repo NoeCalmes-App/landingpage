@@ -70,12 +70,12 @@ export function AvisTrustpilot() {
   )
 }
 
-export function AvisClients() {
+// Les conversations WhatsApp seules. Sur /projets, elles suivent les avis Trustpilot (AvisClients) ; sur l'accueil,
+// depuis le 11/11/2026, elles ont leur propre section « Témoignages clients » sous la FAQ (Noé : « au moins il en
+// voit encore plus »), et le bloc sous « Parlons de ton projet » ne garde que les avis Trustpilot.
+export function AvisWhatsApp() {
   return (
     <>
-      <AvisTrustpilot />
-      {/* Sous le lien Trustpilot, les conversations WhatsApp, annoncées par « D'autres témoignages clients » (Noé, 11/11/2026). */}
-      <p className="font-jakarta text-text font-extrabold tracking-tight text-xl md:text-[1.6rem] text-center mb-6 md:mb-10">D'autres témoignages clients</p>
       <ul className="flex flex-col lg:flex-row items-center justify-center gap-6" aria-label="Messages de clients">
         <li className="w-full max-w-[330px] lg:max-w-[300px]">
           <img src="/assets/images/avis/temoignage-idee.webp" width="640" height="831" loading="lazy" decoding="async"
@@ -94,6 +94,16 @@ export function AvisClients() {
         </li>
       </ul>
       <p className="mt-6 lg:mt-9 text-center text-grey text-[0.8rem]">Noms masqués par discrétion.</p>
+    </>
+  )
+}
+
+export function AvisClients() {
+  return (
+    <>
+      <AvisTrustpilot />
+      <p className="font-jakarta text-text font-extrabold tracking-tight text-xl md:text-[1.6rem] text-center mb-6 md:mb-10">D'autres témoignages clients</p>
+      <AvisWhatsApp />
     </>
   )
 }

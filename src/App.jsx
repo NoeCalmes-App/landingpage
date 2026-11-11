@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { BadgeEuro, Timer } from 'lucide-react'
 import './App.css'
 import PhoneCarousel from './AppShowcase.jsx'
-import { AvisClients } from './AvisClients.jsx'
+import { AvisTrustpilot, AvisWhatsApp } from './AvisClients.jsx'
 import HeroVideo from './HeroVideo.jsx'
 import Documents, { DOCUMENTS } from './Documents.jsx'
 import { ROUTE_DOCUMENTS, ROUTE_APP_MOBILE, ROUTE_APP_WEB, estRouteDocuments, estRouteAppMobile, estRouteAppWeb, trouverDocument } from './routesDocuments.js'
@@ -1168,8 +1168,9 @@ function App() {
             <h3 className="reveal font-jakarta text-text text-xl md:text-[1.6rem] font-extrabold tracking-tight text-center mb-6 md:mb-10">
               Ce que disent <span className="text-brand">mes clients</span>
             </h3>
+            {/* Ici, seulement les avis Trustpilot (11/11/2026) ; les conversations WhatsApp ont leur section sous la FAQ. */}
             <div className="reveal">
-              <AvisClients />
+              <AvisTrustpilot />
             </div>
           </div>
         </div>
@@ -1197,6 +1198,24 @@ function App() {
               Écris-moi sur WhatsApp.
             </a>
           </p>
+        </div>
+      </section>
+
+      {/* ========== TÉMOIGNAGES CLIENTS (WHATSAPP) ========== */}
+      {/* Depuis le 11/11/2026 : les conversations WhatsApp (src/AvisClients.jsx, AvisWhatsApp) ont leur propre section
+          sous la FAQ, demandée par Noé pour que le visiteur qui descend jusqu'ici en voie encore ; les avis Trustpilot
+          restent sous le bouton WhatsApp. Fond blanc comme la FAQ, séparé par un filet ; Instagram (gris) suit. */}
+      <section className="py-14 md:py-24 px-5 border-t border-card-border" id="temoignages">
+        <div className="max-w-275 mx-auto text-center">
+          <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase mb-3">
+            Témoignages clients
+          </p>
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-6 md:mb-14">
+            Ce que mes clients <span className="text-brand">m'écrivent</span>
+          </h2>
+          <div className="reveal">
+            <AvisWhatsApp />
+          </div>
         </div>
       </section>
 
