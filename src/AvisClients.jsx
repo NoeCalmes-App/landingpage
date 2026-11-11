@@ -75,7 +75,7 @@ export function AvisClients() {
     <>
       <AvisTrustpilot />
       {/* Sous le lien Trustpilot, les conversations WhatsApp, annoncées par « D'autres témoignages clients » (Noé, 11/11/2026). */}
-      <p className="font-jakarta text-text font-bold text-[1.05rem] text-center mb-6">D'autres témoignages clients</p>
+      <p className="font-jakarta text-text font-extrabold tracking-tight text-xl md:text-[1.6rem] text-center mb-6 md:mb-10">D'autres témoignages clients</p>
       <ul className="flex flex-col lg:flex-row items-center justify-center gap-6" aria-label="Messages de clients">
         <li className="w-full max-w-[330px] lg:max-w-[300px]">
           <img src="/assets/images/avis/temoignage-idee.webp" width="640" height="831" loading="lazy" decoding="async"
