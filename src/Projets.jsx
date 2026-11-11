@@ -215,7 +215,7 @@ export default function Projets({ onBack }) {
           </article>
         </div>
       </section>
-      <section id="avis" className="projets-reviews projets-section"><div className="projets-container"><SectionIntro label="Avis clients" title="Ce que disent mes clients" /><AvisClients /></div></section>
+      <section id="avis" className="projets-reviews projets-section"><div className="projets-container"><SectionIntro label="Avis clients" title={<>Ce que disent <span className="projets-accent">mes clients</span></>} /><AvisClients /></div></section>
 
       <section id="methode" className="projets-method"><div className="projets-container projets-section">
         <SectionIntro label="Ma façon de travailler" title="Un projet pris en charge de bout en bout" />

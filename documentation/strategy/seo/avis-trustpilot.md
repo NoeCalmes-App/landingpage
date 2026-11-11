@@ -53,8 +53,9 @@ Variante plus courte, pour un client qu'il tutoie peu :
   à envoyer aux clients : https://fr.trustpilot.com/evaluate/noecalmes.fr).
 - URL ajoutée dans `sameAs` de la fiche Person (`index.html`) et dans les profils
   de la page À propos (`PROFILS`, `src/PagesSeo.jsx`).
-- Les avis sont affichés sur l'accueil et sur /projets, sous les cartes WhatsApp,
-  bloc « Avis vérifiés sur Trustpilot » (`AvisTrustpilot` dans `src/AvisClients.jsx`).
+- Les avis sont affichés sur l'accueil et sur /projets, au-dessus des cartes WhatsApp,
+  sans titre, avec le lien « Lire les avis sur Trustpilot » (`AvisTrustpilot` dans
+  `src/AvisClients.jsx`).
   Source : `src/avisTrustpilot.json`. Pas le widget officiel (script tiers, lent,
   illisible par les robots) : les avis sont recopiés mot pour mot, un extrait,
   prénom seul. **Quand un nouvel avis arrive** : l'ajouter en tête du JSON, rebuild.

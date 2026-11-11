@@ -29,7 +29,8 @@
 // `reveal` ici : seul l'accueil anime ses sections, il enveloppe le composant.
 import avisTrustpilot from './avisTrustpilot.json'
 
-// AVIS TRUSTPILOT (11/11/2026) : sous les cartes WhatsApp, les avis publiés par les clients sur Trustpilot, en texte,
+// AVIS TRUSTPILOT (11/11/2026) : AU-DESSUS des cartes WhatsApp (Noé, 11/11 : « avant les WhatsApp »), sans titre
+// « Avis vérifiés sur Trustpilot » (Noé : le lien « Lire les avis sur Trustpilot » suffit, il ouvre la fiche) ; les avis publiés par les clients sur Trustpilot, en texte,
 // pas via le widget officiel (un script tiers de plus ralentirait la page, et les robots ne lisent pas son contenu).
 // Source unique : src/avisTrustpilot.json (prénom, date, titre, extrait, URL de la fiche) ; scripts/generate-routes.js
 // le lit pour le texte servi aux robots. Règles : seulement des avis réellement publiés sur Trustpilot, recopiés
@@ -55,13 +56,7 @@ function EtoilesTrustpilot() {
 
 export function AvisTrustpilot() {
   return (
-    <div className="mt-10 lg:mt-14">
-      <p className="flex items-center justify-center gap-2 text-text text-[0.9rem] font-semibold mb-5">
-        <span className="inline-flex items-center justify-center w-5 h-5 bg-[#00B67A]" aria-hidden="true">
-          <svg viewBox="0 0 24 24" className="w-[14px] h-[14px]" fill="#fff"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.7 1.3 6.8L12 17.7 6 21l1.3-6.8-5-4.7 6.8-.8z"/></svg>
-        </span>
-        Avis vérifiés sur Trustpilot
-      </p>
+    <div className="mb-10 lg:mb-14">
       <ul className="grid gap-4 md:grid-cols-3 text-left" aria-label="Avis publiés sur Trustpilot">
         {avisTrustpilot.avis.map((a) => (
           <li key={a.prenom + a.date} className="flex flex-col gap-3 rounded-[18px] border border-card-border bg-surface p-5 shadow-[0_10px_36px_rgba(102,93,255,0.08)]">
@@ -84,6 +79,7 @@ export function AvisTrustpilot() {
 export function AvisClients() {
   return (
     <>
+      <AvisTrustpilot />
       <ul className="flex flex-col lg:flex-row items-center justify-center gap-6" aria-label="Messages de clients">
         <li className="w-full max-w-[330px] lg:max-w-[300px]">
           <img src="/assets/images/avis/temoignage-idee.webp" width="640" height="831" loading="lazy" decoding="async"
@@ -102,7 +98,6 @@ export function AvisClients() {
         </li>
       </ul>
       <p className="mt-6 lg:mt-9 text-center text-grey text-[0.8rem]">Noms masqués par discrétion.</p>
-      <AvisTrustpilot />
     </>
   )
 }

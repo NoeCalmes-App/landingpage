@@ -67,6 +67,7 @@
 .projets-section { padding-block: 80px; }
 .projets-section-intro { max-width: 650px; margin: 0 auto 34px; text-align: center; }
 .projets-section-intro .projets-eyebrow { justify-content: center; }
+.projets-accent { color: var(--p-purple); }
 .projets-section-intro h2 { font-size: clamp(29px, 3.1vw, 39px); line-height: 1.2; }
 .projets-section-intro > p:last-child:not(.projets-eyebrow) { margin: 16px auto 0; color: var(--p-muted); line-height: 1.7; }
 .projets-results { border-top: 1px solid #eceaf2; }
