@@ -313,7 +313,14 @@ function altDesImages(fichier) {
 // L'accueil : son corps vit dans le composant App de src/App.jsx, plus les avis clients, qui vivent dans
 // src/AvisClients.jsx depuis le 11/10/2026 (partagés avec /projets). Ils sont ajoutés à la fin du texte : le
 // lecteur ne voit pas le contenu d'une balise <AvisClients />.
-const corpsSeoAccueil = corpsDepuisComposant('App.jsx', 'App') + altDesImages('AvisClients.jsx')
+// Puis les avis Trustpilot (src/avisTrustpilot.json, 11/11/2026) : un paragraphe par avis, avec le lien vers la fiche.
+function avisTrustpilotHtml() {
+  const { url, avis } = JSON.parse(readFileSync(join(__dirname, '..', 'src', 'avisTrustpilot.json'), 'utf-8'))
+  if (!avis.length) throw new Error('Aucun avis dans src/avisTrustpilot.json')
+  return `<p>Avis vérifiés sur <a href="${url}">Trustpilot</a> :</p>`
+    + avis.map((a) => `<p>${echapper(a.titre)}. « ${echapper(a.extrait)} » ${echapper(a.prenom)}, ${a.date}, 5 étoiles sur 5.</p>`).join('')
+}
+const corpsSeoAccueil = corpsDepuisComposant('App.jsx', 'App') + altDesImages('AvisClients.jsx') + avisTrustpilotHtml()
 
 const corpsSeoPages = {
   '/expertise': corpsDepuisComposant('PagesSeo.jsx', 'PageExpertise'),
@@ -326,6 +333,7 @@ const corpsSeoPages = {
   // annuaire qui demande un lien retour doit trouver l'URL dans le HTML servi.
   '/projets':
     corpsDepuisComposant('Projets.jsx', 'Projets')
+    + avisTrustpilotHtml()
     + `<p>Référencé sur ${lireAnnuaires().map((a) => `<a href="${a.url}">${echapper(a.nom)}</a>`).join(' · ')}</p>`,
   // Les profils vivent dans le tableau PROFILS (hors corps JSX) : ajoutes ici
   // pour que les robots sans JavaScript voient aussi les liens d'identite.

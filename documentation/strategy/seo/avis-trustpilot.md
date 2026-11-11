@@ -47,9 +47,18 @@ Variante plus courte, pour un client qu'il tutoie peu :
 - Jamais le nom de la messagerie (voir la règle du 09/11) : si un client en parle,
   c'est son choix, pas le nôtre.
 
-## 4. Quand la fiche a 3 avis ou plus
+## 4. Fait le 11/11/2026 : 3 avis (5 étoiles), fiche reliée au site
 
-- Ajouter l'URL Trustpilot dans `sameAs` de la fiche Person (`index.html`) et dans
-  « Vu sur » de la page À propos.
+- Fiche publique : https://fr.trustpilot.com/review/noecalmes.fr (lien d'évaluation
+  à envoyer aux clients : https://fr.trustpilot.com/evaluate/noecalmes.fr).
+- URL ajoutée dans `sameAs` de la fiche Person (`index.html`) et dans les profils
+  de la page À propos (`PROFILS`, `src/PagesSeo.jsx`).
+- Les avis sont affichés sur l'accueil et sur /projets, sous les cartes WhatsApp,
+  bloc « Avis vérifiés sur Trustpilot » (`AvisTrustpilot` dans `src/AvisClients.jsx`).
+  Source : `src/avisTrustpilot.json`. Pas le widget officiel (script tiers, lent,
+  illisible par les robots) : les avis sont recopiés mot pour mot, un extrait,
+  prénom seul. **Quand un nouvel avis arrive** : l'ajouter en tête du JSON, rebuild.
+- Réponses : Noé répond à chaque avis (court, personnalisé, même ton que le client,
+  pas de pub ni de lien, jamais le nom d'une application confidentielle).
 - Noter la note et le nombre d'avis dans `suivi-ia.md` au relevé mensuel : c'est
   exactement ce que ChatGPT recopie.

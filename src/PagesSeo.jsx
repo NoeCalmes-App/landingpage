@@ -162,6 +162,7 @@ function Corps({ children }) {
 
 const PROFILS = [
   { nom: 'LinkedIn', url: 'https://www.linkedin.com/in/noecalmes' },
+  { nom: 'Trustpilot', url: 'https://fr.trustpilot.com/review/noecalmes.fr' },
   { nom: 'Malt', url: 'https://www.malt.fr/profile/noecalmes' },
   { nom: 'Sortlist', url: 'https://www.sortlist.fr/agency/noe-calmes' },
   { nom: 'Codeur.com', url: 'https://www.codeur.com/-noecu9om' },

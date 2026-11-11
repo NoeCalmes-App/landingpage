@@ -27,6 +27,60 @@
 // doubles). Sous les cartes, une note courte (« Noms masqués par discrétion. », raccourcie le 11/10/2026 à la demande
 // de Noé) : elle explique les barres noires, et rassure celui qui a peur qu'on dévoile son idée. Pas de classe
 // `reveal` ici : seul l'accueil anime ses sections, il enveloppe le composant.
+import avisTrustpilot from './avisTrustpilot.json'
+
+// AVIS TRUSTPILOT (11/11/2026) : sous les cartes WhatsApp, les avis publiés par les clients sur Trustpilot, en texte,
+// pas via le widget officiel (un script tiers de plus ralentirait la page, et les robots ne lisent pas son contenu).
+// Source unique : src/avisTrustpilot.json (prénom, date, titre, extrait, URL de la fiche) ; scripts/generate-routes.js
+// le lit pour le texte servi aux robots. Règles : seulement des avis réellement publiés sur Trustpilot, recopiés
+// mot pour mot (un extrait, pas forcément tout), prénom seul, jamais le nom d'une application confidentielle. Quand un
+// nouvel avis arrive, l'ajouter en tête du tableau. Le lien « Lire les avis sur Trustpilot » prouve que c'est vérifiable.
+const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+function moisAnnee(iso) {
+  const [a, m] = iso.split('-')
+  return `${MOIS[Number(m) - 1]} ${a}`
+}
+
+function EtoilesTrustpilot() {
+  return (
+    <span className="inline-flex gap-[2px]" aria-label="5 étoiles sur 5">
+      {[0, 1, 2, 3, 4].map((i) => (
+        <span key={i} className="inline-flex items-center justify-center w-[18px] h-[18px] bg-[#00B67A]" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="w-[13px] h-[13px]" fill="#fff"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.7 1.3 6.8L12 17.7 6 21l1.3-6.8-5-4.7 6.8-.8z"/></svg>
+        </span>
+      ))}
+    </span>
+  )
+}
+
+export function AvisTrustpilot() {
+  return (
+    <div className="mt-10 lg:mt-14">
+      <p className="flex items-center justify-center gap-2 text-text text-[0.9rem] font-semibold mb-5">
+        <span className="inline-flex items-center justify-center w-5 h-5 bg-[#00B67A]" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="w-[14px] h-[14px]" fill="#fff"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.7 1.3 6.8L12 17.7 6 21l1.3-6.8-5-4.7 6.8-.8z"/></svg>
+        </span>
+        Avis vérifiés sur Trustpilot
+      </p>
+      <ul className="grid gap-4 md:grid-cols-3 text-left" aria-label="Avis publiés sur Trustpilot">
+        {avisTrustpilot.avis.map((a) => (
+          <li key={a.prenom + a.date} className="flex flex-col gap-3 rounded-[18px] border border-card-border bg-surface p-5 shadow-[0_10px_36px_rgba(102,93,255,0.08)]">
+            <EtoilesTrustpilot />
+            <p className="font-jakarta text-text font-bold text-[0.95rem] leading-snug m-0">{a.titre}</p>
+            <p className="text-grey text-[0.88rem] leading-relaxed m-0">« {a.extrait} »</p>
+            <p className="text-grey text-[0.78rem] m-0 mt-auto pt-1"><strong className="text-text font-semibold">{a.prenom}</strong> · {moisAnnee(a.date)}</p>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-5 text-center">
+        <a href={avisTrustpilot.url} target="_blank" rel="noopener noreferrer" className="inline-block font-semibold text-brand underline underline-offset-4 decoration-brand/40 hover:decoration-brand text-[0.9rem]">
+          Lire les avis sur Trustpilot
+        </a>
+      </p>
+    </div>
+  )
+}
+
 export function AvisClients() {
   return (
     <>
@@ -48,6 +102,7 @@ export function AvisClients() {
         </li>
       </ul>
       <p className="mt-6 lg:mt-9 text-center text-grey text-[0.8rem]">Noms masqués par discrétion.</p>
+      <AvisTrustpilot />
     </>
   )
 }
