@@ -318,7 +318,7 @@ function avisTrustpilotHtml() {
   const { url, avis } = JSON.parse(readFileSync(join(__dirname, '..', 'src', 'avisTrustpilot.json'), 'utf-8'))
   if (!avis.length) throw new Error('Aucun avis dans src/avisTrustpilot.json')
   return `<p>Avis vérifiés sur <a href="${url}">Trustpilot</a> :</p>`
-    + avis.map((a) => `<p>${echapper(a.titre)}. « ${echapper(a.extrait)} » ${echapper(a.prenom)}, ${a.date}, 5 étoiles sur 5.</p>`).join('')
+    + avis.map((a) => `<p>${echapper(a.titre)}. « ${echapper(a.extrait)} » ${echapper(a.prenom)}, ${echapper(a.role)}, 5 étoiles sur 5.</p>`).join('')
 }
 const corpsSeoAccueil = corpsDepuisComposant('App.jsx', 'App') + altDesImages('AvisClients.jsx') + avisTrustpilotHtml()
 

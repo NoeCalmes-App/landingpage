@@ -32,16 +32,10 @@ import avisTrustpilot from './avisTrustpilot.json'
 // AVIS TRUSTPILOT (11/11/2026) : AU-DESSUS des cartes WhatsApp (Noé, 11/11 : « avant les WhatsApp »), sans titre
 // « Avis vérifiés sur Trustpilot » (Noé : le lien « Lire les avis sur Trustpilot » suffit, il ouvre la fiche) ; les avis publiés par les clients sur Trustpilot, en texte,
 // pas via le widget officiel (un script tiers de plus ralentirait la page, et les robots ne lisent pas son contenu).
-// Source unique : src/avisTrustpilot.json (prénom, date, titre, extrait, URL de la fiche) ; scripts/generate-routes.js
+// Source unique : src/avisTrustpilot.json (prénom, rôle affiché sous l'avis à la place de la date, Noé 11/11 ; date gardée pour l'ordre ; titre, extrait, URL de la fiche) ; scripts/generate-routes.js
 // le lit pour le texte servi aux robots. Règles : seulement des avis réellement publiés sur Trustpilot, recopiés
 // mot pour mot (un extrait, pas forcément tout), prénom seul, jamais le nom d'une application confidentielle. Quand un
 // nouvel avis arrive, l'ajouter en tête du tableau. Le lien « Lire les avis sur Trustpilot » prouve que c'est vérifiable.
-const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
-function moisAnnee(iso) {
-  const [a, m] = iso.split('-')
-  return `${MOIS[Number(m) - 1]} ${a}`
-}
-
 function EtoilesTrustpilot() {
   return (
     <span className="inline-flex gap-[2px]" aria-label="5 étoiles sur 5">
@@ -63,12 +57,12 @@ export function AvisTrustpilot() {
             <EtoilesTrustpilot />
             <p className="font-jakarta text-text font-bold text-[0.95rem] leading-snug m-0">{a.titre}</p>
             <p className="text-grey text-[0.88rem] leading-relaxed m-0">« {a.extrait} »</p>
-            <p className="text-grey text-[0.78rem] m-0 mt-auto pt-1"><strong className="text-text font-semibold">{a.prenom}</strong> · {moisAnnee(a.date)}</p>
+            <p className="text-grey text-[0.78rem] m-0 mt-auto pt-1"><strong className="text-text font-semibold">{a.prenom}</strong> · {a.role}</p>
           </li>
         ))}
       </ul>
       <p className="mt-5 text-center">
-        <a href={avisTrustpilot.url} target="_blank" rel="noopener noreferrer" className="inline-block font-semibold text-brand underline underline-offset-4 decoration-brand/40 hover:decoration-brand text-[0.9rem]">
+        <a href={avisTrustpilot.url} target="_blank" rel="noopener noreferrer" className="inline-block font-semibold text-text underline underline-offset-4 decoration-text/30 hover:decoration-text text-[0.9rem]">
           Lire les avis sur Trustpilot
         </a>
       </p>
@@ -80,6 +74,8 @@ export function AvisClients() {
   return (
     <>
       <AvisTrustpilot />
+      {/* Sous le lien Trustpilot, les conversations WhatsApp, annoncées par « D'autres avis » (Noé, 11/11/2026). */}
+      <p className="font-jakarta text-text font-bold text-[1.05rem] text-center mb-6">D'autres avis</p>
       <ul className="flex flex-col lg:flex-row items-center justify-center gap-6" aria-label="Messages de clients">
         <li className="w-full max-w-[330px] lg:max-w-[300px]">
           <img src="/assets/images/avis/temoignage-idee.webp" width="640" height="831" loading="lazy" decoding="async"
