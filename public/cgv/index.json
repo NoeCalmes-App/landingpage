@@ -1,6 +1,14 @@
 {
   "editions": [
     {
+      "fichier": "CGV-14-11-2026.pdf",
+      "edition": "14 novembre 2026",
+      "titre": "CGV — 14 novembre 2026",
+      "source": "cgv-2026-11-14.md",
+      "octets": 82029,
+      "publieLe": "2026-11-13"
+    },
+    {
       "fichier": "CGV-13-11-2026.pdf",
       "edition": "13 novembre 2026",
       "titre": "CGV — 13 novembre 2026",
