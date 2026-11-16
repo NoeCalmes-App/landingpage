@@ -63,7 +63,9 @@ n'est plus le frein, l'autorité l'est (un seul lien externe). Donc :
   Trustpilot, pages d'offre, projets).
 - **Court terme (0 à 3 mois) : des pages d'offre sur les requêtes d'acheteur**,
   petites en volume mais près de l'argent : « application mobile sur mesure »,
-  « devis application mobile », « expert application mobile », Toulouse. Pas un
+  « devis application mobile », « expert application mobile ». Pas Toulouse en
+  priorité (Noé, 16/11 : ses clients viennent des grandes villes, Paris, Monaco ;
+  la page Toulouse reste, on n'en fait pas d'autres par ville). Pas un
   article : le prix, le délai, la méthode, un bouton. Première page en ligne le
   16/11 : `/application-mobile-sur-mesure`. Prochaine : l'application web / SaaS
   sur mesure, le trou du site (aucune requête web dans Search Console alors que
@@ -77,6 +79,11 @@ n'est plus le frein, l'autorité l'est (un seul lien externe). Donc :
   position 32) : requête d'agences, douze mois de liens pour y entrer.
 - Mesure le 07/12, puis chaque mois : clics, impressions, positions des pages
   d'offre, nombre de liens externes.
+- **Part du temps** : le SEO, c'est deux heures par semaine, pas plus. Le site a
+  été lancé en mars 2026 mais Google n'y a accès correctement que depuis le
+  8 août (boucle de canonique) : la vraie horloge SEO a trois mois, pas huit.
+  Les clients rapides viennent de la prospection, des pubs, des recommandations
+  des clients livrés et des apporteurs d'affaires (voir `strategie-commerciale.md`).
 
 ## Semaine du 16/11/2026 : les pages existantes, pas de nouvel article
 
