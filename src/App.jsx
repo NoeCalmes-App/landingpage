@@ -34,6 +34,7 @@ const QuizRoute = lazy(() => import('./Quiz.jsx').then((m) => ({ default: m.Quiz
 const PageExpertise = lazy(() => import('./PagesSeo.jsx').then((m) => ({ default: m.PageExpertise })))
 const PageMethode = lazy(() => import('./PagesSeo.jsx').then((m) => ({ default: m.PageMethode })))
 const PageSurMesure = lazy(() => import('./PagesSeo.jsx').then((m) => ({ default: m.PageSurMesure })))
+const PageWebSurMesure = lazy(() => import('./PagesSeo.jsx').then((m) => ({ default: m.PageWebSurMesure })))
 const PageFaq = lazy(() => import('./PagesSeo.jsx').then((m) => ({ default: m.PageFaq })))
 const PageAPropos = lazy(() => import('./PagesSeo.jsx').then((m) => ({ default: m.PageAPropos })))
 const CGV = lazy(() => import('./CGV.jsx'))
@@ -287,6 +288,7 @@ function App() {
     if (path === '/expertise') return 'page-expertise'
     if (path === '/creation-application-mobile' || path === '/etapes') return 'page-methode'
     if (path === '/application-mobile-sur-mesure') return 'page-sur-mesure'
+    if (path === '/application-web-sur-mesure') return 'page-web-sur-mesure'
     if (path === '/faq') return 'page-faq'
     if (path === '/a-propos') return 'page-a-propos'
     if (path === '/quiz') return 'quiz-hub'
@@ -483,7 +485,7 @@ function App() {
   // Le vrai titre est relu au moment du départ, pas mémorisé une fois pour
   // toutes : chaque page écrit le sien en navigation (appliquerMeta).
   useEffect(() => {
-    const pagesDeVente = ['home', 'blog', 'blog-article', 'audit-app', 'page-expertise', 'page-methode', 'page-sur-mesure', 'page-faq', 'page-a-propos', 'quiz-hub', 'quiz', 'projets']
+    const pagesDeVente = ['home', 'blog', 'blog-article', 'audit-app', 'page-expertise', 'page-methode', 'page-sur-mesure', 'page-web-sur-mesure', 'page-faq', 'page-a-propos', 'quiz-hub', 'quiz', 'projets']
     if (!pagesDeVente.includes(page)) return
 
     const MESSAGES = ['Maquette offerte pour ton app', 'Parlons de ton idée d’app']
@@ -591,6 +593,7 @@ function App() {
     if (chemin === '/expertise') return setPage('page-expertise')
     if (chemin === '/creation-application-mobile') return setPage('page-methode')
     if (chemin === '/application-mobile-sur-mesure') return setPage('page-sur-mesure')
+    if (chemin === '/application-web-sur-mesure') return setPage('page-web-sur-mesure')
     if (chemin === '/faq') return setPage('page-faq')
     if (chemin === '/a-propos') return setPage('page-a-propos')
     if (chemin === '/quiz') return setPage('quiz-hub')
@@ -612,6 +615,7 @@ function App() {
   if (page === 'page-expertise') return <Suspense fallback={null}><PageExpertise {...propsPageSeo} /></Suspense>
   if (page === 'page-methode') return <Suspense fallback={null}><PageMethode {...propsPageSeo} /></Suspense>
   if (page === 'page-sur-mesure') return <Suspense fallback={null}><PageSurMesure {...propsPageSeo} /></Suspense>
+  if (page === 'page-web-sur-mesure') return <Suspense fallback={null}><PageWebSurMesure {...propsPageSeo} /></Suspense>
   if (page === 'page-faq') return <Suspense fallback={null}><PageFaq {...propsPageSeo} /></Suspense>
   if (page === 'page-a-propos') return <Suspense fallback={null}><PageAPropos {...propsPageSeo} /></Suspense>
   if (page === 'quiz-hub') return <Suspense fallback={null}><PageQuizHub onAccueil={goHome} onBookCall={goBookCall} onNaviguer={allerVers} /></Suspense>
