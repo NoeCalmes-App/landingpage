@@ -669,7 +669,7 @@ const sectionRoutes = [
   {
     path: '/application-mobile-sur-mesure',
     heading: 'Application mobile sur mesure : prix, délai, et comment obtenir un devis',
-    content: 'Une application conçue pour ton activité, prise en charge du cadrage à la mise en ligne, à tarif fixe : 5 000 à 8 000 € pour une application au périmètre resserré, 8 000 à 12 000 € pour une application complète, une dizaine de milliers d\'euros avec deux profils ou du temps réel. 45 jours en moyenne, dont 4 à 6 semaines de développement. Le devis vient après un appel de 15 minutes et une première maquette, gratuits et sans engagement. Mobile ou web, selon l\'usage.',
+    content: 'Une application conçue pour ton activité, prise en charge du cadrage à la mise en ligne, à tarif fixe : une dizaine de milliers d\'euros pour une application mobile ou une application web (SaaS), 15 000 à 18 000 € pour les deux supports, 5 000 à 8 000 € pour une première version resserrée. 45 jours en moyenne, dont 4 à 6 semaines de développement. Le devis vient après un appel de 15 minutes et une première maquette, gratuits et sans engagement. Mobile ou web, selon l\'usage.',
   },
   {
     path: '/faq',
@@ -1445,7 +1445,7 @@ application mobile ou web.
 - [Accueil](${urlPublique('/')}) : le positionnement et les preuves
 - [Concevoir une application qui rapporte](${urlPublique('/expertise')}) : ce que je fais qu'un développeur ne fait pas
 - [Ma méthode](${urlPublique('/creation-application-mobile')}) : les 5 étapes, du cadrage au lancement sur les stores
-- [Application mobile sur mesure](${urlPublique('/application-mobile-sur-mesure')}) : prix (tarif fixe de 5 000 à 12 000 €), délai (45 jours), comment obtenir un devis
+- [Application mobile sur mesure](${urlPublique('/application-mobile-sur-mesure')}) : prix (tarif fixe, une dizaine de milliers d'euros, 15 000 à 18 000 € pour mobile et web), délai (45 jours), comment obtenir un devis
 - [Les applications que j'ai conçues](${urlPublique('/projets')}) : réalisations et résultats
 - [FAQ](${urlPublique('/faq')}) : budget, délai, reprise, stores, suivi après mise en ligne
 - [Qui je suis](${urlPublique('/a-propos')}) : parcours, preuves, profils, façon de travailler
