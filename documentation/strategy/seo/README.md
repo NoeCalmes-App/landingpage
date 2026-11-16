@@ -50,6 +50,34 @@ MàJ : 20/08/2026
 - **IndexNow** (depuis le 09/11/2026) : à chaque push sur `main`, la dernière étape de `.github/workflows/deploy.yml` envoie les URL du sitemap à `api.indexnow.org` (Bing, Yandex, Seznam). La clé vit dans `public/02be746d7eb78efdbd07bde9284dfb03.txt` ; ne pas renommer ce fichier. Réponse attendue dans le journal : `IndexNow : HTTP 202` ou `200`.
 - **Bing Webmaster Tools** (depuis le 09/11/2026) : noecalmes.fr et wakeupalarm.app importés depuis Search Console avec le compte noecalmes.pro@gmail.com, sitemap envoyé, 39 URL soumises. Les rapports à suivre : « Performances de l'IA » (citations par Copilot et les assistants appuyés sur Bing) et « Liens retour ». SmoothRide et Bailora retirés à la demande de Noé.
 
+## Stratégie arrêtée le 16/11/2026 : clients vite, autorité lentement
+
+Relevé Search Console des 28 jours au 14/11 : 9 clics, 1 870 impressions, position
+21,5. Le constat : 29 articles couvrent déjà les requêtes de la cible, le contenu
+n'est plus le frein, l'autorité l'est (un seul lien externe). Donc :
+
+- **Des clients vite, ce n'est pas le SEO.** À 9 clics par mois, aucune page ne
+  ramène un client avant 4 à 6 mois. La prospection, les pubs Meta, la fiche
+  Google Business et les avis restent la source de clients. Le SEO sert d'abord à
+  ce que celui qui googlise Noé après un message trouve des preuves (avis
+  Trustpilot, pages d'offre, projets).
+- **Court terme (0 à 3 mois) : des pages d'offre sur les requêtes d'acheteur**,
+  petites en volume mais près de l'argent : « application mobile sur mesure »,
+  « devis application mobile », « expert application mobile », Toulouse. Pas un
+  article : le prix, le délai, la méthode, un bouton. Première page en ligne le
+  16/11 : `/application-mobile-sur-mesure`. Prochaine : l'application web / SaaS
+  sur mesure, le trou du site (aucune requête web dans Search Console alors que
+  c'est la moitié de l'offre). Puis une page d'offre par cas d'usage (créer,
+  reprendre, faire évoluer).
+- **Long terme (6 à 12 mois) : l'autorité.** Liens entrants (JDN, sites clients,
+  interviews, annuaires de qualité) avant tout nouvel article ; un article par
+  semaine uniquement sur une requête d'acheteur que Search Console montre déjà ;
+  titres avec un chiffre sur les pages en première page sans clic.
+- **On ne court pas après « création application mobile »** (223 impressions,
+  position 32) : requête d'agences, douze mois de liens pour y entrer.
+- Mesure le 07/12, puis chaque mois : clics, impressions, positions des pages
+  d'offre, nombre de liens externes.
+
 ## Semaine du 16/11/2026 : les pages existantes, pas de nouvel article
 
 La file (`idees-articles.md`, chantiers 3 à 7) demandait des enrichissements, pas
