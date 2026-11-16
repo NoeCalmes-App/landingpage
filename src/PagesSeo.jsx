@@ -473,7 +473,7 @@ export function PageSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer })
     appliquerMeta({
       path: '/application-mobile-sur-mesure',
       title: "Application mobile sur mesure : prix, délai, devis | Noé Calmes",
-      description: "Une application mobile ou web sur mesure, pensée pour rapporter : tarif fixe, une dizaine de milliers d'euros, 45 jours en moyenne, devis après un cadrage gratuit.",
+      description: "Application mobile ou web sur mesure, pensée pour rapporter. Tarif fixe, une dizaine de milliers d'euros, 45 jours en moyenne, devis après un appel.",
     })
   }, [])
 
