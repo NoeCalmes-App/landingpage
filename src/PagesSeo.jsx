@@ -102,7 +102,7 @@ function BlocAudit({ onAuditApp, onBookCall, titre, texte }) {
 const LIENS_MAILLAGE = [
   { href: '/expertise', titre: 'Concevoir une application qui rapporte', texte: "Ce que je fais qu'un développeur ne fait pas, et les preuves derrière." },
   { href: '/creation-application-mobile', titre: 'Ma méthode, étape par étape', texte: 'Du cadrage du modèle économique au lancement sur les stores.' },
-  { href: '/application-mobile-sur-mesure', titre: 'Application sur mesure : prix, délai, devis', texte: 'Tarif fixe, une dizaine de milliers d\'euros, 45 jours en moyenne, devis après un cadrage gratuit.' },
+  { href: '/application-mobile-sur-mesure', titre: 'Application sur mesure : prix, délai, devis', texte: 'Tarif fixe, 8 000 à 12 000 € en mobile, 6 000 à 10 000 € en web, 45 jours en moyenne, devis après un cadrage gratuit.' },
   { href: '/projets', titre: 'Les applications que j\'ai conçues', texte: '+1 million de téléchargements, 13 000 € par mois, +20 applications publiées.' },
   { href: '/faq', titre: 'Questions fréquentes', texte: 'Budget, délai, reprise, stores, ce qui se passe après la mise en ligne.' },
   { href: '/a-propos', titre: 'Qui je suis', texte: 'Mon parcours, mes preuves, et la façon dont je travaille avec toi.' },
@@ -456,12 +456,14 @@ export function PageMethode({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
 // couvre la methode, pas l'offre. Les chiffres viennent de l'article prix
 // (combien-coute-application-mobile) et de l'article delai : aucun chiffre neuf.
 
-// Les fourchettes portent le positionnement de Noé (16/11/2026) : une dizaine de
-// milliers d'euros pour une application mobile OU une application web (SaaS),
-// 15 000 à 18 000 € quand le projet a besoin des deux. La première version
+// Les fourchettes portent le positionnement de Noé (16/11/2026) : en moyenne
+// 8 000 à 12 000 € pour une application mobile, 6 000 à 10 000 € pour une
+// application web (SaaS), 15 000 à 18 000 € quand le projet a besoin des deux,
+// avec toujours des exceptions (le devis fait foi). La première version
 // resserrée à 5 000 à 8 000 € reste celle de l'article prix, en dernière ligne.
 const FOURCHETTES_SUR_MESURE = [
-  { projet: 'Application mobile, ou application web (SaaS)', detail: 'Un produit complet sur un support : les comptes, le paiement, les notifications, une administration, un vrai travail de design, la publication sur les stores ou la mise en ligne', prix: 'une dizaine de milliers d\'euros' },
+  { projet: 'Application mobile', detail: 'Un produit complet sur téléphone : les comptes, le paiement, les notifications, une administration légère, un vrai travail de design, la publication sur l\'App Store et Google Play', prix: '8 000 à 12 000 € en moyenne' },
+  { projet: 'Application web (SaaS)', detail: 'Un produit complet sur ordinateur : les comptes, les rôles, le paiement, un espace d\'administration, la mise en ligne sur ton nom de domaine', prix: '6 000 à 10 000 € en moyenne' },
   { projet: 'Application mobile et application web', detail: 'Les deux supports, par exemple une application pour tes clients sur téléphone et un espace de gestion sur ordinateur', prix: '15 000 à 18 000 €' },
   { projet: 'Première version resserrée', detail: 'Un type d\'utilisateur, cinq à huit écrans, le parcours principal et le paiement, pour tester que les gens paient avant d\'aller plus loin', prix: '5 000 à 8 000 €' },
 ]
@@ -473,7 +475,7 @@ export function PageSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer })
     appliquerMeta({
       path: '/application-mobile-sur-mesure',
       title: "Application mobile sur mesure : prix, délai, devis | Noé Calmes",
-      description: "Application mobile ou web sur mesure, pensée pour rapporter. Tarif fixe, une dizaine de milliers d'euros, 45 jours en moyenne, devis après un appel.",
+      description: "Application mobile ou web sur mesure, pensée pour rapporter. Tarif fixe : 8 000 à 12 000 € en mobile, 6 000 à 10 000 € en web, 45 jours en moyenne.",
     })
   }, [])
 
@@ -516,7 +518,7 @@ export function PageSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer })
         </div>
 
         <Corps>
-          <p>Compte une dizaine de milliers d'euros pour une application sur un support, téléphone ou ordinateur, et 15 000 à 18 000 € quand ton projet a besoin des deux. Une agence facture les mêmes projets 50 000 à 300 000 €, parce qu'elle fait payer une équipe, un chef de projet et des processus. Le détail de ce qui fait monter un devis est dans {lien('/blog/combien-coute-application-mobile', "l'article sur le prix d'une application mobile")}.</p>
+          <p>Ce sont des moyennes : le périmètre fait le prix, et il y a toujours des exceptions dans les deux sens, c'est le devis qui fait foi. Une agence facture les mêmes projets 50 000 à 300 000 €, parce qu'elle fait payer une équipe, un chef de projet et des processus. Le détail de ce qui fait monter un devis est dans {lien('/blog/combien-coute-application-mobile', "l'article sur le prix d'une application mobile")}.</p>
           <p>Le tarif est fixe : il est écrit dans le devis, et il ne bouge pas en cours de route. Pas de compteur horaire. Les corrections sont incluses pendant 30 jours après la mise en ligne.</p>
 
           <h2>Le délai</h2>
@@ -547,7 +549,7 @@ export function PageSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer })
             <p>Il comprend le cadrage, le design des écrans, le développement pour iPhone et Android, la publication sur l'App Store et Google Play ou la mise en ligne sur ordinateur, et 30 jours de corrections. Il ne comprend pas les frais fixes qui ne dépendent pas de moi : le compte développeur Apple, l'hébergement, et les services tiers que ton application utilise. Je te les liste avant, pour qu'il n'y ait pas de surprise. Le détail est dans {lien('/blog/combien-coute-application-mobile', 'ce que le devis ne dit pas')}.</p>
 
             <h2>Pour qui, et pour qui pas</h2>
-            <p>Pour un entrepreneur qui a une idée précise, une cible, et un budget d'une dizaine de milliers d'euros, et qui veut une application qui rapporte, pas seulement une application qui existe. Pour une entreprise qui a besoin d'un outil pour ses équipes ou ses clients. Pour une application déjà en ligne qui doit être {lien('/blog/reprendre-application-mobile-existante', 'reprise')} ou refondue.</p>
+            <p>Pour un entrepreneur qui a une idée précise, une cible, et un budget d'une dizaine de milliers d'euros en moyenne, et qui veut une application qui rapporte, pas seulement une application qui existe. Pour une entreprise qui a besoin d'un outil pour ses équipes ou ses clients. Pour une application déjà en ligne qui doit être {lien('/blog/reprendre-application-mobile-existante', 'reprise')} ou refondue.</p>
             <p>Pas pour un site vitrine, que je ne fais pas. Pas pour un projet sans réponse à la question « qui paie » : dans ce cas, on commence par y répondre, et {lien('/audit-app', 'le test de ton idée')} est fait pour ça.</p>
 
             <h2>Pourquoi un indépendant plutôt qu'une agence</h2>
