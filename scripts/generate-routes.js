@@ -845,7 +845,7 @@ const blogRoutes = [
   },
   {
     path: '/blog/idee-application-business-rentable',
-    heading: 'Comment transformer une idée d\'application en business rentable',
+    heading: 'Idée d\'application mobile : comment en faire un business rentable',
     content: 'De l\'idée au premier euro récurrent : formuler un problème payant, valider avant de développer, choisir le modèle de revenu avant la première ligne de code, construire un scénario chiffré prudent et mesurer les bons indicateurs. Une application que j\'ai conçue génère 13 000 € par mois.',
   },
   {
@@ -900,8 +900,8 @@ const blogRoutes = [
   },
   {
     path: '/blog/faire-evoluer-application-mobile',
-    heading: 'Comment faire évoluer une application mobile sans tout casser',
-    content: 'Ajouter des fonctionnalités, réduire la dette technique, améliorer l\'expérience : faire évoluer ton application sans tout casser.',
+    heading: 'Faire évoluer ou refondre une application mobile : par où commencer ?',
+    content: 'Faire évoluer une application, c\'est arbitrer : impact pour l\'utilisateur, impact sur le revenu, effort technique. La refonte ne se justifie que sur trois signaux : chaque ajout coûte plus cher que le précédent, le produit a changé de cible ou de modèle de revenu, ou la première version était un prototype qui a grossi. Une refonte se chiffre comme une création, 5 000 à 8 000 € pour une application resserrée, 8 000 à 12 000 € pour une application complète, 45 jours en moyenne, en gardant les comptes et les abonnements existants.',
   },
   {
     path: '/blog/mvp-application-mobile',

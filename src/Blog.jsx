@@ -752,7 +752,7 @@ export const BLOG_ARTICLES = [
       { q: "Peut-on aller plus vite que quatre semaines ?", a: "Oui, en réduisant le périmètre, jamais en compressant le travail. Une application à un seul type d'utilisateur, sans temps réel et sans paiement intégré, peut sortir plus vite. En revanche accélérer sans rien retirer produit une version fragile qu'il faut reprendre, et le temps regagné est perdu deux fois." },
     ],
     content: `
-      <p>C'est la deuxième question qu'on me pose, juste après <a href="/blog/combien-coute-application-mobile/">le prix</a>. Et la réponse honnête tient en deux temps, parce que la question en cache une autre.</p>
+      <p>Le temps de développement d'une application mobile, c'est <strong>4 à 6 semaines</strong> pour une application au périmètre clair, et <strong>45 jours</strong> en tout si on compte le cadrage avant et la mise en ligne après. C'est la deuxième question qu'on me pose, juste après <a href="/blog/combien-coute-application-mobile/">le prix</a>. Et la réponse honnête tient en deux temps, parce que la question en cache une autre.</p>
       <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Voici les vrais délais, y compris ceux dont personne ne parle.</p>
 
       <h2>La réponse courte</h2>
@@ -1803,8 +1803,8 @@ export const BLOG_ARTICLES = [
   },
   {
     slug: 'idee-application-business-rentable',
-    title: "Comment transformer une idée d'application en business rentable",
-    metaTitle: "Idée d'application : en faire un business rentable | Noé Calmes",
+    title: "Idée d'application mobile : comment en faire un business rentable",
+    metaTitle: "Idée d'application mobile : en faire un business | Noé Calmes",
     description: "La méthode pour passer d'une idée d'application à un vrai business : valider la valeur, choisir le revenu, concevoir la conversion, mesurer.",
     date: '2026-08-03',
     readTime: '7 min',
@@ -1832,7 +1832,7 @@ export const BLOG_ARTICLES = [
     ],
     faq: [
       { q: "Comment valider une idée sans développer l'application ?", a: "Tu vends l'idée avant de la construire : une page qui décrit l'offre, un formulaire, des conversations avec dix personnes de ta cible. Si personne ne s'inscrit ni ne pose de question sur le prix, le problème n'est pas assez douloureux." },
-      { q: "Il faut combien d'utilisateurs pour que ce soit rentable ?", a: "Beaucoup moins que ce que les gens imaginent. Une application à 9 000 € se rembourse avec environ 96 abonnés à 11 € par mois sur un an, une fois la TVA et la commission du store déduites. La question utile n'est pas « des millions ? » mais « est-ce que je peux atteindre 68 personnes ? »." },
+      { q: "Il faut combien d'utilisateurs pour que ce soit rentable ?", a: "Beaucoup moins que ce que les gens imaginent. Une application à 9 000 € se rembourse avec environ 96 abonnés à 11 € par mois sur un an, une fois la TVA et la commission du store déduites. La question utile n'est pas « des millions ? » mais « est-ce que je peux atteindre 96 personnes ? »." },
       { q: "Faut-il un cahier des charges avant de te contacter ?", a: "Non. Une idée et une cible suffisent. Traduire une idée en périmètre fait partie de mon travail, et un cahier des charges écrit trop tôt fige souvent de mauvaises décisions." },
     ],
     content: `
@@ -2241,7 +2241,7 @@ export const BLOG_ARTICLES = [
       <p>Toulouse a un tissu économique particulier, et certains profils reviennent plus souvent que d'autres dans les projets qu'on me soumet.</p>
       <ul>
         <li><strong>Les indépendants du sport et du bien-être.</strong> Coachs, studios, salles : suivi des adhérents, réservation de créneaux, abonnement. C'est le cas où l'application remplace un carnet et trois outils qui ne se parlent pas.</li>
-        <li><strong>Les formateurs et organismes.</strong> La ville en compte beaucoup, portés par les écoles et le tissu aéronautique. Une application change la fréquence d'usage d'une formation, là où une plateforme web est consultée une fois puis oubliée.</li>
+        <li><strong>Les formateurs et organismes.</strong> La ville en compte beaucoup, portés par les écoles et le tissu aéronautique. Une application change la fréquence d'usage d'une formation, là où un espace de cours ouvert sur ordinateur dépend de la discipline de l'apprenant : sur son téléphone, avec des rappels, la formation vient à lui.</li>
         <li><strong>Le commerce de proximité qui fidélise.</strong> Pas une vitrine, une raison de revenir : carte de fidélité, commande à l'avance, notification utile.</li>
         <li><strong>Les porteurs de projet issus de l'écosystème local.</strong> Sortie d'école, essaimage, reconversion : un premier produit à valider vite, sans lever de fonds.</li>
       </ul>
@@ -2679,25 +2679,27 @@ export const BLOG_ARTICLES = [
   },
   {
     slug: 'faire-evoluer-application-mobile',
-    title: 'Faire évoluer une application mobile : par où commencer ?',
-    metaTitle: "Faire évoluer une application mobile | Noé Calmes",
-    description: "Ajouter des fonctionnalités, réduire la dette technique, améliorer l'expérience : faire évoluer ton application sans tout casser.",
+    title: 'Faire évoluer ou refondre une application mobile : par où commencer ?',
+    metaTitle: "Faire évoluer ou refondre une application mobile | Noé Calmes",
+    description: "Ajouter des fonctionnalités, réduire la dette technique ou refondre : comment décider, ce que coûte une refonte, et avancer sans tout casser.",
     date: '2026-04-29',
-    readTime: '5 min',
+    dateMaj: '2026-11-16',
+    readTime: '7 min',
     finalCta: 'whatsapp',
     categorie: "Reprendre",
     accroche: "Ajouter sans casser, et sans faire gonfler la maintenance.",
     tldr: {
-      verdict: "Faire évoluer une application, ce n'est pas ajouter des fonctionnalités : c'est arbitrer. Chaque ajout alourdit le produit, et une application qui grossit sans direction devient plus difficile à utiliser et plus chère à maintenir.",
+      verdict: "Faire évoluer une application, ce n'est pas ajouter des fonctionnalités : c'est arbitrer. Chaque ajout alourdit le produit, et une application qui grossit sans direction devient plus difficile à utiliser et plus chère à maintenir. La refonte, elle, ne se décide que sur trois signaux précis.",
       points: [
-        { label: "Le sujet", valeur: "Ajouter, prioriser et réduire la dette sans tout casser" },
+        { label: "Le sujet", valeur: "Ajouter, prioriser, réduire la dette, ou refondre" },
         { label: "Pour qui", valeur: "Ton application est en ligne et doit avancer" },
         { label: "À retenir", valeur: "La mise en ligne n'est pas la fin du projet, c'est le début" },
-        { label: "Bonne pratique", valeur: "Ce sont les chiffres d'usage qui décident, pas les avis" },
+        { label: "Refonte", valeur: "Se chiffre comme une création, dans les mêmes fourchettes" },
       ],
     },
     pourQui: [
       "Ton application fonctionne et tu veux la faire grandir",
+      "Tu te demandes s'il faut refondre ton application ou continuer à la faire évoluer",
       "Tu accumules des demandes d'utilisateurs et tu dois trancher",
       "Tu sens que la dette technique commence à ralentir les ajouts",
     ],
@@ -2710,17 +2712,19 @@ export const BLOG_ARTICLES = [
       { q: "Comment décider quelle fonctionnalité ajouter ?", a: "Regarde ce que font réellement tes utilisateurs, pas ce qu'ils demandent. Une demande exprimée par trois personnes bruyantes pèse moins qu'un comportement observé sur des centaines. Priorise ce qui rapproche du moment de valeur ou de l'achat." },
       { q: "C'est quoi la dette technique, concrètement ?", a: "Des raccourcis pris pendant le développement qui font que chaque nouvelle fonctionnalité prend plus de temps que la précédente. Elle est invisible tant qu'on n'ajoute rien, et elle devient le principal poste de coût dès qu'on veut avancer." },
       { q: "À quelle fréquence mettre à jour une application ?", a: "Au minimum à chaque version majeure d'iOS et d'Android, sinon l'application finit par être retirée des stores. Au-delà, le rythme dépend de ton activité : mieux vaut des mises à jour régulières et petites que des refontes annuelles." },
+      { q: "Combien coûte une refonte d'application mobile ?", a: "Comme une création, parce que c'en est une : on repart du périmètre, pas du code. Compte les mêmes fourchettes, de 5 000 à 8 000 € pour une application resserrée, 8 000 à 12 000 € pour une application complète, et 45 jours en moyenne du cadrage à la mise en ligne. Ce qui change par rapport à une première version : on sait déjà ce que les utilisateurs font, donc on coupe ce qu'ils n'utilisent pas." },
+      { q: "Refonte ou reprise : quelle différence ?", a: "Une reprise, c'est continuer le code existant avec un nouveau prestataire, après un audit. Une refonte, c'est reconstruire. L'audit de reprise tranche entre les deux : si le code est lisible et à jour, on reprend ; s'il faut plus de temps pour le comprendre que pour le refaire, on refond." },
     ],
     content: `
-      <p>Ton application mobile est en ligne. Elle fonctionne. Mais elle doit avancer, nouvelles fonctionnalités, améliorations UX, optimisations techniques, adaptation aux retours utilisateurs.</p>
-      <p>Faire évoluer une application mobile, ce n'est pas juste "ajouter des choses". C'est arbitrer, prioriser, et construire de façon à ce que le produit reste maintenable et cohérent dans le temps.</p>
+      <p>Ton application mobile est en ligne. Elle fonctionne. Mais elle doit avancer : nouvelles fonctionnalités, meilleure expérience, retours des utilisateurs à prendre en compte. Et parfois, la question qui arrive est plus lourde : faut-il la refondre ?</p>
+      <p>Faire évoluer une application mobile, ce n'est pas juste « ajouter des choses ». C'est arbitrer, prioriser, et construire de façon à ce que le produit reste maintenable et cohérent dans le temps. La refonte, elle, ne se décide pas sur une impression : il y a trois signaux, et un prix.</p>
 
       <h2>Pourquoi l'évolution d'une app est souvent sous-estimée</h2>
       <p>La mise en ligne n'est pas la fin du projet : c'est le début. Une application qui ne change pas est une application qui prend du retard sur ses concurrents, qui accumule de la dette technique, et qui perd progressivement ses utilisateurs.</p>
       <p>Les erreurs les plus fréquentes à ce stade :</p>
       <ul>
         <li>Ajouter des fonctionnalités sans réfléchir à la cohérence d'ensemble</li>
-        <li>Négliger la dette technique au profit de nouvelles features, jusqu'à ce que tout casse</li>
+        <li>Négliger la dette technique au profit de nouvelles fonctionnalités, jusqu'à ce que tout casse</li>
         <li>Ne pas prioriser selon l'usage réel des utilisateurs</li>
         <li>Vouloir tout faire en même temps</li>
       </ul>
@@ -2729,7 +2733,7 @@ export const BLOG_ARTICLES = [
       <p>Avant de commencer à développer quoi que ce soit, pose-toi trois questions :</p>
       <ul>
         <li><strong>Quel est l'impact utilisateur ?</strong> Cette évolution améliore-t-elle vraiment l'expérience ou la valeur pour l'utilisateur ?</li>
-        <li><strong>Quel est l'impact business ?</strong> Est-ce que ça génère plus de revenus, réduit le churn, améliore la rétention ?</li>
+        <li><strong>Quel est l'impact sur le revenu ?</strong> Est-ce que ça fait payer plus de clients, ou rester ceux qui paient déjà ?</li>
         <li><strong>Quel est l'effort technique ?</strong> Certaines évolutions à fort impact peuvent être réalisées rapidement. D'autres demandent un travail de fond important.</li>
       </ul>
       <p>Les meilleures évolutions sont celles qui ont un fort impact et un effort raisonnable. Commence par là.</p>
@@ -2743,13 +2747,30 @@ export const BLOG_ARTICLES = [
       <p>Apple et Google imposent régulièrement des mises à jour obligatoires, nouvelles versions du SDK, nouvelles guidelines, nouvelles exigences de sécurité. Ne pas les suivre, c'est risquer le retrait de l'app des stores.</p>
       <p>Un expert en applications mobiles qui reste disponible après le lancement prend en charge ces mises à jour techniques, tu n'as pas à t'en préoccuper.</p>
 
-      <h2>Évolution vs refonte : quelle différence ?</h2>
-      <p>Une évolution, c'est faire avancer ce qui existe, en ajoutant, en améliorant, en optimisant. Une refonte, c'est remettre en question l'architecture ou l'UX de façon profonde.</p>
-      <p>La plupart du temps, une série d'évolutions bien priorisées est plus efficace qu'une grande refonte. Les grandes refontes prennent du temps, coûtent cher, et introduisent souvent de nouveaux problèmes.</p>
-      <p>Quand une refonte s'impose, c'est en général parce que la dette technique est trop importante ou parce que le positionnement du produit a fondamentalement changé.</p>
+      <h2>Évolution ou refonte : quelle différence ?</h2>
+      <p>Une évolution, c'est faire avancer ce qui existe, en ajoutant, en améliorant, en optimisant. Une refonte, c'est reconstruire : on repart du périmètre et des écrans, et le code existant sert au mieux de documentation.</p>
+      <p>La plupart du temps, une série d'évolutions bien priorisées est plus efficace qu'une grande refonte. Une refonte prend du temps, coûte le prix d'une création, et remet en jeu des choses qui marchaient. Je la déconseille tant qu'un des trois signaux ci-dessous n'est pas là.</p>
 
-      <h2>Tu as une application mobile à faire évoluer ?</h2>
-      <p>Écris-moi sur WhatsApp, on regarde ta situation concrète. Un appel de 30 minutes permet d'identifier les priorités et de voir comment avancer de façon structurée, gratuit, sans engagement.</p>
+      <h2>Refonte d'application mobile : les trois signaux qui la justifient</h2>
+      <p>Trois situations, et seulement trois, où refondre coûte moins cher que continuer.</p>
+      <ol>
+        <li><strong>Chaque ajout coûte plus cher que le précédent.</strong> C'est la dette technique arrivée au bout : les dépendances ne se mettent plus à jour, une fonctionnalité de deux jours en prend dix, et aucun développeur ne veut toucher au code. Le signe le plus sûr : le devis pour une petite évolution dépasse ce qu'elle rapportera.</li>
+        <li><strong>Le produit a changé de cible ou de modèle de revenu.</strong> Une application pensée gratuite qui doit passer à l'abonnement, ou qui s'adressait aux particuliers et vise maintenant les professionnels, ne se corrige pas écran par écran : le parcours entier est à repenser, et c'est le parcours qui fait <a href="/blog/rentabiliser-application-mobile/">le revenu</a>.</li>
+        <li><strong>La première version était un prototype qui a grossi.</strong> Une application générée par un outil ou codée vite pour tester, à laquelle on a ajouté des fonctionnalités pendant un an parce que ça marchait. Elle tourne, mais plus personne ne peut la lire. C'est le cas le plus fréquent depuis l'arrivée de l'IA, et celui où attendre coûte le plus.</li>
+      </ol>
+      <p>Si aucun des trois ne s'applique, ton application a besoin d'évolutions, pas d'une refonte. Et si tu n'es pas sûr, un <a href="/blog/reprendre-application-mobile-existante/">audit de reprise</a> tranche sur le code réel, pas sur une impression.</p>
+
+      <h2>Ce que coûte une refonte, et comment la mener sans tout casser</h2>
+      <p>Une refonte se chiffre comme une création, parce que c'en est une : <a href="/blog/combien-coute-application-mobile/">les mêmes fourchettes</a>, 5 000 à 8 000 € pour une application resserrée, 8 000 à 12 000 € pour une application complète, et 45 jours en moyenne du cadrage à la mise en ligne. Elle a pourtant un avantage que la première version n'avait pas : tu sais ce que tes utilisateurs font vraiment. On coupe ce qu'ils n'ouvrent jamais, on garde ce qui les fait revenir, et la nouvelle version est souvent plus simple que l'ancienne.</p>
+      <p>Trois règles pour ne pas perdre les utilisateurs en route :</p>
+      <ul>
+        <li><strong>L'ancienne version reste en ligne</strong> jusqu'au jour où la nouvelle la remplace, sur les mêmes fiches App Store et Google Play. Tes utilisateurs font une mise à jour, pas une réinstallation.</li>
+        <li><strong>Les comptes et les abonnements sont repris tels quels.</strong> Personne ne doit se réinscrire ni repayer. C'est la partie la plus délicate techniquement, et celle qu'on cadre en premier.</li>
+        <li><strong>On ne refait pas tout d'un coup si on peut l'éviter.</strong> Quand le socle le permet, on refond parcours par parcours, en commençant par celui qui mène au paiement.</li>
+      </ul>
+
+      <h2>Tu as une application mobile à faire évoluer, ou à refondre ?</h2>
+      <p>Écris-moi sur WhatsApp, on regarde ta situation concrète. Un appel de 30 minutes permet de dire si c'est une évolution ou une refonte, d'identifier les priorités et de voir comment avancer de façon structurée, gratuit, sans engagement.</p>
     `,
   },
   {
@@ -2791,6 +2812,7 @@ export const BLOG_ARTICLES = [
     content: `
       <p>Tu as une idée d'application. Tu veux la lancer sans y mettre toutes tes économies, sans attendre un an, et sans construire quelque chose que personne n'utilisera.</p>
       <p>C'est exactement ce à quoi sert un MVP. Encore faut-il savoir ce qu'on met dedans, et surtout ce qu'on en retire.</p>
+      <p>Si tu en es encore à te demander si ton idée tient debout, commence par l'étape d'avant : <a href="/blog/idee-application-business-rentable/">transformer une idée d'application mobile en business rentable</a>. Le MVP vient après, quand le problème payant est identifié.</p>
       <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et la plupart ont commencé par une première version resserrée.</p>
 
       <h2>Ce que veut dire MVP, concrètement</h2>
@@ -2925,6 +2947,21 @@ export const BLOG_ARTICLES = [
       <h3>L'expert indépendant spécialisé</h3>
       <p>Un profil qui combine expertise technique et compréhension produit. Il connaît son domaine en profondeur, il t'aide à cadrer autant qu'à construire. Il est joignable directement, pas de chef de projet intermédiaire.</p>
       <p>C'est le profil le plus pertinent pour la majorité des projets d'application mobile : plus accessible qu'une agence, plus structuré qu'un généraliste.</p>
+
+      <h3>Les trois profils en un tableau</h3>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Profil</th><th>Budget pour une application complète</th><th>Ce qui est inclus</th><th>Pour qui</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Agence digitale</td><td>50 000 à 300 000 €, six à douze mois</td><td>Une équipe, un chef de projet, des processus</td><td>Un projet à plusieurs équipes ou un grand compte</td></tr>
+            <tr><td>Freelance généraliste</td><td>Variable, souvent facturé au temps passé</td><td>Le développement de ce que tu as spécifié</td><td>Un projet déjà cadré, avec quelqu'un qui pilote</td></tr>
+            <tr><td>Expert indépendant spécialisé</td><td>5 000 à 12 000 €, 45 jours en moyenne</td><td>Le cadrage, le design, le développement, la mise en ligne</td><td>Un entrepreneur qui veut une application qui rapporte, sans équipe technique</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Les fourchettes de l'expert indépendant sont celles de <a href="/blog/combien-coute-application-mobile/">l'article sur le prix d'une application</a> : un prix fixe par périmètre, pas un taux horaire. L'écart avec l'agence vient des marges et des intermédiaires, pas de la qualité du code.</p>
 
       <h2>Les critères qui comptent vraiment</h2>
 
