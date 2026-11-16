@@ -68,7 +68,7 @@ Le délai est un argument secondaire. Si le prospect veut aller vite, je peux ca
 - Pas une agence lente et chère
 - Un seul expert, joignable directement 6j/7
 - Tarif fixe, zéro surprise
-- **Fourchettes (données par Noé le 16/11/2026, toujours des exceptions, le devis fait foi)** : 8 000 à 12 000 € en moyenne pour une application mobile, 6 000 à 10 000 € en moyenne pour une application web (SaaS), 15 000 à 18 000 € quand le projet a besoin des deux. Une première version resserrée reste possible à 5 000 à 8 000 €. L'accueil et la pub disent « À partir de 5 000 € » (voir plus bas) ; les pages d'offre (`/application-mobile-sur-mesure`) donnent les moyennes.
+- **Fourchettes (données par Noé le 16/11/2026, toujours des exceptions, le devis fait foi)** : 8 000 à 12 000 € en moyenne pour une application mobile, 6 000 à 10 000 € en moyenne pour une application web (SaaS), 15 000 à 18 000 € quand le projet a besoin des deux. Une première version resserrée reste possible à 5 000 à 8 000 €. L'accueil et la pub disent « À partir de 5 000 € » (voir plus bas), on n'y touche pas. Les pages d'offre (`/application-mobile-sur-mesure`, `/application-web-sur-mesure`) ne publient PAS de moyenne mais des paliers par périmètre (première version, complète, dense, les deux supports), jusqu'à 15 000 € puis 15 000 à 18 000 € : un chiffre publié devient un plafond dans la tête du prospect, et un devis haut doit tomber dans une case qu'il a déjà lue (Noé, 16/11). Jamais les deux supports côte à côte sur une même page (décision du 05/10).
 - Délais cadrés selon le projet — 45 jours possibles pour une première version claire et urgente
 
 ---

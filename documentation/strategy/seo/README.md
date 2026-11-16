@@ -67,8 +67,8 @@ n'est plus le frein, l'autorité l'est (un seul lien externe). Donc :
   priorité (Noé, 16/11 : ses clients viennent des grandes villes, Paris, Monaco ;
   la page Toulouse reste, on n'en fait pas d'autres par ville). Pas un
   article : le prix, le délai, la méthode, un bouton. Première page en ligne le
-  16/11 : `/application-mobile-sur-mesure`. Prochaine : l'application web / SaaS
-  sur mesure, le trou du site (aucune requête web dans Search Console alors que
+  16/11 : `/application-mobile-sur-mesure` et `/application-web-sur-mesure` (le
+  trou du site (aucune requête web dans Search Console alors que
   c'est la moitié de l'offre). Puis une page d'offre par cas d'usage (créer,
   reprendre, faire évoluer).
 - **Long terme (6 à 12 mois) : l'autorité.** Liens entrants (JDN, sites clients,

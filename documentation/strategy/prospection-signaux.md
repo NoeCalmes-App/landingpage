@@ -42,6 +42,7 @@ Ordres de grandeur donnés par Noé le 02/11 : application web à partir de 5 00
 | **BODACC, ajout d'activité** | Une entreprise en activité ajoute « exploitation d'une application… » à son objet | Gratuit | Automatique, script |
 | **BODACC, création** | Une société est créée pour exploiter une application | Gratuit | Automatique, script |
 | **BODACC, hausse de capital** | Une entreprise d'application vient de remettre de l'argent dans sa société. Pour toutes les pistes, une hausse depuis deux ans est une preuve d'argent | Gratuit | Automatique, script |
+| **BODACC, ventes de fonds de commerce** (depuis le 10/11/2026) | Le prix est écrit dans l'annonce. « Vente de fonds » : une société vend un fonds et garde au moins deux établissements, elle vient d'encaisser et son affaire continue. « Achat d'un 2e établissement » : une société installée s'agrandit. Aucun des deux ne parle d'application : c'est l'argent prouvé, le projet reste à trouver par la recherche web. Liste à part, `ventes-de-fonds-….csv`, et seulement 22 % d'opposition à la prospection, contre 84 % pour les sociétés neuves | Gratuit | Automatique, script |
 | **Ulule, campagnes réussies** | Un porteur a collecté de l'argent pour son application, et dit souvent ce que l'argent va payer | Gratuit | Automatique, script |
 | **Bibliothèques de pubs Meta et Google** | La piste paie déjà de la publicité : elle dépense pour grandir | Gratuit | À la main, pour les pistes retenues |
 | **AFNIC, domaines .fr créés** | La piste vient de réserver « monappli.fr » : elle prépare sa sortie, et c'est l'adresse de son site | Gratuit | Automatique, script |
@@ -112,8 +113,10 @@ Par défaut, les 7 derniers jours. `--jours 30` ou `--depuis 2026-10-01` pour re
      - un fondateur qui dirige une société informatique, signalé dans la colonne « Fondateur technique ? » ;
      - une application déjà sur l'App Store.
 11. Il écrit `prospects-signaux/signaux-du-AAAA-MM-JJ-au-AAAA-MM-JJ.csv`, trié par note, avec des colonnes vides pour le suivi : contact, canal, message envoyé, relance, réponse, statut.
+12. **L'opposition à la prospection** (depuis le 10/11/2026). L'annuaire officiel publie pour chaque société le champ `opposition_diffusion_commerciale` : son représentant s'est opposé, au guichet unique, à l'usage de ses données pour la prospection (article R.123-320 du code de commerce). Le script écarte ces sociétés et le dit dans son compte rendu. Mesuré le 06/11/2026 : 84 % des pistes de la liste BODACC, presque 100 % des sociétés créées depuis 2025, 15 à 17 % des sociétés d'avant 2023. La colonne « Opposition à la prospection » vaut « non » ou « inconnue » (champ absent du registre). La portée exacte de l'opposition, pour un contact trouvé sur le site de l'entreprise, n'a pas été tranchée par un juriste : en attendant, c'est une exclusion. `revoir-vivier.mjs` signale aussi les « À creuser » passées en opposition. Premier passage avec ce filtre, le 10/11/2026 sur 7 jours : 424 pistes après tri du bruit, 210 en non-diffusion, 311 en opposition, 32 écrites. La liste est quatre à cinq fois plus courte qu'avant, mais on peut écrire à tout le monde dedans.
+13. **Les ventes de fonds de commerce**, dans une liste à part, `prospects-signaux/ventes-de-fonds-du-…-au-….csv`. Le script lit les avis initiaux de la famille « vente » qui portent un prix, de 50 000 € à 3 M€ (en dessous, un petit commerce qui ferme ; au-delà, une opération de groupe). Il garde le vendeur si c'est une société (jamais une personne physique : pas de contact professionnel, adresse peut-être personnelle), active, de moins de dix salariés, hors holding, foncière et informatique, qui garde au moins deux établissements ouverts (le fonds vendu compte peut-être encore). Il garde l'acheteur quand l'annonce parle d'un établissement « secondaire ou complémentaire » : une société installée qui s'agrandit. Les mêmes vérifications que pour les autres pistes s'ajoutent : annuaire, profil du fondateur, hausse de capital, domaine .fr. La note part de 3, monte avec le prix (100 000 €, 150 000 €), l'ancienneté, un secteur proche des clients de Noé, et baisse de 2 pour un vendeur de plus de 62 ans, qui part souvent à la retraite. L'adresse de l'ancien propriétaire, écrite dans l'annonce, n'est jamais lue ni stockée. `--sans-ventes` saute cette partie. Premier passage, le 10/11/2026 sur 7 jours : 602 ventes publiées, 385 sociétés à vérifier, 153 vendeurs sans autre établissement et 47 sociétés hors cible écartés, 44 gardés (29 vendeurs, 15 acheteurs), tous sans opposition, par exemple un coiffeur de 45 ans qui vend un salon et en garde un autre, ou un restaurateur de 48 ans qui ouvre un troisième restaurant. La note part plus haut que celle des pistes d'application : les deux listes ne se comparent pas.
 
-Durée : environ 5 minutes, car l'App Store limite le rythme des recherches. `--sans-app-store` et `--sans-afnic` vont plus vite.
+Durée : environ 8 minutes, car l'App Store limite le rythme des recherches et l'annuaire se lit à 7 fiches par seconde. `--sans-app-store`, `--sans-afnic` et `--sans-ventes` vont plus vite.
 
 **Le vivier** : `node scripts/prospection/revoir-vivier.mjs` revoit chaque lundi toutes les « À creuser » des semaines passées. Beaucoup manquent d'un seul signe. Le script refait les vérifications gratuites (nouvelle annonce BODACC, domaine .fr réservé, salariés ou chiffre d'affaires apparus, application sortie) et écrit `vivier-AAAA-MM-JJ.csv` et `vivier.json` avec celles qui ont bougé. La commande du lundi les requalifie. Un tri unique devient un stock qui mûrit.
 
@@ -162,7 +165,8 @@ Il écrit `prospects-signaux/ulule-AAAA-MM-JJ.csv` avec ce que finance l'argent 
    - une levée de fonds, un prêt d'honneur ou un incubateur ;
    - une collecte réussie ;
    - un commerce de plus de trois ans avec au moins 50 avis Google ;
-   - de la publicité payée.
+   - de la publicité payée ;
+   - un fonds de commerce vendu ou acheté, prix écrit au BODACC (depuis le 10/11/2026).
 
    « Le fondateur dirige une autre entreprise », une holding, l'ancienneté ou des abonnés ne comptent jamais seuls.
 2. Au moins **un signe de démarrage** de moins de six mois. L'annonce légale seule ne suffit pas.
@@ -276,6 +280,8 @@ La ligne de sortie est là parce que la CNIL demande une possibilité de refus. 
 - **Coordonnées professionnelles seulement.** Jamais l'adresse personnelle d'un entrepreneur individuel, même si le BODACC la publie. Jamais un email deviné.
 - **Aucun contournement** : pas de faux navigateur ni de passage forcé d'une page bloquée pendant la recherche.
 - **Personnes en non-diffusion** : écartées par le script, ne pas les chercher à la main.
+- **Opposition à la prospection dans le registre** (champ `opposition_diffusion_commerciale` de l'annuaire) : écartée par le script depuis le 10/11/2026, et une piste déjà entrée dans Nowork qui se révèle en opposition ne reçoit plus de message ni de relance. Avant de lire ce champ, 4 des 6 personnes contactées les 2 et 3 novembre étaient en opposition. À faire trancher par un juriste : si l'opposition couvre aussi un contact publié par l'entreprise sur son propre site.
+- **Ventes de fonds** : jamais de vendeur personne physique, jamais l'adresse de l'ancien propriétaire, et le prix ne se cite pas dans le message.
 - **Aucune liste dans git.** Le dossier `prospects-signaux/` est ignoré ; ne jamais le forcer.
 - **Quelqu'un qui dit non** : on le note dans le Sheet et on ne lui écrit plus jamais.
 

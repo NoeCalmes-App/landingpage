@@ -552,6 +552,27 @@ fourchettes par profil (agence, freelance, indépendant) noté au brief 8.
 entreprise », position 48, publiée le 11/10) et `application-mobile-artisan`
 (position 33) sont jeunes et montent. Les revoir fin novembre.
 
+## Pages d'offre (depuis le 16/11/2026) : la file des pages de vente
+
+Une page d'offre vend à quelqu'un qui cherche un prestataire (prix, délai,
+méthode, bouton) ; un article explique à quelqu'un qui cherche à comprendre. Le
+site avait 29 articles et zéro page d'offre. Modèle : `PageSurMesure` dans
+`src/PagesSeo.jsx`, câblage dans la commande `.claude/skills/seo-lundi/`.
+
+1. ✅ `/application-mobile-sur-mesure` (16/11/2026) : « application mobile sur
+   mesure » (31 impressions, position 41), « devis application mobile » (9, 28).
+   Paliers de prix par périmètre, jamais une moyenne. **À mesurer le 07/12.**
+2. ✅ `/application-web-sur-mesure` (16/11/2026) : le trou du site, aucune
+   requête web dans Search Console faute de page. Paliers 6 000 à 15 000 €,
+   78 % contre 70 %, deux à trois semaines de moins. **À mesurer le 07/12** :
+   première apparition de requêtes « application web », « logiciel sur mesure »,
+   « SaaS sur mesure ».
+3. `à écrire` : reprendre une application (l'article existe, pas la page qui dit
+   l'audit, le prix, le délai, par où on commence).
+4. `à écrire` : faire évoluer ou refondre (même logique).
+5. `à écrire` : créer son application, la page du cas numéro un, qui renvoie
+   vers mobile ou web selon l'usage.
+
 ## Idées à ne PAS écrire
 
 Elles reviennent régulièrement à l'esprit, et elles sont mauvaises.
