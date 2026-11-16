@@ -340,6 +340,7 @@ const corpsSeoPages = {
   '/a-propos':
     corpsDepuisComposant('PagesSeo.jsx', 'PageAPropos')
     + `<ul>${lireProfils().map((p) => `<li><a href="${p.url}">${echapper(p.nom)}</a></li>`).join('')}</ul>`,
+  '/application-mobile-sur-mesure': corpsDepuisComposant('PagesSeo.jsx', 'PageSurMesure'),
   '/faq':
     corpsDepuisComposant('PagesSeo.jsx', 'PageFaq')
     + lireFaq().map((f) => `<h2>${echapper(f.q)}</h2><p>${echapper(f.a)}</p>`).join(''),
@@ -615,7 +616,7 @@ function patchHtml(html, {
   // Liens internes en forme finale (barre comprise) : chaque lien sans barre
   // coûte une redirection 301 à chaque passage de robot, et un maillage qui
   // pointe partout sur des redirections brouille la version canonique.
-  const siteNav = `<nav aria-label="Pages du site"><a href="https://noecalmes.fr/">Accueil</a> · <a href="${urlPublique('/expertise')}">Concevoir une application qui rapporte</a> · <a href="${urlPublique('/creation-application-mobile')}">Ma méthode</a> · <a href="${urlPublique('/blog')}">Blog</a> · <a href="${urlPublique('/audit-app')}">Tester ton idée</a> · <a href="${urlPublique('/faq')}">FAQ</a></nav>`
+  const siteNav = `<nav aria-label="Pages du site"><a href="https://noecalmes.fr/">Accueil</a> · <a href="${urlPublique('/expertise')}">Concevoir une application qui rapporte</a> · <a href="${urlPublique('/creation-application-mobile')}">Ma méthode</a> · <a href="${urlPublique('/application-mobile-sur-mesure')}">Application sur mesure et devis</a> · <a href="${urlPublique('/blog')}">Blog</a> · <a href="${urlPublique('/audit-app')}">Tester ton idée</a> · <a href="${urlPublique('/faq')}">FAQ</a></nav>`
   // Maillage du cluster dans le HTML brut : Google explore d'abord le HTML
   // servi, avant tout rendu JavaScript. Les liens « A lire aussi » doivent donc
   // exister ici aussi, pas seulement dans le DOM rendu par React.
@@ -664,6 +665,11 @@ const sectionRoutes = [
     path: '/creation-application-mobile',
     heading: 'Ma méthode pour créer une application mobile qui rapporte',
     content: 'Cinq étapes : cadrage du besoin et du modèle économique, conception du parcours qui mène à la valeur puis à l\'achat, développement sur une base propre iOS et Android, lancement sur l\'App Store et Google Play, puis suivi après la mise en ligne. 45 jours en moyenne pour une application mobile ou web, tarif fixe défini avant de commencer.',
+  },
+  {
+    path: '/application-mobile-sur-mesure',
+    heading: 'Application mobile sur mesure : prix, délai, et comment obtenir un devis',
+    content: 'Une application conçue pour ton activité, prise en charge du cadrage à la mise en ligne, à tarif fixe : 5 000 à 8 000 € pour une application au périmètre resserré, 8 000 à 12 000 € pour une application complète, une dizaine de milliers d\'euros avec deux profils ou du temps réel. 45 jours en moyenne, dont 4 à 6 semaines de développement. Le devis vient après un appel de 15 minutes et une première maquette, gratuits et sans engagement. Mobile ou web, selon l\'usage.',
   },
   {
     path: '/faq',
@@ -1325,10 +1331,11 @@ const baseHome = retirerFaqPage(baseHtml).replace(
 
 // Liens du pre-rendu en forme canonique : sans la barre finale, chacun coute
 // une 301 a chaque passage de robot.
-const navHome = ['/expertise', '/creation-application-mobile', '/projets', '/blog/combien-coute-application-mobile', '/blog', '/audit-app', '/faq', '/a-propos']
+const navHome = ['/expertise', '/creation-application-mobile', '/application-mobile-sur-mesure', '/projets', '/blog/combien-coute-application-mobile', '/blog', '/audit-app', '/faq', '/a-propos']
 const libelles = {
   '/expertise': 'Concevoir une application qui rapporte',
   '/creation-application-mobile': 'Ma méthode',
+  '/application-mobile-sur-mesure': 'Application sur mesure et devis',
   '/projets': 'Réalisations et méthode',
   '/blog/combien-coute-application-mobile': "Prix d'une application",
   '/blog': 'Blog',
@@ -1438,6 +1445,7 @@ application mobile ou web.
 - [Accueil](${urlPublique('/')}) : le positionnement et les preuves
 - [Concevoir une application qui rapporte](${urlPublique('/expertise')}) : ce que je fais qu'un développeur ne fait pas
 - [Ma méthode](${urlPublique('/creation-application-mobile')}) : les 5 étapes, du cadrage au lancement sur les stores
+- [Application mobile sur mesure](${urlPublique('/application-mobile-sur-mesure')}) : prix (tarif fixe de 5 000 à 12 000 €), délai (45 jours), comment obtenir un devis
 - [Les applications que j'ai conçues](${urlPublique('/projets')}) : réalisations et résultats
 - [FAQ](${urlPublique('/faq')}) : budget, délai, reprise, stores, suivi après mise en ligne
 - [Qui je suis](${urlPublique('/a-propos')}) : parcours, preuves, profils, façon de travailler
