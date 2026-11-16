@@ -470,7 +470,7 @@ comprendre ce qu'ils ont qu'elle n'a pas ; vérifier aussi qu'aucune page du sit
 ne lui fait concurrence (`/faq/`, le quiz budget, `pour-entreprise`, `artisan`,
 qui parlent tous de prix). Enrichir plutôt que créer.
 
-### 3. Les pages déjà en première page qui n'ont aucun clic
+### 3. Les pages déjà en première page qui n'ont aucun clic (réponse nette ajoutée le 16/11/2026 sur le délai)
 `combien-de-temps-creer-application-mobile` (268 impressions, position 9,7),
 `creer-application-sans-savoir-coder` (73, 9,1), `creation-application-mobile`
 (64, 10,7), `combien-rapporte-application-mobile` (55, 9,3). En dixième
@@ -479,14 +479,25 @@ de la remontée vers le top 5. Leviers : liens depuis la page Claude et l'accuei
 et une réponse plus nette en tête d'article à la question exacte tapée
 (« temps développement application mobile » est la première requête du délai).
 
-### 4. « Idée d'application mobile » : bien placé, sur la mauvaise page
+> **16/11/2026** : la première phrase de `combien-de-temps-creer-application-mobile`
+> répond désormais mot pour mot à cette requête (4 à 6 semaines de développement,
+> 45 jours en tout). Les liens depuis la page Claude et l'accueil restent à faire.
+
+### 4. ✅ « Idée d'application mobile » : bien placé, sur la mauvaise page (fait le 16/11/2026)
 28 impressions en position 3 à 4, zéro clic : Google y montre l'article **MVP**,
 pas `idee-application-business-rentable`. Problème d'intention, pas de
 classement. À faire : donner à `idee-application-business-rentable` un titre
 qui dit « idée d'application » dans les mots du chercheur, et ajouter dans
 l'article MVP une phrase et un lien vers lui.
 
-### 5. Refonte d'application, aucune page ne répond
+> **Fait le 16/11/2026.** Titre devenu « Idée d'application mobile : comment en
+> faire un business rentable », metaTitle « Idée d'application mobile : en faire un
+> business », slug inchangé. L'article MVP renvoie vers lui dès l'introduction
+> (« commence par l'étape d'avant »). Au passage, la FAQ disait « atteindre 68
+> personnes » à côté de « 96 abonnés » : reliquat du calcul en brut, corrigé.
+> **À mesurer le 07/12** : la page montrée sur « idée d'application mobile ».
+
+### 5. ✅ Refonte d'application, aucune page ne répond (fait le 16/11/2026)
 « refonte application » (25), « refonte application mobile », « refonte d'une
 application », « refonte applicative » : une trentaine d'impressions en
 position 78 à 84. `faire-evoluer-application-mobile` a déjà un H2 « Évolution
@@ -494,6 +505,16 @@ vs refonte », et `reprendre-application-mobile-existante` un « Reprendre ou
 reconstruire ? ». **Ne pas créer d'article** : enrichir `faire-evoluer` (titre
 qui contient « refonte », section développée), c'est un des trois cas d'usage
 de Noé et un client qui a déjà un budget.
+
+> **Fait le 16/11/2026.** `faire-evoluer-application-mobile` s'intitule « Faire
+> évoluer ou refondre une application mobile : par où commencer ? », avec
+> `dateMaj`. Deux H2 ajoutés : « Refonte d'application mobile : les trois signaux
+> qui la justifient » (dette au bout, changement de cible ou de modèle de revenu,
+> prototype qui a grossi) et « Ce que coûte une refonte, et comment la mener sans
+> tout casser » (mêmes fourchettes que la création, comptes et abonnements
+> repris). Deux FAQ : le coût d'une refonte, refonte ou reprise. Le mot
+> « churn » a été retiré au passage (vocabulaire de pair). **À mesurer le 07/12** :
+> impressions sur « refonte application ».
 
 ### 6. ✅ Article sœur de la page Claude, publié le 09/11/2026
 `creer-application-web-avec-claude` : « Créer une application web avec Claude :
@@ -513,10 +534,18 @@ logiciel avec Claude » prolongerait le seul sujet où le site est fort, et coll
 au repositionnement web. **Risque principal** : cannibaliser la page qui
 marche. Phase 0 stricte avant d'écrire.
 
-### 7. Les deux retouches notées sur les briefs abandonnés
+### 7. ✅ Les deux retouches notées sur les briefs abandonnés (faites le 16/11/2026)
 `coach-formateur` : la phrase « une plateforme web est consultée une fois puis
 oubliée » dévalorise le web, à reformuler. `choisir-expert` : le tableau des
 fourchettes par profil (agence, freelance, indépendant) noté au brief 8.
+
+> **Fait le 16/11/2026.** La phrase « consultée une fois puis oubliée » n'était pas
+> dans `coach-formateur` mais dans la page Toulouse (liste des projets
+> toulousains) : reformulée sans dévaloriser le web (l'espace de cours sur
+> ordinateur dépend de la discipline de l'apprenant, l'application vient à lui avec
+> des rappels). `choisir-expert` a son tableau « Les trois profils en un tableau »
+> (agence 50 000 à 300 000 €, freelance au temps passé, expert indépendant 5 000 à
+> 12 000 € et 45 jours), chiffres repris de l'article prix, sans chiffre nouveau.
 
 ### À ne pas toucher pour l'instant
 `application-mobile-pour-entreprise` (107 impressions sur « application mobile

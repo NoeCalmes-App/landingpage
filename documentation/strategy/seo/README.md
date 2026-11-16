@@ -50,6 +50,19 @@ MàJ : 20/08/2026
 - **IndexNow** (depuis le 09/11/2026) : à chaque push sur `main`, la dernière étape de `.github/workflows/deploy.yml` envoie les URL du sitemap à `api.indexnow.org` (Bing, Yandex, Seznam). La clé vit dans `public/02be746d7eb78efdbd07bde9284dfb03.txt` ; ne pas renommer ce fichier. Réponse attendue dans le journal : `IndexNow : HTTP 202` ou `200`.
 - **Bing Webmaster Tools** (depuis le 09/11/2026) : noecalmes.fr et wakeupalarm.app importés depuis Search Console avec le compte noecalmes.pro@gmail.com, sitemap envoyé, 39 URL soumises. Les rapports à suivre : « Performances de l'IA » (citations par Copilot et les assistants appuyés sur Bing) et « Liens retour ». SmoothRide et Bailora retirés à la demande de Noé.
 
+## Semaine du 16/11/2026 : les pages existantes, pas de nouvel article
+
+La file (`idees-articles.md`, chantiers 3 à 7) demandait des enrichissements, pas
+un article de plus. Faits : titre « idée d'application mobile » et relais depuis
+l'article MVP ; article évolution devenu « faire évoluer ou refondre », avec deux
+sections sur la refonte (signaux, coût) et `dateMaj` ; tableau des trois profils
+dans `choisir-expert` ; réponse mot pour mot à « temps de développement application
+mobile » en première phrase de l'article délai ; phrase qui dévalorisait le web
+corrigée sur la page Toulouse. Trois avis Trustpilot affichés sur l'accueil et
+/projets (11/11), fiche reliée au site (`sameAs`, page À propos). Reste du chantier
+2 (prix, position 69) : regarder les dix premiers résultats Google avant de
+toucher la page. À mesurer le 07/12.
+
 ## Chantier du 09/11/2026 : contrôle technique et pages à renforcer
 
 - HTTPS forcé dans GitHub Pages (http://noecalmes.fr répondait 200 sans redirection).
