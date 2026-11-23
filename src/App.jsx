@@ -62,6 +62,11 @@ const GuestRideMockups = lazy(() => import('./GuestRideMockups.jsx'))
 const ImmoMatchMockups = lazy(() => import('./ImmoMatchMockups.jsx'))
 const VietCollabMockups = lazy(() => import('./VietCollabMockups.jsx'))
 const PulsoMockups = lazy(() => import('./PulsoMockups.jsx'))
+// Tableau de bord d'exemple (données fictives) : ce que le client suivra une
+// fois son application en ligne. PROVISOIRE (23/11/2026) : en ligne pour être
+// vérifiée en production, à retirer ensuite avec son entrée de
+// `scripts/generate-routes.js`.
+const TableauDeBordExemple = lazy(() => import('./TableauDeBordExemple.jsx'))
 const AuditApp = lazy(() => import('./audit-app/AuditApp.jsx'))
 const Projets = lazy(() => import('./Projets.jsx'))
 
@@ -306,6 +311,7 @@ function App() {
     if (path.toLowerCase() === '/maquette/aretha') return 'aretha-mockups'
     if (path.toLowerCase() === '/maquette/vietcollab') return 'vietcollab-mockups'
     if (path.toLowerCase() === '/maquette/pulso') return 'pulso-mockups'
+    if (['/exemple/tableau-de-bord', '/tableau-de-bord'].includes(path.toLowerCase())) return 'tableau-de-bord-exemple'
     if (['/maquette/pac-assist', '/maquette/cvc-assist', '/maquette/pacassist', '/maquette/cvcassist'].includes(path.toLowerCase())) return 'pac-assist-mockups'
     if (['/maquette/kingfit-coach', '/maquette/kingfit', '/maquette/coach-app', '/maquette/app-coach'].includes(path.toLowerCase())) return 'coach-app-mockups'
     if (['/maquette/blush', '/maquette/blush-rencontre', '/maquette/blushrencontre'].includes(path.toLowerCase())) return 'blush-mockups'
@@ -670,6 +676,7 @@ function App() {
   if (page === 'aretha-mockups') return <Suspense fallback={null}><ArethaMockups /></Suspense>
   if (page === 'vietcollab-mockups') return <Suspense fallback={null}><VietCollabMockups /></Suspense>
   if (page === 'pulso-mockups') return <Suspense fallback={null}><PulsoMockups /></Suspense>
+  if (page === 'tableau-de-bord-exemple') return <Suspense fallback={null}><TableauDeBordExemple /></Suspense>
   if (page === 'pac-assist-mockups') return <Suspense fallback={null}><PacAssistMockups /></Suspense>
   if (page === 'coach-app-mockups') return <Suspense fallback={null}><CoachAppMockups /></Suspense>
   if (page === 'blush-mockups') return <Suspense fallback={null}><BlushMockups /></Suspense>

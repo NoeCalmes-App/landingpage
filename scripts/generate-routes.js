@@ -1309,7 +1309,11 @@ const legacyRoutes = ['/offre', '/contact', '/merci']
 // ne s'affichaient que grace au script de rattrapage du `404.html` — le client
 // voyait passer une page d'erreur, et Google enregistrait un 404 sur des
 // adresses collees dans des devis signes.
-const noindexRoutes = ['/avis', '/rendez-vous', '/mentions', '/privacy', '/cgv', '/documents', '/documents/app-mobile', ROUTE_APP_WEB, ...ROUTES_GUIDES, ...ROUTES_GUIDES_WEB, ...ANCIENNES_ROUTES_GUIDES, '/contactnoe', '/legal', '/espace-client', '/maquette-visuel', ...legacyRoutes]
+// `/exemple/tableau-de-bord` (23/11/2026) : tableau de bord d'exemple, données
+// fictives, mis en ligne pour être vérifié en production. PROVISOIRE : Noé
+// veut retirer la page ensuite (cette entrée, la route d'`App.jsx`,
+// `TableauDeBordExemple.jsx` et son CSS).
+const noindexRoutes = ['/exemple/tableau-de-bord', '/avis', '/rendez-vous', '/mentions', '/privacy', '/cgv', '/documents', '/documents/app-mobile', ROUTE_APP_WEB, ...ROUTES_GUIDES, ...ROUTES_GUIDES_WEB, ...ANCIENNES_ROUTES_GUIDES, '/contactnoe', '/legal', '/espace-client', '/maquette-visuel', ...legacyRoutes]
 
 for (const path of noindexRoutes) {
   let html = retirerFaqPage(baseHtml)
