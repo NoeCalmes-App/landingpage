@@ -2674,7 +2674,7 @@ export const BLOG_ARTICLES = [
       <p>Dans tous les cas, cette décision doit être prise après un audit sérieux, pas sur une impression ou une hypothèse.</p>
 
       <h2>Tu as une application mobile à reprendre ?</h2>
-      <p>Discutons-en. Écris-moi sur WhatsApp avec le lien de ton application et ce qui bloque. Je regarde, j'évalue les enjeux et je te dis franchement ce qui est récupérable.</p>
+      <p>Discutons-en. Écris-moi sur WhatsApp avec le lien de ton application et ce qui bloque. Je regarde, j'évalue les enjeux et je te dis franchement ce qui est récupérable. Comment ça se passe, l'audit, le prix et le délai : <a href="/refonte-application-mobile/">refonte ou reprise d'une application existante</a>.</p>
     `,
   },
   {
@@ -2770,7 +2770,7 @@ export const BLOG_ARTICLES = [
       </ul>
 
       <h2>Tu as une application mobile à faire évoluer, ou à refondre ?</h2>
-      <p>Écris-moi sur WhatsApp, on regarde ta situation concrète. Un appel de 30 minutes permet de dire si c'est une évolution ou une refonte, d'identifier les priorités et de voir comment avancer de façon structurée, gratuit, sans engagement.</p>
+      <p>Écris-moi sur WhatsApp, on regarde ta situation concrète. Un appel de 30 minutes permet de dire si c'est une évolution ou une refonte, d'identifier les priorités et de voir comment avancer de façon structurée, gratuit, sans engagement. L'audit, le prix et le délai d'une refonte sont sur <a href="/refonte-application-mobile/">la page refonte ou reprise</a>.</p>
     `,
   },
   {

@@ -104,6 +104,7 @@ const LIENS_MAILLAGE = [
   { href: '/creation-application-mobile', titre: 'Ma méthode, étape par étape', texte: 'Du cadrage du modèle économique au lancement sur les stores.' },
   { href: '/application-mobile-sur-mesure', titre: 'Application sur mesure : prix, délai, devis', texte: 'Tarif fixe de 5 000 à 15 000 € selon le périmètre, 45 jours, devis après un cadrage gratuit.' },
   { href: '/application-web-sur-mesure', titre: 'Application web sur mesure : prix, délai, devis', texte: 'Un logiciel en ligne pour ton activité, tarif fixe de 6 000 à 15 000 € selon le périmètre, sans commission de store.' },
+  { href: '/refonte-application-mobile', titre: 'Refonte ou reprise d\'une application existante', texte: 'Un audit court qui tranche, puis reprise ou refonte à tarif fixe, en gardant tes utilisateurs et leurs comptes.' },
   { href: '/projets', titre: 'Les applications que j\'ai conçues', texte: '+1 million de téléchargements, 13 000 € par mois, +20 applications publiées.' },
   { href: '/faq', titre: 'Questions fréquentes', texte: 'Budget, délai, reprise, stores, ce qui se passe après la mise en ligne.' },
   { href: '/a-propos', titre: 'Qui je suis', texte: 'Mon parcours, mes preuves, et la façon dont je travaille avec toi.' },
@@ -722,6 +723,156 @@ export function PageWebSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer
         <ResumerAvecIA chemin="/application-web-sur-mesure" titre="Application web sur mesure : prix, délai, et comment obtenir un devis" />
 
         <MaillageInterne exclure={['/application-web-sur-mesure']} onNaviguer={onNaviguer} />
+      </main>
+      <RetourEnHaut />
+    </Coquille>
+  )
+}
+
+// ─── /refonte-application-mobile ─────────────────────────────────────────────
+//
+// Page d'offre des cas 2 et 3 du positionnement (reprendre, faire evoluer ou
+// refondre), ajoutee le 23/11/2026. Search Console (28 jours au 21/11) : depuis
+// l'enrichissement « refonte » de l'article evolution (16/11), les requetes
+// « refonte application », « refonte applicative », « refonte application
+// mobile », « quand refondre une application » font une trentaine d'impressions
+// en position 22 a 86 : Google voit le sujet, aucune page de vente n'y repond.
+// Slug sur « refonte » parce que c'est le mot tape (aucune requete « reprendre »).
+// Une seule page pour reprise ET refonte : les deux s'adressent a quelqu'un qui
+// a deja une application, et c'est l'audit qui tranche entre les deux. Phase 0 :
+// les deux articles (reprendre, faire-evoluer) expliquent ; cette page vend.
+// Chiffres : audit court et borne (article reprise), refonte aux fourchettes
+// de la creation (article prix, page sur mesure), 45 jours, 30 jours de
+// corrections. Bouton WhatsApp seul : le lecteur a deja une application, le
+// test d'idee ne lui sert pas (garde-fou n°4 du runbook).
+
+const PALIERS_REFONTE = [
+  { cas: 'Reprise', quand: 'Le code est lisible et à jour : on le garde, on corrige, on avance dessus', prix: 'Selon l\'état du code, chiffré après l\'audit' },
+  { cas: 'Refonte, périmètre resserré', quand: 'On reconstruit le parcours principal et le paiement, un type d\'utilisateur', prix: '5 000 à 8 000 €' },
+  { cas: 'Refonte complète', quand: 'Les comptes, le paiement, les notifications, une administration légère, un nouveau design', prix: '8 000 à 12 000 €' },
+  { cas: 'Refonte avec deux profils, ou temps réel', quand: 'Un client et un professionnel, ou une fonction en direct', prix: '12 000 à 15 000 €' },
+]
+
+export function PageRefonte({ onAccueil, onBookCall, onNaviguer }) {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    retirerPrerender()
+    appliquerMeta({
+      path: '/refonte-application-mobile',
+      title: "Refonte d'application mobile : audit, prix, délai | Noé Calmes",
+      description: "Ton application bloque, vieillit ou ne rapporte pas : un audit court, puis reprise ou refonte à tarif fixe, en gardant tes utilisateurs et leurs comptes.",
+    })
+  }, [])
+
+  const lien = (chemin, texte) => (
+    <a href={lienInterne(chemin)} onClick={(e) => { if (onNaviguer) { e.preventDefault(); onNaviguer(chemin) } }}>{texte}</a>
+  )
+
+  return (
+    <Coquille>
+      <EnteteSeo onAccueil={onAccueil} onBookCall={onBookCall} />
+      <main className="max-w-160 mx-auto px-5 pt-32 md:pt-36 pb-20">
+        <FilAriane courant="Refonte ou reprise" onAccueil={onAccueil} />
+
+        <h1 className="font-heading text-text text-[1.75rem] md:text-[2.25rem] font-bold tracking-tight leading-[1.2] mb-8">
+          Refonte ou reprise d'une application existante : audit, prix et délai
+        </h1>
+
+        <Corps>
+          <p>Ton application est en ligne, mais quelque chose cloche : le développeur n'est plus là, chaque mise à jour casse autre chose, Apple menace de la retirer, ou elle a des utilisateurs et ne rapporte rien. Je reprends des applications dans cet état, et quand il le faut, je les refais. La décision entre les deux ne se prend pas sur une impression : elle se prend après un audit, sur le code réel.</p>
+
+          <h2>Reprise ou refonte : c'est l'audit qui tranche</h2>
+          <p>Une reprise, c'est continuer le code existant : on le lit, on met à jour ce qui a vieilli, on corrige ce qui est fragile, puis on avance dessus. Une refonte, c'est reconstruire : on repart du périmètre et des écrans, et l'ancien code sert au mieux de documentation.</p>
+          <p>Trois signaux font pencher vers la refonte : chaque ajout coûte plus cher que le précédent, le produit a changé de cible ou de façon de gagner de l'argent, ou la première version était un prototype qui a grossi, souvent généré ou codé vite, et que plus personne ne peut lire. Si aucun des trois n'est là, on reprend. Le détail de ces trois signaux est dans {lien('/blog/faire-evoluer-application-mobile', "faire évoluer ou refondre une application mobile")}.</p>
+
+          <h2>L'audit : court, borné, et il débouche sur un plan</h2>
+          <p>Quelques jours, pas des semaines. Je lis le code, je teste l'application, je vérifie les comptes, la sécurité et l'état des dépendances. À la fin, tu as un plan d'action et un budget écrits, pas une facture ouverte. L'audit se chiffre selon la taille du projet, et il est toujours borné à l'avance. Il te faut trois choses pour le lancer : l'accès au code, aux comptes développeur Apple et Google, et à l'hébergement.</p>
+
+          <h2>Le prix</h2>
+          <p>Une reprise dépend de l'état du code, et c'est l'audit qui la chiffre. Une refonte se chiffre comme une création, parce que c'en est une : le périmètre fait le prix, pas la technologie.</p>
+        </Corps>
+
+        <div className="table-scroll mt-6">
+          <table>
+            <thead>
+              <tr><th>Cas</th><th>Quand</th><th>Tarif fixe</th></tr>
+            </thead>
+            <tbody>
+              {PALIERS_REFONTE.map((f) => (
+                <tr key={f.cas}><td><strong>{f.cas}</strong></td><td>{f.quand}</td><td><strong>{f.prix}</strong></td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <Corps>
+          <p>La refonte a un avantage que la première version n'avait pas : tu sais ce que tes utilisateurs font vraiment. On coupe ce qu'ils n'ouvrent jamais, on garde ce qui les fait revenir, et la nouvelle version est souvent plus simple que l'ancienne. Le tarif est fixe, écrit dans le devis, et les corrections sont incluses 30 jours après la mise en ligne. Les fourchettes et ce qui fait monter un devis sont détaillés dans {lien('/blog/combien-coute-application-mobile', "l'article sur le prix d'une application mobile")}.</p>
+
+          <h2>Le délai</h2>
+          <p>Pour une refonte, 45 jours en moyenne du cadrage à la mise en ligne, comme une création. Pour une reprise, le délai dépend de ce que l'audit a trouvé : la remise en état d'une base saine se compte en semaines, pas en mois. Dans les deux cas, le délai est posé dans le devis avant de commencer.</p>
+
+          <h2>Ce qu'on ne perd pas en route</h2>
+        </Corps>
+
+        <ul className="mt-5 flex flex-col gap-3 list-none p-0">
+          {[
+            { t: 'Tes utilisateurs', d: 'L\'ancienne version reste en ligne jusqu\'au jour où la nouvelle la remplace, sur les mêmes fiches App Store et Google Play. Tes utilisateurs font une mise à jour, pas une réinstallation.' },
+            { t: 'Leurs comptes et leurs abonnements', d: 'Personne ne se réinscrit ni ne repaie. C\'est la partie la plus délicate techniquement, et celle qu\'on cadre en premier.' },
+            { t: 'Ce qui marchait', d: 'Quand le socle le permet, on refond parcours par parcours, en commençant par celui qui mène au paiement, plutôt que tout d\'un coup.' },
+          ].map((e) => (
+            <li key={e.t} className="bg-card border border-card-border rounded-[15px] p-5 md:p-6">
+              <p className="font-heading text-text text-[1rem] font-bold leading-snug mb-1.5">{e.t}</p>
+              <p className="text-grey text-[0.9rem] leading-relaxed">{e.d}</p>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-10">
+          <Corps>
+            <h2>Comment ça commence</h2>
+          </Corps>
+        </div>
+
+        <ol className="mt-6 flex flex-col gap-4 list-none p-0">
+          {[
+            { n: '1', titre: 'Tu m\'écris sur WhatsApp', texte: 'Le lien de ton application, et ce qui bloque, en deux lignes. Je réponds moi-même, en général dans la journée.' },
+            { n: '2', titre: 'On s\'appelle 15 minutes', texte: 'Je te dis franchement ce que je vois de l\'extérieur, et ce qu\'il faut pour aller plus loin. Si je pense que ça ne vaut pas le coup, je te le dis aussi.' },
+            { n: '3', titre: 'L\'audit', texte: 'Quelques jours sur le code réel, bornés et chiffrés à l\'avance. Tu reçois un plan d\'action écrit : ce qui est gardé, ce qui est corrigé, ce qui est reconstruit.' },
+            { n: '4', titre: 'Le devis à tarif fixe', texte: 'Reprise ou refonte, le périmètre, le prix, le délai, et ce qui est inclus après la mise en ligne, noir sur blanc.' },
+          ].map((e) => (
+            <li key={e.n} className="bg-card border border-card-border rounded-[15px] p-6 md:p-7">
+              <span className="block text-brand font-bold text-[0.8rem] tracking-widest mb-2">ÉTAPE {e.n}</span>
+              <h3 className="font-heading text-text text-[1.05rem] md:text-[1.15rem] font-bold leading-snug mb-2.5">{e.titre}</h3>
+              <p className="text-grey text-[0.9rem] md:text-[0.93rem] leading-relaxed">{e.texte}</p>
+            </li>
+          ))}
+        </ol>
+
+        <div className="mt-12">
+          <Corps>
+            <h2>Pour qui, et pour qui pas</h2>
+            <p>Pour une application en ligne dont le développeur ou l'agence n'est plus là, une application qui a des utilisateurs mais qui ne rapporte pas, une application que les stores menacent de retirer, ou un prototype généré qui a grossi et que personne ne peut plus faire évoluer. Mobile d'abord, c'est là que j'ai mes preuves, et aussi une application web quand le besoin est le même.</p>
+            <p>Pas pour une application sans accès au code ni aux comptes développeur : c'est le premier point à débloquer, et je t'aide à le faire avant tout le reste. Et si le code est irrécupérable, je te le dis clairement, avec les raisons, et on compare honnêtement une remise en état et une réécriture. Comment se passe une reprise, étape par étape : {lien('/blog/reprendre-application-mobile-existante', "reprendre une application mobile existante")}.</p>
+
+            <h2>Pourquoi un indépendant plutôt qu'une agence</h2>
+            <p>Tu parles directement à celui qui lit le code et qui le reprend, sans chef de projet entre nous. Plus de 20 applications publiées, 1,3 million de téléchargements, et une application que j'ai conçue génère environ 13 000 € par mois. Ma façon de travailler est décrite dans {lien('/creation-application-mobile', 'ma méthode')}.</p>
+          </Corps>
+        </div>
+
+        <div className="mt-14 p-7 md:p-8 bg-card border border-card-border rounded-[15px] text-center">
+          <h2 className="font-heading text-text text-lg md:text-xl font-bold mb-3">Ton application bloque, vieillit ou ne rapporte pas ?</h2>
+          <p className="text-grey text-[0.93rem] mb-5 max-w-130 mx-auto">Envoie-moi son lien et ce qui coince sur WhatsApp. Je regarde, et je te dis franchement ce qui est récupérable.</p>
+          <button
+            onClick={onBookCall}
+            className="inline-flex justify-center items-center gap-2.5 bg-brand text-surface font-semibold text-[0.95rem] px-7 py-3.5 rounded-full cursor-pointer"
+          >
+            Écrire à Noé sur WhatsApp
+          </button>
+        </div>
+
+        <ResumerAvecIA chemin="/refonte-application-mobile" titre="Refonte ou reprise d'une application existante : audit, prix et délai" />
+
+        <MaillageInterne exclure={['/refonte-application-mobile']} onNaviguer={onNaviguer} />
       </main>
       <RetourEnHaut />
     </Coquille>
