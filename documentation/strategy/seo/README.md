@@ -85,6 +85,28 @@ n'est plus le frein, l'autorité l'est (un seul lien externe). Donc :
   Les clients rapides viennent de la prospection, des pubs, des recommandations
   des clients livrés et des apporteurs d'affaires (voir `strategie-commerciale.md`).
 
+## Lundi 23/11/2026 : relevé et page d'offre « refonte ou reprise »
+
+Relevé Search Console, 28 jours au 21/11 : 12 clics (9 la semaine d'avant),
+1 650 impressions (1 870), position moyenne 23,2 (21,5). Trois mouvements :
+- La page Claude baisse en impressions (352 contre 463) mais fait 5 des 12 clics,
+  position 8. Le guide refondu tient à 721 impressions, position 34.
+- **Les requêtes « refonte » sont arrivées** sur l'article évolution enrichi le
+  16/11 : « refonte application » (7, position 85), « refonte applicative » (7,
+  86), « refonte application mobile » (8, 22), « quand refondre une application
+  métier » (9, 84), soit une trentaine d'impressions. Google a vu le sujet, en
+  une semaine. Aucune page de vente n'y répondait.
+- Les deux pages d'offre du 16/11 n'apparaissent pas encore (indexation à
+  demander par Noé). « application mobile sur mesure » (18, position 42) et
+  « devis application mobile » (9, 28) sont encore servies par des articles.
+- Une requête web : « délai développement application web » (6, position 18).
+
+Action de la semaine : page d'offre `/refonte-application-mobile`, cas 2 et 3
+du positionnement (reprendre, faire évoluer ou refondre), une seule page parce
+que c'est l'audit qui tranche. Les articles reprise et évolution y renvoient.
+À mesurer le 21/12 : positions des requêtes « refonte », apparition de la page.
+Il reste dans la file des pages d'offre : « créer son application » (cas 1).
+
 ## Semaine du 16/11/2026 : les pages existantes, pas de nouvel article
 
 La file (`idees-articles.md`, chantiers 3 à 7) demandait des enrichissements, pas

@@ -567,9 +567,13 @@ site avait 29 articles et zéro page d'offre. Modèle : `PageSurMesure` dans
    78 % contre 70 %, deux à trois semaines de moins. **À mesurer le 07/12** :
    première apparition de requêtes « application web », « logiciel sur mesure »,
    « SaaS sur mesure ».
-3. `à écrire` : reprendre une application (l'article existe, pas la page qui dit
-   l'audit, le prix, le délai, par où on commence).
-4. `à écrire` : faire évoluer ou refondre (même logique).
+3. ✅ `/refonte-application-mobile` (23/11/2026) : une seule page pour reprendre
+   ET refondre (points 3 et 4 fusionnés : les deux s'adressent à quelqu'un qui a
+   déjà une application, et c'est l'audit qui tranche). Slug sur « refonte », le
+   mot tapé (une trentaine d'impressions en une semaine après l'enrichissement de
+   l'article évolution, positions 22 à 86 ; aucune requête « reprendre »).
+   Bouton WhatsApp seul. **À mesurer le 21/12.**
+4. ~~faire évoluer ou refondre~~ : fusionné dans le point 3.
 5. `à écrire` : créer son application, la page du cas numéro un, qui renvoie
    vers mobile ou web selon l'usage.
 
