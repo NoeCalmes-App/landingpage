@@ -1,6 +1,6 @@
 # Images de partage (aperçu des liens WhatsApp, iMessage, LinkedIn)
 
-Cinq images, toutes dans `public/assets/images/meta/` :
+Six images, toutes dans `public/assets/images/meta/` :
 
 | Image | Où elle s'affiche | Source ici |
 |---|---|---|
@@ -9,6 +9,7 @@ Cinq images, toutes dans `public/assets/images/meta/` :
 | `maquette-og.png` | `/maquette` et toutes les `/maquette/...` | `maquette-og.html` |
 | `espace-client-og.png` | `/espace-client` et les liens `/espace-client/#...` envoyés par Nowork | `espace-client-og.html` |
 | `audit-og.png` | `/audit-app` | `audit-og.html` |
+| `document-og.png` | `/signature/` seulement (documents à signer, page construite par Nowork : `signature/index.html` dans son dépôt) | `document-og.html` |
 
 Qui les pose : `accueil-og.jpg` est dans `index.html` (donc héritée par toutes
 les pages générées) et `public/legal/index.html`. Les aperçus dédiés sont posés

@@ -68,6 +68,7 @@ Les fichiers sous `public` se referencent avec une URL absolue depuis la racine,
 - Toute URL interne porte la barre finale. Passer par `lienInterne()` / `urlPublique()` de `src/seo.js`. Le build echoue sur un lien sans barre : voir `documentation/architecture/landing-page.md`.
 - Les `metaTitle` / `description` ont une source unique (`src/Blog.jsx`, `src/PagesSeo.jsx`, `src/Quiz.jsx`). `generate-routes.js` les lit, ne les redefinit pas.
 - `/maquette/...` est une route landing page pour les maquettes HTML faites a la main.
+- `/signature/` appartient a Nowork (documents a signer) : page construite par Nowork et copiee dans `dist/signature/` par `.github/workflows/deploy.yml`. Ni le site ni ses scripts de mesure n'y sont charges : ne pas en faire une route de `src/App.jsx`.
 - `/maquette-visuel/...` appartient a Nowork et passe par une facade landing page vers `/nowork`.
 - Le backend audit app utilise le projet Firebase `manychatia-82692`.
 - Le panel admin des audits est lu depuis Nowork via `auditStatsAdmin`, avec authentification Firebase `devis-app-8e216`.

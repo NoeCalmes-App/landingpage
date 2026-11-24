@@ -67,6 +67,16 @@ jobs:
       - name: Inject Nowork into dist
         run: cp -r nowork-src/dist dist/nowork
 
+      # noecalmes.fr/signature/ : la page ou un client signe un document envoye
+      # depuis Nowork. Construite par Nowork, copiee telle quelle : ni le site ni
+      # ses scripts de mesure n'y sont charges (le pixel Meta enverrait le jeton).
+      - name: Page de signature des documents
+        run: |
+          if [ -f nowork-src/dist/signature/index.html ]; then
+            mkdir -p dist/signature
+            cp nowork-src/dist/signature/index.html dist/signature/index.html
+          fi
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
