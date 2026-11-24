@@ -2,12 +2,35 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
+    <!-- PAGES PRIVEES : AUCUNE MESURE (24/11/2026).
+         L'adresse d'un espace client ou d'une maquette contient un jeton secret.
+         Le pixel Meta envoie l'adresse complete (« # » compris), Google le chemin :
+         le jeton partait chez eux. Sur ces pages, rien n'est charge ni mis en file.
+         `redirect` : les anciens liens passent par 404.html, qui range l'adresse
+         privee dans sessionStorage puis ouvre l'accueil. Teste par
+         src/mesurePrivee.test.js. Doc : documentation/architecture/client-space-public.md -->
+    <script id="pages-privees">
+      window.__sansMesure = (function () {
+        var prive = /^(\/app-devis|\/nowork)?\/(espace-client|espaceclient|espace|panel-client|panelclient|panel|maquette-visuel|signature)(\/|\?|#|$)/i
+        var retour = ''
+        try { retour = sessionStorage.getItem('redirect') || '' } catch (e) { /* mode prive */ }
+        if (!prive.test(location.pathname) && !prive.test(retour)) return false
+        // En quittant la page, l'adresse complete ne part pas non plus comme provenance.
+        var m = document.createElement('meta')
+        m.name = 'referrer'
+        m.content = 'origin'
+        document.head.appendChild(m)
+        return true
+      })()
+    </script>
     <!-- Google tag (gtag.js) : file d'attente seulement, le script est charge plus bas -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-K5SWRR85PN');
+      if (!window.__sansMesure) {
+        gtag('js', new Date());
+        gtag('config', 'G-K5SWRR85PN');
+      }
     </script>
     <link rel="icon" type="image/png" href="/assets/icons/app/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -177,13 +200,15 @@
 
     <!-- Meta Pixel Code -->
     <script>
-    !function(f,n)
+    !window.__sansMesure&&function(f,n)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
     n.queue=[]}(window);
-    fbq('init', '952622783774477');
-    fbq('track', 'PageView');
+    if (!window.__sansMesure) {
+      fbq('init', '952622783774477');
+      fbq('track', 'PageView');
+    }
     </script>
     <!-- End Meta Pixel Code -->
 
@@ -215,6 +240,7 @@
          garantit qu'un visiteur immobile est compte quand meme. -->
     <script>
       (function () {
+        if (window.__sansMesure) return
         var charge = false
         var evenements = ['pointerdown', 'keydown', 'scroll', 'touchstart']
         function charger() {

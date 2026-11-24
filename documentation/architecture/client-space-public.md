@@ -33,6 +33,17 @@ replie le « # » dans le chemin avant de charger l'iframe Nowork
 deja envoyes, reste servie par `public/404.html` : elle marche, sans apercu
 sur WhatsApp. Le meme pont accepte `/maquette-visuel/#{client}/{devis}`.
 
+## Aucune mesure sur les pages privees (24/11/2026)
+
+L'adresse contient un jeton secret. Le pixel Meta envoyait l'adresse complete
+(« # » compris) et Google le chemin des anciens liens : le jeton partait chez
+eux. `index.html` pose `window.__sansMesure` avant tout le reste : sur
+`/espace-client`, ses alias, `/maquette-visuel` et `/signature`, y compris quand
+l'adresse arrive par `sessionStorage.redirect` (404.html), ni gtag ni le pixel
+ne sont charges ni mis en file, et la provenance envoyee en quittant la page se
+limite au domaine. Toute nouvelle adresse a jeton doit y etre ajoutee. Teste par
+`src/mesurePrivee.test.js`.
+
 ## Source de verite
 
 Les donnees d'espace client restent dans le projet Firebase historique `devis-app-8e216`, sous `users/default-user/clientSpaces`.
