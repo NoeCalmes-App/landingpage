@@ -432,3 +432,62 @@
     radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 34%, rgba(255, 254, 252, 0) 70%),
     linear-gradient(0deg, #fffefc 0, #f4f2ff 4%, #c9c4ff 14%, #bab4ff 45%, #d9d5ff 78%, #f3f1ff 100%);
 }
+
+/* MAQUETTE À ZÉRO (26/11/2026) : tous les chiffres de la carte sont à 0, voir AccueilTest.jsx avant de les remplir. */
+/* ===== CE QUE RAPPORTE L'APPLICATION D'UN CLIENT (25/11/2026) ===== */
+/* Après « Mes réalisations », avant le bloc sombre (Noé, 23 h 44 : « après mes réalisations, mieux ») : une carte
+   blanche qui redessine les chiffres envoyés par un client de Noé (voir AccueilTest.jsx pour leur provenance et les
+   règles). Sur téléphone, une colonne, comme l'écran d'origine ; sur ordinateur, deux : le revenu et sa courbe à
+   gauche, le détail à droite. Le vert est celui des pastilles « 7 jours gratuits » du bloc sombre : pas une couleur
+   de plus. Un bord fin et une seule ombre, douce : la carte est sur fond clair. */
+.at-resultat { margin: 0 auto; padding: 0; text-align: center; }
+.at-resultat-carte { display: grid; gap: 22px; width: min(100%, 380px); margin: 0 auto; padding: 22px 20px 20px; border-radius: 24px; background: #fff; border: 1px solid #e6e2f7; box-shadow: 0 34px 64px -42px rgba(59, 47, 208, .5); text-align: left; color: #0d1548; }
+
+/* L'application : une icône et un nom FLOUTÉS. Le texte du nom n'est là que pour avoir une forme de mot à flouter. */
+.at-res-app { display: flex; align-items: center; gap: 9px; margin: 0 0 16px; user-select: none; }
+.at-res-app > i { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(140deg, #2d4fb3, #0d1f5c); filter: blur(4px); }
+.at-res-app > b { font-size: 14px; font-weight: 700; color: #0d1548; filter: blur(5px); }
+
+.at-res-label { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #667185; }
+.at-res-montant { margin: 4px 0 0; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -.04em; line-height: 1.08; color: #0d1548; white-space: nowrap; }
+.at-res-evol { display: flex; align-items: center; gap: 9px; margin: 8px 0 0; font-size: 13px; color: #667185; }
+.at-res-evol > span, .at-res-cases em { padding: 3px 8px; border-radius: 7px; background: #e7f7ed; color: #15803d; font-style: normal; font-weight: 700; font-size: 12px; white-space: nowrap; }
+
+/* La courbe : étirée à la largeur de la carte. Le point est posé par-dessus, en vrai élément, pour ne pas être
+   déformé par l'étirement. */
+.at-res-courbe { position: relative; height: 118px; margin-top: 16px; overflow: hidden; }
+.at-res-courbe > svg { display: block; width: 100%; height: 100%; }
+.at-res-point { position: absolute; left: 94.4%; top: 11.8%; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; border-radius: 50%; background: #18a572; box-shadow: 0 0 0 5px rgba(24, 165, 114, .2); }
+.at-res-mois { display: flex; justify-content: space-between; margin: 6px 0 0; font-size: 11px; color: #98a2b3; }
+
+.at-res-droite { display: grid; gap: 18px; align-content: center; }
+.at-res-boutiques, .at-res-cases { margin: 0; padding: 0; list-style: none; }
+.at-res-boutiques { display: grid; gap: 12px; }
+.at-res-boutiques li { display: grid; grid-template-columns: 82px minmax(0, 1fr) auto; align-items: center; gap: 10px; font-size: 13px; color: #667185; }
+.at-res-boutiques li > i { height: 6px; border-radius: 6px; background: #eceaf3; overflow: hidden; }
+.at-res-boutiques li > i > i { display: block; width: 100%; height: 100%; border-radius: 6px; background: #18a572; transform-origin: left center; transform: scaleX(var(--part)); }
+.at-res-boutiques li > b { font-size: 13.5px; font-weight: 700; color: #0d1548; white-space: nowrap; }
+.at-res-cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.at-res-cases li { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; padding: 11px 10px 12px; border-radius: 14px; background: #f5f4fa; }
+.at-res-cases span { font-size: 11px; color: #667185; white-space: nowrap; }
+.at-res-cases b { font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; color: #0d1548; white-space: nowrap; }
+.at-res-cases em { padding: 2px 6px; font-size: 11px; }
+
+@media (min-width: 860px) {
+  .at-resultat-carte { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); gap: 44px; width: min(100%, 860px); padding: 34px 38px 32px; border-radius: 28px; }
+  .at-res-montant { font-size: 52px; }
+  .at-res-courbe { height: 138px; margin-top: 20px; }
+  .at-res-droite { gap: 24px; }
+  .at-res-boutiques { gap: 16px; }
+  .at-res-boutiques li { grid-template-columns: 92px minmax(0, 1fr) auto; font-size: 14px; }
+  .at-res-boutiques li > b { font-size: 14.5px; }
+  .at-res-cases { gap: 10px; }
+  .at-res-cases li { padding: 14px 13px 15px; border-radius: 16px; }
+  .at-res-cases span { font-size: 12px; }
+  .at-res-cases b { font-size: 19px; }
+}
+
+/* COMME UNE IMAGE (Noé, 25/11/2026, 23 h 37) : aucune animation, et rien ne se sélectionne ni ne se copie à la
+   souris. La carte est annoncée comme une image aux lecteurs d'écran (role="img" dans AccueilTest.jsx). */
+.at-resultat-carte { -webkit-user-select: none; user-select: none; pointer-events: none; cursor: default; -webkit-touch-callout: none; }
+

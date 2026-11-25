@@ -424,8 +424,8 @@ export default function AccueilTest() {
           leçon 2.17), le total « 1,3 million sur toutes mes applications » de l'accueil en ligne, la case « avis »
           (avec cinq avis, les afficher en haut n'est pas crédible : ils restent près du bouton, en bas) et les cases
           de chiffres.
-          UN RÉSULTAT CHIFFRÉ CHEZ UN CLIENT (le « tableau de bord avec l'argent encaissé » de la leçon 2.11) viendra
-          juste sous ce bloc le jour où Noé aura la capture réelle d'un client et son accord. RÈGLE : seulement de
+          LE BLOC « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » juste dessous est une MAQUETTE À ZÉRO (26/11/2026) :
+          il ne prendra de vrais chiffres que d'une capture réelle d'un client, avec son accord. RÈGLE : seulement de
           vrais chiffres, datés. Jamais les chiffres d'un écran d'exemple présentés comme ceux d'un client. */}
       <section className="ex-section" id="realisations" aria-labelledby="at-realisations-titre">
         <div className="ex-interieur">
@@ -433,6 +433,63 @@ export default function AccueilTest() {
           <p className="reveal ex-chiffre"><strong>+20</strong> applications déjà publiées</p>
           <ExemplesMetier />
         </div>
+      </section>
+
+      {/* ========== CE QUE RAPPORTE L'APPLICATION D'UN CLIENT : MAQUETTE A ZERO ========== */}
+      {/* ⚠️ MAQUETTE : TOUS LES CHIFFRES SONT A 0 ET LE RESTERONT TANT QU'IL N'Y A PAS UNE VRAIE CAPTURE.
+          Noé, 26/11/2026, 00 h 52 : « rien n'est en prod, c'est la page test, je l'enlèverai après pour voir à quoi
+          ça pourrait ressembler, mets des 0 partout ». Cette carte montre donc seulement la FORME du bloc (revenus du
+          mois, deux boutiques, trois cases, courbe). Elle ne dit rien d'un client.
+          ⛔ AVANT TOUTE MISE EN LIGNE SUR L'ACCUEIL : remplacer chaque 0 par les chiffres d'une capture RÉELLE du
+          client, avec son accord écrit, ou retirer le bloc. Ne jamais y recopier les chiffres de l'ancien écran
+          d'exemple (« Orbiqa », 18 450 €, commit d5cfbaa) : ils étaient fictifs.
+          La page de test n'est visible qu'en local (import.meta.env.DEV), donc rien de ce bloc ne part en ligne
+          tant que la page n'est pas portée dans l'accueil réel.
+          Archive de la version à chiffres : /home/claude/archive/carte-resultat/.
+          COMME UNE IMAGE, SANS ANIMATION (Noé, 25/11/2026) : rien ne bouge, rien ne se sélectionne. Ni nom, ni
+          icône lisibles : une icône et un nom floutés.
+          LE TITRE est au présent (« rapporte ») : il ne sera vrai qu'avec de vrais chiffres, et le mois devra
+          s'écrire si l'application ne fait plus ces montants (erreur faite avec Calorie et ses 13 000 €). */}
+      <section className="py-14 md:py-28 px-5" id="resultat" aria-labelledby="at-resultat-titre">
+        <h2 id="at-resultat-titre" className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-8 md:mb-14">
+          Ce que rapporte<br className="sm:hidden" /> <span className="text-brand">l'application d'un client</span>
+        </h2>
+        <figure className="reveal at-resultat" aria-labelledby="at-resultat-titre">
+          <div className="at-resultat-carte" role="img" aria-label="Maquette du tableau de bord d'une application, nom masqué, chiffres à zéro. Revenus du mois : 0 euro. App Store : 0 euro. Google Play : 0 euro. 0 abonné, 0 installation, 0 euro sur 12 mois.">
+            <div className="at-res-gauche">
+              <p className="at-res-app"><i /><b>Nom masqué</b></p>
+              <p className="at-res-label">Revenus du mois</p>
+              <p className="at-res-montant">0&nbsp;€</p>
+              <p className="at-res-evol"><span>0&nbsp;%</span> par rapport au mois dernier</p>
+              <div className="at-res-courbe" aria-hidden="true">
+                <svg viewBox="0 0 320 110" preserveAspectRatio="none" focusable="false">
+                  <defs>
+                    <linearGradient id="at-res-fond" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stopColor="#18a572" stopOpacity=".2" />
+                      <stop offset="1" stopColor="#18a572" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 30H320M0 59H320M0 88H320" stroke="#eceaf3" strokeWidth="1" vectorEffect="non-scaling-stroke" fill="none" />
+                  <path d="M8 96C96 82 190 50 302 13V110H8Z" fill="url(#at-res-fond)" />
+                  <path d="M8 96C96 82 190 50 302 13" stroke="#18a572" strokeWidth="3" strokeLinecap="round" vectorEffect="non-scaling-stroke" fill="none" />
+                </svg>
+                <i className="at-res-point" />
+              </div>
+              <p className="at-res-mois" aria-hidden="true"><span>Janv.</span><span>Juin</span><span>Déc.</span></p>
+            </div>
+            <div className="at-res-droite">
+              <ul className="at-res-boutiques">
+                <li><span>App Store</span><i><i style={{ '--part': 0 }} /></i><b>0&nbsp;€</b></li>
+                <li><span>Google Play</span><i><i style={{ '--part': 0 }} /></i><b>0&nbsp;€</b></li>
+              </ul>
+              <ul className="at-res-cases">
+                <li><span>Abonnés</span><b>0</b><em>0&nbsp;%</em></li>
+                <li><span>Installations</span><b>0</b><em>0&nbsp;%</em></li>
+                <li><span>Sur 12&nbsp;mois</span><b>0&nbsp;€</b></li>
+              </ul>
+            </div>
+          </div>
+        </figure>
       </section>
 
       {/* ========== POURQUOI AVEC MOI ========== */}

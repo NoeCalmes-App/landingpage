@@ -159,6 +159,11 @@ export default function ExemplesMetier() {
           if (Math.abs(dx) > 35 && Math.abs(dx) > Math.abs(dy)) aller(dx < 0 ? 1 : -1)
         }}>
         <div className="ex-halo" aria-hidden="true" />
+        {/* Sur grand écran (≥ 1100 px), les flèches sont de part et d'autre de l'image : une flèche seule, grise, sans
+            fond (Noé, 26/11/2026). En dessous, ce sont celles de la rangée sous la légende ; l'autre jeu est alors
+            caché par display:none, donc absent aussi pour les lecteurs d'écran. */}
+        <button type="button" className="ex-fleche-cote ex-fleche-gauche" onClick={() => aller(-1)} aria-label="Application précédente"><ArrowLeft size={26} strokeWidth={1.8} /></button>
+        <button type="button" className="ex-fleche-cote ex-fleche-droite" onClick={() => aller(1)} aria-label="Application suivante"><ArrowRight size={26} strokeWidth={1.8} /></button>
         {APPLICATIONS.map((app, i) => (
           <div key={app.id} className={`ex-scene ${app.ordinateur ? 'ex-scene-duo' : 'ex-scene-telephones'}${i === actif ? ' est-active' : ''}`}
             role="group" aria-roledescription="diapositive" aria-label={`${i + 1} sur ${APPLICATIONS.length} : ${app.metier}. ${app.role}`} aria-hidden={i !== actif}>

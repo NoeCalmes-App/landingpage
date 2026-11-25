@@ -52,7 +52,13 @@
 
 .ex-legende { max-width: 400px; min-height: 0; margin-top: 26px; }
 .ex-legende .app-gallery-caption-role { text-wrap: balance; }
-.ex-fleches { margin-top: 20px; }
+/* Les flèches sous la légende (téléphone et tablette) : juste la flèche, grise, sans fond ni bord, et plus près de la
+   légende qu'avant (Noé, 26/11/2026 : « trop bas, monter un peu »). */
+.ex-fleches { margin-top: 8px; gap: 22px; }
+.ex-fleches button, .ex-fleche-cote { background: none; border: 0; box-shadow: none; border-radius: 8px; color: #98a2b3; cursor: pointer; transition: color .18s; }
+.ex-fleches button { width: 44px; height: 44px; }
+.ex-fleches button:hover, .ex-fleche-cote:hover { background: none; color: #667185; }
+.ex-fleche-cote { display: none; }
 
 @media (min-width: 820px) {
   .ex-section { padding: 112px 24px; }
@@ -74,7 +80,7 @@
   .ex-scene-telephones .ex-scene-tel:first-of-type { width: 236px; }
   .ex-scene-telephones .ex-scene-tel + .ex-scene-tel { position: static; width: 236px; margin-top: 36px; }
   .ex-legende { max-width: 470px; margin-top: 28px; }
-  .ex-fleches { margin-top: 26px; }
+  .ex-fleches { margin-top: 12px; }
 }
 /* ===== Le flottement ===== */
 /* Les écrans de l'application affichée montent et descendent de quelques pixels, lentement, l'ordinateur et le
@@ -87,4 +93,14 @@
 @media (prefers-reduced-motion: reduce) {
   .ex-scene, .ex-scene.est-active { transition: none; }
   .ex-scene.est-active .ex-scene-ordi, .ex-scene.est-active .ex-scene-tel, .ex-scene.est-active .ex-scene-tel + .ex-scene-tel { animation: none; }
+}
+
+/* Grand écran : les flèches passent de chaque côté de l'image, au milieu de sa hauteur, et la rangée du bas ne garde
+   que les points. La scène fait 900 px au plus dans 960 : il reste 30 px de chaque côté pour la flèche. */
+@media (min-width: 1100px) {
+  .ex-fleche-cote { position: absolute; top: 50%; z-index: 3; display: grid; place-items: center; width: 30px; height: 56px; padding: 0; transform: translateY(-50%); }
+  .ex-fleche-gauche { left: 0; }
+  .ex-fleche-droite { right: 0; }
+  .ex-fleches button { display: none; }
+  .ex-fleches { margin-top: 18px; }
 }
