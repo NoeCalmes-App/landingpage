@@ -1,0 +1,434 @@
+/* PAGE TEST /accueiltest (25/11/2026) : la mise en forme de ce qui est nouveau par rapport à l'accueil actuel.
+   Tout le reste vient des styles du site (index.css, App.css, app-showcase.css). Mêmes couleurs, mêmes polices,
+   mêmes cartes : la page doit se lire comme l'accueil, pas comme une autre page. Préfixe « at- » partout, pour ne
+   rien toucher ailleurs. */
+
+/* ===== La ligne sous le nom, dans la barre du haut ===== */
+/* Sur les petits téléphones, elle rétrécit un peu, puis passe sur deux lignes, au lieu d'être coupée par « … ». */
+@media (max-width: 374px) { .at-page .at-sous-nom { font-size: .63rem; } }
+@media (max-width: 349px) { .at-page .at-sous-nom { white-space: normal; overflow: visible; line-height: 1.2; max-width: 12em; } }
+
+/* ===== Le haut de page ===== */
+/* LE TITRE : « Fais de ton métier / une application / qui rapporte. », trois lignes courtes à toutes les largeurs,
+   le plus gros texte de la page. « Ton métier » est en italique à empattements (ce que le visiteur connaît), « qui
+   rapporte vraiment. » en dégradé violet. La ligne la plus longue fait 11 fois la taille du texte : les tailles
+   sont réglées pour qu'elle tienne toujours. DESSOUS, une phrase grise, puis le bouton et la preuve.
+   (`.at-accroche` et `.at-titre-reduit` servaient aux essais de titres du 25/11/2026 ; gardés pour un essai futur.) */
+.at-accroche { max-width: 34em; margin: 0 auto 14px; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 1.02rem; font-weight: 700; letter-spacing: -.012em; line-height: 1.4; color: #033475; }
+.at-accroche .at-titre-metier { font-size: .98em; color: #4b4b4b; }
+@media (min-width: 375px) { .at-accroche { font-size: 1.08rem; } }
+@media (min-width: 480px) { .at-accroche { font-size: 1.16rem; margin-bottom: 16px; } }
+@media (min-width: 768px) { .at-accroche { font-size: 1.32rem; margin-bottom: 20px; } }
+@media (min-width: 1024px) { .at-accroche { font-size: 1.45rem; margin-bottom: 22px; } }
+.at-titre { font-size: 1.6rem; line-height: 1.16; }
+@media (min-width: 360px) { .at-titre { font-size: 1.85rem; } }
+@media (min-width: 375px) { .at-titre { font-size: 1.94rem; } }
+@media (min-width: 390px) { .at-titre { font-size: 2.02rem; } }
+@media (min-width: 414px) { .at-titre { font-size: 2.15rem; } }
+@media (min-width: 430px) { .at-titre { font-size: 2.24rem; } }
+@media (min-width: 480px) { .at-titre { font-size: 2.5rem; } }
+@media (min-width: 640px) { .at-titre { font-size: 2.7rem; } }
+@media (min-width: 768px) { .at-titre { font-size: 3.05rem; } }
+@media (min-width: 1024px) { .at-titre { font-size: 3.5rem; } }
+/* « Ton métier » et « ton activité » se relaient : le nouveau mot monte en fondu. Un seul mot est affiché à la
+   fois, donc la première ligne du titre reste exactement centrée. */
+.at-mot { display: inline-block; animation: at-mot-entree .5s cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes at-mot-entree {
+  from { opacity: 0; transform: translateY(.24em); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) { .at-mot { animation: none; } }
+.at-hero-sous { max-width: 36em; }
+/* Sur téléphone, la deuxième phrase passe à la ligne en entier, au lieu de laisser un mot seul. */
+.at-hero-sous-suite { display: block; }
+@media (min-width: 640px) { .at-hero-sous-suite { display: inline; } }
+/* Un titre dont une ligne dépasse 11 fois la taille du texte rétrécit un peu, pour tenir sur les petits téléphones. */
+.at-titre-reduit { display: inline-block; font-size: .88em; }
+/* LA PREUVE, entre le bouton et la vidéo. Sur téléphone, tout est CENTRÉ : « +1 million » en gros, ce qu'il compte
+   dessous, sur deux lignes équilibrées (Noé, 25/11/2026 : « pas centré » quand le texte était à droite du chiffre,
+   aligné à gauche dans une case trop large). Sur tablette et ordinateur, le chiffre et le texte tiennent sur une
+   ligne. Une case blanche et légère, pour qu'elle se voie sans concurrencer le bouton. */
+.at-hero-preuve { display: inline-flex; flex-direction: column; align-items: center; gap: 5px; margin: 22px auto 0; padding: 12px 22px 13px; border-radius: 18px; background: rgba(255, 255, 255, .78); border: 1px solid #e6e2f7; box-shadow: 0 14px 30px -24px rgba(59, 47, 208, .55); text-align: center; }
+.at-hero-preuve strong { flex-shrink: 0; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 1.72rem; font-weight: 800; letter-spacing: -.035em; line-height: 1.05; white-space: nowrap; background: linear-gradient(90deg, #5a50f5, #8f86ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.at-hero-preuve span { max-width: 17em; font-size: 12.5px; line-height: 1.4; color: #4b5565; text-wrap: balance; }
+/* SUR TÉLÉPHONE AUSSI, le texte est à côté du chiffre, à sa hauteur (Noé, 25/11/2026 : « au même niveau que
+   +1 million »). Le texte tient sur deux lignes de même longueur et la case colle à son contenu : c'est la case trop
+   large qui faisait « pas centré » la première fois. Sous 375 px la place manque : le texte repasse dessous. */
+@media (min-width: 375px) and (max-width: 767px) {
+  .at-hero-preuve { flex-direction: row; gap: 11px; padding: 11px 15px 11px 14px; text-align: left; }
+  .at-hero-preuve strong { font-size: 1.5rem; line-height: 1; transform: translateY(-.1em); }
+  .at-hero-preuve span { transform: translateY(1px); }
+  .at-hero-preuve span { max-width: 13.4em; font-size: 11.5px; line-height: 1.32; }
+}
+@media (min-width: 768px) {
+  .at-hero-preuve { flex-direction: row; gap: 16px; margin-top: 26px; padding: 13px 24px 13px 20px; text-align: left; }
+  .at-hero-preuve strong { font-size: 2rem; line-height: 1; transform: translateY(-.045em); }
+  .at-hero-preuve span { max-width: none; font-size: 14px; white-space: nowrap; transform: translateY(-1px); }
+}
+.at-titre-metier { font-family: 'Libre Baskerville', serif; font-style: italic; font-weight: 700; letter-spacing: 0; color: #4b4b4b; white-space: nowrap; }
+.at-titre-application { display: inline-block; white-space: nowrap; padding: .12em 0; margin: -.12em 0; background: linear-gradient(90deg, #6760ff, #7b73ef, #9e94ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ===== Réalisations ===== */
+/* Deux cases seulement : côte à côte sur ordinateur et tablette (la première ne prend plus toute la largeur), l'une
+   sous l'autre sur téléphone. */
+.app-proof-stats.at-stats li:first-child { grid-column: auto; }
+@media (max-width: 760px) {
+  .app-proof-stats.at-stats { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ===== Pourquoi avec moi : les quatre exemples ===== */
+/* Chaque case montre un morceau d'écran DESSINÉ (pas une capture) : une idée par case, deux ou trois mots dedans.
+   Quatre en ligne sur ordinateur, deux par deux sur tablette et sur téléphone. */
+.at-exemples { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; max-width: 1100px; margin: 0 auto; padding: 0; list-style: none; }
+.at-exemples li { display: flex; flex-direction: column; padding: 10px 10px 20px; border-radius: 20px; background: #fff; border: 1px solid #ebe8f5; box-shadow: 0 14px 30px -26px rgba(59, 47, 208, .5); }
+.at-exemples h3 { margin: 16px 8px 0; font-family: 'Plus Jakarta Sans Local', sans-serif; font-size: 15.5px; font-weight: 800; letter-spacing: -.01em; line-height: 1.35; color: #033475; text-wrap: balance; }
+.at-ecran { position: relative; display: grid; place-items: center; height: 164px; padding: 14px; border-radius: 13px; background: linear-gradient(165deg, #f4f2ff, #ebe7ff); overflow: hidden; }
+.at-fragment { display: flex; flex-direction: column; align-items: stretch; gap: 8px; width: 100%; max-width: 172px; padding: 14px; border-radius: 14px; background: #fff; box-shadow: 0 10px 24px -14px rgba(59, 47, 208, .45); font-size: 12px; line-height: 1.3; color: #667185; }
+.at-champ { padding: 9px 11px; border-radius: 9px; border: 1px solid #e3e0f0; color: #a3a9b8; text-align: left; }
+.at-bouton { padding: 9px 11px; border-radius: 9px; background: #665dff; color: #fff; font-weight: 600; text-align: center; }
+.at-pastille { align-self: center; padding: 4px 10px; border-radius: 999px; background: #e7f7ed; color: #15803d; font-weight: 700; font-size: 11.5px; white-space: nowrap; }
+.at-prix { text-align: center; font-size: 11.5px; }
+.at-prix b { display: block; font-family: 'Plus Jakarta Sans Local', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -.02em; color: #033475; }
+.at-notif { position: relative; z-index: 1; display: flex; align-items: center; gap: 10px; width: 100%; max-width: 190px; padding: 11px 12px; border-radius: 15px; background: #fff; box-shadow: 0 10px 24px -14px rgba(59, 47, 208, .45); text-align: left; font-size: 11.5px; line-height: 1.35; color: #667185; }
+.at-notif i { flex-shrink: 0; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(140deg, #665dff, #9e94ff); color: #fff; }
+.at-notif b { display: block; font-size: 12.5px; color: #033475; }
+.at-notif span { white-space: nowrap; }
+.at-notif-fond { position: absolute; z-index: 0; left: 50%; top: 50%; height: 52px; max-width: 166px; transform: translate(-50%, -4px) scale(.94); opacity: .55; box-shadow: none; }
+/* L'invitation : trois personnes qui se chevauchent, l'avantage (« 1 mois offert »), et le bouton. */
+.at-fragment-invite .at-bouton { white-space: nowrap; }
+@media (max-width: 339px) { .at-invite-long { display: none; } }
+.at-avatars { display: flex; align-items: center; justify-content: center; }
+/* Une personne dans chaque rond (Noé, 25/11/2026 : des ronds vides ne disent rien). LES TROIS RONDS SONT IDENTIQUES,
+   et PLUS CLAIRS que le bouton : violet pâle, icône violette. Ni dégradé du foncé au clair (« bizarre »), ni le même
+   violet que le bouton (Noé, même soir : « plus clair »). */
+.at-avatars i { flex-shrink: 0; display: grid; place-items: center; width: 30px; height: 30px; margin-left: -8px; border-radius: 50%; border: 2px solid #fff; background: #e4e0ff; color: #665dff; }
+.at-avatars i:first-child { margin-left: 0; }
+.at-fragment-suivi { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 190px; padding: 12px; }
+.at-tuile { padding: 8px 9px; border-radius: 9px; background: #f6f5fb; text-align: left; }
+.at-tuile small { display: block; font-size: 9.5px; line-height: 1.25; color: #8a94a6; }
+.at-tuile b { display: block; margin-top: 2px; font-family: 'Plus Jakarta Sans Local', sans-serif; font-size: 15px; font-weight: 800; letter-spacing: -.02em; color: #033475; white-space: nowrap; }
+.at-fragment-suivi svg { grid-column: 1 / -1; width: 100%; height: 30px; }
+
+/* Le partage des rôles, pour finir : sa première peur est de ne pas trouver d'utilisateurs. */
+.at-roles { max-width: 720px; margin: 40px auto 0; text-align: center; font-family: 'Plus Jakarta Sans Local', sans-serif; font-size: clamp(19px, 2.3vw, 26px); font-weight: 800; letter-spacing: -.025em; line-height: 1.38; color: #033475; text-wrap: balance; }
+.at-roles span { display: block; }
+.at-roles-moi { margin-top: 6px; color: #665dff; }
+
+@media (max-width: 1023px) {
+  .at-exemples { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 620px; }
+}
+@media (max-width: 520px) {
+  .at-exemples { gap: 10px; }
+  .at-exemples li { padding: 8px 8px 16px; border-radius: 18px; }
+  .at-exemples h3 { margin: 12px 6px 0; font-size: 14px; }
+  .at-ecran { height: 142px; padding: 9px; border-radius: 12px; }
+  .at-fragment { max-width: none; padding: 11px; gap: 7px; font-size: 11.5px; }
+  .at-notif { max-width: none; }
+  .at-notif-fond { max-width: none; width: calc(100% - 34px); }
+  .at-fragment-suivi { gap: 6px; padding: 9px; }
+  .at-fragment-suivi svg { height: 22px; }
+  .at-tuile { padding: 6px 7px; }
+  .at-tuile b { font-size: 13px; }
+  .at-notif { padding: 9px 10px; gap: 8px; font-size: 11px; }
+  .at-notif b { font-size: 12px; }
+  .at-notif i { width: 26px; height: 26px; border-radius: 8px; }
+  .at-roles { margin-top: 30px; }
+}
+/* Petits téléphones (moins de 400 px) : les morceaux d'écran se resserrent pour tenir dans une demi-largeur. */
+@media (max-width: 399px) {
+  .at-ecran { padding: 7px; }
+  .at-fragment { padding: 9px; gap: 6px; font-size: 11px; }
+  .at-pastille { padding: 3px 8px; font-size: 10.5px; }
+  .at-prix b { font-size: 16px; }
+  .at-champ, .at-bouton { padding: 7px 9px; }
+  .at-notif { padding: 8px 9px; }
+}
+/* Très petits téléphones (moins de 350 px) : une case par ligne, sinon plus rien ne se lit dedans. */
+@media (max-width: 349px) {
+  .at-exemples { grid-template-columns: minmax(0, 1fr); max-width: 250px; }
+  .at-ecran { height: 132px; }
+}
+
+/* ===== Comment ça marche : quatre étapes ===== */
+/* PAS DE CASE autour d'une étape : un numéro dans un petit carré, un nom, une phrase. Puis le dessin, dans un cadre qui
+   prend toute la largeur de la colonne. Ce cadre donne ses bords à la grille, donc son axe : sans lui, le texte calé à
+   gauche faisait paraître le bloc décalé par rapport au titre (retour de Noé, 25/11/2026).
+   Dessins À PLAT : du blanc, un trait fin, presque pas d'ombre (« beaucoup d'ombres », même retour), UNE couleur.
+   L'une sous l'autre sur téléphone, deux par deux à partir de 700 px. */
+.at-marche { display: grid; grid-template-columns: minmax(0, 1fr); gap: 52px; max-width: 920px; margin: 0 auto; padding: 0; list-style: none; text-align: left; }
+.at-marche > li { display: flex; flex-direction: column; min-width: 0; }
+.at-marche-tete { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.at-marche-num { display: grid; place-items: center; flex-shrink: 0; width: 30px; height: 30px; border-radius: 8px; border: 1px solid #d9d6ea; background: #fff; color: #033475; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; }
+.at-marche h3 { font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; color: #033475; }
+/* flex: 1 : dans une même rangée, une phrase d'une ligne et une de deux laissent leurs cadres à la même hauteur. */
+.at-marche > li > p { flex: 1; max-width: 27em; font-size: 15px; line-height: 1.55; color: #667185; text-wrap: balance; }
+/* Le cadre est violet très pâle, sans bord : les pièces blanches s'y détachent toutes seules, sans ombre. */
+.at-dessin { position: relative; height: 208px; margin-top: 20px; border-radius: 22px; background: #f1f0fc; overflow: hidden; }
+@media (min-width: 700px) {
+  .at-marche { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 72px 64px; }
+  .at-marche h3 { font-size: 22px; }
+  .at-marche > li > p { font-size: 15.5px; }
+  .at-dessin { height: 248px; margin-top: 24px; }
+}
+/* Sur un grand écran la colonne fait 428 px : le dessin grossit d'un cran pour remplir son cadre. */
+@media (min-width: 960px) {
+  .at-dessin { height: 264px; }
+  .at-dessin > .at-sc { transform: scale(1.14); }
+}
+
+/* Les pièces communes aux quatre dessins : du blanc et un trait fin. Une ombre à peine visible, rien de plus. */
+.at-sc { position: relative; width: 100%; height: 100%; font-size: 12.5px; line-height: 1.3; color: #4b5565; }
+.at-sc b { display: block; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: -.01em; color: #033475; white-space: nowrap; }
+.at-sc small { display: block; margin-top: 2px; font-size: 11.5px; color: #8a94a6; white-space: nowrap; }
+.at-sc-carte { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 16px; background: #fff; border: 1px solid #e2dff2; box-shadow: 0 1px 2px rgba(13, 21, 72, .04); }
+
+/* 1. L'appel : son message, puis la carte de l'appel. « 15 min » ressort à droite : c'est ce qui rassure. */
+/* Les deux pièces sont dans un même bloc centré : l'écart entre la bulle et la carte reste de 10 px à toute taille
+   (« trop de marge en dessous » de la bulle, et la carte « à diminuer », retours de Noé du 25/11/2026). */
+.at-sc-appel { position: absolute; left: 50%; top: 50%; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; width: min(92%, 280px); transform: translate(-50%, -50%); }
+/* Le message et, par-dessus au même coin, la petite bulle « en train d'écrire » : l'une remplace l'autre. */
+.at-sc-message { position: relative; display: block; }
+.at-sc-bulle { display: block; padding: 9px 14px; border-radius: 16px 16px 5px 16px; background: #665dff; color: #fff; font-weight: 600; font-size: 13px; white-space: nowrap; transform-origin: 100% 100%; }
+.at-sc-saisie { position: absolute; right: 0; top: 0; bottom: 0; display: flex; align-items: center; gap: 5px; padding: 0 15px; border-radius: 16px 16px 5px 16px; background: #665dff; opacity: 0; transform-origin: 100% 100%; }
+.at-sc-saisie i { width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+.at-sc-rdv { position: static; transform: none; display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 11px; border-radius: 15px; }
+.at-sc-rdv img { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+.at-sc-rdv > span { flex: 1; min-width: 0; }
+.at-sc-rdv b { font-size: 13px; }
+.at-sc-rdv small { font-size: 11px; }
+.at-sc-rdv strong { flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; padding: 7px 10px; border-radius: 10px; background: #f1efff; color: #665dff; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; white-space: nowrap; }
+@media (max-width: 359px) {
+  .at-sc-rdv { gap: 8px; padding: 9px; }
+  .at-sc-rdv strong { padding: 6px 8px; font-size: 15px; }
+}
+
+/* 2. La proposition : trois feuilles en éventail, celle du dessus dit ce qui est écrit. */
+.at-sc-feuille { position: absolute; left: 50%; top: 50%; width: 150px; height: 158px; margin: -79px 0 0 -75px; border-radius: 14px; background: #fff; border: 1px solid #e2dff2; box-shadow: 0 1px 2px rgba(13, 21, 72, .04); }
+.at-sc-feuille-gauche { transform: translateX(-34px) rotate(-9deg); background: #faf9ff; box-shadow: none; }
+.at-sc-feuille-droite { transform: translateX(34px) rotate(9deg); background: #faf9ff; box-shadow: none; }
+.at-sc-feuille-devant { display: flex; flex-direction: column; gap: 10px; padding: 18px 16px; text-align: left; }
+.at-sc-feuille-devant b { margin-bottom: 4px; font-size: 15px; }
+.at-coche { display: flex; align-items: center; gap: 9px; font-size: 12.5px; font-weight: 600; color: #4b5565; white-space: nowrap; }
+.at-coche::before { content: ''; flex-shrink: 0; width: 17px; height: 17px; border-radius: 50%; background: #efedff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.4 8.3l2.3 2.3 4.9-5' fill='none' stroke='%23665dff' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 17px 17px no-repeat; }
+@media (min-width: 700px) {
+  .at-sc-feuille { width: 158px; height: 172px; margin: -86px 0 0 -79px; }
+  .at-sc-feuille-devant { gap: 12px; padding: 21px 17px; }
+}
+
+/* 3. La construction : un tableau à trois lignes (faite, en cours, à venir). */
+.at-sc-tableau { display: flex; flex-direction: column; gap: 12px; width: min(88%, 280px); padding: 16px 17px 18px; text-align: left; }
+.at-sc-tableau > b { margin-bottom: 2px; font-size: 15px; }
+.at-sc-phase { display: grid; grid-template-columns: 18px 1fr auto; align-items: center; gap: 10px; font-weight: 600; color: #8a94a6; }
+.at-sc-phase > i { width: 18px; height: 18px; border-radius: 50%; background: #eeecf8; }
+.at-sc-phase small { margin: 0; }
+.at-sc-phase-faite, .at-sc-phase-encours { color: #033475; }
+.at-sc-phase-faite > i { background: #665dff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.4 8.3l2.3 2.3 4.9-5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 18px 18px no-repeat; }
+.at-sc-phase-encours > i { background: #fff; box-shadow: inset 0 0 0 5px #665dff; }
+.at-sc-phase u { display: block; width: 62px; height: 7px; border-radius: 999px; background: #eeecf8; overflow: hidden; text-decoration: none; }
+.at-sc-phase s { display: block; height: 100%; border-radius: 999px; background: #665dff; text-decoration: none; }
+
+/* 4. Le lancement : une fenêtre de navigateur avec son adresse (le web), et devant elle la fiche d'une boutique
+   d'applications (le mobile) : une petite icône, deux lignes à la place du nom, une coche. Ni vrai bouton ni logo
+   de boutique : la phrase au-dessus les nomme déjà. Tout est placé au pixel dans un bloc de 300 x 176, rétréci
+   d'un cran sous 360 px. */
+.at-sc-lancement { position: absolute; left: 50%; top: 50%; width: 300px; height: 176px; transform: translate(-50%, -50%); }
+.at-sc-fenetre { position: absolute; left: 14px; top: 10px; width: 214px; height: 138px; border-radius: 14px; background: #fff; border: 1px solid #e2dff2; overflow: hidden; }
+.at-sc-points { display: flex; gap: 5px; padding: 10px 12px; border-bottom: 1px solid #efedf8; }
+.at-sc-points i { width: 7px; height: 7px; border-radius: 50%; background: #d9d6ea; }
+.at-sc-lignes { position: absolute; left: 16px; bottom: 18px; display: grid; gap: 7px; }
+.at-sc-lignes i { display: block; width: 104px; height: 7px; border-radius: 999px; background: #efedf8; }
+.at-sc-lignes i + i { width: 68px; }
+.at-sc-url { position: absolute; left: 0; top: 50px; display: flex; align-items: center; gap: 10px; width: 212px; padding: 11px 13px; border-radius: 13px; background: #fff; border: 2px solid #8f86ff; box-shadow: 0 0 0 5px rgba(143, 134, 255, .18); font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; color: #033475; white-space: nowrap; }
+.at-sc-url i { flex-shrink: 0; width: 10px; height: 10px; border-radius: 50%; background: #665dff; box-shadow: 0 0 0 4px rgba(102, 93, 255, .18); }
+/* La fiche de boutique (Noé, 25/11/2026 : « l'icône, c'est un carré, trouve mieux », « mets App Store au-dessus
+   pour dire app mobile ») : le nom de la boutique, une icône d'application arrondie avec sa fusée, deux lignes
+   pour le nom, et le bouton « Obtenir ». Pas de logo de marque. Elle ne bouge pas. */
+.at-sc-fiche { position: absolute; right: 0; bottom: -9px; display: grid; gap: 7px; width: 184px; padding: 9px 11px 11px; border-radius: 15px; background: #fff; border: 1px solid #e2dff2; box-shadow: 0 1px 2px rgba(13, 21, 72, .04); }
+.at-sc-fiche > small { font-size: 9.5px; font-weight: 700; line-height: 1; letter-spacing: .01em; color: #8a90a2; }
+.at-sc-fiche-ligne { display: flex; align-items: center; gap: 9px; }
+.at-sc-fiche-icone { flex-shrink: 0; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(150deg, #9189ff, #5a50f5); color: #fff; }
+.at-sc-fiche-texte { flex: 1; min-width: 0; display: grid; gap: 6px; }
+.at-sc-fiche-texte i { display: block; height: 7px; border-radius: 999px; background: #dcd9ee; }
+.at-sc-fiche-texte i + i { width: 62%; background: #eceaf6; }
+.at-sc-fiche-ok { flex-shrink: 0; padding: 5px 10px 6px; border-radius: 999px; background: #eeecff; color: #5a50f5; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 10.5px; font-weight: 800; line-height: 1; }
+@media (max-width: 359px), (min-width: 700px) and (max-width: 767px) {
+  .at-sc-lancement { transform: translate(-50%, -50%) scale(.9); }
+}
+
+/* ===== Le prix et le délai ===== */
+/* Deux repères courts (le chiffre, puis la comparaison avec une agence) et UNE phrase dessous, qui vaut pour les
+   deux. Sur ordinateur, deux cases de même largeur. */
+.at-tarif .etape-tarif-texte strong { margin-bottom: 0; font-size: 17px; }
+.at-tarif-note { margin: 12px auto 0; text-align: center; font-size: 13.5px; line-height: 1.5; color: #8a94a6; }
+@media (min-width: 768px) {
+  .etape-tarif.at-tarif { grid-template-columns: 1fr 1fr; max-width: 620px; }
+}
+
+/* ===== Ce à quoi je m'engage ===== */
+.at-engagements { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; max-width: 1100px; margin: 0 auto; padding: 0; list-style: none; }
+.at-engagements li { display: flex; flex-direction: column; gap: 16px; padding: 24px 22px; border-radius: 18px; background: #fff; border: 1px solid #ebe8f5; box-shadow: 0 14px 30px -26px rgba(59, 47, 208, .5); text-align: left; }
+.at-engagement-icone { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: 12px; background: #f1efff; color: #665dff; }
+.at-engagement-texte { font-size: 14px; line-height: 1.55; color: #667185; }
+.at-engagement-texte strong { display: block; margin-bottom: 5px; font-family: 'Plus Jakarta Sans Local', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: -.01em; line-height: 1.3; color: #033475; }
+@media (max-width: 1023px) {
+  .at-engagements { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 680px; }
+}
+@media (max-width: 560px) {
+  .at-engagements { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .at-engagements li { flex-direction: row; align-items: flex-start; gap: 14px; padding: 16px; }
+  .at-engagement-icone { width: 38px; height: 38px; border-radius: 11px; }
+}
+
+/* ===== LES COULEURS (25/11/2026) ===== */
+/* DEUX COULEURS, PAS PLUS : le violet de la marque, et le bleu nuit. Tout le reste est blanc ou gris très clair.
+   Noé, le 25/11/2026 : d'abord « si c'est que du violet, c'est monotone », puis, devant un essai qui ajoutait du
+   rose, du bleu ciel, de l'orange, du vert et un panneau pastel : « ça va dans tous les sens ». La leçon : le relief
+   vient d'UN contraste (clair / bleu nuit), pas d'une couleur de plus par bloc. Ne pas rajouter de teinte.
+     - Le violet : boutons, mots forts des titres, icônes, liens. Comme sur l'accueil actuel.
+     - Le bleu nuit : le bloc « Pourquoi avec moi » (l'argument qui distingue Noé), le pied de page, et le bouton
+       de la barre du haut. Il revient donc du haut en bas de la page, pas une seule fois.
+     - Le vert ne sert qu'aux deux pastilles « Gratuit » et « Avant de payer », déjà là sur l'accueil actuel. */
+
+/* Pourquoi avec moi : le seul bloc sombre de la page, en panneau aux coins ronds. Une seule lueur, violette. */
+.at-nuit { position: relative; max-width: 1240px; margin: 0 auto; padding: 60px 14px 56px; border-radius: 30px; overflow: hidden; color: #fff;
+  background:
+    radial-gradient(880px 420px at 50% -6%, rgba(124, 114, 255, .55), rgba(124, 114, 255, 0) 64%),
+    linear-gradient(180deg, #0d1548, #090f33); }
+/* Le titre : deux phrases qui s'opposent. La première en blanc, la seconde dessous, en violet clair. */
+.at-nuit h2 { color: #fff; }
+.at-nuit h2 span { display: block; margin-top: .3em; color: #b7b1ff; }
+.at-nuit-titre { max-width: 21em; margin-left: auto; margin-right: auto; font-size: clamp(1.32rem, 4.6vw, 2.1rem); line-height: 1.24; text-wrap: balance; }
+.at-nuit-kicker { color: #b7b1ff; }
+.at-nuit-texte { color: rgba(255, 255, 255, .76); }
+.at-nuit .at-exemples li { border-color: transparent; box-shadow: 0 28px 54px -30px rgba(0, 0, 0, .7); }
+.at-nuit .at-roles { color: #fff; }
+.at-nuit .at-roles-moi { color: #b7b1ff; }
+@media (min-width: 768px) { .at-nuit { padding: 96px 40px 92px; border-radius: 44px; } }
+
+/* ===== LE BLEU NUIT, D'UN BOUT À L'AUTRE (Noé, 25/11/2026 : « j'aime beaucoup la couleur, il faut que ce soit
+   cohérent ») ===== */
+/* Il ne doit pas apparaître une seule fois : le pied de page le reprend (il était violet), et le bouton noir de la
+   barre du haut aussi. La page est claire en haut, sombre au milieu pour l'argument, sombre pour finir. */
+.at-page footer.bg-brand {
+  background:
+    radial-gradient(760px 300px at 50% 0%, rgba(124, 114, 255, .42), rgba(124, 114, 255, 0) 66%),
+    linear-gradient(180deg, #0d1548, #090f33);
+}
+
+/* VARIANTE À COMPARER, /accueiltest?haut=nuit : le haut de page sur le bleu nuit, le film posé dessus. */
+.at-hero.at-hero-nuit.hero-bg {
+  border-radius: 0 0 30px 30px;
+  background:
+    radial-gradient(900px 520px at 50% -4%, rgba(124, 114, 255, .6), rgba(124, 114, 255, 0) 64%),
+    linear-gradient(180deg, #0d1548, #090f33);
+}
+.at-hero-nuit h1.at-titre { color: #fff; }
+.at-hero-nuit .at-accroche { color: rgba(255, 255, 255, .86); }
+.at-hero-nuit .at-hero-sous { color: rgba(255, 255, 255, .78); }
+.at-hero-nuit .at-hero-preuve { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .16); box-shadow: none; }
+.at-hero-nuit .at-hero-preuve strong { background: none; -webkit-background-clip: border-box; background-clip: border-box; color: #fff; }
+.at-hero-nuit .at-hero-preuve span { color: rgba(255, 255, 255, .78); }
+@media (min-width: 768px) { .at-hero.at-hero-nuit.hero-bg { border-radius: 0 0 44px 44px; } }
+
+/* ===== Les questions (25/11/2026, sur le modèle d'Ikovaline) ===== */
+/* PAS DE CASES : des lignes séparées par un trait fin, un « + » qui tourne en croix quand la réponse s'ouvre. Le titre
+   au-dessus sur téléphone ; à gauche à partir de 860 px. Rien d'autre : la ligne « Une autre question ? Écris-moi
+   sur WhatsApp. » est retirée (Noé : « ça va ramener des touristes »). */
+.at-faq { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: 'titre' 'liste'; gap: 20px; max-width: 920px; margin: 0 auto; }
+.at-faq-titre { grid-area: titre; margin: 0; font-size: 1.6rem; line-height: 1.16; text-align: center; }
+.at-faq-liste { grid-area: liste; text-align: left; }
+/* Pas de trait au-dessus de la première question (Noé, 25/11/2026) : elle démarre à la hauteur du titre. */
+.at-faq-liste details:first-child > summary { padding-top: 8px; }
+.at-faq-liste details { border-bottom: 1px solid #e2dfee; }
+.at-faq-liste summary { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 2px; cursor: pointer; list-style: none; font-size: 15px; font-weight: 600; line-height: 1.4; color: #033475; -webkit-tap-highlight-color: transparent; }
+.at-faq-liste summary::-webkit-details-marker { display: none; }
+.at-faq-liste summary:focus-visible { outline: 2px solid #665dff; outline-offset: 3px; border-radius: 6px; }
+.at-faq-liste summary > i { position: relative; flex-shrink: 0; width: 14px; height: 14px; transition: transform .25s ease; }
+.at-faq-liste summary > i::before, .at-faq-liste summary > i::after { content: ''; position: absolute; left: 0; top: 6px; width: 14px; height: 2px; border-radius: 2px; background: #033475; }
+.at-faq-liste summary > i::after { transform: rotate(90deg); }
+.at-faq-liste details[open] > summary > i { transform: rotate(45deg); }
+.at-faq-liste details[open] > summary > i::before, .at-faq-liste details[open] > summary > i::after { background: #665dff; }
+.at-faq-liste details > p { max-width: 35em; margin: 0; padding: 0 34px 20px 2px; font-size: 14.5px; line-height: 1.62; color: #667185; text-wrap: pretty; }
+@media (min-width: 860px) {
+  .at-faq { grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); grid-template-areas: 'titre liste'; column-gap: 72px; align-items: start; }
+  .at-faq-titre { font-size: 2.1rem; text-align: left; }
+  .at-faq-liste summary { padding: 21px 2px; font-size: 16px; }
+  .at-faq-liste details > p { font-size: 15px; padding-bottom: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .at-faq-liste summary > i { transition: none; }
+}
+
+/* ===== LES ANIMATIONS (25/11/2026, Noé : « comme Ikovaline », « pas ringard », « pas partout pour rien ») ===== */
+/* RÈGLE : un seul détail vivant par dessin, et il dit quelque chose (le message arrive, les lignes se cochent, la
+   barre avance, l'adresse est en ligne, la cloche sonne). Rien ne bouge pour décorer. Uniquement des déplacements et
+   des fondus (transform, opacity, box-shadow) : aucune mise en page recalculée, donc léger sur téléphone. Au survol,
+   seulement là où une souris existe. Tout s'arrête pour qui a demandé moins de mouvement. */
+
+/* 1. L'appel : le message s'écrit (trois points qui sautillent), puis s'affiche, et ça recommence. « 15 min » ne
+   bouge pas (Noé, 25/11/2026). */
+@keyframes at-flotte { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes at-bat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+@keyframes at-saisie { 0%, 20% { opacity: 1; transform: scale(1); } 25%, 95% { opacity: 0; transform: scale(.9); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes at-message { 0%, 21% { opacity: 0; transform: scale(.92); } 28%, 93% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(.96); } }
+@keyframes at-point { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-3px); opacity: 1; } }
+.at-sc-saisie { animation: at-saisie 8s ease infinite; }
+.at-sc-bulle { animation: at-message 8s ease infinite; }
+.at-sc-saisie i { animation: at-point 1s ease-in-out infinite; }
+.at-sc-saisie i:nth-child(2) { animation-delay: .15s; }
+.at-sc-saisie i:nth-child(3) { animation-delay: .3s; }
+
+/* 2. La proposition : les trois lignes se cochent l'une après l'autre ; les feuilles du fond respirent. */
+@keyframes at-coche { 0%, 6% { transform: scale(.3); opacity: 0; } 14%, 100% { transform: scale(1); opacity: 1; } }
+@keyframes at-feuille-g { 0%, 100% { transform: translateX(-34px) rotate(-9deg); } 50% { transform: translateX(-37px) rotate(-11deg); } }
+@keyframes at-feuille-d { 0%, 100% { transform: translateX(34px) rotate(9deg); } 50% { transform: translateX(37px) rotate(11deg); } }
+.at-coche::before { animation: at-coche 7s ease-out infinite; }
+.at-coche:nth-of-type(2)::before { animation-delay: .45s; }
+.at-coche:nth-of-type(3)::before { animation-delay: .9s; }
+.at-sc-feuille-gauche { animation: at-feuille-g 6.5s ease-in-out infinite; }
+.at-sc-feuille-droite { animation: at-feuille-d 6.5s ease-in-out infinite; }
+
+/* 3. La construction : la barre du développement avance, le rond « en cours » bat. */
+@keyframes at-avance { 0% { transform: scaleX(.38); } 65%, 100% { transform: scaleX(1); } }
+.at-sc-phase s { transform-origin: 0 50%; animation: at-avance 5.5s ease-in-out infinite alternate; }
+.at-sc-phase-encours > i { animation: at-bat 2.6s ease-in-out infinite; }
+
+/* 4. Le lancement : le point de l'adresse émet (elle est en ligne), la coche de la fiche se pose. Rien ne flotte. */
+@keyframes at-emet { 0% { box-shadow: 0 0 0 0 rgba(102, 93, 255, .5); } 80%, 100% { box-shadow: 0 0 0 11px rgba(102, 93, 255, 0); } }
+.at-sc-url i { animation: at-emet 2.4s ease-out infinite; }
+
+/* Le rappel du bloc sombre : la cloche sonne de temps en temps, la notification flotte. */
+@keyframes at-sonne { 0%, 82%, 100% { transform: rotate(0); } 86% { transform: rotate(-14deg); } 90% { transform: rotate(11deg); } 94% { transform: rotate(-7deg); } 97% { transform: rotate(4deg); } }
+.at-notif:not(.at-notif-fond) { animation: at-flotte 5s ease-in-out infinite; }
+.at-notif i svg { transform-origin: 50% 12%; animation: at-sonne 4.6s ease-in-out infinite; }
+
+/* Au survol (souris seulement) : l'étape s'allume, la case du bloc sombre se soulève, la question se colore. */
+.at-dessin { transition: background-color .3s ease; }
+.at-marche-num { transition: background-color .25s ease, color .25s ease, border-color .25s ease; }
+/* « translate » et non « transform » : l'apparition des cases garde la main sur transform. */
+.at-exemples li { transition: translate .3s cubic-bezier(.22, .75, .2, 1); }
+.at-faq-liste summary { transition: color .2s ease; }
+@media (hover: hover) {
+  .at-marche > li:hover .at-dessin { background: #e9e7fb; }
+  .at-marche > li:hover .at-marche-num { background: #665dff; border-color: #665dff; color: #fff; }
+  .at-exemples li:hover { translate: 0 -5px; }
+  .at-faq-liste summary:hover { color: #665dff; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .at-sc-bulle, .at-sc-saisie, .at-sc-saisie i, .at-coche::before, .at-sc-feuille-gauche, .at-sc-feuille-droite, .at-sc-phase s,
+  .at-sc-phase-encours > i, .at-sc-url i, .at-notif:not(.at-notif-fond), .at-notif i svg { animation: none; }
+  .at-dessin, .at-marche-num, .at-exemples li, .at-faq-liste summary { transition: none; }
+  .at-exemples li:hover { translate: none; }
+}
+
+/* ===== LE FOND DU HAUT DE PAGE NE SE COUPE PLUS (25/11/2026, 23 h 30) ===== */
+/* Noé : « l'ombre se coupe, sûrement à cause d'une autre section ». La lueur violette du haut de page finissait sur
+   un gris (#f9f9f9), et la section suivante commence sur le blanc de la page (#fffefc) : on voyait un trait droit
+   sous la vidéo. Ici la lueur finit sur le blanc de la page, donc elle se fond dedans. Seulement sur cette page :
+   la règle d'origine (index.css) sert aussi à l'accueil en ligne. */
+.at-hero.hero-bg:not(.at-hero-nuit) {
+  background:
+    radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 34%, rgba(255, 254, 252, 0) 70%),
+    linear-gradient(0deg, #fffefc 0, #f4f2ff 4%, #c9c4ff 14%, #bab4ff 45%, #d9d5ff 78%, #f3f1ff 100%);
+}

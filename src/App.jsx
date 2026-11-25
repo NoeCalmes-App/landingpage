@@ -64,6 +64,9 @@ const VietCollabMockups = lazy(() => import('./VietCollabMockups.jsx'))
 const PulsoMockups = lazy(() => import('./PulsoMockups.jsx'))
 const AuditApp = lazy(() => import('./audit-app/AuditApp.jsx'))
 const Projets = lazy(() => import('./Projets.jsx'))
+// PAGE TEST DE LA NOUVELLE PAGE D'ACCUEIL (25/11/2026) : /accueiltest, EN LOCAL SEULEMENT. Hors `npm run dev`,
+// `import.meta.env.DEV` vaut false : la page n'est ni branchée ni embarquée dans le site mis en ligne.
+const AccueilTest = import.meta.env.DEV ? lazy(() => import('./AccueilTest.jsx')) : null
 
 const meetingSvg = '/assets/images/illustrations/meetingdev.svg'
 const devSvg = '/assets/images/illustrations/devmobile.svg'
@@ -229,6 +232,7 @@ function App() {
       history.replaceState(null, '', redirect)
     }
     const path = (redirect || window.location.pathname).replace(/\/$/, '') || '/'
+    if (import.meta.env.DEV && path === '/accueiltest') return 'accueil-test'
     // Redirection directe vers WhatsApp (message pré-rempli). Utilisée comme
     // URL de fin du formulaire Meta (les formulaires instantanés refusent les
     // liens wa.me, mais acceptent noecalmes.fr/whatsapp).
@@ -684,6 +688,7 @@ function App() {
   if (page === 'guestride-mockups') return <Suspense fallback={null}><GuestRideMockups /></Suspense>
   if (page === 'immomatch-mockups') return <Suspense fallback={null}><ImmoMatchMockups /></Suspense>
   if (page === 'projets') return <Suspense fallback={null}><Projets onBack={goHome} /></Suspense>
+  if (import.meta.env.DEV && page === 'accueil-test' && AccueilTest) return <Suspense fallback={null}><AccueilTest /></Suspense>
   if (page === 'contact') return <ContactNoe />
   if (page === 'legal') return <Suspense fallback={null}><Legales /></Suspense>
   if (page === 'audit-app') return <Suspense fallback={null}><AuditApp onBack={goHome} onLegal={(p) => openLegal(p, '/audit-app')} /></Suspense>
