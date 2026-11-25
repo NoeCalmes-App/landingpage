@@ -221,10 +221,6 @@ const QUESTIONS = [
   },
 ]
 
-// Les mots qui se relaient dans le titre : « Fais de ton métier… », « Fais de ton activité… ». Le premier est celui
-// que Google et les lecteurs d'écran lisent.
-const MOTS_DU_TITRE = ['ton métier', 'ton activité']
-
 // Le même mécanisme que l'accueil : une section apparaît quand elle entre à l'écran.
 function useApparition() {
   const ref = useRef(null)
@@ -285,15 +281,6 @@ export default function AccueilTest() {
   const racine = useApparition()
   // Variante à comparer : /accueiltest?haut=nuit (le haut de page sur le bleu nuit).
   const hautNuit = new URLSearchParams(window.location.search).get('haut') === 'nuit'
-  // Le mot du titre qui change : « ton métier », puis « ton activité », toutes les 3,2 secondes. Un seul mot est à
-  // l'écran à la fois, donc la ligne reste centrée. Si le visiteur a demandé moins d'animations, rien ne bouge.
-  const [mot, setMot] = useState(0)
-  useEffect(() => {
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return undefined
-    const minuterie = setInterval(() => setMot((m) => (m + 1) % MOTS_DU_TITRE.length), 3200)
-    return () => clearInterval(minuterie)
-  }, [])
-
   // Une page de travail : pas dans Google, et un titre d'onglet qui dit ce que c'est.
   useEffect(() => {
     const ancienTitre = document.title
@@ -373,44 +360,37 @@ export default function AccueilTest() {
       </nav>
 
       {/* ========== HAUT DE PAGE ========== */}
-      {/* LE HAUT DE PAGE (titre choisi par Noé le 25/11/2026, 19 h 40, parmi quatre). Il arrive le plus souvent
-          d'une pub ou d'Instagram, sur téléphone : il doit se dire « il cible mon profil » et voir que ce n'est pas un
+      {/* LE HAUT DE PAGE. Le visiteur arrive le plus souvent d'une pub ou d'Instagram, sur téléphone : il doit
+          comprendre tout de suite ce que Noé fait, se dire « il cible mon profil » et voir que ce n'est pas un
           simple développeur.
-          LE TITRE : « Fais de ton métier une application qui rapporte vraiment. » (« vraiment » ajouté par Noé,
-          20 h). Court, simple, et la cible est dans le titre (son métier). « TON MÉTIER » ALTERNE AVEC « TON
-          ACTIVITÉ » toutes les trois secondes (idée de Noé, reprise du titre d'Ikovaline dont la fin change) :
-          celui qui ne dit pas « mon métier » se reconnaît dans « mon activité ». Un seul mot est dans la page à
-          la fois : au chargement, c'est « ton métier », celui que Google lit. Quand moins d'animations sont
-          demandées, il reste seul et fixe.
-          DESSOUS : « Tu as l'idée. On en fait une nouvelle source de revenus. » C'est la phrase de Noé (« Tu as
-          une idée, on crée une nouvelle source de revenus »), resserrée. SA DÉCISION, à ne plus rediscuter : pour
-          sa cible, qui a un métier et des contacts à qui la montrer, ce n'est pas un mensonge, c'est son marketing.
+          LE TITRE : « Je transforme ton idée en application qui rapporte vraiment. » Choisi par Noé le 26/11/2026
+          parmi trois, vus côte à côte sur téléphone (« la deuxième, parfait »). À la première personne : on sait
+          ce qu'il fait. « Qui rapporte vraiment » reste, c'est ce qui le sépare d'un développeur.
+          DESSOUS : « Tu connais ton métier. On en fait une nouvelle source de revenus. » C'est cette phrase qui
+          cible maintenant (le professionnel installé), plus le titre. « Nouvelle source de revenus » est le mot de
+          Noé : pour sa cible, qui a un métier et des contacts à qui montrer l'application, c'est son marketing.
+          TITRE D'AVANT (25/11/2026) : « Fais de ton métier une application qui rapporte vraiment. », où « ton
+          métier » alternait avec « ton activité ». Les styles du mot qui alterne (.at-titre-metier, .at-mot) sont
+          gardés dans accueil-test.css.
           LE BOUTON DE LA BARRE DU HAUT dit « Discuter avec Noé » : « J'ai une idée » et « J'ai une idée
           d'application » à dix centimètres l'un de l'autre, c'était deux fois le même bouton.
-          LA PREUVE, AU-DESSUS DE LA VIDÉO, « +1 million » en gros (Noé : « là, au-dessus de la vidéo, c'est bien,
-          il se dit wow »). C'est la seule ligne du haut de page qu'un autre développeur ne peut pas écrire.
-          « Sur une application que j'ai conçue » : Noé veut plus court que « dont j'ai conçu la première
-          version ». Pas « une de mes applications » : elle appartient à un client, qui a donné son accord à
-          condition qu'elle ne soit pas présentée comme la sienne. Ni nom ni icône.
-          Écartés le même jour : la question seule (« pas une grosse promesse »), « Je la construis pour que tes
-          utilisateurs paient chaque mois » (« un développeur dit la même chose »), « Je la transforme en
-          application qui génère des revenus » (la phrase de presque tous les développeurs freelances), « Elle
-          mérite mieux qu'un simple développeur », « Tu ne veux pas une application qui existe… ».
+          Écartés le 25/11/2026 : la question seule (« pas une grosse promesse »), « Je la construis pour que tes
+          utilisateurs paient chaque mois » (« un développeur dit la même chose »), « Elle mérite mieux qu'un simple
+          développeur », « Tu ne veux pas une application qui existe… ».
           VARIANTE À COMPARER : /accueiltest?haut=nuit affiche ce haut de page sur le bleu nuit. */}
       <section className={`hero-bg at-hero ${hautNuit ? 'at-hero-nuit' : ''} relative min-h-screen flex items-center justify-center text-center px-3 sm:px-5 md:px-10 lg:px-16 pt-36 pb-16 sm:pt-40 md:pt-44 lg:pt-50 md:pb-24 overflow-hidden`}>
         <div className="hero-visual" aria-hidden="true" />
         <div className="hero-content anim-hero relative z-10 max-w-4xl mx-auto w-full">
           <h1 className="at-titre font-heading font-extrabold text-text tracking-tight w-full mx-auto mb-4 md:mb-6">
             <span className="font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
-              Fais de{' '}
-              <span className="at-titre-metier"><span key={mot} className="at-mot">{MOTS_DU_TITRE[mot]}</span></span><br />
-              une application<br />
+              Je transforme<br />
+              ton idée en application<br />
               <span className="at-titre-application">qui rapporte vraiment.</span>
             </span>
           </h1>
 
           <p className="at-hero-sous text-grey text-[0.98rem] sm:text-[1.08rem] md:text-[1.18rem] leading-relaxed mx-auto mb-8 md:mb-10">
-            Tu as l'idée. <span className="at-hero-sous-suite">On en fait une nouvelle source de revenus.</span>
+            Tu connais ton métier. <span className="at-hero-sous-suite">On en fait une nouvelle source de revenus.</span>
           </p>
 
           <div className="flex flex-col items-center">
