@@ -422,18 +422,6 @@
   .at-exemples li:hover { translate: none; }
 }
 
-/* ===== LA PREUVE CHEZ UN CLIENT (26/11/2026) ===== */
-/* Sous le bloc sombre : le titre et une phrase à gauche, le message du client à droite ; l'un sous l'autre sur
-   téléphone. L'image a le cadre des cartes d'avis du bas de page (même bord, même ombre), sans être penchée. */
-.at-preuve { display: grid; gap: 28px; justify-items: center; max-width: 900px; margin: 0 auto; text-align: center; }
-.at-preuve-texte p { max-width: 23em; margin: 14px auto 0; font-size: .95rem; line-height: 1.6; text-wrap: balance; }
-.at-preuve-image { display: block; width: min(100%, 330px); height: auto; border-radius: 18px; border: 1px solid var(--color-card-border, #e6e2f7); box-shadow: 0 10px 36px rgba(102, 93, 255, .14); }
-@media (min-width: 860px) {
-  .at-preuve { grid-template-columns: minmax(0, 1fr) auto; gap: 80px; align-items: center; justify-items: start; text-align: left; }
-  .at-preuve-texte p { margin-left: 0; font-size: 1.05rem; }
-  .at-preuve-image { width: 340px; }
-}
-
 /* ===== LE FOND DU HAUT DE PAGE NE SE COUPE PLUS (25/11/2026, 23 h 30) ===== */
 /* Noé : « l'ombre se coupe, sûrement à cause d'une autre section ». La lueur violette du haut de page finissait sur
    un gris (#f9f9f9), et la section suivante commence sur le blanc de la page (#fffefc) : on voyait un trait droit

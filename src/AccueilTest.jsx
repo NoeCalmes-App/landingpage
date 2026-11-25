@@ -444,7 +444,9 @@ export default function AccueilTest() {
           leçon 2.17), le total « 1,3 million sur toutes mes applications » de l'accueil en ligne, la case « avis »
           (avec cinq avis, les afficher en haut n'est pas crédible : ils restent près du bouton, en bas) et les cases
           de chiffres.
-          LA PREUVE CHEZ UN CLIENT est plus bas, sous le bloc sombre (« LA PREUVE CHEZ UN CLIENT »). */}
+          UN RÉSULTAT CHIFFRÉ CHEZ UN CLIENT (le « tableau de bord avec l'argent encaissé » de la leçon 2.11) viendra
+          juste sous ce bloc le jour où Noé aura la capture réelle d'un client et son accord. RÈGLE : seulement de
+          vrais chiffres, datés. Jamais les chiffres d'un écran d'exemple présentés comme ceux d'un client. */}
       <section className="ex-section" id="realisations" aria-labelledby="at-realisations-titre">
         <div className="ex-interieur">
           <h2 id="at-realisations-titre" className="reveal ex-titre">Mes <span>réalisations</span></h2>
@@ -540,32 +542,6 @@ export default function AccueilTest() {
             <span>Toi, tu connais ton métier, et les premières personnes à qui la montrer.</span>
             <span className="at-roles-moi">Moi, je construis l'application qui les garde.</span>
           </p>
-        </div>
-      </section>
-
-      {/* ========== LA PREUVE CHEZ UN CLIENT ========== */}
-      {/* Juste sous le bloc sombre (Noé, 26/11/2026 : « la preuve d'un de mes clients, mets-la en dessous de la
-          section Avec une IA »). Le bloc dit que très peu d'applications rapportent : la preuve qui lui répond est le
-          message d'un client dont l'application ne rapportait pas, et qui rapporte depuis que Noé a refait son
-          inscription et son offre payante, c'est-à-dire deux des quatre moments du bloc. C'est un VRAI message,
-          déjà publié dans les avis (voir AvisClients.jsx : « n'ajouter que des messages réels »), nom masqué.
-          Il n'est donc plus répété en bas de cette page (`sansRefonte`).
-          RÈGLE DE CE BLOC : seulement une preuve réelle. Un tableau de bord chiffré viendra ici le jour où Noé aura
-          la capture réelle d'un client et son accord ; jamais les chiffres d'un écran d'exemple.
-          Le titre reprend celui de l'image (« une app qui existait, mais qui ne rapportait pas ») et la dernière
-          phrase du client (« mon app me génère des revenus »). */}
-      <section className="pt-4 pb-14 md:pt-0 md:pb-28 px-5" id="preuve-client" aria-labelledby="at-preuve-titre">
-        <div className="at-preuve">
-          <div className="at-preuve-texte">
-            <h2 id="at-preuve-titre" className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight">
-              Son application<br />
-              ne rapportait pas.<br />
-              <span className="text-brand">Maintenant, si.</span>
-            </h2>
-            <p className="reveal text-grey">Le message d'un de mes clients, quelques semaines après mon travail sur son application.</p>
-          </div>
-          <img className="reveal at-preuve-image" src="/assets/images/avis/temoignage-refonte.webp" width="640" height="901" loading="lazy" decoding="async"
-            alt="Une app qui existait, mais qui ne rapportait pas. Message WhatsApp d'un client : son application, développée par une agence, attirait des utilisateurs mais peu prenaient un abonnement ; Noé a identifié le problème, refait le paywall et l'onboarding, et quelques semaines plus tard l'application génère des revenus." />
         </div>
       </section>
 
@@ -729,7 +705,7 @@ export default function AccueilTest() {
               Ce que disent <span className="text-brand">mes clients</span>
             </h3>
             <div className="reveal">
-              <AvisClients sansRefonte />
+              <AvisClients />
             </div>
           </div>
         </div>

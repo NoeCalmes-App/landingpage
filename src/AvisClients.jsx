@@ -70,7 +70,7 @@ export function AvisTrustpilot() {
   )
 }
 
-export function AvisClients({ sansRefonte = false } = {}) {
+export function AvisClients() {
   return (
     <>
       <AvisTrustpilot />
@@ -80,14 +80,11 @@ export function AvisClients({ sansRefonte = false } = {}) {
             className="block w-full h-auto rounded-[18px] border border-card-border shadow-[0_10px_36px_rgba(102,93,255,0.14)] transition-transform duration-300 hover:-translate-y-1 hover:rotate-0 lg:-rotate-2"
             alt="D'une simple idée à une app qui tourne. Message WhatsApp d'un client : au départ, il n'avait qu'une idée en tête, rien de concret ; il remercie Noé d'avoir cadré le projet du début à la fin en expliquant honnêtement les coûts et les délais." />
         </li>
-        {/* `sansRefonte` : une page qui montre déjà ce message plus haut ne le répète pas ici. Par défaut, il est là. */}
-        {!sansRefonte && (
         <li className="w-full max-w-[330px] lg:max-w-[300px]">
           <img src="/assets/images/avis/temoignage-refonte.webp" width="640" height="901" loading="lazy" decoding="async"
             className="block w-full h-auto rounded-[18px] border border-card-border shadow-[0_10px_36px_rgba(102,93,255,0.14)] transition-transform duration-300 hover:-translate-y-1 hover:rotate-0"
             alt="Une app qui existait, mais qui ne rapportait pas. Message WhatsApp d'un client : son application, développée par une agence, attirait des utilisateurs mais peu prenaient un abonnement ; Noé a identifié le problème, refait le paywall et l'onboarding, et quelques semaines plus tard l'application génère des revenus." />
         </li>
-        )}
         <li className="w-full max-w-[330px] lg:max-w-[300px]">
           <img src="/assets/images/avis/temoignage-delais.webp" width="640" height="719" loading="lazy" decoding="async"
             className="block w-full h-auto rounded-[18px] border border-card-border shadow-[0_10px_36px_rgba(102,93,255,0.14)] transition-transform duration-300 hover:-translate-y-1 hover:rotate-0 lg:rotate-2"
