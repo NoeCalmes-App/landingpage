@@ -539,7 +539,6 @@
   .hero-bg.at-hero { min-height: 100vh; min-height: 100svh; align-items: center; padding-top: 6.5rem; padding-bottom: 1.5rem; }
   .at-hero .at-hero-sous { margin-bottom: 0; }
   .at-hero .hv-zone { margin-top: max(1.6rem, 5svh - 10px); }
-  .at-hero-avant { margin: max(12px, 2svh) 0 10px; }
 }
 /* LA PASTILLE DU CALENDRIER : l'une sous l'autre sur téléphone, sur une ligne à partir de 768 px. */
 .at-rare { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 28px; }
@@ -556,9 +555,11 @@
       linear-gradient(0deg, #fffefc 0, #d6d2ff 4%, #bfb9ff 10%, #bab4ff 42%, #d9d5ff 76%, #f3f1ff 100%);
   }
 }
-/* SUR UN GRAND TÉLÉPHONE (au moins 780 px de haut), la phrase et le bouton descendent (Noé, 26/11/2026 : « bouton
-   trop collé ») : la place existe, autant la mettre entre la vidéo et le bouton plutôt que sous lui. Un petit
-   téléphone garde les écarts serrés, sinon le bouton sort du premier écran. */
-@media (max-width: 767px) and (min-height: 780px) {
-  .at-hero-avant { margin: 32px 0 20px; }
+/* LA PHRASE ET LE BOUTON SOUS LA VIDÉO, SUR TÉLÉPHONE (Noé, 26/11/2026 : « texte trop bas », « bouton plus bas si
+   espace »). La phrase reste près de la vidéo (12 px) : c'est d'elle qu'elle parle. L'écart avec le bouton grandit
+   avec la hauteur de l'écran : 14 px sur un iPhone SE (667), 25 px à 844, 29 px à 915.
+   SA COULEUR : ni blanc ni gris. Elle est posée sur le violet (#bab4ff) : le blanc y fait 1,9 de contraste et le
+   gris du site 2,1, illisibles. Le bleu nuit du titre, un peu éclairci, fait 6,5. */
+@media (max-width: 767px) {
+  .at-hero-avant { margin: 12px 0 max(14px, 6svh - 26px); color: #2b2f63; }
 }
