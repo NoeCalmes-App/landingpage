@@ -20,7 +20,7 @@ import { ArrowRight, CalendarCheck } from 'lucide-react'
 import './reserver-appel.css'
 import { lienInterne } from './seo.js'
 import { CAL_ESPACE, CAL_LIEN, CAL_ORIGINE, CAL_SCRIPT, UI_CAL, configCal } from './reserverAppel.js'
-import { trackCallBooked } from './metaTracking.js'
+import { trackBookingStep, trackCallBooked } from './metaTracking.js'
 
 // Le chargeur officiel de Cal.com (code d'intégration « en ligne »), tel que Cal.com le donne : il crée `window.Cal`
 // et met les appels en file jusqu'à ce que `embed.js` soit chargé.
@@ -42,6 +42,15 @@ export default function ReserverAppel() {
       calLink: CAL_LIEN,
     })
     Cal.ns[CAL_ESPACE]('ui', UI_CAL)
+    // Les étapes mesurées pour Meta (metaTracking.js). Cal.com n'a pas d'événement public pour « un créneau est
+    // choisi » : il signale seulement que son adresse interne change (`__routeChanged`), au chargement puis à chaque
+    // jour, mois ou créneau cliqué (relevé le 26/11/2026). On ne compte donc que les changements APRÈS que le
+    // calendrier est prêt : le visiteur s'en est servi. Si ce signal disparaît, seule cette étape n'est plus mesurée.
+    let calendrierPret = false
+    Cal.ns[CAL_ESPACE]('on', { action: 'bookerReady', callback: () => { calendrierPret = true } })
+    Cal.ns[CAL_ESPACE]('on', { action: '__routeChanged', callback: () => { if (calendrierPret) trackBookingStep('usage', 'accueil') } })
+    Cal.ns[CAL_ESPACE]('on', { action: 'rescheduleBookingSuccessfulV2', callback: () => trackBookingStep('deplace', 'accueil') })
+    Cal.ns[CAL_ESPACE]('on', { action: 'bookingCancelled', callback: () => trackBookingStep('annule', 'accueil') })
     Cal.ns[CAL_ESPACE]('on', {
       action: 'bookingSuccessfulV2',
       callback: () => {
@@ -50,6 +59,19 @@ export default function ReserverAppel() {
         carte.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
       },
     })
+  }, [])
+
+  // Le calendrier est « vu » quand la moitié du bloc est à l'écran.
+  useEffect(() => {
+    const bloc = carte.current
+    if (!bloc || typeof IntersectionObserver === 'undefined') return undefined
+    const observateur = new IntersectionObserver((entrees) => {
+      if (!entrees.some((entree) => entree.isIntersecting)) return
+      trackBookingStep('calendrier', 'accueil')
+      observateur.disconnect()
+    }, { threshold: 0.5 })
+    observateur.observe(bloc)
+    return () => observateur.disconnect()
   }, [])
 
   return (

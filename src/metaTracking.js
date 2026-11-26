@@ -119,3 +119,25 @@ export function trackAuditWhatsAppClick(source, budgetTier, isQualified) {
 export function trackCallBooked(source) {
   trackStandardOnce('Schedule', { channel: 'calcom', source }, 'call-booked')
 }
+
+// LES ÉTAPES AVANT LA RÉSERVATION (26/11/2026) : pour que Meta sache où les visiteurs s'arrêtent, et pour pouvoir
+// régler une campagne sur une étape plus fréquente tant que les réservations sont rares. Des événements
+// personnalisés, chacun une fois par visite, sans aucune donnée du visiteur :
+//   BookingClick     un bouton qui mène au calendrier a été cliqué
+//   CalendarViewed   le calendrier est arrivé à l'écran
+//   CalendarUsed     le visiteur a touché au calendrier : un autre jour, un autre mois, ou un créneau choisi
+//                    (Cal.com ne dit pas lequel des trois)
+//   BookingRescheduled / BookingCancelled   rendez-vous déplacé ou annulé depuis le calendrier de la page
+const ETAPES_RESERVATION = {
+  clic: 'BookingClick',
+  calendrier: 'CalendarViewed',
+  usage: 'CalendarUsed',
+  deplace: 'BookingRescheduled',
+  annule: 'BookingCancelled',
+}
+
+export function trackBookingStep(etape, source) {
+  const evenement = ETAPES_RESERVATION[etape]
+  if (!evenement) return
+  trackCustomOnce(evenement, { channel: 'calcom', source }, `booking-${etape}`)
+}

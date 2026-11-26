@@ -4,6 +4,7 @@ import assert from 'node:assert/strict'
 import {
   trackAuditComplete,
   trackAuditWhatsAppClick,
+  trackBookingStep,
   trackCallBooked,
   trackDirectWhatsAppLead,
 } from './metaTracking.js'
@@ -71,4 +72,15 @@ test('une reservation part une seule fois, en « Schedule », sans donnee du vis
   trackCallBooked('accueil')
 
   assert.deepEqual(calls, [['track', 'Schedule', { channel: 'calcom', source: 'accueil' }]])
+})
+
+test('chaque etape avant la reservation part une fois, sans toucher a « Schedule »', () => {
+  const calls = createTrackingWindow()
+  for (const etape of ['clic', 'calendrier', 'usage', 'usage', 'inconnue']) trackBookingStep(etape, 'accueil')
+
+  assert.deepEqual(calls.map(([method, event]) => [method, event]), [
+    ['trackCustom', 'BookingClick'],
+    ['trackCustom', 'CalendarViewed'],
+    ['trackCustom', 'CalendarUsed'],
+  ])
 })

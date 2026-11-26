@@ -35,7 +35,7 @@ import './accueil-test.css'
 import ExemplesMetier from './ExemplesMetier.jsx'
 import { AvisClients } from './AvisClients.jsx'
 import HeroVideo from './HeroVideo.jsx'
-import { trackDirectWhatsAppLead } from './metaTracking.js'
+import { trackBookingStep, trackDirectWhatsAppLead } from './metaTracking.js'
 import Footer from './Footer.jsx'
 import ReserverAppel from './ReserverAppel.jsx'
 import { lienInterne } from './seo.js'
@@ -336,6 +336,7 @@ export default function AccueilTest() {
   // section : sinon le calendrier tombe sous le bas de l'écran. Sur ordinateur, tout tient : la section
   // entière, titre compris.
   const allerAuContact = (evenement) => {
+    trackBookingStep('clic', 'accueil')
     const surTelephone = window.matchMedia('(max-width: 899px)').matches
     return allerA(surTelephone ? 'reserver' : 'contact')(evenement)
   }
