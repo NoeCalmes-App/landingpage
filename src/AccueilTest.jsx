@@ -398,13 +398,15 @@ export default function AccueilTest() {
               J'ai une idée d'application
               <Fleche />
             </a>
-            {/* LA CASE « +1 million de téléchargements sur une application que j'ai conçue » EST RETIRÉE (Noé,
-                25/11/2026, 23 h 38 : « enlève »). Les réalisations suivent la vidéo, sans chiffre en haut de page.
-                Le million reste dit une fois sur la page, dans la FAQ (« J'ai trouvé un développeur moins cher »).
-                Ses styles (.at-hero-preuve, accueil-test.css) sont gardés pour la remettre en une ligne. */}
+            {/* LA CASE « +1 million… » EST REMISE (Noé, 26/11/2026, 11 h 36 : « garde, ça ne prend pas beaucoup de place sur
+                mobile, non ? »). Retirée le 25/11/2026 à 23 h 38, puis remise : c'est le seul chiffre du haut de page. Le
+                million est donc dit deux fois sur la page, ici et dans la FAQ (« J'ai trouvé un développeur moins cher ») :
+                à relire à l'étape 5, la règle « une chose n'est dite qu'une fois ». Aucune animation (Noé : « pas partout
+                pour rien »). Ni nom ni logo de la messagerie (Hush). */}
+            <p className="at-hero-preuve"><strong>+1 million</strong><span>de téléchargements sur une application que j'ai conçue</span></p>
           </div>
 
-          <HeroVideo />
+          <HeroVideo unSeulPassage />
         </div>
       </section>
 

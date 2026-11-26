@@ -101,7 +101,11 @@ const IcoPetit = (p) => (
   </svg>
 )
 
-export default function HeroVideo() {
+// `unSeulPassage` (facultatif, page test /accueiltest, 26/11/2026) : le film joue UNE fois, puis s'arrête sur sa dernière
+// image avec un gros bouton « Revoir la vidéo » ; il ne se relance pas tout seul, même si on sort puis revient à l'écran
+// (Noé : « une fois finie elle se stop, il faut recliquer dessus »). Sans l'option, rien ne change : l'accueil en ligne
+// garde sa boucle.
+export default function HeroVideo({ unSeulPassage = false }) {
   const boite = useRef(null)
   const video = useRef(null)
   const barre = useRef(null)       // remplissage de la barre d'avancement
@@ -118,6 +122,8 @@ export default function HeroVideo() {
   const visible = useRef(false)
   const veutJouer = useRef(!sansLectureAuto())        // faux quand la personne a mis en pause elle-même
   const dejaPartie = useRef(false)                    // la vidéo a déjà joué au moins une fois
+  const fini = useRef(false)                          // (unSeulPassage) le film est arrivé au bout : on ne le relance pas seul
+  const [terminee, setTerminee] = useState(false)
   const sonDejaMis = useRef(false)
   const glisse = useRef(false)
   const minuterie = useRef(null)
@@ -159,7 +165,7 @@ export default function HeroVideo() {
     v.setAttribute('muted', '')
     v.setAttribute('playsinline', '')
     v.setAttribute('webkit-playsinline', '')
-    v.loop = true
+    v.loop = !unSeulPassage
     v.src = SOURCES[qualite]
 
     let obs = null
@@ -169,6 +175,7 @@ export default function HeroVideo() {
     const enPleinEcran = () => Boolean(document.fullscreenElement || document.webkitFullscreenElement || v.webkitDisplayingFullscreen)
 
     const decider = () => {
+      if (fini.current) return   // film terminé (unSeulPassage) : il attend un clic
       const vu = part >= SEUIL_VISIBLE - 0.001
       visible.current = vu
       if (!vu) {
@@ -223,7 +230,7 @@ export default function HeroVideo() {
       window.removeEventListener('scroll', surDefilement)
       document.removeEventListener('visibilitychange', auRetour)
     }
-  }, [qualite, jouer, demarrer])
+  }, [qualite, jouer, demarrer, unSeulPassage])
 
   // barre d'avancement fluide, sans re-rendu React, et seulement pendant la lecture
   useEffect(() => {
@@ -284,6 +291,16 @@ export default function HeroVideo() {
     setBloquee(false); setMuette(false)
     jouer()
   }, [jouer])
+
+  // revoir le film terminé : depuis le début, avec le son (le clic est un geste de la personne)
+  const rejouer = useCallback(() => {
+    const v = video.current
+    if (!v) return
+    try { v.currentTime = 0 } catch { /* rien de chargé : elle part déjà de 0 */ }
+    fini.current = false
+    setTerminee(false)
+    regarderAvecSon()
+  }, [regarderAvecSon])
 
   const basculerLecture = useCallback(() => {
     const v = video.current
@@ -363,7 +380,8 @@ export default function HeroVideo() {
   }
 
   const evts = {
-    onPlay: () => { dejaPartie.current = true; setEnLecture(true); setBloquee(false) },
+    onPlay: () => { dejaPartie.current = true; fini.current = false; setTerminee(false); setEnLecture(true); setBloquee(false) },
+    onEnded: () => { if (unSeulPassage) { fini.current = true; setTerminee(true); setEnLecture(false) } },
     onPlaying: () => setImage(true),
     onSeeked: () => setImage(true),
     onPause: () => setEnLecture(false),
@@ -392,7 +410,7 @@ export default function HeroVideo() {
           preload="none"
           playsInline
           muted
-          loop
+          loop={!unSeulPassage}
           disablePictureInPicture
           controlsList="nodownload noplaybackrate"
           onClick={surVideo}
@@ -415,6 +433,14 @@ export default function HeroVideo() {
           <button type="button" className="hv-lancer" onClick={regarderAvecSon} aria-label="Lancer la vidéo avec le son">
             <span className="hv-lancer-rond"><IcoLecture /></span>
             <span className="hv-lancer-txt">Lancer la vidéo <em>· {horloge(duree)}</em></span>
+          </button>
+        )}
+
+        {/* Film terminé (unSeulPassage) : il reste sur sa dernière image, et un clic le relance depuis le début */}
+        {terminee && (
+          <button type="button" className="hv-lancer" onClick={rejouer} aria-label="Revoir la vidéo">
+            <span className="hv-lancer-rond"><IcoLecture /></span>
+            <span className="hv-lancer-txt">Revoir la vidéo <em>· {horloge(duree)}</em></span>
           </button>
         )}
 
