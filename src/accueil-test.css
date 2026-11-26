@@ -487,6 +487,11 @@
   .at-res-cases b { font-size: 19px; }
 }
 
+/* La note sous la carte (Noé, 26/11/2026 : « nom de l'application masqué, même texte »). Hors de la carte : le texte reste
+   lisible et sélectionnable, comme une légende. */
+.at-resultat-note { margin: 14px 0 0; font-size: 12.5px; line-height: 1.4; color: #98a2b3; }
+@media (min-width: 860px) { .at-resultat-note { margin-top: 16px; font-size: 13px; } }
+
 /* COMME UNE IMAGE (Noé, 25/11/2026, 23 h 37) : aucune animation, et rien ne se sélectionne ni ne se copie à la
    souris. La carte est annoncée comme une image aux lecteurs d'écran (role="img" dans AccueilTest.jsx). */
 .at-resultat-carte { -webkit-user-select: none; user-select: none; pointer-events: none; cursor: default; -webkit-touch-callout: none; }
