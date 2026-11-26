@@ -245,9 +245,27 @@ function useApparition() {
   return ref
 }
 
-function Fleche({ className = '' }) {
+// `bas` : la flèche pointe vers le bas, pour un bouton qui fait descendre dans la page (celui du haut de page mène
+// au calendrier, plus bas). Sans `bas`, elle pointe à droite.
+// WHATSAPP DANS LA BARRE DU HAUT (Noé, 26/11/2026) : une icône au trait, de la couleur du menu, à gauche de lui. Elle
+// remplace le gros bouton vert flottant, retiré le même jour : WhatsApp reste possible pour celui qui préfère écrire,
+// sans faire concurrence au calendrier. Le message est déjà écrit et finit ouvert, pour qu'il n'ait qu'à dire son idée.
+// Rien n'est mesuré ici, comme sur le reste de la page test.
+const MESSAGE_WHATSAPP = "Bonjour Noé, j'ai une idée d'application et j'aimerais en discuter avec toi. Mon idée : "
+const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(MESSAGE_WHATSAPP)}`
+
+function IconeWhatsApp() {
   return (
-    <svg className={`shrink-0 w-[18px] h-[18px] min-[360px]:w-[22px] min-[360px]:h-[22px] transition-transform duration-300 group-hover:translate-x-1 ${className}`} width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
+      <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+    </svg>
+  )
+}
+
+function Fleche({ className = '', bas = false }) {
+  return (
+    <svg className={`shrink-0 w-[18px] h-[18px] min-[360px]:w-[22px] min-[360px]:h-[22px] transition-transform duration-300 ${bas ? 'rotate-90 group-hover:translate-y-1' : 'group-hover:translate-x-1'} ${className}`} width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <line x1="5" y1="12" x2="19" y2="12" />
       <polyline points="12 5 19 12 12 19" />
     </svg>
@@ -341,6 +359,9 @@ export default function AccueilTest() {
                 <a href="#contact" onClick={allerAuContact} className="btn-reflet hidden sm:inline-block bg-[#0d1548] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#090f33] transition-colors cursor-pointer whitespace-nowrap">
                   Discuter avec Noé
                 </a>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="Écrire à Noé sur WhatsApp" className="flex items-center justify-center w-10 h-10 -mr-1.5 text-text hover:text-brand transition-colors">
+                  <IconeWhatsApp />
+                </a>
                 <button type="button" onClick={() => setMenuOuvert(!menuOuvert)} aria-label={menuOuvert ? 'Fermer le menu' : 'Ouvrir le menu'} aria-expanded={menuOuvert} className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1 cursor-pointer focus:outline-none">
                   <span className={`block h-[3px] w-6 rounded-full bg-text transition-all duration-300 origin-center ${menuOuvert ? 'translate-y-[7px] rotate-45' : ''}`} />
                   <span className={`block h-[3px] w-6 rounded-full bg-text transition-all duration-300 ${menuOuvert ? 'opacity-0' : ''}`} />
@@ -408,7 +429,7 @@ export default function AccueilTest() {
           <div className="at-hero-bouton flex flex-col items-center">
             <a href="#contact" onClick={allerAuContact} className="btn-reflet group inline-flex items-center gap-2 min-[360px]:gap-2.5 whitespace-nowrap bg-brand text-surface font-semibold text-[0.95rem] min-[360px]:text-[1rem] sm:text-[1.06rem] md:text-[1.15rem] px-5 min-[360px]:px-8 py-3.5 sm:px-9 md:px-11 md:py-[1.05rem] rounded-full cursor-pointer shadow-[0_10px_28px_-8px_rgba(102,93,255,0.55)] hover:bg-[#5a50f5] transition-colors">
               Réserver mon appel gratuit
-              <Fleche />
+              <Fleche bas />
             </a>
             {/* PAS DE CHIFFRE ICI (Noé, 26/11/2026, 11 h 39 : « le million pas ici, à côté de +20 app »). Le haut de page
                 reste léger ; le million est sous « Mes réalisations », à côté de « +20 applications ». */}
@@ -829,8 +850,8 @@ export default function AccueilTest() {
       </section>
 
       <Footer allerVers={allerVers} onLegal={ouvrirLegal} />
-      {/* PAS DE BOUTON WHATSAPP FLOTTANT ICI (Noé, 26/11/2026) : il faisait concurrence au calendrier, et un
-          prospect pouvait écrire sans répondre aux questions. WhatsApp sert à confirmer et à rappeler. */}
+      {/* PAS DE BOUTON WHATSAPP FLOTTANT ICI (Noé, 26/11/2026) : il faisait concurrence au calendrier. WhatsApp
+          reste accessible par l'icône discrète de la barre du haut (IconeWhatsApp). */}
     </div>
   )
 }
