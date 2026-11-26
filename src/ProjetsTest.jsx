@@ -161,10 +161,10 @@ export default function ProjetsTest({ onBack }) {
             <div className="pjt-million-texte">
               <h2 id="pjt-million-titre" className="pjt-million-app">
                 <img src={`${IMAGES}/hushapp.webp`} alt="" width="56" height="56" />
-                <span>Hush<small>Application de rencontre et de messagerie</small></span>
+                <span>Hush<small>Messagerie anonyme</small></span>
               </h2>
               <p className="pjt-million-chiffre"><strong>+1 million</strong><span>de téléchargements au total</span></p>
-              <p className="pjt-million-phrase">J’ai conçu la première version de cette application.</p>
+              <p className="pjt-million-phrase">J’ai conçu la première version de cette messagerie.</p>
             </div>
             <div className="pjt-million-ecran">
               <Telephone image={{ src: `${IMAGES}/captures/messagerie-accueil.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, l’écran d’entrée de l’application, avec son logo' }} />
