@@ -44,10 +44,16 @@ const mePhoto = '/assets/images/profile/me.webp'
 // PLUS DE BOUTON WHATSAPP EN BAS DE PAGE (26/11/2026) : tous les boutons mènent au calendrier Calendly
 // (ReserverAppel.jsx). Le bouton WhatsApp flottant du site est retiré de cette page.
 
+// LES LIENS DE LA BARRE DU HAUT suivent l'ordre de la page (26/11/2026) et répondent aux quatre questions d'un
+// visiteur avant de réserver : qu'a-t-il déjà fait, pourquoi lui, comment ça se passe, qu'en disent ses clients.
+// « Pourquoi moi » manquait : c'est le bloc qui le sépare d'un simple développeur. « Questions » n'est que dans le
+// menu du téléphone (`menuSeul`) : sur ordinateur, cinq liens ne tiennent pas entre le nom et le bouton.
 const NAV_LINKS = [
   { ancre: 'realisations', label: 'Réalisations' },
+  { ancre: 'pourquoi-avec-moi', label: 'Pourquoi moi' },
   { ancre: 'etapes-et-tarif', label: 'Les étapes' },
   { ancre: 'avis-clients', label: 'Avis clients' },
+  { ancre: 'faq', label: 'Questions', menuSeul: true },
 ]
 
 // « COMMENT ÇA MARCHE » (25/11/2026, quatrième version). Le modèle que Noé aime est celui d'Ikovaline, vu dans son
@@ -335,7 +341,7 @@ export default function AccueilTest() {
     <div ref={racine} className="at-page">
       {/* ========== BARRE DU HAUT (celle de l'accueil) ========== */}
       <nav className="anim-nav fixed inset-x-0 top-2.5 md:top-[18px] z-50 flex justify-center px-4 md:px-6">
-        <div className="w-full max-w-210">
+        <div className="w-full max-w-235">
           <div className={`backdrop-blur-[12px] border border-[#70707029] shadow-[0_1px_3px_#00000017] overflow-hidden rounded-[40px] transition-[background-color] duration-300 ease-in-out ${menuOuvert ? 'bg-[#ffffffee]' : 'bg-[#fffefceb]'}`}>
             <div className="flex items-center justify-between h-[68px] px-6 md:px-7">
               <a href="#" className="flex items-center gap-3 min-w-0">
@@ -351,16 +357,17 @@ export default function AccueilTest() {
                 </span>
               </a>
               <div className="hidden lg:flex items-center gap-6">
-                {NAV_LINKS.map(({ ancre, label }) => (
+                {NAV_LINKS.filter((lien) => !lien.menuSeul).map(({ ancre, label }) => (
                   <a key={label} href={`#${ancre}`} onClick={allerA(ancre)} className="text-text text-[0.95rem] font-semibold hover:text-brand transition-colors">{label}</a>
                 ))}
               </div>
               <div className="flex items-center gap-3">
-                <a href="#contact" onClick={allerAuContact} className="btn-reflet hidden sm:inline-block bg-[#0d1548] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#090f33] transition-colors cursor-pointer whitespace-nowrap">
-                  Discuter avec Noé
-                </a>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="Écrire à Noé sur WhatsApp" className="flex items-center justify-center w-10 h-10 -mr-3 text-text hover:text-brand transition-colors">
+                {/* L'icône WhatsApp est à gauche du bouton sur ordinateur, à gauche du menu sur téléphone (Noé, 26/11/2026). */}
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="Écrire à Noé sur WhatsApp" className="flex items-center justify-center w-10 h-10 -mr-3 sm:-mr-1 text-text hover:text-brand transition-colors">
                   <IconeWhatsApp />
+                </a>
+                <a href="#contact" onClick={allerAuContact} className="btn-reflet hidden sm:inline-block bg-[#0d1548] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#090f33] transition-colors cursor-pointer whitespace-nowrap">
+                  J'ai une idée
                 </a>
                 <button type="button" onClick={() => setMenuOuvert(!menuOuvert)} aria-label={menuOuvert ? 'Fermer le menu' : 'Ouvrir le menu'} aria-expanded={menuOuvert} className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1 cursor-pointer focus:outline-none">
                   <span className={`block h-[3px] w-6 rounded-full bg-text transition-all duration-300 origin-center ${menuOuvert ? 'translate-y-[7px] rotate-45' : ''}`} />
@@ -376,7 +383,7 @@ export default function AccueilTest() {
                     <a key={label} href={`#${ancre}`} onClick={allerA(ancre)} className="text-text text-base font-medium hover:text-brand transition-colors">{label}</a>
                   ))}
                   <a href="#contact" onClick={allerAuContact} className="btn-reflet sm:hidden text-center bg-[#0d1548] text-white font-medium text-sm px-5 py-2.5 rounded-full mt-1 cursor-pointer">
-                    Discuter avec Noé
+                    J'ai une idée
                   </a>
                 </div>
               </div>
@@ -398,7 +405,8 @@ export default function AccueilTest() {
           TITRE D'AVANT (25/11/2026) : « Fais de ton métier une application qui rapporte vraiment. », où « ton
           métier » alternait avec « ton activité ». Les styles du mot qui alterne (.at-titre-metier, .at-mot) sont
           gardés dans accueil-test.css.
-          LE BOUTON DE LA BARRE DU HAUT dit « Discuter avec Noé » : « J'ai une idée » et « J'ai une idée
+          LE BOUTON DE LA BARRE DU HAUT dit « J'ai une idée » depuis le 26/11/2026 au soir (Noé), le bouton du haut de page
+          disant maintenant « Réserver mon appel gratuit ». Avant, « Discuter avec Noé » : « J'ai une idée » et « J'ai une idée
           d'application » à dix centimètres l'un de l'autre, c'était deux fois le même bouton.
           Écartés le 25/11/2026 : la question seule (« pas une grosse promesse »), « Je la construis pour que tes
           utilisateurs paient chaque mois » (« un développeur dit la même chose »), « Elle mérite mieux qu'un simple
