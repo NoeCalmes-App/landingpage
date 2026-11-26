@@ -530,15 +530,16 @@
   .at-hero-film { order: 3; }
 }
 
-/* LE HAUT DE PAGE SUR TÉLÉPHONE (Noé, 26/11/2026 : « trop de marge », bouton coupé sur le plus petit). Le contenu
-   part du haut au lieu d'être centré dans la hauteur de l'écran (sur un grand téléphone, ça laissait un vide
-   au-dessus du titre), et les écarts se resserrent : sur un iPhone SE (375 × 667), le titre, la vidéo, la phrase
-   et le bouton tiennent dans le premier écran. */
+/* LE HAUT DE PAGE SUR TÉLÉPHONE (Noé, 26/11/2026). Deux demandes : « trop de marge » et bouton coupé sur le plus
+   petit, puis « pas mettre Réalisations » dans le premier écran. Donc : le haut de page fait toujours la hauteur
+   de l'écran (100svh : la hauteur avec la barre du navigateur affichée), les écarts sont resserrés, et ce qui reste
+   de place sur un grand téléphone se partage au-dessus du titre et sous le bouton. Sur un iPhone SE (375 × 667),
+   le titre, la vidéo, la phrase et le bouton tiennent dans le premier écran. */
 @media (max-width: 767px) {
-  .hero-bg.at-hero { min-height: 0; align-items: flex-start; padding-top: 6.5rem; padding-bottom: 3rem; }
+  .hero-bg.at-hero { min-height: 100vh; min-height: 100svh; align-items: center; padding-top: 6.5rem; padding-bottom: 1.5rem; }
   .at-hero .at-hero-sous { margin-bottom: 0; }
-  .at-hero .hv-zone { margin-top: 1.6rem; }
-  .at-hero-avant { margin: 12px 0 10px; }
+  .at-hero .hv-zone { margin-top: max(1.6rem, 5svh - 10px); }
+  .at-hero-avant { margin: max(12px, 2svh) 0 10px; }
 }
 /* LA PASTILLE DU CALENDRIER : l'une sous l'autre sur téléphone, sur une ligne à partir de 768 px. */
 .at-rare { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 28px; }
