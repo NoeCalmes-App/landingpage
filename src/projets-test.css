@@ -88,6 +88,7 @@
 
 /* Sous la liste : les autres applications sont confidentielles. */
 .pjt-confidentiel { display: flex; align-items: center; gap: 14px; max-width: 640px; margin: 24px auto 0; padding: 16px 20px 16px 16px; border-radius: 20px; background: #fff; border: 1px solid #e7e4f3; box-shadow: 0 30px 60px -48px rgba(59, 47, 208, .45); font-size: 15px; font-weight: 500; line-height: 1.5; color: #033475; text-wrap: pretty; }
+.pjt-confidentiel strong { font-weight: 800; }
 .pjt-confidentiel-icone { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: #0d1548; color: #fff; }
 
 /* Les avis suivent les panneaux : un seul écart entre les deux, pas deux. */
