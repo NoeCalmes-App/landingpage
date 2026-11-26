@@ -1,7 +1,7 @@
 // LA PRISE DE RENDEZ-VOUS : le widget en ligne de Cal.com (page test /accueiltest, 26/11/2026).
 //
 // TOUT PASSE PAR CAL.COM (Noé, 26/11/2026) : la page affiche le calendrier, le visiteur choisit son créneau, puis
-// Cal.com lui demande ses coordonnées et les six questions. Pas de tri par le budget : tout le monde réserve.
+// Cal.com lui demande ses coordonnées et ses questions. Pas de tri par le budget : tout le monde réserve.
 // Réglages et couleur : `reserverAppel.js`.
 //
 // LE WIDGET est le code d'intégration officiel de Cal.com (`embed.js`), chargé quand ce bloc s'affiche. Il règle
@@ -42,13 +42,7 @@ export default function ReserverAppel() {
       calLink: CAL_LIEN,
     })
     Cal.ns[CAL_ESPACE]('ui', UI_CAL)
-    // Les étapes mesurées pour Meta (metaTracking.js). Cal.com n'a pas d'événement public pour « un créneau est
-    // choisi » : il signale seulement que son adresse interne change (`__routeChanged`), au chargement puis à chaque
-    // jour, mois ou créneau cliqué (relevé le 26/11/2026). On ne compte donc que les changements APRÈS que le
-    // calendrier est prêt : le visiteur s'en est servi. Si ce signal disparaît, seule cette étape n'est plus mesurée.
-    let calendrierPret = false
-    Cal.ns[CAL_ESPACE]('on', { action: 'bookerReady', callback: () => { calendrierPret = true } })
-    Cal.ns[CAL_ESPACE]('on', { action: '__routeChanged', callback: () => { if (calendrierPret) trackBookingStep('usage', 'accueil') } })
+    // Les étapes mesurées pour Meta (metaTracking.js).
     Cal.ns[CAL_ESPACE]('on', { action: 'rescheduleBookingSuccessfulV2', callback: () => trackBookingStep('deplace', 'accueil') })
     Cal.ns[CAL_ESPACE]('on', { action: 'bookingCancelled', callback: () => trackBookingStep('annule', 'accueil') })
     Cal.ns[CAL_ESPACE]('on', {
@@ -61,7 +55,9 @@ export default function ReserverAppel() {
     })
   }, [])
 
-  // Le calendrier est « vu » quand la moitié du bloc est à l'écran.
+  // Le calendrier est « vu » quand son haut a dépassé le tiers bas de l'écran. Pas « la moitié du bloc à l'écran » :
+  // sur téléphone le calendrier fait 2 400 px de haut, plus de trois écrans, et la moitié n'y est jamais visible
+  // (défaut trouvé à la vérification du 26/11/2026 : l'étape ne partait jamais sur téléphone).
   useEffect(() => {
     const bloc = carte.current
     if (!bloc || typeof IntersectionObserver === 'undefined') return undefined
@@ -69,9 +65,25 @@ export default function ReserverAppel() {
       if (!entrees.some((entree) => entree.isIntersecting)) return
       trackBookingStep('calendrier', 'accueil')
       observateur.disconnect()
-    }, { threshold: 0.5 })
+    }, { threshold: 0, rootMargin: '0px 0px -33% 0px' })
     observateur.observe(bloc)
     return () => observateur.disconnect()
+  }, [])
+
+  // « Calendrier utilisé » = un vrai clic DANS le calendrier (un jour, un mois, un créneau). La page ne voit pas ce
+  // qui se passe dans le cadre de Cal.com, mais elle sait quand il prend la main : la fenêtre perd le focus et
+  // l'élément actif devient ce cadre. Essayé d'abord, puis retiré le 26/11/2026 à la vérification : le signal
+  // `__routeChanged` de Cal.com, qui partait aussi tout seul au chargement, dans un ordre qui change d'une fois à
+  // l'autre (l'étape était comptée sans que personne ne touche au calendrier).
+  useEffect(() => {
+    const surPerteDeFocus = () => {
+      const actif = document.activeElement
+      if (actif?.tagName !== 'IFRAME' || !carte.current?.contains(actif)) return
+      trackBookingStep('usage', 'accueil')
+      window.removeEventListener('blur', surPerteDeFocus)
+    }
+    window.addEventListener('blur', surPerteDeFocus)
+    return () => window.removeEventListener('blur', surPerteDeFocus)
   }, [])
 
   return (

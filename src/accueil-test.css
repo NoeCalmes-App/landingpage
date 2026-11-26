@@ -565,3 +565,11 @@
      et marges intérieures montent ensemble, comme le titre. Il garde la largeur de son texte. */
   .at-hero-bouton a { font-size: clamp(.95rem, 4.4vw, 1.2rem); padding: clamp(.875rem, 3.9vw, 1.08rem) clamp(1.25rem, 8.6vw, 2.4rem); }
 }
+
+/* TRÈS PETITS ÉCRANS (moins de 360 px de large, vérification du 26/11/2026) : dans la barre, l'icône WhatsApp
+   touchait « Noé Calmes ». Un peu moins de marge intérieure, et les deux phrases du haut de page se coupent en
+   lignes équilibrées au lieu de laisser un mot seul. */
+@media (max-width: 359px) {
+  .at-barre { padding-inline: 14px; }
+}
+.at-hero-avant, .at-hero-sous-suite { text-wrap: balance; }

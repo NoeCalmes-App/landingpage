@@ -33,7 +33,9 @@ export function utmDepuis(adresse) {
 
 // La configuration donnée au widget en ligne de Cal.com : vue mois, thème clair (celui du site), les UTM.
 export function configCal(adressePage) {
-  const config = { layout: 'month_view', theme: 'light' }
+  // `cal.embed.pageType` : Cal.com dessine la silhouette du calendrier pendant qu'il charge, au lieu d'un cadre vide
+  // (sur téléphone, le haut de la carte restait blanc plusieurs secondes : vérification du 26/11/2026).
+  const config = { layout: 'month_view', theme: 'light', 'cal.embed.pageType': 'user.event.booking.slots' }
   if (adressePage) {
     Object.entries(utmDepuis(adressePage)).forEach(([cle, valeur]) => { if (valeur) config[cle] = valeur })
   }

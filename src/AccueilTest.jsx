@@ -332,13 +332,15 @@ export default function AccueilTest() {
     setMenuOuvert(false)
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
-  // SUR TÉLÉPHONE, les boutons descendent directement au bloc de réservation (#reserver), sous le titre de la
-  // section : sinon le calendrier tombe sous le bas de l'écran. Sur ordinateur, tout tient : la section
-  // entière, titre compris.
+  // SUR TÉLÉPHONE, les boutons descendent au TITRE du bloc de réservation (#reserver-titre), posé juste sous la
+  // barre : on lit « 30 minutes avec Noé. Pas un commercial. », la phrase, puis le haut du calendrier. Avant le
+  // 26/11/2026 au soir ils descendaient au calendrier lui-même (#reserver), parce que quatre lignes de texte le
+  // repoussaient sous l'écran ; il n'en reste que deux, et viser le calendrier cachait le titre (vérification).
+  // Sur ordinateur, tout tient : la section entière, titre compris.
   const allerAuContact = (evenement) => {
     trackBookingStep('clic', 'accueil')
     const surTelephone = window.matchMedia('(max-width: 899px)').matches
-    return allerA(surTelephone ? 'reserver' : 'contact')(evenement)
+    return allerA(surTelephone ? 'reserver-titre' : 'contact')(evenement)
   }
   // Le pied de page est celui du site : ses liens rechargent la page demandée, « Contact » descend au bouton.
   const allerVers = (chemin) => {
@@ -353,7 +355,7 @@ export default function AccueilTest() {
       <nav className="anim-nav fixed inset-x-0 top-2.5 md:top-[18px] z-50 flex justify-center px-4 md:px-6">
         <div className="w-full max-w-235">
           <div className={`backdrop-blur-[12px] border border-[#70707029] shadow-[0_1px_3px_#00000017] overflow-hidden rounded-[40px] transition-[background-color] duration-300 ease-in-out ${menuOuvert ? 'bg-[#ffffffee]' : 'bg-[#fffefceb]'}`}>
-            <div className="flex items-center justify-between h-[68px] px-6 md:px-7">
+            <div className="at-barre flex items-center justify-between h-[68px] px-6 md:px-7">
               <a href="#" className="flex items-center gap-3 min-w-0">
                 <img src={mePhoto} alt="Noé Calmes" width="40" height="40" className="h-10 w-10 rounded-full object-cover shrink-0" />
                 <span className="flex flex-col gap-[5px] min-w-0">
@@ -675,8 +677,10 @@ export default function AccueilTest() {
 
           <div className="reveal flex flex-col items-center mt-10 md:mt-14">
             <a href="#contact" onClick={allerAuContact} className="btn-reflet group inline-flex items-center gap-2 min-[360px]:gap-2.5 whitespace-nowrap bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-5 min-[360px]:px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer">
-              Discuter avec Noé
-              <Fleche />
+              {/* Même texte et même flèche que le bouton du haut de page : les deux boutons violets font la même
+                  chose (vérification du 26/11/2026 ; avant, « Discuter avec Noé », l'ancien texte de la barre). */}
+              Réserver mon appel gratuit
+              <Fleche bas />
             </a>
           </div>
         </div>
@@ -778,7 +782,7 @@ export default function AccueilTest() {
               projet par mois. Réserve ton appel. » Retirée une heure par Claude (la rareté avant un appel gratuit),
               remise par Noé : « c'était bien ». Elle finit par « Réserve ton appel : », avec les deux-points (Noé) : la phrase mène au
               calendrier, juste dessous. */}
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-0">
+          <h2 id="reserver-titre" className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-0 scroll-mt-28">
             30&nbsp;minutes avec Noé.<br />
             <span className="text-brand">Pas un commercial.</span>
           </h2>

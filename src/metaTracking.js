@@ -125,8 +125,8 @@ export function trackCallBooked(source) {
 // personnalisés, chacun une fois par visite, sans aucune donnée du visiteur :
 //   BookingClick     un bouton qui mène au calendrier a été cliqué
 //   CalendarViewed   le calendrier est arrivé à l'écran
-//   CalendarUsed     le visiteur a touché au calendrier : un autre jour, un autre mois, ou un créneau choisi
-//                    (Cal.com ne dit pas lequel des trois)
+//   CalendarUsed     le visiteur a cliqué dans le calendrier : un jour, un mois ou un créneau (la page ne voit
+//                    pas lequel, le calendrier est dans le cadre de Cal.com)
 //   BookingRescheduled / BookingCancelled   rendez-vous déplacé ou annulé depuis le calendrier de la page
 const ETAPES_RESERVATION = {
   clic: 'BookingClick',
