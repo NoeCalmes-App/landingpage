@@ -562,7 +562,7 @@
    gris du site 2,1, illisibles. Le bleu nuit du titre, un peu éclairci, fait 6,5. */
 @media (max-width: 767px) {
   .at-hero-avant { margin: 12px 0 max(14px, 14svh - 78px); color: #2b2f63; }
-  /* Le bouton a une largeur qui suit celle de l'écran (Noé : « plus petit sur un iPhone Pro Max ») : sans ça, il
-     garde la largeur de son texte et paraît rétrécir quand l'écran s'élargit. */
-  .at-hero-bouton a { min-width: min(82vw, 380px); justify-content: center; }
+  /* Le bouton GROSSIT avec l'écran (Noé : « plus petit sur un iPhone Pro Max », « grossir », pas l'élargir) : texte
+     et marges intérieures montent ensemble, comme le titre. Il garde la largeur de son texte. */
+  .at-hero-bouton a { font-size: clamp(.95rem, 4.4vw, 1.2rem); padding: clamp(.875rem, 3.9vw, 1.08rem) clamp(1.25rem, 8.6vw, 2.4rem); }
 }
