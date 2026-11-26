@@ -5,7 +5,8 @@ import { trackDirectWhatsAppLead } from './metaTracking.js'
 import { AvisClients } from './AvisClients.jsx'
 import './projets.css'
 
-// Cette page sert aussi de support après un premier appel.
+// Cette page est le support envoyé après un premier appel. Depuis le 26/11/2026 elle n'est PLUS INDEXÉE (décision de
+// Noé) : balise robots « noindex, follow » et sortie du sitemap dans scripts/generate-routes.js.
 const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
   "Bonjour Noé, j’ai une question après avoir consulté la page des réalisations."
 )}`
@@ -17,10 +18,11 @@ export const ANNUAIRES = [
   { nom: 'jesuisnumerique.fr', url: 'https://www.jesuisnumerique.fr' },
 ]
 
+// Les applications de métier d'abord (SmoothRide, Bailora), puis une des miennes. Calorie est retirée (Noé, 26/11/2026).
 const REALISATIONS = [
-  { name: 'Calorie', type: 'Suivi nutritionnel avec l’IA', icon: '/assets/images/apps/calorie.webp', metric: '13 000 €', unit: 'par mois environ', detail: "Une application que j’ai conçue pour un client, sur un marché déjà très concurrentiel." },
-  { name: 'Plouff Habitudes', type: "Suivi d'habitudes", icon: '/assets/images/app-icons/plouffhabitudes.webp', metric: '30 jours', unit: 'du design au lancement', detail: "Ma propre application : une routine quotidienne, une mascotte et une offre d’abonnement." },
   { name: 'SmoothRide', type: 'Navigation GPS', icon: '/assets/images/apps/smoothride.svg', metric: 'App mobile + CarPlay', unit: '', detail: 'Une navigation complète qui évite les ralentisseurs, et qui s’affiche aussi sur l’écran de la voiture avec CarPlay.' },
+  { name: 'Bailora', type: 'Gestion locative', icon: '/assets/images/apps/bailora.webp', metric: 'App iOS + Android', unit: '', detail: 'Pour les propriétaires et les SCI : loyers, quittances, états des lieux, et un assistant à qui l’on parle.' },
+  { name: 'Plouff Habitudes', type: "Suivi d'habitudes", icon: '/assets/images/app-icons/plouffhabitudes.webp', metric: '30 jours', unit: 'du design au lancement', detail: "Ma propre application : une routine quotidienne, une mascotte et une offre d’abonnement." },
 ]
 
 const METHODE = [
@@ -54,7 +56,7 @@ export default function Projets({ onBack }) {
     appliquerMeta({
       path: '/projets',
       title: "Réalisations : applications mobiles et web | Noé Calmes",
-      description: "SmoothRide, Bailora, Wake Up Alarme, Plouff Habitudes, Hush : les applications conçues par Noé Calmes, le besoin de départ et le résultat.",
+      description: "SmoothRide, Bailora, Wake Up Alarme, Plouff Habitudes : les applications conçues par Noé Calmes, le besoin de départ et le résultat.",
       ogImage: 'https://noecalmes.fr/assets/images/meta/projets-og.jpg',
       ogImageAlt: "Mes réalisations : des applications conçues de l’idée au lancement par Noé Calmes.",
     })

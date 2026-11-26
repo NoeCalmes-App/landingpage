@@ -105,7 +105,7 @@ const LIENS_MAILLAGE = [
   { href: '/application-mobile-sur-mesure', titre: 'Application sur mesure : prix, délai, devis', texte: 'Tarif fixe de 5 000 à 15 000 € selon le périmètre, 45 jours, devis après un cadrage gratuit.' },
   { href: '/application-web-sur-mesure', titre: 'Application web sur mesure : prix, délai, devis', texte: 'Un logiciel en ligne pour ton activité, tarif fixe de 6 000 à 15 000 € selon le périmètre, sans commission de store.' },
   { href: '/refonte-application-mobile', titre: 'Refonte ou reprise d\'une application existante', texte: 'Un audit court qui tranche, puis reprise ou refonte à tarif fixe, en gardant tes utilisateurs et leurs comptes.' },
-  { href: '/projets', titre: 'Les applications que j\'ai conçues', texte: '+1 million de téléchargements, 13 000 € par mois, +20 applications publiées.' },
+  { href: '/projets', titre: 'Les applications que j\'ai conçues', texte: '+1 million de téléchargements, +20 applications publiées.' },
   { href: '/faq', titre: 'Questions fréquentes', texte: 'Budget, délai, reprise, stores, ce qui se passe après la mise en ligne.' },
   { href: '/a-propos', titre: 'Qui je suis', texte: 'Mon parcours, mes preuves, et la façon dont je travaille avec toi.' },
   { href: '/quiz', titre: 'Tester ton projet en 2 minutes', texte: 'Trois tests courts : besoin réel, application ou site web, budget à prévoir.' },

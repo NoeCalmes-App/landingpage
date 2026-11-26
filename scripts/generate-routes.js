@@ -696,13 +696,13 @@ const sectionRoutes = [
   {
     path: '/projets',
     heading: 'Réalisations et façon de travailler de Noé Calmes',
-    content: 'Plus de 20 applications publiées. La première version de Hush conçue par Noé a réuni 300 000 utilisateurs et l’application dépasse aujourd’hui un million de téléchargements. Une application conçue par Noé génère environ 13 000 € par mois. Chaque projet est cadré avant le devis : stratégie, design, développement et mise en ligne.',
+    content: 'Plus de 20 applications publiées, dont une messagerie qui dépasse aujourd’hui un million de téléchargements. Chaque projet est cadré avant le devis : stratégie, design, développement et mise en ligne.',
   },
   {
     path: '/projet',
     canonicalPath: '/projets',
     heading: 'Réalisations et façon de travailler de Noé Calmes',
-    content: 'Plus de 20 applications publiées. La première version de Hush conçue par Noé a réuni 300 000 utilisateurs et l’application dépasse aujourd’hui un million de téléchargements. Une application conçue par Noé génère environ 13 000 € par mois. Chaque projet est cadré avant le devis : stratégie, design, développement et mise en ligne.',
+    content: 'Plus de 20 applications publiées, dont une messagerie qui dépasse aujourd’hui un million de téléchargements. Chaque projet est cadré avant le devis : stratégie, design, développement et mise en ligne.',
   },
 ]
 
@@ -732,13 +732,21 @@ for (const route of sectionRoutes) {
     html = html.replace('</head>', `    <script type="application/ld+json">\n    ${faqJson}\n    </script>\n  </head>`)
   }
 
+  // /projets (et son alias /projet) n'est plus indexee depuis le 26/11/2026 : c'est le support envoye apres un premier
+  // appel, pas une page d'acquisition. « follow » et non « nofollow » : le lien retour vers l'annuaire (« Reference
+  // sur ») doit rester suivi. Elle sort aussi du sitemap et de llms.txt.
+  const pageNonIndexee = (route.canonicalPath || route.path) === '/projets'
+  if (pageNonIndexee) {
+    html = html.replace(/<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/, '<meta name="robots" content="noindex, follow" />')
+  }
+
   const routeDir = join(distDir, route.path)
   mkdirSync(routeDir, { recursive: true })
   writeFileSync(join(routeDir, 'index.html'), html)
   pagesGenerees.push(join(routeDir, 'index.html'))
   // /projet est un alias canonique de /projets : une seule des deux entre au
   // sitemap, sinon on declare deux URLs pour une meme page.
-  if (!route.canonicalPath) declarerSitemap(route.path, { priority: '0.8', changefreq: 'monthly', lastmod: dateBuild })
+  if (!route.canonicalPath && !pageNonIndexee) declarerSitemap(route.path, { priority: '0.8', changefreq: 'monthly', lastmod: dateBuild })
   console.log(`✓ Generated ${route.path}/index.html`)
 }
 
@@ -1462,7 +1470,6 @@ application mobile ou web.
 - [Application mobile sur mesure](${urlPublique('/application-mobile-sur-mesure')}) : prix (tarif fixe de 5 000 à 15 000 € par palier de périmètre, 15 000 à 18 000 € avec une application web), délai (45 jours), comment obtenir un devis
 - [Application web sur mesure](${urlPublique('/application-web-sur-mesure')}) : un logiciel en ligne, ce qu'on appelle aussi un SaaS, tarif fixe de 6 000 à 15 000 € par palier de périmètre, sans commission de store, devis après un appel
 - [Refonte ou reprise d'une application existante](${urlPublique('/refonte-application-mobile')}) : audit court qui tranche, reprise ou refonte à tarif fixe, utilisateurs et comptes conservés
-- [Les applications que j'ai conçues](${urlPublique('/projets')}) : réalisations et résultats
 - [FAQ](${urlPublique('/faq')}) : budget, délai, reprise, stores, suivi après mise en ligne
 - [Qui je suis](${urlPublique('/a-propos')}) : parcours, preuves, profils, façon de travailler
 - [Teste ton idée](${urlPublique('/audit-app')}) : potentiel, budget et délai d'une idée d'application en 2 minutes
