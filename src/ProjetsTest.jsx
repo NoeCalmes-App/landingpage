@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { ArrowRight, ArrowUpRight, Car, LockKeyhole, MessageCircle, Phone } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Car, FileLock, MessageCircle, Phone } from 'lucide-react'
 import { trackDirectWhatsAppLead } from './metaTracking.js'
 import { AvisClients } from './AvisClients.jsx'
 import './app-showcase.css'
@@ -192,8 +192,9 @@ export default function ProjetsTest({ onBack }) {
               ))}
             </div>
             {/* Noé, 26/11/2026 : montrer que ces quatre ne sont qu'une partie des +20. Une seule ligne, discrète, sous la
-                liste : là où le lecteur se demande « et les autres ? ». */}
-            <p className="pjt-confidentiel"><span className="pjt-confidentiel-icone"><LockKeyhole size={20} strokeWidth={1.8} aria-hidden="true" /></span><span>Ce n’est qu’une petite partie de mes réalisations. Les autres sont protégées par un accord de confidentialité.</span></p>
+                liste : là où le lecteur se demande « et les autres ? ». L'icône : un document avec un cadenas, le contrat de
+                confidentialité ; en blanc sur un carré noir (Noé : « en noir au lieu du violet »). */}
+            <p className="pjt-confidentiel"><span className="pjt-confidentiel-icone"><FileLock size={21} strokeWidth={1.8} aria-hidden="true" /></span><span>Ce n’est qu’une petite partie de mes réalisations. Les autres sont protégées par un accord de confidentialité.</span></p>
           </div>
         </section>
 
