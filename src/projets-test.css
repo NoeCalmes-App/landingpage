@@ -129,7 +129,7 @@
   .pjt-million { grid-template-columns: 1.25fr 1fr; align-items: center; padding: 0 56px; }
   .pjt-million-texte { padding: 60px 0; }
   .pjt-million-phrase { font-size: 16.5px; }
-  .pjt-million-ecran { align-self: end; width: 300px; height: 400px; margin: 48px auto 0; }
+  .pjt-million-ecran { align-self: end; width: 300px; height: 376px; margin: 48px auto 0; }
   .pjt-section-cas { padding: 112px 24px; }
   .pjt-liste-cas { gap: 24px; }
   .pjt-cas { padding: 44px 40px 48px; border-radius: 30px; }
