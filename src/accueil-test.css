@@ -517,17 +517,19 @@
 .at-resultat-carte { -webkit-user-select: none; user-select: none; pointer-events: none; cursor: default; -webkit-touch-callout: none; }
 
 
-/* LE BAS DU HAUT DE PAGE : bouton, phrase, film. Sur téléphone, le film d'abord, puis la phrase, puis le bouton
-   (on regarde avant de réserver) ; à partir de 768 px, le bouton reste au-dessus du film. */
+/* LE BAS DU HAUT DE PAGE : bouton, film, phrase. Sur téléphone, le film d'abord, puis la phrase, puis le bouton
+   (on regarde avant de réserver) ; à partir de 768 px, le bouton reste au-dessus du film, la phrase dessous. */
 .at-hero-bas { display: flex; flex-direction: column; }
 .at-hero-film { order: 1; }
 .at-hero-avant { order: 2; margin: 18px 0 14px; }
 .at-hero-bouton { order: 3; }
 .at-hero-nuit .at-hero-avant { color: rgba(255, 255, 255, .78); }
+/* Sur ordinateur, la phrase est SOUS la vidéo (Noé, 26/11/2026 au soir) : bouton, vidéo, phrase. Elle y est posée
+   sur le violet, donc en bleu nuit comme sur téléphone (le gris du site y est illisible). */
 @media (min-width: 768px) {
   .at-hero-bouton { order: 1; }
-  .at-hero-avant { order: 2; margin: 16px 0 0; }
-  .at-hero-film { order: 3; }
+  .at-hero-film { order: 2; }
+  .at-hero-avant { order: 3; margin: 20px 0 0; color: #2b2f63; }
 }
 
 /* LE HAUT DE PAGE SUR TÉLÉPHONE (Noé, 26/11/2026). Deux demandes : « trop de marge » et bouton coupé sur le plus

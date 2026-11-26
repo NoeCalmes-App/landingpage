@@ -430,7 +430,7 @@ export default function AccueilTest() {
           {/* L'ORDRE DÉPEND DE L'ÉCRAN (Noé, 26/11/2026, en vue de la vidéo où il parle face caméra) : sur téléphone,
               la vidéo, puis « Regarde la vidéo avant de réserver ton appel. », puis le bouton, pour qu'on regarde
               avant de réserver ; sur ordinateur, le bouton reste au-dessus de la vidéo (« laissé ici »), la phrase
-              entre les deux. Le bouton n'est jamais bloqué tant que la vidéo n'est pas vue.
+              sous la vidéo. Le bouton n'est jamais bloqué tant que la vidéo n'est pas vue.
               LE BOUTON dit « Réserver mon appel gratuit » : « audit » ne parle pas à tout le monde (Noé), et
               « appel gratuit » dit ce qu'il réserve et ce que ça coûte. Avant : « J'ai une idée d'application ». */}
           <div className="at-hero-bas">
@@ -765,9 +765,14 @@ export default function AccueilTest() {
             Depuis combien de temps<br />
             <span className="text-brand">tu as cette idée&nbsp;?</span>
           </h2>
-          {/* AU-DESSUS DU CALENDRIER, DEUX CHOSES SEULEMENT (Noé, 26/11/2026 : « c'est vraiment trop ») : la question et
-              la pastille. Retirés : « Tant qu'elle reste une idée, elle ne te rapporte rien. Réserve ton appel, on en
-              parle. » et « Pour que le tien ait toute mon attention. ». Le calendrier dit déjà ce qu'on réserve. */}
+          {/* AU-DESSUS DU CALENDRIER (Noé, 26/11/2026 au soir) : la question, qu'il aime, UNE phrase qui dit ce qu'on
+              réserve, puis la pastille. La phrase suit le modèle qu'il a montré chez Ikovaline (qui est au bout du fil,
+              ce qu'on en retire, sans obligation), avec ses mots à lui. Retirés le même soir : « Tant qu'elle reste
+              une idée, elle ne te rapporte rien. » et « Pour que le tien ait toute mon attention. » (« c'est vraiment
+              trop »). */}
+          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mt-3 md:mt-4 text-balance">
+            Réserve 30&nbsp;minutes avec moi, pas avec un commercial. Tu&nbsp;repars avec mes conseils et une fourchette de prix, qu'on travaille ensemble ou non.
+          </p>
           <p className="reveal at-rare">
             <span className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.72rem] md:text-[0.78rem] leading-none bg-brand/6 border-brand/12">
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500 shrink-0" />
