@@ -1,241 +1,163 @@
-.projets-page {
-  --p-ink: #033475;
-  --p-muted: #596579;
-  --p-purple: #665dff;
-  min-height: 100vh;
-  background: #fffefc;
-  color: var(--p-ink);
+/* LA PAGE « PROJETS » (refaite le 26/11/2026), src/Projets.jsx. Les couleurs, les titres et le rythme sont ceux de la page
+   d'accueil test : bleu nuit #033475 pour le texte, violet #665dff pour l'accent, 56 px entre les sections sur
+   téléphone et 112 px sur ordinateur, fond blanc et fond gris en alternance. Peu d'ombres, pas de cases autour des
+   textes, aucune animation : c'est une page qu'on lit après un appel, pas une page qui doit accrocher. */
+.pjt-page { background: #fffefc; color: #033475; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+:where(.pjt-page) h1, :where(.pjt-page) h2, :where(.pjt-page) h3 { margin: 0; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-weight: 800; letter-spacing: -.04em; color: #033475; }
+:where(.pjt-page) p { margin: 0; }
+.pjt-int { max-width: 1120px; margin: 0 auto; }
+.pjt-section { padding: 56px 20px; }
+
+/* ===== La barre du haut ===== */
+.pjt-barre-zone { position: sticky; top: 10px; z-index: 30; padding: 10px 12px 0; }
+.pjt-barre { display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: 840px; margin: 0 auto; padding: 7px 8px 7px 10px; border-radius: 999px; background: rgba(255, 255, 255, .9); border: 1px solid #ebe9f5; box-shadow: 0 10px 26px -22px rgba(13, 21, 72, .5); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.pjt-marque { display: flex; align-items: center; gap: 10px; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; color: inherit; font: inherit; }
+.pjt-marque img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.pjt-marque span { display: grid; line-height: 1.2; }
+.pjt-marque strong { font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 800; letter-spacing: -.02em; }
+.pjt-marque small { font-size: 12px; color: #667185; }
+.pjt-barre-bouton { padding: 9px 16px; border-radius: 999px; background: #0d1548; color: #fff; font-size: 13.5px; font-weight: 500; text-decoration: none; white-space: nowrap; }
+.pjt-barre-bouton:hover { background: #090f33; }
+
+/* ===== Le haut de page : celui de l'ancienne page (le titre, puis deux téléphones penchés sur un rond violet) ===== */
+.pjt-haut { max-width: 1120px; margin: 0 auto; padding: 40px 20px 0; }
+.pjt-h1 { max-width: 12em; font-size: clamp(34px, 9.4vw, 60px); line-height: 1.12; letter-spacing: -.05em; }
+.pjt-h1 span, .pjt-h2 span { color: #665dff; }
+.pjt-haut-phrase { max-width: 29em; margin-top: 18px; font-size: 15.5px; line-height: 1.7; color: #667185; }
+.pjt-haut-phrase strong { font-weight: 600; color: #033475; }
+.pjt-haut-visuel { position: relative; isolation: isolate; height: 340px; max-width: 370px; margin: 34px auto 0; }
+.pjt-haut-rond { position: absolute; z-index: -1; top: 25px; left: 50%; width: 280px; height: 280px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle at 35% 30%, #f9f7ff 0%, #e8e1ff 47%, #d3c8ff 85%, #ece7ff 100%); }
+.pjt-haut-tel { position: absolute; padding: 4px; border: 1px solid #70737d; border-radius: 25px; background: #18191e; box-shadow: 0 20px 29px -12px rgba(38, 48, 87, .4), inset 0 0 0 1px #b7bac2; }
+.pjt-haut-tel img { display: block; width: 100%; height: auto; border-radius: 20px; }
+.pjt-haut-tel-1 { z-index: 2; top: 4px; left: calc(50% - 139px); width: 142px; transform: rotate(-8deg); }
+.pjt-haut-tel-2 { z-index: 1; top: 43px; right: calc(50% - 138px); width: 132px; transform: rotate(10deg); }
+
+/* ===== La messagerie au million : le texte, puis un écran de l'application, GRAND ET COUPÉ PAR LE BAS du bloc =====
+   (Noé, 26/11/2026 : en entier, le téléphone faisait un bloc trop haut, « pas beau » ; coupé, on lit le titre de
+   l'écran et sa première offre, et le bloc reste ramassé.) Une lueur blanche derrière le téléphone le détache du fond. */
+.pjt-million-zone { padding: 44px 14px 0; }
+.pjt-million { display: grid; max-width: 1120px; margin: 0 auto; padding: 30px 22px 0; border-radius: 28px; background: #f0eeff; border: 1px solid #e2defb; overflow: hidden; }
+.pjt-million-app { font-size: 23px; letter-spacing: -.03em; }
+.pjt-million-app small { display: block; margin-top: 3px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; color: #5b6577; }
+.pjt-million-chiffre { display: grid; margin-top: 22px; }
+.pjt-million-chiffre strong { font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: clamp(52px, 15vw, 88px); font-weight: 800; letter-spacing: -.055em; line-height: 1; background: linear-gradient(100deg, #033475, #665dff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pjt-million-chiffre span { margin-top: 6px; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -.02em; color: #665dff; }
+.pjt-million-phrase { max-width: 24em; margin-top: 16px; font-size: 15px; line-height: 1.6; color: #4b5565; }
+.pjt-million-ecran { position: relative; container-type: inline-size; width: 236px; height: 300px; margin: 32px auto 0; }
+.pjt-million-ecran::before { content: ''; position: absolute; z-index: 0; left: 50%; top: 8%; width: 170%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, .95), rgba(255, 255, 255, 0) 66%); pointer-events: none; }
+.pjt-million-ecran .app-phone { z-index: 1; }
+.pjt-million-ecran .app-phone { padding: 2.7cqw; border-radius: 16.6cqw; }
+.pjt-million-ecran .app-phone-screen { border-radius: 13.6cqw; }
+.pjt-million-ecran .app-phone-screen img { aspect-ratio: auto; height: auto; }
+.pjt-million-ecran .app-phone-button { width: 1.35cqw; left: -1.9cqw; }
+.pjt-million-ecran .app-phone-action { top: 29.3cqw; height: 6.8cqw; }
+.pjt-million-ecran .app-phone-volume-up { top: 44.6cqw; height: 13cqw; }
+.pjt-million-ecran .app-phone-volume-down { top: 62.2cqw; height: 13cqw; }
+.pjt-million-ecran .app-phone-power { left: auto; right: -1.9cqw; top: 50.5cqw; height: 20.3cqw; }
+
+/* ===== Les applications : un panneau blanc par application (« bien délimité »), sur le fond de la page ===== */
+.pjt-section-cas { padding: 56px 14px; }
+.pjt-liste-cas { display: grid; gap: 16px; }
+.pjt-cas { display: grid; gap: 30px; padding: 22px 18px 28px; border-radius: 26px; background: #fff; border: 1px solid #e7e4f3; box-shadow: 0 30px 60px -48px rgba(59, 47, 208, .45); }
+/* LES ÉCRANS reprennent la fenêtre d'ordinateur et le téléphone du carrousel de l'accueil (classes .ex-scene…), posés
+   une fois pour toutes : ni fondu, ni flottement. LES MÊMES PROPORTIONS POUR TOUTES LES APPLICATIONS (Noé, 26/11/2026 :
+   SmoothRide sortait plus petit que Bailora). LE CADRE DU TÉLÉPHONE SUIT SA TAILLE : dans le carrousel ses arrondis
+   sont en pixels (37 et 29 px pour un téléphone de 222 px) ; ici le téléphone est plus petit, et ces mêmes pixels
+   lui faisaient des coins trop ronds qui mordaient l'heure et la batterie. Tout est donc exprimé en part de sa
+   largeur (unité cqw). */
+.pjt-ecrans .ex-scene { max-width: 520px; }
+.pjt-ecrans .ex-scene.est-active .ex-scene-ordi, .pjt-ecrans .ex-scene.est-active .ex-scene-tel { animation: none; }
+.pjt-ecrans .ex-scene-tel { container-type: inline-size; }
+.pjt-ecrans .app-phone { padding: 2.7cqw; border-radius: 16.6cqw; border-width: max(1px, .9cqw); }
+.pjt-ecrans .app-phone-screen { border-radius: 13.6cqw; }
+.pjt-ecrans .app-phone-button { width: 1.35cqw; left: -1.9cqw; border-radius: 1cqw; }
+.pjt-ecrans .app-phone-action { top: 29.3cqw; height: 6.8cqw; }
+.pjt-ecrans .app-phone-volume-up { top: 44.6cqw; height: 13cqw; }
+.pjt-ecrans .app-phone-volume-down { top: 62.2cqw; height: 13cqw; }
+.pjt-ecrans .app-phone-power { left: auto; right: -1.9cqw; top: 50.5cqw; height: 20.3cqw; }
+/* Sur téléphone : un téléphone PLUS PETIT (Noé : il couvrait presque tout le site), posé en bas à droite de la fenêtre. */
+.pjt-ecrans .ex-scene-duo .ex-scene-tel { width: 38%; margin: -31% 5% 0 auto; }
+.pjt-metier { font-size: 13.5px; font-weight: 600; color: #665dff; }
+.pjt-cas-nom { display: flex; align-items: center; gap: 12px; margin-top: 10px; font-size: 27px; line-height: 1.1; }
+.pjt-cas-nom img { width: 44px; height: 44px; border-radius: 11px; }
+.pjt-cas-phrase { margin-top: 14px; font-size: 18px; font-weight: 600; line-height: 1.4; letter-spacing: -.01em; text-wrap: balance; }
+.pjt-cas-detail { margin-top: 12px; font-size: 15px; line-height: 1.65; color: #5b6577; text-wrap: pretty; }
+/* La seule mise en avant d'un panneau, quand elle compte (CarPlay et Android Auto). */
+.pjt-atout { display: inline-flex; align-items: center; gap: 9px; margin-top: 18px; padding: 9px 15px 9px 13px; border-radius: 12px; background: #f0eeff; font-size: 14px; font-weight: 600; line-height: 1.35; color: #033475; }
+.pjt-atout svg { flex-shrink: 0; color: #665dff; }
+
+/* Sous la liste : les autres applications sont confidentielles. */
+.pjt-confidentiel { display: flex; align-items: center; gap: 14px; max-width: 640px; margin: 24px auto 0; padding: 16px 20px 16px 16px; border-radius: 20px; background: #fff; border: 1px solid #e7e4f3; box-shadow: 0 30px 60px -48px rgba(59, 47, 208, .45); font-size: 15px; font-weight: 500; line-height: 1.5; color: #033475; text-wrap: pretty; }
+.pjt-confidentiel strong { font-weight: 800; }
+.pjt-confidentiel-icone { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: #0d1548; color: #fff; }
+
+/* Les avis suivent les panneaux : un seul écart entre les deux, pas deux. */
+.pjt-section.pjt-section-avis { padding-top: 0; }
+
+/* ===== Les titres de section ===== */
+.pjt-h2 { font-size: clamp(26px, 7vw, 34px); line-height: 1.14; text-align: center; text-wrap: balance; }
+.pjt-h2-texte { max-width: 27em; margin: 12px auto 0; font-size: 15.5px; line-height: 1.55; color: #667185; text-align: center; text-wrap: balance; }
+.pjt-h2-seul { margin-bottom: 32px; }
+
+/* ===== La fin : une seule question, dans le seul bloc bleu nuit ===== */
+.pjt-fin-zone { padding: 0 10px 56px; }
+.pjt-fin { max-width: 1240px; margin: 0 auto; padding: 52px 22px 54px; border-radius: 30px; color: #fff; text-align: center;
+  background:
+    radial-gradient(880px 420px at 50% -6%, rgba(124, 114, 255, .5), rgba(124, 114, 255, 0) 64%),
+    linear-gradient(180deg, #0d1548, #090f33); }
+.pjt-fin-titre { max-width: 14em; margin: 0 auto; font-size: clamp(25px, 6.8vw, 38px); line-height: 1.18; color: #fff; text-wrap: balance; }
+.pjt-fin-titre span { color: #b7b1ff; }
+.pjt-fin-texte { margin-top: 14px; font-size: 15.5px; line-height: 1.5; color: rgba(255, 255, 255, .76); }
+.pjt-contact-liens { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+.pjt-bouton { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 999px; border: 1px solid #fff; background: #fff; color: #0d1548; font-size: 15px; font-weight: 600; text-decoration: none; }
+.pjt-bouton:hover { background: #ebe9ff; border-color: #ebe9ff; }
+.pjt-bouton-clair { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .38); font-weight: 500; }
+.pjt-bouton-clair:hover { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .38); }
+.pjt-barre-bouton:focus-visible, .pjt-marque:focus-visible, .pjt-pied button:focus-visible { outline: 2px solid #665dff; outline-offset: 3px; }
+.pjt-bouton:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.pjt-pied { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; max-width: 1120px; margin: 0 auto; padding: 22px 20px 30px; border-top: 1px solid #ecebf3; font-size: 13.5px; color: #667185; }
+.pjt-pied button { display: inline-flex; align-items: center; gap: 6px; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; font-weight: 600; color: #033475; }
+
+@media (min-width: 820px) {
+  .pjt-section { padding: 112px 24px; }
+  .pjt-barre-zone { top: 14px; }
+  .pjt-haut { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 40px; padding: 64px 24px 0; }
+  .pjt-haut-phrase { margin-top: 22px; font-size: 16.5px; }
+  .pjt-haut-visuel { width: 100%; max-width: none; height: 470px; margin: 0; }
+  .pjt-haut-rond { top: 37px; width: 390px; height: 390px; }
+  .pjt-haut-tel { padding: 5px; border-radius: 31px; }
+  .pjt-haut-tel img { border-radius: 25px; }
+  .pjt-haut-tel-1 { top: 10px; left: calc(50% - 178px); width: 184px; }
+  .pjt-haut-tel-2 { top: 60px; right: calc(50% - 178px); width: 170px; }
+  .pjt-million-zone { padding: 72px 24px 0; }
+  .pjt-million { grid-template-columns: 1.25fr 1fr; align-items: center; padding: 0 56px; }
+  .pjt-million-texte { padding: 60px 0; }
+  .pjt-million-phrase { font-size: 16.5px; }
+  .pjt-million-ecran { align-self: end; width: 300px; height: 376px; margin: 48px auto 0; }
+  .pjt-section-cas { padding: 112px 24px; }
+  .pjt-liste-cas { gap: 24px; }
+  .pjt-cas { padding: 44px 40px 48px; border-radius: 30px; }
+  /* Sur ordinateur le téléphone est posé à droite de la fenêtre et descend plus bas qu'elle : on lui garde la place. */
+  .pjt-ecrans { padding-bottom: 17%; }
+  .pjt-ecrans .ex-scene { max-width: 700px; }
+  .pjt-ecrans .ex-scene-ordi { width: 74%; }
+  .pjt-ecrans .ex-scene-duo .ex-scene-tel { top: 10%; width: 28%; margin: 0; }
+  .pjt-h2-seul { margin-bottom: 56px; }
+  .pjt-h2-texte { font-size: 17px; }
+  .pjt-fin-zone { padding: 0 24px 112px; }
+  .pjt-fin { padding: 88px 40px 92px; }
+  .pjt-fin-texte { font-size: 17px; }
+}
+@media (min-width: 980px) {
+  /* Les écrans ont TOUJOURS la grande colonne, à gauche comme à droite : c'est ce qui donne la même taille partout. */
+  .pjt-cas { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); align-items: center; gap: 56px; padding: 56px 52px; }
+  .pjt-cas-inverse { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); }
+  .pjt-cas-inverse .pjt-ecrans { order: 2; }
+  .pjt-ecrans { padding-bottom: 14%; }
+  .pjt-cas-nom { font-size: 32px; }
+  .pjt-cas-phrase { font-size: 20px; }
 }
 
-.projets-page * { box-sizing: border-box; }
-.projets-container { width: min(1080px, calc(100% - 48px)); margin-inline: auto; }
-.projets-page a:focus-visible,
-.projets-page button:focus-visible { outline: 3px solid #9b94ff; outline-offset: 4px; }
-
-.projets-nav-wrap { position: sticky; top: 0; z-index: 50; padding: 12px 20px 0; pointer-events: none; }
-.projets-nav {
-  max-width: 1080px;
-  height: 66px;
-  margin: auto;
-  padding: 9px 18px 9px 10px;
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  border: 1px solid #e7e5ed;
-  border-radius: 20px;
-  background: #fffefcf2;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 18px #03347508;
-  pointer-events: auto;
-}
-.projets-brand { display: flex; align-items: center; gap: 10px; min-width: 0; padding: 0; background: none; border: 0; text-align: left; color: var(--p-ink); cursor: pointer; }
-.projets-brand img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
-.projets-brand span,
-.projets-app-id span { display: flex; flex-direction: column; min-width: 0; }
-.projets-brand strong { font: 800 15px/1.3 'Plus Jakarta Sans Local', sans-serif; }
-.projets-brand small { margin-top: 2px; color: var(--p-muted); font-size: 11px; line-height: 1.4; }
-.projets-nav nav { display: flex; gap: 26px; margin-left: auto; }
-.projets-nav a { color: var(--p-ink); text-decoration: none; font-size: 13px; font-weight: 700; }
-.projets-nav a:hover { color: var(--p-purple); }
-.projets-nav-avis { display: inline-flex; align-items: center; gap: 7px; margin-left: auto; white-space: nowrap; }
-.projets-nav nav + .projets-nav-avis { margin-left: 0; }
-
-.projets-hero { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 55px; padding-block: 82px 76px; }
-.projets-eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 16px; color: var(--p-purple); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.projets-eyebrow-line { width: 18px; height: 2px; background: currentColor; }
-.projets-hero h1,
-.projets-section-intro h2,
-.projets-budget h2,
-.projets-contact h2 { margin: 0; color: var(--p-ink); font-family: 'Plus Jakarta Sans Local', sans-serif; font-weight: 800; letter-spacing: -.045em; text-wrap: balance; }
-.projets-hero h1 { font-size: clamp(42px, 4.5vw, 60px); line-height: 1.14; }
-.projets-hero h1 em { color: var(--p-purple); font-style: normal; }
-.projets-hero-lead { max-width: 490px; margin: 23px 0 0; color: var(--p-muted); font-size: 16px; line-height: 1.75; }
-.projets-hero-lead strong { color: var(--p-ink); font-weight: 600; }
-.projets-hero-actions { margin-top: 26px; }
-.projets-discover { display: inline-flex; align-items: center; gap: 11px; padding-bottom: 5px; border-bottom: 1px solid #665dff70; color: var(--p-purple); text-decoration: none; font-size: 14px; font-weight: 700; }
-.projets-hero-visual { position: relative; height: 490px; isolation: isolate; }
-.projets-visual-orbit { position: absolute; z-index: -1; width: 410px; height: 410px; top: 37px; left: 50%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle at 35% 30%, #f9f7ff 0%, #e8e1ff 47%, #d3c8ff 85%, #ece7ff 100%); box-shadow: 0 22px 75px #8f7eec20; }
-.projets-screen { position: absolute; width: 190px; margin: 0; }
-.projets-screen-primary { z-index: 2; top: 16px; left: calc(50% - 183px); }
-.projets-screen-secondary { z-index: 1; top: 66px; right: calc(50% - 184px); width: 175px; }
-.projets-phone { padding: 5px; border: 1px solid #70737d; border-radius: 31px; background: #18191e; box-shadow: 0 24px 38px -13px #26305760, inset 0 0 0 1px #b7bac2; }
-.projets-screen-primary .projets-phone { transform: rotate(-8deg); }
-.projets-screen-secondary .projets-phone { transform: rotate(10deg); }
-.projets-phone img { display: block; width: 100%; height: auto; border-radius: 25px; }
-.projets-screen figcaption { position: relative; margin-top: 23px; color: var(--p-muted); font-size: 11px; font-weight: 600; text-align: center; }
-
-.projets-section { padding-block: 80px; }
-.projets-section-intro { max-width: 650px; margin: 0 auto 34px; text-align: center; }
-.projets-section-intro .projets-eyebrow { justify-content: center; }
-.projets-accent { color: var(--p-purple); }
-.projets-section-intro h2 { font-size: clamp(29px, 3.1vw, 39px); line-height: 1.2; }
-.projets-section-intro > p:last-child:not(.projets-eyebrow) { margin: 16px auto 0; color: var(--p-muted); line-height: 1.7; }
-.projets-results { border-top: 1px solid #eceaf2; }
-.projets-feature { border: 1px solid #e1dcfb; border-radius: 22px; background: #f2efff; }
-.projets-feature-copy { display: grid; grid-template-columns: 1fr 1fr; align-items: center; column-gap: 50px; padding: 34px; }
-.projets-app-id { display: flex; align-items: center; gap: 12px; }
-.projets-app-id img { width: 46px; height: 46px; border-radius: 11px; object-fit: cover; }
-.projets-app-id strong { font: 800 16px/1.3 'Plus Jakarta Sans Local', sans-serif; }
-.projets-app-id small { margin-top: 3px; color: var(--p-muted); font-size: 12px; line-height: 1.45; }
-.projets-feature-metric { grid-column: 2; grid-row: 1 / 3; margin: 0; font: 800 clamp(36px, 4vw, 50px)/1.1 'Plus Jakarta Sans Local', sans-serif; letter-spacing: -.045em; }
-.projets-feature-metric span { display: block; margin-top: 5px; font-size: 15px; font-weight: 600; letter-spacing: 0; color: var(--p-purple); }
-.projets-feature-text { margin: 18px 0 0; color: var(--p-muted); font-size: 14px; line-height: 1.7; }
-.projets-project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
-.projets-project-card { padding: 25px; border: 1px solid #e8e6ef; border-radius: 18px; background: #fff; }
-.projets-project-result { display: flex; flex-direction: column; justify-content: flex-end; min-height: 73px; margin-top: 22px; }
-.projets-project-result strong { font: 800 clamp(23px, 2.4vw, 30px)/1.2 'Plus Jakarta Sans Local', sans-serif; letter-spacing: -.04em; }
-.projets-project-result span { margin-top: 3px; color: var(--p-purple); font-size: 13px; font-weight: 600; }
-.projets-project-card > p { margin: 16px 0 0; color: var(--p-muted); font-size: 14px; line-height: 1.65; }
-
-.projets-cases-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-.projets-case { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e8e6ef; border-radius: 18px; background: #fff; transition: box-shadow .2s, transform .2s; }
-.projets-case:hover { box-shadow: 0 14px 34px rgba(3, 52, 117, .09); transform: translateY(-2px); }
-.projets-case-ouvrir { display: block; padding: 0; border: 0; background: none; cursor: pointer; }
-.projets-case-visuel { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: #f4f3f8; }
-.projets-case-corps { display: flex; flex: 1; flex-direction: column; padding: 18px 18px 20px; }
-.projets-case h3 { margin: 0; color: var(--p-ink); font: 800 16px/1.3 'Plus Jakarta Sans Local', sans-serif; letter-spacing: -.02em; }
-.projets-case .projets-app-id img, .projets-cas-modale .projets-app-id img { width: 38px; height: 38px; border-radius: 10px; }
-.projets-case-accroche { margin: 14px 0 0; color: var(--p-ink); font-size: 14px; line-height: 1.55; }
-.projets-case-lire { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-top: auto; padding: 16px 0 0; border: 0; background: none; color: var(--p-purple); font-family: inherit; font-size: 14px; font-weight: 700; line-height: 1; cursor: pointer; }
-.projets-case-lire:hover { text-decoration: underline; }
-
-.projets-cas-modale { position: fixed; inset: 0; margin: auto; width: min(720px, calc(100vw - 32px)); height: fit-content; max-height: calc(100dvh - 48px); padding: 0; border: 0; border-radius: 24px; background: #fff; color: var(--p-ink); box-shadow: 0 30px 80px rgba(3, 20, 60, .28); overflow: auto; }
-.projets-cas-modale::backdrop { background: rgba(8, 14, 34, .55); backdrop-filter: blur(4px); }
-.projets-cas-modale[open] { animation: projets-cas-entree .22s ease-out; }
-@keyframes projets-cas-entree { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
-.projets-cas-modale-boite { position: relative; }
-.projets-cas-fermer-form { position: absolute; top: 14px; right: 14px; z-index: 1; margin: 0; }
-.projets-cas-fermer { display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 999px; background: rgba(255, 255, 255, .92); color: var(--p-ink); box-shadow: 0 4px 14px rgba(0, 0, 0, .15); cursor: pointer; }
-.projets-cas-modale-visuel { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
-.projets-cas-modale-corps { padding: 26px 30px 30px; }
-.projets-cas-modale h4 { margin: 0; font: 800 20px/1.25 'Plus Jakarta Sans Local', sans-serif; letter-spacing: -.02em; }
-.projets-cas-modale-accroche { margin: 16px 0 0; font-size: 16px; line-height: 1.55; }
-.projets-cas-etapes { display: grid; gap: 18px; margin-top: 24px; padding-top: 22px; border-top: 1px solid #ecebf2; }
-.projets-cas-etapes span { color: var(--p-purple); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.projets-cas-etapes p { margin: 6px 0 0; color: var(--p-muted); font-size: 15px; line-height: 1.7; }
-@media (max-width: 1100px) {
-  .projets-cases-grid { display: flex; gap: 14px; margin: 0 -20px; padding: 0 20px 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-  .projets-cases-grid::-webkit-scrollbar { display: none; }
-  .projets-case { flex: 0 0 min(320px, 82%); scroll-snap-align: start; }
-}
-@media (max-width: 640px) {
-  .projets-cas-modale { top: auto; bottom: 0; width: 100vw; max-width: 100vw; max-height: 92dvh; margin: 0; border-radius: 22px 22px 0 0; }
-  .projets-cas-modale-corps { padding: 22px 20px 28px; }
-}
-
-
-.projets-annuaires { margin: -8px auto 28px; color: #9aa3b2; font-size: 12px; }
-.projets-annuaires a { color: inherit; text-decoration: none; }
-.projets-annuaires a:hover { text-decoration: underline; }
-
-.projets-reviews { background: #f8f7fc; }
-.projets-method .projets-section { padding-bottom: 0; }
-.projets-method-grid { max-width: 780px; margin: auto; }
-.projets-method-card { display: grid; grid-template-columns: 40px 1fr; column-gap: 18px; padding: 24px 0; border-bottom: 1px solid #e8e6ef; }
-.projets-method-card:first-child { padding-top: 0; }
-.projets-method-card:last-child { border-bottom: 0; }
-.projets-method-card > span { grid-row: 1 / 3; padding-top: 4px; color: var(--p-purple); font: 700 13px/1.5 'Geist', sans-serif; }
-.projets-method-card h3 { margin: 0; color: var(--p-ink); font: 800 20px/1.35 'Plus Jakarta Sans Local', sans-serif; letter-spacing: -.025em; }
-.projets-method-card p { margin: 9px 0 0; color: var(--p-muted); font-size: 15px; line-height: 1.7; }
-
-.projets-budget-panel { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 58px; padding: 42px; border: 1px solid #e7e1f8; border-radius: 25px; background: linear-gradient(120deg, #f3efff, #faf9ff 48%, #fffefc); }
-.projets-budget-heading { display: grid; grid-template-columns: 60px 1fr; align-items: center; gap: 0 15px; }
-.projets-budget-emblem { display: grid; place-items: center; width: 60px; height: 60px; border: 1px solid #d9d0ff; border-radius: 19px; background: #fff; color: var(--p-purple); box-shadow: 0 8px 20px #665dff0d; }
-.projets-budget-heading .projets-eyebrow { margin: 0; line-height: 1.6; letter-spacing: .09em; }
-.projets-budget h2 { grid-column: 1 / -1; margin-top: 22px; font-size: clamp(29px, 3vw, 36px); line-height: 1.2; }
-.projets-budget-point { display: grid; grid-template-columns: 24px 1fr; grid-template-rows: auto auto; column-gap: 13px; padding-block: 23px; }
-.projets-budget-point:first-child { padding-top: 0; border-bottom: 1px solid #e5dfef; }
-.projets-budget-point:last-child { padding-bottom: 0; }
-.projets-budget-point > svg { grid-column: 1; grid-row: 1; align-self: center; color: var(--p-purple); }
-.projets-budget-point > div { display: contents; }
-.projets-budget-point h3 { margin: 0; font: 800 19px/1.35 'Plus Jakarta Sans Local', sans-serif; letter-spacing: -.025em; }
-.projets-budget-point h3 { grid-column: 2; grid-row: 1; }
-.projets-budget-point p { grid-column: 2; grid-row: 2; margin: 9px 0 0; color: var(--p-muted); font-size: 15px; line-height: 1.7; }
-
-.projets-contact { padding-block: 38px; border-top: 1px solid #e8e6ef; }
-.projets-contact h2 { font-size: 24px; line-height: 1.35; }
-.projets-contact > p { max-width: 570px; margin: 12px 0 18px; color: var(--p-muted); font-size: 15px; line-height: 1.7; }
-.projets-contact-links { display: flex; align-items: center; flex-wrap: wrap; gap: 26px; }
-.projets-contact-links a { display: inline-flex; align-items: center; gap: 8px; padding-block: 6px; color: var(--p-purple); font-weight: 600; font-size: 14px; text-decoration: none; }
-.projets-contact-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.projets-footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-block: 25px 35px; border-top: 1px solid #e8e6ef; color: var(--p-muted); font-size: 12px; line-height: 1.6; }
-.projets-footer button { display: inline-flex; align-items: center; gap: 6px; padding: 0; border: 0; background: none; color: var(--p-ink); font-weight: 600; text-align: left; cursor: pointer; }
-
-@media (max-width: 900px) {
-  .projets-hero { gap: 25px; }
-  .projets-hero h1 { font-size: 43px; }
-  .projets-hero-visual { height: 430px; }
-  .projets-visual-orbit { width: 330px; height: 330px; top: 45px; }
-  .projets-screen-primary { width: 160px; left: calc(50% - 150px); }
-  .projets-screen-secondary { width: 148px; right: calc(50% - 151px); }
-  .projets-phone { border-radius: 25px; padding: 4px; }
-  .projets-phone img { border-radius: 20px; }
-  .projets-project-card { padding: 20px; }
-  .projets-budget-panel { gap: 32px; padding: 32px; }
-}
-
-@media (max-width: 700px) {
-  .projets-container { width: min(520px, calc(100% - 36px)); }
-  .projets-nav-wrap { padding: 8px 10px 0; }
-  .projets-nav { height: 60px; padding: 7px 12px 7px 8px; border-radius: 18px; gap: 10px; }
-  .projets-brand { gap: 8px; }
-  .projets-brand img { width: 38px; height: 38px; }
-  .projets-brand strong { font-size: 13px; }
-  .projets-brand small { font-size: 10px; }
-  .projets-nav nav { display: none; }
-  .projets-nav nav + .projets-nav-avis { margin-left: auto; font-size: 12px; }
-  .projets-hero { display: block; padding-block: 43px 42px; }
-  .projets-hero h1 { max-width: 470px; font-size: clamp(34px, 9.1vw, 45px); line-height: 1.17; }
-  .projets-hero-lead { margin-top: 19px; font-size: 15px; line-height: 1.7; }
-  .projets-hero-actions { margin-top: 19px; }
-  .projets-hero-visual { height: 350px; max-width: 370px; margin: 38px auto 0; }
-  .projets-visual-orbit { width: 280px; height: 280px; top: 25px; }
-  .projets-screen-primary { width: 142px; top: 4px; left: calc(50% - 139px); }
-  .projets-screen-secondary { width: 132px; top: 43px; right: calc(50% - 138px); }
-  .projets-phone { padding: 4px; border-radius: 25px; box-shadow: 0 20px 29px -12px #26305765, inset 0 0 0 1px #b7bac2; }
-  .projets-phone img { border-radius: 20px; }
-  .projets-screen figcaption { margin-top: 19px; font-size: 11px; }
-  .projets-section { padding-block: 53px; }
-  .projets-section-intro { margin-bottom: 27px; text-align: left; }
-  .projets-section-intro .projets-eyebrow { justify-content: flex-start; }
-  .projets-section-intro h2 { font-size: 29px; }
-  .projets-feature-copy { display: flex; flex-direction: column; align-items: flex-start; padding: 24px; }
-  .projets-feature-metric { margin-top: 24px; font-size: 37px; }
-  .projets-feature-metric span { font-size: 14px; }
-  .projets-feature-text { font-size: 14px; }
-  .projets-project-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 12px; }
-  .projets-project-card { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; padding: 22px; }
-  .projets-project-card .projets-app-id { grid-column: 1 / -1; }
-  .projets-project-result { grid-column: 1 / -1; min-height: 0; margin-top: 20px; }
-  .projets-project-card > p { grid-column: 1 / -1; margin-top: 10px; }
-  .projets-method-card { grid-template-columns: 25px 1fr; column-gap: 10px; padding-block: 22px; }
-  .projets-method-card h3 { font-size: 19px; }
-  .projets-method-card p { font-size: 15px; }
-  .projets-budget { padding-top: 42px; }
-  .projets-budget-panel { display: block; padding: 25px 22px; border-radius: 22px; }
-  .projets-budget-heading { grid-template-columns: 46px 1fr; gap: 0 12px; }
-  .projets-budget-emblem { width: 46px; height: 46px; border-radius: 15px; }
-  .projets-budget-emblem svg { width: 26px; height: 26px; }
-  .projets-budget-heading .projets-eyebrow { font-size: 10px; }
-  .projets-budget h2 { font-size: 29px; }
-  .projets-budget-points { margin-top: 26px; }
-  .projets-budget-point { column-gap: 10px; padding-block: 21px; }
-  .projets-budget-point h3 { font-size: 18px; }
-  .projets-budget-point p { font-size: 14px; }
-  .projets-contact { padding-block: 30px; }
-  .projets-contact h2 { font-size: 23px; }
-  .projets-footer { align-items: flex-start; font-size: 11px; }
-  .projets-footer > span { max-width: 180px; }
-}
-
-@media (max-width: 360px) {
-  .projets-hero h1 { font-size: 32px; }
-  .projets-hero-visual { height: 320px; }
-  .projets-visual-orbit { width: 244px; height: 244px; }
-  .projets-screen-primary { width: 125px; left: calc(50% - 123px); }
-  .projets-screen-secondary { width: 116px; right: calc(50% - 122px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .projets-page * { scroll-behavior: auto !important; transition: none !important; }
-}
+/* La ligne des annuaires, sous le pied de page : discrète. */
+.pjt-annuaires { max-width: 1120px; margin: 0 auto; padding: 0 20px 28px; font-size: 12px; color: #8a93a3; }
+.pjt-annuaires a { color: inherit; }
