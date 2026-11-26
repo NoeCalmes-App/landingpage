@@ -516,3 +516,16 @@
    souris. La carte est annoncée comme une image aux lecteurs d'écran (role="img" dans AccueilTest.jsx). */
 .at-resultat-carte { -webkit-user-select: none; user-select: none; pointer-events: none; cursor: default; -webkit-touch-callout: none; }
 
+
+/* LE BAS DU HAUT DE PAGE : bouton, phrase, film. Sur téléphone, le film d'abord, puis la phrase, puis le bouton
+   (on regarde avant de réserver) ; à partir de 768 px, le bouton reste au-dessus du film. */
+.at-hero-bas { display: flex; flex-direction: column; }
+.at-hero-film { order: 1; }
+.at-hero-avant { order: 2; margin: 18px 0 14px; }
+.at-hero-bouton { order: 3; }
+.at-hero-nuit .at-hero-avant { color: rgba(255, 255, 255, .78); }
+@media (min-width: 768px) {
+  .at-hero-bouton { order: 1; }
+  .at-hero-avant { order: 2; margin: 16px 0 0; }
+  .at-hero-film { order: 3; }
+}

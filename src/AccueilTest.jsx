@@ -36,14 +36,13 @@ import ExemplesMetier from './ExemplesMetier.jsx'
 import { AvisClients } from './AvisClients.jsx'
 import HeroVideo from './HeroVideo.jsx'
 import Footer from './Footer.jsx'
-import ChatbotWidget from './chatbot/Widget'
 import ReserverAppel from './ReserverAppel.jsx'
 import { lienInterne } from './seo.js'
 
 const mePhoto = '/assets/images/profile/me.webp'
 
 // PLUS DE BOUTON WHATSAPP EN BAS DE PAGE (26/11/2026) : tous les boutons mènent au calendrier Calendly
-// (ReserverAppel.jsx). Le bouton WhatsApp flottant du site reste.
+// (ReserverAppel.jsx). Le bouton WhatsApp flottant du site est retiré de cette page.
 
 const NAV_LINKS = [
   { ancre: 'realisations', label: 'Réalisations' },
@@ -61,7 +60,7 @@ const NAV_LINKS = [
 //   - un dessin = peu de pièces, À PLAT (trait fin, pas d'ombre), dans UNE couleur (le violet, du blanc, du gris).
 //   - le dessin est dans un cadre violet très pâle, large comme la colonne : c'est lui qui centre le bloc sous le titre.
 //   - pas de sur-titre au-dessus de « Comment ça marche ? ».
-//   - « 15 min » ressort dans le dessin de l'appel (demande de Noé). Pas de bouton ni de logo de boutique dans celui
+//   - « 30 min » ressort dans le dessin de l'appel (demande de Noé ; 15 min jusqu'au 26/11/2026, l'appel en dure 30). Pas de bouton ni de logo de boutique dans celui
 //     du lancement : une fenêtre de navigateur et un téléphone, le web et le mobile.
 // « Prix et délai, noir sur blanc, sous 48 h. » est la phrase voulue par Noé : c'est aussi, mot pour mot, celle
 // d'Ikovaline (dit à Noé le 25/11/2026).
@@ -72,11 +71,11 @@ const NAV_LINKS = [
 const ETAPES = [
   {
     titre: "L'appel",
-    texte: "15 minutes, gratuit. Tu repars avec mes conseils et une fourchette de prix.",
+    texte: "30 minutes, gratuit. Tu repars avec mes conseils et une fourchette de prix.",
     schema: (
       <div className="at-sc">
         <div className="at-sc-appel">
-          {/* Le message s'écrit (trois points), puis s'affiche, en boucle. « 15 min » ne bouge pas : un chrono à
+          {/* Le message s'écrit (trois points), puis s'affiche, en boucle. « 30 min » ne bouge pas : un chrono à
               côté dit que c'est la durée de l'appel (Noé, 25/11/2026). */}
           <span className="at-sc-message">
             <span className="at-sc-saisie"><i /><i /><i /></span>
@@ -85,7 +84,7 @@ const ETAPES = [
           <div className="at-sc-carte at-sc-rdv">
             <img src={mePhoto} alt="" width="36" height="36" loading="lazy" />
             <span><b>Appel avec Noé</b><small>Mardi, 14&nbsp;h</small></span>
-            <strong><Timer size={15} strokeWidth={2.4} />15&nbsp;min</strong>
+            <strong><Timer size={15} strokeWidth={2.4} />30&nbsp;min</strong>
           </div>
         </div>
       </div>
@@ -399,16 +398,25 @@ export default function AccueilTest() {
             Tu connais ton métier. <span className="at-hero-sous-suite">On en fait une nouvelle source de revenus.</span>
           </p>
 
-          <div className="flex flex-col items-center">
+          {/* L'ORDRE DÉPEND DE L'ÉCRAN (Noé, 26/11/2026, en vue de la vidéo où il parle face caméra) : sur téléphone,
+              la vidéo, puis « Regarde la vidéo avant de réserver ton appel. », puis le bouton, pour qu'on regarde
+              avant de réserver ; sur ordinateur, le bouton reste au-dessus de la vidéo (« laissé ici »), la phrase
+              entre les deux. Le bouton n'est jamais bloqué tant que la vidéo n'est pas vue.
+              LE BOUTON dit « Réserver mon appel gratuit » : « audit » ne parle pas à tout le monde (Noé), et
+              « appel gratuit » dit ce qu'il réserve et ce que ça coûte. Avant : « J'ai une idée d'application ». */}
+          <div className="at-hero-bas">
+          <div className="at-hero-bouton flex flex-col items-center">
             <a href="#contact" onClick={allerAuContact} className="btn-reflet group inline-flex items-center gap-2 min-[360px]:gap-2.5 whitespace-nowrap bg-brand text-surface font-semibold text-[0.95rem] min-[360px]:text-[1rem] sm:text-[1.06rem] md:text-[1.15rem] px-5 min-[360px]:px-8 py-3.5 sm:px-9 md:px-11 md:py-[1.05rem] rounded-full cursor-pointer shadow-[0_10px_28px_-8px_rgba(102,93,255,0.55)] hover:bg-[#5a50f5] transition-colors">
-              J'ai une idée d'application
+              Réserver mon appel gratuit
               <Fleche />
             </a>
             {/* PAS DE CHIFFRE ICI (Noé, 26/11/2026, 11 h 39 : « le million pas ici, à côté de +20 app »). Le haut de page
                 reste léger ; le million est sous « Mes réalisations », à côté de « +20 applications ». */}
           </div>
 
-          <HeroVideo unSeulPassage />
+          <p className="at-hero-avant text-grey text-[0.9rem] md:text-[0.95rem]">Regarde la vidéo avant de réserver ton appel.</p>
+          <div className="at-hero-film"><HeroVideo unSeulPassage /></div>
+          </div>
         </div>
       </section>
 
@@ -715,12 +723,6 @@ export default function AccueilTest() {
           réservation arrive chez Noé, par Calendly. */}
       <section className="py-16 md:py-28 px-5" id="contact">
         <div className="max-w-275 mx-auto text-center">
-          <p className="reveal flex justify-center mb-4">
-            <span className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.72rem] md:text-[0.78rem] leading-none bg-brand/6 border-brand/12">
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500 shrink-0" />
-              <strong className="text-text font-semibold">Un seul nouveau projet par mois</strong>
-            </span>
-          </p>
           {/* Le titre est la question de la leçon 2.10 (« une question plutôt qu'un reproche : c'est lui qui fait le
               calcul »), le seul levier d'urgence honnête. La phrase du dessous a été refaite deux fois le 25/11/2026 :
               « Dans quelques semaines, tu peux dire voilà mon application » (« c'est nul », Noé), puis « Tu y crois,
@@ -739,6 +741,16 @@ export default function AccueilTest() {
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-2">
             Tant qu'elle reste une idée,<br className="sm:hidden" /> elle ne te rapporte rien.<br />
             Réserve ton appel, on en parle.
+          </p>
+          {/* LA PASTILLE EST COLLÉE AU CALENDRIER (Noé, 26/11/2026 : « c'est pas au-dessus du calendrier ») : c'est là
+              qu'il décide. La raison est dite dessous, sinon la rareté se lit comme de la pression (leçon 2.11 :
+              « pour m'y concentrer »). */}
+          <p className="reveal flex flex-col items-center gap-2 mt-7 md:mt-9">
+            <span className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.72rem] md:text-[0.78rem] leading-none bg-brand/6 border-brand/12">
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500 shrink-0" />
+              <strong className="text-text font-semibold">Un seul nouveau projet par mois</strong>
+            </span>
+            <span className="text-grey text-[0.82rem] md:text-[0.88rem]">Pour que le tien ait toute mon attention.</span>
           </p>
           <div className="reveal">
             <ReserverAppel />
@@ -817,7 +829,8 @@ export default function AccueilTest() {
       </section>
 
       <Footer allerVers={allerVers} onLegal={ouvrirLegal} />
-      <ChatbotWidget onBookCall={() => allerAuContact()} contactMode="whatsapp" />
+      {/* PAS DE BOUTON WHATSAPP FLOTTANT ICI (Noé, 26/11/2026) : il faisait concurrence au calendrier, et un
+          prospect pouvait écrire sans répondre aux questions. WhatsApp sert à confirmer et à rappeler. */}
     </div>
   )
 }
