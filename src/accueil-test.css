@@ -557,9 +557,12 @@
 }
 /* LA PHRASE ET LE BOUTON SOUS LA VIDÉO, SUR TÉLÉPHONE (Noé, 26/11/2026 : « texte trop bas », « bouton plus bas si
    espace »). La phrase reste près de la vidéo (12 px) : c'est d'elle qu'elle parle. L'écart avec le bouton grandit
-   avec la hauteur de l'écran : 14 px sur un iPhone SE (667), 35 px à 844, 44 px à 915.
+   avec la hauteur de l'écran : 15 px sur un iPhone SE (667), 40 px à 844, 50 px à 915.
    SA COULEUR : ni blanc ni gris. Elle est posée sur le violet (#bab4ff) : le blanc y fait 1,9 de contraste et le
    gris du site 2,1, illisibles. Le bleu nuit du titre, un peu éclairci, fait 6,5. */
 @media (max-width: 767px) {
-  .at-hero-avant { margin: 12px 0 max(14px, 12svh - 66px); color: #2b2f63; }
+  .at-hero-avant { margin: 12px 0 max(14px, 14svh - 78px); color: #2b2f63; }
+  /* Le bouton a une largeur qui suit celle de l'écran (Noé : « plus petit sur un iPhone Pro Max ») : sans ça, il
+     garde la largeur de son texte et paraît rétrécir quand l'écran s'élargit. */
+  .at-hero-bouton a { min-width: min(82vw, 380px); justify-content: center; }
 }

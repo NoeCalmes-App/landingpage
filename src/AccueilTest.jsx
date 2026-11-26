@@ -256,7 +256,7 @@ const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(MESSAG
 
 function IconeWhatsApp() {
   return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
       <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
     </svg>
@@ -359,7 +359,7 @@ export default function AccueilTest() {
                 <a href="#contact" onClick={allerAuContact} className="btn-reflet hidden sm:inline-block bg-[#0d1548] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#090f33] transition-colors cursor-pointer whitespace-nowrap">
                   Discuter avec Noé
                 </a>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="Écrire à Noé sur WhatsApp" className="flex items-center justify-center w-10 h-10 -mr-1.5 text-text hover:text-brand transition-colors">
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="Écrire à Noé sur WhatsApp" className="flex items-center justify-center w-10 h-10 -mr-3 text-text hover:text-brand transition-colors">
                   <IconeWhatsApp />
                 </a>
                 <button type="button" onClick={() => setMenuOuvert(!menuOuvert)} aria-label={menuOuvert ? 'Fermer le menu' : 'Ouvrir le menu'} aria-expanded={menuOuvert} className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1 cursor-pointer focus:outline-none">
