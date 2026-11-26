@@ -436,7 +436,7 @@ export default function AccueilTest() {
               logo de la messagerie (Hush). */}
           <div className="reveal at-chiffres">
             <p className="ex-chiffre"><strong>+20</strong> applications déjà publiées</p>
-            <p className="ex-chiffre"><strong>+1 million</strong> de téléchargements sur l'une d'elles</p>
+            <p className="ex-chiffre ex-chiffre-fort"><strong>+1 million</strong> de téléchargements sur l'une d'elles</p>
           </div>
           <ExemplesMetier />
         </div>
