@@ -1,0 +1,16 @@
+/* LA PRISE DE RENDEZ-VOUS (ReserverAppel.jsx), page test /accueiltest, 26/11/2026. Préfixe « ra- » partout.
+   Le widget en ligne de Cal.com, seul, sur toute la largeur de la section. Il règle lui-même sa hauteur : le bloc
+   n'a qu'une hauteur de départ, pour que la page ne saute pas pendant le chargement. */
+
+.ra-bloc { margin: 28px auto 0; text-align: left; scroll-margin-top: 92px; }
+@media (min-width: 900px) { .ra-bloc { margin-top: 40px; } }
+.ra-widget { min-width: 300px; min-height: 560px; }
+.ra-widget iframe { display: block; }
+
+/* ===== Réservé ===== */
+.ra-reserve { display: flex; align-items: flex-start; gap: 12px; margin: 0 auto 14px; max-width: 640px; padding: 14px 16px; border-radius: 16px; background: #eefaf3; border: 1px solid #c6ebd6; }
+.ra-reserve p { margin: 0; font-size: .92rem; line-height: 1.5; color: #14532d; }
+.ra-reserve b { color: #0f3d22; }
+.ra-reserve a { display: flex; align-items: center; gap: 5px; margin-top: 6px; font-weight: 600; color: #15803d; }
+.ra-reserve a:hover { text-decoration: underline; }
+.ra-reserve-icone { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; width: 36px; height: 36px; border-radius: 12px; background: #d7f3e3; color: #15803d; }

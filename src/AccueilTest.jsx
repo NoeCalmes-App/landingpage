@@ -37,13 +37,13 @@ import { AvisClients } from './AvisClients.jsx'
 import HeroVideo from './HeroVideo.jsx'
 import Footer from './Footer.jsx'
 import ChatbotWidget from './chatbot/Widget'
+import ReserverAppel from './ReserverAppel.jsx'
 import { lienInterne } from './seo.js'
 
 const mePhoto = '/assets/images/profile/me.webp'
 
-// Le même numéro et le même message que l'accueil (App.jsx). Recopiés ici parce que App.jsx ne les exporte pas :
-// quand cette page deviendra l'accueil, elle reprendra les constantes d'origine.
-const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent("Bonjour Noé, j'ai un projet d'application, on peut en parler ?")}`
+// PLUS DE BOUTON WHATSAPP EN BAS DE PAGE (26/11/2026) : tous les boutons mènent au calendrier Calendly
+// (ReserverAppel.jsx). Le bouton WhatsApp flottant du site reste.
 
 const NAV_LINKS = [
   { ancre: 'realisations', label: 'Réalisations' },
@@ -300,7 +300,13 @@ export default function AccueilTest() {
     setMenuOuvert(false)
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
-  const allerAuContact = allerA('contact')
+  // SUR TÉLÉPHONE, les boutons descendent directement au bloc de réservation (#reserver), sous le titre de la
+  // section : sinon le calendrier tombe sous le bas de l'écran. Sur ordinateur, tout tient : la section
+  // entière, titre compris.
+  const allerAuContact = (evenement) => {
+    const surTelephone = window.matchMedia('(max-width: 899px)').matches
+    return allerA(surTelephone ? 'reserver' : 'contact')(evenement)
+  }
   // Le pied de page est celui du site : ses liens rechargent la page demandée, « Contact » descend au bouton.
   const allerVers = (chemin) => {
     if (chemin === '/rendez-vous') return allerAuContact()
@@ -702,8 +708,11 @@ export default function AccueilTest() {
 
       {/* ========== PARLONS DE TON PROJET ========== */}
       {/* La pastille dit la vraie règle (un seul nouveau projet par mois, leçon 2.11), sans compte à rebours ni « place
-          disponible » calculée : on ne dit jamais qu'une place est prise ou libre si ce n'est pas vrai. Sur cette page
-          test, le bouton ouvre WhatsApp mais n'envoie aucune mesure à Meta. */}
+          disponible » calculée : on ne dit jamais qu'une place est prise ou libre si ce n'est pas vrai.
+          LA PRISE DE RENDEZ-VOUS (26/11/2026) remplace le bouton WhatsApp : le calendrier Calendly de l'appel de
+          15 minutes, directement ; les questions sont posées par Calendly, après le choix du créneau
+          (ReserverAppel.jsx). Sur cette page test, rien n'envoie de mesure à Meta ni de fiche à Nowork : seule la
+          réservation arrive chez Noé, par Calendly. */}
       <section className="py-16 md:py-28 px-5" id="contact">
         <div className="max-w-275 mx-auto text-center">
           <p className="reveal flex justify-center mb-4">
@@ -725,21 +734,14 @@ export default function AccueilTest() {
             Depuis combien de temps<br />
             <span className="text-brand">tu as cette idée&nbsp;?</span>
           </h2>
+          {/* « Écris-moi, on en parle. » devient « Réserve ton appel, on en parle. » : le bouton n'ouvre plus WhatsApp.
+              La ligne « Tu bosses direct avec moi… » est dans la carte, à côté du formulaire (« C'est moi qui t'appelle »). */}
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-2">
             Tant qu'elle reste une idée,<br className="sm:hidden" /> elle ne te rapporte rien.<br />
-            Écris-moi, on en parle.
+            Réserve ton appel, on en parle.
           </p>
-          <div className="reveal flex flex-col items-center gap-3 mt-4">
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-reflet group inline-flex items-center gap-2 min-[360px]:gap-2.5 whitespace-nowrap bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-5 min-[360px]:px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer">
-              <svg className="w-[18px] h-[18px] md:w-[20px] md:h-[20px] shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.057 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.562-5.338 11.897-11.9 11.897a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.5 5.211l-.999 3.648 3.998-1.171z" /></svg>
-              <span>Discuter avec Noé</span>
-            </a>
-            <div className="flex items-center gap-3 mt-6 max-w-xs sm:max-w-md mx-auto px-2 text-left">
-              <img src={mePhoto} alt="Noé Calmes" loading="lazy" width="40" height="40" className="w-10 h-10 rounded-full object-cover shadow-sm shrink-0" />
-              <span className="text-grey text-xs md:text-sm">
-                <strong className="text-text">Tu bosses direct avec moi.</strong> C&apos;est moi qui réponds, pas un bot, pas un commercial.
-              </span>
-            </div>
+          <div className="reveal">
+            <ReserverAppel />
           </div>
 
           <div id="avis-clients" className="mt-14 md:mt-28 pt-14 md:pt-28 border-t border-card-border scroll-mt-24">
