@@ -545,7 +545,7 @@ export default function AccueilTest() {
           Ce que rapporte<br className="sm:hidden" /> <span className="text-brand">l'application d'un client</span>
         </h2>
         <figure className="reveal at-resultat" aria-labelledby="at-resultat-titre">
-          <div className="at-resultat-carte" role="img" aria-label="Aperçu du tableau de bord d'une application, nom masqué. Revenus du mois : 18 450 euros, en hausse de 10,8 % par rapport au mois dernier. App Store : 12 200 euros. Google Play : 6 250 euros. 2 390 abonnés, 10 300 installations, 118 700 euros sur 12 mois.">
+          <div className="at-resultat-carte" role="img" aria-label="Aperçu du tableau de bord d'une application, nom masqué. Revenus de décembre 2025 : 18 450 euros, en hausse de 10,8 % par rapport au mois dernier. App Store : 12 200 euros. Google Play : 6 250 euros. 2 390 abonnés, 10 300 installations, 118 700 euros sur 12 mois.">
             <div className="at-res-gauche">
               <p className="at-res-app"><i /><b>Nom masqué</b></p>
               <p className="at-res-label">Revenus du mois</p>
@@ -564,6 +564,7 @@ export default function AccueilTest() {
                   <path d="M8 96C96 82 190 50 302 13" stroke="#18a572" strokeWidth="3" strokeLinecap="round" vectorEffect="non-scaling-stroke" fill="none" />
                 </svg>
                 <i className="at-res-point" />
+                <span className="at-res-bulle"><small>Déc. 2025</small>18&nbsp;450&nbsp;€</span>
               </div>
               <p className="at-res-mois" aria-hidden="true"><span>Janv.</span><span>Juin</span><span>Déc.</span></p>
             </div>
@@ -579,7 +580,7 @@ export default function AccueilTest() {
               </ul>
             </div>
           </div>
-          <p className="at-resultat-note">Nom de l'application masqué à sa demande.</p>
+          <p className="at-resultat-note">Nom de l'application masqué à sa demande, pour qu'on ne la copie pas.</p>
         </figure>
       </section>
 

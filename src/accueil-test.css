@@ -250,7 +250,8 @@
 .at-sc-fiche-texte { flex: 1; min-width: 0; display: grid; gap: 6px; }
 .at-sc-fiche-texte i { display: block; height: 7px; border-radius: 999px; background: #dcd9ee; }
 .at-sc-fiche-texte i + i { width: 62%; background: #eceaf6; }
-.at-sc-fiche-ok { flex-shrink: 0; padding: 5px 10px 6px; border-radius: 999px; background: #eeecff; color: #5a50f5; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 10.5px; font-weight: 800; line-height: 1; }
+/* « Obtenir » : un peu plus petit, sur un fond arrondi qui se voit (Noé, 26/11/2026, 01 h 16). */
+.at-sc-fiche-ok { flex-shrink: 0; padding: 4px 10px 5px; border-radius: 999px; background: #e3e0ff; color: #5a50f5; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 9.5px; font-weight: 800; line-height: 1.1; }
 @media (max-width: 359px), (min-width: 700px) and (max-width: 767px) {
   .at-sc-lancement { transform: translate(-50%, -50%) scale(.9); }
 }
@@ -455,9 +456,14 @@
 
 /* La courbe : étirée à la largeur de la carte. Le point est posé par-dessus, en vrai élément, pour ne pas être
    déformé par l'étirement. */
-.at-res-courbe { position: relative; height: 118px; margin-top: 16px; overflow: hidden; }
-.at-res-courbe > svg { display: block; width: 100%; height: 100%; }
-.at-res-point { position: absolute; left: 94.4%; top: 11.8%; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; border-radius: 50%; background: #18a572; box-shadow: 0 0 0 5px rgba(24, 165, 114, .2); }
+/* Au-dessus de la courbe, 44 px réservés à la bulle noire (« Déc. 2025 » et le montant, Noé, 26/11/2026). */
+.at-res-courbe { --h: 118px; --haut: 44px; position: relative; height: calc(var(--h) + var(--haut)); margin-top: 8px; overflow: hidden; }
+.at-res-courbe > svg { position: absolute; left: 0; right: 0; bottom: 0; display: block; width: 100%; height: var(--h); }
+.at-res-point { position: absolute; left: 94.4%; top: calc(var(--haut) + var(--h) * .118); width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; border-radius: 50%; background: #18a572; box-shadow: 0 0 0 5px rgba(24, 165, 114, .2); }
+/* La bulle : noir et blanc, alignée à droite sur le point pour ne pas déborder de la carte, avec une petite pointe. */
+.at-res-bulle { position: absolute; left: 94.4%; top: calc(var(--haut) + var(--h) * .118 - 12px); transform: translate(calc(-100% + 16px), -100%); display: grid; gap: 2px; padding: 6px 11px 7px; border-radius: 10px; background: #0d1020; color: #fff; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; white-space: nowrap; }
+.at-res-bulle > small { font-size: 10px; font-weight: 600; letter-spacing: 0; color: rgba(255, 255, 255, .66); }
+.at-res-bulle::after { content: ''; position: absolute; right: 12px; bottom: -5px; width: 10px; height: 10px; border-radius: 2px; background: #0d1020; transform: rotate(45deg); }
 .at-res-mois { display: flex; justify-content: space-between; margin: 6px 0 0; font-size: 11px; color: #98a2b3; }
 
 .at-res-droite { display: grid; gap: 18px; align-content: center; }
@@ -476,7 +482,7 @@
 @media (min-width: 860px) {
   .at-resultat-carte { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); gap: 44px; width: min(100%, 860px); padding: 34px 38px 32px; border-radius: 28px; }
   .at-res-montant { font-size: 52px; }
-  .at-res-courbe { height: 138px; margin-top: 20px; }
+  .at-res-courbe { --h: 138px; margin-top: 12px; }
   .at-res-droite { gap: 24px; }
   .at-res-boutiques { gap: 16px; }
   .at-res-boutiques li { grid-template-columns: 92px minmax(0, 1fr) auto; font-size: 14px; }
@@ -489,8 +495,8 @@
 
 /* La note sous la carte (Noé, 26/11/2026 : « nom de l'application masqué, même texte »). Hors de la carte : le texte reste
    lisible et sélectionnable, comme une légende. */
-.at-resultat-note { margin: 14px 0 0; font-size: 12.5px; line-height: 1.4; color: #98a2b3; }
-@media (min-width: 860px) { .at-resultat-note { margin-top: 16px; font-size: 13px; } }
+.at-resultat-note { margin: 14px auto 0; max-width: 34ch; font-size: 12.5px; line-height: 1.4; color: #98a2b3; text-wrap: balance; }
+@media (min-width: 860px) { .at-resultat-note { margin-top: 16px; max-width: none; font-size: 13px; } }
 
 /* COMME UNE IMAGE (Noé, 25/11/2026, 23 h 37) : aucune animation, et rien ne se sélectionne ni ne se copie à la
    souris. La carte est annoncée comme une image aux lecteurs d'écran (role="img" dans AccueilTest.jsx). */
