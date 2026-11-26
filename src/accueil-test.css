@@ -556,3 +556,9 @@
       linear-gradient(0deg, #fffefc 0, #d6d2ff 4%, #bfb9ff 10%, #bab4ff 42%, #d9d5ff 76%, #f3f1ff 100%);
   }
 }
+/* SUR UN GRAND TÉLÉPHONE (au moins 780 px de haut), la phrase et le bouton descendent (Noé, 26/11/2026 : « bouton
+   trop collé ») : la place existe, autant la mettre entre la vidéo et le bouton plutôt que sous lui. Un petit
+   téléphone garde les écarts serrés, sinon le bouton sort du premier écran. */
+@media (max-width: 767px) and (min-height: 780px) {
+  .at-hero-avant { margin: 32px 0 20px; }
+}
