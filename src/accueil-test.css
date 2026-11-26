@@ -544,3 +544,15 @@
 /* LA PASTILLE DU CALENDRIER : l'une sous l'autre sur téléphone, sur une ligne à partir de 768 px. */
 .at-rare { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 28px; }
 @media (min-width: 768px) { .at-rare { flex-direction: row; justify-content: center; gap: 12px; margin-top: 36px; } }
+/* SUR TÉLÉPHONE, LE VIOLET PART DU BAS DE L'ÉCRAN (Noé, 26/11/2026 : « le violet doit partir du bas », « le bouton
+   à l'intérieur »). Le haut de page fait la hauteur de l'écran : le violet est plein dès 10 % de la hauteur en
+   partant du bas (le fondu vers le blanc de la page ne prend que le dernier 5 %), si bien que la phrase et le
+   bouton, qui finissent au plus bas à 6 % du bas (iPhone SE), sont toujours sur le violet. Le cercle blanc du haut
+   s'arrête un peu plus tôt, pour que le violet entoure aussi la vidéo. */
+@media (max-width: 767px) {
+  .at-hero.hero-bg:not(.at-hero-nuit) {
+    background:
+      radial-gradient(circle farthest-side at 50% 0%, var(--color-surface) 30%, rgba(255, 254, 252, 0) 62%),
+      linear-gradient(0deg, #fffefc 0, #d6d2ff 4%, #bfb9ff 10%, #bab4ff 42%, #d9d5ff 76%, #f3f1ff 100%);
+  }
+}
