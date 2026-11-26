@@ -262,7 +262,7 @@ const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(MESSAG
 
 function IconeWhatsApp() {
   return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg width="31" height="31" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
       <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
     </svg>
@@ -761,25 +761,18 @@ export default function AccueilTest() {
               application. Titre d'avant, à remettre si Noé le préfère : « Parlons de ton projet ». */}
           {/* Les retours à la ligne sont posés à la main (Noé, 25/11/2026 : « ça fait bizarre ») : chaque ligne finit
               là où la phrase respire, jamais au milieu de « elle ne te / rapporte rien ». */}
-          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-3 md:mb-4">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-0">
             Depuis combien de temps<br />
             <span className="text-brand">tu as cette idée&nbsp;?</span>
           </h2>
-          {/* « Écris-moi, on en parle. » devient « Réserve ton appel, on en parle. » : le bouton n'ouvre plus WhatsApp.
-              La ligne « Tu bosses direct avec moi… » est dans la carte, à côté du formulaire (« C'est moi qui t'appelle »). */}
-          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-130 mx-auto mb-2">
-            Tant qu'elle reste une idée,<br className="sm:hidden" /> elle ne te rapporte rien.<br />
-            Réserve ton appel, on en parle.
-          </p>
-          {/* LA PASTILLE EST COLLÉE AU CALENDRIER (Noé, 26/11/2026 : « c'est pas au-dessus du calendrier ») : c'est là
-              qu'il décide. La raison est dite dessous, sinon la rareté se lit comme de la pression (leçon 2.11 :
-              « pour m'y concentrer »). */}
+          {/* AU-DESSUS DU CALENDRIER, DEUX CHOSES SEULEMENT (Noé, 26/11/2026 : « c'est vraiment trop ») : la question et
+              la pastille. Retirés : « Tant qu'elle reste une idée, elle ne te rapporte rien. Réserve ton appel, on en
+              parle. » et « Pour que le tien ait toute mon attention. ». Le calendrier dit déjà ce qu'on réserve. */}
           <p className="reveal at-rare">
             <span className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.72rem] md:text-[0.78rem] leading-none bg-brand/6 border-brand/12">
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500 shrink-0" />
               <strong className="text-text font-semibold">Un seul nouveau projet par mois</strong>
             </span>
-            <span className="text-grey text-[0.82rem] md:text-[0.88rem]">Pour que le tien ait toute mon attention.</span>
           </p>
           <div className="reveal">
             <ReserverAppel />

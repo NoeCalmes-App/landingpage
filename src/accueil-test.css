@@ -541,8 +541,8 @@
   .at-hero .hv-zone { margin-top: max(1.6rem, 5svh - 10px); }
 }
 /* LA PASTILLE DU CALENDRIER : l'une sous l'autre sur téléphone, sur une ligne à partir de 768 px. */
-.at-rare { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 28px; }
-@media (min-width: 768px) { .at-rare { flex-direction: row; justify-content: center; gap: 12px; margin-top: 36px; } }
+.at-rare { display: flex; justify-content: center; margin-top: 16px; }
+@media (min-width: 768px) { .at-rare { margin-top: 20px; } }
 /* SUR TÉLÉPHONE, LE VIOLET PART DU BAS DE L'ÉCRAN (Noé, 26/11/2026 : « le violet doit partir du bas », « le bouton
    à l'intérieur »). Le haut de page fait la hauteur de l'écran : le violet est plein dès 10 % de la hauteur en
    partant du bas (le fondu vers le blanc de la page ne prend que le dernier 5 %), si bien que la phrase et le
