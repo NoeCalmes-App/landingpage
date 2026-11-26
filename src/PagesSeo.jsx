@@ -536,7 +536,7 @@ export function PageSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer })
         <ol className="mt-6 flex flex-col gap-4 list-none p-0">
           {[
             { n: '1', titre: 'Tu m\'écris sur WhatsApp', texte: 'En deux lignes : ton idée, et pour qui. Je réponds moi-même, en général dans la journée.' },
-            { n: '2', titre: 'On s\'appelle 15 minutes', texte: 'Je te pose les questions qui comptent : qui paie, à quel moment, et si ton produit a sa place sur un téléphone ou sur un ordinateur. Tu repars avec un avis franc, même si c\'est non.' },
+            { n: '2', titre: 'On s\'appelle 30 minutes', texte: 'Je te pose les questions qui comptent : qui paie, à quel moment, et si ton produit a sa place sur un téléphone ou sur un ordinateur. Tu repars avec un avis franc, même si c\'est non.' },
             { n: '3', titre: 'Je te montre une première maquette', texte: 'Quand le projet s\'engage, tu vois les premiers écrans avant de signer quoi que ce soit. C\'est sur cette base qu\'on fixe le périmètre.' },
             { n: '4', titre: 'Tu reçois un devis à tarif fixe', texte: 'Le périmètre, le prix, le délai et ce qui est inclus après la mise en ligne, écrits noir sur blanc. Tu sais exactement ce que tu achètes.' },
           ].map((e) => (
@@ -566,7 +566,7 @@ export function PageSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer })
           onAuditApp={onAuditApp}
           onBookCall={onBookCall}
           titre="Tu veux un devis pour ton application ?"
-          texte="Écris-moi sur WhatsApp, on s'appelle 15 minutes et tu repars avec un avis franc. Ou teste ton idée en 2 minutes : potentiel, budget à prévoir et délai réaliste."
+          texte="Écris-moi sur WhatsApp, on s'appelle 30 minutes et tu repars avec un avis franc. Ou teste ton idée en 2 minutes : potentiel, budget à prévoir et délai réaliste."
         />
 
         <ResumerAvecIA chemin="/application-mobile-sur-mesure" titre="Application mobile sur mesure : prix, délai, et comment obtenir un devis" />
@@ -684,7 +684,7 @@ export function PageWebSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer
         <ol className="mt-6 flex flex-col gap-4 list-none p-0">
           {[
             { n: '1', titre: 'Tu m\'écris sur WhatsApp', texte: 'En deux lignes : ce que ton logiciel doit faire, et pour qui. Je réponds moi-même, en général dans la journée.' },
-            { n: '2', titre: 'On s\'appelle 15 minutes', texte: 'Je te pose les questions qui comptent : qui s\'en sert, qui paie, à quel moment, et si c\'est bien sur ordinateur que ça doit vivre. Tu repars avec un avis franc, même si c\'est non.' },
+            { n: '2', titre: 'On s\'appelle 30 minutes', texte: 'Je te pose les questions qui comptent : qui s\'en sert, qui paie, à quel moment, et si c\'est bien sur ordinateur que ça doit vivre. Tu repars avec un avis franc, même si c\'est non.' },
             { n: '3', titre: 'Je te montre une première maquette', texte: 'Quand le projet s\'engage, tu vois les premiers écrans avant de signer quoi que ce soit. C\'est sur cette base qu\'on fixe le périmètre.' },
             { n: '4', titre: 'Tu reçois un devis à tarif fixe', texte: 'Le périmètre, le prix, le délai et ce qui est inclus après la mise en ligne, écrits noir sur blanc.' },
           ].map((e) => (
@@ -717,7 +717,7 @@ export function PageWebSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer
           onAuditApp={onAuditApp}
           onBookCall={onBookCall}
           titre="Tu veux un devis pour ton application web ?"
-          texte="Écris-moi sur WhatsApp, on s'appelle 15 minutes et tu repars avec un avis franc. Ou teste ton idée en 2 minutes : potentiel, budget à prévoir et délai réaliste."
+          texte="Écris-moi sur WhatsApp, on s'appelle 30 minutes et tu repars avec un avis franc. Ou teste ton idée en 2 minutes : potentiel, budget à prévoir et délai réaliste."
         />
 
         <ResumerAvecIA chemin="/application-web-sur-mesure" titre="Application web sur mesure : prix, délai, et comment obtenir un devis" />
@@ -836,7 +836,7 @@ export function PageRefonte({ onAccueil, onBookCall, onNaviguer }) {
         <ol className="mt-6 flex flex-col gap-4 list-none p-0">
           {[
             { n: '1', titre: 'Tu m\'écris sur WhatsApp', texte: 'Le lien de ton application, et ce qui bloque, en deux lignes. Je réponds moi-même, en général dans la journée.' },
-            { n: '2', titre: 'On s\'appelle 15 minutes', texte: 'Je te dis franchement ce que je vois de l\'extérieur, et ce qu\'il faut pour aller plus loin. Si je pense que ça ne vaut pas le coup, je te le dis aussi.' },
+            { n: '2', titre: 'On s\'appelle 30 minutes', texte: 'Je te dis franchement ce que je vois de l\'extérieur, et ce qu\'il faut pour aller plus loin. Si je pense que ça ne vaut pas le coup, je te le dis aussi.' },
             { n: '3', titre: 'L\'audit', texte: 'Quelques jours sur le code réel, bornés et chiffrés à l\'avance. Tu reçois un plan d\'action écrit : ce qui est gardé, ce qui est corrigé, ce qui est reconstruit.' },
             { n: '4', titre: 'Le devis à tarif fixe', texte: 'Reprise ou refonte, le périmètre, le prix, le délai, et ce qui est inclus après la mise en ligne, noir sur blanc.' },
           ].map((e) => (

@@ -35,6 +35,7 @@ import './accueil-test.css'
 import ExemplesMetier from './ExemplesMetier.jsx'
 import { AvisClients } from './AvisClients.jsx'
 import HeroVideo from './HeroVideo.jsx'
+import { trackDirectWhatsAppLead } from './metaTracking.js'
 import Footer from './Footer.jsx'
 import ReserverAppel from './ReserverAppel.jsx'
 import { lienInterne } from './seo.js'
@@ -256,7 +257,7 @@ function useApparition() {
 // WHATSAPP DANS LA BARRE DU HAUT (Noé, 26/11/2026) : une icône au trait, de la couleur du menu, à gauche de lui. Elle
 // remplace le gros bouton vert flottant, retiré le même jour : WhatsApp reste possible pour celui qui préfère écrire,
 // sans faire concurrence au calendrier. Le message est déjà écrit et finit ouvert, pour qu'il n'ait qu'à dire son idée.
-// Rien n'est mesuré ici, comme sur le reste de la page test.
+// Le clic est mesuré comme les autres boutons WhatsApp du site (« Lead », une fois par visite).
 // « Depuis la page : … » (Noé, 26/11/2026, vu chez Ikovaline) : Noé sait d'où vient le message, et celui qui écrit se
 // rappelle à qui. L'adresse est celle de la page où il a cliqué, sur le site en ligne ; la page test compte pour
 // l'accueil. « Mon idée : » reste à la fin, pour qu'il n'ait qu'à écrire la suite.
@@ -371,7 +372,7 @@ export default function AccueilTest() {
               </div>
               <div className="flex items-center gap-3">
                 {/* L'icône WhatsApp est à gauche du bouton sur ordinateur, à gauche du menu sur téléphone (Noé, 26/11/2026). */}
-                <a href={WHATSAPP_URL} onClick={(evenement) => { evenement.currentTarget.href = lienWhatsApp(window.location.pathname) }} target="_blank" rel="noopener noreferrer" aria-label="Écrire à Noé sur WhatsApp" className="flex items-center justify-center w-10 h-10 -mr-3 sm:-mr-1 text-text hover:text-brand transition-colors">
+                <a href={WHATSAPP_URL} onClick={(evenement) => { evenement.currentTarget.href = lienWhatsApp(window.location.pathname); trackDirectWhatsAppLead('barre-du-haut') }} target="_blank" rel="noopener noreferrer" aria-label="Écrire à Noé sur WhatsApp" className="flex items-center justify-center w-10 h-10 -mr-3 sm:-mr-1 text-text hover:text-brand transition-colors">
                   <IconeWhatsApp />
                 </a>
                 <a href="#contact" onClick={allerAuContact} className="btn-reflet hidden sm:inline-block bg-[#0d1548] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#090f33] transition-colors cursor-pointer whitespace-nowrap">
@@ -754,9 +755,9 @@ export default function AccueilTest() {
       {/* ========== PARLONS DE TON PROJET ========== */}
       {/* La pastille dit la vraie règle (un seul nouveau projet par mois, leçon 2.11), sans compte à rebours ni « place
           disponible » calculée : on ne dit jamais qu'une place est prise ou libre si ce n'est pas vrai.
-          LA PRISE DE RENDEZ-VOUS (26/11/2026) remplace le bouton WhatsApp : le calendrier Calendly de l'appel de
-          15 minutes, directement ; les questions sont posées par Calendly, après le choix du créneau
-          (ReserverAppel.jsx). Sur cette page test, rien n'envoie de mesure à Meta ni de fiche à Nowork : seule la
+          LA PRISE DE RENDEZ-VOUS (26/11/2026) remplace le bouton WhatsApp : le calendrier Cal.com de l'appel de
+          30 minutes, directement ; les questions sont posées par Cal.com, après le choix du créneau
+          (ReserverAppel.jsx). La réservation et le clic WhatsApp sont mesurés (Meta, depuis le 26/11/2026 au soir) ; aucune fiche ne part à Nowork : seule la
           réservation arrive chez Noé, par Calendly. */}
       <section className="py-16 md:py-28 px-5" id="contact">
         <div className="max-w-275 mx-auto text-center">

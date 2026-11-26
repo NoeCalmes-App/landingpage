@@ -111,3 +111,11 @@ export function trackAuditWhatsAppClick(source, budgetTier, isQualified) {
     trackCustomOnce('LowBudgetLead', parameters, 'low-budget-lead')
   }
 }
+
+// LA RÉSERVATION D'UN APPEL (Cal.com, 26/11/2026). C'est l'événement standard « Schedule » de Meta (« Planifier »
+// dans le gestionnaire de publicités) : celui sur lequel régler une campagne qui doit amener des rendez-vous.
+// Envoyé une seule fois par visite, quand Cal.com confirme la réservation (jamais au clic sur le bouton). Aucune
+// donnée du visiteur ne part : ni nom, ni numéro, ni réponses aux questions.
+export function trackCallBooked(source) {
+  trackStandardOnce('Schedule', { channel: 'calcom', source }, 'call-booked')
+}

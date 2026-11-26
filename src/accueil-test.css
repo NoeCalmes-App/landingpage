@@ -182,7 +182,7 @@
 .at-sc small { display: block; margin-top: 2px; font-size: 11.5px; color: #8a94a6; white-space: nowrap; }
 .at-sc-carte { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 16px; background: #fff; border: 1px solid #e2dff2; box-shadow: 0 1px 2px rgba(13, 21, 72, .04); }
 
-/* 1. L'appel : son message, puis la carte de l'appel. « 15 min » ressort à droite : c'est ce qui rassure. */
+/* 1. L'appel : son message, puis la carte de l'appel. « 30 min » ressort à droite : c'est ce qui rassure. */
 /* Les deux pièces sont dans un même bloc centré : l'écart entre la bulle et la carte reste de 10 px à toute taille
    (« trop de marge en dessous » de la bulle, et la carte « à diminuer », retours de Noé du 25/11/2026). */
 .at-sc-appel { position: absolute; left: 50%; top: 50%; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; width: min(92%, 280px); transform: translate(-50%, -50%); }
@@ -380,7 +380,7 @@
    des fondus (transform, opacity, box-shadow) : aucune mise en page recalculée, donc léger sur téléphone. Au survol,
    seulement là où une souris existe. Tout s'arrête pour qui a demandé moins de mouvement. */
 
-/* 1. L'appel : le message s'écrit (trois points qui sautillent), puis s'affiche, et ça recommence. « 15 min » ne
+/* 1. L'appel : le message s'écrit (trois points qui sautillent), puis s'affiche, et ça recommence. « 30 min » ne
    bouge pas (Noé, 25/11/2026). */
 @keyframes at-flotte { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
 @keyframes at-bat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }

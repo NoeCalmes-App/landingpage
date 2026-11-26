@@ -7,16 +7,20 @@
 // LE WIDGET est le code d'intégration officiel de Cal.com (`embed.js`), chargé quand ce bloc s'affiche. Il règle
 // lui-même sa hauteur. La page écoute la réservation faite (`bookingSuccessfulV2`) pour afficher « C'est réservé ».
 //
+// APRÈS LA RÉSERVATION, le visiteur RESTE SUR LA PAGE : Cal.com affiche sa confirmation dans le cadre (date, lien pour
+// déplacer ou annuler), et la page ajoute « C'est réservé ». Pas de page de remerciement : la redirection de Cal.com
+// est payante, et la mesure n'en a pas besoin.
+// LA MESURE META : `trackCallBooked` envoie l'événement « Schedule » à la confirmation (metaTracking.js).
+//
 // ⚠️ CE QUI MANQUE AVANT LA MISE EN LIGNE :
 //   - la fiche du prospect dans Nowork à chaque réservation : par le WEBHOOK de Cal.com (gratuit), côté Nowork.
-//     Le site n'envoie rien lui-même ;
-//   - la mesure Meta de la réservation, comme le reste de la page test ;
-//   - les messages autour du rendez-vous (confirmation, rappels) : workflows Cal.com ou WhatsApp depuis Nowork.
+//     Le site n'envoie rien lui-même.
 import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, CalendarCheck } from 'lucide-react'
 import './reserver-appel.css'
 import { lienInterne } from './seo.js'
 import { CAL_ESPACE, CAL_LIEN, CAL_ORIGINE, CAL_SCRIPT, UI_CAL, configCal } from './reserverAppel.js'
+import { trackCallBooked } from './metaTracking.js'
 
 // Le chargeur officiel de Cal.com (code d'intégration « en ligne »), tel que Cal.com le donne : il crée `window.Cal`
 // et met les appels en file jusqu'à ce que `embed.js` soit chargé.
@@ -41,6 +45,7 @@ export default function ReserverAppel() {
     Cal.ns[CAL_ESPACE]('on', {
       action: 'bookingSuccessfulV2',
       callback: () => {
+        trackCallBooked('accueil')
         setReserve(true)
         carte.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
       },

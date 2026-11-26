@@ -4,6 +4,7 @@ import assert from 'node:assert/strict'
 import {
   trackAuditComplete,
   trackAuditWhatsAppClick,
+  trackCallBooked,
   trackDirectWhatsAppLead,
 } from './metaTracking.js'
 
@@ -62,4 +63,12 @@ test('un budget qualifie et un clic WhatsApp alimentent Prospect', () => {
   ])
   assert.equal(calls[3][2].qualification_status, 'qualified')
   assert.equal(calls[3][2].budget_tier, 'mid')
+})
+
+test('une reservation part une seule fois, en « Schedule », sans donnee du visiteur', () => {
+  const calls = createTrackingWindow()
+  trackCallBooked('accueil')
+  trackCallBooked('accueil')
+
+  assert.deepEqual(calls, [['track', 'Schedule', { channel: 'calcom', source: 'accueil' }]])
 })
