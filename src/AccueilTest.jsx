@@ -767,11 +767,13 @@ export default function AccueilTest() {
           </h2>
           {/* AU-DESSUS DU CALENDRIER (Noé, 26/11/2026 au soir) : la question, qu'il aime, UNE phrase qui dit ce qu'on
               réserve, puis la pastille. La phrase suit le modèle qu'il a montré chez Ikovaline (qui est au bout du fil,
-              ce qu'on en retire, sans obligation), avec ses mots à lui. Retirés le même soir : « Tant qu'elle reste
+              ce qu'on en retire, sans obligation), avec ses mots à lui. Elle ne dit QUE ce que le calendrier ne dit pas (qui
+              appelle) : le programme, la durée et « gratuit et sans engagement » sont dans la description Cal.com, juste
+              dessous, et une chose ne se dit qu'une fois. Retirés le même soir : « Tant qu'elle reste
               une idée, elle ne te rapporte rien. » et « Pour que le tien ait toute mon attention. » (« c'est vraiment
               trop »). */}
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mt-3 md:mt-4 text-balance">
-            Réserve 30&nbsp;minutes avec moi, pas avec un commercial. Tu&nbsp;repars avec mes conseils et une fourchette de prix, qu'on travaille ensemble ou non.
+            C'est moi qui t'appelle, pas un commercial. Choisis ton créneau.
           </p>
           <p className="reveal at-rare">
             <span className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.72rem] md:text-[0.78rem] leading-none bg-brand/6 border-brand/12">
