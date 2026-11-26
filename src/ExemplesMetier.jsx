@@ -22,7 +22,10 @@ import './exemples-metier.css'
 //     deux images.
 //   - les écrans FLOTTENT doucement (« animation flottement »), l'ordinateur et le téléphone pas au même rythme.
 //   - L'ORDRE : Bailora d'abord (un artisan qui gère ses logements : c'est le visiteur que la page vise), puis
-//     SmoothRide, Plouff Habitudes (une application de Noé), et la maquette.
+//     WakeUp Alarme (ajoutée le 26/11/2026 à la demande de Noé), SmoothRide, Plouff Habitudes, et la maquette. Les
+//     deux applications de Noé (WakeUp et Plouff) ne se suivent pas, comme dans le carrousel de l'accueil en ligne.
+//   - WakeUp Alarme : son écran d'ordinateur est le visuel de présentation de l'application, faute de site. Une
+//     capture de son site le remplacerait.
 // Les images de la maquette sont fabriquées par outils/capture_ecran.py à partir de la page /maquette/… (les noms de
 // fichiers ne portent pas le nom du projet).
 const IMAGES = '/assets/images/apps'
@@ -39,6 +42,22 @@ const APPLICATIONS = [
     telephones: [
       { src: `${IMAGES}/captures/bailora-accueil.webp`, largeur: 660, hauteur: 1431,
         alt: 'Sur téléphone, le tableau de bord des loyers, des paiements et des actions à traiter' },
+    ],
+  },
+  {
+    id: 'reveil',
+    metier: 'Réveil',
+    statut: 'Application',
+    role: 'Un réveil qu’on n’éteint qu’en se levant.',
+    ordinateur: {
+      // Le visuel de présentation de l'application (960 × 540), pas la capture d'un site : WakeUp Alarme n'a pas de
+      // site à montrer ici. Il est posé dans la fenêtre comme les sites des autres.
+      src: `${IMAGES}/exemples/wakeup-ordinateur.webp`, largeur: 960, hauteur: 540,
+      alt: 'Sur ordinateur, la présentation de l’application : « Le réveil qu’on ne peut pas éteindre sans se lever »',
+    },
+    telephones: [
+      { src: `${IMAGES}/captures/wakeup-alarme.webp`, largeur: 660, hauteur: 1431,
+        alt: 'Sur téléphone, l’accueil du réveil à missions avec une alarme activée' },
     ],
   },
   {

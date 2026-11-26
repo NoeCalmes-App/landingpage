@@ -424,6 +424,9 @@ export default function AccueilTest() {
           leçon 2.17), le total « 1,3 million sur toutes mes applications » de l'accueil en ligne, la case « avis »
           (avec cinq avis, les afficher en haut n'est pas crédible : ils restent près du bouton, en bas) et les cases
           de chiffres.
+          LES FONDS ALTERNENT (Noé, 26/11/2026 : « du gris derrière une section sur deux ») : réalisations sur le fond de
+          la page, « Ce que rapporte » sur gris, le bloc sombre sur le fond de la page, les étapes sur gris, etc. Le
+          bas de ce bloc est plus court (40 / 72 px) pour que l'espace avant le gris ne s'ajoute pas à celui du gris.
           LE BLOC « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » juste dessous est une MAQUETTE À ZÉRO (26/11/2026) :
           il ne prendra de vrais chiffres que d'une capture réelle d'un client, avec son accord. RÈGLE : seulement de
           vrais chiffres, datés. Jamais les chiffres d'un écran d'exemple présentés comme ceux d'un client. */}
@@ -450,7 +453,7 @@ export default function AccueilTest() {
           icône lisibles : une icône et un nom floutés.
           LE TITRE est au présent (« rapporte ») : il ne sera vrai qu'avec de vrais chiffres, et le mois devra
           s'écrire si l'application ne fait plus ces montants (erreur faite avec Calorie et ses 13 000 €). */}
-      <section className="py-14 md:py-28 px-5" id="resultat" aria-labelledby="at-resultat-titre">
+      <section className="pt-14 pb-14 md:pt-20 md:pb-28 px-5 bg-card" id="resultat" aria-labelledby="at-resultat-titre">
         <h2 id="at-resultat-titre" className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-8 md:mb-14">
           Ce que rapporte<br className="sm:hidden" /> <span className="text-brand">l'application d'un client</span>
         </h2>
@@ -499,7 +502,7 @@ export default function AccueilTest() {
           première peur, « comment je vais trouver des utilisateurs ? » (leçon 2.3) : il connaît son métier, donc il
           connaît les premières personnes à qui la montrer. On n'écrit pas « tes clients » : il n'en a pas forcément
           (Noé, 25/11/2026). Ce n'est pas une promesse : c'est le partage des rôles. */}
-      <section className="px-2.5 sm:px-4 md:px-6 pt-2 pb-10 md:pb-28" id="pourquoi-avec-moi">
+      <section className="px-2.5 sm:px-4 md:px-6 pt-10 pb-10 md:pt-24 md:pb-28" id="pourquoi-avec-moi">
         <div className="at-nuit">
           <p className="reveal at-nuit-kicker font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">Pourquoi avec moi</p>
           {/* Réécrit le 25/11/2026 (Noé : « plus convaincant », « ça paraît un peu trop texte », et sa suite : « il y
