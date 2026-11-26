@@ -1,6 +1,6 @@
 // LA PRISE DE RENDEZ-VOUS DU SITE : le calendrier Cal.com, directement (page test /accueiltest, 26/11/2026).
 //
-// CAL.COM ET NON CALENDLY (Noé, 26/11/2026, le soir). L'événement : « Appel découverte »,
+// CAL.COM ET NON CALENDLY (Noé, 26/11/2026, le soir). L'événement : « Discuter de ton projet d'application »,
 // cal.com/noecalmes-app/appel, appel téléphonique où Noé appelle le numéro du participant (son numéro à lui n'est
 // jamais affiché). Les questions sont posées PAR CAL.COM, après le choix du créneau, avec des identifiants fixes
 // (activite, idee, lancement, budget, source, confidentialite) : ce sont eux que Nowork lira dans le webhook.

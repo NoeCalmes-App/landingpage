@@ -6,11 +6,14 @@
 @media (min-width: 900px) { .ra-bloc { margin-top: 40px; } }
 .ra-widget { min-width: 300px; min-height: 560px; }
 .ra-widget iframe { display: block; }
-/* SUR ORDINATEUR, une hauteur fixe et le défilement DANS le cadre (Noé, 26/11/2026, comme chez Ikovaline) : quand le
-   visiteur arrive au formulaire, plus long que le calendrier, la page ne s'allonge pas, c'est le cadre qui défile.
+/* SUR ORDINATEUR, une hauteur fixe et le défilement DANS Cal.com (Noé, 26/11/2026, comme chez Mirim) : l'iframe
+   garde 520 px quoi que Cal.com demande, si bien que c'est Cal.com qui défile à l'intérieur (la liste des horaires,
+   puis le formulaire). Un cadre autour de l'iframe qui défile, lui, ne servait à rien : Cal.com agrandissait
+   l'iframe à la taille de son contenu. `!important` parce que Cal.com écrit la hauteur en style en ligne.
    Sur téléphone, le cadre garde toute sa hauteur : un défilement dans un défilement y est pénible. */
 @media (min-width: 900px) {
-  .ra-widget { height: 640px; overflow-y: auto; overscroll-behavior: contain; border-radius: 12px; }
+  .ra-widget { min-height: 520px; }
+  .ra-widget iframe { height: 520px !important; border-radius: 12px; }
 }
 
 /* ===== Réservé ===== */
