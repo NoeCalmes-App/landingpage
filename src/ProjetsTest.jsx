@@ -47,7 +47,7 @@ const CAS = [
     nom: 'Bailora',
     icone: `${IMAGES}/bailora.webp`,
     phrase: 'La gestion de ses locations, sur téléphone.',
-    texte: 'Son fondateur est artisan et gère ses propres logements en location. Loyers, quittances, états des lieux\u00a0: tout était éparpillé entre un tableur, des courriers et des photos. L’application réunit tout, et un assistant lui répond à l’écrit comme à la voix.',
+    texte: 'Son fondateur est artisan et gère ses propres logements en location. Loyers, quittances, états des lieux\u00a0: tout était éparpillé entre un tableur, des courriers et des photos. L’application réunit tout, et un assistant IA lui répond à l’écrit comme à la voix.',
     ordinateur: { src: `${IMAGES}/exemples/bailora-ordinateur.webp`, largeur: 1298, hauteur: 730, alt: 'Sur ordinateur, le site de Bailora : « Vos SCI, enfin simples »' },
     telephone: { src: `${IMAGES}/captures/bailora-accueil.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, le tableau de bord des loyers, des paiements et des actions à traiter' },
   },
@@ -151,6 +151,9 @@ export default function ProjetsTest({ onBack }) {
         </section>
 
         {/* ===== LA MESSAGERIE AU MILLION : la preuve qui pèse le plus, avec un écran de l'application (Noé, 26/11/2026).
+            L'ÉCRAN EST MONTRÉ EN ENTIER (« il faudrait un écran entier ») : c'est son écran d'offre payante, choisi parmi
+            les captures de Noé parce qu'il montre une offre et aucun utilisateur réel. L'encoche a été ajoutée à
+            l'image, à la place qu'elle a sur les autres captures du site (une vraie capture d'écran n'en a pas).
             Noé garde le nom sur cette page (« tu peux laisser » : elle n'est pas indexée et il l'envoie lui-même). ===== */}
         <section className="pjt-million-zone" aria-labelledby="pjt-million-titre">
           <div className="pjt-million">
@@ -163,7 +166,7 @@ export default function ProjetsTest({ onBack }) {
               <p className="pjt-million-phrase">J’ai conçu la première version de cette messagerie, qui a réuni 300&nbsp;000 utilisateurs.</p>
             </div>
             <div className="pjt-million-ecran">
-              <Telephone image={{ src: `${IMAGES}/captures/messagerie-connexion.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, l’écran d’entrée de la messagerie' }} />
+              <Telephone image={{ src: `${IMAGES}/captures/messagerie-offre.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, un écran d’offre payante de la messagerie' }} />
             </div>
           </div>
         </section>
