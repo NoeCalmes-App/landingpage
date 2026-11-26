@@ -427,7 +427,7 @@ export default function AccueilTest() {
           LES FONDS ALTERNENT (Noé, 26/11/2026 : « du gris derrière une section sur deux ») : réalisations sur le fond de
           la page, « Ce que rapporte » sur gris, le bloc sombre sur le fond de la page, les étapes sur gris, etc. Le
           bas de ce bloc est plus court (40 / 72 px) pour que l'espace avant le gris ne s'ajoute pas à celui du gris.
-          LE BLOC « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » juste dessous est une MAQUETTE À ZÉRO (26/11/2026) :
+          LE BLOC « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » juste dessous est un APERÇU À CHIFFRES D'ESSAI (26/11/2026) :
           il ne prendra de vrais chiffres que d'une capture réelle d'un client, avec son accord. RÈGLE : seulement de
           vrais chiffres, datés. Jamais les chiffres d'un écran d'exemple présentés comme ceux d'un client. */}
       <section className="ex-section" id="realisations" aria-labelledby="at-realisations-titre">
@@ -438,17 +438,14 @@ export default function AccueilTest() {
         </div>
       </section>
 
-      {/* ========== CE QUE RAPPORTE L'APPLICATION D'UN CLIENT : MAQUETTE A ZERO ========== */}
-      {/* ⚠️ MAQUETTE : TOUS LES CHIFFRES SONT A 0 ET LE RESTERONT TANT QU'IL N'Y A PAS UNE VRAIE CAPTURE.
-          Noé, 26/11/2026, 00 h 52 : « rien n'est en prod, c'est la page test, je l'enlèverai après pour voir à quoi
-          ça pourrait ressembler, mets des 0 partout ». Cette carte montre donc seulement la FORME du bloc (revenus du
-          mois, deux boutiques, trois cases, courbe). Elle ne dit rien d'un client.
-          ⛔ AVANT TOUTE MISE EN LIGNE SUR L'ACCUEIL : remplacer chaque 0 par les chiffres d'une capture RÉELLE du
-          client, avec son accord écrit, ou retirer le bloc. Ne jamais y recopier les chiffres de l'ancien écran
-          d'exemple (« Orbiqa », 18 450 €, commit d5cfbaa) : ils étaient fictifs.
-          La page de test n'est visible qu'en local (import.meta.env.DEV), donc rien de ce bloc ne part en ligne
-          tant que la page n'est pas portée dans l'accueil réel.
-          Archive de la version à chiffres : /home/claude/archive/carte-resultat/.
+      {/* ========== CE QUE RAPPORTE L'APPLICATION D'UN CLIENT : APERÇU AVEC DES CHIFFRES D'ESSAI ========== */}
+      {/* ⚠️ CHIFFRES D'ESSAI, PAS CEUX D'UN CLIENT VÉRIFIÉ. Noé, 26/11/2026, 01 h 03 : « pour avoir un rendu, pour
+          voir à quoi ça ressemblerait, tu peux mettre les vrais chiffres de 18 450, toujours en test, pour voir ce
+          que ça donnerait », nom de l'application masqué. Ce sont les chiffres de l'ancien écran d'exemple (commit
+          d5cfbaa, données fictives) : la page n'a PAS la capture d'origine d'un client. Aperçu de mise en page.
+          ⛔ AVANT TOUTE MISE EN LIGNE SUR L'ACCUEIL : comparer chaque nombre à la capture RÉELLE du client, avec son
+          accord écrit, ou retirer le bloc (version à zéro : commit aaf4952). La page de test n'est visible qu'en
+          local (import.meta.env.DEV) : rien de ce bloc n'est dans le site en ligne.
           COMME UNE IMAGE, SANS ANIMATION (Noé, 25/11/2026) : rien ne bouge, rien ne se sélectionne. Ni nom, ni
           icône lisibles : une icône et un nom floutés.
           LE TITRE est au présent (« rapporte ») : il ne sera vrai qu'avec de vrais chiffres, et le mois devra
@@ -458,12 +455,12 @@ export default function AccueilTest() {
           Ce que rapporte<br className="sm:hidden" /> <span className="text-brand">l'application d'un client</span>
         </h2>
         <figure className="reveal at-resultat" aria-labelledby="at-resultat-titre">
-          <div className="at-resultat-carte" role="img" aria-label="Maquette du tableau de bord d'une application, nom masqué, chiffres à zéro. Revenus du mois : 0 euro. App Store : 0 euro. Google Play : 0 euro. 0 abonné, 0 installation, 0 euro sur 12 mois.">
+          <div className="at-resultat-carte" role="img" aria-label="Aperçu du tableau de bord d'une application, nom masqué. Revenus du mois : 18 450 euros, en hausse de 10,8 % par rapport au mois dernier. App Store : 12 200 euros. Google Play : 6 250 euros. 2 390 abonnés, 10 300 installations, 118 700 euros sur 12 mois.">
             <div className="at-res-gauche">
               <p className="at-res-app"><i /><b>Nom masqué</b></p>
               <p className="at-res-label">Revenus du mois</p>
-              <p className="at-res-montant">0&nbsp;€</p>
-              <p className="at-res-evol"><span>0&nbsp;%</span> par rapport au mois dernier</p>
+              <p className="at-res-montant">18&nbsp;450&nbsp;€</p>
+              <p className="at-res-evol"><span>+10,8&nbsp;%</span> par rapport au mois dernier</p>
               <div className="at-res-courbe" aria-hidden="true">
                 <svg viewBox="0 0 320 110" preserveAspectRatio="none" focusable="false">
                   <defs>
@@ -482,13 +479,13 @@ export default function AccueilTest() {
             </div>
             <div className="at-res-droite">
               <ul className="at-res-boutiques">
-                <li><span>App Store</span><i><i style={{ '--part': 0 }} /></i><b>0&nbsp;€</b></li>
-                <li><span>Google Play</span><i><i style={{ '--part': 0 }} /></i><b>0&nbsp;€</b></li>
+                <li><span>App Store</span><i><i style={{ '--part': 1 }} /></i><b>12&nbsp;200&nbsp;€</b></li>
+                <li><span>Google Play</span><i><i style={{ '--part': 0.51 }} /></i><b>6&nbsp;250&nbsp;€</b></li>
               </ul>
               <ul className="at-res-cases">
-                <li><span>Abonnés</span><b>0</b><em>0&nbsp;%</em></li>
-                <li><span>Installations</span><b>0</b><em>0&nbsp;%</em></li>
-                <li><span>Sur 12&nbsp;mois</span><b>0&nbsp;€</b></li>
+                <li><span>Abonnés</span><b>2&nbsp;390</b><em>+9,6&nbsp;%</em></li>
+                <li><span>Installations</span><b>10&nbsp;300</b><em>+13,2&nbsp;%</em></li>
+                <li><span>Sur 12&nbsp;mois</span><b>118&nbsp;700&nbsp;€</b></li>
               </ul>
             </div>
           </div>

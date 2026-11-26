@@ -105,10 +105,13 @@ const APPLICATIONS = [
 ]
 
 // LE CARROUSEL DÉFILE TOUT SEUL (Noé, 25/11/2026 : « tourner tout seul au bout de quelques secondes, rapide ») :
-// une application toutes les 4 secondes. Il s'arrête pour de bon dès que le visiteur prend la main (flèches, clavier,
-// doigt), se met en pause sous la souris ou au clavier, ne tourne pas quand le bloc n'est pas à l'écran ni quand
-// l'onglet est caché, et ne démarre jamais si le visiteur a demandé moins d'animations.
+// une application toutes les 4 secondes. Après un geste du visiteur (flèche, clavier, doigt), il repose l'écran
+// choisi 8 secondes puis REPREND tout seul (Noé, 26/11/2026 : « ça doit passer à la suivante automatiquement » : avant,
+// il s'arrêtait pour de bon au premier clic). Il se met en pause sous la souris (jamais au doigt) ou au clavier,
+// ne tourne pas quand le bloc n'est pas à l'écran ni quand l'onglet est caché, et ne démarre jamais si le visiteur a
+// demandé moins d'animations.
 const DELAI = 4000
+const DELAI_APRES_GESTE = 8000
 
 function Telephone({ image }) {
   return (
@@ -128,17 +131,18 @@ function Telephone({ image }) {
 
 export default function ExemplesMetier() {
   const [actif, setActif] = useState(0)
-  // Le défilement automatique (voir DELAI) : `auto` tombe pour de bon dès que le visiteur prend la main, `pause` le
-  // temps d'un survol ou d'un passage au clavier, `aLecran` quand le bloc se voit et que l'onglet est ouvert.
-  const [auto, setAuto] = useState(true)
+  // Le défilement automatique (voir DELAI) : `apresGeste` allonge le premier délai quand le visiteur vient de choisir
+  // un écran, `pause` le temps d'un survol à la souris ou d'un passage au clavier, `aLecran` quand le bloc se voit
+  // et que l'onglet est ouvert.
+  const [apresGeste, setApresGeste] = useState(false)
   const [pause, setPause] = useState(false)
   const [aLecran, setALecran] = useState(false)
   const racine = useRef(null)
   const doigt = useRef(null)
   const application = APPLICATIONS[actif]
   const suivante = (sens) => setActif((i) => (i + sens + APPLICATIONS.length) % APPLICATIONS.length)
-  // Un geste du visiteur (flèche, clavier, doigt) : on lui obéit, et le défilement automatique s'arrête.
-  const aller = (sens) => { setAuto(false); suivante(sens) }
+  // Un geste du visiteur (flèche, clavier, doigt) : on lui obéit, et le défilement reprend 8 secondes plus tard.
+  const aller = (sens) => { setApresGeste(true); suivante(sens) }
 
   useEffect(() => {
     const bloc = racine.current
@@ -152,16 +156,19 @@ export default function ExemplesMetier() {
   }, [])
 
   useEffect(() => {
-    if (!auto || pause || !aLecran) return undefined
+    if (pause || !aLecran) return undefined
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
-    const minuteur = window.setTimeout(() => setActif((i) => (i + 1) % APPLICATIONS.length), DELAI)
+    const minuteur = window.setTimeout(() => {
+      setApresGeste(false)
+      setActif((i) => (i + 1) % APPLICATIONS.length)
+    }, apresGeste ? DELAI_APRES_GESTE : DELAI)
     return () => window.clearTimeout(minuteur)
-  }, [auto, pause, aLecran, actif])
+  }, [pause, aLecran, actif, apresGeste])
 
   return (
     <div ref={racine} className="ex-galerie" role="region" aria-roledescription="carrousel" aria-label="Applications construites par Noé Calmes, par métier"
-      onMouseEnter={() => setPause(true)} onMouseLeave={() => setPause(false)}
-      onFocus={() => setPause(true)} onBlur={() => setPause(false)}
+      onPointerEnter={(e) => { if (e.pointerType === 'mouse') setPause(true) }} onPointerLeave={(e) => { if (e.pointerType === 'mouse') setPause(false) }}
+      onFocus={(e) => { if (e.target.matches?.(':focus-visible')) setPause(true) }} onBlur={() => setPause(false)}
       onKeyDown={(e) => {
         if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); aller(e.key === 'ArrowLeft' ? -1 : 1) }
       }}>
@@ -178,11 +185,11 @@ export default function ExemplesMetier() {
           if (Math.abs(dx) > 35 && Math.abs(dx) > Math.abs(dy)) aller(dx < 0 ? 1 : -1)
         }}>
         <div className="ex-halo" aria-hidden="true" />
-        {/* Sur grand écran (≥ 1100 px), les flèches sont de part et d'autre de l'image : une flèche seule, grise, sans
-            fond (Noé, 26/11/2026). En dessous, ce sont celles de la rangée sous la légende ; l'autre jeu est alors
-            caché par display:none, donc absent aussi pour les lecteurs d'écran. */}
-        <button type="button" className="ex-fleche-cote ex-fleche-gauche" onClick={() => aller(-1)} aria-label="Application précédente"><ArrowLeft size={26} strokeWidth={1.8} /></button>
-        <button type="button" className="ex-fleche-cote ex-fleche-droite" onClick={() => aller(1)} aria-label="Application suivante"><ArrowRight size={26} strokeWidth={1.8} /></button>
+        {/* Sur grand écran (≥ 1100 px), deux petites flèches grises de part et d'autre de l'image, en plus de celles
+            de la rangée sous la légende (Noé, 26/11/2026). Elles doublent celles du bas : cachées aux lecteurs
+            d'écran et au clavier, qui passent par la rangée du bas. */}
+        <button type="button" className="ex-fleche-cote ex-fleche-gauche" onClick={() => aller(-1)} aria-hidden="true" tabIndex={-1}><ArrowLeft size={20} strokeWidth={1.6} /></button>
+        <button type="button" className="ex-fleche-cote ex-fleche-droite" onClick={() => aller(1)} aria-hidden="true" tabIndex={-1}><ArrowRight size={20} strokeWidth={1.6} /></button>
         {APPLICATIONS.map((app, i) => (
           <div key={app.id} className={`ex-scene ${app.ordinateur ? 'ex-scene-duo' : 'ex-scene-telephones'}${i === actif ? ' est-active' : ''}`}
             role="group" aria-roledescription="diapositive" aria-label={`${i + 1} sur ${APPLICATIONS.length} : ${app.metier}. ${app.role}`} aria-hidden={i !== actif}>

@@ -50,11 +50,11 @@
 .ex-scene-telephones .ex-scene-tel:first-of-type { position: relative; z-index: 2; width: 58%; }
 .ex-scene-telephones .ex-scene-tel + .ex-scene-tel { position: absolute; right: 0; top: 9%; z-index: 1; width: 48%; }
 
-.ex-legende { max-width: 400px; min-height: 0; margin-top: 26px; }
+.ex-legende { max-width: 400px; min-height: 0; margin-top: 8px; }
 .ex-legende .app-gallery-caption-role { text-wrap: balance; }
 /* Les flèches sous la légende (téléphone et tablette) : juste la flèche, grise, sans fond ni bord, et plus près de la
    légende qu'avant (Noé, 26/11/2026 : « trop bas, monter un peu »). */
-.ex-fleches { margin-top: 8px; gap: 22px; }
+.ex-fleches { margin-top: 38px; gap: 22px; }
 .ex-fleches button, .ex-fleche-cote { background: none; border: 0; box-shadow: none; border-radius: 8px; color: #98a2b3; cursor: pointer; transition: color .18s; }
 .ex-fleches button { width: 44px; height: 44px; }
 .ex-fleches button:hover, .ex-fleche-cote:hover { background: none; color: #667185; }
@@ -79,8 +79,8 @@
   .ex-scene-telephones { display: flex; justify-content: center; align-items: flex-start; gap: 46px; }
   .ex-scene-telephones .ex-scene-tel:first-of-type { width: 236px; }
   .ex-scene-telephones .ex-scene-tel + .ex-scene-tel { position: static; width: 236px; margin-top: 36px; }
-  .ex-legende { max-width: 470px; margin-top: 28px; }
-  .ex-fleches { margin-top: 12px; }
+  .ex-legende { max-width: 470px; margin-top: 6px; }
+  .ex-fleches { margin-top: 48px; }
 }
 /* ===== Le flottement ===== */
 /* Les écrans de l'application affichée montent et descendent de quelques pixels, lentement, l'ordinateur et le
@@ -95,12 +95,12 @@
   .ex-scene.est-active .ex-scene-ordi, .ex-scene.est-active .ex-scene-tel, .ex-scene.est-active .ex-scene-tel + .ex-scene-tel { animation: none; }
 }
 
-/* Grand écran : les flèches passent de chaque côté de l'image, au milieu de sa hauteur, et la rangée du bas ne garde
-   que les points. La scène fait 900 px au plus dans 960 : il reste 30 px de chaque côté pour la flèche. */
+/* Grand écran : en plus de la rangée du bas, deux petites flèches de part et d'autre de l'image, au milieu de sa
+   hauteur. Elles sont posées dans la marge, à 36 px de la scène (900 px de large dans 960) : avant, à 0, elles
+   touchaient l'image (Noé, 26/11/2026 : « trop collé », « plus discret, petit »). Gris clair, sans fond. */
 @media (min-width: 1100px) {
-  .ex-fleche-cote { position: absolute; top: 50%; z-index: 3; display: grid; place-items: center; width: 30px; height: 56px; padding: 0; transform: translateY(-50%); }
-  .ex-fleche-gauche { left: 0; }
-  .ex-fleche-droite { right: 0; }
-  .ex-fleches button { display: none; }
-  .ex-fleches { margin-top: 18px; }
+  .ex-fleche-cote { position: absolute; top: 50%; z-index: 3; display: grid; place-items: center; width: 32px; height: 48px; padding: 0; transform: translateY(-50%); color: #b8bdca; }
+  .ex-fleche-cote:hover { color: #8b93a3; }
+  .ex-fleche-gauche { left: -66px; }
+  .ex-fleche-droite { right: -66px; }
 }

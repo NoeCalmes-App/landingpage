@@ -433,7 +433,7 @@
     linear-gradient(0deg, #fffefc 0, #f4f2ff 4%, #c9c4ff 14%, #bab4ff 45%, #d9d5ff 78%, #f3f1ff 100%);
 }
 
-/* MAQUETTE À ZÉRO (26/11/2026) : tous les chiffres de la carte sont à 0, voir AccueilTest.jsx avant de les remplir. */
+/* APERÇU À CHIFFRES D'ESSAI (26/11/2026) : les nombres de la carte ne sont pas ceux d'un client vérifié, voir AccueilTest.jsx. */
 /* ===== CE QUE RAPPORTE L'APPLICATION D'UN CLIENT (25/11/2026) ===== */
 /* Après « Mes réalisations », avant le bloc sombre (Noé, 23 h 44 : « après mes réalisations, mieux ») : une carte
    blanche qui redessine les chiffres envoyés par un client de Noé (voir AccueilTest.jsx pour leur provenance et les
