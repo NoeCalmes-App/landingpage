@@ -764,15 +764,14 @@ export default function AccueilTest() {
           {/* LE TITRE DIT QUI EST AU BOUT DU FIL (Noé, 26/11/2026, tard : « 30 min avec Noé. Pas un commercial », sur le
               modèle d'Ikovaline). Il remplace « Depuis combien de temps tu as cette idée ? », que Noé ne comprenait plus
               une fois sa chute retirée (« Tant qu'elle reste une idée, elle ne te rapporte rien »), et « Réserve ton
-              appel stratégique », qui répétait le nom affiché par le calendrier. DESSOUS, la règle du projet par mois
-              est une phrase, plus une pastille : deux éléments au-dessus du calendrier, pas trois. */}
+              appel stratégique », qui répétait le nom affiché par le calendrier. RIEN DESSOUS : « Je prends un seul nouveau
+              projet par mois. Choisis ton créneau. » est retiré le même soir. « Choisis ton créneau » répétait le
+              calendrier, et la rareté n'a pas sa place avant un appel gratuit : d'après la leçon 2.11 de Noé, elle se
+              dit à la fin de la visio, quand il a vu sa maquette et son prix. La règle n'est plus sur cette page. */}
           <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-0">
             30&nbsp;minutes avec Noé.<br />
             <span className="text-brand">Pas un commercial.</span>
           </h2>
-          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mt-3 md:mt-4 text-balance">
-            Je prends un seul nouveau projet par mois. Choisis ton créneau.
-          </p>
           <div className="reveal">
             <ReserverAppel />
           </div>
