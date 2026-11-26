@@ -37,8 +37,7 @@
    l'écran et sa première offre, et le bloc reste ramassé.) Une lueur blanche derrière le téléphone le détache du fond. */
 .pjt-million-zone { padding: 44px 14px 0; }
 .pjt-million { display: grid; max-width: 1120px; margin: 0 auto; padding: 30px 22px 0; border-radius: 28px; background: #f0eeff; border: 1px solid #e2defb; overflow: hidden; }
-.pjt-million-app { display: flex; align-items: center; gap: 13px; font-size: 21px; letter-spacing: -.03em; }
-.pjt-million-app img { width: 52px; height: 52px; border-radius: 13px; }
+.pjt-million-app { font-size: 23px; letter-spacing: -.03em; }
 .pjt-million-app small { display: block; margin-top: 3px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; color: #5b6577; }
 .pjt-million-chiffre { display: grid; margin-top: 22px; }
 .pjt-million-chiffre strong { font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: clamp(52px, 15vw, 88px); font-weight: 800; letter-spacing: -.055em; line-height: 1; background: linear-gradient(100deg, #033475, #665dff); -webkit-background-clip: text; background-clip: text; color: transparent; }

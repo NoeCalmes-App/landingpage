@@ -160,7 +160,7 @@ export default function ProjetsTest({ onBack }) {
           <div className="pjt-million">
             <div className="pjt-million-texte">
               <h2 id="pjt-million-titre" className="pjt-million-app">
-                <img src={`${IMAGES}/hushapp.webp`} alt="" width="56" height="56" />
+                {/* Pas d'icône à côté du nom (Noé, 26/11/2026, 12 h 47) : le logo est déjà sur l'écran du téléphone. */}
                 <span>Hush<small>Messagerie anonyme</small></span>
               </h2>
               <p className="pjt-million-chiffre"><strong>+1 million</strong><span>de téléchargements au total</span></p>
