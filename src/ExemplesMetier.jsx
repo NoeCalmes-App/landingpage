@@ -109,9 +109,14 @@ const APPLICATIONS = [
 // choisi 8 secondes puis REPREND tout seul (Noé, 26/11/2026 : « ça doit passer à la suivante automatiquement » : avant,
 // il s'arrêtait pour de bon au premier clic). Il se met en pause sous la souris (jamais au doigt) ou au clavier,
 // ne tourne pas quand le bloc n'est pas à l'écran ni quand l'onglet est caché, et ne démarre jamais si le visiteur a
-// demandé moins d'animations.
+// demandé moins d'animations. IL NE COMPTE QU'À L'ARRIVÉE (Noé, 26/11/2026 : « ça passe à la suivante quand
+// j'arrive sur la page, pas avant ») : le délai ne part que lorsque les écrans sont vus aux deux tiers, et dès que le bloc
+// est entièrement sorti de l'écran il revient à la première application, pour que chaque arrivée commence par elle.
 const DELAI = 4000
 const DELAI_APRES_GESTE = 8000
+// La première application (Bailora) reste plus longtemps : c'est celle que le visiteur voit en arrivant (Noé,
+// 26/11/2026, 01 h 26 : « la première mais plus de temps avant de passer à la deuxième, léger »).
+const DELAI_PREMIERE = 6500
 
 function Telephone({ image }) {
   return (
@@ -138,6 +143,7 @@ export default function ExemplesMetier() {
   const [pause, setPause] = useState(false)
   const [aLecran, setALecran] = useState(false)
   const racine = useRef(null)
+  const scenes = useRef(null)
   const doigt = useRef(null)
   const application = APPLICATIONS[actif]
   const suivante = (sens) => setActif((i) => (i + sens + APPLICATIONS.length) % APPLICATIONS.length)
@@ -146,13 +152,21 @@ export default function ExemplesMetier() {
 
   useEffect(() => {
     const bloc = racine.current
-    if (!bloc || typeof IntersectionObserver === 'undefined') return undefined
+    const ecrans = scenes.current
+    if (!bloc || !ecrans || typeof IntersectionObserver === 'undefined') return undefined
     let dansLaPage = false
     const maj = () => setALecran(dansLaPage && !document.hidden)
-    const guetteur = new IntersectionObserver(([entree]) => { dansLaPage = entree.isIntersecting; maj() }, { threshold: 0.35 })
-    guetteur.observe(bloc)
+    // Les écrans doivent être vus aux deux tiers : avant, le délai partait dès qu'un tiers du bloc entrait (titre
+    // encore hors de l'écran), et la première application avait déjà changé quand le visiteur arrivait.
+    const guetteur = new IntersectionObserver(([entree]) => { dansLaPage = entree.isIntersecting; maj() }, { threshold: 0.66 })
+    guetteur.observe(ecrans)
+    // Sorti de l'écran : on revient à la première, pour que la prochaine arrivée commence par elle.
+    const sortie = new IntersectionObserver(([entree]) => {
+      if (!entree.isIntersecting) { setActif(0); setApresGeste(false) }
+    }, { threshold: 0 })
+    sortie.observe(bloc)
     document.addEventListener('visibilitychange', maj)
-    return () => { guetteur.disconnect(); document.removeEventListener('visibilitychange', maj) }
+    return () => { guetteur.disconnect(); sortie.disconnect(); document.removeEventListener('visibilitychange', maj) }
   }, [])
 
   useEffect(() => {
@@ -161,7 +175,7 @@ export default function ExemplesMetier() {
     const minuteur = window.setTimeout(() => {
       setApresGeste(false)
       setActif((i) => (i + 1) % APPLICATIONS.length)
-    }, apresGeste ? DELAI_APRES_GESTE : DELAI)
+    }, apresGeste ? DELAI_APRES_GESTE : (actif === 0 ? DELAI_PREMIERE : DELAI))
     return () => window.clearTimeout(minuteur)
   }, [pause, aLecran, actif, apresGeste])
 
@@ -174,7 +188,7 @@ export default function ExemplesMetier() {
       }}>
       {/* Toutes les scènes sont posées l'une sur l'autre : le bloc garde la hauteur de la plus grande, rien ne saute
           quand on passe de l'une à l'autre. On peut aussi glisser le doigt. */}
-      <div className="ex-scenes"
+      <div ref={scenes} className="ex-scenes"
         onPointerDown={(e) => { doigt.current = { x: e.clientX, y: e.clientY } }}
         onPointerCancel={() => { doigt.current = null }}
         onPointerUp={(e) => {
