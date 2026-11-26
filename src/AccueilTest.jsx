@@ -774,13 +774,14 @@ export default function AccueilTest() {
               une fois sa chute retirée (« Tant qu'elle reste une idée, elle ne te rapporte rien »), et « Réserve ton
               appel stratégique », qui répétait le nom affiché par le calendrier. DESSOUS : « Je prends un seul nouveau
               projet par mois. Réserve ton appel. » Retirée une heure par Claude (la rareté avant un appel gratuit),
-              remise par Noé : « c'était bien ». Sans « Réserve ton appel » ni « Choisis ton créneau » (Noé) : le calendrier suffit. */}
+              remise par Noé : « c'était bien ». Elle finit par « Réserve ton appel : », avec les deux-points (Noé) : la phrase mène au
+              calendrier, juste dessous. */}
           <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-0">
             30&nbsp;minutes avec Noé.<br />
             <span className="text-brand">Pas un commercial.</span>
           </h2>
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mt-3 md:mt-4 text-balance">
-            Je prends un seul nouveau projet par mois.
+            Je prends un seul nouveau projet par mois. Réserve ton appel&nbsp;:
           </p>
           <div className="reveal">
             <ReserverAppel />
