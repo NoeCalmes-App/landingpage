@@ -11,6 +11,11 @@
    puis le formulaire). Un cadre autour de l'iframe qui défile, lui, ne servait à rien : Cal.com agrandissait
    l'iframe à la taille de son contenu. `!important` parce que Cal.com écrit la hauteur en style en ligne.
    Sur téléphone, le cadre garde toute sa hauteur : un défilement dans un défilement y est pénible. */
+/* SUR TÉLÉPHONE, le calendrier est dans une carte blanche (Noé, 26/11/2026 : « ça sépare pas ») : sans elle, il se
+   fond dans la page, alors que sur ordinateur Cal.com dessine déjà son cadre. */
+@media (max-width: 899px) {
+  .ra-widget { background: #fff; border: 1px solid #e6e2f7; border-radius: 18px; box-shadow: 0 18px 40px -28px rgba(59, 47, 208, .45); overflow: hidden; padding: 4px 0 8px; }
+}
 @media (min-width: 900px) {
   .ra-widget { min-height: 520px; }
   .ra-widget iframe { height: 520px !important; border-radius: 12px; }

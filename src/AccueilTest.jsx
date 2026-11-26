@@ -745,7 +745,7 @@ export default function AccueilTest() {
           {/* LA PASTILLE EST COLLÉE AU CALENDRIER (Noé, 26/11/2026 : « c'est pas au-dessus du calendrier ») : c'est là
               qu'il décide. La raison est dite dessous, sinon la rareté se lit comme de la pression (leçon 2.11 :
               « pour m'y concentrer »). */}
-          <p className="reveal flex flex-col items-center gap-2 mt-7 md:mt-9">
+          <p className="reveal at-rare">
             <span className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.72rem] md:text-[0.78rem] leading-none bg-brand/6 border-brand/12">
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500 shrink-0" />
               <strong className="text-text font-semibold">Un seul nouveau projet par mois</strong>

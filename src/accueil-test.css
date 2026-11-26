@@ -529,3 +529,17 @@
   .at-hero-avant { order: 2; margin: 16px 0 0; }
   .at-hero-film { order: 3; }
 }
+
+/* LE HAUT DE PAGE SUR TÉLÉPHONE (Noé, 26/11/2026 : « trop de marge », bouton coupé sur le plus petit). Le contenu
+   part du haut au lieu d'être centré dans la hauteur de l'écran (sur un grand téléphone, ça laissait un vide
+   au-dessus du titre), et les écarts se resserrent : sur un iPhone SE (375 × 667), le titre, la vidéo, la phrase
+   et le bouton tiennent dans le premier écran. */
+@media (max-width: 767px) {
+  .hero-bg.at-hero { min-height: 0; align-items: flex-start; padding-top: 6.5rem; padding-bottom: 3rem; }
+  .at-hero .at-hero-sous { margin-bottom: 0; }
+  .at-hero .hv-zone { margin-top: 1.6rem; }
+  .at-hero-avant { margin: 12px 0 10px; }
+}
+/* LA PASTILLE DU CALENDRIER : l'une sous l'autre sur téléphone, sur une ligne à partir de 768 px. */
+.at-rare { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 28px; }
+@media (min-width: 768px) { .at-rare { flex-direction: row; justify-content: center; gap: 12px; margin-top: 36px; } }
