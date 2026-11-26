@@ -580,7 +580,7 @@ export default function AccueilTest() {
               </ul>
             </div>
           </div>
-          <p className="at-resultat-note">Nom de l'application masqué à sa demande, pour qu'on ne la copie pas.</p>
+          <p className="at-resultat-note">Nom de l'application masqué à sa demande, par discrétion et confidentialité.</p>
         </figure>
       </section>
 
@@ -744,7 +744,11 @@ export default function AccueilTest() {
               Ce que disent <span className="text-brand">mes clients</span>
             </h3>
             <div className="reveal">
-              <AvisClients />
+              {/* L'ORDRE (Noé, 26/11/2026 : « on met Trustpilot, et après les captures ; tu mettrais pas l'inverse, avec du
+                  texte entre ? ») : Trustpilot d'abord, car c'est la seule preuve qu'un inconnu peut vérifier ; les messages
+                  WhatsApp ensuite, plus personnels. Une ligne entre les deux, pour qu'on comprenne que ce sont deux
+                  sortes d'avis. Ordre d'avant, à remettre si Noé le préfère : les captures d'abord. */}
+              <AvisClients texteEntre="Et ce qu'ils m'écrivent directement, sur WhatsApp." />
             </div>
           </div>
         </div>

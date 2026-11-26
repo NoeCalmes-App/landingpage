@@ -70,10 +70,13 @@ export function AvisTrustpilot() {
   )
 }
 
-export function AvisClients() {
+// `texteEntre` (facultatif, page test /accueiltest, 26/11/2026) : une ligne entre les avis Trustpilot et les messages
+// WhatsApp. Sans lui, rien ne change : c'est le cas de l'accueil en ligne.
+export function AvisClients({ texteEntre }) {
   return (
     <>
       <AvisTrustpilot />
+      {texteEntre && <p className="mt-12 lg:mt-16 mb-6 lg:mb-9 text-center font-jakarta text-text font-bold text-[1.05rem] md:text-[1.2rem] leading-snug text-balance">{texteEntre}</p>}
       <ul className="flex flex-col lg:flex-row items-center justify-center gap-6" aria-label="Messages de clients">
         <li className="w-full max-w-[330px] lg:max-w-[300px]">
           <img src="/assets/images/avis/temoignage-idee.webp" width="640" height="831" loading="lazy" decoding="async"
