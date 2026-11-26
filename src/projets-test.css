@@ -32,9 +32,11 @@
 .pjt-haut-tel-1 { z-index: 2; top: 4px; left: calc(50% - 139px); width: 142px; transform: rotate(-8deg); }
 .pjt-haut-tel-2 { z-index: 1; top: 43px; right: calc(50% - 138px); width: 132px; transform: rotate(10deg); }
 
-/* ===== La messagerie au million : le texte, puis un écran de l'application, montré en entier ===== */
+/* ===== La messagerie au million : le texte, puis un écran de l'application, GRAND ET COUPÉ PAR LE BAS du bloc =====
+   (Noé, 26/11/2026 : en entier, le téléphone faisait un bloc trop haut, « pas beau » ; coupé, on lit le titre de
+   l'écran et sa première offre, et le bloc reste ramassé.) Une lueur blanche derrière le téléphone le détache du fond. */
 .pjt-million-zone { padding: 44px 14px 0; }
-.pjt-million { display: grid; max-width: 1120px; margin: 0 auto; padding: 30px 22px 34px; border-radius: 28px; background: #f0eeff; border: 1px solid #e2defb; }
+.pjt-million { display: grid; max-width: 1120px; margin: 0 auto; padding: 30px 22px 0; border-radius: 28px; background: #f0eeff; border: 1px solid #e2defb; overflow: hidden; }
 .pjt-million-app { display: flex; align-items: center; gap: 13px; font-size: 21px; letter-spacing: -.03em; }
 .pjt-million-app img { width: 52px; height: 52px; border-radius: 13px; }
 .pjt-million-app small { display: block; margin-top: 3px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; color: #5b6577; }
@@ -42,7 +44,9 @@
 .pjt-million-chiffre strong { font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: clamp(52px, 15vw, 88px); font-weight: 800; letter-spacing: -.055em; line-height: 1; background: linear-gradient(100deg, #033475, #665dff); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .pjt-million-chiffre span { margin-top: 6px; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -.02em; color: #665dff; }
 .pjt-million-phrase { max-width: 24em; margin-top: 16px; font-size: 15px; line-height: 1.6; color: #4b5565; }
-.pjt-million-ecran { container-type: inline-size; width: 190px; margin: 30px auto 0; }
+.pjt-million-ecran { position: relative; container-type: inline-size; width: 236px; height: 300px; margin: 32px auto 0; }
+.pjt-million-ecran::before { content: ''; position: absolute; z-index: 0; left: 50%; top: 8%; width: 170%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, .95), rgba(255, 255, 255, 0) 66%); pointer-events: none; }
+.pjt-million-ecran .app-phone { z-index: 1; }
 .pjt-million-ecran .app-phone { padding: 2.7cqw; border-radius: 16.6cqw; }
 .pjt-million-ecran .app-phone-screen { border-radius: 13.6cqw; }
 .pjt-million-ecran .app-phone-screen img { aspect-ratio: auto; height: auto; }
@@ -122,9 +126,10 @@
   .pjt-haut-tel-1 { top: 10px; left: calc(50% - 178px); width: 184px; }
   .pjt-haut-tel-2 { top: 60px; right: calc(50% - 178px); width: 170px; }
   .pjt-million-zone { padding: 72px 24px 0; }
-  .pjt-million { grid-template-columns: 1.25fr 1fr; align-items: center; padding: 52px 56px; }
+  .pjt-million { grid-template-columns: 1.25fr 1fr; align-items: center; padding: 0 56px; }
+  .pjt-million-texte { padding: 60px 0; }
   .pjt-million-phrase { font-size: 16.5px; }
-  .pjt-million-ecran { width: 232px; margin: 0 auto; }
+  .pjt-million-ecran { align-self: end; width: 300px; height: 400px; margin: 48px auto 0; }
   .pjt-section-cas { padding: 112px 24px; }
   .pjt-liste-cas { gap: 24px; }
   .pjt-cas { padding: 44px 40px 48px; border-radius: 30px; }
