@@ -580,7 +580,7 @@ export default function AccueilTest() {
               </ul>
             </div>
           </div>
-          <p className="at-resultat-note">Nom de l'application masqué à sa demande, par discrétion et confidentialité.</p>
+          <p className="at-resultat-note">Nom de l'application masqué à sa demande, pour éviter la concurrence.</p>
         </figure>
       </section>
 
