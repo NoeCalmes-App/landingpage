@@ -19,29 +19,44 @@
 .pjt-barre-bouton { padding: 9px 16px; border-radius: 999px; background: #0d1548; color: #fff; font-size: 13.5px; font-weight: 500; text-decoration: none; white-space: nowrap; }
 .pjt-barre-bouton:hover { background: #090f33; }
 
-/* ===== Le haut de page ===== */
-.pjt-haut { padding: 44px 20px 8px; text-align: center; }
-.pjt-h1 { font-size: clamp(32px, 8.8vw, 56px); line-height: 1.08; letter-spacing: -.05em; text-wrap: balance; }
+/* ===== Le haut de page : celui de l'ancienne page (le titre, puis deux téléphones penchés sur un rond violet) ===== */
+.pjt-haut { max-width: 1120px; margin: 0 auto; padding: 40px 20px 0; }
+.pjt-h1 { max-width: 12em; font-size: clamp(34px, 9.4vw, 60px); line-height: 1.12; letter-spacing: -.05em; }
 .pjt-h1 span, .pjt-h2 span { color: #665dff; }
-.pjt-haut-texte { max-width: 24em; margin: 16px auto 0; font-size: 16px; line-height: 1.5; color: #667185; text-wrap: balance; }
-.pjt-chiffres { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 10px; margin-top: 22px; }
-.pjt-chiffres .ex-chiffre { margin: 0; }
+.pjt-haut-phrase { max-width: 29em; margin-top: 18px; font-size: 15.5px; line-height: 1.7; color: #667185; }
+.pjt-haut-phrase strong { font-weight: 600; color: #033475; }
+.pjt-haut-visuel { position: relative; isolation: isolate; height: 340px; max-width: 370px; margin: 34px auto 0; }
+.pjt-haut-rond { position: absolute; z-index: -1; top: 25px; left: 50%; width: 280px; height: 280px; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle at 35% 30%, #f9f7ff 0%, #e8e1ff 47%, #d3c8ff 85%, #ece7ff 100%); }
+.pjt-haut-tel { position: absolute; padding: 4px; border: 1px solid #70737d; border-radius: 25px; background: #18191e; box-shadow: 0 20px 29px -12px rgba(38, 48, 87, .4), inset 0 0 0 1px #b7bac2; }
+.pjt-haut-tel img { display: block; width: 100%; height: auto; border-radius: 20px; }
+.pjt-haut-tel-1 { z-index: 2; top: 4px; left: calc(50% - 139px); width: 142px; transform: rotate(-8deg); }
+.pjt-haut-tel-2 { z-index: 1; top: 43px; right: calc(50% - 138px); width: 132px; transform: rotate(10deg); }
 
-/* ===== La messagerie au million : le premier bloc, sur fond violet très clair ===== */
-.pjt-million-zone { padding: 36px 14px 0; }
-.pjt-million { display: grid; justify-items: center; gap: 0; max-width: 1120px; margin: 0 auto; padding: 34px 22px 36px; border-radius: 28px; background: #f0eeff; border: 1px solid #e2defb; text-align: center; }
-.pjt-million-app { display: flex; align-items: center; gap: 13px; font-size: 21px; letter-spacing: -.03em; text-align: left; }
+/* ===== La messagerie au million : le texte, puis un écran de l'application qui dépasse du bas du bloc ===== */
+.pjt-million-zone { padding: 44px 14px 0; }
+.pjt-million { display: grid; max-width: 1120px; margin: 0 auto; padding: 30px 22px 0; border-radius: 28px; background: #f0eeff; border: 1px solid #e2defb; overflow: hidden; }
+.pjt-million-app { display: flex; align-items: center; gap: 13px; font-size: 21px; letter-spacing: -.03em; }
 .pjt-million-app img { width: 52px; height: 52px; border-radius: 13px; }
 .pjt-million-app small { display: block; margin-top: 3px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0; color: #5b6577; }
 .pjt-million-chiffre { display: grid; margin-top: 22px; }
-.pjt-million-chiffre strong { font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: clamp(52px, 15vw, 84px); font-weight: 800; letter-spacing: -.055em; line-height: 1; background: linear-gradient(100deg, #033475, #665dff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pjt-million-chiffre strong { font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: clamp(52px, 15vw, 88px); font-weight: 800; letter-spacing: -.055em; line-height: 1; background: linear-gradient(100deg, #033475, #665dff); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .pjt-million-chiffre span { margin-top: 6px; font-family: 'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -.02em; color: #665dff; }
-.pjt-million-texte { max-width: 30em; margin-top: 18px; font-size: 15px; line-height: 1.6; color: #4b5565; text-wrap: balance; }
+.pjt-million-phrase { max-width: 24em; margin-top: 16px; font-size: 15px; line-height: 1.6; color: #4b5565; }
+/* L'écran : le téléphone est coupé par le bas du bloc, on n'en voit que le haut (le logo et les pastilles). */
+.pjt-million-ecran { container-type: inline-size; width: 200px; height: 250px; margin: 30px auto 0; }
+.pjt-million-ecran .app-phone { padding: 2.7cqw; border-radius: 16.6cqw; }
+.pjt-million-ecran .app-phone-screen { border-radius: 13.6cqw; }
+.pjt-million-ecran .app-phone-screen img { aspect-ratio: auto; height: auto; }
+.pjt-million-ecran .app-phone-button { width: 1.35cqw; left: -1.9cqw; }
+.pjt-million-ecran .app-phone-action { top: 29.3cqw; height: 6.8cqw; }
+.pjt-million-ecran .app-phone-volume-up { top: 44.6cqw; height: 13cqw; }
+.pjt-million-ecran .app-phone-volume-down { top: 62.2cqw; height: 13cqw; }
+.pjt-million-ecran .app-phone-power { left: auto; right: -1.9cqw; top: 50.5cqw; height: 20.3cqw; }
 
-/* ===== Les applications : un panneau blanc par application, sur fond gris (« bien délimité ») ===== */
-.pjt-section-cas { margin-top: 48px; padding: 20px 14px; background: #f6f6f8; }
+/* ===== Les applications : un panneau blanc par application (« bien délimité »), sur le fond de la page ===== */
+.pjt-section-cas { padding: 56px 14px; }
 .pjt-liste-cas { display: grid; gap: 16px; }
-.pjt-cas { display: grid; gap: 30px; padding: 22px 18px 28px; border-radius: 26px; background: #fff; border: 1px solid #e9e7f2; }
+.pjt-cas { display: grid; gap: 30px; padding: 22px 18px 28px; border-radius: 26px; background: #fff; border: 1px solid #e7e4f3; box-shadow: 0 30px 60px -48px rgba(59, 47, 208, .45); }
 /* LES ÉCRANS reprennent la fenêtre d'ordinateur et le téléphone du carrousel de l'accueil (classes .ex-scene…), posés
    une fois pour toutes : ni fondu, ni flottement. LES MÊMES PROPORTIONS POUR TOUTES LES APPLICATIONS (Noé, 26/11/2026 :
    SmoothRide sortait plus petit que Bailora). LE CADRE DU TÉLÉPHONE SUIT SA TAILLE : dans le carrousel ses arrondis
@@ -64,10 +79,13 @@
 .pjt-cas-nom { display: flex; align-items: center; gap: 12px; margin-top: 10px; font-size: 27px; line-height: 1.1; }
 .pjt-cas-nom img { width: 44px; height: 44px; border-radius: 11px; }
 .pjt-cas-phrase { margin-top: 14px; font-size: 18px; font-weight: 600; line-height: 1.4; letter-spacing: -.01em; text-wrap: balance; }
-.pjt-cas-detail { margin-top: 14px; font-size: 15px; line-height: 1.62; color: #5b6577; text-wrap: pretty; }
-.pjt-cas-detail strong { font-weight: 600; color: #033475; }
-.pjt-reperes { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none; }
-.pjt-reperes li { padding: 5px 12px 6px; border-radius: 999px; background: #f1f0f8; font-size: 12.5px; font-weight: 500; line-height: 1.3; color: #033475; }
+.pjt-cas-detail { margin-top: 12px; font-size: 15px; line-height: 1.65; color: #5b6577; text-wrap: pretty; }
+/* La seule mise en avant d'un panneau, quand elle compte (CarPlay et Android Auto). */
+.pjt-atout { display: inline-flex; align-items: center; gap: 9px; margin-top: 18px; padding: 9px 15px 9px 13px; border-radius: 12px; background: #f0eeff; font-size: 14px; font-weight: 600; line-height: 1.35; color: #033475; }
+.pjt-atout svg { flex-shrink: 0; color: #665dff; }
+
+/* Les avis suivent les panneaux : un seul écart entre les deux, pas deux. */
+.pjt-section.pjt-section-avis { padding-top: 0; }
 
 /* ===== Les titres de section ===== */
 .pjt-h2 { font-size: clamp(26px, 7vw, 34px); line-height: 1.14; text-align: center; text-wrap: balance; }
@@ -96,13 +114,20 @@
 @media (min-width: 820px) {
   .pjt-section { padding: 112px 24px; }
   .pjt-barre-zone { top: 14px; }
-  .pjt-haut { padding: 84px 24px 0; }
-  .pjt-haut-texte { margin-top: 20px; font-size: 18px; }
-  .pjt-chiffres { margin-top: 28px; }
-  .pjt-million-zone { padding: 56px 24px 0; }
-  .pjt-million { padding: 52px 40px 56px; }
-  .pjt-million-texte { font-size: 16.5px; }
-  .pjt-section-cas { margin-top: 80px; padding: 72px 24px; }
+  .pjt-haut { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 40px; padding: 64px 24px 0; }
+  .pjt-haut-phrase { margin-top: 22px; font-size: 16.5px; }
+  .pjt-haut-visuel { width: 100%; max-width: none; height: 470px; margin: 0; }
+  .pjt-haut-rond { top: 37px; width: 390px; height: 390px; }
+  .pjt-haut-tel { padding: 5px; border-radius: 31px; }
+  .pjt-haut-tel img { border-radius: 25px; }
+  .pjt-haut-tel-1 { top: 10px; left: calc(50% - 178px); width: 184px; }
+  .pjt-haut-tel-2 { top: 60px; right: calc(50% - 178px); width: 170px; }
+  .pjt-million-zone { padding: 72px 24px 0; }
+  .pjt-million { grid-template-columns: 1.25fr 1fr; align-items: center; padding: 0 56px; }
+  .pjt-million-texte { padding: 56px 0; }
+  .pjt-million-phrase { font-size: 16.5px; }
+  .pjt-million-ecran { align-self: end; width: 250px; height: 330px; margin: 44px auto 0; }
+  .pjt-section-cas { padding: 112px 24px; }
   .pjt-liste-cas { gap: 24px; }
   .pjt-cas { padding: 44px 40px 48px; border-radius: 30px; }
   /* Sur ordinateur le téléphone est posé à droite de la fenêtre et descend plus bas qu'elle : on lui garde la place. */

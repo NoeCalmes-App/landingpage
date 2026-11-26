@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { ArrowRight, ArrowUpRight, MessageCircle, Phone } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Car, MessageCircle, Phone } from 'lucide-react'
 import { trackDirectWhatsAppLead } from './metaTracking.js'
 import { AvisClients } from './AvisClients.jsx'
 import './app-showcase.css'
@@ -12,20 +12,23 @@ import './projets-test.css'
 // À QUOI ELLE SERT : Noé l'envoie APRÈS LE PREMIER APPEL. Le prospect vient de lui parler : il ne faut pas lui
 // redire la méthode ni le budget (c'était l'ancienne page, qui se lisait comme le CV d'un freelance). Il faut lui
 // montrer que c'est vrai, puis lui laisser poser sa question. D'où l'ordre :
-//   1. la messagerie au million de téléchargements, EN PREMIER : c'est la preuve qui pèse le plus (Noé, 26/11/2026) ;
-//   2. QUATRE APPLICATIONS, toutes dans le MÊME FORMAT, chacune dans son panneau (« bien délimité ») : celles de
-//      métier d'abord. La page ne dit pas à qui est chaque application : pas de bloc « Mes propres applications ».
-//      ⚠️ On n'écrit donc « client » à côté d'AUCUNE : l'écrire sur WakeUp Alarme ou Plouff Habitudes serait faux ;
-//   3. les avis ;
-//   4. UNE SEULE FIN : « Une question avant de lancer ton projet ? », dans le seul bloc bleu nuit de la page. Le bloc
-//      « La suite : tu vois ton application avant de payer » a été retiré (Noé, 26/11/2026 : « horrible ») : à la place
-//      du prospect, on ne lui annonce pas la visio sur cette page, on lui laisse la main.
+//   1. LE HAUT DE L'ANCIENNE PAGE, qui avait plus d'impact : « Je crée chaque application comme si c'était la mienne. »
+//      et deux téléphones penchés (Noé, 26/11/2026 : « pas beau par rapport à la page d'avant », « un mix des deux ») ;
+//   2. la messagerie au million de téléchargements : c'est la preuve qui pèse le plus, avec un écran de l'application ;
+//   3. QUATRE APPLICATIONS, toutes dans le MÊME FORMAT, chacune dans son panneau (« bien délimité ») : l'écran
+//      d'ordinateur et le téléphone côté à côté (« j'aime bien »), celles de métier d'abord. Le texte part de CELUI QUI A
+//      EU L'IDÉE et de son métier, parce que c'est le lecteur de la page : quelqu'un qui connaît son sujet et veut
+//      son application. La page ne dit pas à qui est chaque application : pas de bloc « Mes propres applications ».
+//      ⚠️ On n'écrit donc « client » ni « fondateur » à côté de WakeUp Alarme ni de Plouff Habitudes : ce serait faux ;
+//   4. les avis ;
+//   5. UNE SEULE FIN : « Une question avant de lancer ton projet ? », dans le seul bloc bleu nuit de la page. Le bloc
+//      « La suite : tu vois ton application avant de payer » a été retiré (Noé, 26/11/2026 : « horrible »).
 // RÈGLES (les mêmes que la page d'accueil test) : pas de sur-titre au-dessus des titres, peu de texte, une chose dite
 // une seule fois, « téléphone » et « ordinateur », jamais « abonnement » ni « paywall » (« offre payante »), jamais
 // « gratuit » pour la maquette (« avant de payer »). Rien d'inventé : chaque phrase vient de la page en ligne ou des
 // décisions de Noé. Calorie n'y est pas (retirée le 26/11/2026). Pas de maquette de projet non signé.
-// JAMAIS « en ligne » à côté d'une application, aucune (Noé, 26/11/2026, 12 h 03) : on dit ce qu'elle est (« iPhone et
-// Android »), pas si elle est publiée.
+// JAMAIS « en ligne » à côté d'une application, aucune (Noé, 26/11/2026, 12 h 03). JAMAIS « iPhone et Android » non
+// plus, ni aucune pastille qui ne sert à rien (12 h 25) : une seule mise en avant, quand elle compte (CarPlay).
 // ⚠️ AVANT DE LA METTRE À LA PLACE DE /projets : scripts/generate-routes.js lit le texte de Projets.jsx et la liste
 // ANNUAIRES (lien retour vers l'annuaire, à garder au pied de page) ; la page reste « noindex, follow ».
 const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
@@ -34,8 +37,9 @@ const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
 
 const IMAGES = '/assets/images/apps'
 
-// Quatre applications, même format. Les textes reprennent les études de cas de la page en ligne, raccourcis ; les écrans
-// sont ceux du carrousel de l'accueil test (le site de l'application et son écran de téléphone).
+// Quatre applications, même format : le métier, le nom, une phrase, puis trois phrases au plus. `atout` est facultatif :
+// une seule ligne mise en avant, quand elle compte vraiment (Noé : « CarPlay, Android Auto, ça, le mettre, important »).
+// Les écrans sont ceux du carrousel de l'accueil test (le site de l'application et son écran de téléphone).
 const CAS = [
   {
     id: 'bailora',
@@ -43,9 +47,7 @@ const CAS = [
     nom: 'Bailora',
     icone: `${IMAGES}/bailora.webp`,
     phrase: 'La gestion de ses locations, sur téléphone.',
-    besoin: 'Un propriétaire, seul ou en SCI familiale, suit ses loyers, ses quittances et ses états des lieux entre un tableur, des courriers et des photos éparpillées.',
-    construit: 'Une application qui suit les loyers, prépare les quittances et les courriers, guide l’état des lieux pièce par pièce jusqu’à la signature, et range chaque document. Un assistant répond aux questions sur les logements, à l’écrit comme à la voix.',
-    reperes: ['iPhone et Android', 'Assistant à la voix'],
+    texte: 'Son fondateur est artisan et gère ses propres logements en location. Loyers, quittances, états des lieux\u00a0: tout était éparpillé entre un tableur, des courriers et des photos. L’application réunit tout, et un assistant lui répond à l’écrit comme à la voix.',
     ordinateur: { src: `${IMAGES}/exemples/bailora-ordinateur.webp`, largeur: 1298, hauteur: 730, alt: 'Sur ordinateur, le site de Bailora : « Vos SCI, enfin simples »' },
     telephone: { src: `${IMAGES}/captures/bailora-accueil.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, le tableau de bord des loyers, des paiements et des actions à traiter' },
   },
@@ -55,9 +57,10 @@ const CAS = [
     nom: 'SmoothRide',
     icone: `${IMAGES}/smoothride.svg`,
     phrase: 'Le GPS qui évite les dos-d’âne.',
-    besoin: 'Les GPS cherchent le trajet le plus rapide, jamais le plus doux. Avec un dos fragile, un véhicule chargé ou des journées entières sur la route, chaque dos-d’âne compte.',
-    construit: 'Une navigation complète, guidée à la voix, qui compare deux trajets et compte les ralentisseurs sur chacun : plus de 120 000 sont référencés en France. Elle s’affiche aussi sur l’écran de la voiture. Une offre Pro payante lève la limite de trajets.',
-    reperes: ['iPhone et Android', 'CarPlay et Android Auto'],
+    // ⚠️ La première phrase vient de Noé (26/11/2026 : « il possède une voiture de prestige, souhaite créer une app »).
+    // À faire relire par le fondateur avant la mise en ligne.
+    texte: 'Son fondateur possède une voiture de prestige\u00a0: chaque dos-d’âne peut l’abîmer. Il voulait le GPS qui choisit le trajet le plus doux, pas le plus rapide. L’application compare deux trajets, compte les dos-d’âne sur chacun et guide à la voix.',
+    atout: 'CarPlay et Android Auto',
     ordinateur: { src: `${IMAGES}/exemples/smoothride-ordinateur.webp`, largeur: 1245, hauteur: 700, alt: 'Sur ordinateur, le site de SmoothRide : « Votre trajet, sans les dos-d’âne »' },
     telephone: { src: `${IMAGES}/captures/smoothride-navigation.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, la navigation avec les dos-d’âne signalés sur le trajet' },
   },
@@ -67,9 +70,7 @@ const CAS = [
     nom: 'WakeUp Alarme',
     icone: '/assets/images/app-icons/wackupalarme.webp',
     phrase: 'Le réveil qu’on n’éteint qu’en se levant.',
-    besoin: 'On coupe l’alarme sans même ouvrir les yeux, et on se rendort.',
-    construit: 'Pour couper l’alarme, il faut réussir une mission : résoudre un calcul, scanner un QR code posé dans une autre pièce, secouer son téléphone ou faire quelques pas. On choisit sa musique comme sonnerie. Une semaine d’essai, puis une offre payante au mois ou à l’année.',
-    reperes: ['iPhone et Android', 'Essai d’une semaine'],
+    texte: 'On coupe l’alarme sans ouvrir les yeux, et on se rendort. Ici, il faut réussir une mission pour la couper\u00a0: un calcul, un QR code à scanner dans une autre pièce, quelques pas. Une semaine d’essai, puis une offre payante.',
     // Le visuel de présentation de l'application, faute de site à montrer (comme dans le carrousel de l'accueil test).
     ordinateur: { src: `${IMAGES}/exemples/wakeup-ordinateur.webp`, largeur: 960, hauteur: 540, alt: 'Sur ordinateur, la présentation de WakeUp Alarme : « Le réveil qu’on ne peut pas éteindre sans se lever »' },
     telephone: { src: `${IMAGES}/captures/wakeup-alarme.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, l’accueil du réveil à missions avec une alarme activée' },
@@ -80,13 +81,27 @@ const CAS = [
     nom: 'Plouff Habitudes',
     icone: '/assets/images/app-icons/plouffhabitudes.webp',
     phrase: 'De bonnes habitudes, sans pression.',
-    besoin: 'Les applications d’habitudes misent sur la pression et les séries à ne pas casser : on rate un jour, on culpabilise, on abandonne.',
-    construit: 'Une application douce : on planifie ses habitudes à son rythme, avec une loutre qui évolue à mesure qu’on avance, un exercice de respiration guidé, un suivi de l’humeur et des statistiques. Une offre premium payante.',
-    reperes: ['iPhone et Android', 'Du design au lancement en 30 jours'],
+    texte: 'Les applications d’habitudes misent sur la pression\u00a0: on rate un jour, on culpabilise, on abandonne. Celle-ci avance au rythme de chacun, avec une loutre qui évolue à mesure qu’on progresse. Conçue et lancée en 30 jours.',
     ordinateur: { src: `${IMAGES}/exemples/plouff-ordinateur.webp`, largeur: 1245, hauteur: 700, alt: 'Sur ordinateur, le site de Plouff Habitudes : « Crée des habitudes qui durent »' },
     telephone: { src: `${IMAGES}/captures/plouff-habitudes.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, les habitudes du jour avec la mascotte' },
   },
 ]
+
+// Le cadre de téléphone du carrousel de l'accueil (app-showcase.css), seul : il sert aux écrans des applications et à
+// l'écran de la messagerie.
+function Telephone({ image }) {
+  return (
+    <div className="app-phone">
+      <i className="app-phone-button app-phone-action" aria-hidden="true" />
+      <i className="app-phone-button app-phone-volume-up" aria-hidden="true" />
+      <i className="app-phone-button app-phone-volume-down" aria-hidden="true" />
+      <i className="app-phone-button app-phone-power" aria-hidden="true" />
+      <div className="app-phone-screen">
+        <img src={image.src} alt={image.alt} width={image.largeur} height={image.hauteur} loading="lazy" decoding="async" draggable="false" />
+      </div>
+    </div>
+  )
+}
 
 function Ecrans({ ordinateur, telephone }) {
   return (
@@ -96,17 +111,7 @@ function Ecrans({ ordinateur, telephone }) {
           <div className="ex-ordi-barre" aria-hidden="true"><i /><i /><i /><span><b /></span></div>
           <img src={ordinateur.src} alt={ordinateur.alt} width={ordinateur.largeur} height={ordinateur.hauteur} loading="lazy" decoding="async" draggable="false" />
         </div>
-        <div className="ex-scene-tel">
-          <div className="app-phone">
-            <i className="app-phone-button app-phone-action" aria-hidden="true" />
-            <i className="app-phone-button app-phone-volume-up" aria-hidden="true" />
-            <i className="app-phone-button app-phone-volume-down" aria-hidden="true" />
-            <i className="app-phone-button app-phone-power" aria-hidden="true" />
-            <div className="app-phone-screen">
-              <img src={telephone.src} alt={telephone.alt} width={telephone.largeur} height={telephone.hauteur} loading="lazy" decoding="async" draggable="false" />
-            </div>
-          </div>
-        </div>
+        <div className="ex-scene-tel"><Telephone image={telephone} /></div>
       </div>
     </div>
   )
@@ -131,51 +136,62 @@ export default function ProjetsTest({ onBack }) {
       </header>
 
       <main>
-        {/* ===== HAUT DE PAGE : le titre et « +20 ». Le million est dit juste dessous, une seule fois. ===== */}
+        {/* ===== HAUT DE PAGE : celui de l'ancienne page, sans son sur-titre. Le titre à gauche, deux téléphones penchés à
+            droite (dessous sur téléphone). ===== */}
         <section className="pjt-haut" aria-labelledby="pjt-titre">
-          <h1 id="pjt-titre" className="pjt-h1">Ce que j’ai <span>déjà construit</span></h1>
-          <p className="pjt-haut-texte">Des applications conçues de l’idée au lancement, pour être utilisées et pour rapporter.</p>
-          <div className="pjt-chiffres">
-            <p className="ex-chiffre"><strong>+20</strong> applications déjà publiées</p>
+          <div className="pjt-haut-texte">
+            <h1 id="pjt-titre" className="pjt-h1">Je crée chaque application <span>comme si c’était la mienne.</span></h1>
+            <p className="pjt-haut-phrase"><strong>Plus de 20 applications publiées.</strong> De l’idée au lancement, je conçois chacune pour qu’elle soit utilisée, et pour qu’elle rapporte.</p>
+          </div>
+          <div className="pjt-haut-visuel" aria-hidden="true">
+            <div className="pjt-haut-rond" />
+            <div className="pjt-haut-tel pjt-haut-tel-1"><img src={`${IMAGES}/captures/smoothride-navigation.webp`} alt="" width="660" height="1431" /></div>
+            <div className="pjt-haut-tel pjt-haut-tel-2"><img src={`${IMAGES}/captures/wakeup-alarme.webp`} alt="" width="660" height="1431" /></div>
           </div>
         </section>
 
-        {/* ===== LA MESSAGERIE AU MILLION, EN PREMIER (Noé, 26/11/2026 : « celle qui me donne le plus de valeur, tu la
-            mets à la fin »). Noé garde le nom sur cette page (« tu peux laisser » : elle n'est pas indexée et il
-            l'envoie lui-même). ===== */}
+        {/* ===== LA MESSAGERIE AU MILLION : la preuve qui pèse le plus, avec un écran de l'application (Noé, 26/11/2026).
+            Noé garde le nom sur cette page (« tu peux laisser » : elle n'est pas indexée et il l'envoie lui-même). ===== */}
         <section className="pjt-million-zone" aria-labelledby="pjt-million-titre">
           <div className="pjt-million">
-            <h2 id="pjt-million-titre" className="pjt-million-app">
-              <img src={`${IMAGES}/hushapp.webp`} alt="" width="56" height="56" />
-              <span>Hush<small>Messagerie anonyme, iPhone et Android</small></span>
-            </h2>
-            <p className="pjt-million-chiffre"><strong>+1 million</strong><span>de téléchargements</span></p>
-            <p className="pjt-million-texte">J’ai conçu la première version de cette messagerie, qui a réuni 300&nbsp;000 utilisateurs.</p>
+            <div className="pjt-million-texte">
+              <h2 id="pjt-million-titre" className="pjt-million-app">
+                <img src={`${IMAGES}/hushapp.webp`} alt="" width="56" height="56" />
+                <span>Hush<small>Messagerie anonyme</small></span>
+              </h2>
+              <p className="pjt-million-chiffre"><strong>+1 million</strong><span>de téléchargements</span></p>
+              <p className="pjt-million-phrase">J’ai conçu la première version de cette messagerie, qui a réuni 300&nbsp;000 utilisateurs.</p>
+            </div>
+            <div className="pjt-million-ecran">
+              <Telephone image={{ src: `${IMAGES}/captures/messagerie-connexion.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, l’écran d’entrée de la messagerie' }} />
+            </div>
           </div>
         </section>
 
         {/* ===== LES APPLICATIONS : quatre panneaux identiques, l'un sous l'autre, écrans d'un côté et texte de l'autre
             (les côtés alternent sur ordinateur). ===== */}
-        <section className="pjt-section pjt-section-cas" aria-label="Applications conçues par Noé Calmes">
-          <div className="pjt-int pjt-liste-cas">
-            {CAS.map((cas, i) => (
-              <article key={cas.id} className={`pjt-cas${i % 2 ? ' pjt-cas-inverse' : ''}`}>
-                <Ecrans ordinateur={cas.ordinateur} telephone={cas.telephone} />
-                <div className="pjt-cas-texte">
-                  <p className="pjt-metier">{cas.metier}</p>
-                  <h2 className="pjt-cas-nom"><img src={cas.icone} alt="" width="44" height="44" loading="lazy" />{cas.nom}</h2>
-                  <p className="pjt-cas-phrase">{cas.phrase}</p>
-                  <p className="pjt-cas-detail"><strong>Le besoin.</strong> {cas.besoin}</p>
-                  <p className="pjt-cas-detail"><strong>Ce que j’ai construit.</strong> {cas.construit}</p>
-                  <ul className="pjt-reperes">{cas.reperes.map((r) => <li key={r}>{r}</li>)}</ul>
-                </div>
-              </article>
-            ))}
+        <section className="pjt-section pjt-section-cas" aria-labelledby="pjt-cas-titre">
+          <div className="pjt-int">
+            <h2 id="pjt-cas-titre" className="pjt-h2 pjt-h2-seul">Mes <span>réalisations</span></h2>
+            <div className="pjt-liste-cas">
+              {CAS.map((cas, i) => (
+                <article key={cas.id} className={`pjt-cas${i % 2 ? ' pjt-cas-inverse' : ''}`}>
+                  <Ecrans ordinateur={cas.ordinateur} telephone={cas.telephone} />
+                  <div className="pjt-cas-texte">
+                    <p className="pjt-metier">{cas.metier}</p>
+                    <h3 className="pjt-cas-nom"><img src={cas.icone} alt="" width="44" height="44" loading="lazy" />{cas.nom}</h3>
+                    <p className="pjt-cas-phrase">{cas.phrase}</p>
+                    <p className="pjt-cas-detail">{cas.texte}</p>
+                    {cas.atout && <p className="pjt-atout"><Car size={18} strokeWidth={1.8} aria-hidden="true" />{cas.atout}</p>}
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* ===== LES AVIS : le composant partagé avec l'accueil, tel quel. ===== */}
-        <section id="avis" className="pjt-section" aria-labelledby="pjt-avis-titre">
+        <section id="avis" className="pjt-section pjt-section-avis" aria-labelledby="pjt-avis-titre">
           <div className="pjt-int">
             <h2 id="pjt-avis-titre" className="pjt-h2 pjt-h2-seul">Ce que disent <span>mes clients</span></h2>
             <AvisClients />
