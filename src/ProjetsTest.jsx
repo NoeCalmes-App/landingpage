@@ -13,13 +13,15 @@ import './projets-test.css'
 // redire la méthode ni le budget (c'était l'ancienne page, qui se lisait comme le CV d'un freelance). Il faut lui
 // montrer que c'est vrai, puis lui dire ce qui l'attend à la visio. D'où l'ordre :
 //   1. les applications DE MÉTIER, en grand (celles de clients : le prospect s'y reconnaît) ;
-//   2. les applications de Noé, en plus petit (elles sont en ligne et payantes : il sait vendre, pour son compte) ;
+//   2. les applications de Noé, en plus petit (elles sont payantes : il sait vendre, pour son compte) ;
 //   3. les avis ;
 //   4. LA SUITE : ce qu'il verra à la visio, avant de payer.
 // RÈGLES (les mêmes que la page d'accueil test) : pas de sur-titre au-dessus des titres, peu de texte, une chose dite
 // une seule fois, « téléphone » et « ordinateur », jamais « abonnement » ni « paywall » (« offre payante »), jamais
 // « gratuit » pour la maquette (« avant de payer »). Rien d'inventé : chaque phrase vient de la page en ligne ou des
 // décisions de Noé. Calorie n'y est pas (retirée le 26/11/2026). Pas de maquette de projet non signé.
+// JAMAIS « en ligne » à côté d'une application, aucune (Noé, 26/11/2026, 12 h 03) : on dit ce qu'elle est (« iPhone et
+// Android »), pas si elle est publiée.
 // ⚠️ AVANT DE LA METTRE À LA PLACE DE /projets : scripts/generate-routes.js lit le texte de Projets.jsx et la liste
 // ANNUAIRES (lien retour vers l'annuaire, à garder au pied de page) ; la page reste « noindex, follow ».
 const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(
@@ -51,7 +53,7 @@ const CAS = [
     phrase: 'Le GPS qui évite les dos-d’âne.',
     besoin: 'Les GPS cherchent le trajet le plus rapide, jamais le plus doux. Avec un dos fragile, un véhicule chargé ou des journées entières sur la route, chaque dos-d’âne compte.',
     construit: 'Une navigation complète, guidée à la voix, qui compare deux trajets et compte les ralentisseurs sur chacun : plus de 120 000 sont référencés en France. Elle s’affiche aussi sur l’écran de la voiture. Une offre Pro payante lève la limite de trajets.',
-    reperes: ['Application d’un client', 'En ligne sur l’App Store et Google Play', 'CarPlay et Android Auto'],
+    reperes: ['Application d’un client', 'iPhone et Android', 'CarPlay et Android Auto'],
     ordinateur: { src: `${IMAGES}/exemples/smoothride-ordinateur.webp`, largeur: 1245, hauteur: 700, alt: 'Sur ordinateur, le site de SmoothRide : « Votre trajet, sans les dos-d’âne »' },
     telephone: { src: `${IMAGES}/captures/smoothride-navigation.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, la navigation avec les dos-d’âne signalés sur le trajet' },
   },
@@ -158,7 +160,7 @@ export default function ProjetsTest({ onBack }) {
         <section className="pjt-section pjt-gris" aria-labelledby="pjt-miennes-titre">
           <div className="pjt-int">
             <h2 id="pjt-miennes-titre" className="pjt-h2">Mes propres <span>applications</span></h2>
-            <p className="pjt-h2-texte">Elles sont en ligne et payantes. C’est là que je vois ce qui fait payer et revenir.</p>
+            <p className="pjt-h2-texte">C’est sur elles que je vois ce qui fait payer et revenir.</p>
             <div className="pjt-miennes">
               {MIENNES.map((app) => (
                 <article key={app.nom} className="pjt-mienne">
