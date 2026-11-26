@@ -331,6 +331,11 @@
 .at-hero-nuit .at-hero-preuve span { color: rgba(255, 255, 255, .78); }
 @media (min-width: 768px) { .at-hero.at-hero-nuit.hero-bg { border-radius: 0 0 44px 44px; } }
 
+/* Les deux chiffres sous « Mes réalisations » : côte à côte quand la place le permet, l'un sous l'autre sur téléphone. */
+.at-chiffres { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 10px; margin-top: 16px; }
+.at-chiffres .ex-chiffre { margin: 0; }
+@media (min-width: 820px) { .at-chiffres { margin-top: 22px; } }
+
 /* ===== Les questions (25/11/2026, sur le modèle d'Ikovaline) ===== */
 /* PAS DE CASES : des lignes séparées par un trait fin, un « + » qui tourne en croix quand la réponse s'ouvre. Le titre
    au-dessus sur téléphone ; à gauche à partir de 860 px. Rien d'autre : la ligne « Une autre question ? Écris-moi

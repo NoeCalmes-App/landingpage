@@ -384,7 +384,7 @@ export default function AccueilTest() {
           <h1 className="at-titre font-heading font-extrabold text-text tracking-tight w-full mx-auto mb-4 md:mb-6">
             <span className="font-bold" style={{ fontFamily: "'Plus Jakarta Sans Local', 'Plus Jakarta Sans', sans-serif" }}>
               Je transforme<br />
-              ton idée en application<br />
+              <span className="at-titre-metier">ton idée</span> en application<br />
               <span className="at-titre-application">qui rapporte vraiment.</span>
             </span>
           </h1>
@@ -398,12 +398,8 @@ export default function AccueilTest() {
               J'ai une idée d'application
               <Fleche />
             </a>
-            {/* LA CASE « +1 million… » EST REMISE (Noé, 26/11/2026, 11 h 36 : « garde, ça ne prend pas beaucoup de place sur
-                mobile, non ? »). Retirée le 25/11/2026 à 23 h 38, puis remise : c'est le seul chiffre du haut de page. Le
-                million est donc dit deux fois sur la page, ici et dans la FAQ (« J'ai trouvé un développeur moins cher ») :
-                à relire à l'étape 5, la règle « une chose n'est dite qu'une fois ». Aucune animation (Noé : « pas partout
-                pour rien »). Ni nom ni logo de la messagerie (Hush). */}
-            <p className="at-hero-preuve"><strong>+1 million</strong><span>de téléchargements sur une application que j'ai conçue</span></p>
+            {/* PAS DE CHIFFRE ICI (Noé, 26/11/2026, 11 h 39 : « le million pas ici, à côté de +20 app »). Le haut de page
+                reste léger ; le million est sous « Mes réalisations », à côté de « +20 applications ». */}
           </div>
 
           <HeroVideo unSeulPassage />
@@ -435,7 +431,13 @@ export default function AccueilTest() {
       <section className="ex-section" id="realisations" aria-labelledby="at-realisations-titre">
         <div className="ex-interieur">
           <h2 id="at-realisations-titre" className="reveal ex-titre">Mes <span>réalisations</span></h2>
-          <p className="reveal ex-chiffre"><strong>+20</strong> applications déjà publiées</p>
+          {/* DEUX CHIFFRES côte à côte (Noé, 26/11/2026 : le million « à côté de +20 app »). Le million est sa preuve la
+              plus forte : on la lit là où on vient vérifier ce qu'il a fait. Sur téléphone, l'un sous l'autre. Ni nom ni
+              logo de la messagerie (Hush). */}
+          <div className="reveal at-chiffres">
+            <p className="ex-chiffre"><strong>+20</strong> applications déjà publiées</p>
+            <p className="ex-chiffre"><strong>+1 million</strong> de téléchargements sur l'une d'elles</p>
+          </div>
           <ExemplesMetier />
         </div>
       </section>
