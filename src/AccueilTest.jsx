@@ -761,25 +761,17 @@ export default function AccueilTest() {
               application. Titre d'avant, à remettre si Noé le préfère : « Parlons de ton projet ». */}
           {/* Les retours à la ligne sont posés à la main (Noé, 25/11/2026 : « ça fait bizarre ») : chaque ligne finit
               là où la phrase respire, jamais au milieu de « elle ne te / rapporte rien ». */}
+          {/* LE TITRE DIT QUI EST AU BOUT DU FIL (Noé, 26/11/2026, tard : « 30 min avec Noé. Pas un commercial », sur le
+              modèle d'Ikovaline). Il remplace « Depuis combien de temps tu as cette idée ? », que Noé ne comprenait plus
+              une fois sa chute retirée (« Tant qu'elle reste une idée, elle ne te rapporte rien »), et « Réserve ton
+              appel stratégique », qui répétait le nom affiché par le calendrier. DESSOUS, la règle du projet par mois
+              est une phrase, plus une pastille : deux éléments au-dessus du calendrier, pas trois. */}
           <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-0">
-            Depuis combien de temps<br />
-            <span className="text-brand">tu as cette idée&nbsp;?</span>
+            30&nbsp;minutes avec Noé.<br />
+            <span className="text-brand">Pas un commercial.</span>
           </h2>
-          {/* AU-DESSUS DU CALENDRIER (Noé, 26/11/2026 au soir) : la question, qu'il aime, UNE phrase qui dit ce qu'on
-              réserve, puis la pastille. La phrase suit le modèle qu'il a montré chez Ikovaline (qui est au bout du fil,
-              ce qu'on en retire, sans obligation), avec ses mots à lui. Elle ne dit QUE ce que le calendrier ne dit pas (qui
-              appelle) : le programme, la durée et « gratuit et sans engagement » sont dans la description Cal.com, juste
-              dessous, et une chose ne se dit qu'une fois. Retirés le même soir : « Tant qu'elle reste
-              une idée, elle ne te rapporte rien. » et « Pour que le tien ait toute mon attention. » (« c'est vraiment
-              trop »). */}
           <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mt-3 md:mt-4 text-balance">
-            C'est moi qui t'appelle, pas un commercial. Choisis ton créneau.
-          </p>
-          <p className="reveal at-rare">
-            <span className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.72rem] md:text-[0.78rem] leading-none bg-brand/6 border-brand/12">
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500 shrink-0" />
-              <strong className="text-text font-semibold">Un seul nouveau projet par mois</strong>
-            </span>
+            Je prends un seul nouveau projet par mois. Choisis ton créneau.
           </p>
           <div className="reveal">
             <ReserverAppel />
