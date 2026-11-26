@@ -335,16 +335,15 @@
 .at-chiffres { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 10px; margin-top: 16px; }
 .at-chiffres .ex-chiffre { margin: 0; }
 @media (min-width: 820px) { .at-chiffres { margin-top: 22px; } }
-/* LE MILLION EST LA PREUVE LA PLUS FORTE : case pleine bleu nuit, texte blanc (Noé, 26/11/2026 : « c'est toi l'expert,
-   mets-le en valeur »). « +20 » reste la case blanche discrète : une seule case ressort. UN SEUL reflet la traverse
-   quand elle arrive à l'écran, puis plus rien (« pas d'animation partout pour rien »). Pas de reflet si l'on a
-   demandé moins de mouvement. */
-.at-chiffres .ex-chiffre-fort { position: relative; overflow: hidden; background: #033475; border-color: #033475; color: rgba(255, 255, 255, .86); box-shadow: 0 14px 26px -16px rgba(3, 52, 117, .75); }
-.at-chiffres .ex-chiffre-fort strong { color: #fff; }
-.at-chiffres .ex-chiffre-fort::after { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 46%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .34), transparent); transform: translateX(-130%) skewX(-18deg); pointer-events: none; }
-.at-chiffres.visible .ex-chiffre-fort::after { animation: at-reflet 1.3s .5s ease-out 1 both; }
-@keyframes at-reflet { from { transform: translateX(-130%) skewX(-18deg); } to { transform: translateX(330%) skewX(-18deg); } }
-@media (prefers-reduced-motion: reduce) { .at-chiffres.visible .ex-chiffre-fort::after { animation: none; } }
+/* LE MILLION EST LA PREUVE LA PLUS FORTE, mais la case reste la même que « +20 » (Noé, 26/11/2026 : « pas en bleu, je
+   parlais du texte »). Seul le CHIFFRE ressort : un peu plus gros, en dégradé bleu nuit vers violet, les deux couleurs
+   du titre « Mes réalisations ». UN SEUL reflet passe dans les lettres quand la ligne arrive à l'écran, puis plus rien.
+   Le fond fait trois fois la largeur du chiffre : au départ comme à l'arrivée on voit le même dégradé, et entre les
+   deux la bande claire traverse. Pas de reflet si l'on a demandé moins de mouvement. */
+.at-chiffres .ex-chiffre-fort strong { font-size: 1.38em; background: linear-gradient(100deg, #033475 0%, #665dff 33.3%, #d9d6ff 50%, #033475 66.7%, #665dff 100%) 100% 0 / 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
+.at-chiffres.visible .ex-chiffre-fort strong { animation: at-reflet 1.5s .45s ease-in-out 1 both; }
+@keyframes at-reflet { from { background-position: 100% 0; } to { background-position: 0 0; } }
+@media (prefers-reduced-motion: reduce) { .at-chiffres.visible .ex-chiffre-fort strong { animation: none; } }
 
 /* ===== Les questions (25/11/2026, sur le modèle d'Ikovaline) ===== */
 /* PAS DE CASES : des lignes séparées par un trait fin, un « + » qui tourne en croix quand la réponse s'ouvre. Le titre
