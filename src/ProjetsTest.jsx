@@ -47,7 +47,7 @@ const CAS = [
     nom: 'Bailora',
     icone: `${IMAGES}/bailora.webp`,
     phrase: 'La gestion de ses locations, sur téléphone.',
-    texte: 'Son fondateur est artisan et gère ses propres logements en location. Loyers, quittances, états des lieux\u00a0: tout était éparpillé entre un tableur, des courriers et des photos. L’application réunit tout, et un assistant IA lui répond à l’écrit comme à la voix.',
+    texte: 'Son fondateur est artisan et gère ses propres logements en location. Loyers, quittances, états des lieux\u00a0: tout était éparpillé entre un tableur, des courriers et des photos. L’application réunit tout, et un assistant IA répond à ses questions.',
     ordinateur: { src: `${IMAGES}/exemples/bailora-ordinateur.webp`, largeur: 1298, hauteur: 730, alt: 'Sur ordinateur, le site de Bailora : « Vos SCI, enfin simples »' },
     telephone: { src: `${IMAGES}/captures/bailora-accueil.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, le tableau de bord des loyers, des paiements et des actions à traiter' },
   },
@@ -141,7 +141,7 @@ export default function ProjetsTest({ onBack }) {
         <section className="pjt-haut" aria-labelledby="pjt-titre">
           <div className="pjt-haut-texte">
             <h1 id="pjt-titre" className="pjt-h1">Je crée chaque application <span>comme si c’était la mienne.</span></h1>
-            <p className="pjt-haut-phrase"><strong>Plus de 20 applications publiées.</strong> De l’idée au lancement, je conçois chacune pour qu’elle soit utilisée, et pour qu’elle rapporte.</p>
+            <p className="pjt-haut-phrase"><strong>+20 applications publiées.</strong> De l’idée au lancement, je conçois chacune pour qu’elle soit utilisée, et pour qu’elle rapporte.</p>
           </div>
           <div className="pjt-haut-visuel" aria-hidden="true">
             <div className="pjt-haut-rond" />
@@ -191,6 +191,9 @@ export default function ProjetsTest({ onBack }) {
                 </article>
               ))}
             </div>
+            {/* Noé, 26/11/2026 : montrer que ces quatre ne sont qu'une partie des +20. Une seule ligne, discrète, sous la
+                liste : là où le lecteur se demande « et les autres ? ». */}
+            <p className="pjt-confidentiel">Ce n’est qu’une partie de mes réalisations. Les autres sont protégées par un accord de confidentialité.</p>
           </div>
         </section>
 

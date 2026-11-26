@@ -86,6 +86,9 @@
 .pjt-atout { display: inline-flex; align-items: center; gap: 9px; margin-top: 18px; padding: 9px 15px 9px 13px; border-radius: 12px; background: #f0eeff; font-size: 14px; font-weight: 600; line-height: 1.35; color: #033475; }
 .pjt-atout svg { flex-shrink: 0; color: #665dff; }
 
+/* Sous la liste : les autres applications sont confidentielles. */
+.pjt-confidentiel { max-width: 30em; margin: 28px auto 0; font-size: 14.5px; line-height: 1.55; color: #667185; text-align: center; text-wrap: balance; }
+
 /* Les avis suivent les panneaux : un seul écart entre les deux, pas deux. */
 .pjt-section.pjt-section-avis { padding-top: 0; }
 
