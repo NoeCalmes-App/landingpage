@@ -257,8 +257,16 @@ function useApparition() {
 // remplace le gros bouton vert flottant, retiré le même jour : WhatsApp reste possible pour celui qui préfère écrire,
 // sans faire concurrence au calendrier. Le message est déjà écrit et finit ouvert, pour qu'il n'ait qu'à dire son idée.
 // Rien n'est mesuré ici, comme sur le reste de la page test.
-const MESSAGE_WHATSAPP = "Bonjour Noé, j'ai une idée d'application et j'aimerais en discuter avec toi. Mon idée : "
-const WHATSAPP_URL = `https://wa.me/33658308210?text=${encodeURIComponent(MESSAGE_WHATSAPP)}`
+// « Depuis la page : … » (Noé, 26/11/2026, vu chez Ikovaline) : Noé sait d'où vient le message, et celui qui écrit se
+// rappelle à qui. L'adresse est celle de la page où il a cliqué, sur le site en ligne ; la page test compte pour
+// l'accueil. « Mon idée : » reste à la fin, pour qu'il n'ait qu'à écrire la suite.
+const SITE = 'https://noecalmes.fr'
+function messageWhatsApp(chemin = '/') {
+  const page = SITE + (chemin === '/accueiltest' ? '/' : chemin)
+  return `Bonjour Noé, j'ai une idée d'application et j'aimerais en discuter avec toi.\nDepuis la page : ${page}\n\nMon idée : `
+}
+const lienWhatsApp = (chemin) => `https://wa.me/33658308210?text=${encodeURIComponent(messageWhatsApp(chemin))}`
+const WHATSAPP_URL = lienWhatsApp('/')
 
 function IconeWhatsApp() {
   return (
@@ -363,7 +371,7 @@ export default function AccueilTest() {
               </div>
               <div className="flex items-center gap-3">
                 {/* L'icône WhatsApp est à gauche du bouton sur ordinateur, à gauche du menu sur téléphone (Noé, 26/11/2026). */}
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="Écrire à Noé sur WhatsApp" className="flex items-center justify-center w-10 h-10 -mr-3 sm:-mr-1 text-text hover:text-brand transition-colors">
+                <a href={WHATSAPP_URL} onClick={(evenement) => { evenement.currentTarget.href = lienWhatsApp(window.location.pathname) }} target="_blank" rel="noopener noreferrer" aria-label="Écrire à Noé sur WhatsApp" className="flex items-center justify-center w-10 h-10 -mr-3 sm:-mr-1 text-text hover:text-brand transition-colors">
                   <IconeWhatsApp />
                 </a>
                 <a href="#contact" onClick={allerAuContact} className="btn-reflet hidden sm:inline-block bg-[#0d1548] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#090f33] transition-colors cursor-pointer whitespace-nowrap">
@@ -764,14 +772,16 @@ export default function AccueilTest() {
           {/* LE TITRE DIT QUI EST AU BOUT DU FIL (Noé, 26/11/2026, tard : « 30 min avec Noé. Pas un commercial », sur le
               modèle d'Ikovaline). Il remplace « Depuis combien de temps tu as cette idée ? », que Noé ne comprenait plus
               une fois sa chute retirée (« Tant qu'elle reste une idée, elle ne te rapporte rien »), et « Réserve ton
-              appel stratégique », qui répétait le nom affiché par le calendrier. RIEN DESSOUS : « Je prends un seul nouveau
-              projet par mois. Choisis ton créneau. » est retiré le même soir. « Choisis ton créneau » répétait le
-              calendrier, et la rareté n'a pas sa place avant un appel gratuit : d'après la leçon 2.11 de Noé, elle se
-              dit à la fin de la visio, quand il a vu sa maquette et son prix. La règle n'est plus sur cette page. */}
+              appel stratégique », qui répétait le nom affiché par le calendrier. DESSOUS : « Je prends un seul nouveau
+              projet par mois. Réserve ton appel. » Retirée une heure par Claude (la rareté avant un appel gratuit),
+              remise par Noé : « c'était bien ». « Réserve ton appel » remplace « Choisis ton créneau ». */}
           <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-0">
             30&nbsp;minutes avec Noé.<br />
             <span className="text-brand">Pas un commercial.</span>
           </h2>
+          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mt-3 md:mt-4 text-balance">
+            Je prends un seul nouveau projet par mois. Réserve ton appel.
+          </p>
           <div className="reveal">
             <ReserverAppel />
           </div>
