@@ -40,9 +40,11 @@ import Footer from './Footer.jsx'
 import ReserverAppel from './ReserverAppel.jsx'
 import { lienInterne } from './seo.js'
 
-// « Ce que rapporte l'application d'un client » : EN LIGNE depuis le 27/11/2026 (Noé : « ce sont des vrais chiffres,
-// je te donne l'ordre, c'est mon site »). Voir ApercuResultat.jsx.
+// « Ce que rapporte l'application d'un client » : MASQUÉ depuis le 27/11/2026 au soir (Noé : « masque, on réactive
+// plus tard »), après quelques heures en ligne le même jour. Rien n'est supprimé : pour le remettre, passer
+// AFFICHER_RESULTAT à true. Voir ApercuResultat.jsx.
 import ApercuResultat from './ApercuResultat.jsx'
+const AFFICHER_RESULTAT = false
 
 const mePhoto = '/assets/images/profile/me.webp'
 
@@ -581,9 +583,9 @@ export default function Accueil() {
         </div>
       </section>
 
-      {/* « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » (18 450 € en décembre 2025, nom masqué) : EN LIGNE depuis le
-          27/11/2026, sur l'ordre de Noé, qui confirme que ce sont les vrais chiffres d'un client. Le bloc : ApercuResultat.jsx. */}
-      <ApercuResultat />
+      {/* « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » (nom masqué) : bloc MASQUÉ le 27/11/2026 au soir, à la demande
+          de Noé, pour l'instant. Il se réactive en haut du fichier (AFFICHER_RESULTAT). Le bloc : ApercuResultat.jsx. */}
+      {AFFICHER_RESULTAT && <ApercuResultat />}
 
       {/* ========== COMMENT ÇA SE PASSE ========== */}
       {/* Quatre étapes, deux par deux sur ordinateur, chacune avec son schéma et sa durée (voir ETAPES).

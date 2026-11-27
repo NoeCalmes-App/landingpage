@@ -5,6 +5,8 @@
 // Il vit dans ce fichier à part : le texte servi aux robots (scripts/generate-routes.js lit Accueil.jsx) ne le reprend pas.
 // Pas de classe « reveal », COMME UNE IMAGE, SANS ANIMATION (Noé, 25/11/2026) : rien ne bouge, rien ne se sélectionne.
 // Si l'application ne fait plus ces montants, le mois doit s'écrire, ou le bloc partir (erreur faite avec Calorie).
+// MASQUÉ le 27/11/2026 au soir (Noé : « masque, on réactive plus tard ») : l'accueil ne l'affiche plus tant que
+// AFFICHER_RESULTAT, dans Accueil.jsx, est à false. Rien n'est supprimé ici.
 export default function ApercuResultat() {
   return (
     <section className="pt-0 pb-14 md:pb-28 px-5" id="resultat" aria-labelledby="at-resultat-titre">

@@ -105,10 +105,11 @@ noecalmes.fr par accueiltest », puis « supprime l'ancienne, accueiltest devien
   `QUESTIONS`.
 - **Retiré à la mise en ligne** : le titre d'onglet « Page test » et la balise `noindex, nofollow` que la page posait
   elle-même.
-- **Le bloc « Ce que rapporte l'application d'un client » (18 450 € en décembre 2025, nom masqué) est EN LIGNE**
-  depuis le 27/11/2026, sur l'ordre de Noé : ce sont les vrais chiffres d'un client. Code : `src/ApercuResultat.jsx`,
-  rendu par `Accueil.jsx` après « Pourquoi moi », hors du texte servi aux robots. Si l'application ne fait plus ces
-  montants, écrire le mois ou retirer le bloc.
+- **Le bloc « Ce que rapporte l'application d'un client » (18 450 € en décembre 2025, nom masqué) est MASQUÉ**
+  depuis le 27/11/2026 au soir, à la demande de Noé (« masque, on réactive plus tard »), après quelques heures en
+  ligne le même jour. Rien n'est supprimé : `src/ApercuResultat.jsx` reste, et `Accueil.jsx` le réaffiche après
+  « Pourquoi moi » dès que `AFFICHER_RESULTAT` repasse à `true`. Ne pas le réactiver sans que Noé le demande. Hors du
+  texte servi aux robots. Si l'application ne fait plus ces montants, écrire le mois ou retirer le bloc.
 - **La preuve Calorie (« 13 000 €/mois ») a quitté tout le site le 27/11/2026** (section suivante).
 - **`/rendez-vous`** (noindex) s'appelle « Réserver un appel avec Noé » et descend au calendrier.
 - **L'onglet qui appelle au retour** ne dit plus « Maquette offerte pour ton app », seulement « Parlons de ton idée
