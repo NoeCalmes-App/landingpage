@@ -228,10 +228,6 @@ export default function Projets({ onBack }) {
                 </article>
               ))}
             </div>
-            {/* Noé, 26/11/2026 : montrer que ces quatre ne sont qu'une partie des +20. Une seule ligne, discrète, sous la
-                liste : là où le lecteur se demande « et les autres ? ». L'icône : un cadenas plein, dessiné ici (celui de la
-                bibliothèque d'icônes, en simple trait, se lisait mal) ; en blanc sur un carré noir (Noé : « en noir au lieu du violet »). */}
-            <p className="pjt-confidentiel"><span className="pjt-confidentiel-icone"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 10.5V7.2a4.5 4.5 0 0 1 9 0v3.3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" /><rect x="4.5" y="10" width="15" height="11.5" rx="3" fill="currentColor" /><circle cx="12" cy="15" r="1.7" fill="#0d1548" /><rect x="11.15" y="15.4" width="1.7" height="3.2" rx=".85" fill="#0d1548" /></svg></span><span>Ce n’est qu’une petite partie de mes réalisations. Les autres sont protégées par un <strong>accord de confidentialité</strong>.</span></p>
             <div className="pjt-autres">
               <h3 id="pjt-autres-titre" className="pjt-autres-titre">D’autres projets <span>d’applications</span></h3>
               <div className="pjt-autres-rangee" role="list" aria-labelledby="pjt-autres-titre">
@@ -243,6 +239,11 @@ export default function Projets({ onBack }) {
                 ))}
               </div>
             </div>
+            {/* Noé, 26/11/2026 : montrer que ces quatre ne sont qu'une partie des +20. Placée APRÈS la rangée des maquettes
+                (Noé, 27/11/2026) : juste sous les quatre, on aurait pu prendre les maquettes pour « les autres ». Une seule ligne, discrète, sous la
+                liste : là où le lecteur se demande « et les autres ? ». L'icône : un cadenas plein, dessiné ici (celui de la
+                bibliothèque d'icônes, en simple trait, se lisait mal) ; en blanc sur un carré noir (Noé : « en noir au lieu du violet »). */}
+            <p className="pjt-confidentiel"><span className="pjt-confidentiel-icone"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 10.5V7.2a4.5 4.5 0 0 1 9 0v3.3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" /><rect x="4.5" y="10" width="15" height="11.5" rx="3" fill="currentColor" /><circle cx="12" cy="15" r="1.7" fill="#0d1548" /><rect x="11.15" y="15.4" width="1.7" height="3.2" rx=".85" fill="#0d1548" /></svg></span><span>Ce n’est qu’une petite partie de mes réalisations. Les autres sont protégées par un <strong>accord de confidentialité</strong>.</span></p>
           </div>
         </section>
 
