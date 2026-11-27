@@ -70,7 +70,7 @@ export function AvisTrustpilot() {
   )
 }
 
-// `texteEntre` (facultatif, page test /accueiltest, 26/11/2026) : une ligne entre les avis Trustpilot et les messages
+// `texteEntre` (facultatif, accueil, 26/11/2026) : une ligne entre les avis Trustpilot et les messages
 // WhatsApp. Sans lui, rien ne change : c'est le cas de l'accueil en ligne.
 export function AvisClients({ texteEntre }) {
   return (

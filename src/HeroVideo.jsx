@@ -101,7 +101,7 @@ const IcoPetit = (p) => (
   </svg>
 )
 
-// `unSeulPassage` (facultatif, page test /accueiltest, 26/11/2026) : le film joue UNE fois, puis s'arrête sur sa dernière
+// `unSeulPassage` (facultatif, accueil, 26/11/2026) : le film joue UNE fois, puis s'arrête sur sa dernière
 // image avec un gros bouton « Revoir la vidéo » ; il ne se relance pas tout seul, même si on sort puis revient à l'écran
 // (Noé : « une fois finie elle se stop, il faut recliquer dessus »). Sans l'option, rien ne change : l'accueil en ligne
 // garde sa boucle.

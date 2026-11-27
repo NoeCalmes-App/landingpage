@@ -1,5 +1,5 @@
-/* PAGE TEST /accueiltest (25/11/2026) : la mise en forme de ce qui est nouveau par rapport à l'accueil actuel.
-   Tout le reste vient des styles du site (index.css, App.css, app-showcase.css). Mêmes couleurs, mêmes polices,
+/* L'ACCUEIL (src/Accueil.jsx), construit comme page test /accueiltest le 25/11/2026, en ligne le 27/11/2026 : la mise
+   en forme propre à l'accueil. Tout le reste vient des styles du site (index.css, App.css, app-showcase.css). Mêmes couleurs, mêmes polices,
    mêmes cartes : la page doit se lire comme l'accueil, pas comme une autre page. Préfixe « at- » partout, pour ne
    rien toucher ailleurs. */
 
@@ -448,10 +448,11 @@
     linear-gradient(0deg, #fffefc 0, #f4f2ff 4%, #c9c4ff 14%, #bab4ff 45%, #d9d5ff 78%, #f3f1ff 100%);
 }
 
-/* APERÇU À CHIFFRES D'ESSAI (26/11/2026) : les nombres de la carte ne sont pas ceux d'un client vérifié, voir AccueilTest.jsx. */
+/* BLOC RETIRÉ DE LA PAGE le 27/11/2026 (chiffres d'essai, pas ceux d'un client vérifié) : ces styles attendent son
+   retour avec de vrais chiffres. Le bloc complet est dans le commit 1624c00, voir Accueil.jsx. */
 /* ===== CE QUE RAPPORTE L'APPLICATION D'UN CLIENT (25/11/2026) ===== */
 /* Après « Mes réalisations », avant le bloc sombre (Noé, 23 h 44 : « après mes réalisations, mieux ») : une carte
-   blanche qui redessine les chiffres envoyés par un client de Noé (voir AccueilTest.jsx pour leur provenance et les
+   blanche qui redessine les chiffres envoyés par un client de Noé (voir Accueil.jsx pour leur provenance et les
    règles). Sur téléphone, une colonne, comme l'écran d'origine ; sur ordinateur, deux : le revenu et sa courbe à
    gauche, le détail à droite. Le vert est celui des pastilles « 7 jours gratuits » du bloc sombre : pas une couleur
    de plus. Un bord fin et une seule ombre, douce : la carte est sur fond clair. */
@@ -513,7 +514,7 @@
 @media (min-width: 860px) { .at-resultat-note { margin-top: 16px; max-width: none; font-size: 13px; } }
 
 /* COMME UNE IMAGE (Noé, 25/11/2026, 23 h 37) : aucune animation, et rien ne se sélectionne ni ne se copie à la
-   souris. La carte est annoncée comme une image aux lecteurs d'écran (role="img" dans AccueilTest.jsx). */
+   souris. La carte est annoncée comme une image aux lecteurs d'écran (role="img" dans Accueil.jsx). */
 .at-resultat-carte { -webkit-user-select: none; user-select: none; pointer-events: none; cursor: default; -webkit-touch-callout: none; }
 
 

@@ -322,10 +322,8 @@ function avisTrustpilotHtml() {
   return `<p>Avis vérifiés sur <a href="${url}">Trustpilot</a> :</p>`
     + avis.map((a) => `<p>${echapper(a.titre)}. « ${echapper(a.extrait)} » ${echapper(a.prenom)}, ${echapper(a.role)}, 5 étoiles sur 5.</p>`).join('')
 }
-// LE NOUVEL ACCUEIL (27/11/2026) : App.jsx rend src/AccueilTest.jsx pour l'accueil tant que `NOUVEL_ACCUEIL` vaut
-// true. Cette même ligne décide ici d'où vient le texte servi aux robots et la FAQ balisée : jamais le texte d'un
-// accueil que le visiteur ne voit pas.
-const NOUVEL_ACCUEIL = /^const NOUVEL_ACCUEIL = true$/m.test(readFileSync(join(__dirname, '..', 'src', 'App.jsx'), 'utf-8'))
+// L'ACCUEIL (27/11/2026) : src/Accueil.jsx. Le texte servi aux robots et la FAQ balisée viennent de ce fichier, jamais
+// d'un accueil que le visiteur ne voit pas. L'ancien accueil (dans App.jsx) est supprimé.
 
 // Une chaîne JavaScript entre guillemets simples ou doubles, lue telle qu'écrite dans le source.
 const CHAINE_JS = `(?:'((?:[^'\\\\]|\\\\.)*)'|"((?:[^"\\\\]|\\\\.)*)")`
@@ -336,23 +334,21 @@ const litteralJs = (simple, double) => (simple ?? double)
 // Les tableaux de la nouvelle page (étapes, engagements, questions) sont rendus par des .map() : leur texte vit
 // hors du JSX, le lecteur de composant ne le voit pas. Lus ici, depuis le fichier, jamais recopiés.
 function lireTableauAccueil(nomTableau, cleA, cleB) {
-  const src = readFileSync(join(__dirname, '..', 'src', 'AccueilTest.jsx'), 'utf-8')
+  const src = readFileSync(join(__dirname, '..', 'src', 'Accueil.jsx'), 'utf-8')
   const bloc = src.match(new RegExp(`const ${nomTableau} = \\[([\\s\\S]*?)\\n\\]`))
-  if (!bloc) throw new Error(`${nomTableau} introuvable dans src/AccueilTest.jsx`)
+  if (!bloc) throw new Error(`${nomTableau} introuvable dans src/Accueil.jsx`)
   const motif = new RegExp(`${cleA}: ${CHAINE_JS},\\s*${cleB}: ${CHAINE_JS}`, 'g')
   const lignes = [...bloc[1].matchAll(motif)].map((m) => [litteralJs(m[1], m[2]), litteralJs(m[3], m[4])])
-  if (!lignes.length) throw new Error(`Rien lu dans ${nomTableau} de src/AccueilTest.jsx`)
+  if (!lignes.length) throw new Error(`Rien lu dans ${nomTableau} de src/Accueil.jsx`)
   return lignes
 }
-const questionsAccueil = NOUVEL_ACCUEIL ? lireTableauAccueil('QUESTIONS', 'q', 'a').map(([q, a]) => ({ q, a })) : null
+const questionsAccueil = lireTableauAccueil('QUESTIONS', 'q', 'a').map(([q, a]) => ({ q, a }))
 
-const corpsSeoAccueil = NOUVEL_ACCUEIL
-  ? corpsDepuisComposant('AccueilTest.jsx', 'AccueilTest', { garderPremier: true })
-    + lireTableauAccueil('ETAPES', 'titre', 'texte').map(([t, x]) => `<h2>${echapper(t)}</h2><p>${echapper(x)}</p>`).join('')
-    + lireTableauAccueil('ENGAGEMENTS', 'titre', 'texte').map(([t, x]) => `<p><strong>${echapper(t)}.</strong> ${echapper(x)}</p>`).join('')
-    + questionsAccueil.map(({ q, a }) => `<h2>${echapper(q)}</h2><p>${echapper(a)}</p>`).join('')
-    + altDesImages('AvisClients.jsx') + avisTrustpilotHtml()
-  : corpsDepuisComposant('App.jsx', 'App') + altDesImages('AvisClients.jsx') + avisTrustpilotHtml()
+const corpsSeoAccueil = corpsDepuisComposant('Accueil.jsx', 'Accueil', { garderPremier: true })
+  + lireTableauAccueil('ETAPES', 'titre', 'texte').map(([t, x]) => `<h2>${echapper(t)}</h2><p>${echapper(x)}</p>`).join('')
+  + lireTableauAccueil('ENGAGEMENTS', 'titre', 'texte').map(([t, x]) => `<p><strong>${echapper(t)}.</strong> ${echapper(x)}</p>`).join('')
+  + questionsAccueil.map(({ q, a }) => `<h2>${echapper(q)}</h2><p>${echapper(a)}</p>`).join('')
+  + altDesImages('AvisClients.jsx') + avisTrustpilotHtml()
 
 const corpsSeoPages = {
   '/expertise': corpsDepuisComposant('PagesSeo.jsx', 'PageExpertise'),
@@ -1370,13 +1366,10 @@ for (const path of noindexRoutes) {
 
 // ─── Home page — pre-render hero for Lighthouse FCP ──────────────────────────
 
-// Le FAQPage de la home est reecrit depuis FAQ_ITEMS : la home affiche les NB_FAQ_ACCUEIL
-// premieres questions (App.jsx fait `FAQ_ITEMS.slice(0, NB_FAQ_ACCUEIL)`, 4 depuis le 11/10/2026), le balisage doit
-// dire exactement la meme chose. Avant, index.html portait 3 questions
-// reformulees a la main qui ne correspondaient plus au texte visible.
-const NB_FAQ_ACCUEIL = 4 // meme nombre que dans src/App.jsx (ancien accueil)
-// Le nouvel accueil (27/11/2026) affiche ses dix questions (QUESTIONS de src/AccueilTest.jsx) : le balisage dit les mêmes.
-const homeFaqJson = baliseFaq(NOUVEL_ACCUEIL ? questionsAccueil : faqItems.slice(0, NB_FAQ_ACCUEIL))
+// Le FAQPage de la home dit exactement les questions qu'elle affiche. Avant le 11/10/2026, index.html portait
+// 3 questions reformulees a la main qui ne correspondaient plus au texte visible.
+// L'accueil (27/11/2026) affiche ses dix questions (QUESTIONS de src/Accueil.jsx) : le balisage dit les mêmes.
+const homeFaqJson = baliseFaq(questionsAccueil)
 const baseHome = retirerFaqPage(baseHtml).replace(
   '</head>',
   `    <script type="application/ld+json">\n    ${homeFaqJson}\n    </script>\n  </head>`
@@ -1404,12 +1397,9 @@ const navHomeHtml = navHome.map((p) => `<a href="${urlPublique(p)}">${libelles[p
 // <noscript>, et il est retire du DOM des que React est monte. Le <noscript>
 // qui le suit est l'ajout du 21/09/2026 : il porte le corps COMPLET de la page,
 // seul moyen pour les moteurs de reponse de voir autre chose que le titre.
-// Le titre et la phrase du haut de l'accueil, servis aux robots. Ceux du nouvel accueil le 27/11/2026 (sans la preuve
-// Calorie « 13 000 €/mois », retirée de la page).
-const TITRE_ACCUEIL = NOUVEL_ACCUEIL ? 'Je transforme ton idée en application qui rapporte vraiment.' : 'Je transforme ton idée en app qui génère des revenus.'
-const PHRASE_ACCUEIL = NOUVEL_ACCUEIL
-  ? "Tu connais ton métier. On en fait une nouvelle source de revenus. Plus de 20 applications publiées, dont une que j'ai conçue, téléchargée plus d'un million de fois."
-  : "Je ne fais pas que développer ton application : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois. Plus de 20 applications publiées."
+// Le titre et la phrase du haut de l'accueil, servis aux robots (27/11/2026 : sans la preuve Calorie « 13 000 €/mois »).
+const TITRE_ACCUEIL = 'Je transforme ton idée en application qui rapporte vraiment.'
+const PHRASE_ACCUEIL = "Tu connais ton métier. On en fait une nouvelle source de revenus. Plus de 20 applications publiées, dont une que j'ai conçue, téléchargée plus d'un million de fois."
 
 const noscriptAccueil = corpsSeoAccueil
   ? `<noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><p><strong>${echapper(TITRE_ACCUEIL)}</strong></p>${corpsSeoAccueil}<nav aria-label="Pages du site">${navHomeHtml}</nav></div></noscript>`

@@ -1,8 +1,8 @@
-// L'ACCUEIL DE NOECALMES.FR depuis le 27 novembre 2026 (construit comme page test du 25 au 27/11/2026).
+// L'ACCUEIL DE NOECALMES.FR depuis le 27 novembre 2026 (construit comme page test, /accueiltest, du 25 au 27/11/2026).
 //
-// Noé, 27/11/2026 : « remplace la landing page noecalmes.fr par accueiltest ». App.jsx rend ce composant pour
-// l'accueil tant que `NOUVEL_ACCUEIL` vaut true (l'ancien accueil y reste intact, pour revenir en arrière), et
-// /accueiltest mène à l'accueil. Le nom du fichier est resté celui de la page test.
+// Noé, 27/11/2026 : « remplace la landing page noecalmes.fr par accueiltest, puis supprime accueiltest ». App.jsx rend
+// ce composant pour l'accueil et pour toute adresse sans page propre ; l'ancien accueil est supprimé (dernier état
+// complet : commit c8a13b3), et /accueiltest renvoie à l'accueil. Les classes gardent leur préfixe « at- ».
 //
 // D'où viennent les textes : le travail du module « Offres » (dossier Drive « offre », document « Ma nouvelle page
 // d'accueil - Plan et textes à valider »). L'ordre suit les questions du visiteur. La cible, précisée par Noé le
@@ -21,7 +21,7 @@
 // dit « application », jamais « SaaS » ni « site » pour une application ; aucun résultat promis.
 //
 // CE QUI EST RÉUTILISÉ TEL QUEL : le film (HeroVideo), le défilé d'écrans (AppShowcase), les avis (AvisClients),
-// le pied de page et le bouton WhatsApp flottant. CE QUI EST NOUVEAU est mis en forme dans accueil-test.css.
+// le pied de page. CE QUI EST PROPRE À L'ACCUEIL est mis en forme dans accueil.css.
 //
 // LES ÉCRANS DU BLOC « POURQUOI AVEC MOI » SONT DES SCHÉMAS DESSINÉS, pas des captures : quelques traits, deux ou
 // trois mots, de petits montants. La mention « Écrans d'exemple. Chiffres fictifs. » a été retirée à la demande de
@@ -31,7 +31,7 @@
 import { createElement, useEffect, useRef, useState } from 'react'
 import { Bell, Eye, FileCheck2, KeyRound, Rocket, Timer, UserRound, Wallet } from 'lucide-react'
 import './App.css'
-import './accueil-test.css'
+import './accueil.css'
 import ExemplesMetier from './ExemplesMetier.jsx'
 import { AvisClients } from './AvisClients.jsx'
 import HeroVideo from './HeroVideo.jsx'
@@ -259,11 +259,10 @@ function useApparition() {
 // sans faire concurrence au calendrier. Le message est déjà écrit et finit ouvert, pour qu'il n'ait qu'à dire son idée.
 // Le clic est mesuré comme les autres boutons WhatsApp du site (« Lead », une fois par visite).
 // « Depuis la page : … » (Noé, 26/11/2026, vu chez Ikovaline) : Noé sait d'où vient le message, et celui qui écrit se
-// rappelle à qui. L'adresse est celle de la page où il a cliqué, sur le site en ligne ; la page test compte pour
-// l'accueil. « Mon idée : » reste à la fin, pour qu'il n'ait qu'à écrire la suite.
+// rappelle à qui. L'adresse est celle de la page où il a cliqué, sur le site en ligne. « Mon idée : » reste à la fin, pour qu'il n'ait qu'à écrire la suite.
 const SITE = 'https://noecalmes.fr'
 function messageWhatsApp(chemin = '/') {
-  const page = SITE + (chemin === '/accueiltest' ? '/' : chemin)
+  const page = SITE + chemin
   return `Bonjour Noé, j'ai une idée d'application et j'aimerais en discuter avec toi.\nDepuis la page : ${page}\n\nMon idée : `
 }
 const lienWhatsApp = (chemin) => `https://wa.me/33658308210?text=${encodeURIComponent(messageWhatsApp(chemin))}`
@@ -308,7 +307,7 @@ function Questions() {
   )
 }
 
-export default function AccueilTest() {
+export default function Accueil() {
   const [menuOuvert, setMenuOuvert] = useState(false)
   const racine = useApparition()
   // Variante à comparer : /accueiltest?haut=nuit (le haut de page sur le bleu nuit).
@@ -405,7 +404,7 @@ export default function AccueilTest() {
           Noé : pour sa cible, qui a un métier et des contacts à qui montrer l'application, c'est son marketing.
           TITRE D'AVANT (25/11/2026) : « Fais de ton métier une application qui rapporte vraiment. », où « ton
           métier » alternait avec « ton activité ». Les styles du mot qui alterne (.at-titre-metier, .at-mot) sont
-          gardés dans accueil-test.css.
+          gardés dans accueil.css.
           LE BOUTON DE LA BARRE DU HAUT dit « J'ai une idée » depuis le 26/11/2026 au soir (Noé), le bouton du haut de page
           disant maintenant « Réserver mon appel gratuit ». Avant, « Discuter avec Noé » : « J'ai une idée » et « J'ai une idée
           d'application » à dix centimètres l'un de l'autre, c'était deux fois le même bouton.
@@ -580,7 +579,7 @@ export default function AccueilTest() {
           (18 450 € par mois) étaient ceux d'un ancien écran d'exemple, présentés comme ceux d'un client : la règle
           écrite sur le bloc disait de le retirer avant toute mise en ligne, faute de capture réelle et d'accord écrit
           du client. Pour le remettre avec de VRAIS chiffres : le bloc complet est dans le commit 1624c00 (et sa version
-          « à zéro » dans aaf4952), ses styles sont restés dans accueil-test.css (.at-resultat…). */}
+          « à zéro » dans aaf4952), ses styles sont restés dans accueil.css (.at-resultat…). */}
 
       {/* ========== COMMENT ÇA SE PASSE ========== */}
       {/* Quatre étapes, deux par deux sur ordinateur, chacune avec son schéma et sa durée (voir ETAPES).

@@ -1,4 +1,4 @@
-// LA PRISE DE RENDEZ-VOUS DU SITE : le calendrier Cal.com, directement (page test /accueiltest, 26/11/2026).
+// LA PRISE DE RENDEZ-VOUS DU SITE : le calendrier Cal.com, directement (sur l'accueil depuis le 27/11/2026, construit sur la page test le 26/11/2026).
 //
 // CAL.COM ET NON CALENDLY (Noé, 26/11/2026, le soir). L'événement : « Appel stratégique »,
 // cal.com/noecalmes-app/appel, appel téléphonique où Noé appelle le numéro du participant (son numéro à lui n'est

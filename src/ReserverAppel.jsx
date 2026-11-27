@@ -1,4 +1,4 @@
-// LA PRISE DE RENDEZ-VOUS : le widget en ligne de Cal.com (page test /accueiltest, 26/11/2026).
+// LA PRISE DE RENDEZ-VOUS : le widget en ligne de Cal.com (sur l'accueil depuis le 27/11/2026, construit sur la page test le 26/11/2026).
 //
 // TOUT PASSE PAR CAL.COM (Noé, 26/11/2026) : la page affiche le calendrier, le visiteur choisit son créneau, puis
 // Cal.com lui demande ses coordonnées et ses questions. Pas de tri par le budget : tout le monde réserve.

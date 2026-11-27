@@ -5,7 +5,7 @@ import './exemples-metier.css'
 
 // LE CARROUSEL DE « CE QUE J'AI DÉJÀ CONSTRUIT » (page test, 25/11/2026). Une application par métier, montrée sur
 // ordinateur ET sur téléphone, que l'on fait défiler avec les flèches. Il remplace l'ancien carrousel de téléphones
-// (AppShowcase.jsx, qui reste celui de l'accueil en ligne). RÈGLES, toutes de Noé le 25/11/2026 au soir :
+// (AppShowcase.jsx, l'ancien accueil, supprimé le 27/11/2026 ; ses styles app-showcase.css restent). RÈGLES, toutes de Noé le 25/11/2026 au soir :
 //   - TOUJOURS un écran d'ordinateur et, à côté, un écran de téléphone. Quand l'application n'existe que sur
 //     téléphone, l'écran d'ordinateur montre SON SITE, celui que Noé a fait pour elle (captures de bailora-app.fr,
 //     smoothride.fr et plouff-habitudes.com prises dans Chrome, puis outils/rogner_site.py).

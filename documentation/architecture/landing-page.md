@@ -2,9 +2,9 @@
 
 ## Role
 
-Site public `noecalmes.fr` pour vendre le positionnement de Noe Calmes : expert en application mobile, de la strategie au lancement. Le site sert a convertir le trafic en audit gratuit et conversation WhatsApp via la section `/rendez-vous`.
+Site public `noecalmes.fr` pour vendre le positionnement de Noe Calmes : expert en application mobile, de la strategie au lancement. Le site sert a convertir le trafic en appel reserve sur l'accueil (calendrier Cal.com, section `#contact`, depuis le 27/11/2026), audit gratuit et conversation WhatsApp.
 
-Le chemin prioritaire pour les visiteurs qui se posent une question de prix/budget est : landing page -> `/audit-app` -> verdict -> WhatsApp. WhatsApp est le canal de contact unique : tous les CTA y menent (Calendly retire depuis le 22/06/2026, voir `documentation/strategy/tunnel.md`).
+Le chemin prioritaire pour les visiteurs qui se posent une question de prix/budget est : landing page -> `/audit-app` -> verdict -> WhatsApp. Depuis le 27/11/2026, les boutons de l'accueil menent au calendrier Cal.com ; WhatsApp reste ouvert par l'icone de la barre du haut et par la route `/whatsapp` (fin du formulaire Meta).
 
 ## Stack
 
@@ -18,14 +18,14 @@ Le chemin prioritaire pour les visiteurs qui se posent une question de prix/budg
 
 Routes gerees dans `src/App.jsx` :
 
-- `/` — home landing page
+- `/` — l'accueil (`src/Accueil.jsx`, depuis le 27/11/2026). `/accueiltest`, sa page test, renvoie a `/`
 - `/expertise` — page SEO autonome : ce que je fais qu'un developpeur ne fait pas (`src/PagesSeo.jsx`)
 - `/creation-application-mobile` — page SEO autonome : la methode en 5 etapes (`src/PagesSeo.jsx`)
 - `/faq` — page SEO autonome + donnees structurees FAQPage (`src/PagesSeo.jsx`)
 - `/quiz` et `/quiz/{slug}` — pages quizz SEO (`src/Quiz.jsx`)
 - `/projets` — page de confiance principalement consultée sur téléphone après un premier appel (`src/Projets.jsx`, styles `src/projets.css`) : deux captures fixes (SmoothRide et WakeUp), cadres propres inclinés sur un halo violet, résultats contextualisés, avis clients, prise en charge et suivi, puis cadre du devis. Les chiffres ne sont pas répétés dans une barre séparée. Plouff Habitudes est présenté en 30 jours du design au lancement (Noé, 19/10/2026) ; ce cas précis ne modifie pas le délai moyen du site. Pas de prix d'appel sur cette page : le montant dépend du projet, le devis et le cahier des charges précisent livrables, calendrier et prix avant engagement. Pas de nouvelle promesse de maquette ici. La méthode détaille les décisions produit, la réalisation et la poursuite de la collaboration après les 30 jours de corrections incluses (`strategie-commerciale.md`). Le contact final reste discret (écrire ou rappeler), le prospect ayant déjà le numéro de Noé. Les avis restent partagés avec l'accueil (`src/AvisClients.jsx`).
 - `/audit-app` — audit gratuit d'idee d'application
-- `/rendez-vous` — section contact WhatsApp de la home (`#contact`)
+- `/rendez-vous` — la reservation d'un appel de l'accueil (`#contact`, calendrier Cal.com)
 - `/rdv/` — page publique autonome des invitations de rendez-vous Nowork (`public/rdv/index.html`). Le jeton est dans le fragment `#` de l'URL courte partagée ; la page lit la fonction Firebase `meetingInvite`, puis propose le lien Meet, Google Agenda et un fichier `.ics`. Elle est exclue de l'indexation et ne doit pas être confondue avec `/rendez-vous`.
 - `/avis` — les avis clients de la home, sous le bouton du contact (`#avis-clients`)
 - **Ancres de l'accueil** (11/10/2026) : chaque id est le libellé de sa section, en minuscules et sans accents : `#realisations`, `#etapes-et-tarif`, `#pour-qui`, `#contact`, `#avis-clients`, `#faq`, `#audit`, `#instagram`. Lisibles dans l'adresse, et dans les liens « Aller à » que Google affiche parfois sous un résultat. Les anciens noms (`#calories-proof`, `#offre`, `#confiance`, `#contact-section`, et `#avis`, qui était l'id de la section Instagram et mène maintenant aux avis comme la route /avis), déjà partagés, mènent toujours au bon endroit : `ANCIENNES_ANCRES` dans `src/App.jsx`, lu par l'effet « ancre à l'arrivée », qui fait aussi défiler jusqu'à la section quand on arrive par une adresse en « # » (le navigateur ne le fait pas seul, la page étant construite après son arrivée). Une nouvelle section prend un id de ce genre ; si un id change, l'ancien va dans `ANCIENNES_ANCRES`.
@@ -86,82 +86,34 @@ Trois regles en decoulent, toutes appliquees au build :
 
 `index.html` sert de gabarit a toutes les pages generees. Attention : tout JSON-LD ajoute dans `index.html` se retrouve **sur chaque page generee**. C'est pour ca que `generate-routes.js` retire le bloc `FAQPage` partout sauf sur la home et `/faq`, ou il est regenere depuis `FAQ_ITEMS`. Une page qui declare une FAQ invisible enfreint les regles de Google.
 
-## Le nouvel accueil (27/11/2026)
+## L'accueil (depuis le 27/11/2026)
 
 **noecalmes.fr affiche depuis le 27/11/2026 la page construite sur `/accueiltest`** (Noé : « remplace la landing page
-noecalmes.fr par accueiltest »). Code : `src/AccueilTest.jsx` (le nom est resté celui de la page test) et
-`src/accueil-test.css`, prise de rendez-vous `src/ReserverAppel.jsx` (section « Prise de rendez-vous par Cal.com »
-plus bas, qui vaut maintenant pour l'accueil en ligne).
+noecalmes.fr par accueiltest », puis « supprime l'ancienne, accueiltest devient la page d'accueil »). L'adresse est
+`noecalmes.fr/`, rien d'autre.
 
-- **L'interrupteur** : `NOUVEL_ACCUEIL` dans `src/App.jsx`. Vrai, l'accueil (et toute page sans route propre) rend
-  `AccueilTest`. Faux, l'ancien accueil revient : il est resté intact dans `App.jsx`. `scripts/generate-routes.js`
-  lit cette même ligne : le texte servi aux robots (`<noscript>`, bloc masqué, titre « Je transforme ton idée en
-  application qui rapporte vraiment. ») et la FAQ balisée (les dix `QUESTIONS` de la page) suivent l'accueil affiché.
-  Les étapes, les engagements et les questions, rendus par des `.map()`, sont lus dans leurs tableaux
-  (`lireTableauAccueil`), jamais recopiés.
-- **`/accueiltest`** n'a plus de route : il mène à l'accueil, canonique `/`.
+- **Le code** : `src/Accueil.jsx` et `src/accueil.css` (classes préfixées `at-`), prise de rendez-vous
+  `src/ReserverAppel.jsx` (section « Prise de rendez-vous par Cal.com » plus bas). `src/App.jsx` rend `Accueil` pour
+  `/` et pour toute adresse sans page propre.
+- **L'ancien accueil est supprimé** : son code dans `App.jsx` (et le carrousel `src/AppShowcase.jsx`, qui ne servait
+  qu'à lui ; ses styles `app-showcase.css` restent, `ExemplesMetier` et `/projets` s'en servent). Dernier état
+  complet : commit `c8a13b3`. Sa documentation est archivée : `documentation/archive/architecture/ancien-accueil-2026-10.md`.
+- **`/accueiltest`** n'existe plus : l'adresse renvoie à `noecalmes.fr/` (`history.replaceState`).
+- **Pour les robots**, `scripts/generate-routes.js` lit `src/Accueil.jsx` : texte du composant, puis ses tableaux
+  `ETAPES`, `ENGAGEMENTS` et `QUESTIONS` (rendus par des `.map()`, lus par `lireTableauAccueil`, jamais recopiés),
+  titre « Je transforme ton idée en application qui rapporte vraiment. ». La FAQ balisée de l'accueil reprend ses dix
+  `QUESTIONS`.
 - **Retiré à la mise en ligne** : le titre d'onglet « Page test » et la balise `noindex, nofollow` que la page posait
-  elle-même (elle aurait sorti l'accueil de Google) ; le bloc « Ce que rapporte l'application d'un client » (18 450 €
-  par mois), aux chiffres d'un ancien écran d'exemple présentés comme ceux d'un client, faute de capture réelle et
-  d'accord écrit (bloc complet dans le commit 1624c00, styles restés dans `accueil-test.css`).
+  elle-même ; le bloc « Ce que rapporte l'application d'un client » (18 450 € par mois), aux chiffres d'un ancien
+  écran d'exemple présentés comme ceux d'un client, faute de capture réelle et d'accord écrit (bloc complet dans le
+  commit 1624c00, styles restés dans `accueil.css`).
 - **La preuve Calorie (« 13 000 €/mois ») quitte l'accueil** : description (`META_HOME` et `index.html` : description,
   og, twitter), données structurées de la personne (« une application téléchargée plus d'un million de fois ») et
-  pré-rendu. **Le titre de l'accueil ne change pas.** Elle reste ailleurs sur le site (pages SEO, blog, `llms.txt`) :
-  à reprendre page par page, comme le prévoit le plan du Drive.
+  pré-rendu. **Le titre de l'accueil ne change pas.** Elle reste ailleurs sur le site (pages SEO, blog, `llms.txt`).
 - **`/rendez-vous`** (noindex) s'appelle « Réserver un appel avec Noé » et descend au calendrier.
-- **L'onglet qui appelle au retour** ne dit plus « Maquette offerte pour ton app » : seul reste « Parlons de ton idée
+- **L'onglet qui appelle au retour** ne dit plus « Maquette offerte pour ton app », seulement « Parlons de ton idée
   d'app » (la maquette se propose à l'appel, plus sur le site).
-- **Pas de bouton WhatsApp flottant ni de chatbot sur l'accueil** : WhatsApp passe par l'icône de la barre du haut.
-- Les sections « Hero », « Film du hero » et « L'accueil, section par section » ci-dessous décrivent l'ANCIEN accueil.
-
-## Hero
-
-Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton, puis la vidéo.
-
-- Pastille « +20 applications déjà publiées » : masquée à la demande de Noé (octobre 2026), le code
-  reste. Pour la remettre au-dessus du titre, passer `MONTRER_PASTILLE_HERO` à `true` dans `src/App.jsx`.
-- Titre : « Je transforme ton idée en application qui génère des revenus » (« app » sur ordinateur pour
-  tenir en deux lignes), un peu plus grand qu'avant (3,3 rem sur ordinateur). Noé a trouvé 4,15 rem
-  « trop gros ». Sur téléphone, les tailles sont mesurées pour garder trois lignes jusqu'à 320 px.
-- Phrase sous le titre : « Stratégie, design et développement : je m'occupe de tout, de l'idée à la mise
-  en ligne. » Noé l'a préférée à l'ancienne (« Je conçois ton application mobile & web pour qu'elle
-  rapporte vraiment… »).
-- Bouton « J'ai une idée d'application » (refonte du 10/10/2026 : c'est le visiteur qui parle, il se
-  reconnaît ; « Discuter avec Noé » n'a tenu que la journée du 10/10). Pas de ligne dessous : « C'est moi
-  qui réponds, sur WhatsApp · gratuit », essayée le 10/10, répétait la barre du haut (photo de Noé) et
-  « gratuit » était de trop (Noé, 11/10/2026). Plus grand sur ordinateur et
-  sur une seule ligne jusqu'à 320 px. Il mène à la section contact, « Parlons de ton projet », dont le
-  bouton, qui ouvre WhatsApp, dit « Discuter avec Noé » : à cet endroit, le visiteur s'attend à parler à
-  quelqu'un (Noé, 10/10/2026), comme le lien du pied de page. Le bouton qui suit « Comment ça se passe ? »
-  dit aussi « Discuter avec Noé » (11/10/2026 : la suite de l'étape « On en parle »). La barre du haut et le menu sur téléphone disent « J'ai une idée » (plus court,
-  comme Ikovaline), sur l'accueil, le blog, les quiz et les pages /expertise, /creation-application-mobile
-  et /faq. Liens de la barre (`NAV_LINKS`, 11/10/2026) : « Réalisations », « Étapes et tarif », « Avis clients »
-  (« Qui je suis » le matin du 11/10 ; avant : « Preuves », « Méthode », « Audit »), dans l'ordre de la page, les petits titres des sections où ils
-  mènent, mot pour mot. « Et tarif » : le prix est la première question de la cible, on doit voir d'un coup
-  d'œil où le trouver. Ces liens mènent dans la page : ils ne jouent pas sur le référencement (les liens
-  vers les pages SEO sont dans le pied de page et le pré-rendu).
-  Plus d'audit dans la barre : « c'est un plus », Noé ne veut pas le pousser ; il reste en bas de page, dans
-  le pied de page et sur la route /audit. Les trois tiennent dès 1024 px.
-- Le fond de la barre est blanc à 92 % (`#fffefceb`) depuis le 11/10/2026, sur toutes les pages : à 24 %, le
-  texte des sections passait au travers en défilant (Noé : « la navbar transparente, pas ouf »).
-- Au survol, tous les boutons de l'accueil ont le reflet de la fin du film (« Audit offert ») : un trait
-  de lumière penché comme un « / », de haut à droite vers bas à gauche, qui les traverse et passe sous le
-  texte (`.btn-reflet` dans `src/index.css`). Les boutons violets (« J'ai une idée d'application » en haut,
-  « Discuter avec Noé » après les étapes et dans la section contact, « Voir mon Instagram » tout en bas) et les boutons noirs (« J'ai une idée » en haut, le bouton du menu sur
-  téléphone), où le même trait blanc se voit comme un reflet gris clair (demande de Noé du
-  10/10/2026 : « tous les autres boutons », « travailler en noir »). Seulement à la souris, et pas quand
-  moins d'animations sont demandées.
-- Espacement (demandes de Noé du 10 et du 11/10/2026 : plus d'air au-dessus du titre, la vidéo plus bas) :
-  sur ordinateur (1024 px et plus), 112 px entre la barre du haut et le titre (titre à 200 px du haut,
-  `lg:pt-50` ; 176 px avant le 11/10), puis 28 px jusqu'à la phrase, 40 px jusqu'au bouton et 80 px jusqu'à
-  la vidéo (« la vidéo un peu plus bas », 10/10/2026). Sur téléphone : 20, 32 et 40 px. Le hero reste centré
-  en hauteur quand l'écran est plus haut que son contenu. Sur un ordinateur bas (hauteur 820 px ou
-  moins : portables 1366×768, 1280×720), l'air est réduit (48, 20, 32, 40 px) pour que la miniature de
-  la vidéo se voie dès l'arrivée (`src/index.css`).
-- Fond (`.hero-bg` dans `src/index.css`) : une lueur violette en arc de cercle. Un grand cercle blanc
-  centré en haut (blanc jusqu'à 34 % du rayon, fondu jusqu'à 70 %) laisse le violet monter haut sur les
-  côtés, descendre doucement vers le milieu et remonter de l'autre côté ; il entoure la vidéo. Même
-  forme sur téléphone et tablette, sans la tache violette en haut à droite.
+- **Ni bouton WhatsApp flottant ni chatbot** sur l'accueil : WhatsApp passe par l'icône de la barre du haut.
 
 ## Film du hero
 
@@ -221,246 +173,6 @@ Le lecteur reprend celui d'Ikovaline (ikovaline.com), à la demande de Noé :
   données, rien n'est chargé d'avance) : l'affiche reste, avec un gros bouton « Lancer la vidéo », qui la
   lance avec le son.
 
-## L'accueil, section par section (refonte du 10/10/2026)
-
-Question de Noé : « il a vu la vidéo ; s'il fait défiler, on lui montre quoi ? » La page d'avant répétait la
-vidéo (« Une stratégie derrière chaque écran », « Mon métier : transformer tes utilisateurs en clients »,
-« Tu amènes les gens, je les transforme en clients »), montrait trois fois la maquette, le cahier des
-charges et le devis, posait « Pourquoi me faire confiance ? » sur un simple tableau contre les agences,
-et envoyait vers Instagram juste avant la fin. Principe retenu : après la vidéo, le visiteur cherche des
-preuves, pas des promesses. Chaque section répond à une seule de ses questions, dans l'ordre où il se les
-pose (c'est vrai ? qu'est-ce que je risque ? c'est qui ? c'est pour moi ?), puis vient le bouton. Onze
-sections deviennent sept. Le texte des sections est écrit dans le JSX de `App` (pas dans des tableaux) :
-c'est ce que lit le pré-rendu pour les robots (`scripts/generate-routes.js`).
-
-**Un petit titre au-dessus de chaque section** (violet, en capitales, 11/10/2026) : « Réalisations »,
-« Étapes et tarif », « Avis clients » (« Qui je suis » jusqu'au 11/10/2026), « Pour qui », « Questions fréquentes », « Instagram ». Noé trouvait bizarre qu'une section n'en ait
-pas ; les liens de la barre du haut reprennent les trois premiers. « Parlons de ton projet » a la pastille des
-places à la place.
-
-**Sur ordinateur, de l'air** (« c'est serré », Noé, 11/10/2026) : 112 px en haut et en bas de chaque
-section (`md:py-28`), 104 px pour « Ce que j'ai déjà construit », 32 px entre les cartes.
-
-**90 % des visiteurs arrivent sur téléphone, depuis les pubs Instagram et Facebook** (Noé, 11/10/2026) :
-chaque texte se juge d'abord sur un écran de téléphone, en phrases courtes. Une réponse de FAQ tient en
-deux ou trois phrases qui expliquent : trop long, on ne lit pas (« c'est trop long ») ; trop court, on
-n'explique rien (« c'est très court, on explique pas »), Noé, 11/10/2026.
-
-**Une chose n'est dite qu'une fois sur la page** (Noé, 11/10/2026 : « relis tout, si c'est un doublon, si c'est
-répétitif, pas le mettre »). La barre du haut et la vidéo comptent : la barre affiche en permanence « Noé Calmes,
-Expert en applications mobiles & web », et la vidéo, lancée sans le son, écrit à l'écran ce que dit la voix (« une
-dizaine d'idées par semaine », « ils reviennent chaque jour, ils paient chaque mois »). Avant d'ajouter une phrase,
-chercher si la page la dit déjà, même avec d'autres mots. Deux exceptions admises : la FAQ, repliée, qui peut
-reprendre le prix et le délai pour ceux qui y vont directement. (La comparaison avec une agence, qui redisait le
-tarif et le délai, n'existe plus en tableau : le chiffre d'une agence est sous le tarif et le délai des étapes.)
-
-1. **Hero et vidéo** (voir plus haut).
-2. **« Ce que j'ai déjà construit »** (`#realisations`, lien « Réalisations » de la barre du haut) : « Des
-   applications publiées, utilisées, et qui rapportent. », puis quatre chiffres fournis par Noé, en 2 × 2 :
-   +13 000 € par mois pour Calorie (sur un marché déjà saturé ; le « + » demandé par Noé le 11/10/2026), +300 000 utilisateurs pour Hush App (avec
-   sa première version), +900 000 téléchargements (toutes ses applications), +20 applications publiées. À
-   côté, le carrousel des écrans, chacun avec une légende qui dit à quoi il sert : la stratégie se voit au
-   lieu d'être annoncée. Remplace la barre de preuve, « Une stratégie derrière chaque écran » (ses cinq
-   pastilles) et « Mon métier ». Styles : `src/app-showcase.css`.
-3. **« Comment ça se passe ? »** (`#etapes-et-tarif`, sous « Étapes et tarif », lien du même nom dans la barre) : trois cartes, étapes 1 « On en parle » et
-   2 « On cadre » avec la pastille verte « Offert », étape 3 « Je construis » (« On construit ensemble »
-   jusqu'au 11/10/2026 : « c'est un peu faux, l'objectif c'est que je m'occupe de tout », Noé). Son texte
-   commence par « À partir de ta maquette, je crée le design final… » (« Je reprends la maquette sur mesure »
-   ne voulait rien dire pour Noé, 11/10/2026) et finit par « Je reste disponible après la mise en ligne. » (Noé,
-   11/10/2026, à la place de « Ensuite, je t'accompagne pour la faire évoluer »). Pas de phrase
-   au-dessus qui redise « offert » (retirée le 11/10/2026, Noé : « est-ce qu'on le met deux fois ? »). Les
-   textes des étapes sont ceux validés par Noé le 10/10/2026, sans le « offert » de l'étape 2 (« je t'envoie un
-   cahier des charges, une première maquette et un devis clair ») : la pastille le dit déjà (11/10/2026). Les illustrations sont celles que Noé avait
-   choisies (`meetingdev.svg`, `devmobile.svg`, `post.svg` dans `public/assets/images/illustrations/`) : il
-   les a redemandées le 11/10/2026 (« plus design, plus compréhensible ») après deux essais refusés, une
-   conversation avec de vraies maquettes et des dessins mélangés, puis des cartes de petites lignes de texte
-   (« pas lisible du tout »). Sur téléphone, l'illustration (128 × 118 px, 100 × 92 sous 350 px) se met à
-   droite du début du texte au lieu de prendre toute la largeur au-dessus (`.process-…` dans `src/App.css`).
-   Au survol sur ordinateur, la carte passe en violet. Sous les étapes, le tarif et le délai
-   (`.etape-tarif`), deux repères avec chacun son icône dans un carré violet pâle (Noé, 11/10/2026 : en une seule
-   ligne de texte, « c'était fade ») : « À partir de 5 000 € », puis « Le prix dépend de ton application. Tu le
-   connais avant de commencer, sans surprise : stratégie, design, développement et mise en ligne compris » ;
-   « 45 jours en moyenne », puis « Pour une application mobile ou web (SaaS) ». « Le prix dépend de ton
-   application » remplace « Tarif fixe » : à côté de « à partir de 5 000 € », « tarif fixe » se lisait « toutes
-   les applications à 5 000 € » pour une cible qui n'y connaît rien (Noé, 11/10/2026). Pour dire que le prix ne
-   grimpe pas en route, « Tu le connais avant de commencer, sans surprise » (question de Noé le même soir :
-   « pas de compteur qui tourne », « prix fixe » ?) : « prix fixe » refait le piège du « tarif fixe », et
-   « compteur qui tourne » parle à qui a déjà payé une agence au temps passé, pas à la cible (la FAQ le garde,
-   pour qui va plus loin). « Compris » en fin de liste : sans lui, la liste se lisait comme ce qui est « fixé »,
-   pas comme ce que le prix contient. « Design » et pas « maquette » : la maquette est
-   offerte avant de payer, elle n'est pas dans le prix. « (SaaS) » derrière « web » : la seule occurrence de la
-   page, jamais seule (`documentation/context/vocabulaire-mobile-web.md`, règle 6 bis).
-   **Le prix dit « à partir de 5 000 € », comme la pub et le formulaire Meta** (Noé, 11/10/2026
-   au soir ; avant : « en général une dizaine de milliers d'euros », ici et dans la FAQ). Depuis le formulaire du
-   11 octobre, les leads arrivent sur cette page par le bouton « Voir la vidéo » de l'écran de fin, juste avant le
-   premier message de Noé : un autre chiffre que celui de la pub se lit comme un prix qui monte, et un lead déjà
-   gagné ne répond plus. L'ordre de grandeur réel (8 000 à 12 000 € pour un projet complet) se donne à l'appel ;
-   le tri des petits budgets est fait par la question budget du formulaire. Les articles du blog gardent leurs
-   fourchettes par périmètre : c'est du contenu pour qui cherche un prix, pas la page des leads.
-   Côte à côte sur ordinateur, l'un sous l'autre sur téléphone. **45 jours partout, jamais « première version »**
-   (Noé, 11/10/2026 ; la page avait dit 30 jours du 10 au 11/10). « SaaS » seul, que Noé proposait, a été écarté :
-   il ne s'écrit jamais seul (`documentation/context/vocabulaire-mobile-web.md`, règle 6 bis) ; depuis le 11/10/2026
-   au soir il suit « web », entre parenthèses.
-   Sous chacun, en gris, le chiffre d'une agence : « En agence : à partir de 20 000 € » (15 000 jusqu'au 11/10/2026, Noé : « 20 000 partout ») et « En agence : 3 à 6
-   mois » (11/10/2026, à la place du tableau « Une agence / Avec moi » : le contraste se lit au moment où on lit le
-   prix). Le tarif et le délai sont aussi dans la FAQ, mais la FAQ est repliée : ceux-ci se voient, et trient les
-   budgets avant WhatsApp (question de Noé du 11/10/2026, gardés pour ça). Sur ordinateur, 40 px au-dessus du bouton
-   « Discuter avec Noé » et 80 px sous lui (au lieu de 48 et 112) : il flottait au milieu de 224 px vides avant
-   « Avis clients » (Noé, 11/10/2026). Pas de « tu paies ici » : on ne paie pas à la mise en ligne, il y a un
-   acompte au démarrage. Puis le bouton « Discuter avec Noé » (11/10/2026, la suite de « On en parle » ; il
-   mène à « Parlons de ton projet », comme celui du haut). Absorbe « Avant de payer un euro, je t'offre ».
-4. **« On est faits pour travailler ensemble ? »** (`#pour-qui`, sous « Pour qui » ; « C'est pour toi ? »
-   jusqu'au 11/10/2026, trop simple pour Noé) : deux « oui » et deux « non » qui se répondent, le budget et le rôle.
-   « Oui, si… » : une idée d'application et un budget prévu pour la lancer ; un résultat, sans avoir à t'occuper
-   de la technique. « Non, si… » : juste un développeur qui exécute tes consignes ; le prix le plus bas. Écarte
-   avant WhatsApp ceux que Noé ne prend pas. Retirés le 11/10/2026 : « Tu cherches un site vitrine » (Noé en fait
-   quand il le faut), « une seule personne s'occupe de tout » (« il veut un résultat, il s'en fout si un ou
-   plusieurs », Noé), « une application qui te rapporte des revenus chaque mois » (la promesse du hero et de la
-   vidéo, redite), « tu vois ton application comme une dépense, pas comme un investissement » (« ça va pas les
-   faire fuir ? », Noé : ça fait la leçon, et ça redit « le prix le plus bas ») et « quelqu'un pour faire ta
-   publicité » (la FAQ y répond, avec la nuance de Noé : il conseille sur la façon de faire connaître
-   l'application). Remplace « Ce que je fais / Ce que je ne fais pas ». Suit directement les étapes depuis que les
-   avis sont descendus (11/10/2026) : fond blanc, et 80 px au-dessus sur ordinateur.
-5. **« Parlons de ton projet »** (`#contact`, route /rendez-vous) : la pastille des disponibilités
-   (son fond n'apparaît qu'avec le texte des places ; pendant « Vérification des disponibilités… », pas de
-   fond, Noé 11/10/2026),
-   le bouton WhatsApp « Discuter avec Noé » (suivi `home_contact`) et « Tu bosses direct avec moi ».
-   Placée avant la FAQ le 11/10/2026 (Noé). Fond gris depuis le 11/10/2026 (les fonds alternent).
-   **Puis, sous le bouton, les avis clients** : « Ce que disent mes clients » (`#avis-clients`, sous « Avis
-   clients », lien du même nom dans la barre ; la route /avis y mène ; `scroll-mt-24` pour que la barre ne le
-   cache pas), séparé du bouton par un filet. Descendus ici le 11/10/2026 (Noé : « les avis, je les verrais en
-   bas ») : tous les boutons de la page (« J'ai une idée », « Discuter avec Noé ») mènent à cette section, donc
-   celui qui hésite au moment d'écrire trouve les clients juste dessous, avant la FAQ. On ne met pas les avis
-   sous la FAQ : la FAQ répond aux questions, les avis rassurent au moment de cliquer.
-   Des avis depuis le 11/10/2026 (Noé : « il veut de la preuve sociale »). Le titre était « Pourquoi me faire
-   confiance ? » jusqu'au 11/10/2026 à 14 h (Noé : « le titre est bon ? ») : une question fait douter avant de
-   rassurer et annonce un argument, alors qu'on montre des messages. Puis « Ce qu'en disent mes clients », le
-   titre de /projets, l'après-midi : « c'est pas français » (Noé, le soir). Depuis : « Ce que disent mes
-   clients », ses mots, sur les deux pages, sous le petit titre « Avis clients » (le lien de la barre). Trois
-   messages WhatsApp réels (confirmé par Noé), ceux du surligné
-   « Témoignages » de son Instagram (il n'y en a pas d'autres pour l'instant). **La même partie que sur
-   /projets, une seule source : `src/AvisClients.jsx`**, affiché par l'accueil et par /projets (Noé,
-   11/10/2026 : « je veux la même partie que dans projets, c'est plus propre ») : les visuels de Noé, format
-   story (titre en capitales avec des mots en violet, la conversation, papier quadrillé), dans
-   `public/assets/images/avis/temoignage-…webp` ; l'un sous l'autre sur téléphone, côte à côte et ceux des bords
-   légèrement penchés sur ordinateur. Le nom du client est recouvert d'une barre noire sur deux d'entre eux (il
-   était lisible sur /projets jusqu'au 11/10/2026 ; le troisième, Noé l'avait déjà effacé). Sur le premier, la
-   phrase du bas de la story, « Merci pour vos retours ! », est effacée (Noé, 11/10/2026 : elle parlait aux
-   clients, pas au visiteur). Puis la première et la troisième image ont été raccourcies (Noé : « l'image n'est
-   pas si longue ») : le bas vide est coupé, il reste sous la conversation la marge du haut. Trois hauteurs, donc,
-   la plus haute au milieu : sur ordinateur, les cartes sont centrées en hauteur. Le titre de chaque
-   carte est dans l'image, le texte `alt` le reprend : « D'une simple idée à une app qui tourne », « Une app qui
-   existait, mais qui ne rapportait pas », « Livré dans les délais, 100 % satisfait ». Le deuxième répond à
-   « pourquoi moi et pas une agence » et prouve les écrans qui font payer, sans redire la vidéo. Dessous, une note
-   courte : « Noms masqués par discrétion. » (« Messages reçus sur WhatsApp, noms masqués. » jusqu'au 11/10/2026 au
-   soir, Noé : « raccourcis le texte ») ; elle explique les barres noires et rassure celui qui a peur qu'on dévoile
-   son idée. Le contenu des avis est dans le texte `alt` de chaque image, que `scripts/generate-routes.js` sert aux
-   robots de l'accueil.
-   Essai refusé le même jour : des cartes recadrées sur la conversation, avec le titre écrit en texte, en rangée
-   qu'on fait glisser sur téléphone (« c'est plus propre » dans /projets). Ajouter un avis : n'y mettre que des
-   messages réels, avec l'accord de la personne, son nom masqué.
-   Essais retirés le même jour : la carte avec la photo de Noé (sa tête deux fois avec la barre du haut), « Je
-   connais ce milieu, j'ai lancé mes propres applications » (« et alors ? », Noé), le tableau « Une agence / Avec
-   moi » (deux tableaux croix/coche à la suite avec « Pour qui », et « un chef de projet entre vous » : « il s'en
-   fout, il veut un résultat »). **Le tableau ne revient pas sous les avis** (question de Noé, 11/10/2026 à
-   14 h : « ça me paraissait bien, voir si on ne dit pas pareil ») : ses trois lignes disaient pareil, le
-   chiffre d'une agence est déjà sous le tarif et sous le délai des étapes, « Moi, directement » est « Tu bosses
-   direct avec moi » juste au-dessus des avis, et le deuxième avis raconte l'agence par la bouche d'un client, ce
-   qui convainc mieux qu'un tableau fait par Noé. S'il revenait un jour, ce serait à la place des deux lignes
-   grises « En agence : … » des étapes, jamais en plus. Ses applications à lui ne sont nommées nulle part comme
-   telles : le titre du carrousel « Ce que j'ai déjà construit » est vrai pour toutes ; ne jamais écrire qu'elles
-   sont à des clients.
-
-6. **FAQ « Pour y voir plus clair »** (`#faq`, sous « Questions fréquentes » : la cible ne connaît pas
-   forcément « FAQ ») : les 4 premières questions de `FAQ_ITEMS`
-   (`src/PagesSeo.jsx`), les vraies objections, en deux ou trois phrases chacune :
-   - combien : « À partir de 5 000 €. Le prix dépend de ton application et il est fixé avant de commencer :
-     stratégie, design, développement et mise en ligne compris, sans compteur qui tourne. Tu le connais avant
-     de payer quoi que ce soit, et tu vois ta maquette avant de décider. » (11/10/2026 au soir ; avant : « en
-     général une dizaine de milliers d'euros », raison au point 3 sur le tarif) ;
-   - en combien de temps : « En moyenne, 45 jours pour une application mobile ou web, du cadrage à la mise en
-     ligne. Le délai exact est fixé dans le devis, selon les fonctionnalités prévues au cahier des charges. »
-     (45 jours et pas « première version » depuis le 11/10/2026 ; Noé refuse « on cale le délai ensemble », pas
-     assez pro). La page « Ma méthode » et le texte des robots (`/creation-application-mobile`, `/faq`,
-     `llms.txt`), le quiz, les boutons de l'audit et les articles du blog disent la même chose (11/10/2026,
-     « vérifie partout », Noé) : « 4 à 6 semaines » n'y reste que comme le temps de développement à l'intérieur
-     des 45 jours, les tableaux de prix n'ont plus de colonne délai, et « 6 à 9 mois pour une application
-     complète » est devenu « une plateforme plus lourde se compte en mois, son délai est fixé dans le devis ».
-     L'audit, lui, estime un délai par projet (de 5 à 9 semaines selon la complexité, dans
-     `src/audit-app/backend/prompts.ts`) : pas touché, il demande un redéploiement ;
-   - « je n'y connais rien » : « c'est le cas de la plupart de mes clients », « je suis là pour
-     t'aiguiller et te conseiller », « une idée suffit pour commencer ensemble » ;
-   - pour trouver des utilisateurs : Noé ne fait pas la publicité, son travail est que les utilisateurs
-     qui arrivent deviennent des clients qui paient chaque mois, mais il conseille sur la façon la plus
-     pertinente de faire connaître l'application.
-
-   Retirées le 11/10/2026 par Noé : « Application mobile ou web : laquelle choisir ? », « À qui appartient
-   l'application ? » (« c'est logique, il paye ») et « Est-ce que mon application va vraiment générer des
-   revenus ? ». `NB_FAQ_ACCUEIL` vaut 4 dans `src/App.jsx` et dans `scripts/generate-routes.js` (balisage
-   FAQPage de l'accueil) : changer les deux ensemble. /faq garde la liste complète (10 questions). La FAQ vient
-   après « Parlons de ton projet » depuis le 11/10/2026 (décision de Noé : le bouton WhatsApp d'abord, la FAQ
-   ensuite pour ceux qui hésitent encore). Sous les questions, « Une autre question ? Écris-moi sur
-   WhatsApp. » ouvre directement WhatsApp avec le suivi `home_faq`.
-7. **« Je décortique tout ça sur mon Insta »** (`#instagram`, sous « Instagram ») : la section d'avant la
-   refonte, remise en bas le 11/10/2026 à la demande de Noé (« à la fin, remets la section Insta »), même
-   texte et même post intégré (`instagram.com/p/DZS67wXiPRM/embed`), bouton « Voir mon Instagram ». Retirée
-   le 10/10 parce qu'elle faisait quitter la page avant le bouton WhatsApp ; elle vient maintenant après le
-   bouton, les avis et la FAQ : celui qui arrive au bout sans avoir écrit peut suivre Noé. Son id était
-   `avis` (la route /avis y menait) : `#avis` mène désormais aux avis clients.
-8. **L'audit, en dernier** (`#audit`, route /audit) : « Pas encore prêt à écrire ? Teste ton idée : potentiel,
-   budget et délai, en 2 minutes. », avec un bouton au contour violet « Lancer mon audit », jamais plein, et
-   sans petit titre (un rappel, pas une section de plus). Sous Instagram depuis le 11/10/2026 (Noé ; il était
-   sous la FAQ) : la dernière chose avant le pied de page garde le visiteur sur le site au lieu de l'envoyer
-   sur Instagram. Noé ne veut pas le pousser (« c'est un plus ») et avait peur d'y perdre ceux qui allaient
-   écrire, l'audit étant plus long qu'un message : il est donc après tout le reste, pour ceux qui ne sont
-   toujours pas prêts.
-
-Retirés le 10/10/2026 : la barre de preuve, « Mon métier », « Avant de payer un euro, je t'offre », le
-grand tableau Agences et l'ancienne section audit. La section Instagram, retirée aussi, est revenue le
-11/10/2026 en bas (point 7). Les illustrations `meetingdev.svg`, `devmobile.svg` et `post.svg`,
-retirées le 10/10, sont revenues dans les étapes le 11/10 (point 3).
-
-Fonds, de haut en bas (11/10/2026) : le hero violet, blanc (réalisations), gris clair (étapes et tarif), blanc
-(pour qui), gris clair (contact et avis), blanc (FAQ), gris clair (Instagram), blanc (audit), puis le pied de
-page violet.
-
-### Le carrousel des écrans
-
-Neuf captures fournies par Noé, converties en WebP de 660 px sous
-`public/assets/images/apps/captures/` (environ 459 Ko au total). Ajoutées le 11/10/2026 : le premier écran de
-Bailora (« Vos SCI, enfin simples », `bailora-bienvenue.webp`, légende « Une porte pour le propriétaire, une autre
-pour le locataire : personne ne se perd. ») et l'écran d'abonnement de Plouff Habitudes (`plouff-abonnement.webp`,
-choisi parmi six captures de son bureau : c'est l'écran qui fait payer, celui qui prouve « une application conçue
-pour rapporter » ; légende « L'offre annuelle mise en avant, 7 jours d'essai : le curieux devient abonné. »). Il
-affiche « Salut Noe » et « Soutenir un développeur français indé » : à refaire avec un autre prénom si Noé veut
-qu'on devine moins que Plouff Habitudes est à lui. Prix en euros depuis la capture du 11/10/2026 (la première
-était en dollars). Noé prévoit un deuxième écran de Sonora.
-
-**L'ordre** (Noé, 11/10/2026 : « montrer 3 écrans différents ») : les trois téléphones visibles montrent
-toujours trois applications différentes, jamais deux écrans de la même côte à côte. Deux tours, dans le même
-ordre d'applications (SmoothRide, Bailora, WakeUp Alarme, Sonora, Plouff Habitudes ; WakeUp avant Plouff à la
-demande de Noé) : d'abord un écran de chacune, le plus parlant, puis le deuxième écran de chacune. Deux écrans
-par application au plus : au-delà, personne ne les voit (dix écrans font déjà 55 secondes). Plouff Habitudes
-raconte à elle seule la promesse de la vidéo : l'écran du jour au premier tour (ils reviennent chaque jour),
-l'abonnement au second (ils paient chaque mois). Le deuxième écran de Sonora ira entre ceux de WakeUp Alarme et
-de Plouff Habitudes au second tour ; les deux applications de Noé ne se suivront alors plus nulle part. Deux
-légendes ne disent jamais la même chose. En développement, la console avertit si trois écrans qui se suivent ne
-viennent pas de trois applications différentes.
-
-Le nombre d'écrans est libre : seules les positions -1, 0 et 1 se voient, les autres sont rangées cachées à -2
-ou 2 (`position` dans `src/AppShowcase.jsx`). Avant le 11/10/2026, à 8 écrans, celui d'en face (position 4)
-n'avait pas de style et s'affichait par-dessus le téléphone du milieu.
-
-Trois téléphones visibles, défilement toutes les 5,5 secondes (3,5 avant les légendes : le temps de les
-lire), glissement, flèches et clavier. La première capture reste affichée jusqu'à ce qu'au moins la
-moitié de la galerie entre dans l'écran ; le défilement démarre alors et se suspend dès que la galerie
-repasse sous ce seuil. Un clic sur une flèche ou un glissement suspend le défilement 30 secondes avant
-reprise automatique. Aucun bouton pause n'est affiché. L'animation se suspend tant que le focus clavier
-est dans le carrousel, hors écran, pendant un glissement et dans un onglet masqué. `prefers-reduced-motion`
-désactive l'automatisme et les transitions.
-Références de conception : [Embla, exemples](https://www.embla-carousel.com/docs/v8/examples/predefined),
-[Swiper, coverflow](https://swiperjs.com/demos), [W3C, carrousels accessibles](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).
-
 ## Maquettes
 
 Les maquettes HTML faites a la main vivent dans la landing page avec des routes `/maquette/...`.
@@ -490,7 +202,7 @@ Quand une nouvelle maquette client doit etre creee, prendre Aretha comme referen
 
 ## Contact WhatsApp
 
-Calendly a ete retire de la landing le 22/06/2026 (embed, script et preconnexions supprimes). Le contact passe desormais par **WhatsApp** : constante `WHATSAPP_URL` (numero + message pre-rempli) dans `src/App.jsx`.
+Calendly a ete retire de la landing le 22/06/2026. **Depuis le 27/11/2026, l'accueil se reserve par Cal.com** (section suivante). WhatsApp reste : l'icone de la barre du haut de l'accueil (message pre-rempli avec la page d'origine, `src/Accueil.jsx`) et la route `/whatsapp`, fin du formulaire Meta (`WHATSAPP_NUMBER` dans `src/App.jsx`). Ce qui suit decrit l'ancien accueil.
 
 Tous les CTA de contact de la home et des pages de contenu renvoient d'abord vers `/rendez-vous`, qui affiche la section `#calendly-section`. Seuls deux acces ouvrent WhatsApp directement :
 
@@ -533,9 +245,9 @@ Pour les CTA prix/budget, `/audit-app` reste le chemin des pages de contenu. Exc
 
 Le code Calendly a ete entierement retire du repo (07/2026) : plus de `CALENDLY_URL`, plus de no-op `loadCalendlyScript`, la section contact s'appelle `#contact-section` (ancien id `#calendly-section`). La route `/merci` (page post-RDV Calendly) et `src/Merci.jsx` ont ete supprimes ; `/merci` reste prerendu en noindex pour les vieilles URLs indexees. Detail du retrait : `documentation/archive/funnels/funnel-calendly-2026-06.md` et l'historique git.
 
-### Prise de rendez-vous par Cal.com, sur la page test `/accueiltest` seulement (26/11/2026)
+### Prise de rendez-vous par Cal.com, sur l'accueil (construite le 26/11/2026, en ligne le 27/11/2026)
 
-Decision de Noe : un seul agenda pour le site et la pub Meta. **Rien n'est en ligne** : la page test n'existe qu'en `npm run dev`, et l'accueil en ligne garde WhatsApp. Essais du meme jour abandonnes (Calendly, puis un formulaire sur mesure avant le calendrier) : dans l'historique git.
+Decision de Noe : un seul agenda pour le site et la pub Meta. **En ligne sur l'accueil depuis le 27/11/2026.** Essais du meme jour abandonnes (Calendly, puis un formulaire sur mesure avant le calendrier) : dans l'historique git.
 
 - **Le parcours** (`src/ReserverAppel.jsx`, section `#contact`) : le widget en ligne officiel de Cal.com (`app.cal.com/embed/embed.js`), seul. Le visiteur choisit son creneau, puis Cal.com lui demande nom, e-mail, telephone et six questions. Aucun tri par le budget : tout le monde peut reserver.
 - **L'evenement** : « Appel decouverte », `cal.com/noecalmes-app/appel`, lieu « numero de telephone du participant » (Noe appelle, son numero n'est jamais affiche ; c'etait le cas avec le lieu « appel telephonique » de depart). Questions, avec leurs identifiants (lus par Nowork dans le webhook), toutes a choix en **liste deroulante** (« Choisis une reponse », choix de Noe) sauf l'idee en texte libre : `activite`, `idee`, `stade` (« Ou en est ton projet ? » : j'y reflechis, j'ai besoin d'aide pour le structurer / mon cahier des charges est pret / mon projet est defini, je cherche quelqu'un pour le lancer ; idee reprise du formulaire d'Ikovaline, raccourcie et tutoyee), `lancement`, `budget` (« Tu as un budget en tete pour ton projet ? » : moins de 5 000 €, de 5 000 a 10 000 €, de 10 000 a 15 000 €, de 15 000 a 20 000 €, plus de 20 000 € ; les tranches de la pub Meta plus « moins de 5 000 € », choix de Noe), `source`, `confidentialite` (Oui / Non obligatoire, « Oui (je t'envoie par e-mail un accord a signer avant l'appel) » : l'accord part par e-mail, a la main pour l'instant). « Notes supplementaires » et « Ajouter des invites » masques.
@@ -543,9 +255,9 @@ Decision de Noe : un seul agenda pour le site et la pub Meta. **Rien n'est en li
 - **Agenda et messages** : disponibilites 9 h 45 - 18 h 45 en semaine, 10 h - 15 h le samedi, un creneau toutes les 15 minutes (sinon Cal.com aligne sur l'heure et la demi-heure, et le premier creneau tombait a 10 h au lieu de 9 h 45), preavis minimum de 2 h. Les agendas « Agenda de Noe » (Google) et « Noe Apple perso » bloquent les heures deja prises ; chaque reservation s'ajoute dans « Agenda de Noe ». Cal.com envoie la confirmation (e-mail et invitation d'agenda). Workflow « Rappel 1 h avant l'appel » (pas 24 h : le prospect reserve souvent pour le jour meme ou le lendemain) : un e-mail (texte standard de Cal.com, au vouvoiement : le texte personnalise est payant ; expediteur « Noé Calmes ») et un SMS « Bonjour {prenom}, c'est Noé. Je t'appelle aujourd'hui a {heure} pour parler de ton projet d'application. Je t'attends ! », qui ne part que si le compte a des credits SMS (solde a 0 le 26/11/2026 ; 1 credit = 0,01 $, prix Twilio + 80 %, par segment de 160 caracteres).
 - **Sur ordinateur**, l'iframe de Cal.com garde 520 px (`!important`, Cal.com ecrit sa hauteur en style en ligne) : c'est Cal.com qui defile a l'interieur, horaires puis formulaire, comme chez Mirim (mirim-agency.fr). Sur telephone, il prend toute sa hauteur.
 - **Titre de l'evenement Cal.com** : « Appel strategique » (choix de Noe, 26/11/2026 au soir, sur le modele de Mirim), avec une description en programme (« Voici le programme : », trois lignes, « En 30 minutes, et c'est gratuit. ») ; « Parlons de ton idee d'application » et « Appel conseil gratuit » essaye le meme jour, refuse par Noe ; avant « Discuter de ton projet d'application », puis « Appel decouverte »). « Audit » ne parle pas a tout le monde (Noe). C'est aussi l'objet des e-mails de Cal.com. L'adresse reste `noecalmes-app/appel`. L'appel dure **30 minutes** : la page le dit partout (etape 1 et son dessin).
-- **Haut de page (26/11/2026, en vue de la video face camera)** : sur telephone, la video, puis « Regarde la video avant de reserver ton appel. », puis le bouton ; sur ordinateur, le bouton reste au-dessus de la video. Le bouton dit « Reserver mon appel gratuit » et n'est jamais bloque tant que la video n'est pas vue. Styles `.at-hero-bas` dans `accueil-test.css`.
+- **Haut de page (26/11/2026, en vue de la video face camera)** : sur telephone, la video, puis « Regarde la video avant de reserver ton appel. », puis le bouton ; sur ordinateur, le bouton reste au-dessus de la video. Le bouton dit « Reserver mon appel gratuit » et n'est jamais bloque tant que la video n'est pas vue. Styles `.at-hero-bas` dans `accueil.css`.
 - **Au-dessus du calendrier** (26/11/2026, tard) : le titre « 30 minutes avec Noe. Pas un commercial. » et la phrase « Je prends un seul nouveau projet par mois. Reserve ton appel : » (voulue par Noe). Le message WhatsApp de l'icone de la barre finit par « Depuis la page : » et l'adresse de la page, puis « Mon idee : ». La question « Depuis combien de temps tu as cette idee ? » et la pastille sont retirees (Noe ne comprenait plus la question sans sa chute).
-- **Pas de bouton WhatsApp flottant** sur cette page : il faisait concurrence au calendrier et a ses questions.
+- **Pas de bouton WhatsApp flottant** sur l'accueil : il faisait concurrence au calendrier et a ses questions.
 - **Plus de SMS dans le workflow de rappel (27/11/2026)** : l'action « Envoyer un SMS au participant » est supprimee du workflow « Rappel 1 h avant l'appel ». C'est elle qui faisait afficher sous le numero de telephone « En saisissant votre numero de telephone, vous consentez a recevoir des SMS… Des frais de SMS peuvent s'appliquer », qui pouvait faire fuir (Noe). Le rappel par e-mail reste. Ne pas remettre d'action SMS sans accepter le retour de cette mention.
 - **La question « Comment tu m'as connu ? » est masquee dans Cal.com (27/11/2026, Noe : « enlever »)** : interrupteur de la question dans Formulaire de reservation, etiquette « Masque ». Elle n'est pas supprimee : son identifiant `source` existe toujours, le visiteur ne la voit plus. Il reste six questions visibles.
 - **Une seule reservation a venir par personne (27/11/2026, Noe : « la meme personne a max une reservation »)** : Cal.com › Appel strategique › Limites et delais › « Limiter le nombre de reservations a venir par utilisateur » = 1, avec « Proposer de reprogrammer la derniere reservation au nouveau creneau » coche. Essayee en vrai le 27/11/2026 : la deuxieme reservation est refusee, mais APRES que la personne a rempli tout le formulaire, avec un message brut de Cal.com (« Le rendez-vous n'a pas pu etre reserve. Vous avez atteint la limite de 1 reservations a venir », code 400) et sans proposition de deplacement. **Limite retiree le 27/11/2026** (Noe : « c'est toi l'expert, je te laisse faire ») : Nowork range deja deux reservations d'une meme personne sur une seule fiche, la plus recente compte. Elle supprime en pratique le cas relevé cote Nowork (deux reservations vivantes pour une meme fiche).
@@ -553,7 +265,7 @@ Decision de Noe : un seul agenda pour le site et la pub Meta. **Rien n'est en li
 - **Les etapes avant la reservation (26/11/2026)**, en evenements personnalises, une fois par visite, sans donnee du visiteur : `BookingClick` (un bouton qui mene au calendrier), `CalendarViewed` (le haut du calendrier a depasse le tiers bas de l'ecran), `CalendarUsed` (un vrai clic dans le cadre du calendrier : jour, mois ou creneau, voir `ReserverAppel.jsx`), `BookingRescheduled`, `BookingCancelled`. Elles servent a voir ou les visiteurs s'arretent, et a regler une campagne sur une etape plus frequente tant que les reservations sont rares. ⚠️ En local, le pixel est charge : un clic de test part vraiment chez Meta.
 - **Verification complete du 26/11/2026 (nuit)**, trois defauts trouves et corriges : `CalendarViewed` ne partait jamais sur telephone (il attendait la moitie d'un bloc de 2 400 px a l'ecran) ; `CalendarUsed` partait tout seul au chargement (le signal `__routeChanged` de Cal.com, remplace par la perte de focus vers le cadre) ; sur telephone, les boutons descendaient sur le calendrier en cachant le titre (ils visent maintenant `#reserver-titre`). Ajoutes : la silhouette de chargement de Cal.com (`cal.embed.pageType`), la marge de la barre sous 360 px, et le bouton sous les etapes qui dit « Reserver mon appel gratuit » comme celui du haut. Mesure sur 320, 360, 375, 390, 412, 430, 768, 1024, 1366 et 1440 px de large : aucun debordement horizontal.
 - **30 minutes partout sur le site (26/11/2026)** : la page test et les trois pages d'offre (`PagesSeo.jsx`, « On s'appelle 30 minutes »). Dans Nowork, l'appel 1 apres un formulaire Meta reste a 15 minutes : le modele Meta valide promet « une quinzaine de minutes ».
-- **Avant la mise en ligne** : le webhook Cal.com vers Nowork (fiche du prospect avec ses reponses). Sans formulaire sur la page, celui qui ne reserve pas ne laisse aucune trace.
+- **Le webhook Cal.com vers Nowork est en service depuis le 27/11/2026** (fiche du prospect avec ses reponses, dans le CRM au jour du rendez-vous ; doc de Nowork : `documentation/systems/lead-auto-import.md`). Sans formulaire sur la page, celui qui ne reserve pas ne laisse aucune trace.
 
 ## Tracking Meta
 
@@ -573,7 +285,7 @@ Le Pixel voit l'ouverture de WhatsApp, pas l'envoi reel du message. Suivre autom
 
 ## Chatbot
 
-Le widget public est dans `src/chatbot/Widget.jsx`.
+Le widget public est dans `src/chatbot/Widget.jsx`. **Il n'est plus affiche nulle part depuis le 27/11/2026** : seul l'ancien accueil le montait (en mode WhatsApp). Le code reste, pret a etre rebranche ou supprime.
 
 Le backend chatbot n'est pas dans ce repo : il appelle la Cloud Function du projet `devis-app-8e216`, configuree par `VITE_CHATBOT_API_URL`.
 
