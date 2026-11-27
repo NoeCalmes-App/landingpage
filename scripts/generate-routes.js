@@ -294,11 +294,13 @@ const echapper = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/
 // Le premier paragraphe extrait est le <h1> de la page : il est retire ici,
 // car le pre-rendu pose deja son propre <h1> a partir de `heading`. Sans ca,
 // tout agent sans JavaScript verrait deux titres de niveau 1.
-function corpsDepuisComposant(fichier, nom) {
+function corpsDepuisComposant(fichier, nom, { garderPremier = false } = {}) {
   const src = readFileSync(join(__dirname, '..', 'src', fichier), 'utf-8')
   const paras = texteDuComposant(src, nom)
   if (!paras.length) throw new Error(`Aucun texte lu dans le composant ${nom} de src/${fichier} : la lecture a probablement casse`)
-  return paras.slice(1).map((p) => `<p>${echapper(p)}</p>`).join('')
+  // Le titre de la nouvelle page d'accueil (27/11/2026) est coupé par des <br> en morceaux de moins de cinq mots,
+  // que le lecteur écarte : son premier paragraphe n'est donc pas le <h1>, on le garde.
+  return paras.slice(garderPremier ? 0 : 1).map((p) => `<p>${echapper(p)}</p>`).join('')
 }
 
 // Les avis clients sont des images (les visuels de Noé) : leur contenu est dans le texte `alt` de chacune, que ce
@@ -320,7 +322,37 @@ function avisTrustpilotHtml() {
   return `<p>Avis vérifiés sur <a href="${url}">Trustpilot</a> :</p>`
     + avis.map((a) => `<p>${echapper(a.titre)}. « ${echapper(a.extrait)} » ${echapper(a.prenom)}, ${echapper(a.role)}, 5 étoiles sur 5.</p>`).join('')
 }
-const corpsSeoAccueil = corpsDepuisComposant('App.jsx', 'App') + altDesImages('AvisClients.jsx') + avisTrustpilotHtml()
+// LE NOUVEL ACCUEIL (27/11/2026) : App.jsx rend src/AccueilTest.jsx pour l'accueil tant que `NOUVEL_ACCUEIL` vaut
+// true. Cette même ligne décide ici d'où vient le texte servi aux robots et la FAQ balisée : jamais le texte d'un
+// accueil que le visiteur ne voit pas.
+const NOUVEL_ACCUEIL = /^const NOUVEL_ACCUEIL = true$/m.test(readFileSync(join(__dirname, '..', 'src', 'App.jsx'), 'utf-8'))
+
+// Une chaîne JavaScript entre guillemets simples ou doubles, lue telle qu'écrite dans le source.
+const CHAINE_JS = `(?:'((?:[^'\\\\]|\\\\.)*)'|"((?:[^"\\\\]|\\\\.)*)")`
+const litteralJs = (simple, double) => (simple ?? double)
+  .replace(/\\u([0-9a-fA-F]{4})/g, (_, h) => String.fromCharCode(parseInt(h, 16)))
+  .replace(/\\(['"\\])/g, '$1')
+
+// Les tableaux de la nouvelle page (étapes, engagements, questions) sont rendus par des .map() : leur texte vit
+// hors du JSX, le lecteur de composant ne le voit pas. Lus ici, depuis le fichier, jamais recopiés.
+function lireTableauAccueil(nomTableau, cleA, cleB) {
+  const src = readFileSync(join(__dirname, '..', 'src', 'AccueilTest.jsx'), 'utf-8')
+  const bloc = src.match(new RegExp(`const ${nomTableau} = \\[([\\s\\S]*?)\\n\\]`))
+  if (!bloc) throw new Error(`${nomTableau} introuvable dans src/AccueilTest.jsx`)
+  const motif = new RegExp(`${cleA}: ${CHAINE_JS},\\s*${cleB}: ${CHAINE_JS}`, 'g')
+  const lignes = [...bloc[1].matchAll(motif)].map((m) => [litteralJs(m[1], m[2]), litteralJs(m[3], m[4])])
+  if (!lignes.length) throw new Error(`Rien lu dans ${nomTableau} de src/AccueilTest.jsx`)
+  return lignes
+}
+const questionsAccueil = NOUVEL_ACCUEIL ? lireTableauAccueil('QUESTIONS', 'q', 'a').map(([q, a]) => ({ q, a })) : null
+
+const corpsSeoAccueil = NOUVEL_ACCUEIL
+  ? corpsDepuisComposant('AccueilTest.jsx', 'AccueilTest', { garderPremier: true })
+    + lireTableauAccueil('ETAPES', 'titre', 'texte').map(([t, x]) => `<h2>${echapper(t)}</h2><p>${echapper(x)}</p>`).join('')
+    + lireTableauAccueil('ENGAGEMENTS', 'titre', 'texte').map(([t, x]) => `<p><strong>${echapper(t)}.</strong> ${echapper(x)}</p>`).join('')
+    + questionsAccueil.map(({ q, a }) => `<h2>${echapper(q)}</h2><p>${echapper(a)}</p>`).join('')
+    + altDesImages('AvisClients.jsx') + avisTrustpilotHtml()
+  : corpsDepuisComposant('App.jsx', 'App') + altDesImages('AvisClients.jsx') + avisTrustpilotHtml()
 
 const corpsSeoPages = {
   '/expertise': corpsDepuisComposant('PagesSeo.jsx', 'PageExpertise'),
@@ -1342,8 +1374,9 @@ for (const path of noindexRoutes) {
 // premieres questions (App.jsx fait `FAQ_ITEMS.slice(0, NB_FAQ_ACCUEIL)`, 4 depuis le 11/10/2026), le balisage doit
 // dire exactement la meme chose. Avant, index.html portait 3 questions
 // reformulees a la main qui ne correspondaient plus au texte visible.
-const NB_FAQ_ACCUEIL = 4 // meme nombre que dans src/App.jsx
-const homeFaqJson = baliseFaq(faqItems.slice(0, NB_FAQ_ACCUEIL))
+const NB_FAQ_ACCUEIL = 4 // meme nombre que dans src/App.jsx (ancien accueil)
+// Le nouvel accueil (27/11/2026) affiche ses dix questions (QUESTIONS de src/AccueilTest.jsx) : le balisage dit les mêmes.
+const homeFaqJson = baliseFaq(NOUVEL_ACCUEIL ? questionsAccueil : faqItems.slice(0, NB_FAQ_ACCUEIL))
 const baseHome = retirerFaqPage(baseHtml).replace(
   '</head>',
   `    <script type="application/ld+json">\n    ${homeFaqJson}\n    </script>\n  </head>`
@@ -1371,13 +1404,20 @@ const navHomeHtml = navHome.map((p) => `<a href="${urlPublique(p)}">${libelles[p
 // <noscript>, et il est retire du DOM des que React est monte. Le <noscript>
 // qui le suit est l'ajout du 21/09/2026 : il porte le corps COMPLET de la page,
 // seul moyen pour les moteurs de reponse de voir autre chose que le titre.
+// Le titre et la phrase du haut de l'accueil, servis aux robots. Ceux du nouvel accueil le 27/11/2026 (sans la preuve
+// Calorie « 13 000 €/mois », retirée de la page).
+const TITRE_ACCUEIL = NOUVEL_ACCUEIL ? 'Je transforme ton idée en application qui rapporte vraiment.' : 'Je transforme ton idée en app qui génère des revenus.'
+const PHRASE_ACCUEIL = NOUVEL_ACCUEIL
+  ? "Tu connais ton métier. On en fait une nouvelle source de revenus. Plus de 20 applications publiées, dont une que j'ai conçue, téléchargée plus d'un million de fois."
+  : "Je ne fais pas que développer ton application : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois. Plus de 20 applications publiées."
+
 const noscriptAccueil = corpsSeoAccueil
-  ? `<noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><p><strong>Je transforme ton idée en app qui génère des revenus.</strong></p>${corpsSeoAccueil}<nav aria-label="Pages du site">${navHomeHtml}</nav></div></noscript>`
+  ? `<noscript><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif"><p><strong>${echapper(TITRE_ACCUEIL)}</strong></p>${corpsSeoAccueil}<nav aria-label="Pages du site">${navHomeHtml}</nav></div></noscript>`
   : ''
 
 const homeHtml = baseHome.replace(
   '<div id="root"></div>',
-  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif;visibility:hidden" aria-hidden="true"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">Je transforme ton idée en app qui génère des revenus.</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">Je ne fais pas que développer ton application : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois. Plus de 20 applications publiées.</p><a href="${urlPublique('/audit-app')}" style="display:inline-block;background:#6760ff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Tester mon idée d'application</a><nav aria-label="Pages du site" style="margin-top:1.5rem;font-size:0.85rem">${navHomeHtml}</nav></div></div>` + noscriptAccueil
+  `<div id="root"><div style="max-width:700px;margin:40px auto;padding:0 20px;font-family:Inter,sans-serif;visibility:hidden" aria-hidden="true"><h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;margin-bottom:1rem">${echapper(TITRE_ACCUEIL)}</h1><p style="font-size:1rem;color:#555;margin-bottom:1.5rem">${echapper(PHRASE_ACCUEIL)}</p><a href="${urlPublique('/audit-app')}" style="display:inline-block;background:#6760ff;color:#fff;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600">Tester mon idée d'application</a><nav aria-label="Pages du site" style="margin-top:1.5rem;font-size:0.85rem">${navHomeHtml}</nav></div></div>` + noscriptAccueil
 )
 writeFileSync(join(distDir, 'index.html'), homeHtml)
 pagesGenerees.push(join(distDir, 'index.html'))

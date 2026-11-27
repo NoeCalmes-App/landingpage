@@ -1,8 +1,8 @@
-// PAGE TEST DE LA NOUVELLE PAGE D'ACCUEIL (25 novembre 2026).
+// L'ACCUEIL DE NOECALMES.FR depuis le 27 novembre 2026 (construit comme page test du 25 au 27/11/2026).
 //
-// Adresse : /accueiltest, EN LOCAL SEULEMENT (`npm run dev`). La route est branchée dans App.jsx derrière
-// `import.meta.env.DEV` : elle n'existe pas dans le site construit pour la mise en ligne, et ce fichier n'y est
-// pas embarqué. Rien ici ne remplace l'accueil actuel tant que Noé n'a pas validé les textes.
+// Noé, 27/11/2026 : « remplace la landing page noecalmes.fr par accueiltest ». App.jsx rend ce composant pour
+// l'accueil tant que `NOUVEL_ACCUEIL` vaut true (l'ancien accueil y reste intact, pour revenir en arrière), et
+// /accueiltest mène à l'accueil. Le nom du fichier est resté celui de la page test.
 //
 // D'où viennent les textes : le travail du module « Offres » (dossier Drive « offre », document « Ma nouvelle page
 // d'accueil - Plan et textes à valider »). L'ordre suit les questions du visiteur. La cible, précisée par Noé le
@@ -313,19 +313,8 @@ export default function AccueilTest() {
   const racine = useApparition()
   // Variante à comparer : /accueiltest?haut=nuit (le haut de page sur le bleu nuit).
   const hautNuit = new URLSearchParams(window.location.search).get('haut') === 'nuit'
-  // Une page de travail : pas dans Google, et un titre d'onglet qui dit ce que c'est.
-  useEffect(() => {
-    const ancienTitre = document.title
-    document.title = "Page test · nouvelle page d'accueil"
-    const robots = document.createElement('meta')
-    robots.name = 'robots'
-    robots.content = 'noindex, nofollow'
-    document.head.appendChild(robots)
-    return () => {
-      document.title = ancienTitre
-      robots.remove()
-    }
-  }, [])
+  // Le titre, la description et la canonique sont ceux de l'accueil, écrits par App (META_HOME) : plus de titre
+  // « Page test » ni de « noindex » depuis que cette page est l'accueil (27/11/2026).
 
   const allerA = (id) => (evenement) => {
     evenement?.preventDefault()
@@ -480,9 +469,9 @@ export default function AccueilTest() {
           L'ORDRE ET LES FONDS (Noé, 26/11/2026, 01 h 09 : la carte « Ce que rapporte » va « en dessous de la section
           Pourquoi avec moi ») : réalisations, bloc sombre, puis la carte, tous sur le fond de la page ; les étapes
           suivent sur gris et les fonds alternent ensuite, une section sur deux. Le bloc sombre fait office de bande.
-          LE BLOC « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » juste dessous est un APERÇU À CHIFFRES D'ESSAI (26/11/2026) :
-          il ne prendra de vrais chiffres que d'une capture réelle d'un client, avec son accord. RÈGLE : seulement de
-          vrais chiffres, datés. Jamais les chiffres d'un écran d'exemple présentés comme ceux d'un client. */}
+          LE BLOC « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » qui suivait est retiré à la mise en ligne (27/11/2026) :
+          il ne reviendra qu'avec la capture réelle d'un client et son accord. RÈGLE : seulement de vrais chiffres,
+          datés. Jamais les chiffres d'un écran d'exemple présentés comme ceux d'un client. */}
       <section className="ex-section" id="realisations" aria-labelledby="at-realisations-titre">
         <div className="ex-interieur">
           <h2 id="at-realisations-titre" className="reveal ex-titre">Mes <span>réalisations</span></h2>
@@ -587,61 +576,11 @@ export default function AccueilTest() {
         </div>
       </section>
 
-      {/* ========== CE QUE RAPPORTE L'APPLICATION D'UN CLIENT : APERÇU AVEC DES CHIFFRES D'ESSAI ========== */}
-      {/* ⚠️ CHIFFRES D'ESSAI, PAS CEUX D'UN CLIENT VÉRIFIÉ. Noé, 26/11/2026, 01 h 03 : « pour avoir un rendu, pour
-          voir à quoi ça ressemblerait, tu peux mettre les vrais chiffres de 18 450, toujours en test, pour voir ce
-          que ça donnerait », nom de l'application masqué. Ce sont les chiffres de l'ancien écran d'exemple (commit
-          d5cfbaa, données fictives) : la page n'a PAS la capture d'origine d'un client. Aperçu de mise en page.
-          ⛔ AVANT TOUTE MISE EN LIGNE SUR L'ACCUEIL : comparer chaque nombre à la capture RÉELLE du client, avec son
-          accord écrit, ou retirer le bloc (version à zéro : commit aaf4952). La page de test n'est visible qu'en
-          local (import.meta.env.DEV) : rien de ce bloc n'est dans le site en ligne.
-          COMME UNE IMAGE, SANS ANIMATION (Noé, 25/11/2026) : rien ne bouge, rien ne se sélectionne. Ni nom, ni
-          icône lisibles : une icône et un nom floutés.
-          LE TITRE est au présent (« rapporte ») : il ne sera vrai qu'avec de vrais chiffres, et le mois devra
-          s'écrire si l'application ne fait plus ces montants (erreur faite avec Calorie et ses 13 000 €). */}
-      <section className="pt-0 pb-14 md:pb-28 px-5" id="resultat" aria-labelledby="at-resultat-titre">
-        <h2 id="at-resultat-titre" className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight text-center mb-8 md:mb-14">
-          Ce que rapporte<br className="sm:hidden" /> <span className="text-brand">l'application d'un client</span>
-        </h2>
-        <figure className="reveal at-resultat" aria-labelledby="at-resultat-titre">
-          <div className="at-resultat-carte" role="img" aria-label="Aperçu du tableau de bord d'une application, nom masqué. Revenus de décembre 2025 : 18 450 euros, en hausse de 10,8 % par rapport au mois dernier. App Store : 12 200 euros. Google Play : 6 250 euros. 2 390 abonnés, 10 300 installations, 118 700 euros sur 12 mois.">
-            <div className="at-res-gauche">
-              <p className="at-res-app"><i /><b>Nom masqué</b></p>
-              <p className="at-res-label">Revenus du mois</p>
-              <p className="at-res-montant">18&nbsp;450&nbsp;€</p>
-              <p className="at-res-evol"><span>+10,8&nbsp;%</span> par rapport au mois dernier</p>
-              <div className="at-res-courbe" aria-hidden="true">
-                <svg viewBox="0 0 320 110" preserveAspectRatio="none" focusable="false">
-                  <defs>
-                    <linearGradient id="at-res-fond" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0" stopColor="#18a572" stopOpacity=".2" />
-                      <stop offset="1" stopColor="#18a572" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M0 30H320M0 59H320M0 88H320" stroke="#eceaf3" strokeWidth="1" vectorEffect="non-scaling-stroke" fill="none" />
-                  <path d="M8 96C96 82 190 50 302 13V110H8Z" fill="url(#at-res-fond)" />
-                  <path d="M8 96C96 82 190 50 302 13" stroke="#18a572" strokeWidth="3" strokeLinecap="round" vectorEffect="non-scaling-stroke" fill="none" />
-                </svg>
-                <i className="at-res-point" />
-                <span className="at-res-bulle"><small>Déc. 2025</small>18&nbsp;450&nbsp;€</span>
-              </div>
-              <p className="at-res-mois" aria-hidden="true"><span>Janv.</span><span>Juin</span><span>Déc.</span></p>
-            </div>
-            <div className="at-res-droite">
-              <ul className="at-res-boutiques">
-                <li><span>App Store</span><i><i style={{ '--part': 1 }} /></i><b>12&nbsp;200&nbsp;€</b></li>
-                <li><span>Google Play</span><i><i style={{ '--part': 0.51 }} /></i><b>6&nbsp;250&nbsp;€</b></li>
-              </ul>
-              <ul className="at-res-cases">
-                <li><span>Abonnés</span><b>2&nbsp;390</b><em>+9,6&nbsp;%</em></li>
-                <li><span>Installations</span><b>10&nbsp;300</b><em>+13,2&nbsp;%</em></li>
-                <li><span>Sur 12&nbsp;mois</span><b>118&nbsp;700&nbsp;€</b></li>
-              </ul>
-            </div>
-          </div>
-          <p className="at-resultat-note">Nom de l'application masqué à sa demande, pour éviter la concurrence.</p>
-        </figure>
-      </section>
+      {/* « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » EST RETIRÉ (27/11/2026, mise en ligne de l'accueil). Ses chiffres
+          (18 450 € par mois) étaient ceux d'un ancien écran d'exemple, présentés comme ceux d'un client : la règle
+          écrite sur le bloc disait de le retirer avant toute mise en ligne, faute de capture réelle et d'accord écrit
+          du client. Pour le remettre avec de VRAIS chiffres : le bloc complet est dans le commit 1624c00 (et sa version
+          « à zéro » dans aaf4952), ses styles sont restés dans accueil-test.css (.at-resultat…). */}
 
       {/* ========== COMMENT ÇA SE PASSE ========== */}
       {/* Quatre étapes, deux par deux sur ordinateur, chacune avec son schéma et sa durée (voir ETAPES).

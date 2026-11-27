@@ -4,6 +4,7 @@ import './App.css'
 import PhoneCarousel from './AppShowcase.jsx'
 import { AvisClients } from './AvisClients.jsx'
 import HeroVideo from './HeroVideo.jsx'
+import AccueilTest from './AccueilTest.jsx'
 import Documents, { DOCUMENTS } from './Documents.jsx'
 import { ROUTE_DOCUMENTS, ROUTE_APP_MOBILE, ROUTE_APP_WEB, estRouteDocuments, estRouteAppMobile, estRouteAppWeb, trouverDocument } from './routesDocuments.js'
 import ContactNoe, { EmailModal } from './ContactNoe.jsx'
@@ -64,9 +65,6 @@ const VietCollabMockups = lazy(() => import('./VietCollabMockups.jsx'))
 const PulsoMockups = lazy(() => import('./PulsoMockups.jsx'))
 const AuditApp = lazy(() => import('./audit-app/AuditApp.jsx'))
 const Projets = lazy(() => import('./Projets.jsx'))
-// PAGE TEST DE LA NOUVELLE PAGE D'ACCUEIL (25/11/2026) : /accueiltest, EN LOCAL SEULEMENT. Hors `npm run dev`,
-// `import.meta.env.DEV` vaut false : la page n'est ni branchée ni embarquée dans le site mis en ligne.
-const AccueilTest = import.meta.env.DEV ? lazy(() => import('./AccueilTest.jsx')) : null
 
 const meetingSvg = '/assets/images/illustrations/meetingdev.svg'
 const devSvg = '/assets/images/illustrations/devmobile.svg'
@@ -104,8 +102,9 @@ const SECTION_ROUTES = {
   },
   '/rendez-vous': {
     id: 'contact',
-    title: 'Écrire à Noé sur WhatsApp — Application mobile | Noé Calmes',
-    description: 'Un projet d\'application mobile ? Écris directement à Noé sur WhatsApp : c\'est lui qui répond, on voit en 2 messages si ton projet tient la route. Sans engagement.',
+    // Depuis le nouvel accueil (27/11/2026), #contact est le calendrier de réservation, plus un bouton WhatsApp.
+    title: 'Réserver un appel avec Noé | Noé Calmes',
+    description: "30 minutes au téléphone avec Noé, pas un commercial : tu racontes ton idée d'application, tu repars avec ses conseils et une fourchette de prix.",
   },
 }
 
@@ -116,8 +115,16 @@ const SECTION_ROUTES = {
 const META_HOME = {
   path: '/',
   title: 'Application mobile & web qui génère des revenus | Noé Calmes',
-  description: "Je ne fais pas que développer ton application mobile : je la conçois pour qu'elle génère des revenus. Une application que j'ai conçue fait 13 000 €/mois.",
+  // Le 27/11/2026, avec le nouvel accueil : plus de « 13 000 €/mois » (Calorie, qui n'est plus sur les boutiques ; la
+  // page ne le dit plus). Même texte dans index.html (description, og, twitter). Le titre ne change pas.
+  description: "Je transforme ton idée en application qui rapporte vraiment, de la conception à la mise en ligne. Réserve un appel gratuit de 30 minutes avec moi.",
 }
+
+// LE NOUVEL ACCUEIL (27/11/2026, Noé : « remplace la landing page noecalmes.fr par accueiltest »). La page construite
+// sur /accueiltest du 25 au 27/11/2026 (src/AccueilTest.jsx) est l'accueil de noecalmes.fr. L'ANCIEN ACCUEIL reste
+// plus bas dans ce fichier, intact : remettre `false` le ramène, et `scripts/generate-routes.js` lit cette même ligne
+// pour servir aux robots le texte et la FAQ de l'accueil affiché. /accueiltest mène désormais à l'accueil.
+const NOUVEL_ACCUEIL = true
 
 // Pastille « +20 applications déjà publiées » au-dessus du titre du hero : masquée pour l'instant
 const MONTRER_PASTILLE_HERO = false
@@ -232,7 +239,6 @@ function App() {
       history.replaceState(null, '', redirect)
     }
     const path = (redirect || window.location.pathname).replace(/\/$/, '') || '/'
-    if (import.meta.env.DEV && path === '/accueiltest') return 'accueil-test'
     // Redirection directe vers WhatsApp (message pré-rempli). Utilisée comme
     // URL de fin du formulaire Meta (les formulaires instantanés refusent les
     // liens wa.me, mais acceptent noecalmes.fr/whatsapp).
@@ -494,7 +500,9 @@ function App() {
     const pagesDeVente = ['home', 'blog', 'blog-article', 'audit-app', 'page-expertise', 'page-methode', 'page-sur-mesure', 'page-web-sur-mesure', 'page-refonte', 'page-faq', 'page-a-propos', 'quiz-hub', 'quiz', 'projets']
     if (!pagesDeVente.includes(page)) return
 
-    const MESSAGES = ['Maquette offerte pour ton app', 'Parlons de ton idée d’app']
+    // « Maquette offerte pour ton app » retiré le 27/11/2026 : la maquette ne s'annonce plus comme un cadeau, elle se
+    // propose à l'appel (plan de la nouvelle page d'accueil, validé par Noé).
+    const MESSAGES = ['Parlons de ton idée d’app']
     let vraiTitre = document.title
     let depart = null
     let alternance = null
@@ -688,7 +696,6 @@ function App() {
   if (page === 'guestride-mockups') return <Suspense fallback={null}><GuestRideMockups /></Suspense>
   if (page === 'immomatch-mockups') return <Suspense fallback={null}><ImmoMatchMockups /></Suspense>
   if (page === 'projets') return <Suspense fallback={null}><Projets onBack={goHome} /></Suspense>
-  if (import.meta.env.DEV && page === 'accueil-test' && AccueilTest) return <Suspense fallback={null}><AccueilTest /></Suspense>
   if (page === 'contact') return <ContactNoe />
   if (page === 'legal') return <Suspense fallback={null}><Legales /></Suspense>
   if (page === 'audit-app') return <Suspense fallback={null}><AuditApp onBack={goHome} onLegal={(p) => openLegal(p, '/audit-app')} /></Suspense>
@@ -712,6 +719,9 @@ function App() {
   if (page === 'document-viewer' && currentDoc) {
     return <Suspense fallback={null}><Document doc={currentDoc} onBack={currentDoc.famille === 'app-web' ? goDocumentsWeb : goDocuments} /></Suspense>
   }
+
+  // Tout ce qui n'a pas sa page plus haut est l'accueil : le nouveau, tant que NOUVEL_ACCUEIL est vrai.
+  if (NOUVEL_ACCUEIL) return <AccueilTest />
 
   return (
     <div ref={scrollRef}>

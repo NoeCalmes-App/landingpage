@@ -86,6 +86,34 @@ Trois regles en decoulent, toutes appliquees au build :
 
 `index.html` sert de gabarit a toutes les pages generees. Attention : tout JSON-LD ajoute dans `index.html` se retrouve **sur chaque page generee**. C'est pour ca que `generate-routes.js` retire le bloc `FAQPage` partout sauf sur la home et `/faq`, ou il est regenere depuis `FAQ_ITEMS`. Une page qui declare une FAQ invisible enfreint les regles de Google.
 
+## Le nouvel accueil (27/11/2026)
+
+**noecalmes.fr affiche depuis le 27/11/2026 la page construite sur `/accueiltest`** (Noé : « remplace la landing page
+noecalmes.fr par accueiltest »). Code : `src/AccueilTest.jsx` (le nom est resté celui de la page test) et
+`src/accueil-test.css`, prise de rendez-vous `src/ReserverAppel.jsx` (section « Prise de rendez-vous par Cal.com »
+plus bas, qui vaut maintenant pour l'accueil en ligne).
+
+- **L'interrupteur** : `NOUVEL_ACCUEIL` dans `src/App.jsx`. Vrai, l'accueil (et toute page sans route propre) rend
+  `AccueilTest`. Faux, l'ancien accueil revient : il est resté intact dans `App.jsx`. `scripts/generate-routes.js`
+  lit cette même ligne : le texte servi aux robots (`<noscript>`, bloc masqué, titre « Je transforme ton idée en
+  application qui rapporte vraiment. ») et la FAQ balisée (les dix `QUESTIONS` de la page) suivent l'accueil affiché.
+  Les étapes, les engagements et les questions, rendus par des `.map()`, sont lus dans leurs tableaux
+  (`lireTableauAccueil`), jamais recopiés.
+- **`/accueiltest`** n'a plus de route : il mène à l'accueil, canonique `/`.
+- **Retiré à la mise en ligne** : le titre d'onglet « Page test » et la balise `noindex, nofollow` que la page posait
+  elle-même (elle aurait sorti l'accueil de Google) ; le bloc « Ce que rapporte l'application d'un client » (18 450 €
+  par mois), aux chiffres d'un ancien écran d'exemple présentés comme ceux d'un client, faute de capture réelle et
+  d'accord écrit (bloc complet dans le commit 1624c00, styles restés dans `accueil-test.css`).
+- **La preuve Calorie (« 13 000 €/mois ») quitte l'accueil** : description (`META_HOME` et `index.html` : description,
+  og, twitter), données structurées de la personne (« une application téléchargée plus d'un million de fois ») et
+  pré-rendu. **Le titre de l'accueil ne change pas.** Elle reste ailleurs sur le site (pages SEO, blog, `llms.txt`) :
+  à reprendre page par page, comme le prévoit le plan du Drive.
+- **`/rendez-vous`** (noindex) s'appelle « Réserver un appel avec Noé » et descend au calendrier.
+- **L'onglet qui appelle au retour** ne dit plus « Maquette offerte pour ton app » : seul reste « Parlons de ton idée
+  d'app » (la maquette se propose à l'appel, plus sur le site).
+- **Pas de bouton WhatsApp flottant ni de chatbot sur l'accueil** : WhatsApp passe par l'icône de la barre du haut.
+- Les sections « Hero », « Film du hero » et « L'accueil, section par section » ci-dessous décrivent l'ANCIEN accueil.
+
 ## Hero
 
 Inspiré de celui d'Ikovaline (ikovaline.com) : le titre, une phrase, un bouton, puis la vidéo.
