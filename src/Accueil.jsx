@@ -509,9 +509,14 @@ export default function Accueil() {
               sans ces mots, « tout le monde peut créer une application » est faux pour un visiteur qui ne code pas,
               et c'est son argument de la leçon 2.17. « Très peu rapportent » est un constat général, pas une
               promesse sur les siennes. « Chaque mois » n'y est plus : c'est dit dans le titre de la page. */}
+          {/* « DÉVELOPPEUR » ET NON « IA » (Noé, 27/11/2026, 22 h 54) : le visiteur se dit « j'ai juste besoin d'un
+              développeur », c'est à lui que la phrase répond ; et l'IA ne vaut pas pour une application mobile, bien
+              plus dure à faire. « Beaucoup… savent créer » est vrai sans réserve, ce que « tout le monde peut créer »
+              n'était qu'avec « avec une IA ». « La rendent rentable » et non « la faire rapporter » (« ça fait pas
+              pro », Noé), sans redire « savent ». « Rentable » plutôt que « profitable », un anglicisme. */}
           <h2 className="reveal at-nuit-titre font-jakarta font-extrabold tracking-tight text-center mb-4 md:mb-5">
-            Avec une IA, tout le monde peut créer une application.
-            <span>Très peu rapportent de l'argent.</span>
+            Beaucoup de développeurs savent créer une application.
+            <span>Très peu la rendent rentable.</span>
           </h2>
           <p className="reveal at-nuit-texte text-[0.95rem] md:text-[1.05rem] leading-relaxed text-center max-w-[40rem] mx-auto mb-8 md:mb-12 text-balance">
             La différence ne vient pas du code. Elle se joue à quatre moments&nbsp;:
