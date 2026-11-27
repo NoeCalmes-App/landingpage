@@ -121,7 +121,7 @@ noecalmes.fr par accueiltest », puis « supprime l'ancienne, accueiltest devien
   du texte servi aux robots ; pour le remettre, poser `<AccueilAudit />` avant `<Footer />` dans `Accueil.jsx`.
 - **La carte « Coaching sportif » du carrousel** porte la pastille « Maquette d'application » (27/11/2026, Noé :
   « pour application »), pas « Application » : le projet n'est pas construit (devis envoyé, pas signé). Ses images
-  montrent le nom et le logo « Pulso » d'un projet de prospect : il faut son accord, ou les masquer.
+  montrent le nom et le logo « Pulso » d'un projet de prospect : il a donné son accord (Noé, 27/11/2026).
 
 ## L'offre du Drive sur tout le site (27/11/2026)
 

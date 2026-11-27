@@ -19,9 +19,8 @@ import './exemples-metier.css'
 //     l'est pas encore (elle passe en dernier). Pas de faux écran d'ordinateur, pas d'application inventée.
 //     Le 27/11/2026, Noé : « Maquette, pour application stp ». La pastille dit « Maquette d'application » et pas
 //     « Application » : au 27/11/2026, le devis de ce projet est envoyé, pas signé, l'application n'existe pas.
-//   - ⚠️ AVANT DE METTRE CE BLOC SUR L'ACCUEIL EN LIGNE : la maquette de coaching montre le nom et le logo d'un
-//     projet qui n'est pas celui de Noé. Il faut l'accord de son porteur, ou masquer le nom et le logo dans les
-//     deux images.
+//   - La maquette de coaching montre le nom et le logo (« Pulso ») d'un projet qui n'est pas celui de Noé : son
+//     porteur a donné son accord (Noé, 27/11/2026). Pour une autre maquette de prospect : même accord, ou masquer.
 //   - les écrans FLOTTENT doucement (« animation flottement »), l'ordinateur et le téléphone pas au même rythme.
 //   - L'ORDRE : Bailora d'abord (un artisan qui gère ses logements : c'est le visiteur que la page vise), puis
 //     WakeUp Alarme (ajoutée le 26/11/2026 à la demande de Noé), SmoothRide, Plouff Habitudes, et la maquette. Les
