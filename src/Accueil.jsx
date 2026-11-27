@@ -737,9 +737,14 @@ export default function Accueil() {
 
           <div id="avis-clients" className="mt-14 md:mt-28 pt-14 md:pt-28 border-t border-card-border scroll-mt-24">
             <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">Avis clients</p>
-            <h3 className="reveal font-jakarta text-text text-xl md:text-[1.6rem] font-extrabold tracking-tight text-center mb-8 md:mb-14">
+            <h3 className="reveal font-jakarta text-text text-xl md:text-[1.6rem] font-extrabold tracking-tight text-center mb-3">
               Ce que disent <span className="text-brand">mes clients</span>
             </h3>
+            {/* UNE PREUVE EN PLUS (27/11/2026, validée par Noé) : ses clients repassent commande après leur application
+                (nouvelles fonctions, réglages). Dit une seule fois sur la page, ici, au-dessus de leurs avis. */}
+            <p className="reveal text-grey text-[0.98rem] md:text-[1.05rem] leading-relaxed text-center text-balance max-w-[30em] mx-auto mb-8 md:mb-14">
+              Et ils reviennent me voir pour faire évoluer leur application.
+            </p>
             <div className="reveal">
               {/* L'ORDRE (Noé, 26/11/2026 : « on met Trustpilot, et après les captures ; tu mettrais pas l'inverse, avec du
                   texte entre ? ») : Trustpilot d'abord, car c'est la seule preuve qu'un inconnu peut vérifier ; les messages
