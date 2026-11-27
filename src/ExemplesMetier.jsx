@@ -156,9 +156,10 @@ const VISIBLES = APPLICATIONS.filter((app) => !app.masque)
 
 const DELAI = 4000
 const DELAI_APRES_GESTE = 8000
-// La première application (SmoothRide) reste plus longtemps : c'est celle que le visiteur voit en arrivant (Noé,
-// 26/11/2026, 01 h 26 : « la première mais plus de temps avant de passer à la deuxième, léger »).
-const DELAI_PREMIERE = 6500
+// La première application (SmoothRide) reste un peu plus longtemps : c'est celle que le visiteur voit en arrivant (Noé,
+// 26/11/2026, 01 h 26 : « la première mais plus de temps avant de passer à la deuxième, léger »). 6,5 s était trop
+// long (Noé, 27/11/2026 : « un peu long avant de passer de SmoothRide à Bailora ») : 5 s, une seconde de plus que les autres.
+const DELAI_PREMIERE = 5000
 
 function Telephone({ image }) {
   return (
