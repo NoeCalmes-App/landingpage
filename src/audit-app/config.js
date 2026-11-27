@@ -11,7 +11,7 @@ export const API_URL = import.meta.env.VITE_AUDIT_API_URL || ''
 // Les 3 questions du hero (premiere personne, doutes pre-investissement).
 // Triangle classique qualite-cout-temps applique au pre-investissement app :
 // viabilite produit + cout d'entree + delai avant lancement.
-// Q3 (temps) repond a la promesse differenciante "MVP en 45 jours".
+// Q3 (temps) repond au delai annonce partout sur le site : 1 a 2 mois (27/11/2026 ; avant : « MVP en 45 jours »).
 export const HERO_QUESTIONS = [
   "Mon idée d'app peut-elle vraiment marcher ?",
   'Quel budget prévoir pour une première version ?',

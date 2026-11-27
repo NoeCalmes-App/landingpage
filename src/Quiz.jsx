@@ -29,7 +29,7 @@ export const QUIZZES = [
     description: "7 questions pour savoir si une application mobile a du sens pour ton activité, ou si tu ferais mieux d'attendre. Réponse immédiate et sans inscription.",
     resume: "7 questions pour savoir si une application a du sens pour ton activité, ou si tu ferais mieux d'attendre.",
     intro: [
-      "Une application mobile coûte entre 5 000 et 30 000 €. C'est un investissement, pas un achat d'impulsion, et la mauvaise réponse coûte cher dans les deux sens : développer trop tôt, c'est payer pour un produit que personne n'ouvrira ; attendre trop longtemps, c'est laisser un revenu récurrent sur la table.",
+      "Une application mobile coûte autour de 10 000 € chez un indépendant, et plutôt autour de 30 000 € en agence. C'est un investissement, pas un achat d'impulsion, et la mauvaise réponse coûte cher dans les deux sens : développer trop tôt, c'est payer pour un produit que personne n'ouvrira ; attendre trop longtemps, c'est laisser un revenu récurrent sur la table.",
       "Ce test pose les sept questions que je pose moi-même en premier appel. Il ne remplace pas une discussion, mais il te dit honnêtement dans quelle situation tu te trouves.",
     ],
     questions: [
@@ -76,7 +76,7 @@ export const QUIZZES = [
       {
         q: "As-tu un budget identifié pour ce projet ?",
         options: [
-          { label: "Oui, entre 5 000 et 30 000 €", points: 3 },
+          { label: "Oui, mon budget est prêt", points: 3 },
           { label: "Un financement est en cours", points: 2 },
           { label: "Pas encore du tout", points: 0 },
         ],
@@ -216,7 +216,7 @@ export const QUIZZES = [
       },
       {
         h2: "Ce qu'une application web fait qu'une application mobile ne fait pas",
-        p: "Elle se met en ligne le jour où tu veux : pas de compte développeur, pas de validation d'Apple, pas de calendrier de mise à jour imposé. À périmètre égal, ça représente deux à trois semaines de moins. Elle n'a pas de commission de store, donc il te reste environ 78 % de ce que tu encaisses contre environ 70 % sur mobile. Et elle n'a rien à installer : un professionnel qui doit équiper son équipe envoie une adresse, pas une demande de téléchargement. En contrepartie, personne ne t'amène d'utilisateurs : c'est toi qui vas les chercher.",
+        p: "Elle se met en ligne le jour où tu veux : pas de compte développeur, pas de validation d'Apple, pas de calendrier de mise à jour imposé. À périmètre égal, elle est en ligne en 1 mois environ, contre 2 mois pour une application mobile. Elle n'a pas de commission de store, donc il te reste environ 78 % de ce que tu encaisses contre environ 70 % sur mobile. Et elle n'a rien à installer : un professionnel qui doit équiper son équipe envoie une adresse, pas une demande de téléchargement. En contrepartie, personne ne t'amène d'utilisateurs : c'est toi qui vas les chercher.",
       },
       {
         h2: "L'erreur de croire que c'est une question de budget",
@@ -232,7 +232,7 @@ export const QUIZZES = [
     resume: "6 questions pour situer le budget réaliste de ton projet, selon son périmètre et ses fonctionnalités.",
     intro: [
       "« Combien coûte une application ? » n'a pas de réponse unique, et les fourchettes qu'on trouve en ligne vont de 3 000 à 200 000 €, ce qui n'aide personne. Le prix dépend du périmètre, pas de la technologie.",
-      "Ce test situe ton projet dans la bonne fourchette en six questions. Il ne remplace pas un devis, mais il t'évite d'arriver en discussion avec une idée du budget décalée d'un facteur cinq.",
+      "Ce test situe le budget de ton projet en six questions. Il ne remplace pas un devis, mais il t'évite d'arriver en discussion avec une idée du budget décalée d'un facteur cinq.",
     ],
     questions: [
       {
@@ -287,17 +287,17 @@ export const QUIZZES = [
     resultats: [
       {
         min: 15,
-        titre: "Plutôt 15 000 à 30 000 €",
+        titre: "Plutôt 15 000 € et plus",
         texte: "Plusieurs types d'utilisateurs, des paiements, du temps réel ou des connexions à des outils métier : ton projet est une vraie plateforme, pas une première version. Le bon réflexe est de découper : identifier le cœur qui prouve le modèle, le livrer d'abord, et construire le reste ensuite avec des revenus en face.",
       },
       {
         min: 7,
-        titre: "Plutôt 8 000 à 15 000 €",
-        texte: "Comptes utilisateurs, données synchronisées, un abonnement : c'est le périmètre le plus courant chez mes clients, et celui où le rapport entre l'investissement et le revenu potentiel est le plus intéressant. Compte 45 jours en moyenne pour la mettre en ligne.",
+        titre: "Autour de 10 000 €",
+        texte: "Comptes utilisateurs, données synchronisées, un abonnement : c'est le périmètre le plus courant chez mes clients, et celui où le rapport entre l'investissement et le revenu potentiel est le plus intéressant. Compte 1 à 2 mois pour la mettre en ligne.",
       },
       {
         min: 0,
-        titre: "Plutôt 5 000 à 8 000 €",
+        titre: "Un peu moins de 10 000 €",
         texte: "Périmètre resserré, peu d'écrans, pas de complexité serveur : c'est le format d'une première version qui valide une idée sans engager tout ton budget. C'est souvent la meilleure décision, même quand tu as les moyens de faire plus gros.",
       },
     ],

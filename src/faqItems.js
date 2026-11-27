@@ -11,16 +11,16 @@ export const FAQ_ITEMS = [
   // Instagram et Facebook ; trop long, on ne lit pas, trop court, « on explique pas » (Noe, 11/10/2026).
   // Retirees le 11/10/2026 : « Application mobile ou web », « A qui appartient l'application ? » (« c'est
   // logique, il paye ») et « Est-ce que mon application va vraiment generer des revenus ? ».
-  // Delai : « 45 jours en moyenne », sans « premiere version » (Noe, 11/10/2026 : 45 jours partout).
-  // Prix : « A partir de 5 000 € », comme la pub et le formulaire Meta (Noe, 11/10/2026 au soir ; avant : « en general
-  // une dizaine de milliers d'euros »). Raison dans App.jsx, au-dessus du bloc `.etape-tarif`.
+  // Delai : « 1 a 2 mois », comme l'accueil (27/11/2026, offre du Drive ; avant : « 45 jours en moyenne »).
+  // Prix : « Autour de 10 000 € », un seul chiffre, comme l'accueil (27/11/2026 ; avant : « A partir de 5 000 € »,
+  // qui attirait des personnes hors cible). La regle est ecrite dans src/Accueil.jsx, au-dessus de « Comment ca marche ».
   {
     q: "Combien coûte une application ?",
-    a: "À partir de 5 000 €. Le prix dépend de ton application et il est fixé avant de commencer : stratégie, design, développement et mise en ligne compris, sans compteur qui tourne. Tu le connais avant de payer quoi que ce soit, et tu vois ta maquette avant de décider.",
+    a: "Autour de 10 000 €, selon la taille et la complexité de ton projet. En agence, c'est plutôt autour de 30 000 €. Tu as ta fourchette dès le premier appel, et ton prix fixe dans ton devis : stratégie, design, développement et mise en ligne compris, sans compteur qui tourne. Et tu vois ton application avant de payer.",
   },
   {
     q: "Combien de temps faut-il pour avoir une application ?",
-    a: "En moyenne, 45 jours pour une application mobile ou web, du cadrage à la mise en ligne. Le délai exact est fixé dans le devis, selon les fonctionnalités prévues au cahier des charges.",
+    a: "1 à 2 mois, selon la complexité et l'envergure de ton projet. Ton délai est écrit dans ton devis, à côté du prix. Le développement ne prend pas de retard : ce qui peut allonger, c'est ta société et la validation de tes comptes par Apple et Google.",
   },
   {
     q: "Je n'y connais rien en technique, c'est un problème ?",
@@ -32,15 +32,15 @@ export const FAQ_ITEMS = [
   },
   {
     q: "Après la livraison de l'application ?",
-    a: "Je disparais pas après la mise en ligne : corrections, mises à jour, évolutions, accompagnement, je reste dispo. On définit ensemble ce qui est nécessaire selon comment ton app évolue.",
+    a: "Je ne disparais pas après la mise en ligne : 30 jours de corrections compris, puis mises à jour, évolutions, accompagnement, je reste dispo. On définit ensemble ce qui est nécessaire selon comment ton app évolue.",
   },
   {
     q: "Quelle différence avec une agence ?",
-    a: "Une agence te livre une application sur les stores et passe au projet suivant. Tu parles à un chef de projet, rarement à la personne qui conçoit. Chez moi il n'y a qu'un interlocuteur, joignable directement 6j/7, un tarif fixe posé à l'avance, et une application pensée pour générer des revenus plutôt que simplement livrée.",
+    a: "Une agence te livre une application sur les stores et passe au projet suivant. Tu parles à un chef de projet, rarement à la personne qui conçoit. Chez moi il n'y a qu'un interlocuteur, joignable directement 6j/7, un prix fixe écrit à l'avance, et une application pensée pour que ses utilisateurs restent, reviennent et paient chaque mois, plutôt que simplement livrée.",
   },
   {
     q: "Je peux créer mon application avec une IA, non ?",
-    a: "Tu peux générer du code avec une IA, je m'en sers moi-même. Mais l'IA écrit ce que tu lui demandes, elle ne te dira jamais que tu lui demandes la mauvaise chose. Elle ne décide pas ce qui est payant, où placer l'offre, à quel prix, ni pourquoi quelqu'un reviendrait demain. Résultat courant : une application qui existe, qui compile, et qui ne rapporte rien.",
+    a: "Tu peux générer du code avec une IA, je m'en sers moi-même. Mais ce qui fait qu'une application marche, ce n'est pas le code : c'est que ses utilisateurs restent, reviennent et paient chaque mois. L'IA écrit ce que tu lui demandes, elle ne te dira jamais que tu lui demandes la mauvaise chose. Elle ne décide pas ce qui est payant, où placer l'offre, à quel prix, ni pourquoi quelqu'un reviendrait demain. Résultat courant : une application qui existe, qui compile, et qui ne rapporte rien.",
   },
   {
     q: "Tu reprends une application déjà développée ?",

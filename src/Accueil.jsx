@@ -28,7 +28,7 @@
 // Noé (25/11/2026 : « c'est un schéma, il le sait »). C'est ce qui les garde honnêtes : ils doivent RESTER des
 // schémas. Une capture réaliste d'un tableau de bord avec de gros revenus inventés n'a pas sa place sur cette page :
 // elle se lirait comme le résultat d'un client. « Réalisations » ne montre que du vrai.
-import { createElement, useEffect, useRef, useState } from 'react'
+import { createElement, lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Bell, Eye, FileCheck2, KeyRound, Rocket, Timer, UserRound, Wallet } from 'lucide-react'
 import './App.css'
 import './accueil.css'
@@ -39,6 +39,10 @@ import { trackBookingStep, trackDirectWhatsAppLead } from './metaTracking.js'
 import Footer from './Footer.jsx'
 import ReserverAppel from './ReserverAppel.jsx'
 import { lienInterne } from './seo.js'
+
+// « Ce que rapporte l'application d'un client » : aperçu EN LOCAL SEULEMENT (chiffres d'essai, pas ceux d'un client).
+// En production, `import.meta.env.DEV` est faux : ni le fichier ni ses chiffres ne sont dans le site. Voir ApercuResultat.jsx.
+const ApercuResultat = import.meta.env.DEV ? lazy(() => import('./ApercuResultat.jsx')) : null
 
 const mePhoto = '/assets/images/profile/me.webp'
 
@@ -575,11 +579,11 @@ export default function Accueil() {
         </div>
       </section>
 
-      {/* « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » EST RETIRÉ (27/11/2026, mise en ligne de l'accueil). Ses chiffres
-          (18 450 € par mois) étaient ceux d'un ancien écran d'exemple, présentés comme ceux d'un client : la règle
-          écrite sur le bloc disait de le retirer avant toute mise en ligne, faute de capture réelle et d'accord écrit
-          du client. Pour le remettre avec de VRAIS chiffres : le bloc complet est dans le commit 1624c00 (et sa version
-          « à zéro » dans aaf4952), ses styles sont restés dans accueil.css (.at-resultat…). */}
+      {/* « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » : retiré du site le 27/11/2026 à la mise en ligne de l'accueil
+          (ses 18 450 € par mois sont ceux d'un ancien écran d'exemple, pas d'un client), puis remis le même jour EN
+          LOCAL SEULEMENT, pour que Noé le voie (« juste après j'enlève »). En ligne, rien ne s'affiche ici. Le bloc,
+          la règle pour le mettre en ligne avec de vrais chiffres et la façon de l'enlever : ApercuResultat.jsx. */}
+      {ApercuResultat && <Suspense fallback={null}><ApercuResultat /></Suspense>}
 
       {/* ========== COMMENT ÇA SE PASSE ========== */}
       {/* Quatre étapes, deux par deux sur ordinateur, chacune avec son schéma et sa durée (voir ETAPES).
@@ -592,7 +596,7 @@ export default function Accueil() {
           (règle du 05/10/2026). Les fourchettes par support se donnent au premier appel.
           LE PRIX D'UNE AGENCE : « autour de 30 000 € » (budget médian d'une application mobile en agence, fourchette
           courante 15 000 à 50 000 €, baromètre 2026 de La Fabrique du Net, plus de 100 budgets réels). Le reste du
-          site dit encore « à partir de 20 000 € » : à aligner le jour de la mise en ligne.
+          site est aligné sur ce prix depuis le 27/11/2026 (pages d'offre, FAQ, blog, quiz, audit).
           ⚠️ Ce prix devra changer LE MÊME JOUR dans la pub et le formulaire Meta. */}
       <section className="pt-14 pb-14 md:py-28 px-5 bg-card" id="etapes-et-tarif">
         <div className="max-w-275 mx-auto">

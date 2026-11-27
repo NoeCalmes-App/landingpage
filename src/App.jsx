@@ -89,10 +89,15 @@ const SECTION_ROUTES = {
 // de la page precedente.
 const META_HOME = {
   path: '/',
-  title: 'Application mobile & web qui génère des revenus | Noé Calmes',
-  // Le 27/11/2026, avec le nouvel accueil : plus de « 13 000 €/mois » (Calorie, qui n'est plus sur les boutiques ; la
-  // page ne le dit plus). Même texte dans index.html (description, og, twitter). Le titre ne change pas.
-  description: "Je transforme ton idée en application qui rapporte vraiment, de la conception à la mise en ligne. Réserve un appel gratuit de 30 minutes avec moi.",
+  // LE TITRE ET LA DESCRIPTION (27/11/2026, Noé : « le titre Google, c'est toi l'expert ») : plus de promesse de
+  // revenus (offre du Drive : « je ne promets pas des revenus », ça attire ceux qui veulent de l'argent sans budget).
+  // Le titre garde le mot cherché (« application mobile ou web ») et dit ce qu'aucun concurrent ne dit : on la voit
+  // avant de payer. Sans « & » : le contrôle du build compte « &amp; » pour cinq caractères (limite 65). La description parle à la cible du Drive, le professionnel qui a déjà son activité et ses
+  // clients, avec le délai de l'accueil. Même texte dans index.html (title, description, og, twitter).
+  // Avant : « Application mobile & web qui génère des revenus » et « Je transforme ton idée en application qui
+  // rapporte vraiment… ». Le titre du haut de page (Accueil.jsx) n'a pas changé : c'est l'accroche de Noé.
+  title: 'Ton application mobile ou web, vue avant de payer | Noé Calmes',
+  description: "Tu as déjà ton activité et tes clients ? En 1 à 2 mois, ton application est en ligne, et tu la vois avant de payer. Réserve un appel gratuit de 30 minutes.",
 }
 
 // L'ACCUEIL (27/11/2026, Noé : « remplace la landing page par accueiltest, puis supprime accueiltest ») : la page

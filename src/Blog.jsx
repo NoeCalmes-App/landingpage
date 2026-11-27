@@ -57,7 +57,7 @@ export const BLOG_ARTICLES = [
     content: `
       <p>Commençons par la réponse, parce qu'elle est oui.</p>
       <p>Claude écrit le code d'une vraie application web, ce qu'on appelle aussi un SaaS : des comptes, une base de données, des écrans qui se parlent, un tableau de bord. Si tu as passé un week-end dessus et que ça tourne sur ton ordinateur, tu n'as pas rêvé. Et contrairement au mobile, il n'y a ni Mac obligatoire, ni compte Apple, ni validation d'un store entre toi et la mise en ligne. J'ai écrit <a href="/blog/application-mobile-avec-claude/">ce qui coince quand on crée une application mobile avec Claude</a> : en web, la moitié de ces murs n'existe pas.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour générer des revenus. J'ai publié plus de 20 applications, elles cumulent 1,3 million de téléchargements, et j'utilise l'IA tous les jours pour écrire du code. Cet article n'est pas là pour te dire que tu t'es trompé d'outil. Il répond à la question qui arrive juste après le week-end : pourquoi ça marche chez toi, et pourquoi ça ne rapporte rien.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications, elles cumulent 1,3 million de téléchargements, et j'utilise l'IA tous les jours pour écrire du code. Cet article n'est pas là pour te dire que tu t'es trompé d'outil. Il répond à la question qui arrive juste après le week-end : pourquoi ça marche chez toi, et pourquoi ça ne rapporte rien.</p>
 
       <h2>Ce que tu as vraiment entre les mains</h2>
       <p>Ce que Claude te rend, c'est un projet de développement qui tourne sur ton ordinateur. Dans la barre d'adresse, tu lis quelque chose comme « localhost ». Ça veut dire que l'application n'existe que sur ta machine : personne d'autre au monde ne peut l'ouvrir.</p>
@@ -94,7 +94,7 @@ export const BLOG_ARTICLES = [
 
       <h2>Ce qu'aucun code ne décide : qui paie, quand, et pourquoi il revient</h2>
       <p>Voilà le vrai sujet, et c'est celui que les tutoriels ne traitent jamais. Je n'ai encore jamais vu une application qui rapporte grâce à son code. Celles qui rapportent le font grâce à ce qui a été décidé avant la première ligne et mesuré après la mise en ligne : qui est l'utilisateur, ce qu'il comprend en trente secondes, à quel moment on lui propose de payer, et ce qui le fait revenir le lendemain.</p>
-      <p>J'ai conçu la première version d'une application qui a dépassé 300 000 utilisateurs et ne rapportait presque rien, parce que personne n'avait décidé où et quand l'utilisateur sortirait sa carte. J'en ai conçu une autre, sur un marché saturé, qui rapporte environ 13 000 € par mois par abonnement, parce que tout le parcours est construit autour de ce moment. Je raconte les deux dans <a href="/blog/ce-que-j-ai-appris-20-applications/">ce que j'ai appris en publiant plus de 20 applications</a>.</p>
+      <p>J'ai conçu la première version d'une application qui a dépassé 300 000 utilisateurs et ne rapportait presque rien, parce que personne n'avait décidé où et quand l'utilisateur sortirait sa carte. J'en ai conçu une autre, sur un marché saturé, qui a rapporté jusqu'à 13 000 € par mois par abonnement, parce que tout le parcours était construit autour de ce moment. Je raconte les deux dans <a href="/blog/ce-que-j-ai-appris-20-applications/">ce que j'ai appris en publiant plus de 20 applications</a>.</p>
       <p>Si Claude écrit le code en une heure, ça ne change rien à cette question. Personne ne la tape dans une phrase. Et un produit généré sans cette réponse perd simplement de l'argent plus vite, parce que l'hébergement, lui, commence à se facturer le premier jour. La façon de construire ce parcours dans le bon ordre est dans <a href="/blog/rentabiliser-application-mobile/">comment rentabiliser une application</a>, et j'ai détaillé pourquoi un code qui marche ne suffit pas dans <a href="/blog/creer-application-avec-ia/">créer une application avec l'IA</a>.</p>
 
       <h2>La pire erreur : faire grossir le prototype quand ça commence à marcher</h2>
@@ -116,7 +116,7 @@ export const BLOG_ARTICLES = [
       <p>Ce qu'il ne fait pas, ce n'est pas du code non plus : c'est décider, pour ton marché et tes utilisateurs, ce qui sera payant, quand l'offre apparaît, et comment on s'en aperçoit. C'est le design du parcours et la stratégie de lancement, et c'est exactement là que se joue le revenu.</p>
 
       <h2>Web ou mobile : la porte est plus facile en web, pas gratuite</h2>
-      <p>Si ton produit s'utilise assis devant un écran, au travail, avec plusieurs profils et un espace d'administration, tu as choisi le bon support : une application web sort deux à trois semaines plus vite qu'une application mobile à périmètre égal, sans validation d'Apple ni de Google, et elle garde environ 78 % de chaque vente.</p>
+      <p>Si ton produit s'utilise assis devant un écran, au travail, avec plusieurs profils et un espace d'administration, tu as choisi le bon support : une application web est en ligne en environ 1 mois, contre environ 2 pour une application mobile, sans validation d'Apple ni de Google, et elle garde environ 78 % de chaque vente.</p>
       <p>Mais « plus facile » ne veut pas dire « sans travail ». Il faut quelqu'un qui tienne l'application une fois en ligne : les mises à jour de sécurité, la base qui grossit, le paiement qui change ses règles. Et il faut, avant tout ça, le périmètre et le parcours qui en font un produit. Les ordres de grandeur pour une application web conçue de bout en bout sont dans <a href="/blog/combien-coute-application-mobile/">combien coûte une application</a>, section application web.</p>
 
       <h2>Par où commencer</h2>
@@ -133,19 +133,19 @@ export const BLOG_ARTICLES = [
     slug: 'ce-que-j-ai-appris-20-applications',
     title: "Ce que j'ai appris en publiant plus de 20 applications",
     metaTitle: "20 applications publiées : ce que j'ai appris | Noé Calmes",
-    description: "20 applications, 1,3 million de téléchargements, une à 13 000 € par mois, une à 300 000 utilisateurs et presque rien. Ce que j'en retiens pour ton projet.",
+    description: "20 applications, 1,3 million de téléchargements, une qui a fait jusqu'à 13 000 € par mois, une à 300 000 utilisateurs et presque rien. Ce que j'en retiens.",
     date: '2026-10-26',
-    dateMaj: '2026-11-09',
+    dateMaj: '2026-11-27',
     readTime: '9 min',
     finalCta: 'audit',
     categorie: "Monétisation",
-    accroche: "Une à 300 000 utilisateurs, une à 13 000 € par mois. Ce qui les sépare.",
+    accroche: "Une à 300 000 utilisateurs, une autre jusqu'à 13 000 € par mois. Ce qui les sépare.",
     tldr: {
-      verdict: "Plus de 20 applications publiées, 1,3 million de téléchargements, une application qui a dépassé 300 000 utilisateurs sans presque rien rapporter, et une autre qui génère environ 13 000 € par mois sur un marché saturé. Ce qui décide du revenu n'est jamais l'idée ni le nombre de téléchargements, c'est le moment où l'application demande à être payée, et il se décide avant la première ligne de code.",
+      verdict: "Plus de 20 applications publiées, 1,3 million de téléchargements, une application qui a dépassé 300 000 utilisateurs sans presque rien rapporter, et une autre qui a généré jusqu'à 13 000 € par mois sur un marché saturé. Ce qui décide du revenu n'est jamais l'idée ni le nombre de téléchargements, c'est le moment où l'application demande à être payée, et il se décide avant la première ligne de code.",
       points: [
         { label: "Le sujet", valeur: "Ce que les chiffres réels de mes applications m'ont appris, dans l'ordre où je l'ai appris" },
         { label: "Pour qui", valeur: "Tu as une idée d'application et tu veux savoir ce qui sépare celles qui rapportent des autres" },
-        { label: "Le repère", valeur: "300 000 utilisateurs et presque pas de revenu, contre 13 000 € par mois sur un marché saturé" },
+        { label: "Le repère", valeur: "300 000 utilisateurs et presque pas de revenu, contre jusqu'à 13 000 € par mois sur un marché saturé" },
         { label: "À retenir", valeur: "Le revenu se décide avant le code, pas après le lancement" },
       ],
     },
@@ -161,15 +161,15 @@ export const BLOG_ARTICLES = [
     ],
     faq: [
       { q: "Ces leçons valent-elles aussi pour une application web ?", a: "Oui, à un détail près : une application web ne se télécharge pas, elle s'ouvre dans un navigateur, donc le chiffre qui flatte n'est pas le téléchargement mais l'inscription. Le reste ne change pas. La question de savoir à quel écran, et après avoir obtenu quoi, ton utilisateur accepte de payer se pose exactement de la même façon, et elle se décide avant le développement." },
-      { q: "J'ai 8 000 € de côté, c'est assez pour une application ?", a: "Pour une application au périmètre resserré, oui : un seul type d'utilisateur, peu d'écrans, des comptes, éventuellement un paiement, c'est la fourchette que je pratique, 5 000 à 8 000 €. Dès qu'il y a deux profils, un espace d'administration ou du temps réel, on passe au-dessus. Ce qui fait le prix, c'est le périmètre, et c'est la première chose qu'on cadre ensemble." },
-      { q: "Combien de temps te faut-il pour sortir une application ?", a: "45 jours en moyenne, du cadrage à la mise en ligne, quand le périmètre est clair. Ce qui allonge un projet n'est presque jamais le code : c'est ce qui n'a pas été décidé avant, et c'est pour ça que je commence par là. Une plateforme plus lourde se compte en mois, et son délai est fixé dans le devis." },
+      { q: "J'ai 8 000 € de côté, c'est assez pour une application ?", a: "Ça dépend de ce qu'elle doit faire. Mes applications se situent autour de 10 000 €. Une première version plus resserrée, un seul type d'utilisateur et peu d'écrans, peut coûter moins. Dès qu'il y a deux profils, un espace d'administration ou du temps réel, elle coûte plus. Ce qui fait le prix, c'est le périmètre : c'est la première chose qu'on cadre ensemble, et ton prix fixe est écrit dans ton devis." },
+      { q: "Combien de temps te faut-il pour sortir une application ?", a: "1 à 2 mois, du cadrage à la mise en ligne, quand le périmètre est clair : environ 1 mois pour une application web, 2 mois pour une application mobile, 2 mois et demi pour les deux. Le développement ne prend pas de retard. Ce qui peut allonger, c'est ta société et la validation de tes comptes par Apple et Google. Ton délai est écrit dans ton devis, à côté du prix." },
     ],
     content: `
       <p>Il y a deux sortes de chiffres dans mon parcours : ceux que je mets sur mon site, et ceux qui m'ont appris quelque chose. Ce ne sont pas toujours les mêmes.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour rapporter. J'ai publié plus de 20 applications mobiles, les miennes et celles de mes clients, et elles totalisent plus de 1,3 million de téléchargements. Voici ce que j'en ai retenu, dans l'ordre où je l'ai compris, avec les chiffres réels.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications mobiles, les miennes et celles de mes clients, et elles totalisent plus de 1,3 million de téléchargements. Voici ce que j'en ai retenu, dans l'ordre où je l'ai compris, avec les chiffres réels.</p>
 
       <h2>Les chiffres, en un tableau</h2>
-      <p>Avant les leçons, les chiffres eux-mêmes, avec ce que chacun mesure vraiment. Ils sont arrondis et à jour au 9 novembre 2026.</p>
+      <p>Avant les leçons, les chiffres eux-mêmes, avec ce que chacun mesure vraiment. Ils sont arrondis et à jour au 27 novembre 2026.</p>
       <div class="table-scroll">
         <table>
           <thead>
@@ -179,10 +179,10 @@ export const BLOG_ARTICLES = [
             <tr><td><strong>Plus de 20</strong> applications</td><td>Applications mobiles conçues et publiées sur l'App Store et Google Play, les miennes et celles de mes clients</td><td>Combien rapportent de l'argent</td></tr>
             <tr><td><strong>1,3 million</strong> de téléchargements</td><td>Total cumulé de ces applications, celle aux 300 000 utilisateurs comprise</td><td>Combien de personnes les utilisent encore</td></tr>
             <tr><td><strong>300 000</strong> utilisateurs</td><td>La première version d'une application que j'ai conçue pour ses créateurs</td><td>Elle ne rapportait presque rien : le moment de payer n'avait pas été décidé</td></tr>
-            <tr><td>Environ <strong>13 000 €</strong> par mois</td><td>Le revenu par abonnement de Calorie, une application de suivi nutritionnel conçue pour un client</td><td>C'est un cas réel, pas une moyenne de toutes mes applications</td></tr>
-            <tr><td>Environ <strong>30 000</strong> téléchargements et <strong>3 %</strong> de payants</td><td>Ce qui suffit à Calorie pour arriver à ce revenu</td><td>Le volume ne fait pas le revenu, la conversion et la rétention le font</td></tr>
+            <tr><td>Jusqu'à <strong>13 000 €</strong> par mois</td><td>Le revenu par abonnement qu'a atteint une application de suivi nutritionnel avec l'IA, conçue pour un client</td><td>C'est un cas réel, pas une moyenne de toutes mes applications</td></tr>
+            <tr><td>Environ <strong>30 000</strong> téléchargements et <strong>3 %</strong> de payants</td><td>Ce qui a suffi à cette application pour arriver à ce revenu</td><td>Le volume ne fait pas le revenu, la conversion et la rétention le font</td></tr>
             <tr><td>Environ <strong>70 %</strong> du prix affiché</td><td>Ce que tu touches sur une application mobile, après TVA et commission de l'App Store ou de Google Play</td><td>Sur une application web, sans commission de store, c'est environ 78 %</td></tr>
-            <tr><td><strong>45 jours</strong> en moyenne</td><td>Du cadrage à la mise en ligne, sur mes projets</td><td>Le délai exact dépend du périmètre, il est fixé dans le devis</td></tr>
+            <tr><td><strong>1 à 2 mois</strong></td><td>Du cadrage à la mise en ligne, sur mes projets : environ 1 mois sur le web, 2 mois sur mobile</td><td>Ce qui allonge, ce n'est pas le développement : c'est la société du client et la validation de ses comptes par Apple et Google</td></tr>
             <tr><td><strong>30 jours</strong></td><td>Plouff Habitudes, ma propre application, du design au lancement</td><td>Un périmètre que je maîtrisais entièrement, puisque c'est ma propre application</td></tr>
           </tbody>
         </table>
@@ -203,12 +203,12 @@ export const BLOG_ARTICLES = [
       </div>
       <p>C'est la leçon qui m'a le plus appris, et c'est aussi pour ça qu'elle vaut quelque chose : je l'ai vue de l'intérieur, sur une application que j'avais conçue, pas dans un livre.</p>
 
-      <h2>13 000 € par mois sur un marché saturé</h2>
-      <p>Calorie est une application mobile de suivi nutritionnel avec l'IA, que j'ai conçue pour un client. L'idée est banale et le marché était déjà pris : il en existe des dizaines, et celle-ci n'avait rien de neuf sur le papier.</p>
-      <p>Elle lui rapporte aujourd'hui environ 13 000 € par mois, par abonnement. Pas parce que l'idée était meilleure que les autres. Parce que tout, dans l'application, est construit autour du moment où l'utilisateur comprend ce qu'elle lui apporte, puis du moment où on lui propose de payer. Les premiers écrans l'amènent à la valeur vite. L'écran qui propose l'abonnement arrive quand il a déjà une raison de dire oui.</p>
+      <h2>Jusqu'à 13 000 € par mois sur un marché saturé</h2>
+      <p>J'ai conçu pour un client une application mobile de suivi nutritionnel avec l'IA. L'idée était banale et le marché déjà pris : il en existait des dizaines, et celle-ci n'avait rien de neuf sur le papier.</p>
+      <p>Elle lui a rapporté jusqu'à 13 000 € par mois, par abonnement. Pas parce que l'idée était meilleure que les autres. Parce que tout, dans l'application, était construit autour du moment où l'utilisateur comprenait ce qu'elle lui apportait, puis du moment où on lui proposait de payer. Les premiers écrans l'amenaient vite à la valeur. L'écran qui proposait l'abonnement arrivait quand il avait déjà une raison de dire oui.</p>
       <div class="chiffre">
         <span class="chiffre-valeur">13 000 €</span>
-        <span class="chiffre-texte">par mois, par abonnement, sur un marché que tout le monde disait pris.</span>
+        <span class="chiffre-texte">par mois au plus haut, par abonnement, sur un marché que tout le monde disait pris.</span>
       </div>
       <p>Ce que ça m'a appris : <strong>l'idée n'est presque jamais le sujet</strong>. Deux applications avec la même idée peuvent avoir des revenus sans aucun rapport, et la différence ne se voit pas sur la liste des fonctionnalités. Elle se voit dans le parcours. J'ai détaillé les ordres de grandeur dans <a href="/blog/combien-rapporte-application-mobile/">combien rapporte une application mobile</a>.</p>
 
@@ -227,7 +227,7 @@ export const BLOG_ARTICLES = [
       <p>C'est la chose que j'aurais le plus de mal à expliquer à celui que j'étais au début : <strong>le travail commence par ce qu'on refuse de construire</strong>.</p>
 
       <h2>Ce que je ne fais pas : amener les utilisateurs</h2>
-      <p>Les 300 000 utilisateurs de cette application et les abonnés de Calorie, ce n'est pas moi qui les ai fait venir : c'est le travail de ceux qui portent ces applications. Je conçois le marketing dans l'application, ce qui transforme un utilisateur en client. Mon travail commence quand quelqu'un ouvre l'application, et il continue tant qu'il revient et qu'il paie. Avant, rien : la publicité, les réseaux, le référencement, ce n'est pas moi, et quelqu'un qui te promet les deux à la fois te promet trop.</p>
+      <p>Les 300 000 utilisateurs de la première et les abonnés de la seconde, ce n'est pas moi qui les ai fait venir : c'est le travail de leurs créateurs. Je conçois le marketing dans l'application, ce qui transforme un utilisateur en client. Mon travail commence quand quelqu'un ouvre l'application, et il continue tant qu'il revient et qu'il paie. Avant, rien : la publicité, les réseaux, le référencement, ce n'est pas moi, et quelqu'un qui te promet les deux à la fois te promet trop.</p>
 
       <h2>Par où commencer</h2>
       <p>Si tu dois ne garder qu'une chose de ces vingt applications, garde la question des 300 000 utilisateurs, et pose-la avant tout le reste.</p>
@@ -279,7 +279,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>Tu travailles debout, les mains prises, parfois dans une cave sans réseau : deux des <a href="/blog/application-mobile-pour-entreprise/">quatre cas qui justifient le mobile</a> rien qu'en descendant du camion. Ton outil est dans ta poche ou il n'existe pas. Et pourtant, la plupart des artisans qui m'appellent n'ont pas besoin de l'application qu'on leur a proposée.</p>
-      <p>Les deux sont vraies en même temps, parce qu'il y a <strong>deux applications possibles</strong>, et ce n'est pas la même. Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour rapporter, j'en ai publié plus de 20. Voici lesquelles tiennent pour un artisan ou un commerçant, et laquelle je te déconseille.</p>
+      <p>Les deux sont vraies en même temps, parce qu'il y a <strong>deux applications possibles</strong>, et ce n'est pas la même. Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois, j'en ai publié plus de 20. Voici lesquelles tiennent pour un artisan ou un commerçant, et laquelle je te déconseille.</p>
 
       <h2>Deux applications, pas une</h2>
       <p>Quand on dit « une appli pour artisan », on mélange deux choses qui n'ont ni le même utilisateur, ni le même intérêt.</p>
@@ -330,22 +330,16 @@ export const BLOG_ARTICLES = [
       </div>
 
       <h2>Ce que ça coûte, et en combien de temps</h2>
-      <p>Les ordres de grandeur, par périmètre. Si le devis qu'on t'a fait est loin au-dessus, regarde d'abord s'il ne mélange pas les deux applications, la tienne et celle de tes clients : c'est la première chose à séparer avant de comparer quoi que ce soit.</p>
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr><th>Périmètre</th><th>Budget</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Ton outil : devis sur place, photos, suivi simple</td><td>5 000 à 8 000 €</td></tr>
-            <tr><td>Ton outil et le suivi que le client voit, avec validation et paiement d'acompte : deux profils, toi et lui</td><td>Une dizaine de milliers d'euros</td></tr>
-            <tr><td>L'application pour une clientèle qui revient, avec réservation et rappels</td><td>8 000 à 12 000 €</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p>Une application se situe autour de 10 000 €, selon ce qu'elle doit faire, et ton prix fixe est écrit dans ton devis. Si le devis qu'on t'a fait est loin au-dessus, regarde d'abord s'il ne mélange pas les deux applications, la tienne et celle de tes clients : c'est la première chose à séparer avant de comparer quoi que ce soit.</p>
+      <p>Ce qui fait varier le prix :</p>
+      <ul>
+        <li><strong>Ton outil seul</strong> : devis sur place, photos, suivi simple.</li>
+        <li><strong>Ton outil et le suivi que le client voit</strong>, avec validation et paiement d'acompte : deux profils, toi et lui, donc deux parcours à construire.</li>
+        <li><strong>L'application pour une clientèle qui revient</strong>, avec réservation et rappels.</li>
+      </ul>
       <div class="chiffre">
-        <span class="chiffre-valeur">45 jours</span>
-        <span class="chiffre-texte">en moyenne pour une application, du cadrage à la mise en ligne. Pour un artisan, le cadrage est court : le métier est clair, les gestes sont connus, et tu sais exactement ce qui te fait perdre du temps.</span>
+        <span class="chiffre-valeur">1 à 2 mois</span>
+        <span class="chiffre-texte">pour que ton application soit en ligne : environ 1 mois sur le web, 2 mois sur mobile. Pour un artisan, le cadrage est court : le métier est clair, les gestes sont connus, et tu sais exactement ce qui te fait perdre du temps.</span>
       </div>
       <p>Reprends le tableau du début, et compte avec ta marge, pas avec ton chiffre : si deux devis par semaine qui partent vraiment représentent 1 000 € de chiffre et que tu en gardes un tiers, c'est un peu plus de 300 € de marge par semaine, et un outil à 6 000 € est remboursé en quatre à cinq mois. Si ton calcul donne moins, dis-le-moi, et je te dirai franchement si ça vaut le coup. Le détail de ce qui fait varier un devis est dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>.</p>
 
@@ -397,7 +391,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>Quand une entreprise m'appelle pour « une application mobile », dans la majorité des cas ce n'est pas d'une application mobile qu'elle a besoin. C'est d'un outil. Et la différence entre les deux décide de ton budget, de ton délai et de ce que tu auras vraiment entre les mains.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour rapporter. J'ai publié plus de 20 applications. Voici une réponse franche à la question, avec les quatre cas où le mobile se justifie, et ce qu'il faut faire sinon.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications. Voici une réponse franche à la question, avec les quatre cas où le mobile se justifie, et ce qu'il faut faire sinon.</p>
 
       <h2>La bonne question : qui va s'en servir, et où</h2>
       <p>Personne ne te la pose, et c'est pourtant elle qui tranche. Pas ton budget, pas la mode, pas ce que fait ton concurrent.</p>
@@ -421,11 +415,11 @@ export const BLOG_ARTICLES = [
       <h2>Si aucun des quatre ne s'applique</h2>
       <p>Alors ton entreprise a besoin d'une application web, et c'est une bonne nouvelle, pour trois raisons concrètes.</p>
       <ul>
-        <li><strong>Elle se met en ligne le jour où tu veux.</strong> Pas de compte développeur à ouvrir, pas de validation d'Apple à attendre, pas de calendrier de mise à jour imposé par un store. À périmètre égal, c'est souvent deux à trois semaines de gagnées.</li>
+        <li><strong>Elle se met en ligne le jour où tu veux.</strong> Pas de compte développeur à ouvrir, pas de validation d'Apple à attendre, pas de calendrier de mise à jour imposé par un store. Compte environ 1 mois pour une application web, contre environ 2 pour une application mobile.</li>
         <li><strong>Personne n'a rien à installer.</strong> Tu envoies une adresse et un identifiant. Ton équipe est équipée le matin même, ton client aussi.</li>
         <li><strong>Aucun store ne prélève de commission.</strong> Sur un abonnement mobile, après la TVA et la commission du store, il te reste environ 70 %. Sur le même abonnement encaissé en web, après la TVA et les frais bancaires, environ 78 %. Si ton application fait payer quelqu'un, l'écart se voit tous les mois.</li>
       </ul>
-      <p>Et le prix, dans tout ça ? Ce qui fait le montant d'une application, c'est son périmètre : le nombre d'écrans, les profils qui se connectent, les paiements, l'espace d'administration. C'est ce périmètre qu'on cadre ensemble avant le devis, et les ordres de grandeur sont un peu plus bas.</p>
+      <p>Et le prix, dans tout ça ? Ce qui fait le montant d'une application, c'est son périmètre : le nombre d'écrans, les profils qui se connectent, les paiements, l'espace d'administration. C'est ce périmètre qu'on cadre ensemble avant le devis, et le repère est un peu plus bas.</p>
 
       <h2>Le cas où il faut les deux</h2>
       <p>Il est fréquent dans les entreprises qui vendent au grand public, et il se reconnaît vite : tes clients sont sur leur téléphone, et toi tu as besoin d'un espace d'administration pour piloter, facturer, suivre.</p>
@@ -437,23 +431,11 @@ export const BLOG_ARTICLES = [
       </div>
 
       <h2>Ce que ça coûte, et en combien de temps</h2>
-      <p>Voici les ordres de grandeur, par périmètre.</p>
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr><th>Périmètre</th><th>Budget</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Application au périmètre clair : comptes, une fonction centrale, suivi</td><td>5 000 à 8 000 €</td></tr>
-            <tr><td>Application complète : paiements, espace d'administration, davantage d'écrans et de fonctions</td><td>8 000 à 12 000 €</td></tr>
-            <tr><td>Deux profils distincts, par exemple tes clients et ton équipe</td><td>Une dizaine de milliers d'euros</td></tr>
-            <tr><td>Plateforme plus lourde pour toute une organisation</td><td>Chiffrée après cadrage</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p>Une application se situe autour de 10 000 €, selon la taille et la complexité de ton projet. En agence, c'est plutôt autour de 30 000 €. Ton prix fixe est écrit dans ton devis, avant que tu signes.</p>
+      <p>Ce qui fait monter le prix : les paiements, un espace d'administration, davantage d'écrans et de fonctions, et surtout deux profils distincts, par exemple tes clients et ton équipe. Une plateforme plus lourde, pour toute une organisation, se chiffre après le cadrage.</p>
       <div class="chiffre">
-        <span class="chiffre-valeur">45 jours</span>
-        <span class="chiffre-texte">en moyenne pour une application, du cadrage à la mise en ligne. Une plateforme plus lourde se compte en mois, et son délai est fixé dans le devis.</span>
+        <span class="chiffre-valeur">1 à 2 mois</span>
+        <span class="chiffre-texte">pour qu'une application soit en ligne : environ 1 mois sur le web, 2 mois sur mobile. Une plateforme plus lourde se compte en mois, et son délai est fixé dans le devis.</span>
       </div>
       <p>Le détail de ce qui fait monter ou descendre un devis est dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>, et il vaut pour une application web.</p>
 
@@ -500,12 +482,12 @@ export const BLOG_ARTICLES = [
       { q: "J'ai déjà un logiciel de gestion, pourquoi une application en plus ?", a: "Parce qu'ils ne servent pas la même personne. Ton logiciel est fait pour toi : il gère les contrats, les paiements, les plannings, les accès. Une application est faite pour ton adhérent, et elle vit sur son téléphone. La plupart des logiciels de salle proposent bien un espace en ligne, mais il faut y aller, et personne n'y va. La différence tient en un mot : une application peut faire le premier pas, pas un site." },
       { q: "Mes adhérents vont-ils vraiment l'installer ?", a: "Une partie seulement, et c'est suffisant. Compte entre 30 et 50 % sur les premiers mois, en l'installant avec eux à l'accueil plutôt qu'en espérant qu'ils le fassent seuls. Et surtout, ceux qui l'installent sont précisément ceux qui viennent, donc ceux que tu veux garder. Celui qui ne l'installera jamais est déjà à moitié parti, l'application n'aurait rien changé pour lui." },
       { q: "Faut-il faire payer l'abonnement dans l'application ?", a: "Non, et c'est important. Ton abonnement est déjà prélevé par ton logiciel de gestion, directement sur le compte de l'adhérent. Le faire passer par l'application ferait entrer les commissions des stores dans l'équation et te coûterait une part de chaque mensualité, pour rien. L'application sert la fréquentation, pas l'encaissement. En revanche, vendre un service ponctuel dedans, un coaching, un stage, un produit, a du sens." },
-      { q: "Combien ça coûte et en combien de temps ?", a: "Une application au périmètre clair se situe entre 5 000 et 8 000 €, et compte 45 jours en moyenne, du cadrage à la mise en ligne. Avec deux profils distincts, adhérent et coach, elle monte vers 8 000 à 12 000 €. Le détail des fourchettes est dans le prix d'une application mobile." },
+      { q: "Combien ça coûte et en combien de temps ?", a: "Autour de 10 000 €, selon ce qu'elle doit faire : avec deux profils distincts, adhérent et coach, elle demande plus de travail qu'avec un seul. Ton prix fixe est écrit dans ton devis. Pour le délai, compte environ 2 mois pour une application mobile. Le développement ne prend pas de retard : ce qui peut allonger, c'est la validation de tes comptes par Apple et Google." },
       { q: "Et si je n'ai qu'un petit studio de 50 personnes ?", a: "Alors le calcul ne tient probablement pas encore, et je préfère te le dire. Avec 50 adhérents, retenir cinq personnes de plus par mois est irréaliste : il n'y en a pas assez qui partent. En dessous d'une centaine d'adhérents, le levier est ailleurs, dans la relation directe que tu as déjà avec chacun. Une application devient intéressante quand tu ne peux plus connaître tout le monde par son prénom." },
     ],
     content: `
       <p>Les salles qui m'appellent pensent souvent avoir un problème d'inscriptions. Dans presque tous les cas, en regardant les chiffres, c'est un problème de résiliations.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Voici ce qu'une application change réellement dans une salle, et ce qu'elle ne change pas.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications. Voici ce qu'une application change réellement dans une salle, et ce qu'elle ne change pas.</p>
 
       <h2>Ton revenu existe déjà</h2>
       <p>C'est la différence avec la plupart des projets d'application, et elle change tout le raisonnement.</p>
@@ -623,7 +605,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>Tu as décidé de faire développer ton application, on t'a dit qu'il fallait un cahier des charges, et tu es devant une page blanche. Combien de pages, quel niveau de détail, faut-il décrire les écrans ?</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Voici ce que je demande réellement avant un devis, et pourquoi c'est beaucoup moins que ce que tu crois.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications. Voici ce que je demande réellement avant un devis, et pourquoi c'est beaucoup moins que ce que tu crois.</p>
 
       <h2>À quoi sert vraiment ce document</h2>
       <p>Un cahier des charges a une seule utilité pratique : <strong>permettre à plusieurs prestataires de chiffrer la même chose</strong>. C'est tout. Ce n'est ni un contrat, ni un plan de développement, ni une garantie.</p>
@@ -720,18 +702,18 @@ export const BLOG_ARTICLES = [
     slug: 'combien-de-temps-creer-application-mobile',
     title: "Combien de temps faut-il pour créer une application mobile ?",
     metaTitle: "Créer une application mobile : combien de temps ? | Noé Calmes",
-    description: "45 jours en moyenne. Mais ce n'est pas le délai avant ton premier euro : ce qui allonge vraiment, et ce qui se prépare en parallèle.",
+    description: "Environ 2 mois sur mobile, 1 mois sur le web. Mais ce n'est pas le délai avant ton premier euro : ce qui allonge, et ce qui se prépare en parallèle.",
     date: '2026-09-21',
     readTime: '8 min',
     finalCta: 'audit',
     categorie: "Créer",
     accroche: "La vraie question n'est pas quand le code est fini, c'est quand tu encaisses.",
     tldr: {
-      verdict: "45 jours en moyenne pour une application au périmètre clair, du cadrage à la mise en ligne, dont 4 à 6 semaines de développement. Mais ce délai mesure la livraison, pas ton premier euro. Entre l'application livrée et ton premier euro encaissé, il y a une chaîne administrative qui prend son propre temps, et qui peut être préparée pendant le développement au lieu de s'ajouter après.",
+      verdict: "Compte environ 2 mois pour une application mobile au périmètre clair, du cadrage à la mise en ligne, environ 1 mois pour une application web, et 2 mois et demi pour les deux. Le développement ne prend pas de retard : ce qui allonge, c'est ta société et la validation de tes comptes par Apple et Google. Et ce délai mesure la mise en ligne, pas ton premier euro. Entre l'application livrée et ton premier euro encaissé, il y a une chaîne administrative qui prend son propre temps, et qui peut être préparée pendant le développement au lieu de s'ajouter après.",
       points: [
         { label: "Le sujet", valeur: "Le délai réel, développement et mise en vente comprises" },
         { label: "Pour qui", valeur: "Tu veux savoir quand ton application peut rapporter, pas quand le code finit" },
-        { label: "Le repère", valeur: "45 jours en moyenne, dont 4 à 6 semaines de développement" },
+        { label: "Le repère", valeur: "Environ 2 mois sur mobile, 1 mois sur le web, 2 mois et demi pour les deux" },
         { label: "À retenir", valeur: "La première cause de retard n'est pas technique, c'est le temps de réponse" },
       ],
     },
@@ -746,38 +728,39 @@ export const BLOG_ARTICLES = [
       "Tu penses que le délai dépend uniquement du développeur",
     ],
     faq: [
-      { q: "Pourquoi je lis 45 jours à certains endroits et 4 à 6 semaines à d'autres ?", a: "Parce que les deux mesurent des choses différentes, et autant le dire clairement. Quatre à six semaines, c'est le temps de développement effectif. Quarante-cinq jours, c'est la durée porte à porte du projet, cadrage et allers-retours compris, sur un périmètre clair. Six semaines de développement font 42 jours : les deux chiffres décrivent le même projet, l'un compte le travail, l'autre compte le calendrier. Si un délai t'est annoncé, demande toujours lequel des deux il désigne." },
+      { q: "Pourquoi 1 mois sur le web et 2 mois sur mobile ?", a: "Parce que le mobile ajoute des étapes que le web n'a pas : les comptes développeur Apple et Google à créer et à faire valider, la version de test à installer sur ton téléphone, puis la validation de l'application par chaque store avant sa publication. Le développement lui-même avance au même rythme. Une application web se met en ligne sur ton nom de domaine dès qu'elle est prête, sans personne à attendre." },
       { q: "Combien de temps prend la validation sur les stores ?", a: "La validation elle-même est rapide, souvent moins de deux jours ouvrés. Le vrai risque n'est pas sa durée, c'est le refus : chaque refus renvoie en fin de file et relance le compteur. Les motifs classiques sont connus et évitables, une politique de confidentialité manquante, un compte de test qui ne fonctionne pas, des captures d'écran non conformes, ou une application jugée trop pauvre au regard de la règle 4.2 d'Apple. Une soumission préparée passe en général du premier coup." },
       { q: "Faire iOS et Android en même temps double-t-il le délai ?", a: "Non, pas avec une technologie multiplateforme comme Flutter : le code est écrit une fois et compilé pour les deux systèmes. Ce qui s'ajoute est réel mais limité, quelques jours de tests sur les deux familles d'appareils et deux publications à préparer au lieu d'une. Compte une marge, pas un doublement." },
-      { q: "Peut-on aller plus vite que quatre semaines ?", a: "Oui, en réduisant le périmètre, jamais en compressant le travail. Une application à un seul type d'utilisateur, sans temps réel et sans paiement intégré, peut sortir plus vite. En revanche accélérer sans rien retirer produit une version fragile qu'il faut reprendre, et le temps regagné est perdu deux fois." },
+      { q: "Peut-on aller plus vite ?", a: "Oui, en réduisant le périmètre, jamais en compressant le travail. Une application à un seul type d'utilisateur, sans temps réel et sans paiement intégré, peut sortir plus vite. En revanche accélérer sans rien retirer produit une version fragile qu'il faut reprendre, et le temps regagné est perdu deux fois." },
     ],
     content: `
-      <p>Le temps de développement d'une application mobile, c'est <strong>4 à 6 semaines</strong> pour une application au périmètre clair, et <strong>45 jours</strong> en tout si on compte le cadrage avant et la mise en ligne après. C'est la deuxième question qu'on me pose, juste après <a href="/blog/combien-coute-application-mobile/">le prix</a>. Et la réponse honnête tient en deux temps, parce que la question en cache une autre.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Voici les vrais délais, y compris ceux dont personne ne parle.</p>
+      <p>Pour une application mobile, compte <strong>environ 2 mois</strong> du cadrage à la mise en ligne. Pour une application web, <strong>environ 1 mois</strong>, et environ 2 mois et demi pour les deux. C'est la deuxième question qu'on me pose, juste après <a href="/blog/combien-coute-application-mobile/">le prix</a>. Et la réponse honnête tient en deux temps, parce que la question en cache une autre.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications. Voici les vrais délais, y compris ceux dont personne ne parle.</p>
 
       <h2>La réponse courte</h2>
       <div class="chiffre">
-        <span class="chiffre-valeur">45 jours</span>
-        <span class="chiffre-texte">en moyenne pour une application au périmètre clair, du cadrage à la mise en ligne, dont 4 à 6 semaines de développement. Une plateforme plus lourde, avec plusieurs profils d'utilisateurs et des fonctionnalités avancées, demande plus : son délai est fixé dans le devis.</span>
+        <span class="chiffre-valeur">2 mois</span>
+        <span class="chiffre-texte">environ pour une application mobile au périmètre clair, du cadrage à la mise en ligne. Environ 1 mois pour une application web, 2 mois et demi pour les deux. Une plateforme plus lourde, avec plusieurs profils d'utilisateurs et des fonctionnalités avancées, demande plus : son délai est écrit dans le devis.</span>
       </div>
-      <p>Retiens la condition, elle fait tout le délai : <strong>au périmètre clair</strong>. Ce n'est pas une formule de prudence, c'est la variable principale. Un projet cadré en une semaine se développe en quatre. Un projet qui se redéfinit en cours de route n'a pas de délai, il a une direction.</p>
+      <p>Retiens la condition, elle fait tout le délai : <strong>au périmètre clair</strong>. Ce n'est pas une formule de prudence, c'est la variable principale. Un projet cadré dès le départ tient son délai. Un projet qui se redéfinit en cours de route n'a pas de délai, il a une direction.</p>
+      <p>Le développement ne prend pas de retard : ce qui peut allonger, c'est ta société et la validation de tes comptes par Apple et Google.</p>
 
       <h2>Ce que ces semaines contiennent vraiment</h2>
-      <p>Le découpage type d'un projet, pour que tu saches ce qui se passe et quand tu es attendu.</p>
+      <p>Le découpage type d'une application mobile, pour que tu saches ce qui se passe et quand tu es attendu. Sur le web, les étapes sont les mêmes, en plus court, et sans les stores.</p>
       <div class="table-scroll">
         <table>
           <thead>
             <tr><th>Période</th><th>Ce qui avance</th><th>Ce qu'on attend de toi</th></tr>
           </thead>
           <tbody>
-            <tr><td>Semaine 1</td><td>Cadrage, périmètre, parcours utilisateur</td><td>Beaucoup. C'est la semaine la plus dense pour toi</td></tr>
-            <tr><td>Semaines 2 à 4</td><td>Design puis développement des écrans</td><td>Des retours rapides sur les maquettes</td></tr>
-            <tr><td>Semaine 5</td><td>Paiement, comptes, cas limites</td><td>Tes accès et tes contenus définitifs</td></tr>
-            <tr><td>Semaine 6</td><td>Tests, corrections, préparation des fiches store</td><td>Tes tests réels, sur ton téléphone</td></tr>
+            <tr><td>Semaine 1</td><td>Le cadrage, puis ta maquette définitive : les vrais écrans de ton application</td><td>Beaucoup. C'est la semaine la plus dense pour toi</td></tr>
+            <tr><td>Semaines 2 à 5</td><td>Le développement : comptes, paiement, fonctions, cas limites</td><td>Tes accès, tes contenus définitifs, tes comptes Apple et Google</td></tr>
+            <tr><td>Semaines 6 et 7</td><td>La version de test, sur ton téléphone</td><td>Tes tests réels, et tous tes retours en une seule fois</td></tr>
+            <tr><td>Semaine 8</td><td>Les corrections, les fiches des stores, l'envoi à Apple et à Google</td><td>Ta validation de la version finale</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Regarde la colonne de droite. Sur six semaines, tu es sollicité pendant quatre. C'est exactement là que les plannings se décalent, et ce n'est presque jamais du côté du code.</p>
+      <p>Regarde la colonne de droite : tu es sollicité à chaque étape. C'est exactement là que les plannings se décalent, et ce n'est presque jamais du côté du code.</p>
 
       <h2>Le délai dont personne ne parle</h2>
       <p>Voilà le point important, celui qui transforme une bonne nouvelle en mauvaise surprise.</p>
@@ -809,7 +792,7 @@ export const BLOG_ARTICLES = [
       <h2>La première cause de retard n'est pas technique</h2>
       <p>Il faut le dire franchement, parce que c'est ce que je constate sur la majorité des projets.</p>
       <p>Ce qui décale un planning, ce n'est presque jamais une difficulté de développement. C'est un délai de réponse. Une maquette validée en huit jours au lieu de deux, des textes qui arrivent la veille de la mise en ligne, des photos qui n'existent pas encore, un accès qu'on attend.</p>
-      <p>Une semaine d'attente sur un projet de six semaines, ce n'est pas un contretemps : c'est <strong>un sixième du planning</strong>. Deux allers-retours lents suffisent à transformer six semaines en neuf, sans qu'une seule ligne de code ait été plus lente à écrire.</p>
+      <p>Une semaine d'attente sur un projet de deux mois, ce n'est pas un contretemps : c'est <strong>un huitième du planning</strong>. Deux allers-retours lents suffisent à transformer deux mois en trois, sans qu'une seule ligne de code ait été plus lente à écrire.</p>
       <div class="encadre attention">
         <span class="encadre-titre">La question à poser avant de signer</span>
         <p>Pas seulement « en combien de temps », mais aussi <strong>« qu'est-ce que vous attendez de moi, et à quel moment »</strong>. Un interlocuteur qui sait répondre précisément à la seconde question tiendra la première. C'est le meilleur test que je connaisse.</p>
@@ -819,20 +802,21 @@ export const BLOG_ARTICLES = [
       <p>Tout ce qui suit se fait sans développeur, sans budget engagé, et retire directement des jours au calendrier.</p>
       <ul>
         <li><strong>Ouvrir les comptes développeur Apple et Google.</strong> La vérification d'identité peut prendre plusieurs jours, autant qu'elle tourne pendant que tu réfléchis encore.</li>
+        <li><strong>Créer ta société, si elle n'existe pas encore.</strong> Avec la validation de tes comptes, c'est ce qui allonge le plus souvent un projet. Le développement, lui, ne prend pas de retard.</li>
         <li><strong>Rassembler tes contenus.</strong> Textes, logo, photos, conditions générales, politique de confidentialité. C'est la cause de retard la plus fréquente et la plus évitable.</li>
-        <li><strong>Écrire ton périmètre en une page.</strong> Le problème résolu, pour qui, ce qui est payant. Pas un cahier des charges de trente pages, une page. C'est ce qui détermine si tu es à quatre ou à six semaines.</li>
+        <li><strong>Écrire ton périmètre en une page.</strong> Le problème résolu, pour qui, ce qui est payant. Pas un cahier des charges de trente pages, une page. C'est ce qui détermine si ton délai tient.</li>
         <li><strong>Décider de ton prix.</strong> Il conditionne la façon dont le paiement est construit, et il vaut mieux le trancher avant qu'après. Le calcul est dans <a href="/blog/combien-de-clients-pour-rentabiliser-application/">combien de clients pour rentabiliser ton application</a>.</li>
       </ul>
 
       <h2>Et une plateforme plus lourde ?</h2>
       <p>Elle se compte en mois, et c'est précisément pour ça qu'il ne faut pas commencer par là.</p>
       <p>Des mois de développement, ce sont des mois sans un seul retour d'utilisateur réel, sans un euro encaissé, et avec un budget entièrement engagé sur des hypothèses que personne n'a vérifiées. Le risque n'est pas de rater le délai, il est de livrer exactement ce qui était prévu et de découvrir que ce n'était pas ce qu'il fallait.</p>
-      <p>C'est tout l'intérêt d'un périmètre resserré, détaillé dans <a href="/blog/mvp-application-mobile/">le MVP d'application mobile</a> : tu apprends en 45 jours ce que des mois de développement ne t'auraient pas appris.</p>
+      <p>C'est tout l'intérêt d'un périmètre resserré, détaillé dans <a href="/blog/mvp-application-mobile/">le MVP d'application mobile</a> : tu apprends en 1 à 2 mois ce que six mois de développement ne t'auraient pas appris.</p>
 
       <h2>Par où commencer</h2>
       <p>Trois étapes, dans cet ordre, et aucune ne demande d'engager un budget.</p>
       <ol>
-        <li><strong>Écris ton périmètre en une page.</strong> C'est lui qui te place à quatre semaines ou à six mois, bien plus que le choix du prestataire.</li>
+        <li><strong>Écris ton périmètre en une page.</strong> C'est lui qui te place à deux mois ou à six mois, bien plus que le choix du prestataire.</li>
         <li><strong>Ouvre tes comptes développeur et rassemble tes contenus.</strong> Deux à trois semaines de gagnées sur le lancement, dès maintenant.</li>
         <li><strong>Remonte ton planning à l'envers depuis ta date cible.</strong> Compte le développement, puis la chaîne de mise en vente, puis une marge pour un refus de store. Si ça ne tient pas, retire du périmètre plutôt que des semaines.</li>
       </ol>
@@ -877,7 +861,7 @@ export const BLOG_ARTICLES = [
     content: `
       <p>Il y a une phrase qu'on répète partout sur les applications mobiles : une fois lancée, elle ne coûte presque rien à faire tourner. C'est vrai. Je l'ai écrite moi-même dans <a href="/blog/application-mobile-meilleur-investissement/">l'application mobile comme investissement</a>, et je la maintiens.</p>
       <p>Elle devient fausse le jour où tu mets de l'IA dedans.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et une application que j'ai conçue génère environ 13 000 € par mois. Voici ce que change réellement l'IA dans un modèle économique, avec les chiffres.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications, et j'ai conçu la première version d'une application qui dépasse aujourd'hui le million de téléchargements. Voici ce que change réellement l'IA dans un modèle économique, avec les chiffres.</p>
 
       <h2>Ce que l'IA change dans ton modèle économique</h2>
       <p>Une application classique a un coût de départ, puis des frais fixes : comptes développeur, hébergement, maintenance. Que tu aies cent ou dix mille utilisateurs, ces frais bougent à peine. C'est exactement ce qui rend le modèle intéressant : chaque nouvel abonné arrive presque entièrement en marge.</p>
@@ -1009,7 +993,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>C'est le calcul que tout le monde fait dans sa tête avant de signer, souvent mal, et toujours trop vite. Il tient pourtant en une ligne, à condition de ne pas oublier ce que presque tous les calculs oublient.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et une application que j'ai conçue génère environ 13 000 € par mois. Voici la formule que j'utilise avec mes clients avant d'écrire la moindre ligne de code.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications, et j'ai conçu la première version d'une application qui dépasse aujourd'hui le million de téléchargements. Voici la formule que j'utilise avec mes clients avant d'écrire la moindre ligne de code.</p>
 
       <h2>La formule, en une ligne</h2>
       <p>Nombre de clients à acquérir = coût de l'application ÷ (revenu net par client et par mois × nombre de mois où il reste abonné).</p>
@@ -1119,7 +1103,7 @@ export const BLOG_ARTICLES = [
     content: `
       <p>Commençons par la réponse, parce qu'elle est oui.</p>
       <p>Claude écrit du vrai code d'application mobile. Pas une maquette, pas un site déguisé en application : du code source natif, dans un vrai projet, celui qu'un développeur ouvrirait. Si tu as passé un week-end dessus et que quelque chose tourne sur ton téléphone, tu n'as pas rêvé.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus, j'en ai publié plus de 20 sur l'App Store et Google Play, et j'utilise l'IA tous les jours pour coder. Cet article n'est pas là pour te dire que tu t'es trompé. Il est là pour répondre à la question qui arrive juste après, et à laquelle aucun tutoriel ne répond : <strong>pourquoi ça marche sur ton téléphone et pourquoi ça ne part pas sur les stores.</strong></p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois, j'en ai publié plus de 20 sur l'App Store et Google Play, et j'utilise l'IA tous les jours pour coder. Cet article n'est pas là pour te dire que tu t'es trompé. Il est là pour répondre à la question qui arrive juste après, et à laquelle aucun tutoriel ne répond : <strong>pourquoi ça marche sur ton téléphone et pourquoi ça ne part pas sur les stores.</strong></p>
 
       <h2>Le oui est même plus large que tu ne crois</h2>
       <p>Deux choses méritent d'être dites, parce qu'elles sont récentes et que beaucoup de gens les ignorent encore.</p>
@@ -1226,7 +1210,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>Tu as vu les démos. Tu décris ton idée en trois phrases, et quelques minutes plus tard il y a quelque chose à l'écran qui ressemble à une application. C'est bluffant, et ce n'est pas un trucage : ces outils font vraiment ce qu'ils montrent.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications sur l'App Store et Google Play, et j'utilise l'IA tous les jours pour écrire du code. Cet article n'est pas un procès contre ces outils. C'est la réponse à une question précise que personne ne pose avant de s'abonner : <strong>est-ce que ce que tu vas obtenir est bien une application mobile ?</strong></p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications sur l'App Store et Google Play, et j'utilise l'IA tous les jours pour écrire du code. Cet article n'est pas un procès contre ces outils. C'est la réponse à une question précise que personne ne pose avant de s'abonner : <strong>est-ce que ce que tu vas obtenir est bien une application mobile ?</strong></p>
 
       <h2>Ce que ces outils font vraiment bien</h2>
       <p>Autant commencer par là, parce que c'est réel et que beaucoup d'articles le passent sous silence pour vendre autre chose.</p>
@@ -1253,7 +1237,7 @@ export const BLOG_ARTICLES = [
       <p>Le modèle de revenus le plus rentable en mobile est l'abonnement encaissé par l'App Store et Google Play. Il fonctionne parce qu'il est intégré au téléphone : deux taps, l'empreinte digitale, c'est payé, et ça se renouvelle tout seul. Un paiement web demande une carte bancaire saisie à la main sur un petit écran, et il convertit bien moins.</p>
       <div class="chiffre">
         <span class="chiffre-valeur">13 000 €</span>
-        <span class="chiffre-texte">générés chaque mois par une application que j'ai conçue, via un abonnement encaissé par les stores. Ce mécanisme-là passe par l'achat intégré, réservé au mobile. En web, le même abonnement s'encaisse par carte, sans commission : il te reste davantage, mais c'est à toi d'aller chercher l'abonné.</span>
+        <span class="chiffre-texte">par mois au plus haut, pour une application que j'ai conçue, via un abonnement encaissé par les stores. Ce mécanisme-là passe par l'achat intégré, réservé au mobile. En web, le même abonnement s'encaisse par carte, sans commission : il te reste davantage, mais c'est à toi d'aller chercher l'abonné.</span>
       </div>
       <p>Si ton projet vit de la récurrence, la question n'est donc plus « quel outil est le plus rapide », mais « lequel me permet d'encaisser ». Le sujet est développé dans <a href="/blog/application-par-abonnement/">application par abonnement : combien ça rapporte</a>.</p>
 
@@ -1310,7 +1294,7 @@ export const BLOG_ARTICLES = [
         { label: "Le sujet", valeur: "No-code, IA ou expert : ce que chaque option permet réellement" },
         { label: "Pour qui", valeur: "Tu as une idée d'application et aucune compétence technique" },
         { label: "À retenir", valeur: "Le no-code s'arrête à l'abonnement dans les stores et à la propriété du code" },
-        { label: "Repère", valeur: "Une première version sérieuse se situe entre 5 000 et 12 000 €" },
+        { label: "Repère", valeur: "Une première version sérieuse se situe autour de 10 000 €" },
       ],
     },
     pourQui: [
@@ -1331,7 +1315,7 @@ export const BLOG_ARTICLES = [
     content: `
       <p>Tu as une idée d'application. Tu ne sais pas coder, et tu as déjà lu trois choses contradictoires : que le no-code suffit, que l'IA fait le travail à ta place, ou qu'il faut absolument passer par un développeur.</p>
       <p>Les trois sont vraies. Le problème, c'est qu'elles ne le sont pas au même moment, ni pour le même projet.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et je me sers des trois options selon les cas. Voici ce que chacune permet réellement, et surtout où elle s'arrête.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications, et je me sers des trois options selon les cas. Voici ce que chacune permet réellement, et surtout où elle s'arrête.</p>
 
       <h2>La vraie question n'est pas « est-ce que je peux »</h2>
       <p>Tu peux. C'est acquis depuis longtemps, et ce n'est pas ça qui décide.</p>
@@ -1378,7 +1362,7 @@ export const BLOG_ARTICLES = [
         <li>un code qui t'appartient, que n'importe qui peut reprendre après</li>
         <li>quelqu'un à qui parler le jour où ça casse</li>
       </ul>
-      <p>Pour une première version sérieuse publiée sur les deux stores, compte entre 5 000 et 12 000 €. Le détail de ce qui fait monter ce chiffre est ici : <a href="/blog/combien-coute-application-mobile/">combien coûte une application mobile</a>.</p>
+      <p>Pour une première version sérieuse publiée sur les deux stores, compte autour de 10 000 €, et ton prix fixe est écrit dans ton devis. Le détail de ce qui fait varier ce chiffre est ici : <a href="/blog/combien-coute-application-mobile/">combien coûte une application mobile</a>.</p>
 
       <h2>Le vrai comparatif se fait à deux ans</h2>
       <p>À la création, le no-code gagne toujours. C'est à deux ans que la comparaison devient honnête.</p>
@@ -1389,7 +1373,7 @@ export const BLOG_ARTICLES = [
             <tr><th>Ce qui compte</th><th>No-code</th><th>IA seule</th><th>Expert</th></tr>
           </thead>
           <tbody>
-            <tr><td>Coût de départ</td><td>Faible</td><td>Très faible</td><td>5 000 à 12 000 €</td></tr>
+            <tr><td>Coût de départ</td><td>Faible</td><td>Très faible</td><td>Autour de 10 000 €</td></tr>
             <tr><td>Coût qui revient</td><td>Abonnement mensuel, qui monte avec l'usage</td><td>Hébergement</td><td>Hébergement</td></tr>
             <tr><td>Abonnement dans les stores</td><td>Difficile à impossible</td><td>Possible, risqué</td><td>Oui</td></tr>
             <tr><td>Publication Apple et Google</td><td>Refus fréquents</td><td>À ta charge</td><td>Incluse</td></tr>
@@ -1463,7 +1447,7 @@ export const BLOG_ARTICLES = [
     content: `
       <p>Tu as une audience. Une newsletter, une communauté Instagram, une chaîne YouTube, une liste de clients qui te font confiance. Et pourtant tes revenus dépendent encore de ce que tu vends à la main, un lancement après l'autre.</p>
       <p>C'est le décalage le plus fréquent chez les créateurs et les entrepreneurs avec qui je travaille : beaucoup d'attention, peu de récurrence.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>. Voici comment une audience devient un revenu qui revient tout seul.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications, et j'ai conçu la première version d'une application qui dépasse aujourd'hui <strong>le million de téléchargements</strong>. Voici comment une audience devient un revenu qui revient chaque mois.</p>
 
       <h2>Une audience ne se transforme pas toute seule en revenus</h2>
       <p>Une audience, c'est de l'attention empruntée. Elle vit sur une plateforme que tu ne contrôles pas, dans un flux où ton contenu disparaît en quelques heures.</p>
@@ -1486,7 +1470,7 @@ export const BLOG_ARTICLES = [
       </ul>
       <p>C'est ce trio qui transforme une audience en base d'abonnés. L'attention devient un actif, plus un flux à relancer.</p>
 
-      <h2>Les trois formats qui convertissent une audience</h2>
+      <h2>Les trois formats qui transforment une audience en clients</h2>
       <p>Sur ce profil, les mêmes formats reviennent et fonctionnent :</p>
       <ul>
         <li><strong>Le programme suivi</strong> : ton audience ne veut pas ton contenu, elle veut ton résultat. L'application structure un parcours, mesure la progression, et rend l'abonnement évident.</li>
@@ -1497,7 +1481,7 @@ export const BLOG_ARTICLES = [
       <p>Le détail de chaque modèle est dans <a href="/blog/modele-economique-application-mobile/">quel modèle économique choisir pour ton application</a>.</p>
 
       <h2>Le calcul qui décide si ça vaut le coup</h2>
-      <p>Un ordre de grandeur vaut mieux qu'une promesse. Une première version sérieuse se situe le plus souvent entre 5 000 € et 12 000 € selon le périmètre.</p>
+      <p>Un ordre de grandeur vaut mieux qu'une promesse. Une première version sérieuse se situe le plus souvent autour de 10 000 €.</p>
       <p>Prends une application à 9 000 € et un abonnement à 14,99 € par mois. Après commission du store et TVA, il te reste autour de 11 € net par abonné.</p>
       <p>Attention au calcul rapide : sur les 11 €, la TVA et la commission du store passent avant toi, et il t'en reste environ 7,80. Il te faut donc à peu près 96 abonnés actifs pour rembourser l'investissement en un an, pas 68. Le détail est dans <a href="/blog/combien-de-clients-pour-rentabiliser-application/">combien de clients pour rentabiliser ton application</a>. Au delà, chaque abonné supplémentaire est du revenu récurrent qui ne te demande plus de vendre.</p>
       <p>Sur une audience de 10 000 personnes, 96 abonnés représentent environ 1 % de conversion. C'est un objectif discutable et vérifiable, pas un pari. Refais ce calcul avec tes propres chiffres avant de parler technique.</p>
@@ -1548,12 +1532,12 @@ export const BLOG_ARTICLES = [
     faq: [
       { q: "Application ou plateforme de formation existante ?", a: "Si tu vends une formation qu'on suit une fois, une plateforme suffit et coûte bien moins cher. Si tu fais du suivi régulier, avec des rendez-vous, des rappels et de la progression, l'application prend tout son sens : c'est la fréquence qui décide." },
       { q: "Mes clients vont-ils vraiment l'installer ?", a: "Uniquement si l'application leur donne quelque chose qu'ils n'ont pas ailleurs : leur suivi, leur programme, leur historique. Une application qui ne fait que rediriger vers ton site ne sera pas installée, et surtout pas gardée." },
-      { q: "Combien de temps pour avoir l'application ?", a: "45 jours en moyenne, du cadrage à la mise en ligne, pour un périmètre resserré : compte client, contenu, suivi, paiement. Le reste s'ajoute ensuite, avec des revenus en face." },
+      { q: "Combien de temps pour avoir l'application ?", a: "1 à 2 mois, du cadrage à la mise en ligne, pour un périmètre resserré : compte client, contenu, suivi, paiement. Le reste s'ajoute ensuite, avec des revenus en face." },
     ],
     content: `
       <p>Tu as des clients, une audience ou une offre qui tourne. Coaching, formation, accompagnement, studio, consulting. Et cette question revient : est-ce qu'une application mobile a du sens pour toi, ou est-ce que c'est un gadget coûteux.</p>
       <p>La réponse courte : ça dépend de ce que tu vends aujourd'hui et de la façon dont tes clients l'utilisent. Voici comment trancher, sans y passer six mois.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications et une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>. Je travaille surtout avec des entrepreneurs qui ont déjà une activité, pas avec des projets qui partent de rien.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications, et j'ai conçu la première version d'une application qui dépasse aujourd'hui <strong>le million de téléchargements</strong>. Je travaille surtout avec des professionnels qui ont déjà leur activité et leurs clients, pas avec des projets qui partent de rien.</p>
 
       <h2>Le vrai déclencheur n'est pas technologique</h2>
       <p>La bonne raison de faire une application n'est jamais « il me faut une application ». C'est un problème concret dans ton activité :</p>
@@ -1596,7 +1580,7 @@ export const BLOG_ARTICLES = [
       <p>Si tu n'as rien de tout ça, une application ne réglera rien. Elle rendra juste ton problème d'acquisition plus visible, et plus cher.</p>
 
       <h2>À partir de quand c'est rentable</h2>
-      <p>Un ordre de grandeur vaut mieux qu'un discours. Une première version sérieuse se situe le plus souvent entre 5 000 € et 12 000 € selon le périmètre.</p>
+      <p>Un ordre de grandeur vaut mieux qu'un discours. Une première version sérieuse se situe le plus souvent autour de 10 000 €.</p>
       <p>Prends une application à 8 000 € avec un abonnement à 19,99 € par mois. Après commission du store et TVA, il te reste autour de 15 € net. Attention au calcul rapide : la TVA et la commission du store passent avant toi, et il ne te reste qu'environ 10,60 € sur 15. Il te faut donc à peu près 63 abonnés actifs pour rembourser l'investissement en un an, pas 45. Au delà, c'est du revenu récurrent.</p>
       <p>63 abonnés, sur une audience existante ou un portefeuille client, c'est un objectif discutable et atteignable, pas un pari. C'est exactement le calcul que je fais avec mes clients avant de lancer quoi que ce soit. Les ordres de grandeur complets sont dans <a href="/blog/combien-rapporte-application-mobile/">combien rapporte réellement une application mobile</a>.</p>
 
@@ -1651,7 +1635,7 @@ export const BLOG_ARTICLES = [
     content: `
       <p>L'IA sait générer une application en quelques heures. Tu décris ce que tu veux, le code sort, l'écran s'affiche. C'est réel, et c'est impressionnant.</p>
       <p>Le problème arrive après : cette application ne te rapportera probablement rien. Et la raison n'a rien à voir avec la qualité du code.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications et une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>. J'utilise l'IA tous les jours dans mon travail. Ce n'est donc pas un article contre l'IA, c'est un article contre l'idée qu'elle remplace la conception.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications, et j'ai conçu la première version d'une application qui dépasse aujourd'hui <strong>le million de téléchargements</strong>. J'utilise l'IA tous les jours dans mon travail. Ce n'est donc pas un article contre l'IA, c'est un article contre l'idée qu'elle remplace la conception.</p>
 
       <h2>Ce que l'IA fait vraiment bien</h2>
       <p>Autant être honnête, elle est excellente sur une chose : aller vite jusqu'à quelque chose qui s'affiche.</p>
@@ -1675,7 +1659,7 @@ export const BLOG_ARTICLES = [
         <li>le prix, et pourquoi celui-là plutôt qu'un autre</li>
         <li>ce qui donne envie de rester après le premier mois</li>
       </ul>
-      <p>Demande à une IA de générer un écran d'abonnement, elle le fera très bien. Elle ne te dira pas s'il est au bon endroit. Or c'est exactement cette décision qui sépare une application à zéro euro d'une application à 13 000 € par mois. Pour cadrer ces choix, lis <a href="/blog/modele-economique-application-mobile/">quel modèle économique choisir pour ton application</a>.</p>
+      <p>Demande à une IA de générer un écran d'abonnement, elle le fera très bien. Elle ne te dira pas s'il est au bon endroit. Or c'est exactement cette décision qui sépare une application à zéro euro d'une application comme celle que j'ai conçue, qui a rapporté jusqu'à 13 000 € par mois. Pour cadrer ces choix, lis <a href="/blog/modele-economique-application-mobile/">quel modèle économique choisir pour ton application</a>.</p>
 
       <div class="encadre attention"><span class="encadre-titre">Ce que personne ne vérifie avant qu'il soit tard</span><p>Le code généré compile, donc il rassure. Il est rarement structuré pour évoluer, et les questions de sécurité et de données personnelles sont le plus souvent absentes. La facture arrive à la première reprise, ou au premier refus des stores.</p></div>
       <h2>La dette que tu ne vois pas tout de suite</h2>
@@ -1736,7 +1720,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>La très grande majorité des applications publiées sur les stores ne génère presque aucun revenu. Ce n'est pas une question de chance, ni de qualité du code, ni de nombre de téléchargements. C'est presque toujours la même cause : l'application a été conçue comme un outil, pas comme un produit qui vend. La bonne nouvelle : les raisons sont identifiables une par une, et elles se corrigent.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications. Une application que j'ai conçue génère environ <strong>13 000 € par mois</strong> avec une idée banale et un volume de téléchargements modeste. J'ai aussi vu l'inverse de très près : la première version d'une application que j'ai conçue a dépassé 300 000 utilisateurs sans modèle de revenu construit dès le départ.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications. Une application que j'ai conçue a généré jusqu'à <strong>13 000 € par mois</strong> avec une idée banale et un volume de téléchargements modeste. J'ai aussi vu l'inverse de très près : la première version d'une application que j'ai conçue a dépassé 300 000 utilisateurs sans modèle de revenu construit dès le départ.</p>
       <p>Beaucoup d'utilisateurs et peu de revenus : le scénario le plus fréquent, et le plus évitable.</p>
 
       <h2>Raison 1 : le modèle de revenu a été décidé à la fin</h2>
@@ -1770,7 +1754,7 @@ export const BLOG_ARTICLES = [
         <li>un contenu qui se renouvelle</li>
         <li>une progression visible dans le temps</li>
       </ul>
-      <p>Sur l'application à 13 000 € par mois, c'est l'historique accumulé qui retient : après trois mois d'utilisation, partir signifie perdre ses données. La rétention ne se rajoute pas après coup, elle se conçoit.</p>
+      <p>Sur l'application qui a rapporté jusqu'à 13 000 € par mois, c'était l'historique accumulé qui retenait : après trois mois d'utilisation, partir signifiait perdre ses données. La rétention ne se rajoute pas après coup, elle se conçoit.</p>
 
       <h2>Raison 6 : on mesure les téléchargements au lieu du parcours</h2>
       <p>Le nombre de téléchargements est l'indicateur le plus rassurant et le moins utile : il ne dit pas où tu perds les gens. Suis plutôt quatre chiffres :</p>
@@ -1790,7 +1774,7 @@ export const BLOG_ARTICLES = [
 
       <div class="encadre cle"><span class="encadre-titre">Ce qu'il faut retenir des six raisons</span><p>Aucune n'est technique. Ton application peut être parfaitement développée et ne rien rapporter. Cinq de ces six causes se corrigent sans reconstruire : ce sont des décisions de conception, pas du code.</p></div>
       <h2>La vraie différence n'est pas l'idée</h2>
-      <p>On me présente souvent des idées comme si l'idée décidait du résultat. Elle décide de peu. L'application à 13 000 € par mois repose sur une idée banale, déjà occupée par de plus gros concurrents.</p>
+      <p>On me présente souvent des idées comme si l'idée décidait du résultat. Elle décide de peu. L'application qui a rapporté jusqu'à 13 000 € par mois reposait sur une idée banale, déjà occupée par de plus gros concurrents.</p>
       <p>Ce qui change tout, c'est la conception : où se situe le moment de valeur, quand apparaît l'offre, ce qui retient au troisième mois. Deux applications identiques sur l'idée et le nombre d'utilisateurs peuvent avoir un rapport de un à dix sur le revenu.</p>
 
       <h2>Ce que je fais, et ce que je ne fais pas</h2>
@@ -1837,7 +1821,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>Une idée d'application ne vaut rien tant qu'elle n'a pas rencontré une personne prête à payer pour ce qu'elle résout. C'est la partie que la plupart des porteurs de projet sautent : ils passent de l'idée au développement, puis découvrent après la mise en ligne que personne ne sort sa carte bancaire. La méthode qui suit remet les étapes dans l'ordre, de l'idée au premier euro récurrent, pour que ton application soit rentable et pas seulement fonctionnelle.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>. J'ai aussi vu de près l'autre face : la première version d'une application que j'ai conçue a atteint 300 000 utilisateurs sans modèle de revenu construit dès le départ. Une idée peut donc très bien marcher et ne rien rapporter. C'est exactement le problème que cet article traite.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications, et une application que j'ai conçue a généré jusqu'à <strong>13 000 € par mois</strong>. J'ai aussi vu de près l'autre face : la première version d'une application que j'ai conçue a atteint 300 000 utilisateurs sans modèle de revenu construit dès le départ. Une idée peut donc très bien marcher et ne rien rapporter. C'est exactement le problème que cet article traite.</p>
 
       <h2>Étape 1 : transformer l'idée en problème payant</h2>
       <p>Une idée se formule en général comme une fonctionnalité : « une application pour suivre ses entraînements ». Un business se formule comme un problème et une personne : « les coachs indépendants perdent du temps à envoyer des programmes par message et n'ont aucun moyen de faire payer ce suivi ». La deuxième formulation contient déjà un client, une douleur et une raison de payer.</p>
@@ -1878,7 +1862,7 @@ export const BLOG_ARTICLES = [
         <li>quel revenu net tu gardes après frais de store et taxes</li>
       </ul>
       <p>Multiplie, puis divise ton budget de développement par ce revenu mensuel. Tu obtiens ton délai de retour sur investissement.</p>
-      <p>Un exemple concret pour situer les ordres de grandeur. Sur l'application à 13 000 € par mois, le passage au payant tourne autour de 3 %. Prends cette hypothèse, un revenu net moyen de 5 € par mois et par abonné, et 1 000 nouveaux utilisateurs par mois : cela donne 30 abonnés supplémentaires, soit environ 150 € de revenu récurrent ajouté chaque mois, avant les départs.</p>
+      <p>Un exemple concret pour situer les ordres de grandeur. Sur l'application qui a rapporté jusqu'à 13 000 € par mois, le passage au payant tournait autour de 3 %. Prends cette hypothèse, un revenu net moyen de 5 € par mois et par abonné, et 1 000 nouveaux utilisateurs par mois : cela donne 30 abonnés supplémentaires, soit environ 150 € de revenu récurrent ajouté chaque mois, avant les départs.</p>
       <p>Ce n'est pas spectaculaire au premier mois, mais c'est cumulatif. C'est cette mécanique lente qui construit un business, pas le pic du lancement.</p>
       <p>Si ton scénario prudent ne devient jamais rentable, le problème n'est pas le développement : c'est le prix, la cible ou la valeur. Corrige avant, pas après. Pour approfondir, lis <a href="/blog/combien-rapporte-application-mobile/">combien rapporte réellement une application mobile</a>.</p>
 
@@ -1941,7 +1925,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>L'abonnement est souvent le modèle le plus intéressant quand une application apporte une valeur qui revient chaque semaine ou chaque mois. Il ne rend pourtant pas une application rentable par magie. Le revenu dépend du prix, de la conversion et surtout du nombre d'abonnés qui restent. Voici comment une application par abonnement fonctionne, comment estimer ce qu'elle peut rapporter et ce qu'il faut concevoir pour qu'elle tienne sur la durée.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. Une application que j'ai conçue fonctionne par abonnement et génère environ <strong>13 000 € par mois</strong>. J'ai publié plus de 20 applications. Ce qui suit vient donc du terrain, pas d'une formule théorique.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. Une application que j'ai conçue fonctionnait par abonnement et a généré jusqu'à <strong>13 000 € par mois</strong>. J'ai publié plus de 20 applications. Ce qui suit vient donc du terrain, pas d'une formule théorique.</p>
 
       <h2>Comment fonctionne une application par abonnement</h2>
       <p>L'utilisateur télécharge l'application, découvre sa valeur, puis choisit une formule mensuelle ou annuelle pour continuer à profiter du service. Sur mobile, l'App Store et Google Play peuvent gérer le paiement, le renouvellement automatique, la restauration des achats et la résiliation. L'application doit ensuite vérifier que l'abonnement est actif et ouvrir les bons contenus ou fonctionnalités.</p>
@@ -1949,7 +1933,7 @@ export const BLOG_ARTICLES = [
 
       <h2>Combien peut rapporter une application par abonnement</h2>
       <p>Pour suivre ton revenu mensuel récurrent, pars d'une formule simple : <strong>nombre d'abonnés actifs multiplié par le revenu mensuel net moyen par abonné</strong>. Le nombre d'abonnés actifs dépend ensuite de trois mouvements : les utilisateurs que tu attires, ceux que tu convertis en payants et ceux que tu arrives à conserver.</p>
-      <p>Prends l'exemple réel de l'application qui génère environ 13 000 € par mois. Elle totalise autour de 30 000 téléchargements et environ 3 % de passage au payant. Ces deux chiffres ne suffisent pas à refaire le revenu exact, car les téléchargements sont cumulés tandis que le revenu dépend des abonnements encore actifs, du prix, des formules mensuelles et annuelles et des frais. Ils montrent en revanche une chose importante : il n'est pas nécessaire d'avoir des millions de téléchargements. Une audience plus petite, bien convertie et bien retenue, peut valoir davantage qu'un gros volume qui abandonne.</p>
+      <p>Prends l'exemple réel de l'application qui a généré jusqu'à 13 000 € par mois. Elle totalisait autour de 30 000 téléchargements et environ 3 % de passage au payant. Ces deux chiffres ne suffisent pas à refaire le revenu exact, car les téléchargements sont cumulés tandis que le revenu dépend des abonnements encore actifs, du prix, des formules mensuelles et annuelles et des frais. Ils montrent en revanche une chose importante : il n'est pas nécessaire d'avoir des millions de téléchargements. Une audience plus petite, bien convertie et bien retenue, peut valoir davantage qu'un gros volume qui abandonne.</p>
 
       <h2>Quand l'abonnement est le bon modèle</h2>
       <p>L'abonnement fonctionne si la valeur se renouvelle : un suivi qui progresse, du contenu régulièrement ajouté, un outil utilisé chaque semaine, des données synchronisées ou un service qui accompagne une habitude. L'utilisateur doit pouvoir répondre clairement à la question : « pourquoi est-ce que je continue à payer le mois prochain ? »</p>
@@ -2010,7 +1994,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>Abonnement, freemium, achats intégrés, publicité : le modèle économique décide de combien ton application va rapporter. Ce n'est pas un réglage technique qu'on branche à la fin, c'est un choix de conception qui oriente tout le parcours. Voici comment décider, selon ton cas, sans copier le modèle du voisin.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. Une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>, et j'ai publié plus de 20 applications. Le choix du modèle, je le tranche à chaque projet, avant la première ligne de code.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. Une application que j'ai conçue a généré jusqu'à <strong>13 000 € par mois</strong>, et j'ai publié plus de 20 applications. Le choix du modèle, je le tranche à chaque projet, avant la première ligne de code.</p>
 
       <h2>Le mauvais réflexe : choisir le modèle avant de comprendre la valeur</h2>
       <p>Beaucoup de porteurs de projet arrivent avec le modèle déjà en tête, souvent l'abonnement parce que c'est à la mode. Mauvais point de départ. Le bon modèle découle de la nature de la valeur que ton application apporte. Une valeur continue, qu'on consomme mois après mois, appelle un modèle différent d'une valeur ponctuelle, qu'on utilise une fois et qu'on oublie. Commence par comprendre ta valeur, le modèle suit.</p>
@@ -2029,7 +2013,7 @@ export const BLOG_ARTICLES = [
       <p>Les modèles ne s'excluent pas. Beaucoup d'applications qui rapportent mélangent une base freemium pour faire entrer les gens et un abonnement pour capter le revenu récurrent, avec parfois quelques achats ponctuels en plus. Le tout est de garder un parcours clair : l'utilisateur doit toujours comprendre ce qu'il obtient gratuitement, ce qu'il paie, et pourquoi.</p>
 
       <h2>Ce qui compte plus que le modèle</h2>
-      <p>Un point que je répète à chaque projet : le modèle ne rentabilise rien tout seul. L'application à 13 000 € par mois tourne à l'abonnement, mais ce n'est pas l'abonnement qui fait le revenu. C'est le parcours qui amène environ 3 % des utilisateurs à payer, et surtout à rester. Le même modèle, mal conçu, ne rapporterait presque rien. Choisir le bon modèle, c'est nécessaire ; concevoir la conversion et la rétention derrière, c'est ce qui fait la différence.</p>
+      <p>Un point que je répète à chaque projet : le modèle ne rentabilise rien tout seul. L'application qui a rapporté jusqu'à 13 000 € par mois tournait à l'abonnement, mais ce n'est pas l'abonnement qui faisait le revenu. C'était le parcours qui amenait environ 3 % des utilisateurs à payer, et surtout à rester. Le même modèle, mal conçu, n'aurait presque rien rapporté. Choisir le bon modèle, c'est nécessaire ; concevoir la conversion et la rétention derrière, c'est ce qui fait la différence.</p>
 
       <h2>Sois clair sur mon périmètre</h2>
       <p>Je conçois et développe l'application qui transforme tes utilisateurs en clients : le choix du modèle, l'onboarding, l'essai, l'abonnement, la rétention. Je ne fais pas la publicité qui amène les utilisateurs. Toi tu amènes les gens, je les transforme en clients qui paient.</p>
@@ -2042,19 +2026,19 @@ export const BLOG_ARTICLES = [
     slug: 'combien-rapporte-application-mobile',
     title: 'Combien rapporte une application mobile en 2026 ?',
     metaTitle: 'Combien rapporte une application mobile en 2026 ? | Noé Calmes',
-    description: 'Combien rapporte vraiment une application mobile en 2026 ? Chiffres réels, leviers de revenus et l\'exemple d\'une app à 13 000 € par mois.',
+    description: 'Combien rapporte vraiment une application mobile en 2026 ? Chiffres réels, leviers de revenus et l\'exemple d\'une app qui a fait jusqu\'à 13 000 € par mois.',
     date: '2026-07-06',
     readTime: '6 min',
     finalCta: 'audit',
     categorie: "Monétisation",
-    accroche: "La formule du revenu, et l'exemple d'une app à 13 000 €/mois.",
+    accroche: "La formule du revenu, et l'exemple d'une app qui a fait jusqu'à 13 000 €/mois.",
     tldr: {
       verdict: "Il n'y a pas de moyenne utile. Le revenu d'une application se calcule : ton audience réelle, un taux de conversion prudent, un prix crédible, une rétention réaliste. Ce calcul donne une fourchette bien plus exploitable qu'un chiffre de marché.",
       points: [
         { label: "Le sujet", valeur: "La formule du revenu et les ordres de grandeur réels en 2026" },
         { label: "Pour qui", valeur: "Tu veux savoir ce que ton projet peut rapporter avant d'investir" },
         { label: "À retenir", valeur: "Le prix affiché n'est pas le revenu : commission des stores, TVA, impayés" },
-        { label: "Preuve", valeur: "L'exemple détaillé d'une application à 13 000 € par mois" },
+        { label: "Preuve", valeur: "L'exemple détaillé d'une application qui a rapporté jusqu'à 13 000 € par mois" },
       ],
     },
     pourQui: [
@@ -2074,7 +2058,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>Avant de te lancer, tu veux un chiffre. Combien rapporte une application mobile ? La réponse honnête, c'est « ça dépend », mais ce n'est pas une esquive : ça dépend de facteurs précis que tu peux estimer à l'avance. Voici les vrais chiffres, la façon de calculer ce que ton application pourrait générer, et un exemple concret.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour rapporter. Une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>. J'ai publié plus de 20 applications, donc les chiffres qui suivent ne sortent pas d'une étude, ils viennent du terrain.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. Une application que j'ai conçue a généré jusqu'à <strong>13 000 € par mois</strong>. J'ai publié plus de 20 applications, donc les chiffres qui suivent ne sortent pas d'une étude, ils viennent du terrain.</p>
 
       <h2>La réalité : la plupart des applications ne rapportent presque rien</h2>
       <p>Il faut commencer par là, parce que les moyennes mentent. La grande majorité des applications sur les stores ne génèrent quasiment aucun revenu. Ce n'est pas une question de malchance : ce sont des applications lancées sans modèle de revenus pensé, sans parcours de conversion, sans raison de revenir. À l'autre bout, une minorité d'applications bien conçues captent l'essentiel des revenus. La question n'est donc pas « combien rapporte une application en moyenne », mais « dans quel groupe la tienne va tomber ».</p>
@@ -2083,8 +2067,8 @@ export const BLOG_ARTICLES = [
       <p>Le revenu d'une application par abonnement tient en une multiplication simple : <strong>utilisateurs actifs, multipliés par le taux de conversion en payant, multipliés par le prix de l'abonnement, multipliés par la durée pendant laquelle les gens restent.</strong></p>
       <p>Chacun de ces leviers se travaille. Le taux de conversion et la durée de rétention se jouent dans la conception de l'application, pas dans l'idée. C'est exactement là que se creuse l'écart entre une application qui rapporte et une qui stagne.</p>
 
-      <h2>Un exemple concret : 13 000 € par mois</h2>
-      <p>Prends l'application à 13 000 € par mois. Elle n'a pas des millions d'utilisateurs ni une idée révolutionnaire. Elle tourne autour de 30 000 téléchargements et environ 3 % d'abonnés payants. Fais le calcul : ce n'est pas le volume qui fait le revenu, c'est le taux de conversion et la rétention. Une idée banale, une application modeste, peu de téléchargements, et pourtant un revenu récurrent à cinq chiffres par mois. La différence, c'est l'expertise de conception, pas la taille de l'audience.</p>
+      <h2>Un exemple concret : jusqu'à 13 000 € par mois</h2>
+      <p>Prends l'application que j'ai conçue, qui a rapporté jusqu'à 13 000 € par mois. Elle n'avait pas des millions d'utilisateurs ni une idée révolutionnaire. Elle tournait autour de 30 000 téléchargements et environ 3 % d'abonnés payants. Fais le calcul : ce n'est pas le volume qui fait le revenu, c'est le taux de conversion et la rétention. Une idée banale, une application modeste, peu de téléchargements, et pourtant un revenu récurrent à cinq chiffres par mois. La différence, c'est l'expertise de conception, pas la taille de l'audience.</p>
 
       <div class="encadre attention"><span class="encadre-titre">Le prix affiché n'est pas ton revenu</span><p>Retire la commission du store (30 % la première année, 15 % ensuite), la TVA et les impayés. Un abonnement à 10 € te laisse en réalité autour de 5,80 € la première année. Un modèle construit sur le prix affiché repose sur un chiffre qui n'existe pas.</p></div>
       <h2>Pourquoi le revenu récurrent change tout</h2>
@@ -2117,7 +2101,7 @@ export const BLOG_ARTICLES = [
         { label: "Le sujet", valeur: "Les 4 modèles de revenus et surtout ce qui les fait fonctionner" },
         { label: "Pour qui", valeur: "Tu as une idée ou une application qui existe mais ne rapporte rien" },
         { label: "À retenir", valeur: "Le modèle ne suffit pas, c'est la conception de la conversion qui décide" },
-        { label: "Preuve", valeur: "Une application que j'ai conçue génère environ 13 000 € par mois" },
+        { label: "Preuve", valeur: "Une application que j'ai conçue a généré jusqu'à 13 000 € par mois" },
       ],
     },
     pourQui: [
@@ -2137,7 +2121,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>Tu as une application mobile, ou tu veux en lancer une, et la vraie question n'est pas « combien ça coûte » mais « combien ça rapporte ». Rentabiliser une application mobile, ce n'est pas un détail qu'on règle après le lancement. C'est ce qui se décide <strong>avant</strong> la première ligne de code, dans la conception. Cette page te donne la vue d'ensemble : les modèles de revenus, ce qui fait vraiment la différence, et les pièges classiques.</p>
-      <p>Je m'appelle Noé Calmes, je conçois et développe des applications mobiles pensées pour générer des revenus. Pour situer : une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>, j'ai publié plus de 20 applications, et j'ai développé la première version d'une application qui a dépassé 300 000 utilisateurs. Ce que tu lis ici vient de cette expérience, pas d'un cours théorique.</p>
+      <p>Je m'appelle Noé Calmes, je conçois et développe des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. Pour situer : une application que j'ai conçue a généré jusqu'à <strong>13 000 € par mois</strong>, j'ai publié plus de 20 applications, et j'ai développé la première version d'une application qui a dépassé 300 000 utilisateurs. Ce que tu lis ici vient de cette expérience, pas d'un cours théorique.</p>
 
       <h2>Rentabiliser, ça veut dire quoi exactement</h2>
       <p>Une application rentable, c'est une application dont les revenus dépassent durablement ce qu'elle coûte à maintenir. Le mot important, c'est <strong>durablement</strong>. Un pic de téléchargements au lancement ne rentabilise rien. Ce qui rentabilise, c'est un revenu qui revient chaque mois, généré par des utilisateurs qui restent et qui paient. Toute la conception doit servir cet objectif : amener l'utilisateur à la valeur le plus vite possible, puis lui donner une raison de payer et de rester.</p>
@@ -2150,10 +2134,10 @@ export const BLOG_ARTICLES = [
       <p><strong>La publicité.</strong> Tu es payé à l'affichage ou au clic. Ça ne devient intéressant qu'avec un très gros volume d'utilisateurs actifs. Pour la plupart des projets d'entrepreneur, c'est un complément, pas un moteur.</p>
       <p>Si tu hésites entre ces modèles, l'article <a href="/blog/combien-coute-application-mobile/">combien coûte une application mobile</a> t'aide à mettre le budget en face. Le bon modèle, lui, dépend surtout de ton usage réel et de ton public.</p>
 
-      <div class="chiffre"><span class="chiffre-valeur">13 000 €</span><span class="chiffre-texte">générés chaque mois par une application que j'ai conçue. Pas grâce au code : grâce au moment où l'offre est présentée.</span></div>
+      <div class="chiffre"><span class="chiffre-valeur">13 000 €</span><span class="chiffre-texte">par mois au plus haut, pour une application que j'ai conçue. Pas grâce au code : grâce au moment où l'offre était présentée.</span></div>
       <h2>Le modèle ne suffit pas : tout se joue dans la conversion</h2>
       <p>Voici le point que presque tout le monde rate. Choisir un modèle de revenus ne rentabilise pas une application. Ce qui rentabilise, c'est la façon dont l'application <strong>transforme un utilisateur curieux en client qui paie</strong>. C'est un travail de conception : l'onboarding qui montre la valeur en quelques secondes, le bon moment pour proposer l'essai gratuit, la mécanique d'abonnement qui ne frustre pas, les habitudes qui font revenir.</p>
-      <p>Un exemple concret. L'application qui génère 13 000 € par mois n'a pas une idée révolutionnaire ni des millions de téléchargements. Elle a environ 30 000 téléchargements et 3 % d'abonnés payants. La différence ne vient pas de l'idée, elle vient de la conception du parcours qui amène ces 3 % à payer, et à rester. C'est exactement ça, rentabiliser : ce n'est pas l'idée, c'est l'expertise.</p>
+      <p>Un exemple concret. L'application qui a généré jusqu'à 13 000 € par mois n'avait pas une idée révolutionnaire ni des millions de téléchargements. Elle avait environ 30 000 téléchargements et 3 % d'abonnés payants. La différence ne venait pas de l'idée, elle venait de la conception du parcours qui amenait ces 3 % à payer, et à rester. C'est exactement ça, rentabiliser : ce n'est pas l'idée, c'est l'expertise.</p>
 
       <h2>Ce que je fais, et ce que je ne fais pas</h2>
       <p>Sois clair sur le périmètre, ça t'évite une déception. Je conçois et développe l'application qui transforme tes utilisateurs en clients : l'onboarding, l'essai, l'abonnement, la rétention, tout le marketing qui se passe <strong>dans</strong> l'application. Je ne fais pas la publicité qui amène les utilisateurs. La formule est simple : tu amènes les gens, je les transforme en clients. Si tu as déjà une audience, une clientèle ou un trafic, c'est exactement le terrain où une application bien conçue change tout.</p>
@@ -2170,18 +2154,18 @@ export const BLOG_ARTICLES = [
     slug: 'creation-application-mobile-toulouse',
     title: "Création d'application mobile à Toulouse",
     metaTitle: "Création d'application mobile à Toulouse | Noé Calmes",
-    description: "Développeur d'applications mobiles à Toulouse : je conçois ton application iOS et Android pour qu'elle génère des revenus, de l'idée au lancement.",
+    description: "Développeur d'applications mobiles à Toulouse : ton application iOS et Android, pensée pour que tes utilisateurs restent et paient, de l'idée au lancement.",
     date: '2026-09-21',
     readTime: '8 min',
     finalCta: 'audit',
     categorie: "Toulouse",
     accroche: "Toulouse et Occitanie : un seul interlocuteur, tarif fixe.",
     tldr: {
-      verdict: "Je conçois des applications iOS et Android à Toulouse et en Occitanie, pensées pour générer des revenus. Un seul interlocuteur, joignable directement, tarif fixe posé avant de commencer.",
+      verdict: "Je conçois des applications iOS et Android à Toulouse et en Occitanie, pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. Un seul interlocuteur, joignable directement, tarif fixe posé avant de commencer.",
       points: [
         { label: "Zone", valeur: "Toulouse, Haute-Garonne, Occitanie, et à distance partout en France" },
-        { label: "Budget", valeur: "Tarif fixe, en général une dizaine de milliers d'euros selon la complexité" },
-        { label: "Délai", valeur: "45 jours en moyenne pour une application" },
+        { label: "Budget", valeur: "Prix fixe, autour de 10 000 € selon la complexité" },
+        { label: "Délai", valeur: "1 à 2 mois pour une application" },
         { label: "Différence", valeur: "Une application conçue pour rapporter, pas seulement livrée" },
       ],
     },
@@ -2198,7 +2182,7 @@ export const BLOG_ARTICLES = [
     faq: [
       { q: "Tu travailles uniquement sur Toulouse ?", a: "Non. Je suis basé près de Toulouse et j'interviens en direct sur l'Occitanie, mais je travaille à distance partout en France. Le suivi se fait sur WhatsApp, et c'est moi qui réponds." },
       { q: "On peut se rencontrer physiquement ?", a: "Sur Toulouse et les environs, oui, si ça t'aide à démarrer. Dans les faits la plupart des projets se pilotent très bien à distance, avec des points réguliers et des versions testables." },
-      { q: "Quel est le budget pour une application à Toulouse ?", a: "Le même que partout ailleurs : le prix dépend du périmètre, pas de la ville. En général une dizaine de milliers d'euros selon la complexité, avec un tarif fixe défini avant de commencer." },
+      { q: "Quel est le budget pour une application à Toulouse ?", a: "Le même que partout ailleurs : le prix dépend du périmètre, pas de la ville. Autour de 10 000 € selon la complexité, avec un prix fixe écrit dans ton devis avant de commencer." },
       { q: "Pourquoi choisir un indépendant plutôt qu'une agence toulousaine ?", a: "Pour une raison de structure, pas de qualité : chez un indépendant tu parles directement à celui qui construit, sans commercial ni chef de projet intermédiaire, et l'écart de prix à périmètre égal va de 30 à 50 %. Une agence reste le bon choix quand le projet demande plusieurs personnes en parallèle ou une continuité que je ne peux pas garantir seul. Le comparatif complet est dans choisir le bon expert pour ton application." },
     ],
     content: `
@@ -2207,7 +2191,7 @@ export const BLOG_ARTICLES = [
 
       <h2>Pas juste un développeur, un concepteur d'applications qui rapportent</h2>
       <p>La plupart des applications ne rapportent jamais un euro. La différence ne vient pas de l'idée, mais de la <strong>conception</strong> : comment l'application transforme ses utilisateurs en clients, quel modèle économique tient la route (abonnement, essai gratuit, fidélisation), et comment garder les gens sur la durée. C'est ce que je pense <strong>avant</strong> la première ligne de code.</p>
-      <p>Cette approche, je ne la sors pas d'un livre. Une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>, j'ai publié plus de 20 applications, et j'ai développé la première version d'une application qui a dépassé 300 000 utilisateurs. Quand on travaille ensemble, tu profites de cette expérience concrète.</p>
+      <p>Cette approche, je ne la sors pas d'un livre. J'ai publié plus de 20 applications, et j'ai développé la première version d'une application qui a dépassé 300 000 utilisateurs et qui dépasse aujourd'hui <strong>le million de téléchargements</strong>. Quand on travaille ensemble, tu profites de cette expérience concrète.</p>
 
       <h2>Créer, reprendre ou faire évoluer ton application</h2>
       <p>Que tu partes d'une simple idée ou d'un projet déjà avancé, je peux intervenir à trois niveaux : <strong>créer</strong> ton application de zéro avec une première version pensée pour le business, <strong>reprendre</strong> une application existante instable ou mal codée pour la remettre sur de bonnes bases, ou <strong>faire évoluer</strong> une application déjà en ligne avec de nouvelles fonctionnalités.</p>
@@ -2217,25 +2201,14 @@ export const BLOG_ARTICLES = [
       <p>Pour être clair sur mon périmètre : je conçois et développe une application qui transforme tes utilisateurs en clients. Je ne fais pas la publicité qui amène les utilisateurs. Toi tu amènes les gens, moi je les transforme en clients.</p>
 
       <h2>Ma méthode, de l'idée au lancement</h2>
-      <p>On commence par cadrer ton projet et ton modèle économique. Je te livre un cahier des charges clair, un devis transparent et une première maquette de ton application pour que tu visualises avant de décider quoi que ce soit. Ensuite je développe, avec des points réguliers, et je publie sur l'App Store et Google Play. Compte 45 jours en moyenne, du cadrage à la mise en ligne.</p>
+      <p>On commence par cadrer ton projet et ton modèle économique. Tu vois ton application avant de payer : sa maquette, le plan écrit de tout ce qui sera fait, et ton prix fixe. Ensuite je développe, avec des points réguliers, et je publie sur l'App Store et Google Play. Compte 1 à 2 mois, du cadrage à la mise en ligne.</p>
 
 
       <h2>Combien coûte une application à Toulouse</h2>
       <p>Le même prix que partout ailleurs, et c'est une bonne nouvelle : <strong>le prix dépend du périmètre, pas de la ville</strong>. Un développement ne coûte pas moins cher parce qu'il est fait en province, et il ne coûte pas plus cher parce qu'il est fait près de chez toi.</p>
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr><th>Type de projet</th><th>Fourchette</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Application au périmètre resserré</td><td>5 000 à 8 000 €</td></tr>
-            <tr><td>Application complète, un profil</td><td>8 000 à 12 000 €</td></tr>
-            <tr><td>Reprise d'une application existante</td><td>variable, selon l'état du code</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>Côté délai, compte 45 jours en moyenne, du cadrage à la mise en ligne. Le délai exact est fixé dans le devis, selon les fonctionnalités retenues.</p>
-      <p>Le détail de ce que couvre chaque fourchette est dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>.</p>
+      <p>Compte autour de 10 000 € pour une application, selon la taille et la complexité de ton projet, et ton prix fixe est écrit dans ton devis. La reprise d'une application existante varie selon l'état du code.</p>
+      <p>Côté délai, compte 1 à 2 mois, du cadrage à la mise en ligne : environ 1 mois sur le web, 2 mois sur mobile. Le développement ne prend pas de retard : ce qui peut allonger, c'est ta société et la validation de tes comptes par Apple et Google.</p>
+      <p>Ce qui fait varier le prix est détaillé dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>.</p>
 
       <h2>Les projets toulousains où une application a du sens</h2>
       <p>Toulouse a un tissu économique particulier, et certains profils reviennent plus souvent que d'autres dans les projets qu'on me soumet.</p>
@@ -2274,7 +2247,7 @@ export const BLOG_ARTICLES = [
       verdict: "Une application bien pensée se comporte comme un actif : elle produit un revenu récurrent, elle a des frais de fonctionnement faibles, et elle se revend. C'est l'analogie immobilière, sans la taxe foncière ni les travaux.",
       points: [
         { label: "Le sujet", valeur: "Pourquoi une application est un actif et pas une dépense" },
-        { label: "Pour qui", valeur: "Tu compares où placer un budget de 5 000 à 30 000 €" },
+        { label: "Pour qui", valeur: "Tu as un budget à placer, et tu compares les options" },
         { label: "À retenir", valeur: "Frais de fonctionnement faibles, donc marge élevée une fois lancée" },
         { label: "Nuance", valeur: "Un actif seulement si elle est conçue pour encaisser" },
       ],
@@ -2315,21 +2288,21 @@ export const BLOG_ARTICLES = [
   },
   {
     slug: 'combien-coute-application-mobile',
-    title: "Prix d'une application mobile : les fourchettes réelles",
+    title: "Prix d'une application mobile : ce qu'il faut vraiment prévoir",
     metaTitle: "Prix d'une application mobile en 2026 | Noé Calmes",
-    description: "Les fourchettes par type de projet, ce qui fait monter le prix, et pourquoi deux devis pour la même application vont du simple au triple.",
+    description: "Autour de 10 000 € avec un indépendant, 30 000 € en agence : ce qui fait monter le prix, et pourquoi deux devis vont du simple au triple.",
     date: '2026-09-21',
-    dateMaj: '2026-11-09',
+    dateMaj: '2026-11-27',
     readTime: '11 min',
     finalCta: 'audit',
     categorie: "Budget",
-    accroche: "Les vraies fourchettes, et pourquoi deux devis pour la même app varient du simple au triple.",
+    accroche: "Le vrai chiffre, et pourquoi deux devis pour la même app varient du simple au triple.",
     tldr: {
-      verdict: "Compte 5 000 à 8 000 € pour une application au périmètre resserré, 8 000 à 12 000 € pour une application complète à un seul profil d'utilisateur, et en général une dizaine de milliers d'euros dès qu'il y a deux profils ou du temps réel. Le prix ne dépend presque pas de la technologie : il dépend du périmètre, et c'est pour ça que deux devis sur un besoin flou peuvent aller du simple au triple.",
+      verdict: "Compte autour de 10 000 € pour une application conçue et publiée par un expert indépendant, et plutôt autour de 30 000 € en agence. Le prix ne dépend presque pas de la technologie : il dépend de ce que fait l'application, et pour combien de types d'utilisateurs. C'est pour ça que deux devis sur un besoin flou peuvent aller du simple au triple. Ton prix fixe est écrit dans ton devis, avant que tu signes.",
       points: [
-        { label: "Le sujet", valeur: "Les fourchettes par type de projet, et ce qui les fait bouger" },
+        { label: "Le sujet", valeur: "Le prix réel d'une application, et ce qui le fait bouger" },
         { label: "Pour qui", valeur: "Tu construis un budget ou tu compares des devis très écartés" },
-        { label: "Le repère", valeur: "5 000 à 8 000 € pour une application au périmètre resserré" },
+        { label: "Le repère", valeur: "Autour de 10 000 € avec un indépendant, autour de 30 000 € en agence" },
         { label: "À retenir", valeur: "Un devis précis sur un besoin flou n'existe pas" },
       ],
     },
@@ -2339,69 +2312,67 @@ export const BLOG_ARTICLES = [
       "Tu veux savoir ce qui coûte cher avant d'arbitrer ton périmètre",
     ],
     pasPourQui: [
-      "Tu cherches uniquement le devis le moins cher",
+      "Tu cherches le développeur le moins cher",
       "Tu veux un prix ferme sans avoir défini ce que fait l'application",
-      "Ton budget est sous 5 000 € et non extensible",
+      "Ton budget n'est pas encore prêt",
     ],
     faq: [
       { q: "Pourquoi les devis varient autant d'un prestataire à l'autre ?", a: "Parce qu'ils ne décrivent pas la même chose. Un devis à 3 000 € et un devis à 15 000 € couvrent rarement le même périmètre, le même niveau de finition, les mêmes tests et le même suivi après la mise en ligne. Avant de comparer deux prix, mets les deux périmètres côte à côte, ligne par ligne. Dans la majorité des cas l'écart s'explique entièrement, et le moins cher se révèle être le plus incomplet." },
       { q: "Développer iOS et Android coûte-t-il deux fois plus cher ?", a: "Non, pas avec une technologie multiplateforme comme Flutter : le code est écrit une fois et compilé pour les deux systèmes. Ce qui s'ajoute est réel mais limité, quelques jours de tests sur les deux familles d'appareils et deux publications à préparer au lieu d'une. Compte une marge de l'ordre de 10 à 15 %, pas un doublement. Deux développements natifs séparés, eux, coûtent effectivement près du double." },
       { q: "Quels sont les coûts après la mise en ligne ?", a: "Le compte développeur Apple à 99 $ par an, le compte Google Play à 25 $ une seule fois, l'hébergement selon l'usage réel, et la maintenance liée aux mises à jour d'iOS et d'Android. Ces frais sont faibles rapportés au revenu potentiel, mais ils ne sont pas nuls : une application laissée sans mise à jour finit par être retirée des stores. Une exception importante, si ton application appelle un modèle d'IA, le coût devient variable et suit l'usage." },
-      { q: "Peut-on descendre sous 5 000 € ?", a: "Oui, en changeant de produit plutôt que de prix. Sous ce seuil, ce qui est réaliste est un outil no-code ou un périmètre tellement réduit qu'il tient en deux écrans. Attention à une confusion fréquente : une application web sérieuse, avec des comptes, plusieurs profils et un espace d'administration, n'est pas un site vitrine et ne se chiffre pas comme lui. Ce qui fait le montant, c'est le périmètre, pas le support. Ce sont des options honnêtes et parfois les bonnes. Ce qui n'est pas réaliste, c'est une application native publiée sur les deux stores, avec comptes et paiement, pour 2 500 €. Le devis existera, le résultat non." },
+      { q: "Peut-on payer beaucoup moins cher ?", a: "Oui, en changeant de produit plutôt que de prix. Pour beaucoup moins, ce qui est réaliste est un outil no-code ou un périmètre tellement réduit qu'il tient en deux écrans. Attention à une confusion fréquente : une application web sérieuse, avec des comptes, plusieurs profils et un espace d'administration, n'est pas un site vitrine et ne se chiffre pas comme lui. Ce qui fait le montant, c'est le périmètre, pas le support. Ce sont des options honnêtes et parfois les bonnes. Ce qui n'est pas réaliste, c'est une application native publiée sur les deux stores, avec comptes et paiement, pour 2 500 €. Le devis existera, le résultat non." },
       { q: "Combien coûte une application web ?", a: "Ce qui fait le prix d'une application web, c'est son périmètre, exactement comme pour une application mobile : le nombre de profils d'utilisateurs, le temps réel, les intégrations, le paiement et la finition. Le support ne fait pas le prix. Une application web avec des comptes, des rôles et un espace d'administration est un vrai produit, pas un site vitrine. Ce que le web change, c'est le délai, car il n'y a pas de validation par Apple ni Google, et ce que tu encaisses, car il n'y a pas de commission de store." },
-      { q: "Le tarif fixe est-il vraiment sans surprise ?", a: "Oui, à une condition : que le périmètre soit posé au cadrage. Le tarif est fixe pour ce qui a été défini. Si tu ajoutes une fonctionnalité en cours de route, elle est chiffrée à part et tu décides, elle ne se glisse pas discrètement dans la facture finale. C'est justement pour ça que le cadrage est facturé comme du travail : c'est lui qui rend le reste prévisible." },
-      { q: "Faut-il tout payer d'avance ?", a: "Non. Le fonctionnement habituel est un paiement échelonné, adossé à des étapes livrées et vérifiables : le cadrage, les maquettes validées, la version testable, la mise en ligne. Tu paies en face de quelque chose que tu as vu. Un prestataire qui demande la totalité avant d'avoir montré quoi que ce soit est un signal d'alerte." },
+      { q: "Le prix fixe est-il vraiment sans surprise ?", a: "Oui, à une condition : que le périmètre soit posé avant de signer. Le prix est fixe et écrit pour ce qui a été défini. Si tu ajoutes une fonctionnalité en cours de route, elle passe par un nouveau devis, que tu acceptes ou non : elle ne se glisse pas discrètement dans la facture finale. C'est pour ça que tout est écrit avant que tu signes : c'est ce qui rend le reste prévisible." },
+      { q: "Faut-il tout payer d'avance ?", a: "Non. Chez moi, tu paies en trois fois, et à chaque paiement tu as quelque chose de plus entre les mains : la moitié à la signature, après avoir vu ta maquette, le plan écrit et ton prix ; un quart à la version de test, que tu essaies sur ton téléphone ; un quart avant la mise en ligne, sur la version finale que tu as validée. Tu paies en face de quelque chose que tu as vu. Un prestataire qui demande la totalité avant d'avoir montré quoi que ce soit est un signal d'alerte." },
     ],
     content: `
-      <p>C'est la première question de tous les projets, et c'est une bonne question. Voici les fourchettes réelles, ce qu'elles couvrent, et surtout ce qui explique qu'un même projet reçoive un devis à 4 000 € et un autre à 18 000 €.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour générer des revenus. J'ai plus de 20 applications à mon actif, plus de 1,3 million de téléchargements cumulés, et une application que j'ai conçue génère environ 13 000 € par mois. Les chiffres qui suivent sont ceux que je pratique et que je vois pratiquer, mis à jour en novembre 2026.</p>
+      <p>C'est la première question de tous les projets, et c'est une bonne question. Voici le vrai chiffre, ce qu'il couvre, et surtout ce qui explique qu'un même projet reçoive un devis à 4 000 € et un autre à 18 000 €.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai plus de 20 applications à mon actif, plus de 1,3 million de téléchargements cumulés, et j'ai conçu la première version d'une application qui dépasse aujourd'hui le million de téléchargements. Les chiffres qui suivent sont ceux que je pratique et que je vois pratiquer, mis à jour en novembre 2026.</p>
 
       <h2>La réponse courte, en un tableau</h2>
       <p>Le prix ne dépend presque pas de la technologie. Il dépend du périmètre, c'est-à-dire de ce que l'application fait et pour combien de types d'utilisateurs différents.</p>
       <div class="table-scroll">
         <table>
           <thead>
-            <tr><th>Type de projet</th><th>Fourchette</th></tr>
+            <tr><th>Qui la construit</th><th>Prix habituel</th><th>Délai</th></tr>
           </thead>
           <tbody>
-            <tr><td>Application au périmètre resserré</td><td><strong>5 000 à 8 000 €</strong></td></tr>
-            <tr><td>Application complète, un profil d'utilisateur</td><td><strong>8 000 à 12 000 €</strong></td></tr>
-            <tr><td>Deux profils, ou temps réel</td><td><strong>une dizaine de milliers d'euros</strong></td></tr>
-            <tr><td>Reprise d'une application existante</td><td>très variable, selon l'état du code</td></tr>
-            <tr><td>Agence ou ESN</td><td>50 000 à 300 000 €</td></tr>
+            <tr><td>Un expert indépendant, comme moi</td><td><strong>autour de 10 000 €</strong></td><td>1 à 2 mois</td></tr>
+            <tr><td>Une agence ou une ESN</td><td>autour de 30 000 €</td><td>six à douze mois</td></tr>
+            <tr><td>La reprise d'une application existante</td><td>très variable, selon l'état du code</td><td>selon ce que l'audit trouve</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Côté délai, compte 45 jours en moyenne, du cadrage à la mise en ligne ; le délai exact est fixé dans le devis, selon les fonctionnalités retenues. Une agence ou une ESN compte plutôt six à douze mois.</p>
-      <p>Si tu ne retiens qu'une ligne, retiens la première. C'est celle qui correspond à la très grande majorité des projets qui viennent me voir, et c'est celle qui permet de tester une idée sans engager un budget qu'on ne récupère pas.</p>
+      <p>Ton prix fixe est écrit dans ton devis, avant que tu signes, et ton délai à côté : environ 1 mois pour une application web, 2 mois pour une application mobile. Le développement ne prend pas de retard : ce qui peut allonger, c'est ta société et la validation de tes comptes par Apple et Google.</p>
+      <p>Si tu ne retiens qu'un chiffre, retiens le premier. C'est celui qui correspond à la très grande majorité des projets qui viennent me voir.</p>
 
-      <h2>Ce que couvre réellement chaque fourchette</h2>
-      <p>Un prix sans son périmètre ne veut rien dire. Voici ce qu'il y a derrière.</p>
+      <h2>Ce qu'il y a derrière ce chiffre</h2>
+      <p>Un prix sans son périmètre ne veut rien dire. Voici ce qui rend un projet plus simple ou plus complet, autour de ce repère.</p>
       <ul>
-        <li><strong>5 000 à 8 000 €.</strong> Un seul type d'utilisateur, cinq à huit écrans, des comptes, éventuellement un paiement, une publication sur les deux stores. Pas de temps réel, pas d'interface d'administration. C'est une vraie application, pas une maquette.</li>
-        <li><strong>8 000 à 12 000 €.</strong> La même chose avec plus de profondeur fonctionnelle, du contenu structuré, des notifications, une interface d'administration légère, et un vrai travail de design plutôt qu'un habillage.</li>
-        <li><strong>Une dizaine de milliers d'euros.</strong> Deux populations distinctes, par exemple un client et un professionnel, ou une fonction en temps réel comme une messagerie. Ce sont deux parcours, deux jeux de droits et deux fois les tests, et le chiffre dépend alors surtout du nombre d'écrans partagés entre les deux.</li>
-        <li><strong>50 000 € et au-delà.</strong> Des équipes, des processus, plusieurs interlocuteurs. C'est pertinent pour des projets réellement complexes, et surdimensionné pour une première version.</li>
+        <li><strong>Le plus simple.</strong> Un seul type d'utilisateur, cinq à huit écrans, des comptes, éventuellement un paiement, une publication sur les deux stores. Pas de temps réel, pas d'interface d'administration. C'est une vraie application, pas une maquette.</li>
+        <li><strong>Plus complet.</strong> La même chose avec plus de profondeur fonctionnelle, du contenu structuré, des notifications, une interface d'administration légère, et un vrai travail de design plutôt qu'un habillage.</li>
+        <li><strong>Deux profils, ou du temps réel.</strong> Deux populations distinctes, par exemple un client et un professionnel, ou une fonction en temps réel comme une messagerie. Ce sont deux parcours, deux jeux de droits et deux fois les tests, et le prix dépend alors surtout du nombre d'écrans partagés entre les deux.</li>
+        <li><strong>Une organisation entière.</strong> Des équipes, des processus, plusieurs interlocuteurs. C'est le terrain des agences : pertinent pour des projets réellement complexes, et surdimensionné pour une première version.</li>
       </ul>
 
       <h2>Des exemples concrets, projet par projet</h2>
-      <p>Les fourchettes parlent davantage avec des projets réels. Voici où tombent les demandes que je reçois le plus souvent. Regarde surtout la colonne du milieu : c'est elle qui explique le prix, bien plus que le secteur.</p>
+      <p>Le chiffre parle davantage avec des projets réels. Voici les demandes que je reçois le plus souvent, et ce qui fait leur prix : c'est la colonne de droite qui l'explique, bien plus que le secteur.</p>
       <div class="table-scroll">
         <table>
           <thead>
-            <tr><th>Projet</th><th>Ce qui fait le prix</th><th>Fourchette</th></tr>
+            <tr><th>Projet</th><th>Ce qui fait le prix</th></tr>
           </thead>
           <tbody>
-            <tr><td>Réservation pour un salon, un coach ou un studio</td><td>Un seul profil, un agenda, un acompte en ligne</td><td><strong>5 000 à 8 000 €</strong></td></tr>
-            <tr><td>Coaching ou contenu par abonnement</td><td>Un profil, du contenu structuré, un abonnement, des notifications</td><td><strong>8 000 à 12 000 €</strong></td></tr>
-            <tr><td>Habitudes ou bien-être grand public</td><td>Un profil, un parcours très soigné, un abonnement avec essai gratuit</td><td><strong>8 000 à 12 000 €</strong></td></tr>
-            <tr><td>Mise en relation de clients et de professionnels</td><td>Deux profils, une messagerie, souvent un paiement entre les deux</td><td><strong>une dizaine de milliers d'euros</strong></td></tr>
-            <tr><td>Outil métier : devis, suivi de chantier, gestion locative</td><td>Plusieurs rôles, des documents générés, parfois une intégration avec l'existant</td><td><strong>une dizaine de milliers d'euros</strong>, selon les intégrations</td></tr>
-            <tr><td>Navigation, cartographie, écran de la voiture</td><td>Cartes, calcul d'itinéraire, CarPlay et Android Auto</td><td>sur devis, après cadrage</td></tr>
+            <tr><td>Réservation pour un salon, un coach ou un studio</td><td>Un seul profil, un agenda, un acompte en ligne</td></tr>
+            <tr><td>Coaching ou contenu par abonnement</td><td>Un profil, du contenu structuré, un abonnement, des notifications</td></tr>
+            <tr><td>Habitudes ou bien-être grand public</td><td>Un profil, un parcours très soigné, un abonnement avec essai gratuit</td></tr>
+            <tr><td>Mise en relation de clients et de professionnels</td><td>Deux profils, une messagerie, souvent un paiement entre les deux</td></tr>
+            <tr><td>Outil métier : devis, suivi de chantier, gestion locative</td><td>Plusieurs rôles, des documents générés, parfois une intégration avec l'existant</td></tr>
+            <tr><td>Navigation, cartographie, écran de la voiture</td><td>Cartes, calcul d'itinéraire, CarPlay et Android Auto</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Deux projets du même secteur peuvent tomber dans deux lignes différentes. Une application pour une salle de sport qui affiche le planning est dans la première ligne. La même avec un espace coach qui gère ses élèves passe dans la quatrième, parce qu'elle a deux profils.</p>
+      <p>Deux projets du même secteur peuvent coûter très différemment. Une application pour une salle de sport qui affiche le planning reste simple. La même avec un espace coach qui gère ses élèves demande plus de travail, parce qu'elle a deux profils.</p>
 
       <h2>Pourquoi deux devis vont du simple au triple</h2>
       <p>C'est la question qui revient le plus, et la réponse est presque toujours la même.</p>
@@ -2428,7 +2399,7 @@ export const BLOG_ARTICLES = [
 
       <h2>Expert indépendant, agence, offshore</h2>
       <p>Les trois existent, les trois ont leur logique, et l'écart de prix a des causes identifiables.</p>
-      <p>Un <strong>expert indépendant</strong> coûte en général 30 à 50 % de moins qu'une agence à périmètre égal. Pas de marge d'agence, pas de chef de projet intermédiaire, pas de transmission d'information entre trois personnes. Tu parles directement à celui qui construit.</p>
+      <p>Un <strong>expert indépendant</strong> coûte en général bien moins cher qu'une agence : autour de 10 000 € pour une application, quand le budget habituel en agence tourne autour de 30 000 €. Pas de marge d'agence, pas de chef de projet intermédiaire, pas de transmission d'information entre trois personnes. Tu parles directement à celui qui construit.</p>
       <p>Une <strong>agence</strong> apporte une capacité que l'indépendant n'a pas : plusieurs personnes en parallèle, une continuité si quelqu'un part, des process. Ça se paie, et pour un projet à plusieurs équipes c'est justifié.</p>
       <p>L'<strong>offshore</strong> affiche des prix imbattables. Ce qu'il faut savoir avant de trancher : le décalage horaire sur les allers-retours, la barrière de langue sur un besoin qui se précise en discutant, et surtout la question de savoir qui reprendra le code dans un an. Le coût réel d'une application se mesure sur trois ans, pas sur le premier devis.</p>
 
@@ -2436,7 +2407,7 @@ export const BLOG_ARTICLES = [
       <p>La question revient de plus en plus, et la réponse tient en une phrase : <strong>le support ne fait pas le prix, le périmètre le fait</strong>. Une application web se chiffre sur les mêmes critères qu'une application mobile : le nombre de profils, le temps réel, les intégrations, le paiement et la finition. Une plateforme avec des comptes, des rôles et un espace d'administration est un vrai produit, pas un site vitrine.</p>
       <p>Ce que le web change se mesure ailleurs qu'en euros sur le devis :</p>
       <ul>
-        <li><strong>Le délai.</strong> Pas de compte développeur à ouvrir, pas de validation par Apple ou Google : la mise en ligne se fait le jour voulu, souvent deux à trois semaines plus tôt à périmètre égal.</li>
+        <li><strong>Le délai.</strong> Pas de compte développeur à ouvrir, pas de validation par Apple ou Google : la mise en ligne se fait le jour voulu. Compte environ 1 mois pour une application web, contre environ 2 pour une application mobile.</li>
         <li><strong>Ce que tu encaisses.</strong> Sans commission de store, il te reste environ 78 % du prix affiché, contre environ 70 % sur l'App Store ou Google Play. Il faut donc moins de clients pour te rembourser.</li>
       </ul>
       <p>Le bon support dépend de l'usage, pas du budget : une application mobile pour le grand public qui l'ouvre chaque jour, une application web pour un outil professionnel qu'on utilise au bureau. Le <a href="/quiz/application-ou-site-web/">test application mobile ou web</a> t'aide à trancher en deux minutes.</p>
@@ -2486,11 +2457,11 @@ export const BLOG_ARTICLES = [
     categorie: "Créer",
     accroche: "Le déroulé réel, dans l'ordre où les décisions se prennent.",
     tldr: {
-      verdict: "Créer une application commence par deux décisions que personne ne te demande : qui va s'en servir et où, ce qui décide si elle vit sur un téléphone ou sur un ordinateur, et comment elle rapportera. Le développement vient après, et c'est la partie la plus courte : 45 jours en moyenne du cadrage à la mise en ligne, pour 5 000 à 12 000 € selon le périmètre.",
+      verdict: "Créer une application commence par deux décisions que personne ne te demande : qui va s'en servir et où, ce qui décide si elle vit sur un téléphone ou sur un ordinateur, et comment elle rapportera. Le développement vient après, et c'est la partie la plus courte : 1 à 2 mois du cadrage à la mise en ligne, et un prix autour de 10 000 €.",
       points: [
         { label: "Le sujet", valeur: "Les étapes pour créer une application, de l'idée à la mise en ligne" },
         { label: "Pour qui", valeur: "Tu as une idée, pas de compétence technique, et tu veux savoir comment ça se passe" },
-        { label: "Le repère", valeur: "45 jours en moyenne, 5 000 à 12 000 € selon le périmètre" },
+        { label: "Le repère", valeur: "1 à 2 mois, et autour de 10 000 €" },
         { label: "À retenir", valeur: "Les échecs se décident avant le code, pas pendant" },
       ],
     },
@@ -2512,7 +2483,7 @@ export const BLOG_ARTICLES = [
     ],
     content: `
       <p>Tu as une idée d'application. Tu ne sais pas coder, tu ne connais pas le métier, et tu ne sais pas par où commencer. C'est normal : presque tous les gens qui m'appellent sont exactement là.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour rapporter, et j'en ai publié plus de 20. Voici les étapes pour créer une application, dans l'ordre où les décisions se prennent vraiment. Tu verras que le développement arrive tard, et que c'est voulu.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles et web pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois, et j'en ai publié plus de 20. Voici les étapes pour créer une application, dans l'ordre où les décisions se prennent vraiment. Tu verras que le développement arrive tard, et que c'est voulu.</p>
 
       <h2>Étape 1 : décider qui va s'en servir, et où</h2>
       <p>C'est la question que personne ne te pose, et c'est elle qui décide de tout le reste, y compris du support.</p>
@@ -2543,7 +2514,7 @@ export const BLOG_ARTICLES = [
       <p>C'est ce document qui permet d'avoir un devis juste, et de comparer deux devis entre eux. Ce qu'il faut y mettre, et ce qu'il ne faut surtout pas y mettre, est dans <a href="/blog/cahier-des-charges-application-mobile/">le cahier des charges d'application mobile</a>.</p>
 
       <h2>Étape 5 : voir l'application avant qu'elle existe</h2>
-      <p>Avant de développer, on dessine les écrans. Tu vois ton application, tu cliques dedans, tu la montres à des gens autour de toi.</p>
+      <p>Avant de développer, on dessine les écrans. Tu vois ton application, tu cliques dedans, tu la montres à des gens autour de toi. Chez moi, tu la vois avant de payer : ta maquette, le plan écrit de tout ce qui sera fait, et ton prix fixe.</p>
       <p>C'est le moment le moins cher pour changer d'avis. Déplacer un bouton sur une maquette prend dix minutes. Le déplacer dans une application développée prend une journée. Et c'est là qu'on règle l'essentiel : le chemin entre le moment où l'utilisateur ouvre l'application et le moment où il comprend ce qu'elle lui apporte.</p>
 
       <h2>Étape 6 : développer, en voyant l'avancement</h2>
@@ -2559,22 +2530,10 @@ export const BLOG_ARTICLES = [
       <p>Dans les deux cas, cette étape ne doit pas reposer sur toi. C'est la plus administrative du projet, et elle peut bloquer une mise en ligne si elle est mal préparée.</p>
 
       <h2>Combien ça coûte, et combien de temps ça prend</h2>
-      <p>Les deux questions qu'on me pose en premier. Ce qui fait le prix, c'est le périmètre.</p>
-      <div class="table-scroll">
-        <table>
-          <thead>
-            <tr><th>Périmètre</th><th>Budget</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Application au périmètre clair : comptes, une fonction centrale, paiement</td><td>5 000 à 8 000 €</td></tr>
-            <tr><td>Application complète : davantage d'écrans, espace d'administration</td><td>8 000 à 12 000 €</td></tr>
-            <tr><td>Deux profils distincts, par exemple tes clients et ton équipe</td><td>Une dizaine de milliers d'euros</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p>Les deux questions qu'on me pose en premier. Une application se situe autour de 10 000 €, selon la taille et la complexité de ton projet, et ton prix fixe est écrit dans ton devis. Ce qui fait le prix, c'est le périmètre : les paiements, un espace d'administration, davantage d'écrans, et surtout deux profils distincts, par exemple tes clients et ton équipe.</p>
       <div class="chiffre">
-        <span class="chiffre-valeur">45 jours</span>
-        <span class="chiffre-texte">en moyenne pour une application, du cadrage à la mise en ligne, dont quatre à six semaines de développement.</span>
+        <span class="chiffre-valeur">1 à 2 mois</span>
+        <span class="chiffre-texte">pour que ton application soit en ligne : environ 1 mois sur le web, 2 mois sur mobile, 2 mois et demi pour les deux. Le développement ne prend pas de retard : ce qui peut allonger, c'est ta société et la validation de tes comptes par Apple et Google.</span>
       </div>
       <p>Ce qui fait varier un devis est détaillé dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>, et ce qui allonge un calendrier dans <a href="/blog/combien-de-temps-creer-application-mobile/">combien de temps pour créer une application mobile</a>.</p>
 
@@ -2694,7 +2653,7 @@ export const BLOG_ARTICLES = [
         { label: "Le sujet", valeur: "Ajouter, prioriser, réduire la dette, ou refondre" },
         { label: "Pour qui", valeur: "Ton application est en ligne et doit avancer" },
         { label: "À retenir", valeur: "La mise en ligne n'est pas la fin du projet, c'est le début" },
-        { label: "Refonte", valeur: "Se chiffre comme une création, dans les mêmes fourchettes" },
+        { label: "Refonte", valeur: "Se chiffre comme une création : autour de 10 000 €" },
       ],
     },
     pourQui: [
@@ -2712,7 +2671,7 @@ export const BLOG_ARTICLES = [
       { q: "Comment décider quelle fonctionnalité ajouter ?", a: "Regarde ce que font réellement tes utilisateurs, pas ce qu'ils demandent. Une demande exprimée par trois personnes bruyantes pèse moins qu'un comportement observé sur des centaines. Priorise ce qui rapproche du moment de valeur ou de l'achat." },
       { q: "C'est quoi la dette technique, concrètement ?", a: "Des raccourcis pris pendant le développement qui font que chaque nouvelle fonctionnalité prend plus de temps que la précédente. Elle est invisible tant qu'on n'ajoute rien, et elle devient le principal poste de coût dès qu'on veut avancer." },
       { q: "À quelle fréquence mettre à jour une application ?", a: "Au minimum à chaque version majeure d'iOS et d'Android, sinon l'application finit par être retirée des stores. Au-delà, le rythme dépend de ton activité : mieux vaut des mises à jour régulières et petites que des refontes annuelles." },
-      { q: "Combien coûte une refonte d'application mobile ?", a: "Comme une création, parce que c'en est une : on repart du périmètre, pas du code. Compte les mêmes fourchettes, de 5 000 à 8 000 € pour une application resserrée, 8 000 à 12 000 € pour une application complète, et 45 jours en moyenne du cadrage à la mise en ligne. Ce qui change par rapport à une première version : on sait déjà ce que les utilisateurs font, donc on coupe ce qu'ils n'utilisent pas." },
+      { q: "Combien coûte une refonte d'application mobile ?", a: "Comme une création, parce que c'en est une : on repart du périmètre, pas du code. Compte autour de 10 000 €, et 1 à 2 mois du cadrage à la mise en ligne. Ce qui change par rapport à une première version : on sait déjà ce que les utilisateurs font, donc on coupe ce qu'ils n'utilisent pas." },
       { q: "Refonte ou reprise : quelle différence ?", a: "Une reprise, c'est continuer le code existant avec un nouveau prestataire, après un audit. Une refonte, c'est reconstruire. L'audit de reprise tranche entre les deux : si le code est lisible et à jour, on reprend ; s'il faut plus de temps pour le comprendre que pour le refaire, on refond." },
     ],
     content: `
@@ -2761,7 +2720,7 @@ export const BLOG_ARTICLES = [
       <p>Si aucun des trois ne s'applique, ton application a besoin d'évolutions, pas d'une refonte. Et si tu n'es pas sûr, un <a href="/blog/reprendre-application-mobile-existante/">audit de reprise</a> tranche sur le code réel, pas sur une impression.</p>
 
       <h2>Ce que coûte une refonte, et comment la mener sans tout casser</h2>
-      <p>Une refonte se chiffre comme une création, parce que c'en est une : <a href="/blog/combien-coute-application-mobile/">les mêmes fourchettes</a>, 5 000 à 8 000 € pour une application resserrée, 8 000 à 12 000 € pour une application complète, et 45 jours en moyenne du cadrage à la mise en ligne. Elle a pourtant un avantage que la première version n'avait pas : tu sais ce que tes utilisateurs font vraiment. On coupe ce qu'ils n'ouvrent jamais, on garde ce qui les fait revenir, et la nouvelle version est souvent plus simple que l'ancienne.</p>
+      <p>Une refonte se chiffre comme une création, parce que c'en est une : <a href="/blog/combien-coute-application-mobile/">le même repère</a>, autour de 10 000 €, et 1 à 2 mois du cadrage à la mise en ligne. Elle a pourtant un avantage que la première version n'avait pas : tu sais ce que tes utilisateurs font vraiment. On coupe ce qu'ils n'ouvrent jamais, on garde ce qui les fait revenir, et la nouvelle version est souvent plus simple que l'ancienne.</p>
       <p>Trois règles pour ne pas perdre les utilisateurs en route :</p>
       <ul>
         <li><strong>L'ancienne version reste en ligne</strong> jusqu'au jour où la nouvelle la remplace, sur les mêmes fiches App Store et Google Play. Tes utilisateurs font une mise à jour, pas une réinstallation.</li>
@@ -2775,20 +2734,20 @@ export const BLOG_ARTICLES = [
   },
   {
     slug: 'mvp-application-mobile',
-    title: "MVP d'application mobile : lancer ton idée en 45 jours",
-    metaTitle: "MVP application mobile : lancer en 45 jours | Noé Calmes",
-    description: "Ce qu'est vraiment un MVP mobile, ce qu'on garde et ce qu'on coupe, ce que ça coûte, et pourquoi 45 jours est un délai réaliste.",
+    title: "MVP d'application mobile : lancer ton idée en 1 à 2 mois",
+    metaTitle: "MVP application mobile : lancer en 1 à 2 mois | Noé Calmes",
+    description: "Ce qu'est vraiment un MVP mobile, ce qu'on garde et ce qu'on coupe, ce que ça coûte, et pourquoi 1 à 2 mois est un délai réaliste.",
     date: '2026-09-21',
     readTime: '9 min',
     finalCta: 'audit',
     categorie: "Budget",
-    accroche: "Ton application en 45 jours, sans la bâcler.",
+    accroche: "Ton application en 1 à 2 mois, sans la bâcler.",
     tldr: {
-      verdict: "Un MVP n'est pas une application au rabais, c'est une application réduite au périmètre qui prouve le modèle. L'objectif n'est pas de sortir vite, il est de savoir si des gens paient avant d'engager le reste du budget. Compte 5 000 à 8 000 € et 45 jours quand le périmètre est clair.",
+      verdict: "Un MVP n'est pas une application au rabais, c'est une application réduite au périmètre qui prouve le modèle. L'objectif n'est pas de sortir vite, il est de savoir si des gens paient avant d'engager le reste du budget. Compte autour de 10 000 € et 1 à 2 mois quand le périmètre est clair.",
       points: [
         { label: "Le sujet", valeur: "Ce qu'est un MVP mobile, ce qu'on coupe, ce que ça coûte" },
         { label: "Pour qui", valeur: "Tu veux valider vite sans engager tout ton budget" },
-        { label: "Le repère", valeur: "5 000 à 8 000 € et 45 jours pour un périmètre clair" },
+        { label: "Le repère", valeur: "Autour de 10 000 € et 1 à 2 mois pour un périmètre clair" },
         { label: "À retenir", valeur: "Un MVP teste l'idée, pas la qualité. Le bâcler fausse le test" },
       ],
     },
@@ -2803,17 +2762,17 @@ export const BLOG_ARTICLES = [
       "Tu confonds première version et version bâclée",
     ],
     faq: [
-      { q: "Un MVP d'application, ça coûte combien ?", a: "En général 5 000 à 8 000 € pour un périmètre resserré : cinq à huit écrans, un compte utilisateur simple, éventuellement un paiement, pas de complexité serveur. C'est le format d'entrée le plus fréquent, et souvent la meilleure décision même quand le budget permettrait plus. Les fourchettes complètes sont dans le prix d'une application mobile." },
+      { q: "Un MVP d'application, ça coûte combien ?", a: "Autour de 10 000 € pour un périmètre resserré : cinq à huit écrans, un compte utilisateur simple, éventuellement un paiement, pas de complexité serveur. Ton prix fixe est écrit dans ton devis. C'est le format de départ le plus fréquent, et souvent la meilleure décision même quand le budget permettrait plus. Ce qui fait varier le prix est détaillé dans le prix d'une application mobile." },
       { q: "Qu'est-ce qu'on coupe exactement dans un MVP ?", a: "Tout ce qui n'est pas nécessaire pour que l'utilisateur atteigne la valeur et puisse payer. Les paramètres avancés, les statistiques, les profils multiples, le mode hors ligne, les intégrations secondaires, la personnalisation. Ça attend d'avoir des utilisateurs réels, qui te diront lesquelles de ces choses comptent vraiment. La plupart du temps, ce ne sont pas celles que tu aurais devinées." },
       { q: "On garde le code du MVP pour la suite ?", a: "Oui, et c'est tout l'intérêt de le faire correctement. Un MVP écrit proprement sert de base à la version complète : on ajoute par-dessus, on ne recommence pas. Un MVP bâclé se jette, et le budget économisé au départ est alors perdu deux fois, une fois dans le code jeté et une fois dans le temps perdu." },
       { q: "Faut-il un MVP mobile ou un MVP web d'abord ?", a: "Le web sort plus vite, il n'y a ni compte développeur à ouvrir ni validation d'Apple à attendre, donc il est tentant. Mais attention à une idée fausse : le web n'est pas l'option économique. Ce qui fait le prix, c'est le périmètre, pas le support. La bonne question est l'usage : si ton produit a besoin d'être utilisé souvent, hors du bureau, avec des notifications, le mobile n'est pas une version plus chère du web, c'est le produit. Si ton usage est ponctuel et se fait assis devant un écran, commence par le web." },
-      { q: "45 jours, ce n'est pas un argument commercial ?", a: "C'est un délai conditionnel, et la condition fait tout : un périmètre arrêté avant de commencer. Sur un projet qui se redéfinit en cours de route, aucun délai ne tient, et ce n'est pas une question de rapidité du développeur. Quarante-cinq jours, c'est quatre à six semaines de développement plus le cadrage et les allers-retours." },
+      { q: "1 à 2 mois, ce n'est pas un argument commercial ?", a: "C'est un délai conditionnel, et la condition fait tout : un périmètre arrêté avant de commencer. Sur un projet qui se redéfinit en cours de route, aucun délai ne tient, et ce n'est pas une question de rapidité du développeur. Le développement ne prend pas de retard : ce qui allonge, le plus souvent, c'est ta société et la validation de tes comptes par Apple et Google." },
     ],
     content: `
       <p>Tu as une idée d'application. Tu veux la lancer sans y mettre toutes tes économies, sans attendre un an, et sans construire quelque chose que personne n'utilisera.</p>
       <p>C'est exactement ce à quoi sert un MVP. Encore faut-il savoir ce qu'on met dedans, et surtout ce qu'on en retire.</p>
       <p>Si tu en es encore à te demander si ton idée tient debout, commence par l'étape d'avant : <a href="/blog/idee-application-business-rentable/">transformer une idée d'application mobile en business rentable</a>. Le MVP vient après, quand le problème payant est identifié.</p>
-      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour générer des revenus. J'ai publié plus de 20 applications, et la plupart ont commencé par une première version resserrée.</p>
+      <p>Je m'appelle Noé Calmes, je conçois des applications mobiles pensées pour que leurs utilisateurs restent, reviennent et paient chaque mois. J'ai publié plus de 20 applications, et la plupart ont commencé par une première version resserrée.</p>
 
       <h2>Ce que veut dire MVP, concrètement</h2>
       <p>MVP est le sigle de Minimum Viable Product, produit minimum viable. On parle aussi de première version, de version 1, ou simplement de format MVP.</p>
@@ -2849,22 +2808,23 @@ export const BLOG_ARTICLES = [
       </div>
       <p>L'exercice qui aide : liste toutes les fonctionnalités que tu veux, puis pose à chacune une seule question. <strong>Sans elle, l'utilisateur peut-il quand même arriver au bout et payer ?</strong> Si oui, elle attend.</p>
 
-      <h2>Pourquoi 45 jours est réaliste</h2>
+      <h2>Pourquoi 1 à 2 mois est réaliste</h2>
       <div class="chiffre">
-        <span class="chiffre-valeur">45 jours</span>
-        <span class="chiffre-texte">soit 4 à 6 semaines de développement plus le cadrage et les allers-retours. Le délai n'est pas tenu en allant plus vite, il est tenu en construisant moins.</span>
+        <span class="chiffre-valeur">1 à 2 mois</span>
+        <span class="chiffre-texte">environ 1 mois sur le web, 2 mois sur mobile, cadrage et allers-retours compris. Le délai n'est pas tenu en allant plus vite, il est tenu en construisant moins.</span>
       </div>
-      <p>Quatre conditions le rendent possible, et elles se préparent avant la première ligne de code.</p>
+      <p>Cinq conditions le rendent possible, et elles se préparent avant la première ligne de code.</p>
       <ul>
         <li>Un périmètre arrêté avant de commencer, pas pendant.</li>
         <li>Un interlocuteur unique qui comprend le produit et la technique, sans réunion de coordination entre trois personnes.</li>
         <li>Une technologie multiplateforme qui couvre iOS et Android en une seule passe.</li>
+        <li>Ta société et tes comptes Apple et Google lancés tôt. Le développement ne prend pas de retard : c'est ce qui allonge le plus souvent un projet.</li>
         <li>Des retours rapides de ta part. C'est la condition qu'on oublie, et c'est la première cause de décalage : le détail est dans <a href="/blog/combien-de-temps-creer-application-mobile/">combien de temps pour créer une application mobile</a>.</li>
       </ul>
 
       <h2>Combien ça coûte</h2>
-      <p>Compte <strong>5 000 à 8 000 €</strong> pour un MVP au périmètre resserré. C'est l'entrée de gamme sérieuse : une vraie application native, publiée sur les deux stores, avec comptes et éventuellement paiement.</p>
-      <p>En dessous, ce qui reste réaliste change de nature, outil no-code ou périmètre très réduit, et ce sont parfois de bons choix. Une application web, elle, n'est pas l'option économique : à périmètre égal elle se chiffre comme une application mobile. Les fourchettes complètes par type de projet sont dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>.</p>
+      <p>Compte <strong>autour de 10 000 €</strong> pour un MVP au périmètre resserré, et ton prix fixe est écrit dans ton devis. C'est une vraie application native, publiée sur les deux stores, avec comptes et éventuellement paiement.</p>
+      <p>Pour beaucoup moins, ce qui reste réaliste change de nature, outil no-code ou périmètre très réduit, et ce sont parfois de bons choix. Une application web, elle, n'est pas l'option économique : à périmètre égal elle se chiffre comme une application mobile. Ce qui fait varier le prix est détaillé dans <a href="/blog/combien-coute-application-mobile/">le prix d'une application mobile</a>.</p>
       <div class="encadre astuce">
         <span class="encadre-titre">Le calcul à faire avant de signer</span>
         <p>Un MVP à 6 000 € se rembourse avec environ <strong>70 abonnés</strong> sur un an à 9,99 € par mois, en comptant les 70 % qui te reviennent réellement après TVA et commission des stores. Pose-toi la question dans ce sens plutôt que dans celui du budget. La formule complète est dans <a href="/blog/combien-de-clients-pour-rentabiliser-application/">combien de clients pour rentabiliser ton application</a>.</p>
@@ -2926,7 +2886,7 @@ export const BLOG_ARTICLES = [
       "Tu cherches une ressource au forfait journalier",
     ],
     faq: [
-      { q: "Agence ou indépendant ?", a: "Une agence apporte une équipe et une continuité si le projet est gros. Un indépendant apporte un interlocuteur unique, un coût plus bas et des décisions plus rapides. Pour un budget de 5 000 à 30 000 €, l'indépendant spécialisé est presque toujours plus efficace." },
+      { q: "Agence ou indépendant ?", a: "Une agence apporte une équipe et une continuité si le projet est gros. Un indépendant apporte un interlocuteur unique, un coût plus bas et des décisions plus rapides. Pour une première application, l'indépendant spécialisé est presque toujours plus efficace : autour de 10 000 €, quand une agence tourne plutôt autour de 30 000 €." },
       { q: "Quelles questions poser en premier rendez-vous ?", a: "Trois suffisent à trier : qu'est-ce qui sera payant dans mon application et pourquoi, que se passe-t-il après la mise en ligne, et à qui je parle quand il y a un problème. Un prestataire qui esquive la première ne fera que du code." },
       { q: "Comment repérer un mauvais devis ?", a: "Un périmètre flou, une promesse de tout faire sans spécialisation affichée, aucune référence en production, une communication qui passe par des intermédiaires dès le départ, et un tarif anormalement bas." },
     ],
@@ -2938,7 +2898,7 @@ export const BLOG_ARTICLES = [
 
       <h3>L'agence digitale</h3>
       <p>Une équipe pluridisciplinaire : chef de projet, designer, développeurs, parfois un consultant. Des processus structurés, une capacité à gérer des projets complexes et de grande envergure.</p>
-      <p>Les limites : coût élevé (marges d'agence, équipes importantes), délais longs, communication souvent filtrée par un chef de projet. Pour un projet de 5 000 à 20 000 €, la plupart des agences ne sont pas le bon choix.</p>
+      <p>Les limites : coût élevé (marges d'agence, équipes importantes), délais longs, communication souvent filtrée par un chef de projet. Pour une première application autour de 10 000 €, la plupart des agences ne sont pas le bon choix.</p>
 
       <h3>Le freelance généraliste</h3>
       <p>Un profil technique qui développe selon ton brief. Moins cher qu'une agence, disponible rapidement. Mais souvent sans vision produit, il exécute ce que tu lui demandes, sans forcément t'aider à faire les bons choix.</p>
@@ -2955,13 +2915,13 @@ export const BLOG_ARTICLES = [
             <tr><th>Profil</th><th>Budget pour une application complète</th><th>Ce qui est inclus</th><th>Pour qui</th></tr>
           </thead>
           <tbody>
-            <tr><td>Agence digitale</td><td>50 000 à 300 000 €, six à douze mois</td><td>Une équipe, un chef de projet, des processus</td><td>Un projet à plusieurs équipes ou un grand compte</td></tr>
+            <tr><td>Agence digitale</td><td>Autour de 30 000 €, six à douze mois</td><td>Une équipe, un chef de projet, des processus</td><td>Un projet à plusieurs équipes ou un grand compte</td></tr>
             <tr><td>Freelance généraliste</td><td>Variable, souvent facturé au temps passé</td><td>Le développement de ce que tu as spécifié</td><td>Un projet déjà cadré, avec quelqu'un qui pilote</td></tr>
-            <tr><td>Expert indépendant spécialisé</td><td>5 000 à 12 000 €, 45 jours en moyenne</td><td>Le cadrage, le design, le développement, la mise en ligne</td><td>Un entrepreneur qui veut une application qui rapporte, sans équipe technique</td></tr>
+            <tr><td>Expert indépendant spécialisé</td><td>Autour de 10 000 €, 1 à 2 mois</td><td>Le cadrage, le design, le développement, la mise en ligne</td><td>Un professionnel qui a déjà son activité et ses clients, sans équipe technique</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Les fourchettes de l'expert indépendant sont celles de <a href="/blog/combien-coute-application-mobile/">l'article sur le prix d'une application</a> : un prix fixe par périmètre, pas un taux horaire. L'écart avec l'agence vient des marges et des intermédiaires, pas de la qualité du code.</p>
+      <p>Le prix de l'expert indépendant est détaillé dans <a href="/blog/combien-coute-application-mobile/">l'article sur le prix d'une application</a> : un prix fixe, écrit dans le devis, pas un taux horaire. L'écart avec l'agence vient des marges et des intermédiaires, pas de la qualité du code.</p>
 
       <h2>Les critères qui comptent vraiment</h2>
 
@@ -3393,7 +3353,7 @@ function BlogList({ onBack, onArticle, onBookCall, onAuditApp, onNaviguer }) {
           <p className="text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed">
             Ce que j&apos;aurais voulu qu&apos;on me dise avant de lancer ma première application.
             Mobile ou web, budget réel, modèles de revenus, erreurs qui coûtent cher. Écrit par
-            quelqu&apos;un dont une application génère <strong className="text-text font-semibold">13 000 € par mois</strong>.
+            quelqu&apos;un qui a conçu la première version d&apos;une application téléchargée <strong className="text-text font-semibold">plus d&apos;un million de fois</strong>.
           </p>
         </div>
 

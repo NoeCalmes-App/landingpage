@@ -689,37 +689,37 @@ const sectionRoutes = [
   {
     path: '/expertise',
     heading: 'Concevoir une application mobile qui génère des revenus',
-    content: 'La plupart des applications ne rapportent rien, et ce n\'est presque jamais un problème de code. Je conçois ton application comme un actif : modèle économique décidé avant la première ligne de code, moment de valeur atteint vite, offre placée là où elle a du sens. Plus de 20 applications publiées, et une application que j\'ai conçue génère environ 13 000 € par mois.',
+    content: 'La plupart des applications ne rapportent rien, et ce n\'est presque jamais un problème de code. Je conçois ton application comme un actif : modèle économique décidé avant la première ligne de code, moment de valeur atteint vite, offre placée là où elle a du sens. Plus de 20 applications publiées, dont la première version d\'une application qui dépasse aujourd\'hui le million de téléchargements.',
   },
   {
     path: '/creation-application-mobile',
     heading: 'Ma méthode pour créer une application mobile qui rapporte',
-    content: 'Cinq étapes : cadrage du besoin et du modèle économique, conception du parcours qui mène à la valeur puis à l\'achat, développement sur une base propre iOS et Android, lancement sur l\'App Store et Google Play, puis suivi après la mise en ligne. 45 jours en moyenne pour une application mobile ou web, tarif fixe défini avant de commencer.',
+    content: 'Cinq étapes : cadrage du besoin et du modèle économique, conception du parcours qui mène à la valeur puis à l\'achat, développement sur une base propre iOS et Android, lancement sur l\'App Store et Google Play, puis suivi après la mise en ligne. 1 à 2 mois du cadrage à la mise en ligne, autour de 10 000 €, avec un prix fixe écrit dans le devis.',
   },
   {
     path: '/application-mobile-sur-mesure',
     heading: 'Application mobile sur mesure : prix, délai, et comment obtenir un devis',
-    content: 'Une application conçue pour ton activité, prise en charge du cadrage à la mise en ligne, à tarif fixe, par palier de périmètre : 5 000 à 8 000 € pour une première version resserrée, 8 000 à 12 000 € pour une application complète, 12 000 à 15 000 € avec deux profils ou du temps réel, 15 000 à 18 000 € quand le projet a besoin du téléphone et de l\'ordinateur. 45 jours en moyenne, dont 4 à 6 semaines de développement. Le devis vient après un appel de 15 minutes et une première maquette, gratuits et sans engagement. Mobile ou web, selon l\'usage.',
+    content: 'Une application conçue pour ton activité, prise en charge du cadrage à la mise en ligne. Autour de 10 000 €, selon la taille et la complexité du projet, contre plutôt 30 000 € en agence : la fourchette se donne au premier appel, et le prix fixe est écrit dans le devis. Environ 2 mois pour une application mobile, 2 mois et demi avec une application web à côté. Le devis vient après un appel gratuit de 30 minutes, et tu vois ton application avant de payer. Mobile ou web, selon l\'usage.',
   },
   {
     path: '/application-web-sur-mesure',
     heading: 'Application web sur mesure : prix, délai, et comment obtenir un devis',
-    content: 'Un logiciel qu\'on ouvre dans un navigateur avec un identifiant, ce qu\'on appelle aussi un SaaS : comptes, rôles, paiement par carte, espace d\'administration, mise en ligne sur ton nom de domaine. Pour des professionnels assis devant un écran, souvent avec plusieurs rôles. Sans commission de store, il te reste environ 78 % du prix affiché contre environ 70 % sur mobile, et la mise en ligne gagne deux à trois semaines. Tarif fixe par palier de périmètre : 6 000 à 8 000 € pour une première version, 8 000 à 10 000 € pour une application complète, 10 000 à 15 000 € pour une plateforme dense, 15 000 à 18 000 € avec une application mobile en plus. Devis après un appel de 15 minutes et une première maquette, gratuits.',
+    content: 'Un logiciel qu\'on ouvre dans un navigateur avec un identifiant, ce qu\'on appelle aussi un SaaS : comptes, rôles, paiement par carte, espace d\'administration, mise en ligne sur ton nom de domaine. Pour des professionnels assis devant un écran, souvent avec plusieurs rôles. Sans commission de store, il te reste environ 78 % du prix affiché contre environ 70 % sur mobile, et la mise en ligne prend environ 1 mois. Autour de 10 000 €, avec un prix fixe écrit dans le devis. Devis après un appel gratuit de 30 minutes, et tu vois ton application avant de payer.',
   },
   {
     path: '/refonte-application-mobile',
     heading: 'Refonte ou reprise d\'une application existante : audit, prix et délai',
-    content: 'Pour une application en ligne qui bloque, vieillit ou ne rapporte pas : un audit court et borné (code, comptes, sécurité, dépendances) qui débouche sur un plan et un budget écrits, puis une reprise si le code est sain ou une refonte s\'il faut reconstruire. Trois signaux de refonte : chaque ajout coûte plus cher, le produit a changé de cible ou de modèle de revenu, la première version était un prototype qui a grossi. La refonte se chiffre comme une création, 5 000 à 15 000 € selon le périmètre, 45 jours en moyenne, en gardant les utilisateurs, leurs comptes et leurs abonnements.',
+    content: 'Pour une application en ligne qui bloque, vieillit ou ne rapporte pas : un audit court et borné (code, comptes, sécurité, dépendances) qui débouche sur un plan et un budget écrits, puis une reprise si le code est sain ou une refonte s\'il faut reconstruire. Trois signaux de refonte : chaque ajout coûte plus cher, le produit a changé de cible ou de modèle de revenu, la première version était un prototype qui a grossi. La refonte se chiffre comme une création, autour de 10 000 € selon le périmètre, 1 à 2 mois, en gardant les utilisateurs, leurs comptes et leurs abonnements.',
   },
   {
     path: '/faq',
     heading: 'FAQ, créer une application mobile',
-    content: 'Budget et tarification, délai moyen, capacité réelle d\'une application à générer des revenus, différence avec une agence, limites de l\'intelligence artificielle, reprise d\'une application existante, publication sur les stores et suivi après la mise en ligne.',
+    content: 'Budget et tarification, délai, trouver ses premiers utilisateurs, différence avec une agence, limites de l\'intelligence artificielle, reprise d\'une application existante, publication sur les stores et suivi après la mise en ligne.',
   },
   {
     path: '/a-propos',
     heading: "Qui je suis, et pourquoi je conçois des applications qui rapportent",
-    content: "Noé Calmes, près de Toulouse. Bachelor de développeur web et mobile en trois ans, puis plus de 20 applications conçues et publiées, 1,3 million de téléchargements. La première version d'une application qu'il a conçue a dépassé 300 000 utilisateurs sans presque rien rapporter, Calorie rapporte environ 13 000 euros par mois avec environ 30 000 téléchargements et 3 pour cent de payants. Applications mobiles et web, ce qu'on appelle aussi un SaaS, de la stratégie à la mise en ligne, un seul interlocuteur, tarif fixe, 45 jours en moyenne, corrections incluses 30 jours après la sortie.",
+    content: "Noé Calmes, près de Toulouse. Bachelor de développeur web et mobile en trois ans, puis plus de 20 applications conçues et publiées, 1,3 million de téléchargements. La première version d'une application qu'il a conçue a dépassé 300 000 utilisateurs, et cette application dépasse aujourd'hui le million de téléchargements. Il aide les professionnels qui ont déjà leur activité et leurs clients à lancer l'application de leur métier, mobile ou web, de la stratégie à la mise en ligne : un seul interlocuteur, l'application vue avant de payer, un prix fixe autour de 10 000 €, 1 à 2 mois, corrections incluses 30 jours après la sortie, un seul nouveau projet par mois.",
   },
   {
     path: '/projets',
@@ -818,22 +818,22 @@ const blogRoutes = [
   {
     path: '/blog/creer-application-web-avec-claude',
     heading: "Créer une application web avec Claude : la pire erreur, et pourquoi l'argent ne rentre pas",
-    content: "Claude écrit le code d'une vraie application web, sans Mac, sans compte Apple ni validation d'un store. Mais ce qu'il rend est un projet qui tourne sur ton ordinateur, pas un produit en ligne qui encaisse. Entre les deux : l'hébergement, le nom de domaine et la base de données ; des comptes utilisateurs dont la sécurité et les données personnelles n'ont jamais été relues ; un prestataire de paiement qui vérifie ton identité avant que le premier euro arrive, environ 78 % du prix affiché gardés en web contre environ 70 % sur un store ; et la question qu'aucun code ne tranche, qui paie, quand, et pourquoi il revient. Une application à 300 000 utilisateurs sans revenu, une autre à 13 000 € par mois sur un marché saturé : la différence n'était pas dans le code.",
+    content: "Claude écrit le code d'une vraie application web, sans Mac, sans compte Apple ni validation d'un store. Mais ce qu'il rend est un projet qui tourne sur ton ordinateur, pas un produit en ligne qui encaisse. Entre les deux : l'hébergement, le nom de domaine et la base de données ; des comptes utilisateurs dont la sécurité et les données personnelles n'ont jamais été relues ; un prestataire de paiement qui vérifie ton identité avant que le premier euro arrive, environ 78 % du prix affiché gardés en web contre environ 70 % sur un store ; et la question qu'aucun code ne tranche, qui paie, quand, et pourquoi il revient. Une application à 300 000 utilisateurs sans revenu, une autre qui a généré jusqu'à 13 000 € par mois sur un marché saturé : la différence n'était pas dans le code.",
   },
   {
     path: '/blog/ce-que-j-ai-appris-20-applications',
     heading: "Ce que j'ai appris en publiant plus de 20 applications",
-    content: "Plus de 20 applications publiées, plus de 1,3 million de téléchargements cumulés, et deux chiffres qui ne racontent pas la même histoire. La première version d'une application, que j'ai conçue pour ses créateurs, a dépassé 300 000 utilisateurs sans presque rien rapporter, parce que personne n'avait décidé au départ à quel moment elle demanderait à être payée. Calorie, que j'ai conçue pour un client, lui rapporte environ 13 000 euros par mois par abonnement sur un marché saturé, parce que tout le parcours est construit autour du moment où l'utilisateur comprend la valeur puis se voit proposer de payer. Ce que j'en ai retenu, dans l'ordre : le téléchargement est la métrique la plus flatteuse et la moins utile ; le revenu se décide avant la première ligne de code ; l'idée n'est presque jamais le sujet, le parcours l'est ; le code n'a jamais été ce qui coûte cher ; et le travail commence par ce qu'on refuse de construire, y compris une application mobile quand le projet relève d'une application web.",
+    content: "Plus de 20 applications publiées, plus de 1,3 million de téléchargements cumulés, et deux chiffres qui ne racontent pas la même histoire. La première version d'une application, que j'ai conçue pour ses créateurs, a dépassé 300 000 utilisateurs sans presque rien rapporter, parce que personne n'avait décidé au départ à quel moment elle demanderait à être payée. Une autre, que j'ai conçue pour un client, a généré jusqu'à 13 000 euros par mois par abonnement sur un marché saturé, parce que tout son parcours était construit autour du moment où l'utilisateur comprend la valeur puis se voit proposer de payer. Ce que j'en ai retenu, dans l'ordre : le téléchargement est la métrique la plus flatteuse et la moins utile ; le revenu se décide avant la première ligne de code ; l'idée n'est presque jamais le sujet, le parcours l'est ; le code n'a jamais été ce qui coûte cher ; et le travail commence par ce qu'on refuse de construire, y compris une application mobile quand le projet relève d'une application web.",
   },
   {
     path: '/blog/application-mobile-artisan',
     heading: "Application mobile pour artisan et commerçant : ce qui vaut vraiment le coup",
-    content: "Pour un artisan, téléphone ou ordinateur, la question est réglée d'avance : il travaille debout, les mains prises, souvent sans réseau, donc son outil est sur son téléphone. Mais il y a deux applications possibles. La première est son outil à lui : le devis fait sur place avant de remonter dans le camion, les photos de chantier rangées au bon endroit, le suivi que le client ouvre par un simple lien sans rien installer, le rendez-vous confirmé automatiquement. La seconde est pour ses clients, à installer, et elle ne vaut le coup que s'ils reviennent toute l'année, ce qui est le cas d'un commerce, d'un garage ou d'un salon, rarement d'un artisan du bâtiment. Le calcul à faire avant tout : deux devis promis par semaine qui ne partent jamais, à 1 500 euros en moyenne, dont un sur trois aurait signé, font 1 000 euros de chiffre par semaine, à compter avec sa marge. Si le besoin est d'être trouvé par de nouveaux clients, aucune application ne sert : une fiche Google, des avis et des photos font le travail. Budget : 5 000 à 8 000 euros pour l'outil de l'artisan, 8 000 à 12 000 euros avec le suivi client ou pour une application de clientèle fidèle, 45 jours en moyenne du cadrage à la mise en ligne.",
+    content: "Pour un artisan, téléphone ou ordinateur, la question est réglée d'avance : il travaille debout, les mains prises, souvent sans réseau, donc son outil est sur son téléphone. Mais il y a deux applications possibles. La première est son outil à lui : le devis fait sur place avant de remonter dans le camion, les photos de chantier rangées au bon endroit, le suivi que le client ouvre par un simple lien sans rien installer, le rendez-vous confirmé automatiquement. La seconde est pour ses clients, à installer, et elle ne vaut le coup que s'ils reviennent toute l'année, ce qui est le cas d'un commerce, d'un garage ou d'un salon, rarement d'un artisan du bâtiment. Le calcul à faire avant tout : deux devis promis par semaine qui ne partent jamais, à 1 500 euros en moyenne, dont un sur trois aurait signé, font 1 000 euros de chiffre par semaine, à compter avec sa marge. Si le besoin est d'être trouvé par de nouveaux clients, aucune application ne sert : une fiche Google, des avis et des photos font le travail. Budget : autour de 10 000 euros, selon ce que l'application fait, et 1 à 2 mois du cadrage à la mise en ligne.",
   },
   {
     path: '/blog/application-mobile-pour-entreprise',
     heading: "Application mobile pour ton entreprise : dans quels cas ça se justifie",
-    content: "Dans la majorité des cas, une entreprise n'a pas besoin d'une application mobile mais d'un outil, et un outil que des gens utilisent assis devant un écran est une application web : on s'y connecte, on y a un compte, on y travaille, ce n'est pas un site vitrine. Le mobile se justifie dans quatre cas, et il suffit d'un seul : des utilisateurs debout, dehors ou en déplacement ; le besoin d'aller les chercher par une notification ; le besoin du téléphone lui-même, photo, position, hors connexion ; ou des clients grand public qu'on veut sur leur écran d'accueil. Si aucun ne s'applique, l'application web se met en ligne le jour voulu sans validation d'un store, n'exige aucune installation, et aucun store ne prélève de commission. Le prix dépend du périmètre : 5 000 à 8 000 euros pour une application au périmètre clair, 8 000 à 12 000 euros pour une application complète, 45 jours en moyenne du cadrage à la mise en ligne. Quand les clients sont sur mobile et l'équipe sur un écran, on commence par le support qui porte la valeur immédiate.",
+    content: "Dans la majorité des cas, une entreprise n'a pas besoin d'une application mobile mais d'un outil, et un outil que des gens utilisent assis devant un écran est une application web : on s'y connecte, on y a un compte, on y travaille, ce n'est pas un site vitrine. Le mobile se justifie dans quatre cas, et il suffit d'un seul : des utilisateurs debout, dehors ou en déplacement ; le besoin d'aller les chercher par une notification ; le besoin du téléphone lui-même, photo, position, hors connexion ; ou des clients grand public qu'on veut sur leur écran d'accueil. Si aucun ne s'applique, l'application web se met en ligne le jour voulu sans validation d'un store, n'exige aucune installation, et aucun store ne prélève de commission. Le prix dépend du périmètre, autour de 10 000 euros pour une application, et 1 à 2 mois du cadrage à la mise en ligne. Quand les clients sont sur mobile et l'équipe sur un écran, on commence par le support qui porte la valeur immédiate.",
   },
   {
     path: '/blog/application-mobile-salle-de-sport',
@@ -848,7 +848,7 @@ const blogRoutes = [
   {
     path: '/blog/combien-de-temps-creer-application-mobile',
     heading: 'Combien de temps faut-il pour créer une application mobile ?',
-    content: "45 jours en moyenne pour une application au périmètre clair, du cadrage à la mise en ligne, dont quatre à six semaines de développement ; une plateforme plus lourde demande plus, son délai est fixé dans le devis. Mais ce délai mesure la livraison, pas le premier euro : entre l'application livrée et le premier euro encaissé il y a une chaîne administrative, comptes développeur vérifiés, statut de vendeur, contrat et coordonnées bancaires, validation des stores, qui se prépare en parallèle du développement plutôt qu'après. Les quatre facteurs qui allongent réellement sont le nombre de types d'utilisateurs, le temps réel, les intégrations avec l'existant et le paiement. La première cause de retard n'est pas technique : c'est le délai de réponse du client, une semaine d'attente valant un sixième du planning.",
+    content: "1 à 2 mois du cadrage à la mise en ligne : environ 1 mois pour une application web, 2 mois pour une application mobile, 2 mois et demi pour les deux ; le délai exact est écrit dans le devis. Le développement ne prend pas de retard : ce qui allonge, c'est la création de la société et la validation des comptes par Apple et Google. Mais ce délai mesure la livraison, pas le premier euro : entre l'application livrée et le premier euro encaissé il y a une chaîne administrative, comptes développeur vérifiés, statut de vendeur, contrat et coordonnées bancaires, validation des stores, qui se prépare en parallèle du développement plutôt qu'après. Les quatre facteurs qui allongent réellement sont le nombre de types d'utilisateurs, le temps réel, les intégrations avec l'existant et le paiement. La première cause de retard n'est pas technique : c'est le délai de réponse du client : chaque semaine d'attente repousse d'autant la mise en ligne.",
   },
   {
     path: '/blog/application-avec-ia-rentable',
@@ -900,7 +900,7 @@ const blogRoutes = [
   {
     path: '/blog/idee-application-business-rentable',
     heading: 'Idée d\'application mobile : comment en faire un business rentable',
-    content: 'De l\'idée au premier euro récurrent : formuler un problème payant, valider avant de développer, choisir le modèle de revenu avant la première ligne de code, construire un scénario chiffré prudent et mesurer les bons indicateurs. Une application que j\'ai conçue génère 13 000 € par mois.',
+    content: 'De l\'idée au premier euro récurrent : formuler un problème payant, valider avant de développer, choisir le modèle de revenu avant la première ligne de code, construire un scénario chiffré prudent et mesurer les bons indicateurs. Une application que j\'ai conçue a généré jusqu\'à 13 000 € par mois.',
   },
   {
     path: '/blog/application-par-abonnement',
@@ -915,17 +915,17 @@ const blogRoutes = [
   {
     path: '/blog/combien-rapporte-application-mobile',
     heading: 'Combien rapporte une application mobile en 2026 ?',
-    content: 'Combien rapporte réellement une application mobile en 2026 ? Le calcul du revenu (utilisateurs, conversion, prix, rétention), pourquoi la plupart des applications ne rapportent rien, et l\'exemple d\'une application que j\'ai conçue qui génère 13 000 € par mois.',
+    content: 'Combien rapporte réellement une application mobile en 2026 ? Le calcul du revenu (utilisateurs, conversion, prix, rétention), pourquoi la plupart des applications ne rapportent rien, et l\'exemple d\'une application que j\'ai conçue, qui a généré jusqu\'à 13 000 € par mois.',
   },
   {
     path: '/blog/rentabiliser-application-mobile',
     heading: 'Comment rentabiliser une application mobile',
-    content: 'Les modèles de revenus d\'une application mobile (abonnement, freemium, achats intégrés, publicité) et surtout ce qui fait la différence : la conception qui transforme tes utilisateurs en clients. Une application que j\'ai conçue génère 13 000 € par mois.',
+    content: 'Les modèles de revenus d\'une application mobile (abonnement, freemium, achats intégrés, publicité) et surtout ce qui fait la différence : la conception qui transforme tes utilisateurs en clients. Une application que j\'ai conçue a généré jusqu\'à 13 000 € par mois.',
   },
   {
     path: '/blog/creation-application-mobile-toulouse',
     heading: "Création d'application mobile à Toulouse",
-    content: "Conception et developpement d'applications iOS et Android a Toulouse, en Haute-Garonne et en Occitanie, et a distance partout en France. Un seul interlocuteur, joignable directement, tarif fixe pose avant de commencer, 45 jours en moyenne pour une application. Le prix depend du perimetre et non de la ville : 5 000 a 8 000 euros pour une application au perimetre resserre, 8 000 a 12 000 euros pour une application complete a un profil. Les profils toulousains les plus frequents sont les independants du sport et du bien-etre, les formateurs et organismes, le commerce de proximite qui fidelise, et les porteurs de projet issus de l'ecosysteme local. La proximite geographique change surtout le demarrage d'un projet flou, elle ne change ni le prix, ni le delai, ni la qualite. Trois interventions possibles : creer de zero, reprendre une application instable, faire evoluer une application en ligne.",
+    content: "Conception et developpement d'applications iOS et Android a Toulouse, en Haute-Garonne et en Occitanie, et a distance partout en France. Un seul interlocuteur, joignable directement, prix fixe pose avant de commencer, 1 a 2 mois pour une application. Le prix depend du perimetre et non de la ville : autour de 10 000 euros pour une application. Les profils toulousains les plus frequents sont les independants du sport et du bien-etre, les formateurs et organismes, le commerce de proximite qui fidelise, et les porteurs de projet issus de l'ecosysteme local. La proximite geographique change surtout le demarrage d'un projet flou, elle ne change ni le prix, ni le delai, ni la qualite. Trois interventions possibles : creer de zero, reprendre une application instable, faire evoluer une application en ligne.",
   },
   {
     path: '/blog/application-mobile-meilleur-investissement',
@@ -934,8 +934,8 @@ const blogRoutes = [
   },
   {
     path: '/blog/combien-coute-application-mobile',
-    heading: "Prix d'une application mobile : les fourchettes réelles",
-    content: "Le prix ne depend presque pas de la technologie, il depend du perimetre. Compte 5 000 a 8 000 euros pour une application au perimetre resserre, 8 000 a 12 000 euros pour une application complete a un seul profil d'utilisateur, en general une dizaine de milliers d'euros des qu'il y a deux profils ou du temps reel, 50 000 euros et plus en agence ou ESN. Deux devis sur un meme projet vont du simple au triple parce qu'ils ne chiffrent pas le meme travail : ce qui disparait d'un devis bas est d'abord les tests sur appareils reels, la preparation des fiches store et la gestion des cas d'erreur. Les cinq facteurs qui font monter le prix sont le nombre de types d'utilisateurs, le temps reel, les integrations avec l'existant, le paiement et le niveau de finition. Exemples : une application de reservation tombe en general entre 5 000 et 8 000 euros, une application de coaching par abonnement entre 8 000 et 12 000 euros, une mise en relation client et professionnel autour d'une dizaine de milliers d'euros. Pour une application web, ce qu'on appelle aussi un SaaS, le support ne fait pas le prix, le perimetre le fait ; le web change le delai et ce qu'on encaisse, environ 78 pour cent sans commission de store. Trois postes echappent au devis : le cout d'acquisition, les 70 pour cent qui restent apres TVA et commission des stores, et le delai avant la mise en vente.",
+    heading: "Prix d'une application mobile : ce qu'il faut vraiment prévoir",
+    content: "Le prix ne depend presque pas de la technologie, il depend du perimetre. Une application se situe autour de 10 000 euros, selon sa taille et sa complexite, et plutot autour de 30 000 euros en agence ; la fourchette se donne au premier appel, et le prix fixe est ecrit dans le devis. Deux devis sur un meme projet vont du simple au triple parce qu'ils ne chiffrent pas le meme travail : ce qui disparait d'un devis bas est d'abord les tests sur appareils reels, la preparation des fiches store et la gestion des cas d'erreur. Les cinq facteurs qui font monter le prix sont le nombre de types d'utilisateurs, le temps reel, les integrations avec l'existant, le paiement et le niveau de finition. Pour une application web, ce qu'on appelle aussi un SaaS, le support ne fait pas le prix, le perimetre le fait ; le web change le delai et ce qu'on encaisse, environ 78 pour cent sans commission de store. Trois postes echappent au devis : le cout d'acquisition, les 70 pour cent qui restent apres TVA et commission des stores, et le delai avant la mise en vente.",
   },
   {
     path: '/blog/creer-application-sans-savoir-coder',
@@ -945,7 +945,7 @@ const blogRoutes = [
   {
     path: '/blog/creer-application-mobile-guide',
     heading: "Comment créer une application mobile : les étapes, dans le bon ordre",
-    content: "Les étapes pour créer une application quand on n'a aucune compétence technique, dans l'ordre où les décisions se prennent. Un : décider qui va s'en servir et où, ce qui tranche entre une application mobile (des gens en déplacement, du grand public) et une application web (des gens assis devant un écran, plusieurs profils), ou les deux. Deux : décider comment elle rapportera avant le code, où et quand l'utilisateur paie. Trois : garder le strict nécessaire, le MVP. Quatre : un cahier des charges court. Cinq : voir les écrans en maquette avant de développer. Six : développer en voyant l'avancement. Sept : mettre en ligne, sur l'App Store et Google Play pour une application mobile, sur son nom de domaine pour une application web. Budget : 5 000 à 8 000 euros pour une application au périmètre clair, 8 000 à 12 000 euros pour une application complète, une dizaine de milliers d'euros pour deux profils distincts ; 45 jours en moyenne du cadrage à la mise en ligne.",
+    content: "Les étapes pour créer une application quand on n'a aucune compétence technique, dans l'ordre où les décisions se prennent. Un : décider qui va s'en servir et où, ce qui tranche entre une application mobile (des gens en déplacement, du grand public) et une application web (des gens assis devant un écran, plusieurs profils), ou les deux. Deux : décider comment elle rapportera avant le code, où et quand l'utilisateur paie. Trois : garder le strict nécessaire, le MVP. Quatre : un cahier des charges court. Cinq : voir les écrans en maquette avant de développer. Six : développer en voyant l'avancement. Sept : mettre en ligne, sur l'App Store et Google Play pour une application mobile, sur son nom de domaine pour une application web. Budget : autour de 10 000 euros, selon la taille et la complexité de l'application ; 1 à 2 mois du cadrage à la mise en ligne.",
   },
   {
     path: '/blog/reprendre-application-mobile-existante',
@@ -955,12 +955,12 @@ const blogRoutes = [
   {
     path: '/blog/faire-evoluer-application-mobile',
     heading: 'Faire évoluer ou refondre une application mobile : par où commencer ?',
-    content: 'Faire évoluer une application, c\'est arbitrer : impact pour l\'utilisateur, impact sur le revenu, effort technique. La refonte ne se justifie que sur trois signaux : chaque ajout coûte plus cher que le précédent, le produit a changé de cible ou de modèle de revenu, ou la première version était un prototype qui a grossi. Une refonte se chiffre comme une création, 5 000 à 8 000 € pour une application resserrée, 8 000 à 12 000 € pour une application complète, 45 jours en moyenne, en gardant les comptes et les abonnements existants.',
+    content: 'Faire évoluer une application, c\'est arbitrer : impact pour l\'utilisateur, impact sur le revenu, effort technique. La refonte ne se justifie que sur trois signaux : chaque ajout coûte plus cher que le précédent, le produit a changé de cible ou de modèle de revenu, ou la première version était un prototype qui a grossi. Une refonte se chiffre comme une création, autour de 10 000 €, 1 à 2 mois, en gardant les comptes et les abonnements existants.',
   },
   {
     path: '/blog/mvp-application-mobile',
-    heading: "MVP d'application mobile : lancer ton idée en 45 jours",
-    content: "MVP signifie Minimum Viable Product, produit minimum viable, aussi appele premiere version ou format MVP. Le mot qui compte dans le sigle est viable, pas minimum : une application qui fait peu mais bien en est un, une application qui fait beaucoup mais mal n'en est pas un. Compte 5 000 a 8 000 euros et 45 jours, soit 4 a 6 semaines de developpement plus le cadrage. Ce qu'on garde : le parcours principal de bout en bout, un seul type d'utilisateur, le paiement, un design soigne sur ces ecrans. Ce qu'on coupe : les profils multiples, l'administration, le hors ligne, la personnalisation. Un MVP a 6 000 euros se rembourse avec environ 70 abonnes sur un an a 9,99 euros par mois. Le choix entre MVP mobile et MVP web ne se fait pas sur le prix mais sur l'usage.",
+    heading: "MVP d'application mobile : lancer ton idée en 1 à 2 mois",
+    content: "MVP signifie Minimum Viable Product, produit minimum viable, aussi appele premiere version ou format MVP. Le mot qui compte dans le sigle est viable, pas minimum : une application qui fait peu mais bien en est un, une application qui fait beaucoup mais mal n'en est pas un. Compte autour de 10 000 euros, et 1 a 2 mois du cadrage a la mise en ligne. Ce qu'on garde : le parcours principal de bout en bout, un seul type d'utilisateur, le paiement, un design soigne sur ces ecrans. Ce qu'on coupe : les profils multiples, l'administration, le hors ligne, la personnalisation. Un MVP a 6 000 euros se rembourse avec environ 70 abonnes sur un an a 9,99 euros par mois. Le choix entre MVP mobile et MVP web ne se fait pas sur le prix mais sur l'usage.",
   },
   {
     path: '/blog/choisir-expert-application-mobile',
@@ -1474,14 +1474,15 @@ for (const slug of slugsPublies) {
 
 const llms = `# Noé Calmes, applications mobiles et web qui rapportent
 
-> J'aide les entrepreneurs sans compétence technique à transformer une idée en
-> application qui rapporte, mobile (iOS et Android) ou web, ce qu'on appelle
+> J'aide les professionnels qui ont déjà leur activité et leurs clients à lancer
+> l'application de leur métier, mobile (iOS et Android) ou web, ce qu'on appelle
 > aussi un SaaS. Je m'occupe de tout, de la stratégie à la mise en ligne : le
-> modèle de revenus, le design, le développement et la publication. Pas une
-> agence, pas un développeur à la mission : un seul interlocuteur, tarif fixe
-> défini avant de commencer. Plus de 20 applications à mon actif, plus de
-> 1,3 million de téléchargements cumulés. Une application que j'ai conçue
-> génère environ 13 000 € par mois.
+> design, le développement et la publication, pour que les utilisateurs restent,
+> reviennent et paient chaque mois. Pas une agence, pas un développeur à la
+> mission : un seul interlocuteur, et le client voit son application avant de
+> payer. Plus de 20 applications à mon actif, plus de 1,3 million de
+> téléchargements cumulés, dont la première version d'une application qui
+> dépasse aujourd'hui le million de téléchargements.
 
 Le support se choisit selon le projet : une application mobile pour le grand
 public, une application web pour une plateforme professionnelle.
@@ -1489,16 +1490,17 @@ public, une application web pour une plateforme professionnelle.
 Basé près de Toulouse, j'interviens à distance partout en France sur trois
 situations : créer une application à partir d'une idée, reprendre une
 application existante instable ou abandonnée, faire évoluer une application déjà
-en ligne. Budget habituel de 5 000 à 30 000 €, 45 jours en moyenne pour une
-application mobile ou web.
+en ligne. Une application coûte autour de 10 000 € (plutôt 30 000 € en agence),
+avec un prix fixe écrit dans le devis, et elle est en ligne en 1 à 2 mois. Je
+prends un seul nouveau projet par mois.
 
 ## Pages principales
 
 - [Accueil](${urlPublique('/')}) : le positionnement et les preuves
 - [Concevoir une application qui rapporte](${urlPublique('/expertise')}) : ce que je fais qu'un développeur ne fait pas
 - [Ma méthode](${urlPublique('/creation-application-mobile')}) : les 5 étapes, du cadrage au lancement sur les stores
-- [Application mobile sur mesure](${urlPublique('/application-mobile-sur-mesure')}) : prix (tarif fixe de 5 000 à 15 000 € par palier de périmètre, 15 000 à 18 000 € avec une application web), délai (45 jours), comment obtenir un devis
-- [Application web sur mesure](${urlPublique('/application-web-sur-mesure')}) : un logiciel en ligne, ce qu'on appelle aussi un SaaS, tarif fixe de 6 000 à 15 000 € par palier de périmètre, sans commission de store, devis après un appel
+- [Application mobile sur mesure](${urlPublique('/application-mobile-sur-mesure')}) : prix (autour de 10 000 €, prix fixe écrit dans le devis), délai (environ 2 mois), comment obtenir un devis
+- [Application web sur mesure](${urlPublique('/application-web-sur-mesure')}) : un logiciel en ligne, ce qu'on appelle aussi un SaaS, autour de 10 000 €, environ 1 mois, sans commission de store, devis après un appel
 - [Refonte ou reprise d'une application existante](${urlPublique('/refonte-application-mobile')}) : audit court qui tranche, reprise ou refonte à tarif fixe, utilisateurs et comptes conservés
 - [FAQ](${urlPublique('/faq')}) : budget, délai, reprise, stores, suivi après mise en ligne
 - [Qui je suis](${urlPublique('/a-propos')}) : parcours, preuves, profils, façon de travailler
@@ -1518,7 +1520,7 @@ ${v.join('\n')}`).join('')}
 
 ## À savoir
 
-- Canal de contact unique : WhatsApp. C'est Noé Calmes qui répond directement.
+- Pour démarrer : un appel gratuit de 30 minutes, à réserver sur l'accueil, ou un message sur WhatsApp. C'est Noé Calmes qui répond directement.
 - Le blog est écrit à la première personne par Noé Calmes, pas par une rédaction.
 - Site : ${urlPublique('/')}
 `

@@ -104,16 +104,64 @@ noecalmes.fr par accueiltest », puis « supprime l'ancienne, accueiltest devien
   titre « Je transforme ton idée en application qui rapporte vraiment. ». La FAQ balisée de l'accueil reprend ses dix
   `QUESTIONS`.
 - **Retiré à la mise en ligne** : le titre d'onglet « Page test » et la balise `noindex, nofollow` que la page posait
-  elle-même ; le bloc « Ce que rapporte l'application d'un client » (18 450 € par mois), aux chiffres d'un ancien
-  écran d'exemple présentés comme ceux d'un client, faute de capture réelle et d'accord écrit (bloc complet dans le
-  commit 1624c00, styles restés dans `accueil.css`).
-- **La preuve Calorie (« 13 000 €/mois ») quitte l'accueil** : description (`META_HOME` et `index.html` : description,
-  og, twitter), données structurées de la personne (« une application téléchargée plus d'un million de fois ») et
-  pré-rendu. **Le titre de l'accueil ne change pas.** Elle reste ailleurs sur le site (pages SEO, blog, `llms.txt`).
+  elle-même.
+- **Le bloc « Ce que rapporte l'application d'un client » (18 450 € par mois) est EN LOCAL SEULEMENT.** Ses chiffres
+  sont ceux d'un ancien écran d'exemple (commit d5cfbaa, données fictives), pas d'un client : retiré du site à la mise
+  en ligne, puis remis le même jour pour que Noé le voie (« juste après j'enlève »), dans `src/ApercuResultat.jsx`,
+  chargé par `Accueil.jsx` seulement quand `import.meta.env.DEV` est vrai. Le build de production ne contient ni le
+  fichier ni ses chiffres, et le texte servi aux robots ne le voit pas. Pour le mettre en ligne : les vrais chiffres
+  de la capture du client, avec son accord écrit. Pour l'enlever : le fichier et ses deux lignes dans `Accueil.jsx`.
+- **La preuve Calorie (« 13 000 €/mois ») a quitté tout le site le 27/11/2026** (section suivante).
 - **`/rendez-vous`** (noindex) s'appelle « Réserver un appel avec Noé » et descend au calendrier.
 - **L'onglet qui appelle au retour** ne dit plus « Maquette offerte pour ton app », seulement « Parlons de ton idée
   d'app » (la maquette se propose à l'appel, plus sur le site).
 - **Ni bouton WhatsApp flottant ni chatbot** sur l'accueil : WhatsApp passe par l'icône de la barre du haut.
+
+## L'offre du Drive sur tout le site (27/11/2026)
+
+Noé : « dans la landing page, positionnement, cible et prix, mets tout à jour en fonction du Drive Banger Offer », et
+« passe à 30 min partout ». Source : le dossier Drive « Création de l'offre » (« Offre : ce qu'il faudra changer après
+validation », partie « Le site », et « Mon offre sur une page »). Ce qui vaut partout, accueil compris :
+
+- **Le prix : un seul chiffre**, « autour de 10 000 € », selon la taille et la complexité du projet ; en agence,
+  « autour de 30 000 € » (médiane du baromètre 2026 de La Fabrique du Net). Jamais « à partir de » (il attirait des
+  personnes hors cible et a fait peur à un prospect qui l'était), jamais une fourchette (le visiteur retient le chiffre
+  du bas), jamais un prix par support. « Ta fourchette dès le premier appel, ton prix fixe dans ton devis. » Les
+  tableaux de paliers de `/application-mobile-sur-mesure`, `/application-web-sur-mesure`, `/refonte-application-mobile`
+  et des articles sont retirés ; ce qui fait varier le prix reste, sans chiffre. Les scénarios de calcul du blog (« une
+  application à 8 000 € se rembourse avec… ») restent : ce ne sont pas des prix de Noé.
+- **Le délai : « 1 à 2 mois »** (environ 1 mois sur le web, 2 mois sur mobile, 2 mois et demi pour les deux), avec sa
+  condition quand la place le permet : le développement ne prend pas de retard, ce qui allonge, c'est la société et la
+  validation des comptes par Apple et Google. Plus de « 45 jours », ni de « 4 à 6 semaines de développement ».
+  L'article MVP s'appelle « MVP d'application mobile : lancer ton idée en 1 à 2 mois ».
+- **La cible : le professionnel qui a déjà son activité et ses clients.** Les blocs « Pour qui, et pour qui pas » des
+  pages d'offre reprennent les lignes du Drive : pas pour celui qui cherche le prix le plus bas, qui veut juste un
+  développeur qui exécute, ou dont le budget n'est pas prêt.
+- **La preuve : la messagerie au million de téléchargements, sans son nom** (« j'ai conçu la première version d'une
+  application qui dépasse aujourd'hui le million de téléchargements »). Seule `/projets`, non indexée et envoyée par Noé
+  lui-même, garde le nom Hush (décision de Noé du 26/11/2026).
+- **Calorie : plus de nom nulle part.** Retirée des pages ; dans les articles qui reposent sur l'exemple, au passé et sans
+  nom, avec la formule du Drive : « une application que j'ai conçue a généré jusqu'à 13 000 € par mois ».
+- **La maquette n'est plus un cadeau** : jamais « gratuite » ni « offerte ». On dit « tu vois ton application avant de
+  payer », et « tu ne paies rien avant d'avoir vu ton application et signé ton devis ».
+- **L'appel : 30 minutes, partout.**
+- **Le titre Google de l'accueil** (Noé : « c'est toi l'expert, tu ferais quoi ? ») : « Ton application mobile ou web, vue
+  avant de payer | Noé Calmes » (62 caractères ; sans « & », que le contrôle du build compte « &amp; », cinq
+  caractères, sur une limite de 65). Le mot cherché reste, la promesse de revenus sort (le Drive : « je ne promets pas des revenus », elle attire ceux qui veulent de l'argent sans budget), et
+  il dit ce qu'aucun concurrent ne dit. Description : « Tu as déjà ton activité et tes clients ? En 1 à 2 mois, ton
+  application est en ligne, et tu la vois avant de payer. Réserve un appel gratuit de 30 minutes. » (`META_HOME` et
+  `index.html`). Avant : « Application mobile & web qui génère des revenus ». **Le titre du haut de page ne change
+  pas** (« Je transforme ton idée en application qui rapporte vraiment. », « une nouvelle source de revenus ») :
+  c'est l'accroche de Noé, que le Drive veut travailler avec le coach.
+
+Pas encore aligné :
+
+- **L'audit de `/audit-app`** calcule ses estimations avec une IA, dont les consignes vivent dans
+  `src/audit-app/backend/prompts.ts` (projet Firebase à part, déployé à part) : elles disent encore « autour de 5 000 à
+  6 000 € » pour un projet simple, et `orchestrator.ts` a ses propres textes de repli. Le site n'a changé que le texte de
+  repli de l'écran (`AuditAppVerdict.jsx`).
+- **Les documents de `documentation/strategy/`** gardent l'ancien discours, sauf le script d'appel et la prospection
+  Meta, passés à 30 minutes : ce sont des archives de travail.
 
 ## Film du hero
 

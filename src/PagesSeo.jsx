@@ -102,15 +102,15 @@ function BlocAudit({ onAuditApp, onBookCall, titre, texte }) {
 const LIENS_MAILLAGE = [
   { href: '/expertise', titre: 'Concevoir une application qui rapporte', texte: "Ce que je fais qu'un développeur ne fait pas, et les preuves derrière." },
   { href: '/creation-application-mobile', titre: 'Ma méthode, étape par étape', texte: 'Du cadrage du modèle économique au lancement sur les stores.' },
-  { href: '/application-mobile-sur-mesure', titre: 'Application sur mesure : prix, délai, devis', texte: 'Tarif fixe de 5 000 à 15 000 € selon le périmètre, 45 jours, devis après un cadrage gratuit.' },
-  { href: '/application-web-sur-mesure', titre: 'Application web sur mesure : prix, délai, devis', texte: 'Un logiciel en ligne pour ton activité, tarif fixe de 6 000 à 15 000 € selon le périmètre, sans commission de store.' },
+  { href: '/application-mobile-sur-mesure', titre: 'Application sur mesure : prix, délai, devis', texte: 'Autour de 10 000 €, un prix fixe écrit dans le devis, en ligne en 2 mois environ.' },
+  { href: '/application-web-sur-mesure', titre: 'Application web sur mesure : prix, délai, devis', texte: 'Un logiciel pour ton activité, ouvert dans le navigateur, prêt en 1 mois environ, sans commission de store.' },
   { href: '/refonte-application-mobile', titre: 'Refonte ou reprise d\'une application existante', texte: 'Un audit court qui tranche, puis reprise ou refonte à tarif fixe, en gardant tes utilisateurs et leurs comptes.' },
   { href: '/projets', titre: 'Les applications que j\'ai conçues', texte: '+1 million de téléchargements, +20 applications publiées.' },
   { href: '/faq', titre: 'Questions fréquentes', texte: 'Budget, délai, reprise, stores, ce qui se passe après la mise en ligne.' },
   { href: '/a-propos', titre: 'Qui je suis', texte: 'Mon parcours, mes preuves, et la façon dont je travaille avec toi.' },
   { href: '/quiz', titre: 'Tester ton projet en 2 minutes', texte: 'Trois tests courts : besoin réel, application ou site web, budget à prévoir.' },
   { href: '/blog/rentabiliser-application-mobile', titre: 'Comment rentabiliser une application mobile', texte: 'Le guide de fond sur les modèles de revenus et la conversion.' },
-  { href: '/blog/combien-coute-application-mobile', titre: 'Combien coûte une application mobile', texte: 'Les fourchettes réelles et ce qui fait varier le budget.' },
+  { href: '/blog/combien-coute-application-mobile', titre: 'Combien coûte une application mobile', texte: 'Ce qui fait le prix, et ce que le devis ne dit pas.' },
 ]
 
 function MaillageInterne({ exclure = [], onNaviguer }) {
@@ -201,12 +201,11 @@ export function PageAPropos({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
         </h1>
 
         <Corps>
-          <p>Je m'appelle Noé Calmes. J'aide les entrepreneurs sans compétence technique à transformer une idée en application qui rapporte, mobile ou web, ce qu'on appelle aussi un SaaS. Je m'occupe de tout, de la stratégie à la mise en ligne, et je suis le seul interlocuteur du projet.</p>
+          <p>Je m'appelle Noé Calmes. J'aide les professionnels qui ont déjà leur activité et leurs clients à lancer l'application de leur métier, mobile ou web, sans avoir à s'occuper de la technique. Je m'occupe de tout, de la stratégie à la mise en ligne, et je suis le seul interlocuteur du projet.</p>
 
           <h2>D'où je viens</h2>
           <p>Je suis développeur de formation : un bachelor de développeur web et mobile, en trois ans. C'est là que j'ai appris à construire une application. Ce n'est pas là que j'ai appris à en faire une qui rapporte. Ça, je l'ai appris sur le terrain, application après application.</p>
           <p>La leçon qui a tout changé est une application dont j'ai conçu la première version pour ses créateurs, et elle a dépassé 300 000 utilisateurs. Mais elle ne rapportait presque rien, parce que personne, moi compris, n'avait décidé au départ à quel moment elle demanderait à être payée. Depuis, je ne commence plus un projet sans savoir où et quand l'utilisateur sort sa carte.</p>
-          <p>L'inverse est arrivé avec Calorie, une application de suivi nutritionnel conçue pour un client, sur un marché déjà saturé. Elle lui rapporte aujourd'hui environ 13 000 € par mois, par abonnement, avec environ 30 000 téléchargements et 3 % de payants. Ce qui a fait la différence n'était pas l'idée : c'était le parcours qui amène l'utilisateur jusqu'au paiement.</p>
           <p>Et je teste ce que je conseille sur mes propres applications, avec mon propre argent : Wake Up Alarme, le réveil qu'on ne peut pas éteindre sans se lever, et Plouff Habitudes, sortie du design au lancement en 30 jours. Toutes les deux sont en ligne sur l'App Store et Google Play, sur abonnement.</p>
 
           <h2>Ce que je fais qu'un développeur ne fait pas</h2>
@@ -216,7 +215,7 @@ export function PageAPropos({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
           <ul>
             <li><strong>Plus de 20 applications</strong> conçues et publiées, les miennes et celles de mes clients.</li>
             <li><strong>1,3 million de téléchargements</strong> cumulés.</li>
-            <li><strong>Environ 13 000 € par mois</strong> pour Calorie, une application que j'ai conçue.</li>
+            <li><strong>Plus d'un million de téléchargements</strong> pour une application dont j'ai conçu la première version.</li>
             <li>Des applications récentes en ligne : SmoothRide, une navigation GPS qui évite les dos-d'âne avec CarPlay et Android Auto, et Bailora, la gestion locative sur téléphone.</li>
           </ul>
           <p>Le détail de chaque projet est dans <a href="/projets/">mes réalisations</a>, et les chiffres, avec ce qu'ils mesurent vraiment, dans <a href="/blog/ce-que-j-ai-appris-20-applications/">ce que j'ai appris en publiant plus de 20 applications</a>.</p>
@@ -231,13 +230,15 @@ export function PageAPropos({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
           <h2>Comment on travaille ensemble</h2>
           <ul>
             <li><strong>Un seul interlocuteur</strong> : moi, du premier appel à la mise en ligne.</li>
-            <li><strong>Un tarif fixe</strong>, défini par écrit avant de commencer. Ce qui fait le prix, c'est le périmètre.</li>
-            <li><strong>45 jours en moyenne</strong> du cadrage à la mise en ligne. Le délai exact est fixé dans le devis.</li>
+            <li><strong>Tu vois ton application avant de payer</strong> : sa maquette, le plan écrit de tout ce qui sera fait, et ton prix.</li>
+            <li><strong>Un prix fixe</strong>, écrit dans ton devis avant de commencer, autour de 10 000 € selon ton projet. Un ajout passe par un nouveau devis, que tu acceptes ou non.</li>
+            <li><strong>1 à 2 mois</strong> du cadrage à la mise en ligne. Ton délai est écrit dans ton devis, à côté du prix.</li>
+            <li><strong>Un seul nouveau projet par mois</strong>, pour me concentrer sur le tien.</li>
             <li><strong>Le suivi après la sortie</strong> : les corrections de bugs sont incluses pendant 30 jours après la mise en ligne. Ensuite, je reste disponible pour faire évoluer ton application.</li>
           </ul>
 
           <h2>Ce que je ne fais pas</h2>
-          <p>Je ne fais pas venir les utilisateurs à ta place. Je conçois une application capable de transformer ceux qui arrivent en clients qui paient, et je t'aide à préparer le lancement. Mais l'audience, que ce soit tes clients actuels, ta communauté ou ta publicité, reste ton travail. Je préfère le dire avant qu'après.</p>
+          <p>Je ne fais pas venir les utilisateurs à ta place. Je conçois une application capable de transformer ceux qui arrivent en clients qui paient, et je t'aide à préparer le lancement. Mais l'audience, que ce soit tes clients actuels, ta communauté ou ta publicité, reste ton travail. Je préfère le dire avant qu'après. Et je ne te garantis pas un nombre d'utilisateurs ni un chiffre d'affaires : personne ne peut le faire sérieusement. Je m'engage sur ce qui dépend de moi.</p>
 
           <h2>Où me trouver</h2>
           <p>Basé près de Toulouse, je travaille à distance partout en France. Tu peux aussi vérifier qui je suis sur ces profils :</p>
@@ -292,7 +293,7 @@ export function PageExpertise({ onAccueil, onBookCall, onAuditApp, onNaviguer })
 
         <Corps>
           <p>La plupart des applications ne rapportent rien. Ce n'est presque jamais un problème de code : elles sont bien développées, elles fonctionnent, elles sont en ligne. Elles n'ont simplement jamais été pensées pour encaisser quoi que ce soit.</p>
-          <p>Je m'appelle Noé Calmes, je suis expert en applications mobiles et web. J'ai publié plus de 20 applications sur l'App Store et Google Play, et une application que j'ai conçue génère environ <strong>13 000 € par mois</strong>. Mon métier ne s'arrête pas au développement : je conçois ton application comme un actif, pas comme une livraison technique.</p>
+          <p>Je m'appelle Noé Calmes, je suis expert en applications mobiles et web. J'ai publié plus de 20 applications sur l'App Store et Google Play, et j'ai conçu la première version d'une application qui dépasse aujourd'hui <strong>le million de téléchargements</strong>. Mon métier ne s'arrête pas au développement : je conçois ton application comme un actif, pas comme une livraison technique.</p>
 
           <h2>Ce que je fais qu'un développeur ne fait pas</h2>
           <p>Un développeur exécute ce que tu lui demandes. C'est utile quand tu sais déjà exactement quoi demander. Le problème, c'est que la question qui décide des revenus se pose avant : qu'est-ce qui sera payant, pourquoi quelqu'un accepterait de payer, et à quel moment il comprend que ça vaut le coup.</p>
@@ -315,15 +316,14 @@ export function PageExpertise({ onAccueil, onBookCall, onAuditApp, onNaviguer })
 
           <h2>Les preuves</h2>
           <ul>
-            <li><strong>13 000 € par mois</strong> générés par une application que j'ai conçue.</li>
-            <li><strong>+1 million de téléchargements</strong> pour cette application, sur iOS et Android.</li>
+            <li><strong>+1 million de téléchargements</strong> pour une application dont j'ai conçu la première version, sur iOS et Android.</li>
             <li><strong>Plus de 20 applications</strong> publiées sur l'App Store et Google Play.</li>
             <li><strong>Mes propres applications</strong> en production, donc une vision de l'usage réel et pas seulement de la commande client.</li>
           </ul>
 
           <h2>Expert indépendant, agence ou intelligence artificielle</h2>
-          <p>Une agence te livre une application et passe au projet suivant. Tu parles à un chef de projet, rarement à la personne qui conçoit, et le budget démarre souvent au-dessus de 20 000 €. De mon côté il y a un seul interlocuteur, joignable directement 6j/7, et un tarif fixe posé avant de commencer.</p>
-          <p>Quant à l'intelligence artificielle, je l'utilise moi-même. Elle génère du code très vite. Elle ne décide pas ce qui est payant, ni où placer l'offre, ni à quel prix, ni pourquoi quelqu'un reviendrait demain. Elle te permet surtout d'arriver plus vite à une application qui ne rapporte rien. C'est développé dans <a href={lienInterne('/blog/creer-application-avec-ia')} onClick={(e) => { if (onNaviguer) { e.preventDefault(); onNaviguer('/blog/creer-application-avec-ia') } }}>créer une application avec l'IA</a>.</p>
+          <p>Une agence te livre une application et passe au projet suivant. Tu parles à un chef de projet, rarement à la personne qui conçoit, et le budget tourne plutôt autour de 30 000 €. De mon côté il y a un seul interlocuteur, joignable directement 6j/7, et un prix fixe écrit avant de commencer, autour de 10 000 €.</p>
+          <p>Quant à l'intelligence artificielle, je l'utilise moi-même. Aujourd'hui, tout le monde peut écrire du code avec une IA. Ce qui fait qu'une application marche, ce n'est pas le code : c'est que ses utilisateurs restent, reviennent et paient chaque mois. L'IA ne décide pas ce qui est payant, ni où placer l'offre, ni à quel prix, ni pourquoi quelqu'un reviendrait demain. Elle te permet surtout d'arriver plus vite à une application qui ne rapporte rien. C'est développé dans <a href={lienInterne('/blog/creer-application-avec-ia')} onClick={(e) => { if (onNaviguer) { e.preventDefault(); onNaviguer('/blog/creer-application-avec-ia') } }}>créer une application avec l'IA</a>.</p>
 
           <h2>Les trois situations dans lesquelles j'interviens</h2>
           <ul>
@@ -360,7 +360,7 @@ const ETAPES = [
   {
     n: '02',
     titre: 'Conception : le parcours qui mène à la valeur, puis à l\'achat',
-    texte: "Tu vois des maquettes de ton application avant que la moindre ligne de code soit écrite. On dessine le chemin le plus court entre l'ouverture et le moment où l'utilisateur comprend l'intérêt, puis l'endroit où l'offre payante a du sens. Rien n'est validé au feeling, tout se discute sur écran.",
+    texte: "Tu vois ton application avant de payer : des maquettes de ses écrans, avant que la moindre ligne de code soit écrite. On dessine le chemin le plus court entre l'ouverture et le moment où l'utilisateur comprend l'intérêt, puis l'endroit où l'offre payante a du sens. Rien n'est validé au feeling, tout se discute sur écran.",
   },
   {
     n: '03',
@@ -419,11 +419,11 @@ export function PageMethode({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
         <div className="mt-12">
           <Corps>
             <h2>Combien de temps, et pour quel budget</h2>
-            <p>En moyenne, 45 jours pour une application mobile ou web, du cadrage à la mise en ligne. Le délai exact dépend des fonctionnalités retenues, et il est posé avant de commencer.</p>
-            <p>Côté budget, le tarif est fixe et défini à l'avance : en général une dizaine de milliers d'euros en mobile selon la complexité. Pas de compteur qui tourne, pas de rallonge en cours de route. Le détail des fourchettes du marché est dans <a href={lienInterne('/blog/combien-coute-application-mobile')} onClick={(e) => { if (onNaviguer) { e.preventDefault(); onNaviguer('/blog/combien-coute-application-mobile') } }}>combien coûte une application mobile</a>.</p>
+            <p>1 à 2 mois, du cadrage à la mise en ligne : environ 1 mois pour une application web, 2 mois pour une application mobile, 2 mois et demi pour les deux. Le développement ne prend pas de retard. Ce qui peut allonger, c'est ta société et la validation de tes comptes par Apple et Google : plus tu t'en occupes tôt, plus vite tu es en ligne. Ton délai est écrit dans ton devis.</p>
+            <p>Côté budget, autour de 10 000 €, selon la taille et la complexité de ton projet. Le prix est fixe et écrit dans ton devis : pas de compteur qui tourne, pas de rallonge en cours de route. Un ajout passe par un nouveau devis, que tu acceptes ou non. Ce qui fait varier le prix est détaillé dans <a href={lienInterne('/blog/combien-coute-application-mobile')} onClick={(e) => { if (onNaviguer) { e.preventDefault(); onNaviguer('/blog/combien-coute-application-mobile') } }}>combien coûte une application mobile</a>.</p>
 
             <h2>Ce que tu dois avoir avant de me contacter</h2>
-            <p>Une idée et une cible. C'est tout. Pas de cahier des charges, pas de maquette, pas de vocabulaire technique : traduire une idée en périmètre, c'est justement une partie de mon travail. Si tu veux arriver avec une première lecture du potentiel, du budget et du délai, teste ton idée en deux minutes avant notre échange.</p>
+            <p>Une idée, une cible, et ton budget prêt pour la lancer. C'est tout. Pas de cahier des charges, pas de maquette, pas de vocabulaire technique : traduire une idée en périmètre, c'est justement une partie de mon travail. Si tu veux arriver avec une première lecture du potentiel, du budget et du délai, teste ton idée en deux minutes avant notre échange.</p>
 
             <h2>Et si ton application existe déjà</h2>
             <p>La méthode s'adapte. Pour une application instable ou abandonnée, on commence par un audit technique avant tout développement, comme décrit dans <a href={lienInterne('/blog/reprendre-application-mobile-existante')} onClick={(e) => { if (onNaviguer) { e.preventDefault(); onNaviguer('/blog/reprendre-application-mobile-existante') } }}>reprendre une application mobile existante</a>. Pour une application en ligne qui doit grandir, l'enjeu est d'ajouter sans casser, c'est le sujet de <a href={lienInterne('/blog/faire-evoluer-application-mobile')} onClick={(e) => { if (onNaviguer) { e.preventDefault(); onNaviguer('/blog/faire-evoluer-application-mobile') } }}>faire évoluer une application mobile</a>.</p>
@@ -458,20 +458,12 @@ export function PageMethode({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
 // couvre la methode, pas l'offre. Les chiffres viennent de l'article prix
 // (combien-coute-application-mobile) et de l'article delai : aucun chiffre neuf.
 
-// Les fourchettes portent le positionnement de Noé (16/11/2026) : en moyenne
-// 8 000 à 12 000 € pour une application mobile, 15 000 à 18 000 € quand le
-// projet a besoin du téléphone et de l'ordinateur, toujours des exceptions (le
-// devis fait foi). La première version resserrée à 5 000 à 8 000 € reste celle
-// de l'article prix. Le prix de l'application web (6 000 à 10 000 €) est sur SA
-// page, /application-web-sur-mesure : on ne met jamais les deux supports côte à
-// côte devant le prospect (décision de Noé du 05/10/2026, vocabulaire-mobile-web.md,
-// « Ce que le prix ne fait jamais »).
-const FOURCHETTES_SUR_MESURE = [
-  { projet: 'Première version resserrée', detail: 'Un type d\'utilisateur, cinq à huit écrans, le parcours principal et le paiement, pour tester que les gens paient avant d\'aller plus loin', prix: '5 000 à 8 000 €' },
-  { projet: 'Application mobile complète', detail: 'Les comptes, le paiement, les notifications, une administration légère, un vrai travail de design, la publication sur l\'App Store et Google Play', prix: '8 000 à 12 000 €' },
-  { projet: 'Deux profils, ou temps réel', detail: 'Un client et un professionnel, ou une fonction en direct comme une messagerie : deux parcours, deux jeux de droits, deux fois les tests', prix: '12 000 à 15 000 €' },
-  { projet: 'Application mobile et application web', detail: 'Les deux, par exemple une application pour tes clients sur téléphone et un espace de gestion sur ordinateur', prix: '15 000 à 18 000 €' },
-]
+// LE PRIX : UN SEUL CHIFFRE, « autour de 10 000 € » (27/11/2026, offre du Drive « Banger offre », même règle que
+// l'accueil : jamais « à partir de », jamais une fourchette, le visiteur retient le chiffre du bas). Les paliers
+// d'avant (5 000 à 8 000 €, 8 000 à 12 000 €, 12 000 à 15 000 €, 15 000 à 18 000 €) sont retirés : « à partir de
+// 5 000 € » attirait des personnes qui ne sont pas la cible, et a fait peur à un prospect qui l'était. Le risque
+// noté le 16/11/2026 (« un chiffre publié devient un plafond ») est tenu par « selon la taille et la complexité de
+// ton projet » : la fourchette se donne au premier appel, le prix fixe est écrit dans le devis.
 
 export function PageSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
   useEffect(() => {
@@ -480,7 +472,7 @@ export function PageSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer })
     appliquerMeta({
       path: '/application-mobile-sur-mesure',
       title: "Application mobile sur mesure : prix, délai, devis | Noé Calmes",
-      description: "Une application mobile sur mesure, pensée pour rapporter : tarif fixe de 5 000 à 15 000 € selon le périmètre, 45 jours en moyenne, devis après un appel.",
+      description: "Une application mobile conçue pour ton activité : autour de 10 000 €, un prix fixe écrit dans le devis, environ 2 mois, et tu la vois avant de payer.",
     })
   }, [])
 
@@ -506,39 +498,23 @@ export function PageSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer })
           <p>Sur mesure ne veut pas dire mobile à tout prix. Si ton produit se sert au bureau, sur un écran, avec plusieurs profils et une administration, c'est une application web qu'il te faut, et je te le dis avant le devis : son offre est sur {lien('/application-web-sur-mesure', 'la page application web sur mesure')}. Le support se décide sur l'usage, et {lien('/quiz/application-ou-site-web', 'le test application mobile ou web')} tranche en deux minutes.</p>
 
           <h2>Le prix d'une application mobile sur mesure</h2>
-          <p>Le prix ne dépend presque pas de la technologie. Il dépend du périmètre : ce que l'application fait, et pour combien de types d'utilisateurs différents.</p>
-        </Corps>
-
-        <div className="table-scroll mt-6">
-          <table>
-            <thead>
-              <tr><th>Type de projet</th><th>Ce qu'il contient</th><th>Tarif fixe</th></tr>
-            </thead>
-            <tbody>
-              {FOURCHETTES_SUR_MESURE.map((f) => (
-                <tr key={f.projet}><td><strong>{f.projet}</strong></td><td>{f.detail}</td><td><strong>{f.prix}</strong></td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <Corps>
-          <p>La plupart des projets qui viennent me voir sont dans les deux premières lignes. Ce qui fait passer au palier suivant, c'est toujours le périmètre, jamais la technologie. Une agence facture les mêmes projets 50 000 à 300 000 €, parce qu'elle fait payer une équipe, un chef de projet et des processus. Le détail de ce qui fait monter un devis est dans {lien('/blog/combien-coute-application-mobile', "l'article sur le prix d'une application mobile")}.</p>
-          <p>Le tarif est fixe : il est écrit dans le devis, et il ne bouge pas en cours de route. Pas de compteur horaire. Les corrections sont incluses pendant 30 jours après la mise en ligne.</p>
+          <p>Autour de 10 000 €, selon la taille et la complexité de ton projet. En agence, c'est plutôt autour de 30 000 €, parce qu'elle fait payer une équipe, un chef de projet et des processus. Tu as ta fourchette dès le premier appel, et ton prix fixe dans ton devis, avant de signer.</p>
+          <p>Le prix ne dépend presque pas de la technologie. Il dépend de ce que l'application fait : le nombre de types d'utilisateurs (tes clients seuls, ou tes clients et ton équipe), le paiement, une fonction en direct comme une messagerie, et une application web à côté pour tout gérer depuis l'ordinateur. Le détail de ce qui fait monter un devis est dans {lien('/blog/combien-coute-application-mobile', "l'article sur le prix d'une application mobile")}.</p>
+          <p>Le prix est fixe : il est écrit dans le devis, et il ne bouge pas en cours de route. Un ajout passe par un nouveau devis, que tu acceptes ou non. Pas de compteur horaire. Les corrections sont incluses pendant 30 jours après la mise en ligne.</p>
 
           <h2>Le délai</h2>
-          <p>45 jours en moyenne, du cadrage à la mise en ligne, dont 4 à 6 semaines de développement. Le délai exact est fixé dans le devis, selon les fonctionnalités retenues. Une application web gagne souvent deux à trois semaines, parce qu'il n'y a pas de validation par Apple ni par Google. Le détail, semaine par semaine, est dans {lien('/blog/combien-de-temps-creer-application-mobile', "combien de temps pour créer une application mobile")}.</p>
+          <p>Environ 2 mois pour une application mobile, du cadrage à la mise en ligne, et 2 mois et demi avec une application web à côté. Le développement ne prend pas de retard. Ce qui peut allonger, c'est ta société et la validation de tes comptes par Apple et Google : plus tu t'en occupes tôt, plus vite tu es en ligne. Une application web seule va plus vite, environ 1 mois, parce qu'il n'y a pas de validation par Apple ni par Google. Ton délai est écrit dans ton devis, à côté du prix. Le détail est dans {lien('/blog/combien-de-temps-creer-application-mobile', "combien de temps pour créer une application mobile")}.</p>
 
           <h2>Comment obtenir un devis</h2>
-          <p>Tu n'as pas besoin de cahier des charges. Une idée et une cible suffisent, traduire l'idée en périmètre fait partie de mon travail. Voici comment ça se passe, et chaque étape avant le devis est gratuite et sans engagement.</p>
+          <p>Tu n'as pas besoin de cahier des charges. Une idée, une cible et ton budget prêt suffisent, traduire l'idée en périmètre fait partie de mon travail. Voici comment ça se passe. Tu ne paies rien avant d'avoir vu ton application et signé ton devis.</p>
         </Corps>
 
         <ol className="mt-6 flex flex-col gap-4 list-none p-0">
           {[
             { n: '1', titre: 'Tu m\'écris sur WhatsApp', texte: 'En deux lignes : ton idée, et pour qui. Je réponds moi-même, en général dans la journée.' },
             { n: '2', titre: 'On s\'appelle 30 minutes', texte: 'Je te pose les questions qui comptent : qui paie, à quel moment, et si ton produit a sa place sur un téléphone ou sur un ordinateur. Tu repars avec un avis franc, même si c\'est non.' },
-            { n: '3', titre: 'Je te montre une première maquette', texte: 'Quand le projet s\'engage, tu vois les premiers écrans avant de signer quoi que ce soit. C\'est sur cette base qu\'on fixe le périmètre.' },
-            { n: '4', titre: 'Tu reçois un devis à tarif fixe', texte: 'Le périmètre, le prix, le délai et ce qui est inclus après la mise en ligne, écrits noir sur blanc. Tu sais exactement ce que tu achètes.' },
+            { n: '3', titre: 'Tu vois ton application avant de payer', texte: 'Si ton budget est prêt, je prépare ta maquette : les écrans de ton application, le plan écrit de tout ce qui sera fait, et ton prix fixe. Tu les vois avant de signer quoi que ce soit.' },
+            { n: '4', titre: 'Tu reçois un devis à tarif fixe', texte: 'Le périmètre, le prix, le délai et ce qui est inclus après la mise en ligne, écrits noir sur blanc. Tu paies en trois fois, et à chaque paiement tu as quelque chose de plus entre les mains.' },
           ].map((e) => (
             <li key={e.n} className="bg-card border border-card-border rounded-[15px] p-6 md:p-7">
               <span className="block text-brand font-bold text-[0.8rem] tracking-widest mb-2">ÉTAPE {e.n}</span>
@@ -554,11 +530,11 @@ export function PageSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer })
             <p>Il comprend le cadrage, le design des écrans, le développement pour iPhone et Android, la publication sur l'App Store et Google Play ou la mise en ligne sur ordinateur, et 30 jours de corrections. Il ne comprend pas les frais fixes qui ne dépendent pas de moi : le compte développeur Apple, l'hébergement, et les services tiers que ton application utilise. Je te les liste avant, pour qu'il n'y ait pas de surprise. Le détail est dans {lien('/blog/combien-coute-application-mobile', 'ce que le devis ne dit pas')}.</p>
 
             <h2>Pour qui, et pour qui pas</h2>
-            <p>Pour un entrepreneur qui a une idée précise, une cible, et un budget à partir de 5 000 €, et qui veut une application qui rapporte, pas seulement une application qui existe. Pour une entreprise qui a besoin d'un outil pour ses équipes ou ses clients. Pour une application déjà en ligne qui doit être {lien('/blog/reprendre-application-mobile-existante', 'reprise')} ou refondue.</p>
-            <p>Pas pour un site vitrine, que je ne fais pas. Pas pour un projet sans réponse à la question « qui paie » : dans ce cas, on commence par y répondre, et {lien('/audit-app', 'le test de ton idée')} est fait pour ça.</p>
+            <p>Pour toi si tu as déjà ton activité et tes clients, une idée d'application en rapport avec ton métier, et ton budget prêt pour la lancer. Si tu veux un résultat, sans avoir à t'occuper de la technique. Pour une entreprise qui a besoin d'un outil pour ses équipes ou ses clients, ou pour une application déjà en ligne qui doit être {lien('/blog/reprendre-application-mobile-existante', 'reprise')} ou refondue.</p>
+            <p>Pas pour toi si tu cherches le prix le plus bas, si tu veux juste un développeur qui exécute tes consignes, ou si ton budget n'est pas encore prêt. Pas pour un site vitrine, que je ne fais pas. Pas pour un projet sans réponse à la question « qui paie » : dans ce cas, on commence par y répondre, et {lien('/audit-app', 'le test de ton idée')} est fait pour ça.</p>
 
             <h2>Pourquoi un indépendant plutôt qu'une agence</h2>
-            <p>Tu parles directement à celui qui conçoit et qui construit, sans chef de projet entre nous. Pas de marge d'agence, pas de perte d'information. Plus de 20 applications publiées, 1,3 million de téléchargements, et une application que j'ai conçue génère environ 13 000 € par mois. Ma façon de travailler, étape par étape, est décrite dans {lien('/creation-application-mobile', 'ma méthode')}.</p>
+            <p>Tu parles directement à celui qui conçoit et qui construit, sans chef de projet entre nous. Pas de marge d'agence, pas de perte d'information. Plus de 20 applications publiées, dont la première version d'une application qui dépasse aujourd'hui le million de téléchargements. Ma façon de travailler, étape par étape, est décrite dans {lien('/creation-application-mobile', 'ma méthode')}.</p>
           </Corps>
         </div>
 
@@ -586,21 +562,13 @@ export function PageSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer })
 // Phase 0 : des sections existent (article prix, article MVP, article Claude
 // web), aucune page ni aucun article ne porte « application web sur mesure »
 // ou « logiciel sur mesure » en titre. Chiffres : moyennes du positionnement
-// (6 000 a 10 000 €, 15 000 a 18 000 € pour les deux), 78 % encaisses contre
-// 70 % sur un store, 2 a 3 semaines de moins (article prix). Vocabulaire :
+// (un seul prix, autour de 10 000 €, depuis le 27/11/2026 : voir la page mobile), 78 % encaisses contre
+// 70 % sur un store, environ 1 mois au lieu de 2 sur mobile. Vocabulaire :
 // « ordinateur » au prospect, « SaaS » une fois et accompagne, jamais « site »
 // pour une application web, et on ne compare jamais le prix des deux supports.
 
-// Des paliers par périmètre, pas une moyenne : un chiffre publié devient un
-// plafond dans la tête du prospect (Noé, 16/11/2026 : « s'il lit 6 à 10 et que
-// je propose 15, il sera frustré »). Le prospect se situe lui-même, et un devis
-// à 15 000 € tombe dans une case qu'il a déjà lue.
-const FOURCHETTES_WEB = [
-  { projet: 'Première version resserrée', detail: 'Un type d\'utilisateur, le parcours principal, le paiement, pour tester que les gens paient avant d\'aller plus loin', prix: '6 000 à 8 000 €' },
-  { projet: 'Application web complète', detail: 'Les comptes, deux rôles, le paiement par carte, un espace d\'administration, la mise en ligne sur ton nom de domaine', prix: '8 000 à 10 000 €' },
-  { projet: 'Plateforme dense', detail: 'Plusieurs rôles avec des droits différents, beaucoup d\'écrans, des connexions à d\'autres outils, de l\'automatisation ou du temps réel', prix: '10 000 à 15 000 €' },
-  { projet: 'Application web et application mobile', detail: 'Un espace de gestion sur ordinateur et une application sur le téléphone de tes clients', prix: '15 000 à 18 000 €' },
-]
+// Le prix : un seul chiffre, comme la page mobile (27/11/2026). Les paliers d'avant (6 000 à 8 000 €, 8 000 à
+// 10 000 €, 10 000 à 15 000 €, 15 000 à 18 000 €) sont retirés, la raison est au-dessus de la page mobile.
 
 export function PageWebSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer }) {
   useEffect(() => {
@@ -609,7 +577,7 @@ export function PageWebSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer
     appliquerMeta({
       path: '/application-web-sur-mesure',
       title: "Application web sur mesure (SaaS) : prix et devis | Noé Calmes",
-      description: "Un logiciel en ligne conçu pour ton activité, pensé pour rapporter : tarif fixe de 6 000 à 15 000 € selon le périmètre, sans commission de store.",
+      description: "Un logiciel en ligne conçu pour ton activité : autour de 10 000 €, un prix fixe écrit dans le devis, environ 1 mois, sans commission de store.",
     })
   }, [])
 
@@ -638,9 +606,9 @@ export function PageWebSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer
         <ul className="mt-5 flex flex-col gap-3 list-none p-0">
           {[
             { t: 'Tu encaisses plus', d: 'Sans commission de store, il te reste environ 78 % du prix affiché, contre environ 70 % sur l\'App Store ou Google Play. À l\'échelle d\'un abonnement, c\'est la marge.' },
-            { t: 'Tu sors plus vite', d: 'Pas de compte développeur à ouvrir, pas de validation par Apple ni par Google : la mise en ligne se fait le jour voulu, souvent deux à trois semaines plus tôt à périmètre égal.' },
+            { t: 'Tu sors plus vite', d: 'Pas de compte développeur à ouvrir, pas de validation par Apple ni par Google : la mise en ligne se fait le jour voulu, en 1 mois environ, contre 2 mois pour une application mobile.' },
             { t: 'Tu ne demandes rien à installer', d: 'Un lien, un identifiant, et ton client ou ton salarié est dedans, sur n\'importe quel ordinateur.' },
-            { t: 'Et le téléphone, si besoin', d: 'Quand une partie de tes utilisateurs est debout, dehors, et a besoin de notifications, on ajoute une application mobile à côté. C\'est la ligne « les deux » du tableau.' },
+            { t: 'Et le téléphone, si besoin', d: 'Quand une partie de tes utilisateurs est debout, dehors, et a besoin de notifications, on ajoute une application mobile à côté. On en parle dès le premier appel.' },
           ].map((e) => (
             <li key={e.t} className="bg-card border border-card-border rounded-[15px] p-5 md:p-6">
               <p className="font-heading text-text text-[1rem] font-bold leading-snug mb-1.5">{e.t}</p>
@@ -654,39 +622,27 @@ export function PageWebSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer
             <p>Si tu hésites entre le téléphone et l'ordinateur, {lien('/quiz/application-ou-site-web', 'le test application mobile ou web')} tranche en deux minutes, et je te donne mon avis avant le devis, gratuitement. Si ton produit est pour le grand public, sur téléphone, c'est {lien('/application-mobile-sur-mesure', "l'application mobile sur mesure")} qu'il te faut.</p>
 
             <h2>Le prix d'une application web sur mesure</h2>
-            <p>Le prix ne dépend pas de la technologie. Il dépend du périmètre : ce que l'application fait, le nombre de rôles, le paiement, l'espace d'administration, la densité de ce qu'elle gère.</p>
+            <p>Autour de 10 000 €, selon la taille et la complexité de ton projet. En agence, c'est plutôt autour de 30 000 €. Tu as ta fourchette dès le premier appel, et ton prix fixe dans ton devis, avant de signer.</p>
+            <p>Le prix ne dépend pas de la technologie. Il dépend de ce que l'application fait : le nombre de rôles, le paiement, l'espace d'administration, une connexion à un outil extérieur, et une application mobile à côté si tes clients en ont besoin sur leur téléphone.</p>
           </Corps>
         </div>
 
-        <div className="table-scroll mt-6">
-          <table>
-            <thead>
-              <tr><th>Type de projet</th><th>Ce qu'il contient</th><th>Tarif fixe</th></tr>
-            </thead>
-            <tbody>
-              {FOURCHETTES_WEB.map((f) => (
-                <tr key={f.projet}><td><strong>{f.projet}</strong></td><td>{f.detail}</td><td><strong>{f.prix}</strong></td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
         <Corps>
-          <p>La plupart des projets qui viennent me voir sont dans les deux premières lignes. Ce qui fait passer au palier suivant, c'est toujours le périmètre : un rôle de plus, une connexion à un outil extérieur, une logique métier dense. Le tarif est fixe, écrit dans le devis, et il ne bouge pas en cours de route. Les corrections sont incluses pendant 30 jours après la mise en ligne. Ce qui fait monter un devis est détaillé dans {lien('/blog/combien-coute-application-mobile', "l'article sur le prix d'une application")}.</p>
+          <p>Le prix est fixe, écrit dans le devis, et il ne bouge pas en cours de route. Un ajout passe par un nouveau devis, que tu acceptes ou non. Les corrections sont incluses pendant 30 jours après la mise en ligne. Ce qui fait monter un devis est détaillé dans {lien('/blog/combien-coute-application-mobile', "l'article sur le prix d'une application")}.</p>
 
           <h2>Le délai</h2>
-          <p>45 jours en moyenne du cadrage à la mise en ligne pour une application, et une application web gagne souvent deux à trois semaines là-dessus, parce qu'il n'y a ni store ni validation à attendre. Le délai exact est fixé dans le devis, selon les fonctionnalités retenues.</p>
+          <p>Environ 1 mois du cadrage à la mise en ligne, parce qu'il n'y a ni store ni validation à attendre. Avec une application mobile à côté, compte 2 mois et demi. Le développement ne prend pas de retard : ce qui peut allonger, c'est la création de ta société si elle n'existe pas encore. Ton délai est écrit dans ton devis, à côté du prix.</p>
 
           <h2>Comment obtenir un devis</h2>
-          <p>Tu n'as pas besoin de cahier des charges. Une idée, une cible, et ce que tu veux encaisser suffisent. Chaque étape avant le devis est gratuite et sans engagement.</p>
+          <p>Tu n'as pas besoin de cahier des charges. Une idée, une cible, ce que tu veux encaisser et ton budget prêt suffisent. Tu ne paies rien avant d'avoir vu ton application et signé ton devis.</p>
         </Corps>
 
         <ol className="mt-6 flex flex-col gap-4 list-none p-0">
           {[
             { n: '1', titre: 'Tu m\'écris sur WhatsApp', texte: 'En deux lignes : ce que ton logiciel doit faire, et pour qui. Je réponds moi-même, en général dans la journée.' },
             { n: '2', titre: 'On s\'appelle 30 minutes', texte: 'Je te pose les questions qui comptent : qui s\'en sert, qui paie, à quel moment, et si c\'est bien sur ordinateur que ça doit vivre. Tu repars avec un avis franc, même si c\'est non.' },
-            { n: '3', titre: 'Je te montre une première maquette', texte: 'Quand le projet s\'engage, tu vois les premiers écrans avant de signer quoi que ce soit. C\'est sur cette base qu\'on fixe le périmètre.' },
-            { n: '4', titre: 'Tu reçois un devis à tarif fixe', texte: 'Le périmètre, le prix, le délai et ce qui est inclus après la mise en ligne, écrits noir sur blanc.' },
+            { n: '3', titre: 'Tu vois ton application avant de payer', texte: 'Si ton budget est prêt, je prépare ta maquette : les écrans de ton application, le plan écrit de tout ce qui sera fait, et ton prix fixe. Tu les vois avant de signer quoi que ce soit.' },
+            { n: '4', titre: 'Tu reçois un devis à tarif fixe', texte: 'Le périmètre, le prix, le délai et ce qui est inclus après la mise en ligne, écrits noir sur blanc. Tu paies en trois fois, et à chaque paiement tu as quelque chose de plus entre les mains.' },
           ].map((e) => (
             <li key={e.n} className="bg-card border border-card-border rounded-[15px] p-6 md:p-7">
               <span className="block text-brand font-bold text-[0.8rem] tracking-widest mb-2">ÉTAPE {e.n}</span>
@@ -705,11 +661,11 @@ export function PageWebSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer
             <p>Les outils qui génèrent une application web à partir d'une phrase vont vite, et je m'en sers moi-même pour écrire du code. Ce qu'ils ne décident pas : qui paie, à quel moment, et pourquoi il revient le mois suivant. Ils laissent aussi de côté ce qui fait qu'un logiciel tient : la mise en ligne, les comptes, la sécurité, le paiement. Si tu as déjà un prototype qui tourne, je peux le reprendre ou le refaire proprement, c'est le sujet de {lien('/blog/creer-application-web-avec-claude', "créer une application web avec Claude")}.</p>
 
             <h2>Pour qui, et pour qui pas</h2>
-            <p>Pour un entrepreneur qui veut vendre un abonnement à des professionnels, une entreprise qui a besoin d'un outil pour ses équipes ou ses clients, un indépendant qui veut que ses clients suivent leur dossier en ligne. Avec un budget à partir de 6 000 €, et une réponse à la question « qui paie ». Si cette réponse n'existe pas encore, {lien('/audit-app', 'le test de ton idée')} est fait pour la trouver.</p>
-            <p>Pas pour un site vitrine, que je ne fais pas. Pas pour un produit grand public qui vit sur le téléphone : dans ce cas, c'est une application mobile, et je te le dirai à l'appel.</p>
+            <p>Pour un professionnel qui a déjà son activité et ses clients et veut leur proposer son logiciel, une entreprise qui a besoin d'un outil pour ses équipes ou ses clients, un indépendant qui veut que ses clients suivent leur dossier en ligne. Avec un budget prêt, et une réponse à la question « qui paie ». Si cette réponse n'existe pas encore, {lien('/audit-app', 'le test de ton idée')} est fait pour la trouver.</p>
+            <p>Pas pour toi si tu cherches le prix le plus bas, ou si tu veux juste un développeur qui exécute tes consignes. Pas pour un site vitrine, que je ne fais pas. Pas pour un produit grand public qui vit sur le téléphone : dans ce cas, c'est une application mobile, et je te le dirai à l'appel.</p>
 
             <h2>Pourquoi un indépendant plutôt qu'une agence</h2>
-            <p>Tu parles directement à celui qui conçoit et qui construit, sans chef de projet entre nous. Plus de 20 applications publiées, 1,3 million de téléchargements, et une application que j'ai conçue génère environ 13 000 € par mois. Ma façon de travailler, étape par étape, est décrite dans {lien('/creation-application-mobile', 'ma méthode')}.</p>
+            <p>Tu parles directement à celui qui conçoit et qui construit, sans chef de projet entre nous. Plus de 20 applications publiées, dont la première version d'une application qui dépasse aujourd'hui le million de téléchargements. Ma façon de travailler, étape par étape, est décrite dans {lien('/creation-application-mobile', 'ma méthode')}.</p>
           </Corps>
         </div>
 
@@ -741,17 +697,10 @@ export function PageWebSurMesure({ onAccueil, onBookCall, onAuditApp, onNaviguer
 // Une seule page pour reprise ET refonte : les deux s'adressent a quelqu'un qui
 // a deja une application, et c'est l'audit qui tranche entre les deux. Phase 0 :
 // les deux articles (reprendre, faire-evoluer) expliquent ; cette page vend.
-// Chiffres : audit court et borne (article reprise), refonte aux fourchettes
-// de la creation (article prix, page sur mesure), 45 jours, 30 jours de
+// Chiffres : audit court et borne (article reprise), refonte au prix d'une
+// creation (autour de 10 000 €, depuis le 27/11/2026), 1 a 2 mois, 30 jours de
 // corrections. Bouton WhatsApp seul : le lecteur a deja une application, le
 // test d'idee ne lui sert pas (garde-fou n°4 du runbook).
-
-const PALIERS_REFONTE = [
-  { cas: 'Reprise', quand: 'Le code est lisible et à jour : on le garde, on corrige, on avance dessus', prix: 'Selon l\'état du code, chiffré après l\'audit' },
-  { cas: 'Refonte, périmètre resserré', quand: 'On reconstruit le parcours principal et le paiement, un type d\'utilisateur', prix: '5 000 à 8 000 €' },
-  { cas: 'Refonte complète', quand: 'Les comptes, le paiement, les notifications, une administration légère, un nouveau design', prix: '8 000 à 12 000 €' },
-  { cas: 'Refonte avec deux profils, ou temps réel', quand: 'Un client et un professionnel, ou une fonction en direct', prix: '12 000 à 15 000 €' },
-]
 
 export function PageRefonte({ onAccueil, onBookCall, onNaviguer }) {
   useEffect(() => {
@@ -789,27 +738,11 @@ export function PageRefonte({ onAccueil, onBookCall, onNaviguer }) {
           <p>Quelques jours, pas des semaines. Je lis le code, je teste l'application, je vérifie les comptes, la sécurité et l'état des dépendances. À la fin, tu as un plan d'action et un budget écrits, pas une facture ouverte. L'audit se chiffre selon la taille du projet, et il est toujours borné à l'avance. Il te faut trois choses pour le lancer : l'accès au code, aux comptes développeur Apple et Google, et à l'hébergement.</p>
 
           <h2>Le prix</h2>
-          <p>Une reprise dépend de l'état du code, et c'est l'audit qui la chiffre. Une refonte se chiffre comme une création, parce que c'en est une : le périmètre fait le prix, pas la technologie.</p>
-        </Corps>
-
-        <div className="table-scroll mt-6">
-          <table>
-            <thead>
-              <tr><th>Cas</th><th>Quand</th><th>Tarif fixe</th></tr>
-            </thead>
-            <tbody>
-              {PALIERS_REFONTE.map((f) => (
-                <tr key={f.cas}><td><strong>{f.cas}</strong></td><td>{f.quand}</td><td><strong>{f.prix}</strong></td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <Corps>
-          <p>La refonte a un avantage que la première version n'avait pas : tu sais ce que tes utilisateurs font vraiment. On coupe ce qu'ils n'ouvrent jamais, on garde ce qui les fait revenir, et la nouvelle version est souvent plus simple que l'ancienne. Le tarif est fixe, écrit dans le devis, et les corrections sont incluses 30 jours après la mise en ligne. Les fourchettes et ce qui fait monter un devis sont détaillés dans {lien('/blog/combien-coute-application-mobile', "l'article sur le prix d'une application mobile")}.</p>
+          <p>Une reprise dépend de l'état du code, et c'est l'audit qui la chiffre. Une refonte se chiffre comme une création, parce que c'en est une : autour de 10 000 €, selon la taille et la complexité de ton application. Le périmètre fait le prix, pas la technologie.</p>
+          <p>La refonte a un avantage que la première version n'avait pas : tu sais ce que tes utilisateurs font vraiment. On coupe ce qu'ils n'ouvrent jamais, on garde ce qui les fait revenir, et la nouvelle version est souvent plus simple que l'ancienne. Le prix est fixe, écrit dans le devis, et les corrections sont incluses 30 jours après la mise en ligne. Ce qui fait monter un devis est détaillé dans {lien('/blog/combien-coute-application-mobile', "l'article sur le prix d'une application mobile")}.</p>
 
           <h2>Le délai</h2>
-          <p>Pour une refonte, 45 jours en moyenne du cadrage à la mise en ligne, comme une création. Pour une reprise, le délai dépend de ce que l'audit a trouvé : la remise en état d'une base saine se compte en semaines, pas en mois. Dans les deux cas, le délai est posé dans le devis avant de commencer.</p>
+          <p>Pour une refonte, 1 à 2 mois du cadrage à la mise en ligne, comme une création. Pour une reprise, le délai dépend de ce que l'audit a trouvé : la remise en état d'une base saine se compte en semaines, pas en mois. Dans les deux cas, le délai est posé dans le devis avant de commencer.</p>
 
           <h2>Ce qu'on ne perd pas en route</h2>
         </Corps>
@@ -855,7 +788,7 @@ export function PageRefonte({ onAccueil, onBookCall, onNaviguer }) {
             <p>Pas pour une application sans accès au code ni aux comptes développeur : c'est le premier point à débloquer, et je t'aide à le faire avant tout le reste. Et si le code est irrécupérable, je te le dis clairement, avec les raisons, et on compare honnêtement une remise en état et une réécriture. Comment se passe une reprise, étape par étape : {lien('/blog/reprendre-application-mobile-existante', "reprendre une application mobile existante")}.</p>
 
             <h2>Pourquoi un indépendant plutôt qu'une agence</h2>
-            <p>Tu parles directement à celui qui lit le code et qui le reprend, sans chef de projet entre nous. Plus de 20 applications publiées, 1,3 million de téléchargements, et une application que j'ai conçue génère environ 13 000 € par mois. Ma façon de travailler est décrite dans {lien('/creation-application-mobile', 'ma méthode')}.</p>
+            <p>Tu parles directement à celui qui lit le code et qui le reprend, sans chef de projet entre nous. Plus de 20 applications publiées, dont la première version d'une application qui dépasse aujourd'hui le million de téléchargements. Ma façon de travailler est décrite dans {lien('/creation-application-mobile', 'ma méthode')}.</p>
           </Corps>
         </div>
 

@@ -1,5 +1,7 @@
 # Positionnement Noé Calmes — v2
 
+> **Mise à jour du 27/11/2026 : le site applique l'offre du Drive « Banger offre ».** Prix : un seul chiffre, « autour de 10 000 € » (agence : « autour de 30 000 € »), jamais « à partir de », jamais une fourchette ni un prix par support. Délai : « 1 à 2 mois » (environ 1 mois web, 2 mois mobile, 2 mois et demi les deux). Cible : le professionnel qui a déjà son activité et ses clients. Preuve : la messagerie au million de téléchargements, sans nom. Calorie retirée. L'appel dure 30 minutes. Les fourchettes, « 45 jours » et Calorie écrits plus bas sont l'ancien discours. Détail : `documentation/architecture/landing-page.md`, « L'offre du Drive sur tout le site ».
+
 > Funnel / canal de contact : **WhatsApp partout** (l'audit-app et tous les CTA mènent à WhatsApp ; Calendly retiré le 22/06/2026). Le positionnement ci-dessous ne change pas. Détail du funnel : `documentation/strategy/tunnel.md`.
 
 ---

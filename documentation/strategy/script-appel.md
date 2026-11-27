@@ -1,6 +1,6 @@
 # Script d'appel 1 — v5 (2026-10-13)
 
-> **Le premier appel : au téléphone, 15 minutes, l'audit gratuit de son idée.** Décision de Noé du 13/10/2026 : deux appels avec chaque prospect. L'appel 1 (ce fichier) sert à inspirer confiance, et il finit sur la visio. L'appel 2 (visio, 30 minutes : maquette, cahier des charges et devis présentés, puis sa décision) aura son propre script, à écrire. Le pourquoi des deux appels : `nowork/documentation/guides/appels-prospects.md`.
+> **Le premier appel : au téléphone, 30 minutes (15 jusqu'au 27/11/2026 : Noé, « passe à 30 min partout », comme le rendez-vous réservé sur le site), l'audit gratuit de son idée.** Décision de Noé du 13/10/2026 : deux appels avec chaque prospect. L'appel 1 (ce fichier) sert à inspirer confiance, et il finit sur la visio. L'appel 2 (visio, 30 minutes : maquette, cahier des charges et devis présentés, puis sa décision) aura son propre script, à écrire. Le pourquoi des deux appels : `nowork/documentation/guides/appels-prospects.md`.
 >
 > **Deux scripts, une seule suite.** Script 1, « Il ne me connaît pas » : il a rempli le formulaire, il n'a pas répondu sur WhatsApp, c'est Noé qui appelle. Script 2, « Rendez-vous » : il a répondu sur WhatsApp, l'heure est prise, il sait qui appelle. Seul le début change. Dès qu'il raconte son idée, c'est la même suite.
 >
@@ -30,7 +30,9 @@ Trois moments le décident :
 
 Le prix arrive à la fin, dit franchement. Le cahier des charges, la maquette et le devis sont offerts : c'est l'avance que tu prends, l'étape « On cadre » de la page d'accueil.
 
-## Le minutage (15 minutes)
+## Le minutage (écrit pour 15 minutes)
+
+> Depuis le 27/11/2026, l'appel dure 30 minutes. Ce minutage est encore celui des 15 minutes : à recaler par Noé.
 
 | Étape | Durée |
 |---|---|
@@ -84,7 +86,7 @@ Ce début est identique avec ou sans idée renseignée. Quand il en a écrit une
 
 [Tu attends sa réponse. Un robot n'attend pas.]
 
-> Très bien. Écoutez, vous avez une quinzaine de minutes devant vous ? (pause) Je vous offre un audit gratuit de votre idée : je vous donne mes conseils, et à la fin, je vous dis combien ça vous coûterait.
+> Très bien. Écoutez, vous avez trente minutes devant vous ? (pause) Je vous offre un audit gratuit de votre idée : je vous donne mes conseils, et à la fin, je vous dis combien ça vous coûterait.
 
 **Oui :**
 
@@ -155,7 +157,7 @@ Il a répondu au message automatique, ou à ton WhatsApp, avec une heure. Il sai
 
 > Très bien. L'audit, c'est simple : je regarde si votre idée a du potentiel pour rapporter, et comment la lancer. (pause) On peut se tutoyer, ça ne vous dérange pas ?
 >
-> Super. T'as bien une quinzaine de minutes devant toi ?
+> Super. T'as bien trente minutes devant toi ?
 >
 > Je me présente en deux mots. (pause) Je suis développeur et designer d'applications, depuis plus de six ans. J'ai créé plusieurs applications, dont la première version de Hush, une application de chat anonyme : 300 000 utilisateurs sur cette première version. Aujourd'hui, plus de 2 millions d'utilisateurs. (pause) Mon métier, c'est de créer des applications qui vont te générer des revenus, grâce à diverses stratégies.
 >
@@ -248,7 +250,7 @@ Seulement s'il le dit lui-même. Proposé d'office, l'accord installe une peur q
 
 > Je t'arrête une seconde, c'est très clair. (pause) Pour bien te conseiller, j'ai encore deux questions.
 
-*Pourquoi :* le quart d'heure, c'est ta promesse du début. La tenir, c'est une preuve de plus.
+*Pourquoi :* les trente minutes, c'est ta promesse du début. La tenir, c'est une preuve de plus.
 
 ---
 
@@ -498,10 +500,10 @@ Sophie, gérante d'une société de nettoyage, douze salariés. Formulaire Meta 
 > **Sophie** — Euh… ça va. C'est un robot ?
 > **Noé** — Non, c'est bien moi, Noé. Vous avez rempli mon formulaire mardi, pour les plannings et les heures de vos salariés. Je rappelle chaque personne moi-même, pour lui offrir un audit de son idée : est-ce qu'elle a du potentiel, et ce qu'elle peut rapporter.
 > **Sophie** — Ah oui, d'accord.
-> **Noé** — Écoutez, vous avez une quinzaine de minutes devant vous ? Je vous offre un audit gratuit de votre idée : je vous donne mes conseils, et à la fin, je vous dis combien ça vous coûterait.
+> **Noé** — Écoutez, vous avez trente minutes devant vous ? Je vous offre un audit gratuit de votre idée : je vous donne mes conseils, et à la fin, je vous dis combien ça vous coûterait.
 > **Sophie** — Là, je suis chez un client.
 > **Noé** — Pas de souci. Quand êtes-vous disponible, pour qu'on en reparle ? Plutôt demain midi et demi ? Ou lundi dix-sept heures ?
 > **Sophie** — Lundi dix-sept heures.
 > **Noé** — Je vous envoie un message tout de suite, pour confirmer. Bonne journée, Sophie.
 
-Ce qu'il faut voir : son prénom, son projet et le jour dans la première phrase. L'idée est visible en haut du script, sans lecture automatique. Noé ne lui a pas pris le quart d'heure qu'elle n'avait pas : il a pris la date. Lundi, c'est le script 2.
+Ce qu'il faut voir : son prénom, son projet et le jour dans la première phrase. L'idée est visible en haut du script, sans lecture automatique. Noé ne lui a pas pris la demi-heure qu'elle n'avait pas : il a pris la date. Lundi, c'est le script 2.

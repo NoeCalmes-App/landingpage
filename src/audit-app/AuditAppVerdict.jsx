@@ -304,7 +304,7 @@ function PriceTimingCard({
     prix ||
     (isQualifiedBudget
       ? "Pour une première version sérieuse, comptez une estimation large. La fourchette est large parce que c'est une estimation sans cadrage précis. Pour un vrai prix et un délai exact, le plus simple c'est qu'on en parle directement."
-      : "Une première version sérieuse commence à partir de 5 000 €. En dessous de ce budget, il faut encore consolider l'enveloppe ou réduire fortement le périmètre avant de lancer le développement.")
+      : "Mes applications se situent autour de 10 000 €, selon la taille et la complexité du projet. Si ton budget n'est pas encore prêt, mieux vaut le consolider, ou réduire le périmètre, avant de lancer le développement.")
   return (
     <SectionCard
       label="Prix et délai"

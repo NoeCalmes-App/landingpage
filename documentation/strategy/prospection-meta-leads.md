@@ -86,7 +86,7 @@ La touche 1 ne dépend plus de l'import manuel (délai 24-48h) : elle part **aut
 3. **Un seul levier par message** (question OU preuve OU voix OU clôture). Jamais d'empilement.
 4. **Une seule question par message**, la plus facile possible.
 5. **Jamais « c'est toujours d'actualité ? »** ni aucune formulation qui invite le « non ».
-6. **Pas de prix dans le fil.** Fourchette uniquement si le prospect la demande, le chiffre à l'appel. Expliqué de vive voix, le prix passe (« ok, je comprends ») ; écrit à froid dans WhatsApp, il fait fuir des gens qui auraient dit oui. On n'ancre donc pas le budget par écrit, même pour un lead dont on ne sait rien : la question « tu en es où ? » écarte les curieux, et un appel de 15 minutes pour rien coûte moins cher qu'un projet perdu.
+6. **Pas de prix dans le fil.** Fourchette uniquement si le prospect la demande, le chiffre à l'appel. Expliqué de vive voix, le prix passe (« ok, je comprends ») ; écrit à froid dans WhatsApp, il fait fuir des gens qui auraient dit oui. On n'ancre donc pas le budget par écrit, même pour un lead dont on ne sait rien : la question « tu en es où ? » écarte les curieux, et un appel de 30 minutes pour rien coûte moins cher qu'un projet perdu.
 7. **Le visuel offert n'est jamais promis dans les relances.** Il se débloque en conversation, quand on a assez d'infos, comme récompense (« ton projet tient la route »).
 8. **Le visuel complet ne s'envoie jamais sur WhatsApp.** Teaser (1 capture) dans le chat, le reste se montre à l'appel. C'est l'aimant à rendez-vous.
 9. Chaque message tient sur un écran de téléphone sans scroller. Pas d'emoji en message 1.
@@ -125,7 +125,9 @@ Je te propose un audit gratuit de ton idée, une quinzaine de minutes par télé
 Quand es-tu disponible pour cet appel ?
 ```
 
-« Bien reçu », jamais « j'ai lu » : un message automatique n'a rien lu. Un mot seul (« coaching ») reçoit la question, pas ce texte : « j'ai bien reçu ton idée » y sonnerait faux, et « en deux phrases » lui demande de préciser (Noé, 12/10/2026). L'appel se propose comme une personne le ferait, avec une offre claire : un audit gratuit de son idée, une quinzaine de minutes par téléphone, ses conseils (ce sont eux, l'audit), le coût à la fin. Pas « ce que j'en pense » : un inconnu n'achète pas un avis, il achète un audit. Pas de mots de pub (« décoller », « potentiel ») ni de liste de promesses : ça faisait « message IA » (Noé, 12/10/2026). « Combien ça te coûterait » annonce que le prix se donne à l'appel, ce qui coupe le « c'est combien ? » par écrit. « Quand es-tu disponible pour cet appel ? » : la question simple d'un professionnel ; « le matin ou l'après-midi ? » faisait script pour un lead en costard (Noé, 12/10/2026). Ce message ne part qu'à des leads motivés, qui ont écrit leur idée. S'il reste vague, Noé donne deux heures précises (« Parfait. Demain 10h ou jeudi 14h ? »). À la main, Noé garde toujours ses deux heures précises : là, il connaît son agenda.
+> **27/11/2026 : l'appel passe à 30 minutes partout.** Ce message automatique est un modèle validé par Meta (`premier_contact_idee`) : il dit « une quinzaine de minutes » tant que sa nouvelle version n'est pas validée. Le texte à soumettre est dans `nowork/documentation/systems/lead-auto-import.md`.
+
+« Bien reçu », jamais « j'ai lu » : un message automatique n'a rien lu. Un mot seul (« coaching ») reçoit la question, pas ce texte : « j'ai bien reçu ton idée » y sonnerait faux, et « en deux phrases » lui demande de préciser (Noé, 12/10/2026). L'appel se propose comme une personne le ferait, avec une offre claire : un audit gratuit de son idée, 30 minutes par téléphone, ses conseils (ce sont eux, l'audit), le coût à la fin. Pas « ce que j'en pense » : un inconnu n'achète pas un avis, il achète un audit. Pas de mots de pub (« décoller », « potentiel ») ni de liste de promesses : ça faisait « message IA » (Noé, 12/10/2026). « Combien ça te coûterait » annonce que le prix se donne à l'appel, ce qui coupe le « c'est combien ? » par écrit. « Quand es-tu disponible pour cet appel ? » : la question simple d'un professionnel ; « le matin ou l'après-midi ? » faisait script pour un lead en costard (Noé, 12/10/2026). Ce message ne part qu'à des leads motivés, qui ont écrit leur idée. S'il reste vague, Noé donne deux heures précises (« Parfait. Demain 10h ou jeudi 14h ? »). À la main, Noé garde toujours ses deux heures précises : là, il connaît son agenda.
 
 Variante stade « prêt / financement en place » :
 
@@ -148,7 +150,7 @@ C'est quoi ton idée, en deux phrases : c'est quoi, et pour qui ?
 ```
 Bonjour {prénom}, ici Noé Calmes (noecalmes.fr).
 J'ai lu ton idée, ça se tient.
-Je te propose un audit gratuit de ton idée, une quinzaine de minutes par téléphone : je te donne mes conseils, et à la fin, je te dis combien ça te coûterait.
+Je te propose un audit gratuit de ton idée, 30 minutes par téléphone : je te donne mes conseils, et à la fin, je te dis combien ça te coûterait.
 Plutôt demain 12h30 ou jeudi 18h ?
 ```
 
@@ -169,7 +171,7 @@ Mes projets : noecalmes.fr/projets
 Pas de proposition d'appel tant que la personne n'a jamais répondu : la séquence monte seule en pression (message → message → voix à J+5). L'appel se propose par écrit uniquement à un lead qui a déjà répondu. **Exception : le lead qui a écrit son idée dans le formulaire** a déjà répondu à sa façon ; son premier message proposait l'appel, sa relance J+2 aussi :
 
 ```
-{prénom}, je reviens vers toi pour l'audit gratuit de ton idée d'application : une quinzaine de minutes par téléphone suffisent.
+{prénom}, je reviens vers toi pour l'audit gratuit de ton idée d'application : 30 minutes par téléphone suffisent.
 Plutôt demain 12h30 ou jeudi 18h ?
 ```
 
@@ -261,9 +263,9 @@ Ensuite, le chemin est le même que pour un lead formulaire : la section suivant
 
 ## Dès qu'il répond : le chemin vers l'appel
 
-Objectif unique : l'appel de 15 minutes. Le funnel :
+Objectif unique : l'appel de 30 minutes. Le funnel :
 
-il donne son idée → une question sur le stade → l'appel, deux créneaux → appel 1 au téléphone, 15 minutes (l'audit gratuit, la fourchette) → appel 2 en visio, 30 minutes (maquette, cahier des charges et devis présentés, puis sa décision). Décision du 13/10/2026 : `nowork/documentation/guides/appels-prospects.md`.
+il donne son idée → une question sur le stade → l'appel, deux créneaux → appel 1 au téléphone, 30 minutes (l'audit gratuit, la fourchette) → appel 2 en visio, 30 minutes (maquette, cahier des charges et devis présentés, puis sa décision). Décision du 13/10/2026 : `nowork/documentation/guides/appels-prospects.md`.
 
 Deux questions avant l'appel, pas plus : c'est ce que la page `/rendez-vous` promet (« on voit en 2 messages si ton projet tient la route »), et c'est ce qui filtre les curieux sans parler d'argent. Pour un lead formulaire ou audit, dont on connaît déjà le stade, une seule question suffit : l'idée, puis l'appel.
 
@@ -276,10 +278,10 @@ Ok, ça se tient, je vois comment lancer un projet comme ça.
 Tu en es où : juste l'idée, tu y réfléchis sérieusement, ou tu veux démarrer bientôt ?
 ```
 
-**1 bis. Il a répondu** → l'appel, avec la même offre claire : un audit gratuit, une quinzaine de minutes, ses conseils, le coût à la fin. « Combien ça te coûterait » annonce que le prix se donne à l'appel, ce qui coupe le « c'est combien ? » par écrit. (Jusqu'au 12/10/2026 : « on parle budget et délai de vive voix », qui ne promettait rien ; Noé l'a écarté.)
+**1 bis. Il a répondu** → l'appel, avec la même offre claire : un audit gratuit, 30 minutes, ses conseils, le coût à la fin. « Combien ça te coûterait » annonce que le prix se donne à l'appel, ce qui coupe le « c'est combien ? » par écrit. (Jusqu'au 12/10/2026 : « on parle budget et délai de vive voix », qui ne promettait rien ; Noé l'a écarté.)
 
 ```
-Parfait. Je te propose un audit gratuit de ton idée, une quinzaine de minutes par téléphone : je te donne mes conseils, et à la fin, je te dis combien ça te coûterait.
+Parfait. Je te propose un audit gratuit de ton idée, 30 minutes par téléphone : je te donne mes conseils, et à la fin, je te dis combien ça te coûterait.
 Plutôt demain 12h30 ou jeudi 18h ?
 ```
 
@@ -305,7 +307,7 @@ Réciprocité + curiosité (il vient voir SON application), et le visuel se mont
 **Il hésite à prendre l'appel :**
 
 ```
-Aucun engagement derrière, c'est 15 minutes : tu vois ton application en visuel, tu sais combien elle coûterait et en combien de temps elle sort. Au pire tu repars avec des idées plus claires.
+Aucun engagement derrière, c'est 30 minutes : tu vois ton application en visuel, tu sais combien elle coûterait et en combien de temps elle sort. Au pire tu repars avec des idées plus claires.
 ```
 
 **Il demande le prix avant l'appel** (le seul cas où un chiffre s'écrit, et jamais seul : le prix et la question qui relance) :
@@ -318,7 +320,7 @@ Le chiffre précis, je te le donne à l'appel, une fois ton idée cadrée. C'est
 **Il veut une visio ou se voir :**
 
 ```
-On commence par 15 minutes au téléphone, c'est le plus efficace pour cadrer. Ensuite je te prépare un visuel de ton application et on le regarde ensemble en visio.
+On commence par 30 minutes au téléphone, c'est le plus efficace pour cadrer. Ensuite je te prépare un visuel de ton application et on le regarde ensemble en visio.
 Plutôt demain 12h30 ou jeudi 18h ?
 ```
 
@@ -345,7 +347,7 @@ Et si on avance ensemble, je te signe un accord de confidentialité avant que tu
 **Financement pas encore prêt** (cycle long, ne pas jeter, voir Offre C dans `strategie-commerciale.md`) :
 
 ```
-Ça tombe bien, ça se prépare. Je peux te monter un dossier clair (visuel, périmètre, budget, étapes) pour convaincre ta banque ou ton associé. On cale 15 minutes pour en parler ?
+Ça tombe bien, ça se prépare. Je peux te monter un dossier clair (visuel, périmètre, budget, étapes) pour convaincre ta banque ou ton associé. On cale 30 minutes pour en parler ?
 ```
 
 **« Je vais réfléchir »** → donner une date, relancer à J+14 :
