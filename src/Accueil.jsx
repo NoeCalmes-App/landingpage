@@ -459,7 +459,7 @@ export default function Accueil() {
           montraient deux fois les mêmes applications : il reste UN carrousel, qui montre chaque application sur
           ordinateur ET sur téléphone, et qui défile tout seul. Le métier de chaque application est dit sous ses
           écrans. Tout ce qui est montré est RÉEL ; la maquette de coaching, qui n'est pas encore construite, porte
-          la pastille « Maquette » et passe en dernier. Règles du carrousel : ExemplesMetier.jsx.
+          la pastille « Maquette d'application » et passe en dernier. Règles du carrousel : ExemplesMetier.jsx.
           LE TITRE : « Mes réalisations » (le mot de Noé ; il couvre aussi la maquette, ce que « déjà construit » ne
           faisait pas). Pas de sur-titre.
           « +20 applications déjà publiées », sans « App Store et Google Play » (« je fais SaaS et app mobile »), dans
@@ -792,20 +792,10 @@ export default function Accueil() {
         </div>
       </section>
 
-      {/* ========== AUDIT (inchangé) ========== */}
-      <section className="py-14 md:py-20 px-5 bg-card" id="audit">
-        <div className="reveal max-w-150 mx-auto text-center">
-          <p className="font-jakarta text-text font-extrabold text-[1.15rem] md:text-[1.3rem] tracking-tight leading-tight mb-2">Pas encore prêt à écrire&nbsp;?</p>
-          <p className="text-grey text-[0.92rem] md:text-[0.98rem] leading-relaxed mb-5">Teste ton idée&nbsp;: potentiel, budget et délai, en 2&nbsp;minutes.</p>
-          <a href={lienInterne('/audit-app')} className="group inline-flex items-center gap-2 font-semibold text-brand text-[0.92rem] md:text-[0.95rem] border border-brand/35 rounded-full px-6 py-3 hover:bg-brand/5 transition-colors">
-            Tester mon idée
-            <svg className="transition-transform duration-300 group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </a>
-        </div>
-      </section>
+      {/* « PAS ENCORE PRÊT À ÉCRIRE ? » (le test de l'idée, /audit-app) : MASQUÉ le 27/11/2026, Noé : « juste masque,
+          peut-être plus tard je rajoute ». Le bloc est dans AccueilAudit.jsx ; pour le remettre, l'importer et poser
+          <AccueilAudit /> ici. */}
+
 
       <Footer allerVers={allerVers} onLegal={ouvrirLegal} />
       {/* PAS DE BOUTON WHATSAPP FLOTTANT ICI (Noé, 26/11/2026) : il faisait concurrence au calendrier. WhatsApp

@@ -116,6 +116,12 @@ noecalmes.fr par accueiltest », puis « supprime l'ancienne, accueiltest devien
 - **L'onglet qui appelle au retour** ne dit plus « Maquette offerte pour ton app », seulement « Parlons de ton idée
   d'app » (la maquette se propose à l'appel, plus sur le site).
 - **Ni bouton WhatsApp flottant ni chatbot** sur l'accueil : WhatsApp passe par l'icône de la barre du haut.
+- **« Pas encore prêt à écrire ? »** (le lien vers le test de l'idée, en bas de page) est **masqué** depuis le
+  27/11/2026 (Noé : « juste masque, peut-être plus tard je rajoute »). Le bloc vit dans `src/AccueilAudit.jsx`, hors
+  du texte servi aux robots ; pour le remettre, poser `<AccueilAudit />` avant `<Footer />` dans `Accueil.jsx`.
+- **La carte « Coaching sportif » du carrousel** porte la pastille « Maquette d'application » (27/11/2026, Noé :
+  « pour application »), pas « Application » : le projet n'est pas construit (devis envoyé, pas signé). Ses images
+  montrent le nom et le logo « Pulso » d'un projet de prospect : il faut son accord, ou les masquer.
 
 ## L'offre du Drive sur tout le site (27/11/2026)
 

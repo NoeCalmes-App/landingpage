@@ -15,8 +15,10 @@ import './exemples-metier.css'
 //     mais pas ton-application.fr ») : ni la vraie adresse du projet, ni une adresse inventée. Le champ est
 //     là, avec un trait gris à la place du texte, comme une adresse masquée.
 //   - RIEN D'INVENTÉ N'EST PRÉSENTÉ COMME RÉEL. Le titre du bloc dit « déjà construit » : la pastille dit donc
-//     « Application » pour ce qui est construit, et « Maquette » pour la maquette de coaching, qui ne l'est pas
-//     encore (elle passe en dernier). Pas de faux écran d'ordinateur, pas d'application inventée.
+//     « Application » pour ce qui est construit, et « Maquette d'application » pour la maquette de coaching, qui ne
+//     l'est pas encore (elle passe en dernier). Pas de faux écran d'ordinateur, pas d'application inventée.
+//     Le 27/11/2026, Noé : « Maquette, pour application stp ». La pastille dit « Maquette d'application » et pas
+//     « Application » : au 27/11/2026, le devis de ce projet est envoyé, pas signé, l'application n'existe pas.
 //   - ⚠️ AVANT DE METTRE CE BLOC SUR L'ACCUEIL EN LIGNE : la maquette de coaching montre le nom et le logo d'un
 //     projet qui n'est pas celui de Noé. Il faut l'accord de son porteur, ou masquer le nom et le logo dans les
 //     deux images.
@@ -91,7 +93,7 @@ const APPLICATIONS = [
   {
     id: 'coaching',
     metier: 'Coaching sportif',
-    statut: 'Maquette',
+    statut: 'Maquette d’application',
     role: 'Réserver et payer son coach en quelques secondes.',
     ordinateur: {
       src: `${IMAGES}/exemples/coaching-ordinateur.webp`, largeur: 1668, hauteur: 898,
