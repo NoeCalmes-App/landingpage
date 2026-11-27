@@ -105,6 +105,11 @@ noecalmes.fr par accueiltest », puis « supprime l'ancienne, accueiltest devien
   `QUESTIONS`.
 - **Retiré à la mise en ligne** : le titre d'onglet « Page test » et la balise `noindex, nofollow` que la page posait
   elle-même.
+- **Ordre de la fin de l'accueil depuis le 27/11/2026** (Noé) : « Pour qui », puis les avis (Trustpilot, puis
+  WhatsApp), puis « 30 minutes avec Noé » et le calendrier, puis les questions, Instagram, et un dernier bouton
+  « Discuter avec Noé » (section `#dernier-appel`) qui mène au calendrier. Avant, les avis étaient sous le calendrier
+  et la page finissait sur Instagram. L'avis Trustpilot de Lucie (il annonçait la maquette gratuite, que le site ne
+  dit pas) est remplacé par celui de Charly, recopié mot pour mot.
 - **Le bloc « Ce que rapporte l'application d'un client » (18 450 € en décembre 2025, nom masqué) est MASQUÉ**
   depuis le 27/11/2026 au soir, à la demande de Noé (« masque, on réactive plus tard »), après quelques heures en
   ligne le même jour. Rien n'est supprimé : `src/ApercuResultat.jsx` reste, et `Accueil.jsx` le réaffiche après

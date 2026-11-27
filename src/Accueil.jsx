@@ -701,6 +701,33 @@ export default function Accueil() {
         </div>
       </section>
 
+      {/* ========== AVIS CLIENTS ========== */}
+      {/* AVANT LE CALENDRIER depuis le 27/11/2026 (Noé, d'accord) : le visiteur lit ses clients, puis il réserve.
+          Avant, ils étaient sous le calendrier : il fallait réserver avant d'avoir lu les preuves. Le trait du bas
+          sépare les avis de « 30 minutes avec Noé », comme celui qui les séparait du calendrier avant. */}
+      <section className="pt-16 md:pt-28 px-5" id="avis">
+        <div className="max-w-275 mx-auto text-center">
+          <div id="avis-clients" className="pb-14 md:pb-28 border-b border-card-border scroll-mt-24">
+            <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">Avis clients</p>
+            <h3 className="reveal font-jakarta text-text text-xl md:text-[1.6rem] font-extrabold tracking-tight text-center mb-3">
+              Ce que disent <span className="text-brand">mes clients</span>
+            </h3>
+            {/* UNE PREUVE EN PLUS (27/11/2026, validée par Noé) : ses clients repassent commande après leur application
+                (nouvelles fonctions, réglages). Dit une seule fois sur la page, ici, au-dessus de leurs avis. */}
+            <p className="reveal text-grey text-[0.98rem] md:text-[1.05rem] leading-relaxed text-center text-balance max-w-[30em] mx-auto mb-8 md:mb-14">
+              Et ils reviennent me voir pour faire évoluer leur application.
+            </p>
+            <div className="reveal">
+              {/* L'ORDRE (Noé, 26/11/2026 : « on met Trustpilot, et après les captures ; tu mettrais pas l'inverse, avec du
+                  texte entre ? ») : Trustpilot d'abord, car c'est la seule preuve qu'un inconnu peut vérifier ; les messages
+                  WhatsApp ensuite, plus personnels. Une ligne entre les deux, pour qu'on comprenne que ce sont deux
+                  sortes d'avis. Ordre d'avant, à remettre si Noé le préfère : les captures d'abord. */}
+              <AvisClients texteEntre="Et ce qu'ils m'écrivent directement, sur WhatsApp." />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ========== PARLONS DE TON PROJET ========== */}
       {/* La pastille dit la vraie règle (un seul nouveau projet par mois, leçon 2.11), sans compte à rebours ni « place
           disponible » calculée : on ne dit jamais qu'une place est prise ou libre si ce n'est pas vrai.
@@ -737,24 +764,6 @@ export default function Accueil() {
             <ReserverAppel />
           </div>
 
-          <div id="avis-clients" className="mt-14 md:mt-28 pt-14 md:pt-28 border-t border-card-border scroll-mt-24">
-            <p className="reveal text-brand font-semibold text-[0.78rem] tracking-widest uppercase text-center mb-3">Avis clients</p>
-            <h3 className="reveal font-jakarta text-text text-xl md:text-[1.6rem] font-extrabold tracking-tight text-center mb-3">
-              Ce que disent <span className="text-brand">mes clients</span>
-            </h3>
-            {/* UNE PREUVE EN PLUS (27/11/2026, validée par Noé) : ses clients repassent commande après leur application
-                (nouvelles fonctions, réglages). Dit une seule fois sur la page, ici, au-dessus de leurs avis. */}
-            <p className="reveal text-grey text-[0.98rem] md:text-[1.05rem] leading-relaxed text-center text-balance max-w-[30em] mx-auto mb-8 md:mb-14">
-              Et ils reviennent me voir pour faire évoluer leur application.
-            </p>
-            <div className="reveal">
-              {/* L'ORDRE (Noé, 26/11/2026 : « on met Trustpilot, et après les captures ; tu mettrais pas l'inverse, avec du
-                  texte entre ? ») : Trustpilot d'abord, car c'est la seule preuve qu'un inconnu peut vérifier ; les messages
-                  WhatsApp ensuite, plus personnels. Une ligne entre les deux, pour qu'on comprenne que ce sont deux
-                  sortes d'avis. Ordre d'avant, à remettre si Noé le préfère : les captures d'abord. */}
-              <AvisClients texteEntre="Et ce qu'ils m'écrivent directement, sur WhatsApp." />
-            </div>
-          </div>
         </div>
       </section>
 
@@ -795,6 +804,27 @@ export default function Accueil() {
                 <iframe src="https://www.instagram.com/p/DZS67wXiPRM/embed" title="Post Instagram de Noé Calmes" className="w-full h-full block" scrolling="no" loading="lazy" />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== LE DERNIER BOUTON ========== */}
+      {/* LA PAGE FINIT SUR L'APPEL, PAS SUR INSTAGRAM (Noé, 27/11/2026 : « après Instagram, un bouton Discuter avec Noé
+          qui renvoie au calendrier, il te donne des conseils »). Celui qui a tout lu jusqu'ici a une dernière occasion
+          de réserver sans remonter la page. Le bouton descend (sur téléphone : remonte) au calendrier, comme les autres. */}
+      <section className="py-16 md:py-28 px-5 bg-card" id="dernier-appel">
+        <div className="max-w-275 mx-auto text-center">
+          <h2 className="reveal font-jakarta text-text text-2xl md:text-[2.1rem] font-extrabold tracking-tight mb-0">
+            Une idée d'application&nbsp;?
+          </h2>
+          <p className="reveal text-grey text-[0.95rem] md:text-[1.05rem] leading-relaxed max-w-140 mx-auto mt-3 md:mt-4 text-balance">
+            30&nbsp;minutes au téléphone. Je te donne mes conseils et une fourchette de prix.
+          </p>
+          <div className="reveal flex justify-center mt-8 md:mt-10">
+            <a href="#contact" onClick={allerAuContact} className="btn-reflet group inline-flex items-center gap-2 min-[360px]:gap-2.5 whitespace-nowrap bg-brand text-surface font-semibold text-[0.95rem] md:text-base px-5 min-[360px]:px-8 py-3.5 md:px-10 md:py-4 rounded-full cursor-pointer">
+              Discuter avec Noé
+              <Fleche />
+            </a>
           </div>
         </div>
       </section>
