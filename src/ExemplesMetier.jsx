@@ -90,6 +90,23 @@ const APPLICATIONS = [
     ],
   },
   {
+    // Portier (27/11/2026) : l'idée d'un prospect (hôtels + chauffeurs privés) retravaillée sous une marque inventée,
+    // avec paiement en ligne. Rien ne porte le nom du prospect ni de son projet. Captures de /maquette/portier.
+    // Pastille « Application » et non « Maquette d'application » : Noé, 27/11/2026 (« mets Application pas maquette »).
+    id: 'chauffeur',
+    metier: 'Chauffeur privé',
+    statut: 'Application',
+    role: 'L’hôtel commande, le client paie, le chauffeur roule.',
+    ordinateur: {
+      src: `${IMAGES}/exemples/chauffeur-ordinateur.webp`, largeur: 2224, hauteur: 1270,
+      alt: 'Sur ordinateur, la régie de la réception : les courses en cours et la carte de Bordeaux en direct',
+    },
+    telephones: [
+      { src: `${IMAGES}/exemples/chauffeur-telephone.webp`, largeur: 915, hauteur: 2025,
+        alt: 'Sur téléphone, une course arrive : le gain net, 30 secondes pour accepter' },
+    ],
+  },
+  {
     id: 'bien-etre',
     metier: 'Bien-être',
     statut: 'Application',

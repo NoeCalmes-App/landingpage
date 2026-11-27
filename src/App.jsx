@@ -56,6 +56,7 @@ const GuestRideMockups = lazy(() => import('./GuestRideMockups.jsx'))
 const ImmoMatchMockups = lazy(() => import('./ImmoMatchMockups.jsx'))
 const VietCollabMockups = lazy(() => import('./VietCollabMockups.jsx'))
 const PulsoMockups = lazy(() => import('./PulsoMockups.jsx'))
+const PortierMockups = lazy(() => import('./PortierMockups.jsx'))
 const AuditApp = lazy(() => import('./audit-app/AuditApp.jsx'))
 const Projets = lazy(() => import('./Projets.jsx'))
 
@@ -213,6 +214,7 @@ function App() {
     if (path.toLowerCase() === '/maquette/aretha') return 'aretha-mockups'
     if (path.toLowerCase() === '/maquette/vietcollab') return 'vietcollab-mockups'
     if (path.toLowerCase() === '/maquette/pulso') return 'pulso-mockups'
+    if (path.toLowerCase() === '/maquette/portier') return 'portier-mockups'
     if (['/maquette/pac-assist', '/maquette/cvc-assist', '/maquette/pacassist', '/maquette/cvcassist'].includes(path.toLowerCase())) return 'pac-assist-mockups'
     if (['/maquette/kingfit-coach', '/maquette/kingfit', '/maquette/coach-app', '/maquette/app-coach'].includes(path.toLowerCase())) return 'coach-app-mockups'
     if (['/maquette/blush', '/maquette/blush-rencontre', '/maquette/blushrencontre'].includes(path.toLowerCase())) return 'blush-mockups'
@@ -543,6 +545,7 @@ function App() {
   if (page === 'aretha-mockups') return <Suspense fallback={null}><ArethaMockups /></Suspense>
   if (page === 'vietcollab-mockups') return <Suspense fallback={null}><VietCollabMockups /></Suspense>
   if (page === 'pulso-mockups') return <Suspense fallback={null}><PulsoMockups /></Suspense>
+  if (page === 'portier-mockups') return <Suspense fallback={null}><PortierMockups /></Suspense>
   if (page === 'pac-assist-mockups') return <Suspense fallback={null}><PacAssistMockups /></Suspense>
   if (page === 'coach-app-mockups') return <Suspense fallback={null}><CoachAppMockups /></Suspense>
   if (page === 'blush-mockups') return <Suspense fallback={null}><BlushMockups /></Suspense>
