@@ -28,7 +28,7 @@
 // Noé (25/11/2026 : « c'est un schéma, il le sait »). C'est ce qui les garde honnêtes : ils doivent RESTER des
 // schémas. Une capture réaliste d'un tableau de bord avec de gros revenus inventés n'a pas sa place sur cette page :
 // elle se lirait comme le résultat d'un client. « Réalisations » ne montre que du vrai.
-import { createElement, lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { createElement, useEffect, useRef, useState } from 'react'
 import { Bell, Eye, FileCheck2, KeyRound, Rocket, Timer, UserRound, Wallet } from 'lucide-react'
 import './App.css'
 import './accueil.css'
@@ -40,9 +40,9 @@ import Footer from './Footer.jsx'
 import ReserverAppel from './ReserverAppel.jsx'
 import { lienInterne } from './seo.js'
 
-// « Ce que rapporte l'application d'un client » : aperçu EN LOCAL SEULEMENT (chiffres d'essai, pas ceux d'un client).
-// En production, `import.meta.env.DEV` est faux : ni le fichier ni ses chiffres ne sont dans le site. Voir ApercuResultat.jsx.
-const ApercuResultat = import.meta.env.DEV ? lazy(() => import('./ApercuResultat.jsx')) : null
+// « Ce que rapporte l'application d'un client » : EN LIGNE depuis le 27/11/2026 (Noé : « ce sont des vrais chiffres,
+// je te donne l'ordre, c'est mon site »). Voir ApercuResultat.jsx.
+import ApercuResultat from './ApercuResultat.jsx'
 
 const mePhoto = '/assets/images/profile/me.webp'
 
@@ -581,11 +581,9 @@ export default function Accueil() {
         </div>
       </section>
 
-      {/* « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » : retiré du site le 27/11/2026 à la mise en ligne de l'accueil
-          (ses 18 450 € par mois sont ceux d'un ancien écran d'exemple, pas d'un client), puis remis le même jour EN
-          LOCAL SEULEMENT, pour que Noé le voie (« juste après j'enlève »). En ligne, rien ne s'affiche ici. Le bloc,
-          la règle pour le mettre en ligne avec de vrais chiffres et la façon de l'enlever : ApercuResultat.jsx. */}
-      {ApercuResultat && <Suspense fallback={null}><ApercuResultat /></Suspense>}
+      {/* « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » (18 450 € en décembre 2025, nom masqué) : EN LIGNE depuis le
+          27/11/2026, sur l'ordre de Noé, qui confirme que ce sont les vrais chiffres d'un client. Le bloc : ApercuResultat.jsx. */}
+      <ApercuResultat />
 
       {/* ========== COMMENT ÇA SE PASSE ========== */}
       {/* Quatre étapes, deux par deux sur ordinateur, chacune avec son schéma et sa durée (voir ETAPES).

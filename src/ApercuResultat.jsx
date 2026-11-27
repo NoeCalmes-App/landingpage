@@ -1,18 +1,10 @@
-// APERÇU LOCAL SEULEMENT : « Ce que rapporte l'application d'un client » (bloc remis le 27/11/2026, Noé : « remets le
-// bloc avec 18k du client, pour voir ce que ça donnerait, juste après j'enlève »).
-//
-// ⛔ CHIFFRES D'ESSAI, PAS CEUX D'UN CLIENT : 18 450 € sont les chiffres de l'ancien écran d'exemple (commit d5cfbaa,
-// données fictives). Le site n'a ni la capture d'origine ni l'accord écrit d'un client. Montrés comme le résultat
-// d'un client, ils tromperaient le visiteur. D'où le chargement par Accueil.jsx SEULEMENT EN LOCAL
-// (`import.meta.env.DEV`) : le build de production ne contient ni ce fichier ni ses chiffres, et le texte servi aux
-// robots (scripts/generate-routes.js, qui lit Accueil.jsx) ne le voit pas, puisqu'il vit dans ce fichier à part.
-//
-// POUR LE METTRE EN LIGNE : remplacer chaque nombre par celui de la capture RÉELLE du client, avec son accord écrit,
-// puis l'importer normalement dans Accueil.jsx. Pour l'enlever : supprimer ce fichier et ses deux lignes dans
-// Accueil.jsx (l'import et la balise). Les styles sont dans accueil.css (.at-resultat…).
-//
-// Pas de classe « reveal » ici : la page cherche ces classes à son ouverture, avant que ce bloc n'arrive, et il
-// resterait invisible. COMME UNE IMAGE, SANS ANIMATION (Noé, 25/11/2026) : rien ne bouge, rien ne se sélectionne.
+// « CE QUE RAPPORTE L'APPLICATION D'UN CLIENT » : 18 450 € en décembre 2025, nom de l'application masqué.
+// EN LIGNE SUR L'ACCUEIL depuis le 27/11/2026. Noé : « je veux le mettre en ligne, ce sont des vrais chiffres, je te donne
+// l'ordre, c'est mon site ». Il était jusque-là affiché en local seulement, parce qu'une note de travail le disait issu
+// d'un ancien écran d'exemple (commit d5cfbaa) : Noé confirme que ce sont les chiffres réels d'un client.
+// Il vit dans ce fichier à part : le texte servi aux robots (scripts/generate-routes.js lit Accueil.jsx) ne le reprend pas.
+// Pas de classe « reveal », COMME UNE IMAGE, SANS ANIMATION (Noé, 25/11/2026) : rien ne bouge, rien ne se sélectionne.
+// Si l'application ne fait plus ces montants, le mois doit s'écrire, ou le bloc partir (erreur faite avec Calorie).
 export default function ApercuResultat() {
   return (
     <section className="pt-0 pb-14 md:pb-28 px-5" id="resultat" aria-labelledby="at-resultat-titre">

@@ -105,12 +105,10 @@ noecalmes.fr par accueiltest », puis « supprime l'ancienne, accueiltest devien
   `QUESTIONS`.
 - **Retiré à la mise en ligne** : le titre d'onglet « Page test » et la balise `noindex, nofollow` que la page posait
   elle-même.
-- **Le bloc « Ce que rapporte l'application d'un client » (18 450 € par mois) est EN LOCAL SEULEMENT.** Ses chiffres
-  sont ceux d'un ancien écran d'exemple (commit d5cfbaa, données fictives), pas d'un client : retiré du site à la mise
-  en ligne, puis remis le même jour pour que Noé le voie (« juste après j'enlève »), dans `src/ApercuResultat.jsx`,
-  chargé par `Accueil.jsx` seulement quand `import.meta.env.DEV` est vrai. Le build de production ne contient ni le
-  fichier ni ses chiffres, et le texte servi aux robots ne le voit pas. Pour le mettre en ligne : les vrais chiffres
-  de la capture du client, avec son accord écrit. Pour l'enlever : le fichier et ses deux lignes dans `Accueil.jsx`.
+- **Le bloc « Ce que rapporte l'application d'un client » (18 450 € en décembre 2025, nom masqué) est EN LIGNE**
+  depuis le 27/11/2026, sur l'ordre de Noé : ce sont les vrais chiffres d'un client. Code : `src/ApercuResultat.jsx`,
+  rendu par `Accueil.jsx` après « Pourquoi moi », hors du texte servi aux robots. Si l'application ne fait plus ces
+  montants, écrire le mois ou retirer le bloc.
 - **La preuve Calorie (« 13 000 €/mois ») a quitté tout le site le 27/11/2026** (section suivante).
 - **`/rendez-vous`** (noindex) s'appelle « Réserver un appel avec Noé » et descend au calendrier.
 - **L'onglet qui appelle au retour** ne dit plus « Maquette offerte pour ton app », seulement « Parlons de ton idée
