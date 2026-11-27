@@ -107,10 +107,28 @@ const APPLICATIONS = [
     ],
   },
   {
+    // Oui (27/11/2026) : l'app du mariage, idée inventée pour le carrousel (Noé : « faut que ça soit compris en
+    // 2 secondes via l'écriture en dessous et l'image »). Captures de /maquette/oui. Pastille « Application » :
+    // même décision que pour Portier.
+    id: 'mariage',
+    metier: 'Mariage',
+    statut: 'Application',
+    role: 'Invités, menu, plan de table, cagnotte : le mariage dans une app.',
+    ordinateur: {
+      src: `${IMAGES}/exemples/mariage-ordinateur.webp`, largeur: 2224, hauteur: 1270,
+      alt: 'Sur ordinateur, le plan de table des mariés : chaque table, ses invités, les chaises libres, et ceux qu’il reste à placer',
+    },
+    telephones: [
+      { src: `${IMAGES}/exemples/mariage-telephone.webp`, largeur: 915, hauteur: 2025,
+        alt: 'Sur téléphone, l’app de l’invité : répondre, choisir son menu, le programme, la cagnotte' },
+    ],
+  },
+  {
     id: 'bien-etre',
     metier: 'Bien-être',
     statut: 'Application',
-    role: 'Des habitudes qui durent, un jour après l’autre.',
+    // Pas le slogan du site, déjà écrit sur l'image d'ordinateur (Noé, 27/11/2026) : ce que l'on fait dans l'app.
+    role: 'Méditer, bouger, moins de sucre : coché chaque jour.',
     ordinateur: {
       src: `${IMAGES}/exemples/plouff-ordinateur.webp`, largeur: 1245, hauteur: 700,
       alt: 'Sur ordinateur, le site de l’application : « Crée des habitudes qui durent »',

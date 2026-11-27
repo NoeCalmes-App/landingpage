@@ -1,0 +1,226 @@
+/* ============================================================
+   OUI, MAQUETTE VITRINE (27 novembre 2026)
+   L'app du mariage : les mariés paient une fois, leurs invités ont
+   l'app (programme, réponse, menu, cagnotte, photos) ; les mariés
+   remplissent le plan de table et voient les réponses tomber.
+   Marque inventée, aucun devis derrière. Préfixe : ou-.
+
+   DIRECTION : même famille que Portier (fond clair, un bloc sombre qui
+   porte la décision, une seule couleur vive, encoche, traits fins),
+   avec l'identité d'un mariage : ivoire, vert forêt, terracotta, et
+   les prénoms des mariés en serif, eux seuls.
+
+   SIGNE SIGNATURE : LE PLAN DE TABLE. Des tables rondes, les invités
+   assis autour par leurs initiales, les chaises vides en pointillé.
+
+   PALETTE (Radix Sand, Grass 12 pour le vert forêt, Tomato 9 adouci)
+   CONTRASTES : #1d1b1f sur #faf7f2 = 15,6:1 ; #6f6a66 sur blanc =
+   5,1:1 ; blanc sur #1f3a2e = 12,7:1 ; blanc sur #e07a5f = 3,1:1
+   (réservé aux boutons en 12 px gras avec icône) ; #b4563c sur blanc
+   = 5,0:1 (étiquettes, liens).
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;600;700;800&display=swap');
+
+.oui-mockups-page {
+  --canvas: #efece6;
+  --sheet: #ffffff;
+  --surface: #faf7f2;
+  --card: #ffffff;
+  --card-soft: #f2eee6;
+  --line: #e9e3d8;
+  --line-strong: #d9d1c2;
+  --ink: #1d1b1f;
+  --ink-soft: #6f6a66;
+  --ink-faint: #aaa39a;
+  --dark: #1f3a2e;
+  --dark-soft: #2a4a3b;
+  --on-dark: #ffffff;
+  --on-dark-soft: #b5c7bb;
+  --action: #e07a5f;
+  --on-action: #ffffff;
+  --action-soft: #fbe9e2;
+  --action-ink: #b4563c;
+  --sage: #e8efe6;
+  --sage-ink: #2f7a4a;
+  --glass: rgba(255, 255, 255, 0.86);
+  --glass-line: rgba(29, 27, 31, 0.08);
+  --radius-inner: 12px;
+  --radius-control: 14px;
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  --control-compact: 32px;
+  --control-primary: 48px;
+  --shadow-raised: 0 2px 6px rgba(29, 27, 31, 0.04), 0 10px 24px -8px rgba(29, 27, 31, 0.12);
+  --shadow-float: 0 30px 60px -20px rgba(29, 27, 31, 0.35);
+  --type-heading: 14px;
+  --type-body: 12px;
+  --type-label: 10.5px;
+  --type-meta: 9.5px;
+  --font: Manrope, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-names: 'Instrument Serif', Georgia, serif;
+
+  width: 100%;
+  min-height: 100vh;
+  padding: 72px 34px 110px;
+  color: var(--ink);
+  background: radial-gradient(ellipse 50% 36% at 12% 0%, rgba(224, 122, 95, 0.12), transparent 70%), var(--canvas);
+  font-family: var(--font);
+}
+.oui-mockups-page, .oui-mockups-page *, .oui-mockups-page *::before, .oui-mockups-page *::after { box-sizing: border-box; }
+.oui-mockups-page :where(button) { font-family: inherit; font-size: var(--type-label); line-height: 1; cursor: pointer; white-space: nowrap; }
+.oui-mockups-page :where(h1, h2, h3, h4, p) { margin: 0; }
+.oui-mockups-page svg { display: block; flex: 0 0 auto; }
+.oui-mockups-page .lucide { stroke-width: 1.9; }
+.ou-num { font-variant-numeric: tabular-nums; }
+
+/* La page */
+.ou-landing-hero { width: min(100%, 1180px); margin: 0 auto 34px; }
+.ou-eyebrow { margin: 0 0 18px; color: var(--action-ink); font-size: 12px; line-height: 1; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; }
+.ou-landing-hero h1 { color: var(--ink); font-size: 72px; line-height: 0.98; font-weight: 800; letter-spacing: -0.04em; }
+.ou-reference { margin: 18px 0 0; color: var(--action-ink); font-size: 14px; font-weight: 800; }
+.ou-disclaimer { max-width: 640px; margin: 14px 0 0; color: var(--ink-soft); font-size: 14px; line-height: 1.55; }
+.ou-flow { width: min(100%, 1180px); margin: 56px auto 0; }
+.ou-flow-head { margin: 0 0 24px; }
+.ou-flow-head span { display: block; margin-bottom: 8px; color: var(--action-ink); font-size: 13px; font-weight: 800; letter-spacing: 0.12em; }
+.ou-flow-head h2 { color: var(--ink); font-size: 36px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; }
+.ou-flow-head p { margin-top: 10px; max-width: 640px; color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
+.ou-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px; align-items: start; }
+.ou-mockup-card { min-width: 0; padding: 26px; border: 1px solid var(--line); border-radius: 28px; background: var(--sheet); box-shadow: var(--shadow-raised); }
+.ou-mockup-card-wide { grid-column: 1 / -1; }
+.ou-card-head { min-height: 46px; margin-bottom: 18px; }
+.ou-card-head h3 { color: var(--ink); font-size: 19px; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; }
+.ou-card-head p { margin: 6px 0 0; color: var(--ink-soft); font-size: 13px; font-weight: 500; line-height: 1.4; }
+.ou-export-wrap { display: flex; align-items: center; justify-content: center; }
+
+/* Le téléphone, 390 × 864 pt dans 304 × 674 px */
+.ou-phone-export { width: 330px; padding: 13px; border-radius: 50px; background: linear-gradient(150deg, #3a3c46, #15161b 72%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), var(--shadow-float); }
+.ou-phone { position: relative; width: 304px; overflow: hidden; border-radius: 39px; background: var(--surface); color: var(--ink); }
+.ou-screen { position: relative; width: 100%; overflow: hidden; border-radius: 39px; background: var(--surface); display: flex; flex-direction: column; }
+.ou-statusbar { position: absolute; z-index: 50; top: 0; left: 0; right: 0; height: 38px; padding: 0 22px; display: flex; align-items: center; justify-content: space-between; color: #fff; font-size: 11px; font-weight: 750; }
+.ou-status-icons { display: flex; align-items: center; gap: 4px; }
+.ou-island { position: absolute; z-index: 52; top: 9px; left: 50%; width: 86px; height: 25px; transform: translateX(-50%); border-radius: 99px; background: #050608; }
+.ou-home-indicator { position: absolute; z-index: 55; left: 50%; bottom: 8px; width: 92px; height: 4px; transform: translateX(-50%); border-radius: 99px; background: var(--ink); opacity: 0.3; }
+.ou-content { position: relative; height: 674px; padding: 0 16px 26px; overflow: hidden; display: flex; flex-direction: column; }
+
+/* La fenêtre d'ordinateur */
+.ou-desk { padding: 7px; border-radius: 22px; background: #23252d; box-shadow: var(--shadow-float); }
+.ou-desk-bar { padding: 6px 10px 10px; display: flex; align-items: center; gap: 6px; }
+.ou-desk-bar > i { width: 10px; height: 10px; border-radius: 50%; background: #50535d; }
+.ou-desk-url { flex: 1; max-width: 440px; height: 26px; margin-left: 14px; padding: 0 12px; display: flex; align-items: center; border-radius: 8px; color: #d8d9de; background: #363842; font-size: 11px; font-weight: 600; }
+.ou-desk-app { position: relative; height: 660px; display: flex; overflow: hidden; border-radius: 15px; background: var(--surface); }
+.ou-rail { width: 86px; flex: 0 0 auto; padding: 16px 10px 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--on-dark-soft); background: var(--dark); }
+.ou-rail .ou-mark { margin-bottom: 14px; }
+.ou-rail-nav { position: relative; width: 66px; height: 54px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; border-radius: 14px; color: var(--on-dark-soft); font-size: 9.5px; font-weight: 700; line-height: 1; }
+.ou-rail-on { color: #fff; background: rgba(224, 122, 95, 0.26); }
+.ou-rail-on .lucide { color: #f3b39e; }
+.ou-rail-nav b { position: absolute; top: 6px; right: 8px; min-width: 16px; padding: 3px 5px; display: inline-flex; justify-content: center; border-radius: 99px; color: #fff; background: var(--action); font-size: 9px; font-weight: 800; line-height: 1; }
+.ou-rail-account { margin-top: auto; }
+.ou-main { position: relative; flex: 1; min-width: 0; background: var(--surface); }
+
+/* Composants */
+.ou-mark { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 11px; color: #fff; background: linear-gradient(160deg, #ea8d74, #d6684c); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 6px 14px -6px rgba(224, 122, 95, 0.7); }
+.ou-glass { color: var(--ink); background: var(--glass); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 0 0 1px var(--glass-line), 0 8px 20px -6px rgba(29, 27, 31, 0.25); backdrop-filter: blur(16px) saturate(1.3); -webkit-backdrop-filter: blur(16px) saturate(1.3); }
+.ou-ui-button { width: 100%; height: var(--control-primary); padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: var(--radius-pill); color: var(--on-action); background: var(--action); font-size: var(--type-body); font-weight: 800; box-shadow: 0 8px 18px -8px rgba(224, 122, 95, 0.7); }
+.ou-d-btn { height: 40px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--action); border-radius: var(--radius-pill); color: var(--on-action); background: var(--action); font-size: 12.5px; font-weight: 750; }
+.ou-act { height: 30px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); color: var(--ink); background: var(--card); font-size: 11px; font-weight: 750; }
+.ou-pill { width: fit-content; padding: 5px 9px; display: inline-flex; align-items: center; justify-content: center; gap: 4px; border-radius: 99px; white-space: nowrap; font-size: 11px; line-height: 1; font-weight: 750; }
+.ou-pill-neutral { color: var(--ink-soft); background: var(--card-soft); }
+.ou-pill-sage { color: var(--sage-ink); background: var(--sage); }
+.ou-pill-action { color: var(--action-ink); background: var(--action-soft); }
+.ou-pill-glass { color: #fff; background: rgba(29, 27, 31, 0.35); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.ou-avatar { position: relative; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 50%; color: var(--action-ink); background: var(--action-soft); font-weight: 800; line-height: 1; }
+.ou-avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ou-avatar-md { width: 36px; height: 36px; font-size: 13px; }
+.ou-card { border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--card); box-shadow: var(--shadow-raised); }
+.ou-photo { position: relative; overflow: hidden; background: linear-gradient(160deg, #3b352c, #1d1b1f); }
+.ou-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ou-kicker { color: var(--action-ink); font-size: var(--type-meta); line-height: 1; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+.ou-names { font-family: var(--font-names); font-weight: 400; letter-spacing: -0.01em; }
+.ou-names em { font-style: italic; color: var(--action); }
+
+/* L'APP DE L'INVITÉ */
+.ou-hero { position: relative; height: 236px; margin: 0 -16px; }
+.ou-hero .ou-photo { position: absolute; inset: 0; }
+.ou-hero .ou-photo img { object-position: 50% 30%; }
+.ou-hero-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(29, 27, 31, 0.35), rgba(29, 27, 31, 0) 32%, rgba(29, 27, 31, 0.05) 55%, rgba(29, 27, 31, 0.72) 100%); }
+.ou-hero-text { position: absolute; left: 16px; right: 16px; bottom: 16px; color: #fff; }
+.ou-hero-text .ou-names { font-size: 34px; line-height: 1; color: #fff; }
+.ou-hero-text .ou-names em { color: #f3b39e; }
+.ou-hero-text p { margin-top: 7px; font-size: var(--type-label); font-weight: 650; opacity: 0.92; }
+.ou-hero-badge { position: absolute; right: 16px; top: 50px; }
+.ou-section { margin: 12px 0 0; }
+.ou-section-head { margin: 0 2px 8px; display: flex; align-items: center; justify-content: space-between; }
+.ou-section-head strong { color: var(--ink); font-size: var(--type-body); font-weight: 800; }
+.ou-section-head span { color: var(--action-ink); font-size: var(--type-label); font-weight: 750; }
+.ou-rsvp { padding: 12px; }
+.ou-choice { display: grid; grid-template-columns: 1.5fr 1fr; gap: 6px; }
+.ou-choice button { height: var(--control-compact); padding: 0 10px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); color: var(--ink); background: var(--card); font-size: var(--type-label); font-weight: 750; }
+.ou-choice .ou-on { border-color: var(--dark); color: #fff; background: var(--dark); }
+.ou-menu { margin-top: 8px; display: flex; gap: 6px; }
+.ou-menu span { flex: 1; height: var(--control-compact); display: inline-flex; align-items: center; justify-content: center; gap: 5px; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); color: var(--ink); background: var(--card); font-size: var(--type-label); font-weight: 700; }
+.ou-menu .ou-on { border-color: var(--action); color: var(--action-ink); background: var(--action-soft); }
+.ou-rsvp small { display: block; margin-top: 8px; color: var(--ink-soft); font-size: var(--type-meta); font-weight: 600; }
+.ou-programme { padding: 2px 12px; }
+.ou-step { min-height: 40px; display: flex; align-items: center; gap: 10px; }
+.ou-step + .ou-step { border-top: 1px solid var(--line); }
+.ou-step time { width: 38px; flex: 0 0 auto; color: var(--action-ink); font-size: var(--type-label); font-weight: 800; font-variant-numeric: tabular-nums; }
+.ou-step strong { display: block; font-size: var(--type-label); font-weight: 750; }
+.ou-step small { display: block; margin-top: 2px; color: var(--ink-soft); font-size: var(--type-meta); }
+.ou-cagnotte { margin-top: 10px; padding: 10px 10px 10px 14px; display: flex; align-items: center; gap: 10px; border-radius: var(--radius-card); color: #fff; background: var(--dark); }
+.ou-cagnotte > div { flex: 1; min-width: 0; }
+.ou-cagnotte strong { display: block; font-size: var(--type-label); font-weight: 800; }
+.ou-cagnotte small { display: block; margin-top: 3px; color: var(--on-dark-soft); font-size: var(--type-meta); }
+.ou-cagnotte .ou-act { height: 32px; border-color: var(--action); color: #fff; background: var(--action); }
+.ou-tabbar { margin: auto -16px -26px; padding: 8px 14px 26px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.ou-tab { height: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: var(--ink-faint); font-size: 9px; font-weight: 700; line-height: 1; }
+.ou-tab-on { color: var(--action-ink); }
+.ou-tab-on .lucide { stroke-width: 2.2; }
+
+/* LE PLAN DE TABLE (les mariés, sur ordinateur) */
+.ou-floor { position: absolute; inset: 0 346px 0 0; }
+.ou-floor > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ou-table { fill: #ffffff; stroke: var(--line-strong); stroke-width: 1.5; }
+.ou-table-honneur { fill: var(--dark); stroke: var(--dark); }
+.ou-table-name { font-family: var(--font); font-size: 12px; font-weight: 800; fill: #1d1b1f; text-anchor: middle; }
+.ou-table-count { font-family: var(--font); font-size: 10px; font-weight: 700; fill: #6f6a66; text-anchor: middle; }
+.ou-table-honneur ~ .ou-table-name { fill: #fff; }
+.ou-on-dark { fill: #fff; }
+.ou-on-dark-soft { fill: #b5c7bb; }
+.ou-seat { fill: var(--sage); stroke: #cfdccc; stroke-width: 1; }
+.ou-seat-empty { fill: #ffffff; stroke: var(--line-strong); stroke-dasharray: 3 2.5; }
+.ou-seat-next { fill: var(--action-soft); stroke: var(--action); stroke-width: 1.5; }
+.ou-seat-text { font-family: var(--font); font-size: 8.5px; font-weight: 800; fill: #2f7a4a; text-anchor: middle; }
+.ou-seat-text-next { fill: #b4563c; }
+.ou-zone-label { fill: #aaa39a; font-family: var(--font); font-size: 11px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
+.ou-dancefloor { fill: #f2eee6; stroke: #e2dccf; stroke-dasharray: 6 5; }
+.ou-overlay-top { position: absolute; z-index: 6; top: 16px; left: 16px; right: 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; pointer-events: none; }
+.ou-overlay-top > * { pointer-events: auto; }
+.ou-overlay-title { padding: 9px 16px 9px 14px; display: flex; align-items: baseline; gap: 10px; border-radius: 14px; }
+.ou-overlay-title h3 { font-size: 20px; line-height: 1; font-weight: 800; letter-spacing: -0.03em; }
+.ou-overlay-title small { color: var(--ink-soft); font-size: 12px; font-weight: 600; }
+.ou-overlay-tools { display: flex; align-items: center; gap: 8px; }
+.ou-replies { height: 40px; padding: 0 6px 0 14px; display: inline-flex; align-items: center; gap: 8px; border-radius: 14px; font-size: 12.5px; font-weight: 750; }
+.ou-replies .ou-pill { padding: 5px 8px; }
+.ou-panel { position: absolute; z-index: 6; top: 72px; right: 16px; width: 330px; display: flex; flex-direction: column; gap: 10px; }
+.ou-panel-head { padding: 0 4px; display: flex; align-items: baseline; justify-content: space-between; }
+.ou-panel-head strong { font-size: 13px; font-weight: 800; }
+.ou-panel-head span { padding: 3px 7px; border-radius: 99px; background: var(--glass); color: var(--ink-soft); font-size: 11px; font-weight: 600; }
+.ou-guest { padding: 11px 12px; display: flex; align-items: center; gap: 10px; border-radius: 16px; box-shadow: 0 14px 30px -12px rgba(29, 27, 31, 0.3); }
+.ou-guest > div { flex: 1; min-width: 0; }
+.ou-guest strong { display: block; font-size: 13px; font-weight: 800; }
+.ou-guest small { display: block; margin-top: 3px; color: var(--ink-soft); font-size: 11px; font-weight: 600; }
+.ou-guest-next { color: #fff; background: var(--dark); border-color: var(--dark); }
+.ou-guest-next small { color: var(--on-dark-soft); }
+.ou-guest-next .ou-avatar { color: #fff; background: rgba(255, 255, 255, 0.12); }
+.ou-guest-next .ou-act { border-color: var(--action); color: #fff; background: var(--action); }
+.ou-legend { position: absolute; z-index: 6; left: 16px; bottom: 16px; padding: 8px 12px; display: flex; align-items: center; gap: 14px; border-radius: 12px; font-size: 11px; font-weight: 700; }
+.ou-legend span { display: flex; align-items: center; gap: 6px; }
+.ou-legend i { width: 10px; height: 10px; border-radius: 50%; }
+
+@media (max-width: 860px) {
+  .oui-mockups-page { padding: 44px 16px 80px; }
+  .ou-landing-hero h1 { font-size: 48px; }
+  .ou-gallery { grid-template-columns: 1fr; }
+  .ou-mockup-card-wide { overflow-x: auto; }
+  .ou-mockup-card-wide .ou-desk { min-width: 1080px; }
+}
