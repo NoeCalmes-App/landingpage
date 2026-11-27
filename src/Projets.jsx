@@ -51,16 +51,6 @@ const IMAGES = '/assets/images/apps'
 // Les écrans sont ceux du carrousel de l'accueil test (le site de l'application et son écran de téléphone).
 const CAS = [
   {
-    id: 'bailora',
-    metier: 'Immobilier',
-    nom: 'Bailora',
-    icone: `${IMAGES}/bailora.webp`,
-    phrase: 'La gestion de ses locations, sur téléphone.',
-    texte: 'Son fondateur est artisan et gère ses propres logements en location. Loyers, quittances, états des lieux\u00a0: tout était éparpillé entre un tableur, des courriers et des photos. L’application réunit tout, et un assistant IA répond à ses questions.',
-    ordinateur: { src: `${IMAGES}/exemples/bailora-ordinateur.webp`, largeur: 1298, hauteur: 730, alt: 'Sur ordinateur, le site de Bailora : « Vos SCI, enfin simples »' },
-    telephone: { src: `${IMAGES}/captures/bailora-accueil.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, le tableau de bord des loyers, des paiements et des actions à traiter' },
-  },
-  {
     id: 'smoothride',
     metier: 'Automobile',
     nom: 'SmoothRide',
@@ -72,6 +62,16 @@ const CAS = [
     atout: 'CarPlay et Android Auto',
     ordinateur: { src: `${IMAGES}/exemples/smoothride-ordinateur.webp`, largeur: 1245, hauteur: 700, alt: 'Sur ordinateur, le site de SmoothRide : « Votre trajet, sans les dos-d’âne »' },
     telephone: { src: `${IMAGES}/captures/smoothride-navigation.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, la navigation avec les dos-d’âne signalés sur le trajet' },
+  },
+  {
+    id: 'bailora',
+    metier: 'Immobilier',
+    nom: 'Bailora',
+    icone: `${IMAGES}/bailora.webp`,
+    phrase: 'La gestion de ses locations, sur téléphone.',
+    texte: 'Son fondateur est artisan et gère ses propres logements en location. Loyers, quittances, états des lieux\u00a0: tout était éparpillé entre un tableur, des courriers et des photos. L’application réunit tout, et un assistant IA répond à ses questions.',
+    ordinateur: { src: `${IMAGES}/exemples/bailora-ordinateur.webp`, largeur: 1298, hauteur: 730, alt: 'Sur ordinateur, le site de Bailora : « Vos SCI, enfin simples »' },
+    telephone: { src: `${IMAGES}/captures/bailora-accueil.webp`, largeur: 660, hauteur: 1431, alt: 'Sur téléphone, le tableau de bord des loyers, des paiements et des actions à traiter' },
   },
   {
     id: 'wakeup',

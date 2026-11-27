@@ -16,21 +16,35 @@ import './exemples-metier.css'
 //     là, avec un trait gris à la place du texte, comme une adresse masquée.
 //   - RIEN D'INVENTÉ N'EST PRÉSENTÉ COMME RÉEL. Le titre du bloc dit « déjà construit » : la pastille dit donc
 //     « Application » pour ce qui est construit, et « Maquette d'application » pour la maquette de coaching, qui ne
-//     l'est pas encore (elle passe en dernier). Pas de faux écran d'ordinateur, pas d'application inventée.
-//     Le 27/11/2026, Noé : « Maquette, pour application stp ». La pastille dit « Maquette d'application » et pas
-//     « Application » : au 27/11/2026, le devis de ce projet est envoyé, pas signé, l'application n'existe pas.
+//     l'est pas encore (elle passe avant Plouff). Pas de faux écran d'ordinateur, pas d'application inventée.
+//     Le 27/11/2026 au soir, Noé change d'avis : la pastille de la carte coaching dit « Application », comme les autres.
+//     Ses écrans ne portent plus le nom Pulso : « Espace coach » à côté de l'icône sur ordinateur, « Bonjour Noé »
+//     (plus petit) sur le téléphone. Retouches faites seulement sur les captures, pas sur la page /maquette/pulso.
 //   - La maquette de coaching montre le nom et le logo (« Pulso ») d'un projet qui n'est pas celui de Noé : son
 //     porteur a donné son accord (Noé, 27/11/2026). Pour une autre maquette de prospect : même accord, ou masquer.
 //   - les écrans FLOTTENT doucement (« animation flottement »), l'ordinateur et le téléphone pas au même rythme.
-//   - L'ORDRE : Bailora d'abord (un artisan qui gère ses logements : c'est le visiteur que la page vise), puis
-//     WakeUp Alarme (ajoutée le 26/11/2026 à la demande de Noé), SmoothRide, Plouff Habitudes, et la maquette. Les
-//     deux applications de Noé (WakeUp et Plouff) ne se suivent pas, comme dans le carrousel de l'accueil en ligne.
+//   - L'ORDRE (Noé, 27/11/2026) : SmoothRide, Bailora, WakeUp Alarme, la maquette de coaching (Pulso), puis
+//     Plouff Habitudes.
 //   - WakeUp Alarme : son écran d'ordinateur est le visuel de présentation de l'application, faute de site. Une
 //     capture de son site le remplacerait.
 // Les images de la maquette sont fabriquées par outils/capture_ecran.py à partir de la page /maquette/… (les noms de
 // fichiers ne portent pas le nom du projet).
 const IMAGES = '/assets/images/apps'
 const APPLICATIONS = [
+  {
+    id: 'automobile',
+    metier: 'Automobile',
+    statut: 'Application',
+    role: 'Le trajet le plus doux, sans dos-d’âne.',
+    ordinateur: {
+      src: `${IMAGES}/exemples/smoothride-ordinateur.webp`, largeur: 1245, hauteur: 700,
+      alt: 'Sur ordinateur, le site de l’application : « Votre trajet, sans les dos-d’âne »',
+    },
+    telephones: [
+      { src: `${IMAGES}/captures/smoothride-navigation.webp`, largeur: 660, hauteur: 1431,
+        alt: 'Sur téléphone, la navigation avec les dos-d’âne signalés sur le trajet' },
+    ],
+  },
   {
     id: 'immobilier',
     metier: 'Immobilier',
@@ -62,17 +76,17 @@ const APPLICATIONS = [
     ],
   },
   {
-    id: 'automobile',
-    metier: 'Automobile',
+    id: 'coaching',
+    metier: 'Coaching sportif',
     statut: 'Application',
-    role: 'Le trajet le plus doux, sans dos-d’âne.',
+    role: 'Réserver et payer son coach en quelques secondes.',
     ordinateur: {
-      src: `${IMAGES}/exemples/smoothride-ordinateur.webp`, largeur: 1245, hauteur: 700,
-      alt: 'Sur ordinateur, le site de l’application : « Votre trajet, sans les dos-d’âne »',
+      src: `${IMAGES}/exemples/coaching-ordinateur.webp`, largeur: 1668, hauteur: 900,
+      alt: 'Sur ordinateur, l’espace du coach : ses séances du jour, ses paiements et une demande à accepter',
     },
     telephones: [
-      { src: `${IMAGES}/captures/smoothride-navigation.webp`, largeur: 660, hauteur: 1431,
-        alt: 'Sur téléphone, la navigation avec les dos-d’âne signalés sur le trajet' },
+      { src: `${IMAGES}/exemples/coaching-telephone.webp`, largeur: 912, hauteur: 2033,
+        alt: 'Sur téléphone, l’accueil du client : les coachs libres aujourd’hui et le prochain événement' },
     ],
   },
   {
@@ -89,20 +103,6 @@ const APPLICATIONS = [
         alt: 'Sur téléphone, les habitudes du jour avec la mascotte' },
     ],
   },
-  {
-    id: 'coaching',
-    metier: 'Coaching sportif',
-    statut: 'Maquette d’application',
-    role: 'Réserver et payer son coach en quelques secondes.',
-    ordinateur: {
-      src: `${IMAGES}/exemples/coaching-ordinateur.webp`, largeur: 1668, hauteur: 898,
-      alt: 'Sur ordinateur, le tableau de bord du coach : ses séances du jour, ses paiements et une demande à accepter',
-    },
-    telephones: [
-      { src: `${IMAGES}/exemples/coaching-telephone.webp`, largeur: 912, hauteur: 2052,
-        alt: 'Sur téléphone, l’accueil du client : les coachs libres aujourd’hui et le prochain événement' },
-    ],
-  },
 ]
 
 // LE CARROUSEL DÉFILE TOUT SEUL (Noé, 25/11/2026 : « tourner tout seul au bout de quelques secondes, rapide ») :
@@ -115,7 +115,7 @@ const APPLICATIONS = [
 // est entièrement sorti de l'écran il revient à la première application, pour que chaque arrivée commence par elle.
 const DELAI = 4000
 const DELAI_APRES_GESTE = 8000
-// La première application (Bailora) reste plus longtemps : c'est celle que le visiteur voit en arrivant (Noé,
+// La première application (SmoothRide) reste plus longtemps : c'est celle que le visiteur voit en arrivant (Noé,
 // 26/11/2026, 01 h 26 : « la première mais plus de temps avant de passer à la deuxième, léger »).
 const DELAI_PREMIERE = 6500
 
