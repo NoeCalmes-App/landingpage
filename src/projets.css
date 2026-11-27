@@ -89,6 +89,20 @@
 /* Sous la liste : les autres applications sont confidentielles. */
 .pjt-confidentiel { display: flex; align-items: center; gap: 14px; max-width: 640px; margin: 24px auto 0; padding: 16px 20px 16px 16px; border-radius: 20px; background: #fff; border: 1px solid #e7e4f3; box-shadow: 0 30px 60px -48px rgba(59, 47, 208, .45); font-size: 15px; font-weight: 500; line-height: 1.5; color: #033475; text-wrap: pretty; }
 .pjt-confidentiel strong { font-weight: 800; }
+/* « Et pour d'autres métiers » : les maquettes, en petit, dans une rangée qui défile au doigt (et qui tient sans défiler
+   sur ordinateur tant qu'il y en a deux). Même fenêtre et même téléphone que les réalisations, en plus petit. */
+.pjt-autres { margin-top: 56px; }
+.pjt-autres-titre { font-size: clamp(22px, 6vw, 28px); line-height: 1.14; text-align: center; text-wrap: balance; }
+.pjt-autres-titre span { color: #665dff; }
+/* La rangée défile en largeur, donc elle rogne aussi en hauteur : on lui laisse 60 px sous les cartes pour leur ombre
+   (Noé, 27/11/2026 : « les ombres sont coupées »), repris par une marge négative pour ne pas éloigner la suite. */
+.pjt-autres-rangee { display: flex; gap: 14px; margin: 22px -14px -44px; padding: 6px 14px 60px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.pjt-autres-rangee::-webkit-scrollbar { display: none; }
+.pjt-autre { flex: 0 0 84%; scroll-snap-align: center; padding: 18px 16px 20px; border-radius: 22px; background: #fff; border: 1px solid #e7e4f3; box-shadow: 0 30px 60px -48px rgba(59, 47, 208, .45); }
+.pjt-autre .pjt-ecrans .ex-scene { max-width: none; }
+.pjt-autre-legende { margin-top: 14px; text-align: center; text-wrap: balance; }
+.pjt-autre-legende strong { display: block; font-size: 15px; font-weight: 800; color: #033475; }
+.pjt-autre-legende span { display: block; margin-top: 4px; font-size: 14px; line-height: 1.45; color: #5b6577; }
 .pjt-confidentiel-icone { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: #0d1548; color: #fff; }
 
 /* Les avis suivent les panneaux : un seul écart entre les deux, pas deux. */
@@ -144,6 +158,13 @@
   .pjt-ecrans .ex-scene-duo .ex-scene-tel { top: 10%; width: 28%; margin: 0; }
   .pjt-h2-seul { margin-bottom: 56px; }
   .pjt-h2-texte { font-size: 17px; }
+  .pjt-autres { margin-top: 80px; }
+  .pjt-autres-rangee { justify-content: safe center; gap: 24px; margin: 32px 0 -44px; padding: 8px 0 64px; }
+  .pjt-autre { flex-basis: 470px; padding: 28px 28px 26px; border-radius: 26px; }
+  .pjt-autre .pjt-ecrans { padding-bottom: 14%; }
+  .pjt-autre .pjt-ecrans .ex-scene-duo { padding-bottom: 0; }
+  .pjt-autre-legende { margin-top: 10px; }
+  .pjt-autre-legende strong { font-size: 16px; }
   .pjt-fin-zone { padding: 0 24px 112px; }
   .pjt-fin { padding: 88px 40px 92px; }
   .pjt-fin-texte { font-size: 17px; }

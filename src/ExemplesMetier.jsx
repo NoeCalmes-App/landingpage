@@ -76,6 +76,9 @@ const APPLICATIONS = [
     ],
   },
   {
+    // MASQUÉE pour l'instant (Noé, 27/11/2026 : « je la remettrai plus tard ») : passer `masque` à false pour la
+    // réafficher, rien d'autre à toucher.
+    masque: true,
     id: 'coaching',
     metier: 'Coaching sportif',
     statut: 'Application',
@@ -128,7 +131,7 @@ const APPLICATIONS = [
     metier: 'Bien-être',
     statut: 'Application',
     // Pas le slogan du site, déjà écrit sur l'image d'ordinateur (Noé, 27/11/2026) : ce que l'on fait dans l'app.
-    role: 'Méditer, bouger, moins de sucre : coché chaque jour.',
+    role: 'Routines, séries, rappels : la loutre grandit avec ses habitudes.',
     ordinateur: {
       src: `${IMAGES}/exemples/plouff-ordinateur.webp`, largeur: 1245, hauteur: 700,
       alt: 'Sur ordinateur, le site de l’application : « Crée des habitudes qui durent »',
@@ -148,6 +151,9 @@ const APPLICATIONS = [
 // demandé moins d'animations. IL NE COMPTE QU'À L'ARRIVÉE (Noé, 26/11/2026 : « ça passe à la suivante quand
 // j'arrive sur la page, pas avant ») : le délai ne part que lorsque les écrans sont vus aux deux tiers, et dès que le bloc
 // est entièrement sorti de l'écran il revient à la première application, pour que chaque arrivée commence par elle.
+// Les applications affichées : celles qui ne sont pas masquées (voir `masque` dans la liste).
+const VISIBLES = APPLICATIONS.filter((app) => !app.masque)
+
 const DELAI = 4000
 const DELAI_APRES_GESTE = 8000
 // La première application (SmoothRide) reste plus longtemps : c'est celle que le visiteur voit en arrivant (Noé,
@@ -181,8 +187,8 @@ export default function ExemplesMetier() {
   const racine = useRef(null)
   const scenes = useRef(null)
   const doigt = useRef(null)
-  const application = APPLICATIONS[actif]
-  const suivante = (sens) => setActif((i) => (i + sens + APPLICATIONS.length) % APPLICATIONS.length)
+  const application = VISIBLES[actif]
+  const suivante = (sens) => setActif((i) => (i + sens + VISIBLES.length) % VISIBLES.length)
   // Un geste du visiteur (flèche, clavier, doigt) : on lui obéit, et le défilement reprend 8 secondes plus tard.
   const aller = (sens) => { setApresGeste(true); suivante(sens) }
 
@@ -210,7 +216,7 @@ export default function ExemplesMetier() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
     const minuteur = window.setTimeout(() => {
       setApresGeste(false)
-      setActif((i) => (i + 1) % APPLICATIONS.length)
+      setActif((i) => (i + 1) % VISIBLES.length)
     }, apresGeste ? DELAI_APRES_GESTE : (actif === 0 ? DELAI_PREMIERE : DELAI))
     return () => window.clearTimeout(minuteur)
   }, [pause, aLecran, actif, apresGeste])
@@ -240,9 +246,9 @@ export default function ExemplesMetier() {
             d'écran et au clavier, qui passent par la rangée du bas. */}
         <button type="button" className="ex-fleche-cote ex-fleche-gauche" onClick={() => aller(-1)} aria-hidden="true" tabIndex={-1}><ArrowLeft size={20} strokeWidth={1.6} /></button>
         <button type="button" className="ex-fleche-cote ex-fleche-droite" onClick={() => aller(1)} aria-hidden="true" tabIndex={-1}><ArrowRight size={20} strokeWidth={1.6} /></button>
-        {APPLICATIONS.map((app, i) => (
+        {VISIBLES.map((app, i) => (
           <div key={app.id} className={`ex-scene ${app.ordinateur ? 'ex-scene-duo' : 'ex-scene-telephones'}${i === actif ? ' est-active' : ''}`}
-            role="group" aria-roledescription="diapositive" aria-label={`${i + 1} sur ${APPLICATIONS.length} : ${app.metier}. ${app.role}`} aria-hidden={i !== actif}>
+            role="group" aria-roledescription="diapositive" aria-label={`${i + 1} sur ${VISIBLES.length} : ${app.metier}. ${app.role}`} aria-hidden={i !== actif}>
             {app.ordinateur && (
               <div className="ex-scene-ordi">
                 <div className="ex-ordi-barre" aria-hidden="true"><i /><i /><i /><span><b /></span></div>
@@ -259,7 +265,7 @@ export default function ExemplesMetier() {
       </p>
       <div className="app-gallery-controls ex-fleches">
         <button type="button" onClick={() => aller(-1)} aria-label="Application précédente"><ArrowLeft size={18} /></button>
-        <div className="app-gallery-dots" aria-hidden="true">{APPLICATIONS.map((app, i) => <span key={app.id} className={i === actif ? 'is-active' : ''} />)}</div>
+        <div className="app-gallery-dots" aria-hidden="true">{VISIBLES.map((app, i) => <span key={app.id} className={i === actif ? 'is-active' : ''} />)}</div>
         <button type="button" onClick={() => aller(1)} aria-label="Application suivante"><ArrowRight size={18} /></button>
       </div>
     </div>

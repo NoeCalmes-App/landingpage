@@ -96,6 +96,27 @@ const CAS = [
   },
 ]
 
+// « D'autres projets d'applications » (Noé, 27/11/2026 ; « Et pour d'autres métiers » ne se comprenait pas) : après la ligne de confidentialité, une rangée qui défile avec les
+// maquettes de MARQUES INVENTÉES, en petit, comme dans le carrousel de l'accueil : le métier et une ligne, sans nom, sans
+// icône, sans texte, sans pastille. Elles ne se mélangent pas aux quatre réalisations : ce sont des maquettes, pas des
+// applications livrées. Jamais la maquette d'un prospect ici (règle de la page : pas de maquette de projet non signé).
+const MAQUETTES = [
+  {
+    id: 'chauffeur',
+    metier: 'Chauffeur privé',
+    ligne: 'L’hôtel commande, le client paie, le chauffeur roule.',
+    ordinateur: { src: `${IMAGES}/exemples/chauffeur-ordinateur.webp`, largeur: 2224, hauteur: 1270, alt: 'Sur ordinateur, la régie de la réception d’un hôtel : les courses en cours et la carte en direct' },
+    telephone: { src: `${IMAGES}/exemples/chauffeur-telephone.webp`, largeur: 915, hauteur: 2025, alt: 'Sur téléphone, une course arrive pour le chauffeur : le gain net, 30 secondes pour accepter' },
+  },
+  {
+    id: 'mariage',
+    metier: 'Mariage',
+    ligne: 'Invités, menu, plan de table, cagnotte : le mariage dans une app.',
+    ordinateur: { src: `${IMAGES}/exemples/mariage-ordinateur.webp`, largeur: 2224, hauteur: 1270, alt: 'Sur ordinateur, le plan de table des mariés : chaque table, ses invités, les chaises libres' },
+    telephone: { src: `${IMAGES}/exemples/mariage-telephone.webp`, largeur: 915, hauteur: 2025, alt: 'Sur téléphone, l’app de l’invité : répondre, choisir son menu, le programme, la cagnotte' },
+  },
+]
+
 // Le cadre de téléphone du carrousel de l'accueil (app-showcase.css), seul : il sert aux écrans des applications et à
 // l'écran de la messagerie.
 function Telephone({ image }) {
@@ -211,6 +232,17 @@ export default function Projets({ onBack }) {
                 liste : là où le lecteur se demande « et les autres ? ». L'icône : un cadenas plein, dessiné ici (celui de la
                 bibliothèque d'icônes, en simple trait, se lisait mal) ; en blanc sur un carré noir (Noé : « en noir au lieu du violet »). */}
             <p className="pjt-confidentiel"><span className="pjt-confidentiel-icone"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 10.5V7.2a4.5 4.5 0 0 1 9 0v3.3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" /><rect x="4.5" y="10" width="15" height="11.5" rx="3" fill="currentColor" /><circle cx="12" cy="15" r="1.7" fill="#0d1548" /><rect x="11.15" y="15.4" width="1.7" height="3.2" rx=".85" fill="#0d1548" /></svg></span><span>Ce n’est qu’une petite partie de mes réalisations. Les autres sont protégées par un <strong>accord de confidentialité</strong>.</span></p>
+            <div className="pjt-autres">
+              <h3 id="pjt-autres-titre" className="pjt-autres-titre">D’autres projets <span>d’applications</span></h3>
+              <div className="pjt-autres-rangee" role="list" aria-labelledby="pjt-autres-titre">
+                {MAQUETTES.map((m) => (
+                  <article key={m.id} className="pjt-autre" role="listitem">
+                    <Ecrans ordinateur={m.ordinateur} telephone={m.telephone} />
+                    <p className="pjt-autre-legende"><strong>{m.metier}</strong><span>{m.ligne}</span></p>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
