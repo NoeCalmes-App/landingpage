@@ -313,7 +313,7 @@ Aucun engagement derrière, c'est 30 minutes : tu vois ton application en visuel
 **Il demande le prix avant l'appel** (le seul cas où un chiffre s'écrit, et jamais seul : le prix et la question qui relance) :
 
 ```
-Ordre d'idée : une première version démarre à 5 000 €, un projet complet plutôt 8 000 à 12 000.
+Ordre d'idée : autour de 10 000 €, selon ce que l'application doit faire.
 Le chiffre précis, je te le donne à l'appel, une fois ton idée cadrée. C'est quoi, et pour qui ?
 ```
 
@@ -333,7 +333,7 @@ J'ai essayé de t'appeler à 18h comme prévu. On décale à demain 12h30 ou jeu
 **« C'est trop cher » :**
 
 ```
-Je comprends. Une agence facture 20 000 à 30 000 € pour le même travail, et moi c'est un tarif fixe, zéro surprise.
+Je comprends. Une agence facture plutôt autour de 30 000 € pour le même travail, et moi c'est un prix fixe, zéro surprise.
 Et on peut ajuster la première version à ton budget. Tu avais prévu quelle enveloppe ?
 ```
 

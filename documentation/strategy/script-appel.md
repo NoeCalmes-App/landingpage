@@ -300,7 +300,7 @@ La fourchette, c'est celle de son projet. Huit à douze mille pour la plupart. P
 
 **« C'est cher »**
 
-> Je comprends. Pour te situer : une agence, c'est à partir de vingt mille euros. Et trois à six mois. (pause) Moi, c'est un prix fixe, et une seule personne du début à la fin. (pause) Tu avais prévu combien ?
+> Je comprends. Pour te situer : une agence, c'est plutôt trente mille euros. Et trois à six mois. (pause) Moi, c'est un prix fixe, et une seule personne du début à la fin. (pause) Tu avais prévu combien ?
 
 Jamais de remise. Jamais de découpage pour faire rentrer le prix.
 
@@ -398,7 +398,7 @@ Ses objections en cachent toujours une de ces quatre : **combien je mets · quan
 | « Une personne sur quatre ouvre une appli une seule fois » | 25 % (2015), 21 % (2018) | Localytics, *21 % of users abandon an app after one use* |
 | « Huit essais sur dix démarrent le jour où on installe l'appli » | 80 à 90 % des essais démarrent à J0 | RevenueCat, *State of Subscription Apps 2025* |
 | « Quand le paiement est demandé d'entrée, ça convertit cinq fois plus » *(la preuve que le moment du paiement décide, pas un conseil de mettre un mur partout)* | 12,1 % d'installations payantes à J35 avec paiement d'entrée, contre 2,2 % en gratuit | RevenueCat 2025 |
-| « Une agence, c'est à partir de vingt mille euros, et trois à six mois » | — | `positionnement.md`, page d'accueil |
+| « Une agence, c'est plutôt trente mille euros, et trois à six mois » (vingt mille jusqu'au 27/11/2026) | — | `positionnement.md`, page d'accueil (« autour de 30 000 € ») |
 | « Plus de vingt applis publiées », « une dizaine d'idées par semaine » | +20 applications sur les stores, toute carrière confondue | `positionnement.md`, proof points ; profil de Noé |
 | « Une appli que j'ai conçue fait plus de treize mille euros par mois » | Calorie, +13 000 €/mois | `positionnement.md`, `landing-page.md` |
 | « La première version d'une appli qui a dépassé trois cent mille utilisateurs » | Hush, +300 000 utilisateurs, première version | `positionnement.md`, proof points |
