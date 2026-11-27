@@ -39,7 +39,10 @@
 
 /* Le téléphone : la coque du carrousel, mais l'image garde sa propre hauteur (les maquettes sont un peu plus hautes
    que les captures). */
-.ex-scene-tel .app-phone-screen img { aspect-ratio: auto; height: auto; }
+/* La proportion de chaque capture est donnée en ligne par le composant (largeur / hauteur de l'image) : « aspect-ratio:
+   auto » seul laissait le téléphone à 0 px tant que l'image n'était pas chargée, et la page grandissait pendant qu'on
+   la parcourait (Noé, 27/11/2026 : « Une question ? » s'arrêtait au milieu des avis). */
+.ex-scene-tel .app-phone-screen img { height: auto; }
 
 /* Ordinateur + téléphone. Sur téléphone : la fenêtre sur toute la largeur, le téléphone centré devant elle, qui
    descend dessous ; les chiffres du haut de la fenêtre restent visibles. */

@@ -127,7 +127,7 @@ function Telephone({ image }) {
       <i className="app-phone-button app-phone-volume-down" aria-hidden="true" />
       <i className="app-phone-button app-phone-power" aria-hidden="true" />
       <div className="app-phone-screen">
-        <img src={image.src} alt={image.alt} width={image.largeur} height={image.hauteur} loading="lazy" decoding="async" draggable="false" />
+        <img src={image.src} alt={image.alt} width={image.largeur} height={image.hauteur} style={{ aspectRatio: `${image.largeur} / ${image.hauteur}` }} loading="lazy" decoding="async" draggable="false" />
       </div>
     </div>
   )
