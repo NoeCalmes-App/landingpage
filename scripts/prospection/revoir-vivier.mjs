@@ -124,6 +124,8 @@ for (const fiche of vivier) {
   // L'annuaire : salariés, chiffre d'affaires, dirigeants.
   const e = await annuaire(siren);
   if (e) {
+    // L'opposition à la prospection commerciale : on ne lui écrit plus (lu depuis le 10/11/2026).
+    if (e.opposition_diffusion_commerciale === true) bouge.push('OPPOSITION à la prospection commerciale dans le registre : ne plus écrire, à écarter');
     const effectif = e.tranche_effectif_salarie ?? '';
     if (/^\d\d$/.test(effectif) && effectif !== '00' && !/salari/i.test(fiche.preuves_argent ?? '')) bouge.push(`l'annuaire indique maintenant des salariés (tranche ${effectif})`);
     const ca = dernierCA(e.finances);

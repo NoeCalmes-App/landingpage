@@ -18,8 +18,10 @@ Le fichier `{PISTES}` est un tableau JSON. Traite les éléments d'index {INDEX}
 - **Les recrutements** : « nom + recrute », `site:welcometothejungle.com nom`, `site:indeed.fr nom`, `site:hellowork.com nom`, et la page Emplois de son LinkedIn. Une entreprise qui recrute un commercial ou un marketeur a de l'argent. Une entreprise qui recrute un développeur fera l'application en interne : à écarter.
 - **La presse locale et les salons** : « nom + ville », le nom du dirigeant avec la ville.
 - **Les avis et l'audience** : Google Maps, Pages Jaunes, Trustpilot, Instagram, Facebook.
-- **Les registres** : `https://recherche-entreprises.api.gouv.fr/search?q=SIREN` donne les dirigeants, les salariés et parfois le chiffre d'affaires ; societe.com donne les comptes.
+- **Les registres** : `https://recherche-entreprises.api.gouv.fr/search?q=SIREN` donne les dirigeants, les salariés et parfois le chiffre d'affaires ; societe.com donne les comptes. Si le champ `opposition_diffusion_commerciale` y vaut `true`, la personne s'est opposée à la prospection : verdict « À écarter », raison « opposition à la prospection dans le registre », et on ne cherche pas ses contacts.
 - **Le parcours du dirigeant** : LinkedIn, Malt, Viadeo.
+
+Pour une piste « Vente de fonds » ou « Achat d'un 2e établissement » (champs `prix_fonds`, `fonds`, `etablissements_ouverts`), l'argent est déjà prouvé par le registre : ce qui manque, c'est le projet. Cherche d'abord ce que l'entreprise garde ou agrandit (son site, sa fiche Google, ses autres établissements), puis un signe qu'elle veut un outil : réservation ou commande en ligne absente ou bricolée, carte de fidélité papier, plusieurs sites à relier, un recrutement, un post. Sans ce signe, le verdict est « À creuser », jamais « À contacter ». Ne cite jamais le prix du fonds dans `vu` ni dans l'accroche : « J'ai vu que vous gardiez trois restaurants après la vente de celui de Nîmes. » suffit.
 
 Pour une piste Ulule, commence par la page de la campagne. Trouve ensuite la personne ou l'entreprise derrière le projet : son site, ses mentions légales, l'annuaire des entreprises par nom. Regarde si l'application est sortie depuis, et qui la développe : la campagne dit souvent si l'argent paie un prestataire. Garde `ulule-…` tel quel dans le champ siren.
 
@@ -37,7 +39,8 @@ Réponds à ces questions :
      - une levée de fonds, un prêt d'honneur, un concours gagné avec une dotation, un incubateur ;
      - une collecte réussie, sur Ulule ou ailleurs ;
      - un commerce qui tourne depuis plus de trois ans avec beaucoup d'avis Google, au moins 50 ;
-     - de la publicité payée, vue par Noé dans les bibliothèques de pubs Meta et Google.
+     - de la publicité payée, vue par Noé dans les bibliothèques de pubs Meta et Google ;
+     - un fonds de commerce vendu ou acheté, prix écrit au BODACC (champ `prix_fonds`).
    - **Indices faibles**, qui ne comptent jamais seuls :
      - « le fondateur dirige une autre entreprise », sans chiffre d'affaires ni salarié ;
      - une holding ;

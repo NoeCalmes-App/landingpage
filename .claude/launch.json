@@ -31,6 +31,21 @@
       "name": "smoothride-web-preview",
       "url": "http://localhost:5188",
       "port": 5188
+    },
+    {
+      "name": "bailora-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "preview",
+        "--prefix",
+        "/Users/noecalmes/Dev/Clients/Bailora/bailora-web",
+        "--",
+        "--port",
+        "5191",
+        "--strictPort"
+      ],
+      "port": 5191
     }
   ]
 }

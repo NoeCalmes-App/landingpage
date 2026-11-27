@@ -9,11 +9,13 @@
 // (scripts/prospection/campagnes-ulule.mjs), les nouvelles puis les plus grosses collectes.
 // Leur identifiant remplace le SIREN : « ulule-123456 ». Puis les meilleures pistes
 // de Suisse et de Monaco (scripts/prospection/signaux-etranger.mjs), identifiants
-// « ch-CHE-… » et « mc-… ».
+// « ch-CHE-… » et « mc-… ». Enfin les vendeurs et acheteurs de fonds de commerce
+// (liste ventes-de-fonds-….csv du même script BODACC) : une preuve d'argent
+// datée, sans projet déclaré, à suivre à part.
 //
 // Usage :
-//   node scripts/prospection/choisir-pistes.mjs            # 24 pistes BODACC note 7 ou plus, 4 Ulule, 3 étrangères
-//   node scripts/prospection/choisir-pistes.mjs --nombre 12 --note-min 9 --ulule 0 --etranger 0
+//   node scripts/prospection/choisir-pistes.mjs            # 24 pistes BODACC note 7 ou plus, 4 Ulule, 3 étrangères, 5 ventes de fonds
+//   node scripts/prospection/choisir-pistes.mjs --nombre 12 --note-min 9 --ulule 0 --etranger 0 --ventes 0
 //
 // Sortie : prospects-signaux/qualification-AAAA-MM-JJ/pistes.json (dossier ignoré par git).
 
@@ -32,6 +34,7 @@ const NOMBRE = lireArg('--nombre', 24);
 const NOTE_MIN = lireArg('--note-min', 7);
 const ULULE = lireArg('--ulule', 4);
 const ETRANGER = lireArg('--etranger', 3);
+const VENTES = lireArg('--ventes', 5);
 
 function lireCSV(texte) {
   const s = texte.replace(/^﻿/, '');
@@ -120,6 +123,28 @@ if (ETRANGER > 0 && listesEtranger.length) {
     });
   }
   console.log(`${etranger.length} pistes de Suisse ou de Monaco ajoutées (${listesEtranger.at(-1)}).`);
+}
+
+// Les vendeurs et acheteurs de fonds de commerce de la dernière liste, jamais
+// qualifiés, note 7 ou plus. Ils n'ont pas de projet déclaré : la recherche web
+// doit d'abord dire s'ils ont une raison de vouloir une application.
+const listesVentes = readdirSync(DOSSIER).filter((f) => /^ventes-de-fonds-.*\.csv$/.test(f))
+  .map((f) => ({ f, t: statSync(join(DOSSIER, f)).mtimeMs })).sort((a, b) => b.t - a.t);
+if (VENTES > 0 && listesVentes.length) {
+  const ventes = lireCSV(readFileSync(join(DOSSIER, listesVentes[0].f), 'utf8'))
+    .filter((p) => Number(p.Score) >= NOTE_MIN && !dejaVus.has(siren(p)) && !p['Fondateur technique ?'])
+    .slice(0, VENTES);
+  for (const p of ventes) {
+    pistes.push({
+      siren: siren(p), score: p.Score, pourquoi: p.Pourquoi, signal: p.Signal, date: p['Publié le'], entreprise: p.Entreprise,
+      nom_commercial: p['Nom commercial'], dirigeant: p.Dirigeant, forme: p.Forme, age_dirigeant: p['Âge du dirigeant'] ?? '', salaries: p['Salariés'] ?? '',
+      prix_fonds: p['Prix du fonds (€)'], fonds: p['Fonds vendu ou acheté'], etablissements_ouverts: p['Établissements ouverts'],
+      hausse_capital: p['Hausse de capital'] ?? '', preuves_argent_registres: p['Preuves d\'argent (registres)'] ?? '',
+      existe_depuis: p['Existe depuis'], domaine_recent: p['Domaine .fr récent'] ?? '', autres_entreprises: p['Autres entreprises du fondateur'],
+      ville: p.Ville, departement: p['Département'], activite: p['Activité déclarée'], lien_bodacc: p['Annonce BODACC'],
+    });
+  }
+  console.log(`${ventes.length} vendeurs ou acheteurs de fonds de commerce ajoutés (${listesVentes[0].f}).`);
 }
 
 const jour = new Date().toISOString().slice(0, 10);

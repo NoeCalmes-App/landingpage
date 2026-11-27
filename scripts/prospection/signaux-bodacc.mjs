@@ -22,10 +22,25 @@
 // années rapporte des points : « avoir une autre entreprise » ne prouve pas
 // qu'on a de l'argent, remettre de l'argent dans la sienne, si.
 //
+// Quatrième signal, à part (depuis le 10/11/2026) : les ventes de fonds de
+// commerce. « Vente de fonds » : une société vend un fonds, le prix est écrit
+// dans l'annonce, et elle garde au moins deux établissements ouverts : elle
+// vient d'encaisser et son affaire continue. « Achat d'un 2e établissement » :
+// une société installée achète un établissement de plus. Aucun des deux ne
+// parle d'application : c'est une preuve d'argent datée, pas un projet. Ces
+// pistes sortent dans une liste à part (ventes-de-fonds-….csv) et se suivent
+// à part dans Nowork. Les vendeurs personnes physiques sont écartés (pas de
+// contact professionnel, adresse peut-être personnelle) et l'adresse de
+// l'ancien propriétaire, écrite dans l'annonce, n'est jamais lue ni stockée.
+//
 // Le script enrichit chaque piste avec l'annuaire officiel des entreprises
 // (dirigeants, date de création, code d'activité), écarte le bruit (livreurs,
-// agences, développeurs) et les personnes qui ont refusé la diffusion de leurs
-// données, puis note chaque piste et écrit un CSV à ouvrir dans Google Sheets.
+// agences, développeurs), les personnes qui ont refusé la diffusion de leurs
+// données et les entreprises qui se sont opposées à la prospection commerciale
+// dans le registre (champ « opposition_diffusion_commerciale » de l'annuaire,
+// lu depuis le 10/11/2026 : presque toutes les sociétés créées depuis 2025
+// cochent la case, on ne leur écrit pas), puis note chaque piste et écrit un
+// CSV à ouvrir dans Google Sheets.
 //
 // Profil du fondateur : pour chaque dirigeant, le script cherche dans l'annuaire
 // toutes les autres entreprises qu'il dirige (même nom, même prénom, même mois
@@ -39,6 +54,7 @@
 //   node scripts/prospection/signaux-bodacc.mjs --depuis 2026-10-01
 //   --sans-app-store : ne pas vérifier si l'application existe déjà sur l'App Store
 //   --sans-afnic : ne pas chercher les noms de domaine .fr récents
+//   --sans-ventes : ne pas sortir les ventes de fonds de commerce
 //
 // Domaine .fr : l'AFNIC publie chaque jour la liste des noms de domaine .fr
 // créés la veille, et garde environ trois mois en ligne. Une entreprise qui
@@ -74,6 +90,7 @@ const depuis = lireArg('--depuis') ?? new Date(aujourdhui.getTime() - jours * 86
 const sansAnnuaire = args.includes('--sans-annuaire');
 const sansAppStore = args.includes('--sans-app-store');
 const sansAfnic = args.includes('--sans-afnic');
+const sansVentes = args.includes('--sans-ventes');
 const MAX_APP_STORE = 60; // les meilleures pistes seulement : Apple limite le nombre d'appels
 
 // ---------- Filtres ----------
@@ -122,12 +139,22 @@ const AGENCE = /pour le compte de (tiers|ses clients|clients)|prestations? (de s
 const estAgence = (a) => AGENCE.test(a) && !/exploitation|[ée]dition et|abonnements?|commissions?/i.test(a);
 
 const MODELE_REVENUS = /abonnements?|commissions?|r[ée]servations?|premium|payant|frais de service|mon[ée]tis|affiliation|freemium|achats? int[ée]gr[ée]s/i;
+// Ventes de fonds de commerce. En dessous de 50 000 €, c'est un petit commerce
+// qui ferme ; au-delà de 3 millions, une opération de groupe.
+const PRIX_FONDS_MIN = 50000;
+const PRIX_FONDS_MAX = 3000000;
+// « acquis par achat au prix stipulé de 107000.00 euros », « au prix de vente de 70000 EUR ».
+const PRIX_FONDS = /prix[^0-9]{0,40}?(\d[\d\s.,]*)\s*(?:€|eur\b|euros)/i;
+const SIGNAUX_VENTE = new Set(['Vente de fonds', 'Achat d\'un 2e établissement']);
+const estVente = (p) => SIGNAUX_VENTE.has(p.signal);
+
 const SECTEUR_PROCHE = /restaura|traiteur|food|repas|coach|sport|fitness|salle|bien-[êe]tre|beaut[ée]|esth[ée]ti|coiff|immobili|location|[ée]v[ée]nement|auto-[ée]cole|conduite|formation|sant[ée]|m[ée]dical|tourisme|voyage|h[ôo]tel|animaux|cheva|garage|artisan|commer[çc]ant|boutique|march[ée]s?/i;
 
 // ---------- Outils ----------
 const attendre = (ms) => new Promise((r) => setTimeout(r, ms));
 const json = (s) => {
   if (!s) return {};
+  if (typeof s === 'object') return s;
   try { return JSON.parse(s); } catch { return {}; }
 };
 const premier = (x) => (Array.isArray(x) ? x[0] ?? {} : x ?? {});
@@ -187,9 +214,10 @@ const NOM_HORS_CIBLE = /holding|invest|patrimo|participations?|capital|financ|im
 // L'annuaire accepte 7 requêtes par seconde : on attend 160 ms après chaque appel.
 async function appelAnnuaire(params) {
   for (let essai = 0; essai < 4; essai++) {
-    const rep = await fetch(`${ANNUAIRE}?${new URLSearchParams(params)}`);
+    const rep = await fetch(`${ANNUAIRE}?${new URLSearchParams(params)}`).catch(() => null);
     await attendre(160);
-    if (rep.status === 429) { await attendre(1500 * (essai + 1)); continue; }
+    // Trop vite (429) ou annuaire en panne (5xx, réseau) : on réessaie, de plus en plus lentement.
+    if (!rep || rep.status === 429 || rep.status >= 500) { await attendre(1500 * (essai + 1)); continue; }
     if (!rep.ok) return null;
     return rep.json();
   }
@@ -233,7 +261,12 @@ function resumer(e) {
     ca: dernierCA(e.finances),
     sci: e.nature_juridique === SCI,
     etablissements: Number(e.nombre_etablissements_ouverts) || 0,
+    commune: e.siege?.libelle_commune ?? '',
+    departementCode: e.siege?.departement ?? '',
     cachee: JSON.stringify(e).includes('[NON-DIFFUSIBLE]'),
+    // Opposition à la prospection commerciale (article R.123-320 du code de
+    // commerce) : true = opposée, false = pas d'opposition, null = inconnu.
+    opposition: typeof e.opposition_diffusion_commerciale === 'boolean' ? e.opposition_diffusion_commerciale : null,
     dirigeants: (e.dirigeants ?? []).map((d) => (d.type_dirigeant === 'personne morale'
       ? { pm: true, siren: d.siren ?? '', nom: d.denomination ?? '' }
       : { nom: nettoyerNom(d.nom), prenom: String(d.prenoms ?? '').split(/[\s,]+/)[0], naissance: d.date_de_naissance ?? '', qualite: d.qualite ?? '' })),
@@ -406,11 +439,25 @@ function lirePiste(r, signal) {
   };
 }
 
-function noter(piste) {
-  const a = piste.activite;
-  const raisons = [];
-  let score = 0;
+// Une vente de fonds de commerce : le prix, qui vend, qui achète, quel fonds.
+function lireVente(r) {
+  const etabs = [json(r.listeetablissements).etablissement].flat().filter(Boolean);
+  const m = PRIX_FONDS.exec(etabs.map((e) => e.origineFonds ?? '').join(' '));
+  return {
+    prix: m ? montant(m[1]) : 0,
+    vendeurs: [json(r.listeprecedentproprietaire).personne].flat().filter(Boolean),
+    acheteur: premier(json(r.listepersonnes).personne),
+    categorie: json(r.acte).vente?.categorieVente ?? '',
+    activite: (etabs.map((e) => e.activite).find(Boolean) ?? '').replace(/\s+/g, ' ').trim(),
+    ville: etabs.map((e) => e.adresse?.ville).find(Boolean) ?? r.ville ?? '',
+  };
+}
+const sirenDuNumero = (num) => String(num?.numeroIdentification ?? '').replace(/\D/g, '');
 
+// Le projet lui-même : ce que l'activité déclarée dit de l'application.
+function noterProjet(piste, raisons) {
+  const a = piste.activite;
+  let score = 0;
   // Un autre métier, hors application et hors formules juridiques.
   const morceaux = a.split(/\s+-\s+|;\s*|\.\s+(?=[A-ZÉÈ])/).map((m) => m.trim()).filter((m) => m.length > 12);
   const autreMetier = morceaux.some((m) => !/plate-?forme|application|appli|logiciel|num[ée]rique|site|internet|web|digital|saas|informatique|commerciali|abonnement|conception|d[ée]veloppement|[ée]dition|maintenance|exploitation|h[ée]bergement|contenus?|publicit|mon[ée]tis|services? associ/i.test(m) && !BOILERPLATE.test(m));
@@ -452,6 +499,28 @@ function noter(piste) {
   if (piste.capital >= 20000) score += 1;
   if (a.length > 800) { score -= 2; raisons.push('objet social fourre-tout'); }
   else if (/^\s*(la soci[ée]t[ée] a pour objet\s*:?\s*)?prise de participations?/i.test(a)) { score -= 3; raisons.push('holding'); }
+  return score;
+}
+
+// Une vente de fonds ne dit rien d'une application : on note l'argent encaissé
+// ou investi, et le reste (projet précis, modèle de revenus) ne compte pas.
+function noterFonds(piste, raisons) {
+  let score = 3;
+  const prix = piste.prixFonds;
+  if (piste.signal === 'Vente de fonds') raisons.push(`vient de vendre ${piste.fonds} pour ${euros(prix)}`);
+  else raisons.push(`entreprise installée qui vient d'acheter un établissement de plus, ${piste.fonds}, pour ${euros(prix)}`);
+  if (prix >= 150000) score += 2;
+  else if (prix >= 100000) score += 1;
+  if (Number(piste.existeDepuis) && Number(piste.existeDepuis) <= aujourdhui.getFullYear() - 3) { score += 1; raisons.push(`existe depuis ${piste.existeDepuis}`); }
+  if (SECTEUR_PROCHE.test(piste.fonds)) { score += 1; raisons.push('secteur proche de tes clients'); }
+  return score;
+}
+
+function noter(piste) {
+  const raisons = [];
+  let score = 0;
+
+  score += estVente(piste) ? noterFonds(piste, raisons) : noterProjet(piste, raisons);
 
   // Un nom de domaine réservé ces trois derniers mois : il prépare sa sortie.
   if (piste.domaineRecent) { score += 1; raisons.push(`domaine ${piste.domaineRecent}`); }
@@ -498,6 +567,8 @@ function noter(piste) {
   const ages = piste.ages ?? [];
   if (ages.length && Math.max(...ages) < 30) { score -= 2; raisons.push(`dirigeant de ${Math.max(...ages)} ans : fera sans doute avec l'IA`); }
   else if (ages.some((x) => x >= 38 && x <= 62)) { score += 1; raisons.push(`dirigeant de ${ages.find((x) => x >= 38 && x <= 62)} ans`); }
+  // Un vendeur de plus de 62 ans part souvent à la retraite : il ne lancera rien.
+  if (piste.signal === 'Vente de fonds' && ages.length && Math.min(...ages) > 62) { score -= 2; raisons.push('vendeur de plus de 62 ans : part sans doute à la retraite'); }
   return { score, pourquoi: raisons.join(' · ') };
 }
 
@@ -508,6 +579,7 @@ function preuvesArgent(piste) {
   const h = piste.hausse;
   if (h && h.apres - h.avant >= 5000) preuves.push(`capital augmenté de ${euros(h.avant)} à ${euros(h.apres)} le ${dateFr(h.date)}`);
   if (piste.capital >= 10000) preuves.push(`capital de ${euros(piste.capital)}`);
+  if (piste.prixFonds) preuves.push(`${piste.signal === 'Vente de fonds' ? 'a vendu' : 'a acheté'} un fonds de commerce pour ${euros(piste.prixFonds)} (annonce du ${dateFr(piste.date)})`);
   if (piste.ca?.ca >= 100000) preuves.push(`chiffre d'affaires de ${euros(piste.ca.ca)} en ${piste.ca.annee}`);
   if (piste.employeur) preuves.push('emploie des salariés');
   if (piste.etablissements >= 2) preuves.push(`${piste.etablissements} établissements ouverts`);
@@ -521,13 +593,17 @@ const CSV_COLONNES = [
   ['score', 'Score'], ['pourquoi', 'Pourquoi'], ['signal', 'Signal'], ['date', 'Publié le'],
   ['entreprise', 'Entreprise'], ['nomCommercial', 'Nom commercial'], ['dirigeant', 'Dirigeant'],
   ['forme', 'Forme'], ['agesTexte', 'Âge du dirigeant'], ['effectifTexte', 'Salariés'], ['capital', 'Capital (€)'], ['hausseCapital', 'Hausse de capital'], ['preuvesArgent', 'Preuves d\'argent (registres)'],
-  ['existeDepuis', 'Existe depuis'], ['domaineRecent', 'Domaine .fr récent'],
+  ['existeDepuis', 'Existe depuis'], ['oppositionTexte', 'Opposition à la prospection'], ['domaineRecent', 'Domaine .fr récent'],
   ['fondateurTexte', 'Autres entreprises du fondateur'], ['naf', 'Code activité'],
   ['ville', 'Ville'], ['departement', 'Département'], ['activite', 'Activité déclarée'],
   ['lienBodacc', 'Annonce BODACC'], ['lienAnnuaire', 'Fiche entreprise'], ['recherche', 'Recherche Google'],
   ['appEnLigne', 'App déjà en ligne ?'], ['fondateurTechnique', 'Fondateur technique ?'], ['', 'Contact trouvé'], ['', 'Canal'],
   ['', 'Message envoyé le'], ['', 'Relance le'], ['', 'Réponse'], ['', 'Statut'],
 ];
+// La liste des ventes : les mêmes colonnes, plus le prix, le fonds et les établissements.
+const CSV_COLONNES_VENTES = CSV_COLONNES.flatMap(([cle, titre]) => (cle === 'forme'
+  ? [[cle, titre], ['prixFonds', 'Prix du fonds (€)'], ['fonds', 'Fonds vendu ou acheté'], ['etablissements', 'Établissements ouverts']]
+  : [[cle, titre]]));
 const cellule = (v) => {
   const s = String(v ?? '');
   return /[",\n;]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
@@ -566,22 +642,61 @@ async function main() {
   creations.forEach((r) => ajouter(r, 'Création'));
   modifications.forEach((r) => ajouter(r, 'Ajout d\'activité'));
 
+  // Les ventes de fonds de commerce : le vendeur (société qui garde d'autres
+  // établissements, vérifié plus bas dans l'annuaire) et l'acheteur d'un
+  // établissement secondaire. Avis initiaux seulement, avec un prix écrit.
+  const parSirenVente = new Map();
+  if (!sansVentes) {
+    const ventesBrutes = await bodacc(
+      `familleavis='vente' AND typeavis='annonce' AND dateparution>='${depuis}' AND search(listeetablissements,'prix')`,
+      'dateparution,registre,ville,departement_nom_officiel,listepersonnes,listeetablissements,listeprecedentproprietaire,acte,url_complete',
+    );
+    const ajouterVente = (siren, signal, societe, v, r) => {
+      if (!siren || !societe.denomination || NOM_HORS_CIBLE.test(societe.denomination) || FORME_HORS_CIBLE.test(societe.formeJuridique ?? '') || /liquidation/i.test(societe.denomination)) return;
+      if (parSiren.has(siren) || parSirenVente.has(siren)) return; // déjà sortie par son activité, ou déjà vue
+      const fonds = `${v.activite ? `« ${v.activite.slice(0, 120)} »` : 'un fonds de commerce'}${v.ville ? ` à ${v.ville}` : ''}`;
+      parSirenVente.set(siren, {
+        siren, signal, date: r.dateparution,
+        entreprise: societe.denomination, nomCommercial: societe.nomCommercial ?? '', dirigeant: '',
+        forme: societe.formeJuridique ?? 'Société', capital: montant(societe.capital?.montantCapital),
+        prixFonds: v.prix, fonds, categorieVente: v.categorie,
+        ville: signal === 'Vente de fonds' ? '' : v.ville, departement: signal === 'Vente de fonds' ? '' : (r.departement_nom_officiel ?? ''),
+        activite: `${signal === 'Vente de fonds' ? 'Vend' : 'Achète'} ${fonds} pour ${euros(v.prix)}`,
+        lienBodacc: r.url_complete || '',
+      });
+    };
+    for (const r of ventesBrutes) {
+      const v = lireVente(r);
+      if (v.prix < PRIX_FONDS_MIN || v.prix >= PRIX_FONDS_MAX) continue;
+      // Les vendeurs : des sociétés seulement. Une personne physique n'a pas de
+      // contact professionnel publié et son adresse peut être son domicile.
+      for (const vendeur of v.vendeurs) {
+        if (vendeur.typePersonne === 'pm') ajouterVente(sirenDuNumero(vendeur.numeroImmatriculation), 'Vente de fonds', vendeur, v, r);
+      }
+      // L'acheteur, seulement s'il ajoute un établissement à une société qui tourne déjà.
+      if (/secondaire|compl[ée]mentaire/i.test(v.categorie) && v.acheteur.typePersonne === 'pm') {
+        ajouterVente(sirenDe(r), 'Achat d\'un 2e établissement', v.acheteur, v, r);
+      }
+    }
+    console.log(`${ventesBrutes.length} ventes de fonds publiées, ${parSirenVente.size} vendeurs ou acheteurs à vérifier dans l'annuaire.`);
+  }
+
   // L'historique de chaque entreprise : l'activité des hausses de capital (leur
   // annonce ne la redit pas) et l'ancien capital de toutes les pistes.
-  const histo = await historiques([...parSiren.keys(), ...hausses.map(sirenDe)]);
+  const histo = await historiques([...parSiren.keys(), ...parSirenVente.keys(), ...hausses.map(sirenDe)]);
   for (const r of hausses) {
     const h = derniereHausse(histo.get(sirenDe(r)));
     // Quelques euros, c'est un associé qui entre ; des millions, c'est un grand groupe.
     if (!h || h.apres - h.avant < 5000 || h.apres >= 1000000) continue;
     ajouter(r, 'Hausse de capital', derniereActivite(histo.get(sirenDe(r))));
   }
-  let pistes = [...parSiren.values()];
+  let pistes = [...parSiren.values(), ...parSirenVente.values()];
   for (const piste of pistes) {
     piste.hausse = derniereHausse(histo.get(piste.siren));
     if (piste.hausse) piste.hausseCapital = `de ${euros(piste.hausse.avant)} à ${euros(piste.hausse.apres)} le ${dateFr(piste.hausse.date)}`;
   }
   const avecHausse = pistes.filter((p) => p.hausse).length;
-  console.log(`${pistes.length} pistes après tri du bruit, dont ${pistes.filter((p) => p.signal === 'Hausse de capital').length} sorties par une hausse de capital, et ${avecHausse} avec une hausse de capital depuis deux ans.`);
+  console.log(`${parSiren.size} pistes après tri du bruit, dont ${pistes.filter((p) => p.signal === 'Hausse de capital').length} sorties par une hausse de capital, et ${avecHausse} avec une hausse de capital depuis deux ans.`);
 
   if (!sansAnnuaire) {
     // Mémoire locale de l'annuaire : un lancement par semaine n'interroge que les nouvelles entreprises.
@@ -589,20 +704,25 @@ async function main() {
     mkdirSync(DOSSIER_SORTIE, { recursive: true });
     const cache = existsSync(fichierCache) ? JSON.parse(readFileSync(fichierCache, 'utf8')) : {};
     let ecartees = 0;
+    let opposees = 0;
     let techniques = 0;
     let micros = 0;
+    let horsCible = 0;
+    let seuls = 0;
     const unAnAvant = new Date(aujourdhui.getTime() - 365 * 86400000).toISOString().slice(0, 10);
     let nouvelles = 0;
     const gardees = [];
     for (const piste of pistes) {
-      // Version 3 du cache : dirigeants, salariés (tranche), chiffre d'affaires, date de création.
-      if (!(piste.siren in cache) || (cache[piste.siren] && cache[piste.siren].v !== 3)) {
+      // Version 4 du cache : dirigeants, salariés (tranche), chiffre d'affaires,
+      // date de création, opposition à la prospection.
+      // Une fiche absente (null) se relit à chaque fois : c'était peut-être l'annuaire qui ne répondait pas.
+      if (!cache[piste.siren] || cache[piste.siren].v !== 4) {
         const fiche = await annuaire(piste.siren);
         nouvelles++;
         if (nouvelles % 100 === 0) console.log(`  annuaire : ${nouvelles} fiches lues`);
         cache[piste.siren] = fiche
           ? {
-              v: 3,
+              v: 4,
               ...resumer(fiche),
               nonDiffusible: JSON.stringify(fiche).includes('[NON-DIFFUSIBLE]'),
               existeDepuis: (fiche.date_creation ?? '').slice(0, 4),
@@ -615,10 +735,27 @@ async function main() {
       }
       const f = cache[piste.siren];
       if (f?.nonDiffusible) { ecartees++; continue; }
+      // La personne s'est opposée à la prospection dans le registre : on ne lui écrit pas.
+      if (f?.opposition === true) { opposees++; continue; }
+      piste.oppositionTexte = f?.opposition === false ? 'non' : 'inconnue';
       if (f) {
         piste.existeDepuis = f.existeDepuis;
         piste.naf = f.naf;
         if (!piste.dirigeant) piste.dirigeant = f.dirigeant;
+        if (estVente(piste)) {
+          // Un vendeur ou un acheteur de fonds : une société active, de moins de dix
+          // salariés et de moins de 2 M€ de chiffre d'affaires (au-delà, budget
+          // d'agence), qui n'est ni une holding, ni une foncière, ni une société informatique.
+          if (!f.active || f.sci || NAF_HOLDING.test(f.naf) || NAF_IMMO.test(f.naf) || NAF_TECH.test(f.naf) || Number(f.effectif) >= 11 || f.ca?.ca >= 2000000) { horsCible++; continue; }
+          // Le vendeur de son seul commerce : le téléphone et l'adresse partent avec
+          // le fonds, et la société ferme souvent. On garde celui qui a d'autres sites.
+          if (piste.signal === 'Vente de fonds' && f.etablissements < 2) { seuls++; continue; }
+          piste.etablissements = f.etablissements;
+          if (!piste.ville) piste.ville = f.commune;
+          if (!piste.departement) piste.departement = f.departementCode;
+          gardees.push(piste);
+          continue;
+        }
         // Une entreprise déjà informatique qui ajoute une application la fera elle-même.
         if (piste.signal === 'Ajout d\'activité' && NAF_TECH.test(f.naf)) { techniques++; continue; }
         // Une société de programmation qui lève de l'argent a ses développeurs.
@@ -631,8 +768,11 @@ async function main() {
     writeFileSync(fichierCache, JSON.stringify(cache));
     pistes = gardees;
     if (ecartees) console.log(`${ecartees} pistes écartées : la personne a refusé la diffusion de ses données.`);
+    if (opposees) console.log(`${opposees} pistes écartées : opposition à la prospection commerciale dans le registre.`);
     if (techniques) console.log(`${techniques} pistes écartées : entreprise déjà informatique.`);
     if (micros) console.log(`${micros} pistes écartées : micro-entreprise de moins d'un an.`);
+    if (horsCible) console.log(`${horsCible} ventes écartées : société fermée, trop grosse, holding, foncière ou informatique.`);
+    if (seuls) console.log(`${seuls} ventes écartées : le vendeur n'a plus d'autre établissement.`);
 
     // Profil du fondateur : ses autres entreprises, mises en mémoire elles aussi.
     const fichierFondateurs = join(DOSSIER_SORTIE, '.cache-fondateurs.json');
@@ -682,6 +822,10 @@ async function main() {
   }
   pistes.sort((a, b) => b.score - a.score || b.date.localeCompare(a.date));
 
+  // Les ventes de fonds vont dans leur propre liste : pas d'application à chercher sur l'App Store.
+  const ventes = pistes.filter(estVente);
+  pistes = pistes.filter((p) => !estVente(p));
+
   if (!sansAppStore) {
     const fichierApps = join(DOSSIER_SORTIE, '.cache-appstore.json');
     mkdirSync(DOSSIER_SORTIE, { recursive: true });
@@ -720,6 +864,20 @@ async function main() {
   console.log('Les 10 premières :');
   for (const p of pistes.slice(0, 10)) {
     console.log(`  ${String(p.score).padStart(2)} · ${p.nomCommercial || p.entreprise} (${p.ville}) · ${p.activite.slice(0, 110)}`);
+  }
+
+  if (!sansVentes) {
+    const fichierVentes = join(DOSSIER_SORTIE, `ventes-de-fonds-du-${depuis}-au-${aujourdhui.toISOString().slice(0, 10)}.csv`);
+    const lignesVentes = [
+      CSV_COLONNES_VENTES.map(([, titre]) => cellule(titre)).join(','),
+      ...ventes.map((p) => CSV_COLONNES_VENTES.map(([cle]) => cellule(cle ? p[cle] : '')).join(',')),
+    ];
+    writeFileSync(fichierVentes, '﻿' + lignesVentes.join('\n'), 'utf8');
+    console.log(`\n${ventes.length} vendeurs ou acheteurs de fonds de commerce écrits dans ${fichierVentes}`);
+    console.log('Les 10 premiers :');
+    for (const p of ventes.slice(0, 10)) {
+      console.log(`  ${String(p.score).padStart(2)} · ${p.entreprise} (${p.ville}) · ${p.activite.slice(0, 110)}`);
+    }
   }
 }
 
